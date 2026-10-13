@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste do filtro</title>
+<style>
+  :root{--bg:#fffaf2;--card:#fff;--tx:#2b2233;--mut:#6b6275;--ok:#1f9d55;--okb:#e3f6ea;--no:#d64545;--nob:#fde8e8;--wait:#b7791f;--waitb:#fdf3dc;--bd:#eadfce;--ac:#7c4dff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+  h1{font-size:26px;margin:0 0 4px}
+  p.sub{margin:0 0 18px;color:var(--mut)}
+  .box{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:14px 0}
+  .box h2{font-size:17px;margin:0 0 10px}
+  .row{display:flex;align-items:center;gap:12px;padding:9px 4px;border-top:1px solid var(--bd)}
+  .row:first-of-type{border-top:0}
+  .st{flex:0 0 112px;text-align:center;font-weight:700;font-size:13px;border-radius:999px;padding:4px 8px}
+  .st.wait{background:var(--waitb);color:var(--wait)}
+  .st.ok{background:var(--okb);color:var(--ok)}
+  .st.no{background:var(--nob);color:var(--no)}
+  .nm{flex:1;min-width:0}
+  .nm b{display:block}
+  .nm small{color:var(--mut);word-break:break-all}
+  .nm a{color:var(--ac)}
+  button{font:inherit;border:0;border-radius:10px;padding:10px 16px;background:var(--ac);color:#fff;font-weight:700;cursor:pointer}
+  button.sec{background:#efe8ff;color:var(--ac)}
+  #codigo{font:600 15px/1.4 ui-monospace,Consolas,monospace;background:#f4f0ff;border-radius:10px;padding:12px;word-break:break-all;margin:10px 0}
+  .dica{color:var(--mut);font-size:14px}
+  #resumo{font-size:17px}
+  #resumo .bom{color:var(--ok);font-weight:700}
+  #resumo .ruim{color:var(--no);font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <h1>🧪 Teste do filtro</h1>
+  <p class="sub">Abra esta página no computador do trabalho. Ela tenta buscar uma imagem pequenininha em cada site.
+    Se a imagem chega, o filtro deixa passar (🟢). Se não chega, está bloqueado (🔴). Não envia nenhum dado seu.</p>
+
+  <div class="box">
+    <h2>Resultado</h2>
+    <div id="resumo">Testando… leva uns 10 segundos.</div>
+    <div id="codigo">…</div>
+    <button id="copiar">Copiar o código para mandar ao Claude</button>
+    <button class="sec" id="refazer">Testar de novo</button>
+    <p class="dica">Se o botão de copiar não funcionar, tire um print desta parte ou digite as letras do código.</p>
+  </div>
+
+  <div class="box"><h2>1. Onde a loja pode morar (hospedagens grátis)</h2><div id="g-host"></div></div>
+  <div class="box"><h2>2. O Pixel consegue falar com a Meta?</h2><div id="g-meta"></div></div>
+  <div class="box"><h2>3. Outros (só para comparar)</h2><div id="g-outros"></div></div>
+
+  <div class="box">
+    <h2>Teste de olho (opcional)</h2>
+    <p class="dica">O teste automático olha o “bairro” de cada hospedagem. Para ter certeza, clique nos links azuis acima:
+      se abrir uma página normal, passou; se aparecer uma tela do filtro da empresa (“acesso negado”, “site bloqueado”), não passou.</p>
+  </div>
+</main>
+<script>
+// Cada item: código curto, nome, grupo, imagem de prova, página para abrir no olho
+var TESTES = [
+  ['GH','GitHub Pages (github.io)','host','https://google.github.io/styleguide/favicon.ico','https://google.github.io/styleguide/'],
+  ['NL','Netlify (netlify.app)','host','https://hugo-theme-learn.netlify.app/images/favicon.png','https://hugo-theme-learn.netlify.app/'],
+  ['VC','Vercel (vercel.app)','host','https://swr.vercel.app/favicon.ico','https://swr.vercel.app/'],
+  ['CF','Cloudflare Pages (pages.dev)','host','https://astro-docs.pages.dev/favicon.svg','https://astro-docs.pages.dev/'],
+  ['FB','Firebase Hosting (web.app)','host','https://flutterweb-wasm.web.app/favicon.png','https://flutterweb-wasm.web.app/'],
+  ['GS','Google Apps Script','host','https://script.google.com/favicon.ico','https://script.google.com/'],
+  ['SU','Surge (surge.sh)','host','https://surge.sh/favicon.ico','https://surge.sh/'],
+  ['MP','Código do Pixel (connect.facebook.net)','meta','https://connect.facebook.net/en_US/fbevents.js','https://connect.facebook.net/en_US/fbevents.js','script'],
+  ['MF','Facebook (facebook.com)','meta','https://www.facebook.com/favicon.ico','https://www.facebook.com/'],
+  ['MB','Meta Business (business.facebook.com)','meta','https://business.facebook.com/favicon.ico','https://business.facebook.com/'],
+  ['GO','Google','outros','https://www.google.com/favicon.ico','https://www.google.com/'],
+  ['GD','Google Drive','outros','https://drive.google.com/favicon.ico','https://drive.google.com/'],
+  ['GC','GitHub (github.com)','outros','https://pages.github.com/favicon.ico','https://github.com/'],
+  ['JD','jsDelivr (cdn.jsdelivr.net)','outros','https://cdn.jsdelivr.net/gh/github/explore@main/topics/javascript/javascript.png','https://www.jsdelivr.com/']
+];
+var res = {};
+
+function linha(t){
+  var d = document.createElement('div'); d.className = 'row';
+  d.innerHTML = '<span class="st wait" id="st-'+t[0]+'">⏳ testando</span>'
+    + '<span class="nm"><b>'+t[1]+'</b><small><a href="'+t[4]+'" target="_blank" rel="noopener">'+t[4]+'</a></small></span>';
+  return d;
+}
+function marca(cod, ok){
+  if (cod in res) return;
+  res[cod] = ok;
+  var s = document.getElementById('st-'+cod);
+  s.className = 'st ' + (ok ? 'ok' : 'no');
+  s.textContent = ok ? '🟢 passou' : '🔴 bloqueado';
+  atualiza();
+}
+function testa(t){
+  var cod = t[0], url = t[3] + (t[3].indexOf('?')<0 ? '?' : '&') + 't=' + Date.now();
+  var timer = setTimeout(function(){ marca(cod, false); }, 9000);
+  var el;
+  if (t[5] === 'script'){
+    // só baixa o arquivo; o fbq não é iniciado, então nada é enviado à Meta
+    el = document.createElement('script'); el.async = true;
+  } else {
+    el = new Image();
+  }
+  el.onload = function(){ clearTimeout(timer); marca(cod, true); };
+  el.onerror = function(){ clearTimeout(timer); marca(cod, false); };
+  el.src = url;
+  if (t[5] === 'script') document.head.appendChild(el);
+}
+function atualiza(){
+  var feitos = Object.keys(res).length;
+  var cod = TESTES.map(function(t){ return t[0] + (t[0] in res ? (res[t[0]] ? '+' : '-') : '?'); }).join(' ');
+  document.getElementById('codigo').textContent = 'FILTRO ' + cod;
+  if (feitos < TESTES.length){ document.getElementById('resumo').textContent = 'Testando… ' + feitos + ' de ' + TESTES.length; return; }
+  var hosts = TESTES.filter(function(t){ return t[2]==='host' && res[t[0]]; }).map(function(t){ return t[1]; });
+  var metaOk = res.MP && res.MF;
+  var h = hosts.length
+    ? '<span class="bom">Hospedagens que passaram:</span> ' + hosts.join(', ') + '.'
+    : '<span class="ruim">Nenhuma hospedagem passou.</span> Me mande o código que pensamos em outra saída.';
+  h += '<br>' + (metaOk
+    ? '<span class="bom">O Pixel consegue falar com a Meta.</span>'
+    : '<span class="ruim">O código do Pixel está bloqueado aqui:</span> a loja abre, mas não envia eventos a partir deste computador.');
+  document.getElementById('resumo').innerHTML = h;
+}
+function roda(){
+  res = {};
+  ['host','meta','outros'].forEach(function(g){
+    var box = document.getElementById('g-'+g); box.innerHTML = '';
+    TESTES.filter(function(t){ return t[2]===g; }).forEach(function(t){ box.appendChild(linha(t)); });
+  });
+  atualiza();
+  TESTES.forEach(testa);
+}
+document.getElementById('refazer').onclick = roda;
+document.getElementById('copiar').onclick = function(){
+  var txt = document.getElementById('codigo').textContent, b = this;
+  function feito(){ b.textContent = 'Copiado ✓'; setTimeout(function(){ b.textContent = 'Copiar o código para mandar ao Claude'; }, 2000); }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(feito, function(){ selecao(); });
+  } else selecao();
+  function selecao(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('codigo')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); try{ document.execCommand('copy'); feito(); }catch(e){} }
+};
+roda();
+</script>
+</body>
+</html>

@@ -23,6 +23,11 @@ Dê dois cliques em `index.html`. Tudo funciona em **modo simulação**: nada é
 3. Publicar o site (abaixo). A faixa amarela no topo passa a mostrar **“● Pixel ao vivo”**.
 4. Gerenciador de Eventos › Pixel › **Testar eventos** › navegar na loja e ver os eventos chegando.
 
+## Antes de publicar: teste do filtro do trabalho
+Abra `teste-filtro.html` no computador do trabalho (por e-mail, Drive ou pendrive).
+Ela mostra quais hospedagens grátis passam pelo filtro (🟢/🔴) e se o código do Pixel chega à Meta.
+Mande ao Claude o código que aparece (ex.: `FILTRO GH+ NL- …`) para escolher onde publicar.
+
 ## Publicar no GitHub Pages (grátis)
 1. Criar uma conta em github.com (se ainda não tiver).
 2. Criar um repositório novo, por exemplo `lojinha-da-marina`, **público**.
