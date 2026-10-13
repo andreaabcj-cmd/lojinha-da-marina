@@ -31,6 +31,7 @@ s.parentNode.insertBefore(t,s)}}(window, document,'script',
 </script>
 <script src="assets/js/pixel-aula.js"></script>
 <!-- End Meta Pixel Code -->
+<script src="assets/js/data-advisor.js" defer></script>
 </head>
 <body data-pagina="{pagina}">
 <div id="topo"></div>
@@ -194,7 +195,8 @@ PAGINAS = {
 
 TUTORIAL_HEAD = '''
 <link rel="stylesheet" href="assets/css/tutorial.css"/>
-<script src="assets/tutoriais/pt/dados.js"></script>'''
+<script src="assets/tutoriais/pt/dados.js"></script>
+<script src="assets/tutoriais/textos_es.js"></script>'''
 TUTORIAL_PE = '''
 <script src="assets/js/tutorial.js"></script>'''
 

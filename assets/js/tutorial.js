@@ -6,7 +6,27 @@
   var TXT = { passo: 'Passo', de: 'de', ant: '◀ Anterior', prox: 'Próximo ▶', tocar: '▶ Tocar sozinho', pausar: '⏸ Pausar',
     inteira: '🔍 Tela inteira', zoom: '🔍 Aproximar', erro: '⚠️ Erro comum', alt: '🧭 Caminho alternativo', fim: 'Fim desta etapa 🎉',
     proxEtapa: 'Próxima etapa', voltar: '← Todos os tutoriais', porque: 'Por que isso importa', check: 'Elementos que a loja precisa ter',
-    anot: 'Pixel', emBreve: 'em breve', parcial: 'em gravação', pronto: 'pronto' };
+    anot: 'Pixel', emBreve: 'em breve', parcial: 'em gravação', pronto: 'pronto', prints: 'prints', aviso: '' };
+
+  /* idioma dos textos (PT | ES). Os prints continuam os mesmos. */
+  var LANG = 'pt';
+  try { LANG = new URLSearchParams(location.search).get('lang') || localStorage.getItem('loja.tuLang') || 'pt' } catch (e) { }
+  var ES = window.TUTORIAL_ES;
+  if (LANG === 'es' && ES) {
+    Object.keys(ES.ui).forEach(function (k) { TXT[k] = ES.ui[k] });
+    D = { etapas: D.etapas.map(function (e) { return Object.assign({}, e, ES.etapas[e.id] || {}) }),
+          passos: D.passos.map(function (p) { return Object.assign({}, p, ES.passos[p.id] || {}) }) };
+  } else LANG = 'pt';
+  function seletorIdioma() {
+    if (!ES) return '';
+    return '<div class="tu-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div>' +
+      (TXT.aviso ? '<p class="tu-aviso-lang">🌎 ' + TXT.aviso + '</p>' : '');
+  }
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest && ev.target.closest('[data-lang]'); if (!b) return;
+    try { localStorage.setItem('loja.tuLang', b.getAttribute('data-lang')) } catch (e) { }
+    var u = new URL(location.href); u.searchParams.delete('lang'); location.href = u.href;
+  });
 
   function mascote(px) {
     var rows = ['....uuuuuuu.....', '...uuuuuuuuuU...', '..UUUUUUUUUUUUU.', '...dddddddddd...', '...dssssssssd...', '...ssessssesss..', '...ssssssssss...', '...sssmmmmsss...', '....ssssssss....', '...wwwwwwwwww...', '..wwaawwwwaaww..', '..swaaaaaaaapwwp', '..swaaaaaaaapwkp', '...waaaaaaaapppp', '...aaaaaaaaaa...'];
@@ -22,12 +42,12 @@
   /* ---------- lista de tutoriais (hub) ---------- */
   if (raiz.getAttribute('data-modo') === 'lista') {
     var blocos = {}; D.etapas.forEach(function (e) { (blocos[e.bloco] = blocos[e.bloco] || []).push(e) });
-    raiz.innerHTML = Object.keys(blocos).map(function (b) {
+    raiz.innerHTML = seletorIdioma() + Object.keys(blocos).map(function (b) {
       return '<section class="tu-bloco"><h2>' + b + '</h2><div class="tu-cards">' + blocos[b].map(function (e) {
         var n = D.passos.filter(function (p) { return p.etapa === e.id }).length, ok = e.status !== 'em breve';
         return (ok ? '<a class="tu-card" href="tutorial.html?e=' + e.id + '">' : '<div class="tu-card off">') +
           '<span class="tu-num">' + e.id + '</span><b>' + e.titulo + '</b><p>' + e.resumo + '</p>' +
-          '<span class="tu-st ' + e.status.replace(' ', '-') + '">' + (TXT[e.status === 'em breve' ? 'emBreve' : e.status] || e.status) + (n ? ' · ' + n + ' prints' : '') + '</span>' +
+          '<span class="tu-st ' + e.status.replace(' ', '-') + '">' + (TXT[e.status === 'em breve' ? 'emBreve' : e.status] || e.status) + (n ? ' · ' + n + ' ' + TXT.prints : '') + '</span>' +
           (ok ? '</a>' : '</div>');
       }).join('') + '</div></section>';
     }).join('');
@@ -39,10 +59,11 @@
   var etapa = D.etapas.filter(function (e) { return e.id === eid })[0] || D.etapas[0];
   var passos = D.passos.filter(function (p) { return p.etapa === etapa.id });
   var idxEtapa = D.etapas.indexOf(etapa), proxima = D.etapas[idxEtapa + 1];
-  var base = 'assets/tutoriais/pt/';
+  var base = window.TUTORIAL_BASE || 'assets/tutoriais/pt/';
+  function src(p) { return /^(data:|https?:)/.test(p.img) ? p.img : base + p.img }
 
   raiz.innerHTML =
-    '<a class="tu-voltar" href="tutoriais.html">' + TXT.voltar + '</a>' +
+    '<div class="tu-topo-linha"><a class="tu-voltar" href="tutoriais.html">' + TXT.voltar + '</a>' + seletorIdioma() + '</div>' +
     '<p class="tu-bloco-nome">' + etapa.bloco + '</p><h1><span class="tu-num">' + etapa.id + '</span> ' + etapa.titulo + '</h1>' +
     '<p class="lead">' + etapa.resumo + '</p>' +
     '<div class="tu-player" tabindex="0" aria-label="Player do tutorial">' +
@@ -60,7 +81,7 @@
   var img = $('#tuImg'), cam = $('#tuCam'), palco = $('#tuPalco'), holo = $('#tuHolo'), cur = $('#tuCursor'), onda = $('#tuOnda');
   var i = 0, aproximar = true, tocando = null, timers = [], curPos = { x: .5, y: .5 };
   $('#tuPontos').innerHTML = passos.map(function (p, k) { return '<button data-k="' + k + '" class="' + (p.tipo !== 'passo' ? p.tipo : '') + '" title="' + (p.titulo || p.id) + '"></button>' }).join('');
-  passos.forEach(function (p) { var im = new Image(); im.src = base + p.img });   // pré-carrega
+  passos.forEach(function (p) { var im = new Image(); im.src = src(p) });   // pré-carrega
 
   function limpa() { timers.forEach(clearTimeout); timers = [] }
   function depois(ms, f) { timers.push(setTimeout(f, ms)) }
@@ -93,7 +114,7 @@
     // 1) troca a imagem já enquadrada no alvo anterior, 2) aproxima, 3) acende o holofote, 4) cursor anda e clica
     holo.classList.remove('on'); onda.classList.remove('on'); cur.classList.remove('on');
     cam.classList.toggle('sem-anim', !animar);
-    img.src = base + p.img;
+    img.src = src(p);
     holo.style.left = a[0] * 100 + '%'; holo.style.top = a[1] * 100 + '%'; holo.style.width = a[2] * 100 + '%'; holo.style.height = a[3] * 100 + '%';
     holo.classList.toggle('erro', p.tipo === 'erro');
     var alvo = { x: a[0] + a[2] / 2, y: a[1] + a[3] / 2 };

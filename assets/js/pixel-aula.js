@@ -75,15 +75,17 @@ function track(nome,params,opts){
   registra({nome:nome,params:params,eid:eid,status:status,custom:custom,nota:nota.join(' ')});
   if(nome==='PageView'&&LAB.duplicado){var e2=idEvento(nome);fbqSafe('track','PageView',{}, {eventID:e2});registra({nome:'PageView',params:{},eid:e2,status:status,nota:'👯 Laboratório: o mesmo PageView foi disparado DE NOVO (Pixel duplicado).'})}
 }
-function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.pagina=document.body?document.body.getAttribute('data-pagina'):'';ev.url=trUrl(ev.nome,ev.params,ev.eid,ev.custom);
-  pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev)}
+function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=location.href.split('#')[0];ev.ud=(AM&&cliente)?normaliza(cliente):null;ev.pagina=document.body?document.body.getAttribute('data-pagina'):'';ev.url=trUrl(ev.nome,ev.params,ev.eid,ev.custom);
+  pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev);
+  try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}}
 function achaProduto(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){var p=ps[i];if(p.id===id)return p;if(p.variantes)for(var j=0;j<p.variantes.length;j++)if(p.variantes[j].id===id)return p}return null}
 function noCatalogo(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){if(ps[i].id===id&&!ps[i].variantes)return true;if(ps[i].variantes)for(var j=0;j<ps[i].variantes.length;j++)if(ps[i].variantes[j].id===id)return true;if(ps[i].id===id)return true}return false}
 
 window.LOJA = {
   track:function(n,p,o){track(n,p,o)},
   trackCustom:function(n,p,o){o=o||{};o.custom=true;track(n,p,o)},
-  ao_vivo:LIVE, lab:LAB, moeda:MOEDA,
+  ao_vivo:LIVE, lab:LAB, moeda:MOEDA, pixelId:PID, bloqueado:BLOQ, sha256:sha256,
+  eventos:function(){return {pagina:pageEvents.slice(), sessao:log.slice()}},
   salvarCliente:function(c){cliente=c;lsSet('cliente',c)},
   pedidoJaDisparado:function(id){var l=lsGet('pedidosDisparados',[]);return l.indexOf(id)>=0},
   marcarPedido:function(id){var l=lsGet('pedidosDisparados',[]);if(l.indexOf(id)<0){l.push(id);lsSet('pedidosDisparados',l)}}
@@ -162,7 +164,8 @@ var ui = (function(){
   function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
   function toast(msg){if(!toastBox)return;var t=document.createElement('div');t.className='ma-toast';t.innerHTML=msg;toastBox.appendChild(t);setTimeout(function(){t.classList.add('out')},3600);setTimeout(function(){t.remove()},4200)}
   function faixa(){var f=document.getElementById('maFaixa');if(!f)return;var ativos=LABS.filter(function(l){return LAB[l[0]]}).map(function(l){return l[1]});
-    f.innerHTML='<span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo · ID …'+String(C.pixelId).slice(-4):'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Laboratório: '+ativos.join(' ')+'</span>':'')}
+    f.innerHTML='<span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo · ID …'+String(C.pixelId).slice(-4):'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Laboratório: '+ativos.join(' ')+'</span>':'')+
+      '<button class="ma-ext" id="maExt" title="Consultor de Dados de Anúncios da Meta (simulação da extensão)"><span class="ma-ext-ic"></span>Consultor de Dados <i>simulação</i><b id="maExtBadge"></b></button>';try{document.dispatchEvent(new CustomEvent('loja:faixa'))}catch(e){}}
   function banner(){if(!C.pedirConsentimento||consent)return;if(document.getElementById('maCookie'))return;var b=document.createElement('div');b.id='maCookie';b.className='ma-cookie';
     b.innerHTML='<div><b>🍪 Cookies desta loja</b><p>Usamos o Meta Pixel para medir visitas e compras. Você escolhe. <span class="ma-mut">(Em aula: recusar mostra o Pixel “segurando” os eventos.)</span></p></div><div class="ma-row"><button class="ma-btn ghost" data-c="revoke">Recusar</button><button class="ma-btn" data-c="grant">Aceitar</button></div>';
     document.body.appendChild(b);$$('#maCookie [data-c]').forEach(function(x){x.onclick=function(){consent=x.getAttribute('data-c');lsSet('consent',consent);fbqSafe('consent',consent);b.remove();toast(consent==='grant'?'🍪 Aceito: o Pixel pode enviar os eventos à Meta.':'🙏 Recusado: o Pixel não envia os eventos à Meta (e está certo).')}})}

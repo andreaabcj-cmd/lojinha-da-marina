@@ -61,3 +61,11 @@
 .tu-prox-etapa{margin-top:22px;font-weight:700}.tu-prox-etapa span{color:var(--muted)}
 
 @media (max-width:640px){.tu h1{font-size:22px}.tu-fala{flex-direction:column}.tu-balao::before{display:none}.tu-ctrl .btn{flex:1 1 45%}}
+
+/* idioma (PT | ES) */
+.tu-topo-linha{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tu-lang{display:inline-flex;border:2px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:2px 2px 0 var(--ink);margin-left:auto}
+.tu-lang button{border:0;background:#fff;padding:5px 12px;font:800 13px/1 Consolas,monospace;cursor:pointer;color:var(--ink)}
+.tu-lang button.on{background:var(--yellow)}
+.tu-aviso-lang{flex-basis:100%;margin:6px 0 0;font-size:13px;color:var(--muted)}
+.tu > .tu-lang{float:right;margin-top:-52px}
