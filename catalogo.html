@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Catálogo · Lojinha da Marina</title>
+<meta name="description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<link rel="icon" href="assets/img/caneca_01.png"/>
+<link rel="stylesheet" href="assets/css/loja.css"/>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/produtos.js"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+/* O init e o PageView ficam em assets/js/pixel-aula.js, que lê o ID
+   de assets/js/config.js. No site real seria:
+   fbq('init', 'SEU_PIXEL_ID');
+   fbq('track', 'PageView');                                        */
+</script>
+<script src="assets/js/pixel-aula.js"></script>
+<!-- End Meta Pixel Code -->
+</head>
+<body data-pagina="catalogo">
+<div id="topo"></div>
+<main class="wrap">
+<div class="aula">
+  <h1 style="margin-top:26px">🗂️ Catálogo da loja (as “fichas”)</h1>
+  <p>Cada linha é a ficha de um produto. O <code>id</code> de cada ficha é <b>exatamente</b> o código que o Pixel envia em <code>content_ids</code>. As camisetas têm uma ficha por tamanho, ligadas pelo <code>item_group_id</code>.</p>
+  <p class="alerta" id="avisoBase" style="display:none">⚠️ Você abriu o arquivo direto do computador. Os links do catálogo só valem depois que o site estiver publicado num endereço público (https).</p>
+  <p>Endereço base usado nos links: <code id="baseUrl"></code></p>
+  <p><button class="btn" id="baixaCsv">⬇ Baixar catálogo (.csv)</button> <button class="btn ghost" id="baixaXml">⬇ Baixar catálogo (.xml)</button></p>
+  <div class="tabela" id="tabelaCat"></div>
+  <h2>Como usar na aula</h2>
+  <ol>
+    <li>Publique o site e abra esta página pelo endereço público.</li>
+    <li>Baixe o arquivo (CSV ou XML).</li>
+    <li>No <b>Gerenciador de Comércio</b>, crie um catálogo de comércio eletrônico e adicione itens por <b>arquivo</b> (envio) ou por <b>URL</b> (agendado).</li>
+    <li>Conecte o catálogo ao Pixel da loja e confira a correspondência dos IDs.</li>
+  </ol>
+  <p class="alerta azul">💡 Para o laboratório 🏷️ “código errado”: ligue no Modo aula e abra um produto. A Lupa vai mostrar “não encontrado no catálogo”.</p>
+</div>
+</main>
+<div id="rodape"></div>
+<script src="assets/js/loja.js"></script>
+</body>
+</html>

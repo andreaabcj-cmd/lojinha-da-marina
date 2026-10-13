@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Orçamento · Lojinha da Marina</title>
+<meta name="description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<link rel="icon" href="assets/img/caneca_01.png"/>
+<link rel="stylesheet" href="assets/css/loja.css"/>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/produtos.js"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+/* O init e o PageView ficam em assets/js/pixel-aula.js, que lê o ID
+   de assets/js/config.js. No site real seria:
+   fbq('init', 'SEU_PIXEL_ID');
+   fbq('track', 'PageView');                                        */
+</script>
+<script src="assets/js/pixel-aula.js"></script>
+<!-- End Meta Pixel Code -->
+</head>
+<body data-pagina="orcamento">
+<div id="topo"></div>
+<main class="wrap">
+<div class="duas">
+  <form class="painel" id="formOrc">
+    <h1>Peça um orçamento</h1><p>Canecas personalizadas para casamentos, empresas e festas.</p>
+    <p class="alerta">⚠️ Use dados de teste. Nada é enviado de verdade.</p>
+    <div class="campos">
+      <label>Nome<input value="Bruno Teste" required/></label><label>E-mail<input type="email" value="bruno.teste@exemplo.com" required/></label>
+      <label class="inteiro">Tipo<select name="tipo"><option>Casamento</option><option>Empresa</option><option>Aniversário</option></select></label>
+      <label class="inteiro">Detalhes<textarea rows="3">50 canecas com o nome dos noivos.</textarea></label>
+    </div>
+    <button class="btn grande" style="margin-top:14px">Enviar pedido de orçamento</button><p class="ok" id="orcOk"></p>
+  </form>
+  <aside class="painel"><h3>🎓 O que acontece aqui</h3><p>Enviar o formulário dispara o evento <code>Lead</code>: a pessoa deixou os dados para a loja entrar em contato.</p><p>É diferente de <code>Contact</code>, quando a pessoa <b>inicia</b> a conversa (veja na página da oficina).</p></aside>
+</div>
+</main>
+<div id="rodape"></div>
+<script src="assets/js/loja.js"></script>
+</body>
+</html>
