@@ -143,12 +143,12 @@ PAGINAS = {
   <p class="alerta azul">🎬 <b>Novo:</b> <a href="tutoriais.html">Tutoriais passo a passo</a> com prints reais da Meta: criar o portfólio, o Pixel, testar eventos e montar o catálogo.</p>
   <h2>As 6 abas do Modo aula</h2>
   <div class="mapa-aula">
-    <div><b>📹 Câmera</b><p>Cada evento disparado, com parâmetros, explicação e o código <code>fbq()</code> que rodou.</p></div>
-    <div><b>🌐 Rede</b><p>A “aba Rede” sem F12: os pedidos reais para <code>facebook.com/tr</code> e como ler cada parte.</p></div>
-    <div><b>🔍 Lupa</b><p>O que o Meta Ads Data Advisor mostraria: status do Pixel, eventos, catálogo e correspondência avançada.</p></div>
-    <div><b>📄 Código</b><p>O código do Pixel no &lt;head&gt; desta página, sem precisar do “Exibir código-fonte”.</p></div>
-    <div><b>🧪 Lab</b><p>As desculpas do Pixel: quebre o Pixel de propósito e mostre o problema.</p></div>
-    <div><b>💡 Dica</b><p>O que acontece na página atual e como conferir no Gerenciador de Eventos.</p></div>
+    <a href="loja.html?aula=camera"><b>📹 Câmera</b><p>Cada evento disparado, com parâmetros, explicação e o código <code>fbq()</code> que rodou.</p><span class="abrir">Abrir →</span></a>
+    <a href="loja.html?aula=rede"><b>🌐 Rede</b><p>A “aba Rede” sem F12: os pedidos reais para <code>facebook.com/tr</code> e como ler cada parte.</p><span class="abrir">Abrir →</span></a>
+    <a href="loja.html?aula=lupa"><b>🔍 Lupa</b><p>O que o Meta Ads Data Advisor mostraria: status do Pixel, eventos, catálogo e correspondência avançada.</p><span class="abrir">Abrir →</span></a>
+    <a href="loja.html?aula=codigo"><b>📄 Código</b><p>O código do Pixel no &lt;head&gt; desta página, sem precisar do “Exibir código-fonte”.</p><span class="abrir">Abrir →</span></a>
+    <a href="loja.html?aula=lab"><b>🧪 Lab</b><p>As desculpas do Pixel: quebre o Pixel de propósito e mostre o problema.</p><span class="abrir">Abrir →</span></a>
+    <a href="loja.html?aula=dica"><b>💡 Dica</b><p>O que acontece na página atual e como conferir no Gerenciador de Eventos.</p><span class="abrir">Abrir →</span></a>
   </div>
   <h2>Roteiro sugerido (ligado ao Aulão de Pixel)</h2>
   <ol>

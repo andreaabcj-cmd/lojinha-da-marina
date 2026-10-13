@@ -91,6 +91,17 @@
   };
 
   /* ---------- AULA: uma parte por vez (ver · ferramenta · praticar · caso) ---------- */
+  /* conversa no estilo do chat de atendimento: Marina (cliente) à esquerda, Rafa (agente) à direita, Pixel como dica no meio */
+  function chat(dialogo) {
+    var min = 41, h = '<div class="chat"><div class="chat-sis">' + T({ pt: 'Rafa entrou na conversa.', es: 'Rafa se unió a la conversación.' }) + '</div>';
+    function av(q) { return '<span class="av">' + PERSONAGEM(q, 1.6) + '</span>' }
+    dialogo.forEach(function (d) {
+      var hora = '17:' + (min++);
+      if (d[0] === 'pixel') h += '<div class="chat-dica">' + av('pixel') + '<span><b>Pixel:</b> ' + T(d[1]) + '</span></div>';
+      else h += '<div class="msg ' + (d[0] === 'rafa' ? 'dir' : 'esq') + '">' + av(d[0]) + '<div><div class="bolha">' + T(d[1]) + '</div><span class="hora">' + PERSONAGEM_NOME[d[0]] + ' · ' + hora + '</span></div></div>';
+    });
+    return h + '</div>';
+  }
   var passoAtual = 0;
   function aulaTela() {
     var mid = Q.get('m'), aid = Q.get('a'), m = window.MODULOS.filter(function (x) { return x.id === mid })[0], lista = window.AULAS[mid] || [];
@@ -101,7 +112,7 @@
     var prox = lista[lista.indexOf(a) + 1];
     function desenha() {
       var p = partes[passoAtual], h = '';
-      if (p === 'ver') h = '<h2>' + T(a.titulo) + '</h2><div class="dialogo">' + a.ver.dialogo.map(function (d) { return '<div class="fala ' + d[0] + '"><span class="quem">' + PERSONAGEM(d[0], 3) + '<br>' + PERSONAGEM_NOME[d[0]] + '</span><div class="bal">' + T(d[1]) + '</div></div>' }).join('') + '</div>' +
+      if (p === 'ver') h = '<h2>' + T(a.titulo) + '</h2>' + chat(a.ver.dialogo) +
         '<ul class="pontos">' + a.ver.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🛠️ ' + T(f.titulo) + '</h2><p>' + T(f.resumo) + '</p><div class="ferr-box" id="ferr"></div>'; setTimeout(function () { f.montar($('#ferr'), T, LANG) }) }
       else if (p === 'praticar') h = '<h2>🕹️ ' + T(U.praticar) + '</h2><p class="pratica-txt">' + T(a.praticar.texto) + '</p><div class="botoes">' + a.praticar.botoes.map(function (b) { return '<a class="btn amarelo" target="_blank" rel="noopener" href="' + b.href + '">' + T(b.rotulo) + '</a>' }).join('') + '</div>';

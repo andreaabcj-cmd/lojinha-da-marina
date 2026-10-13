@@ -121,14 +121,16 @@ a{color:var(--blue)}
 /* tutorial guiado (holofote + Pixel) em cima do simulador */
 .tour-holo{position:fixed;z-index:70;border-radius:10px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);outline:3px solid var(--yellow);outline-offset:3px;pointer-events:none;transition:all .35s cubic-bezier(.3,.1,.2,1);animation:tourPulso 1.6s infinite}
 @keyframes tourPulso{50%{outline-offset:7px}}
-.tour-balao{position:fixed;z-index:72;width:340px;max-width:calc(100vw - 24px);background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:5px 5px 0 var(--ink);padding:12px 14px 12px 76px;transition:top .35s,left .35s}
+.tour-balao{position:fixed;z-index:72;width:370px;max-width:calc(100vw - 24px);background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:5px 5px 0 var(--ink);padding:12px 14px 12px 76px;transition:top .35s,left .35s}
 .tour-balao .masc{position:absolute;left:10px;top:12px;animation:tourBoing 1.2s ease-in-out infinite}
 @keyframes tourBoing{50%{transform:translateY(-5px)}}
 .tour-balao b{display:block;font-size:16px;margin-bottom:3px}
 .tour-balao p{margin:0 0 8px;font-size:14px;color:var(--ink2)}
 .tour-balao .dica{background:var(--yellow-l);border-radius:8px;padding:6px 8px;font-size:13px;color:#5E4300}
-.tour-balao .ctrl{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}
-.tour-balao .ctrl small{color:var(--muted)}
+.tour-balao .ctrl{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:10px;flex-wrap:nowrap}
+.tour-balao .ctrl>span{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tour-balao .ctrl small{color:var(--muted);white-space:nowrap}
+.tour-balao .ctrl .btn{padding:7px 12px}
 .tour-bloqueio{position:fixed;inset:0;z-index:69}
 
 /* telas estreitas: menu vai para cima, título numa linha só */

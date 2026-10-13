@@ -24,13 +24,14 @@
    "id": "02",
    "bloco": "2 · O Pixel",
    "titulo": "Criar o Pixel (conjunto de dados)",
-   "status": "pronto",
+   "status": "simulador",
    "resumo": "A Meta cria o Pixel e dá a ele um número de identificação (o ID do Pixel). É esse número que vai no código do site.",
    "porque": [
     "Hoje a Meta chama o Pixel de “conjunto de dados”. É a mesma coisa.",
     "Cada Pixel tem um número único (o ID). Lembra do 📓 caderno errado do laboratório? É quando o site usa o ID de outro Pixel."
    ],
-   "sim": "meta-eventos.html?tour=criar-pixel&voltar=tutoriais.html"
+   "sim": "meta-eventos.html?tour=criar-pixel&voltar=tutoriais.html",
+   "so_sim": true
   },
   {
    "id": "03",

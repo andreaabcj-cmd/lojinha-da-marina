@@ -45,7 +45,7 @@
     var blocos = {}; D.etapas.forEach(function (e) { (blocos[e.bloco] = blocos[e.bloco] || []).push(e) });
     raiz.innerHTML = seletorIdioma() + Object.keys(blocos).map(function (b) {
       return '<section class="tu-bloco"><h2>' + b + '</h2><div class="tu-cards">' + blocos[b].map(function (e) {
-        var n = D.passos.filter(function (p) { return p.etapa === e.id }).length, ok = e.status !== 'em breve';
+        var n = e.so_sim ? 0 : D.passos.filter(function (p) { return p.etapa === e.id }).length, ok = e.status !== 'em breve';   // so_sim: o tutorial gravado foi trocado pelo do simulador
         var href = n ? 'tutorial.html?e=' + e.id : e.sim;   // sem prints: vai direto para o simulador
         return (ok ? '<a class="tu-card" href="' + href + '">' : '<div class="tu-card off">') +
           '<span class="tu-num">' + e.id + '</span><b>' + e.titulo + '</b><p>' + e.resumo + '</p>' +
@@ -59,6 +59,7 @@
   /* ---------- player de uma etapa ---------- */
   var eid = params.get('e') || D.etapas[0].id;
   var etapa = D.etapas.filter(function (e) { return e.id === eid })[0] || D.etapas[0];
+  if (etapa.so_sim && etapa.sim) { location.replace(etapa.sim); return }
   var passos = D.passos.filter(function (p) { return p.etapa === etapa.id });
   var idxEtapa = D.etapas.indexOf(etapa), proxima = D.etapas[idxEtapa + 1];
   var base = window.TUTORIAL_BASE || 'assets/tutoriais/pt/';

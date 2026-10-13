@@ -43,9 +43,9 @@ window.AULAS = {
       },
       ferramenta: 'codigo-base',
       praticar: {
-        texto: { pt: 'Abra a Lojinha, clique em <b>Modo aula</b> (canto inferior direito) e vá na aba <b>📄 Código</b>. Ache no código da página: o comentário <code>Meta Pixel Code</code>, o endereço <code>fbevents.js</code> e o <code>fbq(\'init\')</code>.', es: 'Abre la Lojinha, haz clic en <b>Modo aula</b> (esquina inferior derecha) y ve a la pestaña <b>📄 Código</b>. Encuentra en el código de la página: el comentario <code>Meta Pixel Code</code>, la dirección <code>fbevents.js</code> y el <code>fbq(\'init\')</code>.' },
+        texto: { pt: 'O botão abre a Lojinha já no <b>Modo aula</b>, na aba <b>📄 Código</b>, que mostra o código desta página. Ache: o comentário <code>Meta Pixel Code</code>, o endereço <code>fbevents.js</code> e o <code>fbq(\'init\')</code>.', es: 'El botón abre la Lojinha ya en el <b>Modo aula</b>, en la pestaña <b>📄 Código</b>, que muestra el código de esta página. Encuentra: el comentario <code>Meta Pixel Code</code>, la dirección <code>fbevents.js</code> y el <code>fbq(\'init\')</code>.' },
         botoes: [
-          { href: 'loja.html', rotulo: { pt: '🏪 Abrir a Lojinha', es: '🏪 Abrir la Lojinha' } },
+          { href: 'loja.html?aula=codigo', rotulo: { pt: '🏪 Abrir a Lojinha no Modo aula › Código', es: '🏪 Abrir la Lojinha en Modo aula › Código' } },
           { href: 'meta-eventos.html?tour=criar-pixel', rotulo: { pt: '🕹️ Ver o código no simulador', es: '🕹️ Ver el código en el simulador' } }
         ]
       },

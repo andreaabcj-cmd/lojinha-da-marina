@@ -115,6 +115,7 @@ var DICAS = {
 /* ---------- 4) INTERFACE DO MODO AULA ---------- */
 var ui = (function(){
   var aberto=lsGet('aulaAberta',false),aba=lsGet('aulaAba','camera'),pend=[];
+(function(){try{var q=new URLSearchParams(location.search).get('aula');if(q&&/^(camera|rede|lupa|codigo|lab|dica)$/.test(q)){aba=q;aberto=true;lsSet('aulaAba',q);lsSet('aulaAberta',true)}}catch(e){}})();
   var root,badge,panel,toastBox,ready=false;
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function stChip(s){var m={enviado:['ok','enviado à Meta'],simulado:['sim','simulado'],segurado:['warn','segurado: sem consentimento'],bloqueado:['bad','bloqueado'],perdido:['bad','NÃO disparou'],erro:['bad','erro']}[s]||['sim',s];return '<span class="ma-st '+m[0]+'">'+m[1]+'</span>'}
@@ -185,7 +186,7 @@ var ui = (function(){
     document.getElementById('maFab').onclick=function(){aberto=!aberto;lsSet('aulaAberta',aberto);panel.classList.toggle('open',aberto);render()};
     document.getElementById('maFecha').onclick=function(){aberto=false;lsSet('aulaAberta',false);panel.classList.remove('open')};
     $$('.ma-tabs button').forEach(function(b){b.onclick=function(){aba=b.getAttribute('data-aba');lsSet('aulaAba',aba);render()}});
-    panel.classList.toggle('open',aberto);faixa();banner();ready=true;badge.textContent=pageEvents.length;pend.forEach(function(e){toast(msgEv(e))});pend=[];render();
+    panel.classList.toggle('open',aberto);try{if(new URLSearchParams(location.search).get('aula'))document.getElementById('maFab').classList.add('chama')}catch(e){}faixa();banner();ready=true;badge.textContent=pageEvents.length;pend.forEach(function(e){toast(msgEv(e))});pend=[];render();
     setTimeout(function(){if(aba==='rede'&&aberto)render()},2500)}
   function mascote(){var rows=['....uuuuuuu.....','...uuuuuuuuuU...','..UUUUUUUUUUUUU.','...dddddddddd...','...dssssssssd...','...ssessssesss..','...ssssssssss...','...sssmmmmsss...','....ssssssss....','...wwwwwwwwww...','..wwaawwwwaaww..','..swaaaaaaaapwwp','..swaaaaaaaapwkp','...waaaaaaaapppp','...aaaaaaaaaa...'];
     var P={u:'#2F6FD6',U:'#1F4FA8',d:'#2A1E1A',s:'#F4CBA2',e:'#22304A',m:'#D0605A',w:'#fff',a:'#1F3A6E',p:'#A0703A',k:'#22304A'},o='';rows.forEach(function(r,y){for(var x=0;x<r.length;x++){var c=r[x];if(c!=='.')o+='<rect x="'+x*2+'" y="'+y*2+'" width="2" height="2" fill="'+P[c]+'"/>'}});
