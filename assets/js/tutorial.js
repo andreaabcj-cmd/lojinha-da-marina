@@ -94,7 +94,8 @@
     if (!aproximar) { z = cheio; tx = (W - W * z) / 2; ty = (Hp - Hi * z) / 2 }
     else {
       // zoom suave: o alvo ocupa ~40% do palco, sem passar de 2x
-      z = Math.max(cheio, Math.min(2, 0.4 * W / (a[2] * W), 0.4 * Hp / (a[3] * Hi)));
+      // ...e nunca além da nitidez real do print (p.w = pixels reais da imagem)
+      z = Math.max(cheio, Math.min(2, 1.15 * p.w / W, 0.4 * W / (a[2] * W), 0.4 * Hp / (a[3] * Hi)));
       var cx = (a[0] + a[2] / 2) * W, cy = (a[1] + a[3] / 2) * Hi;
       tx = W * z <= W ? (W - W * z) / 2 : Math.min(0, Math.max(W - W * z, W / 2 - cx * z));
       ty = Hi * z <= Hp ? (Hp - Hi * z) / 2 : Math.min(0, Math.max(Hp - Hi * z, Hp / 2 - cy * z));

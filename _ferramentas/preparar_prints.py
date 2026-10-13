@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import json, os, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LARG = 1400  # largura final dos prints
+LARG = 2000  # largura máxima dos prints (nunca amplia um print menor)
 
 
 def fonte(tam):
@@ -60,13 +60,14 @@ def main(lang):
             pixelar(im, c)
         for c, txt in m.get('rotulos', []):
             rotulo(im, c, txt)
-        esc = LARG / W
-        im = im.resize((LARG, round(H * esc)), Image.LANCZOS)
-        im.save(os.path.join(saida, sid + '.webp'), quality=82, method=6)
+        esc = min(1, LARG / W)
+        if esc < 1:
+            im = im.resize((round(W * esc), round(H * esc)), Image.LANCZOS)
+        im.save(os.path.join(saida, sid + '.webp'), quality=92, method=6)
         ax, ay, aw, ah = m['alvo']
         extra = roteiro.get('passos', {}).get(sid, {})
         passos.append({'id': sid, 'etapa': m['etapa'], 'tipo': m.get('tipo', 'passo'), 'img': sid + '.webp',
-                       'w': LARG, 'h': round(H * esc),
+                       'w': im.width, 'h': im.height,
                        'alvo': [round(ax / W, 4), round(ay / H, 4), round(aw / W, 4), round(ah / H, 4)],
                        'texto': extra.get('texto', m['caption']), 'titulo': extra.get('titulo', ''),
                        'dica': extra.get('dica', ''), 'clique': extra.get('clique', True)})
