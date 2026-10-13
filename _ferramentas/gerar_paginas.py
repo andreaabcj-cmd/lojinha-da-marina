@@ -11,7 +11,7 @@ HEAD = '''<!doctype html>
 <title>{titulo} · Lojinha da Marina</title>
 <meta name="description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
 <link rel="icon" href="assets/img/caneca_01.png"/>
-<link rel="stylesheet" href="assets/css/loja.css"/>
+<link rel="stylesheet" href="assets/css/loja.css"/>{extra}
 <script src="assets/js/config.js"></script>
 <script src="assets/js/produtos.js"></script>
 <!-- Meta Pixel Code -->
@@ -136,6 +136,7 @@ PAGINAS = {
   <h1 style="margin-top:26px">🎓 Guia da aula</h1>
   <p id="statusPixel"></p>
   <p>Esta loja existe para ensinar o <b>Meta Pixel</b> na prática. Abra o <b>Modo aula</b> no canto inferior direito: ele mostra o que normalmente só se vê com o F12 ou com extensões, que nos computadores do trabalho ficam bloqueados.</p>
+  <p class="alerta azul">🎬 <b>Novo:</b> <a href="tutoriais.html">Tutoriais passo a passo</a> com prints reais da Meta: criar o portfólio, o Pixel, testar eventos e montar o catálogo.</p>
   <h2>As 6 abas do Modo aula</h2>
   <div class="mapa-aula">
     <div><b>📹 Câmera</b><p>Cada evento disparado, com parâmetros, explicação e o código <code>fbq()</code> que rodou.</p></div>
@@ -191,7 +192,22 @@ PAGINAS = {
 '''),
 }
 
-for arq, (titulo, pagina, corpo) in PAGINAS.items():
+TUTORIAL_HEAD = '''
+<link rel="stylesheet" href="assets/css/tutorial.css"/>
+<script src="assets/tutoriais/pt/dados.js"></script>'''
+TUTORIAL_PE = '''
+<script src="assets/js/tutorial.js"></script>'''
+
+PAGINAS['tutoriais'] = ('Tutoriais passo a passo', 'tutorial', '''
+<div class="tu">
+  <h1 style="margin-top:26px">🎬 Tutoriais passo a passo</h1>
+  <p class="lead">Prints reais da Meta, na ordem certa: do portfólio ao catálogo. Cada tutorial mostra onde clicar (holofote + cursor) e o anotador explica o porquê. Dados pessoais aparecem censurados.</p>
+  <div id="tutorial" data-modo="lista"></div>
+</div>''' + TUTORIAL_PE, TUTORIAL_HEAD)
+PAGINAS['tutorial'] = ('Tutorial', 'tutorial', '''
+<div class="tu" id="tutorial"></div>''' + TUTORIAL_PE, TUTORIAL_HEAD)
+
+for arq, (titulo, pagina, corpo, *extra) in PAGINAS.items():
     with open(os.path.join(RAIZ, arq + '.html'), 'w', encoding='utf-8') as f:
-        f.write(HEAD.format(titulo=titulo, pagina=pagina, corpo=corpo.strip()))
+        f.write(HEAD.format(titulo=titulo, pagina=pagina, corpo=corpo.strip(), extra=extra[0] if extra else ''))
     print('ok', arq + '.html')
