@@ -87,13 +87,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-01.webp",
-   "w": 1099,
-   "h": 1092,
+   "w": 784,
+   "h": 490,
    "alvo": [
-    0.0182,
-    0.304,
-    0.2093,
-    0.0293
+    0.0306,
+    0.9,
+    0.3393,
+    0.0735
    ],
    "texto": "No Meta Business Suite, abra o seletor no canto superior esquerdo. Ele mostra seus portfólios empresariais e o botão Criar um portfólio empresarial.",
    "titulo": "Onde ficam os portfólios",
@@ -105,13 +105,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-02.webp",
-   "w": 1099,
-   "h": 1092,
+   "w": 621,
+   "h": 607,
    "alvo": [
-    0.273,
-    0.2656,
-    0.444,
-    0.3022
+    0.0644,
+    0.1565,
+    0.8696,
+    0.626
    ],
    "texto": "O formulário pede 3 coisas: o nome público do portfólio (o nome da empresa), seu nome e sobrenome (você vira administrador) e um email comercial.",
    "titulo": "O formulário",
@@ -123,13 +123,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "erro",
    "img": "01-03.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 621,
+   "h": 637,
    "alvo": [
-    0.3916,
-    0.2674,
-    0.2105,
-    0.0617
+    0.0644,
+    0.2276,
+    0.8696,
+    0.1209
    ],
    "texto": "Erro comum: parênteses, aspas e outros caracteres especiais não são aceitos no nome do portfólio. Use só letras, números e espaços.",
    "titulo": "Erro comum: caracteres especiais",
@@ -141,13 +141,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-04.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 621,
+   "h": 607,
    "alvo": [
-    0.5829,
-    0.5938,
-    0.0255,
-    0.0283
+    0.8535,
+    0.9094,
+    0.1063,
+    0.0659
    ],
    "texto": "Tudo preenchido: nome sem caracteres especiais, seu nome real (você vira administrador) e o email da empresa. Ao clicar em Criar você aceita os Termos Comerciais.",
    "titulo": "Tudo preenchido",
@@ -159,13 +159,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-05.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 780,
+   "h": 495,
    "alvo": [
-    0.3469,
-    0.2982,
-    0.2997,
-    0.0951
+    0.0462,
+    0.2788,
+    0.9038,
+    0.2242
    ],
    "texto": "Portfólio criado! A Meta oferece adicionar suas páginas. Atenção: uma página que já pertence a outro portfólio NÃO aparece aqui. Só marque páginas da mesma empresa.",
    "titulo": "Adicionar páginas",
@@ -177,13 +177,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-06.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 780,
+   "h": 495,
    "alvo": [
-    0.5995,
-    0.3136,
-    0.037,
-    0.0257
+    0.8077,
+    0.3152,
+    0.1115,
+    0.0606
    ],
    "texto": "Quem criou o portfólio fica com Controle total (administrador). Aqui dá para convidar outras pessoas por email, como Funcionário (acesso parcial) ou com controle total. Para a aula, pule.",
    "titulo": "Pessoas e papéis",
@@ -195,13 +195,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-07.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 780,
+   "h": 495,
    "alvo": [
-    0.6091,
-    0.5488,
-    0.0383,
-    0.0283
+    0.8365,
+    0.8697,
+    0.1154,
+    0.0667
    ],
    "texto": "Resumo final: o nome do portfólio e quem terá acesso. Confira e clique em Confirmar.",
    "titulo": "Confirmar",
@@ -213,13 +213,13 @@ window.TUTORIAL_PT = {
    "etapa": "01",
    "tipo": "passo",
    "img": "01-08.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 2000,
+   "h": 949,
    "alvo": [
-    0.0038,
-    0.0591,
-    0.0753,
-    0.036
+    0.0031,
+    0.0609,
+    0.0766,
+    0.0395
    ],
    "texto": "Pronto: o portfólio novo já está selecionado no canto superior esquerdo. Ele ainda está vazio (sem páginas), por isso essa mensagem. Normal!",
    "titulo": "Portfólio pronto!",
@@ -231,13 +231,13 @@ window.TUTORIAL_PT = {
    "etapa": "02",
    "tipo": "passo",
    "img": "02-01.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 2000,
+   "h": 434,
    "alvo": [
-    0.0344,
-    0.0566,
-    0.0855,
-    0.0257
+    0.0359,
+    0.1297,
+    0.0625,
+    0.0613
    ],
    "texto": "Gerenciador de Eventos, com o portfólio certo selecionado no canto superior direito. Para criar o Pixel, clique em Conectar dados (o + verde).",
    "titulo": "Gerenciador de Eventos",
@@ -249,13 +249,13 @@ window.TUTORIAL_PT = {
    "etapa": "02",
    "tipo": "passo",
    "img": "02-02.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 620,
+   "h": 588,
    "alvo": [
-    0.3865,
-    0.2622,
-    0.2258,
-    0.0514
+    0.0387,
+    0.2177,
+    0.929,
+    0.1088
    ],
    "texto": "Escolha o tipo de fonte de dados. O Pixel é a opção Web (atividade no site: visualizações, carrinho e compras).",
    "titulo": "Tipo de dado: Web",
@@ -267,13 +267,13 @@ window.TUTORIAL_PT = {
    "etapa": "02",
    "tipo": "passo",
    "img": "02-03.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 640,
+   "h": 718,
    "alvo": [
-    0.3827,
-    0.2365,
-    0.2347,
-    0.0488
+    0.0344,
+    0.1811,
+    0.9031,
+    0.0864
    ],
    "texto": "A Meta agora chama o Pixel de conjunto de dados. Dê um nome, decida sobre a caixinha da API de Conversões e escolha a categoria (opcional).",
    "titulo": "Criar o conjunto de dados",
@@ -285,13 +285,13 @@ window.TUTORIAL_PT = {
    "etapa": "02",
    "tipo": "passo",
    "img": "02-04.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 640,
+   "h": 973,
    "alvo": [
-    0.3839,
-    0.6221,
-    0.2321,
-    0.2314
+    0.0344,
+    0.6331,
+    0.9344,
+    0.3032
    ],
    "texto": "As categorias são de assuntos sensíveis (saúde, religião, política...). Só marque se o negócio trabalha com isso. Uma loja de canecas não marca nenhuma.",
    "titulo": "Categorias sensíveis",
@@ -303,13 +303,13 @@ window.TUTORIAL_PT = {
    "etapa": "02",
    "tipo": "passo",
    "img": "02-05.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 640,
+   "h": 718,
    "alvo": [
-    0.5912,
-    0.6504,
-    0.0255,
-    0.0283
+    0.8656,
+    0.9123,
+    0.1031,
+    0.0529
    ],
    "texto": "Nome pronto (sem símbolos). Na aula, desmarcamos a API de Conversões para estudar o Pixel puro primeiro; ela pode ser ligada depois. Clique em Criar.",
    "titulo": "Pronto para criar",
@@ -319,15 +319,33 @@ window.TUTORIAL_PT = {
   {
    "id": "02-06",
    "etapa": "02",
-   "tipo": "alternativo",
+   "tipo": "erro",
    "img": "02-06.webp",
-   "w": 1568,
-   "h": 778,
+   "w": 640,
+   "h": 294,
    "alvo": [
-    0.9337,
-    0.0758,
-    0.0446,
-    0.0308
+    0.0312,
+    0.5034,
+    0.9375,
+    0.3197
+   ],
+   "texto": "Erro real que aconteceu com a gente: Esse conteúdo não está mais disponível. Apareceu porque o portfólio tinha acabado de ser criado. O Pixel não é criado.",
+   "titulo": "Erro: Esse conteúdo não está mais disponível",
+   "dica": "Portfólio recém-criado? A Meta pode segurar a criação de Pixel por um tempo (aconteceu com a gente por mais de um dia). Confirme o email da empresa, preencha os Detalhes da empresa e tente de novo mais tarde.",
+   "clique": false
+  },
+  {
+   "id": "02-07",
+   "etapa": "02",
+   "tipo": "alternativo",
+   "img": "02-07.webp",
+   "w": 2000,
+   "h": 949,
+   "alvo": [
+    0.9336,
+    0.0782,
+    0.0461,
+    0.0329
    ],
    "texto": "Caminho alternativo (quando o Gerenciador de Eventos dá erro): Configurações do portfólio › Fontes de dados › Conjuntos de dados e pixels › Adicionar.",
    "titulo": "Caminho alternativo",

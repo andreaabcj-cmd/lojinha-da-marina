@@ -60,11 +60,17 @@ def main(lang):
             pixelar(im, c)
         for c, txt in m.get('rotulos', []):
             rotulo(im, c, txt)
+        ax, ay, aw, ah = m['alvo']
+        if m.get('recorte'):   # mostra só a área útil (o alvo passa a ser medido dentro do recorte)
+            rx, ry, rw, rh = m['recorte']
+            im = im.crop((rx, ry, rx + rw, ry + rh)); ax, ay = ax - rx, ay - ry; W, H = im.size
+        if m.get('realce'):    # print antigo e pequeno: amplia 1,5x e realça bordas (sem IA: não inventa letras)
+            im = im.resize((round(W * 1.5), round(H * 1.5)), Image.LANCZOS).filter(ImageFilter.UnsharpMask(radius=1.2, percent=90, threshold=2))
+            ax, ay, aw, ah = ax * 1.5, ay * 1.5, aw * 1.5, ah * 1.5; W, H = im.size
         esc = min(1, LARG / W)
         if esc < 1:
             im = im.resize((round(W * esc), round(H * esc)), Image.LANCZOS)
         im.save(os.path.join(saida, sid + '.webp'), quality=92, method=6)
-        ax, ay, aw, ah = m['alvo']
         extra = roteiro.get('passos', {}).get(sid, {})
         passos.append({'id': sid, 'etapa': m['etapa'], 'tipo': m.get('tipo', 'passo'), 'img': sid + '.webp',
                        'w': im.width, 'h': im.height,

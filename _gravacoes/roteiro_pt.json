@@ -140,10 +140,6 @@
    "titulo": "Pronto para criar",
    "dica": "A caixinha da API de Conversões liga o envio pelo servidor. Na aula, deixamos para depois, para entender primeiro o Pixel sozinho."
   },
-  "02-06": {
-   "titulo": "Caminho alternativo",
-   "dica": "Se o Gerenciador de Eventos der erro, tente por aqui. Portfólio recém-criado? A Meta pode segurar a criação por algumas horas. Espere e tente de novo."
-  },
   "06-01": {
    "titulo": "Abrir o depurador",
    "dica": "Endereço: developers.facebook.com/tools/debug. Funciona com qualquer página pública, mesmo sem Pixel."
@@ -165,6 +161,15 @@
   "06-05": {
    "titulo": "Erro comum: tags só no JavaScript",
    "dica": "A pessoa vê a caneca no navegador, mas o robô vê uma página genérica. A solução é escrever as tags no HTML da página (como nas páginas fixas da Lojinha).",
+   "clique": false
+  },
+  "02-07": {
+   "titulo": "Caminho alternativo",
+   "dica": "Se o Gerenciador de Eventos der erro, tente por aqui. Portfólio recém-criado? A Meta pode segurar a criação por algumas horas. Espere e tente de novo."
+  },
+  "02-06": {
+   "titulo": "Erro: Esse conteúdo não está mais disponível",
+   "dica": "Portfólio recém-criado? A Meta pode segurar a criação de Pixel por um tempo (aconteceu com a gente por mais de um dia). Confirme o email da empresa, preencha os Detalhes da empresa e tente de novo mais tarde.",
    "clique": false
   }
  }
