@@ -1,55 +1,51 @@
-# Lojinha da Marina · loja de treinamento do Meta Pixel
+# Lojinha da Marina · plataforma de treinamento (ecossistema Meta)
 
-Loja **fictícia** (canecas, camisetas, ecobags) feita para ensinar o Meta Pixel na prática.
-Nenhum produto é vendido e nenhum pagamento é real.
+Site **público** no GitHub Pages: https://andreaabcj-cmd.github.io/lojinha-da-marina/
+Entrada com senha simples (`support.fb.com`): é um porteiro, não segurança. **Só conteúdo público** entra aqui.
+Personagens: **Marina** (dona da loja, a cliente), **Rafa** (agente de suporte) e o **Pixel** (mascote).
+Idiomas: **PT | ES** desde o início. Progresso: só no navegador de cada pessoa.
 
-## O que já está pronto
-- **10 páginas**: vitrine, produtos (com busca), produto, carrinho, checkout, obrigado, orçamento, oficina, guia da aula e catálogo.
-- **Eventos** em cada ação: PageView, ViewContent, Search, AddToWishlist, AddToCart, InitiateCheckout,
-  AddPaymentInfo, Purchase (com nº do pedido como eventID), Lead, CompleteRegistration, Schedule, Contact
-  e um evento personalizado (MontouKitPresente).
-- **Modo aula** (botão no canto inferior direito), feito para computadores sem F12:
-  📹 Câmera · 🌐 Rede · 🔍 Lupa (tipo Data Advisor) · 📄 Código · 🧪 Laboratório de falhas · 💡 Dica.
-- **Banner de cookies** de verdade (consentimento liga/desliga o envio).
-- **Correspondência avançada** com os dados de teste do checkout (o Pixel envia com hash).
-- **Catálogo**: página que gera o arquivo CSV/XML com os mesmos IDs do Pixel, mais as fotos PNG.
+## As 4 áreas (cada uma tem um só trabalho — nada de "salada")
+| Área | Página | Para quê |
+|---|---|---|
+| 🎓 Módulos | `modulos.html` → `modulo.html?m=` → `aula-plataforma.html?m=&a=` | Aprender (aulas de 5–10 min) |
+| 🏪 Loja | `loja.html` (+ produtos, checkout…) | Praticar: a loja com Pixel, Modo aula e laboratório de falhas |
+| 🕹️ Simuladores | `simuladores.html`, `meta-eventos.html` | Cópias de treino das ferramentas da Meta (layout fiel, visual da Lojinha, data de conferência) |
+| 🧪 Laboratório | `laboratorio.html`, `ferramenta.html?f=` | As ferramentas das aulas, soltas e completas (inclui os detalhes técnicos) |
+| 🗒️ Colas | `colas.html` | A cola de atendimento de todas as aulas, para copiar no dia a dia |
 
-## Testar no computador (sem publicar)
-Dê dois cliques em `index.html`. Tudo funciona em **modo simulação**: nada é enviado à Meta.
+## Formato FIXO de toda aula (foco: atendimento)
+O agente precisa **entender, identificar o problema e orientar o cliente**; o que é técnico demais vai para o desenvolvedor.
+1. **Entender** — chat no estilo do atendimento (Marina à esquerda, Rafa à direita, Pixel como dica) + 2–3 ideias simples.
+2. **Ver de perto** — a ferramenta em modo simples (o técnico fica só no Laboratório).
+3. **Praticar** — SEMPRE guiado (holofote + Pixel), na loja ou no simulador; ao terminar volta para a aula.
+4. **Atender** — o cliente diz algo e o agente escolhe o que responder (com retorno do porquê) + **Cola do atendimento**
+   (perguntas, o que conferir, frase pronta, quando encaminhar). Fontes oficiais com data no rodapé.
 
-## Ligar o Pixel de verdade (fazemos juntos)
-1. No Gerenciador de Eventos, criar um Pixel **só para aulas**.
-2. Abrir `assets/js/config.js` e trocar `SEU_PIXEL_ID` pelo número do Pixel.
-3. Publicar o site (abaixo). A faixa amarela no topo passa a mostrar **“● Pixel ao vivo”**.
-4. Gerenciador de Eventos › Pixel › **Testar eventos** › navegar na loja e ver os eventos chegando.
-
-## Antes de publicar: teste do filtro do trabalho
-Abra `teste-filtro.html` no computador do trabalho (por e-mail, Drive ou pendrive).
-Ela mostra quais hospedagens grátis passam pelo filtro (🟢/🔴) e se o código do Pixel chega à Meta.
-Mande ao Claude o código que aparece (ex.: `FILTRO GH+ NL- …`) para escolher onde publicar.
-
-## Publicar no GitHub Pages (grátis)
-1. Criar uma conta em github.com (se ainda não tiver).
-2. Criar um repositório novo, por exemplo `lojinha-da-marina`, **público**.
-3. Enviar todos os arquivos desta pasta para o repositório (botão “Add file › Upload files”).
-4. No repositório: **Settings › Pages › Branch: main / (root) › Save**.
-5. Em alguns minutos o site fica no ar em `https://SEU-USUARIO.github.io/lojinha-da-marina/`.
-
-## Catálogo (fazemos juntos depois)
-1. Com o site publicado, abrir a página **Catálogo** pelo endereço público e baixar o CSV ou o XML.
-2. No Gerenciador de Comércio, criar um catálogo de e-commerce e adicionar os itens pelo arquivo.
-3. Conectar o catálogo ao Pixel e acompanhar a correspondência dos IDs.
-
-## Arquivos
+## Onde fica cada coisa
 | Arquivo | Para que serve |
 |---|---|
-| `assets/js/config.js` | **O único que você edita**: ID do Pixel e opções |
-| `assets/js/produtos.js` | Os produtos (as “fichas” do catálogo) |
-| `assets/js/pixel-aula.js` | Inicia o Pixel e monta o Modo aula |
-| `assets/js/loja.js` | Carrinho, páginas e os eventos de cada ação |
-| `_ferramentas/gerar_paginas.py` | Recria as páginas com o mesmo código do Pixel no `<head>` |
-| `_ferramentas/gerar_imagens.py` | Recria as fotos dos produtos |
+| `assets/academia/conteudo.js` | Módulos (a trilha) e o texto das aulas, sempre `{pt, es}` |
+| `assets/academia/ferramentas.js` | Ferramentas interativas (mesma ferramenta na aula e no Laboratório) |
+| `assets/js/plataforma.js` + `assets/css/plataforma.css` | Telas da plataforma (início, módulos, aula, colas…) |
+| `assets/js/porta.js` | A entrada com senha (em todas as páginas) |
+| `assets/js/tour.js` + `assets/js/tours-loja.js` | Tutorial guiado na loja (`loja.html?tour=nome&voltar=...`) |
+| `assets/js/sim-eventos.js` + `assets/css/sim.css` | Simulador do Gerenciador de Eventos (tours `?tour=criar-pixel`, `?tour=testar-eventos`) |
+| `assets/js/data-advisor.js` | Simulação do Consultor de Dados de Anúncios (botão na faixa amarela da loja) |
+| `assets/js/personagens.js` | Desenhos da Marina, do Rafa e do Pixel |
+| `assets/js/config.js` | ID do Pixel real (hoje em simulação; a Meta ainda não liberou a criação no portfólio novo) |
+| `assets/js/pixel-aula.js` / `loja.js` / `produtos.js` | Pixel, Modo aula, eventos e produtos da loja |
+| `_ferramentas/gerar_paginas.py` | Gera TODAS as páginas (loja, produtos fixos com Open Graph/JSON-LD, plataforma) |
+| `_ferramentas/gerar_catalogo.js` | Gera `catalogo.csv`/`catalogo.xml` |
+| `_ferramentas/preparar_prints.py` | Prints reais censurados dos tutoriais antigos (`_gravacoes/bruto` fica FORA do Git) |
+| `_modelos/tutorial-modelo.html` | Modelo do player de tutorial com prints (formato antigo) |
 
-## Fase 2 (depois)
-API de Conversões com um servidor pequeno (o token não pode ficar no site público),
-para ensinar a deduplicação com eventos reais do servidor.
+## Regras do projeto
+- Nomes **reais** da Meta (Pixel, Gerenciador de Eventos, catálogo…); analogias só como apoio.
+- Telas da Meta são **recriadas** (não prints): layout idêntico, visual estilizado, sem logo da Meta, com "conferido em DD/MM/AAAA".
+- Toda afirmação técnica conferida na documentação oficial mais recente, com link e data.
+- Ordem: Pixel → Portfólio básico → Catálogo → resto da trilha. Uma frente por vez.
+
+## Testar no computador
+Na pasta, rode `python -m http.server 8765` e abra `http://localhost:8765/`. Depois de mudar o conteúdo:
+`python _ferramentas/gerar_paginas.py`.
