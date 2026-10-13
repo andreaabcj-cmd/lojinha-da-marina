@@ -54,10 +54,31 @@ window.TUTORIAL_PT = {
   },
   {
    "id": "06",
-   "bloco": "3 · Catálogo",
+   "bloco": "3 · Páginas de produto e catálogo",
+   "titulo": "Depurador de Compartilhamento: o que a Meta lê na página",
+   "status": "pronto",
+   "resumo": "Ferramenta gratuita da Meta que mostra o que o robô dela lê numa página: título, foto, descrição e as tags de produto. É o que aparece quando alguém compartilha o link e é a base dos microdados do catálogo.",
+   "porque": [
+    "O robô da Meta NÃO roda JavaScript: se as tags do produto só aparecem depois do JavaScript, ele vê uma página genérica.",
+    "Produto sem foto ou com título errado ao compartilhar? Quase sempre são as tags og: da página.",
+    "A Meta guarda a leitura em memória: depois de corrigir a página, clique em Extrair novamente."
+   ],
+   "checklist": [
+    "og:title (nome do produto)",
+    "og:description",
+    "og:image (foto, endereço completo)",
+    "og:url (endereço da página)",
+    "og:type = product",
+    "product:price:amount e product:price:currency",
+    "product:retailer_item_id (o mesmo ID do catálogo e do Pixel)"
+   ]
+  },
+  {
+   "id": "07",
+   "bloco": "3 · Páginas de produto e catálogo",
    "titulo": "Criar o catálogo e ligar ao Pixel",
    "status": "em breve",
-   "resumo": "Criar as fichas dos produtos no Gerenciador de Comércio e conferir se os códigos batem com o Pixel."
+   "resumo": "Criar os itens do catálogo no Gerenciador de Comércio e conferir se os códigos batem com o Pixel."
   }
  ],
  "passos": [
@@ -312,6 +333,96 @@ window.TUTORIAL_PT = {
    "titulo": "Caminho alternativo",
    "dica": "Se o Gerenciador de Eventos der erro, tente por aqui. Portfólio recém-criado? A Meta pode segurar a criação por algumas horas. Espere e tente de novo.",
    "clique": true
+  },
+  {
+   "id": "06-01",
+   "etapa": "06",
+   "tipo": "passo",
+   "img": "06-01.webp",
+   "w": 1400,
+   "h": 695,
+   "alvo": [
+    0.4592,
+    0.1632,
+    0.0689,
+    0.0206
+   ],
+   "texto": "No Depurador de Compartilhamento, cole o endereço da página do produto e clique em Depurar. Se for a primeira vez, clique em Buscar informações novas.",
+   "titulo": "Abrir o depurador",
+   "dica": "Endereço: developers.facebook.com/tools/debug. Funciona com qualquer página pública, mesmo sem Pixel.",
+   "clique": true
+  },
+  {
+   "id": "06-02",
+   "etapa": "06",
+   "tipo": "passo",
+   "img": "06-02.webp",
+   "w": 1400,
+   "h": 695,
+   "alvo": [
+    0.3782,
+    0.4473,
+    0.206,
+    0.2776
+   ],
+   "texto": "A Meta leu a página: a Prévia do link mostra foto, título e descrição do produto, vindos das tags og:. É assim que o link aparece quando alguém compartilha.",
+   "titulo": "A prévia do link",
+   "dica": "Foto, título e descrição saem das tags og:image, og:title e og:description. Se a prévia está errada, o problema está na página, não no Facebook.",
+   "clique": true
+  },
+  {
+   "id": "06-03",
+   "etapa": "06",
+   "tipo": "erro",
+   "img": "06-03.webp",
+   "w": 1400,
+   "h": 695,
+   "alvo": [
+    0.3087,
+    0.1517,
+    0.3763,
+    0.0797
+   ],
+   "texto": "Aviso fb:app_id ausente: ele só serve para quem tem um app da Meta ligado ao site. Para uma loja, pode ignorar. Já og:image, og:title e og:type precisam estar lá.",
+   "titulo": "O aviso do fb:app_id",
+   "dica": "Esse aviso aparece em quase todo site. O fb:app_id só importa para quem tem um app da Meta ligado ao site. Não é o motivo de prévia errada.",
+   "clique": false
+  },
+  {
+   "id": "06-04",
+   "etapa": "06",
+   "tipo": "passo",
+   "img": "06-04.webp",
+   "w": 1400,
+   "h": 695,
+   "alvo": [
+    0.3099,
+    0.0643,
+    0.375,
+    0.1645
+   ],
+   "texto": "As propriedades do Open Graph que a Meta montou a partir das tags da página. O link URL extraída mostra exatamente o HTML que o robô da Meta recebeu.",
+   "titulo": "As tags que a Meta montou",
+   "dica": "Confira og:type = product e a og:image com o endereço completo (https://...). Endereço de imagem incompleto é erro comum.",
+   "clique": false
+  },
+  {
+   "id": "06-05",
+   "etapa": "06",
+   "tipo": "erro",
+   "img": "06-05.webp",
+   "w": 1400,
+   "h": 664,
+   "alvo": [
+    0.3782,
+    0.5108,
+    0.206,
+    0.2957
+   ],
+   "texto": "A mesma caneca, na página montada por JavaScript: a Meta vê só uma página genérica (Produto · Lojinha da Marina, og:type website). O robô da Meta não roda JavaScript.",
+   "titulo": "Erro comum: tags só no JavaScript",
+   "dica": "A pessoa vê a caneca no navegador, mas o robô vê uma página genérica. A solução é escrever as tags no HTML da página (como nas páginas fixas da Lojinha).",
+   "clique": false
   }
  ]
 };
