@@ -1,0 +1,153 @@
+/* Plataforma Lojinha da Marina: entrada com senha, topo, idioma (PT | ES) e as telas
+   (início, módulos, módulo, aula, simuladores, laboratório, ferramenta). A tela vem de <body data-tela="...">. */
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s) };
+  function lsGet(k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v) } catch (e) { return d } }
+  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch (e) { } }
+  var LANG = lsGet('plat.lang', 'pt') === 'es' ? 'es' : 'pt';
+  var T = window.T = function (o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') };
+  var U = {
+    inicio: { pt: 'Início', es: 'Inicio' }, modulos: { pt: 'Módulos', es: 'Módulos' }, loja: { pt: 'Loja', es: 'Tienda' },
+    simuladores: { pt: 'Simuladores', es: 'Simuladores' }, laboratorio: { pt: 'Laboratório', es: 'Laboratorio' },
+    sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
+    pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
+    planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
+    ver: { pt: 'Ver', es: 'Ver' }, ferramenta: { pt: 'Ferramenta', es: 'Herramienta' }, praticar: { pt: 'Praticar', es: 'Practicar' }, caso: { pt: 'Caso prático', es: 'Caso práctico' },
+    ant: { pt: '◀ Anterior', es: '◀ Anterior' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, proxAula: { pt: 'Próxima aula ▶', es: 'Siguiente clase ▶' }, fimMod: { pt: 'Voltar ao módulo', es: 'Volver al módulo' },
+    apresentar: { pt: '🎤 Apresentar', es: '🎤 Presentar' }, sairApr: { pt: '✕ Sair da apresentação', es: '✕ Salir de la presentación' }, notas: { pt: '📝 Notas', es: '📝 Notas' },
+    fontes: { pt: 'Fontes oficiais', es: 'Fuentes oficiales' }, conferido: { pt: 'conferido em', es: 'revisado el' }, min: { pt: 'min', es: 'min' }
+  };
+
+  /* a entrada (senha) fica em porta.js, que também protege a loja e os simuladores */
+
+
+  /* ---------- topo ---------- */
+  function topo(ativo) {
+    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio']];
+    return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
+      '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
+      '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div></header>';
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-lang]'); if (!b || !b.closest('.pl-topo')) return;
+    lsSet('plat.lang', b.getAttribute('data-lang')); try { localStorage.setItem('loja.tuLang', b.getAttribute('data-lang')) } catch (x) { } location.reload();
+  });
+  var Q = new URLSearchParams(location.search);
+  function selo(st) { return '<span class="selo ' + st + '">' + T(U[st] || { pt: st }) + '</span>' }
+  function feitas() { return lsGet('plat.feitas', {}) }
+
+  /* ---------- telas ---------- */
+  var TELAS = {
+    inicio: function () {
+      var ult = lsGet('plat.ultima', null), aula = ult && (window.AULAS[ult.m] || []).filter(function (a) { return a.id === ult.a })[0];
+      return '<div class="pl-ola">' + PERSONAGEM('marina', 4) + PERSONAGEM('rafa', 4) + PERSONAGEM('pixel', 4) + '</div>' +
+        '<h1 class="pl-h1">' + T({ pt: 'Bem-vindo à Lojinha da Marina', es: 'Bienvenido a la Lojinha da Marina' }) + '</h1>' +
+        '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online, o Rafa é do suporte e o Pixel mede tudo o que acontece no site. Escolha por onde começar.', es: 'Marina tiene una tienda online, Rafa es del soporte y el Pixel mide todo lo que pasa en el sitio. Elige por dónde empezar.' }) + '</p>' +
+        (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
+        '<div class="portas">' + [
+          ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com casos práticos.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
+          ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Modo aula.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Modo aula.' }],
+          ['simuladores.html', '🕹️', U.simuladores, { pt: 'Ferramentas da Meta de treino: clique à vontade, nada vai para a Meta.', es: 'Herramientas de Meta de práctica: haz clic sin miedo, nada va a Meta.' }],
+          ['laboratorio.html', '🧪', U.laboratorio, { pt: 'Explorar: as ferramentas das aulas, soltas, para explicar e testar.', es: 'Explorar: las herramientas de las clases, sueltas, para explicar y probar.' }]
+        ].map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
+    },
+    modulos: function () {
+      return '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1><p class="pl-lead">' + T({ pt: 'A trilha completa. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: ver, ferramenta, praticar e caso prático.', es: 'La ruta completa. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: ver, herramienta, practicar y caso práctico.' }) + '</p>' +
+        '<div class="grade">' + window.MODULOS.map(function (m) {
+          var ok = window.AULAS[m.id]; return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>')
+        }).join('') + '</div>';
+    },
+    modulo: function () {
+      var m = window.MODULOS.filter(function (x) { return x.id === Q.get('m') })[0] || window.MODULOS[0], aulas = window.AULAS[m.id] || [], f = feitas();
+      return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1><p class="pl-lead">' + T(m.resumo) + '</p>' +
+        '<div class="aulas">' + aulas.map(function (a) {
+          var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
+          return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><b>' + T(a.titulo) + '</b><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
+        }).join('') + '</div>';
+    },
+    aula: function () { return aulaTela() },
+    simuladores: function () {
+      var sims = [['meta-eventos.html', '📡', { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, { pt: 'Criar o Pixel, Testar eventos (com os eventos da Lojinha), Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos (con los eventos de la Lojinha), Diagnóstico y Configuración.' }, 'pronta'],
+        ['loja.html', '🔎', { pt: 'Consultor de Dados de Anúncios (extensão)', es: 'Asesor de datos de anuncios (extensión)' }, { pt: 'Na Lojinha, clique em “Consultor de Dados” na faixa amarela.', es: 'En la Lojinha, haz clic en “Consultor de Dados” en la franja amarilla.' }, 'pronta'],
+        [null, '🏢', { pt: 'Configurações do portfólio (Business Suite)', es: 'Configuración del portafolio (Business Suite)' }, { pt: 'Pessoas, páginas, fontes de dados e permissões.', es: 'Personas, páginas, fuentes de datos y permisos.' }, 'planejada'],
+        [null, '🗂️', { pt: 'Gerenciador de Comércio', es: 'Administrador de ventas' }, { pt: 'Catálogo, itens, fontes de dados e correspondência com o Pixel.', es: 'Catálogo, artículos, fuentes de datos y coincidencia con el Pixel.' }, 'planejada'],
+        [null, '📣', { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' }, { pt: 'Campanhas, conjuntos de anúncios, anúncios e relatórios.', es: 'Campañas, conjuntos de anuncios, anuncios e informes.' }, 'planejada']];
+      return '<h1 class="pl-h1">🕹️ ' + T(U.simuladores) + '</h1><p class="pl-lead">' + T({ pt: 'Cópias de treino das ferramentas da Meta: o mesmo layout e os mesmos nomes, com o visual da Lojinha. Cada tela mostra a data em que foi conferida com a ferramenta real.', es: 'Copias de práctica de las herramientas de Meta: el mismo diseño y los mismos nombres, con el estilo de la Lojinha. Cada pantalla muestra la fecha en que se revisó con la herramienta real.' }) + '</p>' +
+        '<div class="grade">' + sims.map(function (s) { return (s[0] ? '<a class="item" href="' + s[0] + '">' : '<div class="item off">') + '<span class="ic">' + s[1] + '</span><b>' + T(s[2]) + '</b><p>' + T(s[3]) + '</p>' + selo(s[4]) + (s[0] ? '</a>' : '</div>') }).join('') + '</div>';
+    },
+    laboratorio: function () {
+      var F = window.FERRAMENTAS;
+      return '<h1 class="pl-h1">🧪 ' + T(U.laboratorio) + '</h1><p class="pl-lead">' + T({ pt: 'As ferramentas das aulas, soltas. Use para explicar um assunto ou testar uma dúvida, sem seguir a aula inteira.', es: 'Las herramientas de las clases, sueltas. Úsalas para explicar un tema o probar una duda, sin seguir la clase completa.' }) + '</p>' +
+        '<div class="grade">' + Object.keys(F).map(function (id) {
+          var f = F[id], ok = f.status === 'pronta', href = f.link || 'ferramenta.html?f=' + id;
+          return (ok ? '<a class="item" href="' + href + '">' : '<div class="item off">') + '<b>' + T(f.titulo) + '</b><p>' + T(f.resumo) + '</p>' + selo(f.status) + (ok ? '</a>' : '</div>')
+        }).join('') + '</div>';
+    },
+    ferramenta: function () {
+      var id = Q.get('f'), f = window.FERRAMENTAS[id]; if (!f || !f.montar) return '<p>' + T({ pt: 'Ferramenta não encontrada.', es: 'Herramienta no encontrada.' }) + '</p>';
+      setTimeout(function () { f.montar($('#ferr'), T, LANG) });
+      return '<p class="pl-trilha"><a href="laboratorio.html">' + T(U.laboratorio) + '</a> ›</p><h1 class="pl-h1">' + T(f.titulo) + '</h1><p class="pl-lead">' + T(f.resumo) + '</p><div class="palco"><div id="ferr"></div></div>';
+    }
+  };
+
+  /* ---------- AULA: uma parte por vez (ver · ferramenta · praticar · caso) ---------- */
+  var passoAtual = 0;
+  function aulaTela() {
+    var mid = Q.get('m'), aid = Q.get('a'), m = window.MODULOS.filter(function (x) { return x.id === mid })[0], lista = window.AULAS[mid] || [];
+    var a = lista.filter(function (x) { return x.id === aid })[0];
+    if (!m || !a || a.status !== 'pronta') return '<p>' + T({ pt: 'Aula não encontrada.', es: 'Clase no encontrada.' }) + ' <a href="modulos.html">' + T(U.modulos) + '</a></p>';
+    lsSet('plat.ultima', { m: mid, a: aid });
+    var partes = ['ver', 'ferramenta', 'praticar', 'caso'].filter(function (p) { return a[p] });
+    var prox = lista[lista.indexOf(a) + 1];
+    function desenha() {
+      var p = partes[passoAtual], h = '';
+      if (p === 'ver') h = '<h2>' + T(a.titulo) + '</h2><div class="dialogo">' + a.ver.dialogo.map(function (d) { return '<div class="fala ' + d[0] + '"><span class="quem">' + PERSONAGEM(d[0], 3) + '<br>' + PERSONAGEM_NOME[d[0]] + '</span><div class="bal">' + T(d[1]) + '</div></div>' }).join('') + '</div>' +
+        '<ul class="pontos">' + a.ver.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
+      else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🛠️ ' + T(f.titulo) + '</h2><p>' + T(f.resumo) + '</p><div class="ferr-box" id="ferr"></div>'; setTimeout(function () { f.montar($('#ferr'), T, LANG) }) }
+      else if (p === 'praticar') h = '<h2>🕹️ ' + T(U.praticar) + '</h2><p class="pratica-txt">' + T(a.praticar.texto) + '</p><div class="botoes">' + a.praticar.botoes.map(function (b) { return '<a class="btn amarelo" target="_blank" rel="noopener" href="' + b.href + '">' + T(b.rotulo) + '</a>' }).join('') + '</div>';
+      else if (p === 'caso') h = '<h2>🧩 ' + T(U.caso) + '</h2><div class="caso-cena">' + T(a.caso.cena) + '</div><b>' + T(a.caso.pergunta) + '</b><div class="opcoes">' + a.caso.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>';
+      $('#palco').innerHTML = h;
+      document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
+      $('#bAnt').disabled = passoAtual === 0;
+      var ultimo = passoAtual === partes.length - 1;
+      $('#bProx').textContent = ultimo ? (prox && prox.status === 'pronta' ? T(U.proxAula) : T(U.fimMod)) : T(U.prox);
+      if (ultimo) { var f2 = feitas(); f2[mid + '/' + aid] = true; lsSet('plat.feitas', f2) }
+    }
+    setTimeout(function () {
+      desenha();
+      $('#bAnt').onclick = function () { if (passoAtual > 0) { passoAtual--; desenha() } };
+      $('#bProx').onclick = function () {
+        if (passoAtual < partes.length - 1) { passoAtual++; desenha(); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+        else location.href = prox && prox.status === 'pronta' ? 'aula-plataforma.html?m=' + mid + '&a=' + prox.id : 'modulo.html?m=' + mid;
+      };
+      document.querySelectorAll('.passos button').forEach(function (b, i) { b.onclick = function () { passoAtual = i; desenha() } });
+      $('#palco').addEventListener('click', function (e) {
+        var o = e.target.closest('[data-op]'); if (!o) return; var op = a.caso.opcoes[+o.getAttribute('data-op')];
+        if (o.querySelector('.fb')) return;
+        o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
+      });
+      $('#bApr').onclick = function () { document.documentElement.classList.toggle('apresentar'); this.textContent = document.documentElement.classList.contains('apresentar') ? T(U.sairApr) : T(U.apresentar) };
+      $('#bNotas').onclick = function () { document.body.classList.toggle('mostra-notas') };
+      document.addEventListener('keydown', function (e) { if (e.target.closest('input,textarea')) return; if (e.key === 'ArrowRight') $('#bProx').click(); if (e.key === 'ArrowLeft') $('#bAnt').click(); if (e.key === 'n' || e.key === 'N') $('#bNotas').click() });
+    });
+    return '<div class="barra-apr"><button class="btn sec" id="bNotas">' + T(U.notas) + '</button><button class="btn sec" id="bApr">' + T(U.apresentar) + '</button></div>' +
+      '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> › <a href="modulo.html?m=' + mid + '">' + T(m.titulo) + '</a> › ' + T({ pt: 'Aula', es: 'Clase' }) + ' ' + a.id + '</p>' +
+      '<h1 class="pl-h1">' + T(a.titulo) + '</h1><p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
+      '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(U[p]) + '</button>' }).join('') + '</div>' +
+      '<div class="palco" id="palco"></div>' +
+      '<div class="notas"><b>📝 ' + T({ pt: 'Notas para quem apresenta', es: 'Notas para quien presenta' }) + ':</b> ' + T(a.ver.notas) + '</div>' +
+      '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +
+      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '');
+  }
+
+  /* ---------- montagem ---------- */
+  function monta() {
+    var tela = document.body.getAttribute('data-tela');
+    if (!tela) return;   // páginas da loja/simulador só usam a porta
+    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio' }[tela];
+    document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
+    document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
+  }
+  function inicia() { window.PLAT_PORTA(monta) }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inicia); else inicia();
+})();

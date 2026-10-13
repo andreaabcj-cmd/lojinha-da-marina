@@ -156,3 +156,6 @@ code,.sku{font-family:Consolas,"Cascadia Mono",monospace;font-size:.86em;backgro
 .ma-cookie{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:98;width:min(720px,calc(100vw - 24px));display:flex;gap:16px;align-items:center;justify-content:space-between;padding:16px 18px;background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink)}
 .ma-cookie p{margin:4px 0 0;font-size:14px}
 @media(max-width:640px){.ma-cookie{flex-direction:column;align-items:flex-start}.ma-fab span:not(.ma-mascote){display:none}}
+
+.ma-plat{position:absolute;left:12px;color:var(--ink);font-weight:800;text-decoration:none;background:#fff;border:2px solid var(--ink);border-radius:8px;padding:1px 8px}
+@media (max-width:700px){.ma-plat{position:static}}

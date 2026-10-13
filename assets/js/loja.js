@@ -30,7 +30,7 @@ window.LOJA_UI={atualizaCarrinho:atualizaCarrinho};
 /* ---------- topo e rodapé ---------- */
 var pg=document.body.getAttribute('data-pagina');
 function topo(){var t=$('#topo');if(!t)return;
-  t.innerHTML='<header class="topo"><a class="marca" href="index.html"><span class="marca-ic">'+lojinhaIcon()+'</span><span>Lojinha<br/><b>da Marina</b></span></a>'+
+  t.innerHTML='<header class="topo"><a class="marca" href="loja.html"><span class="marca-ic">'+lojinhaIcon()+'</span><span>Lojinha<br/><b>da Marina</b></span></a>'+
   '<form class="busca" action="produtos.html"><input name="q" placeholder="Buscar canecas, camisetas…" value="'+esc(qs('q')||'')+'" aria-label="Buscar"/><button>🔎</button></form>'+
   '<nav class="menu"><a href="produtos.html" class="'+(pg==='produtos'||pg==='produto'?'on':'')+'">Produtos</a><a href="oficina.html" class="'+(pg==='oficina'?'on':'')+'">Oficina</a><a href="orcamento.html" class="'+(pg==='orcamento'?'on':'')+'">Orçamento</a><a href="aula.html" class="'+(pg==='aula'||pg==='catalogo'||pg==='tutorial'?'on':'')+'">🎓 Aula</a>'+
   '<a href="carrinho.html" class="carrinho" aria-label="Carrinho">🛒<b id="qtdCarrinho">0</b></a></nav></header>';

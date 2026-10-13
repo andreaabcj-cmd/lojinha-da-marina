@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Início · Lojinha da Marina</title>
+<meta name="description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Lojinha da Marina"/>
+<meta property="og:title" content="Início · Lojinha da Marina"/>
+<meta property="og:description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<meta property="og:url" content="https://andreaabcj-cmd.github.io/lojinha-da-marina/loja.html"/>
+<meta property="og:image" content="https://andreaabcj-cmd.github.io/lojinha-da-marina/marca/capa.png"/>
+<link rel="icon" href="assets/img/caneca_01.png"/>
+<link rel="stylesheet" href="assets/css/loja.css"/>
+<script src="assets/js/personagens.js"></script>
+<script src="assets/js/porta.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/produtos.js"></script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+/* O init e o PageView ficam em assets/js/pixel-aula.js, que lê o ID
+   de assets/js/config.js. No site real seria:
+   fbq('init', 'SEU_PIXEL_ID');
+   fbq('track', 'PageView');                                        */
+</script>
+<script src="assets/js/pixel-aula.js"></script>
+<!-- End Meta Pixel Code -->
+<script src="assets/js/data-advisor.js" defer></script>
+</head>
+<body data-pagina="inicio">
+<div id="topo"></div>
+<main class="wrap">
+<section class="hero">
+  <div>
+    <span class="selo-aula">🎓 Loja de treinamento · Meta Pixel</span>
+    <h1>Canecas, camisetas e ecobags com <span style="color:var(--blue)">boas ideias</span>.</h1>
+    <p class="lead">Feitos à mão na Lojinha da Marina. Navegue, ponha no carrinho e “compre”: cada passo vira um evento do Pixel. Abra o <b>Modo aula</b> (canto inferior direito) para ver tudo acontecendo.</p>
+    <div class="acoes"><a class="btn grande" href="produtos.html">Ver produtos</a><a class="btn ghost grande" href="aula.html">🎓 Guia da aula</a></div>
+  </div>
+  <div class="vitrine"><img src="assets/img/caneca_01.png" alt="Caneca azul"/><img src="assets/img/camiseta_02.png" alt="Camiseta"/><img src="assets/img/ecobag_03.png" alt="Ecobag"/><img src="assets/img/caneca_02.png" alt="Caneca amarela"/><img src="assets/img/bone_01.png" alt="Boné"/><img src="assets/img/caneca_03.png" alt="Caneca Boas Ideias"/></div>
+</section>
+<div class="faixas">
+  <div class="faixa">🎁<b>Monte um kit presente</b><p>3 itens com papel especial. (Este botão dispara um <b>evento personalizado</b>.)</p><button class="btn amarelo" id="kit">Montar kit presente</button></div>
+  <div class="faixa">🎨<b>Oficina de pintura</b><p>Pinte sua própria caneca. Agende um horário.</p><a class="btn ghost" href="oficina.html">Agendar</a></div>
+  <div class="faixa">💍<b>Canecas para casamento</b><p>Personalizadas com o nome dos noivos. Peça um orçamento.</p><a class="btn ghost" href="orcamento.html">Pedir orçamento</a></div>
+</div>
+<h2>Mais vendidos</h2>
+<div class="grade" id="destaques"></div>
+</main>
+<div id="rodape"></div>
+<script src="assets/js/loja.js"></script>
+</body>
+</html>

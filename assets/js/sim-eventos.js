@@ -53,7 +53,7 @@
 
   function esqueleto(titulo, menuAtivo, conteudo, conf) {
     var r = rota();
-    return '<div class="sim-faixa">🧪 Simulador de treinamento do Gerenciador de Eventos · nada aqui vai para a Meta · <a href="tutoriais.html">← voltar à Lojinha</a></div>' +
+    return '<div class="sim-faixa">🧪 Simulador de treinamento do Gerenciador de Eventos · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="sim"><nav class="sim-trilho" aria-label="Ferramentas">' +
       '<span class="logo">' + mascote(24) + '</span>' +
       '<button title="Notificações">' + IC.sino + '</button><button title="Visão geral da conta">' + IC.painel + '</button><button title="Campanhas">' + IC.tabela + '</button>' +
@@ -124,7 +124,7 @@
 
   function abaTeste(d, ev) {
     var lista = ev.filter(function (e) { return e.t >= (S.testeDesde || 0) }).slice().reverse();
-    var url = new URL('index.html', location.href).href;
+    var url = new URL('loja.html', location.href).href;
     var h = '<div class="cartao"><h2>Testar eventos do navegador</h2><p>Confirme se os eventos do navegador estão configurados corretamente. Abra o site, faça as ações (ver produto, pôr no carrinho, comprar) e acompanhe os eventos chegando aqui.</p>' +
       '<div class="linha-url"><input id="urlTeste" value="' + esc(url) + '" aria-label="URL do site"/><button class="btn" data-acao="abrir-site" data-t="abrir-site">Abrir site</button></div></div>' +
       '<div class="cartao" data-t="feed"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Atividade</h2><button class="lnk" data-acao="limpar">Limpar atividade</button></div>';

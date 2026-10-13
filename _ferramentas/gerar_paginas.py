@@ -12,6 +12,8 @@ HEAD = '''<!doctype html>
 <meta name="description" content="{descricao}"/>{meta}
 <link rel="icon" href="assets/img/caneca_01.png"/>
 <link rel="stylesheet" href="assets/css/loja.css"/>{extra}
+<script src="assets/js/personagens.js"></script>
+<script src="assets/js/porta.js"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/produtos.js"></script>
 <!-- Meta Pixel Code -->
@@ -45,7 +47,7 @@ s.parentNode.insertBefore(t,s)}}(window, document,'script',
 '''
 
 PAGINAS = {
-'index': ('Início', 'inicio', '''
+'loja': ('Início', 'inicio', '''
 <section class="hero">
   <div>
     <span class="selo-aula">🎓 Loja de treinamento · Meta Pixel</span>
@@ -150,7 +152,7 @@ PAGINAS = {
   </div>
   <h2>Roteiro sugerido (ligado ao Aulão de Pixel)</h2>
   <ol>
-    <li><b>O Pixel:</b> abra a <a href="index.html">vitrine</a> e mostre o PageView na Câmera e no Testar eventos.</li>
+    <li><b>O Pixel:</b> abra a <a href="loja.html">vitrine</a> e mostre o PageView na Câmera e no Testar eventos.</li>
     <li><b>As anotações:</b> abra um <a href="produto-caneca_01.html">produto</a> (ViewContent) e ponha no carrinho (AddToCart, no clique).</li>
     <li><b>Parâmetros:</b> faça uma compra completa até o <b>obrigado</b>: Purchase com value, currency, produtos e eventID.</li>
     <li><b>Variantes:</b> numa <a href="produto-camiseta_02.html">camiseta</a>, compare o ViewContent antes e depois de escolher o tamanho.</li>
@@ -275,3 +277,30 @@ for arq, (titulo, pagina, corpo, *extra) in PAGINAS.items():
 for p in PRODS:
     grava(link_prod(p['id'])[:-5], p['titulo'], 'produto', PAGINAS['produto'][2], meta=meta_produto(p),
           descricao=p['descricao'], bodyattr=f' data-produto="{p["id"]}"')
+
+# ---------- PLATAFORMA (início, módulos, aula, simuladores, laboratório) ----------
+PLAT = '''<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{titulo} · Lojinha da Marina</title>
+<meta name="description" content="Plataforma de treinamento da Lojinha da Marina: módulos, simuladores e laboratório."/>
+<meta name="robots" content="noindex"/>
+<link rel="icon" href="assets/img/caneca_01.png"/>
+<link rel="stylesheet" href="assets/css/plataforma.css"/>
+<script src="assets/js/personagens.js"></script>
+<script src="assets/js/porta.js"></script>
+<script src="assets/academia/conteudo.js"></script>
+<script src="assets/academia/ferramentas.js"></script>
+<script src="assets/js/plataforma.js"></script>
+</head>
+<body data-tela="{tela}"><noscript>Ative o JavaScript para usar a plataforma.</noscript></body>
+</html>
+'''
+for arq, titulo, tela in [('index', 'Início', 'inicio'), ('modulos', 'Módulos', 'modulos'), ('modulo', 'Módulo', 'modulo'),
+                          ('aula-plataforma', 'Aula', 'aula'), ('simuladores', 'Simuladores', 'simuladores'),
+                          ('laboratorio', 'Laboratório', 'laboratorio'), ('ferramenta', 'Ferramenta', 'ferramenta')]:
+    with open(os.path.join(RAIZ, arq + '.html'), 'w', encoding='utf-8') as f:
+        f.write(PLAT.format(titulo=titulo, tela=tela))
+    print('ok', arq + '.html')
