@@ -9,7 +9,7 @@ HEAD = '''<!doctype html>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{titulo} · Lojinha da Marina</title>
-<meta name="description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<meta name="description" content="{descricao}"/>{meta}
 <link rel="icon" href="assets/img/caneca_01.png"/>
 <link rel="stylesheet" href="assets/css/loja.css"/>{extra}
 <script src="assets/js/config.js"></script>
@@ -33,7 +33,7 @@ s.parentNode.insertBefore(t,s)}}(window, document,'script',
 <!-- End Meta Pixel Code -->
 <script src="assets/js/data-advisor.js" defer></script>
 </head>
-<body data-pagina="{pagina}">
+<body data-pagina="{pagina}"{bodyattr}>
 <div id="topo"></div>
 <main class="wrap">
 {corpo}
@@ -150,13 +150,14 @@ PAGINAS = {
   <h2>Roteiro sugerido (ligado ao Aulão de Pixel)</h2>
   <ol>
     <li><b>O Pixel:</b> abra a <a href="index.html">vitrine</a> e mostre o PageView na Câmera e no Testar eventos.</li>
-    <li><b>As anotações:</b> abra um <a href="produto.html?id=CANECA_01">produto</a> (ViewContent) e ponha no carrinho (AddToCart, no clique).</li>
+    <li><b>As anotações:</b> abra um <a href="produto-caneca_01.html">produto</a> (ViewContent) e ponha no carrinho (AddToCart, no clique).</li>
     <li><b>Parâmetros:</b> faça uma compra completa até o <b>obrigado</b>: Purchase com value, currency, produtos e eventID.</li>
-    <li><b>Variantes:</b> numa <a href="produto.html?id=CAMISETA_02">camiseta</a>, compare o ViewContent antes e depois de escolher o tamanho.</li>
+    <li><b>Variantes:</b> numa <a href="produto-camiseta_02.html">camiseta</a>, compare o ViewContent antes e depois de escolher o tamanho.</li>
     <li><b>Outros eventos:</b> busca (Search), coração (AddToWishlist), <a href="orcamento.html">orçamento</a> (Lead), <a href="oficina.html">oficina</a> (Schedule, Contact), newsletter (CompleteRegistration), kit presente (personalizado).</li>
     <li><b>Consentimento:</b> recuse os cookies e mostre o Pixel “segurando” os eventos.</li>
     <li><b>Correspondência avançada:</b> no checkout, mostre na Lupa os dados com hash.</li>
     <li><b>Catálogo:</b> abra o <a href="catalogo.html">gerador de catálogo</a> e compare os IDs com os eventos.</li>
+    <li><b>🤖 O robô não vê JavaScript:</b> no Depurador de Compartilhamento da Meta, compare a página fixa <code>produto-caneca_01.html</code> (título, preço e foto aparecem) com <code>produto.html?id=CANECA_01&amp;robo=1</code> (página genérica: as tags só existem depois do JavaScript).</li>
     <li><b>Problemas:</b> no 🧪 Lab, ligue uma desculpa (ex.: a moça bonita 😍), refaça a compra e investigue.</li>
   </ol>
   <h2>Checklist de implantação com a Meta</h2>
@@ -209,7 +210,67 @@ PAGINAS['tutoriais'] = ('Tutoriais passo a passo', 'tutorial', '''
 PAGINAS['tutorial'] = ('Tutorial', 'tutorial', '''
 <div class="tu" id="tutorial"></div>''' + TUTORIAL_PE, TUTORIAL_HEAD)
 
-for arq, (titulo, pagina, corpo, *extra) in PAGINAS.items():
+import html, json, subprocess
+BASE = 'https://andreaabcj-cmd.github.io/lojinha-da-marina/'
+DESC = 'Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags.'
+at = lambda s: html.escape(str(s), quote=True)
+
+# produtos e configuração lidos dos mesmos arquivos do site (via Node, que entende o JavaScript)
+_js = ("const fs=require('fs'),vm=require('vm');const c={window:{}};"
+       "vm.runInNewContext(fs.readFileSync('assets/js/config.js','utf8'),c);vm.runInNewContext(fs.readFileSync('assets/js/produtos.js','utf8'),c);"
+       "console.log(JSON.stringify({C:c.window.LOJA_CONFIG,P:c.window.PRODUTOS,CAT:c.window.CATEGORIAS}))")
+_d = json.loads(subprocess.run(['node', '-e', _js], cwd=RAIZ, capture_output=True, text=True, encoding='utf-8', check=True).stdout)
+LOJA, PRODS = _d['C'], _d['P']
+link_prod = lambda pid: 'produto-' + pid.lower() + '.html'
+
+
+def meta_site(titulo, arq):
+    """Open Graph básico das páginas comuns (o que aparece ao compartilhar o link)."""
+    return ('\n<meta property="og:type" content="website"/>\n<meta property="og:site_name" content="Lojinha da Marina"/>'
+            f'\n<meta property="og:title" content="{at(titulo)} · Lojinha da Marina"/>\n<meta property="og:description" content="{at(DESC)}"/>'
+            f'\n<meta property="og:url" content="{BASE}{arq}.html"/>\n<meta property="og:image" content="{BASE}marca/capa.png"/>')
+
+
+def meta_produto(p):
+    """Tags de produto ESCRITAS no HTML: o robô da Meta (que não roda JavaScript) consegue ler.
+    Open Graph + product:* (usados pela Meta) e JSON-LD schema.org (microdados)."""
+    url, img = BASE + link_prod(p['id']), BASE + p['img']
+    disp = 'in stock' if p['estoque'] == 'in stock' else 'out of stock'
+    ld = {'@context': 'https://schema.org', '@type': 'Product', 'name': p['titulo'], 'description': p['descricao'], 'image': img,
+          'sku': p['id'], 'productID': p['id'], 'brand': {'@type': 'Brand', 'name': LOJA['nomeLoja']},
+          'offers': {'@type': 'Offer', 'url': url, 'price': f"{p['preco']:.2f}", 'priceCurrency': LOJA['moeda'],
+                     'itemCondition': 'https://schema.org/NewCondition',
+                     'availability': 'https://schema.org/' + ('InStock' if disp == 'in stock' else 'OutOfStock')}}
+    return ('\n<link rel="canonical" href="' + url + '"/>'
+            '\n<!-- Tags do produto para a Meta (Open Graph) -->'
+            '\n<meta property="og:type" content="product"/>\n<meta property="og:site_name" content="Lojinha da Marina"/>'
+            f'\n<meta property="og:title" content="{at(p["titulo"])}"/>\n<meta property="og:description" content="{at(p["descricao"])}"/>'
+            f'\n<meta property="og:url" content="{url}"/>\n<meta property="og:image" content="{img}"/>'
+            '\n<meta property="og:image:width" content="800"/>\n<meta property="og:image:height" content="800"/>'
+            f'\n<meta property="product:brand" content="{at(LOJA["nomeLoja"])}"/>\n<meta property="product:availability" content="{disp}"/>'
+            '\n<meta property="product:condition" content="new"/>'
+            f'\n<meta property="product:price:amount" content="{p["preco"]:.2f}"/>\n<meta property="product:price:currency" content="{LOJA["moeda"]}"/>'
+            f'\n<meta property="product:retailer_item_id" content="{p["id"]}"/>'
+            '\n<!-- Microdados do produto (schema.org em JSON-LD) -->'
+            '\n<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>')
+
+
+# produto.html antigo: quem abre é levado na hora para a página fixa (antes do Pixel disparar).
+# Com &robo=1 ele fica como exemplo de página que só existe via JavaScript (o robô da Meta vê uma página genérica).
+REDIRECIONA = ('\n<script>/* endereço antigo -> página fixa do produto */(function(){var q=new URLSearchParams(location.search);'
+               'if(q.has("robo"))return;var ids=' + json.dumps([p['id'] for p in PRODS]) + ',id=q.get("id")||"CANECA_01";'
+               'if(ids.indexOf(id)>=0){window.__redirecionando=true;location.replace("produto-"+id.toLowerCase()+".html"+location.hash)}})();</script>')
+
+def grava(arq, titulo, pagina, corpo, extra='', meta=None, descricao=DESC, bodyattr=''):
     with open(os.path.join(RAIZ, arq + '.html'), 'w', encoding='utf-8') as f:
-        f.write(HEAD.format(titulo=titulo, pagina=pagina, corpo=corpo.strip(), extra=extra[0] if extra else ''))
+        f.write(HEAD.format(titulo=titulo, pagina=pagina, corpo=corpo.strip(), extra=extra, descricao=at(descricao),
+                            meta=meta_site(titulo, arq) if meta is None else meta, bodyattr=bodyattr))
     print('ok', arq + '.html')
+
+for arq, (titulo, pagina, corpo, *extra) in PAGINAS.items():
+    grava(arq, titulo, pagina, corpo, (extra[0] if extra else '') + (REDIRECIONA if arq == 'produto' else ''))
+
+# uma página fixa por produto, com as tags já no HTML
+for p in PRODS:
+    grava(link_prod(p['id'])[:-5], p['titulo'], 'produto', PAGINAS['produto'][2], meta=meta_produto(p),
+          descricao=p['descricao'], bodyattr=f' data-produto="{p["id"]}"')

@@ -15,7 +15,7 @@ const linhas = [];
 P.forEach(p => (p.variantes || [null]).forEach(v => linhas.push({
   id: v ? v.id : p.id, item_group_id: v ? p.id : '', title: p.titulo + (v ? ' - ' + v.nome : ''),
   description: p.descricao, availability: p.estoque, condition: 'new', price: p.preco.toFixed(2) + ' ' + C.moeda,
-  link: BASE + 'produto.html?id=' + p.id, image_link: new URL(p.img, BASE).href, brand: C.nomeLoja, size: v ? v.nome : ''
+  link: BASE + 'produto-' + p.id.toLowerCase() + '.html', image_link: new URL(p.img, BASE).href, brand: C.nomeLoja, size: v ? v.nome : ''
 })));
 
 const cq = s => /[",\n]/.test(s) ? '"' + String(s).replace(/"/g, '""') + '"' : s;

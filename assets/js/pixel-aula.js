@@ -7,6 +7,7 @@
    ===================================================================== */
 (function(){
 'use strict';
+if(window.__redirecionando)return;   // produto.html antigo indo para a página fixa
 var C = window.LOJA_CONFIG || {};
 var LIVE = /^\d{8,20}$/.test(String(C.pixelId||''));
 var MOEDA = C.moeda || 'BRL';

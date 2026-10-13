@@ -3,7 +3,7 @@
    Todo evento passa por LOJA.track(nome, parâmetros, {eventID}),
    que chama o fbq() do Meta Pixel e mostra tudo no Modo aula.
    ===================================================================== */
-(function(){
+(function(){if(window.__redirecionando)return;
 'use strict';
 var C=window.LOJA_CONFIG||{},P=window.PRODUTOS||[],MOEDA=C.moeda||'BRL';
 var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
@@ -44,9 +44,10 @@ function rodape(){var r=$('#rodape');if(!r)return;
 function lojinhaIcon(){return '<svg width="40" height="40" viewBox="0 0 20 20" shape-rendering="crispEdges"><rect x="1" y="6" width="18" height="13" fill="#22304A"/><rect x="2" y="7" width="16" height="11" fill="#FFF4E0"/><rect x="0" y="3" width="20" height="4" fill="#2F6FD6"/><rect x="2" y="3" width="2" height="4" fill="#fff"/><rect x="6" y="3" width="2" height="4" fill="#fff"/><rect x="10" y="3" width="2" height="4" fill="#fff"/><rect x="14" y="3" width="2" height="4" fill="#fff"/><rect x="18" y="3" width="2" height="4" fill="#fff"/><rect x="8" y="11" width="4" height="7" fill="#2F6FD6"/><rect x="3" y="10" width="4" height="4" fill="#CFE6FF"/><rect x="13" y="10" width="4" height="4" fill="#CFE6FF"/></svg>'}
 
 /* ---------- componentes ---------- */
+function linkProd(id){return 'produto-'+String(id).toLowerCase()+'.html'}
 function card(p){var esg=p.estoque!=='in stock';
-  return '<article class="card-prod"><a href="produto.html?id='+p.id+'" class="foto"><img src="'+p.img+'" alt="'+esc(p.titulo)+'" loading="lazy"/>'+(esg?'<span class="selo">Esgotado</span>':'')+'</a>'+
-    '<button class="coracao" data-wish="'+p.id+'" title="Salvar na lista de desejos">♡</button><div class="info"><a href="produto.html?id='+p.id+'"><h3>'+esc(p.titulo)+'</h3></a><p class="preco">'+brl(p.preco)+'</p><code class="sku">'+p.id+'</code></div></article>'}
+  return '<article class="card-prod"><a href="'+linkProd(p.id)+'" class="foto"><img src="'+p.img+'" alt="'+esc(p.titulo)+'" loading="lazy"/>'+(esg?'<span class="selo">Esgotado</span>':'')+'</a>'+
+    '<button class="coracao" data-wish="'+p.id+'" title="Salvar na lista de desejos">♡</button><div class="info"><a href="'+linkProd(p.id)+'"><h3>'+esc(p.titulo)+'</h3></a><p class="preco">'+brl(p.preco)+'</p><code class="sku">'+p.id+'</code></div></article>'}
 function ligaCoracoes(){$$('[data-wish]').forEach(function(b){b.onclick=function(){var p=prod(b.getAttribute('data-wish'));b.textContent='♥';b.classList.add('on');
   T('AddToWishlist',{content_ids:[p.id],content_type:p.variantes?'product_group':'product',content_name:p.titulo,value:p.preco,currency:MOEDA})}})}
 
@@ -59,7 +60,7 @@ var PAGINAS={
    $('#tituloLista').textContent=q?'Resultados para “'+qs('q')+'”':cat?window.CATEGORIAS[cat]:'Todos os produtos';
    $('#lista').innerHTML=lista.length?lista.map(card).join(''):'<p class="vazio">Nada encontrado. Tente “caneca”.</p>';ligaCoracoes();
    if(q)T('Search',{search_string:qs('q'),content_ids:lista.map(function(p){return p.id}),content_type:'product',content_category:cat||'todos'})},
- produto:function(){var p=prod(qs('id')||'CANECA_01');var box=$('#produto');if(!p){box.innerHTML='<p class="vazio">Produto não encontrado.</p>';return}
+ produto:function(){var p=prod(document.body.getAttribute('data-produto')||qs('id')||'CANECA_01');var box=$('#produto');if(!p){box.innerHTML='<p class="vazio">Produto não encontrado.</p>';return}
    document.title=p.titulo+' · Lojinha da Marina';var esg=p.estoque!=='in stock',varSel=null;
    box.innerHTML='<div class="prod-foto"><img src="'+p.img+'" alt="'+esc(p.titulo)+'"/></div><div class="prod-info" itemscope itemtype="https://schema.org/Product">'+
      '<a class="voltar" href="produtos.html?cat='+p.categoria+'">← '+window.CATEGORIAS[p.categoria]+'</a><h1 itemprop="name">'+esc(p.titulo)+'</h1><meta itemprop="productID" content="'+p.id+'"/><meta itemprop="sku" content="'+p.id+'"/><meta itemprop="brand" content="'+esc(C.nomeLoja)+'"/>'+
@@ -99,7 +100,7 @@ var PAGINAS={
    $('#agendar').onclick=function(){T('Schedule',{content_name:'Oficina de pintura de canecas',content_category:$('#agendar').getAttribute('data-sel')});$('#ofOk').textContent='✓ Agendado para '+$('#agendar').getAttribute('data-sel')+' (de mentirinha).'};
    $('#falar').onclick=function(){T('Contact',{content_name:'conversa sobre a oficina'});$('#ofOk').textContent='💬 Conversa iniciada (simulada: nenhuma mensagem é enviada).'}},
  aula:function(){var s=$('#statusPixel');if(s)s.innerHTML=window.LOJA&&window.LOJA.ao_vivo?'<span class="ok">● Pixel configurado: ID …'+String(C.pixelId).slice(-4)+'</span>':'<span class="warn">○ Modo simulação: o ID do Pixel ainda não foi colado em <code>assets/js/config.js</code>.</span>'},
- catalogo:function(){var base=new URL('.',location.href).href;var linhas=[];P.forEach(function(p){(p.variantes||[null]).forEach(function(v){linhas.push({id:v?v.id:p.id,item_group_id:v?p.id:'',title:p.titulo+(v?' - '+v.nome:''),description:p.descricao,availability:p.estoque,condition:'new',price:p.preco.toFixed(2)+' '+MOEDA,link:base+'produto.html?id='+p.id,image_link:new URL(p.img,base).href,brand:C.nomeLoja,size:v?v.nome:''})})});
+ catalogo:function(){var base=new URL('.',location.href).href;var linhas=[];P.forEach(function(p){(p.variantes||[null]).forEach(function(v){linhas.push({id:v?v.id:p.id,item_group_id:v?p.id:'',title:p.titulo+(v?' - '+v.nome:''),description:p.descricao,availability:p.estoque,condition:'new',price:p.preco.toFixed(2)+' '+MOEDA,link:base+linkProd(p.id),image_link:new URL(p.img,base).href,brand:C.nomeLoja,size:v?v.nome:''})})});
    var cols=['id','item_group_id','title','description','availability','condition','price','link','image_link','brand','size'];
    $('#tabelaCat').innerHTML='<table><thead><tr>'+cols.map(function(c){return '<th>'+c+'</th>'}).join('')+'</tr></thead><tbody>'+linhas.map(function(l){return '<tr>'+cols.map(function(c){return '<td>'+(c==='image_link'?'<img src="'+esc(l[c])+'" alt=""/>':esc(l[c]))+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>';
    var csvQ=function(s){s=String(s);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};

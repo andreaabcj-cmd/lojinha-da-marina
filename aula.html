@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Guia da aula · Lojinha da Marina</title>
 <meta name="description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Lojinha da Marina"/>
+<meta property="og:title" content="Guia da aula · Lojinha da Marina"/>
+<meta property="og:description" content="Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags."/>
+<meta property="og:url" content="https://andreaabcj-cmd.github.io/lojinha-da-marina/aula.html"/>
+<meta property="og:image" content="https://andreaabcj-cmd.github.io/lojinha-da-marina/marca/capa.png"/>
 <link rel="icon" href="assets/img/caneca_01.png"/>
 <link rel="stylesheet" href="assets/css/loja.css"/>
 <script src="assets/js/config.js"></script>
@@ -48,13 +54,14 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
   <h2>Roteiro sugerido (ligado ao Aulão de Pixel)</h2>
   <ol>
     <li><b>O Pixel:</b> abra a <a href="index.html">vitrine</a> e mostre o PageView na Câmera e no Testar eventos.</li>
-    <li><b>As anotações:</b> abra um <a href="produto.html?id=CANECA_01">produto</a> (ViewContent) e ponha no carrinho (AddToCart, no clique).</li>
+    <li><b>As anotações:</b> abra um <a href="produto-caneca_01.html">produto</a> (ViewContent) e ponha no carrinho (AddToCart, no clique).</li>
     <li><b>Parâmetros:</b> faça uma compra completa até o <b>obrigado</b>: Purchase com value, currency, produtos e eventID.</li>
-    <li><b>Variantes:</b> numa <a href="produto.html?id=CAMISETA_02">camiseta</a>, compare o ViewContent antes e depois de escolher o tamanho.</li>
+    <li><b>Variantes:</b> numa <a href="produto-camiseta_02.html">camiseta</a>, compare o ViewContent antes e depois de escolher o tamanho.</li>
     <li><b>Outros eventos:</b> busca (Search), coração (AddToWishlist), <a href="orcamento.html">orçamento</a> (Lead), <a href="oficina.html">oficina</a> (Schedule, Contact), newsletter (CompleteRegistration), kit presente (personalizado).</li>
     <li><b>Consentimento:</b> recuse os cookies e mostre o Pixel “segurando” os eventos.</li>
     <li><b>Correspondência avançada:</b> no checkout, mostre na Lupa os dados com hash.</li>
     <li><b>Catálogo:</b> abra o <a href="catalogo.html">gerador de catálogo</a> e compare os IDs com os eventos.</li>
+    <li><b>🤖 O robô não vê JavaScript:</b> no Depurador de Compartilhamento da Meta, compare a página fixa <code>produto-caneca_01.html</code> (título, preço e foto aparecem) com <code>produto.html?id=CANECA_01&amp;robo=1</code> (página genérica: as tags só existem depois do JavaScript).</li>
     <li><b>Problemas:</b> no 🧪 Lab, ligue uma desculpa (ex.: a moça bonita 😍), refaça a compra e investigue.</li>
   </ol>
   <h2>Checklist de implantação com a Meta</h2>
