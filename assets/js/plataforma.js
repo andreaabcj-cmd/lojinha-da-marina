@@ -46,7 +46,7 @@
         (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
         '<div class="portas">' + [
           ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
-          ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Modo aula.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Modo aula.' }],
+          ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Consultor de Dados.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Asesor de datos.' }],
           ['simuladores.html', '🕹️', U.simuladores, { pt: 'Ferramentas da Meta de treino: clique à vontade, nada vai para a Meta.', es: 'Herramientas de Meta de práctica: haz clic sin miedo, nada va a Meta.' }],
           ['laboratorio.html', '🧪', U.laboratorio, { pt: 'Explorar: as ferramentas das aulas, soltas, para explicar e testar.', es: 'Explorar: las herramientas de las clases, sueltas, para explicar y probar.' }]
         ].map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
@@ -77,11 +77,19 @@
     },
     laboratorio: function () {
       var F = window.FERRAMENTAS;
+      var dentro = [['camera', '📹', { pt: 'Câmera', es: 'Cámara' }, { pt: 'Cada evento disparado, com parâmetros e o código fbq() que rodou.', es: 'Cada evento disparado, con parámetros y el código fbq() que se ejecutó.' }],
+        ['rede', '🌐', { pt: 'Rede', es: 'Red' }, { pt: 'Os pedidos para facebook.com/tr, como na aba Rede do F12.', es: 'Las solicitudes a facebook.com/tr, como en la pestaña Red del F12.' }],
+        ['lupa', '🔍', { pt: 'Lupa', es: 'Lupa' }, { pt: 'Status do Pixel, eventos, catálogo e correspondência avançada, juntos.', es: 'Estado del Pixel, eventos, catálogo y coincidencia avanzada, juntos.' }],
+        ['codigo', '📄', { pt: 'Código', es: 'Código' }, { pt: 'O código do Pixel no head da página, como no “Exibir código-fonte”.', es: 'El código del Pixel en el head de la página, como en “Ver código fuente”.' }],
+        ['lab', '🧪', { pt: 'Falhas', es: 'Fallas' }, { pt: 'Quebre o Pixel de propósito e veja o problema na loja e no simulador.', es: 'Rompe el Pixel a propósito y mira el problema en la tienda y en el simulador.' }],
+        ['dica', '💡', { pt: 'Dica', es: 'Consejo' }, { pt: 'O que acontece na página atual e como conferir no Gerenciador de Eventos.', es: 'Qué pasa en la página actual y cómo revisarlo en el Administrador de eventos.' }]];
       return '<h1 class="pl-h1">🧪 ' + T(U.laboratorio) + '</h1><p class="pl-lead">' + T({ pt: 'As ferramentas das aulas, soltas. Use para explicar um assunto ou testar uma dúvida, sem seguir a aula inteira.', es: 'Las herramientas de las clases, sueltas. Úsalas para explicar un tema o probar una duda, sin seguir la clase completa.' }) + '</p>' +
         '<div class="grade">' + Object.keys(F).map(function (id) {
           var f = F[id], ok = f.status === 'pronta', href = f.link || 'ferramenta.html?f=' + id;
           return (ok ? '<a class="item" href="' + href + '">' : '<div class="item off">') + '<b>' + T(f.titulo) + '</b><p>' + T(f.resumo) + '</p>' + selo(f.status) + (ok ? '</a>' : '</div>')
-        }).join('') + '</div>';
+        }).join('') + '</div>' +
+        '<h2 class="pl-h2" id="loja-por-dentro">🔬 ' + T({ pt: 'A loja por dentro (Modo aula)', es: 'La tienda por dentro (Modo aula)' }) + '</h2><p class="pl-lead">' + T({ pt: 'O que normalmente só se vê com o F12 (ferramentas de desenvolvedor). No atendimento os agentes não fazem isso: serve para entender o que acontece por trás e para explicar a quem vai mexer no site. Abre a loja com o botão Modo aula; para voltar à loja normal, use “sair” na faixa amarela.', es: 'Lo que normalmente solo se ve con el F12 (herramientas de desarrollador). En la atención los agentes no hacen esto: sirve para entender lo que pasa por detrás y para explicarlo a quien va a tocar el sitio. Abre la tienda con el botón Modo aula; para volver a la tienda normal, usa “salir” en la franja amarilla.' }) + '</p>' +
+        '<div class="grade">' + dentro.map(function (d) { return '<a class="item" href="loja.html?aula=' + d[0] + '"><span class="ic">' + d[1] + '</span><b>' + T(d[2]) + '</b><p>' + T(d[3]) + '</p></a>' }).join('') + '</div>';
     },
     ferramenta: function () {
       var id = Q.get('f'), f = window.FERRAMENTAS[id]; if (!f || !f.montar) return '<p>' + T({ pt: 'Ferramenta não encontrada.', es: 'Herramienta no encontrada.' }) + '</p>';

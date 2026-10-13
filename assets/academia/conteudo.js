@@ -45,8 +45,8 @@ window.AULAS = {
       },
       ferramenta: 'codigo-base',
       praticar: {
-        texto: { pt: 'Na Lojinha, o Pixel vai te mostrar onde fica o Modo aula e onde achar as 3 coisas no código da página.', es: 'En la Lojinha, el Pixel te mostrará dónde está el Modo aula y dónde encontrar las 3 cosas en el código de la página.' },
-        tour: 'achar-codigo', pagina: 'loja.html'
+        texto: { pt: 'No atendimento você não abre o código: confere o Pixel do site com a extensão Consultor de Dados. Na Lojinha, o Pixel te mostra onde ver se tem Pixel, qual é o ID e se o PageView chega.', es: 'En la atención no abres el código: revisas el Pixel del sitio con la extensión Asesor de datos. En la Lojinha, el Pixel te muestra dónde ver si hay Pixel, cuál es el ID y si llega el PageView.' },
+        tour: 'conferir-pixel', pagina: 'loja.html'
       },
       atender: {
         cena: { pt: 'Instalei o Pixel ontem e nenhum evento aparece no meu Gerenciador de Eventos. 😩', es: 'Instalé el Pixel ayer y no aparece ningún evento en mi Administrador de eventos. 😩' },

@@ -157,3 +157,5 @@ html.apresentar h1.pl-h1{font-size:36px}
 .cola-frase{margin:0;padding:10px 12px;background:#1A8CFF;color:#fff;border-radius:16px;max-width:620px}
 .cola p{margin:0}
 @media (max-width:720px){.cola-grade{grid-template-columns:1fr}.pratica{flex-direction:column;align-items:flex-start}}
+
+.pl-h2{font-size:22px;margin:34px 0 4px}

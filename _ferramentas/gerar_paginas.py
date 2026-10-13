@@ -54,8 +54,8 @@ PAGINAS = {
   <div>
     <span class="selo-aula">🎓 Loja de treinamento · Meta Pixel</span>
     <h1>Canecas, camisetas e ecobags com <span style="color:var(--blue)">boas ideias</span>.</h1>
-    <p class="lead">Feitos à mão na Lojinha da Marina. Navegue, ponha no carrinho e “compre”: cada passo vira um evento do Pixel. Abra o <b>Modo aula</b> (canto inferior direito) para ver tudo acontecendo.</p>
-    <div class="acoes"><a class="btn grande" href="produtos.html">Ver produtos</a><a class="btn ghost grande" href="aula.html">🎓 Guia da aula</a></div>
+    <p class="lead">Feitos à mão na Lojinha da Marina. Navegue, ponha no carrinho e “compre”: cada passo vira um evento do Pixel. Abra o <b>Consultor de Dados</b> (na faixa amarela, lá em cima) para ver os eventos chegando, como no atendimento.</p>
+    <div class="acoes"><a class="btn grande" href="produtos.html">Ver produtos</a><a class="btn ghost grande" href="index.html">🎓 Plataforma</a></div>
   </div>
   <div class="vitrine"><img src="assets/img/caneca_01.png" alt="Caneca azul"/><img src="assets/img/camiseta_02.png" alt="Camiseta"/><img src="assets/img/ecobag_03.png" alt="Ecobag"/><img src="assets/img/caneca_02.png" alt="Caneca amarela"/><img src="assets/img/bone_01.png" alt="Boné"/><img src="assets/img/caneca_03.png" alt="Caneca Boas Ideias"/></div>
 </section>
@@ -95,7 +95,7 @@ PAGINAS = {
     <h3 style="margin-top:18px">Forma de pagamento (simulada)</h3>
     <div class="pags"><label><input type="radio" name="pag" value="pix"/> Pix (simulado)</label><label><input type="radio" name="pag" value="cartao"/> Cartão (simulado · sem digitar dados)</label><label><input type="radio" name="pag" value="boleto"/> Boleto (simulado)</label></div>
     <p class="warn" id="erroPag"></p>
-    <p class="alerta azul">💳 Os dados de teste acima viram a <b>correspondência avançada</b> (o “cartão fidelidade”): o Pixel envia com hash, nunca às claras. Veja na aba 🔍 Lupa do Modo aula.</p>
+    <p class="alerta azul">💳 Os dados de teste acima viram a <b>correspondência avançada</b> (o “cartão fidelidade”): o Pixel envia com hash, nunca às claras. Veja no Consultor de Dados (faixa amarela), em “Parâmetros de correspondência avançada enviados”.</p>
     <button class="btn grande" style="width:100%">Finalizar pedido (simulado)</button>
   </form>
   <aside class="painel"><h3>Resumo</h3><div id="resumoPedido"></div></aside>
@@ -105,7 +105,7 @@ PAGINAS = {
 <div class="obrigado" id="obrigadoBox">
   <div class="check">✓</div><h1>Pedido confirmado!</h1><p>Pedido <b id="numPedido"></b> · obrigado por comprar na Lojinha (de mentirinha 😉).</p>
   <div class="painel"><div id="itensPedido"></div></div>
-  <p class="alerta azul" id="avisoRecarga" style="max-width:620px;margin:10px auto">🛒 Esta página disparou o <b>Purchase</b>. Abra o Modo aula para ver o valor, a moeda e o nº do pedido (eventID).</p>
+  <p class="alerta azul" id="avisoRecarga" style="max-width:620px;margin:10px auto">🛒 Esta página disparou o <b>Purchase</b>. Abra o Consultor de Dados (faixa amarela) para ver o valor, a moeda e o nº do pedido (eventID).</p>
   <p><button class="btn ghost" onclick="location.reload()">↻ Recarregar esta página (teste de duplicidade)</button> <a class="btn" href="produtos.html">Continuar comprando</a></p>
 </div>
 '''),
@@ -138,6 +138,7 @@ PAGINAS = {
 '''),
 'aula': ('Guia da aula', 'aula', '''
 <div class="aula">
+<script>/* o guia antigo virou o Laboratório da plataforma */location.replace('laboratorio.html#loja-por-dentro')</script>
   <h1 style="margin-top:26px">🎓 Guia da aula</h1>
   <p id="statusPixel"></p>
   <p>Esta loja existe para ensinar o <b>Meta Pixel</b> na prática. Abra o <b>Modo aula</b> no canto inferior direito: ele mostra o que normalmente só se vê com o F12 ou com extensões, que nos computadores do trabalho ficam bloqueados.</p>
@@ -194,7 +195,7 @@ PAGINAS = {
     <li>No <b>Gerenciador de Comércio</b>, crie um catálogo de comércio eletrônico e adicione itens por <b>arquivo</b> (envio) ou por <b>URL</b> (agendado).</li>
     <li>Conecte o catálogo ao Pixel da loja e confira a correspondência dos IDs.</li>
   </ol>
-  <p class="alerta azul">💡 Para o laboratório 🏷️ “código errado”: ligue no Modo aula e abra um produto. A Lupa vai mostrar “não encontrado no catálogo”.</p>
+  <p class="alerta azul">💡 Para o laboratório 🏷️ “código errado”: ligue no Laboratório (Modo aula › 🧪 Lab) e abra um produto. A Lupa vai mostrar “não encontrado no catálogo”.</p>
 </div>
 '''),
 }

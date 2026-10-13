@@ -17,6 +17,9 @@ function lsGet(k,d){try{var v=localStorage.getItem('loja.'+k);return v==null?d:J
 function lsSet(k,v){try{localStorage.setItem('loja.'+k,JSON.stringify(v))}catch(e){}}
 function ssGet(k,d){try{var v=sessionStorage.getItem('loja.'+k);return v==null?d:JSON.parse(v)}catch(e){return d}}
 function ssSet(k,v){try{sessionStorage.setItem('loja.'+k,JSON.stringify(v))}catch(e){}}
+/* Modo aula (a loja "por dentro", tipo F12) = só no LABORATÓRIO. Liga com ?aula=aba ou ?lab=1; desliga com ?lab=0. Vale para a aba do navegador. */
+(function(){try{var q=new URLSearchParams(location.search);if(q.get('lab')==='0')ssSet('labLoja',false);else if(q.get('lab')==='1'||q.get('aula'))ssSet('labLoja',true)}catch(e){}})();
+var LABON = !!ssGet('labLoja',false);
 var LAB = lsGet('lab',{});
 var consent = lsGet('consent',null);
 var AM = lsGet('am',true);
@@ -172,12 +175,13 @@ var ui = (function(){
   function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
   function toast(msg){if(!toastBox)return;var t=document.createElement('div');t.className='ma-toast';t.innerHTML=msg;toastBox.appendChild(t);setTimeout(function(){t.classList.add('out')},3600);setTimeout(function(){t.remove()},4200)}
   function faixa(){var f=document.getElementById('maFaixa');if(!f)return;var ativos=LABS.filter(function(l){return LAB[l[0]]}).map(function(l){return l[1]});
-    f.innerHTML='<a class="ma-plat" href="index.html">🎓 Plataforma</a><span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo · ID …'+String(C.pixelId).slice(-4):'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Laboratório: '+ativos.join(' ')+'</span>':'')+
+    f.innerHTML='<a class="ma-plat" href="index.html">🎓 Plataforma</a><span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo · ID …'+String(C.pixelId).slice(-4):'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Falhas ligadas: '+ativos.join(' ')+'</span>':'')+(LABON?'<a class="ma-pix lab" href="?lab=0" title="Voltar à loja normal">🔬 Modo laboratório · sair</a>':'')+
       '<button class="ma-ext" id="maExt" title="Consultor de Dados de Anúncios da Meta (simulação da extensão)"><span class="ma-ext-ic"></span>Consultor de Dados <i>simulação</i><b id="maExtBadge"></b></button>';try{document.dispatchEvent(new CustomEvent('loja:faixa'))}catch(e){}}
   function banner(){if(!C.pedirConsentimento||consent)return;if(document.getElementById('maCookie'))return;var b=document.createElement('div');b.id='maCookie';b.className='ma-cookie';
     b.innerHTML='<div><b>🍪 Cookies desta loja</b><p>Usamos o Meta Pixel para medir visitas e compras. Você escolhe. <span class="ma-mut">(Em aula: recusar mostra o Pixel “segurando” os eventos.)</span></p></div><div class="ma-row"><button class="ma-btn ghost" data-c="revoke">Recusar</button><button class="ma-btn" data-c="grant">Aceitar</button></div>';
     document.body.appendChild(b);$$('#maCookie [data-c]').forEach(function(x){x.onclick=function(){consent=x.getAttribute('data-c');lsSet('consent',consent);fbqSafe('consent',consent);b.remove();toast(consent==='grant'?'🍪 Aceito: o Pixel pode enviar os eventos à Meta.':'🙏 Recusado: o Pixel não envia os eventos à Meta (e está certo).')}})}
   function build(){root=document.createElement('div');root.className='ma-root';
+    if(!LABON){root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><div class="ma-toasts" id="maToasts"></div>';document.body.appendChild(root);toastBox=document.getElementById('maToasts');faixa();banner();ready=true;pend=[];return}
     root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><button class="ma-fab" id="maFab" title="Modo aula"><span class="ma-mascote"></span><span>Modo aula</span><b class="ma-badge" id="maBadge">0</b></button>'+
       '<aside class="ma-panel" id="maPanel" aria-label="Modo aula"><header><div><b>🎓 Modo aula</b><small>o que o Pixel está fazendo</small></div><button id="maFecha" title="Fechar">✕</button></header>'+
       '<nav class="ma-tabs"><button data-aba="camera">📹 Câmera</button><button data-aba="rede">🌐 Rede</button><button data-aba="lupa">🔍 Lupa</button><button data-aba="codigo">📄 Código</button><button data-aba="lab">🧪 Lab</button><button data-aba="dica">💡 Dica</button></nav><div class="ma-body" id="maBody"></div></aside><div class="ma-toasts" id="maToasts"></div>';
@@ -192,7 +196,7 @@ var ui = (function(){
     var P={u:'#2F6FD6',U:'#1F4FA8',d:'#2A1E1A',s:'#F4CBA2',e:'#22304A',m:'#D0605A',w:'#fff',a:'#1F3A6E',p:'#A0703A',k:'#22304A'},o='';rows.forEach(function(r,y){for(var x=0;x<r.length;x++){var c=r[x];if(c!=='.')o+='<rect x="'+x*2+'" y="'+y*2+'" width="2" height="2" fill="'+P[c]+'"/>'}});
     return '<svg width="32" height="30" shape-rendering="crispEdges">'+o+'</svg>'}
   function msgEv(ev){return ev.status==='perdido'?'😍 <b>Purchase</b> não foi disparado!':'📡 Pixel: <b>'+ev.nome+'</b> <small>'+({enviado:'enviado à Meta',simulado:'simulado',segurado:'segurado (sem consentimento)',bloqueado:'bloqueado'}[ev.status]||'')+'</small>'}
-  return {novo:function(ev){if(!ready){pend.push(ev);return}badge.textContent=pageEvents.length;badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');toast(msgEv(ev));if(aberto)render()},
+  return {novo:function(ev){if(!LABON)return;if(!ready){pend.push(ev);return}badge.textContent=pageEvents.length;badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');toast(msgEv(ev));if(aberto)render()},
     build:build,toast:function(m){toast(m)}};
 })();
 
