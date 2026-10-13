@@ -1,6 +1,7 @@
 /* Conteúdo da plataforma (PT | ES). Toda frase é {pt, es}.
    MODULOS = a trilha (projeção do André). AULAS = aulas de cada módulo.
-   Cada aula tem sempre as mesmas partes, nesta ordem: ver · ferramenta · praticar · caso · fontes. */
+   Cada aula tem sempre as mesmas partes, nesta ordem: entender · ver de perto (ferramenta) · praticar (guiado) · atender (+ cola) · fontes.
+   Foco: o agente entende, identifica o problema e orienta o cliente; o que é técnico demais vai para o desenvolvedor. */
 window.MODULOS = [
   { id: 'pixel', status: 'construcao', icone: '📡', titulo: { pt: 'Introdução ao Pixel', es: 'Introducción al Pixel' }, resumo: { pt: 'O que é, como instalar, o Gerenciador de Eventos e a solução de problemas.', es: 'Qué es, cómo instalarlo, el Administrador de eventos y la solución de problemas.' } },
   { id: 'portfolio', status: 'planejado', icone: '🏢', titulo: { pt: 'Portfólio empresarial · básico', es: 'Portafolio comercial · básico' }, resumo: { pt: 'Como configurar o portfólio e seus principais recursos.', es: 'Cómo configurar el portafolio y sus principales recursos.' } },
@@ -25,39 +26,47 @@ window.AULAS = {
   pixel: [
     { id: '01', titulo: { pt: 'O que é o Pixel e onde ele mora', es: 'Qué es el Pixel y dónde vive' }, status: 'planejada' },
     {
-      id: '02', min: 7, status: 'pronta',
+      id: '02', min: 6, status: 'pronta',
       titulo: { pt: 'O código base do Pixel', es: 'El código base del Pixel' },
-      objetivo: { pt: 'Reconhecer o código base num site e achar as 3 coisas que importam: o ID, o PageView e o lugar onde ele está.', es: 'Reconocer el código base en un sitio y encontrar las 3 cosas que importan: el ID, el PageView y el lugar donde está.' },
-      ver: {
+      objetivo: { pt: 'Achar o Pixel no código de um site e conferir as 3 coisas que importam: o comentário, o ID e o PageView.', es: 'Encontrar el Pixel en el código de un sitio y revisar las 3 cosas que importan: el comentario, el ID y el PageView.' },
+      entender: {
         dialogo: [
-          ['marina', { pt: 'Esse monte de letra é o tal Pixel? Eu vou ter que decorar isso?', es: '¿Este montón de letras es el famoso Pixel? ¿Voy a tener que memorizar esto?' }],
-          ['rafa', { pt: 'Não precisa decorar nada! O bloco do meio ninguém mexe. Só precisa saber achar três coisas: o ID do Pixel, o PageView e onde o código está na página.', es: '¡No tienes que memorizar nada! El bloque del medio nadie lo toca. Solo tienes que saber encontrar tres cosas: el ID del Pixel, el PageView y dónde está el código en la página.' }],
-          ['pixel', { pt: 'Eu sou o Pixel! Esse código é o que me coloca para trabalhar no site.', es: '¡Soy el Pixel! Este código es el que me pone a trabajar en el sitio.' }]
+          ['marina', { foto: 'codigo-base', legenda: { pt: 'Marina enviou uma foto.', es: 'Marina envió una foto.' } }],
+          ['marina', { pt: 'Oi! Achei isso no código do meu site. Isso é o Pixel? Tá certo?', es: '¡Hola! Encontré esto en el código de mi sitio. ¿Esto es el Pixel? ¿Está bien?' }],
+          ['rafa', { pt: 'Oi, Marina! É ele, sim. Para conferir, não precisa entender o código todo: vou olhar só três coisas.', es: '¡Hola, Marina! Sí, es él. Para revisarlo no hace falta entender todo el código: voy a mirar solo tres cosas.' }],
+          ['pixel', { pt: 'As 3 coisas: o comentário que me marca, o meu número (ID) e o PageView. O resto é técnico.', es: 'Las 3 cosas: el comentario que me marca, mi número (ID) y el PageView. El resto es técnico.' }]
         ],
         pontos: [
-          { pt: '<b>O ID</b> está no <code>fbq(\'init\', \'…\')</code>. Ele diz para qual Pixel os eventos vão. ID errado = eventos chegando em outro Pixel.', es: '<b>El ID</b> está en <code>fbq(\'init\', \'…\')</code>. Dice a qué Pixel van los eventos. ID equivocado = eventos llegando a otro Pixel.' },
-          { pt: '<b>O PageView</b> (<code>fbq(\'track\', \'PageView\')</code>) conta cada visita. A Meta recomenda manter essa linha.', es: '<b>El PageView</b> (<code>fbq(\'track\', \'PageView\')</code>) cuenta cada visita. Meta recomienda mantener esa línea.' },
-          { pt: '<b>O lugar:</b> entre <code>&lt;head&gt;</code> e <code>&lt;/head&gt;</code>, em todas as páginas. Assim ele carrega cedo e corre menos risco de ser bloqueado.', es: '<b>El lugar:</b> entre <code>&lt;head&gt;</code> y <code>&lt;/head&gt;</code>, en todas las páginas. Así carga temprano y corre menos riesgo de ser bloqueado.' }
+          { pt: '<b>O comentário</b> <code>Meta Pixel Code</code> mostra onde o Pixel começa. Achou ele, achou o Pixel.', es: '<b>El comentario</b> <code>Meta Pixel Code</code> muestra dónde empieza el Pixel. Si lo encuentras, encontraste el Pixel.' },
+          { pt: '<b>O ID</b> (o número dentro de <code>init</code>) tem que ser igual ao do Pixel do cliente no Gerenciador de Eventos.', es: '<b>El ID</b> (el número dentro de <code>init</code>) tiene que ser igual al del Pixel del cliente en el Administrador de eventos.' },
+          { pt: '<b>O PageView</b> conta as visitas. Se ele está lá, toda página aberta é contada.', es: '<b>El PageView</b> cuenta las visitas. Si está ahí, cada página abierta se cuenta.' }
         ],
-        notas: { pt: 'Não leia o código linha a linha para a turma: use a ferramenta e passe só pelos destaques. A mensagem é: o meio não se mexe; o que importa é o ID, o PageView e o lugar.', es: 'No leas el código línea por línea al grupo: usa la herramienta y pasa solo por los destacados. El mensaje es: el medio no se toca; lo que importa es el ID, el PageView y el lugar.' }
+        notas: { pt: 'A mensagem é: o agente não precisa entender o código, só achar 3 coisas. Se o código estiver estranho (duplicado, editado, faltando partes), o cliente deve chamar quem cuida do site.', es: 'El mensaje es: el agente no necesita entender el código, solo encontrar 3 cosas. Si el código está raro (duplicado, editado, con partes faltantes), el cliente debe llamar a quien cuida el sitio.' }
       },
       ferramenta: 'codigo-base',
       praticar: {
-        texto: { pt: 'O botão abre a Lojinha já no <b>Modo aula</b>, na aba <b>📄 Código</b>, que mostra o código desta página. Ache: o comentário <code>Meta Pixel Code</code>, o endereço <code>fbevents.js</code> e o <code>fbq(\'init\')</code>.', es: 'El botón abre la Lojinha ya en el <b>Modo aula</b>, en la pestaña <b>📄 Código</b>, que muestra el código de esta página. Encuentra: el comentario <code>Meta Pixel Code</code>, la dirección <code>fbevents.js</code> y el <code>fbq(\'init\')</code>.' },
-        botoes: [
-          { href: 'loja.html?aula=codigo', rotulo: { pt: '🏪 Abrir a Lojinha no Modo aula › Código', es: '🏪 Abrir la Lojinha en Modo aula › Código' } },
-          { href: 'meta-eventos.html?tour=criar-pixel', rotulo: { pt: '🕹️ Ver o código no simulador', es: '🕹️ Ver el código en el simulador' } }
+        texto: { pt: 'Na Lojinha, o Pixel vai te mostrar onde fica o Modo aula e onde achar as 3 coisas no código da página.', es: 'En la Lojinha, el Pixel te mostrará dónde está el Modo aula y dónde encontrar las 3 cosas en el código de la página.' },
+        tour: 'achar-codigo', pagina: 'loja.html'
+      },
+      atender: {
+        cena: { pt: 'Instalei o Pixel ontem e nenhum evento aparece no meu Gerenciador de Eventos. 😩', es: 'Instalé el Pixel ayer y no aparece ningún evento en mi Administrador de eventos. 😩' },
+        pergunta: { pt: 'O que você responde primeiro?', es: '¿Qué respondes primero?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Vamos conferir juntos: você pode me mandar o número que aparece no código do site, dentro de init? Vou comparar com o ID do seu Pixel.”', es: '“Revisémoslo juntos: ¿puedes enviarme el número que aparece en el código del sitio, dentro de init? Voy a compararlo con el ID de tu Pixel.”' }, fb: { pt: 'Boa! O motivo mais comum de “nenhum evento” é o ID do site ser de outro Pixel. Você identifica isso sem mexer em nada.', es: '¡Bien! El motivo más común de “ningún evento” es que el ID del sitio es de otro Pixel. Lo identificas sin tocar nada.' } },
+          { certa: false, txt: { pt: '“É normal, os eventos levam até 7 dias para aparecer.”', es: '“Es normal, los eventos tardan hasta 7 días en aparecer.”' }, fb: { pt: 'Não. Eventos aparecem em minutos (no Testar eventos, na hora). Esperar só atrasa a solução.', es: 'No. Los eventos aparecen en minutos (en Probar eventos, al instante). Esperar solo retrasa la solución.' } },
+          { certa: false, txt: { pt: '“Vou te encaminhar agora para um desenvolvedor.”', es: '“Te voy a derivar ahora a un desarrollador.”' }, fb: { pt: 'Ainda não. Primeiro identifique a causa: conferir o ID é simples e você faz com o cliente. Encaminhe só se for preciso mexer no código e o cliente não souber.', es: 'Todavía no. Primero identifica la causa: revisar el ID es simple y lo haces con el cliente. Deriva solo si hay que tocar el código y el cliente no sabe.' } },
+          { certa: false, txt: { pt: '“Apague a linha do PageView e instale de novo.”', es: '“Borra la línea del PageView e instálalo de nuevo.”' }, fb: { pt: 'Não! O PageView deve ficar. E orientar a apagar partes do código pode quebrar o site do cliente.', es: '¡No! El PageView debe quedarse. Y pedir que borre partes del código puede romper el sitio del cliente.' } }
         ]
       },
-      caso: {
-        cena: { pt: 'Um anunciante diz: <i>“Instalei o Pixel ontem e nenhum evento aparece no meu Gerenciador de Eventos.”</i> Ele manda o código do site, e você vê <code>fbq(\'init\', \'847291036615204\')</code>. No Gerenciador dele, o Pixel tem o ID <code>847291036615240</code>.', es: 'Un anunciante dice: <i>“Instalé el Pixel ayer y no aparece ningún evento en mi Administrador de eventos.”</i> Envía el código del sitio y ves <code>fbq(\'init\', \'847291036615204\')</code>. En su Administrador, el Pixel tiene el ID <code>847291036615240</code>.' },
-        pergunta: { pt: 'Qual é a causa mais provável?', es: '¿Cuál es la causa más probable?' },
-        opcoes: [
-          { certa: true, txt: { pt: 'O ID no init está diferente do ID do Pixel (os dois últimos números trocados).', es: 'El ID del init es diferente del ID del Pixel (los dos últimos números cambiados).' }, fb: { pt: 'Isso! Os eventos estão indo para outro Pixel. Compare o ID do <code>init</code> com o do Gerenciador, número por número.', es: '¡Eso! Los eventos van a otro Pixel. Compara el ID del <code>init</code> con el del Administrador, número por número.' } },
-          { certa: false, txt: { pt: 'Falta a parte do <code>&lt;noscript&gt;</code>.', es: 'Falta la parte del <code>&lt;noscript&gt;</code>.' }, fb: { pt: 'Não é isso. O noscript é só um plano B para quem está sem JavaScript, e registra apenas o PageView. Sem ele, os eventos normais continuam saindo.', es: 'No es eso. El noscript es solo un plan B para quien no tiene JavaScript y registra solo el PageView. Sin él, los eventos normales siguen saliendo.' } },
-          { certa: false, txt: { pt: 'O código precisa ficar no <code>&lt;body&gt;</code>, não no <code>&lt;head&gt;</code>.', es: 'El código tiene que estar en el <code>&lt;body&gt;</code>, no en el <code>&lt;head&gt;</code>.' }, fb: { pt: 'É o contrário: a Meta recomenda o <code>&lt;head&gt;</code>. E mesmo fora do lugar ideal, o Pixel costuma funcionar. Não explicaria “nenhum evento”.', es: 'Es al revés: Meta recomienda el <code>&lt;head&gt;</code>. Y aunque esté fuera del lugar ideal, el Pixel suele funcionar. No explicaría “ningún evento”.' } },
-          { certa: false, txt: { pt: 'Ele precisa apagar a linha do PageView para os outros eventos aparecerem.', es: 'Tiene que borrar la línea del PageView para que aparezcan los otros eventos.' }, fb: { pt: 'Não! A Meta recomenda manter o PageView. Os outros eventos são acrescentados, nunca no lugar dele.', es: '¡No! Meta recomienda mantener el PageView. Los otros eventos se agregan, nunca en su lugar.' } }
-        ]
+      cola: {
+        perguntas: [{ pt: 'Você consegue ver o código do Pixel no site (o comentário Meta Pixel Code)?', es: '¿Puedes ver el código del Pixel en el sitio (el comentario Meta Pixel Code)?' },
+          { pt: 'Qual número aparece dentro de init?', es: '¿Qué número aparece dentro de init?' },
+          { pt: 'Qual é o ID do Pixel no seu Gerenciador de Eventos?', es: '¿Cuál es el ID del Pixel en tu Administrador de eventos?' }],
+        conferir: [{ pt: 'O ID do init é igual ao do Pixel, número por número.', es: 'El ID del init es igual al del Pixel, número por número.' },
+          { pt: 'O PageView está no código.', es: 'El PageView está en el código.' },
+          { pt: 'O código aparece uma vez só (não está duplicado).', es: 'El código aparece una sola vez (no está duplicado).' }],
+        frase: { pt: 'Vamos conferir juntos: você pode me mandar o número que aparece no código do site, dentro de init? Vou comparar com o ID do seu Pixel no Gerenciador de Eventos.', es: 'Revisémoslo juntos: ¿puedes enviarme el número que aparece en el código del sitio, dentro de init? Voy a compararlo con el ID de tu Pixel en el Administrador de eventos.' },
+        encaminhar: { pt: 'Se o código está duplicado, editado ou faltando partes, e o cliente não sabe trocar: oriente a falar com quem cuida do site (desenvolvedor ou a plataforma da loja).', es: 'Si el código está duplicado, editado o con partes faltantes, y el cliente no sabe cambiarlo: oriéntalo a hablar con quien cuida el sitio (desarrollador o la plataforma de la tienda).' }
       },
       fontes: [
         { url: 'https://developers.facebook.com/docs/meta-pixel/get-started', titulo: { pt: 'Meta Pixel · Primeiros passos (código base e onde colocar)', es: 'Meta Pixel · Primeros pasos (código base y dónde colocarlo)' }, conferido: '13/10/2026' }

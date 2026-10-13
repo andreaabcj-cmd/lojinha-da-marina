@@ -12,7 +12,7 @@
     sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
     planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
-    ver: { pt: 'Ver', es: 'Ver' }, ferramenta: { pt: 'Ferramenta', es: 'Herramienta' }, praticar: { pt: 'Praticar', es: 'Practicar' }, caso: { pt: 'Caso prático', es: 'Caso práctico' },
+    entender: { pt: 'Entender', es: 'Entender' }, ferramenta: { pt: 'Ver de perto', es: 'Ver de cerca' }, praticar: { pt: 'Praticar', es: 'Practicar' }, atender: { pt: 'Atender', es: 'Atender' }, colas: { pt: 'Colas', es: 'Guías' },
     ant: { pt: '◀ Anterior', es: '◀ Anterior' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, proxAula: { pt: 'Próxima aula ▶', es: 'Siguiente clase ▶' }, fimMod: { pt: 'Voltar ao módulo', es: 'Volver al módulo' },
     apresentar: { pt: '🎤 Apresentar', es: '🎤 Presentar' }, sairApr: { pt: '✕ Sair da apresentação', es: '✕ Salir de la presentación' }, notas: { pt: '📝 Notas', es: '📝 Notas' },
     fontes: { pt: 'Fontes oficiais', es: 'Fuentes oficiales' }, conferido: { pt: 'conferido em', es: 'revisado el' }, min: { pt: 'min', es: 'min' }
@@ -23,7 +23,7 @@
 
   /* ---------- topo ---------- */
   function topo(ativo) {
-    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio']];
+    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['colas.html', 'colas']];
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
       '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div></header>';
@@ -45,14 +45,14 @@
         '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online, o Rafa é do suporte e o Pixel mede tudo o que acontece no site. Escolha por onde começar.', es: 'Marina tiene una tienda online, Rafa es del soporte y el Pixel mide todo lo que pasa en el sitio. Elige por dónde empezar.' }) + '</p>' +
         (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
         '<div class="portas">' + [
-          ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com casos práticos.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
+          ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
           ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Modo aula.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Modo aula.' }],
           ['simuladores.html', '🕹️', U.simuladores, { pt: 'Ferramentas da Meta de treino: clique à vontade, nada vai para a Meta.', es: 'Herramientas de Meta de práctica: haz clic sin miedo, nada va a Meta.' }],
           ['laboratorio.html', '🧪', U.laboratorio, { pt: 'Explorar: as ferramentas das aulas, soltas, para explicar e testar.', es: 'Explorar: las herramientas de las clases, sueltas, para explicar y probar.' }]
         ].map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
     },
     modulos: function () {
-      return '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1><p class="pl-lead">' + T({ pt: 'A trilha completa. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: ver, ferramenta, praticar e caso prático.', es: 'La ruta completa. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: ver, herramienta, practicar y caso práctico.' }) + '</p>' +
+      return '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1><p class="pl-lead">' + T({ pt: 'A trilha completa. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender.', es: 'La ruta completa. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender.' }) + '</p>' +
         '<div class="grade">' + window.MODULOS.map(function (m) {
           var ok = window.AULAS[m.id]; return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>')
         }).join('') + '</div>';
@@ -92,31 +92,62 @@
 
   /* ---------- AULA: uma parte por vez (ver · ferramenta · praticar · caso) ---------- */
   /* conversa no estilo do chat de atendimento: Marina (cliente) à esquerda, Rafa (agente) à direita, Pixel como dica no meio */
-  function chat(dialogo) {
+  var FOTOS = {
+    'codigo-base': '<div class="foto-cod"><span class="c">&lt;!-- Meta Pixel Code --&gt;</span>\n<span class="t">&lt;script&gt;</span>\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=…\n…(window, document,\'script\',\n\'https://connect.facebook.net/en_US/fbevents.js\');\n<span class="f">fbq</span>(\'init\', \'1234567890123456\');\n<span class="f">fbq</span>(\'track\', \'PageView\');\n<span class="t">&lt;/script&gt;</span>\n<span class="c">&lt;!-- End Meta Pixel Code --&gt;</span></div>'
+  };
+  function chat(dialogo, quem0) {
     var min = 41, h = '<div class="chat"><div class="chat-sis">' + T({ pt: 'Rafa entrou na conversa.', es: 'Rafa se unió a la conversación.' }) + '</div>';
     function av(q) { return '<span class="av">' + PERSONAGEM(q, 1.6) + '</span>' }
     dialogo.forEach(function (d) {
-      var hora = '17:' + (min++);
-      if (d[0] === 'pixel') h += '<div class="chat-dica">' + av('pixel') + '<span><b>Pixel:</b> ' + T(d[1]) + '</span></div>';
-      else h += '<div class="msg ' + (d[0] === 'rafa' ? 'dir' : 'esq') + '">' + av(d[0]) + '<div><div class="bolha">' + T(d[1]) + '</div><span class="hora">' + PERSONAGEM_NOME[d[0]] + ' · ' + hora + '</span></div></div>';
+      var hora = '17:' + (min++), m = d[1];
+      if (d[0] === 'pixel') { h += '<div class="chat-dica">' + av('pixel') + '<span><b>Pixel:</b> ' + T(m) + '</span></div>'; return }
+      var lado = d[0] === 'rafa' ? 'dir' : 'esq', corpo = m.foto ? '<div class="bolha foto">' + FOTOS[m.foto] + '</div>' : '<div class="bolha">' + T(m) + '</div>';
+      if (m.foto) h += '<div class="chat-sis">' + T(m.legenda) + '</div>';
+      h += '<div class="msg ' + lado + '">' + av(d[0]) + '<div>' + corpo + '<span class="hora">' + (PERSONAGEM_NOME[d[0]] || d[0]) + ' · ' + hora + '</span></div></div>';
     });
     return h + '</div>';
   }
+  function colaTexto(c) {
+    return [T({ pt: 'PERGUNTE AO CLIENTE', es: 'PREGUNTA AL CLIENTE' })].concat(c.perguntas.map(function (x) { return '• ' + T(x) }),
+      ['', T({ pt: 'CONFIRA', es: 'REVISA' })], c.conferir.map(function (x) { return '☐ ' + T(x) }),
+      ['', T({ pt: 'FRASE PRONTA', es: 'FRASE LISTA' }), T(c.frase), '', T({ pt: 'QUANDO ENCAMINHAR', es: 'CUÁNDO DERIVAR' }), T(c.encaminhar)]).join('\n').replace(/<[^>]+>/g, '');
+  }
+  function colaHtml(c, id) {
+    return '<div class="cola" id="' + id + '"><div class="cola-cab"><b>🗒️ ' + T({ pt: 'Cola do atendimento', es: 'Guía rápida de atención' }) + '</b><button class="btn sec" data-copiar="' + id + '">📋 ' + T({ pt: 'Copiar', es: 'Copiar' }) + '</button></div>' +
+      '<div class="cola-grade"><div><h4>❓ ' + T({ pt: 'Pergunte ao cliente', es: 'Pregunta al cliente' }) + '</h4><ul>' + c.perguntas.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul></div>' +
+      '<div><h4>✅ ' + T({ pt: 'Confira', es: 'Revisa' }) + '</h4><ul class="ck">' + c.conferir.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul></div></div>' +
+      '<h4>💬 ' + T({ pt: 'Frase pronta', es: 'Frase lista' }) + '</h4><p class="cola-frase">' + T(c.frase) + '</p>' +
+      '<h4>🧑‍💻 ' + T({ pt: 'Quando encaminhar', es: 'Cuándo derivar' }) + '</h4><p>' + T(c.encaminhar) + '</p></div>';
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-copiar]'); if (!b) return;
+    var mid = b.getAttribute('data-copiar').split('__'), a = (window.AULAS[mid[1]] || []).filter(function (x) { return x.id === mid[2] })[0]; if (!a) return;
+    var txt = colaTexto(a.cola), ok = function () { b.textContent = '✓ ' + T({ pt: 'Copiado', es: 'Copiado' }) };
+    try { navigator.clipboard.writeText(txt).then(ok, function () { }) } catch (x) { }
+  });
+
+  /* ---------- AULA: uma parte por vez (entender · ver de perto · praticar · atender) ---------- */
   var passoAtual = 0;
   function aulaTela() {
     var mid = Q.get('m'), aid = Q.get('a'), m = window.MODULOS.filter(function (x) { return x.id === mid })[0], lista = window.AULAS[mid] || [];
     var a = lista.filter(function (x) { return x.id === aid })[0];
     if (!m || !a || a.status !== 'pronta') return '<p>' + T({ pt: 'Aula não encontrada.', es: 'Clase no encontrada.' }) + ' <a href="modulos.html">' + T(U.modulos) + '</a></p>';
     lsSet('plat.ultima', { m: mid, a: aid });
-    var partes = ['ver', 'ferramenta', 'praticar', 'caso'].filter(function (p) { return a[p] });
-    var prox = lista[lista.indexOf(a) + 1];
+    var partes = ['entender', 'ferramenta', 'praticar', 'atender'].filter(function (p) { return a[p] });
+    passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
+    var prox = lista[lista.indexOf(a) + 1], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid;
     function desenha() {
       var p = partes[passoAtual], h = '';
-      if (p === 'ver') h = '<h2>' + T(a.titulo) + '</h2>' + chat(a.ver.dialogo) +
-        '<ul class="pontos">' + a.ver.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
-      else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🛠️ ' + T(f.titulo) + '</h2><p>' + T(f.resumo) + '</p><div class="ferr-box" id="ferr"></div>'; setTimeout(function () { f.montar($('#ferr'), T, LANG) }) }
-      else if (p === 'praticar') h = '<h2>🕹️ ' + T(U.praticar) + '</h2><p class="pratica-txt">' + T(a.praticar.texto) + '</p><div class="botoes">' + a.praticar.botoes.map(function (b) { return '<a class="btn amarelo" target="_blank" rel="noopener" href="' + b.href + '">' + T(b.rotulo) + '</a>' }).join('') + '</div>';
-      else if (p === 'caso') h = '<h2>🧩 ' + T(U.caso) + '</h2><div class="caso-cena">' + T(a.caso.cena) + '</div><b>' + T(a.caso.pergunta) + '</b><div class="opcoes">' + a.caso.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>';
+      if (p === 'entender') h = '<h2>💬 ' + T(U.entender) + '</h2>' + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
+      else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🔍 ' + T(U.ferramenta) + '</h2><div class="ferr-box" id="ferr"></div><p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>'; setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
+      else if (p === 'praticar') {
+        var volta = encodeURIComponent(aqui + '&passo=' + (passoAtual + 2));
+        h = '<h2>🕹️ ' + T(U.praticar) + '</h2><div class="pratica"><span class="pratica-masc">' + PERSONAGEM('pixel', 4) + '</span><div><p class="pratica-txt">' + T(a.praticar.texto) + '</p>' +
+          '<a class="btn amarelo grande" href="' + a.praticar.pagina + '?tour=' + a.praticar.tour + '&voltar=' + volta + '">▶ ' + T({ pt: 'Começar a prática guiada', es: 'Empezar la práctica guiada' }) + '</a>' +
+          '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p></div></div>';
+      }
+      else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + a.atender.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
+        (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '');
       $('#palco').innerHTML = h;
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
       $('#bAnt').disabled = passoAtual === 0;
@@ -133,7 +164,7 @@
       };
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.onclick = function () { passoAtual = i; desenha() } });
       $('#palco').addEventListener('click', function (e) {
-        var o = e.target.closest('[data-op]'); if (!o) return; var op = a.caso.opcoes[+o.getAttribute('data-op')];
+        var o = e.target.closest('[data-op]'); if (!o) return; var op = a.atender.opcoes[+o.getAttribute('data-op')];
         if (o.querySelector('.fb')) return;
         o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
       });
@@ -146,16 +177,27 @@
       '<h1 class="pl-h1">' + T(a.titulo) + '</h1><p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
       '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
-      '<div class="notas"><b>📝 ' + T({ pt: 'Notas para quem apresenta', es: 'Notas para quien presenta' }) + ':</b> ' + T(a.ver.notas) + '</div>' +
+      '<div class="notas"><b>📝 ' + T({ pt: 'Notas para quem apresenta', es: 'Notas para quien presenta' }) + ':</b> ' + T(a.entender.notas) + '</div>' +
       '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +
       (a.fontes ? '<details class="fontes"><summary>📚 ' + T(U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '');
   }
+
+  /* página com todas as colas, para consulta rápida no dia a dia */
+  TELAS.colas = function () {
+    var h = '<h1 class="pl-h1">🗒️ ' + T({ pt: 'Colas do atendimento', es: 'Guías rápidas de atención' }) + '</h1><p class="pl-lead">' + T({ pt: 'O resumo prático de cada aula: o que perguntar, o que conferir, a frase pronta e quando encaminhar. Use o botão copiar durante o atendimento.', es: 'El resumen práctico de cada clase: qué preguntar, qué revisar, la frase lista y cuándo derivar. Usa el botón copiar durante la atención.' }) + '</p>';
+    window.MODULOS.forEach(function (m) {
+      var aulas = (window.AULAS[m.id] || []).filter(function (a) { return a.cola });
+      if (!aulas.length) return;
+      h += '<h2 class="secao-tit">' + m.icone + ' ' + T(m.titulo) + '</h2>' + aulas.map(function (a) { return '<h3>' + a.id + ' · ' + T(a.titulo) + ' <a class="miudo" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' + T({ pt: 'abrir aula', es: 'abrir clase' }) + '</a></h3>' + colaHtml(a.cola, 'cola__' + m.id + '__' + a.id) }).join('');
+    });
+    return h;
+  };
 
   /* ---------- montagem ---------- */
   function monta() {
     var tela = document.body.getAttribute('data-tela');
     if (!tela) return;   // páginas da loja/simulador só usam a porta
-    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio' }[tela];
+    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
   }

@@ -15,6 +15,13 @@
     pv: [{ pt: 'PageView: a visita ⭐', es: 'PageView: la visita ⭐' }, { pt: 'Conta cada página aberta. A Meta recomenda <b>manter</b> esta linha. Os outros eventos (ViewContent, AddToCart, Purchase…) são acrescentados nos lugares certos, nunca no lugar dela.', es: 'Cuenta cada página abierta. Meta recomienda <b>mantener</b> esta línea. Los otros eventos (ViewContent, AddToCart, Purchase…) se agregan en los lugares correctos, nunca en su lugar.' }],
     ns: [{ pt: 'noscript: o plano B', es: 'noscript: el plan B' }, { pt: 'Para quem navega sem JavaScript: uma imagem invisível de 1×1 pixel chama <code>facebook.com/tr</code>. Daí vem o nome “pixel”. Só registra o PageView.', es: 'Para quien navega sin JavaScript: una imagen invisible de 1×1 píxel llama a <code>facebook.com/tr</code>. De ahí viene el nombre “pixel”. Solo registra el PageView.' }]
   };
+  /* modo simples (aulas): só as 3 partes que o agente confere; o resto vira "parte técnica" */
+  var SIMPLES = {
+    cm: [{ pt: '1. O comentário: achou, achou o Pixel', es: '1. El comentario: si lo encuentras, encontraste el Pixel' }, { pt: '<code>Meta Pixel Code</code> marca onde o Pixel começa e termina. É o que se procura no código do site do cliente. Em sites antigos pode estar como <code>Facebook Pixel Code</code>.', es: '<code>Meta Pixel Code</code> marca dónde empieza y termina el Pixel. Es lo que se busca en el código del sitio del cliente. En sitios antiguos puede decir <code>Facebook Pixel Code</code>.' }],
+    init: [{ pt: '2. O ID do Pixel ⭐', es: '2. El ID del Pixel ⭐' }, { pt: 'O número dentro de <code>init</code> diz para qual Pixel os eventos vão. Ele tem que ser <b>igual</b> ao ID do Pixel no Gerenciador de Eventos do cliente. ID diferente = eventos indo para outro Pixel.', es: 'El número dentro de <code>init</code> dice a qué Pixel van los eventos. Tiene que ser <b>igual</b> al ID del Pixel en el Administrador de eventos del cliente. ID diferente = eventos yendo a otro Pixel.' }],
+    pv: [{ pt: '3. O PageView ⭐', es: '3. El PageView ⭐' }, { pt: 'Conta cada página aberta. Tem que estar aqui. Os outros eventos (compra, carrinho...) vêm depois, em outros lugares do site.', es: 'Cuenta cada página abierta. Tiene que estar aquí. Los otros eventos (compra, carrito...) vienen después, en otros lugares del sitio.' }],
+    tec: [{ pt: 'Parte técnica: o cliente não mexe', es: 'Parte técnica: el cliente no la toca' }, { pt: 'Esta parte faz o Pixel carregar. Ninguém edita. Se no site do cliente ela estiver diferente, repetida ou faltando pedaços, oriente a falar com quem cuida do site (desenvolvedor ou a plataforma da loja).', es: 'Esta parte hace que el Pixel cargue. Nadie la edita. Si en el sitio del cliente está diferente, repetida o con partes faltantes, oriéntalo a hablar con quien cuida el sitio (desarrollador o la plataforma de la tienda).' }]
+  };
   var ID = '1234567890123456';
   var CODIGO = [
     ['cm', '<span class="c">&lt;!-- Meta Pixel Code --&gt;</span>'],
@@ -38,15 +45,20 @@
     titulo: { pt: 'Código base explicado', es: 'Código base explicado' },
     resumo: { pt: 'Passe o mouse (ou toque) em cada parte do código base do Pixel para ver o que ela faz.', es: 'Pasa el mouse (o toca) cada parte del código base del Pixel para ver qué hace.' },
     paginas: '9', status: 'pronta',
-    montar: function (el, T) {
+    montar: function (el, T, lang, opts) {
+      var simples = opts && opts.modo === 'simples', TXT = simples ? SIMPLES : PARTES;
       el.innerHTML = '<div class="fr-cb"><div class="fr-codigo" role="list">' +
         '<div class="fr-codigo-tit">● ' + T({ pt: 'código base · como a Meta entrega', es: 'código base · como lo entrega Meta' }) + '</div>' +
-        CODIGO.map(function (l) { return '<div class="fr-ln' + (l[0] ? ' fr-hot' : '') + '"' + (l[0] ? ' data-p="' + l[0] + '" tabindex="0"' : '') + '>' + l[1] + '</div>' }).join('') +
-        '</div><div class="fr-exp" aria-live="polite"><span class="fr-exp-dica">' + T({ pt: '👈 Passe o mouse ou toque numa parte destacada do código. As marcadas com ⭐ são as que mais importam.', es: '👈 Pasa el mouse o toca una parte destacada del código. Las marcadas con ⭐ son las que más importan.' }) + '</span></div></div>' +
+        CODIGO.map(function (l) {
+          var p = l[0], html = l[1];
+          if (simples) { html = html.replace(/ data-p="[^"]+"/g, ''); p = p && !SIMPLES[p] ? 'tec' : p }
+          return '<div class="fr-ln' + (p ? ' fr-hot' : '') + (p === 'tec' ? ' fr-tec' : '') + '"' + (p ? ' data-p="' + p + '" tabindex="0"' : '') + '>' + html + '</div>'
+        }).join('') +
+        '</div><div class="fr-exp" aria-live="polite"><span class="fr-exp-dica">' + T(simples ? { pt: '👈 Toque nas 3 partes destacadas: o comentário, o ID e o PageView. As partes em cinza são técnicas.', es: '👈 Toca las 3 partes destacadas: el comentario, el ID y el PageView. Las partes en gris son técnicas.' } : { pt: '👈 Passe o mouse ou toque numa parte destacada do código. As marcadas com ⭐ são as que mais importam.', es: '👈 Pasa el mouse o toca una parte destacada del código. Las marcadas con ⭐ son las que más importan.' }) + '</span></div></div>' +
         '<p class="fr-nota">' + T({ pt: 'ID fictício. O código real vem do Gerenciador de Eventos ou é instalado por um parceiro (ex.: uma plataforma de loja).', es: 'ID ficticio. El código real viene del Administrador de eventos o lo instala un socio (por ejemplo, una plataforma de tienda).' }) + '</p>';
       var exp = el.querySelector('.fr-exp'), fixo = null;
       function mostra(p) {
-        var d = PARTES[p]; if (!d) return;
+        var d = TXT[p]; if (!d) return;
         exp.innerHTML = '<b>' + T(d[0]) + '</b><p>' + T(d[1]) + '</p>';
         el.querySelectorAll('[data-p]').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-p') === p) });
       }
