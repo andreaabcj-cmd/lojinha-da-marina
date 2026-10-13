@@ -42,8 +42,9 @@ def render(name, rows, bg, size=800):
             d.rectangle([ox + x * cell, oy + y * cell, ox + (x + 1) * cell - 1, oy + (y + 1) * cell - 1], fill=PAL[ch])
     return im
 
-out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'img')
-os.makedirs(out, exist_ok=True)
-for k, rows in SPR.items():
-    render(k, rows, BG[k]).save(os.path.join(out, k.lower() + '.png'), optimize=True)
-    print('ok', k)
+if __name__ == '__main__':
+    out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'img')
+    os.makedirs(out, exist_ok=True)
+    for k, rows in SPR.items():
+        render(k, rows, BG[k]).save(os.path.join(out, k.lower() + '.png'), optimize=True)
+        print('ok', k)
