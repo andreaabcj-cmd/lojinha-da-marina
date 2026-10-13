@@ -4,7 +4,7 @@ window.TUTORIAL_ES = {
  ui: { passo: 'Paso', de: 'de', ant: '◀ Anterior', prox: 'Siguiente ▶', tocar: '▶ Reproducir solo', pausar: '⏸ Pausar',
    inteira: '🔍 Pantalla completa', zoom: '🔍 Acercar', erro: '⚠️ Error común', alt: '🧭 Camino alternativo', fim: 'Fin de esta etapa 🎉',
    proxEtapa: 'Siguiente etapa', voltar: '← Todos los tutoriales', porque: 'Por qué importa', check: 'Elementos que la tienda necesita',
-   anot: 'Pixel', emBreve: 'próximamente', parcial: 'en grabación', pronto: 'listo', prints: 'capturas',
+   anot: 'Pixel', emBreve: 'próximamente', parcial: 'en grabación', pronto: 'listo', prints: 'capturas', simulador: 'simulador', praticar: 'Practicar en el simulador', praticarTxt: 'Hazlo tú mismo, en una copia de práctica del Administrador de eventos (nada va a Meta).',
    aviso: 'Capturas en portugués (la interfaz de Meta en español usa los mismos lugares y botones).' },
  etapas: {
   '01': { bloco: '1 · Preparar la casa', titulo: 'Crear el portafolio comercial',

@@ -24,12 +24,13 @@
    "id": "02",
    "bloco": "2 · O Pixel",
    "titulo": "Criar o Pixel (conjunto de dados)",
-   "status": "parcial",
+   "status": "pronto",
    "resumo": "A Meta cria o Pixel e dá a ele um número de identificação (o ID do Pixel). É esse número que vai no código do site.",
    "porque": [
     "Hoje a Meta chama o Pixel de “conjunto de dados”. É a mesma coisa.",
     "Cada Pixel tem um número único (o ID). Lembra do 📓 caderno errado do laboratório? É quando o site usa o ID de outro Pixel."
-   ]
+   ],
+   "sim": "meta-eventos.html?tour=criar-pixel&voltar=tutoriais.html"
   },
   {
    "id": "03",
@@ -42,8 +43,9 @@
    "id": "04",
    "bloco": "2 · O Pixel",
    "titulo": "Ver o primeiro evento chegar (Testar eventos)",
-   "status": "em breve",
-   "resumo": "Abrir a loja e ver o PageView chegando ao vivo no Gerenciador de Eventos."
+   "status": "simulador",
+   "resumo": "Abrir a loja e ver o PageView chegando ao vivo no Gerenciador de Eventos.",
+   "sim": "meta-eventos.html?tour=testar-eventos&voltar=tutoriais.html"
   },
   {
    "id": "05",

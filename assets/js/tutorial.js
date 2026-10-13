@@ -6,7 +6,8 @@
   var TXT = { passo: 'Passo', de: 'de', ant: '◀ Anterior', prox: 'Próximo ▶', tocar: '▶ Tocar sozinho', pausar: '⏸ Pausar',
     inteira: '🔍 Tela inteira', zoom: '🔍 Aproximar', erro: '⚠️ Erro comum', alt: '🧭 Caminho alternativo', fim: 'Fim desta etapa 🎉',
     proxEtapa: 'Próxima etapa', voltar: '← Todos os tutoriais', porque: 'Por que isso importa', check: 'Elementos que a loja precisa ter',
-    anot: 'Pixel', emBreve: 'em breve', parcial: 'em gravação', pronto: 'pronto', prints: 'prints', aviso: '' };
+    anot: 'Pixel', emBreve: 'em breve', parcial: 'em gravação', pronto: 'pronto', prints: 'prints', aviso: '', simulador: 'simulador', praticar: 'Praticar no simulador',
+    praticarTxt: 'Faça você mesmo, numa cópia de treino do Gerenciador de Eventos (nada vai para a Meta).' };
 
   /* idioma dos textos (PT | ES). Os prints continuam os mesmos. */
   var LANG = 'pt';
@@ -45,9 +46,10 @@
     raiz.innerHTML = seletorIdioma() + Object.keys(blocos).map(function (b) {
       return '<section class="tu-bloco"><h2>' + b + '</h2><div class="tu-cards">' + blocos[b].map(function (e) {
         var n = D.passos.filter(function (p) { return p.etapa === e.id }).length, ok = e.status !== 'em breve';
-        return (ok ? '<a class="tu-card" href="tutorial.html?e=' + e.id + '">' : '<div class="tu-card off">') +
+        var href = n ? 'tutorial.html?e=' + e.id : e.sim;   // sem prints: vai direto para o simulador
+        return (ok ? '<a class="tu-card" href="' + href + '">' : '<div class="tu-card off">') +
           '<span class="tu-num">' + e.id + '</span><b>' + e.titulo + '</b><p>' + e.resumo + '</p>' +
-          '<span class="tu-st ' + e.status.replace(' ', '-') + '">' + (TXT[e.status === 'em breve' ? 'emBreve' : e.status] || e.status) + (n ? ' · ' + n + ' ' + TXT.prints : '') + '</span>' +
+          '<span class="tu-st ' + e.status.replace(' ', '-') + '">' + (e.sim ? '🕹️ ' + TXT.simulador + (n ? ' · ' : '') : '') + (n ? (TXT[e.status] || e.status) + ' · ' + n + ' ' + TXT.prints : e.sim ? '' : TXT.emBreve) + '</span>' +
           (ok ? '</a>' : '</div>');
       }).join('') + '</div></section>';
     }).join('');
@@ -66,6 +68,7 @@
     '<div class="tu-topo-linha"><a class="tu-voltar" href="tutoriais.html">' + TXT.voltar + '</a>' + seletorIdioma() + '</div>' +
     '<p class="tu-bloco-nome">' + etapa.bloco + '</p><h1><span class="tu-num">' + etapa.id + '</span> ' + etapa.titulo + '</h1>' +
     '<p class="lead">' + etapa.resumo + '</p>' +
+    (etapa.sim ? '<p class="tu-sim"><a class="btn amarelo grande" href="' + etapa.sim + '">🕹️ ' + TXT.praticar + '</a> <small>' + TXT.praticarTxt + '</small></p>' : '') +
     '<div class="tu-player" tabindex="0" aria-label="Player do tutorial">' +
     '  <div class="tu-barra"><span id="tuCont"></span><span id="tuTipo" class="tu-tipo"></span><div class="tu-pontos" id="tuPontos"></div></div>' +
     '  <div class="tu-palco" id="tuPalco"><div class="tu-cam" id="tuCam"><img id="tuImg" alt=""/><div class="tu-holo" id="tuHolo"></div>' +

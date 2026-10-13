@@ -21,7 +21,9 @@ var LAB = lsGet('lab',{});
 var consent = lsGet('consent',null);
 var AM = lsGet('am',true);
 var cliente = lsGet('cliente',null);
-var PID = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : C.pixelId;
+/* No modo simulação, o Pixel é o que foi criado no Gerenciador de Eventos SIMULADO (meta-eventos.html). */
+var SIM_PID = (function(){try{var e=JSON.parse(localStorage.getItem('sim.eventos')||'null');var d=e&&e.datasets&&e.datasets[0];return d?d.id:null}catch(x){return null}})();
+var PID = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : (/^\d{8,20}$/.test(String(C.pixelId||'')) ? C.pixelId : (SIM_PID||C.pixelId));
 
 /* ---------- SHA-256 (para MOSTRAR o hash na aula; o Pixel faz o próprio) ---------- */
 function sha256(ascii){function rr(v,a){return(v>>>a)|(v<<(32-a))}var K=[],H=[],p=2,c=0,isP=function(n){for(var f=2;f*f<=n;f++)if(n%f===0)return false;return true};
@@ -78,7 +80,11 @@ function track(nome,params,opts){
 }
 function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=location.href.split('#')[0];ev.ud=(AM&&cliente)?normaliza(cliente):null;ev.pagina=document.body?document.body.getAttribute('data-pagina'):'';ev.url=trUrl(ev.nome,ev.params,ev.eid,ev.custom);
   pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev);
-  try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}}
+  try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}
+  // entrega o evento ao Gerenciador de Eventos simulado (mesmo navegador, outra aba): só o que o Pixel de fato enviaria
+  if(ev.status!=='perdido'&&ev.status!=='bloqueado'&&ev.status!=='segurado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');
+    f.push({t:Date.now(),pid:PID,nome:ev.nome,params:ev.params,eid:ev.eid,href:ev.href,ud:ev.ud?Object.keys(ev.ud):[],custom:!!ev.custom,nota:ev.nota||''});
+    localStorage.setItem('sim.feed',JSON.stringify(f.slice(-300)))}catch(e){}}}
 function achaProduto(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){var p=ps[i];if(p.id===id)return p;if(p.variantes)for(var j=0;j<p.variantes.length;j++)if(p.variantes[j].id===id)return p}return null}
 function noCatalogo(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){if(ps[i].id===id&&!ps[i].variantes)return true;if(ps[i].variantes)for(var j=0;j<ps[i].variantes.length;j++)if(ps[i].variantes[j].id===id)return true;if(ps[i].id===id)return true}return false}
 

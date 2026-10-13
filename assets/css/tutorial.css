@@ -69,3 +69,6 @@
 .tu-lang button.on{background:var(--yellow)}
 .tu-aviso-lang{flex-basis:100%;margin:6px 0 0;font-size:13px;color:var(--muted)}
 .tu > .tu-lang{float:right;margin-top:-52px}
+
+.tu-sim{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}.tu-sim small{color:var(--muted);max-width:420px}
+.tu-st.simulador{background:#EFE8FF;color:#5B3CC4}
