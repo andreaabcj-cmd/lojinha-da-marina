@@ -6,7 +6,7 @@
   var TXT = { passo: 'Passo', de: 'de', ant: '◀ Anterior', prox: 'Próximo ▶', tocar: '▶ Tocar sozinho', pausar: '⏸ Pausar',
     inteira: '🔍 Tela inteira', zoom: '🔍 Aproximar', erro: '⚠️ Erro comum', alt: '🧭 Caminho alternativo', fim: 'Fim desta etapa 🎉',
     proxEtapa: 'Próxima etapa', voltar: '← Todos os tutoriais', porque: 'Por que isso importa', check: 'Elementos que a loja precisa ter',
-    anot: 'Anotador', emBreve: 'em breve', parcial: 'em gravação', pronto: 'pronto' };
+    anot: 'Pixel', emBreve: 'em breve', parcial: 'em gravação', pronto: 'pronto' };
 
   function mascote(px) {
     var rows = ['....uuuuuuu.....', '...uuuuuuuuuU...', '..UUUUUUUUUUUUU.', '...dddddddddd...', '...dssssssssd...', '...ssessssesss..', '...ssssssssss...', '...sssmmmmsss...', '....ssssssss....', '...wwwwwwwwww...', '..wwaawwwwaaww..', '..swaaaaaaaapwwp', '..swaaaaaaaapwkp', '...waaaaaaaapppp', '...aaaaaaaaaa...'];

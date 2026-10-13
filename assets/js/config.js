@@ -6,7 +6,7 @@
    3) Publique o site de novo. Pronto: os eventos passam a chegar na Meta.
 
    Enquanto o ID for "SEU_PIXEL_ID", o site roda em MODO SIMULAÇÃO:
-   tudo funciona na tela (painel do anotador, laboratório etc.),
+   tudo funciona na tela (painel do Pixel, laboratório etc.),
    mas nada é enviado para a Meta.
    ===================================================================== */
 window.LOJA_CONFIG = {

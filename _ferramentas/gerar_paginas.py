@@ -49,7 +49,7 @@ PAGINAS = {
   <div>
     <span class="selo-aula">🎓 Loja de treinamento · Meta Pixel</span>
     <h1>Canecas, camisetas e ecobags com <span style="color:var(--blue)">boas ideias</span>.</h1>
-    <p class="lead">Feitos à mão na Lojinha da Marina. Navegue, ponha no carrinho e “compre”: cada passo é anotado pelo Pixel. Abra o <b>Modo aula</b> (canto inferior direito) para ver tudo acontecendo.</p>
+    <p class="lead">Feitos à mão na Lojinha da Marina. Navegue, ponha no carrinho e “compre”: cada passo vira um evento do Pixel. Abra o <b>Modo aula</b> (canto inferior direito) para ver tudo acontecendo.</p>
     <div class="acoes"><a class="btn grande" href="produtos.html">Ver produtos</a><a class="btn ghost grande" href="aula.html">🎓 Guia da aula</a></div>
   </div>
   <div class="vitrine"><img src="assets/img/caneca_01.png" alt="Caneca azul"/><img src="assets/img/camiseta_02.png" alt="Camiseta"/><img src="assets/img/ecobag_03.png" alt="Ecobag"/><img src="assets/img/caneca_02.png" alt="Caneca amarela"/><img src="assets/img/bone_01.png" alt="Boné"/><img src="assets/img/caneca_03.png" alt="Caneca Boas Ideias"/></div>
@@ -143,12 +143,12 @@ PAGINAS = {
     <div><b>🌐 Rede</b><p>A “aba Rede” sem F12: os pedidos reais para <code>facebook.com/tr</code> e como ler cada parte.</p></div>
     <div><b>🔍 Lupa</b><p>O que o Meta Ads Data Advisor mostraria: status do Pixel, eventos, catálogo e correspondência avançada.</p></div>
     <div><b>📄 Código</b><p>O código do Pixel no &lt;head&gt; desta página, sem precisar do “Exibir código-fonte”.</p></div>
-    <div><b>🧪 Lab</b><p>As desculpas do anotador: quebre o Pixel de propósito e mostre o problema.</p></div>
+    <div><b>🧪 Lab</b><p>As desculpas do Pixel: quebre o Pixel de propósito e mostre o problema.</p></div>
     <div><b>💡 Dica</b><p>O que acontece na página atual e como conferir no Gerenciador de Eventos.</p></div>
   </div>
   <h2>Roteiro sugerido (ligado ao Aulão de Pixel)</h2>
   <ol>
-    <li><b>O anotador:</b> abra a <a href="index.html">vitrine</a> e mostre o PageView na Câmera e no Testar eventos.</li>
+    <li><b>O Pixel:</b> abra a <a href="index.html">vitrine</a> e mostre o PageView na Câmera e no Testar eventos.</li>
     <li><b>As anotações:</b> abra um <a href="produto.html?id=CANECA_01">produto</a> (ViewContent) e ponha no carrinho (AddToCart, no clique).</li>
     <li><b>Parâmetros:</b> faça uma compra completa até o <b>obrigado</b>: Purchase com value, currency, produtos e eventID.</li>
     <li><b>Variantes:</b> numa <a href="produto.html?id=CAMISETA_02">camiseta</a>, compare o ViewContent antes e depois de escolher o tamanho.</li>
@@ -201,7 +201,7 @@ TUTORIAL_PE = '''
 PAGINAS['tutoriais'] = ('Tutoriais passo a passo', 'tutorial', '''
 <div class="tu">
   <h1 style="margin-top:26px">🎬 Tutoriais passo a passo</h1>
-  <p class="lead">Prints reais da Meta, na ordem certa: do portfólio ao catálogo. Cada tutorial mostra onde clicar (holofote + cursor) e o anotador explica o porquê. Dados pessoais aparecem censurados.</p>
+  <p class="lead">Prints reais da Meta, na ordem certa: do portfólio ao catálogo. Cada tutorial mostra onde clicar (holofote + cursor) e o Pixel (nosso mascote) explica o porquê. Dados pessoais aparecem censurados.</p>
   <div id="tutorial" data-modo="lista"></div>
 </div>''' + TUTORIAL_PE, TUTORIAL_HEAD)
 PAGINAS['tutorial'] = ('Tutorial', 'tutorial', '''

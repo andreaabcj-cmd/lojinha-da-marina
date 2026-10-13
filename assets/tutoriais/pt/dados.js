@@ -5,19 +5,19 @@ window.TUTORIAL_PT = {
    "bloco": "1 · Preparar a casa",
    "titulo": "Criar o portfólio empresarial",
    "status": "pronto",
-   "resumo": "O “escritório” da Marina na Meta: é onde ficam guardadas as chaves de tudo (página, Pixel, catálogo, contas de anúncio e pessoas).",
+   "resumo": "O portfólio empresarial reúne tudo o que a empresa tem na Meta: páginas, Pixel, catálogo, contas de anúncios e as pessoas com acesso. Pense nele como o escritório da Marina, onde ficam as chaves.",
    "porque": [
     "Sem portfólio, o Pixel e o catálogo ficam soltos, presos à conta pessoal de alguém.",
     "Quem tem Controle total no portfólio manda em tudo que está dentro dele.",
     "Uma página só pode pertencer a UM portfólio. Se ela já estiver em outro, não aparece para adicionar."
    ],
    "checklist": [
-    "Portfólio empresarial (o escritório)",
-    "Página do Facebook (a vitrine)",
-    "Pixel / conjunto de dados (o anotador)",
-    "Catálogo (as fichas dos produtos)",
-    "Conta de anúncios (o caixa que paga os anúncios)",
-    "Pessoas com o papel certo (quem tem a chave de quê)"
+    "Portfólio empresarial",
+    "Página do Facebook",
+    "Pixel (conjunto de dados)",
+    "Catálogo",
+    "Conta de anúncios",
+    "Pessoas com as permissões certas"
    ]
   },
   {
@@ -25,10 +25,10 @@ window.TUTORIAL_PT = {
    "bloco": "2 · O Pixel",
    "titulo": "Criar o Pixel (conjunto de dados)",
    "status": "parcial",
-   "resumo": "Contratar o anotador: a Meta cria o Pixel e dá um número para ele. É esse número que vai no site.",
+   "resumo": "A Meta cria o Pixel e dá a ele um número de identificação (o ID do Pixel). É esse número que vai no código do site.",
    "porque": [
     "Hoje a Meta chama o Pixel de “conjunto de dados”. É a mesma coisa.",
-    "Cada Pixel tem um número único (o ID). Lembra do 📓 caderno errado? É quando o site usa o número de outro Pixel."
+    "Cada Pixel tem um número único (o ID). Lembra do 📓 caderno errado do laboratório? É quando o site usa o ID de outro Pixel."
    ]
   },
   {
@@ -94,7 +94,7 @@ window.TUTORIAL_PT = {
    ],
    "texto": "O formulário pede 3 coisas: o nome público do portfólio (o nome da empresa), seu nome e sobrenome (você vira administrador) e um email comercial.",
    "titulo": "O formulário",
-   "dica": "Lembra? O portfólio é o escritório da Marina. O nome dele é a placa na porta: use o nome da empresa.",
+   "dica": "O nome do portfólio empresarial é o nome público da empresa na Meta. Use o nome da loja.",
    "clique": true
   },
   {
@@ -112,7 +112,7 @@ window.TUTORIAL_PT = {
    ],
    "texto": "Erro comum: parênteses, aspas e outros caracteres especiais não são aceitos no nome do portfólio. Use só letras, números e espaços.",
    "titulo": "Erro comum: caracteres especiais",
-   "dica": "Desculpa do anotador: “o porteiro não deixou entrar quem usava parênteses”. 😅 Tire ( ) “ ” e símbolos, e o botão Criar acende.",
+   "dica": "A Meta recusa caracteres especiais no nome do portfólio. 😅 Tire ( ) “ ” e símbolos, e o botão Criar acende.",
    "clique": false
   },
   {
@@ -166,7 +166,7 @@ window.TUTORIAL_PT = {
    ],
    "texto": "Quem criou o portfólio fica com Controle total (administrador). Aqui dá para convidar outras pessoas por email, como Funcionário (acesso parcial) ou com controle total. Para a aula, pule.",
    "titulo": "Pessoas e papéis",
-   "dica": "Controle total = tem todas as chaves. Funcionário = só as chaves que você entregar. Na dúvida, dê o mínimo necessário.",
+   "dica": "Controle total: gerencia tudo, inclusive pessoas e permissões. Funcionário: só acessa o que você atribuir. Na dúvida, dê o mínimo necessário.",
    "clique": false
   },
   {
@@ -202,7 +202,7 @@ window.TUTORIAL_PT = {
    ],
    "texto": "Pronto: o portfólio novo já está selecionado no canto superior esquerdo. Ele ainda está vazio (sem páginas), por isso essa mensagem. Normal!",
    "titulo": "Portfólio pronto!",
-   "dica": "O escritório está montado, mas ainda vazio. Agora vamos contratar o anotador (o Pixel). 🎉",
+   "dica": "Portfólio empresarial criado, ainda vazio. Próximo passo: criar o Pixel. 🎉",
    "clique": false
   },
   {
@@ -238,7 +238,7 @@ window.TUTORIAL_PT = {
    ],
    "texto": "Escolha o tipo de fonte de dados. O Pixel é a opção Web (atividade no site: visualizações, carrinho e compras).",
    "titulo": "Tipo de dado: Web",
-   "dica": "Web = o anotador do site. App, Offline e CRM são outros tipos de anotação.",
+   "dica": "Web é o Pixel, que mede o que acontece no site. App, Offline e CRM são outras fontes de dados.",
    "clique": true
   },
   {
@@ -256,7 +256,7 @@ window.TUTORIAL_PT = {
    ],
    "texto": "A Meta agora chama o Pixel de conjunto de dados. Dê um nome, decida sobre a caixinha da API de Conversões e escolha a categoria (opcional).",
    "titulo": "Criar o conjunto de dados",
-   "dica": "Conjunto de dados = o caderno do anotador. É o mesmo que Pixel.",
+   "dica": "Conjunto de dados é o nome atual do Pixel no Gerenciador de Eventos. É a mesma coisa.",
    "clique": false
   },
   {
