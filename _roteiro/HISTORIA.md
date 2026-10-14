@@ -61,6 +61,22 @@ Mudanças que isso pede no que já existe:
 - As aulas 06–09 e 11 (correspondência avançada, bússola/qualidade, CAPI, privacidade) vão para o **Pixel avançado** na fase 3.
 - A aula 10 (Pixel e catálogo) vai para o módulo **Catálogo**.
 
+
+### Aula 05 · "Apareceu um aviso: quebrei alguma coisa?" — ROTEIRO APROVADO (14/10), construção ESPERANDO a tela real
+Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do Gerenciador de Eventos com um problema; (b) a área de ações/correções do Consultor de Dados.
+- Entender: Marina assustada com o AVISO. Rafa: aviso não é quebra. Pixel: "Aviso não quer dizer que eu parei. É o Gerenciador mostrando o que dá para melhorar." (sem comparação com detetive)
+- Método: 1) onde aparece (Diagnóstico / status no Consultor de Dados: Ativo, Aviso, Erro, Nenhum pixel) · 2) qual evento e o que falta · 3) quem resolve, em ESCADA:
+  1. 🔍 ver o que a Meta aponta (Diagnóstico: descrição + passos; Consultor de Dados: eventos quebrados e parâmetros faltando)
+  2. 🤝 resolver junto pelos meios OFICIAIS (passos do Diagnóstico, correção sugerida pelo Consultor de Dados com aprovação, integração da plataforma)
+  3. 🧑‍💻 só se precisar mexer no código: encaminhar com o texto exato
+  4. ✅ sempre testar junto no Testar eventos
+- Ver de perto: "Mesa de diagnóstico" (sintoma → onde olhar → o que aparece → causa → quem resolve).
+- Praticar: menu "Casos do dia" (como a aula 03), cada caso liga uma falha do laboratório: ⭐ venda zerada (semPreco) · testei e não aparece nada (olhosTapados) · nenhum evento chega (cadernoErrado) · visitas em dobro (duplicado).
+- Atender: "Apareceu Aviso, quebrei tudo?" ✅ "Calma, aviso não quer dizer que quebrou. Vou ver o que o Gerenciador está apontando e te digo o que é e quem resolve."
+- Gancho: fim do Pixel básico → fase 🚀 Em ascensão ("agora a Marina quer anunciar!").
+- Fontes oficiais: Diagnóstico (facebook.com/business/help/667164051342757); Meta Ads Data Advisor (developers.facebook.com/documentation/meta-pixel/support/meta-ads-data-advisor). Ferramenta de configuração de eventos: a conferir (não ensinar ainda).
+- Regra do André: NADA de fonte de terceiros; só oficial da Meta. Não implementar tela que não vimos de verdade.
+
 ## Anotações para os tutoriais (telas reais conferidas)
 - **Conta de anúncios (14/10):** Configurações › Contas de anúncios › Adicionar › Criar uma nova conta de anúncios. Etapas: Detalhes (nome, fuso horário, moeda) → Uso (Minha empresa / Outra empresa ou cliente) → Confirmar (aceite dos Termos Comerciais e Políticas de Publicidade). ⚠️ **Moeda e fuso horário NÃO podem ser trocados depois.** ⚠️ Depois de adicionada, a conta não pode ser removida do portfólio. Criar a conta não pede forma de pagamento.
 - **Gerenciador de Eventos · Visão geral (14/10, portfólio sem Pixel):** "Que bom ter você aqui, [nome]!" · "Conecte seus dados" · "A conexão do Pixel da Meta e da API de Conversões fornece mais dados sobre como os clientes interagem com sua empresa. Escolha um parceiro abaixo para começar." · selo "Redução de 25% no custo por conversão fora do site" · parceiros Google Tag Manager, Shopify, WooCommerce ("Eventos da web") · links "Ver outras maneiras de configurar" e "Configure para mim". Menu: Conectar dados, Visão geral, Conjuntos de dados, Conversões personalizadas, Integrações.
@@ -70,5 +86,5 @@ Mudanças que isso pede no que já existe:
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
 - [x] Aulas 01, 02, 03 e 04 do Pixel básico prontas (14/10, no computador local).
-- [ ] Aula 05 (avisos e problemas básicos).
+- [ ] Aula 05: roteiro aprovado; construir quando o Pixel real existir (ver a seção da aula 05).
 - [ ] Detalhar fases 2–5 quando chegar a vez de cada uma.
