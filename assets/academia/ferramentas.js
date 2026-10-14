@@ -186,6 +186,114 @@
     }
   };
 
+
+  /* ---------- 5. O que mora no portfólio? (Portfólio 01) ---------- */
+  var COISAS = [
+    { ic: '📄', n: { pt: 'Página do Facebook', es: 'Página de Facebook' }, ok: 'Contas', fb: { pt: 'Ativo! Fica em Contas › Páginas.', es: '¡Activo! Va en Cuentas › Páginas.' } },
+    { ic: '📸', n: { pt: 'Perfil do Instagram', es: 'Perfil de Instagram' }, ok: 'Contas', fb: { pt: 'Ativo! Fica em Contas › Perfis do Instagram.', es: '¡Activo! Va en Cuentas › Perfiles de Instagram.' } },
+    { ic: '📣', n: { pt: 'Conta de anúncios', es: 'Cuenta publicitaria' }, ok: 'Contas', fb: { pt: 'Ativo! Fica em Contas › Contas de anúncios.', es: '¡Activo! Va en Cuentas › Cuentas publicitarias.' } },
+    { ic: '📡', n: { pt: 'Pixel', es: 'Pixel' }, ok: 'Fontes de dados', fb: { pt: 'Ativo! Fica em Fontes de dados › Conjuntos de dados e pixels.', es: '¡Activo! Va en Fuentes de datos › Conjuntos de datos y píxeles.' } },
+    { ic: '🗂️', n: { pt: 'Catálogo de produtos', es: 'Catálogo de productos' }, ok: 'Fontes de dados', fb: { pt: 'Ativo! Fica em Fontes de dados › Catálogos.', es: '¡Activo! Va en Fuentes de datos › Catálogos.' } },
+    { ic: '👩', n: { pt: 'O sobrinho que ajuda', es: 'El sobrino que ayuda' }, ok: 'Usuários', fb: { pt: 'Pessoas não são ativos: entram em Usuários › Pessoas, cada uma com o acesso que precisa.', es: 'Las personas no son activos: entran en Usuarios › Personas, cada una con el acceso que necesita.' } },
+    { ic: '🔑', n: { pt: 'A senha do Facebook da Marina', es: 'La contraseña de Facebook de Marina' }, ok: null, fb: { pt: 'Nunca! Senha não vai para o portfólio nem se compartilha. Cada pessoa entra com a própria conta.', es: '¡Nunca! La contraseña no va al portafolio ni se comparte. Cada persona entra con su propia cuenta.' } },
+    { ic: '🧾', n: { pt: 'A planilha de vendas', es: 'La planilla de ventas' }, ok: null, fb: { pt: 'Não é um ativo da Meta. O portfólio guarda ativos da Meta (Páginas, contas, Pixel…), não arquivos da empresa.', es: 'No es un activo de Meta. El portafolio guarda activos de Meta (Páginas, cuentas, Pixel…), no archivos de la empresa.' } }
+  ];
+  F['pasta-portfolio'] = {
+    titulo: { pt: 'O que mora no portfólio?', es: '¿Qué vive en el portafolio?' },
+    resumo: { pt: 'Clique em cada coisa da Marina e veja se ela entra no portfólio, e onde.', es: 'Haz clic en cada cosa de Marina y mira si entra en el portafolio, y dónde.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="pp"><div class="pp-coisas">' + COISAS.map(function (c, i) { return '<button class="pp-c" data-pp="' + i + '"><span>' + c.ic + '</span>' + T(c.n) + '</button>' }).join('') + '</div>' +
+        '<div class="pp-pasta"><b>🗃️ ' + T({ pt: 'Portfólio “Lojinha da Marina”', es: 'Portafolio “Lojinha da Marina”' }) + '</b>' + ['Usuários', 'Contas', 'Fontes de dados'].map(function (g) { return '<div class="pp-g" data-g="' + g + '"><small>' + T({ 'Usuários': { pt: 'Usuários', es: 'Usuarios' }, 'Contas': { pt: 'Contas', es: 'Cuentas' }, 'Fontes de dados': { pt: 'Fontes de dados', es: 'Fuentes de datos' } }[g]) + '</small><div class="pp-in"></div></div>' }).join('') + '</div></div>' +
+        '<div class="pp-fb" id="ppFb">' + T({ pt: 'Clique numa coisa da Marina ☝️', es: 'Haz clic en una cosa de Marina ☝️' }) + '</div>' +
+        '<p class="pp-regra">📌 ' + T({ pt: '<b>Regra da Meta:</b> cada ativo pertence a UM portfólio só. A mesma Página não pode estar em dois portfólios ao mesmo tempo.', es: '<b>Regla de Meta:</b> cada activo pertenece a UN solo portafolio. La misma Página no puede estar en dos portafolios al mismo tiempo.' }) + '</p>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-pp]'); if (!b) return; var c = COISAS[+b.getAttribute('data-pp')], fb = el.querySelector('#ppFb');
+        if (c.ok) { var g = el.querySelector('[data-g="' + c.ok + '"] .pp-in'); if (!b.classList.contains('dentro')) { b.classList.add('dentro'); var x = document.createElement('span'); x.className = 'pp-x mv-chega'; x.innerHTML = c.ic + ' ' + T(c.n); g.appendChild(x) } fb.className = 'pp-fb ok' }
+        else { b.classList.remove('treme'); void b.offsetWidth; b.classList.add('treme'); fb.className = 'pp-fb erro' }
+        fb.innerHTML = (c.ok ? '✅ ' : '❌ ') + T(c.fb);
+      });
+    }
+  };
+
+  /* ---------- 6. Nome do portfólio (Portfólio 02) ---------- */
+  F['nome-portfolio'] = {
+    titulo: { pt: 'Esse nome passa?', es: '¿Ese nombre pasa?' },
+    resumo: { pt: 'Teste nomes de portfólio e veja o erro real de caracteres especiais.', es: 'Prueba nombres de portafolio y mira el error real de caracteres especiales.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="np"><label><b>' + T({ pt: 'Nome do portfólio empresarial', es: 'Nombre del portafolio comercial' }) + '</b><small>' + T({ pt: 'Deve corresponder ao nome público da empresa, pois ficará visível na Meta.', es: 'Debe corresponder al nombre público de la empresa, porque será visible en Meta.' }) + '</small><input id="npIn" placeholder="Lojinha da Marina"/></label><div id="npRes" class="np-res"></div>' +
+        '<div class="np-ex">' + ['Lojinha da Marina', 'Lojinha da Marina (aula)', 'Lojinha da Marina Aula'].map(function (n) { return '<button data-np="' + n + '">' + n + '</button>' }).join('') + '</div>' +
+        '<p class="miudo">' + T({ pt: 'Visto de verdade em 13/10/2026: os parênteses dão este erro. A Meta não publica a lista completa de caracteres; se o erro aparecer, tire símbolos e emojis do nome.', es: 'Visto de verdad el 13/10/2026: los paréntesis dan este error. Meta no publica la lista completa de caracteres; si aparece el error, quita símbolos y emojis del nombre.' }) + '</p></div>';
+      var inp = el.querySelector('#npIn'), res = el.querySelector('#npRes');
+      function testa() {
+        var v = inp.value.trim();
+        if (!v) { res.className = 'np-res'; res.innerHTML = ''; return }
+        if (/[()]/.test(v)) { res.className = 'np-res erro'; res.innerHTML = '⛔ ' + T({ pt: 'O nome do portfólio empresarial não pode conter caracteres especiais.', es: 'El nombre del portafolio comercial no puede contener caracteres especiales.' }) }
+        else { res.className = 'np-res ok'; res.innerHTML = '✅ ' + T({ pt: 'Passa! Lembre: deve ser o nome público da empresa.', es: '¡Pasa! Recuerda: debe ser el nombre público de la empresa.' }) }
+      }
+      inp.addEventListener('input', testa);
+      el.addEventListener('click', function (e) { var b = e.target.closest('[data-np]'); if (b) { inp.value = b.getAttribute('data-np'); testa() } });
+    }
+  };
+
+  /* ---------- 7. Quem precisa de quê? (Portfólio 03) ---------- */
+  var GENTE = [
+    { ic: '👩‍💼', n: { pt: 'A sócia, que administra a loja junto com a Marina', es: 'La socia, que administra la tienda junto con Marina' }, certo: 'total' },
+    { ic: '🧑', n: { pt: 'O sobrinho, que só faz as postagens da Página', es: 'El sobrino, que solo hace las publicaciones de la Página' }, certo: 'basico' },
+    { ic: '🏢', n: { pt: 'A agência de outra empresa, que vai cuidar dos anúncios', es: 'La agencia de otra empresa, que va a cuidar los anuncios' }, certo: 'parceiro' },
+    { ic: '🙋', n: { pt: 'Uma amiga que só quer “dar uma olhada”', es: 'Una amiga que solo quiere “echar un vistazo”' }, certo: 'nenhum' }
+  ];
+  var ACESSOS = { total: { pt: 'Controle total', es: 'Control total' }, basico: { pt: 'Acesso básico + só a Página', es: 'Acceso básico + solo la Página' }, parceiro: { pt: 'Parceiro (outra empresa)', es: 'Socio (otra empresa)' }, nenhum: { pt: 'Não precisa de acesso', es: 'No necesita acceso' } };
+  var POR = {
+    total: { pt: 'Controle total é para quem administra a empresa: mexe em tudo, até configurações e pessoas.', es: 'Control total es para quien administra la empresa: toca todo, hasta configuraciones y personas.' },
+    basico: { pt: 'Ele entra com acesso básico (o padrão) e recebe só o ativo em que trabalha, a Página, com acesso parcial. A Meta recomenda dar só o acesso necessário.', es: 'Entra con acceso básico (el predeterminado) y recibe solo el activo en que trabaja, la Página, con acceso parcial. Meta recomienda dar solo el acceso necesario.' },
+    parceiro: { pt: 'Outra empresa entra como parceiro, não como pessoa: a agência usa o portfólio dela, e você compartilha só os ativos necessários.', es: 'Otra empresa entra como socio, no como persona: la agencia usa su propio portafolio, y compartes solo los activos necesarios.' },
+    nenhum: { pt: 'Quem não trabalha nos ativos não precisa de acesso. Menos gente com acesso = mais segurança.', es: 'Quien no trabaja en los activos no necesita acceso. Menos gente con acceso = más seguridad.' }
+  };
+  F['quem-precisa'] = {
+    titulo: { pt: 'Quem precisa de quê?', es: '¿Quién necesita qué?' },
+    resumo: { pt: 'Escolha o acesso certo para cada pessoa que vai ajudar a Marina.', es: 'Elige el acceso correcto para cada persona que va a ayudar a Marina.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + GENTE.map(function (g, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + g.ic + '</span>' + T(g.n) + '</div><div class="qp-ops">' + Object.keys(ACESSOS).map(function (k) { return '<button data-qp="' + i + ':' + k + '">' + T(ACESSOS[k]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-qp]'); if (!b) return; var v = b.getAttribute('data-qp').split(':'), g = GENTE[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
+        box.querySelectorAll('[data-qp]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(POR[v[1]]) : '❌ ' + T({ pt: 'Hmm, pense de novo: o que essa pessoa vai fazer de verdade?', es: 'Mmm, piénsalo otra vez: ¿qué va a hacer esta persona de verdad?' });
+        if (ok && window.MOV && el.querySelectorAll('.certa').length === GENTE.length) MOV.confete(b);
+      });
+    }
+  };
+
+  /* ---------- 8. De quem é este ativo? (Portfólio 04) ---------- */
+  F['de-quem-e'] = {
+    titulo: { pt: 'Minha Página está em outro portfólio', es: 'Mi Página está en otro portafolio' },
+    resumo: { pt: 'Os caminhos oficiais quando um ativo está no portfólio de outra pessoa.', es: 'Los caminos oficiales cuando un activo está en el portafolio de otra persona.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="dq"><p class="dq-perg"><b>' + T({ pt: 'A Página está no portfólio de outra pessoa. Qual é a situação?', es: 'La Página está en el portafolio de otra persona. ¿Cuál es la situación?' }) + '</b></p><div class="dq-ops">' +
+        '<button class="opcao" data-dq="dona">' + T({ pt: '🏠 A Página é da Marina e ela quer trazer para o portfólio dela', es: '🏠 La Página es de Marina y ella quiere traerla a su portafolio' }) + '</button>' +
+        '<button class="opcao" data-dq="agencia">' + T({ pt: '🏢 Uma agência precisa trabalhar na Página de um cliente', es: '🏢 Una agencia necesita trabajar en la Página de un cliente' }) + '</button></div><div id="dqRes"></div>' +
+        '<p class="pp-regra">📌 ' + T({ pt: '<b>Não existe transferência direta</b> de Página entre portfólios. E se a Página tem Instagram conectado, o Instagram vai junto para o portfólio novo.', es: '<b>No existe transferencia directa</b> de Página entre portafolios. Y si la Página tiene Instagram conectado, el Instagram va junto al nuevo portafolio.' }) + '</p></div>';
+      var RES = {
+        dona: [{ pt: 'Quem administra o portfólio onde a Página está vai em Configurações › Contas › Páginas, seleciona a Página e clica em Remover.', es: 'Quien administra el portafolio donde está la Página va a Configuración › Cuentas › Páginas, selecciona la Página y hace clic en Quitar.' },
+          { pt: 'Depois, a Marina (dona da Página) vai no portfólio DELA: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Después, Marina (dueña de la Página) va a SU portafolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
+          { pt: 'Se a Página tem Instagram conectado, ela adiciona o Instagram também.', es: 'Si la Página tiene Instagram conectado, también agrega el Instagram.' }],
+        agencia: [{ pt: 'A Página continua no portfólio do cliente (o dono não muda).', es: 'La Página sigue en el portafolio del cliente (el dueño no cambia).' },
+          { pt: 'No portfólio da agência: Contas › Páginas › Adicionar › “Solicitar acesso compartilhado a uma Página do Facebook”.', es: 'En el portafolio de la agencia: Cuentas › Páginas › Agregar › “Solicitar acceso compartido a una Página de Facebook”.' },
+          { pt: 'O cliente aprova, e a agência trabalha na Página com o acesso que o cliente der (parcial ou total).', es: 'El cliente aprueba, y la agencia trabaja en la Página con el acceso que el cliente dé (parcial o total).' }]
+      };
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-dq]'); if (!b) return; var k = b.getAttribute('data-dq');
+        el.querySelectorAll('[data-dq]').forEach(function (x) { x.classList.toggle('certa', x === b) });
+        el.querySelector('#dqRes').innerHTML = '<ol class="dq-passos mv-chega">' + RES[k].map(function (p) { return '<li>' + T(p) + '</li>' }).join('') + '</ol>';
+      });
+    }
+  };
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

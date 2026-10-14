@@ -124,7 +124,7 @@
   function abre(qual) { jan = qual; passoJ = 0; F = { nomePf: '', nome: '', sobrenome: '', email: '', convEmail: '', acesso: '', contaNome: '', fuso: '(GMT-07:00) America/Los Angeles', moeda: 'USD — Dólar americano', uso: 'minha', termos: false, erroNome: '' }; desenha() }
   function fecha() { jan = null; var f = $('#fundo'); if (f) f.remove() }
   function passos(lista) { return '<aside class="pf-passos">' + lista.map(function (t, i) { return '<span class="' + (i < passoJ ? 'ok' : i === passoJ ? 'on' : '') + '"><i>' + (i < passoJ ? '✓' : '') + '</i>' + t + '</span>' }).join('') + '</aside>' }
-  var ESPECIAL = /[^A-Za-zÀ-ÖØ-öø-ÿ0-9 .,'&\-]/;
+  var ESPECIAL = /[()]/;   // só o que vimos de verdade dar erro (13/10: parênteses). A Meta não publica a lista completa.
   function desenha() {
     var f = $('#fundo'); if (!jan) { if (f) f.remove(); return }
     if (!f) { f = document.createElement('div'); f.id = 'fundo'; f.className = 'fundo'; document.body.appendChild(f) }

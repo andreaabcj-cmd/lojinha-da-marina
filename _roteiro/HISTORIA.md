@@ -91,5 +91,6 @@ Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do 
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
 - [x] Aulas 01, 02, 03 e 04 do Pixel básico prontas (14/10, no computador local).
+- [x] Módulo Portfólio básico: aulas 01–04 prontas (14/10, local) + simulador Configurações do portfólio (meta-portfolio.html). ⚠️ Convite de pessoas: etapas 2–4 a conferir na tela real.
 - [ ] Aula 05: roteiro aprovado; construir quando o Pixel real existir (ver a seção da aula 05).
 - [ ] Detalhar fases 2–5 quando chegar a vez de cada uma.
