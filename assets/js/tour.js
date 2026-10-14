@@ -51,6 +51,8 @@
       var proximoOk = el2 && okc && (el2 === e.target || el2.contains(e.target));
       if (!dentro && p.livre && e.target.closest && e.target.closest(p.livre)) return;   // partes que o passo deixa usar (ex.: escolher o tamanho)
       if (!dentro && !proximoOk) { e.preventDefault(); e.stopImmediatePropagation(); avisa(); return }
+      // passo de "leia e clique em Próximo": os botões dentro do destaque não valem (senão a tela anda e o tutorial fica para trás)
+      if (dentro && !p.clique && !proximoOk && !p.bloqueia && e.target.closest && e.target.closest('button, a, [data-acao], [data-ir]') && !(p.livre && e.target.closest(p.livre))) { e.preventDefault(); e.stopImmediatePropagation(); avisa({ pt: '📖 Primeiro leia e clique em Próximo no balão.', es: '📖 Primero lee y haz clic en Siguiente en el globo.' }); return }
       if (dentro && p.bloqueia) { var bl = false; try { bl = p.bloqueia(e.target) } catch (x) { } if (bl) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
       if (dentro && p.clique && p.valida) { var v = false; try { v = p.valida(e.target) } catch (x) { } if (!v) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
     }, true);
@@ -80,7 +82,7 @@
     if (p.pagina && location.pathname.split('/').pop() !== p.pagina) { location.href = p.pagina; return }
     desenha();
   }
-  var avisoT;
+  var avisoT, faltou = 0;
   function avisa(txt) {   // a pessoa clicou fora do caminho: o balão balança e explica
     if (!balao) return; var a = balao.querySelector('.tg-avisa'); if (!a) { a = document.createElement('div'); a.className = 'tg-avisa'; balao.appendChild(a) }
     a.textContent = txt ? T(txt) : T({ pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
@@ -90,7 +92,7 @@
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
   }
   function desenha() {
-    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva();
+    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false;
     balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
       '<div class="tg-ctrl"><small>' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
@@ -111,7 +113,9 @@
   function posiciona() {
     if (!tour || !holo) return; var p = tour[passo]; if (!p) return; var el = alvoEl(p);
     var bt = balao.querySelector('[data-tg=prox]'); if (bt && p.cond) bt.disabled = !p.cond();
-    if (!el || !el.getClientRects().length) { holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
+    // destaque sumiu (a página recarregou, a janela fechou…): depois de ~1,5 s o passo arruma a tela sozinho, uma vez
+    if (!el || !el.getClientRects().length) { if (++faltou >= 3 && p.garante && !p._consertou) { p._consertou = true; try { p.garante() } catch (e) { } }
+      holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
     if (!p._rolou) { p._rolou = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
     // dentro de uma janela/painel: a janela inteira fica visível; só o resto da tela escurece

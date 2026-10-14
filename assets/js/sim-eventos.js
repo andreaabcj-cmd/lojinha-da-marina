@@ -306,10 +306,11 @@
   var tour = null, passo = 0, holo, balao, recorte, rotas = {};   // rotas[passo] = endereço (#...) em que o passo foi mostrado
   function janelaCom(qual, web) { if (janela !== qual) { abreJanela(qual) } if (web && escolha !== 'web') { escolha = 'web'; desenhaJanela() } }
   function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; recorte = document.createElement('div'); recorte.className = 'tour-recorte'; document.body.appendChild(recorte); holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour'); tourMostra() }
+  var faltouEv = 0;
   function tourMostra() {
     if (!tour) return; var p = tour[passo];
     if (p.pre && p.pre() === false) return;
-    var precisaProx = !p.clique && !p.fim; rotas[passo] = location.hash;
+    var precisaProx = !p.clique && !p.fim; rotas[passo] = location.hash; faltouEv = 0; p._consertou = false;
     balao.innerHTML = '<span class="masc">' + mascote(54) + '</span><b>' + esc(tx(p.tit)) + '</b><p>' + esc(tx(p.txt)) + '</p>' + (p.dica ? '<div class="dica">💬 Pixel: ' + esc(tx(p.dica)) + '</div>' : '') +
       '<div class="ctrl"><small>Passo ' + (passo + 1) + ' de ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="btn sec" data-tour="volta" title="Passo anterior">◀</button> ' : '') +
       (p.fim ? '<button class="btn" data-tour="fim">Concluir</button>' : precisaProx ? '<button class="btn" data-tour="prox" ' + (p.cond && !p.cond() ? 'disabled' : '') + '>Próximo ▶</button>' : '<small>👆 clique no destaque</small>') + '</span></div>';
@@ -327,7 +328,8 @@
   }
   function tourAtualiza() {
     if (!tour || !holo) return; var p = tour[passo], el = $(p.alvo);
-    if (!el) { holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = '50%'; balao.style.top = '80px'; balao.style.transform = 'translateX(-50%)'; return }
+    if (!el) { if (++faltouEv >= 3 && p.garante && !p._consertou) { p._consertou = true; try { p.garante() } catch (e) { } }   // destaque sumiu: arruma a tela sozinho, uma vez
+      holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = '50%'; balao.style.top = '80px'; balao.style.transform = 'translateX(-50%)'; return }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
     var cx = el.closest('.janela, [role=dialog], .da-painel, .ma-panel, .tg-caixa'); if (cx === el) cx = null;   // dentro de uma janela: ela fica visível inteira
     holo.classList.toggle('na-janela', !!cx);
@@ -340,10 +342,14 @@
   // modo guiado sem erros: fora do destaque e do balão, o clique não vale
   document.addEventListener('click', function (ev) {
     if (!tour || !balao || balao.contains(ev.target)) return; var p = tour[passo], el = p && $(p.alvo); if (!el) return;
-    var bl = false; if (el === ev.target || el.contains(ev.target)) { if (!p.bloqueia) return; try { bl = p.bloqueia(ev.target) } catch (x) { } if (!bl) return }
+    var bl = false; if (el === ev.target || el.contains(ev.target)) {
+      // passo de "leia e clique em Próximo": botões dentro do destaque não valem (senão a tela anda e o tutorial fica para trás)
+      if (!p.clique && !p.cond && !p.bloqueia && ev.target.closest('button, a, [data-acao], [data-ir], [data-escolha], [data-ev]')) { bl = true; p._leia = true }
+      else { if (!p.bloqueia) return; try { bl = p.bloqueia(ev.target) } catch (x) { } if (!bl) return }
+    }
     ev.preventDefault(); ev.stopImmediatePropagation();
     var a = balao.querySelector('.tg-avisa'); if (!a) { a = document.createElement('div'); a.className = 'tg-avisa'; balao.appendChild(a) }
-    a.textContent = tx(bl && p.erro ? p.erro : { pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
+    a.textContent = tx(bl && p._leia ? { pt: '📖 Primeiro leia e clique em Próximo no balão.', es: '📖 Primero lee y haz clic en Siguiente en el globo.' } : bl && p.erro ? p.erro : { pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
     balao.classList.remove('tg-treme'); void balao.offsetWidth; balao.classList.add('tg-treme'); setTimeout(function () { if (a.parentNode) a.remove() }, 3500);
   }, true);
   function tourClique(el) { if (!tour) return; var p = tour[passo]; if (p.clique && el.matches(p.alvo)) { passo++; setTimeout(tourMostra, 120) } }
