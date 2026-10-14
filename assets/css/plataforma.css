@@ -240,3 +240,11 @@ a.item:hover,a.aula-l:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 
 .cv-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.cv-chips span{background:#fff;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font-weight:700;font-size:14px}
 .cv-mora{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.cv-mora span{font-size:13px;padding:5px 12px;border-radius:999px;background:#EEF2F7}
 @media (max-width:720px){.cv{grid-template-columns:1fr}.cv-meio{flex-direction:row}.cv-trilho{flex:1}}
+
+/* cola fechada (dropdown) */
+details.cola>summary{list-style:none;cursor:pointer;margin:0}details.cola>summary::-webkit-details-marker{display:none}
+details.cola>summary b::before{content:'▸';display:inline-block;margin-right:8px;transition:transform .2s;color:var(--blue)}
+details.cola[open]>summary b::before{transform:rotate(90deg)}
+details.cola[open]>summary{margin-bottom:10px}details.cola[open] .cola-dica{display:none}
+.cola-dica{margin-left:auto;margin-right:6px;font-size:13px;color:var(--muted)}
+details.cola[open]>summary~*{animation:mvChega .3s both}
