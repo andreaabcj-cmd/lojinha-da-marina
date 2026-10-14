@@ -188,8 +188,16 @@
     var b = e.target.closest && e.target.closest('[data-copiar]'); if (!b) return;
     e.preventDefault();   // o botão fica no título da cola: copiar não abre/fecha
     var mid = b.getAttribute('data-copiar').split('__'), a = (window.AULAS[mid[1]] || []).filter(function (x) { return x.id === mid[2] })[0]; if (!a) return;
-    var txt = colaTexto(a.cola), ok = function () { b.textContent = '✓ ' + T({ pt: 'Copiado', es: 'Copiado' }) };
-    try { navigator.clipboard.writeText(txt).then(ok, function () { }) } catch (x) { }
+    var txt = colaTexto(a.cola), orig = b.getAttribute('data-orig') || b.textContent; b.setAttribute('data-orig', orig);
+    var volta = function () { clearTimeout(b._t); b._t = setTimeout(function () { b.textContent = orig }, 2500) };
+    var ok = function () { b.textContent = '✓ ' + T({ pt: 'Copiado', es: 'Copiado' }); volta() };
+    // plano B (navegador de empresa costuma bloquear a cópia moderna): jeito antigo; se nem assim, avisa
+    var antigo = function () {
+      var t = document.createElement('textarea'); t.value = txt; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;left:-9999px;top:0';
+      document.body.appendChild(t); t.select(); var foi = false; try { foi = document.execCommand('copy') } catch (x) { } t.remove();
+      if (foi) ok(); else { b.textContent = '⚠ ' + T({ pt: 'Não copiou: abra e selecione o texto', es: 'No se copió: abre y selecciona el texto' }); volta() }
+    };
+    try { navigator.clipboard.writeText(txt).then(ok, antigo) } catch (x) { antigo() }
   });
 
   /* a linha das 5 fases: enche conforme as aulas concluídas; a Marina fica onde a pessoa está */
