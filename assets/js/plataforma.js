@@ -82,7 +82,7 @@
           var f = F[id], ok = f.status === 'pronta', href = f.link || 'ferramenta.html?f=' + id;
           return (ok ? '<a class="item" href="' + href + '">' : '<div class="item off">') + '<b>' + T(f.titulo) + '</b><p>' + T(f.resumo) + '</p>' + selo(f.status) + (ok ? '</a>' : '</div>')
         }).join('') + '</div>' +
-        '<h2 class="pl-h2" id="loja-por-dentro">🔬 ' + T({ pt: 'A loja por dentro (Modo aula)', es: 'La tienda por dentro (Modo aula)' }) + '</h2>' +
+        '<h2 class="pl-h2" id="loja-por-dentro">🔬 ' + T({ pt: 'A loja por dentro (F12)', es: 'La tienda por dentro (F12)' }) + '</h2>' +
         '<a class="item dentro" href="loja.html?aula=camera"><b>' + T({ pt: 'Só mais um jeito de ver o Pixel', es: 'Solo otra forma de ver el Pixel' }) + '</b><p>' + T({ pt: 'É o mesmo Pixel e são os mesmos eventos que você vê no Consultor de Dados e no Gerenciador de Eventos, só que olhando por dentro do site, como no F12 (ferramentas de desenvolvedor). No atendimento não é preciso: serve para entender o que acontece por trás e para conversar com quem cuida do site.', es: 'Es el mismo Pixel y son los mismos eventos que ves en el Asesor de datos y en el Administrador de eventos, solo que mirando por dentro del sitio, como en el F12 (herramientas de desarrollador). En la atención no hace falta: sirve para entender lo que pasa por detrás y para hablar con quien cuida el sitio.' }) + '</p><p class="abas">' + T({ pt: 'Dentro dele: 📹 Câmera · 🌐 Rede · 🔍 Lupa · 📄 Código · 🧪 Falhas · 💡 Dica. Para voltar à loja normal, use “sair” na faixa amarela.', es: 'Adentro: 📹 Cámara · 🌐 Red · 🔍 Lupa · 📄 Código · 🧪 Fallas · 💡 Consejo. Para volver a la tienda normal, usa “salir” en la franja amarilla.' }) + '</p><em>' + T({ pt: 'Abrir a loja por dentro →', es: 'Abrir la tienda por dentro →' }) + '</em></a>';
     },
     ferramenta: function () {
@@ -226,7 +226,7 @@
     tg.forEach(function (x) { document.body.appendChild(x) });
   }
   function inicia() {
-    // cada prática começa do zero: sem Modo aula, sem Consultor de Dados aberto, sem tutorial pela metade
+    // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial pela metade
     try { ['loja.labLoja', 'loja.daAberto', 'tour.ativo'].forEach(function (k) { sessionStorage.removeItem(k) }); localStorage.setItem('loja.aulaAberta', 'false') } catch (e) { }
     window.PLAT_PORTA(monta)
   }

@@ -170,3 +170,5 @@ code,.sku{font-family:Consolas,"Cascadia Mono",monospace;font-size:.86em;backgro
 /* quando a aula manda abrir o Modo aula, o botão pisca para mostrar onde ele fica (canto inferior direito) */
 .ma-fab.chama{animation:maChama 1s ease-in-out 6}
 @keyframes maChama{50%{transform:scale(1.12);box-shadow:0 0 0 8px rgba(242,182,50,.6),4px 4px 0 var(--ink)}}
+
+.ma-sim{font-style:normal;font-weight:600;font-size:.75em;opacity:.75;margin-left:3px}

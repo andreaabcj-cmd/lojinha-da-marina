@@ -141,10 +141,10 @@ PAGINAS = {
 <script>/* o guia antigo virou o Laboratório da plataforma */location.replace('laboratorio.html#loja-por-dentro')</script>
   <h1 style="margin-top:26px">🎓 Guia da aula</h1>
   <p id="statusPixel"></p>
-  <p>Esta loja existe para ensinar o <b>Meta Pixel</b> na prática. Abra o <b>Modo aula</b> no canto inferior direito: ele mostra o que normalmente só se vê com o F12 ou com extensões, que nos computadores do trabalho ficam bloqueados.</p>
+  <p>Esta loja existe para ensinar o <b>Meta Pixel</b> na prática. Abra o <b>F12</b> no canto inferior direito: ele mostra o que normalmente só se vê com o F12 ou com extensões, que nos computadores do trabalho ficam bloqueados.</p>
   <p class="alerta azul">🕹️ <b>Simulador:</b> pratique no <a href="meta-eventos.html">Gerenciador de Eventos de treino</a> (criar o Pixel, Testar eventos, Diagnóstico). Os eventos da Lojinha chegam nele ao vivo, nada vai para a Meta.</p>
   <p class="alerta azul">🎬 <b>Novo:</b> <a href="tutoriais.html">Tutoriais passo a passo</a> com prints reais da Meta: criar o portfólio, o Pixel, testar eventos e montar o catálogo.</p>
-  <h2>As 6 abas do Modo aula</h2>
+  <h2>As 6 abas do F12</h2>
   <div class="mapa-aula">
     <a href="loja.html?aula=camera"><b>📹 Câmera</b><p>Cada evento disparado, com parâmetros, explicação e o código <code>fbq()</code> que rodou.</p><span class="abrir">Abrir →</span></a>
     <a href="loja.html?aula=rede"><b>🌐 Rede</b><p>A “aba Rede” sem F12: os pedidos reais para <code>facebook.com/tr</code> e como ler cada parte.</p><span class="abrir">Abrir →</span></a>
@@ -195,7 +195,7 @@ PAGINAS = {
     <li>No <b>Gerenciador de Comércio</b>, crie um catálogo de comércio eletrônico e adicione itens por <b>arquivo</b> (envio) ou por <b>URL</b> (agendado).</li>
     <li>Conecte o catálogo ao Pixel da loja e confira a correspondência dos IDs.</li>
   </ol>
-  <p class="alerta azul">💡 Para o laboratório 🏷️ “código errado”: ligue no Laboratório (Modo aula › 🧪 Lab) e abra um produto. A Lupa vai mostrar “não encontrado no catálogo”.</p>
+  <p class="alerta azul">💡 Para o laboratório 🏷️ “código errado”: ligue no Laboratório (F12 › 🧪 Lab) e abra um produto. A Lupa vai mostrar “não encontrado no catálogo”.</p>
 </div>
 '''),
 }

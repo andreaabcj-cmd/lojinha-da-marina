@@ -2,7 +2,7 @@
    PIXEL + MODO AULA — Lojinha da Marina
    - Inicia o Meta Pixel (com consentimento e correspondência avançada)
    - LOJA.track(): todo evento da loja passa por aqui
-   - Modo aula: câmera do Pixel, "aba Rede" sem F12, lupa (tipo Data
+   - F12: câmera do Pixel, "aba Rede", lupa (tipo Data
      Advisor), código de cada evento, laboratório de falhas e dicas.
    ===================================================================== */
 (function(){
@@ -17,7 +17,7 @@ function lsGet(k,d){try{var v=localStorage.getItem('loja.'+k);return v==null?d:J
 function lsSet(k,v){try{localStorage.setItem('loja.'+k,JSON.stringify(v))}catch(e){}}
 function ssGet(k,d){try{var v=sessionStorage.getItem('loja.'+k);return v==null?d:JSON.parse(v)}catch(e){return d}}
 function ssSet(k,v){try{sessionStorage.setItem('loja.'+k,JSON.stringify(v))}catch(e){}}
-/* Modo aula (a loja "por dentro", tipo F12) = só no LABORATÓRIO. Liga com ?aula=aba ou ?lab=1; desliga com ?lab=0. Vale para a aba do navegador. */
+/* F12 (a loja "por dentro", tipo F12) = só no LABORATÓRIO. Liga com ?aula=aba ou ?lab=1; desliga com ?lab=0. Vale para a aba do navegador. */
 (function(){try{var q=new URLSearchParams(location.search);if(q.get('lab')==='0')ssSet('labLoja',false);else if(q.get('lab')==='1'||q.get('aula'))ssSet('labLoja',true)}catch(e){}})();
 var LABON = !!ssGet('labLoja',false);
 var LAB = lsGet('lab',{});
@@ -133,12 +133,12 @@ var ui = (function(){
     var c=document.getElementById('maBody');var h='';
     if(aba==='camera'){h='<p class="ma-intro">📹 <b>Câmera do Pixel:</b> cada evento que esta loja disparou, na hora. É o que você confere, do lado da Meta, no <b>Testar eventos</b>.</p>'+
         (log.length?log.slice(0,25).map(evHTML).join(''):'<p class="ma-mut">Nenhum evento ainda.</p>')+'<button class="ma-btn ghost" id="maLimpaLog">Limpar a câmera</button>'}
-    else if(aba==='rede'){var reais=redeReal();h='<p class="ma-intro">🌐 <b>A “aba Rede” sem F12.</b> Quando o Pixel envia um evento, o navegador manda um pedido para <code>facebook.com/tr</code>. No computador de casa você veria isso no F12 › Rede, filtrando por <code>facebook.com/tr</code>.</p>'+
+    else if(aba==='rede'){var reais=redeReal();h='<p class="ma-intro">🌐 <b>A aba Rede do F12.</b> Quando o Pixel envia um evento, o navegador manda um pedido para <code>facebook.com/tr</code>. No computador de casa você veria isso no F12 › Rede, filtrando por <code>facebook.com/tr</code>.</p>'+
         '<h4>Pedidos reais saindo desta página</h4>'+(reais.length?reais.map(function(r){return '<div class="ma-req ok"><b>'+esc(r.ev)+'</b><span>'+esc(r.tipo)+'</span><code>'+esc(r.url.slice(0,180))+'…</code></div>'}).join(''):'<p class="ma-mut">'+(LIVE?'Nenhum pedido detectado ainda (ou o navegador não deixou ver).':'Modo simulação: nada é enviado de verdade enquanto o ID do Pixel não for configurado.')+'</p>')+
         '<h4>Como cada evento desta página apareceria</h4>'+pageEvents.map(function(ev){return '<div class="ma-req '+(ev.status==='perdido'?'bad':'')+'"><b>'+esc(ev.nome)+'</b>'+stChip(ev.status)+'<code>'+(ev.status==='perdido'?'— nenhum pedido saiu —':esc(ev.url))+'</code></div>'}).join('')+
         '<div class="ma-legend"><b>Como ler:</b> <code>id</code> = qual Pixel · <code>ev</code> = qual evento · <code>cd[…]</code> = parâmetros · <code>eid</code> = ID do evento.</div>'}
     else if(aba==='lupa'){h=lupa()}
-    else if(aba==='codigo'){h='<p class="ma-intro">📄 <b>Código-fonte sem F12.</b> O trecho do Pixel fica no <code>&lt;head&gt;</code> de todas as páginas, como recomenda a Meta.</p><pre class="ma-code big" id="maFonte">carregando…</pre><p class="ma-mut">Os eventos de cada ação (botões, formulários) ficam no arquivo <code>assets/js/loja.js</code> e passam pelo <code>LOJA.track()</code>, que chama o <code>fbq()</code>. Veja o código de cada evento na aba Câmera.</p>';setTimeout(fonte,0)}
+    else if(aba==='codigo'){h='<p class="ma-intro">📄 <b>O código-fonte da página</b> (o mesmo do Ctrl+U). O trecho do Pixel fica no <code>&lt;head&gt;</code> de todas as páginas, como recomenda a Meta.</p><pre class="ma-code big" id="maFonte">carregando…</pre><p class="ma-mut">Os eventos de cada ação (botões, formulários) ficam no arquivo <code>assets/js/loja.js</code> e passam pelo <code>LOJA.track()</code>, que chama o <code>fbq()</code>. Veja o código de cada evento na aba Câmera.</p>';setTimeout(fonte,0)}
     else if(aba==='lab'){h=labHTML()}
     else if(aba==='dica'){var pg=document.body.getAttribute('data-pagina'),d=DICAS[pg]||{t:'Página',d:'',ev:[]};
       h='<div class="ma-dica"><span class="ma-tag big">Nesta página</span><h3>'+esc(d.t)+'</h3><p>'+d.d+'</p><h4>Eventos esperados aqui</h4><div class="ma-evs">'+d.ev.map(function(e){return '<span>'+esc(e)+'</span>'}).join('')+'</div>'+
@@ -169,7 +169,7 @@ var ui = (function(){
     var b=document.getElementById('maCookies');if(b)b.onclick=function(){consent=null;lsSet('consent',null);banner()};
     b=document.getElementById('maReset');if(b)b.onclick=function(){LAB={};lsSet('lab',{});render();faixa();toast('Laboratório desligado. Recarregue a página.')};
     b=document.getElementById('maZerar');if(b)b.onclick=function(){lsSet('carrinho',[]);lsSet('pedidosDisparados',[]);lsSet('pedidos',{});toast('Carrinho e pedidos zerados.');if(window.LOJA_UI)window.LOJA_UI.atualizaCarrinho()}}
-  function fonte(){var el=document.getElementById('maFonte');if(!el)return;var mostra=function(t){var a=t.indexOf('<!-- Meta Pixel Code -->'),z=t.indexOf('<!-- End Meta Pixel Code -->');var trecho=a>=0?t.slice(a,z+28):t.slice(0,1500);trecho=trecho.replace(/\/\* O init[\s\S]*?\*\/\s*/,"fbq('init', '"+PID+"');\nfbq('track', 'PageView');\n").replace(/<script src="assets\/js\/pixel-aula\.js"><\/script>\s*/,'');el.innerHTML=esc(trecho).replace(/(&lt;!-- (End )?Meta Pixel Code --&gt;)/g,'<mark class="ma-m-com">$1</mark>').replace(/(fbq\(&#39;init&#39;[^)]*\)|fbq\('init'[^)]*\))/g,'<mark class="ma-m-init">$1</mark>').replace(/(fbq\(&#39;track&#39;, &#39;PageView&#39;\)|fbq\('track', 'PageView'\))/g,'<mark class="ma-m-pv">$1</mark>')};
+  function fonte(){var el=document.getElementById('maFonte');if(!el)return;var mostra=function(t){var a=t.indexOf('<!-- Meta Pixel Code -->'),z=t.indexOf('<!-- End Meta Pixel Code -->');var trecho=a>=0?t.slice(a,z+28):t.slice(0,1500);trecho=trecho.replace(/\/\* O init[\s\S]*?\*\/\s*/,"fbq('init', '"+PID+"');\nfbq('track', 'PageView');\n").replace(/<script src="assets\/js\/pixel-aula\.js[^"]*"><\/script>\s*/,'');el.innerHTML=esc(trecho).replace(/(&lt;!-- (End )?Meta Pixel Code --&gt;)/g,'<mark class="ma-m-com">$1</mark>').replace(/(fbq\(&#39;init&#39;[^)]*\)|fbq\('init'[^)]*\))/g,'<mark class="ma-m-init">$1</mark>').replace(/(fbq\(&#39;track&#39;, &#39;PageView&#39;\)|fbq\('track', 'PageView'\))/g,'<mark class="ma-m-pv">$1</mark>')};
     try{fetch(location.href).then(function(r){return r.text()}).then(mostra).catch(function(){mostra(document.documentElement.outerHTML)})}catch(e){mostra(document.documentElement.outerHTML)}}
   function redeReal(){try{return performance.getEntriesByType('resource').filter(function(r){return /facebook\.com\/tr|fbevents\.js|signals\/config/.test(r.name)}).map(function(r){var m=r.name.match(/[?&]ev=([^&]+)/);return{url:r.name,ev:m?decodeURIComponent(m[1]):(/fbevents/.test(r.name)?'fbevents.js (biblioteca)':'configuração do Pixel'),tipo:r.initiatorType}})}catch(e){return[]}}
   function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
@@ -182,8 +182,8 @@ var ui = (function(){
     document.body.appendChild(b);$$('#maCookie [data-c]').forEach(function(x){x.onclick=function(){consent=x.getAttribute('data-c');lsSet('consent',consent);fbqSafe('consent',consent);b.remove();toast(consent==='grant'?'🍪 Aceito: o Pixel pode enviar os eventos à Meta.':'🙏 Recusado: o Pixel não envia os eventos à Meta (e está certo).')}})}
   function build(){root=document.createElement('div');root.className='ma-root';
     if(!LABON){root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><div class="ma-toasts" id="maToasts"></div>';document.body.appendChild(root);toastBox=document.getElementById('maToasts');faixa();banner();ready=true;pend=[];return}
-    root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><button class="ma-fab" id="maFab" title="Modo aula"><span class="ma-mascote"></span><span>Modo aula</span><b class="ma-badge" id="maBadge">0</b></button>'+
-      '<aside class="ma-panel" id="maPanel" aria-label="Modo aula"><header><div><b>🎓 Modo aula</b><small>o que o Pixel está fazendo</small></div><button id="maFecha" title="Fechar">✕</button></header>'+
+    root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><button class="ma-fab" id="maFab" title="F12 (simulação das ferramentas do desenvolvedor)"><span class="ma-mascote"></span><span>F12 <i class="ma-sim">simulação</i></span><b class="ma-badge" id="maBadge">0</b></button>'+
+      '<aside class="ma-panel" id="maPanel" aria-label="F12 (simulação)"><header><div><b>🛠️ F12 <i class="ma-sim">simulação</i></b><small>ferramentas do desenvolvedor: o que o Pixel está fazendo</small></div><button id="maFecha" title="Fechar">✕</button></header>'+
       '<nav class="ma-tabs"><button data-aba="camera">📹 Câmera</button><button data-aba="rede">🌐 Rede</button><button data-aba="lupa">🔍 Lupa</button><button data-aba="codigo">📄 Código</button><button data-aba="lab">🧪 Lab</button><button data-aba="dica">💡 Dica</button></nav><div class="ma-body" id="maBody"></div></aside><div class="ma-toasts" id="maToasts"></div>';
     document.body.appendChild(root);panel=document.getElementById('maPanel');badge=document.getElementById('maBadge');toastBox=document.getElementById('maToasts');
     document.querySelector('.ma-mascote').innerHTML=mascote();

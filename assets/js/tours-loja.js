@@ -5,8 +5,8 @@ function tgPainelAberto() { var p = document.getElementById('maPanel'); return !
 /* Aula 02 · achar o Pixel no código da página */
 window.TOURS['achar-codigo'] = [
   { alvo: '#maFab', clique: true, pula: tgPainelAberto,
-    tit: { pt: 'O botão Modo aula', es: 'El botón Modo aula' },
-    txt: { pt: 'Num computador, o código da página se abre com Ctrl+U (ou F12). Aqui, o botão Modo aula, no canto INFERIOR direito, faz esse papel. Clique nele.', es: 'En una computadora, el código de la página se abre con Ctrl+U (o F12). Aquí, el botón Modo aula, en la esquina INFERIOR derecha, cumple esa función. Haz clic en él.' } },
+    tit: { pt: 'O botão F12', es: 'El botón F12' },
+    txt: { pt: 'Num computador, o código da página se abre com Ctrl+U ou com a tecla F12. Aqui, o botão F12 (simulação), no canto INFERIOR direito, faz esse papel. Clique nele.', es: 'En una computadora, el código de la página se abre con Ctrl+U o con la tecla F12. Aquí, el botón F12 (simulación), en la esquina INFERIOR derecha, cumple esa función. Haz clic en él.' } },
   { alvo: '.ma-tabs [data-aba=codigo]', clique: true,
     tit: { pt: 'A aba Código', es: 'La pestaña Código' },
     txt: { pt: 'Abra a aba 📄 Código. Ela mostra o código do Pixel desta página, sem precisar de ferramenta nenhuma do navegador.', es: 'Abre la pestaña 📄 Código. Muestra el código del Pixel de esta página, sin ninguna herramienta del navegador.' } },
