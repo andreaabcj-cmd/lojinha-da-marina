@@ -317,3 +317,13 @@ details.cola[open]>summary~*{animation:mvChega .3s both}
 .li-p{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:8px;align-items:center;padding:10px 12px;margin:6px 0;background:#fff;border:2px solid var(--line);border-radius:12px}
 .li-p .sim{color:var(--ink);font-weight:700}.li-p .nao{color:var(--muted)}.li-nota{margin:10px 0 0;padding:8px 12px;border-radius:10px;background:var(--blue-l)}
 @media (max-width:720px){.li-p{grid-template-columns:1fr 1fr}.li-p b{grid-column:1/-1}}
+
+/* Laboratório › Como fazer… */
+.como-busca{width:100%;max-width:560px;margin:4px 0 14px;padding:12px 14px;border:2px solid var(--ink);border-radius:12px;font:inherit;background:#fff;box-shadow:3px 3px 0 var(--ink)}
+.como-grupo{margin:0 0 16px}.como-grupo h3{margin:0 0 8px}
+.como-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.como-it{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:#fff;border:2px solid var(--line);border-radius:12px}
+.como-it:hover{border-color:var(--ink)}.como-ir{font-weight:700;color:var(--ink);text-decoration:none}.como-ir:hover{text-decoration:underline}
+.como-aula{flex:none;font-size:12px;color:var(--muted);text-decoration:none;padding:3px 8px;border-radius:999px;background:var(--blue-l)}
+.como-nada{color:var(--muted)}
+@media (max-width:560px){.como-lista{grid-template-columns:1fr}}

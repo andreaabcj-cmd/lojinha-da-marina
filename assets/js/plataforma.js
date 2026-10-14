@@ -85,7 +85,10 @@
     },
     laboratorio: function () {
       var F = window.FERRAMENTAS;
-      return '<h1 class="pl-h1">🧪 ' + T(U.laboratorio) + '</h1><p class="pl-lead">' + T({ pt: 'As ferramentas das aulas, soltas. Use para explicar um assunto ou testar uma dúvida, sem seguir a aula inteira.', es: 'Las herramientas de las clases, sueltas. Úsalas para explicar un tema o probar una duda, sin seguir la clase completa.' }) + '</p>' +
+      setTimeout(ligaComo);
+      return '<h1 class="pl-h1">🧪 ' + T(U.laboratorio) + '</h1><p class="pl-lead">' + T({ pt: 'Tudo das aulas, solto: os tutoriais guiados (“como fazer…”), as ferramentas e a loja por dentro. Use para tirar uma dúvida ou mostrar um passo a passo sem seguir a aula inteira.', es: 'Todo lo de las clases, suelto: los tutoriales guiados (“cómo hacer…”), las herramientas y la tienda por dentro. Úsalo para resolver una duda o mostrar un paso a paso sin seguir la clase completa.' }) + '</p>' +
+        comoFazer() +
+        '<h2 class="pl-h2">🧰 ' + T({ pt: 'Ferramentas das aulas', es: 'Herramientas de las clases' }) + '</h2>' +
         '<div class="grade">' + Object.keys(F).map(function (id) {
           var f = F[id], ok = f.status === 'pronta', href = f.link || 'ferramenta.html?f=' + id;
           return (ok ? '<a class="item" href="' + href + '">' : '<div class="item off">') + '<b>' + T(f.titulo) + '</b><p>' + T(f.resumo) + '</p>' + selo(f.status) + (ok ? '</a>' : '</div>')
@@ -99,6 +102,54 @@
       return '<p class="pl-trilha"><a href="laboratorio.html">' + T(U.laboratorio) + '</a> ›</p><h1 class="pl-h1">' + T(f.titulo) + '</h1><p class="pl-lead">' + T(f.resumo) + '</p><div class="palco"><div id="ferr"></div></div>';
     }
   };
+
+  /* ---------- Laboratório › Como fazer…: todos os tutoriais guiados, na ordem da história da Marina ---------- */
+  var COMO = [
+    { m: 'portfolio', itens: [
+      ['conhecer-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio', '01', { pt: 'Como conhecer as Configurações do portfólio', es: 'Cómo conocer la Configuración del portafolio' }],
+      ['criar-portfolio', 'meta-portfolio.html?zerar=1', 'portfolio', '02', { pt: 'Como criar um portfólio empresarial', es: 'Cómo crear un portafolio comercial' }],
+      ['convidar-pessoa', 'meta-portfolio.html?exemplo=1', 'portfolio', '03', { pt: 'Como convidar uma pessoa (com o acesso certo)', es: 'Cómo invitar a una persona (con el acceso correcto)' }],
+      ['criar-conta-anuncios', 'meta-portfolio.html?exemplo=1', 'portfolio', '04', { pt: 'Como criar uma conta de anúncios', es: 'Cómo crear una cuenta publicitaria' }] ] },
+    { m: 'instagram', itens: [
+      ['virar-profissional', 'meta-instagram.html?zerar=1', 'instagram', '01', { pt: 'Como virar conta profissional no Instagram', es: 'Cómo volverse cuenta profesional en Instagram' }],
+      ['editar-perfil', 'meta-instagram.html', 'instagram', '02', { pt: 'Como deixar o perfil com cara de loja', es: 'Cómo darle al perfil cara de tienda' }],
+      ['adicionar-instagram', 'meta-portfolio.html?exemplo=1', 'instagram', '03', { pt: 'Como adicionar o Instagram ao portfólio', es: 'Cómo agregar el Instagram al portafolio' }],
+      ['conectar-instagram', 'meta-portfolio.html?exemplo=1&aula=ig4', 'instagram', '04', { pt: 'Como ligar o Instagram à Página', es: 'Cómo vincular el Instagram a la Página' }] ] },
+    { m: 'pixel', itens: [
+      ['pixel-em-acao', 'loja.html', 'pixel', '01', { pt: 'Como ver o Pixel trabalhando na loja', es: 'Cómo ver el Pixel trabajando en la tienda' }],
+      ['criar-pixel', 'meta-eventos.html', 'pixel', '02', { pt: 'Como criar um Pixel no Gerenciador de Eventos', es: 'Cómo crear un Pixel en el Administrador de eventos' }],
+      ['gerenciador-pixel', 'meta-eventos.html', 'pixel', '03', { pt: 'Como conferir o Pixel no Gerenciador de Eventos', es: 'Cómo revisar el Pixel en el Administrador de eventos' }],
+      ['print-pixel', 'pratica.html?p=print-pixel', 'pixel', '03', { pt: 'Como pedir e ler o print do cliente', es: 'Cómo pedir y leer la captura del cliente' }],
+      ['extensao-pixel', 'loja.html', 'pixel', '03', { pt: 'Como ver o Pixel com a extensão (Consultor de Dados)', es: 'Cómo ver el Pixel con la extensión (Asesor de datos)' }],
+      ['achar-codigo', 'loja.html?lab=1', 'pixel', '03', { pt: 'Como achar o código do Pixel no site (técnico)', es: 'Cómo encontrar el código del Pixel en el sitio (técnico)' }],
+      ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar o Testar eventos', es: 'Cómo usar Probar eventos' }],
+      ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] }
+  ];
+  function comoFazer() {
+    var volta = encodeURIComponent('laboratorio.html#como');
+    return '<h2 class="pl-h2" id="como">🧭 ' + T({ pt: 'Como fazer…', es: 'Cómo hacer…' }) + '</h2>' +
+      '<p class="pl-lead">' + T({ pt: 'Os tutoriais guiados das aulas, um por um. O Pixel te leva pela mão; no fim, você volta para cá.', es: 'Los tutoriales guiados de las clases, uno por uno. El Pixel te lleva de la mano; al final, vuelves aquí.' }) + '</p>' +
+      '<input class="como-busca" id="comoBusca" type="search" placeholder="' + T({ pt: '🔎 O que você quer fazer? (ex.: convidar, Pixel, Instagram)', es: '🔎 ¿Qué quieres hacer? (ej.: invitar, Pixel, Instagram)' }) + '" aria-label="' + T({ pt: 'Buscar tutorial', es: 'Buscar tutorial' }) + '"/>' +
+      COMO.map(function (g) {
+        var mod = window.MODULOS.filter(function (x) { return x.id === g.m })[0] || { icone: '', titulo: { pt: g.m, es: g.m } };
+        return '<div class="como-grupo"><h3>' + mod.icone + ' ' + T(mod.titulo) + '</h3><div class="como-lista">' + g.itens.map(function (it) {
+          var href = it[1] + (it[1].indexOf('?') < 0 ? '?' : '&') + 'tour=' + it[0] + '&voltar=' + volta;
+          return '<div class="como-it"><a class="como-ir" href="' + href + '">▶ ' + T(it[4]) + '</a><a class="como-aula" href="aula-plataforma.html?m=' + it[2] + '&a=' + it[3] + '">📖 ' + T({ pt: 'aula', es: 'clase' }) + ' ' + it[3] + '</a></div>';
+        }).join('') + '</div></div>';
+      }).join('') + '<p class="como-nada" id="comoNada" hidden>' + T({ pt: 'Nada encontrado. Tente outra palavra.', es: 'Nada encontrado. Prueba otra palabra.' }) + '</p>';
+  }
+  function ligaComo() {
+    var b = document.getElementById('comoBusca'); if (!b) return;
+    var sem = function (x) { return String(x).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') };
+    b.oninput = function () {
+      var q = sem(b.value.trim()), algum = false;
+      [].forEach.call(document.querySelectorAll('.como-grupo'), function (g) {
+        var vis = 0; [].forEach.call(g.querySelectorAll('.como-it'), function (it) { var ok = !q || sem(it.textContent + ' ' + g.querySelector('h3').textContent).indexOf(q) >= 0; it.hidden = !ok; if (ok) vis++ });
+        g.hidden = !vis; if (vis) algum = true;
+      });
+      document.getElementById('comoNada').hidden = algum;
+    };
+  }
 
   /* ---------- AULA: uma parte por vez (ver · ferramenta · praticar · caso) ---------- */
   /* conversa no estilo do chat de atendimento: Marina (cliente) à esquerda, Rafa (agente) à direita, Pixel como dica no meio */
