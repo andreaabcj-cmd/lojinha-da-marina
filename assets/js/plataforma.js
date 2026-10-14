@@ -130,13 +130,14 @@
     return '<h2 class="pl-h2" id="como">🧭 ' + T({ pt: 'Como fazer…', es: 'Cómo hacer…' }) + '</h2>' +
       '<p class="pl-lead">' + T({ pt: 'Os tutoriais guiados das aulas, um por um. O Pixel te leva pela mão; no fim, você volta para cá.', es: 'Los tutoriales guiados de las clases, uno por uno. El Pixel te lleva de la mano; al final, vuelves aquí.' }) + '</p>' +
       '<input class="como-busca" id="comoBusca" type="search" placeholder="' + T({ pt: '🔎 O que você quer fazer? (ex.: convidar, Pixel, Instagram)', es: '🔎 ¿Qué quieres hacer? (ej.: invitar, Pixel, Instagram)' }) + '" aria-label="' + T({ pt: 'Buscar tutorial', es: 'Buscar tutorial' }) + '"/>' +
-      COMO.map(function (g) {
+      '<div class="como-cols">' + COMO.map(function (g) {
         var mod = window.MODULOS.filter(function (x) { return x.id === g.m })[0] || { icone: '', titulo: { pt: g.m, es: g.m } };
-        return '<div class="como-grupo"><h3>' + mod.icone + ' ' + T(mod.titulo) + '</h3><div class="como-lista">' + g.itens.map(function (it) {
+        return '<div class="como-grupo"><h3>' + mod.icone + ' ' + T(mod.titulo) + '</h3>' + g.itens.map(function (it) {
           var href = it[1] + (it[1].indexOf('?') < 0 ? '?' : '&') + 'tour=' + it[0] + '&voltar=' + volta;
-          return '<div class="como-it"><a class="como-ir" href="' + href + '">▶ ' + T(it[4]) + '</a><a class="como-aula" href="aula-plataforma.html?m=' + it[2] + '&a=' + it[3] + '">📖 ' + T({ pt: 'aula', es: 'clase' }) + ' ' + it[3] + '</a></div>';
-        }).join('') + '</div></div>';
-      }).join('') + '<p class="como-nada" id="comoNada" hidden>' + T({ pt: 'Nada encontrado. Tente outra palavra.', es: 'Nada encontrado. Prueba otra palabra.' }) + '</p>';
+          var t = T(it[4]).replace(/^C[oó]mo /, ''); t = t.charAt(0).toUpperCase() + t.slice(1);   // o título da seção já diz "Como fazer…"
+          return '<div class="como-it"><a class="como-ir" href="' + href + '" title="' + T(it[4]) + '">' + t + '</a><a class="como-aula" href="aula-plataforma.html?m=' + it[2] + '&a=' + it[3] + '">' + T({ pt: 'aula', es: 'clase' }) + ' ' + it[3] + '</a></div>';
+        }).join('') + '</div>';
+      }).join('') + '</div><p class="como-nada" id="comoNada" hidden>' + T({ pt: 'Nada encontrado. Tente outra palavra.', es: 'Nada encontrado. Prueba otra palabra.' }) + '</p>';
   }
   function ligaComo() {
     var b = document.getElementById('comoBusca'); if (!b) return;
