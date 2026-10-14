@@ -4,7 +4,7 @@
    - Tutorial guiado: meta-eventos.html?tour=criar-pixel | ?tour=testar-eventos
    Textos das telas copiados do Gerenciador de Eventos em pt-BR. CONF = data em que a tela foi conferida com a real. */
 (function () {
-  var CONF = { visao: '13/10/2026', conectar: '13/10/2026', criar: '13/10/2026', lista: '13/10/2026' };
+  var CONF = { visao: '14/10/2026', conectar: '13/10/2026', criar: '13/10/2026', lista: '13/10/2026' };
   var $ = function (s, r) { return (r || document).querySelector(s) };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
   var PORTFOLIO = 'Lojinha da Marina Aula', USUARIO = 'Marina';
@@ -201,7 +201,7 @@
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="criar" data-t="criar" ' + (nome.trim() ? '' : 'disabled') + '>Criar</button></div><p class="conferido">✓ Conferido com a tela real em ' + CONF.criar + '</p>';
     } else if (janela === 'codigo') {
       var d = ds(rota().id);
-      h = '<h3>Instalar o código manualmente<button class="x" data-acao="fechar">✕</button></h3><p>Copie o código base do Pixel e cole no <b>&lt;head&gt;</b> de todas as páginas do site, antes de &lt;/head&gt;. Na Lojinha, o ID vai em <code>assets/js/config.js</code>.</p>' +
+      h = '<h3>Instalar o código manualmente<button class="x" data-acao="fechar">✕</button></h3><p>Copie o código base do Pixel e cole no <b>&lt;head&gt;</b> de todas as páginas do site, antes de &lt;/head&gt;. Se a loja é de uma plataforma parceira, dá para usar a integração em vez de colar o código.</p>' +
         '<div class="codigo">&lt;!-- Meta Pixel Code --&gt;\n&lt;script&gt;\n!function(f,b,e,v,n,t,s){...}(window, document,\'script\',\n\'https://connect.facebook.net/en_US/fbevents.js\');\nfbq(\'init\', \'' + (d ? d.id : '') + '\');\nfbq(\'track\', \'PageView\');\n&lt;/script&gt;\n&lt;!-- End Meta Pixel Code --&gt;</div>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Fechar</button><button class="btn" data-acao="copiar" data-v="' + (d ? d.id : '') + '">Copiar ID</button></div><p class="conferido pendente">⚠ Tela montada pela documentação da Meta · a conferir com a tela real</p>';
     }
@@ -270,15 +270,26 @@
         txt: { pt: 'Você conferiu no Gerenciador de Eventos: o Pixel existe, você sabe o ID e o PageView está chegando. Clique em Concluir para voltar à aula.', es: 'Revisaste en el Administrador de eventos: el Pixel existe, sabes el ID y el PageView está llegando. Haz clic en Terminar para volver a la clase.' } }
     ],
     'criar-pixel': [
-      { alvo: '[data-t=conectar]', tit: 'Conectar dados', txt: 'Este é o Gerenciador de Eventos, do portfólio Lojinha da Marina Aula (confira sempre no canto superior direito). Para criar o Pixel, clique em Conectar dados.', clique: true },
-      { alvo: '[data-t=op-web]', tit: 'Tipo de dado: Web', txt: 'O Pixel mede o que acontece no SITE. Escolha Web.', dica: 'App, Offline, CRM e Mensagens são outras fontes de dados, para outras aulas.', clique: true },
-      { alvo: '[data-t=avancar]', tit: 'Avançar', txt: 'Clique em Avançar.', clique: true },
-      { alvo: '[data-t=nome]', tit: 'O nome', txt: 'Digite um nome, por exemplo: Pixel Aula Lojinha da Marina. Depois clique em Próximo.', dica: 'A Meta agora chama o Pixel de conjunto de dados. É a mesma coisa.', cond: function () { return (window.__nomeDs || '').trim().length > 2 } },
-      { alvo: '[data-t=capi]', tit: 'API de Conversões', txt: 'Esta caixinha liga também o envio pelo servidor. Na aula, DESMARQUE para estudar o Pixel sozinho primeiro.', dica: 'Ela vale para o portfólio inteiro, não só para este Pixel.' },
-      { alvo: '[data-t=cats]', tit: 'Categorias', txt: 'São categorias de assuntos sensíveis (saúde, religião, política...). Loja de canecas: não marque nenhuma.' },
-      { alvo: '[data-t=criar]', tit: 'Criar', txt: 'Clique em Criar.', dica: 'Ao criar, você aceita os Termos das Ferramentas Comerciais da Meta.', clique: true },
-      { alvo: '[data-t=id-novo]', tit: 'O ID do Pixel', txt: 'Pronto! Este número é o ID do Pixel. É ele que vai no código do site (na Lojinha, em config.js).', dica: 'Lembra do 📓 caderno errado do laboratório? É quando o site usa o ID de OUTRO Pixel: os eventos não chegam aqui.' },
-      { alvo: '[data-t=ver-codigo]', tit: 'O código do Pixel', txt: 'Em Configurar o Pixel você vê o código base com este ID, pronto para colar no <head> do site. Fim deste tutorial! 🎉', fim: true }
+      { alvo: '[data-t=conectar]', clique: true, tit: { pt: 'Conectar dados', es: 'Conectar datos' },
+        txt: { pt: 'Este é o Gerenciador de Eventos do portfólio Lojinha da Marina Aula (confira sempre o nome no canto superior direito). Para criar o Pixel, clique em Conectar dados.', es: 'Este es el Administrador de eventos del portafolio Lojinha da Marina Aula (revisa siempre el nombre arriba a la derecha). Para crear el Pixel, haz clic en Conectar datos.' } },
+      { alvo: '[data-t=op-web]', clique: true, tit: { pt: 'Tipo de dado: Web', es: 'Tipo de dato: Web' },
+        txt: { pt: 'O Pixel mede o que acontece no SITE. Escolha Web.', es: 'El Pixel mide lo que pasa en el SITIO. Elige Web.' },
+        dica: { pt: 'App, Offline, CRM e Mensagens são outras fontes de dados, para outras aulas.', es: 'App, Offline, CRM y Mensajes son otras fuentes de datos, para otras clases.' } },
+      { alvo: '[data-t=avancar]', clique: true, tit: { pt: 'Avançar', es: 'Siguiente' }, txt: { pt: 'Clique em Avançar.', es: 'Haz clic en Siguiente.' } },
+      { alvo: '[data-t=nome]', cond: function () { return (window.__nomeDs || '').trim().length > 2 }, tit: { pt: 'O nome', es: 'El nombre' },
+        txt: { pt: 'Digite um nome, por exemplo: Pixel Aula Lojinha da Marina. Depois clique em Próximo.', es: 'Escribe un nombre, por ejemplo: Pixel Aula Lojinha da Marina. Después haz clic en Siguiente.' },
+        dica: { pt: 'A Meta agora chama o Pixel de conjunto de dados. É a mesma coisa.', es: 'Meta ahora llama al Pixel conjunto de datos. Es lo mismo.' } },
+      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' },
+        txt: { pt: 'Esta caixinha liga também o envio pelo servidor. Na aula, DESMARQUE para estudar o Pixel sozinho primeiro.', es: 'Esta casilla activa también el envío por el servidor. En la clase, DESMÁRCALA para estudiar primero el Pixel solo.' },
+        dica: { pt: 'Ela vale para o portfólio inteiro, não só para este Pixel.', es: 'Vale para todo el portafolio, no solo para este Pixel.' } },
+      { alvo: '[data-t=cats]', tit: { pt: 'Categorias', es: 'Categorías' },
+        txt: { pt: 'São categorias de assuntos sensíveis (saúde, religião, política…). Loja de canecas: não marque nenhuma.', es: 'Son categorías de temas sensibles (salud, religión, política…). Tienda de tazas: no marques ninguna.' } },
+      { alvo: '[data-t=criar]', clique: true, tit: { pt: 'Criar', es: 'Crear' }, txt: { pt: 'Clique em Criar.', es: 'Haz clic en Crear.' },
+        dica: { pt: 'Ao criar, você aceita os Termos das Ferramentas Comerciais da Meta.', es: 'Al crear, aceptas las Condiciones de las Herramientas para empresas de Meta.' } },
+      { alvo: '[data-t=id-novo]', tit: { pt: 'O identificador do Pixel', es: 'El identificador del Pixel' },
+        txt: { pt: 'Pronto! Este número é o identificador do Pixel. É ele que vai no código do site; é ele que você compara quando o cliente pergunta “é o Pixel certo?”.', es: '¡Listo! Este número es el identificador del Pixel. Es el que va en el código del sitio; es el que comparas cuando el cliente pregunta “¿es el Pixel correcto?”.' } },
+      { alvo: '[data-t=ver-codigo]', fim: true, tit: { pt: 'Colocar no site', es: 'Ponerlo en el sitio' },
+        txt: { pt: 'Em Configurar o Pixel fica o código com este número, para colocar no topo de todas as páginas (ou use a integração da plataforma). Fim do tutorial! 🎉', es: 'En Configurar el Pixel está el código con este número, para ponerlo arriba en todas las páginas (o usa la integración de la plataforma). ¡Fin del tutorial! 🎉' } }
     ],
     'testar-eventos': [
       { alvo: '[data-t=menu-conjuntos]', tit: 'Conjuntos de dados', txt: 'Clique em Conjuntos de dados para ver seus Pixels.', clique: true, pre: function () { if (!S.datasets.length) { alert('Primeiro crie um Pixel: siga o tutorial "Criar o Pixel".'); location.href = '?tour=criar-pixel'; return false } } },

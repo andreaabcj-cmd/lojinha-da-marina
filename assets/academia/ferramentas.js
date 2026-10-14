@@ -108,6 +108,43 @@
     }
   };
 
+
+  /* ---------- 3. Onde vai o código? (aula 02) ---------- */
+  var PAGS = [{ ic: '🏠', n: { pt: 'Início', es: 'Inicio' }, ev: 'PageView' }, { ic: '🧸', n: { pt: 'Produto', es: 'Producto' }, ev: 'ViewContent' },
+    { ic: '🛒', n: { pt: 'Carrinho', es: 'Carrito' }, ev: 'AddToCart' }, { ic: '🎉', n: { pt: 'Obrigado pela compra', es: 'Gracias por tu compra' }, ev: 'Purchase' }];
+  var LUGARES = {
+    head: { certo: true, tit: { pt: 'No topo (&lt;head&gt;) de TODAS as páginas', es: 'Arriba (&lt;head&gt;) de TODAS las páginas' }, mede: [1, 1, 1, 1],
+      fb: { pt: 'Isso! É o que a Meta recomenda: o código no &lt;head&gt; de todas as páginas. Assim o Pixel está presente em cada passo, até a compra.', es: '¡Eso! Es lo que Meta recomienda: el código en el &lt;head&gt; de todas las páginas. Así el Pixel está presente en cada paso, hasta la compra.' } },
+    plataforma: { certo: true, tit: { pt: 'Pela integração da plataforma da loja (ex.: Shopify)', es: 'Por la integración de la plataforma de la tienda (ej.: Shopify)' }, mede: [1, 1, 1, 1],
+      fb: { pt: 'Também certo! Se a loja é de uma plataforma parceira, a integração coloca o Pixel em todas as páginas sem mexer em código.', es: '¡También es correcto! Si la tienda es de una plataforma socia, la integración pone el Pixel en todas las páginas sin tocar código.' } },
+    inicio: { certo: false, tit: { pt: 'Só na página inicial', es: 'Solo en la página de inicio' }, mede: [1, 0, 0, 0],
+      fb: { pt: 'Não. O Pixel só mede onde ele está: produto, carrinho e a COMPRA ficam de fora. A cliente não vê o resultado das vendas.', es: 'No. El Pixel solo mide donde está: producto, carrito y la COMPRA quedan fuera. La clienta no ve el resultado de las ventas.' } },
+    rodape: { certo: false, tit: { pt: 'No rodapé, só da página de compra', es: 'En el pie, solo de la página de compra' }, mede: [0, 0, 0, 1],
+      fb: { pt: 'Não. Fica faltando todo o caminho até a compra (visitas, produtos vistos, carrinho), e a Meta não aprende quem se interessa.', es: 'No. Falta todo el camino hasta la compra (visitas, productos vistos, carrito), y Meta no aprende quién se interesa.' } }
+  };
+  F['onde-colar'] = {
+    titulo: { pt: 'Onde vai o código?', es: '¿Dónde va el código?' },
+    resumo: { pt: 'Escolha onde colocar o código do Pixel e veja quais páginas passam a ser medidas.', es: 'Elige dónde poner el código del Pixel y mira qué páginas empiezan a medirse.' },
+    paginas: '11', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="oc"><p class="oc-perg">' + T({ pt: 'O sobrinho da Marina vai colocar o código. Onde ele deve colar?', es: 'El sobrino de Marina va a poner el código. ¿Dónde debe pegarlo?' }) + '</p>' +
+        '<div class="oc-ops">' + Object.keys(LUGARES).map(function (k) { return '<button class="opcao" data-oc="' + k + '">' + T(LUGARES[k].tit) + '</button>' }).join('') + '</div>' +
+        '<div class="oc-site">' + PAGS.map(function (p, i) { return '<div class="oc-pag" data-i="' + i + '"><div class="oc-head">&lt;head&gt;</div><span class="oc-ic">' + p.ic + '</span><b>' + T(p.n) + '</b><code>' + p.ev + '</code><span class="oc-st">—</span></div>' }).join('') + '</div>' +
+        '<div class="oc-fb" id="ocFb"></div></div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-oc]'); if (!b) return; var L = LUGARES[b.getAttribute('data-oc')];
+        el.querySelectorAll('[data-oc]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(L.certo ? 'certa' : 'errada');
+        el.querySelectorAll('.oc-pag').forEach(function (pg, i) {
+          var ok = L.mede[i]; pg.classList.toggle('mede', !!ok); pg.classList.toggle('nao', !ok);
+          pg.querySelector('.oc-st').textContent = ok ? T({ pt: '✓ medida', es: '✓ medida' }) : T({ pt: '✗ sem Pixel', es: '✗ sin Pixel' });
+          pg.style.setProperty('--i', i); pg.classList.remove('mv-chega'); void pg.offsetWidth; pg.classList.add('mv-chega');
+        });
+        var fb = el.querySelector('#ocFb'); fb.className = 'oc-fb ' + (L.certo ? 'ok' : 'erro'); fb.innerHTML = (L.certo ? '✅ ' : '❌ ') + T(L.fb);
+        if (L.certo && window.MOV) MOV.confete(b);
+      });
+    }
+  };
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

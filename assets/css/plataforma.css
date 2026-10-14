@@ -248,3 +248,15 @@ details.cola[open]>summary b::before{transform:rotate(90deg)}
 details.cola[open]>summary{margin-bottom:10px}details.cola[open] .cola-dica{display:none}
 .cola-dica{margin-left:auto;margin-right:6px;font-size:13px;color:var(--muted)}
 details.cola[open]>summary~*{animation:mvChega .3s both}
+
+/* ferramenta: onde vai o código? */
+.oc-perg{font-weight:700;font-size:16px;margin:0 0 10px}
+.oc-ops{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.oc-site{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.oc-pag{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 8px 10px;background:#fff;border:2px solid var(--ink);border-radius:10px;box-shadow:3px 3px 0 var(--ink);text-align:center;font-size:14px;overflow:hidden}
+.oc-head{align-self:stretch;margin:0 -8px 6px;padding:3px;font:11px Consolas,monospace;background:#EEF2F7;color:var(--muted)}
+.oc-ic{font-size:26px}.oc-pag code{font-size:11px;color:var(--muted)}.oc-st{font-size:12px;font-weight:700;color:var(--muted)}
+.oc-pag.mede{background:var(--green-l)}.oc-pag.mede .oc-head{background:#BFE9CF;color:var(--green)}.oc-pag.mede .oc-st{color:var(--green)}
+.oc-pag.nao{opacity:.6}.oc-pag.nao .oc-st{color:var(--red)}
+.oc-fb{margin-top:12px;padding:0;border-radius:10px;font-size:15px}.oc-fb.ok{padding:12px 14px;background:var(--green-l)}.oc-fb.erro{padding:12px 14px;background:var(--red-l)}
+@media (max-width:720px){.oc-ops{grid-template-columns:1fr}.oc-site{grid-template-columns:1fr 1fr}}
