@@ -296,6 +296,8 @@ PLAT = '''<!doctype html>
 <script src="assets/js/porta.js"></script>
 <script src="assets/academia/conteudo.js"></script>
 <script src="assets/academia/ferramentas.js"></script>
+<script src="assets/academia/praticas.js"></script>
+<script src="assets/js/tour.js"></script>
 <script src="assets/js/plataforma.js"></script>
 </head>
 <body data-tela="{tela}"><noscript>Ative o JavaScript para usar a plataforma.</noscript></body>
@@ -303,7 +305,7 @@ PLAT = '''<!doctype html>
 '''
 for arq, titulo, tela in [('index', 'Início', 'inicio'), ('modulos', 'Módulos', 'modulos'), ('modulo', 'Módulo', 'modulo'),
                           ('aula-plataforma', 'Aula', 'aula'), ('simuladores', 'Simuladores', 'simuladores'),
-                          ('laboratorio', 'Laboratório', 'laboratorio'), ('ferramenta', 'Ferramenta', 'ferramenta'), ('colas', 'Colas do atendimento', 'colas')]:
+                          ('laboratorio', 'Laboratório', 'laboratorio'), ('ferramenta', 'Ferramenta', 'ferramenta'), ('pratica', 'Prática', 'pratica'), ('colas', 'Colas do atendimento', 'colas')]:
     with open(os.path.join(RAIZ, arq + '.html'), 'w', encoding='utf-8') as f:
         f.write(PLAT.format(titulo=titulo, tela=tela))
     print('ok', arq + '.html')

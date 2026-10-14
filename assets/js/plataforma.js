@@ -95,7 +95,8 @@
   /* ---------- AULA: uma parte por vez (ver · ferramenta · praticar · caso) ---------- */
   /* conversa no estilo do chat de atendimento: Marina (cliente) à esquerda, Rafa (agente) à direita, Pixel como dica no meio */
   var FOTOS = {
-    'codigo-base': '<div class="foto-cod"><span class="c">&lt;!-- Meta Pixel Code --&gt;</span>\n<span class="t">&lt;script&gt;</span>\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=…\n…(window, document,\'script\',\n\'https://connect.facebook.net/en_US/fbevents.js\');\n<span class="f">fbq</span>(\'init\', \'1234567890123456\');\n<span class="f">fbq</span>(\'track\', \'PageView\');\n<span class="t">&lt;/script&gt;</span>\n<span class="c">&lt;!-- End Meta Pixel Code --&gt;</span></div>'
+    'gerenciador': '<div class="foto-ger"><div class="fg-topo"><b>Gerenciador de Eventos</b><span>Lojinha da Marina</span></div><div class="fg-corpo"><div class="fg-menu"><i></i><i class="on"></i><i></i><i></i></div><div><b class="fg-nome">Pixel da Lojinha</b><span class="fg-id">Identificação: 1234567890123456</span><div class="fg-abas"><u>Visão geral</u> Testar eventos · Diagnóstico</div><div class="fg-barras"><i style="height:30%"></i><i style="height:55%"></i><i style="height:20%"></i><i style="height:70%"></i><i style="height:45%"></i></div><span class="fg-ev">PageView · Ativo</span></div></div></div>',
+    'codigo-base': '<div class="foto-cod"><span class="c">&lt;!-- Meta Pixel Code --&gt;</span>\n<span class="t">&lt;script&gt;</span>\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=…\n…(window, document,\'script\',\n\'https://connect.facebook.net/en_US/fbevents.js\');\n<span class="f">fbq</span>(\'init\', \'<span class="f-init">1234567890123456</span>\');\n<span class="f">fbq</span>(\'track\', \'PageView\');\n<span class="t">&lt;/script&gt;</span>\n<span class="c">&lt;!-- End Meta Pixel Code --&gt;</span></div>'
   };
   function chat(dialogo, quem0) {
     var min = 41, h = '<div class="chat"><div class="chat-sis">' + T({ pt: 'Rafa entrou na conversa.', es: 'Rafa se unió a la conversación.' }) + '</div>';
@@ -103,7 +104,7 @@
     dialogo.forEach(function (d) {
       var hora = '17:' + (min++), m = d[1];
       if (d[0] === 'pixel') { h += '<div class="chat-dica">' + av('pixel') + '<span><b>Pixel:</b> ' + T(m) + '</span></div>'; return }
-      var lado = d[0] === 'rafa' ? 'dir' : 'esq', corpo = m.foto ? '<div class="bolha foto">' + FOTOS[m.foto] + '</div>' : '<div class="bolha">' + T(m) + '</div>';
+      var lado = d[0] === 'rafa' ? 'dir' : 'esq', corpo = m.foto ? '<div class="bolha foto" data-foto="' + m.foto + '">' + FOTOS[m.foto] + '</div>' : '<div class="bolha"' + (m.id ? ' data-msg="' + m.id + '"' : '') + '>' + T(m) + '</div>';
       if (m.foto) h += '<div class="chat-sis">' + T(m.legenda) + '</div>';
       h += '<div class="msg ' + lado + '">' + av(d[0]) + '<div>' + corpo + '<span class="hora">' + (PERSONAGEM_NOME[d[0]] || d[0]) + ' · ' + hora + '</span></div></div>';
     });
@@ -138,15 +139,20 @@
     var partes = ['entender', 'ferramenta', 'praticar', 'atender'].filter(function (p) { return a[p] });
     passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
     var prox = lista[lista.indexOf(a) + 1], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid;
+    if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function desenha() {
       var p = partes[passoAtual], h = '';
       if (p === 'entender') h = '<h2>💬 ' + T(U.entender) + '</h2>' + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🔍 ' + T(U.ferramenta) + '</h2><div class="ferr-box" id="ferr"></div><p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>'; setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
       else if (p === 'praticar') {
-        var volta = encodeURIComponent(aqui + '&passo=' + (passoAtual + 2));
+        var volta = function (id) { return encodeURIComponent(aqui + '&passo=' + (passoAtual + 1) + '&feito=' + id) }, fp = lsGet('plat.praticas', {});
+        var url = function (o) { return o.pagina + (o.pagina.indexOf('?') < 0 ? '?' : '&') + 'tour=' + o.tour + '&voltar=' + volta(o.id) };
         h = '<h2>🕹️ ' + T(U.praticar) + '</h2><div class="pratica"><span class="pratica-masc">' + PERSONAGEM('pixel', 4) + '</span><div><p class="pratica-txt">' + T(a.praticar.texto) + '</p>' +
-          '<a class="btn amarelo grande" href="' + a.praticar.pagina + '?tour=' + a.praticar.tour + '&voltar=' + volta + '">▶ ' + T({ pt: 'Começar a prática guiada', es: 'Empezar la práctica guiada' }) + '</a>' +
-          '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p></div></div>';
+          (a.praticar.opcoes ? '' : '<a class="btn amarelo grande" href="' + url({ pagina: a.praticar.pagina, tour: a.praticar.tour, id: 'unica' }) + '">▶ ' + T({ pt: 'Começar a prática guiada', es: 'Empezar la práctica guiada' }) + '</a>') + '</div></div>' +
+          (a.praticar.opcoes ? '<div class="jeitos">' + a.praticar.opcoes.map(function (o, i) {
+            var feito = fp[mid + '/' + aid + '/' + o.id];
+            return '<a class="jeito' + (i === 0 ? ' principal' : '') + (feito ? ' feito' : '') + '" href="' + url(o) + '"><span class="n">' + (feito ? '✓' : i + 1) + '</span><span class="ic">' + o.icone + '</span><div><b>' + T(o.tit) + (o.selo ? ' <em>' + T(o.selo) + '</em>' : '') + '</b><p>' + T(o.txt) + '</p></div><span class="ir">▶</span></a>'
+          }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p>');
       }
       else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + a.atender.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
         (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '');
@@ -184,6 +190,20 @@
       (a.fontes ? '<details class="fontes"><summary>📚 ' + T(U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '');
   }
 
+  /* prática guiada feita na própria plataforma (ex.: pedir e ler o print do cliente) */
+  TELAS.pratica = function () {
+    var p = (window.PRATICAS || {})[Q.get('p')]; if (!p) return '<p>' + T({ pt: 'Prática não encontrada.', es: 'Práctica no encontrada.' }) + '</p>';
+    setTimeout(function () {
+      $('#palcoPratica').addEventListener('click', function (e) {
+        var o = e.target.closest('[data-pp]'); if (!o || $('.pp-op.certa')) return; var op = p.pergunta.opcoes[+o.getAttribute('data-pp')];
+        document.querySelectorAll('.pp-op .fb').forEach(function (x) { x.remove() }); document.querySelectorAll('.pp-op').forEach(function (x) { x.classList.remove('errada') });
+        o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
+      });
+    });
+    return '<h1 class="pl-h1">🕹️ ' + T(p.titulo) + '</h1><p class="pl-lead">' + T(p.resumo) + '</p><div class="palco" id="palcoPratica">' + chat(p.dialogo) +
+      '<div class="pp-pergunta"><b>' + T(p.pergunta.txt) + '</b><div class="opcoes">' + p.pergunta.opcoes.map(function (o, i) { return '<button class="opcao pp-op" data-pp="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div></div></div>';
+  };
+
   /* página com todas as colas, para consulta rápida no dia a dia */
   TELAS.colas = function () {
     var h = '<h1 class="pl-h1">🗒️ ' + T({ pt: 'Colas do atendimento', es: 'Guías rápidas de atención' }) + '</h1><p class="pl-lead">' + T({ pt: 'O resumo prático de cada aula: o que perguntar, o que conferir, a frase pronta e quando encaminhar. Use o botão copiar durante o atendimento.', es: 'El resumen práctico de cada clase: qué preguntar, qué revisar, la frase lista y cuándo derivar. Usa el botón copiar durante la atención.' }) + '</p>';
@@ -199,10 +219,12 @@
   function monta() {
     var tela = document.body.getAttribute('data-tela');
     if (!tela) return;   // páginas da loja/simulador só usam a porta
-    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas' }[tela];
+    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
+    var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
+    tg.forEach(function (x) { document.body.appendChild(x) });
   }
-  function inicia() { window.PLAT_PORTA(monta) }
+  function inicia() { try { sessionStorage.removeItem('loja.labLoja') } catch (e) { } window.PLAT_PORTA(monta) }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inicia); else inicia();
 })();

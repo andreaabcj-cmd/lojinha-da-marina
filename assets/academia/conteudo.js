@@ -45,8 +45,17 @@ window.AULAS = {
       },
       ferramenta: 'codigo-base',
       praticar: {
-        texto: { pt: 'No atendimento você não abre o código: confere o Pixel do site com a extensão Consultor de Dados. Na Lojinha, o Pixel te mostra onde ver se tem Pixel, qual é o ID e se o PageView chega.', es: 'En la atención no abres el código: revisas el Pixel del sitio con la extensión Asesor de datos. En la Lojinha, el Pixel te muestra dónde ver si hay Pixel, cuál es el ID y si llega el PageView.' },
-        tour: 'conferir-pixel', pagina: 'loja.html'
+        texto: { pt: 'Há vários jeitos de ver as 3 coisas (tem Pixel? qual é o ID? o PageView chega?). Escolha um e o Pixel te guia. Comece pelo primeiro: é o que mais se usa no atendimento.', es: 'Hay varias formas de ver las 3 cosas (¿hay Pixel? ¿cuál es el ID? ¿llega el PageView?). Elige una y el Pixel te guía. Empieza por la primera: es la que más se usa en la atención.' },
+        opcoes: [
+          { id: 'gerenciador', icone: '📡', pagina: 'meta-eventos.html', tour: 'gerenciador-pixel', selo: { pt: 'mais usado', es: 'el más usado' },
+            tit: { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, txt: { pt: 'Ver o ID do Pixel e o PageView chegando em Testar eventos.', es: 'Ver el ID del Pixel y el PageView llegando en Probar eventos.' } },
+          { id: 'print', icone: '📸', pagina: 'pratica.html?p=print-pixel', tour: 'print-pixel',
+            tit: { pt: 'Print do cliente', es: 'Captura del cliente' }, txt: { pt: 'Como pedir o print certo (com o caminho exato) e o que ler nele.', es: 'Cómo pedir la captura correcta (con el camino exacto) y qué leer en ella.' } },
+          { id: 'extensao', icone: '🔎', pagina: 'loja.html', tour: 'extensao-pixel',
+            tit: { pt: 'Extensão Consultor de Dados', es: 'Extensión Asesor de datos' }, txt: { pt: 'Abrir o site do cliente e ver o Pixel, o ID e os eventos.', es: 'Abrir el sitio del cliente y ver el Pixel, el ID y los eventos.' } },
+          { id: 'codigo', icone: '🧑‍💻', pagina: 'loja.html?lab=1', tour: 'achar-codigo', selo: { pt: 'técnico', es: 'técnico' },
+            tit: { pt: 'Código-fonte da página', es: 'Código fuente de la página' }, txt: { pt: 'Achar o comentário, o init e o PageView direto no código (como Ctrl+U ou F12).', es: 'Encontrar el comentario, el init y el PageView directo en el código (como Ctrl+U o F12).' } }
+        ]
       },
       atender: {
         cena: { pt: 'Instalei o Pixel ontem e nenhum evento aparece no meu Gerenciador de Eventos. 😩', es: 'Instalé el Pixel ayer y no aparece ningún evento en mi Administrador de eventos. 😩' },
@@ -59,12 +68,14 @@ window.AULAS = {
         ]
       },
       cola: {
-        perguntas: [{ pt: 'Você consegue ver o código do Pixel no site (o comentário Meta Pixel Code)?', es: '¿Puedes ver el código del Pixel en el sitio (el comentario Meta Pixel Code)?' },
+        perguntas: [{ pt: 'Pode me mandar um print do Gerenciador de Eventos, com o seu Pixel aberto (nome e número de identificação)?', es: '¿Puedes enviarme una captura del Administrador de eventos, con tu Pixel abierto (nombre y número de identificación)?' },
+          { pt: 'Você consegue ver o código do Pixel no site (o comentário Meta Pixel Code)?', es: '¿Puedes ver el código del Pixel en el sitio (el comentario Meta Pixel Code)?' },
           { pt: 'Qual número aparece dentro de init?', es: '¿Qué número aparece dentro de init?' },
           { pt: 'Qual é o ID do Pixel no seu Gerenciador de Eventos?', es: '¿Cuál es el ID del Pixel en tu Administrador de eventos?' }],
         conferir: [{ pt: 'O ID do init é igual ao do Pixel, número por número.', es: 'El ID del init es igual al del Pixel, número por número.' },
           { pt: 'O PageView está no código.', es: 'El PageView está en el código.' },
-          { pt: 'O código aparece uma vez só (não está duplicado).', es: 'El código aparece una sola vez (no está duplicado).' }],
+          { pt: 'O código aparece uma vez só (não está duplicado).', es: 'El código aparece una sola vez (no está duplicado).' },
+          { pt: 'Se um jeito não der, tente outro: Gerenciador de Eventos → print do cliente → extensão → código-fonte.', es: 'Si una forma no funciona, prueba otra: Administrador de eventos → captura del cliente → extensión → código fuente.' }],
         frase: { pt: 'Vamos conferir juntos: você pode me mandar o número que aparece no código do site, dentro de init? Vou comparar com o ID do seu Pixel no Gerenciador de Eventos.', es: 'Revisémoslo juntos: ¿puedes enviarme el número que aparece en el código del sitio, dentro de init? Voy a compararlo con el ID de tu Pixel en el Administrador de eventos.' },
         encaminhar: { pt: 'Se o código está duplicado, editado ou faltando partes, e o cliente não sabe trocar: oriente a falar com quem cuida do site (desenvolvedor ou a plataforma da loja).', es: 'Si el código está duplicado, editado o con partes faltantes, y el cliente no sabe cambiarlo: oriéntalo a hablar con quien cuida el sitio (desarrollador o la plataforma de la tienda).' }
       },

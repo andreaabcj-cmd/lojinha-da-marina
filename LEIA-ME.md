@@ -18,7 +18,9 @@ Idiomas: **PT | ES** desde o início. Progresso: só no navegador de cada pessoa
 O agente precisa **entender, identificar o problema e orientar o cliente**; o que é técnico demais vai para o desenvolvedor.
 1. **Entender** — chat no estilo do atendimento (Marina à esquerda, Rafa à direita, Pixel como dica) + 2–3 ideias simples.
 2. **Ver de perto** — a ferramenta em modo simples (o técnico fica só no Laboratório).
-3. **Praticar** — SEMPRE guiado (holofote + Pixel), na loja ou no simulador; ao terminar volta para a aula.
+3. **Praticar** — SEMPRE guiado (holofote + Pixel), na loja, no simulador ou em `pratica.html?p=` (prática na própria plataforma, ex.: print do cliente).
+   Quando há vários jeitos, a aula mostra um menu de tutoriais (`praticar.opcoes`), na ordem do atendimento:
+   **Gerenciador de Eventos → print do cliente (e como pedir) → extensão Consultor de Dados → código-fonte/F12**. "Se um jeito não der, tente o próximo."
 4. **Atender** — o cliente diz algo e o agente escolhe o que responder (com retorno do porquê) + **Cola do atendimento**
    (perguntas, o que conferir, frase pronta, quando encaminhar). Fontes oficiais com data no rodapé.
 
@@ -26,6 +28,7 @@ O agente precisa **entender, identificar o problema e orientar o cliente**; o qu
 | Arquivo | Para que serve |
 |---|---|
 | `assets/academia/conteudo.js` | Módulos (a trilha) e o texto das aulas, sempre `{pt, es}` |
+| `assets/academia/praticas.js` | Práticas guiadas dentro da plataforma (conversa + tour), abertas por `pratica.html?p=` |
 | `assets/academia/ferramentas.js` | Ferramentas interativas (mesma ferramenta na aula e no Laboratório) |
 | `assets/js/plataforma.js` + `assets/css/plataforma.css` | Telas da plataforma (início, módulos, aula, colas…) |
 | `assets/js/porta.js` | A entrada com senha (em todas as páginas) |

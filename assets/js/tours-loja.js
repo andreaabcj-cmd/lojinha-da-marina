@@ -6,7 +6,7 @@ function tgPainelAberto() { var p = document.getElementById('maPanel'); return !
 window.TOURS['achar-codigo'] = [
   { alvo: '#maFab', clique: true, pula: tgPainelAberto,
     tit: { pt: 'O botão Modo aula', es: 'El botón Modo aula' },
-    txt: { pt: 'Ele fica no canto INFERIOR direito de todas as páginas da Lojinha e mostra o que o Pixel está fazendo. Clique nele.', es: 'Está en la esquina INFERIOR derecha de todas las páginas de la Lojinha y muestra lo que hace el Pixel. Haz clic en él.' } },
+    txt: { pt: 'Num computador, o código da página se abre com Ctrl+U (ou F12). Aqui, o botão Modo aula, no canto INFERIOR direito, faz esse papel. Clique nele.', es: 'En una computadora, el código de la página se abre con Ctrl+U (o F12). Aquí, el botón Modo aula, en la esquina INFERIOR derecha, cumple esa función. Haz clic en él.' } },
   { alvo: '.ma-tabs [data-aba=codigo]', clique: true,
     tit: { pt: 'A aba Código', es: 'La pestaña Código' },
     txt: { pt: 'Abra a aba 📄 Código. Ela mostra o código do Pixel desta página, sem precisar de ferramenta nenhuma do navegador.', es: 'Abre la pestaña 📄 Código. Muestra el código del Pixel de esta página, sin ninguna herramienta del navegador.' } },
@@ -27,7 +27,7 @@ window.TOURS['achar-codigo'] = [
 
 /* Aula 02 · prática do atendimento: conferir o Pixel do site com o Consultor de Dados (a extensão que o agente usa) */
 function tgDaAberto() { return document.documentElement.classList.contains('da-aberto') }
-window.TOURS['conferir-pixel'] = [
+window.TOURS['extensao-pixel'] = [
   { alvo: '#maExt', clique: true, pula: tgDaAberto,
     tit: { pt: 'A extensão Consultor de Dados', es: 'La extensión Asesor de datos' },
     txt: { pt: 'No atendimento, você não abre o código do site: usa a extensão Consultor de Dados de Anúncios da Meta, no Chrome. Aqui ela fica na faixa amarela. Clique nela.', es: 'En la atención no abres el código del sitio: usas la extensión Asesor de datos de anuncios de Meta, en Chrome. Aquí está en la franja amarilla. Haz clic en ella.' },

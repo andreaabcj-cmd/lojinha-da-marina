@@ -248,7 +248,27 @@
   window.addEventListener('storage', function (e) { if (e.key === 'sim.feed' || e.key === 'sim.eventos') { S = ler('sim.eventos', S); if (!janela) render(); tourChecaCondicao() } });
 
   /* ---------- tutorial guiado ---------- */
+  var TLANG = (function () { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } })();
+  function tx(o) { return o == null ? '' : typeof o === 'string' ? o : (o[TLANG] || o.pt || '') }
+  /* para a aula: se ainda não existe Pixel no simulador, cria um de exemplo (sem abrir janelas) */
+  function garantePixel() { if (!S.datasets.length) { S.datasets.unshift({ id: novoId(), nome: 'Pixel da Lojinha da Marina', criado: Date.now(), capi: false, am: true, cookies: true, auto: false }); grava(); render() } }
   var TOURS = {
+    'gerenciador-pixel': [
+      { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { garantePixel() },
+        tit: { pt: 'Conjuntos de dados', es: 'Conjuntos de datos' }, txt: { pt: 'No atendimento, este é o primeiro lugar para olhar. Clique em Conjuntos de dados: é onde ficam os Pixels do cliente.', es: 'En la atención, este es el primer lugar donde mirar. Haz clic en Conjuntos de datos: ahí están los Pixels del cliente.' },
+        dica: { pt: 'A Meta chama o Pixel de conjunto de dados. É a mesma coisa.', es: 'Meta llama al Pixel conjunto de datos. Es lo mismo.' } },
+      { alvo: '[data-t=ds-abrir]', clique: true, tit: { pt: 'Abrir o Pixel', es: 'Abrir el Pixel' }, txt: { pt: 'Clique no Pixel do cliente.', es: 'Haz clic en el Pixel del cliente.' } },
+      { alvo: '.ds-cab [data-t=id-novo]', tit: { pt: 'O ID do Pixel', es: 'El ID del Pixel' },
+        txt: { pt: 'Este é o número de identificação. Ele tem que ser IGUAL ao número que está no site (dentro do init). Se for diferente, os eventos vão para outro Pixel.', es: 'Este es el número de identificación. Tiene que ser IGUAL al número que está en el sitio (dentro del init). Si es distinto, los eventos van a otro Pixel.' },
+        dica: { pt: 'Para saber o número do site, peça um print ao cliente ou use a extensão Consultor de Dados.', es: 'Para saber el número del sitio, pide una captura al cliente o usa la extensión Asesor de datos.' } },
+      { alvo: '[data-t=aba-teste]', clique: true, tit: { pt: 'Testar eventos', es: 'Probar eventos' }, txt: { pt: 'Agora veja se os eventos chegam. Abra a aba Testar eventos.', es: 'Ahora mira si llegan los eventos. Abre la pestaña Probar eventos.' } },
+      { alvo: '[data-t=abrir-site]', clique: true, tit: { pt: 'Abrir o site', es: 'Abrir el sitio' }, txt: { pt: 'O endereço do site já está preenchido. Clique em Abrir site: a loja abre numa aba nova. Depois volte para esta aba.', es: 'La dirección del sitio ya está completa. Haz clic en Abrir sitio: la tienda se abre en una pestaña nueva. Luego vuelve a esta pestaña.' } },
+      { alvo: '[data-t=feed]', cond: function () { return feed().some(function (e) { return e.t >= (S.testeDesde || 0) && e.nome === 'PageView' }) },
+        tit: { pt: 'Esperando o PageView', es: 'Esperando el PageView' }, txt: { pt: 'Quando a loja abre, o PageView aparece aqui sozinho. Chegou? Então clique em Próximo.', es: 'Cuando la tienda se abre, el PageView aparece aquí solo. ¿Llegó? Entonces haz clic en Siguiente.' },
+        dica: { pt: 'Não chegou? Pode ser o ID errado no site, o código faltando ou cookies recusados.', es: '¿No llegó? Puede ser el ID equivocado en el sitio, el código faltante o cookies rechazadas.' } },
+      { alvo: '[data-t=feed]', fim: true, tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
+        txt: { pt: 'Você conferiu no Gerenciador de Eventos: o Pixel existe, você sabe o ID e o PageView está chegando. Clique em Concluir para voltar à aula.', es: 'Revisaste en el Administrador de eventos: el Pixel existe, sabes el ID y el PageView está llegando. Haz clic en Terminar para volver a la clase.' } }
+    ],
     'criar-pixel': [
       { alvo: '[data-t=conectar]', tit: 'Conectar dados', txt: 'Este é o Gerenciador de Eventos, do portfólio Lojinha da Marina Aula (confira sempre no canto superior direito). Para criar o Pixel, clique em Conectar dados.', clique: true },
       { alvo: '[data-t=op-web]', tit: 'Tipo de dado: Web', txt: 'O Pixel mede o que acontece no SITE. Escolha Web.', dica: 'App, Offline, CRM e Mensagens são outras fontes de dados, para outras aulas.', clique: true },
@@ -276,7 +296,7 @@
     if (!tour) return; var p = tour[passo];
     if (p.pre && p.pre() === false) return;
     var precisaProx = !p.clique && !p.fim;
-    balao.innerHTML = '<span class="masc">' + mascote(54) + '</span><b>' + esc(p.tit) + '</b><p>' + esc(p.txt) + '</p>' + (p.dica ? '<div class="dica">💬 Pixel: ' + esc(p.dica) + '</div>' : '') +
+    balao.innerHTML = '<span class="masc">' + mascote(54) + '</span><b>' + esc(tx(p.tit)) + '</b><p>' + esc(tx(p.txt)) + '</p>' + (p.dica ? '<div class="dica">💬 Pixel: ' + esc(tx(p.dica)) + '</div>' : '') +
       '<div class="ctrl"><small>Passo ' + (passo + 1) + ' de ' + tour.length + '</small><span>' + (passo ? '<button class="btn sec" data-tour="volta">◀</button> ' : '') +
       (p.fim ? '<button class="btn" data-tour="fim">Concluir</button>' : precisaProx ? '<button class="btn" data-tour="prox" ' + (p.cond && !p.cond() ? 'disabled' : '') + '>Próximo ▶</button>' : '<small>👆 clique no destaque</small>') + '</span></div>';
     tourAtualiza();
