@@ -2,7 +2,7 @@
    - MOV.chat(caixa, fim): mensagens aparecem uma por vez, com "digitando…" antes
    - MOV.cascata(raiz): cartões entram um depois do outro
    - MOV.confete(origem): festinha curta (acertou / concluiu)
-   Com "menos animação" ligado no sistema (comum no Windows do trabalho), só o confete some: o resto é suave e ajuda a contar a história. */
+   Com "menos animação" ligado no sistema (comum em computadores de empresa), só o confete some: o resto é suave e ajuda a contar a história. */
 (function () {
   var reduz = false;
   try { reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches } catch (e) { }

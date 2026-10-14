@@ -1,14 +1,15 @@
-# A história da Marina — roteiro da trilha (rascunho para revisar com o André)
+# A história da Marina — roteiro da trilha (rascunho em revisão)
 
 A trilha inteira é **uma história só**: a Marina começa sem saber nada e termina com o ecossistema da Meta
 inteiro funcionando. Cada **módulo** é um momento do negócio dela; cada **aula** abre com
 "onde paramos" e fecha com um gancho para a próxima.
 
 Regras do roteiro:
+- **A regra de ouro (13/10):** não se perder. Toda aula respeita DUAS coisas ao mesmo tempo: o **nível da Marina** naquela fase e a **hierarquia da Meta** (uma ferramenta/recurso só aparece depois daquilo de que ele depende).
 - Uma aula = uma pergunta da Marina. A aula responde essa pergunta e só ela.
 - A Marina sabe exatamente o que a fase dela permite saber: ela **não** pergunta de API de Conversões na fase 1.
 - Se uma aula mais à frente pedir mudança numa aula de trás, muda (e anota aqui).
-- Nada de classificação interna no site: as fases são o momento do negócio dela, sem julgamento.
+- As fases são o momento do negócio dela, sem julgamento.
 - A Marina que "pesquisou na IA" é tratada com respeito: o caso ensina a corrigir sem humilhar.
 
 ## As 5 fases
@@ -61,7 +62,7 @@ Mudanças que isso pede no que já existe:
 - A aula 10 (Pixel e catálogo) vai para o módulo **Catálogo**.
 
 ## Pendências de revisão
-- [x] André aprovou a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
+- [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
-- [ ] Construir as aulas 01, 02, 04 e 05 do Pixel básico (uma por vez, revisando com o André).
+- [ ] Construir as aulas 01, 02, 04 e 05 do Pixel básico (uma por vez, revisando cada uma).
 - [ ] Detalhar fases 2–5 quando chegar a vez de cada uma.
