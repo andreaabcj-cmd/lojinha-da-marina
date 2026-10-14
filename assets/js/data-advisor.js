@@ -156,11 +156,13 @@
     aberto = on === undefined ? !aberto : on;
     try { sessionStorage.setItem('loja.daAberto', aberto ? '1' : '') } catch (e) { }
     if (painel) painel.classList.toggle('open', aberto);
+    if (aberto) try { document.dispatchEvent(new CustomEvent('loja:ferramenta', { detail: 'da' })) } catch (e) { }   // uma ferramenta por vez
     document.documentElement.classList.toggle('da-aberto', aberto);
     render();
   }
 
   document.addEventListener('click', function (ev) { if (ev.target.closest && ev.target.closest('#maExt')) alterna() });
+  document.addEventListener('loja:ferramenta', function (e) { if (e.detail !== 'da' && aberto) alterna(false) });
   document.addEventListener('loja:evento', function () { render() });
   document.addEventListener('loja:faixa', function () { contaBadge() });
   function inicia() { monta(); try { if (sessionStorage.getItem('loja.daAberto')) alterna(true) } catch (e) { } }

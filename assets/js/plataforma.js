@@ -225,6 +225,10 @@
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
     tg.forEach(function (x) { document.body.appendChild(x) });
   }
-  function inicia() { try { sessionStorage.removeItem('loja.labLoja') } catch (e) { } window.PLAT_PORTA(monta) }
+  function inicia() {
+    // cada prática começa do zero: sem Modo aula, sem Consultor de Dados aberto, sem tutorial pela metade
+    try { ['loja.labLoja', 'loja.daAberto', 'tour.ativo'].forEach(function (k) { sessionStorage.removeItem(k) }); localStorage.setItem('loja.aulaAberta', 'false') } catch (e) { }
+    window.PLAT_PORTA(monta)
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inicia); else inicia();
 })();

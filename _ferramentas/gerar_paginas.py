@@ -309,3 +309,15 @@ for arq, titulo, tela in [('index', 'Início', 'inicio'), ('modulos', 'Módulos'
     with open(os.path.join(RAIZ, arq + '.html'), 'w', encoding='utf-8') as f:
         f.write(PLAT.format(titulo=titulo, tela=tela))
     print('ok', arq + '.html')
+
+# ---------- versão nos arquivos (o navegador não fica com o .js/.css antigo depois de uma atualização) ----------
+import re, time, glob
+VERSAO = time.strftime('%Y%m%d%H%M')
+for html in glob.glob(os.path.join(RAIZ, '*.html')):
+    with open(html, encoding='utf-8') as f:
+        t = f.read()
+    n = re.sub(r'((?:src|href)="assets/[^"?]+\.(?:js|css))(?:\?v=\d+)?"', r'\1?v=' + VERSAO + '"', t)
+    if n != t:
+        with open(html, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(n)
+print('versão dos arquivos:', VERSAO)

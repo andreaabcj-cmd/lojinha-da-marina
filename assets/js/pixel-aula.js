@@ -187,7 +187,8 @@ var ui = (function(){
       '<nav class="ma-tabs"><button data-aba="camera">📹 Câmera</button><button data-aba="rede">🌐 Rede</button><button data-aba="lupa">🔍 Lupa</button><button data-aba="codigo">📄 Código</button><button data-aba="lab">🧪 Lab</button><button data-aba="dica">💡 Dica</button></nav><div class="ma-body" id="maBody"></div></aside><div class="ma-toasts" id="maToasts"></div>';
     document.body.appendChild(root);panel=document.getElementById('maPanel');badge=document.getElementById('maBadge');toastBox=document.getElementById('maToasts');
     document.querySelector('.ma-mascote').innerHTML=mascote();
-    document.getElementById('maFab').onclick=function(){aberto=!aberto;lsSet('aulaAberta',aberto);panel.classList.toggle('open',aberto);render()};
+    document.getElementById('maFab').onclick=function(){aberto=!aberto;lsSet('aulaAberta',aberto);panel.classList.toggle('open',aberto);if(aberto)try{document.dispatchEvent(new CustomEvent('loja:ferramenta',{detail:'aula'}))}catch(e){}render()};
+    document.addEventListener('loja:ferramenta',function(e){if(e.detail!=='aula'&&aberto){aberto=false;lsSet('aulaAberta',false);panel.classList.remove('open')}});
     document.getElementById('maFecha').onclick=function(){aberto=false;lsSet('aulaAberta',false);panel.classList.remove('open')};
     $$('.ma-tabs button').forEach(function(b){b.onclick=function(){aba=b.getAttribute('data-aba');lsSet('aulaAba',aba);render()}});
     panel.classList.toggle('open',aberto);try{if(new URLSearchParams(location.search).get('aula'))document.getElementById('maFab').classList.add('chama')}catch(e){}faixa();banner();ready=true;badge.textContent=pageEvents.length;pend.forEach(function(e){toast(msgEv(e))});pend=[];render();
