@@ -48,6 +48,7 @@ O agente precisa **entender, identificar o problema e orientar o cliente**; o qu
 | `_modelos/tutorial-modelo.html` | Modelo do player de tutorial com prints (formato antigo) |
 
 ## Regras do projeto
+- ⛔ **ESTE REPOSITÓRIO É PÚBLICO. NADA interno nem pessoal entra aqui**: nenhuma ferramenta interna, caso real, classificação de clientes, processo de equipe, nome ou dado pessoal — nem em comentário, roteiro ou nome de arquivo. Conferir o diff antes de todo envio.
 - Nomes **reais** da Meta (Pixel, Gerenciador de Eventos, catálogo…); analogias só como apoio.
 - Telas da Meta são **recriadas** (não prints): layout idêntico, visual estilizado, sem logo da Meta, com "conferido em DD/MM/AAAA".
 - Toda afirmação técnica conferida na documentação oficial mais recente, com link e data.
