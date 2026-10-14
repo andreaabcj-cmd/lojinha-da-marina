@@ -200,3 +200,7 @@ body.em-tour .fundo{background:transparent}
 .pf-tipo{display:block;padding:6px 8px;border-radius:8px;font-size:13px}.pf-tipo.on{background:var(--blue-l);color:var(--blue);font-weight:700}
 .pf-ck{display:flex;gap:6px;align-items:center;font-size:13px;margin:4px 0}
 @media (max-width:820px){.pf-3col{grid-template-columns:1fr}}
+
+/* tutorial: com o destaque dentro de uma janela, a janela fica inteira visível e só o fundo escurece */
+.tour-recorte{position:fixed;z-index:69;border-radius:16px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);pointer-events:none;opacity:0;transition:all .35s cubic-bezier(.3,.1,.2,1)}
+.tour-holo.na-janela{box-shadow:none}

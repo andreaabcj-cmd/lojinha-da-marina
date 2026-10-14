@@ -11,7 +11,9 @@
   function T(o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') }
   var UI = { passo: { pt: 'Passo', es: 'Paso' }, de: { pt: 'de', es: 'de' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, fim: { pt: 'Concluir 🎉', es: 'Terminar 🎉' },
     clique: { pt: '👆 clique no destaque', es: '👆 haz clic en lo destacado' }, sair: { pt: 'Sair do tutorial', es: 'Salir del tutorial' }, procura: { pt: 'Procurando o próximo lugar…', es: 'Buscando el siguiente lugar…' } };
-  var css = '.tg-holo{position:fixed;z-index:2147483000;border-radius:10px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);outline:3px solid #F2B632;outline-offset:3px;pointer-events:none;transition:all .35s cubic-bezier(.3,.1,.2,1);animation:tgPulso 1.6s infinite}' +
+  var css = '.tg-recorte{position:fixed;z-index:2147482999;border-radius:16px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);pointer-events:none;opacity:0;transition:all .35s cubic-bezier(.3,.1,.2,1)}' +
+    '.tg-holo.na-janela{box-shadow:none}body.em-tour .fundo{background:transparent}' +
+    '.tg-holo{position:fixed;z-index:2147483000;border-radius:10px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);outline:3px solid #F2B632;outline-offset:3px;pointer-events:none;transition:all .35s cubic-bezier(.3,.1,.2,1);animation:tgPulso 1.6s infinite}' +
     '@keyframes tgPulso{50%{outline-offset:7px}}' +
     '.tg-balao{position:fixed;z-index:2147483001;width:370px;max-width:calc(100vw - 24px);background:#fff;border:3px solid #16294A;border-radius:14px;box-shadow:5px 5px 0 #16294A;padding:24px 14px 12px 74px;font:15px/1.45 "Segoe UI",system-ui,Arial,sans-serif;color:#16294A;transition:top .35s,left .35s}' +
     '.tg-balao .tg-masc{position:absolute;left:10px;top:12px;animation:tgBoing 1.2s ease-in-out infinite}@keyframes tgBoing{50%{transform:translateY(-5px)}}' +
@@ -22,7 +24,7 @@
     '.tg-btn{padding:7px 12px;border-radius:9px;border:2px solid #16294A;background:#2F6FD6;color:#fff;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 #16294A}.tg-btn.sec{background:#fff;color:#16294A}.tg-btn[disabled]{opacity:.45;cursor:default}' +
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
-  var holo, balao, tour, nome, passo = 0, timer;
+  var holo, balao, recorte, tour, nome, passo = 0, timer;
   var voltar = null, paginas = {};   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
   function aqui() { return (location.pathname.split('/').pop() || 'index.html') + (location.hash || '') }   // página + tela (#...) dos simuladores
   function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar, paginas: paginas })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
@@ -32,7 +34,8 @@
     if (holo) return;
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
     holo = document.createElement('div'); holo.className = 'tg-holo'; balao = document.createElement('div'); balao.className = 'tg-balao';
-    document.body.appendChild(holo); document.body.appendChild(balao);
+    recorte = document.createElement('div'); recorte.className = 'tg-recorte'; document.body.appendChild(recorte);
+    document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour');
     balao.addEventListener('click', function (e) {
       var b = e.target.closest('[data-tg]'); if (!b) return; var a = b.getAttribute('data-tg');
       if (a === 'prox') vai(passo + 1); else if (a === 'volta') volta(); else if (a === 'fim' || a === 'sair') termina(a === 'fim');
@@ -78,9 +81,14 @@
   function posiciona() {
     if (!tour || !holo) return; var p = tour[passo]; if (!p) return; var el = alvoEl(p);
     var bt = balao.querySelector('[data-tg=prox]'); if (bt && p.cond) bt.disabled = !p.cond();
-    if (!el || !el.getClientRects().length) { holo.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
+    if (!el || !el.getClientRects().length) { holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
     if (!p._rolou) { p._rolou = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
+    // dentro de uma janela/painel: a janela inteira fica visível; só o resto da tela escurece
+    var cx = el.closest && el.closest('.janela, [role=dialog], .da-painel, .ma-panel'); if (cx === el) cx = null;
+    holo.classList.toggle('na-janela', !!cx);
+    if (cx) { var rc = cx.getBoundingClientRect(); recorte.style.opacity = 1; recorte.style.left = rc.left + 'px'; recorte.style.top = rc.top + 'px'; recorte.style.width = rc.width + 'px'; recorte.style.height = rc.height + 'px'; recorte.style.borderRadius = getComputedStyle(cx).borderTopLeftRadius }
+    else recorte.style.opacity = 0;
     holo.style.left = r.left - 4 + 'px'; holo.style.top = r.top - 4 + 'px'; holo.style.width = r.width + 8 + 'px'; holo.style.height = r.height + 8 + 'px';
     var bw = balao.offsetWidth, bh = balao.offsetHeight, x = r.right + 18, y = r.top;
     if (x + bw > innerWidth - 10) { x = r.left - bw - 18; if (x < 10) { x = Math.max(10, Math.min(r.left, innerWidth - bw - 10)); y = r.bottom + 16; if (y + bh > innerHeight - 10) y = r.top - bh - 16 } }
@@ -88,7 +96,7 @@
   }
   function termina(concluiu) {
     var v = voltar; tour = null; salva(); clearInterval(timer);
-    if (holo) { holo.remove(); balao.remove(); holo = balao = null }
+    if (holo) { holo.remove(); balao.remove(); recorte.remove(); holo = balao = recorte = null } document.body.classList.remove('em-tour');
     if (concluiu && v) location.href = v;
   }
   window.TOUR = {

@@ -303,9 +303,9 @@
       { alvo: '[data-t=feed]', tit: 'Os detalhes', txt: 'Aqui estão os parâmetros (content_ids, value, currency...), o endereço da página e o ID do evento (eventID). É assim que se confere se o Pixel está enviando certo. 🎉', fim: true }
     ]
   };
-  var tour = null, passo = 0, holo, balao, rotas = {};   // rotas[passo] = endereço (#...) em que o passo foi mostrado
+  var tour = null, passo = 0, holo, balao, recorte, rotas = {};   // rotas[passo] = endereço (#...) em que o passo foi mostrado
   function janelaCom(qual, web) { if (janela !== qual) { abreJanela(qual) } if (web && escolha !== 'web') { escolha = 'web'; desenhaJanela() } }
-  function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour'); tourMostra() }
+  function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; recorte = document.createElement('div'); recorte.className = 'tour-recorte'; document.body.appendChild(recorte); holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour'); tourMostra() }
   function tourMostra() {
     if (!tour) return; var p = tour[passo];
     if (p.pre && p.pre() === false) return;
@@ -317,8 +317,11 @@
   }
   function tourAtualiza() {
     if (!tour || !holo) return; var p = tour[passo], el = $(p.alvo);
-    if (!el) { holo.style.opacity = 0; balao.style.left = '50%'; balao.style.top = '80px'; balao.style.transform = 'translateX(-50%)'; return }
+    if (!el) { holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = '50%'; balao.style.top = '80px'; balao.style.transform = 'translateX(-50%)'; return }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
+    var cx = el.closest('.janela, [role=dialog], .da-painel, .ma-panel'); if (cx === el) cx = null;   // dentro de uma janela: ela fica visível inteira
+    holo.classList.toggle('na-janela', !!cx);
+    if (cx) { var rc = cx.getBoundingClientRect(); recorte.style.opacity = 1; recorte.style.left = rc.left + 'px'; recorte.style.top = rc.top + 'px'; recorte.style.width = rc.width + 'px'; recorte.style.height = rc.height + 'px' } else recorte.style.opacity = 0;
     holo.style.left = r.left - 4 + 'px'; holo.style.top = r.top - 4 + 'px'; holo.style.width = r.width + 8 + 'px'; holo.style.height = r.height + 8 + 'px';
     var bw = balao.offsetWidth || 340, bh = balao.offsetHeight || 160, x = r.right + 18, y = r.top;
     if (x + bw > innerWidth - 10) { x = Math.max(10, r.left); y = r.bottom + 16; if (y + bh > innerHeight - 10) y = Math.max(10, r.top - bh - 16) }
@@ -336,7 +339,7 @@
       if (q.garante) q.garante(); else fechaJanela();
       setTimeout(tourMostra, 150)
     }
-    else if (t === 'fim') { holo.remove(); balao.remove(); tour = null; document.body.classList.remove('em-tour'); var vt = params.get('voltar'); if (vt) location.href = vt }
+    else if (t === 'fim') { holo.remove(); balao.remove(); recorte.remove(); tour = null; document.body.classList.remove('em-tour'); var vt = params.get('voltar'); if (vt) location.href = vt }
   });
   document.addEventListener('input', function () { tourAtualiza() });
   window.addEventListener('resize', tourAtualiza); document.addEventListener('scroll', tourAtualiza, true);
