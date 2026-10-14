@@ -173,3 +173,5 @@ code,.sku{font-family:Consolas,"Cascadia Mono",monospace;font-size:.86em;backgro
 
 .ma-sim{font-style:normal;font-weight:600;font-size:.75em;opacity:.75;margin-left:3px}
 @media(max-width:560px){.topo{gap:10px}.menu{flex-wrap:wrap;justify-content:flex-end;min-width:0;max-width:100%}.menu a{padding:5px 6px;font-size:13px}}
+/* celular: a faixa amarela quebra em várias linhas; fixa no topo, ela escondia o logo e o menu da loja. No celular ela rola junto com a página. */
+@media(max-width:700px){body{padding-top:0}.ma-faixa{position:relative;font-size:12px;gap:6px}.topo{top:0}.ma-panel{top:0}}
