@@ -22,7 +22,7 @@ function ssSet(k,v){try{sessionStorage.setItem('loja.'+k,JSON.stringify(v))}catc
 var LABON = !!ssGet('labLoja',false);
 var LAB = lsGet('lab',{});
 var consent = lsGet('consent',null);
-var AM = lsGet('am',true);
+var AM = lsGet('am',!LIVE);   // com o Pixel de verdade, a correspondência avançada começa DESLIGADA (alunos podem digitar dados reais no checkout)
 var cliente = lsGet('cliente',null);
 /* No modo simulação, o Pixel é o que foi criado no Gerenciador de Eventos SIMULADO (meta-eventos.html). */
 var SIM_PID = (function(){try{var e=JSON.parse(localStorage.getItem('sim.eventos')||'null');var d=e&&e.datasets&&e.datasets[0];return d?d.id:null}catch(x){return null}})();
@@ -100,6 +100,11 @@ window.LOJA = {
   pedidoJaDisparado:function(id){var l=lsGet('pedidosDisparados',[]);return l.indexOf(id)>=0},
   marcarPedido:function(id){var l=lsGet('pedidosDisparados',[]);if(l.indexOf(id)<0){l.push(id);lsSet('pedidosDisparados',l)}}
 };
+/* Pixel de verdade: se a biblioteca da Meta não carregou neste navegador (bloqueador, extensão, rede), a extensão REAL
+   não vê Pixel nenhum. A simulação NÃO muda (as aulas continuam iguais, mesmo em rede que bloqueia): só mostra um aviso. */
+var BIB_FALHOU=false;
+window.LOJA.bibliotecaFalhou=function(){return BIB_FALHOU};
+if(LIVE&&!BLOQ)setTimeout(function(){if(!(window.fbq&&window.fbq.instance)){BIB_FALHOU=true;try{document.dispatchEvent(new CustomEvent('loja:evento'))}catch(e){}}},5000);
 
 /* ---------- 3) DICAS DE AULA POR PÁGINA ---------- */
 var DICAS = {

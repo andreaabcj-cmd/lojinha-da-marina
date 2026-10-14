@@ -61,6 +61,7 @@
     var pag = visiveis(dados().pagina), bloq = L().bloqueado;
     var h = '<div class="da-sec"><button class="da-sec-tit" data-acao="nesta"><span>Nesta página</span>' + (nestaAberto ? IC.cima : IC.baixo) + '</button>';
     if (nestaAberto) {
+      if (!bloq && L().bibliotecaFalhou && L().bibliotecaFalhou()) h += '<p class="da-aviso-real">ℹ️ Neste navegador o Pixel de verdade não carregou (bloqueador ou rede). A extensão real pode mostrar “Nenhum Pixel encontrado”; esta simulação continua normal para a aula.</p>';
       if (bloq) h += '<p class="da-vazio-txt">Nenhum pixel encontrado nesta página.</p>';
       else h += '<span class="da-chip">1 pixel</span><button class="da-card da-card-pixel" data-acao="pixel"><div><b>Pixel da Meta</b><span class="da-sub">Identificação: ' + pid() + '</span>' +
         '<div class="da-linha">' + dot(statusPixel(pag)) + '<span class="da-pill">' + pag.length + (pag.length === 1 ? ' evento' : ' eventos') + '</span></div></div>' + IC.dir + '</button>';

@@ -75,3 +75,4 @@ html.da-aberto .ma-faixa{right:380px}
 html.da-aberto .ma-fab{right:398px}
 html.da-aberto .ma-panel{right:380px}
 @media (max-width:760px){html.da-aberto .ma-faixa,html.da-aberto .ma-panel{right:0}html.da-aberto .ma-fab{right:18px}}
+.da-aviso-real{margin:0 0 8px;padding:6px 8px;border-radius:8px;background:#FFF6D6;font-size:12px;line-height:1.35;color:#5a4a00}
