@@ -363,7 +363,7 @@
       if (q.garante) q.garante(); else fechaJanela();
       setTimeout(tourMostra, 150)
     }
-    else if (t === 'fim') { holo.remove(); balao.remove(); recorte.remove(); tour = null; document.body.classList.remove('em-tour'); var vt = params.get('voltar'); if (vt) location.href = vt }
+    else if (t === 'fim') { holo.remove(); balao.remove(); recorte.remove(); tour = null; document.body.classList.remove('em-tour'); var vt = params.get('voltar'); if (vt && /^[a-z0-9_-]+\.html([?#][^\s<>\"']*)?$/i.test(vt)) location.href = vt }
   });
   document.addEventListener('input', function () { tourAtualiza() });
   document.addEventListener('change', function () { setTimeout(tourAtualiza, 0) });   // caixinhas: a resposta só vale depois do change

@@ -27,7 +27,9 @@
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
   var holo, balao, recorte, tour, nome, passo = 0, timer, ouvindo = false;
-  var voltar = null, paginas = {};   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
+  var voltar = null, paginas = {};
+  // ?voltar= só aceita uma página da própria Lojinha (nada de javascript: nem site de fora num link montado por alguém)
+  function seguro(v) { return typeof v === 'string' && /^[a-z0-9_-]+\.html([?#][^\s<>\"']*)?$/i.test(v) ? v : null }   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
   function aqui() { return (location.pathname.split('/').pop() || 'index.html') + (location.hash || '') }   // página + tela (#...) dos simuladores
   function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar, paginas: paginas })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
   function alvoEl(p) { try { return typeof p.alvo === 'function' ? p.alvo() : document.querySelector(p.alvo) } catch (e) { return null } }
@@ -130,11 +132,11 @@
   function termina(concluiu) {
     var v = voltar; tour = null; salva(); clearInterval(timer);
     if (holo) { holo.remove(); balao.remove(); recorte.remove(); holo = balao = recorte = null } document.body.classList.remove('em-tour');
-    if (concluiu && v) location.href = v;
+    if (concluiu && seguro(v)) location.href = v;
   }
   window.TOUR = {
     inicia: function (n, p0, volta, pgs, atras) {
-      if (!window.TOURS || !window.TOURS[n]) return; tour = window.TOURS[n]; nome = n; voltar = volta || null; paginas = pgs || {}; monta();
+      if (!window.TOURS || !window.TOURS[n]) return; tour = window.TOURS[n]; nome = n; voltar = seguro(volta); paginas = pgs || {}; monta();
       clearInterval(timer); timer = setInterval(posiciona, 500);   // acompanha painéis que abrem e conteúdo que carrega
       vai(p0 || 0, atras);
     }
