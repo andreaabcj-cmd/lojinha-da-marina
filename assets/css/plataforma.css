@@ -182,3 +182,41 @@ html.apresentar h1.pl-h1{font-size:36px}
 .fase-ic{font-size:30px;width:52px;height:52px;display:grid;place-items:center;border:2px solid #16294A;border-radius:14px;background:#fff;box-shadow:3px 3px 0 #16294A}
 .fase-chip{display:inline-flex;align-items:center;gap:8px;margin:0 0 6px;padding:4px 12px 4px 6px;border-radius:999px;background:#FFF4D6;font-size:14px}
 .fio{padding:10px 14px;border-radius:10px;margin:0 0 14px;font-size:15px}.fio.antes{background:#EEF2F7}.fio.depois{background:#FFF4D6;margin:18px 0 0}
+
+/* ---------- movimento (leve) ---------- */
+@keyframes mvSobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes mvChega{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes mvDesliza{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes mvPop{0%{transform:scale(.4)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes mvPonto{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+@keyframes mvVoa{to{transform:translate(var(--dx),calc(var(--dy) + 140px)) rotate(var(--rot));opacity:0}}
+.mv-entra{animation:mvSobe .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 55ms)}
+.mv-oculta{display:none!important}
+.mv-chega{animation:mvChega .35s cubic-bezier(.2,.7,.2,1) both}
+.palco.mv-troca{animation:mvDesliza .35s cubic-bezier(.2,.7,.2,1) both}
+.mv-digitando .bolha{display:flex;gap:4px;padding:12px 14px!important}
+.mv-digitando .bolha i{width:7px;height:7px;border-radius:50%;background:currentColor;animation:mvPonto 1s infinite}
+.mv-digitando .bolha i:nth-child(2){animation-delay:.15s}.mv-digitando .bolha i:nth-child(3){animation-delay:.3s}
+.mv-digitando.esq .bolha{color:#6B7280}.mv-digitando.dir .bolha{color:#fff}
+.mv-pular{align-self:flex-end;margin-top:6px;border:0;background:rgba(255,255,255,.12);color:#C9D1DB;border-radius:999px;padding:4px 12px;font:600 12px inherit;cursor:pointer}
+.mv-pular:hover{background:rgba(255,255,255,.22)}
+.item,.aula-l,.jeito,.porta-card{transition:transform .15s ease,box-shadow .15s ease}
+a.item:hover,a.aula-l:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.jeito:hover{box-shadow:5px 5px 0 #16294A}
+.jeito.pop .n{animation:mvPop .6s .3s both}
+.mv-confete{position:fixed;inset:0;pointer-events:none;z-index:2147482000}
+.mv-confete i{position:fixed;width:8px;height:12px;border-radius:2px;animation:mvVoa 1.2s cubic-bezier(.2,.6,.4,1) forwards}
+/* trilha das fases */
+.trilha{position:relative;height:96px;margin:18px 28px 6px}
+.trilha-linha{position:absolute;left:0;right:0;top:26px;height:8px;border-radius:99px;background:#E2E8F0;border:2px solid var(--ink);overflow:hidden}
+.trilha-linha span{display:block;height:100%;width:var(--pct);background:repeating-linear-gradient(45deg,var(--yellow) 0 10px,#F7C95A 10px 20px);animation:mvEnche 1.2s .2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mvEnche{from{width:0}}
+.trilha-no{position:absolute;top:8px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink)}
+.trilha-no span{width:44px;height:44px;display:grid;place-items:center;font-size:22px;background:#fff;border:2px solid var(--ink);border-radius:50%;box-shadow:2px 2px 0 var(--ink);filter:grayscale(1);opacity:.75;transition:transform .15s}
+.trilha-no.ok span{filter:none;opacity:1;background:var(--yellow-l)}
+.trilha-no:hover span{transform:translateY(-3px)}
+.trilha-no small{font-size:12px;font-weight:700;white-space:nowrap}
+.trilha-marina{position:absolute;top:-30px;left:var(--pct);transform:translateX(-50%);animation:mvAnda 1.2s .2s cubic-bezier(.2,.7,.2,1) both,plBoing 1.2s 1.4s ease-in-out infinite;z-index:2}
+@keyframes mvAnda{from{left:0}}
+@media (max-width:720px){.trilha{margin:18px 18px 6px}.trilha-no small{display:none}.trilha-no span{width:36px;height:36px;font-size:18px}}
+@media (prefers-reduced-motion:reduce){.mv-confete{display:none}.trilha-marina{animation:mvAnda 1.2s .2s both}}

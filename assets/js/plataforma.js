@@ -5,6 +5,7 @@
   function lsGet(k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v) } catch (e) { return d } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch (e) { } }
   var LANG = lsGet('plat.lang', 'pt') === 'es' ? 'es' : 'pt';
+  function mov() { return (window.MOV || { chat: function (c, f) { f && f() }, cascata: function () { }, confete: function () { } }) }
   var T = window.T = function (o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') };
   var U = {
     inicio: { pt: 'Início', es: 'Inicio' }, modulos: { pt: 'Módulos', es: 'Módulos' }, loja: { pt: 'Loja', es: 'Tienda' },
@@ -42,7 +43,7 @@
       var ult = lsGet('plat.ultima', null), aula = ult && (window.AULAS[ult.m] || []).filter(function (a) { return a.id === ult.a && a.status === 'pronta' })[0];
       return '<div class="pl-ola">' + PERSONAGEM('marina', 4) + PERSONAGEM('rafa', 4) + PERSONAGEM('pixel', 4) + '</div>' +
         '<h1 class="pl-h1">' + T({ pt: 'Bem-vindo à Lojinha da Marina', es: 'Bienvenido a la Lojinha da Marina' }) + '</h1>' +
-        '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online, o Rafa é do suporte e o Pixel mede tudo o que acontece no site. Escolha por onde começar.', es: 'Marina tiene una tienda online, Rafa es del soporte y el Pixel mide todo lo que pasa en el sitio. Elige por dónde empezar.' }) + '</p>' +
+        '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online e quer crescer com a Meta. O Rafa é do suporte e ajuda a Marina em cada fase. O Pixel, nosso mascote, te guia pelo caminho. Escolha por onde começar.', es: 'Marina tiene una tienda online y quiere crecer con Meta. Rafa es del soporte y ayuda a Marina en cada fase. El Pixel, nuestra mascota, te guía en el camino. Elige por dónde empezar.' }) + '</p>' +
         (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
         '<div class="portas">' + [
           ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
@@ -54,10 +55,10 @@
     modulos: function () {
       var F = window.FASES || [];
       function card(m) { var ok = window.AULAS[m.id]; return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>') }
-      var h = '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1><p class="pl-lead">' + T({ pt: 'A trilha é a história da Marina: ela começa sem saber nada e, a cada fase, o negócio dela cresce e aparecem dúvidas novas. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender.', es: 'La ruta es la historia de Marina: empieza sin saber nada y, en cada fase, su negocio crece y aparecen dudas nuevas. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender.' }) + '</p>';
+      var h = '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1>' + trilhaFases() + '<p class="pl-lead">' + T({ pt: 'A trilha é a história da Marina: ela começa sem saber nada e, a cada fase, o negócio dela cresce e aparecem dúvidas novas. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender.', es: 'La ruta es la historia de Marina: empieza sin saber nada y, en cada fase, su negocio crece y aparecen dudas nuevas. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender.' }) + '</p>';
       for (var f = 1; f < F.length; f++) {
         var ms = window.MODULOS.filter(function (m) { return m.fase === f }); if (!ms.length) continue;
-        h += '<div class="fase-cab"><span class="fase-ic">' + F[f].icone + '</span><div><small>' + T({ pt: 'Fase', es: 'Fase' }) + ' ' + f + '</small><h2>' + T(F[f].nome) + '</h2><p>' + T(F[f].resumo) + '</p></div></div><div class="grade">' + ms.map(card).join('') + '</div>';
+        h += '<div class="fase-cab" id="fase-' + f + '"><span class="fase-ic">' + F[f].icone + '</span><div><small>' + T({ pt: 'Fase', es: 'Fase' }) + ' ' + f + '</small><h2>' + T(F[f].nome) + '</h2><p>' + T(F[f].resumo) + '</p></div></div><div class="grade">' + ms.map(card).join('') + '</div>';
       }
       var fora = window.MODULOS.filter(function (m) { return !m.fase });
       if (fora.length) h += '<div class="fase-cab fora"><div><h2>' + T({ pt: 'Fora da trilha', es: 'Fuera de la ruta' }) + '</h2></div></div><div class="grade">' + fora.map(card).join('') + '</div>';
@@ -136,6 +137,23 @@
     try { navigator.clipboard.writeText(txt).then(ok, function () { }) } catch (x) { }
   });
 
+  /* a linha das 5 fases: enche conforme as aulas concluídas; a Marina fica onde a pessoa está */
+  function trilhaFases() {
+    var F = window.FASES || [], fe = feitas(), pos = 0, n = F.length - 1;
+    for (var f = 1; f <= n; f++) {
+      var tot = 0, ok = 0;
+      window.MODULOS.filter(function (m) { return m.fase === f }).forEach(function (m) {
+        var aulas = window.AULAS[m.id]; if (!aulas) { tot++; return }
+        aulas.forEach(function (a) { tot++; if (fe[m.id + '/' + a.id]) ok++ });
+      });
+      if (ok < tot) { pos = (f - 1) + ok / tot; break }
+      pos = f;
+    }
+    var pct = Math.min(100, pos / (n - 1) * 100);
+    var h = '<div class="trilha" style="--pct:' + pct.toFixed(1) + '%"><div class="trilha-linha"><span></span></div><span class="trilha-marina" title="Marina">' + PERSONAGEM('marina', 2) + '</span>';
+    for (var k = 1; k <= n; k++) h += '<a class="trilha-no' + (k - 1 <= pos ? ' ok' : '') + '" href="#fase-' + k + '" style="left:' + ((k - 1) / (n - 1) * 100) + '%"><span>' + F[k].icone + '</span><small>' + T(F[k].nome) + '</small></a>';
+    return h + '</div>';
+  }
   function faseChip(m) { var f = (window.FASES || [])[m && m.fase]; return f ? '<p class="fase-chip">' + PERSONAGEM('marina', 1.4) + T({ pt: 'Marina nesta fase:', es: 'Marina en esta fase:' }) + ' <b>' + f.icone + ' ' + T(f.nome) + '</b></p>' : '' }
   /* ---------- AULA: uma parte por vez (entender · ver de perto · praticar · atender) ---------- */
   var passoAtual = 0;
@@ -146,7 +164,7 @@
     lsSet('plat.ultima', { m: mid, a: aid });
     var partes = ['entender', 'ferramenta', 'praticar', 'atender'].filter(function (p) { return a[p] });
     passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
-    var prox = lista[lista.indexOf(a) + 1], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid;
+    var prox = lista[lista.indexOf(a) + 1], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function desenha() {
       var p = partes[passoAtual], h = '';
@@ -159,12 +177,13 @@
           (a.praticar.opcoes ? '' : '<a class="btn amarelo grande" href="' + url({ pagina: a.praticar.pagina, tour: a.praticar.tour, id: 'unica' }) + '">▶ ' + T({ pt: 'Começar a prática guiada', es: 'Empezar la práctica guiada' }) + '</a>') + '</div></div>' +
           (a.praticar.opcoes ? '<div class="jeitos">' + a.praticar.opcoes.map(function (o, i) {
             var feito = fp[mid + '/' + aid + '/' + o.id];
-            return '<a class="jeito' + (i === 0 ? ' principal' : '') + (feito ? ' feito' : '') + '" href="' + url(o) + '"><span class="n">' + (feito ? '✓' : i + 1) + '</span><span class="ic">' + o.icone + '</span><div><b>' + T(o.tit) + (o.selo ? ' <em>' + T(o.selo) + '</em>' : '') + '</b><p>' + T(o.txt) + '</p></div><span class="ir">▶</span></a>'
+            return '<a class="jeito' + (i === 0 ? ' principal' : '') + (feito ? ' feito' : '') + (Q.get('feito') === o.id ? ' pop' : '') + '" href="' + url(o) + '"><span class="n">' + (feito ? '✓' : i + 1) + '</span><span class="ic">' + o.icone + '</span><div><b>' + T(o.tit) + (o.selo ? ' <em>' + T(o.selo) + '</em>' : '') + '</b><p>' + T(o.txt) + '</p></div><span class="ir">▶</span></a>'
           }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p>');
       }
       else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + a.atender.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
         (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '') + (a.gancho ? '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>' : '');
-      $('#palco').innerHTML = h;
+      $('#palco').innerHTML = h; $('#palco').classList.remove('mv-troca'); void $('#palco').offsetWidth; $('#palco').classList.add('mv-troca'); mov().cascata($('#palco'));
+      if (p === 'entender' && !chatVisto) { chatVisto = true; var pts = $('#palco .pontos'); if (pts) pts.classList.add('mv-oculta'); mov().chat($('#palco'), function () { if (pts) { pts.classList.remove('mv-oculta'); pts.classList.add('mv-chega') } }) }
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
       $('#bAnt').disabled = passoAtual === 0;
       var ultimo = passoAtual === partes.length - 1;
@@ -183,6 +202,7 @@
         var o = e.target.closest('[data-op]'); if (!o) return; var op = a.atender.opcoes[+o.getAttribute('data-op')];
         if (o.querySelector('.fb')) return;
         o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
+        if (op.certa) mov().confete(o);
       });
       $('#bApr').onclick = function () { document.documentElement.classList.toggle('apresentar'); this.textContent = document.documentElement.classList.contains('apresentar') ? T(U.sairApr) : T(U.apresentar) };
       $('#bNotas').onclick = function () { document.body.classList.toggle('mostra-notas') };
@@ -206,6 +226,7 @@
         var o = e.target.closest('[data-pp]'); if (!o || $('.pp-op.certa')) return; var op = p.pergunta.opcoes[+o.getAttribute('data-pp')];
         document.querySelectorAll('.pp-op .fb').forEach(function (x) { x.remove() }); document.querySelectorAll('.pp-op').forEach(function (x) { x.classList.remove('errada') });
         o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
+        if (op.certa) mov().confete(o);
       });
     });
     return '<h1 class="pl-h1">🕹️ ' + T(p.titulo) + '</h1><p class="pl-lead">' + T(p.resumo) + '</p><div class="palco" id="palcoPratica">' + chat(p.dialogo) +
@@ -232,6 +253,7 @@
     var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
     tg.forEach(function (x) { document.body.appendChild(x) });
+    if (tela !== 'aula') mov().cascata($('.pl-main'));
   }
   function inicia() {
     // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial pela metade

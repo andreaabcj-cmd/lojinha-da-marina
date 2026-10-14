@@ -298,6 +298,7 @@ PLAT = '''<!doctype html>
 <script src="assets/academia/ferramentas.js"></script>
 <script src="assets/academia/praticas.js"></script>
 <script src="assets/js/tour.js"></script>
+<script src="assets/js/movimento.js"></script>
 <script src="assets/js/plataforma.js"></script>
 </head>
 <body data-tela="{tela}"><noscript>Ative o JavaScript para usar a plataforma.</noscript></body>
