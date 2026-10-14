@@ -113,13 +113,14 @@
   function colaTexto(c) {
     return [T({ pt: 'PERGUNTE AO CLIENTE', es: 'PREGUNTA AL CLIENTE' })].concat(c.perguntas.map(function (x) { return '• ' + T(x) }),
       ['', T({ pt: 'CONFIRA', es: 'REVISA' })], c.conferir.map(function (x) { return '☐ ' + T(x) }),
-      ['', T({ pt: 'FRASE PRONTA', es: 'FRASE LISTA' }), T(c.frase), '', T({ pt: 'QUANDO ENCAMINHAR', es: 'CUÁNDO DERIVAR' }), T(c.encaminhar)]).join('\n').replace(/<[^>]+>/g, '');
+      ['', T({ pt: 'FRASE PRONTA', es: 'FRASE LISTA' }), T(c.frase)], c.passos ? [''].concat([T({ pt: 'PASSO A PASSO PARA O CLIENTE', es: 'PASO A PASO PARA EL CLIENTE' })], c.passos.map(function (x, i) { return (i + 1) + '. ' + T(x) })) : [], ['', T({ pt: 'QUANDO ENCAMINHAR', es: 'CUÁNDO DERIVAR' }), T(c.encaminhar)]).join('\n').replace(/<[^>]+>/g, '');
   }
   function colaHtml(c, id) {
     return '<div class="cola" id="' + id + '"><div class="cola-cab"><b>🗒️ ' + T({ pt: 'Cola do atendimento', es: 'Guía rápida de atención' }) + '</b><button class="btn sec" data-copiar="' + id + '">📋 ' + T({ pt: 'Copiar', es: 'Copiar' }) + '</button></div>' +
       '<div class="cola-grade"><div><h4>❓ ' + T({ pt: 'Pergunte ao cliente', es: 'Pregunta al cliente' }) + '</h4><ul>' + c.perguntas.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul></div>' +
       '<div><h4>✅ ' + T({ pt: 'Confira', es: 'Revisa' }) + '</h4><ul class="ck">' + c.conferir.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul></div></div>' +
       '<h4>💬 ' + T({ pt: 'Frase pronta', es: 'Frase lista' }) + '</h4><p class="cola-frase">' + T(c.frase) + '</p>' +
+      (c.passos ? '<h4>🧭 ' + T({ pt: 'Passo a passo para o cliente', es: 'Paso a paso para el cliente' }) + '</h4><ol class="cola-passos">' + c.passos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ol>' : '') +
       '<h4>🧑‍💻 ' + T({ pt: 'Quando encaminhar', es: 'Cuándo derivar' }) + '</h4><p>' + T(c.encaminhar) + '</p></div>';
   }
   document.addEventListener('click', function (e) {
