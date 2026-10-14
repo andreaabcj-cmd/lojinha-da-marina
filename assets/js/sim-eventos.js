@@ -288,8 +288,10 @@
         dica: { pt: 'Ao criar, você aceita os Termos das Ferramentas Comerciais da Meta.', es: 'Al crear, aceptas las Condiciones de las Herramientas para empresas de Meta.' } },
       { alvo: '[data-t=id-novo]', semVolta: true, tit: { pt: 'O identificador do Pixel', es: 'El identificador del Pixel' },
         txt: { pt: 'Pronto! Este número é o identificador do Pixel. É ele que vai no código do site; é ele que você compara quando o cliente pergunta “é o Pixel certo?”.', es: '¡Listo! Este número es el identificador del Pixel. Es el que va en el código del sitio; es el que comparas cuando el cliente pregunta “¿es el Pixel correcto?”.' } },
-      { alvo: '[data-t=ver-codigo]', fim: true, tit: { pt: 'Colocar no site', es: 'Ponerlo en el sitio' },
-        txt: { pt: 'Em Configurar o Pixel fica o código com este número, para colocar no topo de todas as páginas (ou use a integração da plataforma). Fim do tutorial! 🎉', es: 'En Configurar el Pixel está el código con este número, para ponerlo arriba en todas las páginas (o usa la integración de la plataforma). ¡Fin del tutorial! 🎉' } }
+      { alvo: '[data-t=ver-codigo]', clique: true, garante: function () { fechaJanela() }, tit: { pt: 'Colocar no site', es: 'Ponerlo en el sitio' },
+        txt: { pt: 'Agora falta colocar o Pixel no site. Clique em Configurar o Pixel para ver o código com este número.', es: 'Ahora falta poner el Pixel en el sitio. Haz clic en Configurar el Pixel para ver el código con este número.' } },
+      { alvo: '.janela .codigo', fim: true, garante: function () { janelaCom('codigo') }, tit: { pt: 'O código do seu Pixel', es: 'El código de tu Pixel' },
+        txt: { pt: 'Este é o código, já com o número do Pixel dentro (no init). Ele vai no topo de todas as páginas do site, ou use a integração da plataforma da loja. Fim do tutorial! 🎉', es: 'Este es el código, ya con el número del Pixel adentro (en el init). Va arriba en todas las páginas del sitio, o usa la integración de la plataforma de la tienda. ¡Fin del tutorial! 🎉' } }
     ],
     'testar-eventos': [
       { alvo: '[data-t=menu-conjuntos]', tit: 'Conjuntos de dados', txt: 'Clique em Conjuntos de dados para ver seus Pixels.', clique: true, pre: function () { if (!S.datasets.length) { alert('Primeiro crie um Pixel: siga o tutorial "Criar o Pixel".'); location.href = '?tour=criar-pixel'; return false } } },
@@ -303,7 +305,7 @@
   };
   var tour = null, passo = 0, holo, balao, rotas = {};   // rotas[passo] = endereço (#...) em que o passo foi mostrado
   function janelaCom(qual, web) { if (janela !== qual) { abreJanela(qual) } if (web && escolha !== 'web') { escolha = 'web'; desenhaJanela() } }
-  function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); tourMostra() }
+  function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour'); tourMostra() }
   function tourMostra() {
     if (!tour) return; var p = tour[passo];
     if (p.pre && p.pre() === false) return;
@@ -334,7 +336,7 @@
       if (q.garante) q.garante(); else fechaJanela();
       setTimeout(tourMostra, 150)
     }
-    else if (t === 'fim') { holo.remove(); balao.remove(); tour = null; var vt = params.get('voltar'); if (vt) location.href = vt }
+    else if (t === 'fim') { holo.remove(); balao.remove(); tour = null; document.body.classList.remove('em-tour'); var vt = params.get('voltar'); if (vt) location.href = vt }
   });
   document.addEventListener('input', function () { tourAtualiza() });
   window.addEventListener('resize', tourAtualiza); document.addEventListener('scroll', tourAtualiza, true);

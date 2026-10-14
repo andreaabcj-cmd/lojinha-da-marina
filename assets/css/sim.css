@@ -146,3 +146,5 @@ a{color:var(--blue)}
 
 .lista-cat input[type=checkbox]{width:16px;height:16px;min-width:0;flex:none;margin:2px 0 0;padding:0;accent-color:var(--blue,#1877F2)}
 .lista-cat label{align-items:flex-start;cursor:pointer}
+/* durante o tutorial, quem escurece a tela é o holofote (não escurecer duas vezes) */
+body.em-tour .fundo{background:transparent}
