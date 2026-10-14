@@ -2,7 +2,8 @@
    - Os roteiros ficam em window.TOURS[nome] = [passos]. Cada passo:
        { alvo: 'seletor' | function(){return elemento}, tit, txt, dica?, clique?: true (avança ao clicar no alvo),
          cond?: function(){return true quando pode avançar}, fim?: true, pagina?: 'loja.html' (passo em outra página),
-         garante?: function(){arruma a tela para este passo — roda quando a pessoa VOLTA com ◀}, semVolta?: true }
+         garante?: function(){arruma a tela para este passo — roda quando a pessoa VOLTA com ◀}, semVolta?: true,
+         valida?: function(alvoClicado){só avança se true}, erro?: {pt,es}, livre?: 'seletor' (pode clicar sem avançar) }
    - Ao voltar, o tutorial reabre a página onde aquele passo aconteceu e chama garante().
    - Inicia com ?tour=nome na URL ou TOUR.inicia('nome'). Continua entre páginas (sessionStorage).
    - Ao terminar volta para ?voltar=... (ex.: a aula). Textos {pt, es}. */
@@ -12,6 +13,7 @@
   var UI = { passo: { pt: 'Passo', es: 'Paso' }, de: { pt: 'de', es: 'de' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, fim: { pt: 'Concluir 🎉', es: 'Terminar 🎉' },
     clique: { pt: '👆 clique no destaque', es: '👆 haz clic en lo destacado' }, sair: { pt: 'Sair do tutorial', es: 'Salir del tutorial' }, procura: { pt: 'Procurando o próximo lugar…', es: 'Buscando el siguiente lugar…' } };
   var css = '.tg-recorte{position:fixed;z-index:2147482999;border-radius:16px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);pointer-events:none;opacity:0;transition:all .35s cubic-bezier(.3,.1,.2,1)}' +
+    '.tg-avisa{margin-top:8px;padding:6px 8px;border-radius:8px;background:#FDE8EF;color:#9B1240;font-size:13px;font-weight:600}.tg-treme{animation:tgTreme .45s}@keyframes tgTreme{20%{margin-left:-6px}40%{margin-left:6px}60%{margin-left:-4px}80%{margin-left:3px}}' +
     '.tg-holo.na-janela{box-shadow:none}body.em-tour .fundo{background:transparent}' +
     '.tg-holo{position:fixed;z-index:2147483000;border-radius:10px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);outline:3px solid #F2B632;outline-offset:3px;pointer-events:none;transition:all .35s cubic-bezier(.3,.1,.2,1);animation:tgPulso 1.6s infinite}' +
     '@keyframes tgPulso{50%{outline-offset:7px}}' +
@@ -24,7 +26,7 @@
     '.tg-btn{padding:7px 12px;border-radius:9px;border:2px solid #16294A;background:#2F6FD6;color:#fff;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 #16294A}.tg-btn.sec{background:#fff;color:#16294A}.tg-btn[disabled]{opacity:.45;cursor:default}' +
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
-  var holo, balao, recorte, tour, nome, passo = 0, timer;
+  var holo, balao, recorte, tour, nome, passo = 0, timer, ouvindo = false;
   var voltar = null, paginas = {};   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
   function aqui() { return (location.pathname.split('/').pop() || 'index.html') + (location.hash || '') }   // página + tela (#...) dos simuladores
   function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar, paginas: paginas })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
@@ -40,6 +42,17 @@
       var b = e.target.closest('[data-tg]'); if (!b) return; var a = b.getAttribute('data-tg');
       if (a === 'prox') vai(passo + 1); else if (a === 'volta') volta(); else if (a === 'fim' || a === 'sair') termina(a === 'fim');
     });
+    if (ouvindo) return; ouvindo = true;   // os 'ouvidos' da página são ligados UMA vez (antes, cada tutorial novo duplicava os cliques)
+    // modo guiado sem erros: só o destaque e o balão aceitam clique (se o destaque sumiu, não trava a pessoa)
+    document.addEventListener('click', function (e) {
+      if (!tour || !balao || balao.contains(e.target)) return; var p = tour[passo], el = alvoEl(p); if (!p || !el) return;
+      var dentro = el === e.target || el.contains(e.target), q = tour[passo + 1], el2 = q && q.clique && p.cond && !p.clique ? alvoEl(q) : null, okc = false;
+      if (el2) try { okc = p.cond() } catch (x) { }
+      var proximoOk = el2 && okc && (el2 === e.target || el2.contains(e.target));
+      if (!dentro && p.livre && e.target.closest && e.target.closest(p.livre)) return;   // partes que o passo deixa usar (ex.: escolher o tamanho)
+      if (!dentro && !proximoOk) { e.preventDefault(); e.stopImmediatePropagation(); avisa(); return }
+      if (dentro && p.clique && p.valida) { var v = false; try { v = p.valida(e.target) } catch (x) { } if (!v) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
+    }, true);
     document.addEventListener('click', function (e) {
       if (!tour) return; var p = tour[passo], el = alvoEl(p);
       if (p && p.clique && el && (el === e.target || el.contains(e.target))) { var n = passo + 1; passo = n; salva(); setTimeout(function () { vai(n) }, 150) }   // salva já: o clique pode abrir outra página
@@ -65,6 +78,12 @@
     if (p.pula && p.pula()) return vai(n + 1);
     if (p.pagina && location.pathname.split('/').pop() !== p.pagina) { location.href = p.pagina; return }
     desenha();
+  }
+  var avisoT;
+  function avisa(txt) {   // a pessoa clicou fora do caminho: o balão balança e explica
+    if (!balao) return; var a = balao.querySelector('.tg-avisa'); if (!a) { a = document.createElement('div'); a.className = 'tg-avisa'; balao.appendChild(a) }
+    a.textContent = txt ? T(txt) : T({ pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
+    balao.classList.remove('tg-treme'); void balao.offsetWidth; balao.classList.add('tg-treme'); clearTimeout(avisoT); avisoT = setTimeout(function () { if (a.parentNode) a.remove() }, 3500);
   }
   function volta() {   // volta ao passo anterior que mostra algo (pula para trás os que foram pulados)
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);

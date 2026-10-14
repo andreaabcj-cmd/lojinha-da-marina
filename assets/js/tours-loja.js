@@ -61,11 +61,11 @@ window.TOURS['extensao-pixel'] = [
 
 /* Aula 01 · o Pixel em ação: a pessoa faz coisas na loja e vê os avisos no Consultor de Dados */
 window.TOURS['pixel-em-acao'] = [
-  { alvo: '.card-prod .foto', clique: true,
+  { alvo: function () { return document.querySelector('#destaques, #lista') }, clique: true, valida: function (t) { return !!(t && t.closest && t.closest('.card-prod a')) }, erro: { pt: 'Clique na foto ou no nome de um produto. 🙂', es: 'Haz clic en la foto o en el nombre de un producto. 🙂' },
     garante: function () { window.DA && DA.fechar() },
     tit: { pt: 'Abra um produto', es: 'Abre un producto' },
     txt: { pt: 'Você é uma cliente da Marina. Clique num produto para ver os detalhes.', es: 'Eres una clienta de Marina. Haz clic en un producto para ver los detalles.' } },
-  { alvo: '#addCart', clique: true,
+  { alvo: '#addCart', clique: true, livre: '[data-var], #qtd', valida: function () { return !document.querySelector('[data-var]') || !!document.querySelector('[data-var].on') }, erro: { pt: 'Este produto tem tamanho: escolha um tamanho antes de pôr no carrinho. 🙂', es: 'Este producto tiene talla: elige una talla antes de ponerlo en el carrito. 🙂' },
     garante: function () { window.DA && DA.fechar() },
     tit: { pt: 'Ponha no carrinho', es: 'Ponlo en el carrito' },
     txt: { pt: 'Agora clique em Adicionar ao carrinho.', es: 'Ahora haz clic en Agregar al carrito.' },
@@ -86,17 +86,17 @@ window.TOURS['pixel-em-acao'] = [
 /* Aula 04 · uma compra completa: da vitrine até o Purchase com valor e moeda no Consultor de Dados */
 function tgEvPurchase() { var c = [].slice.call(document.querySelectorAll('.da-ev-cab')); return c.filter(function (x) { return /Purchase/.test(x.textContent) })[0] || null }
 window.TOURS['compra-completa'] = [
-  { alvo: '.card-prod .foto', clique: true, garante: function () { window.DA && DA.fechar() },
+  { alvo: function () { return document.querySelector('#destaques, #lista') }, clique: true, valida: function (t) { return !!(t && t.closest && t.closest('.card-prod a')) }, erro: { pt: 'Clique na foto ou no nome de um produto. 🙂', es: 'Haz clic en la foto o en el nombre de un producto. 🙂' }, garante: function () { window.DA && DA.fechar() },
     tit: { pt: 'Escolha um produto', es: 'Elige un producto' },
     txt: { pt: 'Você é uma cliente da Marina e vai comprar de verdade (de mentirinha 😄). Clique num produto.', es: 'Eres una clienta de Marina y vas a comprar de verdad (de mentira 😄). Haz clic en un producto.' },
     dica: { pt: 'Abrir o produto já dispara o ViewContent.', es: 'Abrir el producto ya dispara el ViewContent.' } },
-  { alvo: '#addCart', clique: true, garante: function () { window.DA && DA.fechar() },
+  { alvo: '#addCart', clique: true, livre: '[data-var], #qtd', valida: function () { return !document.querySelector('[data-var]') || !!document.querySelector('[data-var].on') }, erro: { pt: 'Este produto tem tamanho: escolha um tamanho antes de pôr no carrinho. 🙂', es: 'Este producto tiene talla: elige una talla antes de ponerlo en el carrito. 🙂' }, garante: function () { window.DA && DA.fechar() },
     tit: { pt: 'Ponha no carrinho', es: 'Ponlo en el carrito' },
     txt: { pt: 'Clique em Adicionar ao carrinho (se tiver tamanho, escolha um antes).', es: 'Haz clic en Agregar al carrito (si tiene talla, elige una antes).' },
     dica: { pt: 'Este clique dispara o AddToCart.', es: 'Este clic dispara el AddToCart.' } },
-  { alvo: '#addOk a', clique: true,
+  { alvo: function () { return document.querySelector('#addOk a') || document.querySelector('a.carrinho') }, clique: true,
     tit: { pt: 'Vá para o carrinho', es: 'Ve al carrito' },
-    txt: { pt: 'Clique em Ver carrinho.', es: 'Haz clic en Ver carrito.' } },
+    txt: { pt: 'Clique em Ver carrinho (ou no carrinho 🛒 lá em cima).', es: 'Haz clic en Ver carrito (o en el carrito 🛒 arriba).' } },
   { alvo: 'a[href="checkout.html"]', clique: true,
     tit: { pt: 'Hora de pagar', es: 'Hora de pagar' },
     txt: { pt: 'Clique em Ir para o pagamento.', es: 'Haz clic en Ir al pago.' },

@@ -279,10 +279,10 @@
       { alvo: '[data-t=nome]', cond: function () { return (window.__nomeDs || '').trim().length > 2 }, tit: { pt: 'O nome', es: 'El nombre' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'Digite um nome, por exemplo: Pixel Aula Lojinha da Marina. Depois clique em Próximo.', es: 'Escribe un nombre, por ejemplo: Pixel Aula Lojinha da Marina. Después haz clic en Siguiente.' },
         dica: { pt: 'A Meta agora chama o Pixel de conjunto de dados. É a mesma coisa.', es: 'Meta ahora llama al Pixel conjunto de datos. Es lo mismo.' } },
-      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' }, garante: function () { janelaCom('criar') },
-        txt: { pt: 'Esta caixinha liga também o envio pelo servidor. Na aula, DESMARQUE para estudar o Pixel sozinho primeiro.', es: 'Esta casilla activa también el envío por el servidor. En la clase, DESMÁRCALA para estudiar primero el Pixel solo.' },
+      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' }, garante: function () { janelaCom('criar') }, cond: function () { return window.__capi === false },
+        txt: { pt: 'Esta caixinha liga também o envio pelo servidor. Na aula, DESMARQUE para estudar o Pixel sozinho primeiro (o Próximo só libera desmarcada).', es: 'Esta casilla activa también el envío por el servidor. En la clase, DESMÁRCALA para estudiar primero el Pixel solo (el Siguiente solo se habilita desmarcada).' },
         dica: { pt: 'Ela vale para o portfólio inteiro, não só para este Pixel.', es: 'Vale para todo el portafolio, no solo para este Pixel.' } },
-      { alvo: '[data-t=cats]', tit: { pt: 'Categorias', es: 'Categorías' }, garante: function () { janelaCom('criar') },
+      { alvo: '[data-t=cats]', cond: function () { return !document.querySelector('.lista-cat input:checked') }, tit: { pt: 'Categorias', es: 'Categorías' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'São categorias de assuntos sensíveis (saúde, religião, política…). Loja de canecas: não marque nenhuma.', es: 'Son categorías de temas sensibles (salud, religión, política…). Tienda de tazas: no marques ninguna.' } },
       { alvo: '[data-t=criar]', clique: true, tit: { pt: 'Criar', es: 'Crear' }, txt: { pt: 'Clique em Criar.', es: 'Haz clic en Crear.' }, garante: function () { janelaCom('criar') },
         dica: { pt: 'Ao criar, você aceita os Termos das Ferramentas Comerciais da Meta.', es: 'Al crear, aceptas las Condiciones de las Herramientas para empresas de Meta.' } },
@@ -328,6 +328,15 @@
     balao.style.transform = 'none'; balao.style.left = Math.min(x, innerWidth - bw - 10) + 'px'; balao.style.top = Math.max(42, Math.min(y, innerHeight - bh - 10)) + 'px';
     var bt = balao.querySelector('[data-tour=prox]'); if (bt && p.cond) bt.disabled = !p.cond();
   }
+  // modo guiado sem erros: fora do destaque e do balão, o clique não vale
+  document.addEventListener('click', function (ev) {
+    if (!tour || !balao || balao.contains(ev.target)) return; var p = tour[passo], el = p && $(p.alvo); if (!el) return;
+    if (el === ev.target || el.contains(ev.target)) return;
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    var a = balao.querySelector('.tg-avisa'); if (!a) { a = document.createElement('div'); a.className = 'tg-avisa'; balao.appendChild(a) }
+    a.textContent = tx({ pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
+    balao.classList.remove('tg-treme'); void balao.offsetWidth; balao.classList.add('tg-treme'); setTimeout(function () { if (a.parentNode) a.remove() }, 3500);
+  }, true);
   function tourClique(el) { if (!tour) return; var p = tour[passo]; if (p.clique && el.matches(p.alvo)) { passo++; setTimeout(tourMostra, 120) } }
   function tourChecaCondicao() { if (tour) tourAtualiza() }
   document.addEventListener('click', function (ev) {
@@ -342,6 +351,8 @@
     else if (t === 'fim') { holo.remove(); balao.remove(); recorte.remove(); tour = null; document.body.classList.remove('em-tour'); var vt = params.get('voltar'); if (vt) location.href = vt }
   });
   document.addEventListener('input', function () { tourAtualiza() });
+  document.addEventListener('change', function () { setTimeout(tourAtualiza, 0) });   // caixinhas: a resposta só vale depois do change
+  setInterval(function () { if (tour) tourAtualiza() }, 500);
   window.addEventListener('resize', tourAtualiza); document.addEventListener('scroll', tourAtualiza, true);
   setInterval(function () { if (rota().aba === 'teste' && !janela && !tour) render() }, 5000);   // atualiza o "há X s"
 

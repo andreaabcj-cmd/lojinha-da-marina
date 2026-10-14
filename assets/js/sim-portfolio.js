@@ -220,7 +220,7 @@
     campo('fGerenciar', 'gerenciar');
     $$('[data-ativo]').forEach(function (c) { c.onchange = function () { F.ativos = F.ativos || {}; F.ativos[c.getAttribute('data-ativo')] = c.checked; desenha() } });
     $$('[data-todos]').forEach(function (c) { c.onchange = function () { F.ativos = {}; $$('[data-ativo]').forEach(function (x) { F.ativos[x.getAttribute('data-ativo')] = c.checked }); desenha() } });
-    $$('[name=uso]').forEach(function (r) { r.onchange = function () { F.uso = r.value; desenha() } });
+    $$('[name=uso]').forEach(function (r) { r.onchange = function () { F.uso = r.value; window.__simPf = F; desenha() } });
     window.__simPf = F;
   }
 
@@ -321,7 +321,7 @@
       tit: T('⚠️ Fuso e moeda: não mudam depois!', '⚠️ Zona horaria y moneda: ¡no cambian después!'), txt: T('Escolha o fuso America/Sao Paulo e a moeda BRL (a Marina vende em reais). Atenção: depois de criada, a conta NÃO deixa trocar fuso nem moeda.', 'Elige la zona America/Sao Paulo y la moneda BRL (Marina vende en reales). Atención: después de creada, la cuenta NO permite cambiar zona ni moneda.'),
       dica: T('Erro comum: deixar o padrão (dólar e horário de Los Angeles). Aí os relatórios ficam em outra moeda e outro horário.', 'Error común: dejar lo predeterminado (dólar y horario de Los Ángeles). Así los informes quedan en otra moneda y otro horario.') },
     { alvo: '[data-t=conta-avancar]', clique: true, garante: function () { SIMPF.abre('conta', 0) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
-    { alvo: '[data-t=conta-uso]', garante: function () { SIMPF.abre('conta', 1) }, tit: T('Para quem é a conta', 'Para quién es la cuenta'), txt: T('A conta é da própria Marina: deixe Minha empresa. “Outra empresa ou cliente” é para agências que anunciam por clientes.', 'La cuenta es de la propia Marina: deja Mi empresa. “Otra empresa o cliente” es para agencias que anuncian por clientes.') },
+    { alvo: '[data-t=conta-uso]', garante: function () { SIMPF.abre('conta', 1) }, cond: function () { var f = window.__simPf; return !!(f && f.uso === 'minha') }, tit: T('Para quem é a conta', 'Para quién es la cuenta'), txt: T('A conta é da própria Marina: deixe Minha empresa e clique em Próximo. “Outra empresa ou cliente” é para agências que anunciam por clientes.', 'La cuenta es de la propia Marina: deja Mi empresa y haz clic en Siguiente. “Otra empresa o cliente” es para agencias que anuncian por clientes.') },
     { alvo: '[data-t=conta-avancar2]', clique: true, garante: function () { SIMPF.abre('conta', 1) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
     { alvo: '[data-t=conta-termos]', garante: function () { SIMPF.abre('conta', 2) }, cond: function () { var f = window.__simPf; return !!(f && f.termos) },
       tit: T('Confirmar', 'Confirmar'), txt: T('Leia o aviso: depois de adicionada, a conta não pode ser removida do portfólio. Marque a caixinha dos termos e clique em Próximo.', 'Lee el aviso: después de agregada, la cuenta no puede quitarse del portafolio. Marca la casilla de condiciones y haz clic en Siguiente.') },

@@ -204,3 +204,4 @@ body.em-tour .fundo{background:transparent}
 /* tutorial: com o destaque dentro de uma janela, a janela fica inteira visível e só o fundo escurece */
 .tour-recorte{position:fixed;z-index:69;border-radius:16px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);pointer-events:none;opacity:0;transition:all .35s cubic-bezier(.3,.1,.2,1)}
 .tour-holo.na-janela{box-shadow:none}
+.tour-balao .tg-avisa{margin-top:8px;padding:6px 8px;border-radius:8px;background:#FDE8EF;color:#9B1240;font-size:13px;font-weight:600}.tour-balao.tg-treme{animation:tgTreme .45s}@keyframes tgTreme{20%{margin-left:-6px}40%{margin-left:6px}60%{margin-left:-4px}80%{margin-left:3px}}

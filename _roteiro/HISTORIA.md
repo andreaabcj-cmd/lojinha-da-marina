@@ -87,7 +87,13 @@ Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do 
 - **Informações da empresa (14/10, só rótulos — NUNCA os dados):** Informações do portfólio empresarial (nome, Identificação do portfólio empresarial, Página principal) · Detalhes da empresa (Razão social, Endereço, Telefone comercial, Site) · Status de verificação da empresa ("Não verificada") · Histórico da empresa · Limite de criação de contas de anúncios · Localização principal · Opções da empresa (Autenticação de dois fatores: "Exigir um código de login para acessar este portfólio empresarial em navegadores desconhecidos.", Páginas e notificações, Meta One) · Informações de contato do perfil.
 - **Criar conjunto de dados (14/10):** mesmas telas de 13/10 (Conectar dados › Web › Avançar › nome + caixa da API de Conversões + categorias › Criar).
 
+## Regras dos tutoriais guiados (14/10)
+- No modo guiado não dá para errar: só o destaque e o balão aceitam clique; escolha errada segura o Próximo; botões da janela só valem no passo certo.
+- Voltar ◀ e avançar de novo mantêm o que foi preenchido; o ◀ reabre a página/tela/janela do passo.
+- Destaque dentro de janela/painel: a janela fica inteira visível; só o fundo escurece.
+
 ## Pendências de revisão
+- [ ] **(depois)** Laboratório: todos os tutoriais guiados acessíveis como "Como fazer X" (criar o Pixel, convidar pessoa, criar conta de anúncios…), e a parte da loja/simulação da plataforma que estamos reconstruindo. O Laboratório também guiado.
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
 - [x] Aulas 01, 02, 03 e 04 do Pixel básico prontas (14/10, no computador local).
