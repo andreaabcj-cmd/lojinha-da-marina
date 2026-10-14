@@ -61,6 +61,11 @@ Mudanças que isso pede no que já existe:
 - As aulas 06–09 e 11 (correspondência avançada, bússola/qualidade, CAPI, privacidade) vão para o **Pixel avançado** na fase 3.
 - A aula 10 (Pixel e catálogo) vai para o módulo **Catálogo**.
 
+## Anotações para os tutoriais (telas reais conferidas)
+- **Conta de anúncios (14/10):** Configurações › Contas de anúncios › Adicionar › Criar uma nova conta de anúncios. Etapas: Detalhes (nome, fuso horário, moeda) → Uso (Minha empresa / Outra empresa ou cliente) → Confirmar (aceite dos Termos Comerciais e Políticas de Publicidade). ⚠️ **Moeda e fuso horário NÃO podem ser trocados depois.** ⚠️ Depois de adicionada, a conta não pode ser removida do portfólio. Criar a conta não pede forma de pagamento.
+- **Gerenciador de Eventos · Visão geral (14/10, portfólio sem Pixel):** "Que bom ter você aqui, [nome]!" · "Conecte seus dados" · "A conexão do Pixel da Meta e da API de Conversões fornece mais dados sobre como os clientes interagem com sua empresa. Escolha um parceiro abaixo para começar." · selo "Redução de 25% no custo por conversão fora do site" · parceiros Google Tag Manager, Shopify, WooCommerce ("Eventos da web") · links "Ver outras maneiras de configurar" e "Configure para mim". Menu: Conectar dados, Visão geral, Conjuntos de dados, Conversões personalizadas, Integrações.
+- **Criar conjunto de dados (14/10):** mesmas telas de 13/10 (Conectar dados › Web › Avançar › nome + caixa da API de Conversões + categorias › Criar).
+
 ## Pendências de revisão
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
