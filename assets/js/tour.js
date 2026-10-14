@@ -24,7 +24,7 @@
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
   var holo, balao, tour, nome, passo = 0, timer;
   var voltar = null, paginas = {};   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
-  function aqui() { return location.pathname.split('/').pop() || 'index.html' }
+  function aqui() { return (location.pathname.split('/').pop() || 'index.html') + (location.hash || '') }   // página + tela (#...) dos simuladores
   function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar, paginas: paginas })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
   function alvoEl(p) { try { return typeof p.alvo === 'function' ? p.alvo() : document.querySelector(p.alvo) } catch (e) { return null } }
   function masc() { return window.PERSONAGEM ? window.PERSONAGEM('pixel', 3) : '' }
@@ -46,7 +46,11 @@
   function vai(n, atras) {
     passo = n; salva(); var p = tour[passo]; if (!p) return termina(true);
     if (atras) {   // voltando: primeiro a página certa, depois arruma a tela
-      if (paginas[n] && paginas[n] !== aqui()) { location.href = paginas[n]; return }
+      if (paginas[n] && paginas[n] !== aqui()) {
+        var pg = paginas[n].split('#');
+        if (pg[0] === aqui().split('#')[0]) location.hash = pg[1] || '';   // mesma página, outra tela
+        else { location.href = paginas[n]; return }
+      }
       if (p.garante) try { p.garante() } catch (e) { }
       return setTimeout(desenha, 250);
     }
