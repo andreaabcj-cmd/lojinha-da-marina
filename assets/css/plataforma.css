@@ -260,3 +260,19 @@ details.cola[open]>summary~*{animation:mvChega .3s both}
 .oc-pag.nao{opacity:.6}.oc-pag.nao .oc-st{color:var(--red)}
 .oc-fb{margin-top:12px;padding:0;border-radius:10px;font-size:15px}.oc-fb.ok{padding:12px 14px;background:var(--green-l)}.oc-fb.erro{padding:12px 14px;background:var(--red-l)}
 @media (max-width:720px){.oc-ops{grid-template-columns:1fr}.oc-site{grid-template-columns:1fr 1fr}}
+
+/* ferramenta: explorador de eventos */
+.ex-trilha{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:14px}
+.ex-seta{font-style:normal;color:var(--muted);font-size:20px}
+.ex-passo{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:104px;padding:10px 8px;background:#fff;border:2px solid var(--line);border-radius:12px;cursor:pointer;font:inherit;transition:transform .12s,border-color .12s}
+.ex-passo span{font-size:24px}.ex-passo b{font-size:14px}.ex-passo code{font-size:11px;color:var(--muted)}
+.ex-passo:hover{border-color:var(--ink);transform:translateY(-2px)}.ex-passo.on{border-color:var(--blue);background:var(--blue-l);box-shadow:3px 3px 0 var(--ink)}
+.ex-det{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:14px 16px;box-shadow:3px 3px 0 var(--ink)}
+.ex-det>small,.ex-cab small{display:block;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px}
+.ex-cab{display:flex;gap:12px;align-items:center}.ex-cab small{margin:0}.ex-cab h3{margin:0;font:800 20px Consolas,monospace}.ex-cab p{margin:2px 0 0}.ex-ic{font-size:34px}
+.ex-params{display:flex;flex-wrap:wrap;gap:8px}.ex-params span{padding:5px 12px;border-radius:999px;background:#EEF2F7;font-size:14px}
+.ex-params span.obrig{background:var(--yellow-l);outline:2px solid #E5B53A}.ex-params em{font-style:normal;font-size:11px;font-weight:800;color:#8A5A00}.ex-params .vazio{background:none;color:var(--muted);padding-left:0}
+.ex-dica{margin:10px 0 0;padding:8px 12px;border-radius:10px;background:var(--yellow-l)}
+.ex-ger{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font:600 14px Consolas,monospace}.ex-ger .st{width:9px;height:9px;border-radius:50%;background:var(--green)}.ex-ger em{margin-left:auto;font:600 12px inherit;color:var(--green);font-style:normal}
+.ex-code{margin:0;padding:10px 12px;border-radius:10px;background:#0B1424;color:#C9D6E8;font:12px/1.5 Consolas,monospace;white-space:pre-wrap}
+@media (max-width:720px){.ex-seta{display:none}.ex-passo{min-width:0;flex:1 1 30%}}

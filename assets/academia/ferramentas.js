@@ -145,6 +145,47 @@
     }
   };
 
+
+  /* ---------- 4. Explorador de eventos (aula 04): evento = o que aconteceu; parâmetro = o detalhe ---------- */
+  var EVS = [
+    { ev: 'PageView', ic: '🏠', passo: { pt: 'Abriu a loja', es: 'Abrió la tienda' }, quando: { pt: 'Em toda página aberta (o código base já envia).', es: 'En cada página abierta (el código base ya lo envía).' },
+      params: [], ger: 'PageView · Navegador', code: "fbq('track', 'PageView');" },
+    { ev: 'ViewContent', ic: '👀', passo: { pt: 'Viu um produto', es: 'Vio un producto' }, quando: { pt: 'Quando a pessoa abre a página de um produto.', es: 'Cuando la persona abre la página de un producto.' },
+      params: [['🧸', { pt: 'produto', es: 'producto' }, 'CANECA_01'], ['💰', { pt: 'valor', es: 'valor' }, 'R$ 89,90'], ['🪙', { pt: 'moeda', es: 'moneda' }, 'BRL']], ger: 'ViewContent · Navegador',
+      code: "fbq('track', 'ViewContent', {content_ids: ['CANECA_01'], value: 89.90, currency: 'BRL'});" },
+    { ev: 'AddToCart', ic: '🛒', passo: { pt: 'Pôs no carrinho', es: 'Puso en el carrito' }, quando: { pt: 'No clique em “Adicionar ao carrinho”.', es: 'Al hacer clic en “Agregar al carrito”.' },
+      params: [['🧸', { pt: 'produto', es: 'producto' }, 'CANECA_01'], ['🔢', { pt: 'quantidade', es: 'cantidad' }, '1'], ['💰', { pt: 'valor', es: 'valor' }, 'R$ 89,90'], ['🪙', { pt: 'moeda', es: 'moneda' }, 'BRL']], ger: 'AddToCart · Navegador',
+      code: "fbq('track', 'AddToCart', {contents: [{id: 'CANECA_01', quantity: 1}], value: 89.90, currency: 'BRL'});" },
+    { ev: 'InitiateCheckout', ic: '🧾', passo: { pt: 'Foi pagar', es: 'Fue a pagar' }, quando: { pt: 'Quando a pessoa abre a página de pagamento.', es: 'Cuando la persona abre la página de pago.' },
+      params: [['📦', { pt: 'itens', es: 'artículos' }, '1'], ['💰', { pt: 'valor', es: 'valor' }, 'R$ 89,90'], ['🪙', { pt: 'moeda', es: 'moneda' }, 'BRL']], ger: 'InitiateCheckout · Navegador',
+      code: "fbq('track', 'InitiateCheckout', {num_items: 1, value: 89.90, currency: 'BRL'});" },
+    { ev: 'Purchase', ic: '🎉', passo: { pt: 'Comprou', es: 'Compró' }, quando: { pt: 'Na página de “obrigado pela compra”, uma vez por pedido.', es: 'En la página de “gracias por tu compra”, una vez por pedido.' },
+      params: [['💰', { pt: 'valor', es: 'valor' }, 'R$ 89,90', 1], ['🪙', { pt: 'moeda', es: 'moneda' }, 'BRL', 1], ['🧸', { pt: 'produto', es: 'producto' }, 'CANECA_01']], ger: 'Purchase · Navegador · R$ 89,90',
+      code: "fbq('track', 'Purchase', {value: 89.90, currency: 'BRL', content_ids: ['CANECA_01']});",
+      dica: { pt: 'Valor e moeda são OBRIGATÓRIOS na compra. Sem eles, a Meta sabe que vendeu, mas não quanto.', es: 'Valor y moneda son OBLIGATORIOS en la compra. Sin ellos, Meta sabe que vendió, pero no cuánto.' } }
+  ];
+  F['explorador'] = {
+    titulo: { pt: 'Explorador de eventos', es: 'Explorador de eventos' },
+    resumo: { pt: 'Clique em cada passo da compra e veja o evento, os parâmetros e como ele aparece no Gerenciador de Eventos.', es: 'Haz clic en cada paso de la compra y mira el evento, los parámetros y cómo aparece en el Administrador de eventos.' },
+    paginas: '15', status: 'pronta',
+    montar: function (el, T, lang, opts) {
+      var simples = opts && opts.modo === 'simples';
+      el.innerHTML = '<div class="ex"><div class="ex-trilha">' + EVS.map(function (e, i) { return '<button class="ex-passo" data-ex="' + i + '"><span>' + e.ic + '</span><b>' + T(e.passo) + '</b><code>' + e.ev + '</code></button>' }).join('<i class="ex-seta">›</i>') + '</div><div class="ex-det" id="exDet"></div></div>';
+      function mostra(i) {
+        var e = EVS[i];
+        el.querySelectorAll('.ex-passo').forEach(function (b, k) { b.classList.toggle('on', k === i) });
+        el.querySelector('#exDet').innerHTML = '<div class="ex-cab"><span class="ex-ic">' + e.ic + '</span><div><small>' + T({ pt: 'Evento (o que aconteceu)', es: 'Evento (lo que pasó)' }) + '</small><h3>' + e.ev + '</h3><p>' + T(e.quando) + '</p></div></div>' +
+          '<small>' + T({ pt: 'Parâmetros (os detalhes)', es: 'Parámetros (los detalles)' }) + '</small><div class="ex-params">' + (e.params.length ? e.params.map(function (p) { return '<span class="' + (p[3] ? 'obrig' : '') + '">' + p[0] + ' ' + T(p[1]) + ': <b>' + p[2] + '</b>' + (p[3] ? ' <em>' + T({ pt: 'obrigatório', es: 'obligatorio' }) + '</em>' : '') + '</span>' }).join('') : '<span class="vazio">' + T({ pt: 'nenhum: só avisa que a página abriu', es: 'ninguno: solo avisa que la página se abrió' }) + '</span>') + '</div>' +
+          (e.dica ? '<p class="ex-dica">💡 ' + T(e.dica) + '</p>' : '') +
+          '<small>' + T({ pt: 'Como aparece no Gerenciador de Eventos (Testar eventos)', es: 'Cómo aparece en el Administrador de eventos (Probar eventos)' }) + '</small><div class="ex-ger"><span class="st"></span>' + e.ger + ' <em>' + T({ pt: 'Processado', es: 'Procesado' }) + '</em></div>' +
+          (simples ? '' : '<small>' + T({ pt: 'O código que dispara (técnico)', es: 'El código que lo dispara (técnico)' }) + '</small><pre class="ex-code">' + e.code + '</pre>');
+        var d = el.querySelector('#exDet'); d.classList.remove('mv-chega'); void d.offsetWidth; d.classList.add('mv-chega');
+      }
+      el.addEventListener('click', function (ev) { var b = ev.target.closest('[data-ex]'); if (b) mostra(+b.getAttribute('data-ex')) });
+      mostra(4);
+    }
+  };
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
@@ -163,5 +204,5 @@
    ['arvore', { pt: 'Árvore de diagnóstico', es: 'Árbol de diagnóstico' }, { pt: 'Do que o cliente diz até a causa: perguntas guiadas.', es: 'De lo que dice el cliente hasta la causa: preguntas guiadas.' }, '49'],
    ['biblioteca', { pt: 'Biblioteca de problemas e soluções', es: 'Biblioteca de problemas y soluciones' }, { pt: 'Todos os problemas conhecidos, com causa e solução.', es: 'Todos los problemas conocidos, con causa y solución.' }, '50'],
    ['fontes', { pt: 'Fontes oficiais e validade', es: 'Fuentes oficiales y vigencia' }, { pt: 'Os links da Meta que embasam cada aula, com a data da última conferência.', es: 'Los enlaces de Meta que respaldan cada clase, con la fecha de la última revisión.' }, '57']
-  ].forEach(function (f) { F[f[0]] = { titulo: f[1], resumo: f[2], paginas: f[3], status: 'planejada' } });
+  ].forEach(function (f) { if (F[f[0]]) return; F[f[0]] = { titulo: f[1], resumo: f[2], paginas: f[3], status: 'planejada' } });
 })();

@@ -82,3 +82,41 @@ window.TOURS['pixel-em-acao'] = [
     tit: { pt: 'Aí estão! 🎉', es: '¡Ahí están! 🎉' },
     txt: { pt: 'PageView (abriu a página), ViewContent (viu o produto) e AddToCart (pôs no carrinho). O Pixel contou para a Meta o que você fez, nada além disso. Clique em Concluir para voltar à aula.', es: 'PageView (abrió la página), ViewContent (vio el producto) y AddToCart (puso en el carrito). El Pixel le contó a Meta lo que hiciste, nada más. Haz clic en Terminar para volver a la clase.' } }
 ];
+
+/* Aula 04 · uma compra completa: da vitrine até o Purchase com valor e moeda no Consultor de Dados */
+function tgEvPurchase() { var c = [].slice.call(document.querySelectorAll('.da-ev-cab')); return c.filter(function (x) { return /Purchase/.test(x.textContent) })[0] || null }
+window.TOURS['compra-completa'] = [
+  { alvo: '.card-prod .foto', clique: true, garante: function () { window.DA && DA.fechar() },
+    tit: { pt: 'Escolha um produto', es: 'Elige un producto' },
+    txt: { pt: 'Você é uma cliente da Marina e vai comprar de verdade (de mentirinha 😄). Clique num produto.', es: 'Eres una clienta de Marina y vas a comprar de verdad (de mentira 😄). Haz clic en un producto.' },
+    dica: { pt: 'Abrir o produto já dispara o ViewContent.', es: 'Abrir el producto ya dispara el ViewContent.' } },
+  { alvo: '#addCart', clique: true, garante: function () { window.DA && DA.fechar() },
+    tit: { pt: 'Ponha no carrinho', es: 'Ponlo en el carrito' },
+    txt: { pt: 'Clique em Adicionar ao carrinho (se tiver tamanho, escolha um antes).', es: 'Haz clic en Agregar al carrito (si tiene talla, elige una antes).' },
+    dica: { pt: 'Este clique dispara o AddToCart.', es: 'Este clic dispara el AddToCart.' } },
+  { alvo: '#addOk a', clique: true,
+    tit: { pt: 'Vá para o carrinho', es: 'Ve al carrito' },
+    txt: { pt: 'Clique em Ver carrinho.', es: 'Haz clic en Ver carrito.' } },
+  { alvo: 'a[href="checkout.html"]', clique: true,
+    tit: { pt: 'Hora de pagar', es: 'Hora de pagar' },
+    txt: { pt: 'Clique em Ir para o pagamento.', es: 'Haz clic en Ir al pago.' },
+    dica: { pt: 'Abrir a página de pagamento dispara o InitiateCheckout.', es: 'Abrir la página de pago dispara el InitiateCheckout.' } },
+  { alvo: '.pags', cond: function () { return !!document.querySelector('[name=pag]:checked') },
+    tit: { pt: 'Forma de pagamento', es: 'Forma de pago' },
+    txt: { pt: 'Os dados de teste já estão preenchidos (nada aqui é real). Escolha uma forma de pagamento simulada e clique em Próximo.', es: 'Los datos de prueba ya están completos (nada aquí es real). Elige una forma de pago simulada y haz clic en Siguiente.' } },
+  { alvo: '#formCheckout button.btn', clique: true,
+    tit: { pt: 'Finalize o pedido', es: 'Finaliza el pedido' },
+    txt: { pt: 'Clique em Finalizar pedido.', es: 'Haz clic en Finalizar pedido.' } },
+  { alvo: '#maExt', clique: true, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() },
+    tit: { pt: 'Comprou! 🎉 E o Pixel?', es: '¡Compró! 🎉 ¿Y el Pixel?' },
+    txt: { pt: 'Esta página de “obrigado” dispara o Purchase. Abra o Consultor de Dados, na faixa amarela, para ver.', es: 'Esta página de “gracias” dispara el Purchase. Abre el Asesor de datos, en la franja amarilla, para verlo.' } },
+  { alvo: '.da-card-pixel', clique: true, pula: function () { return !!document.querySelector('.da-card-id') }, garante: function () { window.DA && DA.abrir('inicio') },
+    tit: { pt: 'Abra o Pixel', es: 'Abre el Pixel' },
+    txt: { pt: 'Clique no cartão do Pixel.', es: 'Haz clic en la tarjeta del Pixel.' } },
+  { alvo: tgEvPurchase, clique: true, garante: function () { window.DA && DA.abrir('pixel') },
+    tit: { pt: 'O evento da compra', es: 'El evento de la compra' },
+    txt: { pt: 'Aí está o Purchase: o EVENTO, ou seja, o que aconteceu. Clique nele para ver os detalhes.', es: 'Ahí está el Purchase: el EVENTO, o sea, lo que pasó. Haz clic en él para ver los detalles.' } },
+  { alvo: '.da-ev-corpo', fim: true,
+    tit: { pt: 'Os parâmetros 💰', es: 'Los parámetros 💰' },
+    txt: { pt: 'Em “Parâmetros personalizados” estão os DETALHES: value (o valor) e currency (a moeda, BRL). Com eles a Meta sabe quanto a Marina vendeu. Clique em Concluir para voltar à aula.', es: 'En “Parámetros personalizados” están los DETALLES: value (el valor) y currency (la moneda, BRL). Con ellos Meta sabe cuánto vendió Marina. Haz clic en Terminar para volver a la clase.' } }
+];

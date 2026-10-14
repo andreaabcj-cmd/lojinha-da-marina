@@ -69,5 +69,6 @@ Mudanças que isso pede no que já existe:
 ## Pendências de revisão
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
-- [ ] Construir as aulas 01, 02, 04 e 05 do Pixel básico (uma por vez, revisando cada uma).
+- [x] Aulas 01, 02, 03 e 04 do Pixel básico prontas (14/10, no computador local).
+- [ ] Aula 05 (avisos e problemas básicos).
 - [ ] Detalhar fases 2–5 quando chegar a vez de cada uma.
