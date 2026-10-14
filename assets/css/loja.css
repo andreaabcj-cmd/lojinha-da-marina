@@ -172,3 +172,4 @@ code,.sku{font-family:Consolas,"Cascadia Mono",monospace;font-size:.86em;backgro
 @keyframes maChama{50%{transform:scale(1.12);box-shadow:0 0 0 8px rgba(242,182,50,.6),4px 4px 0 var(--ink)}}
 
 .ma-sim{font-style:normal;font-weight:600;font-size:.75em;opacity:.75;margin-left:3px}
+@media(max-width:560px){.topo{gap:10px}.menu{flex-wrap:wrap;justify-content:flex-end;min-width:0;max-width:100%}.menu a{padding:5px 6px;font-size:13px}}

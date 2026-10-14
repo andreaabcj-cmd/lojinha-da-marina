@@ -329,3 +329,7 @@ details.cola[open]>summary~*{animation:mvChega .3s both}
 .como-ir{color:var(--ink);text-decoration:none;font-weight:600}.como-ir::before{content:"▶ ";color:var(--blue);font-size:11px}.como-ir:hover{color:var(--blue)}
 .como-aula{flex:none;font-size:12px;color:var(--muted);text-decoration:none}.como-aula:hover{text-decoration:underline}
 .como-nada{color:var(--muted)}
+/* celular: a "foto" (print) dentro do balão não pode sair da tela */
+.msg{max-width:100%;min-width:0}.msg .bolha{min-width:0;max-width:100%}.msg .bolha.foto{max-width:calc(100vw - 90px)}.msg .bolha.foto>*{max-width:100%}
+.msg>div{min-width:0;max-width:100%}.msg .bolha.foto{max-width:100%}
+html,body{overflow-x:clip}
