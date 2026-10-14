@@ -10,7 +10,7 @@
    mas nada é enviado para a Meta.
    ===================================================================== */
 window.LOJA_CONFIG = {
-  pixelId: 'SEU_PIXEL_ID',
+  pixelId: '1779103133372149',   // "Pixel da Mari" (criado em 14/10/2026)
 
   // Um segundo ID, usado só no laboratório "Anotei no caderno errado".
   // Pode deixar assim; se quiser mostrar o erro de verdade, crie um 2º Pixel de teste.
