@@ -39,7 +39,7 @@
   /* ---------- telas ---------- */
   var TELAS = {
     inicio: function () {
-      var ult = lsGet('plat.ultima', null), aula = ult && (window.AULAS[ult.m] || []).filter(function (a) { return a.id === ult.a })[0];
+      var ult = lsGet('plat.ultima', null), aula = ult && (window.AULAS[ult.m] || []).filter(function (a) { return a.id === ult.a && a.status === 'pronta' })[0];
       return '<div class="pl-ola">' + PERSONAGEM('marina', 4) + PERSONAGEM('rafa', 4) + PERSONAGEM('pixel', 4) + '</div>' +
         '<h1 class="pl-h1">' + T({ pt: 'Bem-vindo à Lojinha da Marina', es: 'Bienvenido a la Lojinha da Marina' }) + '</h1>' +
         '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online, o Rafa é do suporte e o Pixel mede tudo o que acontece no site. Escolha por onde começar.', es: 'Marina tiene una tienda online, Rafa es del soporte y el Pixel mide todo lo que pasa en el sitio. Elige por dónde empezar.' }) + '</p>' +
@@ -52,14 +52,20 @@
         ].map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
     },
     modulos: function () {
-      return '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1><p class="pl-lead">' + T({ pt: 'A trilha completa. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender.', es: 'La ruta completa. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender.' }) + '</p>' +
-        '<div class="grade">' + window.MODULOS.map(function (m) {
-          var ok = window.AULAS[m.id]; return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>')
-        }).join('') + '</div>';
+      var F = window.FASES || [];
+      function card(m) { var ok = window.AULAS[m.id]; return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>') }
+      var h = '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1><p class="pl-lead">' + T({ pt: 'A trilha é a história da Marina: ela começa sem saber nada e, a cada fase, o negócio dela cresce e aparecem dúvidas novas. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender.', es: 'La ruta es la historia de Marina: empieza sin saber nada y, en cada fase, su negocio crece y aparecen dudas nuevas. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender.' }) + '</p>';
+      for (var f = 1; f < F.length; f++) {
+        var ms = window.MODULOS.filter(function (m) { return m.fase === f }); if (!ms.length) continue;
+        h += '<div class="fase-cab"><span class="fase-ic">' + F[f].icone + '</span><div><small>' + T({ pt: 'Fase', es: 'Fase' }) + ' ' + f + '</small><h2>' + T(F[f].nome) + '</h2><p>' + T(F[f].resumo) + '</p></div></div><div class="grade">' + ms.map(card).join('') + '</div>';
+      }
+      var fora = window.MODULOS.filter(function (m) { return !m.fase });
+      if (fora.length) h += '<div class="fase-cab fora"><div><h2>' + T({ pt: 'Fora da trilha', es: 'Fuera de la ruta' }) + '</h2></div></div><div class="grade">' + fora.map(card).join('') + '</div>';
+      return h;
     },
     modulo: function () {
       var m = window.MODULOS.filter(function (x) { return x.id === Q.get('m') })[0] || window.MODULOS[0], aulas = window.AULAS[m.id] || [], f = feitas();
-      return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1><p class="pl-lead">' + T(m.resumo) + '</p>' +
+      return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + faseChip(m) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
           return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><b>' + T(a.titulo) + '</b><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
@@ -130,6 +136,7 @@
     try { navigator.clipboard.writeText(txt).then(ok, function () { }) } catch (x) { }
   });
 
+  function faseChip(m) { var f = (window.FASES || [])[m && m.fase]; return f ? '<p class="fase-chip">' + PERSONAGEM('marina', 1.4) + T({ pt: 'Marina nesta fase:', es: 'Marina en esta fase:' }) + ' <b>' + f.icone + ' ' + T(f.nome) + '</b></p>' : '' }
   /* ---------- AULA: uma parte por vez (entender · ver de perto · praticar · atender) ---------- */
   var passoAtual = 0;
   function aulaTela() {
@@ -143,7 +150,7 @@
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function desenha() {
       var p = partes[passoAtual], h = '';
-      if (p === 'entender') h = '<h2>💬 ' + T(U.entender) + '</h2>' + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
+      if (p === 'entender') h = '<h2>💬 ' + T(U.entender) + '</h2>' + (a.antes ? '<p class="fio antes">📖 <b>' + T({ pt: 'Onde paramos:', es: 'Dónde quedamos:' }) + '</b> ' + T(a.antes) + '</p>' : '') + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🔍 ' + T(U.ferramenta) + '</h2><div class="ferr-box" id="ferr"></div><p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>'; setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
       else if (p === 'praticar') {
         var volta = function (id) { return encodeURIComponent(aqui + '&passo=' + (passoAtual + 1) + '&feito=' + id) }, fp = lsGet('plat.praticas', {});
@@ -156,7 +163,7 @@
           }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p>');
       }
       else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + a.atender.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
-        (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '');
+        (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '') + (a.gancho ? '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>' : '');
       $('#palco').innerHTML = h;
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
       $('#bAnt').disabled = passoAtual === 0;
@@ -183,7 +190,7 @@
     });
     return '<div class="barra-apr"><button class="btn sec" id="bNotas">' + T(U.notas) + '</button><button class="btn sec" id="bApr">' + T(U.apresentar) + '</button></div>' +
       '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> › <a href="modulo.html?m=' + mid + '">' + T(m.titulo) + '</a> › ' + T({ pt: 'Aula', es: 'Clase' }) + ' ' + a.id + '</p>' +
-      '<h1 class="pl-h1">' + T(a.titulo) + '</h1><p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
+      '<h1 class="pl-h1">' + T(a.titulo) + '</h1>' + faseChip(m) + '<p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
       '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
       '<div class="notas"><b>📝 ' + T({ pt: 'Notas para quem apresenta', es: 'Notas para quien presenta' }) + ':</b> ' + T(a.entender.notas) + '</div>' +

@@ -14,6 +14,10 @@ Idiomas: **PT | ES** desde o início. Progresso: só no navegador de cada pessoa
 | 🧪 Laboratório | `laboratorio.html`, `ferramenta.html?f=` | As ferramentas das aulas, soltas e completas (inclui os detalhes técnicos) + **A loja por dentro**: o F12 (tipo F12), que só aparece com `loja.html?aula=aba` ou `?lab=1` e some com `?lab=0` |
 | 🗒️ Colas | `colas.html` | A cola de atendimento de todas as aulas, para copiar no dia a dia |
 
+## A história
+A trilha é a história da Marina, em 5 fases (🌱 Cliente nova → 🚀 Em ascensão → 📈 Consolidada → ⭐ Referência → 🏆 Grande anunciante).
+Cada aula abre com "onde paramos" (`antes`) e fecha com o gancho (`gancho`). Roteiro completo: `_roteiro/HISTORIA.md`.
+
 ## Formato FIXO de toda aula (foco: atendimento)
 O agente precisa **entender, identificar o problema e orientar o cliente**; o que é técnico demais vai para o desenvolvedor.
 1. **Entender** — chat no estilo do atendimento (Marina à esquerda, Rafa à direita, Pixel como dica) + 2–3 ideias simples.

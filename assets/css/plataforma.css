@@ -176,3 +176,9 @@ html.apresentar h1.pl-h1{font-size:36px}
 .jeito .ir{margin-left:auto;font-size:18px;color:#2F6FD6}.jeito.principal{border-color:#2F6FD6;background:#F2F7FF}.jeito.feito .n{background:#22A06B;color:#fff}
 .pp-pergunta{margin-top:18px}
 .cola-passos{margin:4px 0 12px;padding-left:22px}.cola-passos li{margin:3px 0}
+
+/* fases da Marina e o fio da história */
+.fase-cab{display:flex;gap:14px;align-items:center;margin:34px 0 12px}.fase-cab h2{margin:0;font-size:22px}.fase-cab p{margin:2px 0 0;opacity:.8}.fase-cab small{font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.6;font-size:11px}
+.fase-ic{font-size:30px;width:52px;height:52px;display:grid;place-items:center;border:2px solid #16294A;border-radius:14px;background:#fff;box-shadow:3px 3px 0 #16294A}
+.fase-chip{display:inline-flex;align-items:center;gap:8px;margin:0 0 6px;padding:4px 12px 4px 6px;border-radius:999px;background:#FFF4D6;font-size:14px}
+.fio{padding:10px 14px;border-radius:10px;margin:0 0 14px;font-size:15px}.fio.antes{background:#EEF2F7}.fio.depois{background:#FFF4D6;margin:18px 0 0}
