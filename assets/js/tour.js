@@ -1,7 +1,9 @@
 /* Tutorial guiado (holofote + Pixel explicando), o mesmo em qualquer página do site.
    - Os roteiros ficam em window.TOURS[nome] = [passos]. Cada passo:
        { alvo: 'seletor' | function(){return elemento}, tit, txt, dica?, clique?: true (avança ao clicar no alvo),
-         cond?: function(){return true quando pode avançar}, fim?: true, pagina?: 'loja.html' (passo em outra página) }
+         cond?: function(){return true quando pode avançar}, fim?: true, pagina?: 'loja.html' (passo em outra página),
+         garante?: function(){arruma a tela para este passo — roda quando a pessoa VOLTA com ◀}, semVolta?: true }
+   - Ao voltar, o tutorial reabre a página onde aquele passo aconteceu e chama garante().
    - Inicia com ?tour=nome na URL ou TOUR.inicia('nome'). Continua entre páginas (sessionStorage).
    - Ao terminar volta para ?voltar=... (ex.: a aula). Textos {pt, es}. */
 (function () {
@@ -21,8 +23,9 @@
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
   var holo, balao, tour, nome, passo = 0, timer;
-  function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
-  var voltar = null;
+  var voltar = null, paginas = {};   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
+  function aqui() { return location.pathname.split('/').pop() || 'index.html' }
+  function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar, paginas: paginas })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
   function alvoEl(p) { try { return typeof p.alvo === 'function' ? p.alvo() : document.querySelector(p.alvo) } catch (e) { return null } }
   function masc() { return window.PERSONAGEM ? window.PERSONAGEM('pixel', 3) : '' }
   function monta() {
@@ -32,7 +35,7 @@
     document.body.appendChild(holo); document.body.appendChild(balao);
     balao.addEventListener('click', function (e) {
       var b = e.target.closest('[data-tg]'); if (!b) return; var a = b.getAttribute('data-tg');
-      if (a === 'prox') vai(passo + 1); else if (a === 'volta') vai(Math.max(0, passo - 1)); else if (a === 'fim' || a === 'sair') termina(a === 'fim');
+      if (a === 'prox') vai(passo + 1); else if (a === 'volta') volta(); else if (a === 'fim' || a === 'sair') termina(a === 'fim');
     });
     document.addEventListener('click', function (e) {
       if (!tour) return; var p = tour[passo], el = alvoEl(p);
@@ -40,17 +43,25 @@
     }, true);
     window.addEventListener('resize', posiciona); document.addEventListener('scroll', posiciona, true);
   }
-  function vai(n) {
+  function vai(n, atras) {
     passo = n; salva(); var p = tour[passo]; if (!p) return termina(true);
+    if (atras) {   // voltando: primeiro a página certa, depois arruma a tela
+      if (paginas[n] && paginas[n] !== aqui()) { location.href = paginas[n]; return }
+      if (p.garante) try { p.garante() } catch (e) { }
+      return setTimeout(desenha, 250);
+    }
     if (p.pula && p.pula()) return vai(n + 1);
     if (p.pagina && location.pathname.split('/').pop() !== p.pagina) { location.href = p.pagina; return }
     desenha();
   }
+  function volta() {   // volta ao passo anterior que mostra algo (pula para trás os que foram pulados)
+    var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
+  }
   function desenha() {
-    var p = tour[passo], prox = !p.clique && !p.fim;
+    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva();
     balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
-      '<div class="tg-ctrl"><small>' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + '</small><span>' + (passo ? '<button class="tg-btn sec" data-tg="volta">◀</button>' : '') +
+      '<div class="tg-ctrl"><small>' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
       (p.fim ? '<button class="tg-btn" data-tg="fim">' + T(UI.fim) + '</button>' : prox ? '<button class="tg-btn" data-tg="prox">' + T(UI.prox) + '</button>' : '<small>' + T(UI.clique) + '</small>') + '</span></div>';
     p.antes && p.antes();
     posiciona();
@@ -72,17 +83,17 @@
     if (concluiu && v) location.href = v;
   }
   window.TOUR = {
-    inicia: function (n, p0, volta) {
-      if (!window.TOURS || !window.TOURS[n]) return; tour = window.TOURS[n]; nome = n; voltar = volta || null; monta();
+    inicia: function (n, p0, volta, pgs, atras) {
+      if (!window.TOURS || !window.TOURS[n]) return; tour = window.TOURS[n]; nome = n; voltar = volta || null; paginas = pgs || {}; monta();
       clearInterval(timer); timer = setInterval(posiciona, 500);   // acompanha painéis que abrem e conteúdo que carrega
-      vai(p0 || 0);
+      vai(p0 || 0, atras);
     }
   };
   function inicia() {
     var q = new URLSearchParams(location.search), st = null;
     try { st = JSON.parse(sessionStorage.getItem('tour.ativo') || 'null') } catch (e) { }
     if (q.get('tour')) window.TOUR.inicia(q.get('tour'), 0, q.get('voltar'));
-    else if (st && window.TOURS && window.TOURS[st.nome]) window.TOUR.inicia(st.nome, st.passo, st.voltar);
+    else if (st && window.TOURS && window.TOURS[st.nome]) window.TOUR.inicia(st.nome, st.passo, st.voltar, st.paginas, st.paginas && st.paginas[st.passo] === aqui());
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(inicia, 300) }); else setTimeout(inicia, 300);
 })();

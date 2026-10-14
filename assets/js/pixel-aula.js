@@ -197,7 +197,8 @@ var ui = (function(){
     var P={u:'#2F6FD6',U:'#1F4FA8',d:'#2A1E1A',s:'#F4CBA2',e:'#22304A',m:'#D0605A',w:'#fff',a:'#1F3A6E',p:'#A0703A',k:'#22304A'},o='';rows.forEach(function(r,y){for(var x=0;x<r.length;x++){var c=r[x];if(c!=='.')o+='<rect x="'+x*2+'" y="'+y*2+'" width="2" height="2" fill="'+P[c]+'"/>'}});
     return '<svg width="32" height="30" shape-rendering="crispEdges">'+o+'</svg>'}
   function msgEv(ev){return ev.status==='perdido'?'😍 <b>Purchase</b> não foi disparado!':'📡 Pixel: <b>'+ev.nome+'</b> <small>'+({enviado:'enviado à Meta',simulado:'simulado',segurado:'segurado (sem consentimento)',bloqueado:'bloqueado'}[ev.status]||'')+'</small>'}
-  return {novo:function(ev){if(!LABON)return;if(!ready){pend.push(ev);return}badge.textContent=pageEvents.length;badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');toast(msgEv(ev));if(aberto)render()},
+  function painel(on,ab){if(!panel)return;if(ab){aba=ab;lsSet('aulaAba',ab)}aberto=!!on;lsSet('aulaAberta',aberto);panel.classList.toggle('open',aberto);if(aberto)try{document.dispatchEvent(new CustomEvent('loja:ferramenta',{detail:'aula'}))}catch(e){}render()}
+  return {painel:painel,novo:function(ev){if(!LABON)return;if(!ready){pend.push(ev);return}badge.textContent=pageEvents.length;badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');toast(msgEv(ev));if(aberto)render()},
     build:build,toast:function(m){toast(m)}};
 })();
 
@@ -205,4 +206,5 @@ var ui = (function(){
 track('PageView');
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ui.build);else ui.build();
 window.LOJA.toast=ui.toast;
+window.LOJA.painel=ui.painel;   // tutoriais: LOJA.painel(true,'codigo') abre o F12 na aba; LOJA.painel(false) fecha
 })();

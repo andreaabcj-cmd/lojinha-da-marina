@@ -162,6 +162,8 @@
   }
 
   document.addEventListener('click', function (ev) { if (ev.target.closest && ev.target.closest('#maExt')) alterna() });
+  // tutoriais: DA.abrir('inicio'|'pixel') e DA.fechar() arrumam a extensão quando a pessoa volta um passo
+  window.DA = { abrir: function (v) { vista = v || 'inicio'; todos = false; abertos = {}; alterna(true) }, fechar: function () { alterna(false) } };
   document.addEventListener('loja:ferramenta', function (e) { if (e.detail !== 'da' && aberto) alterna(false) });
   document.addEventListener('loja:evento', function () { render() });
   document.addEventListener('loja:faixa', function () { contaBadge() });

@@ -270,23 +270,23 @@
         txt: { pt: 'Você conferiu no Gerenciador de Eventos: o Pixel existe, você sabe o ID e o PageView está chegando. Clique em Concluir para voltar à aula.', es: 'Revisaste en el Administrador de eventos: el Pixel existe, sabes el ID y el PageView está llegando. Haz clic en Terminar para volver a la clase.' } }
     ],
     'criar-pixel': [
-      { alvo: '[data-t=conectar]', clique: true, tit: { pt: 'Conectar dados', es: 'Conectar datos' },
+      { alvo: '[data-t=conectar]', clique: true, tit: { pt: 'Conectar dados', es: 'Conectar datos' }, garante: function () { fechaJanela() },
         txt: { pt: 'Este é o Gerenciador de Eventos do portfólio Lojinha da Marina Aula (confira sempre o nome no canto superior direito). Para criar o Pixel, clique em Conectar dados.', es: 'Este es el Administrador de eventos del portafolio Lojinha da Marina Aula (revisa siempre el nombre arriba a la derecha). Para crear el Pixel, haz clic en Conectar datos.' } },
-      { alvo: '[data-t=op-web]', clique: true, tit: { pt: 'Tipo de dado: Web', es: 'Tipo de dato: Web' },
+      { alvo: '[data-t=op-web]', clique: true, tit: { pt: 'Tipo de dado: Web', es: 'Tipo de dato: Web' }, garante: function () { janelaCom('conectar') },
         txt: { pt: 'O Pixel mede o que acontece no SITE. Escolha Web.', es: 'El Pixel mide lo que pasa en el SITIO. Elige Web.' },
         dica: { pt: 'App, Offline, CRM e Mensagens são outras fontes de dados, para outras aulas.', es: 'App, Offline, CRM y Mensajes son otras fuentes de datos, para otras clases.' } },
-      { alvo: '[data-t=avancar]', clique: true, tit: { pt: 'Avançar', es: 'Siguiente' }, txt: { pt: 'Clique em Avançar.', es: 'Haz clic en Siguiente.' } },
-      { alvo: '[data-t=nome]', cond: function () { return (window.__nomeDs || '').trim().length > 2 }, tit: { pt: 'O nome', es: 'El nombre' },
+      { alvo: '[data-t=avancar]', clique: true, tit: { pt: 'Avançar', es: 'Siguiente' }, txt: { pt: 'Clique em Avançar.', es: 'Haz clic en Siguiente.' }, garante: function () { janelaCom('conectar', true) } },
+      { alvo: '[data-t=nome]', cond: function () { return (window.__nomeDs || '').trim().length > 2 }, tit: { pt: 'O nome', es: 'El nombre' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'Digite um nome, por exemplo: Pixel Aula Lojinha da Marina. Depois clique em Próximo.', es: 'Escribe un nombre, por ejemplo: Pixel Aula Lojinha da Marina. Después haz clic en Siguiente.' },
         dica: { pt: 'A Meta agora chama o Pixel de conjunto de dados. É a mesma coisa.', es: 'Meta ahora llama al Pixel conjunto de datos. Es lo mismo.' } },
-      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' },
+      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'Esta caixinha liga também o envio pelo servidor. Na aula, DESMARQUE para estudar o Pixel sozinho primeiro.', es: 'Esta casilla activa también el envío por el servidor. En la clase, DESMÁRCALA para estudiar primero el Pixel solo.' },
         dica: { pt: 'Ela vale para o portfólio inteiro, não só para este Pixel.', es: 'Vale para todo el portafolio, no solo para este Pixel.' } },
-      { alvo: '[data-t=cats]', tit: { pt: 'Categorias', es: 'Categorías' },
+      { alvo: '[data-t=cats]', tit: { pt: 'Categorias', es: 'Categorías' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'São categorias de assuntos sensíveis (saúde, religião, política…). Loja de canecas: não marque nenhuma.', es: 'Son categorías de temas sensibles (salud, religión, política…). Tienda de tazas: no marques ninguna.' } },
-      { alvo: '[data-t=criar]', clique: true, tit: { pt: 'Criar', es: 'Crear' }, txt: { pt: 'Clique em Criar.', es: 'Haz clic en Crear.' },
+      { alvo: '[data-t=criar]', clique: true, tit: { pt: 'Criar', es: 'Crear' }, txt: { pt: 'Clique em Criar.', es: 'Haz clic en Crear.' }, garante: function () { janelaCom('criar') },
         dica: { pt: 'Ao criar, você aceita os Termos das Ferramentas Comerciais da Meta.', es: 'Al crear, aceptas las Condiciones de las Herramientas para empresas de Meta.' } },
-      { alvo: '[data-t=id-novo]', tit: { pt: 'O identificador do Pixel', es: 'El identificador del Pixel' },
+      { alvo: '[data-t=id-novo]', semVolta: true, tit: { pt: 'O identificador do Pixel', es: 'El identificador del Pixel' },
         txt: { pt: 'Pronto! Este número é o identificador do Pixel. É ele que vai no código do site; é ele que você compara quando o cliente pergunta “é o Pixel certo?”.', es: '¡Listo! Este número es el identificador del Pixel. Es el que va en el código del sitio; es el que comparas cuando el cliente pregunta “¿es el Pixel correcto?”.' } },
       { alvo: '[data-t=ver-codigo]', fim: true, tit: { pt: 'Colocar no site', es: 'Ponerlo en el sitio' },
         txt: { pt: 'Em Configurar o Pixel fica o código com este número, para colocar no topo de todas as páginas (ou use a integração da plataforma). Fim do tutorial! 🎉', es: 'En Configurar el Pixel está el código con este número, para ponerlo arriba en todas las páginas (o usa la integración de la plataforma). ¡Fin del tutorial! 🎉' } }
@@ -301,14 +301,15 @@
       { alvo: '[data-t=feed]', tit: 'Os detalhes', txt: 'Aqui estão os parâmetros (content_ids, value, currency...), o endereço da página e o ID do evento (eventID). É assim que se confere se o Pixel está enviando certo. 🎉', fim: true }
     ]
   };
-  var tour = null, passo = 0, holo, balao;
+  var tour = null, passo = 0, holo, balao, rotas = {};   // rotas[passo] = endereço (#...) em que o passo foi mostrado
+  function janelaCom(qual, web) { if (janela !== qual) { abreJanela(qual) } if (web && escolha !== 'web') { escolha = 'web'; desenhaJanela() } }
   function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); tourMostra() }
   function tourMostra() {
     if (!tour) return; var p = tour[passo];
     if (p.pre && p.pre() === false) return;
-    var precisaProx = !p.clique && !p.fim;
+    var precisaProx = !p.clique && !p.fim; rotas[passo] = location.hash;
     balao.innerHTML = '<span class="masc">' + mascote(54) + '</span><b>' + esc(tx(p.tit)) + '</b><p>' + esc(tx(p.txt)) + '</p>' + (p.dica ? '<div class="dica">💬 Pixel: ' + esc(tx(p.dica)) + '</div>' : '') +
-      '<div class="ctrl"><small>Passo ' + (passo + 1) + ' de ' + tour.length + '</small><span>' + (passo ? '<button class="btn sec" data-tour="volta">◀</button> ' : '') +
+      '<div class="ctrl"><small>Passo ' + (passo + 1) + ' de ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="btn sec" data-tour="volta" title="Passo anterior">◀</button> ' : '') +
       (p.fim ? '<button class="btn" data-tour="fim">Concluir</button>' : precisaProx ? '<button class="btn" data-tour="prox" ' + (p.cond && !p.cond() ? 'disabled' : '') + '>Próximo ▶</button>' : '<small>👆 clique no destaque</small>') + '</span></div>';
     tourAtualiza();
   }
@@ -327,7 +328,12 @@
   document.addEventListener('click', function (ev) {
     var b = ev.target.closest('[data-tour]'); if (!b) return;
     var t = b.getAttribute('data-tour');
-    if (t === 'prox') { passo++; tourMostra() } else if (t === 'volta') { passo = Math.max(0, passo - 1); tourMostra() }
+    if (t === 'prox') { passo++; tourMostra() } else if (t === 'volta') {   // volta de verdade: endereço do passo + janela certa
+      passo = Math.max(0, passo - 1); var q = tour[passo];
+      if (rotas[passo] !== undefined && rotas[passo] !== location.hash) location.hash = rotas[passo];
+      if (q.garante) q.garante(); else fechaJanela();
+      setTimeout(tourMostra, 150)
+    }
     else if (t === 'fim') { holo.remove(); balao.remove(); tour = null; var vt = params.get('voltar'); if (vt) location.href = vt }
   });
   document.addEventListener('input', function () { tourAtualiza() });

@@ -143,3 +143,6 @@ a{color:var(--blue)}
   .sim-portfolio .seta{display:none}
 }
 @media (max-width:560px){.sim-portfolio{display:none}.sim-faixa{font-size:11px}.tabela th:nth-child(3),.tabela td:nth-child(3){display:none}}
+
+.lista-cat input[type=checkbox]{width:16px;height:16px;min-width:0;flex:none;margin:2px 0 0;padding:0;accent-color:var(--blue,#1877F2)}
+.lista-cat label{align-items:flex-start;cursor:pointer}
