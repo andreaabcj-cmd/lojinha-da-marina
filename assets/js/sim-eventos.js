@@ -279,10 +279,10 @@
       { alvo: '[data-t=nome]', cond: function () { return (window.__nomeDs || '').trim().length > 2 }, tit: { pt: 'O nome', es: 'El nombre' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'Digite um nome, por exemplo: Pixel Aula Lojinha da Marina. Depois clique em Próximo.', es: 'Escribe un nombre, por ejemplo: Pixel Aula Lojinha da Marina. Después haz clic en Siguiente.' },
         dica: { pt: 'A Meta agora chama o Pixel de conjunto de dados. É a mesma coisa.', es: 'Meta ahora llama al Pixel conjunto de datos. Es lo mismo.' } },
-      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' }, garante: function () { janelaCom('criar') }, cond: function () { return window.__capi === false },
+      { alvo: '[data-t=capi]', tit: { pt: 'API de Conversões', es: 'API de conversiones' }, garante: function () { janelaCom('criar') }, cond: function () { return window.__capi === false }, bloqueia: function (t) { return window.__capi === false && !!t.closest('label, input') }, erro: { pt: 'Na aula, a caixinha fica DESMARCADA. Clique em Próximo.', es: 'En la clase, la casilla queda DESMARCADA. Haz clic en Siguiente.' },
         txt: { pt: 'Esta caixinha liga também o envio pelo servidor. Na aula, DESMARQUE para estudar o Pixel sozinho primeiro (o Próximo só libera desmarcada).', es: 'Esta casilla activa también el envío por el servidor. En la clase, DESMÁRCALA para estudiar primero el Pixel solo (el Siguiente solo se habilita desmarcada).' },
         dica: { pt: 'Ela vale para o portfólio inteiro, não só para este Pixel.', es: 'Vale para todo el portafolio, no solo para este Pixel.' } },
-      { alvo: '[data-t=cats]', cond: function () { return !document.querySelector('.lista-cat input:checked') }, tit: { pt: 'Categorias', es: 'Categorías' }, garante: function () { janelaCom('criar') },
+      { alvo: '[data-t=cats]', cond: function () { return !document.querySelector('.lista-cat input:checked') }, bloqueia: function (t) { return !!t.closest('.lista-cat label') }, erro: { pt: 'A Lojinha não é de nenhuma dessas categorias: deixe todas desmarcadas.', es: 'La Lojinha no es de ninguna de estas categorías: déjalas todas sin marcar.' }, tit: { pt: 'Categorias', es: 'Categorías' }, garante: function () { janelaCom('criar') },
         txt: { pt: 'São categorias de assuntos sensíveis (saúde, religião, política…). Loja de canecas: não marque nenhuma.', es: 'Son categorías de temas sensibles (salud, religión, política…). Tienda de tazas: no marques ninguna.' } },
       { alvo: '[data-t=criar]', clique: true, tit: { pt: 'Criar', es: 'Crear' }, txt: { pt: 'Clique em Criar.', es: 'Haz clic en Crear.' }, garante: function () { janelaCom('criar') },
         dica: { pt: 'Ao criar, você aceita os Termos das Ferramentas Comerciais da Meta.', es: 'Al crear, aceptas las Condiciones de las Herramientas para empresas de Meta.' } },
@@ -315,26 +315,35 @@
       (p.fim ? '<button class="btn" data-tour="fim">Concluir</button>' : precisaProx ? '<button class="btn" data-tour="prox" ' + (p.cond && !p.cond() ? 'disabled' : '') + '>Próximo ▶</button>' : '<small>👆 clique no destaque</small>') + '</span></div>';
     tourAtualiza();
   }
+  function lugarBalao(caixa, alvo, bw, bh, topo) {
+    var W = innerWidth, H = innerHeight, m = 12, c = [
+      [caixa.right + 18, caixa.top], [caixa.left - bw - 18, caixa.top], [caixa.left, caixa.bottom + 16], [caixa.left, caixa.top - bh - 16],
+      [W - bw - m, H - bh - m], [m, H - bh - m], [W - bw - m, topo], [m, topo]];
+    function ajusta(p) { return [Math.max(m, Math.min(p[0], W - bw - m)), Math.max(topo, Math.min(p[1], H - bh - m))] }
+    function cobre(p, r) { var x = Math.max(0, Math.min(p[0] + bw, r.right) - Math.max(p[0], r.left)), y = Math.max(0, Math.min(p[1] + bh, r.bottom) - Math.max(p[1], r.top)); return x * y }
+    for (var i = 0; i < 4; i++) { var a = ajusta(c[i]); if (!cobre(a, caixa)) return a }
+    var melhor = null, nota = 1e12; c.forEach(function (p) { var a = ajusta(p), n = cobre(a, alvo) * 1000 + cobre(a, caixa); if (n < nota) { nota = n; melhor = a } });
+    return melhor;
+  }
   function tourAtualiza() {
     if (!tour || !holo) return; var p = tour[passo], el = $(p.alvo);
     if (!el) { holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = '50%'; balao.style.top = '80px'; balao.style.transform = 'translateX(-50%)'; return }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
-    var cx = el.closest('.janela, [role=dialog], .da-painel, .ma-panel'); if (cx === el) cx = null;   // dentro de uma janela: ela fica visível inteira
+    var cx = el.closest('.janela, [role=dialog], .da-painel, .ma-panel, .tg-caixa'); if (cx === el) cx = null;   // dentro de uma janela: ela fica visível inteira
     holo.classList.toggle('na-janela', !!cx);
     if (cx) { var rc = cx.getBoundingClientRect(); recorte.style.opacity = 1; recorte.style.left = rc.left + 'px'; recorte.style.top = rc.top + 'px'; recorte.style.width = rc.width + 'px'; recorte.style.height = rc.height + 'px' } else recorte.style.opacity = 0;
     holo.style.left = r.left - 4 + 'px'; holo.style.top = r.top - 4 + 'px'; holo.style.width = r.width + 8 + 'px'; holo.style.height = r.height + 8 + 'px';
-    var bw = balao.offsetWidth || 340, bh = balao.offsetHeight || 160, x = r.right + 18, y = r.top;
-    if (x + bw > innerWidth - 10) { x = Math.max(10, r.left); y = r.bottom + 16; if (y + bh > innerHeight - 10) y = Math.max(10, r.top - bh - 16) }
-    balao.style.transform = 'none'; balao.style.left = Math.min(x, innerWidth - bw - 10) + 'px'; balao.style.top = Math.max(42, Math.min(y, innerHeight - bh - 10)) + 'px';
+    var pos = lugarBalao(cx ? cx.getBoundingClientRect() : r, r, balao.offsetWidth || 340, balao.offsetHeight || 160, 42);
+    balao.style.transform = 'none'; balao.style.left = pos[0] + 'px'; balao.style.top = pos[1] + 'px';
     var bt = balao.querySelector('[data-tour=prox]'); if (bt && p.cond) bt.disabled = !p.cond();
   }
   // modo guiado sem erros: fora do destaque e do balão, o clique não vale
   document.addEventListener('click', function (ev) {
     if (!tour || !balao || balao.contains(ev.target)) return; var p = tour[passo], el = p && $(p.alvo); if (!el) return;
-    if (el === ev.target || el.contains(ev.target)) return;
+    var bl = false; if (el === ev.target || el.contains(ev.target)) { if (!p.bloqueia) return; try { bl = p.bloqueia(ev.target) } catch (x) { } if (!bl) return }
     ev.preventDefault(); ev.stopImmediatePropagation();
     var a = balao.querySelector('.tg-avisa'); if (!a) { a = document.createElement('div'); a.className = 'tg-avisa'; balao.appendChild(a) }
-    a.textContent = tx({ pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
+    a.textContent = tx(bl && p.erro ? p.erro : { pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
     balao.classList.remove('tg-treme'); void balao.offsetWidth; balao.classList.add('tg-treme'); setTimeout(function () { if (a.parentNode) a.remove() }, 3500);
   }, true);
   function tourClique(el) { if (!tour) return; var p = tour[passo]; if (p.clique && el.matches(p.alvo)) { passo++; setTimeout(tourMostra, 120) } }

@@ -14,7 +14,7 @@ window.FASES = [
 
 window.MODULOS = [
   { id: 'portfolio', fase: 1, status: 'construcao', icone: '🏢', titulo: { pt: 'Portfólio empresarial · básico', es: 'Portafolio comercial · básico' }, resumo: { pt: 'Como configurar o portfólio e seus principais recursos.', es: 'Cómo configurar el portafolio y sus principales recursos.' } },
-  { id: 'instagram', fase: 1, status: 'planejado', icone: '📸', titulo: { pt: 'Instagram para empresas', es: 'Instagram para empresas' }, resumo: { pt: 'Como funciona o Instagram para empresas e seus anúncios.', es: 'Cómo funciona Instagram para empresas y sus anuncios.' } },
+  { id: 'instagram', fase: 1, status: 'construcao', icone: '📸', titulo: { pt: 'Instagram para empresas', es: 'Instagram para empresas' }, resumo: { pt: 'Como funciona o Instagram para empresas e seus anúncios.', es: 'Cómo funciona Instagram para empresas y sus anuncios.' } },
   { id: 'pixel', fase: 1, status: 'construcao', icone: '📡', titulo: { pt: 'Pixel · básico', es: 'Pixel · básico' }, resumo: { pt: 'O que é, como criar, como saber se está funcionando, os eventos e os primeiros avisos.', es: 'Qué es, cómo crearlo, cómo saber si funciona, los eventos y los primeros avisos.' } },
   { id: 'anuncios', fase: 2, status: 'planejado', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'planejado', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'O que são e erros comuns.', es: 'Qué son y errores comunes.' } },
@@ -34,6 +34,167 @@ window.MODULOS = [
 ];
 
 window.AULAS = {
+  instagram: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'Pessoal ou profissional?', es: '¿Personal o profesional?' },
+      antes: { pt: 'O portfólio da Marina está pronto, com pessoas e conta de anúncios.', es: 'El portafolio de Marina está listo, con personas y cuenta publicitaria.' },
+      gancho: { pt: '“Virei profissional! E agora, o que eu coloco no perfil?” Vamos deixar o perfil com cara de loja.', es: '“¡Me volví profesional! ¿Y ahora qué pongo en el perfil?” Vamos a darle al perfil cara de tienda.' },
+      objetivo: { pt: 'Entender a diferença entre conta pessoal e profissional (Comercial ou Criador de conteúdo) e o que muda ao trocar.', es: 'Entender la diferencia entre cuenta personal y profesional (Comercial o Creador de contenido) y qué cambia al cambiar.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu Instagram é pessoal e privado. Para vender, preciso mudar alguma coisa? 🤔', es: 'Mi Instagram es personal y privado. Para vender, ¿tengo que cambiar algo? 🤔' }],
+          ['rafa', { pt: 'Precisa sim: virar conta profissional. Para loja, o tipo certo é Comercial. Com ela você vê os insights dos seguidores, faz promoções e ganha botão de contato.', es: 'Sí: volverse cuenta profesional. Para tienda, el tipo correcto es Comercial. Con ella ves las estadísticas de los seguidores, haces promociones y tienes botón de contacto.' }],
+          ['pixel', { pt: 'Atenção: conta profissional é sempre PÚBLICA. Se hoje é privada, ela fica pública ao trocar.', es: 'Atención: la cuenta profesional siempre es PÚBLICA. Si hoy es privada, queda pública al cambiar.' }],
+          ['marina', { pt: 'E se eu me arrepender?', es: '¿Y si me arrepiento?' }],
+          ['rafa', { pt: 'Dá para voltar para pessoal quando quiser, mas aí você perde as ferramentas de empresa, como o Business Suite e o Gerenciador de Anúncios.', es: 'Se puede volver a personal cuando quieras, pero pierdes las herramientas de empresa, como Business Suite y el Administrador de anuncios.' }]
+        ],
+        pontos: [
+          { pt: '<b>Conta profissional</b> tem dois tipos: <b>Comercial</b> (lojas, negócios, marcas) e <b>Criador de conteúdo</b> (influenciadores, artistas).', es: '<b>La cuenta profesional</b> tiene dos tipos: <b>Comercial</b> (tiendas, negocios, marcas) y <b>Creador de contenido</b> (influencers, artistas).' },
+          { pt: '<b>Ela é sempre pública.</b> Quem quer conta privada fica na pessoal.', es: '<b>Siempre es pública.</b> Quien quiere cuenta privada se queda en la personal.' },
+          { pt: '<b>Dá para voltar</b> para pessoal, mas perde as ferramentas de empresa.', es: '<b>Se puede volver</b> a personal, pero se pierden las herramientas de empresa.' }
+        ],
+        notas: { pt: 'O caminho no app: Perfil › ☰ › Configurações e atividade › Para profissionais › Tipo de conta e ferramentas. Na web (instagram.com), a opção se chama “Comercial”. As telas da troca foram vistas de verdade em 14/10/2026.', es: 'El camino en la app: Perfil › ☰ › Configuración y actividad › Para profesionales › Tipo de cuenta y herramientas. En la web (instagram.com), la opción se llama “Comercial”. Las pantallas del cambio se vieron de verdad el 14/10/2026.' }
+      },
+      ferramenta: 'tipo-conta',
+      praticar: {
+        texto: { pt: 'No simulador do Instagram, o Pixel te guia para virar a conta da Marina em Comercial, tela por tela, como na real.', es: 'En el simulador de Instagram, el Pixel te guía para volver Comercial la cuenta de Marina, pantalla por pantalla, como en la real.' },
+        tour: 'virar-profissional', pagina: 'meta-instagram.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Virei meu Instagram para profissional e agora qualquer pessoa vê minhas fotos! Quero deixar privado de novo, mas continuar com as ferramentas de loja. 😣', es: '¡Volví mi Instagram profesional y ahora cualquiera ve mis fotos! Quiero dejarlo privado otra vez, pero seguir con las herramientas de tienda. 😣' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Conta profissional é sempre pública, não dá para deixar privada. Se a privacidade for mais importante, dá para voltar para conta pessoal, mas aí perde as ferramentas de loja. Quer pensar juntas no que faz mais sentido?”', es: '“La cuenta profesional siempre es pública, no se puede dejar privada. Si la privacidad es más importante, se puede volver a cuenta personal, pero se pierden las herramientas de tienda. ¿Pensamos juntas qué tiene más sentido?”' }, fb: { pt: 'Isso! Você foi honesto sobre a regra e ajudou a cliente a escolher, sem pressionar.', es: '¡Eso! Fuiste honesto sobre la regla y ayudaste a la clienta a elegir, sin presionar.' } },
+          { certa: false, txt: { pt: '“É só ir em Privacidade e deixar privada.”', es: '“Solo ve a Privacidad y déjala privada.”' }, fb: { pt: 'Não existe essa opção na conta profissional: ela é sempre pública.', es: 'No existe esa opción en la cuenta profesional: siempre es pública.' } },
+          { certa: false, txt: { pt: '“Crie uma conta nova e apague esta.”', es: '“Crea una cuenta nueva y borra esta.”' }, fb: { pt: 'Exagero: ela perderia seguidores e posts. Primeiro entenda o que ela prefere: privacidade ou ferramentas.', es: 'Exagerado: perdería seguidores y publicaciones. Primero entiende qué prefiere: privacidad o herramientas.' } },
+          { certa: false, txt: { pt: '“Isso é bug, vou abrir um chamado.”', es: '“Es un error, voy a abrir un caso.”' }, fb: { pt: 'Não é bug: é a regra da conta profissional, avisada na própria tela de troca.', es: 'No es un error: es la regla de la cuenta profesional, avisada en la propia pantalla de cambio.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Sua conta é pessoal ou profissional?', es: '¿Tu cuenta es personal o profesional?' },
+          { pt: 'Você vende algo (loja, serviço) ou cria conteúdo (influenciador, artista)?', es: '¿Vendes algo (tienda, servicio) o creas contenido (influencer, artista)?' },
+          { pt: 'Tudo bem a conta ficar pública?', es: '¿Está bien que la cuenta quede pública?' }],
+        conferir: [{ pt: 'Loja ou negócio = Comercial; influenciador ou artista = Criador de conteúdo.', es: 'Tienda o negocio = Comercial; influencer o artista = Creador de contenido.' },
+          { pt: 'A cliente sabe que a conta profissional é sempre pública.', es: 'La clienta sabe que la cuenta profesional siempre es pública.' },
+          { pt: 'Voltar para pessoal tira as ferramentas de empresa.', es: 'Volver a personal quita las herramientas de empresa.' }],
+        frase: { pt: 'Para loja, o ideal é a conta profissional do tipo Comercial: você ganha insights, promoções e botão de contato. Só lembrando: a conta profissional é sempre pública.', es: 'Para tienda, lo ideal es la cuenta profesional tipo Comercial: obtienes estadísticas, promociones y botón de contacto. Solo recuerda: la cuenta profesional siempre es pública.' },
+        passos: [{ pt: 'No app: Perfil › ☰ › Configurações e atividade.', es: 'En la app: Perfil › ☰ › Configuración y actividad.' },
+          { pt: 'Em “Para profissionais”, toque em Tipo de conta e ferramentas › Mudar para conta profissional.', es: 'En “Para profesionales”, toca Tipo de cuenta y herramientas › Cambiar a cuenta profesional.' },
+          { pt: 'Escolha a categoria e o tipo (Comercial), e confirme.', es: 'Elige la categoría y el tipo (Comercial), y confirma.' }],
+        encaminhar: { pt: 'Se a opção não aparece ou dá erro, oriente a seguir a Central de Ajuda do Instagram.', es: 'Si la opción no aparece o da error, orienta a seguir el Centro de ayuda de Instagram.' }
+      },
+      fontes: [
+        { url: 'https://help.instagram.com/502981923235522', titulo: { pt: 'Configurar uma conta profissional no Instagram', es: 'Configurar una cuenta profesional en Instagram' }, conferido: '14/10/2026' },
+        { url: 'https://help.instagram.com/1717693135113805/', titulo: { pt: 'Voltar para conta pessoal', es: 'Volver a una cuenta personal' }, conferido: '14/10/2026' }
+      ]
+    },
+    {
+      id: '02', min: 6, status: 'pronta',
+      titulo: { pt: 'Um perfil que vende', es: 'Un perfil que vende' },
+      antes: { pt: 'O Instagram da Marina virou conta profissional Comercial.', es: 'El Instagram de Marina se volvió cuenta profesional Comercial.' },
+      gancho: { pt: '“Perfil pronto! Agora meu Instagram precisa entrar no portfólio, né?” Vamos juntar o Instagram à pasta da empresa.', es: '“¡Perfil listo! Ahora mi Instagram tiene que entrar al portafolio, ¿no?” Vamos a juntar el Instagram a la carpeta de la empresa.' },
+      objetivo: { pt: 'Saber o que vai no perfil de uma loja (nome, @, bio, foto) e cuidar do que fica público, como o contato.', es: 'Saber qué va en el perfil de una tienda (nombre, @, bio, foto) y cuidar lo que queda público, como el contacto.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu perfil ainda diz “Marina, amo fazer canecas”. Está bom assim? 😅', es: 'Mi perfil todavía dice “Marina, amo hacer tazas”. ¿Así está bien? 😅' }],
+          ['rafa', { pt: 'Dá para melhorar! Coloque o nome da loja no Nome (ele aparece em negrito e na busca), um @ da loja e, na bio, o que você vende em uma frase.', es: '¡Se puede mejorar! Pon el nombre de la tienda en Nombre (aparece en negrita y en la búsqueda), un @ de la tienda y, en la bio, lo que vendes en una frase.' }],
+          ['marina', { pt: 'E coloco meu celular para as pessoas me chamarem?', es: '¿Y pongo mi celular para que me llamen?' }],
+          ['pixel', { pt: 'Cuidado: o contato do perfil fica PÚBLICO. Use um telefone ou email comercial, não o pessoal.', es: 'Cuidado: el contacto del perfil queda PÚBLICO. Usa un teléfono o correo comercial, no el personal.' }]
+        ],
+        pontos: [
+          { pt: '<b>Nome:</b> o nome da loja (aparece em negrito e ajuda na busca).', es: '<b>Nombre:</b> el nombre de la tienda (aparece en negrita y ayuda en la búsqueda).' },
+          { pt: '<b>@ (nome de usuário):</b> o endereço do perfil, sem espaços, fácil de digitar.', es: '<b>@ (nombre de usuario):</b> la dirección del perfil, sin espacios, fácil de escribir.' },
+          { pt: '<b>Bio e contato:</b> a bio diz o que a loja vende; o contato aparece publicamente, então use dados comerciais.', es: '<b>Bio y contacto:</b> la bio dice qué vende la tienda; el contacto aparece públicamente, así que usa datos comerciales.' }
+        ],
+        notas: { pt: 'Na tela real de contato, o Instagram avisa: “Essas informações serão exibidas no seu perfil publicamente… Você pode editar ou remover essas informações quando quiser.” A tela Editar perfil foi vista no app em 14/10/2026.', es: 'En la pantalla real de contacto, Instagram avisa: “Esta información se mostrará públicamente en tu perfil… Puedes editarla o quitarla cuando quieras.” La pantalla Editar perfil se vio en la app el 14/10/2026.' }
+      },
+      ferramenta: 'perfil-que-vende',
+      praticar: {
+        texto: { pt: 'No simulador do Instagram, o Pixel te guia para deixar o perfil da Marina com cara de loja: nome, @ e bio.', es: 'En el simulador de Instagram, el Pixel te guía para darle al perfil de Marina cara de tienda: nombre, @ y bio.' },
+        tour: 'editar-perfil', pagina: 'meta-instagram.html'
+      },
+      atender: {
+        cena: { pt: 'Coloquei meu celular pessoal no perfil e agora não param de me ligar, até de madrugada! 😩', es: '¡Puse mi celular personal en el perfil y ahora no paran de llamarme, hasta de madrugada! 😩' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O contato do perfil fica público, por isso todo mundo vê. Você pode editar ou remover quando quiser: troque por um telefone ou email comercial, ou tire o telefone. Te mostro onde.”', es: '“El contacto del perfil queda público, por eso todos lo ven. Puedes editarlo o quitarlo cuando quieras: cámbialo por un teléfono o correo comercial, o quita el teléfono. Te muestro dónde.”' }, fb: { pt: 'Isso! Você explicou o porquê e deu a solução na hora, sem complicar.', es: '¡Eso! Explicaste el porqué y diste la solución al momento, sin complicar.' } },
+          { certa: false, txt: { pt: '“Volte para conta pessoal.”', es: '“Vuelve a cuenta personal.”' }, fb: { pt: 'Exagero: ela perderia as ferramentas de loja. É só editar o contato.', es: 'Exagerado: perdería las herramientas de tienda. Solo hay que editar el contacto.' } },
+          { certa: false, txt: { pt: '“Não tem como tirar, agora já foi.”', es: '“No se puede quitar, ya está.”' }, fb: { pt: 'Tem sim: o próprio Instagram diz que dá para editar ou remover quando quiser.', es: 'Sí se puede: el propio Instagram dice que se puede editar o quitar cuando quieras.' } },
+          { certa: false, txt: { pt: '“Bloqueie quem ligar.”', es: '“Bloquea a quien llame.”' }, fb: { pt: 'Não resolve a causa: o número continua público. Primeiro tire ou troque o contato.', es: 'No resuelve la causa: el número sigue público. Primero quita o cambia el contacto.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O Nome do perfil tem o nome da loja?', es: '¿El Nombre del perfil tiene el nombre de la tienda?' },
+          { pt: 'A bio diz o que você vende?', es: '¿La bio dice qué vendes?' },
+          { pt: 'O contato no perfil é comercial ou pessoal?', es: '¿El contacto del perfil es comercial o personal?' }],
+        conferir: [{ pt: 'Nome = nome da loja; @ sem espaços.', es: 'Nombre = nombre de la tienda; @ sin espacios.' },
+          { pt: 'Bio com o que a loja vende.', es: 'Bio con lo que vende la tienda.' },
+          { pt: 'Contato público só com dados comerciais.', es: 'Contacto público solo con datos comerciales.' }],
+        frase: { pt: 'O contato do perfil fica público. Você pode editar ou remover quando quiser: troque por um telefone ou email comercial. Te mostro onde.', es: 'El contacto del perfil queda público. Puedes editarlo o quitarlo cuando quieras: cámbialo por un teléfono o correo comercial. Te muestro dónde.' },
+        passos: [{ pt: 'No app, vá no seu perfil e toque em Editar perfil.', es: 'En la app, ve a tu perfil y toca Editar perfil.' },
+          { pt: 'Ajuste Nome, Nome de usuário e Bio, e toque em Concluir.', es: 'Ajusta Nombre, Nombre de usuario y Bio, y toca Terminar.' }],
+        encaminhar: { pt: 'Se a cliente não consegue trocar o nome ou o @ (o Instagram limita mudanças), oriente a seguir a Central de Ajuda do Instagram.', es: 'Si la clienta no logra cambiar el nombre o el @ (Instagram limita cambios), orienta a seguir el Centro de ayuda de Instagram.' }
+      },
+      fontes: [
+        { url: 'https://help.instagram.com/502981923235522', titulo: { pt: 'Conta profissional: contato e exibição no perfil', es: 'Cuenta profesional: contacto y visualización en el perfil' }, conferido: '14/10/2026' }
+      ]
+    },
+    {
+      id: '03', min: 6, status: 'pronta',
+      titulo: { pt: 'Instagram no portfólio', es: 'Instagram en el portafolio' },
+      antes: { pt: 'O perfil da Marina está com cara de loja.', es: 'El perfil de Marina tiene cara de tienda.' },
+      gancho: { pt: '“Portfólio, Instagram… tudo pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“Portafolio, Instagram… ¡todo listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
+      objetivo: { pt: 'Saber adicionar o Instagram ao portfólio e os cuidados: só conta profissional, um ativo em um portfólio, e a conta de anúncios que vem junto.', es: 'Saber agregar el Instagram al portafolio y los cuidados: solo cuenta profesional, un activo en un portafolio, y la cuenta publicitaria que viene junto.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu Instagram precisa estar no portfólio? Ele já não é meu? 🤔', es: '¿Mi Instagram tiene que estar en el portafolio? ¿No es mío ya? 🤔' }],
+          ['rafa', { pt: 'É seu, sim! No portfólio ele fica junto com a Página, a conta de anúncios e o Pixel, e você controla quem ajuda a cuidar dele.', es: '¡Es tuyo! En el portafolio queda junto con la Página, la cuenta publicitaria y el Pixel, y controlas quién ayuda a cuidarlo.' }],
+          ['rafa', { pt: 'Para adicionar, você entra com a sua conta do Instagram numa janela de autorização. Eu nunca preciso da sua senha.', es: 'Para agregarlo, entras con tu cuenta de Instagram en una ventana de autorización. Nunca necesito tu contraseña.' }],
+          ['pixel', { pt: 'Se o Instagram tiver uma conta de anúncios conectada, ela vem junto para o portfólio e não pode ser removida depois.', es: 'Si el Instagram tiene una cuenta publicitaria conectada, viene junto al portafolio y no se puede quitar después.' }]
+        ],
+        pontos: [
+          { pt: '<b>Só conta profissional</b> entra no portfólio. Se for pessoal, ela vira profissional ao adicionar.', es: '<b>Solo la cuenta profesional</b> entra al portafolio. Si es personal, se vuelve profesional al agregarla.' },
+          { pt: '<b>Um ativo, um portfólio:</b> se o Instagram está no portfólio de outra empresa, precisa ser liberado antes.', es: '<b>Un activo, un portafolio:</b> si el Instagram está en el portafolio de otra empresa, hay que liberarlo antes.' },
+          { pt: '<b>Conta de anúncios conectada</b> vem junto e não pode ser removida. E o login é sempre da cliente.', es: '<b>La cuenta publicitaria conectada</b> viene junto y no se puede quitar. Y el inicio de sesión siempre es de la clienta.' }
+        ],
+        notas: { pt: 'Caminho: Configurações › Contas › Perfis do Instagram › Adicionar. Na tela real (14/10/2026) o título da página e a janela aparecem em inglês (“Instagram profiles”, “Add an Instagram profile”). Conectar o Instagram à Página fica para a aula 04.', es: 'Camino: Configuración › Cuentas › Perfiles de Instagram › Agregar. En la pantalla real (14/10/2026) el título de la página y la ventana aparecen en inglés (“Instagram profiles”, “Add an Instagram profile”). Conectar el Instagram a la Página queda para la clase 04.' }
+      },
+      ferramenta: 'ig-portfolio',
+      praticar: {
+        texto: { pt: 'No simulador do portfólio, o Pixel te guia para adicionar o Instagram da Marina, com os avisos da tela real.', es: 'En el simulador del portafolio, el Pixel te guía para agregar el Instagram de Marina, con los avisos de la pantalla real.' },
+        tour: 'adicionar-instagram', pagina: 'meta-portfolio.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Fui adicionar meu Instagram no portfólio e ele diz que já pertence a outra empresa. Era de uma agência que me atendia. 😕', es: 'Fui a agregar mi Instagram al portafolio y dice que ya pertenece a otra empresa. Era de una agencia que me atendía. 😕' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Cada ativo só pode estar em um portfólio. Peça para a agência tirar o seu Instagram do portfólio deles; depois você adiciona no seu.”', es: '“Cada activo solo puede estar en un portafolio. Pídele a la agencia que quite tu Instagram de su portafolio; después lo agregas en el tuyo.”' }, fb: { pt: 'Isso! Você explicou a regra e deu o caminho certo, que depende de quem administra o outro portfólio.', es: '¡Eso! Explicaste la regla y diste el camino correcto, que depende de quien administra el otro portafolio.' } },
+          { certa: false, txt: { pt: '“Me passa a senha do Instagram que eu resolvo.”', es: '“Pásame la contraseña de Instagram y lo resuelvo.”' }, fb: { pt: 'Nunca! O agente não pede senha, e isso nem resolveria: o Instagram está no portfólio da agência.', es: '¡Nunca! El agente no pide contraseña, y eso ni lo resolvería: el Instagram está en el portafolio de la agencia.' } },
+          { certa: false, txt: { pt: '“Crie um Instagram novo.”', es: '“Crea un Instagram nuevo.”' }, fb: { pt: 'Ela perderia seguidores e posts. O caminho é a agência liberar.', es: 'Perdería seguidores y publicaciones. El camino es que la agencia lo libere.' } },
+          { certa: false, txt: { pt: '“Adicione em dois portfólios ao mesmo tempo.”', es: '“Agrégalo en dos portafolios al mismo tiempo.”' }, fb: { pt: 'Não dá: cada ativo pertence a um portfólio só.', es: 'No se puede: cada activo pertenece a un solo portafolio.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Seu Instagram é conta profissional?', es: '¿Tu Instagram es cuenta profesional?' },
+          { pt: 'Ele já está no portfólio de alguém (uma agência, outra empresa)?', es: '¿Ya está en el portafolio de alguien (una agencia, otra empresa)?' },
+          { pt: 'Ele tem uma conta de anúncios conectada?', es: '¿Tiene una cuenta publicitaria conectada?' }],
+        conferir: [{ pt: 'Conta profissional (se for pessoal, vira ao adicionar).', es: 'Cuenta profesional (si es personal, se vuelve al agregarla).' },
+          { pt: 'Não está em outro portfólio.', es: 'No está en otro portafolio.' },
+          { pt: 'A cliente sabe que a conta de anúncios conectada vem junto e não sai.', es: 'La clienta sabe que la cuenta publicitaria conectada viene junto y no sale.' }],
+        frase: { pt: 'Cada ativo só pode estar em um portfólio. Peça para quem administra o outro portfólio liberar o seu Instagram; depois você adiciona no seu.', es: 'Cada activo solo puede estar en un portafolio. Pídele a quien administra el otro portafolio que libere tu Instagram; después lo agregas en el tuyo.' },
+        passos: [{ pt: 'Configurações › Contas › Perfis do Instagram › Adicionar.', es: 'Configuración › Cuentas › Perfiles de Instagram › Agregar.' },
+          { pt: 'Leia os avisos e clique em Add Instagram profile.', es: 'Lee los avisos y haz clic en Add Instagram profile.' },
+          { pt: 'Na janela do Instagram, entre com a sua conta e confirme.', es: 'En la ventana de Instagram, entra con tu cuenta y confirma.' }],
+        encaminhar: { pt: 'Se ninguém consegue liberar o Instagram do outro portfólio, oriente a seguir a Central de Ajuda da Meta para empresas.', es: 'Si nadie logra liberar el Instagram del otro portafolio, orienta a seguir el Centro de ayuda de Meta para empresas.' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/620548115562686', titulo: { pt: 'Conectar uma conta do Instagram no Business Suite', es: 'Conectar una cuenta de Instagram en Business Suite' }, conferido: '14/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1125825714110549', titulo: { pt: 'Adicionar uma conta do Instagram ao portfólio (só um portfólio por conta)', es: 'Agregar una cuenta de Instagram al portafolio (solo un portafolio por cuenta)' }, conferido: '14/10/2026' }
+      ]
+    },
+    { id: '04', titulo: { pt: 'Conectar o Instagram à Página', es: 'Conectar el Instagram a la Página' }, status: 'planejada' }
+  ],
   portfolio: [
     {
       id: '01', min: 6, status: 'pronta',

@@ -294,6 +294,79 @@
     }
   };
 
+
+  /* ---------- 9. Pessoal, Criador ou Comercial? (Instagram 01) ---------- */
+  var QUEM = [
+    { ic: '🏪', n: { pt: 'A Marina, que vende canecas e camisetas', es: 'Marina, que vende tazas y camisetas' }, certo: 'comercial' },
+    { ic: '🎤', n: { pt: 'Uma influenciadora que faz publis', es: 'Una influencer que hace publicidad' }, certo: 'criador' },
+    { ic: '👨‍👩‍👧', n: { pt: 'A tia da Marina, que só posta fotos da família e quer conta privada', es: 'La tía de Marina, que solo publica fotos de la familia y quiere cuenta privada' }, certo: 'pessoal' },
+    { ic: '🥐', n: { pt: 'Uma padaria do bairro', es: 'Una panadería del barrio' }, certo: 'comercial' }
+  ];
+  var TIPOS = { pessoal: { pt: 'Pessoal', es: 'Personal' }, criador: { pt: 'Criador de conteúdo', es: 'Creador de contenido' }, comercial: { pt: 'Comercial', es: 'Comercial' } };
+  var PQ = {
+    comercial: { pt: 'Comercial é para varejistas, negócios locais, marcas, organizações e prestadores de serviços: insights, promoções e botão de contato.', es: 'Comercial es para minoristas, negocios locales, marcas, organizaciones y prestadores de servicios: estadísticas, promociones y botón de contacto.' },
+    criador: { pt: 'Criador de conteúdo é para figuras públicas, produtores de conteúdo, artistas e influenciadores.', es: 'Creador de contenido es para figuras públicas, productores de contenido, artistas e influencers.' },
+    pessoal: { pt: 'Quem quer conta privada fica na pessoal: a conta profissional é sempre pública.', es: 'Quien quiere cuenta privada se queda en la personal: la cuenta profesional siempre es pública.' }
+  };
+  F['tipo-conta'] = {
+    titulo: { pt: 'Pessoal, Criador ou Comercial?', es: '¿Personal, Creador o Comercial?' },
+    resumo: { pt: 'Escolha o tipo de conta do Instagram certo para cada pessoa.', es: 'Elige el tipo de cuenta de Instagram correcto para cada persona.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + QUEM.map(function (g, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + g.ic + '</span>' + T(g.n) + '</div><div class="qp-ops">' + Object.keys(TIPOS).map(function (k) { return '<button data-tc="' + i + ':' + k + '">' + T(TIPOS[k]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-tc]'); if (!b) return; var v = b.getAttribute('data-tc').split(':'), g = QUEM[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
+        box.querySelectorAll('[data-tc]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(PQ[v[1]]) : '❌ ' + T({ pt: 'Pense no que essa pessoa faz e se ela quer a conta privada.', es: 'Piensa en qué hace esta persona y si quiere la cuenta privada.' });
+        if (ok && window.MOV && el.querySelectorAll('.certa').length === QUEM.length) MOV.confete(b);
+      });
+    }
+  };
+
+  /* ---------- 10. Um perfil que vende (Instagram 02) ---------- */
+  F['perfil-que-vende'] = {
+    titulo: { pt: 'Monte o perfil da loja', es: 'Arma el perfil de la tienda' },
+    resumo: { pt: 'Escreva nome, @ e bio e veja como o perfil fica, com dicas do que funciona.', es: 'Escribe nombre, @ y bio y mira cómo queda el perfil, con consejos de lo que funciona.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="pv"><div class="pv-form"><label><small>' + T({ pt: 'Nome', es: 'Nombre' }) + '</small><input id="pvNome" value="Marina"/></label><label><small>' + T({ pt: 'Nome de usuário', es: 'Nombre de usuario' }) + '</small><input id="pvUser" value="marina.lojinha"/></label><label><small>Bio</small><textarea id="pvBio" rows="2">Amo fazer canecas 🧡</textarea></label>' +
+        '<label class="pv-ck"><input type="checkbox" id="pvTel"/> ' + T({ pt: 'Mostrar meu telefone pessoal no perfil', es: 'Mostrar mi teléfono personal en el perfil' }) + '</label></div>' +
+        '<div class="pv-prev"><span class="ig-foto">🧡</span><div><b id="pvU"></b><p><b id="pvN"></b> <small>Compras e varejo</small></p><p id="pvB"></p><p id="pvT" class="pv-tel"></p></div></div></div><ul class="pv-dicas" id="pvDicas"></ul>';
+      var q = function (i) { return el.querySelector(i) };
+      function atualiza() {
+        var n = q('#pvNome').value, u = q('#pvUser').value, b = q('#pvBio').value, tel = q('#pvTel').checked, d = [];
+        q('#pvN').textContent = n; q('#pvU').textContent = u; q('#pvB').textContent = b; q('#pvT').textContent = tel ? '📞 +55 11 9xxxx-xxxx (público!)' : '';
+        d.push(/lojinha|loja/i.test(n) ? ['ok', { pt: 'O nome mostra a loja: quem procura acha.', es: 'El nombre muestra la tienda: quien busca la encuentra.' }] : ['erro', { pt: 'Use o nome da loja no Nome (ele aparece em negrito e na busca).', es: 'Usa el nombre de la tienda en Nombre (aparece en negrita y en la búsqueda).' }]);
+        d.push(/\s/.test(u) ? ['erro', { pt: 'O @ não pode ter espaços.', es: 'El @ no puede tener espacios.' }] : ['ok', { pt: 'O @ é o endereço do perfil: curto e fácil de digitar.', es: 'El @ es la dirección del perfil: corto y fácil de escribir.' }]);
+        d.push(/(caneca|camiseta|ecobag|vend|loja|feit)/i.test(b) ? ['ok', { pt: 'A bio diz o que a loja vende.', es: 'La bio dice qué vende la tienda.' }] : ['erro', { pt: 'Na bio, diga em uma frase o que a loja vende.', es: 'En la bio, di en una frase qué vende la tienda.' }]);
+        d.push(tel ? ['erro', { pt: 'O contato aparece PUBLICAMENTE no perfil. Prefira um telefone ou email comercial.', es: 'El contacto aparece PÚBLICAMENTE en el perfil. Prefiere un teléfono o correo comercial.' }] : ['ok', { pt: 'Nada pessoal exposto.', es: 'Nada personal expuesto.' }]);
+        q('#pvDicas').innerHTML = d.map(function (x) { return '<li class="' + x[0] + '">' + (x[0] === 'ok' ? '✅ ' : '⚠️ ') + T(x[1]) + '</li>' }).join('');
+      }
+      el.addEventListener('input', atualiza); el.addEventListener('change', atualiza); atualiza();
+    }
+  };
+
+  /* ---------- 11. O Instagram pode entrar no portfólio? (Instagram 03) ---------- */
+  F['ig-portfolio'] = {
+    titulo: { pt: 'O Instagram pode entrar no portfólio?', es: '¿El Instagram puede entrar al portafolio?' },
+    resumo: { pt: 'Três perguntas antes de adicionar o Instagram ao portfólio.', es: 'Tres preguntas antes de agregar el Instagram al portafolio.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      var P = [
+        [{ pt: 'O Instagram é conta profissional?', es: '¿El Instagram es cuenta profesional?' }, { pt: 'Ótimo, entra.', es: 'Perfecto, entra.' }, { pt: 'Se for pessoal, ao adicionar ele vira profissional (e público). Combine isso com a cliente antes.', es: 'Si es personal, al agregarlo se vuelve profesional (y público). Acuérdalo con la clienta antes.' }],
+        [{ pt: 'Ele já está no portfólio de outra empresa?', es: '¿Ya está en el portafolio de otra empresa?' }, { pt: 'Não entra: cada ativo pertence a UM portfólio. Quem administra o outro portfólio precisa liberar primeiro.', es: 'No entra: cada activo pertenece a UN portafolio. Quien administra el otro portafolio tiene que liberarlo primero.' }, { pt: 'Ótimo, está livre.', es: 'Perfecto, está libre.' }],
+        [{ pt: 'Ele tem uma conta de anúncios conectada?', es: '¿Tiene una cuenta publicitaria conectada?' }, { pt: 'Ela vem junto para o portfólio e NÃO pode ser removida depois. Confirme com a cliente.', es: 'Viene junto al portafolio y NO se puede quitar después. Confírmalo con la clienta.' }, { pt: 'Ótimo, nada vem junto.', es: 'Perfecto, nada viene junto.' }]
+      ];
+      el.innerHTML = '<div class="qp">' + P.map(function (x, i) { return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + (i + 1) + '</span>' + T(x[0]) + '</div><div class="qp-ops"><button data-ip="' + i + ':1">' + T({ pt: 'Sim', es: 'Sí' }) + '</button><button data-ip="' + i + ':2">' + T({ pt: 'Não', es: 'No' }) + '</button></div><p class="qp-fb"></p></div>' }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-ip]'); if (!b) return; var v = b.getAttribute('data-ip').split(':'), box = el.querySelector('.qp-p[data-i="' + v[0] + '"]');
+        box.querySelectorAll('[data-ip]').forEach(function (x) { x.classList.toggle('certa', x === b) }); box.querySelector('.qp-fb').innerHTML = T(P[+v[0]][+v[1]]);
+      });
+    }
+  };
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

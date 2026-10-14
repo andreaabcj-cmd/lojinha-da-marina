@@ -3,7 +3,7 @@
        { alvo: 'seletor' | function(){return elemento}, tit, txt, dica?, clique?: true (avança ao clicar no alvo),
          cond?: function(){return true quando pode avançar}, fim?: true, pagina?: 'loja.html' (passo em outra página),
          garante?: function(){arruma a tela para este passo — roda quando a pessoa VOLTA com ◀}, semVolta?: true,
-         valida?: function(alvoClicado){só avança se true}, erro?: {pt,es}, livre?: 'seletor' (pode clicar sem avançar) }
+         valida?: function(alvoClicado){só avança se true}, erro?: {pt,es}, livre?: 'seletor' (pode clicar sem avançar), bloqueia?: function(alvoClicado){true = escolha errada, não deixa} }
    - Ao voltar, o tutorial reabre a página onde aquele passo aconteceu e chama garante().
    - Inicia com ?tour=nome na URL ou TOUR.inicia('nome'). Continua entre páginas (sessionStorage).
    - Ao terminar volta para ?voltar=... (ex.: a aula). Textos {pt, es}. */
@@ -51,6 +51,7 @@
       var proximoOk = el2 && okc && (el2 === e.target || el2.contains(e.target));
       if (!dentro && p.livre && e.target.closest && e.target.closest(p.livre)) return;   // partes que o passo deixa usar (ex.: escolher o tamanho)
       if (!dentro && !proximoOk) { e.preventDefault(); e.stopImmediatePropagation(); avisa(); return }
+      if (dentro && p.bloqueia) { var bl = false; try { bl = p.bloqueia(e.target) } catch (x) { } if (bl) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
       if (dentro && p.clique && p.valida) { var v = false; try { v = p.valida(e.target) } catch (x) { } if (!v) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
     }, true);
     document.addEventListener('click', function (e) {
@@ -97,6 +98,16 @@
     p.antes && p.antes();
     posiciona();
   }
+  function lugarBalao(caixa, alvo, bw, bh, topo) {
+    var W = innerWidth, H = innerHeight, m = 12, c = [
+      [caixa.right + 18, caixa.top], [caixa.left - bw - 18, caixa.top], [caixa.left, caixa.bottom + 16], [caixa.left, caixa.top - bh - 16],
+      [W - bw - m, H - bh - m], [m, H - bh - m], [W - bw - m, topo], [m, topo]];
+    function ajusta(p) { return [Math.max(m, Math.min(p[0], W - bw - m)), Math.max(topo, Math.min(p[1], H - bh - m))] }
+    function cobre(p, r) { var x = Math.max(0, Math.min(p[0] + bw, r.right) - Math.max(p[0], r.left)), y = Math.max(0, Math.min(p[1] + bh, r.bottom) - Math.max(p[1], r.top)); return x * y }
+    for (var i = 0; i < 4; i++) { var a = ajusta(c[i]); if (!cobre(a, caixa)) return a }
+    var melhor = null, nota = 1e12; c.forEach(function (p) { var a = ajusta(p), n = cobre(a, alvo) * 1000 + cobre(a, caixa); if (n < nota) { nota = n; melhor = a } });
+    return melhor;
+  }
   function posiciona() {
     if (!tour || !holo) return; var p = tour[passo]; if (!p) return; var el = alvoEl(p);
     var bt = balao.querySelector('[data-tg=prox]'); if (bt && p.cond) bt.disabled = !p.cond();
@@ -104,14 +115,13 @@
     if (!p._rolou) { p._rolou = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
     // dentro de uma janela/painel: a janela inteira fica visível; só o resto da tela escurece
-    var cx = el.closest && el.closest('.janela, [role=dialog], .da-painel, .ma-panel'); if (cx === el) cx = null;
+    var cx = el.closest && el.closest('.janela, [role=dialog], .da-painel, .ma-panel, .tg-caixa'); if (cx === el) cx = null;
     holo.classList.toggle('na-janela', !!cx);
     if (cx) { var rc = cx.getBoundingClientRect(); recorte.style.opacity = 1; recorte.style.left = rc.left + 'px'; recorte.style.top = rc.top + 'px'; recorte.style.width = rc.width + 'px'; recorte.style.height = rc.height + 'px'; recorte.style.borderRadius = getComputedStyle(cx).borderTopLeftRadius }
     else recorte.style.opacity = 0;
     holo.style.left = r.left - 4 + 'px'; holo.style.top = r.top - 4 + 'px'; holo.style.width = r.width + 8 + 'px'; holo.style.height = r.height + 8 + 'px';
-    var bw = balao.offsetWidth, bh = balao.offsetHeight, x = r.right + 18, y = r.top;
-    if (x + bw > innerWidth - 10) { x = r.left - bw - 18; if (x < 10) { x = Math.max(10, Math.min(r.left, innerWidth - bw - 10)); y = r.bottom + 16; if (y + bh > innerHeight - 10) y = r.top - bh - 16 } }
-    balao.style.left = Math.max(10, Math.min(x, innerWidth - bw - 10)) + 'px'; balao.style.top = Math.max(10, Math.min(y, innerHeight - bh - 10)) + 'px';
+    var pos = lugarBalao(cx ? cx.getBoundingClientRect() : r, r, balao.offsetWidth, balao.offsetHeight, 10);
+    balao.style.left = pos[0] + 'px'; balao.style.top = pos[1] + 'px';
   }
   function termina(concluiu) {
     var v = voltar; tour = null; salva(); clearInterval(timer);

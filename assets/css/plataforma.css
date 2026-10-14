@@ -299,3 +299,14 @@ details.cola[open]>summary~*{animation:mvChega .3s both}
 .qp-fb{margin:8px 0 0;font-size:14px}
 .dq-ops{display:flex;flex-direction:column;gap:8px}.dq-passos{margin:12px 0 0;padding:12px 14px 12px 32px;border-radius:10px;background:var(--green-l)}.dq-passos li{margin:4px 0}
 @media (max-width:720px){.pp{grid-template-columns:1fr}}
+
+/* ferramenta: perfil que vende */
+.pv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pv-form label{display:block;margin:0 0 8px;padding:6px 12px;border:2px solid var(--line);border-radius:12px;background:#fff}.pv-form small{display:block;color:var(--muted);font-size:12px}
+.pv-form input,.pv-form textarea{width:100%;border:0;font:inherit;outline:0;resize:none}.pv-form .pv-ck{display:flex;gap:8px;align-items:center;border-style:dashed}
+.pv-prev{display:flex;gap:14px;align-items:flex-start;padding:14px;background:#fff;border:2px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--ink)}
+.pv-prev .ig-foto{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,#FFE7A3,#FFD0C2);border:2px solid var(--ink)}
+.pv-prev p{margin:4px 0}.pv-prev small{color:var(--muted)}.pv-tel{color:var(--red);font-weight:700}
+.pv-dicas{list-style:none;margin:12px 0 0;padding:0}.pv-dicas li{padding:6px 10px;margin:4px 0;border-radius:8px;background:var(--green-l)}.pv-dicas li.erro{background:var(--yellow-l)}
+@media (max-width:720px){.pv{grid-template-columns:1fr}}
+.pv-form .pv-ck input{width:auto;flex:none}.pv-form .pv-ck{font-size:14px}

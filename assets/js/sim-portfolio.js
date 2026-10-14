@@ -16,7 +16,7 @@
   var S = ler('sim.portfolio', null) || { pfs: [], atual: null };
   function exemplo() {
     return { id: novoId(), nome: 'Lojinha da Marina Aula', criado: Date.now(),
-      pessoas: [{ nome: 'Marina (você)', email: 'marina@lojinha.exemplo', acesso: 'Acesso total', status: 'Ativo' }], paginas: [], contas: [] };
+      pessoas: [{ nome: 'Marina (você)', email: 'marina@lojinha.exemplo', acesso: 'Acesso total', status: 'Ativo' }], paginas: [], contas: [], igs: [] };
   }
   if (params.get('zerar')) { S = { pfs: [], atual: null }; grava() }
   if (params.get('exemplo') && !S.pfs.length) { var ex = exemplo(); S.pfs.push(ex); S.atual = ex.id; grava() }
@@ -38,7 +38,7 @@
   var MENU = [
     ['Informações da empresa', 'info', IC.info],
     ['Usuários', null, IC.user, [['Pessoas', 'pessoas'], ['Parceiros'], ['Usuários do sistema']]],
-    ['Contas', null, IC.conta, [['Páginas', 'paginas'], ['Contas de anúncios', 'contas'], ['Grupos de ativos de negócios'], ['Apps'], ['Perfis do Instagram'], ['Contas do WhatsApp'], ['Perfis do Threads']]],
+    ['Contas', null, IC.conta, [['Páginas', 'paginas'], ['Contas de anúncios', 'contas'], ['Grupos de ativos de negócios'], ['Apps'], ['Perfis do Instagram', 'instagram'], ['Contas do WhatsApp'], ['Perfis do Threads']]],
     ['Fontes de dados', null, IC.dados, [['Catálogos'], ['Conjuntos de dados e pixels', 'pixel'], ['Conjuntos de eventos offline'], ['Conversões personalizadas'], ['Públicos compartilhados'], ['Pastas de criativos da empresa']]],
     ['Central de Segurança', 'seguranca', IC.escudo]
   ];
@@ -100,6 +100,14 @@
       else h += '<div class="pf-duas"><div class="cartao">' + p.contas.map(function (c) { return '<div class="pf-linha on"><span class="L">' + IC.conta + '</span><span><b>' + esc(c.nome) + '</b></span></div>' }).join('') + '</div>' +
         p.contas.slice(0, 1).map(function (c) { return '<div class="cartao" data-t="conta-detalhe"><h2>' + esc(c.nome) + '</h2><p class="miudo">Identificação: <span class="id">' + c.id + '</span><br>Propriedade de: ' + esc(p.nome) + '</p><h3>Formas de pagamento</h3><p class="miudo">Você não adicionou nenhuma forma de pagamento.</p><h3>Dados da empresa</h3><table class="tabela"><tr><td>Moeda</td><td><b>' + esc(c.moeda) + '</b></td></tr><tr><td>Fuso horário</td><td><b>' + esc(c.fuso) + '</b></td></tr></table></div>' }).join('') + '</div>';
       return esqueleto(h, CONF.contas);
+    },
+    instagram: function () {   // título em inglês na tela real (14/10/2026)
+      var p = pf(); p.igs = p.igs || [];
+      var h = cabTela('Instagram profiles', '<button class="btn" data-acao="add-ig" data-t="add-ig">' + IC.mais + ' Adicionar</button>');
+      if (!p.igs.length) h += '<div class="cartao">' + vazio('Nenhuma conta do Instagram adicionada', 'Adicione contas do Instagram a este portfólio empresarial para gerenciar todos os seus ativos de negócios em um só local.') + '</div>';
+      else h += '<div class="pf-duas"><div class="cartao">' + p.igs.map(function (g) { return '<div class="pf-linha on"><span class="L">📸</span><span><b>@' + esc(g.user) + '</b></span></div>' }).join('') + '</div>' +
+        p.igs.slice(0, 1).map(function (g) { return '<div class="cartao" data-t="ig-detalhe"><h2>@' + esc(g.user) + '</h2><p class="miudo">Identificação: <span class="id">' + g.id + '</span><br>Propriedade de: ' + esc(p.nome) + '</p><p><button class="btn sec">Atribuir pessoas</button> <button class="btn sec">Atribuir parceiro</button> <button class="btn sec">Conectar ativos</button></p><p class="miudo">Pessoas · Parceiros · Ativos conectados</p></div>' }).join('') + '</div>';
+      return esqueleto(h, CONF.menu);
     },
     seguranca: function () {
       return esqueleto('<div class="pf-tit"><h1>Central de Segurança</h1></div>' +
@@ -198,6 +206,19 @@
         '<label class="pf-termos" data-t="conta-termos"><input type="checkbox" id="fTermos"' + (F.termos ? ' checked' : '') + '/> Concordo com os <a>Termos Comerciais da Meta</a> e as <a>Políticas de Publicidade</a> em nome do portfólio empresarial ' + esc(p2.nome) + '.</label>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="conta-volta">Voltar</button><button class="btn" data-acao="conta-criar" data-t="conta-criar" ' + (F.termos ? '' : 'disabled') + '>Criar conta de anúncios</button></div>';
       h = '<div class="pf-jan2">' + passos(['Detalhes', 'Uso', 'Confirmar']) + '<div>' + corpo2 + '</div></div>';
+    } else if (jan === 'add-ig') {
+      if (passoJ === 0) h = '<h3>Add an Instagram profile<button class="x" data-acao="fechar">✕</button></h3>' +
+        '<div class="pf-nota" data-t="ig-aviso"><b>⚠ Somente contas profissionais do Instagram podem ser adicionadas a um portfólio empresarial. Se você adicionar uma conta pessoal, ela mudará para profissional.</b></div>' +
+        '<p data-t="ig-anuncios">You\'ll be asked to log into the Instagram profile you want to add. If the profile has a connected ad account, both the profile and ad account will be moved into this business portfolio, giving you a single, secure place to manage tools, run ads and assign access. <b>The ad account can\'t be removed once added.</b></p>' +
+        '<p class="miudo">By adding the Instagram profile, you agree to the Instagram Terms, and acknowledge the Privacy policy and Cookies policy on behalf of ' + esc(pf().nome) + ' business portfolio.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="ig-login" data-t="ig-add">Add Instagram profile</button></div>';
+      else if (passoJ === 1) h = '<div class="pf-insta" data-t="ig-autoriza"><p class="miudo" style="text-align:center">Solicitação de autorização</p><b class="ig-logo" style="display:block;text-align:center">Instagram</b>' +
+        '<h3 style="justify-content:center;text-align:center">Entre no Meta Business Suite usando sua conta do Instagram</h3>' +
+        '<button class="btn" style="width:100%;justify-content:center" data-acao="ig-entrar" data-t="ig-entrar">Entrar como lojinhadamarina</button><button class="btn sec" style="width:100%;justify-content:center;margin-top:8px" data-acao="fechar">Cancelar</button>' +
+        '<p class="miudo" style="text-align:center">Não é lojinhadamarina? <a>Trocar de conta</a></p></div>';
+      else h = '<h3>@lojinhadamarina was added to the business portfolio<button class="x" data-acao="fechar">✕</button></h3><p>As pessoas que entrarem no Meta Business Suite usando o perfil do Instagram @lojinhadamarina e a senha poderão realizar ações como: Ver a atividade do perfil no portfólio · Veicular anúncios e gerenciar lojas.</p>' +
+        '<b>Resumo das alterações</b><div class="pf-linha"><span class="L">L</span><span><b>' + esc(pf().nome) + '</b><small>Portfólio empresarial</small></span></div><div class="pf-linha"><span class="L">📸</span><span><b>@lojinhadamarina</b><small>Perfil do Instagram</small></span></div>' +
+        '<div class="rodape-jan"><button class="btn" data-acao="fechar" data-t="ig-concluir">Concluir</button></div>';
     } else if (jan === 'aviso') {
       conf = false;
       h = '<h3>Fora do simulador por enquanto<button class="x" data-acao="fechar">✕</button></h3><p>Esta etapa ainda não está montada no simulador, porque ainda não conferimos a tela real dela. Na vida real, siga a Central de Ajuda da Meta.</p><div class="rodape-jan"><button class="btn" data-acao="fechar">Entendi</button></div>';
@@ -248,6 +269,9 @@
     else if (ac === 'menu-pag') { menuPag = !menuPag; render() }
     else if (ac === 'op-pagina') { menuPag = false; render(); abre('aviso') }
     else if (ac === 'add-conta') abre('add-conta');
+    else if (ac === 'add-ig') abre('add-ig');
+    else if (ac === 'ig-login') { passoJ = 1; desenha() }
+    else if (ac === 'ig-entrar') { var p0 = pf(); p0.igs = p0.igs || []; if (!p0.igs.length) p0.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 2; desenha(); render() }
     else if (ac === 'conta-nova') { var keep = jan; abre('conta') }
     else if (ac === 'conta-prox') { passoJ++; desenha() }
     else if (ac === 'conta-volta') { passoJ = Math.max(0, passoJ - 1); desenha() }
@@ -304,12 +328,23 @@
     { alvo: '[data-t=conv-email]', garante: function () { SIMPF.abre('convidar', 0) }, cond: function () { var f = window.__simPf; return !!(f && /.+@.+\..+/.test(f.convEmail)) },
       tit: T('O email', 'El correo'), txt: T('Digite o email do sobrinho (na aula, invente: sobrinho@lojinha.exemplo) e clique em Próximo.', 'Escribe el correo del sobrino (en la clase, invéntalo: sobrino@lojinha.exemplo) y haz clic en Siguiente.') },
     { alvo: '[data-t=conv-avancar]', clique: true, garante: function () { SIMPF.abre('convidar', 0) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
-    { alvo: '[data-t=conv-acesso]', garante: function () { SIMPF.abre('convidar', 1) }, cond: function () { var f = window.__simPf; return !!(f && !f.gerenciar) },
+    { alvo: '[data-t=conv-acesso]', garante: function () { SIMPF.abre('convidar', 1) }, cond: function () { var f = window.__simPf; return !!(f && !f.gerenciar) }, bloqueia: function (t) { return !!t.closest('[data-t=conv-gerenciar]') }, erro: T('Para quem ajuda no dia a dia, o Básico basta: deixe o Gerenciar desligado.', 'Para quien ayuda en el día a día, Básico alcanza: deja Administrar apagado.'),
       tit: T('Só o acesso necessário', 'Solo el acceso necesario'), txt: T('Todo mundo entra com acesso Básico: trabalha só nos ativos que você atribuir. Ele só vai postar, então NÃO ligue o Gerenciar (acesso total). Clique em Próximo.', 'Todos entran con acceso Básico: trabajan solo en los activos que asignes. Él solo va a publicar, así que NO actives Gestionar (acceso total). Haz clic en Siguiente.'),
       dica: T('Acesso total é para quem administra a empresa junto com você: pode até excluir o portfólio.', 'El acceso total es para quien administra la empresa contigo: puede hasta eliminar el portafolio.') },    { alvo: '[data-t=conv-avancar2]', clique: true, garante: function () { SIMPF.abre('convidar', 1) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
     { alvo: '[data-t=conv-avancar3]', clique: true, garante: function () { SIMPF.abre('convidar', 2) }, tit: T('Atribuir ativos', 'Asignar activos'), txt: T('Aqui você escolhe em quais ativos ele trabalha. A Marina ainda não tem a Página neste portfólio, então pode avançar sem marcar nada.', 'Aquí eliges en qué activos trabaja. Marina todavía no tiene la Página en este portafolio, así que puedes avanzar sin marcar nada.') },
     { alvo: '[data-t=conv-enviar]', clique: true, garante: function () { SIMPF.abre('convidar', 3) }, tit: T('Enviar o convite', 'Enviar la invitación'), txt: T('Confira o resumo e clique em Convidar.', 'Revisa el resumen y haz clic en Invitar.') },
     { alvo: '[data-t=lista-pessoas]', fim: true, semVolta: true, tit: T('Convite enviado! 🎉', '¡Invitación enviada! 🎉'), txt: T('Ele aparece na lista com acesso parcial: Básico. Clique em Concluir para voltar à aula.', 'Aparece en la lista con acceso parcial: Básico. Haz clic en Terminar para volver a la clase.') }
+  ];
+  TOURS['adicionar-instagram'] = [
+    { alvo: '[data-t=menu-instagram]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha() }, tit: T('Perfis do Instagram', 'Perfiles de Instagram'), txt: T('O Instagram da Marina já é profissional. Agora ele entra na “pasta” da empresa. Clique em Perfis do Instagram.', 'El Instagram de Marina ya es profesional. Ahora entra en la “carpeta” de la empresa. Haz clic en Perfiles de Instagram.') },
+    { alvo: '[data-t=add-ig]', clique: true, garante: function () { SIMPF.fecha() }, tit: T('Adicionar', 'Agregar'), txt: T('Clique em Adicionar. (Repare: na tela real, o título desta página aparece em inglês.)', 'Haz clic en Agregar. (Fíjate: en la pantalla real, el título de esta página aparece en inglés.)') },
+    { alvo: '[data-t=ig-aviso]', garante: function () { SIMPF.abre('add-ig', 0) }, tit: T('Só conta profissional', 'Solo cuenta profesional'), txt: T('Regra da Meta: só conta profissional entra no portfólio. Se a cliente adicionar uma pessoal, ela vira profissional (e pública).', 'Regla de Meta: solo la cuenta profesional entra al portafolio. Si la clienta agrega una personal, se vuelve profesional (y pública).') },
+    { alvo: '[data-t=ig-anuncios]', garante: function () { SIMPF.abre('add-ig', 0) }, tit: T('⚠️ A conta de anúncios vem junto', '⚠️ La cuenta publicitaria viene junto'), txt: T('Se o Instagram já tiver uma conta de anúncios conectada, ela vem junto para este portfólio e NÃO pode ser removida depois. Confira isso com a cliente antes.', 'Si el Instagram ya tiene una cuenta publicitaria conectada, viene junto a este portafolio y NO se puede quitar después. Revísalo con la clienta antes.') },
+    { alvo: '[data-t=ig-add]', clique: true, garante: function () { SIMPF.abre('add-ig', 0) }, tit: T('Adicionar o perfil', 'Agregar el perfil'), txt: T('Clique em Add Instagram profile (o portfólio aceita os Termos do Instagram).', 'Haz clic en Add Instagram profile (el portafolio acepta las Condiciones de Instagram).') },
+    { alvo: '[data-t=ig-autoriza]', garante: function () { SIMPF.abre('add-ig', 1) }, tit: T('O login é da cliente', 'El inicio de sesión es de la clienta'), txt: T('Abre uma janela do Instagram pedindo autorização. Quem entra é a dona do Instagram, com a conta dela: o agente nunca pede a senha.', 'Se abre una ventana de Instagram pidiendo autorización. Quien entra es la dueña del Instagram, con su cuenta: el agente nunca pide la contraseña.') },
+    { alvo: '[data-t=ig-entrar]', clique: true, garante: function () { SIMPF.abre('add-ig', 1) }, tit: T('Entrar', 'Entrar'), txt: T('Clique em Entrar como lojinhadamarina.', 'Haz clic en Entrar como lojinhadamarina.') },
+    { alvo: '[data-t=ig-concluir]', clique: true, semVolta: true, tit: T('Adicionado! 🎉', '¡Agregado! 🎉'), txt: T('O Instagram agora pertence ao portfólio. Clique em Concluir.', 'El Instagram ahora pertenece al portafolio. Haz clic en Terminar.') },
+    { alvo: '[data-t=ig-detalhe]', fim: true, semVolta: true, tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Repare em “Propriedade de”: o Instagram é do portfólio da Marina. Clique em Concluir para voltar à aula.', 'Fíjate en “Propiedad de”: el Instagram es del portafolio de Marina. Haz clic en Terminar para volver a la clase.') }
   ];
   TOURS['criar-conta-anuncios'] = [
     { alvo: '[data-t=menu-contas]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha() }, tit: T('Contas de anúncios', 'Cuentas publicitarias'), txt: T('Para anunciar, a Marina precisa de uma conta de anúncios dentro do portfólio. Clique em Contas de anúncios.', 'Para anunciar, Marina necesita una cuenta publicitaria dentro del portafolio. Haz clic en Cuentas publicitarias.') },
@@ -321,7 +356,7 @@
       tit: T('⚠️ Fuso e moeda: não mudam depois!', '⚠️ Zona horaria y moneda: ¡no cambian después!'), txt: T('Escolha o fuso America/Sao Paulo e a moeda BRL (a Marina vende em reais). Atenção: depois de criada, a conta NÃO deixa trocar fuso nem moeda.', 'Elige la zona America/Sao Paulo y la moneda BRL (Marina vende en reales). Atención: después de creada, la cuenta NO permite cambiar zona ni moneda.'),
       dica: T('Erro comum: deixar o padrão (dólar e horário de Los Angeles). Aí os relatórios ficam em outra moeda e outro horário.', 'Error común: dejar lo predeterminado (dólar y horario de Los Ángeles). Así los informes quedan en otra moneda y otro horario.') },
     { alvo: '[data-t=conta-avancar]', clique: true, garante: function () { SIMPF.abre('conta', 0) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
-    { alvo: '[data-t=conta-uso]', garante: function () { SIMPF.abre('conta', 1) }, cond: function () { var f = window.__simPf; return !!(f && f.uso === 'minha') }, tit: T('Para quem é a conta', 'Para quién es la cuenta'), txt: T('A conta é da própria Marina: deixe Minha empresa e clique em Próximo. “Outra empresa ou cliente” é para agências que anunciam por clientes.', 'La cuenta es de la propia Marina: deja Mi empresa y haz clic en Siguiente. “Otra empresa o cliente” es para agencias que anuncian por clientes.') },
+    { alvo: '[data-t=conta-uso]', garante: function () { SIMPF.abre('conta', 1) }, cond: function () { var f = window.__simPf; return !!(f && f.uso === 'minha') }, bloqueia: function (t) { var l = t.closest('label'); return !!(l && l.querySelector('[value=outra]')) }, erro: T('A conta é da própria Marina: a opção certa é Minha empresa.', 'La cuenta es de la propia Marina: la opción correcta es Mi empresa.'), tit: T('Para quem é a conta', 'Para quién es la cuenta'), txt: T('A conta é da própria Marina: deixe Minha empresa e clique em Próximo. “Outra empresa ou cliente” é para agências que anunciam por clientes.', 'La cuenta es de la propia Marina: deja Mi empresa y haz clic en Siguiente. “Otra empresa o cliente” es para agencias que anuncian por clientes.') },
     { alvo: '[data-t=conta-avancar2]', clique: true, garante: function () { SIMPF.abre('conta', 1) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
     { alvo: '[data-t=conta-termos]', garante: function () { SIMPF.abre('conta', 2) }, cond: function () { var f = window.__simPf; return !!(f && f.termos) },
       tit: T('Confirmar', 'Confirmar'), txt: T('Leia o aviso: depois de adicionada, a conta não pode ser removida do portfólio. Marque a caixinha dos termos e clique em Próximo.', 'Lee el aviso: después de agregada, la cuenta no puede quitarse del portafolio. Marca la casilla de condiciones y haz clic en Siguiente.') },
