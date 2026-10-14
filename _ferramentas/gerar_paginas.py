@@ -313,7 +313,7 @@ for arq, titulo, tela in [('index', 'Início', 'inicio'), ('modulos', 'Módulos'
 
 # ---------- versão nos arquivos (o navegador não fica com o .js/.css antigo depois de uma atualização) ----------
 import re, time, glob
-VERSAO = time.strftime('%Y%m%d%H%M')
+VERSAO = time.strftime('%Y%m%d%H%M%S')
 for html in glob.glob(os.path.join(RAIZ, '*.html')):
     with open(html, encoding='utf-8') as f:
         t = f.read()

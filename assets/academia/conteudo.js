@@ -153,11 +153,11 @@ window.AULAS = {
           ['pixel', { pt: 'E se for uma agência, de outra empresa? Aí ela entra como parceiro, não como pessoa.', es: '¿Y si es una agencia, de otra empresa? Entonces entra como socio, no como persona.' }]
         ],
         pontos: [
-          { pt: '<b>Controle total:</b> para quem administra a empresa. Mexe em tudo, até pessoas e configurações.', es: '<b>Control total:</b> para quien administra la empresa. Toca todo, hasta personas y configuraciones.' },
+          { pt: '<b>Acesso total (“Tudo”):</b> para quem administra a empresa. Mexe em tudo, dá acesso total a outros e pode até excluir o portfólio.', es: '<b>Acceso total (“Todo”):</b> para quien administra la empresa. Toca todo, da acceso total a otros y puede hasta eliminar el portafolio.' },
           { pt: '<b>Acesso básico (padrão) + ativos atribuídos:</b> a pessoa trabalha só no que você der, com acesso parcial ou total àquele ativo.', es: '<b>Acceso básico (predeterminado) + activos asignados:</b> la persona trabaja solo en lo que le des, con acceso parcial o total a ese activo.' },
           { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro. E ative a autenticação de dois fatores.', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio. Y activa la autenticación en dos pasos.' }
         ],
-        notas: { pt: 'Erro clássico: dar controle total para todo mundo “porque é mais fácil”. Mostre o risco com calma. No simulador, só a 1ª etapa do convite foi vista na tela real; as etapas 2 a 4 seguem a documentação oficial e estão marcadas “a conferir”.', es: 'Error clásico: dar control total a todos “porque es más fácil”. Muestra el riesgo con calma. En el simulador, solo la 1ª etapa de la invitación se vio en la pantalla real; las etapas 2 a 4 siguen la documentación oficial y están marcadas “por revisar”.' }
+        notas: { pt: 'Erro clássico: dar controle total para todo mundo “porque é mais fácil”. Mostre o risco com calma. As 4 etapas do convite no simulador foram conferidas na tela real (14/10/2026). Na tela real, o acesso total aparece como “Tudo · Gerenciar” e avisa que a pessoa pode até excluir o portfólio.', es: 'Error clásico: dar control total a todos “porque es más fácil”. Muestra el riesgo con calma. Las 4 etapas de la invitación en el simulador se revisaron en la pantalla real (14/10/2026). En la pantalla real, el acceso total aparece como “Todo · Gestionar” y avisa que la persona puede hasta eliminar el portafolio.' }
       },
       ferramenta: 'quem-precisa',
       praticar: {

@@ -83,7 +83,7 @@
       var p = pf();
       var h = cabTela('Pessoas', '<button class="btn sec">Exportar</button><button class="btn" data-acao="convidar" data-t="convidar">' + IC.mais + ' Convidar pessoas</button>') +
         '<div class="cartao" data-t="lista-pessoas"><table class="tabela"><tr><th>Nome</th><th>Acesso ao portfólio empresarial</th><th>Última sessão ativa</th><th></th></tr>' +
-        p.pessoas.map(function (x) { return '<tr><td><b>' + esc(x.nome) + '</b><br><span class="miudo">' + esc(x.email) + '</span></td><td>' + esc(x.acesso) + '<br><span class="miudo">' + (x.acesso === 'Acesso total' ? 'Tudo' : 'Ativos atribuídos') + '</span></td><td><span class="st' + (x.status === 'Ativo' ? '' : ' cinza') + '"><i></i>' + esc(x.status) + '</span></td><td><button class="lnk">Detalhes</button></td></tr>' }).join('') + '</table></div>';
+        p.pessoas.map(function (x) { return '<tr><td><b>' + esc(x.nome) + '</b><br><span class="miudo">' + esc(x.email) + '</span></td><td>' + esc(x.acesso) + '<br><span class="miudo">' + (x.acesso === 'Acesso total' ? 'Tudo' : 'Básico') + '</span></td><td><span class="st' + (x.status === 'Ativo' ? '' : ' cinza') + '"><i></i>' + esc(x.status) + '</span></td><td><button class="lnk">Detalhes</button></td></tr>' }).join('') + '</table></div>';
       return esqueleto(h, CONF.pessoas);
     },
     paginas: function () {
@@ -152,20 +152,29 @@
         '<div class="pf-nota"><b>ⓘ Você pode editar estes detalhes do portfólio mais tarde</b></div>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="pf-volta">Voltar</button><button class="btn" data-acao="pf-confirmar" data-t="pf-confirmar">Confirmar</button></div>';
     } else if (jan === 'convidar') {
-      larga = true; conf = passoJ === 0;
-      var p = pf(), corpo;
-      if (passoJ === 0) corpo = '<h3>Inserir endereços de email<button class="x" data-acao="fechar">✕</button></h3><p>Insira os emails das pessoas que você quer convidar para o portfólio empresarial ' + esc(p.nome) + '. Notificações sobre o portfólio também serão enviadas para esses emails.</p>' +
-        '<label class="campo" data-t="conv-email"><b>Endereço de email</b><input id="fConv" type="email" value="' + esc(F.convEmail) + '" placeholder="nome@exemplo.com"/></label><p><b>Configurações adicionais</b><br><span class="miudo">Acesso temporário</span></p>' +
+      larga = true;   // as 4 etapas conferidas na tela real em 14/10/2026 (com um email de teste, sem enviar)
+      var p = pf(), corpo, ativos = p.contas.map(function (c) { return { tipo: 'Contas de anúncios', n: c.nome } }).concat(p.paginas.map(function (n) { return { tipo: 'Páginas', n: n } }));
+      if (F.fechar) corpo = '<h3>Tem certeza de que deseja fechar?<button class="x" data-acao="conv-naofecha">✕</button></h3><p>Você não concluiu as etapas necessárias e nenhuma pessoa será adicionada ao portfólio empresarial.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="conv-naofecha">Voltar</button><button class="btn" data-acao="fechar">Sim, fechar</button></div>';
+      else if (passoJ === 0) corpo = '<h3>Inserir endereços de email<button class="x" data-acao="conv-fechar">✕</button></h3><p>Insira os emails das pessoas que você quer convidar para o portfólio empresarial ' + esc(p.nome) + '. Notificações sobre o portfólio também serão enviadas para esses emails.</p>' +
+        '<label class="campo" data-t="conv-email"><b>Endereço de email</b><input id="fConv" type="email" value="' + esc(F.convEmail) + '" placeholder="Insira os endereços de email"/></label><p><b>Configurações adicionais</b><br><span class="miudo">Acesso temporário</span></p>' +
         '<p class="miudo">Quer trabalhar com alguém de uma empresa diferente? <a>Adicione essa pessoa como parceiro</a></p>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="conv-prox" data-t="conv-avancar" ' + (/.+@.+\..+/.test(F.convEmail) ? '' : 'disabled') + '>Avançar</button></div>';
-      else if (passoJ === 1) corpo = '<h3>Conceder acesso<button class="x" data-acao="fechar">✕</button></h3><p>Escolha o acesso desta pessoa ao portfólio empresarial.</p><div data-t="conv-acesso">' +
-        [['Acesso básico', 'Padrão. A pessoa trabalha só nos ativos que você atribuir a ela.'], ['Controle total', 'Gerencia tudo no portfólio, inclusive configurações, pessoas e verificação.']].map(function (o) { return '<label class="pf-op' + (F.acesso === o[0] ? ' on' : '') + '"><input type="radio" name="acesso" value="' + o[0] + '"' + (F.acesso === o[0] ? ' checked' : '') + '/><span><b>' + o[0] + '</b><small>' + o[1] + '</small></span></label>' }).join('') + '</div>' +
-        '<div class="rodape-jan"><button class="btn sec" data-acao="conv-volta">Voltar</button><button class="btn" data-acao="conv-prox" data-t="conv-avancar2" ' + (F.acesso ? '' : 'disabled') + '>Avançar</button></div>';
-      else if (passoJ === 2) corpo = '<h3>Atribuir ativos<button class="x" data-acao="fechar">✕</button></h3><p>Escolha em quais ativos esta pessoa vai trabalhar e com qual acesso (acesso parcial ou controle total).</p>' +
-        (p.paginas.length + p.contas.length ? p.paginas.concat(p.contas.map(function (c) { return c.nome })).map(function (n) { return '<label class="pf-op"><input type="checkbox"/><span><b>' + esc(n) + '</b><small>Acesso parcial</small></span></label>' }).join('') : '<p class="miudo" data-t="conv-ativos">Este portfólio ainda não tem ativos para atribuir. Você pode atribuir depois.</p>') +
+      else if (passoJ === 1) corpo = '<h3>Conceder acesso ao portfólio empresarial<button class="x" data-acao="conv-fechar">✕</button></h3><p>Selecione as tarefas que correspondem melhor ao que as pessoas precisam fazer no portfólio empresarial de ' + esc(p.nome) + '.</p><div data-t="conv-acesso">' +
+        '<div class="pf-nivel"><small>Acesso parcial</small><label class="pf-sw"><span><b>Básico</b><small>Veja as pessoas com controle total. Todas as pessoas adicionadas ao portfólio empresarial têm acesso básico. Elas podem trabalhar apenas nas Páginas, nas contas do Instagram e nos outros ativos de negócios atribuídos a elas.</small></span><input type="checkbox" checked disabled/><i></i></label></div>' +
+        '<div class="pf-nivel"><small>Acesso total</small><label class="pf-sw" data-t="conv-gerenciar"><span><b>Tudo</b><small>Este é o nível máximo de controle que você pode dar. A pessoa poderá fazer tudo que foi mencionado acima, atribuir acesso total a outras pessoas e excluir o portfólio empresarial.</small><em>Gerenciar</em></span><input type="checkbox" id="fGerenciar"' + (F.gerenciar ? ' checked' : '') + '/><i></i></label></div></div>' +
+        '<p class="miudo"><a>Ver opções avançadas</a> · <a>Saiba mais sobre como atribuir acesso a um portfólio empresarial</a></p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="conv-volta">Voltar</button><button class="btn" data-acao="conv-prox" data-t="conv-avancar2">Avançar</button></div>';
+      else if (passoJ === 2) corpo = '<h3>Atribuir ativos de negócios<button class="x" data-acao="conv-fechar">✕</button></h3><p>Atribua pessoas para trabalhar em Páginas do Facebook, contas do Instagram ou outros ativos de negócios no portfólio empresarial ' + esc(p.nome) + '. <a>Troque para atribuição de ativo individual</a></p>' +
+        '<div class="pf-3col" data-t="conv-ativos"><div><small>Selecione o tipo de ativo</small>' + (ativos.length ? ['Contas de anúncios', 'Páginas'].filter(function (t) { return ativos.some(function (a) { return a.tipo === t }) }).map(function (t, k) { return '<span class="pf-tipo' + (k === 0 ? ' on' : '') + '">' + t + '</span>' }).join('') : '<span class="miudo">Nenhum ativo neste portfólio ainda.</span>') + '</div>' +
+        '<div><small>Selecione os ativos</small>' + (ativos.length ? '<label class="pf-ck"><input type="checkbox" data-todos/> Selecionar tudo</label>' + ativos.map(function (a, k) { return '<label class="pf-ck"><input type="checkbox" data-ativo="' + k + '"' + (F.ativos && F.ativos[k] ? ' checked' : '') + '/> ' + esc(a.n) + '</label>' }).join('') : '') + '</div>' +
+        '<div><small>Atribuir permissões</small><p class="miudo">A atribuição de contas de anúncios permite que as pessoas criem, gerenciem e analisem o desempenho dos seus anúncios.</p><p class="miudo">Dica: se quiser que as pessoas veiculem anúncios, você também precisará dar a elas acesso a anúncios nas Páginas do Facebook ou nos perfis do Instagram.</p></div></div>' +
+        '<p class="miudo">' + nAtivos() + ' ativos selecionados</p>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="conv-volta">Voltar</button><button class="btn" data-acao="conv-prox" data-t="conv-avancar3">Avançar</button></div>';
-      else corpo = '<h3>Analisar<button class="x" data-acao="fechar">✕</button></h3><p>Confira antes de enviar o convite.</p><table class="tabela" data-t="conv-resumo"><tr><td>Email</td><td><b>' + esc(F.convEmail) + '</b></td></tr><tr><td>Acesso</td><td><b>' + esc(F.acesso) + '</b></td></tr></table>' +
-        '<div class="rodape-jan"><button class="btn sec" data-acao="conv-volta">Voltar</button><button class="btn" data-acao="conv-enviar" data-t="conv-enviar">Enviar convite</button></div>';
+      else corpo = '<h3>Conferir o convite<button class="x" data-acao="conv-fechar">✕</button></h3><p>Enviaremos um convite para os emails abaixo chamando as pessoas para participar do portfólio empresarial de ' + esc(p.nome) + '.</p>' +
+        '<div data-t="conv-resumo"><b>Adicionar ao portfólio empresarial</b><p>' + esc(F.convEmail) + '</p><b>Acesso ao portfólio e aos ativos</b><p>' + esc(p.nome) + '<br><span class="miudo">' + (F.gerenciar ? 'Acesso total: Tudo' : 'Acesso parcial: Básico') + '</span><br><span class="miudo">' + (nAtivos() ? nAtivos() + ' ativo(s) atribuído(s)' : 'Nenhum ativo atribuído') + '</span></p></div>' +
+        '<p class="miudo">O nome da empresa, a data de criação do portfólio, o status de verificação, a razão social, o país, o site, as informações da Página principal e o número de seguidores da Página mais relevante da sua empresa ficarão disponíveis para os usuários convidados.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="conv-volta">Voltar</button><button class="btn" data-acao="conv-enviar" data-t="conv-enviar">Convidar com ' + nAtivos() + ' ativos</button></div>';
       h = '<div class="pf-jan2">' + passos(['Inserir email', 'Conceder acesso', 'Atribuir ativos', 'Analisar']) + '<div>' + corpo + '</div></div>';
     } else if (jan === 'add-conta') {
       h = '<h3>Adicionar uma conta de anúncios<button class="x" data-acao="fechar">✕</button></h3>' +
@@ -197,6 +206,7 @@
       '<p class="conferido' + (conf ? '' : ' pendente') + '">' + (conf ? '✓ Conferido com a tela real' : '⚠ Tela montada pela documentação da Meta · a conferir com a tela real') + '</p></div>';
     liga();
   }
+  function nAtivos() { return F.ativos ? Object.keys(F.ativos).filter(function (k) { return F.ativos[k] }).length : 0 }
   function okCriar() { return F.nomePf.trim() && !ESPECIAL.test(F.nomePf) && F.nome.trim() && F.sobrenome.trim() && /.+@.+\..+/.test(F.email) }
   function liga() {   // campos: guardam o valor e atualizam só o botão (sem redesenhar, para não perder o foco)
     function campo(id, k, cb) { var i = $('#' + id); if (i) i.oninput = i.onchange = function () { F[k] = i.type === 'checkbox' ? i.checked : i.value; if (cb) cb(); window.__simPf = F } }
@@ -207,7 +217,9 @@
     campo('fConta', 'contaNome', function () { botao('[data-acao=conta-prox]', !!F.contaNome.trim()) });
     campo('fFuso', 'fuso'); campo('fMoeda', 'moeda');
     campo('fTermos', 'termos', function () { botao('[data-acao=conta-criar]', F.termos) });
-    $$('[name=acesso]').forEach(function (r) { r.onchange = function () { F.acesso = r.value; window.__simPf = F; desenha() } });
+    campo('fGerenciar', 'gerenciar');
+    $$('[data-ativo]').forEach(function (c) { c.onchange = function () { F.ativos = F.ativos || {}; F.ativos[c.getAttribute('data-ativo')] = c.checked; desenha() } });
+    $$('[data-todos]').forEach(function (c) { c.onchange = function () { F.ativos = {}; $$('[data-ativo]').forEach(function (x) { F.ativos[x.getAttribute('data-ativo')] = c.checked }); desenha() } });
     $$('[name=uso]').forEach(function (r) { r.onchange = function () { F.uso = r.value; desenha() } });
     window.__simPf = F;
   }
@@ -229,8 +241,10 @@
     }
     else if (ac === 'convidar') abre('convidar');
     else if (ac === 'conv-prox') { passoJ++; desenha() }
+    else if (ac === 'conv-fechar') { F.fechar = true; desenha() }
+    else if (ac === 'conv-naofecha') { F.fechar = false; desenha() }
     else if (ac === 'conv-volta') { passoJ = Math.max(0, passoJ - 1); desenha() }
-    else if (ac === 'conv-enviar') { pf().pessoas.push({ nome: F.convEmail.split('@')[0], email: F.convEmail, acesso: F.acesso === 'Controle total' ? 'Acesso total' : 'Acesso básico', status: 'Convite enviado' }); grava(); fecha(); render() }
+    else if (ac === 'conv-enviar') { pf().pessoas.push({ nome: F.convEmail.split('@')[0], email: F.convEmail, acesso: F.gerenciar ? 'Acesso total' : 'Acesso parcial', status: 'Convite enviado' }); grava(); fecha(); render() }
     else if (ac === 'menu-pag') { menuPag = !menuPag; render() }
     else if (ac === 'op-pagina') { menuPag = false; render(); abre('aviso') }
     else if (ac === 'add-conta') abre('add-conta');
@@ -290,13 +304,12 @@
     { alvo: '[data-t=conv-email]', garante: function () { SIMPF.abre('convidar', 0) }, cond: function () { var f = window.__simPf; return !!(f && /.+@.+\..+/.test(f.convEmail)) },
       tit: T('O email', 'El correo'), txt: T('Digite o email do sobrinho (na aula, invente: sobrinho@lojinha.exemplo) e clique em Próximo.', 'Escribe el correo del sobrino (en la clase, invéntalo: sobrino@lojinha.exemplo) y haz clic en Siguiente.') },
     { alvo: '[data-t=conv-avancar]', clique: true, garante: function () { SIMPF.abre('convidar', 0) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
-    { alvo: '[data-t=conv-acesso]', garante: function () { SIMPF.abre('convidar', 1) }, cond: function () { var f = window.__simPf; return !!(f && f.acesso === 'Acesso básico') },
-      tit: T('Só o acesso necessário', 'Solo el acceso necesario'), txt: T('Ele só vai postar: escolha Acesso básico. A Meta recomenda dar só o acesso que a pessoa precisa. Depois clique em Próximo.', 'Él solo va a publicar: elige Acceso básico. Meta recomienda dar solo el acceso que la persona necesita. Después haz clic en Siguiente.'),
-      dica: T('Controle total é para quem administra a empresa junto com você.', 'Control total es para quien administra la empresa contigo.') },
-    { alvo: '[data-t=conv-avancar2]', clique: true, garante: function () { SIMPF.abre('convidar', 1) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
-    { alvo: '[data-t=conv-avancar3]', clique: true, garante: function () { SIMPF.abre('convidar', 2) }, tit: T('Atribuir ativos', 'Asignar activos'), txt: T('Aqui você escolhe em quais ativos ele trabalha (por exemplo, só a Página, com acesso parcial). Clique em Avançar.', 'Aquí eliges en qué activos trabaja (por ejemplo, solo la Página, con acceso parcial). Haz clic en Siguiente.') },
-    { alvo: '[data-t=conv-enviar]', clique: true, garante: function () { SIMPF.abre('convidar', 3) }, tit: T('Enviar o convite', 'Enviar la invitación'), txt: T('Confira e clique em Enviar convite.', 'Revisa y haz clic en Enviar invitación.') },
-    { alvo: '[data-t=lista-pessoas]', fim: true, semVolta: true, tit: T('Convite enviado! 🎉', '¡Invitación enviada! 🎉'), txt: T('Ele aparece na lista com acesso básico. Clique em Concluir para voltar à aula.', 'Aparece en la lista con acceso básico. Haz clic en Terminar para volver a la clase.') }
+    { alvo: '[data-t=conv-acesso]', garante: function () { SIMPF.abre('convidar', 1) }, cond: function () { var f = window.__simPf; return !!(f && !f.gerenciar) },
+      tit: T('Só o acesso necessário', 'Solo el acceso necesario'), txt: T('Todo mundo entra com acesso Básico: trabalha só nos ativos que você atribuir. Ele só vai postar, então NÃO ligue o Gerenciar (acesso total). Clique em Próximo.', 'Todos entran con acceso Básico: trabajan solo en los activos que asignes. Él solo va a publicar, así que NO actives Gestionar (acceso total). Haz clic en Siguiente.'),
+      dica: T('Acesso total é para quem administra a empresa junto com você: pode até excluir o portfólio.', 'El acceso total es para quien administra la empresa contigo: puede hasta eliminar el portafolio.') },    { alvo: '[data-t=conv-avancar2]', clique: true, garante: function () { SIMPF.abre('convidar', 1) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
+    { alvo: '[data-t=conv-avancar3]', clique: true, garante: function () { SIMPF.abre('convidar', 2) }, tit: T('Atribuir ativos', 'Asignar activos'), txt: T('Aqui você escolhe em quais ativos ele trabalha. A Marina ainda não tem a Página neste portfólio, então pode avançar sem marcar nada.', 'Aquí eliges en qué activos trabaja. Marina todavía no tiene la Página en este portafolio, así que puedes avanzar sin marcar nada.') },
+    { alvo: '[data-t=conv-enviar]', clique: true, garante: function () { SIMPF.abre('convidar', 3) }, tit: T('Enviar o convite', 'Enviar la invitación'), txt: T('Confira o resumo e clique em Convidar.', 'Revisa el resumen y haz clic en Invitar.') },
+    { alvo: '[data-t=lista-pessoas]', fim: true, semVolta: true, tit: T('Convite enviado! 🎉', '¡Invitación enviada! 🎉'), txt: T('Ele aparece na lista com acesso parcial: Básico. Clique em Concluir para voltar à aula.', 'Aparece en la lista con acceso parcial: Básico. Haz clic en Terminar para volver a la clase.') }
   ];
   TOURS['criar-conta-anuncios'] = [
     { alvo: '[data-t=menu-contas]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha() }, tit: T('Contas de anúncios', 'Cuentas publicitarias'), txt: T('Para anunciar, a Marina precisa de uma conta de anúncios dentro do portfólio. Clique em Contas de anúncios.', 'Para anunciar, Marina necesita una cuenta publicitaria dentro del portafolio. Haz clic en Cuentas publicitarias.') },

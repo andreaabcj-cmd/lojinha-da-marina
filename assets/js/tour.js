@@ -40,6 +40,11 @@
     document.addEventListener('click', function (e) {
       if (!tour) return; var p = tour[passo], el = alvoEl(p);
       if (p && p.clique && el && (el === e.target || el.contains(e.target))) { var n = passo + 1; passo = n; salva(); setTimeout(function () { vai(n) }, 150) }   // salva já: o clique pode abrir outra página
+      // passo com condição já cumprida + a pessoa clicou direto no destaque do PRÓXIMO passo (ex.: digitou e clicou no Avançar da janela): acompanha
+      else if (p && p.cond && !p.clique && tour[passo + 1] && tour[passo + 1].clique) {
+        var q = tour[passo + 1], el2 = alvoEl(q); var okc = false; try { okc = p.cond() } catch (x) { }
+        if (okc && el2 && (el2 === e.target || el2.contains(e.target))) { var n2 = passo + 2; passo = n2; salva(); setTimeout(function () { vai(n2) }, 150) }
+      }
     }, true);
     window.addEventListener('resize', posiciona); document.addEventListener('scroll', posiciona, true);
   }
