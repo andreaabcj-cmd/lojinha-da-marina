@@ -7,7 +7,7 @@
   var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'assets/css/data-advisor.css'; document.head.appendChild(css);
 
   var IC = {
-    logo: '<svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="3" fill="#7aa7ff"/><path d="M6.3 6.3a8 8 0 0 0 0 11.4M17.7 6.3a8 8 0 0 1 0 11.4M8.8 8.8a4.5 4.5 0 0 0 0 6.4M15.2 8.8a4.5 4.5 0 0 1 0 6.4" fill="none" stroke="#b18cff" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    logo: '<svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="3" fill="#16294A"/><path d="M6.3 6.3a8 8 0 0 0 0 11.4M17.7 6.3a8 8 0 0 1 0 11.4M8.8 8.8a4.5 4.5 0 0 0 0 6.4M15.2 8.8a4.5 4.5 0 0 1 0 6.4" fill="none" stroke="#16294A" stroke-width="1.8" stroke-linecap="round"/></svg>',
     pin: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 4h6l-1 5 3 3H7l3-3zM12 12v7M4 4l16 16"/></svg>',
     x: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     sino: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1c1e21" stroke-width="1.7"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/></svg>',
