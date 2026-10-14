@@ -245,3 +245,5 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .ig-row{display:flex;justify-content:space-between;padding:10px 2px}.ig-row a{color:var(--blue)}
 @media (max-width:760px){.ig{grid-template-columns:1fr}.ig-lado{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:2px solid var(--ink)}.ig-logo,.ig-lado span.ig-l{display:none}.ig-cab{flex-direction:column;align-items:center;text-align:center;gap:14px}.ig-foto{width:96px;height:96px;font-size:44px}.ig-dest{gap:14px}.ig-dest i{width:58px;height:58px}}
 .pf-insta{max-width:380px;margin:0 auto}
+.pf-abas{display:flex;gap:6px;margin:14px 0 10px;border-bottom:1px solid var(--line)}.pf-abas button{border:0;background:none;padding:8px 10px;font:inherit;font-weight:600;color:var(--muted);border-radius:8px 8px 0 0;cursor:pointer}.pf-abas button.on{background:var(--blue-l);color:var(--ink)}.pf-abas button:disabled{cursor:default}
+.pf-par{font-size:30px;text-align:center;margin:6px 0}

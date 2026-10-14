@@ -367,6 +367,34 @@
     }
   };
 
+
+  /* ---------- 12. O que muda quando eu ligo? (Instagram 04) ---------- */
+  F['ligar-ig'] = {
+    titulo: { pt: 'O que muda quando eu ligo?', es: '¿Qué cambia cuando los vinculo?' },
+    resumo: { pt: 'Ligue e desligue o Instagram da Página e veja o que cada pessoa passa a poder fazer.', es: 'Vincula y desvincula el Instagram de la Página y mira qué puede hacer cada persona.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      var est = { ligado: false, msg: true };
+      var PESS = [
+        { ic: '👩', n: { pt: 'Marina (acesso total à Página)', es: 'Marina (acceso total a la Página)' }, pag: true },
+        { ic: '🧑', n: { pt: 'Sobrinho (cuida só da Página)', es: 'Sobrino (cuida solo la Página)' }, pag: true },
+        { ic: '📱', n: { pt: 'Amiga que só tem acesso ao Instagram', es: 'Amiga que solo tiene acceso al Instagram' }, ig: true }
+      ];
+      function desenha() {
+        el.innerHTML = '<div class="li"><div class="li-ctrl"><label class="li-sw"><input type="checkbox" data-k="ligado"' + (est.ligado ? ' checked' : '') + '/> ' + T({ pt: 'Instagram ligado à Página', es: 'Instagram vinculado a la Página' }) + '</label>' +
+          '<label class="li-sw' + (est.ligado ? '' : ' off') + '"><input type="checkbox" data-k="msg"' + (est.msg ? ' checked' : '') + (est.ligado ? '' : ' disabled') + '/> ' + T({ pt: 'Mensagens do Instagram na Caixa de Entrada', es: 'Mensajes de Instagram en la Bandeja de entrada' }) + '</label></div>' +
+          '<div class="li-par">🏪 ' + (est.ligado ? '🔗' : '···') + ' 📸</div>' +
+          PESS.map(function (p) {
+            var vePag = p.pag || est.ligado, veIg = p.ig || est.ligado, veMsg = p.ig || (est.ligado && est.msg);
+            return '<div class="li-p"><b>' + p.ic + ' ' + T(p.n) + '</b><span class="' + (vePag ? 'sim' : 'nao') + '">' + (vePag ? '✅' : '—') + ' ' + T({ pt: 'Página', es: 'Página' }) + '</span><span class="' + (veIg ? 'sim' : 'nao') + '">' + (veIg ? '✅' : '—') + ' Instagram</span><span class="' + (veMsg ? 'sim' : 'nao') + '">' + (veMsg ? '✅' : '—') + ' ' + T({ pt: 'Mensagens do Instagram', es: 'Mensajes de Instagram' }) + '</span></div>';
+          }).join('') +
+          '<p class="li-nota">' + (est.ligado ? T({ pt: '🔗 Ligados: quem cuida da Página OU do Instagram pode cuidar dos dois — sempre conforme o acesso que cada pessoa recebeu.', es: '🔗 Vinculados: quien cuida la Página O el Instagram puede cuidar los dos — siempre según el acceso que recibió cada persona.' }) : T({ pt: 'Separados: cada pessoa só mexe no que recebeu.', es: 'Separados: cada persona solo toca lo que recibió.' })) + '</p></div>';
+      }
+      el.addEventListener('change', function (e) { var k = e.target.getAttribute('data-k'); if (!k) return; est[k] = e.target.checked; desenha() });
+      desenha();
+    }
+  };
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

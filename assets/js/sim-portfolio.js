@@ -87,10 +87,19 @@
       return esqueleto(h, CONF.pessoas);
     },
     paginas: function () {
-      var p = pf();
+      var p = pf(); p.conex = p.conex || {};
       var h = cabTela('Páginas', '<span class="pf-drop"><button class="btn" data-acao="menu-pag" data-t="add-pagina">' + IC.mais + ' Adicionar ▾</button>' + (menuPag ? menuPaginas() : '') + '</span>');
-      h += p.paginas.length ? '<div class="cartao"><table class="tabela"><tr><th>Nome</th></tr>' + p.paginas.map(function (n) { return '<tr><td>' + esc(n) + '</td></tr>' }).join('') + '</table></div>' :
-        '<div class="cartao">' + vazio('Nenhuma Página adicionada', 'Adicione Páginas a este portfólio empresarial para gerenciar todos os seus ativos de negócios em um só local.') + '</div>';
+      if (!p.paginas.length) return esqueleto(h + '<div class="cartao">' + vazio('Nenhuma Página adicionada', 'Adicione Páginas a este portfólio empresarial para gerenciar todos os seus ativos de negócios em um só local.') + '</div>', CONF.paginas);
+      var n = p.paginas[0], ig = p.conex[n];
+      h += '<div class="pf-duas"><div class="cartao">' + p.paginas.map(function (x) { return '<div class="pf-linha on"><span class="L">f</span><span><b>' + esc(x) + '</b></span></div>' }).join('') + '</div>' +
+        '<div class="cartao" data-t="pag-detalhe"><h2>' + esc(n) + '</h2><p class="miudo">Identificação: <span class="id">4196' + String(p.id || '').slice(-11) + '</span><br>Propriedade de: ' + esc(p.nome) + '</p>' +
+        '<p><button class="btn sec">Ver no Facebook</button> <button class="btn sec">Boost</button> <button class="btn sec">Remover</button></p>' +
+        '<p><button class="btn sec">Atribuir pessoas</button> <button class="btn sec">Atribuir parceiro</button> <button class="btn sec" data-acao="conectar-ativos" data-t="conectar-ativos">Conectar ativos</button></p>' +
+        '<div class="pf-abas"><button data-acao="aba-pag" data-aba="pessoas" class="' + (abaPag === 'pessoas' ? 'on' : '') + '">Pessoas</button><button disabled>Parceiros</button><button data-acao="aba-pag" data-aba="ativos" data-t="aba-ativos" class="' + (abaPag === 'ativos' ? 'on' : '') + '">Ativos conectados</button></div>' +
+        (abaPag === 'ativos' ? '<div data-t="pag-ativos">' + (ig ? '<h3>1 ativo está conectado a esta Página do Facebook</h3><p class="miudo">Você pode conectar ativos ou desconectá-los.</p><b>Conta do Instagram</b><div class="pf-linha"><span class="L">📸</span><span><b>' + esc(ig) + '</b><small>Conta do Instagram</small></span><button class="btn sec">Desconectar</button></div>' :
+          vazio('Nenhum ativo conectado', '', '<button class="btn sec" data-acao="conectar-ativos">Conectar ativos</button>')) + '</div>' :
+          '<div><h3>' + p.pessoas.length + (p.pessoas.length === 1 ? ' pessoa está atribuída' : ' pessoas estão atribuídas') + ' a essa Página do Facebook</h3><b>Pessoas com acesso total</b>' + p.pessoas.filter(function (x) { return x.acesso === 'Acesso total' }).map(function (x) { return '<div class="pf-linha"><span class="L">' + IC.user + '</span><span><b>' + esc(x.nome) + '</b><small>Acesso total</small></span></div>' }).join('') + '</div>') +
+        '</div></div>';
       return esqueleto(h, CONF.paginas);
     },
     contas: function () {
@@ -118,7 +127,7 @@
         '<div class="cartao"><h2>Administrador secundário</h2><p class="miudo">Ter pelo menos um outro administrador neste portfólio ajuda se você perder acesso à sua conta.</p></div>', CONF.seguranca);
     }
   };
-  var menuPag = false;
+  var menuPag = false, abaPag = 'pessoas';
   function menuPaginas() {
     return '<div class="pf-menu-drop" data-t="opcoes-pagina">' + [
       ['Adicionar uma Página do Facebook existente', 'Ideal para: quando você precisa gerenciar uma Página no mesmo portfólio empresarial que outras Páginas do Facebook, perfis do Instagram ou outros ativos de negócios.'],
@@ -219,6 +228,31 @@
       else h = '<h3>@lojinhadamarina was added to the business portfolio<button class="x" data-acao="fechar">✕</button></h3><p>As pessoas que entrarem no Meta Business Suite usando o perfil do Instagram @lojinhadamarina e a senha poderão realizar ações como: Ver a atividade do perfil no portfólio · Veicular anúncios e gerenciar lojas.</p>' +
         '<b>Resumo das alterações</b><div class="pf-linha"><span class="L">L</span><span><b>' + esc(pf().nome) + '</b><small>Portfólio empresarial</small></span></div><div class="pf-linha"><span class="L">📸</span><span><b>@lojinhadamarina</b><small>Perfil do Instagram</small></span></div>' +
         '<div class="rodape-jan"><button class="btn" data-acao="fechar" data-t="ig-concluir">Concluir</button></div>';
+    } else if (jan === 'conectar') {   // telas reais de 14/10/2026 (Página › Conectar ativos › Instagram)
+      var pg = pf().paginas[0] || 'Lojinha da Marina';
+      if (passoJ === 0) h = '<h3>O que você quer conectar?<button class="x" data-acao="fechar">✕</button></h3>' +
+        '<button class="pf-op" data-acao="con-prox" data-t="con-ig"><span>📸</span><span><b>Conta do Instagram</b><small>Inspire e conecte-se com seus clientes no Instagram.</small></span></button>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button></div>';
+      else if (passoJ === 1) h = '<h3>Conectar ao Instagram<button class="x" data-acao="fechar">✕</button></h3><p class="pf-par">🏪 ··· 📸</p><div data-t="con-info">' +
+        '<div class="pf-nota"><b>💡 Apenas uma conta profissional do Instagram pode ser conectada a uma Página do Facebook, e essa conexão pode ser vista por outras pessoas.</b></div>' +
+        '<p>Após a conexão da sua Página do Facebook <b>' + esc(pg) + '</b> ao Instagram, as pessoas que gerenciam a Página ou o perfil do Instagram poderão gerenciar tarefas para ambos os perfis. Analise o acesso atribuído às pessoas em <a>Configurações</a>.</p>' +
+        '<p>Dependendo do acesso atribuído a cada pessoa, essas tarefas podem incluir:</p><ul><li>Conteúdo e anúncios</li><li>Insights</li><li>Mensagens e comentários</li><li>Configurações e permissões</li></ul></div>' +
+        '<div class="rodape-jan"><button class="btn sec" data-t="con-novo">Criar um novo perfil do Instagram</button><button class="btn" data-acao="con-prox" data-t="con-entrar">Entrar no Instagram</button></div>';
+      else if (passoJ === 2) h = '<div style="text-align:center;font-size:40px">📸</div><h3 style="justify-content:center">Escolha as configurações de mensagem do Instagram</h3><div data-t="con-msg">' +
+        '<label class="pf-sw"><span><b>Permitir acesso a mensagens do Instagram na Caixa de Entrada</b></span><input type="checkbox" id="fMsgIg"' + (F.msgIg === false ? '' : ' checked') + '/><i></i></label>' +
+        '<p class="miudo">Dependendo das funções que tiverem, as pessoas que ajudam a gerenciar sua Página poderão ter acesso de visualização e resposta às mensagens do Instagram. Você pode alterar isso nas suas configurações a qualquer momento. <a>Saiba mais</a></p></div>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="con-prox" data-t="con-continuar">Continuar</button></div>';
+      else if (passoJ === 3) h = '<div class="pf-insta" data-t="con-autoriza"><p class="miudo" style="text-align:center">Solicitação de autorização</p><b class="ig-logo" style="display:block;text-align:center">Instagram</b>' +
+        '<h3 style="justify-content:center;text-align:center">Entre no Meta Business Suite usando sua conta do Instagram</h3><p style="text-align:center">Turbine o post para aumentar seus públicos</p>' +
+        '<button class="btn" style="width:100%;justify-content:center" data-acao="con-prox" data-t="con-entrar-ig">Entrar como lojinhadamarina</button><button class="btn sec" style="width:100%;justify-content:center;margin-top:8px" data-acao="fechar">Cancelar</button>' +
+        '<p class="miudo" style="text-align:center">Não é lojinhadamarina? <a>Trocar de conta</a></p><p class="miudo" style="text-align:center">Ao clicar em Continuar, você concorda com nossos Termos de Serviços da Meta</p></div>';
+      else if (passoJ === 4) h = '<h3>Adição desse perfil do Instagram ao seu portfólio empresarial<button class="x" data-acao="fechar">✕</button></h3><div data-t="con-resumo">' +
+        '<p>Se você conectar a Página do Facebook <b>' + esc(pg) + '</b> ao perfil do Instagram <b>lojinhadamarina</b>, o perfil do Instagram será adicionado ao seu portfólio empresarial.</p>' +
+        '<b>Seu portfólio empresarial</b><div class="pf-linha"><span class="L">L</span><span><b>' + esc(pf().nome) + '</b><small>Portfólio empresarial · ' + pf().pessoas.length + (pf().pessoas.length === 1 ? ' pessoa tem' : ' pessoas têm') + ' acesso</small></span></div><p class="pf-par" style="margin-left:40px">🏪 🔗 📸</p>' +
+        '<p class="miudo">Você tem controle total deste portfólio. Gerencie o acesso a esses ativos de negócios quando quiser e permita que outras pessoas tenham acesso a eles em <b>Configurações</b>.</p></div>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="con-ligar" data-t="con-adicionar">Adicionar</button></div>';
+      else h = '<div style="text-align:center;font-size:44px">✅</div><h3 style="justify-content:center">Instagram conectado</h3><p style="text-align:center">A Página do Facebook <b>' + esc(pg) + '</b> agora está conectada ao perfil do Instagram <b>@lojinhadamarina</b>.</p>' +
+        '<div class="rodape-jan"><button class="btn" data-acao="con-fim" data-t="con-concluir">Concluir</button></div>';
     } else if (jan === 'aviso') {
       conf = false;
       h = '<h3>Fora do simulador por enquanto<button class="x" data-acao="fechar">✕</button></h3><p>Esta etapa ainda não está montada no simulador, porque ainda não conferimos a tela real dela. Na vida real, siga a Central de Ajuda da Meta.</p><div class="rodape-jan"><button class="btn" data-acao="fechar">Entendi</button></div>';
@@ -239,6 +273,7 @@
     campo('fFuso', 'fuso'); campo('fMoeda', 'moeda');
     campo('fTermos', 'termos', function () { botao('[data-acao=conta-criar]', F.termos) });
     campo('fGerenciar', 'gerenciar');
+    campo('fMsgIg', 'msgIg');
     $$('[data-ativo]').forEach(function (c) { c.onchange = function () { F.ativos = F.ativos || {}; F.ativos[c.getAttribute('data-ativo')] = c.checked; desenha() } });
     $$('[data-todos]').forEach(function (c) { c.onchange = function () { F.ativos = {}; $$('[data-ativo]').forEach(function (x) { F.ativos[x.getAttribute('data-ativo')] = c.checked }); desenha() } });
     $$('[name=uso]').forEach(function (r) { r.onchange = function () { F.uso = r.value; window.__simPf = F; desenha() } });
@@ -269,6 +304,11 @@
     else if (ac === 'menu-pag') { menuPag = !menuPag; render() }
     else if (ac === 'op-pagina') { menuPag = false; render(); abre('aviso') }
     else if (ac === 'add-conta') abre('add-conta');
+    else if (ac === 'aba-pag') { abaPag = a.getAttribute('data-aba'); render() }
+    else if (ac === 'conectar-ativos') abre('conectar');
+    else if (ac === 'con-prox') { passoJ++; desenha() }
+    else if (ac === 'con-ligar') { var p1 = pf(); p1.conex = p1.conex || {}; p1.conex[p1.paginas[0]] = 'lojinhadamarina'; p1.igs = p1.igs || []; if (!p1.igs.length) p1.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 5; desenha() }
+    else if (ac === 'con-fim') { fecha(); abaPag = 'ativos'; render() }
     else if (ac === 'add-ig') abre('add-ig');
     else if (ac === 'ig-login') { passoJ = 1; desenha() }
     else if (ac === 'ig-entrar') { var p0 = pf(); p0.igs = p0.igs || []; if (!p0.igs.length) p0.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 2; desenha(); render() }
@@ -283,6 +323,9 @@
   window.SIMPF = {
     fecha: fecha, abre: function (q, p) { if (jan !== q) abre(q); if (p != null && passoJ !== p) { passoJ = p; desenha() } },
     garanteExemplo: function () { if (!S.pfs.length) { var e = exemplo(); S.pfs.push(e); S.atual = e.id; grava(); render() } },
+    // aula 04 do Instagram: Página e Instagram já no portfólio, ainda sem ligação
+    garanteAula4: function () { this.garanteExemplo(); var p = pf(); p.igs = p.igs || []; p.conex = p.conex || {}; if (!p.paginas.length) p.paginas.push('Lojinha da Marina'); if (!p.igs.length) p.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); if (p.conex[p.paginas[0]] && !SIMPF._ligando) delete p.conex[p.paginas[0]]; grava(); render() },
+    aba: function (x) { abaPag = x; render() },
     estado: function () { return { jan: jan, passo: passoJ, F: F, pf: pf() } }
   };
 
@@ -291,6 +334,7 @@
     $('#app').innerHTML = (TELAS[r] || TELAS.info)();
   }
   render();
+  if (params.get('aula') === 'ig4') SIMPF.garanteAula4();   // aula 04 do Instagram: Página + Instagram no portfólio, sem ligação
 
   /* ---------- tutoriais guiados (tour.js) ---------- */
   var TOURS = window.TOURS = window.TOURS || {};
@@ -345,6 +389,21 @@
     { alvo: '[data-t=ig-entrar]', clique: true, garante: function () { SIMPF.abre('add-ig', 1) }, tit: T('Entrar', 'Entrar'), txt: T('Clique em Entrar como lojinhadamarina.', 'Haz clic en Entrar como lojinhadamarina.') },
     { alvo: '[data-t=ig-concluir]', clique: true, semVolta: true, tit: T('Adicionado! 🎉', '¡Agregado! 🎉'), txt: T('O Instagram agora pertence ao portfólio. Clique em Concluir.', 'El Instagram ahora pertenece al portafolio. Haz clic en Terminar.') },
     { alvo: '[data-t=ig-detalhe]', fim: true, semVolta: true, tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Repare em “Propriedade de”: o Instagram é do portfólio da Marina. Clique em Concluir para voltar à aula.', 'Fíjate en “Propiedad de”: el Instagram es del portafolio de Marina. Haz clic en Terminar para volver a la clase.') }
+  ];
+  TOURS['conectar-instagram'] = [
+    { alvo: '[data-t=menu-paginas]', clique: true, garante: function () { SIMPF._ligando = false; SIMPF.garanteAula4(); SIMPF.fecha() }, tit: T('Páginas', 'Páginas'), txt: T('A Página e o Instagram da Marina já estão no portfólio, mas ainda separados. Clique em Páginas.', 'La Página y el Instagram de Marina ya están en el portafolio, pero todavía separados. Haz clic en Páginas.') },
+    { alvo: '[data-t=aba-ativos]', clique: true, garante: function () { SIMPF.fecha(); SIMPF.aba('pessoas'); location.hash = 'paginas' }, tit: T('Ativos conectados', 'Activos conectados'), txt: T('Clique na aba Ativos conectados para ver o que está ligado a esta Página.', 'Haz clic en la pestaña Activos conectados para ver qué está vinculado a esta Página.') },
+    { alvo: '[data-t=pag-ativos]', garante: function () { SIMPF.fecha(); SIMPF.aba('ativos'); location.hash = 'paginas' }, bloqueia: function (t) { return !!t.closest('button') }, erro: T('Primeiro leia e clique em Próximo no balão.', 'Primero lee y haz clic en Siguiente en el globo.'), tit: T('Nada ligado ainda', 'Nada vinculado todavía'), txt: T('Estar no mesmo portfólio NÃO liga o Instagram à Página. A ligação é outro passo. Clique em Próximo.', 'Estar en el mismo portafolio NO vincula el Instagram a la Página. Es otro paso. Haz clic en Siguiente.') },
+    { alvo: '[data-t=conectar-ativos]', clique: true, garante: function () { SIMPF.fecha(); SIMPF.aba('ativos'); location.hash = 'paginas' }, tit: T('Conectar ativos', 'Conectar activos'), txt: T('Clique em Conectar ativos.', 'Haz clic en Conectar activos.') },
+    { alvo: '[data-t=con-ig]', clique: true, garante: function () { SIMPF.abre('conectar', 0) }, tit: T('Conta do Instagram', 'Cuenta de Instagram'), txt: T('Clique em Conta do Instagram.', 'Haz clic en Cuenta de Instagram.') },
+    { alvo: '[data-t=con-info]', garante: function () { SIMPF.abre('conectar', 1) }, tit: T('Leia antes de ligar', 'Lee antes de vincular'), txt: T('Só conta profissional pode ser ligada. E depois de ligar, quem cuida da Página OU do Instagram pode cuidar dos dois (conforme o acesso de cada um). Clique em Próximo.', 'Solo una cuenta profesional se puede vincular. Y después de vincular, quien cuida la Página O el Instagram puede cuidar los dos (según el acceso de cada uno). Haz clic en Siguiente.') },
+    { alvo: '[data-t=con-entrar]', clique: true, garante: function () { SIMPF.abre('conectar', 1) }, tit: T('Entrar no Instagram', 'Entrar en Instagram'), txt: T('A Marina já tem Instagram: clique em Entrar no Instagram (não em Criar um novo perfil).', 'Marina ya tiene Instagram: haz clic en Entrar en Instagram (no en Crear un perfil nuevo).') },
+    { alvo: '[data-t=con-msg]', garante: function () { SIMPF.abre('conectar', 2) }, bloqueia: function (t) { return !!t.closest('label') }, erro: T('Na aula, deixe ligado: a Marina quer responder o Instagram pelo Business Suite.', 'En la clase, déjalo activado: Marina quiere responder el Instagram desde Business Suite.'), tit: T('Mensagens do Instagram', 'Mensajes de Instagram'), txt: T('Ligado, as mensagens do Instagram aparecem na Caixa de Entrada, e quem ajuda na Página pode ver e responder (conforme o acesso). Dá para mudar depois nas configurações. Clique em Próximo.', 'Activado, los mensajes de Instagram aparecen en la Bandeja de entrada, y quien ayuda en la Página puede verlos y responder (según el acceso). Se puede cambiar después en la configuración. Haz clic en Siguiente.') },
+    { alvo: '[data-t=con-continuar]', clique: true, garante: function () { SIMPF.abre('conectar', 2) }, tit: T('Continuar', 'Continuar'), txt: T('Clique em Continuar.', 'Haz clic en Continuar.') },
+    { alvo: '[data-t=con-entrar-ig]', clique: true, garante: function () { SIMPF.abre('conectar', 3) }, tit: T('O login é da cliente', 'El inicio de sesión es de la clienta'), txt: T('Abre a janela do Instagram. Quem entra é a dona do Instagram; o agente nunca pede a senha. Clique em Entrar como lojinhadamarina.', 'Se abre la ventana de Instagram. Quien entra es la dueña del Instagram; el agente nunca pide la contraseña. Haz clic en Entrar como lojinhadamarina.') },
+    { alvo: '[data-t=con-adicionar]', clique: true, garante: function () { SIMPF.abre('conectar', 4) }, tit: T('Confirmar', 'Confirmar'), txt: T('A Meta mostra o resumo: portfólio, Página 🔗 Instagram. Clique em Adicionar.', 'Meta muestra el resumen: portafolio, Página 🔗 Instagram. Haz clic en Agregar.') },
+    { alvo: '[data-t=con-concluir]', clique: true, semVolta: true, garante: function () { SIMPF._ligando = true }, tit: T('Conectado! 🎉', '¡Conectado! 🎉'), txt: T('Clique em Concluir.', 'Haz clic en Terminar.') },
+    { alvo: '[data-t=pag-ativos]', fim: true, semVolta: true, tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Agora a Página mostra o Instagram em Ativos conectados (e tem o botão Desconectar, se um dia precisar). Clique em Concluir para voltar à aula.', 'Ahora la Página muestra el Instagram en Activos conectados (y tiene el botón Desconectar, si algún día hace falta). Haz clic en Terminar para volver a la clase.') }
   ];
   TOURS['criar-conta-anuncios'] = [
     { alvo: '[data-t=menu-contas]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha() }, tit: T('Contas de anúncios', 'Cuentas publicitarias'), txt: T('Para anunciar, a Marina precisa de uma conta de anúncios dentro do portfólio. Clique em Contas de anúncios.', 'Para anunciar, Marina necesita una cuenta publicitaria dentro del portafolio. Haz clic en Cuentas publicitarias.') },

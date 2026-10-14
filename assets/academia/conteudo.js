@@ -144,7 +144,7 @@ window.AULAS = {
       id: '03', min: 6, status: 'pronta',
       titulo: { pt: 'Instagram no portfólio', es: 'Instagram en el portafolio' },
       antes: { pt: 'O perfil da Marina está com cara de loja.', es: 'El perfil de Marina tiene cara de tienda.' },
-      gancho: { pt: '“Portfólio, Instagram… tudo pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“Portafolio, Instagram… ¡todo listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
+      gancho: { pt: '“Instagram e Página no portfólio! Mas eles ainda não conversam entre si…” Vamos ligar os dois.', es: '“¡Instagram y Página en el portafolio! Pero todavía no se hablan entre sí…” Vamos a vincular los dos.' },
       objetivo: { pt: 'Saber adicionar o Instagram ao portfólio e os cuidados: só conta profissional, um ativo em um portfólio, e a conta de anúncios que vem junto.', es: 'Saber agregar el Instagram al portafolio y los cuidados: solo cuenta profesional, un activo en un portafolio, y la cuenta publicitaria que viene junto.' },
       entender: {
         dialogo: [
@@ -158,7 +158,7 @@ window.AULAS = {
           { pt: '<b>Um ativo, um portfólio:</b> se o Instagram está no portfólio de outra empresa, precisa ser liberado antes.', es: '<b>Un activo, un portafolio:</b> si el Instagram está en el portafolio de otra empresa, hay que liberarlo antes.' },
           { pt: '<b>Conta de anúncios conectada</b> vem junto e não pode ser removida. E o login é sempre da cliente.', es: '<b>La cuenta publicitaria conectada</b> viene junto y no se puede quitar. Y el inicio de sesión siempre es de la clienta.' }
         ],
-        notas: { pt: 'Caminho: Configurações › Contas › Perfis do Instagram › Adicionar. Na tela real (14/10/2026) o título da página e a janela aparecem em inglês (“Instagram profiles”, “Add an Instagram profile”). Conectar o Instagram à Página fica para a aula 04.', es: 'Camino: Configuración › Cuentas › Perfiles de Instagram › Agregar. En la pantalla real (14/10/2026) el título de la página y la ventana aparecen en inglés (“Instagram profiles”, “Add an Instagram profile”). Conectar el Instagram a la Página queda para la clase 04.' }
+        notas: { pt: 'Caminho: Configurações › Contas › Perfis do Instagram › Adicionar. Na tela real (14/10/2026) o título da página e a janela aparecem em inglês (“Instagram profiles”, “Add an Instagram profile”). Ligar o Instagram à Página é a aula 04.', es: 'Camino: Configuración › Cuentas › Perfiles de Instagram › Agregar. En la pantalla real (14/10/2026) el título de la página y la ventana aparecen en inglés (“Instagram profiles”, “Add an Instagram profile”). Vincular el Instagram a la Página es la clase 04.' }
       },
       ferramenta: 'ig-portfolio',
       praticar: {
@@ -193,7 +193,61 @@ window.AULAS = {
         { url: 'https://www.facebook.com/business/help/1125825714110549', titulo: { pt: 'Adicionar uma conta do Instagram ao portfólio (só um portfólio por conta)', es: 'Agregar una cuenta de Instagram al portafolio (solo un portafolio por cuenta)' }, conferido: '14/10/2026' }
       ]
     },
-    { id: '04', titulo: { pt: 'Conectar o Instagram à Página', es: 'Conectar el Instagram a la Página' }, status: 'planejada' }
+    {
+      id: '04', min: 7, status: 'pronta',
+      titulo: { pt: 'Instagram e Página juntos', es: 'Instagram y Página juntos' },
+      antes: { pt: 'A Página e o Instagram da Marina estão no portfólio, mas ainda separados.', es: 'La Página y el Instagram de Marina están en el portafolio, pero todavía separados.' },
+      gancho: { pt: '“Portfólio, Instagram, Página… tudo pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“Portafolio, Instagram, Página… ¡todo listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
+      objetivo: { pt: 'Saber ligar o Instagram à Página, o que é preciso antes e o que muda para quem ajuda a cuidar dos dois.', es: 'Saber vincular el Instagram a la Página, qué se necesita antes y qué cambia para quien ayuda a cuidar los dos.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu Instagram e minha Página já estão no portfólio. Isso quer dizer que estão ligados? 🤔', es: 'Mi Instagram y mi Página ya están en el portafolio. ¿Eso quiere decir que están vinculados? 🤔' }],
+          ['rafa', { pt: 'Ainda não! Estar no mesmo portfólio é estar na mesma pasta. Ligar é outro passo: aí você faz posts nos dois, junta os insights e usa as ferramentas de empresa do Instagram.', es: '¡Todavía no! Estar en el mismo portafolio es estar en la misma carpeta. Vincular es otro paso: ahí publicas en los dos, juntas las estadísticas y usas las herramientas de empresa de Instagram.' }],
+          ['marina', { pt: 'E o que eu preciso para ligar?', es: '¿Y qué necesito para vincularlos?' }],
+          ['rafa', { pt: 'Três coisas: Instagram profissional, controle total da Página e os dois no mesmo portfólio. Você já tem tudo!', es: 'Tres cosas: Instagram profesional, control total de la Página y los dos en el mismo portafolio. ¡Ya tienes todo!' }],
+          ['pixel', { pt: 'Atenção: depois de ligar, quem cuida da Página OU do Instagram pode cuidar dos dois, conforme o acesso de cada um. E as mensagens do Instagram podem ir para a Caixa de Entrada.', es: 'Atención: después de vincular, quien cuida la Página O el Instagram puede cuidar los dos, según el acceso de cada uno. Y los mensajes de Instagram pueden ir a la Bandeja de entrada.' }]
+        ],
+        pontos: [
+          { pt: '<b>Antes de ligar:</b> Instagram profissional + controle total da Página + os dois no mesmo portfólio.', es: '<b>Antes de vincular:</b> Instagram profesional + control total de la Página + los dos en el mismo portafolio.' },
+          { pt: '<b>Onde:</b> no portfólio, Páginas › a Página › Conectar ativos › Conta do Instagram. (No app do Instagram: Editar perfil › Página › Conectar ou criar.)', es: '<b>Dónde:</b> en el portafolio, Páginas › la Página › Conectar activos › Cuenta de Instagram. (En la app de Instagram: Editar perfil › Página › Conectar o crear.)' },
+          { pt: '<b>O que muda:</b> quem tem acesso à Página ou ao Instagram pode gerenciar os dois; as mensagens do Instagram podem ir para a Caixa de Entrada (dá para mudar depois).', es: '<b>Qué cambia:</b> quien tiene acceso a la Página o al Instagram puede gestionar los dos; los mensajes de Instagram pueden ir a la Bandeja de entrada (se puede cambiar después).' }
+        ],
+        notas: { pt: '📌 Cenário alternativo (visto de verdade em 14/10/2026): a Página estava no portfólio de outra pessoa. O caminho: quem administra aquele portfólio remove a Página (quem já administrava a Página não perde o acesso) e a dona adiciona no portfólio dela como “Página existente”. Telas de Conectar ativos conferidas em 14/10/2026.', es: '📌 Escenario alternativo (visto de verdad el 14/10/2026): la Página estaba en el portafolio de otra persona. El camino: quien administra ese portafolio quita la Página (quien ya administraba la Página no pierde el acceso) y la dueña la agrega en su portafolio como “Página existente”. Pantallas de Conectar activos revisadas el 14/10/2026.' }
+      },
+      ferramenta: 'ligar-ig',
+      praticar: {
+        texto: { pt: 'No simulador do portfólio, o Pixel te guia para ligar o Instagram da Marina à Página, com as telas reais.', es: 'En el simulador del portafolio, el Pixel te guía para vincular el Instagram de Marina a la Página, con las pantallas reales.' },
+        tour: 'conectar-instagram', pagina: 'meta-portfolio.html?exemplo=1&aula=ig4'
+      },
+      atender: {
+        cena: { pt: 'Liguei meu Instagram à Página e agora meu sócio, que só cuidava da Página, está lendo as mensagens do Instagram. Eu não queria isso! 😟', es: 'Vinculé mi Instagram a la Página y ahora mi socio, que solo cuidaba la Página, está leyendo los mensajes de Instagram. ¡Yo no quería eso! 😟' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Isso acontece porque, ligados, quem cuida da Página pode ver as mensagens do Instagram, conforme o acesso dele. Dá para mudar: você pode tirar o acesso às mensagens do Instagram nas configurações ou rever o acesso do seu sócio no portfólio. Quer ver comigo?”', es: '“Eso pasa porque, vinculados, quien cuida la Página puede ver los mensajes de Instagram, según su acceso. Se puede cambiar: puedes quitar el acceso a los mensajes de Instagram en la configuración o revisar el acceso de tu socio en el portafolio. ¿Lo vemos juntos?”' }, fb: { pt: 'Isso! Você explicou o porquê e deu as duas saídas, sem precisar desfazer a ligação.', es: '¡Eso! Explicaste el porqué y diste las dos salidas, sin tener que deshacer el vínculo.' } },
+          { certa: false, txt: { pt: '“Desconecte o Instagram da Página.”', es: '“Desconecta el Instagram de la Página.”' }, fb: { pt: 'Resolve, mas perde tudo o que a ligação dá (posts nos dois, insights juntos). Dá para ajustar só as mensagens ou o acesso do sócio.', es: 'Lo resuelve, pero pierde todo lo que da el vínculo (publicar en los dos, estadísticas juntas). Se puede ajustar solo los mensajes o el acceso del socio.' } },
+          { certa: false, txt: { pt: '“Isso é um erro da Meta, vou abrir um chamado.”', es: '“Es un error de Meta, voy a abrir un caso.”' }, fb: { pt: 'Não é erro: a própria tela avisa que, ligados, quem cuida da Página pode ver as mensagens do Instagram.', es: 'No es un error: la propia pantalla avisa que, vinculados, quien cuida la Página puede ver los mensajes de Instagram.' } },
+          { certa: false, txt: { pt: '“Me passa a senha do Instagram que eu arrumo.”', es: '“Pásame la contraseña de Instagram y lo arreglo.”' }, fb: { pt: 'Nunca peça senha. O ajuste é feito pela própria cliente, com você orientando.', es: 'Nunca pidas contraseña. El ajuste lo hace la propia clienta, contigo orientando.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Seu Instagram é conta profissional?', es: '¿Tu Instagram es cuenta profesional?' },
+          { pt: 'Você tem controle total da Página?', es: '¿Tienes control total de la Página?' },
+          { pt: 'A Página e o Instagram estão no mesmo portfólio?', es: '¿La Página y el Instagram están en el mismo portafolio?' }],
+        conferir: [{ pt: 'Instagram profissional (Comercial ou Criador).', es: 'Instagram profesional (Comercial o Creador).' },
+          { pt: 'Controle total da Página.', es: 'Control total de la Página.' },
+          { pt: 'Os dois no mesmo portfólio (se não, primeiro organizar os portfólios).', es: 'Los dos en el mismo portafolio (si no, primero organizar los portafolios).' }],
+        frase: { pt: 'Para ligar, você precisa do Instagram profissional, controle total da Página e os dois no mesmo portfólio. Depois de ligados, quem cuida de um pode cuidar dos dois, conforme o acesso de cada pessoa.', es: 'Para vincular, necesitas el Instagram profesional, control total de la Página y los dos en el mismo portafolio. Después de vinculados, quien cuida uno puede cuidar los dos, según el acceso de cada persona.' },
+        passos: [{ pt: 'No portfólio: Configurações › Contas › Páginas › escolha a Página.', es: 'En el portafolio: Configuración › Cuentas › Páginas › elige la Página.' },
+          { pt: 'Conectar ativos › Conta do Instagram › Entrar no Instagram.', es: 'Conectar activos › Cuenta de Instagram › Entrar en Instagram.' },
+          { pt: 'Escolha se as mensagens do Instagram vão para a Caixa de Entrada › Continuar.', es: 'Elige si los mensajes de Instagram van a la Bandeja de entrada › Continuar.' },
+          { pt: 'Entre com a conta do Instagram, confira o resumo e clique em Adicionar.', es: 'Entra con la cuenta de Instagram, revisa el resumen y haz clic en Agregar.' },
+          { pt: '💡 Cenário alternativo: a Página está no portfólio de outra pessoa? Quem administra aquele portfólio remove a Página, e a cliente adiciona no dela como “Página existente”.', es: '💡 Escenario alternativo: ¿la Página está en el portafolio de otra persona? Quien administra ese portafolio quita la Página, y la clienta la agrega en el suyo como “Página existente”.' }],
+        encaminhar: { pt: 'Se aparecer erro ao ligar e os três requisitos estão certos, oriente a seguir a Central de Ajuda da Meta para empresas (erros de conexão entre Instagram e Página).', es: 'Si aparece un error al vincular y los tres requisitos están bien, orienta a seguir el Centro de ayuda de Meta para empresas (errores de conexión entre Instagram y Página).' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/898752960195806', titulo: { pt: 'Como conectar ou desconectar sua conta profissional do Instagram e uma Página do Facebook', es: 'Cómo conectar o desconectar tu cuenta profesional de Instagram y una Página de Facebook' }, conferido: '14/10/2026' }
+      ]
+    }
   ],
   portfolio: [
     {
