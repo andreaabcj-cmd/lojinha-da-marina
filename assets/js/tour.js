@@ -36,7 +36,7 @@
     });
     document.addEventListener('click', function (e) {
       if (!tour) return; var p = tour[passo], el = alvoEl(p);
-      if (p && p.clique && el && (el === e.target || el.contains(e.target))) setTimeout(function () { vai(passo + 1) }, 150);
+      if (p && p.clique && el && (el === e.target || el.contains(e.target))) { var n = passo + 1; passo = n; salva(); setTimeout(function () { vai(n) }, 150) }   // salva já: o clique pode abrir outra página
     }, true);
     window.addEventListener('resize', posiciona); document.addEventListener('scroll', posiciona, true);
   }

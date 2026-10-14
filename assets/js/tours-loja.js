@@ -48,3 +48,23 @@ window.TOURS['extensao-pixel'] = [
     tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
     txt: { pt: 'Você conferiu o Pixel como no atendimento: tem Pixel? O ID é o do cliente? O PageView chega? Tudo sem mexer no código. Clique em Concluir para voltar à aula.', es: 'Revisaste el Pixel como en la atención: ¿hay Pixel? ¿El ID es el del cliente? ¿Llega el PageView? Todo sin tocar el código. Haz clic en Terminar para volver a la clase.' } }
 ];
+
+/* Aula 01 · o Pixel em ação: a pessoa faz coisas na loja e vê os avisos no Consultor de Dados */
+window.TOURS['pixel-em-acao'] = [
+  { alvo: '.card-prod .foto', clique: true,
+    tit: { pt: 'Abra um produto', es: 'Abre un producto' },
+    txt: { pt: 'Você é uma cliente da Marina. Clique num produto para ver os detalhes.', es: 'Eres una clienta de Marina. Haz clic en un producto para ver los detalles.' } },
+  { alvo: '#addCart', clique: true,
+    tit: { pt: 'Ponha no carrinho', es: 'Ponlo en el carrito' },
+    txt: { pt: 'Agora clique em Adicionar ao carrinho.', es: 'Ahora haz clic en Agregar al carrito.' },
+    dica: { pt: 'Se o produto tiver tamanho, escolha um antes. 🙂', es: 'Si el producto tiene talla, elige una antes. 🙂' } },
+  { alvo: '#maExt', clique: true, pula: function () { return document.documentElement.classList.contains('da-aberto') },
+    tit: { pt: 'Hora de ver os avisos', es: 'Hora de ver los avisos' },
+    txt: { pt: 'Cada coisa que você fez virou um aviso do Pixel. Abra o Consultor de Dados, na faixa amarela, para ver.', es: 'Cada cosa que hiciste se convirtió en un aviso del Pixel. Abre el Asesor de datos, en la franja amarilla, para verlo.' } },
+  { alvo: '.da-card-pixel', clique: true, pula: function () { return !!document.querySelector('.da-card-id') },
+    tit: { pt: 'Abra o Pixel', es: 'Abre el Pixel' },
+    txt: { pt: 'Clique no cartão do Pixel.', es: 'Haz clic en la tarjeta del Pixel.' } },
+  { alvo: '.da-lista', fim: true,
+    tit: { pt: 'Aí estão! 🎉', es: '¡Ahí están! 🎉' },
+    txt: { pt: 'PageView (abriu a página), ViewContent (viu o produto) e AddToCart (pôs no carrinho). O Pixel contou para a Meta o que você fez, nada além disso. Clique em Concluir para voltar à aula.', es: 'PageView (abrió la página), ViewContent (vio el producto) y AddToCart (puso en el carrito). El Pixel le contó a Meta lo que hiciste, nada más. Haz clic en Terminar para volver a la clase.' } }
+];

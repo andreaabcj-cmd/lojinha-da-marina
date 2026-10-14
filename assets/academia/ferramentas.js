@@ -68,6 +68,46 @@
     }
   };
 
+
+  /* ---------- 2. O caminho de uma visita (aula 01): o que o Pixel faz, em linguagem de gente ---------- */
+  var ACOES = {
+    ver: { ev: 'ViewContent', ic: '👀', bt: { pt: 'Ver um produto', es: 'Ver un producto' }, nome: { pt: 'viu um produto', es: 'vio un producto' },
+      uso: ['medir', 'publicos'], txt: { pt: 'Com esse aviso você sabe quantas pessoas viram seus produtos depois de um anúncio, e pode falar de novo com quem viu e não comprou.', es: 'Con este aviso sabes cuántas personas vieron tus productos después de un anuncio, y puedes volver a hablar con quien vio y no compró.' } },
+    carrinho: { ev: 'AddToCart', ic: '🛒', bt: { pt: 'Pôr no carrinho', es: 'Poner en el carrito' }, nome: { pt: 'pôs no carrinho', es: 'puso en el carrito' },
+      uso: ['melhorar', 'publicos'], txt: { pt: 'Pôr no carrinho mostra interesse de verdade: a Meta aprende que tipo de pessoa se interessa pelos seus produtos.', es: 'Poner en el carrito muestra interés real: Meta aprende qué tipo de persona se interesa por tus productos.' } },
+    comprar: { ev: 'Purchase', ic: '💳', bt: { pt: 'Comprar', es: 'Comprar' }, nome: { pt: 'comprou', es: 'compró' },
+      uso: ['medir', 'melhorar'], txt: { pt: 'O aviso mais importante: você vê quantas vendas o anúncio trouxe e quanto rendeu, e a Meta passa a mostrar seus anúncios para quem tem mais chance de comprar.', es: 'El aviso más importante: ves cuántas ventas trajo el anuncio y cuánto rindió, y Meta empieza a mostrar tus anuncios a quien tiene más chance de comprar.' } }
+  };
+  var USOS = { medir: { pt: '📏 Medir', es: '📏 Medir' }, melhorar: { pt: '🎯 Melhorar os anúncios', es: '🎯 Mejorar los anuncios' }, publicos: { pt: '👥 Criar públicos', es: '👥 Crear públicos' } };
+  F['caminho-visita'] = {
+    titulo: { pt: 'O caminho de uma visita', es: 'El camino de una visita' },
+    resumo: { pt: 'Clique no que a pessoa faz na loja e veja o Pixel levar o aviso até a Meta, e para que ele serve.', es: 'Haz clic en lo que la persona hace en la tienda y mira al Pixel llevar el aviso hasta Meta, y para qué sirve.' },
+    paginas: '10', status: 'pronta',
+    montar: function (el, T) {
+      var recebidos = [{ ev: 'PageView', nome: { pt: 'abriu o site', es: 'abrió el sitio' } }];
+      el.innerHTML = '<div class="cv">' +
+        '<div class="cv-col cv-loja"><b class="cv-tit">🏪 ' + T({ pt: 'Site da Marina', es: 'Sitio de Marina' }) + '</b><p class="cv-mut">' + T({ pt: 'O que a pessoa faz:', es: 'Lo que hace la persona:' }) + '</p>' +
+          Object.keys(ACOES).map(function (k) { return '<button class="cv-bt" data-cv="' + k + '">' + ACOES[k].ic + ' ' + T(ACOES[k].bt) + '</button>' }).join('') + '</div>' +
+        '<div class="cv-col cv-meio"><span class="cv-pixel">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 3) : '') + '</span><div class="cv-trilho"><span class="cv-carta" id="cvCarta">✉️</span></div><small>' + T({ pt: 'o Pixel leva o aviso', es: 'el Pixel lleva el aviso' }) + '</small></div>' +
+        '<div class="cv-col cv-meta"><b class="cv-tit">📡 ' + T({ pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }) + '</b><p class="cv-mut">' + T({ pt: 'Avisos que chegaram:', es: 'Avisos que llegaron:' }) + '</p><ul class="cv-lista" id="cvLista"></ul></div>' +
+        '</div><div class="cv-uso" id="cvUso"><b>' + T({ pt: 'Clique numa ação da loja ☝️', es: 'Haz clic en una acción de la tienda ☝️' }) + '</b><p>' + T({ pt: 'Quando o site abriu, o Pixel já avisou: PageView (alguém abriu o site).', es: 'Cuando el sitio se abrió, el Pixel ya avisó: PageView (alguien abrió el sitio).' }) + '</p></div>' +
+        '<div class="cv-mora"><span>📄 ' + T({ pt: 'Mora no código do site', es: 'Vive en el código del sitio' }) + '</span><span>🏢 ' + T({ pt: 'Pertence ao portfólio da empresa', es: 'Pertenece al portafolio de la empresa' }) + '</span><span>📡 ' + T({ pt: 'Os avisos chegam no Gerenciador de Eventos', es: 'Los avisos llegan al Administrador de eventos' }) + '</span></div>';
+      var lista = el.querySelector('#cvLista'), carta = el.querySelector('#cvCarta'), uso = el.querySelector('#cvUso'), ocupado = false;
+      function desenha() { lista.innerHTML = recebidos.map(function (r, i) { return '<li class="' + (i === recebidos.length - 1 && i ? 'novo' : '') + '"><code>' + r.ev + '</code> <span>' + T(r.nome) + '</span></li>' }).join('') }
+      desenha();
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-cv]'); if (!b || ocupado) return; var a = ACOES[b.getAttribute('data-cv')]; ocupado = true;
+        el.querySelectorAll('.cv-bt').forEach(function (x) { x.classList.toggle('on', x === b) });
+        carta.classList.remove('voa'); void carta.offsetWidth; carta.classList.add('voa');
+        setTimeout(function () {
+          recebidos.push({ ev: a.ev, nome: a.nome }); desenha(); ocupado = false;
+          uso.innerHTML = '<b>' + a.ic + ' ' + T({ pt: 'A pessoa', es: 'La persona' }) + ' ' + T(a.nome) + ' → <code>' + a.ev + '</code></b><p>' + T(a.txt) + '</p><div class="cv-chips">' + a.uso.map(function (u) { return '<span>' + T(USOS[u]) + '</span>' }).join('') + '</div>';
+          uso.classList.remove('mv-chega'); void uso.offsetWidth; uso.classList.add('mv-chega');
+        }, 900);
+      });
+    }
+  };
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

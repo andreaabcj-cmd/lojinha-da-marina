@@ -220,3 +220,23 @@ a.item:hover,a.aula-l:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 
 @keyframes mvAnda{from{left:0}}
 @media (max-width:720px){.trilha{margin:18px 18px 6px}.trilha-no small{display:none}.trilha-no span{width:36px;height:36px;font-size:18px}}
 @media (prefers-reduced-motion:reduce){.mv-confete{display:none}.trilha-marina{animation:mvAnda 1.2s .2s both}}
+
+/* ferramenta: o caminho de uma visita */
+.cv{display:grid;grid-template-columns:1fr 150px 1fr;gap:14px;align-items:stretch}
+.cv-col{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:14px;box-shadow:3px 3px 0 var(--ink)}
+.cv-tit{display:block;font-size:16px}.cv-mut{margin:4px 0 10px;color:var(--muted);font-size:13px}
+.cv-bt{display:block;width:100%;margin:0 0 8px;padding:10px 12px;text-align:left;font:600 15px inherit;border:2px solid var(--line);border-radius:10px;background:#F8FAFD;cursor:pointer;transition:transform .12s,border-color .12s}
+.cv-bt:hover{border-color:var(--ink);transform:translateX(3px)}.cv-bt.on{border-color:var(--blue);background:var(--blue-l)}
+.cv-meio{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:transparent;border:0;box-shadow:none;padding:0;text-align:center}
+.cv-meio small{color:var(--muted);font-size:12px}.cv-pixel{animation:plBoing 1.2s ease-in-out infinite}
+.cv-trilho{position:relative;width:100%;height:6px;border-radius:9px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
+.cv-carta{position:absolute;left:-10px;top:-14px;font-size:22px;opacity:0}
+.cv-carta.voa{animation:cvVoa .9s cubic-bezier(.4,.1,.3,1) both}
+@keyframes cvVoa{0%{left:-10px;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:calc(100% - 12px);opacity:0}}
+.cv-lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.cv-lista li{padding:7px 10px;border-radius:9px;background:var(--green-l);font-size:14px}.cv-lista li code{font-weight:700;color:var(--green)}
+.cv-lista li.novo{animation:mvChega .4s both;outline:2px solid var(--green)}
+.cv-uso{margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--yellow-l);border:2px dashed #E5B53A}.cv-uso p{margin:6px 0 0}
+.cv-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.cv-chips span{background:#fff;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font-weight:700;font-size:14px}
+.cv-mora{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.cv-mora span{font-size:13px;padding:5px 12px;border-radius:999px;background:#EEF2F7}
+@media (max-width:720px){.cv{grid-template-columns:1fr}.cv-meio{flex-direction:row}.cv-trilho{flex:1}}
