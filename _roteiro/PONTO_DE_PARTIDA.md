@@ -115,3 +115,14 @@ Leia nesta ordem:
 - INVENTADO: eventos, horários, pedido 1042, números 71 × 46, botões de correção.
 - Nota de teste: o alinhamento do destaque acusa "DESALINHADO" com a aba do navegador em segundo plano (transição CSS pausada); o estilo real do destaque estava certo.
 - Próximo na ordem do Foco: MBE, integrações, Shopify, WhatsApp (por último).
+
+## MBE · integrações de parceiros (Foco) · 16/10/2026
+- Simulador `meta-mbe.html` (sim-mbe.js, sim-es-mbe.js, sim-mbe.css): abas Galeria de parceiros (REAL), Conectar pela plataforma (janela do MBE: do simulador), Opções da API de Conversões (tabela da Central de Ajuda), Problemas comuns (triagem) e Dar acesso a um parceiro. `?zerar=1`.
+- 5 tutoriais (galeria-parceiros, conectar-extensao, escolher-capi, eventos-nao-chegam, dar-acesso-parceiro), 6 aulas, 6 quizzes; todos rodaram em ES.
+- REAL (tela, PT e ES): Gerenciador de Eventos › Integrações (Minhas integrações | Galeria de parceiros), recomendações (Google Tag Manager, Shopify, WooCommerce), categorias e parceiros listados (sem o "Ver tudo").
+- REAL (Central de Ajuda PT): 260370078559247 (Integrações de Parceiros para eventos do site), 226398427762487 (Integrações de parceiros), 433493041367251 (comparar API de Conversões), 1717412048538897 (conceder acesso a parceiro). REAL (docs de desenvolvedor, inglês): FBE/MBE pixel-capi-onboarding: cria/seleciona portfólio, Página, Pixel (e conta de anúncios); sem catálogo; permissão privada manage_business_extension exige liberação do app pela Meta.
+- NÃO visto (a conferir): a janela do MBE dentro de uma plataforma parceira (exige conectar de verdade), tela de cada parceiro, "Ver tudo", Minhas integrações com dados.
+- INVENTADO: fluxo e telas da janela do MBE (5 etapas), cenários da API de Conversões, triagem de sintomas, tela de dar acesso.
+- Parte técnica do parceiro (tokens, permissões, review) ficou só em nota: o treino é para o atendimento ao lojista.
+- Nota de ambiente: o navegador interno recusou facebook.com por um tempo; usei o Chrome (extensão) para as páginas da Meta.
+- Próximo na ordem do Foco: integrações de terceiros, Shopify, WhatsApp (por último).

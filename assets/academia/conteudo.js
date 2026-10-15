@@ -30,7 +30,7 @@ window.MODULOS = [
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
   { id: 'shop-ads-offsite', fase: 4, status: 'construcao', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'A jornada até a compra no site, Pixel e catálogo, eventos duplicados, UTM e terceiros, e atualizar loja antiga.', es: 'El recorrido hasta la compra en el sitio, píxel y catálogo, eventos duplicados, UTM y terceros, y actualizar tienda antigua.' } },
   { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
-  { id: 'mbe', fase: 5, status: 'planejado', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Visão geral da extensão e da integração com parceiros.', es: 'Visión general de la extensión y de la integración con socios.' } },
+  { id: 'mbe', fase: 5, status: 'construcao', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Galeria de parceiros, a janela do MBE, opções da API de Conversões, problemas comuns e acesso de parceiros.', es: 'Galería de socios, la ventana del MBE, opciones de la API de Conversiones, problemas comunes y acceso de socios.' } },
   { id: 'integracoes', fase: 5, status: 'planejado', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Como integrar e os erros possíveis.', es: 'Cómo integrar y los errores posibles.' } },
   { id: 'shopify', fase: 5, status: 'planejado', icone: '🧩', titulo: { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, resumo: { pt: 'Como integrar, solução de problemas e redirecionamento.', es: 'Cómo integrar, solución de problemas y redirección.' } },
   { id: 'pagamentos', extra: true, status: 'planejado', icone: '💳', titulo: { pt: 'Pagamentos e cobrança', es: 'Pagos y facturación' }, resumo: { pt: 'Formas de pagamento, saldo, limites de gastos e cobranças.', es: 'Métodos de pago, saldo, límites de gasto y cobros.' } },
@@ -3734,6 +3734,274 @@ window.AULAS = {
           frase: L('Vamos atualizar a loja que você já tem para a finalização da compra no site: URL de finalização, perfis de envio, catálogo e variantes. As campanhas ativas continuam.', 'Actualicemos la tienda que ya tienes a la finalización de compra en el sitio: URL de finalización, perfiles de envío, catálogo y variantes. Las campañas activas continúan.'),
           passos: [L('Adicione o URL de finalização da compra e os perfis de envio.', 'Agrega la URL de finalización de compra y los perfiles de envío.'), L('Prepare o catálogo e as variantes.', 'Prepara el catálogo y las variantes.')],
           encaminhar: L('Se a loja ficou invisível, siga os avisos do Gerenciador de Comércio para atualizá-la, em vez de criar outra.', 'Si la tienda quedó invisible, sigue los avisos del Administrador de ventas para actualizarla, en lugar de crear otra.')
+        }
+      }
+    ];
+  })(),
+  mbe: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Galeria de parceiros e página Integrações vistas de verdade no Gerenciador de Eventos da conta de aula em 16/10/2026, em português e espanhol. Textos da Central de Ajuda da Meta para Empresas (português): “Sobre as Integrações de Parceiros para eventos do site”, “Integrações de parceiros do Facebook”, “Comparar as opções de configuração da API de Conversões” e “Como conceder acesso a ativos de negócios… para um parceiro”. O Meta Business Extension (MBE/FBE) é descrito na documentação para desenvolvedores da Meta (inglês, lida em 16/10/2026): permite ao lojista criar ou selecionar portfólio, Página e Pixel (e conta de anúncios) dentro da plataforma parceira, sem catálogo; a permissão privada exige liberação do app por um representante da Meta. A janela do MBE funcionando dentro de uma plataforma parceira não foi vista (as telas do simulador são do treino, a conferir).', 'Galería de socios y página Integraciones vistas de verdad en el Administrador de eventos de la cuenta de clase el 16/10/2026, en portugués y español. Textos del Centro de ayuda de Meta para Empresas (portugués): “Acerca de las integraciones de socios para eventos del sitio web”, “Integraciones de socios de Facebook”, “Comparar las opciones de configuración de la API de Conversiones” y “Cómo conceder acceso a activos comerciales… a un socio”. Meta Business Extension (MBE/FBE) se describe en la documentación para desarrolladores de Meta (inglés, leída el 16/10/2026): permite al comerciante crear o seleccionar portfolio, página y píxel (y cuenta publicitaria) dentro de la plataforma socia, sin catálogo; el permiso privado exige que un representante de Meta habilite la app. No se vio la ventana del MBE funcionando dentro de una plataforma socia (las pantallas del simulador son del entrenamiento, por confirmar).');
+    var FERR = L('Gerenciador de Eventos › Integrações › Galeria de parceiros.', 'Administrador de eventos › Integraciones › Galería de socios.');
+    return [
+      {
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('O que são as integrações de parceiros e o MBE', 'Qué son las integraciones de socios y el MBE'),
+        antes: L('A Marina usa uma plataforma de loja virtual e não quer mexer no código do site.', 'Marina usa una plataforma de tienda virtual y no quiere tocar el código del sitio.'),
+        gancho: L('“Dá para ligar o Pixel sem programar?” Dá: é para isso que servem os parceiros e o MBE.', '“¿Se puede activar el píxel sin programar?” Sí: para eso sirven los socios y el MBE.'),
+        objetivo: L('Entender o que é uma integração de parceiro, o que é o Meta Business Extension e o que ele conecta (e o que não conecta).', 'Entender qué es una integración de socio, qué es Meta Business Extension y qué conecta (y qué no).'),
+        entender: {
+          dialogo: [
+            ['marina', L('Como ligo meu site à Meta sem editar o código? 🤔', '¿Cómo vinculo mi sitio a Meta sin editar el código? 🤔')],
+            ['rafa', L('Com uma integração de parceiro: se o site roda em uma plataforma compatível (WordPress, Shopify, WooCommerce, BigCommerce, Magento…), a Meta captura os eventos do site automaticamente, sem editar código, usando o Pixel no navegador e a API de Conversões no servidor.', 'Con una integración de socio: si el sitio corre en una plataforma compatible (WordPress, Shopify, WooCommerce, BigCommerce, Magento…), Meta captura los eventos del sitio automáticamente, sin editar código, usando el píxel en el navegador y la API de Conversiones en el servidor.')],
+            ['marina', L('E o MBE, o que é?', '¿Y el MBE, qué es?')],
+            ['rafa', L('É a extensão da Meta que a plataforma parceira embute: o lojista clica em conectar e abre uma janela da Meta em que ele cria ou escolhe o portfólio, a Página, o Pixel e a conta de anúncios. Quem constrói isso é o parceiro, com permissões que a Meta precisa liberar.', 'Es la extensión de Meta que la plataforma socia integra: el comerciante hace clic en conectar y se abre una ventana de Meta en la que crea o elige el portfolio, la página, el píxel y la cuenta publicitaria. Quien construye eso es el socio, con permisos que Meta debe habilitar.')],
+            ['pixel', L('Cuidado: o fluxo do MBE para Pixel e API de Conversões não inclui o catálogo, que se conecta por outro caminho. E se a plataforma do cliente não estiver na lista, a API de Conversões é manual.', 'Cuidado: el flujo del MBE para píxel y API de Conversiones no incluye el catálogo, que se conecta por otro camino. Y si la plataforma del cliente no está en la lista, la API de Conversiones es manual.')]
+          ],
+          pontos: [
+            L('<b>Integração de parceiro</b> = Pixel + API de Conversões sem editar o código.', '<b>Integración de socio</b> = píxel + API de Conversiones sin editar el código.'),
+            L('<b>MBE</b> = janela da Meta dentro da plataforma: portfólio, Página, Pixel, conta de anúncios.', '<b>MBE</b> = ventana de Meta dentro de la plataforma: portfolio, página, píxel, cuenta publicitaria.'),
+            L('<b>Não inclui catálogo;</b> plataforma fora da lista = API de Conversões manual.', '<b>No incluye catálogo;</b> plataforma fuera de la lista = API de Conversiones manual.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'o-que-e-mbe',
+        atender: {
+          cena: L('Meu site é na Shopify. Preciso contratar um programador para ligar o Pixel e a API de Conversões? 💸', 'Mi sitio es en Shopify. ¿Necesito contratar a un programador para activar el píxel y la API de Conversiones? 💸'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não precisa programar: a Shopify é uma plataforma parceira, e a integração captura os eventos automaticamente, com o Pixel no navegador e a API de Conversões no servidor, sem editar o código. Vamos ver no Gerenciador de Eventos, em Integrações, e seguir as instruções do parceiro.”', '“No necesitas programar: Shopify es una plataforma socia, y la integración captura los eventos automáticamente, con el píxel en el navegador y la API de Conversiones en el servidor, sin editar el código. Veamos en el Administrador de eventos, en Integraciones, y sigamos las instrucciones del socio.”'), fb: L('Isso! Honesto e prático.', '¡Eso! Honesto y práctico.') },
+            { certa: false, txt: L('“Precisa, é código manual.”', '“Sí, es código manual.”'), fb: L('Com parceiro, não precisa editar código.', 'Con socio, no hace falta editar código.') },
+            { certa: false, txt: L('“A Meta instala tudo sozinha no seu site.”', '“Meta instala todo sola en tu sitio.”'), fb: L('Quem conecta é o lojista, pela plataforma parceira.', 'Quien conecta es el comerciante, por la plataforma socia.') },
+            { certa: false, txt: L('“Passe a senha da loja para eu configurar.”', '“Pásame la contraseña de la tienda y yo lo configuro.”'), fb: L('Nunca peça senha: oriente.', 'Nunca pidas contraseñas: orienta.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual plataforma o site usa? Já tem Pixel instalado à mão?', '¿Qué plataforma usa el sitio? ¿Ya tiene un píxel instalado a mano?'), L('Quer só eventos do site ou também catálogo e app?', '¿Quiere solo eventos del sitio o también catálogo y app?')],
+          conferir: [FERR, L('Se a plataforma está na lista.', 'Si la plataforma está en la lista.')],
+          frase: L('Se a sua plataforma é parceira da Meta, a integração captura os eventos do site sem editar código, com Pixel e API de Conversões. Vamos ver se ela está na galeria.', 'Si tu plataforma es socia de Meta, la integración captura los eventos del sitio sin editar código, con píxel y API de Conversiones. Veamos si está en la galería.'),
+          passos: [L('Abra Integrações no Gerenciador de Eventos.', 'Abre Integraciones en el Administrador de eventos.'), L('Procure a plataforma na Galeria de parceiros.', 'Busca la plataforma en la Galería de socios.')],
+          encaminhar: L('Se a plataforma não aparecer, oriente o cliente a configurar a API de Conversões manualmente ou falar com o provedor de serviços.', 'Si la plataforma no aparece, orienta al cliente a configurar la API de Conversiones manualmente o hablar con el proveedor de servicios.')
+        }
+      },
+      {
+        id: '02', min: 7, status: 'pronta',
+        titulo: L('Achar o parceiro na galeria', 'Encontrar el socio en la galería'),
+        antes: L('A Marina quer saber se a plataforma do cliente dela tem integração.', 'Marina quiere saber si la plataforma de su cliente tiene integración.'),
+        gancho: L('A galeria lista dezenas de parceiros por categoria. Saber filtrar poupa tempo.', 'La galería lista decenas de socios por categoría. Saber filtrar ahorra tiempo.'),
+        objetivo: L('Usar a página Integrações: recomendações, Galeria de parceiros, categorias e o tipo de evento de cada parceiro.', 'Usar la página Integraciones: recomendaciones, Galería de socios, categorías y el tipo de evento de cada socio.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Onde vejo os parceiros? 😅', '¿Dónde veo los socios? 😅')],
+            ['rafa', L('No Gerenciador de Eventos, em Integrações. Há duas abas: Minhas integrações e Galeria de parceiros. Se você não tem dados conectados, a página já recomenda parceiros com base no site da empresa, como Google Tag Manager, Shopify e WooCommerce.', 'En el Administrador de eventos, en Integraciones. Hay dos pestañas: Mis integraciones y Galería de socios. Si no tienes datos conectados, la página ya recomienda socios según el sitio de la empresa, como Google Tag Manager, Shopify y WooCommerce.')],
+            ['marina', L('E a galeria?', '¿Y la galería?')],
+            ['rafa', L('Tem categorias: Produtos da Meta, Comércio eletrônico, Análises, Plataformas de site, Plataformas de dados do cliente, Plataformas de conexão de dados, CRM e software de marketing, Gerenciamento de tags, Plataformas móveis, Inteligência de ligação e Engajamento conversacional.', 'Tiene categorías: Productos de Meta, Comercio electrónico, Análisis, Plataformas de sitios web, Plataformas de datos de clientes, Plataformas de conexión de datos, Software de marketing y CRM, Administración de etiquetas, Plataformas para celulares, Análisis de llamadas e Interacción conversacional.')],
+            ['pixel', L('Cada parceiro mostra o que envia: eventos da web, do app, offline ou de CRM. Escolha o que combina com o que o cliente precisa.', 'Cada socio muestra qué envía: eventos web, de la app, offline o de CRM. Elige el que combina con lo que necesita el cliente.')]
+          ],
+          pontos: [
+            L('<b>Integrações</b> tem duas abas: Minhas integrações e Galeria de parceiros.', '<b>Integraciones</b> tiene dos pestañas: Mis integraciones y Galería de socios.'),
+            L('<b>Recomendações</b> vêm do site da empresa.', '<b>Las recomendaciones</b> vienen del sitio de la empresa.'),
+            L('<b>Cada parceiro</b> indica o tipo de evento: web, app, offline, CRM.', '<b>Cada socio</b> indica el tipo de evento: web, app, offline, CRM.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'galeria-mbe',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela página Integrações real: recomendações, filtro por categoria e o tipo de evento de um parceiro.', 'En el simulador, el Pixel te guía por la página Integraciones real: recomendaciones, filtro por categoría y el tipo de evento de un socio.'),
+          tour: 'galeria-parceiros', pagina: 'meta-mbe.html?zerar=1'
+        },
+        atender: {
+          cena: L('Minha plataforma não aparece nas recomendações. Isso quer dizer que não tem integração? 😕', 'Mi plataforma no aparece en las recomendaciones. ¿Eso quiere decir que no tiene integración? 😕'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não necessariamente: as recomendações são baseadas no site, e a Galeria de parceiros tem muitos outros, organizados por categoria. Vamos filtrar pela categoria que combina com a sua plataforma. Se ela realmente não estiver, a API de Conversões pode ser configurada manualmente.”', '“No necesariamente: las recomendaciones se basan en el sitio, y la Galería de socios tiene muchos otros, organizados por categoría. Filtremos por la categoría que combina con tu plataforma. Si realmente no está, la API de Conversiones se puede configurar manualmente.”'), fb: L('Isso! Mostrou onde procurar e a alternativa.', '¡Eso! Mostraste dónde buscar y la alternativa.') },
+            { certa: false, txt: L('“Se não aparece, não existe.”', '“Si no aparece, no existe.”'), fb: L('A galeria tem muito mais que as recomendações.', 'La galería tiene mucho más que las recomendaciones.') },
+            { certa: false, txt: L('“Troque de plataforma.”', '“Cambia de plataforma.”'), fb: L('Exagero: há alternativa manual.', 'Exagerado: hay alternativa manual.') },
+            { certa: false, txt: L('“Instale o Pixel em outro site.”', '“Instala el píxel en otro sitio.”'), fb: L('Não resolve.', 'No resuelve.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é a plataforma do site? Aparece na Galeria de parceiros?', '¿Cuál es la plataforma del sitio? ¿Aparece en la Galería de socios?'), L('Que tipo de evento o cliente precisa: web, app, offline?', '¿Qué tipo de evento necesita el cliente: web, app, offline?')],
+          conferir: [FERR, L('Filtro por categoria.', 'Filtro por categoría.')],
+          frase: L('Vamos procurar a sua plataforma na Galeria de parceiros, filtrando pela categoria, e ver que tipo de evento ela envia.', 'Busquemos tu plataforma en la Galería de socios, filtrando por categoría, y veamos qué tipo de evento envía.'),
+          passos: [L('Abra a Galeria de parceiros.', 'Abre la Galería de socios.'), L('Filtre por categoria e abra o parceiro.', 'Filtra por categoría y abre el socio.')],
+          encaminhar: L('Se o parceiro não estiver listado, oriente o cliente a falar com o provedor da plataforma ou configurar a API de Conversões manualmente.', 'Si el socio no está en la lista, orienta al cliente a hablar con el proveedor de la plataforma o configurar la API de Conversiones manualmente.')
+        }
+      },
+      {
+        id: '03', min: 8, status: 'pronta',
+        titulo: L('Conectar pela plataforma (a janela do MBE)', 'Conectar desde la plataforma (la ventana del MBE)'),
+        antes: L('A Marina vai conectar a loja pela plataforma, mas quer saber o que vai aparecer.', 'Marina va a conectar la tienda por la plataforma, pero quiere saber qué va a aparecer.'),
+        gancho: L('Quatro escolhas e um resumo: portfólio, Página, Pixel e conta de anúncios.', 'Cuatro elecciones y un resumen: portfolio, página, píxel y cuenta publicitaria.'),
+        objetivo: L('Descrever o que o lojista escolhe na janela do MBE, o que ela não inclui e o risco de Pixel duplicado.', 'Describir qué elige el comerciante en la ventana del MBE, qué no incluye y el riesgo de píxel duplicado.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cliquei em conectar na plataforma e abriu uma janela da Meta. 😬', 'Hice clic en conectar en la plataforma y se abrió una ventana de Meta. 😬')],
+            ['rafa', L('É o MBE. Nela você escolhe ou cria o portfólio empresarial, a Página, o Pixel e a conta de anúncios, confere o resumo e conclui.', 'Es el MBE. En ella eliges o creas el portfolio comercial, la página, el píxel y la cuenta publicitaria, revisas el resumen y finalizas.')],
+            ['marina', L('E o catálogo?', '¿Y el catálogo?')],
+            ['rafa', L('Esse fluxo é para Pixel e API de Conversões e não inclui o catálogo: ele se conecta por outro caminho, como no Gerenciador de Comércio.', 'Este flujo es para píxel y API de Conversiones y no incluye el catálogo: se conecta por otro camino, como en el Administrador de ventas.')],
+            ['pixel', L('Atenção ao Pixel: se o site já tem um instalado à mão, criar um novo e deixar os dois ativos pode duplicar eventos. Depois de concluir, a plataforma envia eventos em seu nome, pelo navegador e pelo servidor.', 'Atención al píxel: si el sitio ya tiene uno instalado a mano, crear uno nuevo y dejar los dos activos puede duplicar eventos. Después de finalizar, la plataforma envía eventos en tu nombre, por el navegador y por el servidor.')]
+          ],
+          pontos: [
+            L('<b>Na janela:</b> portfólio, Página, Pixel, conta de anúncios, resumo.', '<b>En la ventana:</b> portfolio, página, píxel, cuenta publicitaria, resumen.'),
+            L('<b>Catálogo</b> fica de fora: outro caminho.', '<b>El catálogo</b> queda fuera: otro camino.'),
+            L('<b>Cuidado</b> com Pixel antigo + novo: duplicação.', '<b>Cuidado</b> con píxel antiguo + nuevo: duplicación.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'conectar-mbe',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelas escolhas da janela do MBE até “Conectado”.', 'En el simulador, el Pixel te guía por las elecciones de la ventana del MBE hasta “Conectado”.'),
+          tour: 'conectar-extensao', pagina: 'meta-mbe.html?zerar=1'
+        },
+        atender: {
+          cena: L('Conectei, mas meu catálogo não apareceu, e ainda criei um Pixel novo por engano! 😰', '¡Conecté, pero mi catálogo no apareció, y además creé un píxel nuevo por error! 😰'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Calma. Sobre o catálogo: esse fluxo conecta Pixel e API de Conversões, mas não o catálogo, que se conecta por outro caminho (Gerenciador de Comércio). Sobre o Pixel novo: vamos conferir no Gerenciador de Eventos se há dois Pixels enviando o mesmo evento, para não duplicar, e deixar só um.”', '“Calma. Sobre el catálogo: este flujo conecta píxel y API de Conversiones, pero no el catálogo, que se conecta por otro camino (Administrador de ventas). Sobre el píxel nuevo: revisemos en el Administrador de eventos si hay dos píxeles enviando el mismo evento, para no duplicar, y dejar solo uno.”'), fb: L('Isso! Explicou o limite e o risco real.', '¡Eso! Explicaste el límite y el riesgo real.') },
+            { certa: false, txt: L('“Refaça tudo do zero.”', '“Rehaz todo desde cero.”'), fb: L('Antes confira o que está enviando.', 'Antes revisa qué está enviando.') },
+            { certa: false, txt: L('“O catálogo some sempre, é normal.”', '“El catálogo desaparece siempre, es normal.”'), fb: L('Ele não faz parte desse fluxo.', 'No forma parte de este flujo.') },
+            { certa: false, txt: L('“Apague a conta de anúncios.”', '“Elimina la cuenta publicitaria.”'), fb: L('Não tem relação.', 'No tiene relación.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual portfólio, Página, Pixel e conta de anúncios foram escolhidos na janela?', '¿Qué portfolio, página, píxel y cuenta publicitaria se eligieron en la ventana?'), L('O site já tinha um Pixel instalado antes?', '¿El sitio ya tenía un píxel instalado antes?')],
+          conferir: [FERR, L('Atividade do Pixel no Gerenciador de Eventos.', 'Actividad del píxel en el Administrador de eventos.')],
+          frase: L('Na janela da extensão você escolhe portfólio, Página, Pixel e conta de anúncios; o catálogo se conecta por outro caminho. Vamos conferir se os eventos estão chegando sem duplicar.', 'En la ventana de la extensión eliges portfolio, página, píxel y cuenta publicitaria; el catálogo se conecta por otro camino. Revisemos si los eventos están llegando sin duplicar.'),
+          passos: [L('Confirme os ativos escolhidos.', 'Confirma los activos elegidos.'), L('Confira os eventos no Gerenciador de Eventos.', 'Revisa los eventos en el Administrador de eventos.')],
+          encaminhar: L('Problemas dentro da janela da plataforma são resolvidos com o suporte da plataforma parceira; os da Meta, pelo suporte da Meta.', 'Los problemas dentro de la ventana de la plataforma se resuelven con la asistencia de la plataforma socia; los de Meta, con la asistencia de Meta.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Escolher a configuração da API de Conversões', 'Elegir la configuración de la API de Conversiones'),
+        antes: L('Três clientes da Marina, três situações diferentes.', 'Tres clientes de Marina, tres situaciones distintas.'),
+        gancho: L('Um clique, um desenvolvedor ou um parceiro? A resposta depende do cliente.', '¿Un clic, un desarrollador o un socio? La respuesta depende del cliente.'),
+        objetivo: L('Comparar as três opções por custo, tempo e recursos e indicar a certa para cada cliente.', 'Comparar las tres opciones por costo, tiempo y recursos e indicar la correcta para cada cliente.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Como configuro a API de Conversões? Vi várias opções. 😵', '¿Cómo configuro la API de Conversiones? Vi varias opciones. 😵')],
+            ['rafa', L('Três: a habilitada pela Meta (um clique, grátis, só web, usa o Pixel que você já tem), a integração direta (precisa de desenvolvedor e leva 2 a 4 semanas, mas serve para web, app, offline, CRM e mensagens) e os parceiros (custo e tempo dependem do parceiro).', 'Tres: la habilitada por Meta (un clic, gratis, solo web, usa el píxel que ya tienes), la integración directa (necesita desarrollador y tarda 2 a 4 semanas, pero sirve para web, app, offline, CRM y mensajes) y los socios (costo y tiempo dependen del socio).')],
+            ['marina', L('E se a loja é na Shopify?', '¿Y si la tienda es en Shopify?')],
+            ['rafa', L('Plataformas de comércio como Shopify, WooCommerce, Wix e BigCommerce configuram a API de Conversões com poucos cliques e sem custo adicional.', 'Las plataformas de comercio como Shopify, WooCommerce, Wix y BigCommerce configuran la API de Conversiones con pocos clics y sin costo adicional.')],
+            ['pixel', L('E para eventos de app ou de loja física (offline), a integração direta é a única opção hoje.', 'Y para eventos de app o de tienda física (offline), la integración directa es la única opción hoy.')]
+          ],
+          pontos: [
+            L('<b>Habilitada pela Meta:</b> grátis, um clique, só web.', '<b>Habilitada por Meta:</b> gratis, un clic, solo web.'),
+            L('<b>Integração direta:</b> desenvolvedor; web, app, offline, CRM e mensagens.', '<b>Integración directa:</b> desarrollador; web, app, offline, CRM y mensajes.'),
+            L('<b>Parceiros:</b> custo e tempo variam; lojas de plataformas conhecidas: poucos cliques.', '<b>Socios:</b> costo y tiempo varían; tiendas de plataformas conocidas: pocos clics.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'capi-mbe',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela tabela de opções e por dois cenários de cliente.', 'En el simulador, el Pixel te guía por la tabla de opciones y por dos escenarios de cliente.'),
+          tour: 'escolher-capi', pagina: 'meta-mbe.html?zerar=1'
+        },
+        atender: {
+          cena: L('Quero mandar também as vendas da minha loja física para a Meta. Qual opção uso? 🏬', '¡Quiero mandar también las ventas de mi tienda física a Meta! ¿Qué opción uso? 🏬'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Para eventos de loja física (offline) e de app, a integração direta é a única opção disponível hoje; ela exige um desenvolvedor e costuma levar de 2 a 4 semanas. Os eventos do site você pode seguir enviando pelo parceiro ou pelo Pixel.”', '“Para eventos de tienda física (offline) y de app, la integración directa es la única opción disponible hoy; exige un desarrollador y suele tardar de 2 a 4 semanas. Los eventos del sitio puedes seguir enviándolos por el socio o por el píxel.”'), fb: L('Isso! Opção e prazo reais.', '¡Eso! Opción y plazo reales.') },
+            { certa: false, txt: L('“Use a API de Conversões habilitada pela Meta, é um clique.”', '“Usa la API de Conversiones habilitada por Meta, es un clic.”'), fb: L('Essa é só para web.', 'Esa es solo para web.') },
+            { certa: false, txt: L('“Não dá para mandar vendas físicas.”', '“No se pueden mandar ventas físicas.”'), fb: L('Dá, por integração direta.', 'Se puede, por integración directa.') },
+            { certa: false, txt: L('“Use o Pixel no balcão.”', '“Usa el píxel en el mostrador.”'), fb: L('O Pixel é do site.', 'El píxel es del sitio.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Que eventos o cliente quer enviar: site, app, offline, CRM?', '¿Qué eventos quiere enviar el cliente: sitio, app, offline, CRM?'), L('Tem desenvolvedor? Qual plataforma usa?', '¿Tiene desarrollador? ¿Qué plataforma usa?')],
+          conferir: [L('Comparar as opções de configuração da API de Conversões (Central de Ajuda).', 'Comparar las opciones de configuración de la API de Conversiones (Centro de ayuda).'), FERR],
+          frase: L('Cada opção serve a um caso: um clique para quem só tem site e Pixel, parceiros para plataformas conhecidas, e integração direta para app e offline.', 'Cada opción sirve a un caso: un clic para quien solo tiene sitio y píxel, socios para plataformas conocidas, e integración directa para app y offline.'),
+          passos: [L('Pergunte que eventos e que plataforma.', 'Pregunta qué eventos y qué plataforma.'), L('Indique a opção pela tabela.', 'Indica la opción según la tabla.')],
+          encaminhar: L('Integração direta é com o desenvolvedor do cliente: oriente com as páginas da Central de Ajuda e do Meta for Developers.', 'La integración directa es con el desarrollador del cliente: orienta con las páginas del Centro de ayuda y de Meta for Developers.')
+        }
+      },
+      {
+        id: '05', min: 8, status: 'pronta',
+        titulo: L('Quando a integração dá problema', 'Cuando la integración da problemas'),
+        antes: L('Um cliente conectou a plataforma, mas os resultados não aparecem como esperado.', 'Un cliente conectó la plataforma, pero los resultados no aparecen como se esperaba.'),
+        gancho: L('Cinco sintomas comuns e o primeiro lugar para olhar em cada um.', 'Cinco síntomas comunes y el primer lugar para mirar en cada uno.'),
+        objetivo: L('Triar os problemas mais comuns de integração e indicar o primeiro passo de conferência.', 'Clasificar los problemas más comunes de integración e indicar el primer paso de revisión.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Conectei e nada chega! O que olho primeiro? 😩', '¡Conecté y no llega nada! ¿Qué miro primero? 😩')],
+            ['rafa', L('Gerenciador de Eventos: o Pixel certo está recebendo atividade? Use Eventos de teste. Depois, veja se o plugin ou a extensão está na versão mais recente e se o parceiro escolhido é o da plataforma do site.', 'Administrador de eventos: ¿el píxel correcto está recibiendo actividad? Usa Probar eventos. Luego, mira si el plugin o la extensión está en la versión más reciente y si el socio elegido es el de la plataforma del sitio.')],
+            ['marina', L('E compras em dobro?', '¿Y compras duplicadas?')],
+            ['rafa', L('Duplicação: o mesmo evento chegando pela extensão e por outro caminho, como um Pixel manual. Deixe só um caminho.', 'Duplicación: el mismo evento llegando por la extensión y por otro camino, como un píxel manual. Deja un solo camino.')],
+            ['pixel', L('Boas práticas: atualize plugins, use integrações de parceiros em vez de código manual e monitore o rastreamento no Gerenciador de Eventos. Catálogo ausente: ele é outro caminho. Agência sem acesso: dê acesso ao parceiro (próxima aula).', 'Buenas prácticas: actualiza plugins, usa integraciones de socios en lugar de código manual y monitorea el rastreo en el Administrador de eventos. Catálogo ausente: es otro camino. Agencia sin acceso: da acceso al socio (próxima clase).')]
+          ],
+          pontos: [
+            L('<b>Sem eventos:</b> Pixel certo, plugin atualizado, parceiro certo.', '<b>Sin eventos:</b> píxel correcto, plugin actualizado, socio correcto.'),
+            L('<b>Em dobro:</b> mais de um caminho enviando; deixe um só.', '<b>Duplicados:</b> más de un camino enviando; deja uno solo.'),
+            L('<b>Catálogo ausente:</b> outro caminho; <b>agência sem acesso:</b> dar acesso ao parceiro.', '<b>Catálogo ausente:</b> otro camino; <b>agencia sin acceso:</b> dar acceso al socio.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'problemas-mbe',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por dois sintomas: “não chegam eventos” e “o catálogo não aparece”.', 'En el simulador, el Pixel te guía por dos síntomas: “no llegan eventos” y “el catálogo no aparece”.'),
+          tour: 'eventos-nao-chegam', pagina: 'meta-mbe.html?zerar=1'
+        },
+        atender: {
+          cena: L('A integração está quebrada! Desde que conectei, nada funciona! Quero cancelar tudo! 😡', '¡La integración está rota! ¡Desde que conecté, nada funciona! ¡Quiero cancelar todo! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Vamos por partes antes de cancelar. Primeiro, no Gerenciador de Eventos, vemos se o Pixel certo recebe atividade com Eventos de teste; depois, se o plugin está atualizado e se o parceiro escolhido é o da sua plataforma. Se houver evento em dobro, deixamos só um caminho. Se for o catálogo, ele se conecta por outro caminho.”', '“Vamos por partes antes de cancelar. Primero, en el Administrador de eventos, vemos si el píxel correcto recibe actividad con Probar eventos; después, si el plugin está actualizado y si el socio elegido es el de tu plataforma. Si hay evento duplicado, dejamos un solo camino. Si es el catálogo, se conecta por otro camino.”'), fb: L('Isso! Acolheu e deu a ordem.', '¡Eso! Acogiste y diste el orden.') },
+            { certa: false, txt: L('“Cancele e instale o código manual.”', '“Cancela e instala el código manual.”'), fb: L('Código manual aumenta o risco de erro.', 'El código manual aumenta el riesgo de error.') },
+            { certa: false, txt: L('“Espere uma semana.”', '“Espera una semana.”'), fb: L('Dá para conferir agora.', 'Se puede revisar ahora.') },
+            { certa: false, txt: L('“A Meta está fora do ar.”', '“Meta está caída.”'), fb: L('Sem sinal disso.', 'Sin señal de eso.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O que acontece exatamente: não chegam eventos, duplicam, falta catálogo, falta acesso?', '¿Qué pasa exactamente: no llegan eventos, se duplican, falta catálogo, falta acceso?'), L('Qual plataforma e qual versão do plugin?', '¿Qué plataforma y qué versión del plugin?')],
+          conferir: [FERR, L('Eventos de teste e Diagnóstico no Gerenciador de Eventos.', 'Probar eventos y Diagnóstico en el Administrador de eventos.')],
+          frase: L('Vamos conferir por ordem: se o Pixel certo recebe eventos, se o plugin está atualizado, se há duplicação e, se for o catálogo, o caminho dele.', 'Revisemos en orden: si el píxel correcto recibe eventos, si el plugin está actualizado, si hay duplicación y, si es el catálogo, su camino.'),
+          passos: [L('Abra Eventos de teste e faça uma ação no site.', 'Abre Probar eventos y haz una acción en el sitio.'), L('Compare com os eventos recebidos.', 'Compara con los eventos recibidos.')],
+          encaminhar: L('Se o problema estiver dentro da plataforma parceira, oriente o cliente a falar com o suporte dela.', 'Si el problema está dentro de la plataforma socia, orienta al cliente a hablar con su asistencia.')
+        }
+      },
+      {
+        id: '06', min: 8, status: 'pronta',
+        titulo: L('Dar acesso a um parceiro', 'Dar acceso a un socio'),
+        antes: L('A agência da Marina precisa ver o Pixel e a Página do cliente.', 'La agencia de Marina necesita ver el píxel y la página del cliente.'),
+        gancho: L('Controle total só para quem precisa. Para os outros, acesso parcial.', 'Control total solo para quien lo necesita. Para los demás, acceso parcial.'),
+        objetivo: L('Conceder a um parceiro acesso aos ativos do portfólio: pré-requisitos, passos e a diferença entre controle total e acesso parcial.', 'Conceder a un socio acceso a los activos del portfolio: requisitos previos, pasos y la diferencia entre control total y acceso parcial.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A agência diz que não vê o Pixel. 😕', 'La agencia dice que no ve el píxel. 😕')],
+            ['rafa', L('Você precisa compartilhar os ativos com o portfólio dela. Só quem tem controle total do portfólio pode fazer isso, e o parceiro precisa ter um portfólio e informar a identificação dele. Ative também a autenticação de dois fatores no portfólio, se ainda não estiver.', 'Debes compartir los activos con su portfolio. Solo quien tiene control total del portfolio puede hacerlo, y el socio debe tener un portfolio e informar su identificación. Activa también la autenticación de dos factores en el portfolio, si todavía no está.')],
+            ['marina', L('Onde faço?', '¿Dónde lo hago?')],
+            ['rafa', L('Nas Configurações do portfólio, em Parceiros, Adicionar, Conceder a um parceiro acesso aos seus recursos; informe a identificação do portfólio do parceiro, escolha os ativos e o nível de acesso, e clique em Atribuir ativos.', 'En la Configuración del portfolio, en Socios, Agregar, Conceder a un socio acceso a tus recursos; ingresa la identificación del portfolio del socio, elige los activos y el nivel de acceso, y haz clic en Asignar activos.')],
+            ['pixel', L('Controle total deixa o parceiro gerenciar tudo (mas não compartilhar o ativo com outra empresa); acesso parcial dá só as tarefas escolhidas. Outra pessoa com controle total pode precisar aprovar.', 'El control total deja al socio administrar todo (pero no compartir el activo con otra empresa); el acceso parcial da solo las tareas elegidas. Otra persona con control total puede necesitar aprobar.')]
+          ],
+          pontos: [
+            L('<b>Só com controle total</b> do portfólio; o parceiro precisa de um portfólio e do ID.', '<b>Solo con control total</b> del portfolio; el socio necesita un portfolio y el ID.'),
+            L('<b>Caminho:</b> Configurações › Parceiros › Adicionar › Conceder acesso › ID › ativos e nível › Atribuir.', '<b>Camino:</b> Configuración › Socios › Agregar › Conceder acceso › ID › activos y nivel › Asignar.'),
+            L('<b>Prefira acesso parcial;</b> controle total só se necessário.', '<b>Prefiere acceso parcial;</b> control total solo si es necesario.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'acesso-mbe',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelos passos para dar à agência acesso parcial ao Pixel e à Página.', 'En el simulador, el Pixel te guía por los pasos para dar a la agencia acceso parcial al píxel y a la página.'),
+          tour: 'dar-acesso-parceiro', pagina: 'meta-mbe.html?zerar=1'
+        },
+        atender: {
+          cena: L('Entrei nas Configurações e não vejo a opção Parceiros. A Meta escondeu? 😠', 'Entré en Configuración y no veo la opción Socios. ¿Meta la escondió? 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Ninguém escondeu: a opção Parceiros só aparece para quem tem controle total do portfólio empresarial. Veja se você tem esse acesso; se não tiver, peça a quem é dono do portfólio para conceder ou para fazer o compartilhamento.”', '“Nadie la escondió: la opción Socios solo aparece para quien tiene control total del portfolio comercial. Mira si tienes ese acceso; si no, pide a quien es dueño del portfolio que te lo conceda o que haga el uso compartido.”'), fb: L('Isso! Causa real e caminho.', '¡Eso! Causa real y camino.') },
+            { certa: false, txt: L('“É um bug, espere.”', '“Es un bug, espera.”'), fb: L('É falta de controle total.', 'Es falta de control total.') },
+            { certa: false, txt: L('“Use a conta da agência para compartilhar.”', '“Usa la cuenta de la agencia para compartir.”'), fb: L('Quem compartilha é quem tem controle total do portfólio dono do ativo.', 'Quien comparte es quien tiene control total del portfolio dueño del activo.') },
+            { certa: false, txt: L('“Crie um novo portfólio.”', '“Crea un nuevo portfolio.”'), fb: L('Antes confira o seu acesso.', 'Antes revisa tu acceso.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quem tem controle total do portfólio? Qual é a identificação do portfólio do parceiro?', '¿Quién tiene control total del portfolio? ¿Cuál es la identificación del portfolio del socio?'), L('O parceiro precisa de controle total ou acesso parcial? Para quais tarefas?', '¿El socio necesita control total o acceso parcial? ¿Para qué tareas?')],
+          conferir: [L('Meta Business Suite › Configurações › Usuários › Parceiros.', 'Meta Business Suite › Configuración › Usuarios › Socios.'), L('Autenticação de dois fatores no portfólio.', 'Autenticación de dos factores en el portfolio.')],
+          frase: L('Para a agência ver o Pixel e a Página, quem tem controle total do portfólio compartilha os ativos com o portfólio dela, preferindo o acesso parcial. Vamos fazer juntos.', 'Para que la agencia vea el píxel y la página, quien tiene control total del portfolio comparte los activos con su portfolio, prefiriendo el acceso parcial. Hagámoslo juntos.'),
+          passos: [L('Peça a identificação do portfólio da agência.', 'Pide la identificación del portfolio de la agencia.'), L('Atribua os ativos com acesso parcial.', 'Asigna los activos con acceso parcial.')],
+          encaminhar: L('Se o cliente não tem controle total, quem é dono do portfólio precisa agir: oriente-o a falar com essa pessoa.', 'Si el cliente no tiene control total, quien es dueño del portfolio debe actuar: oriéntalo a hablar con esa persona.')
         }
       }
     ];

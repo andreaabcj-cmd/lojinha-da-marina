@@ -1440,6 +1440,92 @@
         [{ pt: 'Comprar anúncios', es: 'Comprar anuncios' }, 0, { pt: 'Não faz parte.', es: 'No forma parte.' }]] }
   ]);
 
+  /* ---------- 25. MBE e integrações de parceiros: seis mini-quizzes (MBE 01–06) ---------- */
+  quizCatalogo('o-que-e-mbe', { pt: 'Integração de parceiro e MBE', es: 'Integración de socio y MBE' }, { pt: 'O que são e o que conectam.', es: 'Qué son y qué conectan.' }, [
+    { q: { pt: 'O que a integração de parceiros permite?', es: '¿Qué permite la integración de socios?' },
+      o: [[{ pt: 'Capturar eventos do site sem editar o código, com Pixel e API de Conversões', es: 'Capturar eventos del sitio sin editar el código, con píxel y API de Conversiones' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Criar anúncios automaticamente', es: 'Crear anuncios automáticamente' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Pagar a conta de anúncios', es: 'Pagar la cuenta publicitaria' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'O que o lojista escolhe ou cria na janela do MBE?', es: '¿Qué elige o crea el comerciante en la ventana del MBE?' },
+      o: [[{ pt: 'Portfólio, Página, Pixel e conta de anúncios', es: 'Portfolio, página, píxel y cuenta publicitaria' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só o catálogo', es: 'Solo el catálogo' }, 0, { pt: 'O fluxo não inclui o catálogo.', es: 'El flujo no incluye el catálogo.' }],
+        [{ pt: 'O orçamento do anúncio', es: 'El presupuesto del anuncio' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'A plataforma do cliente não está na lista de parceiros. E agora?', es: 'La plataforma del cliente no está en la lista de socios. ¿Y ahora?' },
+      o: [[{ pt: 'Não dá para usar a Meta', es: 'No se puede usar Meta' }, 0, { pt: 'Há alternativa manual.', es: 'Hay alternativa manual.' }],
+        [{ pt: 'Configurar a API de Conversões manualmente ou falar com o provedor de serviços', es: 'Configurar la API de Conversiones manualmente o hablar con el proveedor de servicios' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Trocar de plataforma', es: 'Cambiar de plataforma' }, 0, { pt: 'Exagero.', es: 'Exagerado.' }]] }
+  ]);
+  quizCatalogo('galeria-mbe', { pt: 'Na Galeria de parceiros', es: 'En la Galería de socios' }, { pt: 'Onde olhar e como filtrar.', es: 'Dónde mirar y cómo filtrar.' }, [
+    { q: { pt: 'Onde ficam as integrações de parceiros?', es: '¿Dónde están las integraciones de socios?' },
+      o: [[{ pt: 'No Gerenciador de Eventos, em Integrações', es: 'En el Administrador de eventos, en Integraciones' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'É no Gerenciador de Eventos.', es: 'Es en el Administrador de eventos.' }],
+        [{ pt: 'No Instagram', es: 'En Instagram' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] },
+    { q: { pt: 'O que indica a etiqueta “Eventos da web” em um parceiro?', es: '¿Qué indica la etiqueta “Eventos web” en un socio?' },
+      o: [[{ pt: 'O tipo de evento que ele envia à Meta', es: 'El tipo de evento que envía a Meta' }, 1, { pt: 'Isso! Há também eventos do app, offline e de CRM.', es: '¡Eso! También hay eventos de la app, offline y de CRM.' }],
+        [{ pt: 'O preço do parceiro', es: 'El precio del socio' }, 0, { pt: 'Não é preço.', es: 'No es precio.' }],
+        [{ pt: 'O país do parceiro', es: 'El país del socio' }, 0, { pt: 'Não é país.', es: 'No es país.' }]] },
+    { q: { pt: 'Para achar uma plataforma de loja virtual, qual categoria filtrar?', es: 'Para encontrar una plataforma de tienda virtual, ¿qué categoría filtrar?' },
+      o: [[{ pt: 'Plataformas móveis', es: 'Plataformas para celulares' }, 0, { pt: 'Essa é de apps.', es: 'Esa es de apps.' }],
+        [{ pt: 'Comércio eletrônico', es: 'Comercio electrónico' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Inteligência de ligação', es: 'Análisis de llamadas' }, 0, { pt: 'Essa é de ligações.', es: 'Esa es de llamadas.' }]] }
+  ]);
+  quizCatalogo('conectar-mbe', { pt: 'Conectar pela plataforma', es: 'Conectar desde la plataforma' }, { pt: 'O que a janela faz e o que não faz.', es: 'Qué hace la ventana y qué no.' }, [
+    { q: { pt: 'O fluxo do MBE para Pixel e API de Conversões conecta o catálogo?', es: '¿El flujo del MBE para píxel y API de Conversiones conecta el catálogo?' },
+      o: [[{ pt: 'Sim, sempre', es: 'Sí, siempre' }, 0, { pt: 'Não inclui catálogo.', es: 'No incluye catálogo.' }],
+        [{ pt: 'Não: o catálogo se conecta por outro caminho', es: 'No: el catálogo se conecta por otro camino' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só se pagar', es: 'Solo si se paga' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'O site já tem um Pixel instalado à mão e o lojista cria outro pela extensão. Risco?', es: 'El sitio ya tiene un píxel instalado a mano y el comerciante crea otro por la extensión. ¿Riesgo?' },
+      o: [[{ pt: 'Eventos duplicados', es: 'Eventos duplicados' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nenhum', es: 'Ninguno' }, 0, { pt: 'Há risco de duplicação.', es: 'Hay riesgo de duplicación.' }],
+        [{ pt: 'Perder a Página', es: 'Perder la página' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'Depois de concluir, a plataforma parceira…', es: 'Después de finalizar, la plataforma socia…' },
+      o: [[{ pt: 'Passa a enviar eventos da web em nome do lojista, pelo navegador e pelo servidor', es: 'Pasa a enviar eventos web en nombre del comerciante, por el navegador y por el servidor' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Cria anúncios sozinha', es: 'Crea anuncios sola' }, 0, { pt: 'Não cria.', es: 'No crea.' }],
+        [{ pt: 'Apaga os dados antigos', es: 'Borra los datos antiguos' }, 0, { pt: 'Não apaga.', es: 'No borra.' }]] }
+  ]);
+  quizCatalogo('capi-mbe', { pt: 'Qual opção da API de Conversões?', es: '¿Qué opción de la API de Conversiones?' }, { pt: 'Habilitada pela Meta, direta ou parceiro.', es: 'Habilitada por Meta, directa o socio.' }, [
+    { q: { pt: 'Qual opção é grátis, de um clique e só para web?', es: '¿Qué opción es gratis, de un clic y solo para web?' },
+      o: [[{ pt: 'API de Conversões habilitada pela Meta', es: 'API de Conversiones habilitada por Meta' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Integração direta', es: 'Integración directa' }, 0, { pt: 'Exige desenvolvedor.', es: 'Exige desarrollador.' }],
+        [{ pt: 'Parceiro de CRM', es: 'Socio de CRM' }, 0, { pt: 'Depende do parceiro.', es: 'Depende del socio.' }]] },
+    { q: { pt: 'Para eventos de app e de loja física, qual é a única opção hoje?', es: 'Para eventos de app y de tienda física, ¿cuál es la única opción hoy?' },
+      o: [[{ pt: 'Integração direta', es: 'Integración directa' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Habilitada pela Meta', es: 'Habilitada por Meta' }, 0, { pt: 'Essa é só web.', es: 'Esa es solo web.' }],
+        [{ pt: 'Nenhuma', es: 'Ninguna' }, 0, { pt: 'Há a integração direta.', es: 'Hay la integración directa.' }]] },
+    { q: { pt: 'A loja é na Shopify. O que a Central de Ajuda diz sobre configurar a API de Conversões?', es: 'La tienda es en Shopify. ¿Qué dice el Centro de ayuda sobre configurar la API de Conversiones?' },
+      o: [[{ pt: 'Dá para configurar com poucos cliques, sem custo adicional', es: 'Se puede configurar con pocos clics, sin costo adicional' }, 1, { pt: 'Isso! Vale também para WooCommerce, Wix e BigCommerce.', es: '¡Eso! Vale también para WooCommerce, Wix y BigCommerce.' }],
+        [{ pt: 'Exige 4 semanas de programação', es: 'Exige 4 semanas de programación' }, 0, { pt: 'Isso é da integração direta.', es: 'Eso es de la integración directa.' }],
+        [{ pt: 'Não é possível', es: 'No es posible' }, 0, { pt: 'É possível.', es: 'Es posible.' }]] }
+  ]);
+  quizCatalogo('problemas-mbe', { pt: 'Primeiro passo de conferência', es: 'Primer paso de revisión' }, { pt: 'Sintomas comuns.', es: 'Síntomas comunes.' }, [
+    { q: { pt: 'Conectou, mas não chegam eventos. O que conferir primeiro?', es: 'Conectó, pero no llegan eventos. ¿Qué revisar primero?' },
+      o: [[{ pt: 'Se o Pixel certo recebe atividade (Eventos de teste), se o plugin está atualizado e se o parceiro é o certo', es: 'Si el píxel correcto recibe actividad (Probar eventos), si el plugin está actualizado y si el socio es el correcto' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Trocar a conta de anúncios', es: 'Cambiar la cuenta publicitaria' }, 0, { pt: 'Não é o primeiro passo.', es: 'No es el primer paso.' }],
+        [{ pt: 'Apagar o site', es: 'Borrar el sitio' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Eventos de compra aparecem em dobro. Provável causa?', es: 'Los eventos de compra aparecen duplicados. ¿Causa probable?' },
+      o: [[{ pt: 'O mesmo evento chega por mais de um caminho (extensão e Pixel manual, por exemplo)', es: 'El mismo evento llega por más de un camino (extensión y píxel manual, por ejemplo)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O cliente comprou duas vezes', es: 'El cliente compró dos veces' }, 0, { pt: 'Verifique antes se é duplicação.', es: 'Verifica antes si es duplicación.' }],
+        [{ pt: 'A Meta cobra em dobro', es: 'Meta cobra el doble' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'Qual destas é uma boa prática para integrações de parceiros?', es: '¿Cuál de estas es una buena práctica para integraciones de socios?' },
+      o: [[{ pt: 'Atualizar os plugins e extensões e monitorar os eventos no Gerenciador de Eventos', es: 'Actualizar los plugins y extensiones y monitorear los eventos en el Administrador de eventos' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nunca atualizar', es: 'Nunca actualizar' }, 0, { pt: 'Atualize.', es: 'Actualiza.' }],
+        [{ pt: 'Trocar de parceiro todo mês', es: 'Cambiar de socio todos los meses' }, 0, { pt: 'Não é recomendado.', es: 'No se recomienda.' }]] }
+  ]);
+  quizCatalogo('acesso-mbe', { pt: 'Dar acesso a um parceiro', es: 'Dar acceso a un socio' }, { pt: 'Quem pode, onde e que nível.', es: 'Quién puede, dónde y qué nivel.' }, [
+    { q: { pt: 'Quem pode compartilhar ativos com parceiros?', es: '¿Quién puede compartir activos con socios?' },
+      o: [[{ pt: 'Quem tem controle total do portfólio empresarial', es: 'Quien tiene control total del portfolio comercial' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Qualquer pessoa do portfólio', es: 'Cualquier persona del portfolio' }, 0, { pt: 'Só quem tem controle total.', es: 'Solo quien tiene control total.' }],
+        [{ pt: 'Só o parceiro', es: 'Solo el socio' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'O que o parceiro precisa informar para receber os ativos?', es: '¿Qué necesita informar el socio para recibir los activos?' },
+      o: [[{ pt: 'A senha do portfólio', es: 'La contraseña del portfolio' }, 0, { pt: 'Nunca senha.', es: 'Nunca la contraseña.' }],
+        [{ pt: 'A identificação do portfólio empresarial dele', es: 'La identificación de su portfolio comercial' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O número do cartão', es: 'El número de la tarjeta' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Qual a diferença entre controle total e acesso parcial?', es: '¿Cuál es la diferencia entre control total y acceso parcial?' },
+      o: [[{ pt: 'Controle total gerencia tudo, mas não compartilha o ativo com outra empresa; acesso parcial dá permissões para tarefas específicas', es: 'El control total administra todo, pero no comparte el activo con otra empresa; el acceso parcial da permisos para tareas específicas' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Não há diferença', es: 'No hay diferencia' }, 0, { pt: 'Há.', es: 'Hay.' }],
+        [{ pt: 'Acesso parcial é mais caro', es: 'El acceso parcial es más caro' }, 0, { pt: 'Não tem preço.', es: 'No tiene precio.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
