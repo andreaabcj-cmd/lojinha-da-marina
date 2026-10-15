@@ -89,3 +89,9 @@ Só rótulos e textos de tela (nada de dados pessoais). Conferido em rascunho, *
 - Anúncio rodando (em análise, ativo, resultados, fase de aprendizado, edição de publicado): telefone já verificado; falta decidir publicar um de verdade — e o orçamento mínimo do Turbinar (R$ 5,27/dia) passa do saldo de R$ 5.
 - Tela de "Conferir e publicar" / revisão, e o que aparece quando a conta não pode publicar (aula 05).
 - Edição de anúncio já publicado e "fase de aprendizado" (aula 04) — sem publicar, dá para ver só pela documentação; marcar "a conferir".
+
+## Fontes oficiais lidas em 16/10/2026 (Central de Ajuda da Meta)
+- 621956575422138 · Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta? (campanha = objetivo e tipo de compra; conjunto = público, posicionamentos, orçamento, programação; anúncio = formato, criativo, identidade). **Atenção:** na tela real de Vendas o orçamento aparece com a escolha "Orçamento da campanha / do conjunto de anúncios".
+- 240208966080581 · Sobre os posts turbinados ("anúncios criados de posts existentes"; diferentes de criar novos anúncios).
+- 244044399504197 · Tipos de posts que não podem ser turbinados (fotos do perfil, rascunhos, álbuns, posts com muitas imagens, vídeos ao vivo programados, certos reels, posts compartilhados). Solução para foto do perfil: carregar como novo post e turbinar.
+- 1575107409431290 · Solucionar problemas de posts que não podem ser turbinados (só o título foi visto).

@@ -687,7 +687,60 @@ window.AULAS = {
     { id: '05', titulo: { pt: 'Apareceu um aviso: quebrei alguma coisa?', es: 'Apareció un aviso: ¿rompí algo?' }, status: 'planejada' }
   ],
   anuncios: [
-    { id: '01', titulo: { pt: 'Turbinar ou Gerenciador de Anúncios?', es: '¿Impulsar o Administrador de anuncios?' }, status: 'planejada' },
+    {
+      id: '01', min: 7, status: 'pronta',
+      titulo: { pt: 'Turbinar ou Gerenciador de Anúncios?', es: '¿Impulsar o Administrador de anuncios?' },
+      antes: { pt: 'A Marina tem Página, Instagram, conta de anúncios e o Pixel no site. Ela publicou um post e viu um botão azul: “Turbinar”.', es: 'Marina tiene Página, Instagram, cuenta publicitaria y el Pixel en el sitio. Publicó un post y vio un botón azul: “Impulsar”.' },
+      gancho: { pt: '“Turbinei e deu certo! Mas eu quero vender de verdade, medindo as compras.” Vamos conhecer o Gerenciador de Anúncios e seus três níveis.', es: '“¡Impulsé y funcionó! Pero quiero vender de verdad, midiendo las compras.” Vamos a conocer el Administrador de anuncios y sus tres niveles.' },
+      objetivo: { pt: 'Saber quando o Turbinar basta e quando é hora do Gerenciador, e fazer um turbinamento sem cair nas pegadinhas.', es: 'Saber cuándo basta Impulsar y cuándo es hora del Administrador, y hacer un impulso sin caer en las trampas.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Apareceu um botão “Turbinar” no meu post. É a mesma coisa que o Gerenciador de Anúncios? 🤔', es: 'Apareció un botón “Impulsar” en mi post. ¿Es lo mismo que el Administrador de anuncios? 🤔' }],
+          ['rafa', { pt: 'Não é igual. Turbinar pega um post que já existe e transforma em anúncio, em poucos passos: meta, botão, público, duração e orçamento. É ótimo para dar uma força num post. O Gerenciador é onde você monta campanhas de verdade, com objetivo, conjunto de anúncios e anúncio.', es: 'No es igual. Impulsar toma un post que ya existe y lo convierte en anuncio, en pocos pasos: meta, botón, público, duración y presupuesto. Es genial para darle fuerza a un post. El Administrador es donde armas campañas de verdad, con objetivo, conjunto de anuncios y anuncio.' }],
+          ['marina', { pt: 'E se o meu post for só a foto de perfil?', es: '¿Y si mi post es solo la foto de perfil?' }],
+          ['rafa', { pt: 'Foto de perfil não pode ser turbinada. A saída é publicar a foto como um post novo e turbinar esse post.', es: 'La foto de perfil no se puede impulsar. La salida es publicar la foto como un post nuevo e impulsar ese post.' }],
+          ['pixel', { pt: 'Pegadinha real: ao trocar a meta no Turbinar, o botão do anúncio não troca sozinho. Confira a prévia antes de publicar.', es: 'Trampa real: al cambiar la meta en Impulsar, el botón del anuncio no cambia solo. Revisa la vista previa antes de publicar.' }]
+        ],
+        pontos: [
+          { pt: '<b>Turbinar:</b> transforma um <b>post que já existe</b> em anúncio, em poucos campos. Bom para engajamento, mensagens ou ligações.', es: '<b>Impulsar:</b> convierte un <b>post que ya existe</b> en anuncio, en pocos campos. Bueno para interacción, mensajes o llamadas.' },
+          { pt: '<b>Gerenciador de Anúncios:</b> campanha › conjunto › anúncio. É onde entram o objetivo Vendas, o conjunto de dados (Pixel) e os testes de público.', es: '<b>Administrador de anuncios:</b> campaña › conjunto › anuncio. Es donde entran el objetivo Ventas, el conjunto de datos (Pixel) y las pruebas de público.' },
+          { pt: '<b>Nem todo post pode ser turbinado:</b> foto de perfil, rascunho, álbum e post compartilhado, por exemplo, não podem.', es: '<b>No todo post se puede impulsar:</b> foto de perfil, borrador, álbum y post compartido, por ejemplo, no se pueden.' }
+        ],
+        notas: { pt: 'Fontes: Central de Ajuda da Meta, “Sobre os posts turbinados” e “Tipos de posts que não podem ser turbinados na sua Página do Facebook” (lidas em 16/10/2026). As telas do Turbinar foram vistas de verdade em 15/10/2026, e um anúncio de teste foi publicado de verdade (R$ 5,27 por 1 dia). A lista de metas do Turbinar não tem o objetivo Vendas; ele aparece no Gerenciador (e no “Criar anúncio” do Business Suite).', es: 'Fuentes: Centro de ayuda de Meta, “Acerca de las publicaciones impulsadas” y “Tipos de publicaciones que no se pueden impulsar en tu Página de Facebook” (leídas el 16/10/2026). Las pantallas de Impulsar se vieron de verdad el 15/10/2026, y se publicó de verdad un anuncio de prueba (R$ 5,27 por 1 día). La lista de metas de Impulsar no tiene el objetivo Ventas; aparece en el Administrador (y en “Crear anuncio” de Business Suite).' }
+      },
+      ferramenta: 'turbinar-ou-gerenciador',
+      praticar: {
+        texto: { pt: 'No simulador do Turbinar, o Pixel te leva para turbinar o post de teste da Marina: meta, botão, duração e orçamento, até o “em análise”.', es: 'En el simulador de Impulsar, el Pixel te lleva a impulsar el post de prueba de Marina: meta, botón, duración y presupuesto, hasta el “en revisión”.' },
+        tour: 'turbinar-post', pagina: 'meta-turbinar.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'O botão Turbinar não aparece no meu post! E quando eu clico em Criar anúncio, diz que eu não tenho conteúdo. Está tudo quebrado! 😤', es: '¡El botón Impulsar no aparece en mi post! Y cuando hago clic en Crear anuncio, dice que no tengo contenido. ¡Está todo roto! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Vamos ver que tipo de post é. Posts de troca de foto de perfil ou capa, rascunhos, álbuns e posts compartilhados não podem ser turbinados. Se for isso, publique a foto como um post novo: ele ganha o botão Turbinar.”', es: '“Veamos qué tipo de post es. Los posts de cambio de foto de perfil o portada, borradores, álbumes y posts compartidos no se pueden impulsar. Si es eso, publica la foto como un post nuevo: gana el botón Impulsar.”' }, fb: { pt: 'Isso! Você identificou a causa provável, citou os tipos que não turbinam e deu a saída.', es: '¡Eso! Identificaste la causa probable, citaste los tipos que no se impulsan y diste la salida.' } },
+          { certa: false, txt: { pt: '“Isso é um erro da Meta. Espere um dia e tente de novo.”', es: '“Es un error de Meta. Espera un día e intenta de nuevo.”' }, fb: { pt: 'Não é erro: a Meta limita os tipos de post que podem ser turbinados. Esperar não resolve.', es: 'No es un error: Meta limita los tipos de post que se pueden impulsar. Esperar no lo resuelve.' } },
+          { certa: false, txt: { pt: '“Adicione mais saldo na conta de anúncios.”', es: '“Agrega más saldo a la cuenta publicitaria.”' }, fb: { pt: 'Saldo não faz o botão aparecer: o problema é o tipo de post.', es: 'El saldo no hace aparecer el botón: el problema es el tipo de post.' } },
+          { certa: false, txt: { pt: '“Troque a conta de anúncios por outra.”', es: '“Cambia la cuenta publicitaria por otra.”' }, fb: { pt: 'Exagero: antes de mexer em contas, confira o tipo de post.', es: 'Exagerado: antes de tocar cuentas, revisa el tipo de post.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Que tipo de post é: foto normal, foto de perfil ou capa, rascunho, álbum, compartilhado?', es: '¿Qué tipo de post es: foto normal, foto de perfil o portada, borrador, álbum, compartido?' },
+          { pt: 'O post está publicado na Página (não em rascunho)?', es: '¿El post está publicado en la Página (no en borrador)?' },
+          { pt: 'A conta de anúncios tem telefone verificado e saldo?', es: '¿La cuenta publicitaria tiene teléfono verificado y saldo?' }],
+        conferir: [{ pt: 'Foto de perfil, rascunho, álbum e post compartilhado não podem ser turbinados.', es: 'Foto de perfil, borrador, álbum y post compartido no se pueden impulsar.' },
+          { pt: 'Ao trocar a meta, conferir o botão do anúncio na prévia.', es: 'Al cambiar la meta, revisar el botón del anuncio en la vista previa.' },
+          { pt: 'Sem telefone verificado a tela avisa e não deixa veicular.', es: 'Sin teléfono verificado la pantalla avisa y no deja publicar.' }],
+        frase: { pt: 'Nem todo post pode ser turbinado: foto de perfil, rascunho, álbum e post compartilhado não podem. Se for foto de perfil, publique como um post novo e turbine esse post.', es: 'No todo post se puede impulsar: foto de perfil, borrador, álbum y post compartido no se pueden. Si es foto de perfil, publícala como un post nuevo e impulsa ese post.' },
+        passos: [{ pt: 'No Business Suite, abra Conteúdo › Posts e reels.', es: 'En Business Suite, abre Contenido › Posts y reels.' },
+          { pt: 'Ache o post publicado e clique em Turbinar.', es: 'Encuentra el post publicado y haz clic en Impulsar.' },
+          { pt: 'Escolha a meta, o botão, a duração e o orçamento, confira a prévia e clique em Publicar.', es: 'Elige la meta, el botón, la duración y el presupuesto, revisa la vista previa y haz clic en Publicar.' }],
+        encaminhar: { pt: 'Se o post parece turbinável e o botão não aparece, siga a Central de Ajuda da Meta: “Solucionar problemas de posts que não podem ser turbinados na sua Página do Facebook”.', es: 'Si el post parece poder impulsarse y el botón no aparece, sigue el Centro de ayuda de Meta: “Solucionar problemas de publicaciones que no se pueden impulsar en tu Página de Facebook”.' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/240208966080581', titulo: { pt: 'Sobre os posts turbinados', es: 'Acerca de las publicaciones impulsadas' }, conferido: '16/10/2026' },
+        { url: 'https://www.facebook.com/business/help/244044399504197', titulo: { pt: 'Tipos de posts que não podem ser turbinados na sua Página do Facebook', es: 'Tipos de publicaciones que no se pueden impulsar en tu Página de Facebook' }, conferido: '16/10/2026' }
+      ]
+    },
     {
       id: '02', min: 6, status: 'pronta',
       titulo: { pt: 'Campanha, conjunto e anúncio', es: 'Campaña, conjunto y anuncio' },

@@ -368,6 +368,35 @@
   };
 
 
+  /* ---------- 11a. Turbinar ou Gerenciador? (Anúncios 01) ---------- */
+  var TG_ESC = { turbinar: { pt: 'Turbinar', es: 'Impulsar' }, gerenciador: { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' } };
+  var TG_ITENS = [
+    { ic: '🚀', n: { pt: 'Dar uma força num post que a Marina já publicou, rápido e sem mexer em nada técnico', es: 'Darle fuerza a un post que Marina ya publicó, rápido y sin tocar nada técnico' }, certo: 'turbinar',
+      fb: { pt: 'Turbinar transforma um post que já existe em anúncio, em poucos campos.', es: 'Impulsar convierte un post que ya existe en anuncio, en pocos campos.' } },
+    { ic: '🛒', n: { pt: 'Vender canecas pelo site e medir cada compra com o Pixel', es: 'Vender tazas por el sitio y medir cada compra con el Pixel' }, certo: 'gerenciador',
+      fb: { pt: 'Para Vendas com o conjunto de dados (Pixel) escolhido, o caminho é o Gerenciador. A lista de metas do Turbinar não tem Vendas.', es: 'Para Ventas con el conjunto de datos (Pixel) elegido, el camino es el Administrador. La lista de metas de Impulsar no tiene Ventas.' } },
+    { ic: '🧪', n: { pt: 'Testar dois públicos diferentes com o mesmo anúncio', es: 'Probar dos públicos distintos con el mismo anuncio' }, certo: 'gerenciador',
+      fb: { pt: 'Dois públicos são dois conjuntos de anúncios dentro da campanha, e isso se monta no Gerenciador.', es: 'Dos públicos son dos conjuntos de anuncios dentro de la campaña, y eso se arma en el Administrador.' } },
+    { ic: '👍', n: { pt: 'Ter mais curtidas e comentários no post de hoje, com R$ 5 por dia', es: 'Tener más reacciones y comentarios en el post de hoy, con R$ 5 por día' }, certo: 'turbinar',
+      fb: { pt: 'Meta “Gerar engajamento” no Turbinar, com orçamento diário baixo (o mínimo era R$ 5,27).', es: 'Meta “Generar interacción” en Impulsar, con presupuesto diario bajo (el mínimo era R$ 5,27).' } }
+  ];
+  F['turbinar-ou-gerenciador'] = {
+    titulo: { pt: 'Turbinar ou Gerenciador?', es: '¿Impulsar o Administrador?' },
+    resumo: { pt: 'Para cada pedido da Marina, escolha a ferramenta certa.', es: 'Para cada pedido de Marina, elige la herramienta correcta.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + TG_ITENS.map(function (g, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + g.ic + '</span>' + T(g.n) + '</div><div class="qp-ops">' + Object.keys(TG_ESC).map(function (k) { return '<button data-tu="' + i + ':' + k + '">' + T(TG_ESC[k]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-tu]'); if (!b) return; var v = b.getAttribute('data-tu').split(':'), g = TG_ITENS[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
+        box.querySelectorAll('[data-tu]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(g.fb) : '❌ ' + T({ pt: 'Pense: o post já existe e basta dar uma força, ou é preciso montar uma campanha com objetivo, público e medição?', es: 'Piensa: ¿el post ya existe y basta darle fuerza, o hay que armar una campaña con objetivo, público y medición?' });
+        if (ok && window.MOV && el.querySelectorAll('.certa').length === TG_ITENS.length) MOV.confete(b);
+      });
+    }
+  };
+
   /* ---------- 11b. Em qual nível fica? (Anúncios 02) ---------- */
   var NIVEIS = { campanha: { pt: 'Campanha', es: 'Campaña' }, conjunto: { pt: 'Conjunto de anúncios', es: 'Conjunto de anuncios' }, anuncio: { pt: 'Anúncio', es: 'Anuncio' } };
   var NIVEL_PQ = {
