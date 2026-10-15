@@ -18,6 +18,7 @@ Leia nesta ordem:
 - Só telas reais (o que não foi visto fica "a conferir"); fontes oficiais da Meta.
 - Tutorial guiado sem erro possível; testar como aluno teimoso (clicar fora, escolher errado, voltar/avançar, clicar antes da hora em botão dentro do destaque, recarregar).
 - O Pixel real nunca pode mudar o que a aula/simulação mostra.
+- Respostas do "Atender" e das práticas são **embaralhadas** (mesma ordem para a mesma aula; a certa nunca fica em primeiro). No conteúdo, pode escrever a certa onde quiser: `ordemOpcoes` em `plataforma.js` cuida da ordem.
 - Sem analogias na parte técnica (F12/Laboratório).
 
 ## Pendências que dependem do André

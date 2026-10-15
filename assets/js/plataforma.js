@@ -255,6 +255,17 @@
     return h + '</div>';
   }
   function faseChip(m) { var f = (window.FASES || [])[m && m.fase]; return f ? '<p class="fase-chip">' + PERSONAGEM('marina', 1.4) + T({ pt: 'Marina nesta fase:', es: 'Marina en esta fase:' }) + ' <b>' + f.icone + ' ' + T(f.nome) + '</b></p>' : '' }
+  /* Ordem das respostas: embaralhada, mas sempre a MESMA para a mesma aula (semente = id), e a certa nunca fica em primeiro.
+     Devolve os índices originais, para o resto do código continuar achando a opção pelo número. */
+  function ordemOpcoes(opcoes, semente) {
+    var h = 2166136261, i; for (i = 0; i < semente.length; i++) { h ^= semente.charCodeAt(i); h = Math.imul(h, 16777619) }
+    function rnd() { h += 0x6D2B79F5; var t = Math.imul(h ^ (h >>> 15), 1 | h); t ^= t + Math.imul(t ^ (t >>> 7), 61 | t); return ((t ^ (t >>> 14)) >>> 0) / 4294967296 }
+    var idx = opcoes.map(function (o, k) { return k }), j, tmp;
+    for (i = idx.length - 1; i > 0; i--) { j = Math.floor(rnd() * (i + 1)); tmp = idx[i]; idx[i] = idx[j]; idx[j] = tmp }
+    if (idx.length > 1 && opcoes[idx[0]].certa) { j = 1 + Math.floor(rnd() * (idx.length - 1)); tmp = idx[0]; idx[0] = idx[j]; idx[j] = tmp }
+    return idx;
+  }
+
   /* ---------- AULA: uma parte por vez (entender · ver de perto · praticar · atender) ---------- */
   var passoAtual = 0;
   function aulaTela() {
@@ -281,7 +292,7 @@
             return '<a class="jeito' + (i === 0 ? ' principal' : '') + (feito ? ' feito' : '') + (Q.get('feito') === o.id ? ' pop' : '') + '" href="' + url(o) + '"><span class="n">' + (feito ? '✓' : i + 1) + '</span><span class="ic">' + o.icone + '</span><div><b>' + T(o.tit) + (o.selo ? ' <em>' + T(o.selo) + '</em>' : '') + '</b><p>' + T(o.txt) + '</p></div><span class="ir">▶</span></a>'
           }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p>');
       }
-      else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + a.atender.opcoes.map(function (o, i) { return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
+      else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + ordemOpcoes(a.atender.opcoes, mid + '/' + aid).map(function (i) { var o = a.atender.opcoes[i]; return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
         (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '') + (a.gancho ? '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>' : '');
       $('#palco').innerHTML = h; $('#palco').classList.remove('mv-troca'); void $('#palco').offsetWidth; $('#palco').classList.add('mv-troca'); mov().cascata($('#palco'));
       if (p === 'entender' && !chatVisto) { chatVisto = true; var pts = $('#palco .pontos'); if (pts) pts.classList.add('mv-oculta'); mov().chat($('#palco'), function () { if (pts) { pts.classList.remove('mv-oculta'); pts.classList.add('mv-chega') } }) }
@@ -331,7 +342,7 @@
       });
     });
     return '<h1 class="pl-h1">🕹️ ' + T(p.titulo) + '</h1><p class="pl-lead">' + T(p.resumo) + '</p><div class="palco" id="palcoPratica">' + chat(p.dialogo) +
-      '<div class="pp-pergunta"><b>' + T(p.pergunta.txt) + '</b><div class="opcoes">' + p.pergunta.opcoes.map(function (o, i) { return '<button class="opcao pp-op" data-pp="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div></div></div>';
+      '<div class="pp-pergunta"><b>' + T(p.pergunta.txt) + '</b><div class="opcoes">' + ordemOpcoes(p.pergunta.opcoes, 'p/' + Q.get('p')).map(function (i) { var o = p.pergunta.opcoes[i]; return '<button class="opcao pp-op" data-pp="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div></div></div>';
   };
 
   /* página com todas as colas, para consulta rápida no dia a dia */
