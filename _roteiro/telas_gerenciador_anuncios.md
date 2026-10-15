@@ -74,7 +74,17 @@ Só rótulos e textos de tela (nada de dados pessoais). Conferido em rascunho, *
 ## Gerenciador › Descartar rascunhos (15/10)
 - Janela "Descartar rascunhos — Qualquer alteração nesta conta de anúncios [nome] ([ID]) que ainda não foi publicado será descartada." · Cancelar / Descartar.
 
+## Turbinar com meta "Gerar engajamento" — publicado de verdade, 15/10 (anúncio de teste, R$ 5,27/dia × 1 dia)
+- Telefone verificado → o bloqueio do topo **sumiu**. Meta padrão continua "Automático - Receber mensagens"; **Alterar** abre a janela "Meta": Automático · **Gerar engajamento** ("Mostre seu anúncio para pessoas com probabilidade de reagir, comentar e compartilhar." · Bom para: Engajamento) · Obter leads · Receber visitantes no site · Atrair visitas e seguidores para a Página (Novo) · Receba ligações · Salvar.
+- Ao trocar a meta, o **Botão** ainda vem "Enviar mensagem" (dica "Receber mais mensagens → Alterar para objetivo de mensagens"). Lista de "Texto do botão": **Nenhum botão** · Agendar agora · Saiba mais · Comprar agora · Cadastre-se · Enviar mensagem · Ligar agora. Escolhendo "Nenhum botão", o botão some da prévia (e as seções de mensagens/destino desaparecem). **Pegadinha de aula:** trocar a meta não troca o botão sozinho.
+- **Programação**: padrão "Veicular anúncio continuamente"; ao escolher "Escolher data de término" vem **7 dias** por padrão (aviso: "Anúncios que são veiculados por pelo menos 4 dias tendem a obter resultados melhores."). Aviso de limite de gastos da conta aparece e some conforme o saldo.
+- **Estimativa diária**: Impressões 829 a 2,4 mil · Engajamento com o post 120. **Resumo do pagamento**: Orçamento total R$ 5,27 (1 dia) + ISS estimado R$ 0,17 + PIS/COFINS estimado R$ 0,55 = **Valor total R$ 5,99**. Forma de pagamento: "Saldo disponível: R$10,27" (cobra ~1 vez/dia; sem saldo, anúncios pausam).
+- Ao clicar **Publicar**: janela **"Anúncio em análise"** — "Seu anúncio está sendo criado. Avisaremos se ele atende aos Padrões de Publicidade da Meta em até 24 horas. Você também pode receber atualizações na Central de Anúncios." · Status **Em análise** · Meta "Conseguir mais engajamento com o post" · valores · interruptor "Mantenha contato na conversa" · "Próximas etapas recomendadas" (app do celular, QR code).
+- Anúncio de teste: post com imagem 1080×1080 "TESTE — aqui não vendemos nada", sem link, sem botão, recompensa simbólica por comentário criativo.
+- **A acompanhar**: aprovado/reprovado, status "Ativo", primeiros resultados, e as telas de "Pausar/Concluído". Pausar o anúncio assim que terminar o 1 dia.
+
 ## Ainda falta ver de verdade
-- Anúncio rodando (em análise, ativo, resultados, fase de aprendizado, edição de publicado): precisa de telefone verificado na conta de anúncios (do André) — e o orçamento mínimo do Turbinar (R$ 5,27/dia) passa do saldo de R$ 5.
+- Telefone verificado em 15/10 (janela "Seu número de telefone foi verificado · Esse número de telefone foi adicionado à sua conta de anúncios. Agora você pode veicular anúncios e turbinar posts com essa conta de anúncios." · botão Concluir) — o bloqueio do Turbinar deve ter saído; reconferir.
+- Anúncio rodando (em análise, ativo, resultados, fase de aprendizado, edição de publicado): telefone já verificado; falta decidir publicar um de verdade — e o orçamento mínimo do Turbinar (R$ 5,27/dia) passa do saldo de R$ 5.
 - Tela de "Conferir e publicar" / revisão, e o que aparece quando a conta não pode publicar (aula 05).
 - Edição de anúncio já publicado e "fase de aprendizado" (aula 04) — sem publicar, dá para ver só pela documentação; marcar "a conferir".

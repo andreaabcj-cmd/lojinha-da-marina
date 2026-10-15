@@ -79,7 +79,7 @@
         ['meta-instagram.html', '📸', { pt: 'Instagram (perfil e conta profissional)', es: 'Instagram (perfil y cuenta profesional)' }, { pt: 'Virar conta profissional e editar o perfil, com as telas reais.', es: 'Volverse cuenta profesional y editar el perfil, con las pantallas reales.' }, 'pronta'],
         ['meta-portfolio.html', '🏢', { pt: 'Configurações do portfólio (Business Suite)', es: 'Configuración del portafolio (Business Suite)' }, { pt: 'Criar o portfólio, convidar pessoas, Páginas, contas de anúncios e Central de Segurança.', es: 'Crear el portafolio, invitar personas, Páginas, cuentas publicitarias y Centro de seguridad.' }, 'pronta'],
         [null, '🗂️', { pt: 'Gerenciador de Comércio', es: 'Administrador de ventas' }, { pt: 'Catálogo, itens, fontes de dados e correspondência com o Pixel.', es: 'Catálogo, artículos, fuentes de datos y coincidencia con el Pixel.' }, 'planejada'],
-        [null, '📣', { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' }, { pt: 'Campanhas, conjuntos de anúncios, anúncios e relatórios.', es: 'Campañas, conjuntos de anuncios, anuncios e informes.' }, 'planejada']];
+        ['meta-anuncios.html', '📣', { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' }, { pt: 'Criar a primeira campanha (Vendas) em rascunho: campanha, conjunto de anúncios e anúncio. Relatórios virão depois.', es: 'Crear la primera campaña (Ventas) en borrador: campaña, conjunto de anuncios y anuncio. Los informes vendrán después.' }, 'pronta']];
       return '<h1 class="pl-h1">🕹️ ' + T(U.simuladores) + '</h1><p class="pl-lead">' + T({ pt: 'Cópias de treino das ferramentas da Meta: o mesmo layout e os mesmos nomes, com o visual da Lojinha. Cada tela mostra a data em que foi conferida com a ferramenta real.', es: 'Copias de práctica de las herramientas de Meta: el mismo diseño y los mismos nombres, con el estilo de la Lojinha. Cada pantalla muestra la fecha en que se revisó con la herramienta real.' }) + '</p>' +
         '<div class="grade">' + sims.map(function (s) { return (s[0] ? '<a class="item" href="' + s[0] + '">' : '<div class="item off">') + '<span class="ic">' + s[1] + '</span><b>' + T(s[2]) + '</b><p>' + T(s[3]) + '</p>' + selo(s[4]) + (s[0] ? '</a>' : '</div>') }).join('') + '</div>' + recomecarHTML();
     },
@@ -153,7 +153,9 @@
       ['extensao-pixel', 'loja.html', 'pixel', '03', { pt: 'Como ver o Pixel com a extensão (Consultor de Dados)', es: 'Cómo ver el Pixel con la extensión (Asesor de datos)' }],
       ['achar-codigo', 'loja.html?lab=1', 'pixel', '03', { pt: 'Como achar o código do Pixel no site (técnico)', es: 'Cómo encontrar el código del Pixel en el sitio (técnico)' }],
       ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar o Testar eventos', es: 'Cómo usar Probar eventos' }],
-      ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] }
+      ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] },
+    { m: 'anuncios', itens: [
+      ['primeiro-anuncio', 'meta-anuncios.html?zerar=1', 'anuncios', '03', { pt: 'Como montar o primeiro anúncio (campanha de Vendas em rascunho)', es: 'Cómo armar el primer anuncio (campaña de Ventas en borrador)' }] ] }
   ];
   function comoFazer() {
     var volta = encodeURIComponent('laboratorio.html#como');
@@ -165,7 +167,7 @@
         return '<div class="como-grupo"><h3>' + mod.icone + ' ' + T(mod.titulo) + '</h3>' + g.itens.map(function (it) {
           var href = it[1] + (it[1].indexOf('?') < 0 ? '?' : '&') + 'tour=' + it[0] + '&voltar=' + volta;
           var t = T(it[4]).replace(/^C[oó]mo /, ''); t = t.charAt(0).toUpperCase() + t.slice(1);   // o título da seção já diz "Como fazer…"
-          return '<div class="como-it"><a class="como-ir" href="' + href + '" title="' + T(it[4]) + '">' + t + '</a><a class="como-aula" href="aula-plataforma.html?m=' + it[2] + '&a=' + it[3] + '">' + T({ pt: 'aula', es: 'clase' }) + ' ' + it[3] + '</a></div>';
+          return '<div class="como-it"><a class="como-ir" href="' + href + '" title="' + T(it[4]) + '">' + t + '</a>' + (((window.AULAS[it[2]] || []).filter(function (a) { return a.id === it[3] && a.status === 'pronta' }).length) ? '<a class="como-aula" href="aula-plataforma.html?m=' + it[2] + '&a=' + it[3] + '">' + T({ pt: 'aula', es: 'clase' }) + ' ' + it[3] + '</a>' : '') + '</div>';
         }).join('') + '</div>';
       }).join('') + '</div><p class="como-nada" id="comoNada" hidden>' + T({ pt: 'Nada encontrado. Tente outra palavra.', es: 'Nada encontrado. Prueba otra palabra.' }) + '</p>';
   }

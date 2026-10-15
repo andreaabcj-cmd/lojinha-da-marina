@@ -20,7 +20,7 @@ Leia nesta ordem:
 - Sem analogias na parte técnica (F12/Laboratório).
 
 ## Pendências que dependem do André
-- Telefone verificado na conta de anúncios de aula (libera anúncio rodando; saldo pré-pago de R$ 5 autorizado).
+- ~~Telefone verificado na conta de anúncios de aula~~ — **feito em 15/10** (tela "Seu número de telefone foi verificado… Agora você pode veicular anúncios e turbinar posts"). Próximo: ver um anúncio rodando de verdade (saldo pré-pago de R$ 5 autorizado; o mínimo do Turbinar é R$ 5,27/dia, então talvez precise de um pouco mais de saldo ou de outro caminho — decidir com o André antes de publicar qualquer coisa).
 - Trazer o Pixel para o portfólio da Lojinha (hoje está fora dele).
 - Espanhol em tudo (adiado; telas da Meta precisam dos textos reais em espanhol).
 - Tutorial guiado do F12 simulado (mais pra frente).
