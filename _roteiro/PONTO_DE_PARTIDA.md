@@ -39,3 +39,8 @@ Leia nesta ordem:
 - Pronto em PT e ES: simulador `meta-catalogo.html` (Gerenciador de Comércio › Catálogo; `?zerar=1`, `?exemplo=1`, `?moeda=1`), 4 tutoriais (`criar-catalogo`, `adicionar-produtos`, `conferir-ids`, `achar-produto`), 5 aulas (`AULAS.catalogo`) e 5 quizzes (`um-ou-varios`, `tipo-catalogo`, `jeito-de-adicionar`, `ids-batem`, `por-que-nao-aparece`).
 - A conferir com a tela real: janela de editar produto, janela "Criar conjunto", textos das opções 2–4 do tipo, aba Eventos com Pixel já ligado. Produtos recusados por política = fora de escopo (uma linha de encaminhamento, sem detalhes internos).
 - Próximo na ordem do Foco: Anúncios no Feed.
+
+## Anúncios no Feed (Foco) · 16/10/2026
+- Escopo escolhido pelo André: criativo + posicionamentos + erros comuns. Pronto em PT e ES: simulador `meta-feed.html` (nível do anúncio; `?zerar=1`, `?exemplo=1`, `?problemas=1`), 4 tutoriais (`montar-criativo`, `ver-previa`, `destino-botao`, `resolver-criativo`), 5 aulas (`AULAS.feed`) e 5 quizzes (`anatomia-anuncio`, `imagem-ou-carrossel`, `qual-corte`, `destino-e-botao`, `anuncio-esquisito`). Telas reais anotadas em `telas_gerenciador_anuncios.md` (seção "Anúncio no Feed…").
+- A conferir: etapa "Corte" dentro do assistente de mídia, botão "Personalizar" dos aprimoramentos, cortes do grupo Coluna da direita, escolha manual de posicionamentos, texto exato dos erros ao publicar, carrossel configurado. Recusa por política = fora de escopo (uma linha de encaminhamento).
+- Próximo na ordem do Foco: Instagram (aulas 03+; 01 e 02 só na Completa).

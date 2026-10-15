@@ -17,7 +17,7 @@ window.MODULOS = [
   { id: 'instagram', fase: 1, status: 'construcao', icone: '📸', titulo: { pt: 'Instagram para empresas', es: 'Instagram para empresas' }, resumo: { pt: 'Como funciona o Instagram para empresas e seus anúncios.', es: 'Cómo funciona Instagram para empresas y sus anuncios.' } },
   { id: 'pixel', fase: 1, status: 'construcao', icone: '📡', titulo: { pt: 'Pixel · básico', es: 'Pixel · básico' }, resumo: { pt: 'O que é, como criar, como saber se está funcionando, os eventos e os primeiros avisos.', es: 'Qué es, cómo crearlo, cómo saber si funciona, los eventos y los primeros avisos.' } },
   { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
-  { id: 'feed', fase: 2, status: 'planejado', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'O que são e erros comuns.', es: 'Qué son y errores comunes.' } },
+  { id: 'feed', fase: 2, status: 'construcao', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'Criativo, texto, destino, posicionamentos e erros comuns.', es: 'Contenido, texto, destino, ubicaciones y errores comunes.' } },
   { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
   { id: 'relatorios', fase: 3, status: 'planejado', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Criar e interpretar relatórios; o efeito das mudanças de privacidade do iOS.', es: 'Crear e interpretar informes; el efecto de los cambios de privacidad de iOS.' } },
   { id: 'segmentacao', fase: 3, status: 'planejado', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados (visitantes do site pelo Pixel, lista de clientes), públicos semelhantes, público Advantage+, categorias especiais e erros comuns.', es: 'Públicos personalizados (visitantes del sitio por el Pixel, lista de clientes), públicos similares, público Advantage+, categorías especiales y errores comunes.' } },
@@ -1206,6 +1206,241 @@ window.AULAS = {
         passos: [{ pt: 'Corrija o estoque ou o preço no site.', es: 'Corrige el stock o el precio en el sitio.' },
           { pt: 'No catálogo, aba Fontes de dados, clique em Atualizar e confira o produto.', es: 'En el catálogo, pestaña Orígenes de datos, haz clic en Actualizar y revisa el producto.' }],
         encaminhar: { pt: 'Se o produto foi recusado por política ou o aviso não é sobre dados do arquivo, confirme o sintoma e siga a Central de Ajuda da Meta; esse tema é tratado por outra área.', es: 'Si el producto fue rechazado por política o el aviso no es sobre datos del archivo, confirma el síntoma y sigue el Centro de ayuda de Meta; ese tema lo trata otra área.' }
+      }
+    }
+  ],
+  feed: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'O anúncio no Feed: o que a pessoa vê', es: 'El anuncio en el Feed: lo que ve la persona' },
+      antes: { pt: 'A Marina já sabe criar a campanha, o conjunto de anúncios e o catálogo. Falta cuidar do que a pessoa realmente vê.', es: 'Marina ya sabe crear la campaña, el conjunto de anuncios y el catálogo. Falta cuidar lo que realmente ve la persona.' },
+      gancho: { pt: '“Meu anúncio vai aparecer no Feed? E como ele vai ficar?” Vamos separar as peças do anúncio e saber onde cada uma mora.', es: '“¿Mi anuncio va a aparecer en el Feed? ¿Y cómo va a quedar?” Vamos a separar las piezas del anuncio y saber dónde vive cada una.' },
+      objetivo: { pt: 'Reconhecer as partes do anúncio (Página, texto principal, mídia, título, descrição, botão e destino) e achar onde cada uma é configurada.', es: 'Reconocer las partes del anuncio (Página, texto principal, contenido multimedia, título, descripción, botón y destino) y encontrar dónde se configura cada una.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Já escolhi o público e o orçamento. Mas o anúncio em si, o que a pessoa vê, onde eu monto? 🤔', es: 'Ya elegí el público y el presupuesto. Pero el anuncio en sí, lo que ve la persona, ¿dónde lo armo? 🤔' }],
+          ['rafa', { pt: 'No nível do anúncio, o terceiro da árvore. Lá ficam a Identidade (a Página que assina), o formato, a mídia, o texto, o botão e o destino.', es: 'En el nivel del anuncio, el tercero del árbol. Ahí están la Identidad (la Página que firma), el formato, el contenido multimedia, el texto, el botón y el destino.' }],
+          ['marina', { pt: 'E o que aparece no Feed, afinal?', es: '¿Y qué aparece en el Feed, entonces?' }],
+          ['rafa', { pt: 'O nome da Página, o texto principal em cima, a imagem no meio e, embaixo, o título e o botão. Para ver exatamente como fica, a tela tem a Prévia do anúncio.', es: 'El nombre de la Página, el texto principal arriba, la imagen en el medio y, abajo, el título y el botón. Para ver exactamente cómo queda, la pantalla tiene la Vista previa del anuncio.' }],
+          ['pixel', { pt: 'Importante: o Feed é só um dos lugares. Com os posicionamentos Advantage+, o mesmo anúncio também aparece em Stories, Reels e outros. A prévia tem uma aba para cada grupo.', es: 'Importante: el Feed es solo uno de los lugares. Con las ubicaciones Advantage+, el mismo anuncio también aparece en Stories, Reels y otros. La vista previa tiene una pestaña para cada grupo.' }]
+        ],
+        pontos: [
+          { pt: '<b>Identidade:</b> a Página do Facebook que assina (obrigatória). O Instagram é opcional.', es: '<b>Identidad:</b> la Página de Facebook que firma (obligatoria). El Instagram es opcional.' },
+          { pt: '<b>O que a pessoa lê:</b> texto principal (em cima), título e descrição (embaixo) e o botão (chamada para ação).', es: '<b>Lo que lee la persona:</b> texto principal (arriba), título y descripción (abajo) y el botón (llamada a la acción).' },
+          { pt: '<b>Para onde vai:</b> em Destino, o URL do site, obrigatório.', es: '<b>A dónde va:</b> en Destino, la URL del sitio web, obligatoria.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (rascunho de Vendas na conta de aula; nada foi publicado). Nomes conferidos em português e em espanhol (Administrador de anuncios).', es: 'Pantallas vistas de verdad el 16/10/2026 (borrador de Ventas en la cuenta de práctica; no se publicó nada). Nombres revisados en portugués y en español (Administrador de anuncios).' }
+      },
+      ferramenta: 'anatomia-anuncio',
+      atender: {
+        cena: { pt: 'Coloquei o endereço da loja no texto do anúncio, mas quando clicam nada acontece! Onde eu coloquei errado? 😕', es: '¡Puse la dirección de la tienda en el texto del anuncio, pero cuando hacen clic no pasa nada! ¿Dónde me equivoqué? 😕' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O texto do anúncio é só para ler: o clique é definido no campo Destino. Abra o anúncio, vá em Destino e preencha o URL do site (é obrigatório). Aí o botão leva a pessoa até lá.”', es: '“El texto del anuncio es solo para leer: el clic se define en el campo Destino. Abre el anuncio, ve a Destino y completa la URL del sitio web (es obligatoria). Ahí el botón lleva a la persona hasta allí.”' }, fb: { pt: 'Isso! Você separou o que se lê do que se clica e mostrou o campo certo.', es: '¡Eso! Separaste lo que se lee de lo que se hace clic y mostraste el campo correcto.' } },
+          { certa: false, txt: { pt: '“Escreva o endereço em letras maiores no texto.”', es: '“Escribe la dirección en letras más grandes en el texto.”' }, fb: { pt: 'Tamanho de letra não cria o clique: é o campo Destino que faz isso.', es: 'El tamaño de letra no crea el clic: lo hace el campo Destino.' } },
+          { certa: false, txt: { pt: '“Troque a Página que assina o anúncio.”', es: '“Cambia la Página que firma el anuncio.”' }, fb: { pt: 'A Página só identifica quem anuncia; não decide para onde o clique vai.', es: 'La Página solo identifica quién anuncia; no decide adónde va el clic.' } },
+          { certa: false, txt: { pt: '“Aguarde 24 horas, a Meta ativa o link sozinha.”', es: '“Espera 24 horas, Meta activa el enlace sola.”' }, fb: { pt: 'Não ativa: o destino precisa ser preenchido por você.', es: 'No se activa: el destino tienes que completarlo tú.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Em qual nível do rascunho você está (campanha, conjunto ou anúncio)?', es: '¿En qué nivel del borrador estás (campaña, conjunto o anuncio)?' },
+          { pt: 'O que a pessoa vê hoje no anúncio e o que ela queria ver?', es: '¿Qué ve hoy la persona en el anuncio y qué quería ver?' }],
+        conferir: [{ pt: 'Nível do anúncio: Identidade, formato, mídia, texto, botão e Destino.', es: 'Nivel del anuncio: Identidad, formato, contenido multimedia, texto, botón y Destino.' },
+          { pt: 'Prévia do anúncio: uma aba por grupo de posicionamentos.', es: 'Vista previa del anuncio: una pestaña por grupo de ubicaciones.' }],
+        frase: { pt: 'O que a pessoa lê é o texto principal, o título e o botão. O lugar para onde ela vai ao clicar é o Destino, onde fica o URL do site. Vamos conferir os dois no nível do anúncio.', es: 'Lo que lee la persona es el texto principal, el título y el botón. El lugar al que va al hacer clic es el Destino, donde está la URL del sitio web. Revisemos los dos en el nivel del anuncio.' },
+        passos: [{ pt: 'Abra o anúncio e role até Destino.', es: 'Abre el anuncio y desplázate hasta Destino.' },
+          { pt: 'Confira o URL do site e a prévia ao lado.', es: 'Revisa la URL del sitio web y la vista previa de al lado.' }],
+        encaminhar: { pt: 'Se a pessoa não encontrar o nível do anúncio ou o rascunho, volte ao módulo de Anúncios (criação e edição).', es: 'Si la persona no encuentra el nivel del anuncio o el borrador, vuelve al módulo de Anuncios (creación y edición).' }
+      }
+    },
+    {
+      id: '02', min: 9, status: 'pronta',
+      titulo: { pt: 'Montar o criativo da Marina', es: 'Armar el contenido de Marina' },
+      antes: { pt: 'A Marina conhece as partes do anúncio e tem a foto da Caneca azul pronta.', es: 'Marina conoce las partes del anuncio y tiene lista la foto de la Caneca azul.' },
+      gancho: { pt: '“A tela pede ‘Especifique a mídia’… e depois aparece uma janela cheia de etapas!” Vamos montar o criativo sem se perder.', es: '“La pantalla pide ‘Especifica el contenido multimedia’… ¡y después aparece una ventana llena de etapas!” Vamos a armar el contenido sin perdernos.' },
+      objetivo: { pt: 'Escolher o formato, adicionar a mídia pelo assistente (mídia, texto, aprimoramentos) e ver o resultado na prévia.', es: 'Elegir el formato, agregar el contenido multimedia con el asistente (contenido, texto, mejoras) y ver el resultado en la vista previa.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Escolhi “Imagem ou vídeo único”. E agora, onde coloco a foto? 🤔', es: 'Elegí “Una sola imagen o video”. ¿Y ahora dónde pongo la foto? 🤔' }],
+          ['rafa', { pt: 'Em “Criativo do anúncio”, clique em Configurar criativo e escolha Anúncio em imagem. Abre uma janela com etapas: Mídia, Configuração do criativo, Corte, Texto, Geração de imagem, Aprimoramentos.', es: 'En “Contenido del anuncio”, haz clic en Configurar contenido y elige Anuncio en imagen. Se abre una ventana con etapas: Contenido multimedia, Configuración del contenido, Recorte, Texto, Generación de imágenes, Mejoras.' }],
+          ['marina', { pt: 'Preciso mexer em todas?', es: '¿Tengo que tocar todas?' }],
+          ['rafa', { pt: 'Não. O essencial é escolher a mídia e escrever o texto principal e o título. As extensões e a geração de imagem com IA são opcionais.', es: 'No. Lo esencial es elegir el contenido multimedia y escribir el texto principal y el título. Las extensiones y la generación de imágenes con IA son opcionales.' }],
+          ['pixel', { pt: 'Atenção nos Aprimoramentos: “Adicionar música” e “Adicionar animação” aparecem como “Ativado por padrão”. Se o cliente quer o anúncio exatamente como fez, confira aí.', es: 'Atención a las Mejoras: “Agregar música” y “Agregar animación” aparecen como “Activado de forma predeterminada”. Si el cliente quiere el anuncio exactamente como lo hizo, revísalo ahí.' }]
+        ],
+        pontos: [
+          { pt: '<b>Formato:</b> “Imagem ou vídeo único” (uma peça) ou “Carrossel” (vários cartões).', es: '<b>Formato:</b> “Una sola imagen o video” (una pieza) o “Secuencia” (varias tarjetas).' },
+          { pt: '<b>Assistente de mídia:</b> escolha a mídia, escreva texto principal e título e confira os aprimoramentos.', es: '<b>Asistente de contenido:</b> elige el contenido, escribe texto principal y título y revisa las mejoras.' },
+          { pt: '<b>Depois de concluir:</b> a mídia aparece no anúncio e a prévia mostra o resultado.', es: '<b>Al terminar:</b> el contenido aparece en el anuncio y la vista previa muestra el resultado.' }
+        ],
+        notas: { pt: 'Assistente e etapas vistos de verdade em 16/10/2026 (nomes das etapas, campos de texto e lista de aprimoramentos). A etapa “Corte” dentro do assistente e o botão “Personalizar” dos aprimoramentos não foram vistos em detalhe (a conferir).', es: 'Asistente y etapas vistos de verdad el 16/10/2026 (nombres de las etapas, campos de texto y lista de mejoras). La etapa “Recorte” dentro del asistente y el botón “Personalizar” de las mejoras no se vieron en detalle (por confirmar).' }
+      },
+      ferramenta: 'imagem-ou-carrossel',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia pelo assistente: Configurar criativo, escolher a imagem, escrever o texto e passar pelos aprimoramentos.', es: 'En el simulador, el Pixel te guía por el asistente: Configurar contenido, elegir la imagen, escribir el texto y pasar por las mejoras.' },
+        tour: 'montar-criativo', pagina: 'meta-feed.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Terminei de montar e, depois, vi que apareceu música no meu anúncio! Eu não quis música! 😤', es: '¡Terminé de armarlo y, después, vi que apareció música en mi anuncio! ¡Yo no quise música! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“No assistente do criativo, na etapa Aprimoramentos, “Adicionar música” e “Adicionar animação” vêm “Ativado por padrão”. Vamos abrir essa etapa e ver o que você quer manter.”', es: '“En el asistente del contenido, en la etapa Mejoras, “Agregar música” y “Agregar animación” vienen “Activado de forma predeterminada”. Abramos esa etapa y veamos qué quieres mantener.”' }, fb: { pt: 'Isso! Você achou a causa provável e o lugar onde conferir.', es: '¡Eso! Encontraste la causa probable y el lugar donde revisar.' } },
+          { certa: false, txt: { pt: '“A música é culpa da sua foto, tente outra.”', es: '“La música es culpa de tu foto, prueba otra.”' }, fb: { pt: 'Não tem relação com a foto: é um aprimoramento ativado por padrão.', es: 'No tiene relación con la foto: es una mejora activada de forma predeterminada.' } },
+          { certa: false, txt: { pt: '“Isso não acontece, você deve ter colocado sem querer.”', es: '“Eso no pasa, debes haberla puesto sin querer.”' }, fb: { pt: 'Acontece: a própria tela mostra “Ativado por padrão”. Não culpe o cliente.', es: 'Pasa: la propia pantalla muestra “Activado de forma predeterminada”. No culpes al cliente.' } },
+          { certa: false, txt: { pt: '“Apague o anúncio e crie outro.”', es: '“Elimina el anuncio y crea otro.”' }, fb: { pt: 'Exagero: basta rever os aprimoramentos.', es: 'Exagerado: basta revisar las mejoras.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O anúncio é de imagem ou de vídeo? Qual formato está marcado (único ou carrossel)?', es: '¿El anuncio es de imagen o de video? ¿Qué formato está marcado (único o secuencia)?' },
+          { pt: 'O que apareceu no anúncio que o cliente não pediu (música, animação, texto)?', es: '¿Qué apareció en el anuncio que el cliente no pidió (música, animación, texto)?' }],
+        conferir: [{ pt: 'Criativo do anúncio › Editar: etapas Mídia, Texto e Aprimoramentos.', es: 'Contenido del anuncio › Editar: etapas Contenido multimedia, Texto y Mejoras.' },
+          { pt: 'Prévia do anúncio: confira o resultado em cada aba.', es: 'Vista previa del anuncio: revisa el resultado en cada pestaña.' }],
+        frase: { pt: 'Alguns aprimoramentos do criativo, como música e animação, vêm ativados por padrão. Vamos abrir o assistente do criativo e conferir o que você quer manter.', es: 'Algunas mejoras del contenido, como música y animación, vienen activadas de forma predeterminada. Abramos el asistente del contenido y revisemos qué quieres mantener.' },
+        passos: [{ pt: 'No anúncio, em Criativo do anúncio, clique em Editar.', es: 'En el anuncio, en Contenido del anuncio, haz clic en Editar.' },
+          { pt: 'Vá até a etapa Aprimoramentos e confira cada item.', es: 'Ve a la etapa Mejoras y revisa cada elemento.' }],
+        encaminhar: { pt: 'Se a opção de desligar um aprimoramento não aparecer como esperado, confirme o que a tela mostra e siga a Central de Ajuda da Meta.', es: 'Si la opción de desactivar una mejora no aparece como se espera, confirma lo que muestra la pantalla y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '03', min: 8, status: 'pronta',
+      titulo: { pt: 'Posicionamentos e cortes', es: 'Ubicaciones y recortes' },
+      antes: { pt: 'A mídia da Marina entrou no anúncio e a prévia mostrou três cartões diferentes.', es: 'El contenido de Marina entró en el anuncio y la vista previa mostró tres tarjetas distintas.' },
+      gancho: { pt: '“No Feed ficou lindo, mas no Story tem uma faixa escura!” Vamos entender onde o anúncio aparece e como ajustar o corte.', es: '“En el Feed quedó lindo, ¡pero en el Story hay una franja oscura!” Vamos a entender dónde aparece el anuncio y cómo ajustar el recorte.' },
+      objetivo: { pt: 'Entender os posicionamentos Advantage+, ler a prévia por grupo e ajustar o corte da mídia em Editar grupo.', es: 'Entender las ubicaciones Advantage+, leer la vista previa por grupo y ajustar el recorte del contenido en Editar grupo.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Escolhi só o Feed e não vi essa opção em lugar nenhum! Onde fica? 🤔', es: '¡Elegí solo el Feed y no vi esa opción en ningún lado! ¿Dónde queda? 🤔' }],
+          ['rafa', { pt: 'Os posicionamentos ficam no conjunto de anúncios. Nesta campanha de Vendas aparece “Advantage+ ativado”: a Meta mostra o anúncio onde há mais chance de resposta. Abaixo está “Posicionamentos excluídos: Nenhum”.', es: 'Las ubicaciones están en el conjunto de anuncios. En esta campaña de Ventas aparece “Advantage+ activado”: Meta muestra el anuncio donde hay más probabilidad de respuesta. Abajo está “Ubicaciones excluidas: Ninguna”.' }],
+          ['marina', { pt: 'Então o anúncio aparece em vários lugares, não só no Feed.', es: 'Entonces el anuncio aparece en varios lugares, no solo en el Feed.' }],
+          ['rafa', { pt: 'Isso. A tela junta os lugares em três grupos: Feeds e in-stream, Stories e Reels (com resultados da pesquisa e apps), e Coluna da direita. Cada grupo tem o seu “Editar grupo” e o seu corte.', es: 'Eso. La pantalla junta los lugares en tres grupos: Feeds e instream, Stories y Reels (con resultados de búsqueda y apps), y Columna derecha. Cada grupo tiene su “Editar grupo” y su recorte.' }],
+          ['pixel', { pt: 'Os cortes recomendados que a tela mostra: Feeds, Quadrado 1:1; Stories e Reels, Vertical em tela cheia 9:16. Para o Original, repare nas faixas escuras na prévia.', es: 'Los recortes recomendados que muestra la pantalla: Feeds, Cuadrado 1:1; Stories y Reels, Vertical en pantalla completa 9:16. Con el Original, fíjate en las franjas oscuras en la vista previa.' }]
+        ],
+        pontos: [
+          { pt: '<b>Posicionamentos</b> ficam no conjunto de anúncios; com Advantage+ a Meta escolhe os lugares.', es: '<b>Las ubicaciones</b> están en el conjunto de anuncios; con Advantage+ Meta elige los lugares.' },
+          { pt: '<b>Três grupos</b> na prévia e em Editar grupo, cada um com o seu corte.', es: '<b>Tres grupos</b> en la vista previa y en Editar grupo, cada uno con su recorte.' },
+          { pt: '<b>Recomendados:</b> Feeds 1:1 · Stories e Reels 9:16.', es: '<b>Recomendados:</b> Feeds 1:1 · Stories y Reels 9:16.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (prévia por grupo, janela Editar grupo com os cortes de Feeds e de Stories, seção Posicionamentos Advantage+). O corte do grupo Coluna da direita e a escolha manual de posicionamentos não foram vistos (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (vista previa por grupo, ventana Editar grupo con los recortes de Feeds y de Stories, sección Ubicaciones Advantage+). El recorte del grupo Columna derecha y la elección manual de ubicaciones no se vieron (por confirmar).' }
+      },
+      ferramenta: 'qual-corte',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva ao conjunto de anúncios, depois à prévia por grupo, e ajusta o corte de Stories para 9:16.', es: 'En el simulador, el Pixel te lleva al conjunto de anuncios, luego a la vista previa por grupo, y ajusta el recorte de Stories a 9:16.' },
+        tour: 'ver-previa', pagina: 'meta-feed.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Meu anúncio aparece com uma faixa escura em cima e embaixo nos Stories. Está quebrado? 😟', es: '¡Mi anuncio aparece con una franja oscura arriba y abajo en los Stories! ¿Está roto? 😟' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Não está quebrado: sua imagem é quadrada e o Story é vertical, então sobram faixas. Na prévia de Stories e Reels, abra Editar grupo e escolha o corte Vertical em tela cheia 9:16. Só o grupo de Stories muda.”', es: '“No está roto: tu imagen es cuadrada y el Story es vertical, por eso sobran franjas. En la vista previa de Stories y Reels, abre Editar grupo y elige el recorte Vertical en pantalla completa 9:16. Solo cambia el grupo de Stories.”' }, fb: { pt: 'Isso! Explicação simples, caminho claro e sem mexer no resto.', es: '¡Eso! Explicación simple, camino claro y sin tocar el resto.' } },
+          { certa: false, txt: { pt: '“É um bug conhecido, aguarde a Meta corrigir.”', es: '“Es un error conocido, espera a que Meta lo corrija.”' }, fb: { pt: 'Não é bug: é o corte “Original” da imagem.', es: 'No es un error: es el recorte “Original” de la imagen.' } },
+          { certa: false, txt: { pt: '“Troque a imagem por uma horizontal.”', es: '“Cambia la imagen por una horizontal.”' }, fb: { pt: 'Horizontal em tela vertical sobra ainda mais espaço.', es: 'Horizontal en pantalla vertical deja aún más espacio.' } },
+          { certa: false, txt: { pt: '“Desmarque os Stories nos posicionamentos para nunca mais ver isso.”', es: '“Desmarca los Stories en las ubicaciones para no volver a verlo.”' }, fb: { pt: 'Isso tira o anúncio de um lugar importante. Primeiro ajuste o corte.', es: 'Eso saca el anuncio de un lugar importante. Primero ajusta el recorte.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Em qual aba da prévia aparece o problema (Feeds, Stories e Reels ou Coluna da direita)?', es: '¿En qué pestaña de la vista previa aparece el problema (Feeds, Stories y Reels o Columna derecha)?' },
+          { pt: 'Qual é o tamanho da imagem? (A mídia mostra, por exemplo, 1080 × 1080.)', es: '¿Cuál es el tamaño de la imagen? (El contenido muestra, por ejemplo, 1080 × 1080.)' }],
+        conferir: [{ pt: 'Prévia do anúncio, aba do grupo com o problema.', es: 'Vista previa del anuncio, pestaña del grupo con el problema.' },
+          { pt: 'Editar grupo › Cortar mídia: qual corte está marcado.', es: 'Editar grupo › Recortar archivo multimedia: qué recorte está marcado.' }],
+        frase: { pt: 'Cada lugar onde o anúncio aparece tem um formato preferido. Vamos abrir a prévia do grupo e ajustar o corte da imagem só ali.', es: 'Cada lugar donde aparece el anuncio tiene un formato preferido. Abramos la vista previa del grupo y ajustemos el recorte de la imagen solo ahí.' },
+        passos: [{ pt: 'Na prévia, abra a aba do grupo com a faixa escura.', es: 'En la vista previa, abre la pestaña del grupo con la franja oscura.' },
+          { pt: 'Clique em Editar grupo, escolha o corte recomendado e Salvar.', es: 'Haz clic en Editar grupo, elige el recorte recomendado y Guardar.' }],
+        encaminhar: { pt: 'Se o cliente quiser escolher manualmente onde o anúncio aparece, confira no conjunto de anúncios o que a tela oferece para a campanha dele e siga a Central de Ajuda da Meta.', es: 'Si el cliente quiere elegir manualmente dónde aparece el anuncio, revisa en el conjunto de anuncios lo que ofrece la pantalla para su campaña y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '04', min: 7, status: 'pronta',
+      titulo: { pt: 'Destino e botão', es: 'Destino y botón' },
+      antes: { pt: 'O criativo da Marina está bonito em todos os lugares. Falta o clique levar a algum lugar.', es: 'El contenido de Marina se ve lindo en todos los lugares. Falta que el clic lleve a algún lado.' },
+      gancho: { pt: '“Preenchi tudo e a tela ainda não deixa publicar! O que está faltando?” Quase sempre é o destino.', es: '“¡Completé todo y la pantalla todavía no deja publicar! ¿Qué falta?” Casi siempre es el destino.' },
+      objetivo: { pt: 'Preencher o URL do site, entender o link de exibição e escolher um botão que combine com o clique.', es: 'Completar la URL del sitio web, entender el enlace visible y elegir un botón que combine con el clic.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Na seção Destino tem um campo com asterisco: URL do site. É obrigatório mesmo? 🤔', es: 'En la sección Destino hay un campo con asterisco: URL del sitio web. ¿Es obligatorio de verdad? 🤔' }],
+          ['rafa', { pt: 'É: o asterisco avisa. Em Vendas com site, o Destino principal é “Site” e o URL diz para onde a pessoa vai ao clicar. Uma boa prática é usar o endereço da página do produto, e não a página inicial.', es: 'Lo es: el asterisco avisa. En Ventas con sitio web, el Destino principal es “Sitio web” y la URL dice adónde va la persona al hacer clic. Una buena práctica es usar la dirección de la página del producto, y no la página de inicio.' }],
+          ['marina', { pt: 'E “Usar um link de exibição”?', es: '¿Y “Usar un enlace visible”?' }],
+          ['rafa', { pt: 'Serve para mostrar um endereço mais limpo no anúncio. Muda só o que aparece escrito; o clique continua indo para o URL. E precisa mostrar o mesmo site.', es: 'Sirve para mostrar una dirección más limpia en el anuncio. Cambia solo lo que aparece escrito; el clic sigue yendo a la URL. Y debe mostrar el mismo sitio.' }],
+          ['pixel', { pt: 'O botão (chamada para ação) vem como “Ver detalhes”. A tela diz que ele gera um CVR até 2,3% maior que “Saiba mais”. Mas o botão tem que combinar com o que o clique entrega.', es: 'El botón (llamada a la acción) viene como “Ver detalles”. La pantalla dice que genera un CVR hasta un 2,3% mayor que “Más información”. Pero el botón tiene que combinar con lo que entrega el clic.' }]
+        ],
+        pontos: [
+          { pt: '<b>URL do site:</b> obrigatório (asterisco), começando com http:// ou https://.', es: '<b>URL del sitio web:</b> obligatoria (asterisco), empezando con http:// o https://.' },
+          { pt: '<b>Link de exibição:</b> só muda o texto mostrado, não o destino.', es: '<b>Enlace visible:</b> solo cambia el texto mostrado, no el destino.' },
+          { pt: '<b>Botão:</b> Ver detalhes, Saiba mais, Comprar agora, Cadastre-se, Enviar mensagem, Ligar agora ou Nenhum botão.', es: '<b>Botón:</b> Ver detalles, Más información, Comprar ahora, Registrarte, Enviar mensaje, Llamar ahora o Sin botón.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (Destino com URL obrigatório, link de exibição, Destinos personalizados e o texto da chamada para ação). A lista completa de botões foi vista no Turbinar; no Gerenciador ela fica no menu da chamada para ação (a conferir). O texto exato do erro quando o URL falta não foi visto (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (Destino con URL obligatoria, enlace visible, Destinos personalizados y el texto de la llamada a la acción). La lista completa de botones se vio en Promocionar; en el Administrador está en el menú de la llamada a la acción (por confirmar). El texto exacto del error cuando falta la URL no se vio (por confirmar).' }
+      },
+      ferramenta: 'destino-e-botao',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para preencher o URL, ver o link de exibição e trocar o botão para “Comprar agora”.', es: 'En el simulador, el Pixel te guía para completar la URL, ver el enlace visible y cambiar el botón a “Comprar ahora”.' },
+        tour: 'destino-botao', pagina: 'meta-feed.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Quando clico no botão do meu anúncio ele leva à página inicial da loja, e não à caneca que eu anunciei! 😠', es: '¡Cuando hago clic en el botón de mi anuncio me lleva a la página de inicio de la tienda, y no a la taza que anuncié! 😠' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O botão leva ao que está no campo URL do site, na seção Destino. Se estiver o endereço da página inicial, troque pelo endereço da página da caneca, comece com https:// e confira de novo na prévia.”', es: '“El botón lleva a lo que está en el campo URL del sitio web, en la sección Destino. Si está la dirección de la página de inicio, cámbiala por la dirección de la página de la taza, empieza con https:// y revisa de nuevo en la vista previa.”' }, fb: { pt: 'Isso! O destino é o URL: basta corrigi-lo.', es: '¡Eso! El destino es la URL: basta corregirla.' } },
+          { certa: false, txt: { pt: '“Troque o botão para ‘Saiba mais’.”', es: '“Cambia el botón a ‘Más información’.”' }, fb: { pt: 'O texto do botão não muda para onde ele leva.', es: 'El texto del botón no cambia adónde lleva.' } },
+          { certa: false, txt: { pt: '“Use um link de exibição com o endereço da caneca.”', es: '“Usa un enlace visible con la dirección de la taza.”' }, fb: { pt: 'O link de exibição só muda o texto mostrado; o clique continua indo para o URL.', es: 'El enlace visible solo cambia el texto mostrado; el clic sigue yendo a la URL.' } },
+          { certa: false, txt: { pt: '“Escreva o endereço da caneca no texto principal.”', es: '“Escribe la dirección de la taza en el texto principal.”' }, fb: { pt: 'O texto principal não define o destino do clique.', es: 'El texto principal no define el destino del clic.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual URL está no campo “URL do site”? É a página do produto ou a inicial?', es: '¿Qué URL está en el campo “URL del sitio web”? ¿Es la página del producto o la de inicio?' },
+          { pt: 'Foi marcado “Usar um link de exibição”? O que está escrito nele?', es: '¿Se marcó “Usar un enlace visible”? ¿Qué está escrito en él?' },
+          { pt: 'Qual botão (chamada para ação) está escolhido?', es: '¿Qué botón (llamada a la acción) está elegido?' }],
+        conferir: [{ pt: 'Destino › URL do site (começa com https://).', es: 'Destino › URL del sitio web (empieza con https://).' },
+          { pt: 'Prévia: o botão mostrado é o escolhido.', es: 'Vista previa: el botón mostrado es el elegido.' }],
+        frase: { pt: 'O lugar para onde o clique leva é o URL do site, no Destino. O link de exibição só muda o texto que aparece. Vamos conferir o URL e o botão na prévia.', es: 'El lugar adonde lleva el clic es la URL del sitio web, en Destino. El enlace visible solo cambia el texto que aparece. Revisemos la URL y el botón en la vista previa.' },
+        passos: [{ pt: 'No anúncio, abra a seção Destino.', es: 'En el anuncio, abre la sección Destino.' },
+          { pt: 'Corrija o URL do site e confira o botão na prévia.', es: 'Corrige la URL del sitio web y revisa el botón en la vista previa.' }],
+        encaminhar: { pt: 'Se o URL está certo e mesmo assim a página não abre ou não é a esperada, o problema é no site do cliente: peça que ele confira a página.', es: 'Si la URL está correcta y aun así la página no abre o no es la esperada, el problema está en el sitio del cliente: pídele que revise la página.' }
+      }
+    },
+    {
+      id: '05', min: 8, status: 'pronta',
+      titulo: { pt: 'Meu anúncio não publica ou ficou estranho!', es: '¡Mi anuncio no se publica o quedó raro!' },
+      antes: { pt: 'A Marina já montou, ajustou os cortes e preencheu o destino. Mas algo ainda não está certo.', es: 'Marina ya armó, ajustó los recortes y completó el destino. Pero algo todavía no está bien.' },
+      gancho: { pt: '“Não publica, e o Story ficou estranho!” Vamos investigar como um detetive: o que falta, e o que está diferente do esperado.', es: '“¡No se publica, y el Story quedó raro!” Vamos a investigar como un detective: qué falta, y qué es diferente de lo esperado.' },
+      objetivo: { pt: 'Resolver os dois casos mais comuns do criativo: o que falta para publicar (destino, mídia, Página) e o que ficou diferente do esperado (corte, aprimoramentos).', es: 'Resolver los dos casos más comunes del contenido: qué falta para publicar (destino, contenido, Página) y qué quedó diferente de lo esperado (recorte, mejoras).' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Cliquei em Publicar e a tela me barrou. O que ela quer? 😩', es: 'Hice clic en Publicar y la pantalla me frenó. ¿Qué quiere? 😩' }],
+          ['rafa', { pt: 'Procure o que está obrigatório e vazio: a Página do Facebook, a mídia (“Especifique a mídia”) e o URL do site (campo com asterisco).', es: 'Busca lo que es obligatorio y está vacío: la Página de Facebook, el contenido multimedia (“Especifica el contenido multimedia”) y la URL del sitio web (campo con asterisco).' }],
+          ['marina', { pt: 'Preenchi e publiquei. Mas o anúncio ficou estranho nos Stories e tem música!', es: 'Completé y publiqué. ¡Pero el anuncio quedó raro en los Stories y tiene música!' }],
+          ['rafa', { pt: 'São dois casos diferentes. Faixas escuras: é o corte do grupo de Stories, ajuste em Editar grupo. Música ou animação: confira os Aprimoramentos, que vêm ativados por padrão.', es: 'Son dos casos distintos. Franjas oscuras: es el recorte del grupo de Stories, ajusta en Editar grupo. Música o animación: revisa las Mejoras, que vienen activadas de forma predeterminada.' }],
+          ['pixel', { pt: 'E se o anúncio for recusado por política? Isso é outro assunto: registre o sintoma, siga a Central de Ajuda da Meta e encaminhe, sem prometer aprovação.', es: '¿Y si el anuncio es rechazado por política? Eso es otro tema: registra el síntoma, sigue el Centro de ayuda de Meta y deriva, sin prometer aprobación.' }]
+        ],
+        pontos: [
+          { pt: '<b>Não publica:</b> procure o obrigatório vazio (Página, mídia, URL do site).', es: '<b>No se publica:</b> busca lo obligatorio vacío (Página, contenido multimedia, URL del sitio web).' },
+          { pt: '<b>Ficou estranho:</b> veja a prévia de cada grupo e ajuste o corte; confira os aprimoramentos.', es: '<b>Quedó raro:</b> mira la vista previa de cada grupo y ajusta el recorte; revisa las mejoras.' },
+          { pt: '<b>Recusa por política:</b> registrar o sintoma e encaminhar, sem prometer aprovação.', es: '<b>Rechazo por política:</b> registrar el síntoma y derivar, sin prometer aprobación.' }
+        ],
+        notas: { pt: 'Telas do criativo vistas de verdade em 16/10/2026. A lista de erros ao publicar é do simulador, resumindo o que a tela real cobra (o texto exato dos erros não foi visto: a conferir). Motivos de recusa por política não fazem parte deste treinamento.', es: 'Pantallas del contenido vistas de verdad el 16/10/2026. La lista de errores al publicar es del simulador, resumiendo lo que cobra la pantalla real (el texto exacto de los errores no se vio: por confirmar). Los motivos de rechazo por política no forman parte de esta capacitación.' }
+      },
+      ferramenta: 'anuncio-esquisito',
+      praticar: {
+        texto: { pt: 'No simulador, o anúncio da Marina não publica e o Story está com faixas. O Pixel te guia até resolver os dois.', es: 'En el simulador, el anuncio de Marina no se publica y el Story tiene franjas. El Pixel te guía hasta resolver los dos.' },
+        tour: 'resolver-criativo', pagina: 'meta-feed.html?problemas=1'
+      },
+      atender: {
+        cena: { pt: 'Meu anúncio não publica e eu não sei por quê. A tela só marca uns campos em vermelho! 😖', es: '¡Mi anuncio no se publica y no sé por qué! ¡La pantalla solo marca unos campos en rojo! 😖' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Os campos em vermelho são o que falta. Vamos olhar um por um: a Página do Facebook, a mídia e o URL do site (o que tem asterisco é obrigatório). Preencha o que estiver vazio e tente Publicar de novo.”', es: '“Los campos en rojo son lo que falta. Miremos uno por uno: la Página de Facebook, el contenido multimedia y la URL del sitio web (lo que tiene asterisco es obligatorio). Completa lo que esté vacío e intenta Publicar de nuevo.”' }, fb: { pt: 'Isso! Transformou o vermelho em uma lista simples de tarefas.', es: '¡Eso! Convertiste el rojo en una lista simple de tareas.' } },
+          { certa: false, txt: { pt: '“É um problema da conta, abra um chamado.”', es: '“Es un problema de la cuenta, abre un caso.”' }, fb: { pt: 'Antes de abrir qualquer chamado, confira o que está vazio e obrigatório.', es: 'Antes de abrir cualquier caso, revisa lo que está vacío y es obligatorio.' } },
+          { certa: false, txt: { pt: '“Crie o anúncio de novo do zero.”', es: '“Crea el anuncio de nuevo desde cero.”' }, fb: { pt: 'Exagero: basta completar o que falta.', es: 'Exagerado: basta completar lo que falta.' } },
+          { certa: false, txt: { pt: '“Tente de novo mais tarde, às vezes passa.”', es: '“Intenta de nuevo más tarde, a veces pasa.”' }, fb: { pt: 'Não passa sozinho: um campo obrigatório vazio continua vazio.', es: 'No pasa solo: un campo obligatorio vacío sigue vacío.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O que a tela mostra em vermelho ou como aviso? Pode me enviar um print?', es: '¿Qué muestra la pantalla en rojo o como aviso? ¿Puedes enviarme una captura?' },
+          { pt: 'Quais campos obrigatórios estão vazios: Página, mídia, URL do site?', es: '¿Qué campos obligatorios están vacíos: Página, contenido multimedia, URL del sitio web?' },
+          { pt: 'O problema é para publicar, ou é como o anúncio ficou depois (corte, música, texto)?', es: '¿El problema es para publicar, o es cómo quedó el anuncio después (recorte, música, texto)?' }],
+        conferir: [{ pt: 'Identidade (Página), Mídia, Destino (URL).', es: 'Identidad (Página), contenido multimedia, Destino (URL).' },
+          { pt: 'Prévia por grupo e Aprimoramentos.', es: 'Vista previa por grupo y Mejoras.' }],
+        frase: { pt: 'Vamos olhar o que falta para publicar: a Página, a mídia e o URL do site são obrigatórios. Se o anúncio já publicou e ficou diferente do esperado, vemos o corte e os aprimoramentos.', es: 'Veamos qué falta para publicar: la Página, el contenido multimedia y la URL del sitio web son obligatorios. Si el anuncio ya se publicó y quedó diferente de lo esperado, vemos el recorte y las mejoras.' },
+        passos: [{ pt: 'Complete Página, mídia e URL do site no nível do anúncio.', es: 'Completa Página, contenido multimedia y URL del sitio web en el nivel del anuncio.' },
+          { pt: 'Confira a prévia de cada grupo e ajuste o corte onde precisar.', es: 'Revisa la vista previa de cada grupo y ajusta el recorte donde haga falta.' }],
+        encaminhar: { pt: 'Se o anúncio foi recusado por política ou a conta está restrita, confirme o sintoma e siga a Central de Ajuda da Meta; esse tema é tratado por outra área. Nunca prometa aprovação.', es: 'Si el anuncio fue rechazado por política o la cuenta está restringida, confirma el síntoma y sigue el Centro de ayuda de Meta; ese tema lo trata otra área. Nunca prometas aprobación.' }
       }
     }
   ],
