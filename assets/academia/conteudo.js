@@ -19,7 +19,7 @@ window.MODULOS = [
   { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'construcao', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'Criativo, texto, destino, posicionamentos e erros comuns.', es: 'Contenido, texto, destino, ubicaciones y errores comunes.' } },
   { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
-  { id: 'relatorios', fase: 3, status: 'planejado', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Criar e interpretar relatórios; o efeito das mudanças de privacidade do iOS.', es: 'Crear e interpretar informes; el efecto de los cambios de privacidad de iOS.' } },
+  { id: 'relatorios', fase: 3, status: 'construcao', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Ler, montar e comparar relatórios; atribuição e relatórios vazios.', es: 'Leer, armar y comparar informes; atribución e informes vacíos.' } },
   { id: 'segmentacao', fase: 3, status: 'planejado', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados (visitantes do site pelo Pixel, lista de clientes), públicos semelhantes, público Advantage+, categorias especiais e erros comuns.', es: 'Públicos personalizados (visitantes del sitio por el Pixel, lista de clientes), públicos similares, público Advantage+, categorías especiales y errores comunes.' } },
   { id: 'entrega', fase: 3, status: 'planejado', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'Como a entrega funciona, a fase de aprendizado e a solução de problemas.', es: 'Cómo funciona la entrega, la fase de aprendizaje y la solución de problemas.' } },
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
@@ -1912,6 +1912,240 @@ window.AULAS = {
         passos: [{ pt: 'Abra Regras automatizadas e leia Resultados da regra.', es: 'Abre Reglas automáticas y lee Resultados de la regla.' },
           { pt: 'Edite a regra (intervalo e condições) e ative de novo os conjuntos.', es: 'Edita la regla (intervalo y condiciones) y activa de nuevo los conjuntos.' }],
         encaminhar: { pt: 'Se não há regra e o anúncio parou, outras causas (pagamento, limite de gastos, política) entram em jogo: siga a aula de “Meu anúncio não publica” e a Central de Ajuda da Meta; recusas por política são tratadas por outra área.', es: 'Si no hay regla y el anuncio se detuvo, entran en juego otras causas (pago, límite de gastos, política): sigue la clase de “Mi anuncio no se publica” y el Centro de ayuda de Meta; los rechazos por política los trata otra área.' }
+      }
+    }
+  ],
+  relatorios: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'Onde ficam os números', es: 'Dónde están los números' },
+      antes: { pt: 'A Marina tem anúncios, regras e posts. Agora quer saber se tudo isso está funcionando.', es: 'Marina tiene anuncios, reglas y publicaciones. Ahora quiere saber si todo eso está funcionando.' },
+      gancho: { pt: '“Onde eu vejo quanto gastei e quantas pessoas viram?” Há mais de um lugar, e cada um serve para uma coisa.', es: '“¿Dónde veo cuánto gasté y cuántas personas vieron?” Hay más de un lugar, y cada uno sirve para una cosa.' },
+      objetivo: { pt: 'Saber os lugares onde se veem números (Gerenciador, Relatórios de Anúncios, Insights, Gerenciador de Eventos) e qual usar em cada caso.', es: 'Saber los lugares donde se ven números (Administrador, Informes de anuncios, Estadísticas, Administrador de eventos) y cuál usar en cada caso.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Vi números no Gerenciador de Anúncios, no Business Suite e no Gerenciador de Eventos. Qual é o certo? 🤔', es: 'Vi números en el Administrador de anuncios, en Business Suite y en el Administrador de eventos. ¿Cuál es el correcto? 🤔' }],
+          ['rafa', { pt: 'Todos, cada um no seu papel. A tabela de campanhas e os Relatórios de Anúncios são para anúncios. Os Insights do Business Suite mostram a Página e o Instagram. O Gerenciador de Eventos mostra o que o Pixel recebeu.', es: 'Todos, cada uno en su papel. La tabla de campañas y los Informes de anuncios son para anuncios. Las Estadísticas de Business Suite muestran la Página y Instagram. El Administrador de eventos muestra lo que recibió el Pixel.' }],
+          ['marina', { pt: 'E se um número não bater com o outro?', es: '¿Y si un número no coincide con el otro?' }],
+          ['rafa', { pt: 'A Central de Ajuda tem um artigo só sobre as diferenças de contagem entre essas telas. Antes de achar defeito, confira período e janela de atribuição (veremos na aula 04).', es: 'El Centro de ayuda tiene un artículo solo sobre las diferencias de conteo entre esas pantallas. Antes de pensar en un defecto, revisa período y ventana de atribución (lo veremos en la clase 04).' }],
+          ['pixel', { pt: 'Nos Relatórios de Anúncios dá para montar uma tabela dinâmica, salvar, compartilhar e exportar. É a ferramenta para o cliente que pede “um relatório”.', es: 'En los Informes de anuncios se puede armar una tabla dinámica, guardar, compartir y exportar. Es la herramienta para el cliente que pide “un informe”.' }]
+        ],
+        pontos: [
+          { pt: '<b>Anúncios:</b> tabela de campanhas e Relatórios de Anúncios.', es: '<b>Anuncios:</b> tabla de campañas e Informes de anuncios.' },
+          { pt: '<b>Página e Instagram:</b> Insights do Business Suite.', es: '<b>Página e Instagram:</b> Estadísticas de Business Suite.' },
+          { pt: '<b>Pixel e eventos:</b> Gerenciador de Eventos. Contagens podem diferir entre telas.', es: '<b>Pixel y eventos:</b> Administrador de eventos. Los conteos pueden diferir entre pantallas.' }
+        ],
+        notas: { pt: 'Relatórios de Anúncios vistos de verdade em 16/10/2026 em português e espanhol, com os números reais do anúncio de teste da conta de aula. Os títulos dos artigos da Central de Ajuda (atribuição, diferenças de contagem, anúncio sem dados) foram lidos em 16/10/2026; o conteúdo do artigo de diferenças de contagem não foi lido (a conferir).', es: 'Informes de anuncios vistos de verdad el 16/10/2026 en portugués y español, con los números reales del anuncio de prueba de la cuenta de práctica. Los títulos de los artículos del Centro de ayuda (atribución, diferencias de conteo, anuncio sin datos) se leyeron el 16/10/2026; el contenido del artículo de diferencias de conteo no se leyó (por confirmar).' }
+      },
+      ferramenta: 'onde-olhar',
+      atender: {
+        cena: { pt: 'O Gerenciador de Anúncios diz 14 compras e o Gerenciador de Eventos diz 17. Qual está errado? 😠', es: '¡El Administrador de anuncios dice 14 compras y el Administrador de eventos dice 17. ¿Cuál está mal? 😠' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Nenhum dos dois está necessariamente errado: cada tela conta de um jeito. O Gerenciador de Anúncios conta as compras atribuídas ao anúncio, segundo uma janela de atribuição, e o Gerenciador de Eventos mostra os eventos que o Pixel recebeu. Vamos comparar o período e a janela.”', es: '“Ninguno de los dos está necesariamente mal: cada pantalla cuenta de una forma. El Administrador de anuncios cuenta las compras atribuidas al anuncio, según una ventana de atribución, y el Administrador de eventos muestra los eventos que recibió el Pixel. Comparemos el período y la ventana.”' }, fb: { pt: 'Isso! Explicou por que podem diferir e o que conferir.', es: '¡Eso! Explicaste por qué pueden diferir y qué revisar.' } },
+          { certa: false, txt: { pt: '“O Pixel está quebrado, vamos recriar.”', es: '“El Pixel está roto, vamos a recrearlo.”' }, fb: { pt: 'Diferença de contagem não prova defeito no Pixel.', es: 'Una diferencia de conteo no prueba un defecto en el Pixel.' } },
+          { certa: false, txt: { pt: '“Use só o maior número.”', es: '“Usa solo el número mayor.”' }, fb: { pt: 'Escolher o mais bonito não é método.', es: 'Elegir el más bonito no es un método.' } },
+          { certa: false, txt: { pt: '“Ignore o Gerenciador de Eventos.”', es: '“Ignora el Administrador de eventos.”' }, fb: { pt: 'Ele serve para checar se o Pixel envia os eventos.', es: 'Sirve para comprobar si el Pixel envía los eventos.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Em qual tela o cliente viu cada número? Qual período usou em cada uma?', es: '¿En qué pantalla vio el cliente cada número? ¿Qué período usó en cada una?' },
+          { pt: 'Qual é a configuração de atribuição (coluna do relatório)?', es: '¿Cuál es la configuración de atribución (columna del informe)?' }],
+        conferir: [{ pt: 'Relatórios de Anúncios › coluna Configuração de atribuição e período.', es: 'Informes de anuncios › columna Configuración de atribución y período.' },
+          { pt: 'Gerenciador de Eventos: período e eventos recebidos.', es: 'Administrador de eventos: período y eventos recibidos.' }],
+        frase: { pt: 'Cada tela conta de um jeito, então os números nem sempre batem. Vamos comparar o período e a janela de atribuição das duas telas.', es: 'Cada pantalla cuenta de una forma, así que los números no siempre coinciden. Comparemos el período y la ventana de atribución de las dos pantallas.' },
+        passos: [{ pt: 'Coloque as duas telas no mesmo período.', es: 'Pon las dos pantallas en el mismo período.' },
+          { pt: 'Veja a Configuração de atribuição e compare de novo.', es: 'Mira la Configuración de atribución y compara de nuevo.' }],
+        encaminhar: { pt: 'Se a diferença continuar grande mesmo com período e janela iguais, siga a Central de Ajuda da Meta sobre diferenças de contagem de eventos.', es: 'Si la diferencia sigue siendo grande aun con período y ventana iguales, sigue el Centro de ayuda de Meta sobre diferencias de conteo de eventos.' }
+      }
+    },
+    {
+      id: '02', min: 7, status: 'pronta',
+      titulo: { pt: 'Ler o relatório: alcance, impressões, gasto', es: 'Leer el informe: alcance, impresiones, gasto' },
+      antes: { pt: 'A Marina abriu os Relatórios de Anúncios pela primeira vez.', es: 'Marina abrió los Informes de anuncios por primera vez.' },
+      gancho: { pt: '“Tem 69, 71, 1,03… o que significa cada número?” Vamos ler a tabela com os números reais do anúncio de teste.', es: '“Hay 69, 71, 1,03… ¿qué significa cada número?” Vamos a leer la tabla con los números reales del anuncio de prueba.' },
+      objetivo: { pt: 'Ler as colunas padrão (Alcance, Impressões, Frequência, Valor gasto, Configuração de atribuição) e o efeito do período.', es: 'Leer las columnas predeterminadas (Alcance, Impresiones, Frecuencia, Monto gastado, Configuración de atribución) y el efecto del período.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'O relatório mostra Alcance 69, Impressões 71 e Frequência 1,03. Parece difícil! 😅', es: 'El informe muestra Alcance 69, Impresiones 71 y Frecuencia 1,03. ¡Parece difícil! 😅' }],
+          ['rafa', { pt: 'Alcance é quantas pessoas viram: 69. Impressões é quantas vezes o anúncio apareceu: 71. A Frequência é a média: 71 ÷ 69 = 1,03, quase uma vez por pessoa.', es: 'Alcance es cuántas personas vieron: 69. Impresiones es cuántas veces apareció el anuncio: 71. La Frecuencia es el promedio: 71 ÷ 69 = 1,03, casi una vez por persona.' }],
+          ['marina', { pt: 'E o Valor gasto, R$ 2,77? Eu coloquei R$ 5,27 por dia!', es: '¿Y el Monto gastado, R$ 2,77? ¡Yo puse R$ 5,27 por día!' }],
+          ['rafa', { pt: 'R$ 5,27 era o orçamento, o limite. O Valor gasto é o que foi cobrado de verdade: R$ 2,77.', es: 'R$ 5,27 era el presupuesto, el límite. El Monto gastado es lo que se cobró de verdad: R$ 2,77.' }],
+          ['pixel', { pt: 'E repare que o relatório mostra um período (aqui, Este mês). Troque o período e os números mudam, se houve atividade.', es: 'Y fíjate que el informe muestra un período (aquí, Este mes). Cambia el período y los números cambian, si hubo actividad.' }]
+        ],
+        pontos: [
+          { pt: '<b>Alcance</b> = pessoas. <b>Impressões</b> = vezes. <b>Frequência</b> = impressões ÷ alcance.', es: '<b>Alcance</b> = personas. <b>Impresiones</b> = veces. <b>Frecuencia</b> = impresiones ÷ alcance.' },
+          { pt: '<b>Valor gasto</b> = o que foi cobrado, não o orçamento.', es: '<b>Monto gastado</b> = lo que se cobró, no el presupuesto.' },
+          { pt: '<b>Sempre olhe o período</b> e a configuração de atribuição.', es: '<b>Siempre mira el período</b> y la configuración de atribución.' }
+        ],
+        notas: { pt: 'Linha e linha de total vistas de verdade em 16/10/2026 (conta de aula): Alcance 69 (rótulo “Contas Meta”), Impressões 71 (“Total”), Frequência 1,03 (“Por Conta Meta”), Valor gasto R$ 2,77 (“Total usado”) e atribuição “Clique de 7 dias ou visualização de 1 dias”.', es: 'Fila y fila de total vistas de verdad el 16/10/2026 (cuenta de práctica): Alcance 69 (etiqueta “Cuentas de Meta”), Impresiones 71 (“Total”), Frecuencia 1,03 (“Por cuenta de Meta”), Monto gastado R$ 2,77 (“Gasto total”) y atribución “7 días tras clic o 1 días tras visualización”.' }
+      },
+      ferramenta: 'ler-numeros',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia pela tabela com os números reais do anúncio de teste e mostra o efeito do período.', es: 'En el simulador, el Pixel te guía por la tabla con los números reales del anuncio de prueba y muestra el efecto del período.' },
+        tour: 'ler-relatorio', pagina: 'meta-relatorios.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Meu relatório diz que gastei R$ 2,77, mas eu defini R$ 5,27 por dia! A Meta ficou com a diferença? 😡', es: '¡Mi informe dice que gasté R$ 2,77, pero definí R$ 5,27 por día! ¿Meta se quedó con la diferencia? 😡' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Ninguém ficou com a diferença: R$ 5,27 é o limite que você definiu, e o Valor gasto é o que foi realmente cobrado, R$ 2,77. É normal gastar menos que o orçamento.”', es: '“Nadie se quedó con la diferencia: R$ 5,27 es el límite que definiste, y el Monto gastado es lo que realmente se cobró, R$ 2,77. Es normal gastar menos que el presupuesto.”' }, fb: { pt: 'Isso! Diferenciou orçamento de gasto.', es: '¡Eso! Diferenciaste presupuesto de gasto.' } },
+          { certa: false, txt: { pt: '“É uma taxa da Meta.”', es: '“Es una tarifa de Meta.”' }, fb: { pt: 'Não é taxa: é só gasto menor que o limite.', es: 'No es tarifa: es solo gasto menor que el límite.' } },
+          { certa: false, txt: { pt: '“O relatório está com defeito.”', es: '“El informe tiene un defecto.”' }, fb: { pt: 'Sem sinal de defeito: orçamento e gasto são coisas diferentes.', es: 'Sin señal de defecto: presupuesto y gasto son cosas distintas.' } },
+          { certa: false, txt: { pt: '“Peça reembolso da diferença.”', es: '“Pide reembolso de la diferencia.”' }, fb: { pt: 'Não há nada a reembolsar: ela só foi cobrada pelo que gastou.', es: 'No hay nada que reembolsar: solo se le cobró lo que gastó.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual período o relatório mostra?', es: '¿Qué período muestra el informe?' },
+          { pt: 'O cliente está comparando orçamento com Valor gasto?', es: '¿El cliente está comparando presupuesto con Monto gastado?' }],
+        conferir: [{ pt: 'Colunas Alcance, Impressões, Frequência e Valor gasto, e a linha Total.', es: 'Columnas Alcance, Impresiones, Frecuencia y Monto gastado, y la fila Total.' },
+          { pt: 'Período do relatório.', es: 'Período del informe.' }],
+        frase: { pt: 'Alcance conta pessoas, Impressões conta vezes, e o Valor gasto é o que foi realmente cobrado, que pode ser menos que o orçamento. Vamos olhar o período do relatório.', es: 'Alcance cuenta personas, Impresiones cuenta veces, y el Monto gastado es lo que realmente se cobró, que puede ser menos que el presupuesto. Veamos el período del informe.' },
+        passos: [{ pt: 'Abra o relatório e confira o período.', es: 'Abre el informe y revisa el período.' },
+          { pt: 'Leia as colunas e a linha Total.', es: 'Lee las columnas y la fila Total.' }],
+        encaminhar: { pt: 'Se houver cobrança que o cliente não reconhece, o assunto é de pagamento: confirme o que a tela mostra e siga a Central de Ajuda da Meta; reembolsos são tratados por outra área.', es: 'Si hay un cobro que el cliente no reconoce, el tema es de pagos: confirma lo que muestra la pantalla y sigue el Centro de ayuda de Meta; los reembolsos los trata otra área.' }
+      }
+    },
+    {
+      id: '03', min: 9, status: 'pronta',
+      titulo: { pt: 'Montar o seu relatório', es: 'Armar tu informe' },
+      antes: { pt: 'A Marina sabe ler a tabela padrão, mas quer mais detalhe.', es: 'Marina sabe leer la tabla predeterminada, pero quiere más detalle.' },
+      gancho: { pt: '“Quero ver por campanha e por plataforma, com cliques e compras!” Isso se monta em Personalizar.', es: '“¡Quiero ver por campaña y por plataforma, con clics y compras!” Eso se arma en Personalizar.' },
+      objetivo: { pt: 'Usar Personalizar para escolher detalhamentos (como dividir) e métricas (os números), e salvar o relatório.', es: 'Usar Personalizar para elegir desgloses (cómo dividir) y métricas (los números), y guardar el informe.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Como eu mudo as colunas do relatório? 🤔', es: '¿Cómo cambio las columnas del informe? 🤔' }],
+          ['rafa', { pt: 'Clique em Personalizar. Abre o painel “Personalizar tabela dinâmica” com duas abas: Detalhamentos e Métricas.', es: 'Haz clic en Personalizar. Se abre el panel “Personalizar tabla dinámica” con dos pestañas: Desgloses y Métricas.' }],
+          ['marina', { pt: 'E qual a diferença?', es: '¿Y cuál es la diferencia?' }],
+          ['rafa', { pt: 'Detalhamento é como o relatório divide os números: por nome da campanha, do conjunto, do anúncio, idade, gênero, país, plataforma, posicionamento, dia, mês. Métrica é o número: valor gasto, impressões, cliques no link, compras, CPM, CTR…', es: 'Desglose es cómo el informe divide los números: por nombre de la campaña, del conjunto, del anuncio, edad, sexo, país, plataforma, ubicación, día, mes. Métrica es el número: monto gastado, impresiones, clics en el enlace, compras, CPM, CTR…' }],
+          ['pixel', { pt: 'Alguns detalhamentos, como Hora do dia, só estão disponíveis para os últimos 13 meses. E o botão Salvar guarda o relatório para você voltar depois.', es: 'Algunos desgloses, como Hora, solo están disponibles para los últimos 13 meses. Y el botón Guardar guarda el informe para que vuelvas después.' }]
+        ],
+        pontos: [
+          { pt: '<b>Detalhamentos</b> dividem (campanha, idade, plataforma, posicionamento, dia…).', es: '<b>Los desgloses</b> dividen (campaña, edad, plataforma, ubicación, día…).' },
+          { pt: '<b>Métricas</b> são os números (valor gasto, cliques no link, compras, CPM, CTR…).', es: '<b>Las métricas</b> son los números (monto gastado, clics en el enlace, compras, CPM, CTR…).' },
+          { pt: '<b>Salvar</b> guarda o relatório; <b>Exportar</b> e <b>Compartilhar</b> levam para fora.', es: '<b>Guardar</b> guarda el informe; <b>Exportar</b> y <b>Compartir</b> lo llevan afuera.' }
+        ],
+        notas: { pt: 'Painel Personalizar tabela dinâmica visto de verdade em 16/10/2026 em português e espanhol (abas Detalhamentos e Métricas, listas populares e grupos; “Disponível para os últimos 13 meses”). O simulador combina um nível com um detalhamento por vez e usa dados inventados para as divisões; o que acontece ao clicar em Salvar não foi visto (a conferir).', es: 'Panel Personalizar tabla dinámica visto de verdad el 16/10/2026 en portugués y español (pestañas Desgloses y Métricas, listas populares y grupos; “Disponibles para los últimos 13 meses”). El simulador combina un nivel con un desglose a la vez y usa datos inventados para las divisiones; lo que pasa al hacer clic en Guardar no se vio (por confirmar).' }
+      },
+      ferramenta: 'detalhe-ou-metrica',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para adicionar os detalhamentos Campanha e Plataforma e as métricas Cliques no link e Compras.', es: 'En el simulador, el Pixel te guía para agregar los desgloses Campaña y Plataforma y las métricas Clics en el enlace y Compras.' },
+        tour: 'montar-relatorio', pagina: 'meta-relatorios.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Quero um relatório do que cada plataforma gastou e vendeu, mas só vejo uma linha com tudo junto! 😩', es: '¡Quiero un informe de lo que gastó y vendió cada plataforma, pero solo veo una fila con todo junto! 😩' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“A tabela está sem divisão. Clique em Personalizar e, na aba Detalhamentos, marque Plataforma; depois, na aba Métricas, deixe Valor gasto e Compras marcados. Aí aparece uma linha por plataforma.”', es: '“La tabla está sin división. Haz clic en Personalizar y, en la pestaña Desgloses, marca Plataforma; después, en la pestaña Métricas, deja Monto gastado y Compras marcados. Ahí aparece una fila por plataforma.”' }, fb: { pt: 'Isso! Detalhamento para dividir, métricas para os números.', es: '¡Eso! Desglose para dividir, métricas para los números.' } },
+          { certa: false, txt: { pt: '“Crie uma campanha para cada plataforma.”', es: '“Crea una campaña para cada plataforma.”' }, fb: { pt: 'Não precisa mexer nas campanhas: é só dividir o relatório.', es: 'No hace falta tocar las campañas: solo hay que dividir el informe.' } },
+          { certa: false, txt: { pt: '“Esse relatório só mostra tudo junto.”', es: '“Ese informe solo muestra todo junto.”' }, fb: { pt: 'Mostra por plataforma, com o detalhamento certo.', es: 'Muestra por plataforma, con el desglose correcto.' } },
+          { certa: false, txt: { pt: '“Exporte e separe no Excel.”', es: '“Exporta y separa en Excel.”' }, fb: { pt: 'O próprio relatório já divide: basta o detalhamento.', es: 'El propio informe ya divide: basta el desglose.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Como o cliente quer dividir os números (campanha, idade, plataforma, dia…)?', es: '¿Cómo quiere el cliente dividir los números (campaña, edad, plataforma, día…)?' },
+          { pt: 'Quais números ele quer ver (gasto, cliques, compras…)?', es: '¿Qué números quiere ver (gasto, clics, compras…)?' }],
+        conferir: [{ pt: 'Personalizar › Detalhamentos e Métricas marcados.', es: 'Personalizar › Desgloses y Métricas marcados.' },
+          { pt: 'Período e filtro Teve veiculação.', es: 'Período y filtro Con entrega.' }],
+        frase: { pt: 'Em Personalizar, a aba Detalhamentos define como dividir e a aba Métricas define os números. Vamos marcar o que você quer ver.', es: 'En Personalizar, la pestaña Desgloses define cómo dividir y la pestaña Métricas define los números. Marquemos lo que quieres ver.' },
+        passos: [{ pt: 'Clique em Personalizar e marque os detalhamentos.', es: 'Haz clic en Personalizar y marca los desgloses.' },
+          { pt: 'Na aba Métricas, marque os números e feche o painel.', es: 'En la pestaña Métricas, marca los números y cierra el panel.' }],
+        encaminhar: { pt: 'Se uma métrica que o cliente quer não aparece na lista, confira o objetivo da campanha (a métrica certa depende dele) e siga a Central de Ajuda da Meta.', es: 'Si una métrica que quiere el cliente no aparece en la lista, revisa el objetivo de la campaña (la métrica correcta depende de él) y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '04', min: 8, status: 'pronta',
+      titulo: { pt: 'Atribuição: de onde vêm as compras', es: 'Atribución: de dónde vienen las compras' },
+      antes: { pt: 'A Marina montou o relatório e viu 14 compras numa campanha de exemplo.', es: 'Marina armó el informe y vio 14 compras en una campaña de ejemplo.' },
+      gancho: { pt: '“De onde saíram essas 14 compras? Um amigo viu 8 na tela dele!” A resposta está na janela de atribuição.', es: '“¿De dónde salieron esas 14 compras? ¡Un amigo vio 8 en su pantalla!” La respuesta está en la ventana de atribución.' },
+      objetivo: { pt: 'Entender a Configuração de atribuição (como uma compra é contada para o anúncio) e por que só se compara igual com igual.', es: 'Entender la Configuración de atribución (cómo se cuenta una compra para el anuncio) y por qué solo se compara igual con igual.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Tem uma coluna “Configuração de atribuição” com “Clique de 7 dias ou visualização de 1 dia”. O que é isso? 🤔', es: 'Hay una columna “Configuración de atribución” con “7 días tras clic o 1 día tras visualización”. ¿Qué es eso? 🤔' }],
+          ['rafa', { pt: 'Pela Central de Ajuda: ações dentro do anúncio, como impressões e cliques no link, a Meta conta direto. Ações fora do anúncio, como uma compra no site, são atribuídas ao anúncio se acontecerem em um número de dias.', es: 'Según el Centro de ayuda: las acciones dentro del anuncio, como impresiones y clics en el enlace, Meta las cuenta directo. Las acciones fuera del anuncio, como una compra en el sitio, se atribuyen al anuncio si ocurren en un número de días.' }],
+          ['marina', { pt: 'E onde se define esse número de dias?', es: '¿Y dónde se define ese número de días?' }],
+          ['rafa', { pt: 'Por padrão, a configuração de atribuição é do conjunto de anúncios. Na tela vem “Clique de 7 dias ou visualização de 1 dia”: conta a compra até 7 dias depois de um clique, ou 1 dia depois de só ver o anúncio.', es: 'De forma predeterminada, la configuración de atribución es del conjunto de anuncios. En la pantalla viene “7 días tras clic o 1 día tras visualización”: cuenta la compra hasta 7 días después de un clic, o 1 día después de solo ver el anuncio.' }],
+          ['pixel', { pt: 'Por isso, janela diferente dá número diferente. Duas telas só são comparáveis com a mesma janela e o mesmo período.', es: 'Por eso, ventana distinta da número distinto. Dos pantallas solo son comparables con la misma ventana y el mismo período.' }]
+        ],
+        pontos: [
+          { pt: '<b>No anúncio:</b> impressões, cliques, visualizações: contadas direto.', es: '<b>En el anuncio:</b> impresiones, clics, reproducciones: contadas directo.' },
+          { pt: '<b>Fora do anúncio</b> (compra no site): atribuída por uma janela de dias.', es: '<b>Fuera del anuncio</b> (compra en el sitio): atribuida por una ventana de días.' },
+          { pt: '<b>Comparar:</b> mesma janela e mesmo período.', es: '<b>Comparar:</b> misma ventana y mismo período.' }
+        ],
+        notas: { pt: 'Coluna Configuração de atribuição vista de verdade em 16/10/2026. As regras (ações no anúncio × fora do anúncio; atribuição definida no conjunto) vêm da Central de Ajuda da Meta, “Sobre o sistema de atribuição do Facebook”, lida em 16/10/2026. A troca de janela dentro do relatório e os números da campanha de exemplo são do simulador (a conferir). Os efeitos das mudanças de privacidade (como as do iOS) sobre os relatórios não foram lidos nesta aula (a conferir).', es: 'Columna Configuración de atribución vista de verdad el 16/10/2026. Las reglas (acciones en el anuncio × fuera del anuncio; atribución definida en el conjunto) vienen del Centro de ayuda de Meta, “Acerca del sistema de atribución de Facebook”, leído el 16/10/2026. El cambio de ventana dentro del informe y los números de la campaña de ejemplo son del simulador (por confirmar). Los efectos de los cambios de privacidad (como los de iOS) sobre los informes no se leyeron en esta clase (por confirmar).' }
+      },
+      ferramenta: 'janela-atribuicao',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva pela coluna de atribuição e troca a janela para “Clique de 1 dia”, para você ver as compras mudarem.', es: 'En el simulador, el Pixel te lleva por la columna de atribución y cambia la ventana a “1 día tras clic”, para que veas cambiar las compras.' },
+        tour: 'comparar-atribuicao', pagina: 'meta-relatorios.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Meu relatório mostra 14 compras e o do meu sócio, 8, da mesma campanha. Um de nós está errado! 😤', es: '¡Mi informe muestra 14 compras y el de mi socio, 8, de la misma campaña. ¡Uno de nosotros está equivocado! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Provavelmente nenhum dos dois: confira a coluna Configuração de atribuição de cada relatório. Se uma tela usa clique de 7 dias ou visualização de 1 dia e a outra só clique de 1 dia, os números diferem. Coloquem a mesma janela e o mesmo período.”', es: '“Probablemente ninguno de los dos: revisen la columna Configuración de atribución de cada informe. Si una pantalla usa 7 días tras clic o 1 día tras visualización y la otra solo 1 día tras clic, los números difieren. Pongan la misma ventana y el mismo período.”' }, fb: { pt: 'Isso! Achou a causa mais provável.', es: '¡Eso! Encontraste la causa más probable.' } },
+          { certa: false, txt: { pt: '“O relatório do seu sócio está errado.”', es: '“El informe de tu socio está equivocado.”' }, fb: { pt: 'Não dá para dizer sem comparar as janelas.', es: 'No se puede decir sin comparar las ventanas.' } },
+          { certa: false, txt: { pt: '“A Meta conta compras ao acaso.”', es: '“Meta cuenta compras al azar.”' }, fb: { pt: 'Há uma regra de contagem: a janela de atribuição.', es: 'Hay una regla de conteo: la ventana de atribución.' } },
+          { certa: false, txt: { pt: '“Some os dois números.”', es: '“Suma los dos números.”' }, fb: { pt: 'Somar contaria as mesmas compras duas vezes.', es: 'Sumar contaría las mismas compras dos veces.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual é a Configuração de atribuição em cada relatório?', es: '¿Cuál es la Configuración de atribución en cada informe?' },
+          { pt: 'Os dois estão no mesmo período?', es: '¿Los dos están en el mismo período?' }],
+        conferir: [{ pt: 'Coluna Configuração de atribuição de cada tela.', es: 'Columna Configuración de atribución de cada pantalla.' },
+          { pt: 'Período de cada tela.', es: 'Período de cada pantalla.' }],
+        frase: { pt: 'Compras são atribuídas ao anúncio dentro de uma janela de dias. Se as janelas ou os períodos são diferentes, os números diferem. Vamos igualar os dois.', es: 'Las compras se atribuyen al anuncio dentro de una ventana de días. Si las ventanas o los períodos son distintos, los números difieren. Igualemos los dos.' },
+        passos: [{ pt: 'Veja a coluna Configuração de atribuição nos dois relatórios.', es: 'Mira la columna Configuración de atribución en los dos informes.' },
+          { pt: 'Igualar janela e período e comparar de novo.', es: 'Igualar ventana y período y comparar de nuevo.' }],
+        encaminhar: { pt: 'Se mesmo com janela e período iguais os números continuam muito diferentes, siga a Central de Ajuda da Meta sobre diferenças de contagem; efeitos de mudanças de privacidade nos relatórios ficam para a Central de Ajuda.', es: 'Si aun con ventana y período iguales los números siguen siendo muy distintos, sigue el Centro de ayuda de Meta sobre diferencias de conteo; los efectos de cambios de privacidad en los informes se consultan en el Centro de ayuda.' }
+      }
+    },
+    {
+      id: '05', min: 7, status: 'pronta',
+      titulo: { pt: 'Relatório vazio, zerado ou diferente', es: 'Informe vacío, en cero o distinto' },
+      antes: { pt: 'A Marina já lê, monta e compara relatórios. Um dia, a tela amanhece vazia.', es: 'Marina ya lee, arma y compara informes. Un día, la pantalla amanece vacía.' },
+      gancho: { pt: '“Meu relatório sumiu! Está tudo vazio!” Quase nunca é defeito: costuma ser período ou filtro.', es: '“¡Mi informe desapareció! ¡Está todo vacío!” Casi nunca es un defecto: suele ser período o filtro.' },
+      objetivo: { pt: 'Diagnosticar relatório vazio ou zerado: período, filtro Teve veiculação, objetivo da campanha.', es: 'Diagnosticar informe vacío o en cero: período, filtro Con entrega, objetivo de la campaña.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Abri o relatório e diz “Nenhuma atividade durante o intervalo de datas selecionado”. Perdi tudo? 😱', es: 'Abrí el informe y dice “Ninguna actividad durante el intervalo de fechas seleccionado”. ¿Perdí todo? 😱' }],
+          ['rafa', { pt: 'Calma. A própria tela sugere: selecione um intervalo de datas diferente. Olhe o período: se estiver em Hoje e o anúncio rodou ontem, não há atividade hoje.', es: 'Calma. La propia pantalla sugiere: selecciona un intervalo de fechas diferente. Mira el período: si está en Hoy y el anuncio corrió ayer, no hay actividad hoy.' }],
+          ['marina', { pt: 'E se a conta aparece sumida?', es: '¿Y si la cuenta aparece desaparecida?' }],
+          ['rafa', { pt: 'Veja o filtro Teve veiculação: ele esconde contas sem atividade. Desmarque para ver a conta com zeros.', es: 'Mira el filtro Con entrega: oculta cuentas sin actividad. Desmárcalo para ver la cuenta con ceros.' }],
+          ['pixel', { pt: 'E zero em Compras numa campanha de engajamento é normal: a métrica certa depende do objetivo. Para anúncio sem dados, a Central de Ajuda tem um artigo próprio.', es: 'Y cero en Compras en una campaña de interacción es normal: la métrica correcta depende del objetivo. Para un anuncio sin datos, el Centro de ayuda tiene un artículo propio.' }]
+        ],
+        pontos: [
+          { pt: '<b>Vazio:</b> confira o período e clique em Alterar data.', es: '<b>Vacío:</b> revisa el período y haz clic en Cambiar fecha.' },
+          { pt: '<b>Conta sumida:</b> filtro Teve veiculação.', es: '<b>Cuenta desaparecida:</b> filtro Con entrega.' },
+          { pt: '<b>Zero numa métrica:</b> veja o objetivo da campanha e se houve atividade.', es: '<b>Cero en una métrica:</b> mira el objetivo de la campaña y si hubo actividad.' }
+        ],
+        notas: { pt: 'Tela vazia (“Nenhuma atividade durante o intervalo de datas selecionado”, Alterar data) e filtro Teve veiculação vistos de verdade em 15–16/10/2026. No simulador, Alterar data passa direto para Últimos 30 dias; na tela real escolhe-se o intervalo (a conferir). Existe um artigo da Central de Ajuda sobre anúncios sem dados, não lido (a conferir).', es: 'Pantalla vacía (“Ninguna actividad durante el intervalo de fechas seleccionado”, Cambiar fecha) y filtro Con entrega vistos de verdad el 15–16/10/2026. En el simulador, Cambiar fecha pasa directo a Últimos 30 días; en la pantalla real se elige el intervalo (por confirmar). Existe un artículo del Centro de ayuda sobre anuncios sin datos, no leído (por confirmar).' }
+      },
+      ferramenta: 'por-que-vazio',
+      praticar: {
+        texto: { pt: 'No simulador, o relatório amanhece vazio. O Pixel te guia: achar o período certo e entender o filtro Teve veiculação.', es: 'En el simulador, el informe amanece vacío. El Pixel te guía: encontrar el período correcto y entender el filtro Con entrega.' },
+        tour: 'relatorio-vazio', pagina: 'meta-relatorios.html?vazio=1'
+      },
+      atender: {
+        cena: { pt: 'Meu relatório está todo vazio! Perdi meus dados! Quero que a Meta restaure agora! 😭', es: '¡Mi informe está todo vacío! ¡Perdí mis datos! ¡Quiero que Meta los restaure ahora! 😭' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Seus dados não sumiram. A tela diz que não há atividade no intervalo de datas escolhido. Vamos olhar o período no topo e clicar em Alterar data; se a conta ainda não aparecer, vemos o filtro Teve veiculação.”', es: '“Tus datos no desaparecieron. La pantalla dice que no hay actividad en el intervalo de fechas elegido. Miremos el período arriba y hagamos clic en Cambiar fecha; si la cuenta aún no aparece, vemos el filtro Con entrega.”' }, fb: { pt: 'Isso! Tranquilizou e deu o caminho.', es: '¡Eso! Tranquilizaste y diste el camino.' } },
+          { certa: false, txt: { pt: '“Abra um chamado para restaurar os dados.”', es: '“Abre un caso para restaurar los datos.”' }, fb: { pt: 'Não há dados perdidos: antes de chamado, confira o período.', es: 'No hay datos perdidos: antes de un caso, revisa el período.' } },
+          { certa: false, txt: { pt: '“Recrie o relatório do zero.”', es: '“Recrea el informe desde cero.”' }, fb: { pt: 'Não resolve: o período continuaria igual.', es: 'No resuelve: el período seguiría igual.' } },
+          { certa: false, txt: { pt: '“Sua conta foi apagada.”', es: '“Tu cuenta fue eliminada.”' }, fb: { pt: 'Não: o relatório só não tem atividade naquele período.', es: 'No: el informe solo no tiene actividad en ese período.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual período está no relatório? O anúncio rodou nesse período?', es: '¿Qué período está en el informe? ¿El anuncio corrió en ese período?' },
+          { pt: 'O filtro Teve veiculação está ligado?', es: '¿El filtro Con entrega está activado?' },
+          { pt: 'O que a campanha busca (objetivo)? A métrica que falta é do objetivo dela?', es: '¿Qué busca la campaña (objetivo)? ¿La métrica que falta es de su objetivo?' }],
+        conferir: [{ pt: 'Período no topo e botão Alterar data.', es: 'Período arriba y botón Cambiar fecha.' },
+          { pt: 'Filtro Teve veiculação.', es: 'Filtro Con entrega.' }],
+        frase: { pt: 'Quando o relatório aparece vazio, quase sempre é o período ou o filtro. Vamos mudar o intervalo de datas e olhar o filtro Teve veiculação.', es: 'Cuando el informe aparece vacío, casi siempre es el período o el filtro. Cambiemos el intervalo de fechas y miremos el filtro Con entrega.' },
+        passos: [{ pt: 'Clique em Alterar data e escolha um período em que o anúncio rodou.', es: 'Haz clic en Cambiar fecha y elige un período en que el anuncio corrió.' },
+          { pt: 'Se a conta sumir, desmarque Teve veiculação.', es: 'Si la cuenta desaparece, desmarca Con entrega.' }],
+        encaminhar: { pt: 'Se o anúncio rodou naquele período e mesmo assim não há dados, siga a Central de Ajuda da Meta sobre anúncios sem dados ou métricas.', es: 'Si el anuncio corrió en ese período y aun así no hay datos, sigue el Centro de ayuda de Meta sobre anuncios sin datos o métricas.' }
       }
     }
   ],

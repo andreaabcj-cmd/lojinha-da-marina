@@ -55,3 +55,8 @@ Leia nesta ordem:
 - Telas reais: página em PT e ES; a janela Criar regra só abriu em PT (em ES travou carregando), então os textos dela em espanhol seguem o padrão da Meta (a conferir). Lista exata de ações e métricas não vista (a conferir). Fontes: Central de Ajuda "Criar uma regra automatizada" (644860419002064) e "Editar ou excluir…" (1776994142531909). Dados do simulador (conjuntos, gastos) são inventados.
 - Correção geral: `<option>` agora tem `value` fixo (sim-feed, sim-regras, sim-catalogo), porque o tradutor ES trocava o texto e quebrava a lógica.
 - Próximo na ordem do Foco: Relatórios.
+
+## Relatórios (Foco) · 16/10/2026
+- Pronto em PT e ES: simulador `meta-relatorios.html` (Relatórios de Anúncios; os números da conta de aula são REAIS: 69/71/1,03/R$ 2,77; divisões, campanha de exemplo `?exemplo=1` e troca de janela de atribuição são inventadas), 4 tutoriais (`ler-relatorio`, `montar-relatorio`, `comparar-atribuicao`, `relatorio-vazio`), 5 aulas (`AULAS.relatorios`) e 5 quizzes (`onde-olhar`, `ler-numeros`, `detalhe-ou-metrica`, `janela-atribuicao`, `por-que-vazio`).
+- A conferir: Salvar/Exportar/Compartilhar, comparação real de janelas, efeitos de privacidade do iOS (nada lido ainda), conteúdo do artigo de diferenças de contagem.
+- Próximo na ordem do Foco: Segmentação (públicos).
