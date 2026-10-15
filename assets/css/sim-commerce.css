@@ -1,0 +1,8 @@
+/* Simulador do Gerenciador de Comércio · usa sim.css, sim-anuncios.css, sim-feed.css, sim-suite.css, sim-regras.css (tabela) */
+.vf-pas{display:flex;gap:6px;list-style:none;padding:0;margin:8px 0 14px;flex-wrap:wrap}
+.vf-pas li{padding:4px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--muted)}
+.vf-pas li.on{border-color:var(--ink);color:var(--ink);font-weight:700}.vf-pas li.ok{background:var(--green-l,#E6F7EE)}
+.vf-caixa{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0;background:#fff}
+.vf-req{list-style:none;padding:0}.vf-req li{padding:6px 0}.vf-req li.verm{color:#9B1240}.vf-req li.vd{color:#0b7a43}
+.ss-main ul.miudo{padding-left:18px}
+.ga-aviso.verm{border-color:var(--red);background:#fff7f9}

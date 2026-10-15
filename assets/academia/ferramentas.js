@@ -1224,6 +1224,78 @@
         [{ pt: 'Qualquer um, mesmo sem assinatura', es: 'Cualquiera, incluso sin suscripción' }, 0, { pt: 'O suporte otimizado vale só para assinatura ativa.', es: 'La asistencia mejorada vale solo para suscripción activa.' }]] }
   ]);
 
+  /* ---------- 22. Commerce (Gerenciador de Comércio): cinco mini-quizzes (Commerce 01–05) ---------- */
+  quizCatalogo('o-que-e-commerce', { pt: 'O que é o Commerce?', es: '¿Qué es Commerce?' }, { pt: 'Gerenciador de Comércio, loja e finalização da compra.', es: 'Administrador de ventas, tienda y finalización de compra.' }, [
+    { q: { pt: 'Para que serve o Gerenciador de Comércio?', es: '¿Para qué sirve el Administrador de ventas?' },
+      o: [[{ pt: 'Só para criar anúncios', es: 'Solo para crear anuncios' }, 0, { pt: 'Anúncios são no Gerenciador de Anúncios.', es: 'Los anuncios se hacen en el Administrador de anuncios.' }],
+        [{ pt: 'Para gerenciar catálogos, configurar uma loja e ver atividades de vendas no Facebook e no Instagram', es: 'Para gestionar catálogos, configurar una tienda y ver actividades de ventas en Facebook e Instagram' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Para pagar a conta de anúncios', es: 'Para pagar la cuenta publicitaria' }, 0, { pt: 'Pagamentos de anúncios são outra área.', es: 'Los pagos de anuncios son otra área.' }]] },
+    { q: { pt: 'Onde o cliente termina a compra numa loja da Meta?', es: '¿Dónde termina el cliente la compra en una tienda de Meta?' },
+      o: [[{ pt: 'Dentro do Instagram, pagando com cartão', es: 'Dentro de Instagram, pagando con tarjeta' }, 0, { pt: 'Isso foi descontinuado.', es: 'Eso fue discontinuado.' }],
+        [{ pt: 'No WhatsApp', es: 'En WhatsApp' }, 0, { pt: 'Não é o método das Lojas.', es: 'No es el método de las Tiendas.' }],
+        [{ pt: 'No site da empresa (finalização da compra no site)', es: 'En el sitio de la empresa (finalización de compra en el sitio)' }, 1, { pt: 'Isso! Desde setembro de 2025.', es: '¡Eso! Desde septiembre de 2025.' }]] },
+    { q: { pt: 'Para usar etiquetas de produto em posts e anúncios, é obrigatório ter uma loja?', es: 'Para usar etiquetas de producto en publicaciones y anuncios, ¿es obligatorio tener una tienda?' },
+      o: [[{ pt: 'Não: etiquetas de produto não exigem loja (os anúncios das Lojas, sim)', es: 'No: las etiquetas de producto no exigen tienda (los anuncios de Tiendas, sí)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Sim, sempre', es: 'Sí, siempre' }, 0, { pt: 'Não é obrigatório.', es: 'No es obligatorio.' }],
+        [{ pt: 'Só com Meta Verified', es: 'Solo con Meta Verified' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] }
+  ]);
+  quizCatalogo('criar-loja-q', { pt: 'Criando a loja', es: 'Creando la tienda' }, { pt: 'Etapas do assistente e o que checar antes.', es: 'Etapas del asistente y qué revisar antes.' }, [
+    { q: { pt: 'Quanto custa configurar uma loja no Facebook e no Instagram?', es: '¿Cuánto cuesta configurar una tienda en Facebook e Instagram?' },
+      o: [[{ pt: 'Uma taxa mensal', es: 'Una tasa mensual' }, 0, { pt: 'A tela diz que não custa nada.', es: 'La pantalla dice que no cuesta nada.' }],
+        [{ pt: 'Nada: configurar a loja não custa nada', es: 'Nada: configurar la tienda no cuesta nada' }, 1, { pt: 'Isso! Está escrito na tela real.', es: '¡Eso! Está escrito en la pantalla real.' }],
+        [{ pt: 'US$ 49,99', es: '49,99 USD' }, 0, { pt: 'Esse valor é de outro produto.', es: 'Ese valor es de otro producto.' }]] },
+    { q: { pt: 'Qual destas é uma plataforma de parceiro do assistente?', es: '¿Cuál de estas es una plataforma de un socio del asistente?' },
+      o: [[{ pt: 'Shopify', es: 'Shopify' }, 1, { pt: 'Isso! Também BigCommerce, Feedonomics, DataFeedWatch, Productsup e Magento.', es: '¡Eso! También BigCommerce, Feedonomics, DataFeedWatch, Productsup y Magento.' }],
+        [{ pt: 'Netflix', es: 'Netflix' }, 0, { pt: 'Não é de comércio.', es: 'No es de comercio.' }],
+        [{ pt: 'Google Maps', es: 'Google Maps' }, 0, { pt: 'Não é uma plataforma de loja.', es: 'No es una plataforma de tienda.' }]] },
+    { q: { pt: 'O que acontece ao clicar em “Concluir a configuração” na última tela?', es: '¿Qué pasa al hacer clic en “Finalizar la configuración” en la última pantalla?' },
+      o: [[{ pt: 'Nada, é só uma prévia', es: 'Nada, es solo una vista previa' }, 0, { pt: 'Ele envia a loja para análise.', es: 'Envía la tienda a revisión.' }],
+        [{ pt: 'A loja é enviada para análise e o Acordo do Vendedor é aceito', es: 'La tienda se envía a revisión y se acepta el Acuerdo para vendedores' }, 1, { pt: 'Isso! Por isso confira tudo antes.', es: '¡Eso! Por eso revisa todo antes.' }],
+        [{ pt: 'A loja é apagada', es: 'La tienda se elimina' }, 0, { pt: 'Não.', es: 'No.' }]] }
+  ]);
+  quizCatalogo('configurar-loja-q', { pt: 'Configurar e publicar', es: 'Configurar y publicar' }, { pt: 'Análise, perfil de envio e URL de finalização da compra.', es: 'Revisión, perfil de envío y URL de finalización de compra.' }, [
+    { q: { pt: 'Quanto pode levar a análise da loja?', es: '¿Cuánto puede tardar la revisión de la tienda?' },
+      o: [[{ pt: 'Até quatro semanas', es: 'Hasta cuatro semanas' }, 1, { pt: 'Isso! O status é atualizado no Gerenciador de Comércio.', es: '¡Eso! El estado se actualiza en el Administrador de ventas.' }],
+        [{ pt: 'Sempre 1 hora', es: 'Siempre 1 hora' }, 0, { pt: 'Pode levar semanas.', es: 'Puede tardar semanas.' }],
+        [{ pt: 'Não há análise', es: 'No hay revisión' }, 0, { pt: 'Há análise.', es: 'Hay revisión.' }]] },
+    { q: { pt: 'Por que a loja não fica visível mesmo aprovada?', es: '¿Por qué la tienda no queda visible aunque esté aprobada?' },
+      o: [[{ pt: 'Porque falta o URL de finalização da compra', es: 'Porque falta la URL de finalización de compra' }, 1, { pt: 'Isso! É obrigatório para a loja ficar visível.', es: '¡Eso! Es obligatoria para que la tienda sea visible.' }],
+        [{ pt: 'Porque o Instagram está lento', es: 'Porque Instagram está lento' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Porque faltam seguidores', es: 'Porque faltan seguidores' }, 0, { pt: 'Não é isso nessa etapa.', es: 'No es eso en esta etapa.' }]] },
+    { q: { pt: 'No perfil de envio, o que é exigido?', es: 'En el perfil de envío, ¿qué se exige?' },
+      o: [[{ pt: 'Pelo menos um tipo de prazo de entrega', es: 'Al menos un tipo de plazo de entrega' }, 1, { pt: 'Isso! Padrão 5–8 dias, rápido 3–5, expresso 2–3.', es: '¡Eso! Estándar 5–8 días, rápido 3–5, exprés 2–3.' }],
+        [{ pt: 'Nenhum prazo', es: 'Ningún plazo' }, 0, { pt: 'É preciso pelo menos um.', es: 'Se necesita al menos uno.' }],
+        [{ pt: 'Fotos de cada pacote', es: 'Fotos de cada paquete' }, 0, { pt: 'Não é pedido.', es: 'No se pide.' }]] }
+  ]);
+  quizCatalogo('loja-nao-aparece-q', { pt: 'Por que a loja não aparece?', es: '¿Por qué la tienda no aparece?' }, { pt: 'Requisitos, domínio e ordem de conferência.', es: 'Requisitos, dominio y orden de revisión.' }, [
+    { q: { pt: 'Quantos são os requisitos de qualificação para comércio?', es: '¿Cuántos son los requisitos de calificación para comercio?' },
+      o: [[{ pt: 'Cinco: políticas, empresa e domínio, país compatível, confiabilidade e informações precisas', es: 'Cinco: políticas, empresa y dominio, país compatible, confiabilidad e información precisa' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nenhum', es: 'Ninguno' }, 0, { pt: 'Há cinco.', es: 'Hay cinco.' }],
+        [{ pt: 'Só um: pagar', es: 'Solo uno: pagar' }, 0, { pt: 'Não é por pagamento.', es: 'No es por pago.' }]] },
+    { q: { pt: 'Sobre o domínio da loja, o que a Meta pede?', es: 'Sobre el dominio de la tienda, ¿qué pide Meta?' },
+      o: [[{ pt: 'Qualquer link encurtado', es: 'Cualquier enlace acortado' }, 0, { pt: 'Encurtadores não são aceitos.', es: 'Los acortadores no se aceptan.' }],
+        [{ pt: 'Vários domínios, sem verificação', es: 'Varios dominios, sin verificación' }, 0, { pt: 'É um domínio só.', es: 'Es un solo dominio.' }],
+        [{ pt: 'Um único domínio, sem encurtadores; pode pedir verificação de domínio', es: 'Un único dominio, sin acortadores; puede pedir verificación de dominio' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] },
+    { q: { pt: 'Qual é a melhor ordem de conferência quando a loja não aparece?', es: '¿Cuál es el mejor orden de revisión cuando la tienda no aparece?' },
+      o: [[{ pt: 'Requisitos, análise, perfil de envio, URL de finalização da compra e só então publicar', es: 'Requisitos, revisión, perfil de envío, URL de finalización de compra y solo entonces publicar' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Apagar a loja e criar de novo', es: 'Eliminar la tienda y crearla de nuevo' }, 0, { pt: 'Antes confira os requisitos.', es: 'Antes revisa los requisitos.' }],
+        [{ pt: 'Comprar mais anúncios', es: 'Comprar más anuncios' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] }
+  ]);
+  quizCatalogo('mudancas-checkout-q', { pt: 'Descontinuado ou continua?', es: '¿Discontinuado o continúa?' }, { pt: 'O que mudou com a finalização da compra no site.', es: 'Qué cambió con la finalización de compra en el sitio.' }, [
+    { q: { pt: 'Qual destes foi descontinuado nas Lojas?', es: '¿Cuál de estos fue discontinuado en las Tiendas?' },
+      o: [[{ pt: 'As coleções da loja', es: 'Las colecciones de la tienda' }, 0, { pt: 'Coleções continuam.', es: 'Las colecciones continúan.' }],
+        [{ pt: 'O gerenciamento de pedidos novos no Gerenciador de Comércio', es: 'La gestión de pedidos nuevos en el Administrador de ventas' }, 1, { pt: 'Isso! Agora é no site.', es: '¡Eso! Ahora es en el sitio.' }],
+        [{ pt: 'O catálogo de produtos', es: 'El catálogo de productos' }, 0, { pt: 'O catálogo continua.', es: 'El catálogo continúa.' }]] },
+    { q: { pt: 'Nos anúncios das Lojas, qual local da conversão usar agora?', es: 'En los anuncios de Tiendas, ¿qué lugar de conversión usar ahora?' },
+      o: [[{ pt: 'Site e loja', es: 'Sitio y tienda' }, 0, { pt: 'Esse local foi descontinuado.', es: 'Ese lugar fue discontinuado.' }],
+        [{ pt: 'Site, mantendo Lojas ativado em Destinos personalizados', es: 'Sitio, manteniendo Tiendas activado en Destinos personalizados' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Apenas Messenger', es: 'Solo Messenger' }, 0, { pt: 'Não é a orientação.', es: 'No es la orientación.' }]] },
+    { q: { pt: 'Depois da mudança, “compras na Meta” aparecem como 0. O que isso significa?', es: 'Después del cambio, “compras en Meta” aparecen como 0. ¿Qué significa?' },
+      o: [[{ pt: 'Que as vendas pararam', es: 'Que las ventas se detuvieron' }, 0, { pt: 'Não: as compras agora acontecem no site.', es: 'No: las compras ahora ocurren en el sitio.' }],
+        [{ pt: 'Que a métrica não se aplica mais; acompanhe Compras no site', es: 'Que la métrica ya no se aplica; sigue Compras en el sitio' }, 1, { pt: 'Isso! Dados antigos ficam por até 39 meses.', es: '¡Eso! Los datos antiguos se conservan hasta 39 meses.' }],
+        [{ pt: 'Que a conta foi bloqueada', es: 'Que la cuenta fue bloqueada' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

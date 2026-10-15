@@ -87,3 +87,12 @@ Leia nesta ordem:
 - NÃO visto (a conferir): as telas internas do fluxo (exigiria assinar; nada foi comprado); reembolsos, formas de pagamento e histórico (artigos não lidos); WhatsApp (fora do escopo desta versão). Preços em US$ variam por região. A página pública avisa que os recursos agora aparecem também no "Meta One" (não explorado).
 - INVENTADO: o painel "Verificar requisitos" e os botões de correção, os dias do ciclo, o "?" e as causas "possíveis". 
 - Próximo na ordem do Foco: Commerce, Shop Ads…
+
+## Commerce (Foco) · 16/10/2026
+- Simulador `meta-commerce.html` (sim-commerce.js, sim-es-commerce.js, sim-commerce.css): aba Ativos (real), assistente "Adicionar conta" de 5 telas (real), aba Minha loja (checklist, requisitos, análise por semanas: do simulador) e aba "O que mudou em 2025". `?zerar=1 | ?loja=1 | ?problema=1`.
+- 4 tutoriais (criar-loja, configurar-loja, loja-nao-aparece, mudancas-checkout), 5 aulas, 5 quizzes; todos rodaram em ES sem "falta" (depois de completar o dicionário).
+- REAL (telas, PT e ES): Gerenciador de Comércio | Administrador de ventas da conta de aula: Ativos, "Venda em uma loja personalizada", catálogos, país, parceiros (Shopify, BigCommerce, Feedonomics, DataFeedWatch, Productsup, Magento), canais, catálogo, prévia com "Finalização da compra em outro site". O botão "Concluir a configuração" NÃO foi clicado (envia a loja para análise e aceita o Acordo do Vendedor); em ES o rótulo dele não foi visto ("Finalizar la configuración" é suposição).
+- REAL (Central de Ajuda PT, 16/10): artigos 2343035149322466 (Sobre as Lojas), 268860861184453 (configurar loja: checklist, análise até 4 semanas, perfil de envio 5–8/3–5/2–3 dias, URL de finalização obrigatório, publicar), 1314349509894768 (mudanças de set/2025), 1627591223954487 (5 requisitos; detalhes lidos no artigo em inglês, as seções em PT estavam recolhidas). Página pública facebook.com/business/tools/commerce-manager.
+- NÃO visto: o checklist real "Configurar sua loja" (exige concluir), coleções, Insights, finalização da compra para vendedores dos EUA (só mencionado em inglês).
+- INVENTADO: tela do checklist, passar das semanas, botões de correção, validação do URL (https, sem encurtadores), textos explicativos da aba "O que mudou".
+- Próximo na ordem do Foco: Shop Ads, Shop Ads com checkout fora da Meta, MBE, integrações, Shopify, WhatsApp (por último).

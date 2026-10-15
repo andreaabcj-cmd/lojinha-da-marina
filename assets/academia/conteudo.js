@@ -26,7 +26,7 @@ window.MODULOS = [
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
   { id: 'pixel-avancado', fase: 3, status: 'planejado', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
-  { id: 'commerce', fase: 4, status: 'planejado', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'O que é e qual o escopo.', es: 'Qué es y cuál es el alcance.' } },
+  { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'planejado', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'O que são os anúncios de loja e como funcionam.', es: 'Qué son los anuncios de tienda y cómo funcionan.' } },
   { id: 'shop-ads-offsite', fase: 4, status: 'planejado', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'Finalização da compra, URL de checkout e métricas.', es: 'Finalización de la compra, URL de pago y métricas.' } },
   { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
@@ -3058,6 +3058,230 @@ window.AULAS = {
           frase: L('Cancelar mantém os benefícios até o fim do ciclo; revogar tira tudo na hora e costuma ter uma causa. Vamos ver qual foi no seu caso.', 'Cancelar mantiene los beneficios hasta el final del ciclo; revocar quita todo al instante y suele tener una causa. Veamos cuál fue en tu caso.'),
           passos: [L('Veja o status e o histórico de pagamentos.', 'Mira el estado y el historial de pagos.'), L('Compare com a lista de causas de revogação.', 'Compara con la lista de causas de revocación.')],
           encaminhar: L('Reembolsos e casos de revogação são analisados pela Meta. Oriente o cliente a usar o suporte do Meta Verified pelos canais da conta e não prometa valores.', 'Los reembolsos y los casos de revocación los analiza Meta. Orienta al cliente a usar la asistencia de Meta Verified por los canales de la cuenta y no prometas valores.')
+        }
+      }
+    ];
+  })(),
+  commerce: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Telas do assistente de criação (Ativos, país, plataforma de parceiro, canais, catálogo e prévia) vistas de verdade no Gerenciador de Comércio da conta de aula em 16/10/2026, em português e espanhol; o botão final não foi clicado (envia a loja para análise). O checklist “Configurar sua loja”, os requisitos e as mudanças de setembro de 2025 vêm da Central de Ajuda da Meta para Empresas (português, lida em 16/10/2026; os detalhes dos 5 requisitos, do artigo em inglês). A tela do checklist no simulador, o passar das semanas e os botões de correção são do treino (a conferir). A disponibilidade das Lojas depende do país.', 'Pantallas del asistente de creación (Activos, país, plataforma de un socio, canales, catálogo y vista previa) vistas de verdad en el Administrador de ventas de la cuenta de clase el 16/10/2026, en portugués y español; el botón final no se hizo clic (envía la tienda a revisión). La lista “Configurar tu tienda”, los requisitos y los cambios de septiembre de 2025 vienen del Centro de ayuda de Meta para Empresas (portugués, leído el 16/10/2026; los detalles de los 5 requisitos, del artículo en inglés). La pantalla de la lista en el simulador, el paso de las semanas y los botones de corrección son del entrenamiento (por confirmar). La disponibilidad de las Tiendas depende del país.');
+    var FERR = L('Gerenciador de Comércio (Ativos › Adicionar conta) e Central de Ajuda da Meta para Empresas.', 'Administrador de ventas (Activos › Agregar cuenta) y Centro de ayuda de Meta para Empresas.');
+    return [
+      {
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('O que é o Commerce da Meta', 'Qué es Commerce de Meta'),
+        antes: L('A Marina tem catálogo e anúncios. Agora quer uma vitrine dentro do Instagram e do Facebook.', 'Marina tiene catálogo y anuncios. Ahora quiere una vitrina dentro de Instagram y Facebook.'),
+        gancho: L('“Dá para vender direto no Instagram?” Quase: a loja mostra, e a compra termina no site.', '“¿Se puede vender directo en Instagram?” Casi: la tienda muestra, y la compra termina en el sitio.'),
+        objetivo: L('Entender o que é o Gerenciador de Comércio, o que é uma loja da Meta e o que ela faz (e não faz).', 'Entender qué es el Administrador de ventas, qué es una tienda de Meta y qué hace (y qué no).'),
+        entender: {
+          dialogo: [
+            ['marina', L('Já tenho catálogo. O que mais o Commerce faz? 🤔', 'Ya tengo catálogo. ¿Qué más hace Commerce? 🤔')],
+            ['rafa', L('O Gerenciador de Comércio é a ferramenta central das vendas online no Facebook e no Instagram: nela você gerencia catálogos, configura uma loja e vê atividades de vendas.', 'El Administrador de ventas es la herramienta central de las ventas online en Facebook e Instagram: en él gestionas catálogos, configuras una tienda y ves actividades de ventas.')],
+            ['marina', L('E a loja?', '¿Y la tienda?')],
+            ['rafa', L('É uma vitrine digital personalizada: página inicial, coleções e páginas de produto, dentro do app. Mas desde setembro de 2025 os clientes são levados ao seu site para finalizar a compra.', 'Es una vitrina digital personalizada: página de inicio, colecciones y páginas de producto, dentro de la app. Pero desde septiembre de 2025 los clientes son llevados a tu sitio para finalizar la compra.')],
+            ['pixel', L('A loja é obrigatória para os anúncios das Lojas. Mas para usar etiquetas de produto em posts e anúncios você não precisa de uma loja.', 'La tienda es obligatoria para los anuncios de Tiendas. Pero para usar etiquetas de producto en publicaciones y anuncios no necesitas una tienda.')]
+          ],
+          pontos: [
+            L('<b>Gerenciador de Comércio</b> = catálogos + loja + atividade de vendas.', '<b>Administrador de ventas</b> = catálogos + tienda + actividad de ventas.'),
+            L('<b>Loja</b> = vitrine no Facebook e no Instagram; a <b>compra termina no site</b>.', '<b>Tienda</b> = vitrina en Facebook e Instagram; la <b>compra termina en el sitio</b>.'),
+            L('<b>Anúncios das Lojas</b> exigem uma loja; etiquetas de produto, não.', '<b>Los anuncios de Tiendas</b> exigen una tienda; las etiquetas de producto, no.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'o-que-e-commerce',
+        atender: {
+          cena: L('Eu quero vender dentro do Instagram, sem o cliente sair do app para pagar. Dá? 🙏', 'Quiero vender dentro de Instagram, sin que el cliente salga de la app para pagar. ¿Se puede? 🙏'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Você pode ter uma loja no Facebook e no Instagram, com página inicial, coleções e páginas de produto. Mas, desde setembro de 2025, a finalização da compra é feita no seu site: o cliente navega na loja e termina a compra lá. Vamos ver como configurar.”', '“Puedes tener una tienda en Facebook e Instagram, con página de inicio, colecciones y páginas de producto. Pero, desde septiembre de 2025, la finalización de la compra se hace en tu sitio: el cliente explora la tienda y termina la compra allí. Veamos cómo configurarla.”'), fb: L('Isso! Honesto sobre o que mudou.', '¡Eso! Honesto sobre lo que cambió.') },
+            { certa: false, txt: L('“Dá, o cliente paga direto no Instagram.”', '“Sí, el cliente paga directo en Instagram.”'), fb: L('Esse pagamento dentro da Meta foi descontinuado nas Lojas.', 'Ese pago dentro de Meta fue discontinuado en las Tiendas.') },
+            { certa: false, txt: L('“Não existe loja no Instagram.”', '“No existe tienda en Instagram.”'), fb: L('Existe, com finalização da compra no site.', 'Existe, con finalización de compra en el sitio.') },
+            { certa: false, txt: L('“Pague um plano e a loja libera.”', '“Paga un plan y la tienda se habilita.”'), fb: L('Configurar a loja não custa nada.', 'Configurar la tienda no tiene ningún costo.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A empresa já tem catálogo e site com finalização da compra?', '¿La empresa ya tiene catálogo y sitio con finalización de compra?'), L('Quer só etiquetar produtos ou ter uma loja completa?', '¿Quiere solo etiquetar productos o tener una tienda completa?')],
+          conferir: [FERR, L('Catálogo ligado ao portfólio da empresa.', 'Catálogo vinculado al portfolio de la empresa.')],
+          frase: L('A loja da Meta funciona como vitrine no Facebook e no Instagram, e a compra é finalizada no site. Vamos ver o que você já tem e como configurar.', 'La tienda de Meta funciona como vitrina en Facebook e Instagram, y la compra se finaliza en el sitio. Veamos qué tienes ya y cómo configurarla.'),
+          passos: [L('Confirme que há catálogo e site de compra.', 'Confirma que hay catálogo y sitio de compra.'), L('Explique que a compra termina no site.', 'Explica que la compra termina en el sitio.')],
+          encaminhar: L('A disponibilidade das Lojas depende do país: confirme na tela da conta e nos requisitos da Central de Ajuda.', 'La disponibilidad de las Tiendas depende del país: confirma en la pantalla de la cuenta y en los requisitos del Centro de ayuda.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Criar a loja', 'Crear la tienda'),
+        antes: L('A Marina decidiu: quer a loja da Lojinha no Instagram e no Facebook.', 'Marina decidió: quiere la tienda de la Lojinha en Instagram y Facebook.'),
+        gancho: L('Cinco telas, um catálogo e uma escolha importante: onde a compra termina.', 'Cinco pantallas, un catálogo y una elección importante: dónde termina la compra.'),
+        objetivo: L('Percorrer o assistente de criação da loja: país, plataforma de parceiro, canais, catálogo e prévia.', 'Recorrer el asistente de creación de la tienda: país, plataforma de un socio, canales, catálogo y vista previa.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cliquei em Adicionar conta e apareceu um assistente. 😬', 'Hice clic en Agregar cuenta y apareció un asistente. 😬')],
+            ['rafa', L('Antes, precisa ter controle total do portfólio, da Página e do catálogo. No assistente: primeiro o país (Brasil) e “Começar”; depois, se você usa uma plataforma de parceiro (Shopify, BigCommerce, Feedonomics, DataFeedWatch, Productsup ou Magento), pode configurar por ela.', 'Antes necesitas control total del portfolio, de la página y del catálogo. En el asistente: primero el país (Brasil) y “Empezar”; luego, si usas una plataforma de un socio (Shopify, BigCommerce, Feedonomics, DataFeedWatch, Productsup o Magento), puedes configurar desde ella.')],
+            ['marina', L('Eu não uso nenhuma.', 'Yo no uso ninguna.')],
+            ['rafa', L('Então “Eu não uso essas plataformas”. Depois, os canais de vendas (a conta com a Página e o Instagram) e o catálogo. Última tela: a prévia, com o método “Finalização da compra em outro site”.', 'Entonces “No uso estas plataformas”. Luego, los canales de venta (la cuenta con la página e Instagram) y el catálogo. Última pantalla: la vista previa, con el método “Finalizar compra en otro sitio web”.')],
+            ['pixel', L('Atenção: depois da prévia, não dá para alterar até concluir a configuração, e o botão final envia a loja para análise e aceita o Acordo do Vendedor. Confira tudo antes.', 'Atención: después de la vista previa, no se puede cambiar hasta completar la configuración, y el botón final envía la tienda a revisión y acepta el Acuerdo para vendedores. Revisa todo antes.')]
+          ],
+          pontos: [
+            L('<b>Antes:</b> controle total do portfólio, da Página e do catálogo; Instagram comercial no portfólio.', '<b>Antes:</b> control total del portfolio, de la página y del catálogo; Instagram comercial en el portfolio.'),
+            L('<b>5 telas:</b> país → parceiro → canais → catálogo → prévia.', '<b>5 pantallas:</b> país → socio → canales → catálogo → vista previa.'),
+            L('<b>Prévia:</b> a compra termina em outro site; o botão final envia para análise.', '<b>Vista previa:</b> la compra termina en otro sitio; el botón final envía a revisión.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'criar-loja-q',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelas 5 telas reais do assistente até a loja ser criada.', 'En el simulador, el Pixel te guía por las 5 pantallas reales del asistente hasta que se crea la tienda.'),
+          tour: 'criar-loja', pagina: 'meta-commerce.html?zerar=1'
+        },
+        atender: {
+          cena: L('Não encontro onde criar a loja! E já mandei criar e não deu certo, pagar é só pelo cartão? 😡', '¡No encuentro dónde crear la tienda! Y ya intenté y no salió, ¿se paga solo con tarjeta? 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Calma: criar a loja não custa nada. No Gerenciador de Comércio, em Ativos, use Adicionar conta e siga as telas: país, plataforma de parceiro (se usa), canais de vendas, catálogo e a prévia. Antes, confirme que você tem controle total do portfólio, da Página e do catálogo.”', '“Calma: crear la tienda no tiene ningún costo. En el Administrador de ventas, en Activos, usa Agregar cuenta y sigue las pantallas: país, plataforma de un socio (si usas), canales de venta, catálogo y vista previa. Antes, confirma que tienes control total del portfolio, de la página y del catálogo.”'), fb: L('Isso! Corrigiu o custo e deu o caminho.', '¡Eso! Corregiste el costo y diste el camino.') },
+            { certa: false, txt: L('“Sim, paga com cartão a taxa de criação.”', '“Sí, se paga con tarjeta la tasa de creación.”'), fb: L('Não há taxa: configurar a loja não custa nada.', 'No hay tasa: configurar la tienda no tiene ningún costo.') },
+            { certa: false, txt: L('“Me passe a senha que eu crio.”', '“Pásame la contraseña y yo la creo.”'), fb: L('Nunca peça senha: oriente.', 'Nunca pidas contraseñas: orienta.') },
+            { certa: false, txt: L('“Crie uma Página nova para cada produto.”', '“Crea una página nueva para cada producto.”'), fb: L('Não: uma loja usa a Página e o catálogo existentes.', 'No: una tienda usa la página y el catálogo existentes.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Você tem controle total do portfólio, da Página e do catálogo?', '¿Tienes control total del portfolio, de la página y del catálogo?'), L('Já usa Shopify ou outra plataforma de parceiro?', '¿Ya usas Shopify u otra plataforma de un socio?')],
+          conferir: [FERR, L('Catálogo que será usado na loja.', 'Catálogo que se usará en la tienda.')],
+          frase: L('Criar a loja não custa nada. No Gerenciador de Comércio, vamos seguir as telas: país, canais, catálogo e a prévia, e só concluímos depois de conferir tudo.', 'Crear la tienda no tiene ningún costo. En el Administrador de ventas, sigamos las pantallas: país, canales, catálogo y vista previa, y solo finalizamos después de revisar todo.'),
+          passos: [L('Abra Ativos e clique em Adicionar conta.', 'Abre Activos y haz clic en Agregar cuenta.'), L('Revise a prévia antes de concluir.', 'Revisa la vista previa antes de finalizar.')],
+          encaminhar: L('Se o cliente usa uma plataforma como a Shopify, a loja pode ser configurada por ela; oriente-o a seguir o guia da própria plataforma.', 'Si el cliente usa una plataforma como Shopify, la tienda puede configurarse desde ella; oriéntalo a seguir la guía de la propia plataforma.')
+        }
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('Configurar e publicar a loja', 'Configurar y publicar la tienda'),
+        antes: L('A loja da Marina foi criada e enviada para análise. Agora falta deixá-la pronta.', 'La tienda de Marina fue creada y enviada a revisión. Ahora falta dejarla lista.'),
+        gancho: L('Seis tarefas e um botão: Publicar loja só liga quando as obrigatórias terminam.', 'Seis tareas y un botón: Publicar tienda solo se enciende cuando terminan las obligatorias.'),
+        objetivo: L('Saber as tarefas de “Configurar sua loja”, o prazo da análise e como o perfil de envio e o URL de finalização da compra funcionam.', 'Saber las tareas de “Configurar tu tienda”, el plazo de la revisión y cómo funcionan el perfil de envío y la URL de finalización de compra.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Criei a loja, e agora? 😅', 'Creé la tienda, ¿y ahora? 😅')],
+            ['rafa', L('Em Configurar sua loja há tarefas: criar loja (já feita), verificar as informações (a análise), otimizar o catálogo, configurar o perfil de envio, adicionar o URL de finalização da compra, otimizar a loja (opcional) e publicar.', 'En Configurar tu tienda hay tareas: crear tienda (ya hecha), verificar la información (la revisión), optimizar el catálogo, configurar el perfil de envío, agregar la URL de finalización de compra, optimizar la tienda (opcional) y publicar.')],
+            ['marina', L('Quanto demora a análise?', '¿Cuánto tarda la revisión?')],
+            ['rafa', L('Pode levar até quatro semanas; a Meta atualiza o status no Gerenciador de Comércio e avisa por e-mail se houver ação a fazer.', 'Puede tardar hasta cuatro semanas; Meta actualiza el estado en el Administrador de ventas y avisa por correo si hay alguna acción por hacer.')],
+            ['pixel', L('No perfil de envio você coloca pelo menos um prazo: padrão (5 a 8 dias), rápido (3 a 5) ou expresso (2 a 3), incluindo o processamento. E o URL de finalização da compra é obrigatório: sem ele a loja não fica visível.', 'En el perfil de envío pones al menos un plazo: estándar (5 a 8 días), rápido (3 a 5) o exprés (2 a 3), incluido el procesamiento. Y la URL de finalización de compra es obligatoria: sin ella la tienda no queda visible.')]
+          ],
+          pontos: [
+            L('<b>Análise:</b> até quatro semanas; o status aparece no Gerenciador de Comércio.', '<b>Revisión:</b> hasta cuatro semanas; el estado aparece en el Administrador de ventas.'),
+            L('<b>Perfil de envio:</b> pelo menos um prazo de entrega.', '<b>Perfil de envío:</b> al menos un plazo de entrega.'),
+            L('<b>URL de finalização da compra:</b> obrigatório para a loja ficar visível.', '<b>URL de finalización de compra:</b> obligatoria para que la tienda sea visible.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'configurar-loja-q',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelo checklist: perfil de envio, URL de finalização da compra, a espera da análise e a publicação.', 'En el simulador, el Pixel te guía por la lista: perfil de envío, URL de finalización de compra, la espera de la revisión y la publicación.'),
+          tour: 'configurar-loja', pagina: 'meta-commerce.html?loja=1'
+        },
+        atender: {
+          cena: L('Faz duas semanas e minha loja ainda não foi aprovada. Vocês me enrolando? 😠', 'Hace dos semanas y mi tienda todavía no fue aprobada. ¿Me están dando vueltas? 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo a ansiedade. A análise da loja pode levar até quatro semanas, e o status é atualizado no Gerenciador de Comércio; se houver algo a corrigir, a Meta avisa por e-mail. Enquanto isso, vamos terminar o perfil de envio e o URL de finalização da compra para a loja sair assim que for aprovada.”', '“Entiendo la ansiedad. La revisión de la tienda puede tardar hasta cuatro semanas, y el estado se actualiza en el Administrador de ventas; si hay algo que corregir, Meta avisa por correo. Mientras tanto, terminemos el perfil de envío y la URL de finalización de compra para que la tienda salga apenas sea aprobada.”'), fb: L('Isso! Deu o prazo real e o que adiantar.', '¡Eso! Diste el plazo real y qué adelantar.') },
+            { certa: false, txt: L('“Em 24 horas está aprovada.”', '“En 24 horas está aprobada.”'), fb: L('O prazo oficial é de até quatro semanas.', 'El plazo oficial es de hasta cuatro semanas.') },
+            { certa: false, txt: L('“Crie outra loja, assim vai mais rápido.”', '“Crea otra tienda, así va más rápido.”'), fb: L('Criar outra só reinicia o processo.', 'Crear otra solo reinicia el proceso.') },
+            { certa: false, txt: L('“Publique agora mesmo.”', '“Publica ahora mismo.”'), fb: L('Só dá para publicar quando as etapas obrigatórias terminam.', 'Solo se puede publicar cuando terminan las etapas obligatorias.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O que aparece em “Verificar as informações da sua loja”?', '¿Qué aparece en “Verificar la información de tu tienda”?'), L('O perfil de envio e o URL de finalização da compra já foram adicionados?', '¿El perfil de envío y la URL de finalización de compra ya fueron agregados?')],
+          conferir: [FERR, L('Checklist “Configurar sua loja”.', 'Lista “Configurar tu tienda”.')],
+          frase: L('A análise da loja pode levar até quatro semanas. Vamos deixar tudo pronto: perfil de envio e URL de finalização da compra, para publicar assim que ela for aprovada.', 'La revisión de la tienda puede tardar hasta cuatro semanas. Dejemos todo listo: perfil de envío y URL de finalización de compra, para publicar apenas sea aprobada.'),
+          passos: [L('Adicione pelo menos um prazo de entrega.', 'Agrega al menos un plazo de entrega.'), L('Cole o URL de finalização da compra do site.', 'Pega la URL de finalización de compra del sitio.')],
+          encaminhar: L('Se a análise passar de quatro semanas, oriente o cliente a falar com o suporte da Meta pelos canais da conta.', 'Si la revisión pasa de cuatro semanas, orienta al cliente a hablar con la asistencia de Meta por los canales de la cuenta.')
+        }
+      },
+      {
+        id: '04', min: 9, status: 'pronta',
+        titulo: L('“Minha loja não aparece”', '“Mi tienda no aparece”'),
+        antes: L('A Marina diz que a loja ainda não aparece para os clientes.', 'Marina dice que la tienda todavía no aparece para los clientes.'),
+        gancho: L('Quase sempre é um requisito, uma etapa do checklist ou o status. Vamos por ordem.', 'Casi siempre es un requisito, una etapa de la lista o el estado. Vamos en orden.'),
+        objetivo: L('Conferir os 5 requisitos de qualificação, o domínio e a política de devolução e seguir a ordem de conferência.', 'Revisar los 5 requisitos de calificación, el dominio y la política de devolución y seguir el orden de revisión.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A loja não aparece. Por onde começo? 😩', 'La tienda no aparece. ¿Por dónde empiezo? 😩')],
+            ['rafa', L('Pelos requisitos: cumprir as políticas, representar sua empresa e seu domínio, estar em um país compatível, demonstrar confiabilidade e fornecer informações precisas e seguir as boas práticas. Não cumprir a qualquer momento pode levar à perda de acesso aos recursos de comércio.', 'Por los requisitos: cumplir las políticas, representar a tu empresa y tu dominio, estar en un país compatible, demostrar confiabilidad y proporcionar información precisa y seguir las buenas prácticas. No cumplirlos en cualquier momento puede llevar a la pérdida de acceso a las funciones de comercio.')],
+            ['marina', L('E o que é “representar o domínio”?', '¿Y qué es “representar el dominio”?')],
+            ['rafa', L('Informar à Meta um único domínio, sem encurtadores de link, pelo qual você vende; a Meta pode pedir a verificação de domínio para confirmar que é seu. E, nas boas práticas, a política de devolução e reembolso precisa estar clara e acessível.', 'Informar a Meta un único dominio, sin acortadores de enlaces, por el cual vendes; Meta puede pedir la verificación del dominio para confirmar que es tuyo. Y, en las buenas prácticas, la política de devolución y reembolso debe estar clara y accesible.')],
+            ['pixel', L('Depois dos requisitos, veja o checklist: análise concluída, perfil de envio e URL de finalização da compra. Sem o URL a loja não fica visível. Só então publique.', 'Después de los requisitos, mira la lista: revisión terminada, perfil de envío y URL de finalización de compra. Sin la URL la tienda no queda visible. Solo entonces publica.')]
+          ],
+          pontos: [
+            L('<b>1º requisitos:</b> políticas, domínio, país, confiabilidade, informações precisas.', '<b>1.º requisitos:</b> políticas, dominio, país, confiabilidad, información precisa.'),
+            L('<b>Domínio:</b> um só, sem encurtadores; pode exigir verificação.', '<b>Dominio:</b> uno solo, sin acortadores; puede exigir verificación.'),
+            L('<b>2º checklist:</b> análise, envio, URL; <b>3º</b> publicar.', '<b>2.º lista:</b> revisión, envío, URL; <b>3.º</b> publicar.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'loja-nao-aparece-q',
+        praticar: {
+          texto: L('No simulador, a análise pede ação: domínio e política de devolução faltando. O Pixel te guia na ordem certa.', 'En el simulador, la revisión pide acción: faltan el dominio y la política de devolución. El Pixel te guía en el orden correcto.'),
+          tour: 'loja-nao-aparece', pagina: 'meta-commerce.html?problema=1'
+        },
+        atender: {
+          cena: L('Minha loja não aparece e eu preciso vender hoje! Libere para mim! 😡', '¡Mi tienda no aparece y necesito vender hoy! ¡Habilítala para mí! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo a urgência. Eu não consigo liberar por fora, mas posso te guiar na ordem certa: primeiro os requisitos (domínio, política de devolução, informações corretas), depois o status da análise, o perfil de envio e o URL de finalização da compra; só então dá para publicar.”', '“Entiendo la urgencia. No puedo habilitarla por fuera, pero puedo guiarte en el orden correcto: primero los requisitos (dominio, política de devolución, información correcta), luego el estado de la revisión, el perfil de envío y la URL de finalización de compra; solo entonces se puede publicar.”'), fb: L('Isso! Acolheu e deu a ordem.', '¡Eso! Acogiste y diste el orden.') },
+            { certa: false, txt: L('“Vou aprovar agora.”', '“La apruebo ahora.”'), fb: L('Ninguém aprova por fora.', 'Nadie aprueba por fuera.') },
+            { certa: false, txt: L('“Use um link encurtado no URL, é mais fácil.”', '“Usa un enlace acortado en la URL, es más fácil.”'), fb: L('Encurtadores não são aceitos: use o domínio da loja.', 'Los acortadores no se aceptan: usa el dominio de la tienda.') },
+            { certa: false, txt: L('“Apague a loja e comece de novo.”', '“Elimina la tienda y empieza de nuevo.”'), fb: L('Antes confira requisitos e checklist.', 'Antes revisa requisitos y lista.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o domínio da loja? Ele foi informado e verificado?', '¿Cuál es el dominio de la tienda? ¿Fue informado y verificado?'), L('A política de devolução e reembolso está visível no site?', '¿La política de devolución y reembolso está visible en el sitio?')],
+          conferir: [FERR, L('Requisitos de qualificação para comércio (Central de Ajuda).', 'Requisitos de calificación para comercio (Centro de ayuda).')],
+          frase: L('Vamos por ordem: primeiro os requisitos (domínio e política de devolução), depois a análise, o perfil de envio e o URL de finalização da compra; aí publicamos.', 'Vamos en orden: primero los requisitos (dominio y política de devolución), luego la revisión, el perfil de envío y la URL de finalización de compra; entonces publicamos.'),
+          passos: [L('Confira os 5 requisitos.', 'Revisa los 5 requisitos.'), L('Complete o checklist e publique.', 'Completa la lista y publica.')],
+          encaminhar: L('Se tudo estiver certo e a loja continuar invisível, oriente o cliente a seguir as mensagens da conta e o suporte da Meta.', 'Si todo está correcto y la tienda sigue invisible, orienta al cliente a seguir los mensajes de la cuenta y la asistencia de Meta.')
+        }
+      },
+      {
+        id: '05', min: 9, status: 'pronta',
+        titulo: L('Finalização da compra no site: o que mudou', 'Finalización de compra en el sitio: qué cambió'),
+        antes: L('Uma cliente antiga da Marina pergunta onde foram parar os pedidos e as devoluções da loja dela.', 'Una clienta antigua de Marina pregunta adónde fueron los pedidos y las devoluciones de su tienda.'),
+        gancho: L('Desde setembro de 2025, tudo que vem depois do clique em “comprar” acontece no site.', 'Desde septiembre de 2025, todo lo que viene después del clic en “comprar” ocurre en el sitio.'),
+        objetivo: L('Explicar o que foi descontinuado e o que continua nas Lojas, e como ficam os anúncios e os relatórios.', 'Explicar qué fue discontinuado y qué continúa en las Tiendas, y cómo quedan los anuncios y los informes.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cadê o gerenciamento de pedidos no Gerenciador de Comércio? 😕', '¿Dónde está la gestión de pedidos en el Administrador de ventas? 😕')],
+            ['rafa', L('A partir de setembro de 2025, as Lojas passaram a usar a finalização da compra no site. Por isso foram descontinuados o processamento de pagamentos, o gerenciamento de pedidos novos, as devoluções, as contestações e estornos e a Caixa de Entrada para clientes. Isso tudo passa a ser no seu site.', 'A partir de septiembre de 2025, las Tiendas pasaron a usar la finalización de compra en el sitio. Por eso se discontinuaron el procesamiento de pagos, la gestión de pedidos nuevos, las devoluciones, las disputas y reembolsos forzosos y la Bandeja de entrada para clientes. Todo eso pasa a hacerse en tu sitio.')],
+            ['marina', L('E a loja continua?', '¿Y la tienda continúa?')],
+            ['rafa', L('Continua, com página inicial, coleções e páginas de produto; só a compra termina no site.', 'Continúa, con página de inicio, colecciones y páginas de producto; solo la compra termina en el sitio.')],
+            ['pixel', L('Nos anúncios das Lojas, o local da conversão “Site e loja” acabou: escolha Site. E no relatório, “compras na Meta” aparecem como 0, mas os dados antigos ficam por até 39 meses. Acompanhe “Compras no site”.', 'En los anuncios de Tiendas, el lugar de conversión “Sitio y tienda” terminó: elige Sitio. Y en el informe, “compras en Meta” aparecen como 0, pero los datos antiguos se conservan hasta 39 meses. Sigue “Compras en el sitio”.')]
+          ],
+          pontos: [
+            L('<b>Descontinuado:</b> pagamentos, pedidos novos, devoluções, estornos, Caixa de Entrada.', '<b>Discontinuado:</b> pagos, pedidos nuevos, devoluciones, reembolsos forzosos, Bandeja de entrada.'),
+            L('<b>Continua:</b> página inicial, coleções, páginas de produto, catálogo.', '<b>Continúa:</b> página de inicio, colecciones, páginas de producto, catálogo.'),
+            L('<b>Anúncios:</b> local da conversão = Site; “compras na Meta” = 0.', '<b>Anuncios:</b> lugar de conversión = Sitio; “compras en Meta” = 0.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'mudancas-checkout-q',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por uma lista “descontinuado × continua”, pelo local da conversão nos anúncios e pelas métricas em 0.', 'En el simulador, el Pixel te guía por una lista “discontinuado × continúa”, por el lugar de conversión en los anuncios y por las métricas en 0.'),
+          tour: 'mudancas-checkout', pagina: 'meta-commerce.html?zerar=1'
+        },
+        atender: {
+          cena: L('Minhas compras na Meta viraram zero no relatório! Meus anúncios pararam de vender? 😱', '¡Mis compras en Meta pasaron a cero en el informe! ¿Mis anuncios dejaron de vender? 😱'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Calma: desde a mudança de setembro de 2025, as compras acontecem só no seu site, e as métricas de compras na Meta passam a aparecer como 0; não quer dizer que as vendas pararam. Os dados antigos ficam por até 39 meses. Para acompanhar, use Compras no site, Compras com assistência das lojas ou Compras direto no site.”', '“Calma: desde el cambio de septiembre de 2025, las compras ocurren solo en tu sitio, y las métricas de compras en Meta pasan a aparecer como 0; no significa que las ventas se detuvieron. Los datos antiguos se conservan hasta 39 meses. Para seguir, usa Compras en el sitio, Compras con asistencia de las tiendas o Compras directas en el sitio.”'), fb: L('Isso! Explicou sem alarme e deu as métricas certas.', '¡Eso! Explicaste sin alarma y diste las métricas correctas.') },
+            { certa: false, txt: L('“Sim, os anúncios quebraram.”', '“Sí, los anuncios se rompieron.”'), fb: L('Não: é efeito da mudança do método de finalização.', 'No: es efecto del cambio del método de finalización.') },
+            { certa: false, txt: L('“Crie outra conta de anúncios.”', '“Crea otra cuenta publicitaria.”'), fb: L('Não resolve: as compras são medidas no site.', 'No resuelve: las compras se miden en el sitio.') },
+            { certa: false, txt: L('“Reative o pagamento na Meta.”', '“Reactiva el pago en Meta.”'), fb: L('O processamento de pagamentos nas Lojas foi descontinuado.', 'El procesamiento de pagos en las Tiendas fue discontinuado.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o período do relatório: inclui datas antes ou depois de setembro de 2025?', '¿Cuál es el período del informe: incluye fechas antes o después de septiembre de 2025?'), L('Que local de conversão está nos anúncios das Lojas?', '¿Qué lugar de conversión hay en los anuncios de Tiendas?')],
+          conferir: [L('Gerenciador de Anúncios › local da conversão e destinos personalizados.', 'Administrador de anuncios › lugar de conversión y destinos personalizados.'), L('Relatórios: Compras no site.', 'Informes: Compras en el sitio.')],
+          frase: L('Desde setembro de 2025 a finalização da compra é no site, e as métricas de compras na Meta aparecem como 0. Vamos acompanhar as compras no site.', 'Desde septiembre de 2025 la finalización de compra es en el sitio, y las métricas de compras en Meta aparecen como 0. Sigamos las compras en el sitio.'),
+          passos: [L('Veja o local da conversão do anúncio.', 'Mira el lugar de conversión del anuncio.'), L('Troque a métrica do relatório para Compras no site.', 'Cambia la métrica del informe a Compras en el sitio.')],
+          encaminhar: L('Pedidos, devoluções e contestações agora são do site do cliente: oriente-o a usar a plataforma de e-commerce dele.', 'Los pedidos, devoluciones y disputas ahora son del sitio del cliente: oriéntalo a usar su plataforma de comercio electrónico.')
         }
       }
     ];
