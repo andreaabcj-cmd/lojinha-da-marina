@@ -91,7 +91,7 @@
         '<div class="cv-col cv-meio"><span class="cv-pixel">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 3) : '') + '</span><div class="cv-trilho"><span class="cv-carta" id="cvCarta">✉️</span></div><small>' + T({ pt: 'o Pixel leva o aviso', es: 'el Pixel lleva el aviso' }) + '</small></div>' +
         '<div class="cv-col cv-meta"><b class="cv-tit">📡 ' + T({ pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }) + '</b><p class="cv-mut">' + T({ pt: 'Avisos que chegaram:', es: 'Avisos que llegaron:' }) + '</p><ul class="cv-lista" id="cvLista"></ul></div>' +
         '</div><div class="cv-uso" id="cvUso"><b>' + T({ pt: 'Clique numa ação da loja ☝️', es: 'Haz clic en una acción de la tienda ☝️' }) + '</b><p>' + T({ pt: 'Quando o site abriu, o Pixel já avisou: PageView (alguém abriu o site).', es: 'Cuando el sitio se abrió, el Pixel ya avisó: PageView (alguien abrió el sitio).' }) + '</p></div>' +
-        '<div class="cv-mora"><span>📄 ' + T({ pt: 'Mora no código do site', es: 'Vive en el código del sitio' }) + '</span><span>🏢 ' + T({ pt: 'Pertence ao portfólio da empresa', es: 'Pertenece al portafolio de la empresa' }) + '</span><span>📡 ' + T({ pt: 'Os avisos chegam no Gerenciador de Eventos', es: 'Los avisos llegan al Administrador de eventos' }) + '</span></div>';
+        '<div class="cv-mora"><span>📄 ' + T({ pt: 'Mora no código do site', es: 'Vive en el código del sitio' }) + '</span><span>🏢 ' + T({ pt: 'Pertence ao portfólio da empresa', es: 'Pertenece al portfolio de la empresa' }) + '</span><span>📡 ' + T({ pt: 'Os avisos chegam no Gerenciador de Eventos', es: 'Los avisos llegan al Administrador de eventos' }) + '</span></div>';
       var lista = el.querySelector('#cvLista'), carta = el.querySelector('#cvCarta'), uso = el.querySelector('#cvUso'), ocupado = false;
       function desenha() { lista.innerHTML = recebidos.map(function (r, i) { return '<li class="' + (i === recebidos.length - 1 && i ? 'novo' : '') + '"><code>' + r.ev + '</code> <span>' + T(r.nome) + '</span></li>' }).join('') }
       desenha();
@@ -195,18 +195,18 @@
     { ic: '📡', n: { pt: 'Pixel', es: 'Pixel' }, ok: 'Fontes de dados', fb: { pt: 'Ativo! Fica em Fontes de dados › Conjuntos de dados e pixels.', es: '¡Activo! Va en Fuentes de datos › Conjuntos de datos y píxeles.' } },
     { ic: '🗂️', n: { pt: 'Catálogo de produtos', es: 'Catálogo de productos' }, ok: 'Fontes de dados', fb: { pt: 'Ativo! Fica em Fontes de dados › Catálogos.', es: '¡Activo! Va en Fuentes de datos › Catálogos.' } },
     { ic: '👩', n: { pt: 'O sobrinho que ajuda', es: 'El sobrino que ayuda' }, ok: 'Usuários', fb: { pt: 'Pessoas não são ativos: entram em Usuários › Pessoas, cada uma com o acesso que precisa.', es: 'Las personas no son activos: entran en Usuarios › Personas, cada una con el acceso que necesita.' } },
-    { ic: '🔑', n: { pt: 'A senha do Facebook da Marina', es: 'La contraseña de Facebook de Marina' }, ok: null, fb: { pt: 'Nunca! Senha não vai para o portfólio nem se compartilha. Cada pessoa entra com a própria conta.', es: '¡Nunca! La contraseña no va al portafolio ni se comparte. Cada persona entra con su propia cuenta.' } },
-    { ic: '🧾', n: { pt: 'A planilha de vendas', es: 'La planilla de ventas' }, ok: null, fb: { pt: 'Não é um ativo da Meta. O portfólio guarda ativos da Meta (Páginas, contas, Pixel…), não arquivos da empresa.', es: 'No es un activo de Meta. El portafolio guarda activos de Meta (Páginas, cuentas, Pixel…), no archivos de la empresa.' } }
+    { ic: '🔑', n: { pt: 'A senha do Facebook da Marina', es: 'La contraseña de Facebook de Marina' }, ok: null, fb: { pt: 'Nunca! Senha não vai para o portfólio nem se compartilha. Cada pessoa entra com a própria conta.', es: '¡Nunca! La contraseña no va al portfolio ni se comparte. Cada persona entra con su propia cuenta.' } },
+    { ic: '🧾', n: { pt: 'A planilha de vendas', es: 'La planilla de ventas' }, ok: null, fb: { pt: 'Não é um ativo da Meta. O portfólio guarda ativos da Meta (Páginas, contas, Pixel…), não arquivos da empresa.', es: 'No es un activo de Meta. El portfolio guarda activos de Meta (Páginas, cuentas, Pixel…), no archivos de la empresa.' } }
   ];
   F['pasta-portfolio'] = {
-    titulo: { pt: 'O que mora no portfólio?', es: '¿Qué vive en el portafolio?' },
-    resumo: { pt: 'Clique em cada coisa da Marina e veja se ela entra no portfólio, e onde.', es: 'Haz clic en cada cosa de Marina y mira si entra en el portafolio, y dónde.' },
+    titulo: { pt: 'O que mora no portfólio?', es: '¿Qué vive en el portfolio?' },
+    resumo: { pt: 'Clique em cada coisa da Marina e veja se ela entra no portfólio, e onde.', es: 'Haz clic en cada cosa de Marina y mira si entra en el portfolio, y dónde.' },
     paginas: '—', status: 'pronta',
     montar: function (el, T) {
       el.innerHTML = '<div class="pp"><div class="pp-coisas">' + COISAS.map(function (c, i) { return '<button class="pp-c" data-pp="' + i + '"><span>' + c.ic + '</span>' + T(c.n) + '</button>' }).join('') + '</div>' +
-        '<div class="pp-pasta"><b>🗃️ ' + T({ pt: 'Portfólio “Lojinha da Marina”', es: 'Portafolio “Lojinha da Marina”' }) + '</b>' + ['Usuários', 'Contas', 'Fontes de dados'].map(function (g) { return '<div class="pp-g" data-g="' + g + '"><small>' + T({ 'Usuários': { pt: 'Usuários', es: 'Usuarios' }, 'Contas': { pt: 'Contas', es: 'Cuentas' }, 'Fontes de dados': { pt: 'Fontes de dados', es: 'Fuentes de datos' } }[g]) + '</small><div class="pp-in"></div></div>' }).join('') + '</div></div>' +
+        '<div class="pp-pasta"><b>🗃️ ' + T({ pt: 'Portfólio “Lojinha da Marina”', es: 'Portfolio “Lojinha da Marina”' }) + '</b>' + ['Usuários', 'Contas', 'Fontes de dados'].map(function (g) { return '<div class="pp-g" data-g="' + g + '"><small>' + T({ 'Usuários': { pt: 'Usuários', es: 'Usuarios' }, 'Contas': { pt: 'Contas', es: 'Cuentas' }, 'Fontes de dados': { pt: 'Fontes de dados', es: 'Fuentes de datos' } }[g]) + '</small><div class="pp-in"></div></div>' }).join('') + '</div></div>' +
         '<div class="pp-fb" id="ppFb">' + T({ pt: 'Clique numa coisa da Marina ☝️', es: 'Haz clic en una cosa de Marina ☝️' }) + '</div>' +
-        '<p class="pp-regra">📌 ' + T({ pt: '<b>Regra da Meta:</b> cada ativo pertence a UM portfólio só. A mesma Página não pode estar em dois portfólios ao mesmo tempo.', es: '<b>Regla de Meta:</b> cada activo pertenece a UN solo portafolio. La misma Página no puede estar en dos portafolios al mismo tiempo.' }) + '</p>';
+        '<p class="pp-regra">📌 ' + T({ pt: '<b>Regra da Meta:</b> cada ativo pertence a UM portfólio só. A mesma Página não pode estar em dois portfólios ao mesmo tempo.', es: '<b>Regla de Meta:</b> cada activo pertenece a UN solo portfolio. La misma Página no puede estar en dos portfolios al mismo tiempo.' }) + '</p>';
       el.addEventListener('click', function (e) {
         var b = e.target.closest('[data-pp]'); if (!b) return; var c = COISAS[+b.getAttribute('data-pp')], fb = el.querySelector('#ppFb');
         if (c.ok) { var g = el.querySelector('[data-g="' + c.ok + '"] .pp-in'); if (!b.classList.contains('dentro')) { b.classList.add('dentro'); var x = document.createElement('span'); x.className = 'pp-x mv-chega'; x.innerHTML = c.ic + ' ' + T(c.n); g.appendChild(x) } fb.className = 'pp-fb ok' }
@@ -219,17 +219,17 @@
   /* ---------- 6. Nome do portfólio (Portfólio 02) ---------- */
   F['nome-portfolio'] = {
     titulo: { pt: 'Esse nome passa?', es: '¿Ese nombre pasa?' },
-    resumo: { pt: 'Teste nomes de portfólio e veja o erro real de caracteres especiais.', es: 'Prueba nombres de portafolio y mira el error real de caracteres especiales.' },
+    resumo: { pt: 'Teste nomes de portfólio e veja o erro real de caracteres especiais.', es: 'Prueba nombres de portfolio y mira el error real de caracteres especiales.' },
     paginas: '—', status: 'pronta',
     montar: function (el, T) {
-      el.innerHTML = '<div class="np"><label><b>' + T({ pt: 'Nome do portfólio empresarial', es: 'Nombre del portafolio comercial' }) + '</b><small>' + T({ pt: 'Deve corresponder ao nome público da empresa, pois ficará visível na Meta.', es: 'Debe corresponder al nombre público de la empresa, porque será visible en Meta.' }) + '</small><input id="npIn" placeholder="Lojinha da Marina"/></label><div id="npRes" class="np-res"></div>' +
+      el.innerHTML = '<div class="np"><label><b>' + T({ pt: 'Nome do portfólio empresarial', es: 'Nombre del portfolio comercial' }) + '</b><small>' + T({ pt: 'Deve corresponder ao nome público da empresa, pois ficará visível na Meta.', es: 'Debe corresponder al nombre público de la empresa, porque será visible en Meta.' }) + '</small><input id="npIn" placeholder="Lojinha da Marina"/></label><div id="npRes" class="np-res"></div>' +
         '<div class="np-ex">' + ['Lojinha da Marina', 'Lojinha da Marina (aula)', 'Lojinha da Marina Aula'].map(function (n) { return '<button data-np="' + n + '">' + n + '</button>' }).join('') + '</div>' +
         '<p class="miudo">' + T({ pt: 'Visto de verdade em 13/10/2026: os parênteses dão este erro. A Meta não publica a lista completa de caracteres; se o erro aparecer, tire símbolos e emojis do nome.', es: 'Visto de verdad el 13/10/2026: los paréntesis dan este error. Meta no publica la lista completa de caracteres; si aparece el error, quita símbolos y emojis del nombre.' }) + '</p></div>';
       var inp = el.querySelector('#npIn'), res = el.querySelector('#npRes');
       function testa() {
         var v = inp.value.trim();
         if (!v) { res.className = 'np-res'; res.innerHTML = ''; return }
-        if (/[()]/.test(v)) { res.className = 'np-res erro'; res.innerHTML = '⛔ ' + T({ pt: 'O nome do portfólio empresarial não pode conter caracteres especiais.', es: 'El nombre del portafolio comercial no puede contener caracteres especiales.' }) }
+        if (/[()]/.test(v)) { res.className = 'np-res erro'; res.innerHTML = '⛔ ' + T({ pt: 'O nome do portfólio empresarial não pode conter caracteres especiais.', es: 'El nombre del portfolio comercial no puede contener caracteres especiales.' }) }
         else { res.className = 'np-res ok'; res.innerHTML = '✅ ' + T({ pt: 'Passa! Lembre: deve ser o nome público da empresa.', es: '¡Pasa! Recuerda: debe ser el nombre público de la empresa.' }) }
       }
       inp.addEventListener('input', testa);
@@ -248,7 +248,7 @@
   var POR = {
     total: { pt: 'Controle total é para quem administra a empresa: mexe em tudo, até configurações e pessoas.', es: 'Control total es para quien administra la empresa: toca todo, hasta configuraciones y personas.' },
     basico: { pt: 'Ele entra com acesso básico (o padrão) e recebe só o ativo em que trabalha, a Página, com acesso parcial. A Meta recomenda dar só o acesso necessário.', es: 'Entra con acceso básico (el predeterminado) y recibe solo el activo en que trabaja, la Página, con acceso parcial. Meta recomienda dar solo el acceso necesario.' },
-    parceiro: { pt: 'Outra empresa entra como parceiro, não como pessoa: a agência usa o portfólio dela, e você compartilha só os ativos necessários.', es: 'Otra empresa entra como socio, no como persona: la agencia usa su propio portafolio, y compartes solo los activos necesarios.' },
+    parceiro: { pt: 'Outra empresa entra como parceiro, não como pessoa: a agência usa o portfólio dela, e você compartilha só os ativos necessários.', es: 'Otra empresa entra como socio, no como persona: la agencia usa su propio portfolio, y compartes solo los activos necesarios.' },
     nenhum: { pt: 'Quem não trabalha nos ativos não precisa de acesso. Menos gente com acesso = mais segurança.', es: 'Quien no trabaja en los activos no necesita acceso. Menos gente con acceso = más seguridad.' }
   };
   F['quem-precisa'] = {
@@ -270,20 +270,20 @@
 
   /* ---------- 8. De quem é este ativo? (Portfólio 04) ---------- */
   F['de-quem-e'] = {
-    titulo: { pt: 'Minha Página está em outro portfólio', es: 'Mi Página está en otro portafolio' },
-    resumo: { pt: 'Os caminhos oficiais quando um ativo está no portfólio de outra pessoa.', es: 'Los caminos oficiales cuando un activo está en el portafolio de otra persona.' },
+    titulo: { pt: 'Minha Página está em outro portfólio', es: 'Mi Página está en otro portfolio' },
+    resumo: { pt: 'Os caminhos oficiais quando um ativo está no portfólio de outra pessoa.', es: 'Los caminos oficiales cuando un activo está en el portfolio de otra persona.' },
     paginas: '—', status: 'pronta',
     montar: function (el, T) {
-      el.innerHTML = '<div class="dq"><p class="dq-perg"><b>' + T({ pt: 'A Página está no portfólio de outra pessoa. Qual é a situação?', es: 'La Página está en el portafolio de otra persona. ¿Cuál es la situación?' }) + '</b></p><div class="dq-ops">' +
-        '<button class="opcao" data-dq="dona">' + T({ pt: '🏠 A Página é da Marina e ela quer trazer para o portfólio dela', es: '🏠 La Página es de Marina y ella quiere traerla a su portafolio' }) + '</button>' +
+      el.innerHTML = '<div class="dq"><p class="dq-perg"><b>' + T({ pt: 'A Página está no portfólio de outra pessoa. Qual é a situação?', es: 'La Página está en el portfolio de otra persona. ¿Cuál es la situación?' }) + '</b></p><div class="dq-ops">' +
+        '<button class="opcao" data-dq="dona">' + T({ pt: '🏠 A Página é da Marina e ela quer trazer para o portfólio dela', es: '🏠 La Página es de Marina y ella quiere traerla a su portfolio' }) + '</button>' +
         '<button class="opcao" data-dq="agencia">' + T({ pt: '🏢 Uma agência precisa trabalhar na Página de um cliente', es: '🏢 Una agencia necesita trabajar en la Página de un cliente' }) + '</button></div><div id="dqRes"></div>' +
-        '<p class="pp-regra">📌 ' + T({ pt: '<b>Não existe transferência direta</b> de Página entre portfólios. E se a Página tem Instagram conectado, o Instagram vai junto para o portfólio novo.', es: '<b>No existe transferencia directa</b> de Página entre portafolios. Y si la Página tiene Instagram conectado, el Instagram va junto al nuevo portafolio.' }) + '</p></div>';
+        '<p class="pp-regra">📌 ' + T({ pt: '<b>Não existe transferência direta</b> de Página entre portfólios. E se a Página tem Instagram conectado, o Instagram vai junto para o portfólio novo.', es: '<b>No existe transferencia directa</b> de Página entre portfolios. Y si la Página tiene Instagram conectado, el Instagram va junto al nuevo portfolio.' }) + '</p></div>';
       var RES = {
-        dona: [{ pt: 'Quem administra o portfólio onde a Página está vai em Configurações › Contas › Páginas, seleciona a Página e clica em Remover.', es: 'Quien administra el portafolio donde está la Página va a Configuración › Cuentas › Páginas, selecciona la Página y hace clic en Quitar.' },
-          { pt: 'Depois, a Marina (dona da Página) vai no portfólio DELA: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Después, Marina (dueña de la Página) va a SU portafolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
+        dona: [{ pt: 'Quem administra o portfólio onde a Página está vai em Configurações › Contas › Páginas, seleciona a Página e clica em Remover.', es: 'Quien administra el portfolio donde está la Página va a Configuración › Cuentas › Páginas, selecciona la Página y hace clic en Quitar.' },
+          { pt: 'Depois, a Marina (dona da Página) vai no portfólio DELA: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Después, Marina (dueña de la Página) va a SU portfolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
           { pt: 'Se a Página tem Instagram conectado, ela adiciona o Instagram também.', es: 'Si la Página tiene Instagram conectado, también agrega el Instagram.' }],
-        agencia: [{ pt: 'A Página continua no portfólio do cliente (o dono não muda).', es: 'La Página sigue en el portafolio del cliente (el dueño no cambia).' },
-          { pt: 'No portfólio da agência: Contas › Páginas › Adicionar › “Solicitar acesso compartilhado a uma Página do Facebook”.', es: 'En el portafolio de la agencia: Cuentas › Páginas › Agregar › “Solicitar acceso compartido a una Página de Facebook”.' },
+        agencia: [{ pt: 'A Página continua no portfólio do cliente (o dono não muda).', es: 'La Página sigue en el portfolio del cliente (el dueño no cambia).' },
+          { pt: 'No portfólio da agência: Contas › Páginas › Adicionar › “Solicitar acesso compartilhado a uma Página do Facebook”.', es: 'En el portfolio de la agencia: Cuentas › Páginas › Agregar › “Solicitar acceso compartido a una Página de Facebook”.' },
           { pt: 'O cliente aprova, e a agência trabalha na Página com o acesso que o cliente der (parcial ou total).', es: 'El cliente aprueba, y la agencia trabaja en la Página con el acceso que el cliente dé (parcial o total).' }]
       };
       el.addEventListener('click', function (e) {
@@ -350,14 +350,14 @@
 
   /* ---------- 11. O Instagram pode entrar no portfólio? (Instagram 03) ---------- */
   F['ig-portfolio'] = {
-    titulo: { pt: 'O Instagram pode entrar no portfólio?', es: '¿El Instagram puede entrar al portafolio?' },
-    resumo: { pt: 'Três perguntas antes de adicionar o Instagram ao portfólio.', es: 'Tres preguntas antes de agregar el Instagram al portafolio.' },
+    titulo: { pt: 'O Instagram pode entrar no portfólio?', es: '¿El Instagram puede entrar al portfolio?' },
+    resumo: { pt: 'Três perguntas antes de adicionar o Instagram ao portfólio.', es: 'Tres preguntas antes de agregar el Instagram al portfolio.' },
     paginas: '—', status: 'pronta',
     montar: function (el, T) {
       var P = [
         [{ pt: 'O Instagram é conta profissional?', es: '¿El Instagram es cuenta profesional?' }, { pt: 'Ótimo, entra.', es: 'Perfecto, entra.' }, { pt: 'Se for pessoal, ao adicionar ele vira profissional (e público). Combine isso com a cliente antes.', es: 'Si es personal, al agregarlo se vuelve profesional (y público). Acuérdalo con la clienta antes.' }],
-        [{ pt: 'Ele já está no portfólio de outra empresa?', es: '¿Ya está en el portafolio de otra empresa?' }, { pt: 'Não entra: cada ativo pertence a UM portfólio. Quem administra o outro portfólio precisa liberar primeiro.', es: 'No entra: cada activo pertenece a UN portafolio. Quien administra el otro portafolio tiene que liberarlo primero.' }, { pt: 'Ótimo, está livre.', es: 'Perfecto, está libre.' }],
-        [{ pt: 'Ele tem uma conta de anúncios conectada?', es: '¿Tiene una cuenta publicitaria conectada?' }, { pt: 'Ela vem junto para o portfólio e NÃO pode ser removida depois. Confirme com a cliente.', es: 'Viene junto al portafolio y NO se puede quitar después. Confírmalo con la clienta.' }, { pt: 'Ótimo, nada vem junto.', es: 'Perfecto, nada viene junto.' }]
+        [{ pt: 'Ele já está no portfólio de outra empresa?', es: '¿Ya está en el portfolio de otra empresa?' }, { pt: 'Não entra: cada ativo pertence a UM portfólio. Quem administra o outro portfólio precisa liberar primeiro.', es: 'No entra: cada activo pertenece a UN portfolio. Quien administra el otro portfolio tiene que liberarlo primero.' }, { pt: 'Ótimo, está livre.', es: 'Perfecto, está libre.' }],
+        [{ pt: 'Ele tem uma conta de anúncios conectada?', es: '¿Tiene una cuenta publicitaria conectada?' }, { pt: 'Ela vem junto para o portfólio e NÃO pode ser removida depois. Confirme com a cliente.', es: 'Viene junto al portfolio y NO se puede quitar después. Confírmalo con la clienta.' }, { pt: 'Ótimo, nada vem junto.', es: 'Perfecto, nada viene junto.' }]
       ];
       el.innerHTML = '<div class="qp">' + P.map(function (x, i) { return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + (i + 1) + '</span>' + T(x[0]) + '</div><div class="qp-ops"><button data-ip="' + i + ':1">' + T({ pt: 'Sim', es: 'Sí' }) + '</button><button data-ip="' + i + ':2">' + T({ pt: 'Não', es: 'No' }) + '</button></div><p class="qp-fb"></p></div>' }).join('') + '</div>';
       el.addEventListener('click', function (e) {
@@ -369,19 +369,19 @@
 
 
   /* ---------- 11a. Turbinar ou Gerenciador? (Anúncios 01) ---------- */
-  var TG_ESC = { turbinar: { pt: 'Turbinar', es: 'Impulsar' }, gerenciador: { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' } };
+  var TG_ESC = { turbinar: { pt: 'Turbinar', es: 'Promocionar' }, gerenciador: { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' } };
   var TG_ITENS = [
     { ic: '🚀', n: { pt: 'Dar uma força num post que a Marina já publicou, rápido e sem mexer em nada técnico', es: 'Darle fuerza a un post que Marina ya publicó, rápido y sin tocar nada técnico' }, certo: 'turbinar',
-      fb: { pt: 'Turbinar transforma um post que já existe em anúncio, em poucos campos.', es: 'Impulsar convierte un post que ya existe en anuncio, en pocos campos.' } },
+      fb: { pt: 'Turbinar transforma um post que já existe em anúncio, em poucos campos.', es: 'Promocionar convierte un post que ya existe en anuncio, en pocos campos.' } },
     { ic: '🛒', n: { pt: 'Vender canecas pelo site e medir cada compra com o Pixel', es: 'Vender tazas por el sitio y medir cada compra con el Pixel' }, certo: 'gerenciador',
-      fb: { pt: 'Para Vendas com o conjunto de dados (Pixel) escolhido, o caminho é o Gerenciador. A lista de metas do Turbinar não tem Vendas.', es: 'Para Ventas con el conjunto de datos (Pixel) elegido, el camino es el Administrador. La lista de metas de Impulsar no tiene Ventas.' } },
+      fb: { pt: 'Para Vendas com o conjunto de dados (Pixel) escolhido, o caminho é o Gerenciador. A lista de metas do Turbinar não tem Vendas.', es: 'Para Ventas con el conjunto de datos (Pixel) elegido, el camino es el Administrador. La lista de metas de Promocionar no tiene Ventas.' } },
     { ic: '🧪', n: { pt: 'Testar dois públicos diferentes com o mesmo anúncio', es: 'Probar dos públicos distintos con el mismo anuncio' }, certo: 'gerenciador',
       fb: { pt: 'Dois públicos são dois conjuntos de anúncios dentro da campanha, e isso se monta no Gerenciador.', es: 'Dos públicos son dos conjuntos de anuncios dentro de la campaña, y eso se arma en el Administrador.' } },
     { ic: '👍', n: { pt: 'Ter mais curtidas e comentários no post de hoje, com R$ 5 por dia', es: 'Tener más reacciones y comentarios en el post de hoy, con R$ 5 por día' }, certo: 'turbinar',
-      fb: { pt: 'Meta “Gerar engajamento” no Turbinar, com orçamento diário baixo (o mínimo era R$ 5,27).', es: 'Meta “Generar interacción” en Impulsar, con presupuesto diario bajo (el mínimo era R$ 5,27).' } }
+      fb: { pt: 'Meta “Gerar engajamento” no Turbinar, com orçamento diário baixo (o mínimo era R$ 5,27).', es: 'Meta “Generar interacción” en Promocionar, con presupuesto diario bajo (el mínimo era R$ 5,27).' } }
   ];
   F['turbinar-ou-gerenciador'] = {
-    titulo: { pt: 'Turbinar ou Gerenciador?', es: '¿Impulsar o Administrador?' },
+    titulo: { pt: 'Turbinar ou Gerenciador?', es: '¿Promocionar o Administrador?' },
     resumo: { pt: 'Para cada pedido da Marina, escolha a ferramenta certa.', es: 'Para cada pedido de Marina, elige la herramienta correcta.' },
     paginas: '—', status: 'pronta',
     montar: function (el, T) {
@@ -406,8 +406,8 @@
       fb: { pt: 'Editar substitui a versão antiga sem volta e mistura as métricas. Para testar, duplique e mude a cópia.', es: 'Editar reemplaza la versión antigua sin vuelta y mezcla las métricas. Para probar, duplica y cambia la copia.' } },
     { ic: '🎯', n: { pt: 'Trocar o objetivo de uma campanha já publicada de Engajamento para Vendas', es: 'Cambiar el objetivo de una campaña ya publicada de Interacción a Ventas' }, certo: 'novo',
       fb: { pt: 'O objetivo fica em cinza depois de publicar. Para mudar, crie uma campanha nova com o objetivo certo.', es: 'El objetivo queda en gris después de publicar. Para cambiarlo, crea una campaña nueva con el objetivo correcto.' } },
-    { ic: '🖼️', n: { pt: 'Trocar a imagem de um post turbinado que já foi analisado', es: 'Cambiar la imagen de un post impulsado que ya fue revisado' }, certo: 'novo',
-      fb: { pt: 'A Central de Ajuda diz que não dá para editar texto, imagens ou vídeo de um post turbinado depois de analisado. Publique um post novo e turbine de novo.', es: 'El Centro de ayuda dice que no se puede editar el texto, las imágenes ni el video de un post impulsado después de revisado. Publica un post nuevo e impulsa de nuevo.' } }
+    { ic: '🖼️', n: { pt: 'Trocar a imagem de um post turbinado que já foi analisado', es: 'Cambiar la imagen de un post promocionado que ya fue revisado' }, certo: 'novo',
+      fb: { pt: 'A Central de Ajuda diz que não dá para editar texto, imagens ou vídeo de um post turbinado depois de analisado. Publique um post novo e turbine de novo.', es: 'El Centro de ayuda dice que no se puede editar el texto, las imágenes ni el video de un post promocionado después de revisado. Publica un post nuevo e promociona de nuevo.' } }
   ];
   F['editar-ou-novo'] = {
     titulo: { pt: 'Editar, duplicar ou criar novo?', es: '¿Editar, duplicar o crear nuevo?' },
@@ -458,7 +458,7 @@
   /* ---------- 11b. Em qual nível fica? (Anúncios 02) ---------- */
   var NIVEIS = { campanha: { pt: 'Campanha', es: 'Campaña' }, conjunto: { pt: 'Conjunto de anúncios', es: 'Conjunto de anuncios' }, anuncio: { pt: 'Anúncio', es: 'Anuncio' } };
   var NIVEL_PQ = {
-    campanha: { pt: 'Isso fica na campanha: é a meta geral (objetivo, tipo de compra, categorias especiais).', es: 'Eso queda en la campaña: es la meta general (objetivo, tipo de compra, categorías especiales).' },
+    campanha: { pt: 'Isso fica na campanha: é a meta geral (objetivo, tipo de compra, categorias especiais).', es: 'Eso queda en la campaña: es el objetivo general (objetivo, tipo de compra, categorías especiales).' },
     conjunto: { pt: 'Isso fica no conjunto de anúncios: é “para quem” e “como medir” (público, local da conversão, conjunto de dados).', es: 'Eso queda en el conjunto de anuncios: es “para quién” y “cómo medir” (público, lugar de la conversión, conjunto de datos).' },
     anuncio: { pt: 'Isso fica no anúncio: é o que a pessoa vê e quem assina (Página, formato, imagem e texto).', es: 'Eso queda en el anuncio: es lo que ve la persona y quién firma (Página, formato, imagen y texto).' }
   };
@@ -482,7 +482,7 @@
       el.addEventListener('click', function (e) {
         var b = e.target.closest('[data-nv]'); if (!b) return; var v = b.getAttribute('data-nv').split(':'), g = NIVEL_ITENS[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
         box.querySelectorAll('[data-nv]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
-        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(NIVEL_PQ[v[1]]) : '❌ ' + T({ pt: 'Pense: isso é a meta geral, “para quem/como medir” ou o que a pessoa vê?', es: 'Piensa: ¿es la meta general, “para quién/cómo medir” o lo que ve la persona?' });
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(NIVEL_PQ[v[1]]) : '❌ ' + T({ pt: 'Pense: isso é a meta geral, “para quem/como medir” ou o que a pessoa vê?', es: 'Piensa: ¿es el objetivo general, “para quién/cómo medir” o lo que ve la persona?' });
         if (ok && window.MOV && el.querySelectorAll('.certa').length === NIVEL_ITENS.length) MOV.confete(b);
       });
     }

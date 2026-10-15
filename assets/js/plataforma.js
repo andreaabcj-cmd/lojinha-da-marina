@@ -77,9 +77,9 @@
       setTimeout(ligaRecomecar);
       var sims = [['meta-eventos.html', '📡', { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, { pt: 'Criar o Pixel, Testar eventos (com os eventos da Lojinha), Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos (con los eventos de la Lojinha), Diagnóstico y Configuración.' }, 'pronta'],
         ['meta-instagram.html', '📸', { pt: 'Instagram (perfil e conta profissional)', es: 'Instagram (perfil y cuenta profesional)' }, { pt: 'Virar conta profissional e editar o perfil, com as telas reais.', es: 'Volverse cuenta profesional y editar el perfil, con las pantallas reales.' }, 'pronta'],
-        ['meta-portfolio.html', '🏢', { pt: 'Configurações do portfólio (Business Suite)', es: 'Configuración del portafolio (Business Suite)' }, { pt: 'Criar o portfólio, convidar pessoas, Páginas, contas de anúncios e Central de Segurança.', es: 'Crear el portafolio, invitar personas, Páginas, cuentas publicitarias y Centro de seguridad.' }, 'pronta'],
+        ['meta-portfolio.html', '🏢', { pt: 'Configurações do portfólio (Business Suite)', es: 'Configuración del portfolio (Business Suite)' }, { pt: 'Criar o portfólio, convidar pessoas, Páginas, contas de anúncios e Central de Segurança.', es: 'Crear el portfolio, invitar personas, Páginas, cuentas publicitarias y Centro de seguridad.' }, 'pronta'],
         [null, '🗂️', { pt: 'Gerenciador de Comércio', es: 'Administrador de ventas' }, { pt: 'Catálogo, itens, fontes de dados e correspondência com o Pixel.', es: 'Catálogo, artículos, fuentes de datos y coincidencia con el Pixel.' }, 'planejada'],
-        ['meta-turbinar.html', '🚀', { pt: 'Turbinar post (Business Suite)', es: 'Impulsar publicación (Business Suite)' }, { pt: 'Turbinar um post existente: meta, botão, duração, orçamento e pagamento, com as telas reais.', es: 'Impulsar un post existente: meta, botón, duración, presupuesto y pago, con las pantallas reales.' }, 'pronta'],
+        ['meta-turbinar.html', '🚀', { pt: 'Turbinar post (Business Suite)', es: 'Promocionar publicación (Business Suite)' }, { pt: 'Turbinar um post existente: meta, botão, duração, orçamento e pagamento, com as telas reais.', es: 'Promocionar un post existente: meta, botón, duración, presupuesto y pago, con las pantallas reales.' }, 'pronta'],
         ['meta-anuncios.html', '📣', { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' }, { pt: 'Criar a primeira campanha (Vendas) em rascunho: campanha, conjunto de anúncios e anúncio. Relatórios virão depois.', es: 'Crear la primera campaña (Ventas) en borrador: campaña, conjunto de anuncios y anuncio. Los informes vendrán después.' }, 'pronta']];
       return '<h1 class="pl-h1">🕹️ ' + T(U.simuladores) + '</h1><p class="pl-lead">' + T({ pt: 'Cópias de treino das ferramentas da Meta: o mesmo layout e os mesmos nomes, com o visual da Lojinha. Cada tela mostra a data em que foi conferida com a ferramenta real.', es: 'Copias de práctica de las herramientas de Meta: el mismo diseño y los mismos nombres, con el estilo de la Lojinha. Cada pantalla muestra la fecha en que se revisó con la herramienta real.' }) + '</p>' +
         '<div class="grade">' + sims.map(function (s) { return (s[0] ? '<a class="item" href="' + s[0] + '">' : '<div class="item off">') + '<span class="ic">' + s[1] + '</span><b>' + T(s[2]) + '</b><p>' + T(s[3]) + '</p>' + selo(s[4]) + (s[0] ? '</a>' : '</div>') }).join('') + '</div>' + recomecarHTML();
@@ -107,7 +107,7 @@
   /* ---------- 🧹 Recomeçar do zero: apaga o que a pessoa fez nos simuladores e na loja (só neste navegador) ---------- */
   function recomecarHTML() {
     return '<div class="recomecar" id="recomecar"><h2 class="pl-h2">🧹 ' + T({ pt: 'Recomeçar do zero', es: 'Empezar de cero' }) + '</h2>' +
-      '<p>' + T({ pt: 'Apaga o que você fez nos simuladores (Pixels criados, eventos, portfólios, convites, contas de anúncios, perfil do Instagram) e na loja (carrinho, pedidos, dados do checkout, cookies, falhas do Laboratório). Só neste navegador: não mexe no de mais ninguém.', es: 'Borra lo que hiciste en los simuladores (Pixels creados, eventos, portafolios, invitaciones, cuentas publicitarias, perfil de Instagram) y en la tienda (carrito, pedidos, datos del checkout, cookies, fallas del Laboratorio). Solo en este navegador: no toca el de nadie más.' }) + '</p>' +
+      '<p>' + T({ pt: 'Apaga o que você fez nos simuladores (Pixels criados, eventos, portfólios, convites, contas de anúncios, perfil do Instagram) e na loja (carrinho, pedidos, dados do checkout, cookies, falhas do Laboratório). Só neste navegador: não mexe no de mais ninguém.', es: 'Borra lo que hiciste en los simuladores (Pixels creados, eventos, portfolios, invitaciones, cuentas publicitarias, perfil de Instagram) y en la tienda (carrito, pedidos, datos del checkout, cookies, fallas del Laboratorio). Solo en este navegador: no toca el de nadie más.' }) + '</p>' +
       '<label class="rc-ck"><input type="checkbox" id="rcProg"/> ' + T({ pt: 'Apagar também meu progresso nas aulas (os ✓)', es: 'Borrar también mi progreso en las clases (los ✓)' }) + '</label>' +
       '<div class="rc-bts" id="rcBts"><button class="btn sec" id="rcIr">🧹 ' + T({ pt: 'Recomeçar do zero', es: 'Empezar de cero' }) + '</button></div></div>';
   }
@@ -137,14 +137,14 @@
   /* ---------- Laboratório › Como fazer…: todos os tutoriais guiados, na ordem da história da Marina ---------- */
   var COMO = [
     { m: 'portfolio', itens: [
-      ['conhecer-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio', '01', { pt: 'Como conhecer as Configurações do portfólio', es: 'Cómo conocer la Configuración del portafolio' }],
-      ['criar-portfolio', 'meta-portfolio.html?zerar=1', 'portfolio', '02', { pt: 'Como criar um portfólio empresarial', es: 'Cómo crear un portafolio comercial' }],
+      ['conhecer-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio', '01', { pt: 'Como conhecer as Configurações do portfólio', es: 'Cómo conocer la Configuración del portfolio' }],
+      ['criar-portfolio', 'meta-portfolio.html?zerar=1', 'portfolio', '02', { pt: 'Como criar um portfólio empresarial', es: 'Cómo crear un portfolio comercial' }],
       ['convidar-pessoa', 'meta-portfolio.html?exemplo=1', 'portfolio', '03', { pt: 'Como convidar uma pessoa (com o acesso certo)', es: 'Cómo invitar a una persona (con el acceso correcto)' }],
       ['criar-conta-anuncios', 'meta-portfolio.html?exemplo=1', 'portfolio', '04', { pt: 'Como criar uma conta de anúncios', es: 'Cómo crear una cuenta publicitaria' }] ] },
     { m: 'instagram', itens: [
       ['virar-profissional', 'meta-instagram.html?zerar=1', 'instagram', '01', { pt: 'Como virar conta profissional no Instagram', es: 'Cómo volverse cuenta profesional en Instagram' }],
       ['editar-perfil', 'meta-instagram.html', 'instagram', '02', { pt: 'Como deixar o perfil com cara de loja', es: 'Cómo darle al perfil cara de tienda' }],
-      ['adicionar-instagram', 'meta-portfolio.html?exemplo=1', 'instagram', '03', { pt: 'Como adicionar o Instagram ao portfólio', es: 'Cómo agregar el Instagram al portafolio' }],
+      ['adicionar-instagram', 'meta-portfolio.html?exemplo=1', 'instagram', '03', { pt: 'Como adicionar o Instagram ao portfólio', es: 'Cómo agregar el Instagram al portfolio' }],
       ['conectar-instagram', 'meta-portfolio.html?exemplo=1&aula=ig4', 'instagram', '04', { pt: 'Como ligar o Instagram à Página', es: 'Cómo vincular el Instagram a la Página' }] ] },
     { m: 'pixel', itens: [
       ['pixel-em-acao', 'loja.html', 'pixel', '01', { pt: 'Como ver o Pixel trabalhando na loja', es: 'Cómo ver el Pixel trabajando en la tienda' }],
@@ -156,7 +156,7 @@
       ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar o Testar eventos', es: 'Cómo usar Probar eventos' }],
       ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] },
     { m: 'anuncios', itens: [
-      ['turbinar-post', 'meta-turbinar.html?zerar=1', 'anuncios', '01', { pt: 'Como turbinar um post', es: 'Cómo impulsar un post' }],
+      ['turbinar-post', 'meta-turbinar.html?zerar=1', 'anuncios', '01', { pt: 'Como turbinar um post', es: 'Cómo promocionar un post' }],
       ['conhecer-niveis', 'meta-anuncios.html?zerar=1', 'anuncios', '02', { pt: 'Como achar cada coisa: campanha, conjunto e anúncio', es: 'Cómo encontrar cada cosa: campaña, conjunto y anuncio' }],
       ['primeiro-anuncio', 'meta-anuncios.html?zerar=1', 'anuncios', '03', { pt: 'Como montar o primeiro anúncio (campanha de Vendas em rascunho)', es: 'Cómo armar el primer anuncio (campaña de Ventas en borrador)' }],
       ['editar-publicado', 'meta-anuncios.html?zerar=1', 'anuncios', '04', { pt: 'Como editar uma campanha que já está rodando', es: 'Cómo editar una campaña que ya está corriendo' }],
@@ -368,7 +368,7 @@
     if (tela !== 'aula') mov().cascata($('.pl-main'));
   }
   function inicia() {
-    // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial pela metade
+    // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial peel objetivode
     try { ['loja.labLoja', 'loja.daAberto', 'tour.ativo', 'tour.volta'].forEach(function (k) { sessionStorage.removeItem(k) }); localStorage.setItem('loja.aulaAberta', 'false') } catch (e) { }
     window.PLAT_PORTA(monta)
   }
