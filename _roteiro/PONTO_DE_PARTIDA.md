@@ -64,5 +64,11 @@ Leia nesta ordem:
 ## Segmentação / Públicos (Foco) · 16/10/2026
 - Pronto em PT e ES: simulador `meta-publicos.html` (página Públicos com os 3 cartões reais, fonte do público, formulário do público do site, semelhante e salvo; `?zerar=1`, `?exemplo=1`, `?pequeno=1`), 4 tutoriais (`criar-publico-site`, `criar-semelhante`, `criar-salvo`, `publico-pequeno`), 5 aulas (`AULAS.segmentacao`) e 5 quizzes (`tipo-publico`, `fonte-publico`, `semelhante-ok`, `salvo-ou-automatico`, `publico-pequeno-q`).
 - A conferir: formulário do público do site em ES, janela do público salvo, texto exato da recusa do semelhante e mínimo da fonte. Tamanhos de público do simulador são inventados (exceto "Abaixo de 1.000").
-- **PENDENTE (André, 16/10): módulo "Microdata Debugger" vem logo DEPOIS do Catálogo na lista do treinamento e ainda não foi feito.** Fazer em seguida (pesquisar a ferramenta real antes).
+- (Microdata Debugger: FEITO em seguida, ver seção abaixo.)
 - Próximo na ordem do Foco depois dele: Entrega, Meta Verified, Commerce, Shop Ads…
+
+## Microdata Debugger (Foco, logo depois do Catálogo) · 16/10/2026
+- Pedido do André (esquecido na lista inicial). Ferramenta real: business.facebook.com/ads/microdata/debug ("Ferramenta de depuração de microdados do Facebook para catálogo"); testada de verdade com a página de produto pública da loja de aula (sucesso em PT; erro em ES numa nova tentativa, causa não apurada) e com o carrinho (erro "Falha na validação de dados"). Notas em `amostras_meta.md`.
+- Pronto em PT e ES: simulador `meta-microdados.html` (site de mentirinha lojinha.exemplo.com.br, páginas boas e com defeito), 3 tutoriais (`verificar-microdados`, `ler-campos`, `erro-microdados`), 4 aulas (`AULAS.microdados`) e 4 quizzes. Módulo 6 da Trilha Foco (agora 21 módulos).
+- A conferir: sucesso em ES, erros por campo específico (a tela real só diz "Falha na validação de dados"), artigo de ajuda 1175004275966513 não lido, lista completa de parâmetros.
+- Próximo: Entrega.

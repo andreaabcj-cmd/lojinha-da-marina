@@ -1008,6 +1008,64 @@
         [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'O Comércio cuida do catálogo.', es: 'Ventas cuida del catálogo.' }]] }
   ]);
 
+  /* ---------- 19. Microdata Debugger: quatro mini-quizzes (Microdados 01–04) ---------- */
+  quizCatalogo('para-que-microdados', { pt: 'Para que servem os microdados?', es: '¿Para qué sirven los microdatos?' }, { pt: 'Site, Pixel, catálogo e Microdata Debugger: quem faz o quê.', es: 'Sitio, Pixel, catálogo y Microdata Debugger: quién hace qué.' }, [
+    { q: { pt: 'Um cliente quer que os produtos do site entrem sozinhos no catálogo da Meta. O que a Meta pede?', es: 'Un cliente quiere que los productos del sitio entren solos en el catálogo de Meta. ¿Qué pide Meta?' },
+      o: [[{ pt: 'Tags de microdados nas páginas de produto, junto da instalação do Pixel', es: 'Etiquetas de microdatos en las páginas de producto, junto con la instalación del Pixel' }, 1, { pt: 'Isso! É o que a própria ferramenta explica.', es: '¡Eso! Es lo que explica la propia herramienta.' }],
+        [{ pt: 'Mandar um print de cada produto', es: 'Mandar una captura de cada producto' }, 0, { pt: 'Print não alimenta o catálogo.', es: 'Una captura no alimenta el catálogo.' }],
+        [{ pt: 'Criar um público personalizado', es: 'Crear un público personalizado' }, 0, { pt: 'Público é para segmentação, não para trazer produtos.', es: 'El público es para segmentación, no para traer productos.' }]] },
+    { q: { pt: 'O que são microdados?', es: '¿Qué son los microdatos?' },
+      o: [[{ pt: 'Dados de marcação estruturados que indicam informações do produto, como nome, descrição e preço', es: 'Datos de marcado estructurados que indican información del producto, como nombre, descripción y precio' }, 1, { pt: 'Isso! Ficam no código da página, invisíveis para o cliente comum.', es: '¡Eso! Están en el código de la página, invisibles para el cliente común.' }],
+        [{ pt: 'Dados pessoais dos clientes', es: 'Datos personales de los clientes' }, 0, { pt: 'Não: são dados do produto, não das pessoas.', es: 'No: son datos del producto, no de las personas.' }],
+        [{ pt: 'O texto do anúncio', es: 'El texto del anuncio' }, 0, { pt: 'Anúncio é outra coisa.', es: 'El anuncio es otra cosa.' }]] },
+    { q: { pt: 'Quem normalmente adiciona os microdados no site?', es: '¿Quién suele agregar los microdatos en el sitio?' },
+      o: [[{ pt: 'A plataforma da loja ou o desenvolvedor do site do cliente; o atendimento mostra o que falta com o Microdata Debugger', es: 'La plataforma de la tienda o el desarrollador del sitio del cliente; la atención muestra lo que falta con el Microdata Debugger' }, 1, { pt: 'Isso! O código do site não é seu: você mostra e orienta.', es: '¡Eso! El código del sitio no es tuyo: muestras y orientas.' }],
+        [{ pt: 'O agente de atendimento, direto no código do cliente', es: 'El agente de atención, directo en el código del cliente' }, 0, { pt: 'Não: mexer no site é do cliente ou do desenvolvedor dele.', es: 'No: tocar el sitio es del cliente o de su desarrollador.' }],
+        [{ pt: 'A própria Meta, sozinha', es: 'Meta misma, sola' }, 0, { pt: 'A Meta só lê o que o site publica.', es: 'Meta solo lee lo que el sitio publica.' }]] }
+  ]);
+  quizCatalogo('usar-debugger', { pt: 'Como uso o Microdata Debugger?', es: '¿Cómo uso el Microdata Debugger?' }, { pt: 'URL de uma página de produto, Verificar e ler a Prévia.', es: 'URL de una página de producto, Comprobar y leer la vista previa.' }, [
+    { q: { pt: 'Qual URL colocar no campo “Link do site”?', es: '¿Qué URL poner en el campo “Enlace al sitio web”?' },
+      o: [[{ pt: 'A de uma página de produto, com detalhes do inventário', es: 'La de una página de producto, con detalles de inventario' }, 1, { pt: 'Isso! A tela pede “a URL de uma página da web com detalhes do inventário”.', es: '¡Eso! La pantalla pide “la URL de una página web con detalles de inventario”.' }],
+        [{ pt: 'A do Gerenciador de Anúncios', es: 'La del Administrador de anuncios' }, 0, { pt: 'A ferramenta lê o site do cliente, não a Meta.', es: 'La herramienta lee el sitio del cliente, no Meta.' }],
+        [{ pt: 'A do Instagram da loja', es: 'La de Instagram de la tienda' }, 0, { pt: 'Precisa ser a página do produto no site.', es: 'Debe ser la página del producto en el sitio.' }]] },
+    { q: { pt: 'A ferramenta mostra as tabelas OpenGraph e JSON-LD e, no fim, “Parabéns! Seus microdados parecem ótimos!”. O que significa?', es: 'La herramienta muestra las tablas OpenGraph y JSON-LD y, al final, “¡Felicitaciones! ¡Tus microdatos se ven muy bien!”. ¿Qué significa?' },
+      o: [[{ pt: 'Que a Meta leu os dados de produto da página e não achou problema', es: 'Que Meta leyó los datos de producto de la página y no encontró problema' }, 1, { pt: 'Isso! Mas é de uma página: outras páginas podem ter problema.', es: '¡Eso! Pero es de una página: otras páginas pueden tener problema.' }],
+        [{ pt: 'Que o catálogo está pronto e com todos os produtos', es: 'Que el catálogo está listo y con todos los productos' }, 0, { pt: 'A ferramenta olha uma página por vez.', es: 'La herramienta mira una página por vez.' }],
+        [{ pt: 'Que o anúncio foi aprovado', es: 'Que el anuncio fue aprobado' }, 0, { pt: 'Não tem relação com anúncio.', es: 'No tiene relación con el anuncio.' }]] },
+    { q: { pt: 'O cliente tem 300 produtos. Como conferir?', es: 'El cliente tiene 300 productos. ¿Cómo revisar?' },
+      o: [[{ pt: 'Testar algumas páginas de tipos diferentes (por exemplo, produto normal, sem estoque e com variantes)', es: 'Probar algunas páginas de tipos distintos (por ejemplo, producto normal, sin stock y con variantes)' }, 1, { pt: 'Isso! A ferramenta verifica uma URL por vez.', es: '¡Eso! La herramienta verifica una URL por vez.' }],
+        [{ pt: 'Testar só a página inicial', es: 'Probar solo la página de inicio' }, 0, { pt: 'A página inicial não tem os dados de um produto.', es: 'La página de inicio no tiene los datos de un producto.' }],
+        [{ pt: 'Não precisa testar', es: 'No hace falta probar' }, 0, { pt: 'Vale testar para evitar surpresas.', es: 'Conviene probar para evitar sorpresas.' }]] }
+  ]);
+  quizCatalogo('campo-microdados', { pt: 'Que campo é esse?', es: '¿Qué campo es ese?' }, { pt: 'id, price, availability e a ligação com o catálogo e o Pixel.', es: 'id, price, availability y el vínculo con el catálogo y el Pixel.' }, [
+    { q: { pt: 'O parâmetro “id” da tabela mostra CANECA_01. Com o que ele deve combinar?', es: 'El parámetro “id” de la tabla muestra CANECA_01. ¿Con qué debe coincidir?' },
+      o: [[{ pt: 'Com a Identificação do conteúdo do produto no catálogo, e com o content_id que o Pixel manda', es: 'Con el Identificador de contenido del producto en el catálogo, y con el content_id que manda el Pixel' }, 1, { pt: 'Isso! É o mesmo “idioma” da aula 04 do Catálogo.', es: '¡Eso! Es el mismo “idioma” de la clase 04 del Catálogo.' }],
+        [{ pt: 'Com o nome da Página', es: 'Con el nombre de la Página' }, 0, { pt: 'O id é do produto, não da Página.', es: 'El id es del producto, no de la Página.' }],
+        [{ pt: 'Com o ID do anúncio', es: 'Con el ID del anuncio' }, 0, { pt: 'O id é do produto no catálogo.', es: 'El id es del producto en el catálogo.' }]] },
+    { q: { pt: 'O preço da página aparece como “R$ 54,90” escrito como texto. O que está errado?', es: 'El precio de la página aparece como “R$ 54,90” escrito como texto. ¿Qué está mal?' },
+      o: [[{ pt: 'O preço deve ser um número com a moeda, como 54.90 BRL', es: 'El precio debe ser un número con la moneda, como 54.90 BRL' }, 1, { pt: 'Isso! É o formato que a ferramenta mostra no sucesso.', es: '¡Eso! Es el formato que muestra la herramienta en el éxito.' }],
+        [{ pt: 'Nada: texto é aceito', es: 'Nada: el texto se acepta' }, 0, { pt: 'Texto livre não é entendido como preço.', es: 'El texto libre no se entiende como precio.' }],
+        [{ pt: 'O preço deveria estar em dólar', es: 'El precio debería estar en dólares' }, 0, { pt: 'A moeda deve ser a da loja (BRL).', es: 'La moneda debe ser la de la tienda (BRL).' }]] },
+    { q: { pt: 'Um produto sem estoque. Como a página deve informar a disponibilidade?', es: 'Un producto sin stock. ¿Cómo debe informar la página la disponibilidad?' },
+      o: [[{ pt: 'Com availability “out of stock”', es: 'Con availability “out of stock”' }, 1, { pt: 'Isso! Assim o catálogo mostra “Indisponível”.', es: '¡Eso! Así el catálogo muestra “Agotado”.' }],
+        [{ pt: 'Sem o campo, e pronto', es: 'Sin el campo, y listo' }, 0, { pt: 'Falta de dado pode deixar o produto errado no catálogo.', es: 'La falta de datos puede dejar el producto mal en el catálogo.' }],
+        [{ pt: 'Com availability “in stock”, para vender mais', es: 'Con availability “in stock”, para vender más' }, 0, { pt: 'Isso engana o cliente e gera reclamação.', es: 'Eso engaña al cliente y genera reclamos.' }]] }
+  ]);
+  quizCatalogo('por-que-erro-microdados', { pt: 'Por que deu erro?', es: '¿Por qué dio error?' }, { pt: '“Falha na validação de dados”: onde procurar.', es: '“Error al validar los datos”: dónde buscar.' }, [
+    { q: { pt: 'A ferramenta mostra “Falha na validação de dados”. Ela diz qual campo está errado?', es: 'La herramienta muestra “Error al validar los datos”. ¿Dice qué campo está mal?' },
+      o: [[{ pt: 'Não: é um aviso geral; é preciso comparar com uma página que funciona', es: 'No: es un aviso general; hay que comparar con una página que funciona' }, 1, { pt: 'Isso! Na tela real que vimos, não aparece o campo.', es: '¡Eso! En la pantalla real que vimos, no aparece el campo.' }],
+        [{ pt: 'Sim: sempre diz o campo e a linha', es: 'Sí: siempre dice el campo y la línea' }, 0, { pt: 'Na tela que vimos, só a frase geral.', es: 'En la pantalla que vimos, solo la frase general.' }],
+        [{ pt: 'Sim: diz o nome do desenvolvedor', es: 'Sí: dice el nombre del desarrollador' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Uma página mostra erro e a página de outro produto da mesma loja está ótima. Primeira ideia?', es: 'Una página muestra error y la página de otro producto de la misma tienda está perfecta. ¿Primera idea?' },
+      o: [[{ pt: 'Comparar as duas tabelas: algum parâmetro (id, price, availability…) falta ou está em formato diferente na página com erro', es: 'Comparar las dos tablas: algún parámetro (id, price, availability…) falta o está en formato distinto en la página con error' }, 1, { pt: 'Isso! A diferença costuma ser um campo.', es: '¡Eso! La diferencia suele ser un campo.' }],
+        [{ pt: 'Recriar o catálogo', es: 'Recrear el catálogo' }, 0, { pt: 'O problema está na página, não no catálogo.', es: 'El problema está en la página, no en el catálogo.' }],
+        [{ pt: 'Trocar o domínio do site', es: 'Cambiar el dominio del sitio' }, 0, { pt: 'Exagero.', es: 'Exagerado.' }]] },
+    { q: { pt: 'A página aparece sem microdados (por exemplo, um carrinho). O que dizer ao cliente?', es: 'La página aparece sin microdatos (por ejemplo, un carrito). ¿Qué decirle al cliente?' },
+      o: [[{ pt: 'Que a ferramenta deve ser testada numa página de produto, que é onde ficam os dados do produto', es: 'Que la herramienta debe probarse en una página de producto, que es donde están los datos del producto' }, 1, { pt: 'Isso! Carrinho e página inicial não trazem os dados do produto.', es: '¡Eso! El carrito y la página de inicio no traen los datos del producto.' }],
+        [{ pt: 'Que o site está quebrado', es: 'Que el sitio está roto' }, 0, { pt: 'Não: só é a página errada para testar.', es: 'No: solo es la página equivocada para probar.' }],
+        [{ pt: 'Que a Meta bloqueou o site', es: 'Que Meta bloqueó el sitio' }, 0, { pt: 'Sem sinal disso.', es: 'Sin señal de eso.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

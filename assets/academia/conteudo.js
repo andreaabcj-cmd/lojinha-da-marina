@@ -19,6 +19,7 @@ window.MODULOS = [
   { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'construcao', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'Criativo, texto, destino, posicionamentos e erros comuns.', es: 'Contenido, texto, destino, ubicaciones y errores comunes.' } },
   { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
+  { id: 'microdados', fase: 2, status: 'construcao', icone: '🔎', titulo: { pt: 'Microdata Debugger', es: 'Microdata Debugger' }, resumo: { pt: 'Conferir se as páginas de produto do site falam a língua do catálogo.', es: 'Revisar si las páginas de producto del sitio hablan el idioma del catálogo.' } },
   { id: 'relatorios', fase: 3, status: 'construcao', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Ler, montar e comparar relatórios; atribuição e relatórios vazios.', es: 'Leer, armar y comparar informes; atribución e informes vacíos.' } },
   { id: 'segmentacao', fase: 3, status: 'construcao', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados do site, semelhantes, salvos e controles; erros comuns.', es: 'Públicos personalizados del sitio, similares, guardados y controles; errores comunes.' } },
   { id: 'entrega', fase: 3, status: 'planejado', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'Como a entrega funciona, a fase de aprendizado e a solução de problemas.', es: 'Cómo funciona la entrega, la fase de aprendizaje y la solución de problemas.' } },
@@ -45,7 +46,7 @@ window.MODULOS = [
 window.TRILHAS = [
   { id: 'foco', icone: '🎯', nome: { pt: 'Trilha Foco', es: 'Ruta Foco' }, sub: { pt: 'Anúncios, medição e comércio', es: 'Anuncios, medición y comercio' },
     resumo: { pt: 'A ordem de estudo de quem atende anúncios, medição e comércio. Foca no que você resolve e, quando um caso é de outra área, mostra só uma linha de encaminhamento.', es: 'El orden de estudio de quien atiende anuncios, medición y comercio. Se centra en lo que tú resuelves y, cuando un caso es de otra área, muestra solo una línea de derivación.' },
-    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'catalogo', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
+    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
   { id: 'completa', icone: '🧭', nome: { pt: 'Trilha Completa', es: 'Ruta Completa' }, sub: { pt: 'Tudo do Foco e mais', es: 'Todo el Foco y más' },
     resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
     modulos: null, extras: ['pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
@@ -2379,6 +2380,192 @@ window.AULAS = {
         passos: [{ pt: 'Leia os status do público em Públicos.', es: 'Lee los estados del público en Públicos.' },
           { pt: 'Rode com Advantage+ e controles, e volte ao semelhante depois.', es: 'Corre con Advantage+ y controles, y vuelve al similar después.' }],
         encaminhar: { pt: 'Se o público não enche mesmo com tráfego no site, confira o Pixel (módulo Pixel) e siga a Central de Ajuda da Meta.', es: 'Si el público no se llena aun con tráfico en el sitio, revisa el Pixel (módulo Pixel) y sigue el Centro de ayuda de Meta.' }
+      }
+    }
+  ],
+  microdados: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'Microdados: como o site fala com o catálogo', es: 'Microdatos: cómo habla el sitio con el catálogo' },
+      antes: { pt: 'A Marina tem o catálogo pronto, com 8 produtos que entraram por um arquivo.', es: 'Marina tiene el catálogo listo, con 8 productos que entraron por un archivo.' },
+      gancho: { pt: '“E se os produtos do site entrassem sozinhos no catálogo?” Isso depende de um detalhe no código das páginas: os microdados.', es: '“¿Y si los productos del sitio entraran solos en el catálogo?” Eso depende de un detalle en el código de las páginas: los microdatos.' },
+      objetivo: { pt: 'Entender o que são microdados, por que o catálogo precisa deles e qual é a ferramenta para conferir.', es: 'Entender qué son los microdatos, por qué el catálogo los necesita y cuál es la herramienta para revisarlos.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'No catálogo eu coloquei os produtos por um arquivo. Existe um jeito de o próprio site mandar? 🤔', es: 'En el catálogo puse los productos por un archivo. ¿Existe una forma de que el propio sitio los mande? 🤔' }],
+          ['rafa', { pt: 'Existe: para adicionar produtos do site automaticamente ao catálogo da Meta, as páginas precisam ter tags de microdados, junto da instalação do Pixel.', es: 'Existe: para agregar productos del sitio automáticamente al catálogo de Meta, las páginas necesitan tener etiquetas de microdatos, junto con la instalación del Pixel.' }],
+          ['marina', { pt: 'E o que são microdados?', es: '¿Y qué son los microdatos?' }],
+          ['rafa', { pt: 'São dados de marcação estruturados, escondidos no código da página, que dizem coisas do produto: nome, descrição, preço, estoque. Quem vê a loja não enxerga; a Meta, sim.', es: 'Son datos de marcado estructurados, escondidos en el código de la página, que dicen cosas del producto: nombre, descripción, precio, stock. Quien ve la tienda no los ve; Meta sí.' }],
+          ['pixel', { pt: 'E para conferir se estão certos há uma ferramenta própria: a Ferramenta de depuração de microdados, o Microdata Debugger. Você cola a URL de uma página de produto e ela mostra o que a Meta leu.', es: 'Y para revisar si están bien hay una herramienta propia: la Herramienta de depuración de microdatos, el Microdata Debugger. Pegas la URL de una página de producto y muestra lo que Meta leyó.' }]
+        ],
+        pontos: [
+          { pt: '<b>Microdados</b> = dados estruturados do produto no código da página.', es: '<b>Microdatos</b> = datos estructurados del producto en el código de la página.' },
+          { pt: '<b>Para quê:</b> o catálogo puxar os produtos do site automaticamente.', es: '<b>Para qué:</b> que el catálogo traiga los productos del sitio automáticamente.' },
+          { pt: '<b>Conferir:</b> Ferramenta de depuração de microdados (uma URL por vez).', es: '<b>Revisar:</b> Herramienta de depuración de microdatos (una URL por vez).' }
+        ],
+        notas: { pt: 'Ferramenta vista de verdade em 16/10/2026 em português e espanhol (textos da explicação, campo Link do site e botão), com a página de produto da Lojinha. Fonte oficial: o próprio texto da ferramenta e o link “Saiba mais” para a Central de Ajuda da Meta (artigo 1175004275966513, não lido).', es: 'Herramienta vista de verdad el 16/10/2026 en portugués y español (textos de la explicación, campo Enlace al sitio web y botón), con la página de producto de la Lojinha. Fuente oficial: el propio texto de la herramienta y el enlace “Más información” al Centro de ayuda de Meta (artículo 1175004275966513, no leído).' }
+      },
+      ferramenta: 'para-que-microdados',
+      atender: {
+        cena: { pt: 'Meu site tem 300 produtos e não quero subir arquivo toda semana. Dá para a Meta puxar sozinha do site? 🙏', es: 'Mi sitio tiene 300 productos y no quiero subir un archivo cada semana. ¿Se puede hacer que Meta los traiga sola del sitio? 🙏' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“A Meta pode adicionar produtos do site ao catálogo automaticamente se as páginas de produto tiverem tags de microdados, junto da instalação do Pixel. Vamos conferir uma página sua na ferramenta de depuração de microdados.”', es: '“Meta puede agregar productos del sitio al catálogo automáticamente si las páginas de producto tienen etiquetas de microdatos, junto con la instalación del Pixel. Revisemos una página tuya en la herramienta de depuración de microdatos.”' }, fb: { pt: 'Isso! Explicou o requisito e o primeiro passo.', es: '¡Eso! Explicaste el requisito y el primer paso.' } },
+          { certa: false, txt: { pt: '“Não dá, só por arquivo.”', es: '“No se puede, solo por archivo.”' }, fb: { pt: 'Dá, com microdados nas páginas.', es: 'Se puede, con microdatos en las páginas.' } },
+          { certa: false, txt: { pt: '“Basta ligar o Pixel, ele manda os produtos.”', es: '“Basta activar el Pixel, él manda los productos.”' }, fb: { pt: 'O Pixel mede eventos; os dados de produto vêm dos microdados.', es: 'El Pixel mide eventos; los datos de producto vienen de los microdatos.' } },
+          { certa: false, txt: { pt: '“Passe o login do site para eu configurar.”', es: '“Pásame el acceso del sitio para configurarlo.”' }, fb: { pt: 'Nunca peça acesso: oriente o cliente ou o desenvolvedor dele.', es: 'Nunca pidas acceso: orienta al cliente o a su desarrollador.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O site é feito em uma plataforma de loja ou sob medida? Quem cuida do código?', es: '¿El sitio está hecho en una plataforma de tienda o a medida? ¿Quién se encarga del código?' },
+          { pt: 'Qual é a URL de uma página de produto?', es: '¿Cuál es la URL de una página de producto?' }],
+        conferir: [{ pt: 'Ferramenta de depuração de microdados: Verificar microdados com a URL do produto.', es: 'Herramienta de depuración de microdatos: Comprobar microdatos con la URL del producto.' },
+          { pt: 'Catálogo › Fontes de dados.', es: 'Catálogo › Orígenes de datos.' }],
+        frase: { pt: 'Para os produtos do site entrarem sozinhos no catálogo, as páginas precisam ter microdados. Vamos conferir uma página de produto na ferramenta de depuração.', es: 'Para que los productos del sitio entren solos en el catálogo, las páginas necesitan tener microdatos. Revisemos una página de producto en la herramienta de depuración.' },
+        passos: [{ pt: 'Abra a ferramenta e cole a URL de um produto.', es: 'Abre la herramienta y pega la URL de un producto.' },
+          { pt: 'Clique em Verificar microdados e leia o resultado.', es: 'Haz clic en Comprobar microdatos y lee el resultado.' }],
+        encaminhar: { pt: 'Adicionar ou corrigir microdados é mudança no código do site: quem faz é a plataforma da loja ou o desenvolvedor do cliente.', es: 'Agregar o corregir microdatos es un cambio en el código del sitio: lo hace la plataforma de la tienda o el desarrollador del cliente.' }
+      }
+    },
+    {
+      id: '02', min: 7, status: 'pronta',
+      titulo: { pt: 'Usar o Microdata Debugger', es: 'Usar el Microdata Debugger' },
+      antes: { pt: 'A Marina sabe que o site precisa de microdados. Quer conferir os da Caneca azul.', es: 'Marina sabe que el sitio necesita microdatos. Quiere revisar los de la Caneca azul.' },
+      gancho: { pt: '“Como eu sei se o meu site está certo?” Cola a URL, clica, e a Meta mostra o que enxergou.', es: '“¿Cómo sé si mi sitio está bien?” Pegas la URL, haces clic, y Meta muestra lo que vio.' },
+      objetivo: { pt: 'Abrir a ferramenta, verificar uma página de produto e ler a Prévia e a mensagem final.', es: 'Abrir la herramienta, verificar una página de producto y leer la vista previa y el mensaje final.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Abri a ferramenta e só tem um campo. 🤔', es: 'Abrí la herramienta y solo hay un campo. 🤔' }],
+          ['rafa', { pt: 'É isso: Link do site. Coloque a URL de uma página de produto, com detalhes do inventário, e clique em Verificar microdados.', es: 'Es eso: Enlace al sitio web. Pon la URL de una página de producto, con detalles de inventario, y haz clic en Comprobar microdatos.' }],
+          ['marina', { pt: 'E o que aparece?', es: '¿Y qué aparece?' }],
+          ['rafa', { pt: 'Uma Prévia: “É assim que os microdados são configurados no seu site”. Embaixo, tabelas com Parâmetro e Valor: uma para OpenGraph e outra para JSON-LD, que são dois formatos de publicar os dados.', es: 'Una vista previa: “Así se configuran los microdatos en tu sitio web”. Abajo, tablas con Parámetro y Valor: una para OpenGraph y otra para JSON-LD, que son dos formatos de publicar los datos.' }],
+          ['pixel', { pt: 'Se estiver tudo certo, termina com “Parabéns! Seus microdados parecem ótimos!”. Isso vale para aquela página: teste outras também.', es: 'Si está todo bien, termina con “¡Felicitaciones! ¡Tus microdatos se ven muy bien!”. Eso vale para esa página: prueba otras también.' }]
+        ],
+        pontos: [
+          { pt: '<b>Uma página de produto por vez</b> (não a loja inteira).', es: '<b>Una página de producto por vez</b> (no toda la tienda).' },
+          { pt: '<b>OpenGraph e JSON-LD:</b> dois formatos, com os mesmos dados.', es: '<b>OpenGraph y JSON-LD:</b> dos formatos, con los mismos datos.' },
+          { pt: '<b>“Parabéns”</b> vale só para a página testada.', es: '<b>“Felicitaciones”</b> vale solo para la página probada.' }
+        ],
+        notas: { pt: 'Resultado de sucesso visto de verdade em português em 16/10/2026 com a página da Caneca azul (Prévia, OpenGraph, JSON-LD e “Parabéns!”). Em espanhol, uma nova tentativa da mesma página deu erro, e o texto de sucesso em espanhol não foi visto (a conferir).', es: 'Resultado de éxito visto de verdad en portugués el 16/10/2026 con la página de la Caneca azul (vista previa, OpenGraph, JSON-LD y “¡Felicitaciones!”). En español, un nuevo intento de la misma página dio error, y el texto de éxito en español no se vio (por confirmar).' }
+      },
+      ferramenta: 'usar-debugger',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para verificar a página da Caneca azul e ler a Prévia e o “Parabéns!”.', es: 'En el simulador, el Pixel te guía para verificar la página de la Caneca azul y leer la vista previa y el “¡Felicitaciones!”.' },
+        tour: 'verificar-microdados', pagina: 'meta-microdados.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Testei meu site na ferramenta e deu “Parabéns”, então por que só 5 dos meus 300 produtos entraram no catálogo? 😠', es: '¡Probé mi sitio en la herramienta y dio “Felicitaciones”, entonces por qué solo 5 de mis 300 productos entraron en el catálogo? 😠' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“A ferramenta confere uma página por vez: o “Parabéns” vale só para a que você testou. Vamos testar outras páginas de produto, de tipos diferentes, e comparar quais dão erro.”', es: '“La herramienta revisa una página por vez: el “Felicitaciones” vale solo para la que probaste. Probemos otras páginas de producto, de tipos distintos, y comparemos cuáles dan error.”' }, fb: { pt: 'Isso! Explicou o alcance da ferramenta.', es: '¡Eso! Explicaste el alcance de la herramienta.' } },
+          { certa: false, txt: { pt: '“A Meta demora, espere.”', es: '“Meta demora, espera.”' }, fb: { pt: 'Primeiro teste outras páginas.', es: 'Primero prueba otras páginas.' } },
+          { certa: false, txt: { pt: '“O catálogo só aceita 5 produtos.”', es: '“El catálogo solo acepta 5 productos.”' }, fb: { pt: 'Não há esse limite.', es: 'No hay ese límite.' } },
+          { certa: false, txt: { pt: '“Teste a página inicial.”', es: '“Prueba la página de inicio.”' }, fb: { pt: 'A página inicial não traz os dados de um produto.', es: 'La página de inicio no trae los datos de un producto.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual URL foi testada? É de um produto?', es: '¿Qué URL se probó? ¿Es de un producto?' },
+          { pt: 'O resultado foi Prévia com “Parabéns” ou Erros?', es: '¿El resultado fue vista previa con “Felicitaciones” o Errores?' }],
+        conferir: [{ pt: 'Tabelas OpenGraph e JSON-LD da Prévia.', es: 'Tablas OpenGraph y JSON-LD de la vista previa.' },
+          { pt: 'Outras páginas de produto, de tipos diferentes.', es: 'Otras páginas de producto, de tipos distintos.' }],
+        frase: { pt: 'A ferramenta confere uma página de produto por vez. Vamos testar algumas páginas diferentes e comparar os resultados.', es: 'La herramienta revisa una página de producto por vez. Probemos algunas páginas distintas y comparemos los resultados.' },
+        passos: [{ pt: 'Cole a URL de um produto e verifique.', es: 'Pega la URL de un producto y verifica.' },
+          { pt: 'Repita com outros produtos e compare.', es: 'Repite con otros productos y compara.' }],
+        encaminhar: { pt: 'Se algumas páginas dão erro e outras não, a diferença está no código dessas páginas: oriente o cliente ou o desenvolvedor dele.', es: 'Si algunas páginas dan error y otras no, la diferencia está en el código de esas páginas: orienta al cliente o a su desarrollador.' }
+      }
+    },
+    {
+      id: '03', min: 8, status: 'pronta',
+      titulo: { pt: 'Os campos que o catálogo precisa', es: 'Los campos que necesita el catálogo' },
+      antes: { pt: 'A Marina viu as tabelas da Prévia, cheias de siglas.', es: 'Marina vio las tablas de la vista previa, llenas de siglas.' },
+      gancho: { pt: '“id, title, price, availability… o que cada um faz?” Vamos ler a tabela como quem lê uma ficha.', es: '“id, title, price, availability… ¿qué hace cada uno?” Vamos a leer la tabla como quien lee una ficha.' },
+      objetivo: { pt: 'Ler os parâmetros principais (id, title, description, price, link, image_link, availability, condition, brand) e ligar o id ao catálogo e ao Pixel.', es: 'Leer los parámetros principales (id, title, description, price, link, image_link, availability, condition, brand) y vincular el id con el catálogo y el Pixel.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Na tabela tem id, title, description, price, link, image_link, availability, condition, brand… 😵', es: 'En la tabla hay id, title, description, price, link, image_link, availability, condition, brand… 😵' }],
+          ['rafa', { pt: 'É a ficha do produto. title é o nome, description a descrição, price o preço, link a página, image_link a foto, availability o estoque, condition se é novo, brand a marca.', es: 'Es la ficha del producto. title es el nombre, description la descripción, price el precio, link la página, image_link la foto, availability el stock, condition si es nuevo, brand la marca.' }],
+          ['marina', { pt: 'E o id?', es: '¿Y el id?' }],
+          ['rafa', { pt: 'O id é o mais importante: ele é o CANECA_01, o mesmo código da Identificação do conteúdo no catálogo. É ele que liga a página ao produto, e o evento do Pixel ao produto (lembra do content_id?).', es: 'El id es el más importante: es CANECA_01, el mismo código del Identificador de contenido en el catálogo. Es el que une la página con el producto, y el evento del Pixel con el producto (¿recuerdas el content_id?).' }],
+          ['pixel', { pt: 'O preço aparece como 49.90 BRL: número com ponto e a moeda. E availability diz “in stock” ou “out of stock”.', es: 'El precio aparece como 49.90 BRL: número con punto y la moneda. Y availability dice “in stock” o “out of stock”.' }]
+        ],
+        pontos: [
+          { pt: '<b>id</b> = Identificação do conteúdo do catálogo (e content_id do Pixel).', es: '<b>id</b> = Identificador de contenido del catálogo (y content_id del Pixel).' },
+          { pt: '<b>price</b> = número com ponto + moeda (49.90 BRL).', es: '<b>price</b> = número con punto + moneda (49.90 BRL).' },
+          { pt: '<b>availability</b> = in stock / out of stock, e os valores iguais nos dois formatos.', es: '<b>availability</b> = in stock / out of stock, y los valores iguales en los dos formatos.' }
+        ],
+        notas: { pt: 'Parâmetros e valores vistos de verdade em 16/10/2026 (OpenGraph: id, title, description, price, link, image_link, availability, condition, brand, additional_image_link; JSON-LD: sem condition e additional_image_link). Os significados de cada campo são os nomes do próprio catálogo; a lista completa de parâmetros aceitos não foi lida (a conferir).', es: 'Parámetros y valores vistos de verdad el 16/10/2026 (OpenGraph: id, title, description, price, link, image_link, availability, condition, brand, additional_image_link; JSON-LD: sin condition y additional_image_link). Los significados de cada campo son los nombres del propio catálogo; la lista completa de parámetros aceptados no se leyó (por confirmar).' }
+      },
+      ferramenta: 'campo-microdados',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva pelos campos da Prévia: id, price, availability e a diferença entre OpenGraph e JSON-LD.', es: 'En el simulador, el Pixel te lleva por los campos de la vista previa: id, price, availability y la diferencia entre OpenGraph y JSON-LD.' },
+        tour: 'ler-campos', pagina: 'meta-microdados.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Na ferramenta, o id da minha página é “caneca-azul”, mas no catálogo é CANECA_01. Isso importa? 🤔', es: 'En la herramienta, el id de mi página es “caneca-azul”, pero en el catálogo es CANECA_01. ¿Eso importa? 🤔' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Importa: o id da página precisa ser igual à Identificação do conteúdo no catálogo (CANECA_01); é ele que liga o produto, e o evento do Pixel, ao catálogo. Vale ajustar o site, ou o catálogo, para os dois usarem o mesmo código.”', es: '“Importa: el id de la página debe ser igual al Identificador de contenido en el catálogo (CANECA_01); es el que une el producto, y el evento del Pixel, con el catálogo. Conviene ajustar el sitio, o el catálogo, para que los dos usen el mismo código.”' }, fb: { pt: 'Isso! Ligou microdados, catálogo e Pixel.', es: '¡Eso! Uniste microdatos, catálogo y Pixel.' } },
+          { certa: false, txt: { pt: '“Não importa, a Meta entende pelo nome.”', es: '“No importa, Meta entiende por el nombre.”' }, fb: { pt: 'A Meta compara ids, não nomes.', es: 'Meta compara ids, no nombres.' } },
+          { certa: false, txt: { pt: '“Apague o catálogo.”', es: '“Elimina el catálogo.”' }, fb: { pt: 'Exagero: basta alinhar os ids.', es: 'Exagerado: basta alinear los ids.' } },
+          { certa: false, txt: { pt: '“Escreva o id no título do produto.”', es: '“Escribe el id en el título del producto.”' }, fb: { pt: 'O id é um campo próprio.', es: 'El id es un campo propio.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual é o id mostrado na ferramenta? E a Identificação do conteúdo no catálogo?', es: '¿Cuál es el id mostrado en la herramienta? ¿Y el Identificador de contenido en el catálogo?' },
+          { pt: 'O preço aparece como número com moeda (ex.: 49.90 BRL)?', es: '¿El precio aparece como número con moneda (ej.: 49.90 BRL)?' }],
+        conferir: [{ pt: 'Tabela da Prévia: id, price, availability.', es: 'Tabla de la vista previa: id, price, availability.' },
+          { pt: 'Catálogo › Produtos › Identificação do conteúdo.', es: 'Catálogo › Productos › Identificador de contenido.' }],
+        frase: { pt: 'O id da página precisa ser igual à Identificação do conteúdo no catálogo. Vamos comparar os dois e alinhar.', es: 'El id de la página debe ser igual al Identificador de contenido en el catálogo. Comparemos los dos y alineemos.' },
+        passos: [{ pt: 'Veja o id na Prévia da ferramenta.', es: 'Mira el id en la vista previa de la herramienta.' },
+          { pt: 'Compare com a Identificação do conteúdo no catálogo.', es: 'Compara con el Identificador de contenido en el catálogo.' }],
+        encaminhar: { pt: 'Mudar o id nas páginas do site é trabalho do site do cliente; mudar no catálogo, da fonte de dados. Oriente o cliente sobre qual lado ajustar.', es: 'Cambiar el id en las páginas del sitio es trabajo del sitio del cliente; cambiarlo en el catálogo, del origen de datos. Orienta al cliente sobre qué lado ajustar.' }
+      }
+    },
+    {
+      id: '04', min: 8, status: 'pronta',
+      titulo: { pt: '“Falha na validação de dados”', es: '“Error al validar los datos”' },
+      antes: { pt: 'A Marina testou a página do Boné e a ferramenta mostrou Erros.', es: 'Marina probó la página de la Gorra y la herramienta mostró Errores.' },
+      gancho: { pt: '“Deu erro e não diz o quê!” Vamos achar a causa comparando com uma página que funciona.', es: '“¡Dio error y no dice qué!” Vamos a encontrar la causa comparando con una página que funciona.' },
+      objetivo: { pt: 'Ler a tela de erro, achar a causa comparando com uma página boa e orientar o cliente sem mexer no site.', es: 'Leer la pantalla de error, encontrar la causa comparando con una página buena y orientar al cliente sin tocar el sitio.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Apareceu “Erros: os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas”. E embaixo só “Falha na validação de dados”. 😩', es: 'Apareció “Errores: estos problemas impiden que los productos de tu sitio web se agreguen al catálogo automáticamente”. Y abajo solo “Error al validar los datos”. 😩' }],
+          ['rafa', { pt: 'É um aviso geral, que não aponta o campo. O truque é comparar: teste uma página do mesmo site que funcione e veja o que a página com erro não tem ou tem diferente.', es: 'Es un aviso general, que no señala el campo. El truco es comparar: prueba una página del mismo sitio que funcione y mira qué no tiene o qué tiene distinto la página con error.' }],
+          ['marina', { pt: 'E se eu testar o carrinho?', es: '¿Y si pruebo el carrito?' }],
+          ['rafa', { pt: 'Também dá erro, porque carrinho e página inicial não trazem dados de um produto. Teste sempre uma página de produto.', es: 'También da error, porque el carrito y la página de inicio no traen datos de un producto. Prueba siempre una página de producto.' }],
+          ['pixel', { pt: 'Causas comuns: faltar o id ou o preço, ou o preço vir como texto (“R$ 54,90”). Quem corrige é o site do cliente ou a plataforma da loja: você mostra a diferença e orienta.', es: 'Causas comunes: faltar el id o el precio, o que el precio venga como texto (“R$ 54,90”). Quien corrige es el sitio del cliente o la plataforma de la tienda: tú muestras la diferencia y orientas.' }]
+        ],
+        pontos: [
+          { pt: '<b>Erro geral:</b> “Falha na validação de dados” não diz o campo.', es: '<b>Error general:</b> “Error al validar los datos” no dice el campo.' },
+          { pt: '<b>Compare</b> com uma página de produto que funciona.', es: '<b>Compara</b> con una página de producto que funciona.' },
+          { pt: '<b>Teste páginas de produto</b>, não carrinho nem página inicial.', es: '<b>Prueba páginas de producto</b>, no carrito ni página de inicio.' }
+        ],
+        notas: { pt: 'Tela de erro vista de verdade em 16/10/2026 em português e espanhol (com a página do carrinho, e, em espanhol, também numa nova tentativa da página de produto). As causas comuns e os casos “sem preço”, “sem id” e “preço em texto” do simulador são nossos, a partir do que a ferramenta lê (a tela real não aponta o campo: a conferir). Uma falha pode também ser momentânea; a causa da falha em espanhol não foi apurada.', es: 'Pantalla de error vista de verdad el 16/10/2026 en portugués y español (con la página del carrito y, en español, también en un nuevo intento de la página de producto). Las causas comunes y los casos “sin precio”, “sin id” y “precio en texto” del simulador son nuestros, a partir de lo que lee la herramienta (la pantalla real no señala el campo: por confirmar). Un fallo también puede ser momentáneo; la causa del fallo en español no se determinó.' }
+      },
+      ferramenta: 'por-que-erro-microdados',
+      praticar: {
+        texto: { pt: 'No simulador, a página do Boné dá erro. O Pixel te guia para comparar com a página da Caneca azul e achar o que falta.', es: 'En el simulador, la página de la Gorra da error. El Pixel te guía para comparar con la página de la Caneca azul y encontrar lo que falta.' },
+        tour: 'erro-microdados', pagina: 'meta-microdados.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'A ferramenta diz “Falha na validação de dados” e não diz o que consertar! Isso é inútil! Resolve você! 😡', es: '¡La herramienta dice “Error al validar los datos” y no dice qué arreglar! ¡Eso es inútil! ¡Resuélvelo tú! 😡' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Entendo, o aviso é geral mesmo. Vamos descobrir juntos: teste uma página de produto que funcione e compare com a que dá erro, campo por campo (id, preço, estoque). A correção é no código do site ou na plataforma da loja, e eu te mostro exatamente o que está diferente.”', es: '“Entiendo, el aviso es general de verdad. Descubrámoslo juntos: prueba una página de producto que funcione y compárala con la que da error, campo por campo (id, precio, stock). La corrección es en el código del sitio o en la plataforma de la tienda, y te muestro exactamente qué está distinto.”' }, fb: { pt: 'Isso! Acolheu, deu método e deixou claro quem corrige.', es: '¡Eso! Acogiste, diste método y dejaste claro quién corrige.' } },
+          { certa: false, txt: { pt: '“É assim mesmo, não tem o que fazer.”', es: '“Es así, no hay nada que hacer.”' }, fb: { pt: 'Há método: comparar com uma página boa.', es: 'Hay método: comparar con una página buena.' } },
+          { certa: false, txt: { pt: '“Me passe o acesso ao site que eu corrijo.”', es: '“Pásame el acceso al sitio y yo lo corrijo.”' }, fb: { pt: 'Nunca peça acesso: oriente.', es: 'Nunca pidas acceso: orienta.' } },
+          { certa: false, txt: { pt: '“Tente de novo 10 vezes.”', es: '“Intenta de nuevo 10 veces.”' }, fb: { pt: 'Se a página não mudou, o resultado não muda (embora uma falha momentânea possa passar).', es: 'Si la página no cambió, el resultado no cambia (aunque un fallo momentáneo pueda pasar).' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual URL deu erro? É uma página de produto?', es: '¿Qué URL dio error? ¿Es una página de producto?' },
+          { pt: 'Existe uma página de produto do mesmo site que funcione?', es: '¿Existe una página de producto del mismo sitio que funcione?' }],
+        conferir: [{ pt: 'Compare as tabelas das duas páginas: id, price, availability.', es: 'Compara las tablas de las dos páginas: id, price, availability.' },
+          { pt: 'Preço como número com moeda (49.90 BRL).', es: 'Precio como número con moneda (49.90 BRL).' }],
+        frase: { pt: 'O aviso da ferramenta é geral, então comparamos com uma página que funciona para ver o que está faltando ou diferente. A correção é feita no site do cliente.', es: 'El aviso de la herramienta es general, así que comparamos con una página que funciona para ver qué falta o qué es distinto. La corrección se hace en el sitio del cliente.' },
+        passos: [{ pt: 'Teste uma página de produto boa e a com erro.', es: 'Prueba una página de producto buena y la que da error.' },
+          { pt: 'Mostre ao cliente a diferença entre as tabelas.', es: 'Muestra al cliente la diferencia entre las tablas.' }],
+        encaminhar: { pt: 'Corrigir microdados é mudança no site: a plataforma da loja ou o desenvolvedor do cliente faz. Se ainda houver dúvida, siga a Central de Ajuda da Meta (artigo da ferramenta).', es: 'Corregir microdatos es un cambio en el sitio: lo hace la plataforma de la tienda o el desarrollador del cliente. Si aún hay duda, sigue el Centro de ayuda de Meta (artículo de la herramienta).' }
       }
     }
   ],
