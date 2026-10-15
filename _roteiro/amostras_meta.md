@@ -56,3 +56,29 @@ simuladores e roteiros. Nada de dados pessoais. Telas do Gerenciador de Anúncio
 - **Permissões de tráfego**: "Use uma lista de bloqueio ou de permissão para controlar se os domínios podem enviar eventos… Sugerimos o uso de uma lista de permissão…" · Lista de permissão / Lista de bloqueio · Criar lista de permissão.
 - **Rastrear eventos automaticamente sem código: Desativado** ("Seu Pixel da Meta pode encontrar e relatar eventos importantes no site, como compras ou inscrições, com base no tráfego do seu site, no texto do botão e nos metadados da página…").
 - Ao abrir a página: "Verificando a existência de problemas de diagnóstico".
+
+## Gerenciador de Anúncios › Relatórios de Anúncios (conta de aula, sem veiculação)
+- "Todos os relatórios › Relatório sem título · [portfólio] · 1 conta de anúncios" · Salvar · Atualizar · Compartilhar · Exportar · filtro "Teve veiculação" · busca · período "Este mês: …".
+- Tipo de visualização: **Tabela dinâmica** · Agrupar detalhamentos · Redefinir larguras das colunas · Formatar · Personalizar.
+- Colunas padrão: Nome da conta · **Alcance · Impressões · Frequência · Valor gasto** · Configuração de atribuição.
+- Vazio: "Nenhuma atividade durante o intervalo de datas selecionado — Selecione um intervalo de datas diferente e pesquise novamente." · Alterar data.
+- Personalizar tabela dinâmica: Detalhamentos / Métricas. **Detalhamentos populares**: Nome da conta · Nome da campanha · Nome do conjunto de anúncios · Nome do anúncio · Criativo do anúncio · Idade · Gênero · País · Região · Plataforma · Posicionamento · Dia · Mês · Detalhamentos personalizados (Criar). Grupos: Nível (nomes e identificações) · Hora/Dia/Semana/2 semanas/Mês · Veiculação (Idade, Gênero, País, Região, Dispositivo de impressão, Plataforma, Posicionamento, Plataforma do dispositivo, Segmentos de público, Hora do dia — "Disponível para os últimos 13 meses.") · Ação (Dispositivo de conversão, Tipo de visualização do vídeo) · Configurações (Peça publicitária dinâmica) · Detalhamentos das regras de valor.
+
+## Business Suite › Insights (Página de aula, quase sem dados)
+- "Insights — Veja os resultados de desempenho e outras informações." · Seletor de entidade (Facebook / Instagram) · período "Últimos 28 dias".
+- Menu: Tarefas · Visão geral · Plano · **Resultados** · **Público** · Mensagens · Avaliação comparativa · **Conteúdo** (Visão geral, Conteúdo, Anúncios) · Ganhos.
+- Aviso: "Os insights sobre criadores de conteúdo, empresas e mensagens agora estão em um só lugar".
+- **Desempenho** (cartões com gráfico e "Ver mais detalhes"): Visualizações (de seguidores / de não seguidores) · Visualizadores · Seguidores (Deixaram de seguir · Seguidores líquidos) · Visitas ao Facebook · Interações com o conteúdo · Vídeos e reels (Visualizações de 3 segundos · Tempo de visualização) · Conversas iniciadas (Novos contatos · Taxa de resposta) · Conversões (Pedidos criados · Leads · Horas marcadas criadas).
+- Anúncios recentes (vazio: "Nenhuma atividade durante esse intervalo de datas — Selecione outro intervalo de datas para ver esses insights.") · Conteúdo recente.
+- Recomendações: "Aumente seu alcance com os reels — Você normalmente posta 0 reels do Facebook por semana. Compartilhar de 1 a 3 vezes por semana…" · "Priorize a qualidade: … não silenciados · entre 15 e 90 segundos · pelo menos 720p".
+- Janela "Sua retrospectiva da última semana": Sua atividade (Posts/Histórias do Facebook, Posts/Stories do Instagram) · Seus resultados (Alcance no Facebook / Alcance do Instagram) · Sua atividade de mensagem (Novos contatos).
+- Plano semanal: depois do post de aula, "Parabéns por atingir a meta semanal! · 4 de 6 tarefas concluídas".
+
+## Business Suite › Caixa de Entrada
+- "Caixa de Entrada — Responda a mensagens, configure automações e muito mais." · **Automações** · Criar anúncio de mensagens · Insights sobre mensagens · Status de disponibilidade ("Disponível") · Configurações de mensagem · Tarefas.
+- Canais: Todas as mensagens · Messenger · Instagram · **WhatsApp (Novo)** · Comentários do Facebook · Comentários do Instagram · Pesquisar · Gerenciar.
+- Filtros: Não lidas · Prioridade · Respostas a anúncios.
+
+## Notas gerais da coleta
+- Endereços digitados direto para algumas áreas (Suporte para Empresas, Qualidade da conta) caem numa tela da Meta "Redirect Confirmation — Notamos que você seguiu um link que redireciona de um site externo…"; pelo menu do Business Suite funciona.
+- O Chrome fica lento no Gerenciador de Anúncios/Comércio (prints falham às vezes); ler o texto da página funciona melhor.
