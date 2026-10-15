@@ -26,7 +26,12 @@ var AM = lsGet('am',!LIVE);   // com o Pixel de verdade, a correspondência avan
 var cliente = lsGet('cliente',null);
 /* No modo simulação, o Pixel é o que foi criado no Gerenciador de Eventos SIMULADO (meta-eventos.html). */
 var SIM_PID = (function(){try{var e=JSON.parse(localStorage.getItem('sim.eventos')||'null');var d=e&&e.datasets&&e.datasets[0];return d?d.id:null}catch(x){return null}})();
-var PID = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : (/^\d{8,20}$/.test(String(C.pixelId||'')) ? C.pixelId : (SIM_PID||C.pixelId));
+/* Dois Pixels, cada um no seu papel (regra: o Pixel de verdade nunca muda o que a aula mostra):
+   - PID = o da AULA: o que o aluno criou no Gerenciador de Eventos simulado. É o que a extensão de treino, o F12 e o
+     Testar eventos simulado mostram, para os números baterem dentro da aula.
+   - PID_REAL = o de verdade (config.js): recebe os eventos por trás, para a extensão real e o Gerenciador real. */
+var PID_REAL = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : C.pixelId;
+var PID = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : (SIM_PID || C.pixelId);
 
 /* ---------- SHA-256 (para MOSTRAR o hash na aula; o Pixel faz o próprio) ---------- */
 function sha256(ascii){function rr(v,a){return(v>>>a)|(v<<(32-a))}var K=[],H=[],p=2,c=0,isP=function(n){for(var f=2;f*f<=n;f++)if(n%f===0)return false;return true};
@@ -46,7 +51,7 @@ function fbqSafe(){if(!LIVE||BLOQ||typeof window.fbq!=='function')return false;t
 if(LIVE&&!BLOQ){
   if(C.pedirConsentimento) fbqSafe('consent', consent==='grant'?'grant':'revoke');
   var ud = (AM&&cliente) ? normaliza(cliente) : null;
-  if(ud) fbqSafe('init', PID, ud); else fbqSafe('init', PID);
+  if(ud) fbqSafe('init', PID_REAL, ud); else fbqSafe('init', PID_REAL);
 }
 
 /* ---------- 2) REGISTRAR EVENTOS ---------- */
@@ -85,7 +90,7 @@ function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=locati
   pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev);
   try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}
   // entrega o evento ao Gerenciador de Eventos simulado (mesmo navegador, outra aba): só o que o Pixel de fato enviaria
-  if(ev.status!=='perdido'&&ev.status!=='bloqueado'&&ev.status!=='segurado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');
+  if(ev.status!=='perdido'&&ev.status!=='bloqueado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');
     f.push({t:Date.now(),pid:PID,nome:ev.nome,params:ev.params,eid:ev.eid,href:ev.href,ud:ev.ud?Object.keys(ev.ud):[],custom:!!ev.custom,nota:ev.nota||''});
     localStorage.setItem('sim.feed',JSON.stringify(f.slice(-300)))}catch(e){}}}
 function achaProduto(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){var p=ps[i];if(p.id===id)return p;if(p.variantes)for(var j=0;j<p.variantes.length;j++)if(p.variantes[j].id===id)return p}return null}
@@ -180,7 +185,7 @@ var ui = (function(){
   function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
   function toast(msg){if(!toastBox)return;var t=document.createElement('div');t.className='ma-toast';t.innerHTML=msg;toastBox.appendChild(t);setTimeout(function(){t.classList.add('out')},3600);setTimeout(function(){t.remove()},4200)}
   function faixa(){var f=document.getElementById('maFaixa');if(!f)return;var ativos=LABS.filter(function(l){return LAB[l[0]]}).map(function(l){return l[1]});
-    f.innerHTML='<a class="ma-plat" href="index.html">🎓 Plataforma</a><span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo · ID …'+String(C.pixelId).slice(-4):'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Falhas ligadas: '+ativos.join(' ')+'</span>':'')+(LABON?'<a class="ma-pix lab" href="?lab=0" title="Voltar à loja normal">🔬 Modo laboratório · sair</a>':'')+
+    f.innerHTML='<a class="ma-plat" href="index.html">🎓 Plataforma</a><span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo':'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Falhas ligadas: '+ativos.join(' ')+'</span>':'')+(LABON?'<a class="ma-pix lab" href="?lab=0" title="Voltar à loja normal">🔬 Modo laboratório · sair</a>':'')+
       '<button class="ma-ext" id="maExt" title="Consultor de Dados de Anúncios da Meta (simulação da extensão)"><span class="ma-ext-ic"></span>Consultor de Dados <i>simulação</i><b id="maExtBadge"></b></button>';try{document.dispatchEvent(new CustomEvent('loja:faixa'))}catch(e){}}
   function banner(){if(!C.pedirConsentimento||consent)return;if(document.getElementById('maCookie'))return;var b=document.createElement('div');b.id='maCookie';b.className='ma-cookie';
     b.innerHTML='<div><b>🍪 Cookies desta loja</b><p>Usamos o Meta Pixel para medir visitas e compras. Você escolhe. <span class="ma-mut">(Em aula: recusar mostra o Pixel “segurando” os eventos.)</span></p></div><div class="ma-row"><button class="ma-btn ghost" data-c="revoke">Recusar</button><button class="ma-btn" data-c="grant">Aceitar</button></div>';
