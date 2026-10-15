@@ -49,7 +49,32 @@ Só rótulos e textos de tela (nada de dados pessoais). Conferido em rascunho, *
 - Criar anúncio › **Escolha uma meta**: Anúncios automatizados · Receba mensagens ("Conecte-se com as pessoas por meio dos apps de mensagens da Meta." · Sugestão) · Consiga reservas (selo **Pixel conectado** · "Faça com que as pessoas agendem horários.") · Gere compras no site (selo **Pixel conectado** · "Faça com que as pessoas comprem no seu site.") · Turbinar conteúdo do Facebook ("Use um post ou reel existente.") · Conseguir seguidores para a Página · Receba ligações · Receber visitantes no site · Atrair visitas e seguidores para a Página · Obter leads ("Colete informações de contato das pessoas.").
 - Turbinar conteúdo › "Selecione um conteúdo do Facebook" (filtro Tipo de conteúdo: Todos). **Caso real**: a Página só tinha posts de troca de foto de perfil/capa → "Parece que você não criou nenhum conteúdo (ou não é possível turbinar seu conteúdo existente). Crie um post ou reel agora para aumentar o engajamento com sua empresa." · Criar post / Criar reel. → bom caso de atendimento ("o Turbinar não aparece/não funciona").
 
+## Criar post (Business Suite › Conteúdo › Criar post), 15/10 — publicado de verdade na Página + Instagram de aula
+- Aviso: "Quer criar um post de anúncio? Os posts de anúncios só podem ser criados no Facebook…".
+- **Postar em**: [Página] e [Instagram] juntos. **Mídia**: "Compartilhe fotos e vídeos. Os posts do Instagram não podem ter mais de 10 fotos." · Adicionar foto/vídeo (mostra 1080 × 1080, editar/etiquetar/excluir).
+- **Detalhes do post**: interruptor "Personalizar post para o Facebook e o Instagram" · Texto (hashtag, emoji) · "Escrever com IA: Corrigir gramática · Mais curto · Mais longo · Engraçado · Profissional".
+- Programar ("Definir data e hora") · Compartilhar em: Story do Facebook · Configurações de privacidade (Público / Restrito).
+- Rodapé: interruptor **Turbinar** · Cancelar · Concluir mais tarde · **Publicar**. Prévia do Feed do Facebook (Curtir · Comentar · Compartilhar).
+- Depois de publicar: "Há mais posts que você quer publicar? … Talvez mais tarde / Programar outro post". Na lista, o post novo ganha o botão **Turbinar** (posts de troca de foto não têm).
+
+## Turbinar post (boost_post_creation), 15/10 — aberto e lido, NÃO publicado
+- **Bloqueio no topo**: "É necessário ter um telefone verificado para esta conta antes de veicular anúncios. · Iniciar autenticação" → caso de atendimento: sem telefone verificado não roda anúncio.
+- **Meta**: "Quais resultados você gostaria de obter com esse anúncio?" · "Automático - Receber mensagens · Selecionamos a meta Receber mensagens com base na sua atividade anterior." · Alterar.
+- **Texto do anúncio**: Texto existente · Geração de texto (IA) ("Não é possível gerar variações de texto") · Criativo Advantage+ · **Botão** "Enviar mensagem".
+- **Mensagens**: Modelo de mensagem ("Modelo de mensagem de boas-vindas padrão" · Criar) · Saudação personalizada (usa o NOME de quem administra — não anotar) · **Perguntas geradas por IA** (ex.: "Quais são os preços das canecas?", "Você envia para todo o Brasil?", "Posso personalizar as camisetas?") · Respostas automáticas: Desativado · Convite para ligação no Messenger.
+- **Destino das mensagens**: "Destino automático (Recomendado) — Direcione as pessoas para o app de mensagens em que elas mais interagem." (Página / Instagram) · aviso longo sobre WhatsApp ("Online no WhatsApp" etc.).
+- Categoria de anúncio especial.
+- **Público**: "Quem deve ver seu anúncio?" · **Público Advantage+** ("Permita que nossa tecnologia de anúncios encontre seu público automaticamente…") · Detalhes: Localização Brasil · Idade mínima 18 · "Pessoas que você escolhe por meio de direcionamento · Criar".
+- **Transparência dos anúncios**: "Informe ao seu público quem se beneficia com este anúncio e quem paga por ele… Biblioteca de Anúncios da Meta" · "Conclua a verificação… Iniciar verificação".
+- **Programação e duração**: "Este anúncio será veiculado continuamente com um orçamento diário" · Data de início · "Veicular anúncio continuamente — Seu anúncio será veiculado até que você o pause." / Escolher data de término · "Veicular este anúncio durante o horário de atendimento".
+- **Orçamento diário**: "Estimativa de 1,3 mil a 2,7 mil impressões por dia" · slider R$ 5,27 (mínimo) a R$ 500,00 · aviso "Você quase atingiu o limite de gastos que definiu para essa conta de anúncios. Aumente, redefina ou remova o limite… Aumentar limite".
+- **Posicionamentos**: Recomendado · "Posicionamentos Advantage+ — … Facebook, Messenger, Instagram e Audience Network da Meta".
+- **Forma de pagamento**: "Saldo disponível: R$5,00 · Deduziremos um valor do seu saldo por volta de uma vez por dia quando você veicular anúncios. Se não houver saldo disponível, os anúncios serão pausados." · Adicionar saldo.
+
+## Gerenciador › Descartar rascunhos (15/10)
+- Janela "Descartar rascunhos — Qualquer alteração nesta conta de anúncios [nome] ([ID]) que ainda não foi publicado será descartada." · Cancelar / Descartar.
+
 ## Ainda falta ver de verdade
-- O fluxo completo do "Turbinar" com um post turbinável (público, orçamento, duração, pagamento) — precisa de um post de verdade na Página/Instagram (aula 01).
+- Anúncio rodando (em análise, ativo, resultados, fase de aprendizado, edição de publicado): precisa de telefone verificado na conta de anúncios (do André) — e o orçamento mínimo do Turbinar (R$ 5,27/dia) passa do saldo de R$ 5.
 - Tela de "Conferir e publicar" / revisão, e o que aparece quando a conta não pode publicar (aula 05).
 - Edição de anúncio já publicado e "fase de aprendizado" (aula 04) — sem publicar, dá para ver só pela documentação; marcar "a conferir".
