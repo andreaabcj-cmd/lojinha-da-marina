@@ -22,7 +22,7 @@ window.MODULOS = [
   { id: 'relatorios', fase: 3, status: 'planejado', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Criar e interpretar relatórios; o efeito das mudanças de privacidade do iOS.', es: 'Crear e interpretar informes; el efecto de los cambios de privacidad de iOS.' } },
   { id: 'segmentacao', fase: 3, status: 'planejado', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados (visitantes do site pelo Pixel, lista de clientes), públicos semelhantes, público Advantage+, categorias especiais e erros comuns.', es: 'Públicos personalizados (visitantes del sitio por el Pixel, lista de clientes), públicos similares, público Advantage+, categorías especiales y errores comunes.' } },
   { id: 'entrega', fase: 3, status: 'planejado', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'Como a entrega funciona, a fase de aprendizado e a solução de problemas.', es: 'Cómo funciona la entrega, la fase de aprendizaje y la solución de problemas.' } },
-  { id: 'regras', fase: 3, status: 'planejado', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automatizadas' }, resumo: { pt: 'Como funcionam e como configurar.', es: 'Cómo funcionan y cómo configurarlas.' } },
+    { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
   { id: 'pixel-avancado', fase: 3, status: 'planejado', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   { id: 'verified', fase: 4, status: 'planejado', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'O que é, recursos, escopo e casos.', es: 'Qué es, funciones, alcance y casos.' } },
   { id: 'commerce', fase: 4, status: 'planejado', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'O que é e qual o escopo.', es: 'Qué es y cuál es el alcance.' } },
@@ -1678,6 +1678,240 @@ window.AULAS = {
         passos: [{ pt: 'Complete Página, mídia e URL do site no nível do anúncio.', es: 'Completa Página, contenido multimedia y URL del sitio web en el nivel del anuncio.' },
           { pt: 'Confira a prévia de cada grupo e ajuste o corte onde precisar.', es: 'Revisa la vista previa de cada grupo y ajusta el recorte donde haga falta.' }],
         encaminhar: { pt: 'Se o anúncio foi recusado por política ou a conta está restrita, confirme o sintoma e siga a Central de Ajuda da Meta; esse tema é tratado por outra área. Nunca prometa aprovação.', es: 'Si el anuncio fue rechazado por política o la cuenta está restringida, confirma el síntoma y sigue el Centro de ayuda de Meta; ese tema lo trata otra área. Nunca prometas aprobación.' }
+      }
+    }
+  ],
+  regras: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'Regras automatizadas: para que servem', es: 'Reglas automáticas: para qué sirven' },
+      antes: { pt: 'A Marina já posta, anuncia e responde clientes. Agora ela passa o dia olhando os anúncios.', es: 'Marina ya publica, anuncia y responde clientes. Ahora se pasa el día mirando los anuncios.' },
+      gancho: { pt: '“Queria que o anúncio fraco parasse sozinho, sem eu ficar olhando.” Existe: são as regras automatizadas.', es: '“Quería que el anuncio flojo se detuviera solo, sin que yo esté mirando.” Existe: son las reglas automáticas.' },
+      objetivo: { pt: 'Saber o que é uma regra automatizada, onde ela mora e onde criá-la conforme o alcance (algumas campanhas ou todas).', es: 'Saber qué es una regla automática, dónde vive y dónde crearla según el alcance (algunas campañas o todas).' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Dá para o Gerenciador pausar sozinho o anúncio que só gasta? 🤔', es: '¿Se puede hacer que el Administrador pause solo el anuncio que solo gasta? 🤔' }],
+          ['rafa', { pt: 'Dá, com uma regra automatizada: ela faz uma mudança sozinha, ou só avisa, quando campanhas, conjuntos de anúncios ou anúncios atendem às condições que você define.', es: 'Se puede, con una regla automática: hace un cambio sola, o solo avisa, cuando campañas, conjuntos de anuncios o anuncios cumplen las condiciones que defines.' }],
+          ['marina', { pt: 'Onde ela fica?', es: '¿Dónde está?' }],
+          ['rafa', { pt: 'Em Todas as ferramentas › Regras automatizadas. Lá tem a tabela das regras e o botão Criar regra. Aparece também uma faixa avisando que as regras para recomendações agora se chamam ajustes automáticos.', es: 'En Más herramientas › Reglas automáticas. Ahí está la tabla de reglas y el botón Crear regla. También aparece una franja avisando que las reglas de las recomendaciones ahora se llaman ajustes automáticos.' }],
+          ['pixel', { pt: 'Dois jeitos de criar: na tabela de campanhas, marcando o que quer (a regra vale só para aquilo), ou na página de regras (vale para todas as campanhas, conjuntos ou anúncios). Há também modelos, como reduzir sobreposição no leilão.', es: 'Dos formas de crear: en la tabla de campañas, marcando lo que quieres (la regla vale solo para eso), o en la página de reglas (vale para todas las campañas, conjuntos o anuncios). También hay plantillas, como reducir la superposición en la subasta.' }]
+        ],
+        pontos: [
+          { pt: '<b>Regra automatizada:</b> muda algo ou avisa quando uma condição acontece.', es: '<b>Regla automática:</b> cambia algo o avisa cuando se cumple una condición.' },
+          { pt: '<b>Onde:</b> Todas as ferramentas › Regras automatizadas (tabela e Criar regra).', es: '<b>Dónde:</b> Más herramientas › Reglas automáticas (tabla y Crear regla).' },
+          { pt: '<b>Alcance:</b> pela tabela de campanhas, só o que foi marcado; pela página de regras, todos.', es: '<b>Alcance:</b> por la tabla de campañas, solo lo que se marcó; por la página de reglas, todos.' }
+        ],
+        notas: { pt: 'Página Regras automatizadas vista de verdade em 16/10/2026 em português e espanhol (faixa de ajustes automáticos, Criar regra, colunas da tabela e tela vazia). Os dois caminhos de criação e os modelos vêm da Central de Ajuda da Meta, “Como criar uma regra automatizada”, lida em 16/10/2026. A janela Criar regra não abriu em espanhol (a conferir).', es: 'Página Reglas automáticas vista de verdad el 16/10/2026 en portugués y español (franja de ajustes automáticos, Crear regla, columnas de la tabla y pantalla vacía). Las dos formas de creación y las plantillas vienen del Centro de ayuda de Meta, “Cómo crear una regla automática”, leída el 16/10/2026. La ventana Crear regla no abrió en español (por confirmar).' }
+      },
+      ferramenta: 'regra-ou-ajuste',
+      atender: {
+        cena: { pt: 'Quero que uma regra pause só o conjunto “Camiseta Montanha”, não os outros. Criei na página de regras e ela pegou todos! 😠', es: '¡Quiero que una regla pause solo el conjunto “Camiseta Montanha”, no los otros. La creé en la página de reglas y alcanzó a todos! 😠' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Na página de regras, o padrão é aplicar a todos os conjuntos ativos. Para valer só para um, crie a regra na tabela de campanhas: marque o conjunto e use Mais › Criar nova regra.”', es: '“En la página de reglas, el valor predeterminado es aplicar a todos los conjuntos activos. Para que valga solo para uno, crea la regla en la tabla de campañas: marca el conjunto y usa Más › Crear nueva regla.”' }, fb: { pt: 'Isso! Você achou a diferença entre os dois caminhos.', es: '¡Eso! Encontraste la diferencia entre los dos caminos.' } },
+          { certa: false, txt: { pt: '“Regras sempre valem para tudo, não tem como limitar.”', es: '“Las reglas siempre valen para todo, no hay cómo limitar.”' }, fb: { pt: 'Tem: criando pela tabela e marcando o conjunto.', es: 'Sí hay: creándola por la tabla y marcando el conjunto.' } },
+          { certa: false, txt: { pt: '“Apague a conta de anúncios e comece de novo.”', es: '“Elimina la cuenta publicitaria y empieza de nuevo.”' }, fb: { pt: 'Exagero: é só recriar a regra pelo caminho certo.', es: 'Exagerado: solo hay que recrear la regla por el camino correcto.' } },
+          { certa: false, txt: { pt: '“Ligue os ajustes automáticos, eles resolvem.”', es: '“Activa los ajustes automáticos, ellos lo resuelven.”' }, fb: { pt: 'Ajustes automáticos são as antigas regras de recomendações; não é esse o caso.', es: 'Los ajustes automáticos son las antiguas reglas de recomendaciones; no es este el caso.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'A regra deve valer para tudo ou só para alguns conjuntos, campanhas ou anúncios?', es: '¿La regla debe valer para todo o solo para algunos conjuntos, campañas o anuncios?' },
+          { pt: 'Onde a regra foi criada: na tabela de campanhas ou na página Regras automatizadas?', es: '¿Dónde se creó la regla: en la tabla de campañas o en la página Reglas automáticas?' }],
+        conferir: [{ pt: 'Regras automatizadas › coluna “Aplicada a”.', es: 'Reglas automáticas › columna “Se aplica a”.' },
+          { pt: 'Tabela de campanhas: Mais › Criar nova regra.', es: 'Tabla de campañas: Más › Crear nueva regla.' }],
+        frase: { pt: 'Se a regra é criada pela página de regras, ela vale para todos. Para valer só para alguns itens, crie pela tabela de campanhas marcando o que quer.', es: 'Si la regla se crea por la página de reglas, vale para todos. Para que valga solo para algunos elementos, créala por la tabla de campañas marcando lo que quieres.' },
+        passos: [{ pt: 'No Gerenciador, marque o conjunto na tabela.', es: 'En el Administrador, marca el conjunto en la tabla.' },
+          { pt: 'Mais › Criar nova regra e configure.', es: 'Más › Crear nueva regla y configura.' }],
+        encaminhar: { pt: 'Se o cliente quer um modelo pronto (como reduzir sobreposição no leilão), mostre a escolha “Regra personalizada” ou os modelos na janela e siga a Central de Ajuda da Meta.', es: 'Si el cliente quiere una plantilla lista (como reducir la superposición en la subasta), muestra la opción “Regla personalizada” o las plantillas en la ventana y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '02', min: 9, status: 'pronta',
+      titulo: { pt: 'Criar a primeira regra', es: 'Crear la primera regla' },
+      antes: { pt: 'A Marina entendeu: regra = “se isto, então aquilo”.', es: 'Marina entendió: regla = “si esto, entonces aquello”.' },
+      gancho: { pt: '“Cliquei em Criar regra e apareceu um formulário enorme!” Vamos preencher peça por peça.', es: '“¡Hice clic en Crear regla y apareció un formulario enorme!” Vamos a completarlo pieza por pieza.' },
+      objetivo: { pt: 'Preencher a janela “Crie uma regra personalizada”: nome, onde aplica, ação, condição, intervalo e programação.', es: 'Completar la ventana “Crea una regla personalizada”: nombre, dónde se aplica, acción, condición, intervalo y programación.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'O formulário tem Nome, Aplicar regra a, Ação, Condições, Intervalo, Programação, Notificação… por onde começo? 🤔', es: 'El formulario tiene Nombre, Aplicar regla a, Acción, Condiciones, Intervalo, Programación, Notificación… ¿por dónde empiezo? 🤔' }],
+          ['rafa', { pt: 'Pelo nome: algo que explique a regra. Depois o “Aplicar regra a”: o padrão é “Todos os conjuntos de anúncios ativos”. Depois a Ação: o que a regra faz.', es: 'Por el nombre: algo que explique la regla. Después el “Aplicar regla a”: el valor predeterminado es “Todos los conjuntos de anuncios activos”. Después la Acción: lo que hace la regla.' }],
+          ['marina', { pt: 'E a condição?', es: '¿Y la condición?' }],
+          ['rafa', { pt: 'É o “se”: uma métrica (como Gasto), um operador (é maior que) e um valor. Todas as condições precisam ser verdadeiras ao mesmo tempo. A tela avisa que algumas métricas atrasam e sugere buffers para evitar falsos positivos.', es: 'Es el “si”: una métrica (como Gasto), un operador (es mayor que) y un valor. Todas las condiciones deben cumplirse al mismo tiempo. La pantalla avisa que algunas métricas demoran y sugiere márgenes para evitar falsos positivos.' }],
+          ['pixel', { pt: 'Por fim: o Intervalo de tempo (a quantos dias de dados a regra olha), a Programação (de quanto em quanto tempo ela confere) e a Notificação. Clique em Criar e a regra fica ativa.', es: 'Por último: el Intervalo de tiempo (a cuántos días de datos mira la regla), la Programación (cada cuánto tiempo revisa) y la Notificación. Haz clic en Crear y la regla queda activa.' }]
+        ],
+        pontos: [
+          { pt: '<b>Ação</b> = o que a regra faz. <b>Condição</b> = quando faz (métrica, operador, valor).', es: '<b>Acción</b> = lo que hace la regla. <b>Condición</b> = cuándo lo hace (métrica, operador, valor).' },
+          { pt: '<b>Intervalo</b> = quantos dias de dados. <b>Programação</b> = com que frequência confere.', es: '<b>Intervalo</b> = cuántos días de datos. <b>Programación</b> = con qué frecuencia revisa.' },
+          { pt: '<b>Primeira regra:</b> prefira só avisar (“Enviar apenas uma notificação”).', es: '<b>Primera regla:</b> prefiere solo avisar (“Enviar solo una notificación”).' }
+        ],
+        notas: { pt: 'Janela Criar regra vista de verdade em 16/10/2026 em português (nome, Aplicar regra a, Ação, Condições com o aviso de buffers, Intervalo de tempo com padrão de 37 meses, Programação Continuamente/Diariamente/Personalizado, Notificação, Assinante). A lista exata de ações e de métricas não foi vista (a conferir); no simulador há quatro ações e três métricas como exemplo.', es: 'Ventana Crear regla vista de verdad el 16/10/2026 en portugués (nombre, Aplicar regla a, Acción, Condiciones con el aviso de márgenes, Intervalo de tiempo con valor predeterminado de 37 meses, Programación Continuamente/Diariamente/Personalizado, Notificación, Suscriptor). La lista exacta de acciones y de métricas no se vio (por confirmar); en el simulador hay cuatro acciones y tres métricas como ejemplo.' }
+      },
+      ferramenta: 'ler-regra',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para criar uma regra de aviso: nome, ação, condição de gasto, intervalo e programação.', es: 'En el simulador, el Pixel te guía para crear una regla de aviso: nombre, acción, condición de gasto, intervalo y programación.' },
+        tour: 'criar-regra', pagina: 'meta-regras.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Preenchi tudo mas o botão Criar não funciona! Aparece um aviso vermelho que não entendo. 😩', es: '¡Completé todo pero el botón Crear no funciona! ¡Aparece un aviso rojo que no entiendo! 😩' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Confira o que está em vermelho: costuma ser o nome vazio, a ação sem escolher (“Selecione uma opção”) ou o valor de alguma condição em branco. Preencha esses três e clique em Criar de novo.”', es: '“Revisa lo que está en rojo: suele ser el nombre vacío, la acción sin elegir (“Selecciona una opción”) o el valor de alguna condición en blanco. Completa esos tres y haz clic en Crear de nuevo.”' }, fb: { pt: 'Isso! Lista curta de conferência.', es: '¡Eso! Lista corta de revisión.' } },
+          { certa: false, txt: { pt: '“Atualize a página e refaça tudo.”', es: '“Actualiza la página y rehaz todo.”' }, fb: { pt: 'Perde o que foi feito, e o problema continua.', es: 'Se pierde lo que se hizo, y el problema continúa.' } },
+          { certa: false, txt: { pt: '“Regras só funcionam em contas antigas.”', es: '“Las reglas solo funcionan en cuentas antiguas.”' }, fb: { pt: 'Não é isso: é campo obrigatório vazio.', es: 'No es eso: es un campo obligatorio vacío.' } },
+          { certa: false, txt: { pt: '“Use outro navegador.”', es: '“Usa otro navegador.”' }, fb: { pt: 'Antes de trocar de navegador, confira os campos.', es: 'Antes de cambiar de navegador, revisa los campos.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O nome da regra está preenchido? A Ação foi escolhida?', es: '¿El nombre de la regla está completo? ¿Se eligió la Acción?' },
+          { pt: 'Cada condição tem métrica, operador e valor?', es: '¿Cada condición tiene métrica, operador y valor?' }],
+        conferir: [{ pt: 'Janela “Crie uma regra personalizada”: campos em vermelho.', es: 'Ventana “Crea una regla personalizada”: campos en rojo.' },
+          { pt: 'Intervalo de tempo e Programação.', es: 'Intervalo de tiempo y Programación.' }],
+        frase: { pt: 'Vamos olhar o que ficou em vermelho: nome, ação e o valor de cada condição precisam estar preenchidos. Depois clique em Criar.', es: 'Veamos qué quedó en rojo: nombre, acción y el valor de cada condición deben estar completos. Después haz clic en Crear.' },
+        passos: [{ pt: 'Preencha o nome, escolha a ação e digite o valor.', es: 'Completa el nombre, elige la acción y escribe el valor.' },
+          { pt: 'Clique em Criar e confira a regra na tabela.', es: 'Haz clic en Crear y revisa la regla en la tabla.' }],
+        encaminhar: { pt: 'Se a regra não pode ser criada mesmo com tudo preenchido, confirme o texto que a tela mostra e siga a Central de Ajuda da Meta.', es: 'Si la regla no se puede crear aun con todo completo, confirma el texto que muestra la pantalla y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '03', min: 8, status: 'pronta',
+      titulo: { pt: 'Regra segura: intervalo e condições', es: 'Regla segura: intervalo y condiciones' },
+      antes: { pt: 'A Marina criou uma regra de aviso. Agora quer uma que desative.', es: 'Marina creó una regla de aviso. Ahora quiere una que desactive.' },
+      gancho: { pt: '“Se eu desativar tudo que gasta mais de R$ 20, resolvo!” Cuidado: é assim que se desativa o anúncio que vende.', es: '“¡Si desactivo todo lo que gasta más de R$ 20, resuelvo!” Cuidado: así se desactiva el anuncio que vende.' },
+      objetivo: { pt: 'Entender o intervalo de tempo e o falso positivo, e montar uma regra que só atinge quem gastou e não teve resultado.', es: 'Entender el intervalo de tiempo y el falso positivo, y armar una regla que solo alcance a quien gastó y no tuvo resultado.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Quero desativar conjuntos que gastam mais de R$ 20. Qual o problema? 🤔', es: 'Quiero desactivar conjuntos que gastan más de R$ 20. ¿Cuál es el problema? 🤔' }],
+          ['rafa', { pt: 'O intervalo de tempo. O padrão da tela é “37 meses (máximo)”: a regra soma o gasto da vida inteira do conjunto. Quase todo conjunto antigo passa de R$ 20, até os que vendem bem.', es: 'El intervalo de tiempo. El valor predeterminado de la pantalla es “37 meses (máximo)”: la regla suma el gasto de toda la vida del conjunto. Casi todo conjunto antiguo pasa de R$ 20, incluso los que venden bien.' }],
+          ['marina', { pt: 'Então o que eu faço?', es: '¿Entonces qué hago?' }],
+          ['rafa', { pt: 'Duas coisas: encurte o intervalo (por exemplo, Últimos 7 dias) e some uma segunda condição: Resultados é igual a 0. Assim só entra quem gastou e não trouxe nada na semana.', es: 'Dos cosas: acorta el intervalo (por ejemplo, Últimos 7 días) y suma una segunda condición: Resultados es igual a 0. Así solo entra quien gastó y no trajo nada en la semana.' }],
+          ['pixel', { pt: 'A tela avisa: algumas métricas atrasam e oscilam por horas, e dá a dica de adicionar buffers às condições para evitar falsos positivos.', es: 'La pantalla avisa: algunas métricas demoran y fluctúan durante horas, y da la pista de agregar márgenes a las condiciones para evitar falsos positivos.' }]
+        ],
+        pontos: [
+          { pt: '<b>Intervalo:</b> o padrão é 37 meses (máximo); para o dia a dia, use poucos dias.', es: '<b>Intervalo:</b> el valor predeterminado es 37 meses (máximo); para el día a día, usa pocos días.' },
+          { pt: '<b>Falso positivo:</b> a regra pega quem não devia.', es: '<b>Falso positivo:</b> la regla alcanza a quien no debía.' },
+          { pt: '<b>Mais de uma condição</b> (todas precisam ser verdadeiras) deixa a regra mais precisa.', es: '<b>Más de una condición</b> (todas deben cumplirse) deja la regla más precisa.' }
+        ],
+        notas: { pt: 'Padrão “37 meses (máximo)”, aviso sobre métricas que atrasam e buffers, e “há correspondência em todos os itens” vistos de verdade em 16/10/2026. Os números de gasto e resultados e a caixa “Quem seria atingido hoje” são só do simulador (a tela real não mostra essa prévia).', es: 'Valor predeterminado “37 meses (máximo)”, aviso sobre métricas que demoran y márgenes, y “hay coincidencia en todos los elementos” vistos de verdad el 16/10/2026. Los números de gasto y resultados y la caja “Quién sería alcanzado hoy” son solo del simulador (la pantalla real no muestra esa vista previa).' }
+      },
+      ferramenta: 'falso-positivo',
+      praticar: {
+        texto: { pt: 'No simulador, uma regra que desativa pega a “Caneca azul”, que vende bem. O Pixel te guia para encurtar o intervalo e somar a condição de resultado.', es: 'En el simulador, una regla que desactiva alcanza la “Caneca azul”, que vende bien. El Pixel te guía para acortar el intervalo y sumar la condición de resultado.' },
+        tour: 'evitar-falso-positivo', pagina: 'meta-regras.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Criei uma regra para desativar quem gasta mais de R$ 20 e ela desativou o meu melhor anúncio! Que absurdo! 😡', es: '¡Creé una regla para desactivar a quien gasta más de R$ 20 y desactivó mi mejor anuncio! ¡Qué absurdo! 😡' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Entendo o susto. O intervalo da regra estava em 37 meses, então ela somou o gasto de toda a vida do anúncio. Vamos editar: intervalo de 7 dias e mais uma condição, Resultados igual a 0. E reativamos o anúncio bom.”', es: '“Entiendo el susto. El intervalo de la regla estaba en 37 meses, así que sumó el gasto de toda la vida del anuncio. Editemos: intervalo de 7 días y una condición más, Resultados igual a 0. Y reactivamos el anuncio bueno.”' }, fb: { pt: 'Isso! Causa, correção e reativação.', es: '¡Eso! Causa, corrección y reactivación.' } },
+          { certa: false, txt: { pt: '“Foi erro da Meta, ela não deveria ter desativado.”', es: '“Fue un error de Meta, no debería haber desactivado.”' }, fb: { pt: 'A regra fez o que foi configurado: a configuração é que estava larga.', es: 'La regla hizo lo que se configuró: lo que estaba amplio era la configuración.' } },
+          { certa: false, txt: { pt: '“Nunca mais use regras.”', es: '“No uses reglas nunca más.”' }, fb: { pt: 'Regras ajudam: só precisam ser bem configuradas.', es: 'Las reglas ayudan: solo necesitan estar bien configuradas.' } },
+          { certa: false, txt: { pt: '“Aumente o valor da condição para 1000 e pronto.”', es: '“Sube el valor de la condición a 1000 y listo.”' }, fb: { pt: 'Isso esconde o problema; o certo é encurtar o intervalo.', es: 'Eso esconde el problema; lo correcto es acortar el intervalo.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual é o intervalo de tempo da regra? E quais são as condições?', es: '¿Cuál es el intervalo de tiempo de la regla? ¿Y cuáles son las condiciones?' },
+          { pt: 'A regra olha o gasto de quanto tempo?', es: '¿La regla mira el gasto de cuánto tiempo?' }],
+        conferir: [{ pt: 'Regras automatizadas › Ação e condição (intervalo ao lado).', es: 'Reglas automáticas › Acción y condición (intervalo al lado).' },
+          { pt: 'Editar › Intervalo de tempo e Condições.', es: 'Editar › Intervalo de tiempo y Condiciones.' }],
+        frase: { pt: 'Quando o intervalo é longo, como 37 meses, a regra soma o gasto da vida inteira e pode atingir quem vende bem. Encurte o intervalo e some uma condição de resultado.', es: 'Cuando el intervalo es largo, como 37 meses, la regla suma el gasto de toda la vida y puede alcanzar a quien vende bien. Acorta el intervalo y suma una condición de resultado.' },
+        passos: [{ pt: 'Edite a regra: intervalo para poucos dias.', es: 'Edita la regla: intervalo a pocos días.' },
+          { pt: 'Adicione a condição “Resultados é igual a 0” e salve.', es: 'Agrega la condición “Resultados es igual a 0” y guarda.' }],
+        encaminhar: { pt: 'Se o cliente perdeu vendas por causa da regra, reative o que for preciso e explique o ajuste; reembolsos e valores não são tratados aqui.', es: 'Si el cliente perdió ventas por culpa de la regla, reactiva lo que haga falta y explica el ajuste; los reembolsos y valores no se tratan aquí.' }
+      }
+    },
+    {
+      id: '04', min: 7, status: 'pronta',
+      titulo: { pt: 'Acompanhar, editar e excluir', es: 'Seguir, editar y eliminar' },
+      antes: { pt: 'A regra da Marina está criada e ativa.', es: 'La regla de Marina está creada y activa.' },
+      gancho: { pt: '“Criei, e agora? Como sei se a regra fez alguma coisa, e se eu quiser mudar?” Vamos acompanhar.', es: '“Creé, ¿y ahora? ¿Cómo sé si la regla hizo algo, y si quiero cambiarla?” Vamos a hacer el seguimiento.' },
+      objetivo: { pt: 'Ler a tabela de regras, ver o que a regra fez, e saber o que dá e o que não dá para editar.', es: 'Leer la tabla de reglas, ver qué hizo la regla, y saber qué se puede y qué no se puede editar.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Onde vejo se minha regra já fez alguma coisa? 🤔', es: '¿Dónde veo si mi regla ya hizo algo? 🤔' }],
+          ['rafa', { pt: 'Na tabela de Regras automatizadas. Cada regra é uma linha: Nome, Status, Número de identificação, Aplicada a, Ação e condição, Resultados da regra, Quando a regra é executada, Criada por e Ações.', es: 'En la tabla de Reglas automáticas. Cada regla es una fila: Nombre, Estado, Identificador, Se aplica a, Acción y condición, Resultados de la regla, Cuándo se ejecuta la regla, Creada por y Acciones.' }],
+          ['marina', { pt: 'E se eu quiser mudar a regra?', es: '¿Y si quiero cambiar la regla?' }],
+          ['rafa', { pt: 'Dá para editar nome, condições, intervalo e programação. Não dá para mudar onde a regra se aplica nem a ação: nesse caso, exclua a regra e crie outra.', es: 'Se pueden editar nombre, condiciones, intervalo y programación. No se puede cambiar dónde se aplica la regla ni la acción: en ese caso, elimina la regla y crea otra.' }],
+          ['pixel', { pt: 'E para parar a regra por uns dias sem apagar, use o interruptor de Status.', es: 'Y para detener la regla por unos días sin borrarla, usa el interruptor de Estado.' }]
+        ],
+        pontos: [
+          { pt: '<b>Resultados da regra</b> diz o que ela fez; <b>Quando a regra é executada</b>, com que frequência.', es: '<b>Resultados de la regla</b> dice lo que hizo; <b>Cuándo se ejecuta la regla</b>, con qué frecuencia.' },
+          { pt: '<b>Editar:</b> nome, condições, intervalo e programação. <b>Não edita:</b> onde se aplica e a ação.', es: '<b>Editar:</b> nombre, condiciones, intervalo y programación. <b>No se edita:</b> dónde se aplica y la acción.' },
+          { pt: '<b>Excluir</b> para recomeçar; <b>Status</b> para pausar sem apagar.', es: '<b>Eliminar</b> para recomenzar; <b>Estado</b> para pausar sin borrar.' }
+        ],
+        notas: { pt: 'Colunas da tabela vistas de verdade em 16/10/2026 (a conta de aula ainda não tem regras, então o conteúdo das linhas é do simulador). A regra de edição (não muda onde aplica nem a ação) vem da Central de Ajuda da Meta, “Editar ou excluir uma regra automatizada”. O interruptor de Status na linha é uma suposição do simulador (a conferir).', es: 'Columnas de la tabla vistas de verdad el 16/10/2026 (la cuenta de práctica todavía no tiene reglas, así que el contenido de las filas es del simulador). La regla de edición (no cambia dónde se aplica ni la acción) viene del Centro de ayuda de Meta, “Editar o eliminar una regla automática”. El interruptor de Estado en la fila es una suposición del simulador (por confirmar).' }
+      },
+      ferramenta: 'editar-ou-excluir',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva pela tabela, mostra a regra trabalhando (Executar agora) e abre a edição para ver o que fica apagado.', es: 'En el simulador, el Pixel te lleva por la tabla, muestra la regla trabajando (Ejecutar ahora) y abre la edición para ver qué queda apagado.' },
+        tour: 'acompanhar-editar', pagina: 'meta-regras.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Quero mudar a minha regra para valer só para a campanha de camisetas, mas o campo “Aplicar regra a” está cinza! 😣', es: '¡Quiero cambiar mi regla para que valga solo para la campaña de camisetas, pero el campo “Aplicar regla a” está gris! 😣' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Esse campo fica cinza de propósito: depois de criada, a regra não muda onde se aplica nem a ação. O caminho é excluir esta regra e criar outra pela tabela de campanhas, marcando as camisetas.”', es: '“Ese campo queda gris a propósito: una vez creada, la regla no cambia dónde se aplica ni la acción. El camino es eliminar esta regla y crear otra por la tabla de campañas, marcando las camisetas.”' }, fb: { pt: 'Isso! Explicou a limitação e já deu o caminho.', es: '¡Eso! Explicaste la limitación y ya diste el camino.' } },
+          { certa: false, txt: { pt: '“O campo está com defeito, aguarde.”', es: '“El campo tiene un defecto, espera.”' }, fb: { pt: 'Não é defeito: é regra do produto.', es: 'No es un defecto: es regla del producto.' } },
+          { certa: false, txt: { pt: '“Edite o nome da regra para ‘só camisetas’.”', es: '“Edita el nombre de la regla a ‘solo camisetas’.”' }, fb: { pt: 'O nome não muda onde ela vale.', es: 'El nombre no cambia dónde vale.' } },
+          { certa: false, txt: { pt: '“Desligue o Status e a regra passa a valer só para camisetas.”', es: '“Desactiva el Estado y la regla pasa a valer solo para camisetas.”' }, fb: { pt: 'O Status só liga e desliga a regra inteira.', es: 'El Estado solo activa y desactiva la regla entera.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O que o cliente quer mudar: nome, condição, intervalo, programação, ou onde a regra vale / a ação?', es: '¿Qué quiere cambiar el cliente: nombre, condición, intervalo, programación, o dónde vale la regla / la acción?' },
+          { pt: 'A regra está ativa? O que diz em “Resultados da regra”?', es: '¿La regla está activa? ¿Qué dice en “Resultados de la regla”?' }],
+        conferir: [{ pt: 'Regras automatizadas › linha da regra › Editar.', es: 'Reglas automáticas › fila de la regla › Editar.' },
+          { pt: 'Campos apagados ao editar: Aplicar regra a e Ação.', es: 'Campos apagados al editar: Aplicar regla a y Acción.' }],
+        frase: { pt: 'Depois de criada, dá para editar nome, condições, intervalo e programação. Para mudar onde a regra vale ou a ação, a gente exclui a regra e cria outra.', es: 'Una vez creada, se pueden editar nombre, condiciones, intervalo y programación. Para cambiar dónde vale la regla o la acción, eliminamos la regla y creamos otra.' },
+        passos: [{ pt: 'Para editar: Regras automatizadas › Editar.', es: 'Para editar: Reglas automáticas › Editar.' },
+          { pt: 'Para recomeçar: Excluir e criar nova pela tabela de campanhas.', es: 'Para recomenzar: Eliminar y crear una nueva por la tabla de campañas.' }],
+        encaminhar: { pt: 'Se a regra não pode ser editada ou excluída mesmo com permissão, confirme o que a tela mostra e siga a Central de Ajuda da Meta.', es: 'Si la regla no se puede editar o eliminar aun con permiso, confirma lo que muestra la pantalla y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '05', min: 8, status: 'pronta',
+      titulo: { pt: 'Meus anúncios pararam sozinhos!', es: '¡Mis anuncios se detuvieron solos!' },
+      antes: { pt: 'A Marina tem regras e sabe lê-las. Um dia, a campanha amanhece diferente.', es: 'Marina tiene reglas y sabe leerlas. Un día, la campaña amanece distinta.' },
+      gancho: { pt: '“Dois anúncios pararam e ninguém mexeu!” Quando algo para sem ninguém mexer, olhe as regras.', es: '“¡Dos anuncios se detuvieron y nadie los tocó!” Cuando algo se detiene sin que nadie lo toque, mira las reglas.' },
+      objetivo: { pt: 'Descobrir se uma regra desativou algo, achar qual e por quê, corrigi-la e reativar o que for preciso.', es: 'Descubrir si una regla desactivó algo, encontrar cuál y por qué, corregirla y reactivar lo que haga falta.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Dois conjuntos aparecem como Desativados e eu não toquei neles! 😱', es: '¡Dos conjuntos aparecen como Desactivados y yo no los toqué! 😱' }],
+          ['rafa', { pt: 'Respire. Primeiro ache a causa: abra Regras automatizadas e veja a coluna Resultados da regra. Se alguma regra diz “Desativou 2 conjuntos”, foi ela.', es: 'Respira. Primero encuentra la causa: abre Reglas automáticas y mira la columna Resultados de la regla. Si alguna regla dice “Desactivó 2 conjuntos”, fue ella.' }],
+          ['marina', { pt: 'E agora, como conserto?', es: '¿Y ahora cómo lo arreglo?' }],
+          ['rafa', { pt: 'Leia a condição e o intervalo. Se estiver larga demais, edite: intervalo curto e mais uma condição. Depois, volte à tabela de conjuntos e ative de novo o que foi desativado sem merecer.', es: 'Lee la condición y el intervalo. Si está demasiado amplia, edita: intervalo corto y una condición más. Después, vuelve a la tabla de conjuntos y activa de nuevo lo que se desactivó sin merecerlo.' }],
+          ['pixel', { pt: 'Corrigir a regra não reativa sozinho o que ela já desativou. Esse passo é manual.', es: 'Corregir la regla no reactiva solo lo que ya desactivó. Ese paso es manual.' }]
+        ],
+        pontos: [
+          { pt: '<b>Parou sem ninguém mexer?</b> Olhe Resultados da regra.', es: '<b>¿Se detuvo sin que nadie lo toque?</b> Mira Resultados de la regla.' },
+          { pt: '<b>Corrija a regra</b> (intervalo curto, condições a mais) e <b>reative</b> o que foi desativado.', es: '<b>Corrige la regla</b> (intervalo corto, más condiciones) y <b>reactiva</b> lo que se desactivó.' },
+          { pt: '<b>Outras causas</b> (pagamento, política) são outros assuntos: confira antes de culpar a regra.', es: '<b>Otras causas</b> (pago, política) son otros temas: revisa antes de culpar a la regla.' }
+        ],
+        notas: { pt: 'A página de regras e a janela de criação foram vistas de verdade em 16/10/2026; o caso do simulador (regra larga que desativa dois conjuntos) e os números são inventados para o treino. Que corrigir a regra não reative sozinho o que ela desativou é o comportamento esperado de uma regra de “desativar”, mas não foi testado na tela real (a conferir).', es: 'La página de reglas y la ventana de creación se vieron de verdad el 16/10/2026; el caso del simulador (regla amplia que desactiva dos conjuntos) y los números son inventados para la práctica. Que corregir la regla no reactive solo lo que desactivó es el comportamiento esperado de una regla de “desactivar”, pero no se probó en la pantalla real (por confirmar).' }
+      },
+      ferramenta: 'por-que-parou',
+      praticar: {
+        texto: { pt: 'No simulador, dois conjuntos pararam. O Pixel te guia: achar a regra, entender, corrigir e reativar o que foi desativado sem merecer.', es: 'En el simulador, dos conjuntos se detuvieron. El Pixel te guía: encontrar la regla, entender, corregir y reactivar lo que se desactivó sin merecerlo.' },
+        tour: 'regra-desativou-tudo', pagina: 'meta-regras.html?problema=1'
+      },
+      atender: {
+        cena: { pt: 'Meus anúncios pararam e eu já perdi vendas hoje! Quero saber quem desativou e quero tudo no ar agora! 😤', es: '¡Mis anuncios se detuvieron y ya perdí ventas hoy! ¡Quiero saber quién los desactivó y quiero todo al aire ahora! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Vamos resolver agora. Abra Regras automatizadas: se alguma regra aparece com resultados como “Desativou 2 conjuntos”, foi ela. Vamos corrigir a regra, ativar de novo os conjuntos que merecem e deixar a regra mais segura.”', es: '“Vamos a resolverlo ahora. Abre Reglas automáticas: si alguna regla aparece con resultados como “Desactivó 2 conjuntos”, fue ella. Corrijamos la regla, activemos de nuevo los conjuntos que lo merecen y dejemos la regla más segura.”' }, fb: { pt: 'Isso! Acolheu, achou a causa e apresentou o plano.', es: '¡Eso! Acogiste, encontraste la causa y presentaste el plan.' } },
+          { certa: false, txt: { pt: '“Só reative os conjuntos e pronto.”', es: '“Solo reactiva los conjuntos y listo.”' }, fb: { pt: 'Sem corrigir a regra, ela desativa de novo na próxima verificação.', es: 'Sin corregir la regla, desactiva de nuevo en la próxima revisión.' } },
+          { certa: false, txt: { pt: '“Foi a Meta, não tem o que fazer.”', es: '“Fue Meta, no hay nada que hacer.”' }, fb: { pt: 'Foi uma regra da conta, e dá para ver e corrigir.', es: 'Fue una regla de la cuenta, y se puede ver y corregir.' } },
+          { certa: false, txt: { pt: '“Exclua a conta de anúncios e crie outra.”', es: '“Elimina la cuenta publicitaria y crea otra.”' }, fb: { pt: 'Exagero e perde o histórico.', es: 'Exagerado y pierde el historial.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Existe alguma regra em Regras automatizadas? O que diz em Resultados da regra?', es: '¿Existe alguna regla en Reglas automáticas? ¿Qué dice en Resultados de la regla?' },
+          { pt: 'Quais conjuntos estão Desativados e desde quando?', es: '¿Qué conjuntos están Desactivados y desde cuándo?' },
+          { pt: 'Alguém desativou à mão, ou houve problema de pagamento?', es: '¿Alguien desactivó a mano, o hubo un problema de pago?' }],
+        conferir: [{ pt: 'Regras automatizadas › Resultados da regra, condição e intervalo.', es: 'Reglas automáticas › Resultados de la regla, condición e intervalo.' },
+          { pt: 'Tabela de conjuntos: status de cada um.', es: 'Tabla de conjuntos: estado de cada uno.' }],
+        frase: { pt: 'Quando algo para sem ninguém mexer, uma regra pode ser a causa. Vamos olhar a página de regras, corrigir o que estiver largo demais e reativar o que foi desativado sem precisar.', es: 'Cuando algo se detiene sin que nadie lo toque, una regla puede ser la causa. Veamos la página de reglas, corrijamos lo que esté demasiado amplio y reactivemos lo que se desactivó sin necesidad.' },
+        passos: [{ pt: 'Abra Regras automatizadas e leia Resultados da regra.', es: 'Abre Reglas automáticas y lee Resultados de la regla.' },
+          { pt: 'Edite a regra (intervalo e condições) e ative de novo os conjuntos.', es: 'Edita la regla (intervalo y condiciones) y activa de nuevo los conjuntos.' }],
+        encaminhar: { pt: 'Se não há regra e o anúncio parou, outras causas (pagamento, limite de gastos, política) entram em jogo: siga a aula de “Meu anúncio não publica” e a Central de Ajuda da Meta; recusas por política são tratadas por outra área.', es: 'Si no hay regla y el anuncio se detuvo, entran en juego otras causas (pago, límite de gastos, política): sigue la clase de “Mi anuncio no se publica” y el Centro de ayuda de Meta; los rechazos por política los trata otra área.' }
       }
     }
   ],

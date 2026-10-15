@@ -1,0 +1,13 @@
+/* Simulador das Regras automatizadas · usa sim.css, sim-anuncios.css, sim-feed.css, sim-suite.css e sim-catalogo.css (tabela) */
+.rg-tab{overflow:auto;margin-top:10px}
+.rg-vazio{text-align:center;padding:26px;color:var(--ink2)}.rg-vazio .ilus{font-size:46px}
+.rg-sw{display:flex;align-items:center;gap:6px;font-weight:700}
+.rg-ac{white-space:nowrap}.rg-ac .btn{padding:4px 8px;font-size:12px}
+.rg-cond{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:6px 0}.rg-cond .ga-in{width:auto;min-width:120px}
+.rg-v{width:90px!important;min-width:70px!important}
+.cm-tab{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+.cm-tab th{text-align:left;padding:8px;font-size:12px;color:var(--muted);border-bottom:2px solid var(--line);white-space:nowrap}
+.cm-tab td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.ga-barra{position:relative;display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.ga-barra .fd-op{top:100%;left:0}
+.ss-main .fd-jan{max-width:760px}

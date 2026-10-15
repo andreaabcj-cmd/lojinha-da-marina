@@ -123,7 +123,7 @@
         '<p><b>Texto principal</b></p><textarea class="ga-in" id="fPrincipal" rows="2" placeholder="Informe às pessoas sobre o que é o seu anúncio" data-t="txt-principal">' + esc(S.principal) + '</textarea>' +
         '<p><b>Título</b></p><input class="ga-in" id="fTitulo" placeholder="Título" value="' + esc(S.titulo) + '" data-t="txt-titulo"/>' +
         '<p><b>Descrição</b></p><input class="ga-in" id="fDesc" placeholder="Inclua detalhes adicionais" value="' + esc(S.desc) + '"/>' +
-        '<p><b>Chamada para ação</b></p><select class="ga-in" id="fCta" data-t="cta">' + CTAS.map(function (c) { return '<option' + (S.cta === c ? ' selected' : '') + '>' + c + '</option>' }).join('') + '</select>' +
+        '<p><b>Chamada para ação</b></p><select class="ga-in" id="fCta" data-t="cta">' + CTAS.map(function (c) { return '<option value="' + c + '"' + (S.cta === c ? ' selected' : '') + '>' + c + '</option>' }).join('') + '</select>' +
         '<p class="miudo">“Ver detalhes” é o texto de chamada para ação padrão. “Ver detalhes” gera um CVR até 2,3% maior em comparação com “Saiba mais”. Você ainda pode escolher “Saiba mais” ou outra opção.</p></div>';
     }
     return '<div class="ga-sec"><h3>Nome do anúncio</h3><input class="ga-in" value="Novo anúncio de Vendas" disabled/></div>' +
@@ -179,7 +179,7 @@
         '<p><b>Texto principal</b></p><textarea class="ga-in" id="wPrincipal" rows="2" placeholder="Informe às pessoas sobre o que é o seu anúncio" data-t="w-principal">' + esc(S.principal) + '</textarea>' +
         '<p><b>Título</b></p><input class="ga-in" id="wTitulo" placeholder="Título" value="' + esc(S.titulo) + '" data-t="w-titulo"/>' +
         '<p><b>Descrição</b></p><input class="ga-in" id="wDesc" placeholder="Inclua detalhes adicionais" value="' + esc(S.desc) + '"/>' +
-        '<p><b>Chamada para ação</b></p><select class="ga-in" id="wCta" data-t="w-cta">' + CTAS.map(function (c) { return '<option' + (S.cta === c ? ' selected' : '') + '>' + c + '</option>' }).join('') + '</select>' +
+        '<p><b>Chamada para ação</b></p><select class="ga-in" id="wCta" data-t="w-cta">' + CTAS.map(function (c) { return '<option value="' + c + '"' + (S.cta === c ? ' selected' : '') + '>' + c + '</option>' }).join('') + '</select>' +
         '<p class="miudo">“Ver detalhes” é o texto de chamada para ação padrão. “Ver detalhes” gera um CVR até 2,3% maior em comparação com “Saiba mais”. Você ainda pode escolher “Saiba mais” ou outra opção.</p>';
     } else if (p === 4) {
       corpo = '<h3>Geração de imagem para criativo Advantage+</h3><p class="miudo">Meta AI · Em nosso experimento, campanhas com todos os anúncios adicionando imagens geradas por IA tiveram incremento de 10% na CTR e incremento de 6% na CVR. Esta etapa é opcional: nada é gerado no simulador.</p>';

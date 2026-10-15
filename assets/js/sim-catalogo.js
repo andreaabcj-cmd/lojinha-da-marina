@@ -107,7 +107,7 @@
       '<div data-t="cm-confirmar"><h3 style="margin-top:14px">Confirmar configurações</h3><p><b>Nome do feed</b></p><input class="ga-in" id="cmFeed" value="' + esc(W.nomeFeed || 'Novo feed de dados') + '"/>' +
       '<p><b>Moeda padrão</b></p><select class="ga-in" id="cmMoeda" data-t="moeda-feed"><option value="USD"' + (usd ? ' selected' : '') + '>USD — Dólar americano</option><option value="BRL"' + (!usd ? ' selected' : '') + '>BRL — Real brasileiro</option><option value="EUR">EUR — Euro</option></select>' +
       (usd ? '<p class="cm-set" data-t="aviso-moeda">⚠ A moeda padrão veio em <b>USD</b>. Se o feed não trouxer a moeda em cada preço, os produtos entram em dólar. Troque para a moeda da loja.</p>' : '') +
-      '<p><b>Programação do feed</b> · Frequência</p><select class="ga-in" id="cmFreq" data-t="freq-feed"><option>A cada hora</option><option selected>Diariamente</option><option>Semanalmente</option></select></div>' +
+      '<p><b>Programação do feed</b> · Frequência</p><select class="ga-in" id="cmFreq" data-t="freq-feed"><option value="A cada hora">A cada hora</option><option value="Diariamente" selected>Diariamente</option><option value="Semanalmente">Semanalmente</option></select></div>' +
       '<div class="cm-rod"><button class="btn sec" data-ir="novo-produtos">Voltar</button><button class="btn" data-acao="carregar-arquivo" data-t="btn-carregar"' + (/^https?:\/\//.test(W.url.trim()) ? '' : ' disabled') + '>Carregar</button></div></div>');
   }
   function novoManual() {

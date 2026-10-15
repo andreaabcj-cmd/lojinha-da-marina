@@ -788,6 +788,82 @@
         [{ pt: 'Porque falta pagar um plano', es: 'Porque falta pagar un plan' }, 0, { pt: 'Não há plano pago nisso.', es: 'No hay plan pago para eso.' }]] }
   ]);
 
+  /* ---------- 16. Regras automatizadas: cinco mini-quizzes (Regras 01–05) ---------- */
+  quizCatalogo('regra-ou-ajuste', { pt: 'Onde crio a regra?', es: '¿Dónde creo la regla?' }, { pt: 'Regra para todos ou para alguns? E o que são os ajustes automáticos?', es: '¿Regla para todos o para algunos? ¿Y qué son los ajustes automáticos?' }, [
+    { q: { pt: 'A Marina quer que uma regra valha para só um conjunto de anúncios específico. Onde ela cria?', es: 'Marina quiere que una regla valga solo para un conjunto de anuncios específico. ¿Dónde la crea?' },
+      o: [[{ pt: 'Na tabela de campanhas do Gerenciador: marca o conjunto e usa Mais › Criar nova regra', es: 'En la tabla de campañas del Administrador: marca el conjunto y usa Más › Crear nueva regla' }, 1, { pt: 'Isso! Assim a regra vale só para o que foi marcado.', es: '¡Eso! Así la regla vale solo para lo que se marcó.' }],
+        [{ pt: 'Na página Regras automatizadas, sem marcar nada', es: 'En la página Reglas automáticas, sin marcar nada' }, 0, { pt: 'Ali a regra vale para todas as campanhas, conjuntos ou anúncios da conta.', es: 'Ahí la regla vale para todas las campañas, conjuntos o anuncios de la cuenta.' }],
+        [{ pt: 'No Business Suite', es: 'En Business Suite' }, 0, { pt: 'As regras ficam no Gerenciador de Anúncios.', es: 'Las reglas están en el Administrador de anuncios.' }]] },
+    { q: { pt: 'E se ela quer uma regra para todos os conjuntos ativos da conta?', es: '¿Y si quiere una regla para todos los conjuntos activos de la cuenta?' },
+      o: [[{ pt: 'Na página Regras automatizadas, com + Criar regra', es: 'En la página Reglas automáticas, con + Crear regla' }, 1, { pt: 'Isso! O padrão é “Todos os conjuntos de anúncios ativos”.', es: '¡Eso! El valor predeterminado es “Todos los conjuntos de anuncios activos”.' }],
+        [{ pt: 'Marcando um por um na tabela', es: 'Marcando uno por uno en la tabla' }, 0, { pt: 'Isso serve para poucos; para todos, a página de regras é mais simples.', es: 'Eso sirve para pocos; para todos, la página de reglas es más simple.' }],
+        [{ pt: 'Não dá', es: 'No se puede' }, 0, { pt: 'Dá: é o padrão da janela.', es: 'Se puede: es el valor predeterminado de la ventana.' }]] },
+    { q: { pt: 'A faixa no topo da página diz que “as regras para recomendações agora se chamam ajustes automáticos”. O que isso significa?', es: 'La franja de arriba de la página dice que “las reglas de las recomendaciones ahora se llaman ajustes automáticos”. ¿Qué significa?' },
+      o: [[{ pt: 'Os ajustes automáticos são as antigas regras de recomendações; tem um botão Ver ajustes automáticos, separado das suas regras personalizadas', es: 'Los ajustes automáticos son las antiguas reglas de recomendaciones; hay un botón Ver ajustes automáticos, separado de tus reglas personalizadas' }, 1, { pt: 'Isso! É só uma mudança de nome.', es: '¡Eso! Es solo un cambio de nombre.' }],
+        [{ pt: 'Que todas as regras da conta foram apagadas', es: 'Que todas las reglas de la cuenta fueron eliminadas' }, 0, { pt: 'Não: é só um aviso de mudança de nome.', es: 'No: es solo un aviso de cambio de nombre.' }],
+        [{ pt: 'Que a Meta cria regras sozinha sem avisar', es: 'Que Meta crea reglas sola sin avisar' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }
+  ]);
+  quizCatalogo('ler-regra', { pt: 'Que parte da regra é essa?', es: '¿Qué parte de la regla es esa?' }, { pt: 'Nome, Aplicar a, Ação, Condições, Intervalo, Programação e Notificação.', es: 'Nombre, Aplicar a, Acción, Condiciones, Intervalo, Programación y Notificación.' }, [
+    { q: { pt: '“Gasto é maior que 20”', es: '“Gasto es mayor que 20”' },
+      o: [[{ pt: 'Uma condição: o “se” da regra', es: 'Una condición: el “si” de la regla' }, 1, { pt: 'Isso! Métrica, operador e valor.', es: '¡Eso! Métrica, operador y valor.' }],
+        [{ pt: 'A ação', es: 'La acción' }, 0, { pt: 'A ação é o que a regra faz (desativar, avisar…).', es: 'La acción es lo que hace la regla (desactivar, avisar…).' }],
+        [{ pt: 'A programação', es: 'La programación' }, 0, { pt: 'Programação é de quanto em quanto tempo ela confere.', es: 'La programación es cada cuánto tiempo revisa.' }]] },
+    { q: { pt: '“Últimos 7 dias”', es: '“Últimos 7 días”' },
+      o: [[{ pt: 'O intervalo de tempo: a quantos dias de dados a regra se aplica', es: 'El intervalo de tiempo: a cuántos días de datos se aplica la regla' }, 1, { pt: 'Isso! O padrão da tela é 37 meses (máximo).', es: '¡Eso! El valor predeterminado de la pantalla es 37 meses (máximo).' }],
+        [{ pt: 'A programação', es: 'La programación' }, 0, { pt: 'A programação é Continuamente, Diariamente ou Personalizado.', es: 'La programación es Continuamente, Diariamente o Personalizado.' }],
+        [{ pt: 'O lugar onde a regra se aplica', es: 'El lugar donde se aplica la regla' }, 0, { pt: 'Isso é “Aplicar regra a”.', es: 'Eso es “Aplicar regla a”.' }]] },
+    { q: { pt: '“Continuamente (normalmente entre 30 e 60 minutos)”', es: '“Continuamente (normalmente entre 30 y 60 minutos)”' },
+      o: [[{ pt: 'A programação: de quanto em quanto tempo a regra é verificada', es: 'La programación: cada cuánto tiempo se revisa la regla' }, 1, { pt: 'Isso! As outras são Diariamente e Personalizado.', es: '¡Eso! Las otras son Diariamente y Personalizado.' }],
+        [{ pt: 'A ação', es: 'La acción' }, 0, { pt: 'Não: ação é o que acontece.', es: 'No: acción es lo que pasa.' }],
+        [{ pt: 'O intervalo de tempo', es: 'El intervalo de tiempo' }, 0, { pt: 'O intervalo fala dos dados, não da frequência.', es: 'El intervalo habla de los datos, no de la frecuencia.' }]] },
+    { q: { pt: '“Enviar apenas uma notificação”', es: '“Enviar solo una notificación”' },
+      o: [[{ pt: 'Uma ação segura: só avisa, não muda nada nos anúncios', es: 'Una acción segura: solo avisa, no cambia nada en los anuncios' }, 1, { pt: 'Isso! Ótima para a primeira regra.', es: '¡Eso! Excelente para la primera regla.' }],
+        [{ pt: 'Uma condição', es: 'Una condición' }, 0, { pt: 'É uma ação.', es: 'Es una acción.' }],
+        [{ pt: 'Uma ação que desativa o conjunto', es: 'Una acción que desactiva el conjunto' }, 0, { pt: 'O nome diz: “apenas uma notificação”.', es: 'El nombre lo dice: “solo una notificación”.' }]] }
+  ]);
+  quizCatalogo('falso-positivo', { pt: 'Essa regra é segura?', es: '¿Esta regla es segura?' }, { pt: 'Intervalo e condições mudam quem é atingido.', es: 'El intervalo y las condiciones cambian a quién se alcanza.' }, [
+    { q: { pt: 'Regra: desativar se “Gasto é maior que 20”, intervalo “37 meses (máximo)”. O que pode dar errado?', es: 'Regla: desactivar si “Gasto es mayor que 20”, intervalo “37 meses (máximo)”. ¿Qué puede salir mal?' },
+      o: [[{ pt: 'Ela soma o gasto de toda a vida do conjunto e pode desativar até os que vendem bem (falso positivo)', es: 'Suma el gasto de toda la vida del conjunto y puede desactivar incluso los que venden bien (falso positivo)' }, 1, { pt: 'Isso! Um intervalo curto e mais uma condição resolvem.', es: '¡Eso! Un intervalo corto y una condición más lo resuelven.' }],
+        [{ pt: 'Nada: está perfeita', es: 'Nada: está perfecta' }, 0, { pt: 'Com 37 meses e uma só condição, quase todo conjunto antigo passa de R$ 20.', es: 'Con 37 meses y una sola condición, casi todo conjunto antiguo pasa de R$ 20.' }],
+        [{ pt: 'Ela não roda sem programação', es: 'No corre sin programación' }, 0, { pt: 'A programação padrão é Continuamente.', es: 'La programación predeterminada es Continuamente.' }]] },
+    { q: { pt: 'Como deixar a regra mais segura?', es: '¿Cómo dejar la regla más segura?' },
+      o: [[{ pt: 'Usar “Últimos 7 dias” e somar a condição “Resultados é igual a 0”', es: 'Usar “Últimos 7 días” y sumar la condición “Resultados es igual a 0”' }, 1, { pt: 'Isso! Só pega quem gastou e não trouxe nada na última semana.', es: '¡Eso! Solo alcanza a quien gastó y no trajo nada en la última semana.' }],
+        [{ pt: 'Aumentar o valor para 2000', es: 'Subir el valor a 2000' }, 0, { pt: 'Isso só esconde o problema; o intervalo longo continua.', es: 'Eso solo esconde el problema; el intervalo largo sigue.' }],
+        [{ pt: 'Trocar a programação para Personalizado', es: 'Cambiar la programación a Personalizado' }, 0, { pt: 'A programação não muda quem é atingido.', es: 'La programación no cambia a quién se alcanza.' }]] },
+    { q: { pt: 'A Marina nunca usou regras. Qual a melhor ação para a primeira?', es: 'Marina nunca usó reglas. ¿Cuál es la mejor acción para la primera?' },
+      o: [[{ pt: '“Enviar apenas uma notificação”: ela vê o que a regra pegaria, antes de deixar desativar algo', es: '“Enviar solo una notificación”: ve lo que alcanzaría la regla, antes de dejar que desactive algo' }, 1, { pt: 'Isso! Primeiro avise, depois automatize.', es: '¡Eso! Primero avisa, después automatiza.' }],
+        [{ pt: 'Desativar tudo que gastar mais de R$ 1', es: 'Desactivar todo lo que gaste más de R$ 1' }, 0, { pt: 'Perigoso: desativaria quase tudo.', es: 'Peligroso: desactivaría casi todo.' }],
+        [{ pt: 'Aumentar o orçamento em 100%', es: 'Aumentar el presupuesto en un 100%' }, 0, { pt: 'Gasta dinheiro sem teste.', es: 'Gasta dinero sin prueba.' }]] }
+  ]);
+  quizCatalogo('editar-ou-excluir', { pt: 'Editar ou excluir?', es: '¿Editar o eliminar?' }, { pt: 'O que se pode mudar numa regra que já existe.', es: 'Qué se puede cambiar en una regla que ya existe.' }, [
+    { q: { pt: 'A Marina quer mudar o intervalo de “37 meses” para “7 dias” numa regra já criada.', es: 'Marina quiere cambiar el intervalo de “37 meses” a “7 días” en una regla ya creada.' },
+      o: [[{ pt: 'Editar a regra: o intervalo dá para mudar', es: 'Editar la regla: el intervalo se puede cambiar' }, 1, { pt: 'Isso! Nome, condições, intervalo e programação se editam.', es: '¡Eso! Nombre, condiciones, intervalo y programación se editan.' }],
+        [{ pt: 'Excluir e criar outra', es: 'Eliminar y crear otra' }, 0, { pt: 'Não precisa: dá para editar.', es: 'No hace falta: se puede editar.' }],
+        [{ pt: 'Não dá para mudar', es: 'No se puede cambiar' }, 0, { pt: 'Dá: é só Editar.', es: 'Se puede: solo hay que Editar.' }]] },
+    { q: { pt: 'Ela criou a regra aplicada a “Todos os conjuntos de anúncios ativos” e agora quer só um conjunto. O que fazer?', es: 'Creó la regla aplicada a “Todos los conjuntos de anuncios activos” y ahora quiere solo un conjunto. ¿Qué hacer?' },
+      o: [[{ pt: 'Excluir a regra e criar outra na tabela, marcando o conjunto', es: 'Eliminar la regla y crear otra en la tabla, marcando el conjunto' }, 1, { pt: 'Isso! Ao editar, não dá para mudar onde a regra se aplica nem a ação.', es: '¡Eso! Al editar, no se puede cambiar dónde se aplica la regla ni la acción.' }],
+        [{ pt: 'Editar o “Aplicar regra a”', es: 'Editar el “Aplicar regla a”' }, 0, { pt: 'Esse campo fica apagado ao editar.', es: 'Ese campo queda apagado al editar.' }],
+        [{ pt: 'Pedir à Meta para mudar', es: 'Pedirle a Meta que lo cambie' }, 0, { pt: 'Não precisa: é só excluir e recriar.', es: 'No hace falta: basta eliminar y recrear.' }]] },
+    { q: { pt: 'O cliente quer parar a regra por uns dias, sem apagá-la.', es: 'El cliente quiere detener la regla por unos días, sin borrarla.' },
+      o: [[{ pt: 'Desligar o interruptor de Status na linha da regra', es: 'Desactivar el interruptor de Estado en la fila de la regla' }, 1, { pt: 'Isso! Depois é só ligar de novo.', es: '¡Eso! Después solo hay que activarla de nuevo.' }],
+        [{ pt: 'Excluir a regra', es: 'Eliminar la regla' }, 0, { pt: 'Excluir apaga de vez.', es: 'Eliminar borra del todo.' }],
+        [{ pt: 'Trocar a ação para notificação', es: 'Cambiar la acción a notificación' }, 0, { pt: 'A ação não pode ser mudada ao editar.', es: 'La acción no se puede cambiar al editar.' }]] }
+  ]);
+  quizCatalogo('por-que-parou', { pt: 'Por que meu anúncio parou?', es: '¿Por qué se detuvo mi anuncio?' }, { pt: 'Quando algo para sem ninguém mexer, olhe as regras.', es: 'Cuando algo se detiene sin que nadie lo toque, mira las reglas.' }, [
+    { q: { pt: 'Um conjunto de anúncios apareceu como Desativado, e ninguém mexeu nele. Onde olhar?', es: 'Un conjunto de anuncios apareció como Desactivado, y nadie lo tocó. ¿Dónde mirar?' },
+      o: [[{ pt: 'Na página Regras automatizadas, na coluna Resultados da regra', es: 'En la página Reglas automáticas, en la columna Resultados de la regla' }, 1, { pt: 'Isso! Ela diz o que cada regra fez e quando.', es: '¡Eso! Dice qué hizo cada regla y cuándo.' }],
+        [{ pt: 'Na aba Públicos', es: 'En la pestaña Públicos' }, 0, { pt: 'Públicos não desativam conjuntos.', es: 'Los públicos no desactivan conjuntos.' }],
+        [{ pt: 'Só no cartão de crédito', es: 'Solo en la tarjeta de crédito' }, 0, { pt: 'Pagamento pode parar anúncio, mas primeiro confira as regras.', es: 'El pago puede detener un anuncio, pero primero revisa las reglas.' }]] },
+    { q: { pt: 'A regra “Pausar conjunto caro” desativou 2 conjuntos, incluindo um bom. Depois de corrigir a regra, o bom volta sozinho?', es: 'La regla “Pausar conjunto caro” desactivó 2 conjuntos, incluido uno bueno. Después de corregir la regla, ¿el bueno vuelve solo?' },
+      o: [[{ pt: 'Não: é preciso ativar de novo o conjunto na tabela', es: 'No: hay que activar de nuevo el conjunto en la tabla' }, 1, { pt: 'Isso! Corrigir a regra só evita novos casos.', es: '¡Eso! Corregir la regla solo evita nuevos casos.' }],
+        [{ pt: 'Sim, na próxima execução', es: 'Sí, en la próxima ejecución' }, 0, { pt: 'Não: a regra desativou, ela não reativa sozinha.', es: 'No: la regla desactivó, no reactiva sola.' }],
+        [{ pt: 'Só depois de 24 horas', es: 'Solo después de 24 horas' }, 0, { pt: 'Não há esse prazo.', es: 'No hay ese plazo.' }]] },
+    { q: { pt: 'O cliente quer outra pessoa da equipe recebendo os avisos da regra. O que a Central de Ajuda diz sobre o Assinante?', es: 'El cliente quiere que otra persona del equipo reciba los avisos de la regla. ¿Qué dice el Centro de ayuda sobre el Suscriptor?' },
+      o: [[{ pt: 'A pessoa precisa ter permissão de administrador na conta de anúncios e acesso de controle total ao portfólio', es: 'La persona necesita permiso de administrador en la cuenta publicitaria y acceso de control total al portfolio' }, 1, { pt: 'Isso! Sem isso ela não pode ser assinante.', es: '¡Eso! Sin eso no puede ser suscriptora.' }],
+        [{ pt: 'Qualquer pessoa pode ser assinante', es: 'Cualquier persona puede ser suscriptora' }, 0, { pt: 'Há requisito de permissão.', es: 'Hay requisito de permiso.' }],
+        [{ pt: 'Só o dono do Facebook pessoal', es: 'Solo el dueño del Facebook personal' }, 0, { pt: 'O requisito é de permissão na conta e no portfólio.', es: 'El requisito es de permiso en la cuenta y en el portfolio.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
