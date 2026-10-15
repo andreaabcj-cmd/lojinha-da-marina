@@ -28,7 +28,7 @@ window.MODULOS = [
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
-  { id: 'shop-ads-offsite', fase: 4, status: 'planejado', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'Finalização da compra, URL de checkout e métricas.', es: 'Finalización de la compra, URL de pago y métricas.' } },
+  { id: 'shop-ads-offsite', fase: 4, status: 'construcao', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'A jornada até a compra no site, Pixel e catálogo, eventos duplicados, UTM e terceiros, e atualizar loja antiga.', es: 'El recorrido hasta la compra en el sitio, píxel y catálogo, eventos duplicados, UTM y terceros, y actualizar tienda antigua.' } },
   { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
   { id: 'mbe', fase: 5, status: 'planejado', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Visão geral da extensão e da integração com parceiros.', es: 'Visión general de la extensión y de la integración con socios.' } },
   { id: 'integracoes', fase: 5, status: 'planejado', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Como integrar e os erros possíveis.', es: 'Cómo integrar y los errores posibles.' } },
@@ -3506,6 +3506,234 @@ window.AULAS = {
           frase: L('Os anúncios das Lojas se avaliam pelos resultados no site e na loja. Vamos usar as métricas recomendadas e entender por que algumas aparecem como zero.', 'Los anuncios de Tiendas se evalúan por los resultados en el sitio y en la tienda. Usemos las métricas recomendadas y entendamos por qué algunas aparecen como cero.'),
           passos: [L('Troque as colunas pelas métricas recomendadas.', 'Cambia las columnas por las métricas recomendadas.'), L('Explique as diferenças com ferramentas de terceiros.', 'Explica las diferencias con herramientas de terceros.')],
           encaminhar: L('Para comparar anúncios das Lojas com campanhas só de site, use teste A/B. Se a diferença for grande e sem explicação, siga o suporte da Meta.', 'Para comparar anuncios de Tiendas con campañas solo de sitio, usa una prueba A/B. Si la diferencia es grande y sin explicación, sigue la asistencia de Meta.')
+        }
+      }
+    ];
+  })(),
+  'shop-ads-offsite': (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Conteúdo da Central de Ajuda da Meta para Empresas lida em 16/10/2026 (português): “Dicas para usar o Pixel da Meta nos anúncios da sua loja”, “Como corrigir a duplicação do Pixel da Meta ao usar anúncios das Lojas”, “Sobre relatórios de terceiros para o desempenho dos anúncios das Lojas”, “Como entender seus relatórios…” e “Sobre as mudanças nas Lojas e na finalização da compra…”. A tela da prévia da loja com “Finalização da compra em outro site” foi vista de verdade no Gerenciador de Comércio (módulo Commerce). O Gerenciador de Eventos com compras reais e a extensão Consultor de Dados de Anúncios não foram vistos (a conta de aula não tem Pixel com compras). Eventos, horários e números do simulador são do treino (a conferir).', 'Contenido del Centro de ayuda de Meta para Empresas leído el 16/10/2026 (portugués): “Consejos para usar el píxel de Meta en los anuncios de tu tienda”, “Cómo corregir la duplicación del píxel de Meta al usar anuncios de Tiendas”, “Acerca de los informes de terceros para el rendimiento de los anuncios de Tiendas”, “Cómo entender tus informes…” y “Acerca de los cambios en Tiendas y en la finalización de compra…”. La pantalla de la vista previa de la tienda con “Finalizar compra en otro sitio web” se vio de verdad en el Administrador de ventas (módulo Commerce). El Administrador de eventos con compras reales y la extensión Asesor de datos de anuncios no se vieron (la cuenta de clase no tiene píxel con compras). Los eventos, horarios y números del simulador son del entrenamiento (por confirmar).');
+    var FERR = L('Gerenciador de Eventos › Fontes de dados › seu Pixel, e o Gerenciador de Anúncios.', 'Administrador de eventos › Fuentes de datos › tu píxel, y el Administrador de anuncios.');
+    return [
+      {
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('Do anúncio à compra no site', 'Del anuncio a la compra en el sitio'),
+        antes: L('A Marina quer entender o caminho completo: o cliente clica no anúncio das Lojas e… onde compra?', 'Marina quiere entender el camino completo: la clienta hace clic en el anuncio de Tiendas y… ¿dónde compra?'),
+        gancho: L('A compra termina sempre no site. Entender isso explica quase todas as dúvidas de medição.', 'La compra termina siempre en el sitio. Entender eso explica casi todas las dudas de medición.'),
+        objetivo: L('Descrever a jornada do anúncio das Lojas à compra no site e saber qual evento o Pixel registra em cada etapa.', 'Describir el recorrido del anuncio de Tiendas a la compra en el sitio y saber qué evento registra el píxel en cada etapa.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Se o cliente compra no site, o que a loja da Meta faz? 🤔', 'Si el cliente compra en el sitio, ¿qué hace la tienda de Meta? 🤔')],
+            ['rafa', L('A loja é a vitrine: página inicial, coleções e páginas de produto. A pessoa pode ir à loja ou direto ao site, conforme a Meta achar que converte mais. Na hora de comprar, ela é levada ao URL de finalização da compra do seu site.', 'La tienda es la vitrina: página de inicio, colecciones y páginas de producto. La persona puede ir a la tienda o directo al sitio, según Meta considere que convierte más. A la hora de comprar, es llevada a la URL de finalización de compra de tu sitio.')],
+            ['marina', L('E quem cuida do pagamento e do pedido?', '¿Y quién se encarga del pago y del pedido?')],
+            ['rafa', L('O seu site, ou a plataforma de e-commerce conectada: pagamento, pedido, envio e devolução.', 'Tu sitio, o la plataforma de comercio electrónico conectada: pago, pedido, envío y devolución.')],
+            ['pixel', L('E a Meta sabe da compra pelo Pixel do site: ele registra ViewContent, AddToCart, InitiateCheckout e Purchase. As “compras na Meta” ficam em 0, porque a compra é medida como compra no site.', 'Y Meta sabe de la compra por el píxel del sitio: registra ViewContent, AddToCart, InitiateCheckout y Purchase. Las “compras en Meta” quedan en 0, porque la compra se mide como compra en el sitio.')]
+          ],
+          pontos: [
+            L('<b>Loja</b> = vitrine; <b>compra</b> = no site (URL de finalização da compra).', '<b>Tienda</b> = vitrina; <b>compra</b> = en el sitio (URL de finalización de compra).'),
+            L('<b>Pixel do site</b> registra a jornada: ViewContent, AddToCart, InitiateCheckout, Purchase.', '<b>El píxel del sitio</b> registra el recorrido: ViewContent, AddToCart, InitiateCheckout, Purchase.'),
+            L('<b>“Compras na Meta”</b> = 0; meça compras no site.', '<b>“Compras en Meta”</b> = 0; mide compras en el sitio.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'jornada-offsite',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelas 5 etapas da jornada e mostra os eventos do Pixel que aparecem em cada uma.', 'En el simulador, el Pixel te guía por las 5 etapas del recorrido y muestra los eventos del píxel que aparecen en cada una.'),
+          tour: 'jornada-compra-site', pagina: 'meta-checkoutsite.html?zerar=1'
+        },
+        atender: {
+          cena: L('Se a compra é no site, por que eu preciso de loja no Instagram? E quem trata meus pedidos? 😕', 'Si la compra es en el sitio, ¿por qué necesito una tienda en Instagram? ¿Y quién gestiona mis pedidos? 😕'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“A loja é a vitrine: página inicial, coleções e páginas de produto dentro do app, que ajudam a descoberta. A compra termina no seu site, e pagamento, pedidos, envio e devoluções são tratados por lá ou pela plataforma de e-commerce conectada. A Meta mede pelo Pixel do site.”', '“La tienda es la vitrina: página de inicio, colecciones y páginas de producto dentro de la app, que ayudan al descubrimiento. La compra termina en tu sitio, y pago, pedidos, envío y devoluciones se gestionan allí o con la plataforma de comercio electrónico conectada. Meta mide por el píxel del sitio.”'), fb: L('Isso! Explicou o papel de cada lado.', '¡Eso! Explicaste el papel de cada lado.') },
+            { certa: false, txt: L('“Os pedidos aparecem no Gerenciador de Comércio.”', '“Los pedidos aparecen en el Administrador de ventas.”'), fb: L('Para pedidos novos, o gerenciamento foi descontinuado.', 'Para pedidos nuevos, la gestión fue discontinuada.') },
+            { certa: false, txt: L('“Não precisa de loja, ignore.”', '“No necesitas tienda, ignórala.”'), fb: L('Para anúncios das Lojas, a loja é obrigatória.', 'Para anuncios de Tiendas, la tienda es obligatoria.') },
+            { certa: false, txt: L('“A Meta processa o pagamento.”', '“Meta procesa el pago.”'), fb: L('O processamento de pagamentos nas Lojas foi descontinuado.', 'El procesamiento de pagos en las Tiendas fue discontinuado.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o URL de finalização da compra da loja? Qual plataforma o site usa?', '¿Cuál es la URL de finalización de compra de la tienda? ¿Qué plataforma usa el sitio?'), L('O Pixel do site está conectado ao catálogo?', '¿El píxel del sitio está vinculado al catálogo?')],
+          conferir: [FERR, L('Gerenciador de Comércio › Configurações da loja.', 'Administrador de ventas › Configuración de la tienda.')],
+          frase: L('A loja é a vitrine e a compra termina no seu site. A Meta mede a jornada pelo Pixel do site, então vamos conferir se ele está certo.', 'La tienda es la vitrina y la compra termina en tu sitio. Meta mide el recorrido por el píxel del sitio, así que revisemos si está bien.'),
+          passos: [L('Confirme o URL de finalização da compra.', 'Confirma la URL de finalización de compra.'), L('Confira o Pixel (aula 02).', 'Revisa el píxel (clase 02).')],
+          encaminhar: L('Pedidos, pagamentos e devoluções são do site do cliente: oriente-o a usar a plataforma de e-commerce dele.', 'Los pedidos, pagos y devoluciones son del sitio del cliente: oriéntalo a usar su plataforma de comercio electrónico.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Pixel e catálogo falando a mesma língua', 'Píxel y catálogo hablando el mismo idioma'),
+        antes: L('Os anúncios da Marina rodam, mas as compras não aparecem direito.', 'Los anuncios de Marina corren, pero las compras no aparecen bien.'),
+        gancho: L('Se Pixel e catálogo não combinam, a Meta não liga o produto ao evento.', 'Si píxel y catálogo no coinciden, Meta no vincula el producto con el evento.'),
+        objetivo: L('Aplicar as 4 dicas oficiais: Pixel ligado ao catálogo, Content ID igual, sem duplicação e teste com Eventos de teste.', 'Aplicar los 4 consejos oficiales: píxel vinculado al catálogo, Content ID igual, sin duplicación y prueba con Probar eventos.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Como confiro se o Pixel está bom para os anúncios das Lojas? 😬', '¿Cómo reviso si el píxel está bien para los anuncios de Tiendas? 😬')],
+            ['rafa', L('Quatro conferências. Primeiro, o Pixel do site precisa estar conectado ao catálogo da loja (Gerenciador de Comércio, sua loja, Configurações, Catálogo).', 'Cuatro revisiones. Primero, el píxel del sitio debe estar vinculado al catálogo de la tienda (Administrador de ventas, tu tienda, Configuración, Catálogo).')],
+            ['marina', L('E depois?', '¿Y después?')],
+            ['rafa', L('Segundo, o Content ID de cada item no catálogo precisa ser o mesmo que o Pixel manda; só estes eventos servem: Adicionar ao carrinho, Adicionar à lista de desejos, Iniciar finalização da compra, Comprar e Ver conteúdo.', 'Segundo, el Content ID de cada artículo en el catálogo debe ser el mismo que manda el píxel; solo estos eventos sirven: Agregar al carrito, Agregar a la lista de deseos, Iniciar compra, Comprar y Ver contenido.')],
+            ['pixel', L('Terceiro, ver se há duplicação (Shopify, Gerenciador de tags do Google, ou Pixel mais API de Conversões, que exige desduplicar). Quarto, testar com a ferramenta Eventos de teste para ver se as ações do site chegam à Meta.', 'Tercero, ver si hay duplicación (Shopify, Administrador de etiquetas de Google, o píxel más API de Conversiones, que exige deduplicar). Cuarto, probar con la herramienta Probar eventos para ver si las acciones del sitio llegan a Meta.')]
+          ],
+          pontos: [
+            L('<b>1.</b> Pixel conectado ao catálogo da loja.', '<b>1.</b> Píxel vinculado al catálogo de la tienda.'),
+            L('<b>2.</b> Content ID igual no catálogo e no Pixel; só 5 eventos aceitos.', '<b>2.</b> Content ID igual en el catálogo y en el píxel; solo 5 eventos aceptados.'),
+            L('<b>3 e 4.</b> Sem duplicação; testar com Eventos de teste.', '<b>3 y 4.</b> Sin duplicación; probar con Probar eventos.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'pixel-offsite',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelas 4 conferências e acha um Content ID diferente entre catálogo e site.', 'En el simulador, el Pixel te guía por las 4 revisiones y encuentra un Content ID distinto entre catálogo y sitio.'),
+          tour: 'pixel-e-catalogo', pagina: 'meta-checkoutsite.html?zerar=1'
+        },
+        atender: {
+          cena: L('Os anúncios vendem, mas a Meta não mostra quais produtos foram comprados! 😠', '¡Los anuncios venden, pero Meta no muestra qué productos se compraron! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Vamos conferir o Pixel: se ele está conectado ao catálogo e se o Content ID de cada produto é igual no catálogo e no Pixel do site; sem isso a Meta não consegue ligar o produto ao evento. Depois, testamos com a ferramenta Eventos de teste.”', '“Revisemos el píxel: si está vinculado al catálogo y si el Content ID de cada producto es igual en el catálogo y en el píxel del sitio; sin eso Meta no puede vincular el producto con el evento. Después, probamos con la herramienta Probar eventos.”'), fb: L('Isso! Causa provável e teste.', '¡Eso! Causa probable y prueba.') },
+            { certa: false, txt: L('“Crie um catálogo novo.”', '“Crea un catálogo nuevo.”'), fb: L('Antes confira o Content ID.', 'Antes revisa el Content ID.') },
+            { certa: false, txt: L('“Apague o Pixel e instale de novo.”', '“Elimina el píxel e instálalo de nuevo.”'), fb: L('Exagero: primeiro confira ligação e IDs.', 'Exagerado: primero revisa vínculo e IDs.') },
+            { certa: false, txt: L('“É normal, a Meta nunca mostra isso.”', '“Es normal, Meta nunca muestra eso.”'), fb: L('Com IDs iguais, a ligação funciona.', 'Con IDs iguales, el vínculo funciona.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o Content ID de um produto no catálogo e no site?', '¿Cuál es el Content ID de un producto en el catálogo y en el sitio?'), L('O Pixel está conectado ao catálogo da loja?', '¿El píxel está vinculado al catálogo de la tienda?')],
+          conferir: [FERR, L('Eventos de teste durante uma compra de teste.', 'Probar eventos durante una compra de prueba.')],
+          frase: L('Para a Meta ligar compra e produto, o Pixel precisa estar conectado ao catálogo e o Content ID precisa ser igual nos dois. Vamos conferir e testar.', 'Para que Meta vincule compra y producto, el píxel debe estar vinculado al catálogo y el Content ID debe ser igual en los dos. Revisemos y probemos.'),
+          passos: [L('Compare o Content ID do catálogo com o do site.', 'Compara el Content ID del catálogo con el del sitio.'), L('Teste com Eventos de teste.', 'Prueba con Probar eventos.')],
+          encaminhar: L('Mudar o ID no site é trabalho do site do cliente ou da plataforma dele: oriente e mostre a diferença.', 'Cambiar el ID en el sitio es trabajo del sitio del cliente o de su plataforma: orienta y muestra la diferencia.')
+        }
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('Compras contadas em dobro', 'Compras contadas dos veces'),
+        antes: L('A Marina viu 2 compras para um pedido só.', 'Marina vio 2 compras para un solo pedido.'),
+        gancho: L('Mesmo evento, dois caminhos: Shopify e Gerenciador de tags do Google brigando.', 'Mismo evento, dos caminos: Shopify y el Administrador de etiquetas de Google peleando.'),
+        objetivo: L('Achar eventos de compra duplicados no Gerenciador de Eventos, descobrir a origem e remover só o evento repetido.', 'Encontrar eventos de compra duplicados en el Administrador de eventos, descubrir el origen y quitar solo el evento repetido.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cada compra aparece duas vezes na Meta! 😱', '¡Cada compra aparece dos veces en Meta! 😱')],
+            ['rafa', L('Isso é duplicação: o mesmo evento chegando por mais de um caminho, por exemplo o canal do Facebook e Instagram na Shopify e também um Pixel no Gerenciador de tags do Google.', 'Eso es duplicación: el mismo evento llegando por más de un camino, por ejemplo el canal de Facebook e Instagram en Shopify y también un píxel en el Administrador de etiquetas de Google.')],
+            ['marina', L('Como eu vejo?', '¿Cómo lo veo?')],
+            ['rafa', L('No Gerenciador de Eventos: Fontes de dados, seu Pixel, Visão geral, em Atividades clique em Comprar e Ver detalhes, aba Atividades recentes. Dois eventos no mesmo horário e com o mesmo URL indicam duplicação. Também dá para usar a extensão Consultor de Dados de Anúncios no Chrome.', 'En el Administrador de eventos: Fuentes de datos, tu píxel, Descripción general, en Actividades haz clic en Comprar y Ver detalles, pestaña Actividades recientes. Dos eventos en el mismo horario y con la misma URL indican duplicación. También se puede usar la extensión Asesor de datos de anuncios en Chrome.')],
+            ['pixel', L('Para corrigir, ache a origem. Na Shopify, use o canal do Facebook e Instagram e tire o Pixel de outros lugares (apps, tema). No Gerenciador de tags do Google, remova só os eventos duplicados, sem apagar eventos de pesquisa ou registro.', 'Para corregir, encuentra el origen. En Shopify, usa el canal de Facebook e Instagram y saca el píxel de otros lugares (apps, tema). En el Administrador de etiquetas de Google, quita solo los eventos duplicados, sin borrar eventos de búsqueda o registro.')]
+          ],
+          pontos: [
+            L('<b>Duplicação</b> = mesmo evento por mais de um caminho (Shopify, tags do Google, Pixel + API).', '<b>Duplicación</b> = mismo evento por más de un camino (Shopify, etiquetas de Google, píxel + API).'),
+            L('<b>Como ver:</b> Atividades recentes: mesmo horário e mesmo URL.', '<b>Cómo verlo:</b> Actividades recientes: mismo horario y misma URL.'),
+            L('<b>Corrigir:</b> achar a origem e remover só o evento repetido.', '<b>Corregir:</b> encontrar el origen y quitar solo el evento repetido.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'duplicacao-offsite',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia para ver dois eventos iguais, achar a origem e remover o do Gerenciador de tags do Google.', 'En el simulador, el Pixel te guía para ver dos eventos iguales, encontrar el origen y quitar el del Administrador de etiquetas de Google.'),
+          tour: 'achar-duplicacao', pagina: 'meta-checkoutsite.html?zerar=1'
+        },
+        atender: {
+          cena: L('Meu ROAS está lindo, mas as vendas reais são metade! Vocês inflaram meus números! 😡', '¡Mi ROAS está lindo, pero las ventas reales son la mitad! ¡Inflaron mis números! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Pode ser compra contada em dobro: o mesmo evento chegando por mais de um caminho. Vamos olhar no Gerenciador de Eventos as atividades recentes do evento Comprar: dois eventos no mesmo horário e URL indicam duplicação. Depois achamos a origem, como Shopify ou Gerenciador de tags do Google, e removemos só o repetido.”', '“Puede ser una compra contada dos veces: el mismo evento llegando por más de un camino. Veamos en el Administrador de eventos las actividades recientes del evento Comprar: dos eventos en el mismo horario y URL indican duplicación. Después encontramos el origen, como Shopify o el Administrador de etiquetas de Google, y quitamos solo el repetido.”'), fb: L('Isso! Hipótese real e método.', '¡Eso! Hipótesis real y método.') },
+            { certa: false, txt: L('“A Meta inflou de propósito.”', '“Meta infló a propósito.”'), fb: L('Não há sinal disso; é um problema de configuração.', 'No hay señal de eso; es un problema de configuración.') },
+            { certa: false, txt: L('“Apague todo o Gerenciador de tags do Google.”', '“Borra todo el Administrador de etiquetas de Google.”'), fb: L('Remova só os eventos duplicados.', 'Quita solo los eventos duplicados.') },
+            { certa: false, txt: L('“Ignore, o ROAS é só um número.”', '“Ignóralo, el ROAS es solo un número.”'), fb: L('Duplicação distorce a otimização e os relatórios.', 'La duplicación distorsiona la optimización y los informes.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A loja usa Shopify, Gerenciador de tags do Google ou API de Conversões?', '¿La tienda usa Shopify, Administrador de etiquetas de Google o API de Conversiones?'), L('Há dois eventos de compra no mesmo horário e URL?', '¿Hay dos eventos de compra en el mismo horario y URL?')],
+          conferir: [FERR, L('Atividades recentes do evento Comprar.', 'Actividades recientes del evento Comprar.')],
+          frase: L('Vamos ver se a mesma compra chega duas vezes: se sim, achamos a origem e removemos só o evento repetido.', 'Veamos si la misma compra llega dos veces: si es así, encontramos el origen y quitamos solo el evento repetido.'),
+          passos: [L('Abra as atividades recentes do evento Comprar.', 'Abre las actividades recientes del evento Comprar.'), L('Compare horário e URL e ache a origem.', 'Compara horario y URL y encuentra el origen.')],
+          encaminhar: L('Mexer no Gerenciador de tags do Google ou no tema da Shopify é com quem cuida do site: oriente e mostre qual evento remover.', 'Tocar el Administrador de etiquetas de Google o el tema de Shopify es de quien se encarga del sitio: orienta y muestra qué evento quitar.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Meta × Google Analytics: números diferentes', 'Meta × Google Analytics: números distintos'),
+        antes: L('A Marina compara o Gerenciador de Anúncios com o Google Analytics e os números não batem.', 'Marina compara el Administrador de anuncios con Google Analytics y los números no coinciden.'),
+        gancho: L('Duas ferramentas, duas formas de contar. Dá para reduzir a diferença, mas não zerar.', 'Dos herramientas, dos formas de contar. Se puede reducir la diferencia, pero no eliminarla.'),
+        objetivo: L('Usar UTM e tags de marketing de terceiros e explicar por que terceiros não veem tudo.', 'Usar UTM y etiquetas de marketing de terceros y explicar por qué los terceros no ven todo.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A Meta diz 71 compras e o Analytics, 46. Quem está certo? 🤷', 'Meta dice 71 compras y Analytics, 46. ¿Quién está bien? 🤷')],
+            ['rafa', L('Os dois contam de formas diferentes. Muitas ferramentas de terceiros medem um canal só, o site, e não veem o que acontece só dentro da Meta, como Ver conteúdo e Adicionar ao carrinho na loja.', 'Los dos cuentan de formas distintas. Muchas herramientas de terceros miden un solo canal, el sitio, y no ven lo que ocurre solo dentro de Meta, como Ver contenido y Agregar al carrito en la tienda.')],
+            ['marina', L('E dá para melhorar?', '¿Y se puede mejorar?')],
+            ['rafa', L('Dá: use parâmetros de UTM (a Meta põe padrões: pago, Facebook ou Instagram, ID da campanha, do anúncio e do conjunto) e conecte tags de marketing de terceiros no Google Analytics.', 'Sí: usa parámetros UTM (Meta pone predeterminados: pago, Facebook o Instagram, ID de la campaña, del anuncio y del conjunto) y conecta etiquetas de marketing de terceros en Google Analytics.')],
+            ['pixel', L('Mesmo assim, a ferramenta pode não ligar a jornada de quem passou pela loja e depois foi ao site. Para comparar de verdade, use teste A/B. Ferramentas como Triple Whale, Northbeam e Measured rastreiam eventos da loja se ligadas à API de Marketing.', 'Aun así, la herramienta puede no unir el recorrido de quien pasó por la tienda y luego fue al sitio. Para comparar de verdad, usa una prueba A/B. Herramientas como Triple Whale, Northbeam y Measured rastrean eventos de la tienda si se conectan a la API de Marketing.')]
+          ],
+          pontos: [
+            L('<b>UTM padrão:</b> pago, fonte, ID da campanha, anúncio e conjunto.', '<b>UTM predeterminados:</b> pago, fuente, ID de campaña, anuncio y conjunto.'),
+            L('<b>Terceiros</b> podem não ver Ver conteúdo e Adicionar ao carrinho da loja.', '<b>Los terceros</b> pueden no ver Ver contenido y Agregar al carrito de la tienda.'),
+            L('<b>Comparar de verdade:</b> teste A/B.', '<b>Comparar de verdad:</b> prueba A/B.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'terceiros-offsite',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela diferença 71 × 46, pelos UTM padrão e pelas tags de marketing de terceiros.', 'En el simulador, el Pixel te guía por la diferencia 71 × 46, por los UTM predeterminados y por las etiquetas de marketing de terceros.'),
+          tour: 'comparar-terceiros', pagina: 'meta-checkoutsite.html?zerar=1'
+        },
+        atender: {
+          cena: L('Meu Google Analytics mostra bem menos vendas que a Meta. Alguém está mentindo! 😠', '¡Mi Google Analytics muestra bastantes menos ventas que Meta! ¡Alguien está mintiendo! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Ninguém mente: as ferramentas contam de forma diferente, e muitas de terceiros não veem as conversões ligadas à loja da Meta nem conectam a jornada de quem passou pela loja e depois foi ao site. Dá para reduzir a diferença com UTM e tags de marketing de terceiros no Google Analytics, e para comparar de verdade usamos um teste A/B.”', '“Nadie miente: las herramientas cuentan de forma distinta, y muchas de terceros no ven las conversiones ligadas a la tienda de Meta ni unen el recorrido de quien pasó por la tienda y luego fue al sitio. Se puede reducir la diferencia con UTM y etiquetas de marketing de terceros en Google Analytics, y para comparar de verdad usamos una prueba A/B.”'), fb: L('Isso! Explicou e deu o caminho.', '¡Eso! Explicaste y diste el camino.') },
+            { certa: false, txt: L('“O Analytics está sempre errado.”', '“Analytics siempre está mal.”'), fb: L('Nenhum está “errado”: medem de formas diferentes.', 'Ninguno está “mal”: miden de formas distintas.') },
+            { certa: false, txt: L('“Desligue o Google Analytics.”', '“Apaga Google Analytics.”'), fb: L('Ele ajuda; só precisa de UTM e tags.', 'Ayuda; solo necesita UTM y etiquetas.') },
+            { certa: false, txt: L('“Mude os UTM todo dia.”', '“Cambia los UTM todos los días.”'), fb: L('UTM estáveis ajudam a filtrar.', 'UTM estables ayudan a filtrar.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quais ferramentas o cliente usa para medir? Há UTM nos anúncios?', '¿Qué herramientas usa el cliente para medir? ¿Hay UTM en los anuncios?'), L('O Google Analytics tem tags de marketing de terceiros conectadas?', '¿Google Analytics tiene etiquetas de marketing de terceros conectadas?')],
+          conferir: [FERR, L('Parâmetros de UTM do anúncio.', 'Parámetros UTM del anuncio.')],
+          frase: L('As ferramentas contam de formas diferentes; vamos usar UTM e conectar as tags de terceiros para reduzir a diferença, e um teste A/B para comparar de verdade.', 'Las herramientas cuentan de formas distintas; usemos UTM y conectemos las etiquetas de terceros para reducir la diferencia, y una prueba A/B para comparar de verdad.'),
+          passos: [L('Confira os UTM dos anúncios.', 'Revisa los UTM de los anuncios.'), L('Conecte as tags de marketing de terceiros.', 'Conecta las etiquetas de marketing de terceros.')],
+          encaminhar: L('Configurar o Google Analytics é com quem cuida do site ou do marketing do cliente: oriente com as páginas da Central de Ajuda.', 'Configurar Google Analytics es de quien se encarga del sitio o del marketing del cliente: orienta con las páginas del Centro de ayuda.')
+        }
+      },
+      {
+        id: '05', min: 8, status: 'pronta',
+        titulo: L('Atualizar uma loja que usava a finalização da compra na Meta', 'Actualizar una tienda que usaba la finalización de compra en Meta'),
+        antes: L('Uma cliente antiga da Marina tinha loja com finalização da compra dentro do Instagram. Agora a loja mudou.', 'Una clienta antigua de Marina tenía tienda con finalización de compra dentro de Instagram. Ahora la tienda cambió.'),
+        gancho: L('Atualizar a loja existente é melhor do que criar outra. E há uma lista do que fazer.', 'Actualizar la tienda existente es mejor que crear otra. Y hay una lista de qué hacer.'),
+        objetivo: L('Listar o que fazer para atualizar uma loja antiga para a finalização da compra no site e o que acontece com campanhas e rascunhos.', 'Listar qué hacer para actualizar una tienda antigua a la finalización de compra en el sitio y qué pasa con campañas y borradores.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A loja dela usava checkout na Meta. O que acontece agora? 😟', 'Su tienda usaba checkout en Meta. ¿Qué pasa ahora? 😟')],
+            ['rafa', L('Ela foi atualizada para a finalização da compra no site, ou ficou invisível. Se ainda não foi atualizada, a loja precisa permanecer visível, e a Meta recomenda atualizar a existente em vez de criar uma nova.', 'Fue actualizada a la finalización de compra en el sitio, o quedó invisible. Si todavía no fue actualizada, la tienda debe permanecer visible, y Meta recomienda actualizar la existente en lugar de crear una nueva.')],
+            ['marina', L('O que ela precisa fazer?', '¿Qué necesita hacer?')],
+            ['rafa', L('Criar e adicionar o URL de finalização da compra; adicionar perfis de envio; preparar o catálogo; conferir as variantes de produto do site e adicioná-las; e, opcionalmente, conectar um conjunto de dados para rastrear as interações.', 'Crear y agregar la URL de finalización de compra; agregar perfiles de envío; preparar el catálogo; revisar las variantes de producto del sitio y agregarlas; y, opcionalmente, conectar un conjunto de datos para rastrear las interacciones.')],
+            ['pixel', L('E as campanhas? As ativas continuam, só que a compra passa a ser no site. Os rascunhos antigos são atualizados para o local da conversão Site, com a loja ligada por padrão para personalizar a jornada do comprador.', '¿Y las campañas? Las activas continúan, solo que la compra pasa a ser en el sitio. Los borradores antiguos se actualizan al lugar de conversión Sitio web, con la tienda activada por defecto para personalizar el recorrido del comprador.')]
+          ],
+          pontos: [
+            L('<b>Atualize</b> a loja existente; ela deve ficar visível até a atualização.', '<b>Actualiza</b> la tienda existente; debe quedar visible hasta la actualización.'),
+            L('<b>Faça:</b> URL de finalização, perfis de envio, catálogo e variantes.', '<b>Haz:</b> URL de finalización, perfiles de envío, catálogo y variantes.'),
+            L('<b>Campanhas ativas</b> continuam; rascunhos viram local Site.', '<b>Las campañas activas</b> continúan; los borradores pasan a lugar Sitio web.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'antiga-offsite',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela lista de atualização de uma loja antiga, item por item.', 'En el simulador, el Pixel te guía por la lista de actualización de una tienda antigua, ítem por ítem.'),
+          tour: 'atualizar-loja-antiga', pagina: 'meta-checkoutsite.html?zerar=1'
+        },
+        atender: {
+          cena: L('Minha loja sumiu e meus anúncios mudaram! Vou criar uma loja nova do zero! 😡', '¡Mi tienda desapareció y mis anuncios cambiaron! ¡Voy a crear una tienda nueva desde cero! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Antes de criar outra, atualize a loja que você já tem: a Meta recomenda isso. A loja precisa ficar visível e você precisa adicionar o URL de finalização da compra, os perfis de envio, preparar o catálogo e conferir as variantes. Suas campanhas ativas continuam, com a compra no site.”', '“Antes de crear otra, actualiza la tienda que ya tienes: Meta lo recomienda. La tienda debe quedar visible y debes agregar la URL de finalización de compra, los perfiles de envío, preparar el catálogo y revisar las variantes. Tus campañas activas continúan, con la compra en el sitio.”'), fb: L('Isso! Evitou recomeçar e deu a lista.', '¡Eso! Evitaste empezar de nuevo y diste la lista.') },
+            { certa: false, txt: L('“Crie uma loja nova, é mais simples.”', '“Crea una tienda nueva, es más simple.”'), fb: L('A Meta recomenda atualizar a existente.', 'Meta recomienda actualizar la existente.') },
+            { certa: false, txt: L('“Oculte a loja até a Meta resolver.”', '“Oculta la tienda hasta que Meta lo resuelva.”'), fb: L('Se ainda não foi atualizada, deve ficar visível.', 'Si todavía no fue actualizada, debe quedar visible.') },
+            { certa: false, txt: L('“Apague as campanhas ativas.”', '“Borra las campañas activas.”'), fb: L('As campanhas ativas continuam.', 'Las campañas activas continúan.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A loja está visível ou oculta? Já tem URL de finalização da compra?', '¿La tienda está visible u oculta? ¿Ya tiene URL de finalización de compra?'), L('Há campanhas ativas ou rascunhos ligados à loja?', '¿Hay campañas activas o borradores vinculados a la tienda?')],
+          conferir: [L('Gerenciador de Comércio › loja › Configurações.', 'Administrador de ventas › tienda › Configuración.'), L('Gerenciador de Anúncios › local da conversão dos rascunhos.', 'Administrador de anuncios › lugar de conversión de los borradores.')],
+          frase: L('Vamos atualizar a loja que você já tem para a finalização da compra no site: URL de finalização, perfis de envio, catálogo e variantes. As campanhas ativas continuam.', 'Actualicemos la tienda que ya tienes a la finalización de compra en el sitio: URL de finalización, perfiles de envío, catálogo y variantes. Las campañas activas continúan.'),
+          passos: [L('Adicione o URL de finalização da compra e os perfis de envio.', 'Agrega la URL de finalización de compra y los perfiles de envío.'), L('Prepare o catálogo e as variantes.', 'Prepara el catálogo y las variantes.')],
+          encaminhar: L('Se a loja ficou invisível, siga os avisos do Gerenciador de Comércio para atualizá-la, em vez de criar outra.', 'Si la tienda quedó invisible, sigue los avisos del Administrador de ventas para actualizarla, en lugar de crear otra.')
         }
       }
     ];

@@ -1368,6 +1368,78 @@
         [{ pt: 'Porque o cliente digitou errado', es: 'Porque el cliente escribió mal' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }
   ]);
 
+  /* ---------- 24. Shop Ads com compra no site: cinco mini-quizzes (Offsite 01–05) ---------- */
+  quizCatalogo('jornada-offsite', { pt: 'Onde acontece cada coisa?', es: '¿Dónde ocurre cada cosa?' }, { pt: 'Jornada do anúncio das Lojas à compra no site.', es: 'Recorrido del anuncio de Tiendas a la compra en el sitio.' }, [
+    { q: { pt: 'Onde termina a compra de um anúncio das Lojas?', es: '¿Dónde termina la compra de un anuncio de Tiendas?' },
+      o: [[{ pt: 'No site (URL de finalização da compra)', es: 'En el sitio (URL de finalización de compra)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Dentro do Instagram', es: 'Dentro de Instagram' }, 0, { pt: 'Isso foi descontinuado.', es: 'Eso fue discontinuado.' }],
+        [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'O Gerenciador não processa compras.', es: 'El Administrador no procesa compras.' }]] },
+    { q: { pt: 'Qual evento do Pixel marca a compra concluída?', es: '¿Qué evento del píxel marca la compra completada?' },
+      o: [[{ pt: 'ViewContent', es: 'ViewContent' }, 0, { pt: 'É a visualização do produto.', es: 'Es la vista del producto.' }],
+        [{ pt: 'AddToCart', es: 'AddToCart' }, 0, { pt: 'É adicionar ao carrinho.', es: 'Es agregar al carrito.' }],
+        [{ pt: 'Purchase', es: 'Purchase' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] },
+    { q: { pt: 'Quem trata pagamento, pedido, envio e devolução?', es: '¿Quién gestiona pago, pedido, envío y devolución?' },
+      o: [[{ pt: 'O site, ou a plataforma de e-commerce conectada', es: 'El sitio, o la plataforma de comercio electrónico conectada' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'A Meta, no Gerenciador de Comércio', es: 'Meta, en el Administrador de ventas' }, 0, { pt: 'Foi descontinuado.', es: 'Fue discontinuado.' }],
+        [{ pt: 'Ninguém', es: 'Nadie' }, 0, { pt: 'O site cuida.', es: 'El sitio se encarga.' }]] }
+  ]);
+  quizCatalogo('pixel-offsite', { pt: 'Pixel e catálogo', es: 'Píxel y catálogo' }, { pt: 'As 4 dicas oficiais.', es: 'Los 4 consejos oficiales.' }, [
+    { q: { pt: 'Para medir os anúncios das Lojas, o Pixel do site precisa estar…', es: 'Para medir los anuncios de Tiendas, el píxel del sitio debe estar…' },
+      o: [[{ pt: 'Conectado ao catálogo usado na loja', es: 'Vinculado al catálogo usado en la tienda' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Desligado', es: 'Apagado' }, 0, { pt: 'Precisa funcionar.', es: 'Debe funcionar.' }],
+        [{ pt: 'Só no app', es: 'Solo en la app' }, 0, { pt: 'É o Pixel do site.', es: 'Es el píxel del sitio.' }]] },
+    { q: { pt: 'Qual parâmetro deve ser igual no catálogo e no Pixel?', es: '¿Qué parámetro debe ser igual en el catálogo y en el píxel?' },
+      o: [[{ pt: 'O preço', es: 'El precio' }, 0, { pt: 'O que liga item e evento é o Content ID.', es: 'Lo que vincula artículo y evento es el Content ID.' }],
+        [{ pt: 'O Content ID de cada item', es: 'El Content ID de cada artículo' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'A cor da foto', es: 'El color de la foto' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'Qual destes eventos NÃO é aceito pelos anúncios das Lojas?', es: '¿Cuál de estos eventos NO es aceptado por los anuncios de Tiendas?' },
+      o: [[{ pt: 'Adicionar ao carrinho', es: 'Agregar al carrito' }, 0, { pt: 'É aceito.', es: 'Es aceptado.' }],
+        [{ pt: 'Comprar', es: 'Comprar' }, 0, { pt: 'É aceito.', es: 'Es aceptado.' }],
+        [{ pt: 'Cadastro concluído', es: 'Registro completado' }, 1, { pt: 'Isso! Só 5 eventos são aceitos.', es: '¡Eso! Solo 5 eventos son aceptados.' }]] }
+  ]);
+  quizCatalogo('duplicacao-offsite', { pt: 'Evento duplicado', es: 'Evento duplicado' }, { pt: 'Como achar e corrigir.', es: 'Cómo encontrar y corregir.' }, [
+    { q: { pt: 'Como o Gerenciador de Eventos indica que um evento foi duplicado?', es: '¿Cómo indica el Administrador de eventos que un evento fue duplicado?' },
+      o: [[{ pt: 'Dois eventos no mesmo horário e com o mesmo URL', es: 'Dos eventos en el mismo horario y con la misma URL' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Uma cor vermelha na tela', es: 'Un color rojo en la pantalla' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'O Pixel desliga sozinho', es: 'El píxel se apaga solo' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Qual é uma causa comum de duplicação?', es: '¿Cuál es una causa común de duplicación?' },
+      o: [[{ pt: 'Pixel enviado pelo canal do Facebook e Instagram na Shopify e também pelo Gerenciador de tags do Google', es: 'Píxel enviado por el canal de Facebook e Instagram en Shopify y también por el Administrador de etiquetas de Google' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Ter poucas fotos no catálogo', es: 'Tener pocas fotos en el catálogo' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }],
+        [{ pt: 'Usar o Instagram', es: 'Usar Instagram' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'Ao corrigir no Gerenciador de tags do Google, o que remover?', es: 'Al corregir en el Administrador de etiquetas de Google, ¿qué quitar?' },
+      o: [[{ pt: 'Todas as tags, inclusive pesquisa e registro', es: 'Todas las etiquetas, incluidas búsqueda y registro' }, 0, { pt: 'Remova só os eventos duplicados.', es: 'Quita solo los eventos duplicados.' }],
+        [{ pt: 'Só os eventos duplicados (ver conteúdo, carrinho, finalização, compra), mantendo os outros', es: 'Solo los eventos duplicados (ver contenido, carrito, finalización, compra), manteniendo los demás' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nada', es: 'Nada' }, 0, { pt: 'É preciso remover o repetido.', es: 'Hay que quitar el repetido.' }]] }
+  ]);
+  quizCatalogo('terceiros-offsite', { pt: 'Meta × terceiros', es: 'Meta × terceros' }, { pt: 'UTM, tags e por que os números diferem.', es: 'UTM, etiquetas y por qué los números difieren.' }, [
+    { q: { pt: 'Por que o Google Analytics pode mostrar menos compras que o Gerenciador de Anúncios?', es: '¿Por qué Google Analytics puede mostrar menos compras que el Administrador de anuncios?' },
+      o: [[{ pt: 'Porque ele pode não conectar a jornada de quem passou pela loja e depois foi ao site', es: 'Porque puede no unir el recorrido de quien pasó por la tienda y luego fue al sitio' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Porque está quebrado', es: 'Porque está roto' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Porque a Meta mente', es: 'Porque Meta miente' }, 0, { pt: 'Não há sinal disso.', es: 'No hay señal de eso.' }]] },
+    { q: { pt: 'Qual é o valor padrão de utm_medium que a Meta define?', es: '¿Cuál es el valor predeterminado de utm_medium que define Meta?' },
+      o: [[{ pt: 'pago', es: 'pago' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'organico', es: 'organico' }, 0, { pt: 'O padrão é pago.', es: 'El predeterminado es pago.' }],
+        [{ pt: 'email', es: 'email' }, 0, { pt: 'O padrão é pago.', es: 'El predeterminado es pago.' }]] },
+    { q: { pt: 'Como comparar de verdade anúncios das Lojas com campanhas só de site?', es: '¿Cómo comparar de verdad anuncios de Tiendas con campañas solo de sitio?' },
+      o: [[{ pt: 'Pelo achismo', es: 'Por intuición' }, 0, { pt: 'Use um teste.', es: 'Usa una prueba.' }],
+        [{ pt: 'Com um teste A/B', es: 'Con una prueba A/B' }, 1, { pt: 'Isso! Se a loja usa finalização no site, A/B.', es: '¡Eso! Si la tienda usa finalización en el sitio, A/B.' }],
+        [{ pt: 'Olhando só o Analytics', es: 'Mirando solo Analytics' }, 0, { pt: 'Ele não vê tudo.', es: 'No ve todo.' }]] }
+  ]);
+  quizCatalogo('antiga-offsite', { pt: 'Loja antiga', es: 'Tienda antigua' }, { pt: 'O que fazer ao atualizar.', es: 'Qué hacer al actualizar.' }, [
+    { q: { pt: 'Uma loja antiga ainda não foi atualizada. O que a Meta recomenda?', es: 'Una tienda antigua todavía no fue actualizada. ¿Qué recomienda Meta?' },
+      o: [[{ pt: 'Atualizar a loja existente, mantendo-a visível', es: 'Actualizar la tienda existente, manteniéndola visible' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Criar uma loja nova do zero', es: 'Crear una tienda nueva desde cero' }, 0, { pt: 'A recomendação é atualizar a existente.', es: 'La recomendación es actualizar la existente.' }],
+        [{ pt: 'Apagar a loja', es: 'Eliminar la tienda' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'O que acontece com as campanhas ativas?', es: '¿Qué pasa con las campañas activas?' },
+      o: [[{ pt: 'Param para sempre', es: 'Paran para siempre' }, 0, { pt: 'Elas continuam.', es: 'Continúan.' }],
+        [{ pt: 'Continuam, com a finalização da compra no site', es: 'Continúan, con la finalización de compra en el sitio' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'São apagadas', es: 'Se borran' }, 0, { pt: 'Não são.', es: 'No se borran.' }]] },
+    { q: { pt: 'Qual destes é um item da lista de atualização?', es: '¿Cuál de estos es un ítem de la lista de actualización?' },
+      o: [[{ pt: 'Criar e adicionar um URL de finalização da compra', es: 'Crear y agregar una URL de finalización de compra' }, 1, { pt: 'Isso! Também perfis de envio, catálogo e variantes.', es: '¡Eso! También perfiles de envío, catálogo y variantes.' }],
+        [{ pt: 'Trocar o logotipo', es: 'Cambiar el logotipo' }, 0, { pt: 'Não faz parte.', es: 'No forma parte.' }],
+        [{ pt: 'Comprar anúncios', es: 'Comprar anuncios' }, 0, { pt: 'Não faz parte.', es: 'No forma parte.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

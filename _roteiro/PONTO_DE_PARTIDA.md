@@ -105,3 +105,13 @@ Leia nesta ordem:
 - INVENTADO: números do relatório, painel "por que só o site", cenário ?problema=1, botões de correção.
 - Não lido: dicas do Pixel com Site e loja (593273318981233), duplicação do Pixel na Shopify, passos de identidade/catálogo (5318930238194863, 451411486590536), terceiros (1497481554083753).
 - Próximo na ordem do Foco: Shop Ads com checkout fora da Meta, MBE, integrações, Shopify, WhatsApp (por último).
+
+## Shop Ads · finalização da compra fora da Meta (Foco) · 16/10/2026
+- Escopo: desde setembro de 2025 TODA loja usa finalização da compra no site; este módulo cobre o que isso muda na medição e no suporte (jornada, Pixel e catálogo, duplicação, terceiros e UTM, loja antiga). Overlap com Commerce (mudanças) e Shop Ads (relatórios) mantido mínimo.
+- Simulador `meta-checkoutsite.html` (sim-offsite.js, sim-es-offsite.js, sim-offsite.css): abas Jornada, Pixel e catálogo, Eventos e duplicação, Terceiros e UTM, Atualizar loja antiga. `?zerar=1 | ?ok=1`.
+- 5 tutoriais (jornada-compra-site, pixel-e-catalogo, achar-duplicacao, comparar-terceiros, atualizar-loja-antiga), 5 aulas, 5 quizzes; todos rodaram em ES.
+- REAL (Central de Ajuda PT, 16/10): 593273318981233 (4 dicas do Pixel; só 5 eventos aceitos), 1190564818451304 (duplicação: diagnóstico no Gerenciador de Eventos, GTM, Shopify), 1497481554083753 (terceiros: UTM padrão, eventos que terceiros não veem, Triple Whale/Northbeam/Measured), 775732186866048 (relatórios), 1314349509894768 (como atualizar loja antiga). Tela real da prévia da loja ("Finalização da compra em outro site") já vista no módulo Commerce.
+- NÃO visto (a conferir): Gerenciador de Eventos real com compras (a conta de aula não tem Pixel com compras), extensão Consultor de Dados de Anúncios em uso, tags de marketing de terceiros no Google Analytics.
+- INVENTADO: eventos, horários, pedido 1042, números 71 × 46, botões de correção.
+- Nota de teste: o alinhamento do destaque acusa "DESALINHADO" com a aba do navegador em segundo plano (transição CSS pausada); o estilo real do destaque estava certo.
+- Próximo na ordem do Foco: MBE, integrações, Shopify, WhatsApp (por último).
