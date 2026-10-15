@@ -8,7 +8,8 @@ Leia nesta ordem:
 
 ## Onde estamos
 - **Fase 1 pronta** (Portfólio 01–04, Instagram 01–04, Pixel 01–04). Falta só a **Pixel 05** (avisos reais do Diagnóstico — aguardando; foram enviadas compras de teste sem valor/moeda em 15/10).
-- **Fase 2, módulo "Gerenciador de Anúncios · criação e edição"**: roteiro aprovado (5 aulas) e telas reais coletadas; **ainda não construído**. Próximo passo: simulador do Gerenciador de Anúncios + aulas 02 e 03.
+- **Fase 2, módulo "Gerenciador de Anúncios · criação e edição"**: **simulador pronto** (`meta-anuncios.html`, rascunho de Vendas com telas reais) e **aulas 02 (Campanha, conjunto e anúncio) e 03 (O primeiro anúncio da Marina) prontas**, com tutoriais `conhecer-niveis` e `primeiro-anuncio` e as ferramentas "Em qual nível fica?" e "O que falta para publicar?". Faltam: aula 01 (Turbinar × Gerenciador — precisa de um simulador do Turbinar), 04 (editar sem bagunçar) e 05 (meu anúncio não publica).
+- **Anúncio de teste real** (Turbinar, engajamento, sem link, R$ 5,27 × 1 dia, publicado 15/10 ~03h): ficou "Anúncio ativo" com selo "1 dia restante" na manhã de 16/10. Quando acabar: anotar as telas de concluído/resultados em `telas_gerenciador_anuncios.md` e escrever a aula do anúncio real ("rodou, e agora?").
 - Laboratório com "Como fazer…" (16 tutoriais), botão "🧹 Recomeçar do zero", botão "↩ Voltar à aula" depois dos tutoriais, avisos de disparo só durante tutorial.
 - O site publicado está atrás do local em alguns commits; publicar só quando o André pedir (script fora do repositório).
 

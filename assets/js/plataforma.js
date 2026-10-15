@@ -155,6 +155,7 @@
       ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar o Testar eventos', es: 'Cómo usar Probar eventos' }],
       ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] },
     { m: 'anuncios', itens: [
+      ['conhecer-niveis', 'meta-anuncios.html?zerar=1', 'anuncios', '02', { pt: 'Como achar cada coisa: campanha, conjunto e anúncio', es: 'Cómo encontrar cada cosa: campaña, conjunto y anuncio' }],
       ['primeiro-anuncio', 'meta-anuncios.html?zerar=1', 'anuncios', '03', { pt: 'Como montar o primeiro anúncio (campanha de Vendas em rascunho)', es: 'Cómo armar el primer anuncio (campaña de Ventas en borrador)' }] ] }
   ];
   function comoFazer() {

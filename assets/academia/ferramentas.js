@@ -368,6 +368,71 @@
   };
 
 
+  /* ---------- 11b. Em qual nível fica? (Anúncios 02) ---------- */
+  var NIVEIS = { campanha: { pt: 'Campanha', es: 'Campaña' }, conjunto: { pt: 'Conjunto de anúncios', es: 'Conjunto de anuncios' }, anuncio: { pt: 'Anúncio', es: 'Anuncio' } };
+  var NIVEL_PQ = {
+    campanha: { pt: 'Isso fica na campanha: é a meta geral (objetivo, tipo de compra, categorias especiais).', es: 'Eso queda en la campaña: es la meta general (objetivo, tipo de compra, categorías especiales).' },
+    conjunto: { pt: 'Isso fica no conjunto de anúncios: é “para quem” e “como medir” (público, local da conversão, conjunto de dados).', es: 'Eso queda en el conjunto de anuncios: es “para quién” y “cómo medir” (público, lugar de la conversión, conjunto de datos).' },
+    anuncio: { pt: 'Isso fica no anúncio: é o que a pessoa vê e quem assina (Página, formato, imagem e texto).', es: 'Eso queda en el anuncio: es lo que ve la persona y quién firma (Página, formato, imagen y texto).' }
+  };
+  var NIVEL_ITENS = [
+    { ic: '🎯', n: { pt: 'O objetivo: Vendas', es: 'El objetivo: Ventas' }, certo: 'campanha' },
+    { ic: '👥', n: { pt: 'Para quem o anúncio aparece (Brasil, 18+)', es: 'Para quién aparece el anuncio (Brasil, 18+)' }, certo: 'conjunto' },
+    { ic: '📡', n: { pt: 'O conjunto de dados (o antigo Pixel) que mede as compras', es: 'El conjunto de datos (el antiguo Pixel) que mide las compras' }, certo: 'conjunto' },
+    { ic: '🏪', n: { pt: 'A Página do Facebook que assina o anúncio', es: 'La Página de Facebook que firma el anuncio' }, certo: 'anuncio' },
+    { ic: '🖼️', n: { pt: 'A imagem e o texto que a pessoa vê', es: 'La imagen y el texto que ve la persona' }, certo: 'anuncio' },
+    { ic: '🔨', n: { pt: 'O tipo de compra: Leilão', es: 'El tipo de compra: Subasta' }, certo: 'campanha' }
+  ];
+  F['qual-nivel'] = {
+    titulo: { pt: 'Em qual nível fica?', es: '¿En qué nivel queda?' },
+    resumo: { pt: 'Para cada configuração, escolha: campanha, conjunto de anúncios ou anúncio.', es: 'Para cada configuración, elige: campaña, conjunto de anuncios o anuncio.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + NIVEL_ITENS.map(function (g, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + g.ic + '</span>' + T(g.n) + '</div><div class="qp-ops">' + Object.keys(NIVEIS).map(function (k) { return '<button data-nv="' + i + ':' + k + '">' + T(NIVEIS[k]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>' +
+        '<p class="qp-fb" style="margin-top:10px">' + T({ pt: 'Dica: o orçamento é o caso especial. Na Central de Ajuda da Meta ele fica no conjunto de anúncios; na tela de Vendas que o Pixel viu, aparece uma escolha: “Orçamento da campanha” ou “Orçamento do conjunto de anúncios”.', es: 'Pista: el presupuesto es el caso especial. En el Centro de ayuda de Meta queda en el conjunto de anuncios; en la pantalla de Ventas que vio el Pixel, aparece una opción: “Presupuesto de la campaña” o “Presupuesto del conjunto de anuncios”.' }) + '</p>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-nv]'); if (!b) return; var v = b.getAttribute('data-nv').split(':'), g = NIVEL_ITENS[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
+        box.querySelectorAll('[data-nv]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(NIVEL_PQ[v[1]]) : '❌ ' + T({ pt: 'Pense: isso é a meta geral, “para quem/como medir” ou o que a pessoa vê?', es: 'Piensa: ¿es la meta general, “para quién/cómo medir” o lo que ve la persona?' });
+        if (ok && window.MOV && el.querySelectorAll('.certa').length === NIVEL_ITENS.length) MOV.confete(b);
+      });
+    }
+  };
+
+  /* ---------- 11c. O que falta para publicar? (Anúncios 03) ---------- */
+  var FALTA = [
+    { q: { pt: 'A tela avisa: “Um conjunto de dados (anteriormente conhecido como Pixel) é necessário.” O que a Marina faz?', es: 'La pantalla avisa: “Se necesita un conjunto de datos (antes conocido como Pixel).” ¿Qué hace Marina?' },
+      o: [[{ pt: 'No conjunto de anúncios, escolhe o conjunto de dados (o Pixel da loja)', es: 'En el conjunto de anuncios, elige el conjunto de datos (el Pixel de la tienda)' }, 1, { pt: 'Isso! Campanha de Vendas com local “Site” precisa saber onde medir as compras: é o Pixel.', es: '¡Eso! Una campaña de Ventas con lugar “Sitio” necesita saber dónde medir las compras: es el Pixel.' }],
+        [{ pt: 'Apaga a campanha e começa de novo', es: 'Borra la campaña y empieza de nuevo' }, 0, { pt: 'Não precisa: é só um campo do conjunto de anúncios que falta preencher.', es: 'No hace falta: es solo un campo del conjunto de anuncios que falta llenar.' }],
+        [{ pt: 'Escreve o ID do Pixel no texto do anúncio', es: 'Escribe el ID del Pixel en el texto del anuncio' }, 0, { pt: 'O texto do anúncio é o que as pessoas leem; o conjunto de dados se escolhe no conjunto de anúncios.', es: 'El texto del anuncio es lo que lee la gente; el conjunto de datos se elige en el conjunto de anuncios.' }]] },
+    { q: { pt: 'Ao publicar, a tela cobra a Página do Facebook. Onde se escolhe?', es: 'Al publicar, la pantalla pide la Página de Facebook. ¿Dónde se elige?' },
+      o: [[{ pt: 'Na campanha, em Detalhes da campanha', es: 'En la campaña, en Detalles de la campaña' }, 0, { pt: 'Não: a Página assina o anúncio, então fica no nível do anúncio.', es: 'No: la Página firma el anuncio, así que queda en el nivel del anuncio.' }],
+        [{ pt: 'No anúncio, em Identidade', es: 'En el anuncio, en Identidad' }, 1, { pt: 'Isso! Identidade é a Página (e o Instagram) que aparece no anúncio.', es: '¡Eso! Identidad es la Página (y el Instagram) que aparece en el anuncio.' }],
+        [{ pt: 'No conjunto de anúncios, em Público', es: 'En el conjunto de anuncios, en Público' }, 0, { pt: 'Público é “quem vê”. “Quem assina” é a Identidade, no anúncio.', es: 'Público es “quién ve”. “Quién firma” es la Identidad, en el anuncio.' }]] },
+    { q: { pt: 'A Marina quer parar agora e continuar amanhã, sem publicar nada ainda.', es: 'Marina quiere parar ahora y seguir mañana, sin publicar nada todavía.' },
+      o: [[{ pt: 'Clica em Publicar para não perder o trabalho', es: 'Hace clic en Publicar para no perder el trabajo' }, 0, { pt: 'Publicar manda para análise e começa a gastar. Para guardar, basta Fechar.', es: 'Publicar manda a revisión y empieza a gastar. Para guardar, basta Cerrar.' }],
+        [{ pt: 'Clica em Fechar: o rascunho fica salvo', es: 'Hace clic en Cerrar: el borrador queda guardado' }, 1, { pt: 'Isso! Ele aparece na lista como “Em rascunho” e dá para voltar depois.', es: '¡Eso! Aparece en la lista como “En borrador” y se puede volver después.' }],
+        [{ pt: 'Clica em Descartar rascunhos', es: 'Hace clic en Descartar borradores' }, 0, { pt: 'Cuidado: descartar apaga o que ainda não foi publicado.', es: 'Cuidado: descartar borra lo que todavía no se publicó.' }]] }
+  ];
+  F['falta-publicar'] = {
+    titulo: { pt: 'O que falta para publicar?', es: '¿Qué falta para publicar?' },
+    resumo: { pt: 'Três situações reais do rascunho da Marina: escolha o que fazer.', es: 'Tres situaciones reales del borrador de Marina: elige qué hacer.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + FALTA.map(function (s, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + (i + 1) + '</span>' + T(s.q) + '</div><div class="qp-ops" style="flex-direction:column;align-items:stretch">' + s.o.map(function (o, j) { return '<button data-fp="' + i + ':' + j + '">' + T(o[0]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-fp]'); if (!b) return; var v = b.getAttribute('data-fp').split(':'), o = FALTA[+v[0]].o[+v[1]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]');
+        box.querySelectorAll('[data-fp]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(o[1] ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = (o[1] ? '✅ ' : '❌ ') + T(o[2]);
+        if (o[1] && window.MOV && el.querySelectorAll('.certa').length === FALTA.length) MOV.confete(b);
+      });
+    }
+  };
+
   /* ---------- 12. O que muda quando eu ligo? (Instagram 04) ---------- */
   F['ligar-ig'] = {
     titulo: { pt: 'O que muda quando eu ligo?', es: '¿Qué cambia cuando los vinculo?' },

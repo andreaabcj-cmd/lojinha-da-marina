@@ -16,7 +16,7 @@ window.MODULOS = [
   { id: 'portfolio', fase: 1, status: 'construcao', icone: '🏢', titulo: { pt: 'Portfólio empresarial · básico', es: 'Portafolio comercial · básico' }, resumo: { pt: 'Como configurar o portfólio e seus principais recursos.', es: 'Cómo configurar el portafolio y sus principales recursos.' } },
   { id: 'instagram', fase: 1, status: 'construcao', icone: '📸', titulo: { pt: 'Instagram para empresas', es: 'Instagram para empresas' }, resumo: { pt: 'Como funciona o Instagram para empresas e seus anúncios.', es: 'Cómo funciona Instagram para empresas y sus anuncios.' } },
   { id: 'pixel', fase: 1, status: 'construcao', icone: '📡', titulo: { pt: 'Pixel · básico', es: 'Pixel · básico' }, resumo: { pt: 'O que é, como criar, como saber se está funcionando, os eventos e os primeiros avisos.', es: 'Qué es, cómo crearlo, cómo saber si funciona, los eventos y los primeros avisos.' } },
-  { id: 'anuncios', fase: 2, status: 'planejado', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
+  { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'planejado', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'O que são e erros comuns.', es: 'Qué son y errores comunes.' } },
   { id: 'catalogo', fase: 2, status: 'planejado', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
   { id: 'relatorios', fase: 3, status: 'planejado', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Criar e interpretar relatórios; o efeito das mudanças de privacidade do iOS.', es: 'Crear e interpretar informes; el efecto de los cambios de privacidad de iOS.' } },
@@ -685,6 +685,117 @@ window.AULAS = {
       ]
     },
     { id: '05', titulo: { pt: 'Apareceu um aviso: quebrei alguma coisa?', es: 'Apareció un aviso: ¿rompí algo?' }, status: 'planejada' }
+  ],
+  anuncios: [
+    { id: '01', titulo: { pt: 'Turbinar ou Gerenciador de Anúncios?', es: '¿Impulsar o Administrador de anuncios?' }, status: 'planejada' },
+    {
+      id: '02', min: 6, status: 'pronta',
+      titulo: { pt: 'Campanha, conjunto e anúncio', es: 'Campaña, conjunto y anuncio' },
+      antes: { pt: 'A Marina já turbinou um post e viu anúncio de verdade rodando. Agora quer o Gerenciador de Anúncios, onde se controla tudo.', es: 'Marina ya impulsó un post y vio un anuncio de verdad corriendo. Ahora quiere el Administrador de anuncios, donde se controla todo.' },
+      gancho: { pt: '“Entendi os três níveis! Vamos montar meu primeiro anúncio de vendas?” Vamos criar a primeira campanha da Marina.', es: '“¡Entendí los tres niveles! ¿Armamos mi primer anuncio de ventas?” Vamos a crear la primera campaña de Marina.' },
+      objetivo: { pt: 'Saber o que fica em cada nível (campanha, conjunto de anúncios e anúncio) para achar qualquer configuração sem se perder.', es: 'Saber qué queda en cada nivel (campaña, conjunto de anuncios y anuncio) para encontrar cualquier configuración sin perderse.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Abri o Gerenciador de Anúncios e tem campanha, conjunto de anúncios e anúncio. Por que tanta coisa? 😵', es: 'Abrí el Administrador de anuncios y hay campaña, conjunto de anuncios y anuncio. ¿Por qué tanto? 😵' }],
+          ['rafa', { pt: 'São três níveis, do mais geral ao mais específico. A campanha tem o objetivo (o que você quer, como Vendas). O conjunto de anúncios diz para quem e como medir. O anúncio é o que a pessoa vê.', es: 'Son tres niveles, del más general al más específico. La campaña tiene el objetivo (lo que quieres, como Ventas). El conjunto de anuncios dice para quién y cómo medir. El anuncio es lo que ve la persona.' }],
+          ['marina', { pt: 'E se eu quiser testar dois públicos?', es: '¿Y si quiero probar dos públicos?' }],
+          ['rafa', { pt: 'Aí você cria dois conjuntos de anúncios dentro da mesma campanha. O público e o conjunto de dados ficam no conjunto, então cada um pode ser diferente.', es: 'Entonces creas dos conjuntos de anuncios dentro de la misma campaña. El público y el conjunto de datos quedan en el conjunto, así que cada uno puede ser distinto.' }],
+          ['pixel', { pt: 'Atenção ao orçamento: a Central de Ajuda diz que ele fica no conjunto, mas na tela de Vendas aparece a escolha “Orçamento da campanha” ou “do conjunto de anúncios”. Confira qual está marcada.', es: 'Atención al presupuesto: el Centro de ayuda dice que queda en el conjunto, pero en la pantalla de Ventas aparece la opción “Presupuesto de la campaña” o “del conjunto de anuncios”. Revisa cuál está marcada.' }]
+        ],
+        pontos: [
+          { pt: '<b>Campanha:</b> o objetivo (Vendas, Tráfego…) e o tipo de compra (Leilão). É a meta geral.', es: '<b>Campaña:</b> el objetivo (Ventas, Tráfico…) y el tipo de compra (Subasta). Es la meta general.' },
+          { pt: '<b>Conjunto de anúncios:</b> o público (quem vê), onde acontece a conversão e o conjunto de dados (o antigo Pixel). Todos os anúncios do conjunto compartilham isso.', es: '<b>Conjunto de anuncios:</b> el público (quién ve), dónde ocurre la conversión y el conjunto de datos (el antiguo Pixel). Todos los anuncios del conjunto lo comparten.' },
+          { pt: '<b>Anúncio:</b> a Página (e o Instagram) que assina, o formato, a imagem e o texto.', es: '<b>Anuncio:</b> la Página (y el Instagram) que firma, el formato, la imagen y el texto.' }
+        ],
+        notas: { pt: 'Fonte: Central de Ajuda da Meta, “Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta?” (lida em 16/10/2026). As telas do rascunho de Vendas foram vistas de verdade em 14–15/10/2026; ali o orçamento aparece tanto como “Orçamento da campanha” quanto “do conjunto de anúncios”. Em outros objetivos, as telas podem mudar (a conferir).', es: 'Fuente: Centro de ayuda de Meta, “¿Cuáles son los niveles de publicidad en el Administrador de anuncios de Meta?” (leída el 16/10/2026). Las pantallas del borrador de Ventas se vieron de verdad el 14–15/10/2026; allí el presupuesto aparece tanto como “Presupuesto de la campaña” como “del conjunto de anuncios”. En otros objetivos, las pantallas pueden cambiar (por confirmar).' }
+      },
+      ferramenta: 'qual-nivel',
+      praticar: {
+        texto: { pt: 'No simulador do Gerenciador de Anúncios, o Pixel te leva pelos três níveis de um rascunho, mostrando o que mora em cada um.', es: 'En el simulador del Administrador de anuncios, el Pixel te lleva por los tres niveles de un borrador, mostrando qué vive en cada uno.' },
+        tour: 'conhecer-niveis', pagina: 'meta-anuncios.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Mudei o público lá na campanha e o anúncio continua aparecendo para gente que não é do meu público! Onde eu mexo?? 😠', es: '¡Cambié el público en la campaña y el anuncio sigue apareciendo para gente que no es de mi público! ¿Dónde lo cambio?? 😠' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O público não fica na campanha: fica no conjunto de anúncios. Abra o conjunto, vá em Público e ajuste ali. Te mostro o caminho: campanha › conjunto › anúncio.”', es: '“El público no queda en la campaña: queda en el conjunto de anuncios. Abre el conjunto, ve a Público y ajústalo ahí. Te muestro el camino: campaña › conjunto › anuncio.”' }, fb: { pt: 'Isso! Você achou onde fica a configuração e ensinou o mapa dos três níveis.', es: '¡Eso! Encontraste dónde queda la configuración y enseñaste el mapa de los tres niveles.' } },
+          { certa: false, txt: { pt: '“Isso é bug do Gerenciador, vou abrir um chamado.”', es: '“Eso es un error del Administrador, voy a abrir un caso.”' }, fb: { pt: 'Não é bug: ela procurou no nível errado. Primeiro mostre o nível certo.', es: 'No es un error: buscó en el nivel equivocado. Primero muestra el nivel correcto.' } },
+          { certa: false, txt: { pt: '“Apague a campanha e crie outra.”', es: '“Borra la campaña y crea otra.”' }, fb: { pt: 'Exagero: basta editar o público no conjunto de anúncios.', es: 'Exagerado: basta editar el público en el conjunto de anuncios.' } },
+          { certa: false, txt: { pt: '“Mude o texto do anúncio para falar com o público certo.”', es: '“Cambia el texto del anuncio para hablar con el público correcto.”' }, fb: { pt: 'O texto não limita quem vê. Quem vê é definido no público, no conjunto.', es: 'El texto no limita quién ve. Quién ve se define en el público, en el conjunto.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O que você quer mudar: o objetivo, quem vê ou o que a pessoa vê?', es: '¿Qué quieres cambiar: el objetivo, quién ve o lo que ve la persona?' },
+          { pt: 'Em qual nível você está agora (campanha, conjunto ou anúncio)?', es: '¿En qué nivel estás ahora (campaña, conjunto o anuncio)?' },
+          { pt: 'É uma campanha de Vendas? O orçamento está na campanha ou no conjunto?', es: '¿Es una campaña de Ventas? ¿El presupuesto está en la campaña o en el conjunto?' }],
+        conferir: [{ pt: 'Objetivo e tipo de compra: campanha.', es: 'Objetivo y tipo de compra: campaña.' },
+          { pt: 'Público e conjunto de dados (Pixel): conjunto de anúncios.', es: 'Público y conjunto de datos (Pixel): conjunto de anuncios.' },
+          { pt: 'Página, formato, imagem e texto: anúncio.', es: 'Página, formato, imagen y texto: anuncio.' }],
+        frase: { pt: 'No Gerenciador são três níveis: a campanha tem o objetivo, o conjunto de anúncios tem o público e o conjunto de dados, e o anúncio tem a Página, a imagem e o texto. Vamos ver em qual nível está o que você quer mudar.', es: 'En el Administrador son tres niveles: la campaña tiene el objetivo, el conjunto de anuncios tiene el público y el conjunto de datos, y el anuncio tiene la Página, la imagen y el texto. Veamos en qué nivel está lo que quieres cambiar.' },
+        passos: [{ pt: 'Na lista de campanhas, clique em Editar na campanha.', es: 'En la lista de campañas, haz clic en Editar en la campaña.' },
+          { pt: 'Na árvore à esquerda, escolha o nível: campanha, conjunto de anúncios ou anúncio.', es: 'En el árbol de la izquierda, elige el nivel: campaña, conjunto de anuncios o anuncio.' },
+          { pt: 'Ajuste a configuração e confira antes de publicar.', es: 'Ajusta la configuración y revisa antes de publicar.' }],
+        encaminhar: { pt: 'Se a configuração não aparece onde deveria, confira o objetivo da campanha (as telas mudam por objetivo) e siga a Central de Ajuda da Meta.', es: 'Si la configuración no aparece donde debería, revisa el objetivo de la campaña (las pantallas cambian por objetivo) y sigue el Centro de ayuda de Meta.' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta?', es: '¿Cuáles son los niveles de publicidad en el Administrador de anuncios de Meta?' }, conferido: '16/10/2026' }
+      ]
+    },
+    {
+      id: '03', min: 8, status: 'pronta',
+      titulo: { pt: 'O primeiro anúncio da Marina', es: 'El primer anuncio de Marina' },
+      antes: { pt: 'A Marina entendeu os três níveis: campanha, conjunto de anúncios e anúncio.', es: 'Marina entendió los tres niveles: campaña, conjunto de anuncios y anuncio.' },
+      gancho: { pt: '“Deixei tudo em rascunho! E se eu errar depois de publicar, como edito sem bagunçar?” Vamos ver rascunho, publicado e edição.', es: '“¡Dejé todo en borrador! ¿Y si me equivoco después de publicar, cómo edito sin desordenar?” Vamos a ver borrador, publicado y edición.' },
+      objetivo: { pt: 'Montar uma campanha de Vendas em rascunho, do objetivo à Página, e saber o que falta para poder publicar.', es: 'Armar una campaña de Ventas en borrador, del objetivo a la Página, y saber qué falta para poder publicar.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Quero vender mais canecas pela loja. Qual objetivo eu escolho? 🤔', es: 'Quiero vender más tazas por la tienda. ¿Qué objetivo elijo? 🤔' }],
+          ['rafa', { pt: 'Vendas. Aí a campanha vai atrás de quem tem mais chance de comprar. Como a conversão acontece no site, o conjunto de anúncios pede o conjunto de dados: é o Pixel que você criou.', es: 'Ventas. Así la campaña busca a quien tiene más probabilidad de comprar. Como la conversión ocurre en el sitio, el conjunto de anuncios pide el conjunto de datos: es el Pixel que creaste.' }],
+          ['marina', { pt: 'E o orçamento? Quanto eu gasto?', es: '¿Y el presupuesto? ¿Cuánto gasto?' }],
+          ['rafa', { pt: 'Você define um valor por dia. A tela explica: “Gastaremos cerca de R$ 25,00 por dia”, mas alguns dias gastam mais e outros menos, e há um máximo diário e semanal.', es: 'Defines un valor por día. La pantalla explica: “Gastaremos cerca de R$ 25,00 por día”, pero algunos días gasta más y otros menos, y hay un máximo diario y semanal.' }],
+          ['pixel', { pt: 'Tudo isso fica em rascunho. Nada vai para a Meta até clicar em Publicar. E “Fechar” guarda o rascunho; “Descartar rascunhos” apaga o que não foi publicado.', es: 'Todo esto queda en borrador. Nada va a Meta hasta hacer clic en Publicar. Y “Cerrar” guarda el borrador; “Descartar borradores” borra lo que no se publicó.' }]
+        ],
+        pontos: [
+          { pt: '<b>Vendas com local “Site”</b> exige o conjunto de dados (Pixel). Sem ele, a tela avisa e não deixa publicar.', es: '<b>Ventas con lugar “Sitio”</b> exige el conjunto de datos (Pixel). Sin él, la pantalla avisa y no deja publicar.' },
+          { pt: '<b>A Página do Facebook é obrigatória</b> no anúncio (Identidade). O Instagram é opcional.', es: '<b>La Página de Facebook es obligatoria</b> en el anuncio (Identidad). El Instagram es opcional.' },
+          { pt: '<b>Rascunho não gasta nada.</b> Só depois de Publicar vai para análise, e depois fica ativo.', es: '<b>El borrador no gasta nada.</b> Solo después de Publicar va a revisión, y luego queda activo.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 14–15/10/2026 (conta de aula, sempre em rascunho). A tela de “Conferir e publicar” ainda é montada a partir da documentação (a conferir). Anúncio em análise e anúncio ativo foram vistos em 15–16/10/2026 no Turbinar.', es: 'Pantallas vistas de verdad el 14–15/10/2026 (cuenta de aula, siempre en borrador). La pantalla de “Revisar y publicar” todavía se arma a partir de la documentación (por confirmar). Anuncio en revisión y anuncio activo se vieron el 15–16/10/2026 en Impulsar.' }
+      },
+      ferramenta: 'falta-publicar',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para montar a primeira campanha de Vendas da Marina e deixar tudo em rascunho, sem publicar.', es: 'En el simulador, el Pixel te guía para armar la primera campaña de Ventas de Marina y dejar todo en borrador, sin publicar.' },
+        tour: 'primeiro-anuncio', pagina: 'meta-anuncios.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Não consigo publicar minha campanha de Vendas! A tela diz que um tal de “conjunto de dados” é necessário. Que é isso?? 😩', es: '¡No puedo publicar mi campaña de Ventas! La pantalla dice que un tal “conjunto de datos” es necesario. ¿Qué es eso?? 😩' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Conjunto de dados é o nome novo do Pixel: ele diz à campanha onde medir as compras do seu site. Abra o conjunto de anúncios, escolha o Pixel da loja ali, e a tela deixa publicar. Se ele não aparecer na lista, conferimos se está no portfólio e na conta certos.”', es: '“Conjunto de datos es el nombre nuevo del Pixel: le dice a la campaña dónde medir las compras de tu sitio. Abre el conjunto de anuncios, elige el Pixel de la tienda ahí, y la pantalla deja publicar. Si no aparece en la lista, revisamos si está en el portafolio y en la cuenta correctos.”' }, fb: { pt: 'Isso! Você traduziu o termo, mostrou onde resolver e já pensou no caso do Pixel não aparecer.', es: '¡Eso! Tradujiste el término, mostraste dónde resolverlo y ya pensaste en el caso de que el Pixel no aparezca.' } },
+          { certa: false, txt: { pt: '“Isso é um erro da Meta, tente de novo mais tarde.”', es: '“Es un error de Meta, intenta de nuevo más tarde.”' }, fb: { pt: 'Não é erro: é um campo obrigatório que falta preencher.', es: 'No es un error: es un campo obligatorio que falta llenar.' } },
+          { certa: false, txt: { pt: '“Mude o objetivo para Reconhecimento, que não pede isso.”', es: '“Cambia el objetivo a Reconocimiento, que no pide eso.”' }, fb: { pt: 'Isso muda o que a campanha busca (não é mais vender). Primeiro tente resolver com o Pixel.', es: 'Eso cambia lo que busca la campaña (ya no es vender). Primero intenta resolver con el Pixel.' } },
+          { certa: false, txt: { pt: '“Crie uma conta de anúncios nova.”', es: '“Crea una cuenta publicitaria nueva.”' }, fb: { pt: 'Exagero: o problema é só o campo do conjunto de dados.', es: 'Exagerado: el problema es solo el campo del conjunto de datos.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual é o objetivo da campanha? Onde acontece a conversão (site, app…)?', es: '¿Cuál es el objetivo de la campaña? ¿Dónde ocurre la conversión (sitio, app…)?' },
+          { pt: 'O conjunto de dados (Pixel) aparece na lista do conjunto de anúncios?', es: '¿El conjunto de datos (Pixel) aparece en la lista del conjunto de anuncios?' },
+          { pt: 'A Página do Facebook está escolhida na Identidade do anúncio?', es: '¿La Página de Facebook está elegida en la Identidad del anuncio?' }],
+        conferir: [{ pt: 'Vendas + Site: conjunto de dados escolhido no conjunto de anúncios.', es: 'Ventas + Sitio: conjunto de datos elegido en el conjunto de anuncios.' },
+          { pt: 'Página do Facebook escolhida no anúncio.', es: 'Página de Facebook elegida en el anuncio.' },
+          { pt: 'O Pixel está no portfólio e na conta de anúncios corretos.', es: 'El Pixel está en el portafolio y en la cuenta publicitaria correctos.' }],
+        frase: { pt: 'Conjunto de dados é o nome novo do Pixel. Em campanha de Vendas, ele diz onde medir as compras do site. Abra o conjunto de anúncios, escolha o Pixel da loja e depois confira a Página no anúncio.', es: 'Conjunto de datos es el nombre nuevo del Pixel. En una campaña de Ventas, dice dónde medir las compras del sitio. Abre el conjunto de anuncios, elige el Pixel de la tienda y luego revisa la Página en el anuncio.' },
+        passos: [{ pt: 'No conjunto de anúncios, em Conversão, escolha o conjunto de dados.', es: 'En el conjunto de anuncios, en Conversión, elige el conjunto de datos.' },
+          { pt: 'No anúncio, em Identidade, escolha a Página do Facebook.', es: 'En el anuncio, en Identidad, elige la Página de Facebook.' },
+          { pt: 'Clique em Publicar (ou em Fechar para guardar o rascunho).', es: 'Haz clic en Publicar (o en Cerrar para guardar el borrador).' }],
+        encaminhar: { pt: 'Se o Pixel não aparece na lista ou a Página não deixa escolher, revise permissões e o portfólio e siga a Central de Ajuda da Meta (solução de problemas ao criar ou publicar um anúncio).', es: 'Si el Pixel no aparece en la lista o la Página no deja elegirse, revisa permisos y el portafolio y sigue el Centro de ayuda de Meta (solución de problemas al crear o publicar un anuncio).' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta? (lista “Solucionar problemas ao criar ou publicar um anúncio”)', es: '¿Cuáles son los niveles de publicidad en el Administrador de anuncios de Meta? (lista “Solucionar problemas al crear o publicar un anuncio”)' }, conferido: '16/10/2026' }
+      ]
+    },
+    { id: '04', titulo: { pt: 'Editar sem bagunçar', es: 'Editar sin desordenar' }, status: 'planejada' },
+    { id: '05', titulo: { pt: '“Meu anúncio não publica!”', es: '“¡Mi anuncio no se publica!”' }, status: 'planejada' }
   ],
   'pixel-avancado': [
     { id: '01', titulo: { pt: 'Correspondência avançada', es: 'Coincidencia avanzada' }, status: 'planejada' },

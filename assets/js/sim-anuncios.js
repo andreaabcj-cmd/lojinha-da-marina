@@ -158,12 +158,27 @@
   function render() { var r = rota(); if (!S.rasc && /^(camp|conj|anu|revisar)$/.test(r)) r = 'lista'; $('#app').innerHTML = (TELAS[r] || TELAS.lista)(); window.__simGa = { S: S, O: O } }
   window.SIMGA = { vai: vai, estado: function () { return { S: S, O: O } },
     rascunho: function () { if (!S.rasc) { O.obj = 'Vendas'; S.camp.nome = 'Nova campanha de Vendas'; S.rasc = true; grava() } } };
+  if (params.get('tour') === 'conhecer-niveis') { SIMGA.rascunho(); if (rota() === 'lista') location.hash = 'camp' }   // este tutorial começa com um rascunho pronto
   render();
 
   /* ---------- tutorial guiado ---------- */
   var TOURS = window.TOURS = window.TOURS || {};
   function T(pt, es) { return { pt: pt, es: es } }
   function ga() { return window.__simGa || { S: S, O: O } }
+  TOURS['conhecer-niveis'] = [
+    { alvo: '[data-t=arvore]', garante: function () { SIMGA.rascunho(); location.hash = 'camp' },
+      tit: T('Três níveis, um rascunho', 'Tres niveles, un borrador'), txt: T('Este rascunho tem três níveis, em cadeia: campanha › conjunto de anúncios › anúncio. Cada um guarda coisas diferentes. Clique em Próximo e vamos visitar um por um.', 'Este borrador tiene tres niveles, en cadena: campaña › conjunto de anuncios › anuncio. Cada uno guarda cosas distintas. Haz clic en Siguiente y vamos a visitar uno por uno.') },
+    { alvo: '[data-t=camp-orc]', garante: function () { location.hash = 'camp' },
+      tit: T('Nível 1 · Campanha', 'Nivel 1 · Campaña'), txt: T('Aqui ficam o objetivo (Vendas), o tipo de compra (Leilão) e, nesta tela de Vendas, a escolha do orçamento: da campanha ou do conjunto. Clique em Próximo.', 'Aquí quedan el objetivo (Ventas), el tipo de compra (Subasta) y, en esta pantalla de Ventas, la elección del presupuesto: de la campaña o del conjunto. Haz clic en Siguiente.') },
+    { alvo: '[data-t=no-conj]', clique: true, garante: function () { location.hash = 'camp' }, tit: T('Ir ao conjunto de anúncios', 'Ir al conjunto de anuncios'), txt: T('Clique no conjunto de anúncios, na árvore.', 'Haz clic en el conjunto de anuncios, en el árbol.') },
+    { alvo: '[data-t=conj-publico]', garante: function () { location.hash = 'conj' },
+      tit: T('Nível 2 · Conjunto de anúncios', 'Nivel 2 · Conjunto de anuncios'), txt: T('Aqui fica o público (quem vê). Se quiser testar dois públicos, cria-se outro conjunto. O conjunto de dados (Pixel) também mora neste nível. Clique em Próximo.', 'Aquí queda el público (quién ve). Si quieres probar dos públicos, se crea otro conjunto. El conjunto de datos (Pixel) también vive en este nivel. Haz clic en Siguiente.') },
+    { alvo: '[data-t=no-anu]', clique: true, garante: function () { location.hash = 'conj' }, tit: T('Ir ao anúncio', 'Ir al anuncio'), txt: T('Agora clique no anúncio, na árvore.', 'Ahora haz clic en el anuncio, en el árbol.') },
+    { alvo: '[data-t=an-identidade]', garante: function () { location.hash = 'anu' },
+      tit: T('Nível 3 · Anúncio', 'Nivel 3 · Anuncio'), txt: T('Aqui fica o que a pessoa vê e quem assina: a Página do Facebook (Identidade), o formato, a imagem e o texto. Clique em Próximo.', 'Aquí queda lo que ve la persona y quién firma: la Página de Facebook (Identidad), el formato, la imagen y el texto. Haz clic en Siguiente.') },
+    { alvo: '[data-t=fechar]', fim: true, semVolta: true, garante: function () { location.hash = 'anu' },
+      tit: T('Mapa na cabeça! 🎉', '¡Mapa en la cabeza! 🎉'), txt: T('Campanha = a meta. Conjunto = para quem e como medir. Anúncio = o que a pessoa vê. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Campaña = la meta. Conjunto = para quién y cómo medir. Anuncio = lo que ve la persona. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
   TOURS['primeiro-anuncio'] = [
     { alvo: '[data-t=btn-criar]', clique: true, garante: function () { location.hash = 'lista' },
       tit: T('O Gerenciador de Anúncios', 'El Administrador de anuncios'), txt: T('Aqui ficam todas as campanhas da conta. A Marina ainda não tem nenhuma. Clique em Criar.', 'Aquí están todas las campañas de la cuenta. Marina todavía no tiene ninguna. Haz clic en Crear.') },
