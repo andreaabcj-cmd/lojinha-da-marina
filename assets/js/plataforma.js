@@ -158,7 +158,9 @@
     { m: 'anuncios', itens: [
       ['turbinar-post', 'meta-turbinar.html?zerar=1', 'anuncios', '01', { pt: 'Como turbinar um post', es: 'Cómo impulsar un post' }],
       ['conhecer-niveis', 'meta-anuncios.html?zerar=1', 'anuncios', '02', { pt: 'Como achar cada coisa: campanha, conjunto e anúncio', es: 'Cómo encontrar cada cosa: campaña, conjunto y anuncio' }],
-      ['primeiro-anuncio', 'meta-anuncios.html?zerar=1', 'anuncios', '03', { pt: 'Como montar o primeiro anúncio (campanha de Vendas em rascunho)', es: 'Cómo armar el primer anuncio (campaña de Ventas en borrador)' }] ] }
+      ['primeiro-anuncio', 'meta-anuncios.html?zerar=1', 'anuncios', '03', { pt: 'Como montar o primeiro anúncio (campanha de Vendas em rascunho)', es: 'Cómo armar el primer anuncio (campaña de Ventas en borrador)' }],
+      ['editar-publicado', 'meta-anuncios.html?zerar=1', 'anuncios', '04', { pt: 'Como editar uma campanha que já está rodando', es: 'Cómo editar una campaña que ya está corriendo' }],
+      ['resolver-publicacao', 'meta-turbinar.html?zerar=1&problemas=1', 'anuncios', '05', { pt: 'Como destravar um anúncio que não publica', es: 'Cómo destrabar un anuncio que no se publica' }] ] }
   ];
   function comoFazer() {
     var volta = encodeURIComponent('laboratorio.html#como');

@@ -17,6 +17,8 @@
   }
   var S = ler('sim.anuncios', null) || inicial();
   if (params.get('zerar')) S = inicial();
+  function pubInicial() { return { valor: 5.27, edit: 5.27, draft: false, sel: false, publicadaEm: 0 } }
+  if (params.get('publicada') && !S.pub) S.pub = pubInicial();
   function grava() { try { localStorage.setItem('sim.anuncios', JSON.stringify(S)) } catch (e) { } window.__simGa = { S: S, O: O } }
   var O = { obj: '' };          // objetivo escolhido na janela "Criar nova campanha" (ainda não vira rascunho)
   var DATASET = 'Pixel da Lojinha da Marina';
@@ -39,9 +41,10 @@
 
   /* ---------- lista de campanhas ---------- */
   function lista(modal) {
-    var n = S.rasc && !S.publicado ? 3 : 0;
-    var linha = S.rasc ? '<tr class="' + (S.publicado ? '' : 'rasc') + '" data-t="linha-rascunho"><td>' + (S.publicado ? '🟢' : '⚪') + '</td><td><b>' + esc(S.camp.nome) + '</b>' + (S.publicado ? '' : '<br><span class="ga-tag am">Em rascunho</span>') + '</td><td>' + (S.publicado ? '<span class="ga-tag vd">Em análise</span>' : '—') + '</td><td>—</td><td>—</td><td>—</td><td>R$ ' + S.camp.valor + ',00<br><small>Diário</small></td><td>R$ 0,00</td><td>—</td><td>—</td></tr>' :
-      '<tr><td colspan="10" class="ga-vazio">Nenhuma campanha ainda. Clique em <b>Criar</b> para começar.</td></tr>';
+    var P = S.pub, n = (S.rasc && !S.publicado ? 3 : 0) + (P && P.draft ? 1 : 0);
+    var linha = S.rasc ? '<tr class="' + (S.publicado ? '' : 'rasc') + '" data-t="linha-rascunho"><td>' + (S.publicado ? '🟢' : '⚪') + '</td><td><b>' + esc(S.camp.nome) + '</b>' + (S.publicado ? '' : '<br><span class="ga-tag am">Em rascunho</span>') + '</td><td>' + (S.publicado ? '<span class="ga-tag vd">Em análise</span>' : '—') + '</td><td>—</td><td>R$ ' + S.camp.valor + ',00<br><small>Diário</small></td><td>R$ 0,00</td><td>—</td><td>Volume mais alto</td><td>—</td><td>—</td></tr>' :
+      (P ? '' : '<tr><td colspan="10" class="ga-vazio">Nenhuma campanha ainda. Clique em <b>Criar</b> para começar.</td></tr>');
+    if (P) linha = '<tr class="' + (P.draft ? 'rasc' : '') + '" data-t="linha-pub"><td><input type="checkbox" name="gaChk" data-t="chk-pub"' + (P.sel ? ' checked' : '') + '/></td><td><b>Post: "🧪 TESTE de treinamento — aqui não vendemos nada!…"</b>' + (P.draft ? '<br><span class="ga-tag am">Em rascunho</span>' : '') + '</td><td><span class="ga-tag vd">● Ativo</span></td><td>—</td><td>R$ ' + P.valor.toFixed(2).replace('.', ',') + '<br><small>Diário</small></td><td>R$ 0,00</td><td>16 de out…<br><small>⚠ 1 dia restante</small></td><td>Volume mais alto</td><td>' + (P.publicadaEm ? 'hoje' : '—') + '</td><td>—</td></tr>' + linha;
     return casca('<div class="ga"><div class="ga-topo"><h1>Campanhas</h1><span class="ga-conta">Conta de aula da Lojinha (ID 123456789)</span>' +
       '<button class="btn sec" data-ir="lista">Atualizar dados da tabela</button>' +
       '<button class="btn sec" data-ir="descartar" data-t="btn-descartar"' + (n ? '' : ' disabled') + '>Descartar rascunhos</button>' +
@@ -49,8 +52,39 @@
       '<div class="ga-vistas"><b>Todos os anúncios</b><span>Anúncios ativos</span><span>Ações</span><span>Tiveram veiculação</span><span>Ver mais</span><span>Criar uma visualização</span></div>' +
       '<div class="ga-corpo"><div class="ga-aviso">Prepare-se para veicular anúncios · Confirme alguns detalhes em “Visão geral da conta” para publicar sua primeira campanha de anúncios. <b>Ir para a Visão geral da conta</b> <small>(a conta de aula já está pronta: telefone verificado, Página e pagamento ok)</small></div>' +
       '<div class="ga-abas"><span class="ga-aba on">Campanhas</span><span class="ga-aba" data-t="aba-conjuntos">Conjuntos de anúncios</span><span class="ga-aba">Anúncios</span><span style="margin-left:auto;align-self:center;color:var(--muted);font-size:13px">Últimos 30 dias</span></div>' +
-      '<div class="ga-barra"><button class="btn" data-ir="objetivo" data-t="btn-criar">＋ Criar</button><button class="btn sec" disabled>Duplicar</button><button class="btn sec" disabled>Editar</button><button class="btn sec" disabled>Analisar</button><button class="btn sec" disabled>Teste A/B</button><span class="busca">Pesquise para filtrar por: nome, identificação ou métrica</span></div>' +
-      '<table class="ga-tab"><thead><tr><th></th><th>Campanha</th><th>Veiculação</th><th>Ações</th><th>Configuração de atribuição</th><th>Resultados</th><th>Orçamento</th><th>Valor gasto</th><th>Impressões</th><th>Alcance</th></tr></thead><tbody>' + linha + '</tbody></table>' + conferido() + '</div></div>' + (modal || ''));
+      '<div class="ga-barra"><button class="btn" data-ir="objetivo" data-t="btn-criar">＋ Criar</button><button class="btn sec" disabled>Duplicar</button><button class="btn sec" data-ir="editpub" data-t="btn-editar"' + (P && P.sel ? '' : ' disabled') + '>Editar</button><button class="btn sec" disabled>Analisar</button><button class="btn sec" disabled>Teste A/B</button><span class="busca">Pesquise para filtrar por: nome, identificação ou métrica</span></div>' +
+      '<table class="ga-tab"><thead><tr><th></th><th>Campanha</th><th>Veiculação</th><th>Ações</th><th>Orçamento</th><th>Valor gasto</th><th>Término</th><th>Estratégia de lance</th><th>Última edição significativa</th><th>Resultados</th></tr></thead><tbody>' + linha + '</tbody></table>' + conferido() + '</div></div>' + (modal || ''));
+  }
+
+  /* ---------- editar uma campanha JÁ PUBLICADA (telas reais de 16/10/2026; o anúncio de teste é um post turbinado) ---------- */
+  function sujo() { var P = S.pub; return !!P && Math.abs(P.edit - P.valor) > 0.001 }
+  function editorPub(nivel, form) {
+    var P = S.pub, no = function (id, t, sub, cls) { return '<button class="ga-no ' + cls + (nivel === id ? ' on' : '') + '" data-ir="' + id + '"' + (id === 'editpub-conj' ? ' data-t="no-pconj"' : id === 'editpub-anu' ? ' data-t="no-panu"' : '') + '>' + t + '<small>' + sub + '</small></button>' };
+    return casca('<div class="ga"><div class="ga-topo"><h1>Editar</h1><span class="ga-conta">Post: “🧪 TESTE de treinamento…”</span><span class="ga-tag vd">● Ativo</span></div>' +
+      '<div class="ga-ed"><aside class="ga-arv" data-t="arvore-pub">' + no('editpub', '🎯 Post: “🧪 TESTE de treinamento…”', 'Campanha', '') + no('editpub-conj', '👥 1 Conjunto de anúncios', 'Engajamento com o post', 'f1') + no('editpub-anu', '🖼️ 1 anúncio', 'Usar post existente', 'f2') + '</aside>' +
+      '<main class="ga-form">' + form + conferido() + '</main>' +
+      '<aside class="ga-dir"><b>Recomendações da campanha</b><p class="miudo">Você pode ter resultados melhores com posicionamentos Advantage+ para 1 conjunto de anúncios. A inclusão de mais posicionamentos frequentemente ajuda a encontrar um público mais amplo.</p><p><button class="btn sec" disabled>Aplicar agora</button> <button class="btn sec" disabled>Ver no conjunto de anúncios</button></p></aside></div>' +
+      '<div class="ga-rod"><span class="esq">Ao clicar em Publicar, você aceita que seu uso das ferramentas para anúncios da Meta está sujeito aos nossos Termos e Condições.</span>' +
+      '<button class="btn sec" data-acao="pub-fechar" data-t="pub-fechar">Fechar</button><button class="btn sec" data-acao="pub-descartar-rasc" data-t="pub-descartar-rasc">Descartar rascunho</button>' +
+      '<button class="btn" data-acao="pub-publicar" data-t="pub-publicar"' + (sujo() ? '' : ' disabled') + '>Publicar</button></div></div>');
+  }
+  function formPubCamp() {
+    var v = S.pub.edit, max = (v * 1.75).toFixed(2).replace('.', ','), sem = (v * 7).toFixed(2).replace('.', ',');
+    return '<div class="ga-sec"><h3>Nome da campanha</h3><input class="ga-in" value="Post: &quot;🧪 TESTE de treinamento — aqui não vendemos nada!…&quot;" disabled/></div>' +
+      '<div class="ga-sec" data-t="pub-fixos"><h3>Detalhes da campanha</h3><p><b>Tipo de compra</b></p><input class="ga-in" value="Leilão" disabled style="background:#EEF1F6"/><p><b>Objetivo da campanha</b></p><input class="ga-in" value="Engajamento" disabled style="background:#EEF1F6"/><p class="miudo">Os dois campos ficam cinza: depois de publicada, a campanha não troca de objetivo nem de tipo de compra.</p></div>' +
+      '<div class="ga-sec" data-t="pub-orc"><h3>Orçamento</h3><p><b>Estratégia de orçamento</b>: Orçamento da campanha</p><p><b>Orçamento diário</b> R$ <input class="ga-in" id="pValor" type="number" min="1" step="0.01" value="' + v + '" style="width:120px" data-t="pub-valor"/> BRL</p>' +
+      '<p id="pTexto">Gastaremos cerca de R$ ' + v.toFixed(2).replace('.', ',') + ' por dia. Seu gasto diário máximo é de R$ ' + max + ', e seu gasto semanal máximo é de R$ ' + sem + '.</p><p class="miudo">Os gastos podem ser maiores em alguns dias e menores em outros. Estratégia de lance da campanha: <b>Volume mais alto</b>.</p>' +
+      '<p class="miudo"><b>Programação do orçamento</b>: aumente seu orçamento durante dias ou horários específicos · <b>Programação de anúncios</b>: veicular anúncios o tempo todo · <b>Controle da frequência</b>: Desativado</p></div>' +
+      '<div class="ga-aviso" data-t="aviso-edicao" id="pAviso" style="' + (sujo() ? '' : 'display:none') + '"><b>Atenção:</b> editar certos detalhes da campanha pode reiniciar a fase de aprendizado ou fazer a análise de anúncios revisar o anúncio de novo. A nova versão substitui a antiga e não dá para reverter nem separar as métricas de antes e depois. <small>(texto da Central de Ajuda da Meta, não é uma mensagem da tela)</small></div>';
+  }
+  function formPubConj() {
+    return '<div class="ga-sec"><h3>Conversão</h3><p>Local da conversão: <b>No seu anúncio</b> · Tipo de engajamento: <b>Engajamento com o post</b></p><p class="miudo">A opção Maximizar o alcance e a impressão não está mais disponível para Engajamento. Meta de desempenho: Maximizar o engajamento com um post. Lance: a Meta tentará usar todo o seu orçamento e obter o máximo de engajamentos com o post usando a estratégia de lance de volume mais alto.</p></div><div class="ga-sec"><p class="miudo">Tamanho estimado do público: 164.800.000 - 193.900.000</p></div>';
+  }
+  function formPubAnu() {
+    return '<div class="ga-sec" data-t="pub-anu"><h3>Identidade</h3><p>Página do Facebook: <b>Lojinha da Marina - Fictício</b> · Perfil do Instagram: <b>lojinhadamarina.aula</b></p></div><div class="ga-sec"><h3>Configuração do anúncio</h3><p><b>Usar post existente</b></p><p class="miudo">Pela Central de Ajuda: não é possível editar o texto, as imagens ou o vídeo de um post turbinado depois de ele ser analisado e publicado como anúncio. Para mudar o criativo, publique outro post e turbine de novo.</p></div>';
+  }
+  function modalPubOk() {
+    return '<div class="ga-fundo"><div class="ga-jan" data-t="jan-pubok"><h2>Alterações publicadas</h2><p>O orçamento diário agora é R$ ' + S.pub.valor.toFixed(2).replace('.', ',') + '. A versão antiga foi substituída.</p><p class="miudo">Pela Central de Ajuda, uma edição assim pode reiniciar a fase de aprendizado (a coluna Veiculação mostraria “Aprendizado”) e o anúncio pode passar por análise de novo. <small>(Mensagem do simulador: a tela real não foi vista.)</small></p><div class="rodape-jan"><button class="btn" data-ir="lista">Concluir</button></div></div></div>';
   }
   var OBJ = [['Reconhecimento', 'Mostre seus anúncios para o maior número de pessoas que puder ver.'], ['Tráfego', 'Leve pessoas a um destino, como um site ou app.'], ['Engajamento', 'Consiga mais curtidas, comentários, mensagens ou seguidores.'], ['Leads', 'Colete informações de pessoas interessadas.'], ['Promoção do app', 'Consiga mais instalações do app.'], ['Vendas', 'Encontre pessoas com probabilidade de comprar seus produtos ou serviços.']];
   function modalObjetivo() {
@@ -129,7 +163,11 @@
     conj: function () { return editor('conj', formConj()) },
     anu: function () { return editor('anu', formAnu()) },
     revisar: function () { return revisar() },
-    analise: function () { return lista(modalAnalise()) }
+    analise: function () { return lista(modalAnalise()) },
+    editpub: function () { return editorPub('editpub', formPubCamp()) },
+    'editpub-conj': function () { return editorPub('editpub-conj', formPubConj()) },
+    'editpub-anu': function () { return editorPub('editpub-anu', formPubAnu()) },
+    pubok: function () { return lista(modalPubOk()) }
   };
 
   document.addEventListener('click', function (ev) {
@@ -137,12 +175,16 @@
     if (a.hasAttribute('data-ir')) { var d = a.getAttribute('data-ir'); if (d === 'objetivo') O.obj = ''; if (d === 'anu') S.an.tentou = S.an.tentou; vai(d); return }
     var ac = a.getAttribute('data-acao');
     if (ac === 'continuar') { if (!O.obj) return; if (O.obj === 'Vendas' || true) { S.camp.nome = 'Nova campanha de ' + O.obj; S.conj.nome = 'Novo conjunto de anúncios de ' + O.obj; S.an.nome = 'Novo anúncio de ' + O.obj; S.rasc = true; S.publicado = false; S.conj.dataset = ''; S.an.pagina = ''; S.conj.tentou = false; S.an.tentou = false; grava(); vai('camp') } }
-    else if (ac === 'descartar') { var z = inicial(); S = z; grava(); vai('lista') }
+    else if (ac === 'descartar') { var pp = S.pub; S = inicial(); if (pp) { pp.draft = false; pp.edit = pp.valor; pp.sel = false; S.pub = pp } grava(); vai('lista') }
+    else if (ac === 'pub-fechar') { if (sujo()) S.pub.draft = true; else S.pub.edit = S.pub.valor; grava(); vai('lista') }
+    else if (ac === 'pub-descartar-rasc') { S.pub.edit = S.pub.valor; S.pub.draft = false; grava(); vai('lista') }
+    else if (ac === 'pub-publicar') { if (!sujo()) return; S.pub.valor = S.pub.edit; S.pub.draft = false; S.pub.publicadaEm = 1; S.pub.sel = false; grava(); vai('pubok') }
     else if (ac === 'publicar') { S.an.tentou = true; S.conj.tentou = true; if (faltas().length) { grava(); if (rota() === 'revisar') render(); else vai('anu'); render(); return } S.publicado = true; grava(); vai('analise') }
   });
   document.addEventListener('change', function (ev) {
     var t = ev.target;
-    if (t.name === 'gaObj') { O.obj = t.value; window.__simGa = { S: S, O: O }; render() }
+    if (t.name === 'gaChk') { S.pub.sel = t.checked; grava(); render() }
+    else if (t.name === 'gaObj') { O.obj = t.value; window.__simGa = { S: S, O: O }; render() }
     else if (t.name === 'gaOrc') { S.camp.orc = t.value; grava(); render() }
     else if (t.name === 'gaDs') { S.conj.dataset = t.value === '0' ? DATASET : ''; S.conj.escolheuNenhum = t.value !== '0'; grava(); render() }
     else if (t.name === 'gaPg') { S.an.pagina = PAGINAS[+t.value]; grava(); render() }
@@ -151,13 +193,16 @@
     var t = ev.target;
     if (t.id === 'cNome') S.camp.nome = t.value; else if (t.id === 'jNome') S.conj.nome = t.value; else if (t.id === 'aNome') S.an.nome = t.value;
     else if (t.id === 'cValor') { var v = parseInt(t.value, 10); if (v > 0) S.camp.valor = v }
+    else if (t.id === 'pValor') { var pv = parseFloat(t.value); if (pv > 0) { S.pub.edit = pv; var tx = $('#pTexto'); if (tx) tx.textContent = 'Gastaremos cerca de R$ ' + pv.toFixed(2).replace('.', ',') + ' por dia. Seu gasto diário máximo é de R$ ' + (pv * 1.75).toFixed(2).replace('.', ',') + ', e seu gasto semanal máximo é de R$ ' + (pv * 7).toFixed(2).replace('.', ',') + '.'; var bp = $('[data-t=pub-publicar]'); if (bp) bp.disabled = !sujo(); var av = $('#pAviso'); if (av) av.style.display = sujo() ? '' : 'none' } }
     else return;
     grava();
   });
   window.addEventListener('hashchange', render);
-  function render() { var r = rota(); if (!S.rasc && /^(camp|conj|anu|revisar)$/.test(r)) r = 'lista'; $('#app').innerHTML = (TELAS[r] || TELAS.lista)(); window.__simGa = { S: S, O: O } }
+  function render() { var r = rota(); if (!S.rasc && /^(camp|conj|anu|revisar)$/.test(r)) r = 'lista'; if (!S.pub && /^(editpub|editpub-conj|editpub-anu|pubok)$/.test(r)) r = 'lista'; $('#app').innerHTML = (TELAS[r] || TELAS.lista)(); window.__simGa = { S: S, O: O } }
   window.SIMGA = { vai: vai, estado: function () { return { S: S, O: O } },
+    pub: function (sel) { if (!S.pub) S.pub = pubInicial(); if (sel) S.pub.sel = true; grava() },
     rascunho: function () { if (!S.rasc) { O.obj = 'Vendas'; S.camp.nome = 'Nova campanha de Vendas'; S.rasc = true; grava() } } };
+  if (params.get('tour') === 'editar-publicado' && !S.pub) { S.pub = pubInicial(); grava() }
   if (params.get('tour') === 'conhecer-niveis') { SIMGA.rascunho(); if (rota() === 'lista') location.hash = 'camp' }   // este tutorial começa com um rascunho pronto
   render();
 
@@ -165,6 +210,28 @@
   var TOURS = window.TOURS = window.TOURS || {};
   function T(pt, es) { return { pt: pt, es: es } }
   function ga() { return window.__simGa || { S: S, O: O } }
+  TOURS['editar-publicado'] = [
+    { alvo: '[data-t=linha-pub]', garante: function () { location.hash = 'lista' },
+      tit: T('Uma campanha já rodando', 'Una campaña ya corriendo'), txt: T('Esta campanha já está publicada: o status é Ativo e ela está gastando R$ 5,27 por dia. Editar uma campanha que está no ar pede cuidado. Clique em Próximo.', 'Esta campaña ya está publicada: el estado es Activo y está gastando R$ 5,27 por día. Editar una campaña que está en el aire pide cuidado. Haz clic en Siguiente.') },
+    { alvo: '[data-t=chk-pub]', clique: true, garante: function () { SIMGA.pub(); location.hash = 'lista' }, tit: T('Marcar a campanha', 'Marcar la campaña'), txt: T('Para editar, primeiro marque a caixinha da campanha.', 'Para editar, primero marca la casilla de la campaña.') },
+    { alvo: '[data-t=btn-editar]', clique: true, garante: function () { SIMGA.pub(true); location.hash = 'lista' }, tit: T('Editar', 'Editar'), txt: T('Agora o botão Editar acendeu. Clique nele.', 'Ahora el botón Editar se encendió. Haz clic en él.') },
+    { alvo: '[data-t=pub-fixos]', garante: function () { SIMGA.pub(); location.hash = 'editpub' }, tit: T('O que não muda', 'Lo que no cambia'), txt: T('Repare: Tipo de compra e Objetivo estão em cinza. Depois de publicada, a campanha não troca de objetivo. Se a Marina quisesse Vendas em vez de Engajamento, teria de criar uma campanha nova. Clique em Próximo.', 'Fíjate: Tipo de compra y Objetivo están en gris. Una vez publicada, la campaña no cambia de objetivo. Si Marina quisiera Ventas en vez de Interacción, tendría que crear una campaña nueva. Haz clic en Siguiente.') },
+    { alvo: '[data-t=pub-orc]', garante: function () { SIMGA.pub(); location.hash = 'editpub' }, cond: function () { return Math.abs(ga().S.pub.edit - ga().S.pub.valor) > 0.001 },
+      bloqueia: function (t) { return !!t.closest('[data-t=pub-publicar]') }, erro: T('Ainda não! Primeiro vamos entender o que acontece ao editar.', '¡Todavía no! Primero vamos a entender qué pasa al editar.'),
+      tit: T('Mudar o orçamento', 'Cambiar el presupuesto'), txt: T('A Marina quer gastar mais: troque o orçamento diário de 5,27 para 8 (ou outro valor). Repare que o texto embaixo muda junto. Depois clique em Próximo.', 'Marina quiere gastar más: cambia el presupuesto diario de 5,27 a 8 (u otro valor). Fíjate que el texto de abajo cambia junto. Después haz clic en Siguiente.'),
+      dica: T('O botão Publicar só acende depois que algo muda.', 'El botón Publicar solo se enciende después de que algo cambia.') },
+    { alvo: '[data-t=aviso-edicao]', garante: function () { SIMGA.pub(); ga().S.pub.edit = 8; location.hash = 'editpub'; render() },
+      tit: T('Cuidado com a edição', 'Cuidado con la edición'), txt: T('Pela Central de Ajuda: a nova versão substitui a antiga, não dá para desfazer nem separar as métricas de antes e depois, e a edição pode reiniciar a fase de aprendizado. Para uma campanha com poucos dias, vale esperar. Clique em Próximo.', 'Según el Centro de ayuda: la nueva versión reemplaza la antigua, no se puede deshacer ni separar las métricas de antes y después, y la edición puede reiniciar la fase de aprendizaje. Para una campaña con pocos días, vale esperar. Haz clic en Siguiente.') },
+    { alvo: '[data-t=pub-fechar]', clique: true, garante: function () { SIMGA.pub(); ga().S.pub.edit = 8; location.hash = 'editpub'; render() }, tit: T('Fechar guarda como rascunho', 'Cerrar guarda como borrador'), txt: T('A Marina decide pensar mais antes de mudar. Clique em Fechar: a mudança fica salva como rascunho, e a campanha continua rodando como estava.', 'Marina decide pensarlo más antes de cambiar. Haz clic en Cerrar: el cambio queda guardado como borrador, y la campaña sigue corriendo como estaba.') },
+    { alvo: '[data-t=linha-pub]', garante: function () { SIMGA.pub(); ga().S.pub.edit = 8; ga().S.pub.draft = true; location.hash = 'lista'; render() },
+      tit: T('Rascunho de uma campanha rodando', 'Borrador de una campaña corriendo'), txt: T('Repare no “Em rascunho” e no “Conferir e publicar (1)”: a mudança está guardada, mas NÃO está valendo. A campanha continua com R$ 5,27. Clique em Próximo.', 'Fíjate en el “En borrador” y en “Revisar y publicar (1)”: el cambio está guardado, pero NO está vigente. La campaña sigue con R$ 5,27. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-descartar]', clique: true, garante: function () { SIMGA.pub(); ga().S.pub.edit = 8; ga().S.pub.draft = true; location.hash = 'lista'; render() }, tit: T('Descartar rascunhos', 'Descartar borradores'), txt: T('A Marina desistiu da mudança por enquanto. Clique em Descartar rascunhos.', 'Marina desistió del cambio por ahora. Haz clic en Descartar borradores.') },
+    { alvo: '[data-t=jan-descartar]', clique: true, garante: function () { SIMGA.pub(); ga().S.pub.edit = 8; ga().S.pub.draft = true; location.hash = 'descartar'; render() },
+      bloqueia: function (t) { return !!t.closest('button') && !t.closest('[data-acao=descartar]') }, erro: T('Para terminar, clique em Descartar.', 'Para terminar, haz clic en Descartar.'),
+      tit: T('Confirmar', 'Confirmar'), txt: T('A janela avisa: o que ainda não foi publicado será descartado. Isso não mexe na campanha que está rodando. Clique em Descartar.', 'La ventana avisa: lo que todavía no se publicó será descartado. Esto no toca la campaña que está corriendo. Haz clic en Descartar.') },
+    { alvo: '[data-t=linha-pub]', fim: true, semVolta: true, garante: function () { location.hash = 'lista' },
+      tit: T('Tudo como estava! 🎉', '¡Todo como estaba! 🎉'), txt: T('A campanha segue ativa, com R$ 5,27 por dia, sem ter sido mexida. Regra de ouro: editar campanha rodando só com um bom motivo. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'La campaña sigue activa, con R$ 5,27 por día, sin haberse tocado. Regla de oro: editar una campaña corriendo solo con un buen motivo. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
   TOURS['conhecer-niveis'] = [
     { alvo: '[data-t=arvore]', garante: function () { SIMGA.rascunho(); location.hash = 'camp' },
       tit: T('Três níveis, um rascunho', 'Tres niveles, un borrador'), txt: T('Este rascunho tem três níveis, em cadeia: campanha › conjunto de anúncios › anúncio. Cada um guarda coisas diferentes. Clique em Próximo e vamos visitar um por um.', 'Este borrador tiene tres niveles, en cadena: campaña › conjunto de anuncios › anuncio. Cada uno guarda cosas distintas. Haz clic en Siguiente y vamos a visitar uno por uno.') },

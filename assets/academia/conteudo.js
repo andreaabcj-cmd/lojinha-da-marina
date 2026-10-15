@@ -847,8 +847,113 @@ window.AULAS = {
         { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta? (lista “Solucionar problemas ao criar ou publicar um anúncio”)', es: '¿Cuáles son los niveles de publicidad en el Administrador de anuncios de Meta? (lista “Solucionar problemas al crear o publicar un anuncio”)' }, conferido: '16/10/2026' }
       ]
     },
-    { id: '04', titulo: { pt: 'Editar sem bagunçar', es: 'Editar sin desordenar' }, status: 'planejada' },
-    { id: '05', titulo: { pt: '“Meu anúncio não publica!”', es: '“¡Mi anuncio no se publica!”' }, status: 'planejada' }
+    {
+      id: '04', min: 7, status: 'pronta',
+      titulo: { pt: 'Editar sem bagunçar', es: 'Editar sin desordenar' },
+      antes: { pt: 'O anúncio de teste da Marina foi publicado, passou pela análise e está ativo. Agora ela quer mexer em coisas.', es: 'El anuncio de prueba de Marina se publicó, pasó la revisión y está activo. Ahora quiere tocar cosas.' },
+      gancho: { pt: '“E se eu tentar publicar e não conseguir? Ou se o anúncio parar sozinho?” Vamos ver o que bloqueia um anúncio.', es: '“¿Y si intento publicar y no puedo? ¿O si el anuncio se detiene solo?” Vamos a ver qué bloquea un anuncio.' },
+      objetivo: { pt: 'Saber o que dá e o que não dá para mudar numa campanha publicada, a diferença entre rascunho e publicado, e quando é melhor esperar.', es: 'Saber qué se puede y qué no se puede cambiar en una campaña publicada, la diferencia entre borrador y publicado, y cuándo es mejor esperar.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu anúncio está rodando, mas acho que o orçamento ficou baixo. Posso só mudar o número? 🤔', es: 'Mi anuncio está corriendo, pero creo que el presupuesto quedó bajo. ¿Puedo solo cambiar el número? 🤔' }],
+          ['rafa', { pt: 'Pode editar, mas com cuidado: a nova versão substitui a antiga, não dá para desfazer e as métricas de antes e depois ficam misturadas. Além disso, mudar certas coisas pode reiniciar a fase de aprendizado.', es: 'Puedes editar, pero con cuidado: la nueva versión reemplaza la antigua, no se puede deshacer y las métricas de antes y después quedan mezcladas. Además, cambiar ciertas cosas puede reiniciar la fase de aprendizaje.' }],
+          ['marina', { pt: 'Fase de aprendizado? 😵', es: '¿Fase de aprendizaje? 😵' }],
+          ['rafa', { pt: 'É o período em que a Meta ainda está aprendendo a veicular seu anúncio. Ela costuma terminar com cerca de 50 resultados na semana depois da última edição significativa. Se você fica mexendo toda hora, o aprendizado recomeça.', es: 'Es el período en que Meta todavía está aprendiendo a mostrar tu anuncio. Suele terminar con unos 50 resultados en la semana después de la última edición significativa. Si cambias todo el tiempo, el aprendizaje empieza de nuevo.' }],
+          ['pixel', { pt: 'Duas pegadinhas reais: o Objetivo e o Tipo de compra ficam em cinza depois de publicar, e o botão Publicar só acende depois que algo muda. Fechar guarda como rascunho; só Publicar vale.', es: 'Dos trampas reales: el Objetivo y el Tipo de compra quedan en gris después de publicar, y el botón Publicar solo se enciende después de que algo cambia. Cerrar guarda como borrador; solo Publicar vale.' }]
+        ],
+        pontos: [
+          { pt: '<b>Rascunho não vale.</b> Fechar guarda a mudança como rascunho; só Publicar a coloca no ar. O que está rodando continua como estava.', es: '<b>El borrador no vale.</b> Cerrar guarda el cambio como borrador; solo Publicar lo pone en el aire. Lo que está corriendo sigue como estaba.' },
+          { pt: '<b>Editar substitui.</b> Não dá para voltar atrás nem separar as métricas de antes e depois. Para testar sem perder o original, melhor duplicar e mudar a cópia.', es: '<b>Editar reemplaza.</b> No se puede volver atrás ni separar las métricas de antes y después. Para probar sin perder el original, mejor duplicar y cambiar la copia.' },
+          { pt: '<b>Nem tudo se edita.</b> Objetivo e tipo de compra não mudam; o texto e a mídia de um post turbinado também não, depois de analisado.', es: '<b>No todo se edita.</b> Objetivo y tipo de compra no cambian; el texto y los medios de un post impulsado tampoco, una vez revisado.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026, só olhando (nada foi salvo): lista com a campanha ativa, editor da campanha, do conjunto e do anúncio. Fontes: Central de Ajuda da Meta, “Como editar campanhas de anúncios” e “Sobre a fase de aprendizado”. A tela que aparece depois de clicar em Publicar numa edição e a coluna “Aprendizado” ainda não foram vistas (a conferir); o botão Duplicar também ainda não foi usado.', es: 'Pantallas vistas de verdad el 16/10/2026, solo mirando (no se guardó nada): lista con la campaña activa, editor de la campaña, del conjunto y del anuncio. Fuentes: Centro de ayuda de Meta, “Cómo editar campañas de anuncios” y “Acerca de la fase de aprendizaje”. La pantalla que aparece después de hacer clic en Publicar en una edición y la columna “Aprendizaje” todavía no se vieron (por confirmar); el botón Duplicar tampoco se usó todavía.' }
+      },
+      ferramenta: 'editar-ou-novo',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva a abrir a campanha que está rodando, mexer no orçamento, ver os avisos e decidir: fechar como rascunho e descartar, sem estragar nada.', es: 'En el simulador, el Pixel te lleva a abrir la campaña que está corriendo, tocar el presupuesto, ver los avisos y decidir: cerrar como borrador y descartar, sin estropear nada.' },
+        tour: 'editar-publicado', pagina: 'meta-anuncios.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Fiquei mudando o orçamento do meu anúncio quase todo dia e os resultados só pioraram! Será que o anúncio está com defeito? 😤', es: '¡Estuve cambiando el presupuesto de mi anuncio casi todos los días y los resultados solo empeoraron! ¿Será que el anuncio tiene un defecto? 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Provavelmente não é defeito: cada edição significativa, como mexer no orçamento, pode reiniciar a fase de aprendizado, e com mudanças toda hora ele nunca estabiliza. Vamos esperar uns dias sem mexer e olhar a coluna Última edição significativa. Edite só quando tiver um bom motivo.”', es: '“Probablemente no es un defecto: cada edición significativa, como tocar el presupuesto, puede reiniciar la fase de aprendizaje, y con cambios todo el tiempo nunca se estabiliza. Esperemos unos días sin tocar y miremos la columna Última edición significativa. Edita solo cuando tengas un buen motivo.”' }, fb: { pt: 'Isso! Você ligou o sintoma à causa provável (edições frequentes reiniciam o aprendizado) e deu um plano simples.', es: '¡Eso! Conectaste el síntoma con la causa probable (ediciones frecuentes reinician el aprendizaje) y diste un plan simple.' } },
+          { certa: false, txt: { pt: '“Aumente o orçamento de novo, para compensar.”', es: '“Aumenta el presupuesto otra vez, para compensar.”' }, fb: { pt: 'Mais uma edição reinicia o aprendizado de novo e piora o que já está instável.', es: 'Otra edición reinicia el aprendizaje de nuevo y empeora lo que ya está inestable.' } },
+          { certa: false, txt: { pt: '“É um bug da Meta, vou abrir um chamado.”', es: '“Es un error de Meta, voy a abrir un caso.”' }, fb: { pt: 'Não é bug: é como a fase de aprendizado funciona, e está explicado na Central de Ajuda.', es: 'No es un error: así funciona la fase de aprendizaje, y está explicado en el Centro de ayuda.' } },
+          { certa: false, txt: { pt: '“Apague a campanha e crie outra igual.”', es: '“Borra la campaña y crea otra igual.”' }, fb: { pt: 'Criar de novo também começa o aprendizado do zero. Melhor esperar e parar de editar.', es: 'Crear de nuevo también empieza el aprendizaje de cero. Mejor esperar y dejar de editar.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O que você mudou e quando? Foi mais de uma vez na semana?', es: '¿Qué cambiaste y cuándo? ¿Fue más de una vez por semana?' },
+          { pt: 'A campanha está em Aprendizado ou Aprendizado limitado?', es: '¿La campaña está en Aprendizaje o Aprendizaje limitado?' },
+          { pt: 'A mudança foi publicada ou ficou só como rascunho?', es: '¿El cambio se publicó o quedó solo como borrador?' }],
+        conferir: [{ pt: 'Coluna Última edição significativa (em Colunas, se não aparecer).', es: 'Columna Última edición significativa (en Columnas, si no aparece).' },
+          { pt: 'Rascunho só vale depois de Publicar.', es: 'El borrador solo vale después de Publicar.' },
+          { pt: 'Objetivo e tipo de compra não mudam; texto e mídia de post turbinado também não.', es: 'Objetivo y tipo de compra no cambian; texto y medios de un post impulsado tampoco.' }],
+        frase: { pt: 'Cada edição significativa pode reiniciar a fase de aprendizado, e a nova versão substitui a antiga sem volta. Vamos esperar uns dias sem mexer e edite só quando tiver um bom motivo.', es: 'Cada edición significativa puede reiniciar la fase de aprendizaje, y la nueva versión reemplaza a la antigua sin vuelta. Esperemos unos días sin tocar y edita solo cuando tengas un buen motivo.' },
+        passos: [{ pt: 'No Gerenciador, marque a campanha e clique em Editar.', es: 'En el Administrador, marca la campaña y haz clic en Editar.' },
+          { pt: 'Escolha o nível (campanha, conjunto ou anúncio) e mude só o necessário.', es: 'Elige el nivel (campaña, conjunto o anuncio) y cambia solo lo necesario.' },
+          { pt: 'Clique em Publicar para valer, ou em Fechar para guardar como rascunho.', es: 'Haz clic en Publicar para que valga, o en Cerrar para guardarlo como borrador.' }],
+        encaminhar: { pt: 'Se a edição dá erro ou não salva, siga a Central de Ajuda da Meta: “Solucionar problemas de edição de anúncios” (código de erro 1860014).', es: 'Si la edición da error o no guarda, sigue el Centro de ayuda de Meta: “Solucionar problemas de edición de anuncios” (código de error 1860014).' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/2169779963333459', titulo: { pt: 'Como editar campanhas de anúncios no Gerenciador de Anúncios da Meta', es: 'Cómo editar campañas de anuncios en el Administrador de anuncios de Meta' }, conferido: '16/10/2026' },
+        { url: 'https://www.facebook.com/business/help/112167992830700', titulo: { pt: 'Sobre a fase de aprendizado', es: 'Acerca de la fase de aprendizaje' }, conferido: '16/10/2026' }
+      ]
+    },
+    {
+      id: '05', min: 7, status: 'pronta',
+      titulo: { pt: '“Meu anúncio não publica!”', es: '“¡Mi anuncio no se publica!”' },
+      antes: { pt: 'A Marina já sabe criar, publicar e editar. Mas um dia o anúncio dela não publica, ou para de rodar.', es: 'Marina ya sabe crear, publicar y editar. Pero un día su anuncio no se publica, o deja de correr.' },
+      gancho: { pt: '“Consegui resolver! Agora quero entender os números: o que é alcance, o que é resultado?” Próxima fase: relatórios e métricas.', es: '“¡Logré resolverlo! Ahora quiero entender los números: ¿qué es alcance, qué es resultado?” Próxima fase: informes y métricas.' },
+      objetivo: { pt: 'Descobrir, em ordem, o que bloqueia um anúncio: telefone, limite de gastos, saldo, conjunto de dados e Página.', es: 'Descubrir, en orden, qué bloquea un anuncio: teléfono, límite de gastos, saldo, conjunto de datos y Página.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Tentei publicar e o botão está apagado! E antes, meu anúncio parou de rodar sozinho. O que eu fiz de errado? 😭', es: '¡Intenté publicar y el botón está apagado! Y antes, mi anuncio dejó de correr solo. ¿Qué hice mal? 😭' }],
+          ['rafa', { pt: 'Calma, quase sempre é uma destas causas: telefone não verificado, limite de gastos da conta atingido, saldo acabado, ou um campo obrigatório faltando, como o conjunto de dados (Pixel) ou a Página. A tela costuma avisar qual.', es: 'Calma, casi siempre es una de estas causas: teléfono no verificado, límite de gastos de la cuenta alcanzado, saldo agotado, o un campo obligatorio faltante, como el conjunto de datos (Pixel) o la Página. La pantalla suele avisar cuál.' }],
+          ['marina', { pt: 'Mas eu tenho saldo! Por que parou?', es: '¡Pero tengo saldo! ¿Por qué se detuvo?' }],
+          ['rafa', { pt: 'Saldo e limite são coisas diferentes. A conta pode ter um limite de gastos: ao chegar nele, os anúncios param, mesmo com saldo. Dá para ver na Visão geral da conta.', es: 'Saldo y límite son cosas distintas. La cuenta puede tener un límite de gastos: al llegar a él, los anuncios se detienen, aunque haya saldo. Se puede ver en la Visión general de la cuenta.' }],
+          ['pixel', { pt: 'Caso real da conta de aula: a Visão geral mostrava “Limite de gastos da conta” com um valor baixo, e o Turbinar avisou “Você quase atingiu o limite de gastos”. Quem muda o limite é o responsável pela conta.', es: 'Caso real de la cuenta de aula: la Visión general mostraba “Límite de gastos de la cuenta” con un valor bajo, y Impulsar avisó “Casi alcanzaste el límite de gastos”. Quien cambia el límite es el responsable de la cuenta.' }]
+        ],
+        pontos: [
+          { pt: '<b>Telefone verificado:</b> sem ele a tela avisa “É necessário ter um telefone verificado para esta conta antes de veicular anúncios” e não deixa veicular.', es: '<b>Teléfono verificado:</b> sin él la pantalla avisa “Se necesita un teléfono verificado para esta cuenta antes de publicar anuncios” y no deja publicar.' },
+          { pt: '<b>Limite de gastos × saldo:</b> o saldo paga os anúncios; o limite é um teto da conta. Sem saldo, os anúncios pausam; com o limite atingido, também param.', es: '<b>Límite de gastos × saldo:</b> el saldo paga los anuncios; el límite es un tope de la cuenta. Sin saldo, los anuncios se pausan; con el límite alcanzado, también se detienen.' },
+          { pt: '<b>Campos obrigatórios:</b> em Vendas, o conjunto de dados; em todo anúncio, a Página do Facebook.', es: '<b>Campos obligatorios:</b> en Ventas, el conjunto de datos; en todo anuncio, la Página de Facebook.' }
+        ],
+        notas: { pt: 'Telas reais vistas em 15–16/10/2026: bloqueio do telefone, aviso do limite de gastos, saldo e Visão geral da conta (com o limite de gastos). A Central de Ajuda da Meta lista erros específicos, como “A Página do Facebook está ausente” (1443121), “As Páginas não correspondem” (1885029) e “Nenhum objeto de promoção foi encontrado” (1815430 e 1487790); o passo a passo de cada um não foi lido nem testado aqui (a conferir). Quem paga ou muda limites é sempre o responsável pela conta, nunca o agente.', es: 'Pantallas reales vistas el 15–16/10/2026: bloqueo del teléfono, aviso del límite de gastos, saldo y Visión general de la cuenta (con el límite de gastos). El Centro de ayuda de Meta lista errores específicos, como “Falta la Página de Facebook” (1443121), “Las Páginas no coinciden” (1885029) y “No se encontró ningún objeto de promoción” (1815430 y 1487790); el paso a paso de cada uno no se leyó ni se probó aquí (por confirmar). Quien paga o cambia límites es siempre el responsable de la cuenta, nunca el agente.' }
+      },
+      ferramenta: 'o-que-bloqueia',
+      praticar: {
+        texto: { pt: 'No simulador do Turbinar, a conta da Marina vem com três bloqueios juntos. O Pixel te leva a resolver um por um, de cima para baixo, até publicar.', es: 'En el simulador de Impulsar, la cuenta de Marina viene con tres bloqueos juntos. El Pixel te lleva a resolverlos uno por uno, de arriba hacia abajo, hasta publicar.' },
+        tour: 'resolver-publicacao', pagina: 'meta-turbinar.html?zerar=1&problemas=1'
+      },
+      atender: {
+        cena: { pt: 'Meu anúncio parou de rodar do nada! Eu tenho saldo na conta e não mexi em nada. Isso é golpe da Meta?! 😡', es: '¡Mi anuncio dejó de correr de la nada! Tengo saldo en la cuenta y no toqué nada. ¡¿Es una estafa de Meta?! 😡' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Entendo o susto. Ter saldo não basta: a conta pode ter um limite de gastos, e quando ele é atingido os anúncios param. Vamos abrir a Visão geral da conta e ver o limite e quanto já foi gasto. Se for isso, quem administra a conta aumenta ou remove o limite.”', es: '“Entiendo el susto. Tener saldo no basta: la cuenta puede tener un límite de gastos, y cuando se alcanza los anuncios se detienen. Abramos la Visión general de la cuenta y veamos el límite y cuánto ya se gastó. Si es eso, quien administra la cuenta aumenta o quita el límite.”' }, fb: { pt: 'Isso! Você acalmou a cliente, apontou a causa mais provável (limite, não saldo) e disse onde conferir e quem resolve.', es: '¡Eso! Calmaste a la clienta, señalaste la causa más probable (límite, no saldo) y dijiste dónde revisar y quién lo resuelve.' } },
+          { certa: false, txt: { pt: '“Coloque mais saldo que volta a rodar.”', es: '“Pon más saldo y vuelve a correr.”' }, fb: { pt: 'Ela já tem saldo. Se o limite de gastos foi atingido, saldo extra não resolve.', es: 'Ella ya tiene saldo. Si se alcanzó el límite de gastos, saldo extra no lo resuelve.' } },
+          { certa: false, txt: { pt: '“Crie outro anúncio igual.”', es: '“Crea otro anuncio igual.”' }, fb: { pt: 'Se o limite da conta foi atingido, o novo anúncio também não vai rodar.', es: 'Si se alcanzó el límite de la cuenta, el nuevo anuncio tampoco va a correr.' } },
+          { certa: false, txt: { pt: '“Pode ser golpe mesmo, desative a conta.”', es: '“Puede ser una estafa, desactiva la cuenta.”' }, fb: { pt: 'Exagero e perigoso: não há sinal de golpe. Primeiro confira os bloqueios comuns.', es: 'Exagerado y peligroso: no hay señal de estafa. Primero revisa los bloqueos comunes.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'A tela mostra algum aviso? Qual é o texto exato?', es: '¿La pantalla muestra algún aviso? ¿Cuál es el texto exacto?' },
+          { pt: 'O telefone da conta está verificado? Qual é o saldo e o limite de gastos da conta?', es: '¿El teléfono de la cuenta está verificado? ¿Cuál es el saldo y el límite de gastos de la cuenta?' },
+          { pt: 'Em Vendas: o conjunto de dados está escolhido? A Página está escolhida no anúncio?', es: 'En Ventas: ¿el conjunto de datos está elegido? ¿La Página está elegida en el anuncio?' }],
+        conferir: [{ pt: 'Telefone verificado na conta de anúncios.', es: 'Teléfono verificado en la cuenta publicitaria.' },
+          { pt: 'Visão geral da conta: limite de gastos e valor já gasto; e o saldo disponível.', es: 'Visión general de la cuenta: límite de gastos y valor ya gastado; y el saldo disponible.' },
+          { pt: 'Conjunto de dados (Vendas) e Página do Facebook escolhidos.', es: 'Conjunto de datos (Ventas) y Página de Facebook elegidos.' }],
+        frase: { pt: 'Vamos conferir, em ordem: telefone verificado, limite de gastos e saldo da conta, e os campos obrigatórios do anúncio. Quase sempre o problema está em um deles, e a própria tela costuma avisar qual.', es: 'Vamos a revisar, en orden: teléfono verificado, límite de gastos y saldo de la cuenta, y los campos obligatorios del anuncio. Casi siempre el problema está en uno de ellos, y la propia pantalla suele avisar cuál.' },
+        passos: [{ pt: 'Peça o texto exato do aviso (ou um print).', es: 'Pide el texto exacto del aviso (o una captura).' },
+          { pt: 'Abra a Visão geral da conta e confira o limite de gastos e o saldo.', es: 'Abre la Visión general de la cuenta y revisa el límite de gastos y el saldo.' },
+          { pt: 'Se o telefone não está verificado, oriente o responsável a usar Iniciar autenticação.', es: 'Si el teléfono no está verificado, orienta al responsable a usar Iniciar autenticación.' }],
+        encaminhar: { pt: 'Se nenhuma dessas causas explica, ou a conta está restrita ou o anúncio foi rejeitado, siga a Central de Ajuda da Meta (“Solucionar problemas ao criar ou publicar um anúncio” e “Solucionar problemas com uma conta desativada ou restrita”).', es: 'Si ninguna de estas causas lo explica, o la cuenta está restringida o el anuncio fue rechazado, sigue el Centro de ayuda de Meta (“Solucionar problemas al crear o publicar un anuncio” y “Solucionar problemas con una cuenta desactivada o restringida”).' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/125897810822573', titulo: { pt: 'Como solucionar problemas ao criar ou publicar uma campanha de anúncios no Gerenciador de Anúncios da Meta', es: 'Cómo solucionar problemas al crear o publicar una campaña de anuncios en el Administrador de anuncios de Meta' }, conferido: '16/10/2026' }
+      ]
+    }
   ],
   'pixel-avancado': [
     { id: '01', titulo: { pt: 'Correspondência avançada', es: 'Coincidencia avanzada' }, status: 'planejada' },

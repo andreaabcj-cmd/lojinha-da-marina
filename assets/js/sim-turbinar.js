@@ -10,10 +10,12 @@
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
   var params = new URLSearchParams(location.search);
   function ler(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d } catch (e) { return d } }
-  function inicial() { return { meta: 'mensagens', botao: 'Enviar mensagem', fim: 'continuo', dias: 7, valor: 5.27, tel: true, saldo: 10.27, publicado: false } }
+  function inicial() { return { meta: 'mensagens', botao: 'Enviar mensagem', fim: 'continuo', dias: 7, valor: 5.27, tel: true, saldo: 10.27, publicado: false, limite: null } }
   var S = ler('sim.turbinar', null) || inicial();
   if (params.get('zerar')) S = inicial();
   if (params.get('semtelefone')) S.tel = false;
+  function problemasIniciais() { S.tel = false; S.saldo = 3; S.limite = { max: 10, gasto: 8.2 } }   // conta com os 3 bloqueios juntos
+  if (params.get('problemas')) problemasIniciais();
   var M = { aberta: false, sel: '' };   // janela "Meta" aberta e opção marcada (ainda não salva)
   function grava() { try { localStorage.setItem('sim.turbinar', JSON.stringify(S)) } catch (e) { } window.__simTb = { S: S, M: M } }
   grava();
@@ -88,15 +90,17 @@
       '<label class="ga-lin' + (S.fim === 'data' ? ' on' : '') + '" data-t="prog-data"><input type="radio" name="tbFim" value="data"' + (S.fim === 'data' ? ' checked' : '') + '/><span><b>Escolher data de término</b></span></label>' +
       (S.fim === 'data' ? '<p>Dias <input class="ga-in" id="tbDias" type="number" min="1" max="90" value="' + S.dias + '" style="width:90px" data-t="dias"/> ' + (S.dias < 4 ? '<small>Anúncios que são veiculados por pelo menos 4 dias tendem a obter resultados melhores.</small>' : '') + '</p>' : '') + '</div>';
   }
+  function passouLimite() { return !!S.limite && S.limite.gasto + totais().base > S.limite.max }
   function secOrc() {
     var f = S.valor / 5.27, lo = Math.round(829 * f), hi = Math.round(2400 * f);
-    return '<div class="ga-sec" data-t="sec-orc"><h3>Orçamento diário</h3><p class="miudo">Estimativa de ' + lo.toLocaleString('pt-BR') + ' a ' + hi.toLocaleString('pt-BR') + ' impressões por dia <small>(no simulador, cresce com o valor)</small></p><p class="ga-pont" style="font-size:28px;color:var(--blue)">' + rs(S.valor) + '</p>' +
+    return '<div class="ga-sec" data-t="sec-orc"><h3>Orçamento diário</h3>' +
+      (passouLimite() ? '<div class="ga-aviso" data-t="aviso-limite">⚠ Você quase atingiu o limite de gastos que definiu para essa conta de anúncios. Aumente, redefina ou remova o limite para manter seus anúncios em veiculação. <button class="btn sec" data-acao="limite-aumentar" data-t="btn-limite">Aumentar limite</button> <small>(limite da conta: ' + rs(S.limite.max) + ' · já gastos: ' + rs(S.limite.gasto) + ' · no simulador, clicar aqui sobe o limite)</small></div>' : '') + '<p class="miudo">Estimativa de ' + lo.toLocaleString('pt-BR') + ' a ' + hi.toLocaleString('pt-BR') + ' impressões por dia <small>(no simulador, cresce com o valor)</small></p><p class="ga-pont" style="font-size:28px;color:var(--blue)">' + rs(S.valor) + '</p>' +
       '<input id="tbValor" type="range" min="5.27" max="200" step="0.01" value="' + S.valor + '" style="width:100%"/><p class="miudo" style="display:flex;justify-content:space-between"><span>R$ 5,27 (mínimo)</span><span>R$ 200,00</span></p></div>' +
       '<div class="ga-sec"><h3>Posicionamentos</h3><p class="miudo">Recomendado</p><p><b>Posicionamentos Advantage+</b> · Vamos maximizar seu orçamento no Facebook, Messenger, Instagram e Audience Network da Meta para ajudar a mostrar seu anúncio para mais pessoas.</p></div>';
   }
   function secPag() {
     var t = totais(), falta = t.total > S.saldo;
-    return '<div class="ga-sec" data-t="sec-pag"><h3>Forma de pagamento</h3><p><b>Saldo disponível: ' + rs(S.saldo) + '</b></p><p class="miudo">Deduziremos um valor do seu saldo por volta de uma vez por dia quando você veicular anúncios. Se não houver saldo disponível, os anúncios serão pausados.</p>' +
+    return '<div class="ga-sec" data-t="sec-pag"><h3>Forma de pagamento</h3><p><b>Saldo disponível: ' + rs(S.saldo) + '</b> <button class="btn sec" data-acao="saldo-add" data-t="btn-saldo">Adicionar saldo</button> <small>(no simulador, soma R$ 10 de mentirinha)</small></p><p class="miudo">Deduziremos um valor do seu saldo por volta de uma vez por dia quando você veicular anúncios. Se não houver saldo disponível, os anúncios serão pausados.</p>' +
       '<p><b>Resumo do pagamento</b> · ' + (S.fim === 'data' ? 'Seu anúncio será veiculado por ' + nDias() + ' dia' + (nDias() > 1 ? 's' : '') + '.' : 'Seu anúncio será veiculado continuamente.') + '</p>' +
       '<p>Orçamento total ' + rs(t.base) + ' <small>(' + rs(S.valor) + ' por dia × ' + nDias() + ' dia' + (nDias() > 1 ? 's' : '') + ')</small><br>ISS estimado ' + rs(t.iss) + ' · PIS/COFINS estimado ' + rs(t.pis) + '<br><b>Valor total ' + rs(t.total) + ' BRL</b> <small>(impostos aproximados no simulador)</small></p>' +
       (falta ? '<p class="ga-aviso verm" data-t="aviso-saldo">O saldo disponível (' + rs(S.saldo) + ') não cobre o valor total. Como a cobrança é diária, o anúncio pode ficar pausado quando o saldo acabar.</p>' : '') + '</div>';
@@ -134,6 +138,8 @@
     else if (ac === 'meta-cancelar') { M.aberta = false; render() }
     else if (ac === 'meta-salvar') { if (M.sel) S.meta = M.sel; M.aberta = false; grava(); render() }
     else if (ac === 'verificar-tel') { S.tel = true; grava(); render() }
+    else if (ac === 'limite-aumentar') { if (S.limite) S.limite.max = 50; grava(); render() }
+    else if (ac === 'saldo-add') { S.saldo += 10; grava(); render() }
     else if (ac === 'publicar') { if (!S.tel) return; S.publicado = true; grava(); vai('analise') }
   });
   document.addEventListener('change', function (ev) {
@@ -149,13 +155,27 @@
   });
   window.addEventListener('hashchange', render);
   function render() { var r = rota(); $('#app').innerHTML = (TELAS[r] || TELAS.posts)(); window.__simTb = { S: S, M: M } }
-  window.SIMTB = { vai: vai, estado: function () { return { S: S, M: M } } };
+  window.SIMTB = { vai: vai, estado: function () { return { S: S, M: M } }, problemas: function (q) { if (!S.limite && !S.publicado) { problemasIniciais() } if (q) { if (q.tel) S.tel = true; if (q.limite && S.limite) S.limite.max = 50; if (q.saldo) S.saldo = 13 } grava() } };
+  if (params.get('tour') === 'resolver-publicacao' || params.get('tour') === 'turbinar-post' && false) { if (rota() === 'posts') location.hash = 'turbinar' }   // este tutorial começa na tela do Turbinar
   render();
 
   /* ---------- tutorial guiado ---------- */
   var TOURS = window.TOURS = window.TOURS || {};
   function T(pt, es) { return { pt: pt, es: es } }
   function tb() { return window.__simTb || { S: S, M: M } }
+  TOURS['resolver-publicacao'] = [
+    { alvo: '[data-t=aviso-tel]', garante: function () { SIMTB.problemas(); location.hash = 'turbinar'; M.aberta = false; render() },
+      tit: T('O anúncio da Marina não publica', 'El anuncio de Marina no se publica'), txt: T('A Marina tentou turbinar e não consegue publicar. Repare: o botão Publicar está apagado e há um aviso no topo. O agente resolve um bloqueio de cada vez, de cima para baixo. Clique em Próximo.', 'Marina intentó impulsar y no puede publicar. Fíjate: el botón Publicar está apagado y hay un aviso arriba. El agente resuelve un bloqueo a la vez, de arriba hacia abajo. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-tel]', clique: true, garante: function () { SIMTB.problemas(); location.hash = 'turbinar'; render() }, tit: T('1º bloqueio: telefone', '1.er bloqueo: teléfono'), txt: T('“É necessário ter um telefone verificado para esta conta antes de veicular anúncios.” Sem isso a Meta não deixa veicular. Clique em Iniciar autenticação. (No simulador, ela já verifica.)', '“Se necesita un teléfono verificado para esta cuenta antes de publicar anuncios.” Sin eso Meta no deja publicar. Haz clic en Iniciar autenticación. (En el simulador, ya verifica.)') },
+    { alvo: '[data-t=aviso-limite]', garante: function () { SIMTB.problemas({ tel: true }); location.hash = 'turbinar'; render() },
+      tit: T('2º bloqueio: limite de gastos', '2.º bloqueo: límite de gastos'), txt: T('Agora outro aviso, dentro do orçamento: a conta tem um limite de gastos e a Marina quase chegou nele. Mesmo com saldo, o anúncio para quando o limite é atingido. Clique em Próximo.', 'Ahora otro aviso, dentro del presupuesto: la cuenta tiene un límite de gastos y Marina casi llegó a él. Aunque haya saldo, el anuncio se detiene cuando se alcanza el límite. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-limite]', clique: true, garante: function () { SIMTB.problemas({ tel: true }); location.hash = 'turbinar'; render() }, tit: T('Aumentar o limite', 'Aumentar el límite'), txt: T('Clique em Aumentar limite. (Na conta real, esse botão leva às configurações de cobrança, onde o limite é aumentado, redefinido ou removido.)', 'Haz clic en Aumentar límite. (En la cuenta real, ese botón lleva a la configuración de facturación, donde el límite se aumenta, redefine o quita.)') },
+    { alvo: '[data-t=aviso-saldo]', garante: function () { SIMTB.problemas({ tel: true, limite: true }); location.hash = 'turbinar'; render() },
+      tit: T('3º bloqueio: saldo', '3.er bloqueo: saldo'), txt: T('Por fim, o saldo (R$ 3,00) não cobre o valor total. A Meta cobra por volta de uma vez por dia e, “se não houver saldo disponível, os anúncios serão pausados”. Clique em Próximo.', 'Por último, el saldo (R$ 3,00) no cubre el valor total. Meta cobra más o menos una vez al día y, “si no hay saldo disponible, los anuncios se pausarán”. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-saldo]', clique: true, garante: function () { SIMTB.problemas({ tel: true, limite: true }); location.hash = 'turbinar'; render() }, tit: T('Adicionar saldo', 'Agregar saldo'), txt: T('Clique em Adicionar saldo. (Aqui é de mentirinha: na conta real, quem paga é o responsável pela conta, nunca o agente.)', 'Haz clic en Agregar saldo. (Aquí es de mentira: en la cuenta real, paga el responsable de la cuenta, nunca el agente.)') },
+    { alvo: '[data-t=publicar]', clique: true, garante: function () { SIMTB.problemas({ tel: true, limite: true, saldo: true }); location.hash = 'turbinar'; render() }, tit: T('Agora publica', 'Ahora publica'), txt: T('Os três bloqueios saíram e o botão Publicar acendeu. Clique em Publicar.', 'Los tres bloqueos salieron y el botón Publicar se encendió. Haz clic en Publicar.') },
+    { alvo: '[data-t=jan-analise]', fim: true, semVolta: true, tit: T('Resolvido! 🎉', '¡Resuelto! 🎉'), txt: T('Telefone, limite de gastos e saldo: as três causas mais comuns de “não publica” ou “parou de rodar” no Turbinar. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Teléfono, límite de gastos y saldo: las tres causas más comunes de “no se publica” o “dejó de correr” en Impulsar. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
   TOURS['turbinar-post'] = [
     { alvo: '[data-t=btn-turbinar]', clique: true, garante: function () { location.hash = 'posts' },
       tit: T('Turbinar um post', 'Impulsar un post'), txt: T('A Marina publicou um post de teste e quer que mais gente veja e comente. Na lista de posts, cada post publicado tem o botão Turbinar. Clique nele.', 'Marina publicó un post de prueba y quiere que más gente lo vea y comente. En la lista de posts, cada post publicado tiene el botón Impulsar. Haz clic en él.') },

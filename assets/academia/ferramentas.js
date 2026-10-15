@@ -397,6 +397,64 @@
     }
   };
 
+  /* ---------- 11d. Editar, duplicar ou criar novo? (Anúncios 04) ---------- */
+  var EO_ESC = { editar: { pt: 'Editar', es: 'Editar' }, duplicar: { pt: 'Duplicar e mudar a cópia', es: 'Duplicar y cambiar la copia' }, novo: { pt: 'Criar algo novo', es: 'Crear algo nuevo' } };
+  var EO_ITENS = [
+    { ic: '💰', n: { pt: 'Mudar o orçamento diário de uma campanha que está rodando', es: 'Cambiar el presupuesto diario de una campaña que está corriendo' }, certo: 'editar',
+      fb: { pt: 'Dá para editar, mas pode reiniciar a fase de aprendizado: faça uma vez, com motivo, e espere.', es: 'Se puede editar, pero puede reiniciar la fase de aprendizaje: hazlo una vez, con motivo, y espera.' } },
+    { ic: '🧪', n: { pt: 'Testar outro texto sem perder o anúncio e os resultados atuais', es: 'Probar otro texto sin perder el anuncio y los resultados actuales' }, certo: 'duplicar',
+      fb: { pt: 'Editar substitui a versão antiga sem volta e mistura as métricas. Para testar, duplique e mude a cópia.', es: 'Editar reemplaza la versión antigua sin vuelta y mezcla las métricas. Para probar, duplica y cambia la copia.' } },
+    { ic: '🎯', n: { pt: 'Trocar o objetivo de uma campanha já publicada de Engajamento para Vendas', es: 'Cambiar el objetivo de una campaña ya publicada de Interacción a Ventas' }, certo: 'novo',
+      fb: { pt: 'O objetivo fica em cinza depois de publicar. Para mudar, crie uma campanha nova com o objetivo certo.', es: 'El objetivo queda en gris después de publicar. Para cambiarlo, crea una campaña nueva con el objetivo correcto.' } },
+    { ic: '🖼️', n: { pt: 'Trocar a imagem de um post turbinado que já foi analisado', es: 'Cambiar la imagen de un post impulsado que ya fue revisado' }, certo: 'novo',
+      fb: { pt: 'A Central de Ajuda diz que não dá para editar texto, imagens ou vídeo de um post turbinado depois de analisado. Publique um post novo e turbine de novo.', es: 'El Centro de ayuda dice que no se puede editar el texto, las imágenes ni el video de un post impulsado después de revisado. Publica un post nuevo e impulsa de nuevo.' } }
+  ];
+  F['editar-ou-novo'] = {
+    titulo: { pt: 'Editar, duplicar ou criar novo?', es: '¿Editar, duplicar o crear nuevo?' },
+    resumo: { pt: 'Para cada vontade da Marina, escolha o jeito mais seguro.', es: 'Para cada deseo de Marina, elige la forma más segura.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + EO_ITENS.map(function (g, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + g.ic + '</span>' + T(g.n) + '</div><div class="qp-ops">' + Object.keys(EO_ESC).map(function (k) { return '<button data-eo="' + i + ':' + k + '">' + T(EO_ESC[k]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-eo]'); if (!b) return; var v = b.getAttribute('data-eo').split(':'), g = EO_ITENS[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
+        box.querySelectorAll('[data-eo]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(g.fb) : '❌ ' + T({ pt: 'Pense: dá para mudar esse campo? E se editar, perde o original e os resultados?', es: 'Piensa: ¿se puede cambiar ese campo? Y si editas, ¿pierdes el original y los resultados?' });
+        if (ok && window.MOV && el.querySelectorAll('.certa').length === EO_ITENS.length) MOV.confete(b);
+      });
+    }
+  };
+
+  /* ---------- 11e. O que bloqueia o anúncio? (Anúncios 05) ---------- */
+  var OB_ESC = { telefone: { pt: 'Telefone', es: 'Teléfono' }, limite: { pt: 'Limite de gastos', es: 'Límite de gastos' }, saldo: { pt: 'Saldo', es: 'Saldo' }, dados: { pt: 'Conjunto de dados', es: 'Conjunto de datos' } };
+  var OB_ITENS = [
+    { ic: '📱', n: { pt: 'A tela avisa: “É necessário ter um telefone verificado para esta conta antes de veicular anúncios.”', es: 'La pantalla avisa: “Se necesita un teléfono verificado para esta cuenta antes de publicar anuncios.”' }, certo: 'telefone',
+      fb: { pt: 'É o telefone. A saída é Iniciar autenticação, feita pelo responsável da conta.', es: 'Es el teléfono. La salida es Iniciar autenticación, hecha por el responsable de la cuenta.' } },
+    { ic: '🚧', n: { pt: 'A tela avisa: “Você quase atingiu o limite de gastos que definiu para essa conta de anúncios.” e a Marina tem saldo.', es: 'La pantalla avisa: “Casi alcanzaste el límite de gastos que definiste para esta cuenta publicitaria.” y Marina tiene saldo.' }, certo: 'limite',
+      fb: { pt: 'É o limite de gastos da conta, que é diferente do saldo. Aumentar, redefinir ou remover o limite é com o responsável.', es: 'Es el límite de gastos de la cuenta, que es distinto del saldo. Aumentar, redefinir o quitar el límite es cosa del responsable.' } },
+    { ic: '🪙', n: { pt: 'O anúncio rodou alguns dias e pausou. Saldo disponível: R$ 0,00.', es: 'El anuncio corrió algunos días y se pausó. Saldo disponible: R$ 0,00.' }, certo: 'saldo',
+      fb: { pt: 'A tela explica: “Se não houver saldo disponível, os anúncios serão pausados.” Quem adiciona saldo é o responsável.', es: 'La pantalla explica: “Si no hay saldo disponible, los anuncios se pausarán.” Quien agrega saldo es el responsable.' } },
+    { ic: '📡', n: { pt: 'Ao publicar a campanha de Vendas: “Um conjunto de dados (anteriormente conhecido como Pixel) é necessário.”', es: 'Al publicar la campaña de Ventas: “Se necesita un conjunto de datos (antes conocido como Pixel).”' }, certo: 'dados',
+      fb: { pt: 'É o conjunto de dados, no conjunto de anúncios. Escolha o Pixel da loja ali.', es: 'Es el conjunto de datos, en el conjunto de anuncios. Elige ahí el Pixel de la tienda.' } }
+  ];
+  F['o-que-bloqueia'] = {
+    titulo: { pt: 'O que bloqueia o anúncio?', es: '¿Qué bloquea el anuncio?' },
+    resumo: { pt: 'Leia o aviso da tela e descubra a causa.', es: 'Lee el aviso de la pantalla y descubre la causa.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      el.innerHTML = '<div class="qp">' + OB_ITENS.map(function (g, i) {
+        return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + g.ic + '</span>' + T(g.n) + '</div><div class="qp-ops">' + Object.keys(OB_ESC).map(function (k) { return '<button data-ob="' + i + ':' + k + '">' + T(OB_ESC[k]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>'
+      }).join('') + '</div>';
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-ob]'); if (!b) return; var v = b.getAttribute('data-ob').split(':'), g = OB_ITENS[+v[0]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]'), ok = g.certo === v[1];
+        box.querySelectorAll('[data-ob]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(ok ? 'certa' : 'errada');
+        box.querySelector('.qp-fb').innerHTML = ok ? '✅ ' + T(g.fb) : '❌ ' + T({ pt: 'Releia o aviso: que palavra dele aponta a causa (telefone, limite, saldo, conjunto de dados)?', es: 'Relee el aviso: ¿qué palabra señala la causa (teléfono, límite, saldo, conjunto de datos)?' });
+        if (ok && window.MOV && el.querySelectorAll('.certa').length === OB_ITENS.length) MOV.confete(b);
+      });
+    }
+  };
+
   /* ---------- 11b. Em qual nível fica? (Anúncios 02) ---------- */
   var NIVEIS = { campanha: { pt: 'Campanha', es: 'Campaña' }, conjunto: { pt: 'Conjunto de anúncios', es: 'Conjunto de anuncios' }, anuncio: { pt: 'Anúncio', es: 'Anuncio' } };
   var NIVEL_PQ = {
