@@ -45,5 +45,5 @@ window.TOURS['print-pixel'] = [
     txt: { pt: 'Agora responda: os dois números são iguais?', es: 'Ahora responde: ¿los dos números son iguales?' } },
   { alvo: '.pp-pergunta', fim: true,
     tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
-    txt: { pt: 'Você pediu os prints certos e comparou os números, sem precisar de acesso ao site. Clique em Concluir para voltar à aula.', es: 'Pediste las capturas correctas y comparaste los números, sin necesitar acceso al sitio. Haz clic en Terminar para volver a la clase.' } }
+    txt: { pt: 'Você pediu os prints certos e comparou os números, sem precisar de acesso ao site. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Pediste las capturas correctas y comparaste los números, sin necesitar acceso al sitio. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];

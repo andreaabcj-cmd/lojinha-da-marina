@@ -1,3 +1,25 @@
+/* ↩ Voltar à aula: depois do tutorial a pessoa fica para explorar à vontade; o botão no canto leva de volta quando ela quiser.
+   Guardado na aba (sessionStorage 'tour.volta'); a plataforma apaga ao chegar na aula. */
+window.VOLTA_AULA = window.VOLTA_AULA || (function () {
+  var K = 'tour.volta', SEG = /^[a-z0-9_-]+\.html([?#][^\s<>\"']*)?$/i;
+  function lang() { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } }
+  function le() { try { var v = sessionStorage.getItem(K); return v && SEG.test(v) ? v : null } catch (e) { return null } }
+  function mostra() {
+    var v = le(), b = document.getElementById('tgVolta'); if (!v) { if (b) b.remove(); return }
+    if (b || !document.body) return;
+    var lab = /^laboratorio/.test(v), es = lang() === 'es';
+    if (!document.getElementById('tgVoltaCss')) { var st = document.createElement('style'); st.id = 'tgVoltaCss';
+      st.textContent = '.tg-volta{position:fixed;left:16px;bottom:16px;z-index:2147483600;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:12px;border:2px solid #16294A;background:#fff;color:#16294A;font:800 14px "Segoe UI",system-ui,Arial,sans-serif;text-decoration:none;box-shadow:3px 3px 0 #16294A;cursor:pointer}.tg-volta:hover{background:#FFE07A}body.em-tour .tg-volta{display:none}';
+      document.head.appendChild(st) }
+    b = document.createElement('a'); b.id = 'tgVolta'; b.className = 'tg-volta'; b.href = v;
+    b.textContent = '↩ ' + (lab ? (es ? 'Volver al Laboratorio' : 'Voltar ao Laboratório') : (es ? 'Volver a la clase' : 'Voltar à aula'));
+    b.onclick = function () { try { sessionStorage.removeItem(K) } catch (e) { } };
+    document.body.appendChild(b);
+  }
+  function guarda(v) { if (!v || !SEG.test(v)) return; try { sessionStorage.setItem(K, v) } catch (e) { } mostra() }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mostra); else setTimeout(mostra, 0);
+  return { guarda: guarda, mostra: mostra };
+})();
 /* Tutorial guiado (holofote + Pixel explicando), o mesmo em qualquer página do site.
    - Os roteiros ficam em window.TOURS[nome] = [passos]. Cada passo:
        { alvo: 'seletor' | function(){return elemento}, tit, txt, dica?, clique?: true (avança ao clicar no alvo),
@@ -132,7 +154,7 @@
   function termina(concluiu) {
     var v = voltar; tour = null; salva(); clearInterval(timer);
     if (holo) { holo.remove(); balao.remove(); recorte.remove(); holo = balao = recorte = null } document.body.classList.remove('em-tour');
-    if (concluiu && seguro(v)) location.href = v;
+    if (seguro(v)) window.VOLTA_AULA.guarda(v);   // não leva embora: a pessoa explora à vontade e volta pelo botão do canto
   }
   window.TOUR = {
     inicia: function (n, p0, volta, pgs, atras) {

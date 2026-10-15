@@ -27,7 +27,7 @@ window.TOURS['achar-codigo'] = [
     txt: { pt: 'Conta cada visita. Se ele está aqui, toda página aberta envia um PageView.', es: 'Cuenta cada visita. Si está aquí, cada página abierta envía un PageView.' } },
   { alvo: '#maPanel', fim: true,
     tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
-    txt: { pt: 'Você achou as 3 coisas que importam: o comentário, o ID e o PageView. O resto do código é técnico: o cliente não mexe. Clique em Concluir para voltar à aula.', es: 'Encontraste las 3 cosas que importan: el comentario, el ID y el PageView. El resto del código es técnico: el cliente no lo toca. Haz clic en Terminar para volver a la clase.' } }
+    txt: { pt: 'Você achou as 3 coisas que importam: o comentário, o ID e o PageView. O resto do código é técnico: o cliente não mexe. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Encontraste las 3 cosas que importan: el comentario, el ID y el PageView. El resto del código es técnico: el cliente no lo toca. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
 
 /* Aula 02 · prática do atendimento: conferir o Pixel do site com o Consultor de Dados (a extensão que o agente usa) */
@@ -56,7 +56,7 @@ window.TOURS['extensao-pixel'] = [
     txt: { pt: 'O PageView aparece na lista: as visitas estão sendo contadas. Clique nele para ver os detalhes.', es: 'El PageView aparece en la lista: las visitas se están contando. Haz clic en él para ver los detalles.' } },
   { alvo: '.da-ev-corpo', fim: true,
     tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
-    txt: { pt: 'Você conferiu o Pixel como no atendimento: tem Pixel? O ID é o do cliente? O PageView chega? Tudo sem mexer no código. Clique em Concluir para voltar à aula.', es: 'Revisaste el Pixel como en la atención: ¿hay Pixel? ¿El ID es el del cliente? ¿Llega el PageView? Todo sin tocar el código. Haz clic en Terminar para volver a la clase.' } }
+    txt: { pt: 'Você conferiu o Pixel como no atendimento: tem Pixel? O ID é o do cliente? O PageView chega? Tudo sem mexer no código. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Revisaste el Pixel como en la atención: ¿hay Pixel? ¿El ID es el del cliente? ¿Llega el PageView? Todo sin tocar el código. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
 
 /* Aula 01 · o Pixel em ação: a pessoa faz coisas na loja e vê os avisos no Consultor de Dados */
@@ -80,7 +80,7 @@ window.TOURS['pixel-em-acao'] = [
     txt: { pt: 'Clique no cartão do Pixel.', es: 'Haz clic en la tarjeta del Pixel.' } },
   { alvo: '.da-lista', fim: true,
     tit: { pt: 'Aí estão! 🎉', es: '¡Ahí están! 🎉' },
-    txt: { pt: 'PageView (abriu a página), ViewContent (viu o produto) e AddToCart (pôs no carrinho). O Pixel contou para a Meta o que você fez, nada além disso. Clique em Concluir para voltar à aula.', es: 'PageView (abrió la página), ViewContent (vio el producto) y AddToCart (puso en el carrito). El Pixel le contó a Meta lo que hiciste, nada más. Haz clic en Terminar para volver a la clase.' } }
+    txt: { pt: 'PageView (abriu a página), ViewContent (viu o produto) e AddToCart (pôs no carrinho). O Pixel contou para a Meta o que você fez, nada além disso. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'PageView (abrió la página), ViewContent (vio el producto) y AddToCart (puso en el carrito). El Pixel le contó a Meta lo que hiciste, nada más. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
 
 /* Aula 04 · uma compra completa: da vitrine até o Purchase com valor e moeda no Consultor de Dados */
@@ -118,5 +118,5 @@ window.TOURS['compra-completa'] = [
     txt: { pt: 'Aí está o Purchase: o EVENTO, ou seja, o que aconteceu. Clique nele para ver os detalhes.', es: 'Ahí está el Purchase: el EVENTO, o sea, lo que pasó. Haz clic en él para ver los detalles.' } },
   { alvo: '.da-ev-corpo', fim: true,
     tit: { pt: 'Os parâmetros 💰', es: 'Los parámetros 💰' },
-    txt: { pt: 'Em “Parâmetros personalizados” estão os DETALHES: value (o valor) e currency (a moeda, BRL). Com eles a Meta sabe quanto a Marina vendeu. Clique em Concluir para voltar à aula.', es: 'En “Parámetros personalizados” están los DETALLES: value (el valor) y currency (la moneda, BRL). Con ellos Meta sabe cuánto vendió Marina. Haz clic en Terminar para volver a la clase.' } }
+    txt: { pt: 'Em “Parâmetros personalizados” estão os DETALHES: value (o valor) e currency (a moeda, BRL). Com eles a Meta sabe quanto a Marina vendeu. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'En “Parámetros personalizados” están los DETALLES: value (el valor) y currency (la moneda, BRL). Con ellos Meta sabe cuánto vendió Marina. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];

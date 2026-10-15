@@ -151,7 +151,7 @@
     { alvo: '[data-t=conv-contato]', garante: function () { SIMIG.conv(4) }, tit: T('Contato público?', '¿Contacto público?'), txt: T('O que entra aqui aparece PUBLICAMENTE no perfil. A Marina não quer expor o telefone pessoal agora. Clique em Próximo.', 'Lo que pongas aquí aparece PÚBLICAMENTE en el perfil. Marina no quiere exponer su teléfono personal ahora. Haz clic en Siguiente.') },
     { alvo: '[data-t=conv-semcontato]', clique: true, garante: function () { SIMIG.conv(4) }, tit: T('Sem contato por enquanto', 'Sin contacto por ahora'), txt: T('Clique em Não usar minhas informações de contato (dá para adicionar depois).', 'Haz clic en No usar mi información de contacto (se puede agregar después).') },
     { alvo: '[data-t=conv-fim]', clique: true, semVolta: true, tit: T('Conta comercial pronta! 🎉', '¡Cuenta comercial lista! 🎉'), txt: T('Clique em Concluir para ver o perfil.', 'Haz clic en Terminar para ver el perfil.') },
-    { alvo: '[data-t=ig-tipo]', fim: true, semVolta: true, tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Agora é conta profissional Comercial, pública, com a categoria no perfil. Clique em Concluir para voltar à aula.', 'Ahora es cuenta profesional Comercial, pública, con la categoría en el perfil. Haz clic en Terminar para volver a la clase.') }
+    { alvo: '[data-t=ig-tipo]', fim: true, semVolta: true, tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Agora é conta profissional Comercial, pública, com a categoria no perfil. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Ahora es cuenta profesional Comercial, pública, con la categoría en el perfil. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
   ];
   TOURS['editar-perfil'] = [
     { alvo: '[data-t=editar-perfil]', clique: true, garante: function () { SIMIG.perfilComercial(); location.hash = 'perfil' }, tit: T('Editar perfil', 'Editar perfil'), txt: T('Vamos deixar o perfil com cara de loja. Clique em Editar perfil.', 'Vamos a dejar el perfil con cara de tienda. Haz clic en Editar perfil.') },
@@ -162,6 +162,6 @@
     { alvo: '[data-t=ed-bio]', garante: function () { location.hash = 'editar' }, cond: function () { var f = (ig().F || {}); return (f.eBio || '').trim().length > 10 },
       tit: T('A bio', 'La bio'), txt: T('Em uma frase: o que a loja vende. Ex.: Canecas, camisetas e ecobags feitas à mão. Depois clique em Próximo.', 'En una frase: qué vende la tienda. Ej.: Tazas, camisetas y ecobags hechas a mano. Después haz clic en Siguiente.') },
     { alvo: '[data-t=ed-salvar]', clique: true, garante: function () { location.hash = 'editar' }, tit: T('Concluir', 'Terminar'), txt: T('Clique em Concluir para salvar.', 'Haz clic en Terminar para guardar.') },
-    { alvo: '.ig-cab', fim: true, semVolta: true, tit: T('Perfil de loja! 🎉', '¡Perfil de tienda! 🎉'), txt: T('Nome, @ e bio de loja. Clique em Concluir para voltar à aula.', 'Nombre, @ y bio de tienda. Haz clic en Terminar para volver a la clase.') }
+    { alvo: '.ig-cab', fim: true, semVolta: true, tit: T('Perfil de loja! 🎉', '¡Perfil de tienda! 🎉'), txt: T('Nome, @ e bio de loja. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Nombre, @ y bio de tienda. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
   ];
 })();
