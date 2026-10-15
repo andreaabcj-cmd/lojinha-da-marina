@@ -13,6 +13,14 @@ Leia nesta ordem:
 - Laboratório com "Como fazer…" (16 tutoriais), botão "🧹 Recomeçar do zero", botão "↩ Voltar à aula" depois dos tutoriais, avisos de disparo só durante tutorial.
 - O site publicado está atrás do local em alguns commits; publicar só quando o André pedir (script fora do repositório).
 
+## Trilhas (16/10)
+- Duas trilhas sobre o **mesmo conteúdo**: **Foco** (anúncios, medição e comércio; é a ordem de estudo oficial) e **Completa** (Foco + módulos extras de outras áreas). Definidas em `window.TRILHAS` (`assets/academia/conteudo.js`); a tela `modulos.html?t=foco|completa` mostra uma ordem numerada. Trilha escolhida fica em `plat.trilha`.
+- Ordem do Foco: Portfólio básico · Portfólio avançado · Pixel básico · Pixel avançado · Catálogo · Anúncios (criação e edição) · Anúncios no Feed · Instagram · Regras automatizadas · Relatórios · Segmentação · Entrega · Meta Verified · Commerce · Shop Ads · Shop Ads (finalização fora da Meta) · MBE · Integração com terceiros · Shopify · WhatsApp (por último).
+- Extras só da Completa (ainda planejados): pagamentos e cobrança · acesso e login · contas e restrições · políticas e anúncios rejeitados · Instagram e Facebook orgânicos. Construir DEPOIS do Foco.
+- Fora do escopo de uma trilha: UMA linha de encaminhamento na cola, por área, em português simples, sem siglas nem nomes de times. Nada interno no repositório.
+- Material novo sai sempre em PT e ES juntos (telas: `sim-i18n.js` + `sim-es-*.js`).
+- Atenção: nas aulas existentes a história da Marina assume Instagram antes do Pixel; na ordem do Foco o Instagram vem depois. Decidir se ajusta os textos "onde paramos" ou a ordem.
+
 ## Regras de trabalho (resumo)
 - Tudo local até o André mandar subir. Conferir à mão que nada interno/pessoal vai para o repositório.
 - Só telas reais (o que não foi visto fica "a conferir"); fontes oficiais da Meta.

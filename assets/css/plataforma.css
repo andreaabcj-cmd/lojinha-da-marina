@@ -338,3 +338,11 @@ html,body{overflow-x:clip}
 .recomecar{margin:28px 0 8px;padding:16px 18px;border:2px dashed var(--line);border-radius:var(--r);background:#fff}
 .recomecar .pl-h2{margin-top:0}.recomecar p{margin:0 0 10px;color:var(--muted)}
 .rc-ck{display:flex;gap:8px;align-items:center;margin:0 0 12px;font-weight:600}.rc-bts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* trilhas (Foco | Completa) */
+.trilhas-abas{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 14px}
+.trilha-aba{flex:1 1 260px;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:2px solid var(--ink);border-radius:var(--r);background:#fff;color:var(--ink);text-decoration:none;box-shadow:3px 3px 0 var(--ink)}
+.trilha-aba .ic{font-size:24px}.trilha-aba b{font-size:18px}.trilha-aba small{color:var(--muted)}
+.trilha-aba.on{background:var(--blue-l,#E7F0FF);outline:3px solid var(--yellow,#F2B632);outline-offset:2px}
+.item .num{position:absolute;top:10px;right:12px;min-width:26px;height:26px;padding:0 6px;display:grid;place-items:center;border-radius:13px;background:var(--ink);color:#fff;font-weight:800;font-size:13px}
+.trilha-chip{display:inline-block;margin:0 0 8px;padding:4px 10px;border-radius:999px;background:var(--blue-l,#E7F0FF);border:2px solid var(--ink);font-weight:800;font-size:13px}

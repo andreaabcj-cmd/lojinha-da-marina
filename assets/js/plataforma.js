@@ -37,6 +37,20 @@
   function selo(st) { return '<span class="selo ' + st + '">' + T(U[st] || { pt: st }) + '</span>' }
   function feitas() { return lsGet('plat.feitas', {}) }
 
+  /* ---------- trilhas (Foco | Completa): só listas e ordens de módulos; o conteúdo é um só ---------- */
+  function trilhaAtual() {
+    var L = window.TRILHAS || [], id = Q.get('t');
+    if (id && L.filter(function (t) { return t.id === id }).length) lsSet('plat.trilha', id); else id = lsGet('plat.trilha', 'foco');
+    return L.filter(function (t) { return t.id === id })[0] || L[0];
+  }
+  function modulosDaTrilha(tr) {
+    return (tr.modulos || []).map(function (id) { return window.MODULOS.filter(function (m) { return m.id === id })[0] }).filter(Boolean);
+  }
+  function trilhaChip(m) {
+    var tr = trilhaAtual(), ids = (tr.modulos || []).concat(tr.extras || []), k = ids.indexOf(m.id);
+    return k < 0 ? '' : '<p class="trilha-chip">' + tr.icone + ' ' + T(tr.nome) + ' · ' + T({ pt: 'módulo', es: 'módulo' }) + ' ' + (k + 1) + ' ' + T({ pt: 'de', es: 'de' }) + ' ' + ids.length + '</p>';
+  }
+
   /* ---------- telas ---------- */
   var TELAS = {
     inicio: function () {
@@ -53,20 +67,26 @@
         ].map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
     },
     modulos: function () {
-      var F = window.FASES || [];
-      function card(m) { var ok = window.AULAS[m.id]; return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>') }
-      var h = '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1>' + trilhaFases() + '<p class="pl-lead">' + T({ pt: 'A trilha é a história da Marina: ela começa sem saber nada e, a cada fase, o negócio dela cresce e aparecem dúvidas novas. Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender.', es: 'La ruta es la historia de Marina: empieza sin saber nada y, en cada fase, su negocio crece y aparecen dudas nuevas. Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender.' }) + '</p>';
-      for (var f = 1; f < F.length; f++) {
-        var ms = window.MODULOS.filter(function (m) { return m.fase === f }); if (!ms.length) continue;
-        h += '<div class="fase-cab" id="fase-' + f + '"><span class="fase-ic">' + F[f].icone + '</span><div><small>' + T({ pt: 'Fase', es: 'Fase' }) + ' ' + f + '</small><h2>' + T(F[f].nome) + '</h2><p>' + T(F[f].resumo) + '</p></div></div><div class="grade">' + ms.map(card).join('') + '</div>';
+      var tr = trilhaAtual(), n = 0;
+      function card(m) {
+        n++; var ok = window.AULAS[m.id];
+        return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="num">' + n + '</span><span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>');
       }
-      var fora = window.MODULOS.filter(function (m) { return !m.fase });
-      if (fora.length) h += '<div class="fase-cab fora"><div><h2>' + T({ pt: 'Fora da trilha', es: 'Fuera de la ruta' }) + '</h2></div></div><div class="grade">' + fora.map(card).join('') + '</div>';
+      var abas = '<div class="trilhas-abas" role="tablist">' + window.TRILHAS.map(function (t) {
+        return '<a role="tab" class="trilha-aba' + (t.id === tr.id ? ' on' : '') + '" href="modulos.html?t=' + t.id + '"><span class="ic">' + t.icone + '</span><b>' + T(t.nome) + '</b><small>' + T(t.sub) + '</small></a>';
+      }).join('') + '</div>';
+      var h = '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1>' + abas + '<p class="pl-lead">' + T(tr.resumo) + '</p>' +
+        '<p class="pl-lead"><small>' + T({ pt: 'Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender. A história da Marina acompanha todas as aulas.', es: 'Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender. La historia de Marina acompaña todas las clases.' }) + '</small></p>' +
+        '<div class="grade">' + modulosDaTrilha(tr).map(card).join('') + '</div>';
+      if (tr.extras && tr.extras.length) {
+        h += '<div class="fase-cab fora"><div><h2>' + T({ pt: 'Módulos extras', es: 'Módulos extras' }) + '</h2><p>' + T({ pt: 'Só na Trilha Completa: assuntos de outras áreas, ainda em construção.', es: 'Solo en la Ruta Completa: temas de otras áreas, todavía en construcción.' }) + '</p></div></div><div class="grade">' +
+          tr.extras.map(function (id) { return card(window.MODULOS.filter(function (m) { return m.id === id })[0]) }).join('') + '</div>';
+      }
       return h;
     },
     modulo: function () {
       var m = window.MODULOS.filter(function (x) { return x.id === Q.get('m') })[0] || window.MODULOS[0], aulas = window.AULAS[m.id] || [], f = feitas();
-      return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + faseChip(m) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
+      return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + trilhaChip(m) + faseChip(m) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
           return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><b>' + T(a.titulo) + '</b><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
