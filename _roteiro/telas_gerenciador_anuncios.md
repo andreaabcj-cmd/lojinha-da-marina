@@ -43,7 +43,13 @@ Só rótulos e textos de tela (nada de dados pessoais). Conferido em rascunho, *
 - Prévia do anúncio · Analisar configurações padrão · Prévia avançada · Compartilhar.
 - Rodapé: "Ao clicar em Publicar, você aceita que seu uso das ferramentas para anúncios da Meta está sujeito aos nossos Termos e Condições." · Fechar · Voltar · **Publicar** (NUNCA clicar na conta de aula).
 
+## Business Suite › Conteúdo › Posts e reels → "Criar anúncio" (= Promover / Turbinar), 15/10
+- Lista de posts publicados: colunas Data da publicação · Status · Alcance · Visualizações · Visualizadores · Seguidores; cada post tem botão **Criar anúncio** e "…". Abas: Publicados · Programados · Rascunhos · Quase expirando · Expirados · Posts de anúncios.
+- Tela **Promover** (menu à esquerda): **Anúncios Automatizados** ("Tenha anúncios personalizados que ajudam você a conseguir mais resultados.") · **Criar anúncio** ("Escolha uma meta e crie um anúncio do zero.") · **Turbinar conteúdo** ("Use um post ou reel existente.").
+- Criar anúncio › **Escolha uma meta**: Anúncios automatizados · Receba mensagens ("Conecte-se com as pessoas por meio dos apps de mensagens da Meta." · Sugestão) · Consiga reservas (selo **Pixel conectado** · "Faça com que as pessoas agendem horários.") · Gere compras no site (selo **Pixel conectado** · "Faça com que as pessoas comprem no seu site.") · Turbinar conteúdo do Facebook ("Use um post ou reel existente.") · Conseguir seguidores para a Página · Receba ligações · Receber visitantes no site · Atrair visitas e seguidores para a Página · Obter leads ("Colete informações de contato das pessoas.").
+- Turbinar conteúdo › "Selecione um conteúdo do Facebook" (filtro Tipo de conteúdo: Todos). **Caso real**: a Página só tinha posts de troca de foto de perfil/capa → "Parece que você não criou nenhum conteúdo (ou não é possível turbinar seu conteúdo existente). Crie um post ou reel agora para aumentar o engajamento com sua empresa." · Criar post / Criar reel. → bom caso de atendimento ("o Turbinar não aparece/não funciona").
+
 ## Ainda falta ver de verdade
-- "Turbinar" no Instagram/Página (aula 01).
+- O fluxo completo do "Turbinar" com um post turbinável (público, orçamento, duração, pagamento) — precisa de um post de verdade na Página/Instagram (aula 01).
 - Tela de "Conferir e publicar" / revisão, e o que aparece quando a conta não pode publicar (aula 05).
 - Edição de anúncio já publicado e "fase de aprendizado" (aula 04) — sem publicar, dá para ver só pela documentação; marcar "a conferir".
