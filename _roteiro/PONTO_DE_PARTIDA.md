@@ -96,3 +96,12 @@ Leia nesta ordem:
 - NÃO visto: o checklist real "Configurar sua loja" (exige concluir), coleções, Insights, finalização da compra para vendedores dos EUA (só mencionado em inglês).
 - INVENTADO: tela do checklist, passar das semanas, botões de correção, validação do URL (https, sem encurtadores), textos explicativos da aba "O que mudou".
 - Próximo na ordem do Foco: Shop Ads, Shop Ads com checkout fora da Meta, MBE, integrações, Shopify, WhatsApp (por último).
+
+## Shop Ads / anúncios das Lojas (Foco) · 16/10/2026
+- Simulador `meta-shopads.html` (sim-shopads.js, sim-es-shopads.js, sim-shopads.css): abas Antes de criar (5 ativos), Criar anúncio das Lojas (campanha › conjunto › anúncio, com painel "por que só o site") e Resultados (métricas). `?zerar=1 | ?problema=1 | ?relatorio=1`.
+- 4 tutoriais (antes-de-criar, criar-anuncio-lojas, so-para-o-site, ler-relatorio-lojas), 5 aulas, 5 quizzes; todos rodaram em ES sem "falta".
+- REAL (Central de Ajuda PT, 16/10): 786101482615028 (Sobre os anúncios das Lojas), 3171236526530970 (criar: 5 ativos, Vendas, local Site, eventos, botão Loja em Destinos personalizados, destinos da loja, formatos), 1245449522969913 (por que só o site: requisitos), 6158069234251430 (boas práticas), 775732186866048 (relatórios: métricas recomendadas, "compras na Meta" = 0), 549256849084694 (países: EUA completo; BRASIL = beta aberto, "alguns vendedores podem não ter recursos completos"). Gerenciador de Anúncios real visto (colunas, "Destinos personalizados 0/3").
+- NÃO visto (a conferir): a aba "Loja" e o botão Loja dentro de Destinos personalizados (a conta de aula não tem loja publicada); o Gerenciador travou em "Carregando" ao abrir um rascunho. Nomes exatos em espanhol desses campos.
+- INVENTADO: números do relatório, painel "por que só o site", cenário ?problema=1, botões de correção.
+- Não lido: dicas do Pixel com Site e loja (593273318981233), duplicação do Pixel na Shopify, passos de identidade/catálogo (5318930238194863, 451411486590536), terceiros (1497481554083753).
+- Próximo na ordem do Foco: Shop Ads com checkout fora da Meta, MBE, integrações, Shopify, WhatsApp (por último).

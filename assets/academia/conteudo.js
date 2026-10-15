@@ -27,7 +27,7 @@ window.MODULOS = [
   { id: 'pixel-avancado', fase: 3, status: 'planejado', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
-  { id: 'shop-ads', fase: 4, status: 'planejado', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'O que são os anúncios de loja e como funcionam.', es: 'Qué son los anuncios de tienda y cómo funcionan.' } },
+  { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
   { id: 'shop-ads-offsite', fase: 4, status: 'planejado', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'Finalização da compra, URL de checkout e métricas.', es: 'Finalización de la compra, URL de pago y métricas.' } },
   { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
   { id: 'mbe', fase: 5, status: 'planejado', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Visão geral da extensão e da integração com parceiros.', es: 'Visión general de la extensión y de la integración con socios.' } },
@@ -3282,6 +3282,230 @@ window.AULAS = {
           frase: L('Desde setembro de 2025 a finalização da compra é no site, e as métricas de compras na Meta aparecem como 0. Vamos acompanhar as compras no site.', 'Desde septiembre de 2025 la finalización de compra es en el sitio, y las métricas de compras en Meta aparecen como 0. Sigamos las compras en el sitio.'),
           passos: [L('Veja o local da conversão do anúncio.', 'Mira el lugar de conversión del anuncio.'), L('Troque a métrica do relatório para Compras no site.', 'Cambia la métrica del informe a Compras en el sitio.')],
           encaminhar: L('Pedidos, devoluções e contestações agora são do site do cliente: oriente-o a usar a plataforma de e-commerce dele.', 'Los pedidos, devoluciones y disputas ahora son del sitio del cliente: oriéntalo a usar su plataforma de comercio electrónico.')
+        }
+      }
+    ];
+  })(),
+  'shop-ads': (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Conteúdo da Central de Ajuda da Meta para Empresas lida em 16/10/2026 (português): “Sobre os anúncios das Lojas”, “Como criar um anúncio das Lojas…”, “Por que os anúncios das Lojas só podem direcionar pessoas para seu site”, “Boas práticas…”, “Como entender seus relatórios…” e “Países com suporte para Lojas…”. O Brasil aparece como beta aberto: “alguns vendedores podem não ter recursos completos”. Na conta de aula, o Gerenciador de Anúncios foi visto de verdade, mas a aba Loja e o botão Loja (em Destinos personalizados) não puderam ser vistos, porque a conta não tem loja publicada. As telas do simulador e os números do relatório são do treino (a conferir).', 'Contenido del Centro de ayuda de Meta para Empresas leído el 16/10/2026 (portugués): “Acerca de los anuncios de Tiendas”, “Cómo crear un anuncio de Tiendas…”, “Por qué los anuncios de Tiendas solo pueden dirigir a las personas a tu sitio web”, “Buenas prácticas…”, “Cómo entender tus informes…” y “Países compatibles con las Tiendas…”. Brasil aparece como beta abierto: “algunos vendedores pueden no tener funciones completas”. En la cuenta de clase, el Administrador de anuncios se vio de verdad, pero la pestaña Tienda y el botón Tienda (en Destinos personalizados) no pudieron verse, porque la cuenta no tiene tienda publicada. Las pantallas del simulador y los números del informe son del entrenamiento (por confirmar).');
+    var FERR = L('Gerenciador de Anúncios › Criar › Vendas, e a loja no Gerenciador de Comércio.', 'Administrador de anuncios › Crear › Ventas, y la tienda en el Administrador de ventas.');
+    return [
+      {
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('O que são os anúncios das Lojas', 'Qué son los anuncios de Tiendas'),
+        antes: L('A Marina já tem a loja. Agora quer anúncios que levem as pessoas até ela.', 'Marina ya tiene la tienda. Ahora quiere anuncios que lleven a las personas hasta ella.'),
+        gancho: L('“Anúncio da loja” não é só um anúncio com link: a Meta decide para onde a pessoa vai.', '“Anuncio de la tienda” no es solo un anuncio con enlace: Meta decide adónde va la persona.'),
+        objetivo: L('Entender o que são os anúncios das Lojas, para quem servem e onde estão disponíveis (inclusive o Brasil).', 'Entender qué son los anuncios de Tiendas, para quién sirven y dónde están disponibles (incluido Brasil).'),
+        entender: {
+          dialogo: [
+            ['marina', L('O que é um anúncio das Lojas (Shop Ads)? 🤔', '¿Qué es un anuncio de Tiendas (Shop Ads)? 🤔')],
+            ['rafa', L('É um anúncio que usa a sua loja. Com tecnologia de IA, ele envia cada pessoa ao destino com mais chance de gerar uma conversão: o seu site ou a sua loja no Facebook e no Instagram.', 'Es un anuncio que usa tu tienda. Con tecnología de IA, envía a cada persona al destino con más probabilidad de generar una conversión: tu sitio web o tu tienda en Facebook e Instagram.')],
+            ['marina', L('Posso escolher para onde vai cada pessoa?', '¿Puedo elegir adónde va cada persona?')],
+            ['rafa', L('Você escolhe o destino da loja (página inicial, um produto ou uma coleção), mas é a Meta quem decide, pessoa a pessoa, entre site e loja. E uma loja é obrigatória para esse tipo de anúncio.', 'Eliges el destino de la tienda (página de inicio, un producto o una colección), pero es Meta quien decide, persona a persona, entre sitio y tienda. Y una tienda es obligatoria para este tipo de anuncio.')],
+            ['pixel', L('Disponibilidade: a experiência completa é nos EUA. O Brasil está em beta aberto, e alguns vendedores podem não ter todos os recursos. Confirme sempre na conta.', 'Disponibilidad: la experiencia completa es en EE. UU. Brasil está en beta abierto, y algunos vendedores pueden no tener todas las funciones. Confirma siempre en la cuenta.')]
+          ],
+          pontos: [
+            L('<b>Anúncio das Lojas</b> = anúncio de Vendas ligado à loja; a Meta escolhe site ou loja.', '<b>Anuncio de Tiendas</b> = anuncio de Ventas vinculado a la tienda; Meta elige sitio o tienda.'),
+            L('<b>Exige uma loja</b> (etiquetas de produto não exigem).', '<b>Exige una tienda</b> (las etiquetas de producto no).'),
+            L('<b>Brasil:</b> beta aberto; recursos podem ser parciais.', '<b>Brasil:</b> beta abierto; las funciones pueden ser parciales.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'o-que-e-shopads',
+        atender: {
+          cena: L('Quero que todo mundo que clicar no anúncio caia direto na minha loja do Instagram, nunca no site. Dá para forçar? 🙏', 'Quiero que todos los que hagan clic en el anuncio caigan directo en mi tienda de Instagram, nunca en el sitio. ¿Se puede forzar? 🙏'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Nos anúncios das Lojas, quem decide é a Meta: ela envia cada pessoa ao destino com maior chance de converter, que pode ser a loja ou o site. Você escolhe o destino da loja (página inicial, produto ou coleção) e pode permitir que a Meta escolha o melhor caminho. E lembre que a compra termina no seu site.”', '“En los anuncios de Tiendas, quien decide es Meta: envía a cada persona al destino con más probabilidad de convertir, que puede ser la tienda o el sitio. Tú eliges el destino de la tienda (página de inicio, producto o colección) y puedes permitir que Meta elija el mejor camino. Y recuerda que la compra termina en tu sitio.”'), fb: L('Isso! Explicou a lógica e o limite.', '¡Eso! Explicaste la lógica y el límite.') },
+            { certa: false, txt: L('“Dá, é só marcar a opção ‘só loja’.”', '“Sí, solo marca la opción ‘solo tienda’.”'), fb: L('Não existe essa opção nos anúncios das Lojas.', 'No existe esa opción en los anuncios de Tiendas.') },
+            { certa: false, txt: L('“Use um link encurtado da loja.”', '“Usa un enlace acortado de la tienda.”'), fb: L('Isso não muda a lógica e pode atrapalhar.', 'Eso no cambia la lógica y puede estorbar.') },
+            { certa: false, txt: L('“Não se preocupe, a Meta sempre manda para a loja.”', '“No te preocupes, Meta siempre manda a la tienda.”'), fb: L('Não: ela decide pessoa a pessoa.', 'No: decide persona a persona.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A empresa já tem loja e catálogo? Em qual país a loja foi criada?', '¿La empresa ya tiene tienda y catálogo? ¿En qué país se creó la tienda?'), L('O objetivo é vender no site, na loja ou nos dois?', '¿El objetivo es vender en el sitio, en la tienda o en ambos?')],
+          conferir: [FERR, L('Países com suporte para Lojas (Central de Ajuda).', 'Países compatibles con Tiendas (Centro de ayuda).')],
+          frase: L('Os anúncios das Lojas usam a sua loja e a Meta envia cada pessoa ao site ou à loja, conforme a chance de conversão. No Brasil o recurso está em beta aberto, então vamos conferir o que aparece na sua conta.', 'Los anuncios de Tiendas usan tu tienda y Meta envía a cada persona al sitio o a la tienda, según la probabilidad de conversión. En Brasil la función está en beta abierto, así que revisemos qué aparece en tu cuenta.'),
+          passos: [L('Confirme que a loja existe e está publicada.', 'Confirma que la tienda existe y está publicada.'), L('Explique que a Meta escolhe o destino.', 'Explica que Meta elige el destino.')],
+          encaminhar: L('Se os recursos não aparecerem na conta, pode ser a limitação do beta: oriente o cliente a seguir os avisos da conta e o suporte da Meta.', 'Si las funciones no aparecen en la cuenta, puede ser la limitación del beta: orienta al cliente a seguir los avisos de la cuenta y la asistencia de Meta.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Antes de criar o anúncio', 'Antes de crear el anuncio'),
+        antes: L('A Marina quer criar o primeiro anúncio das Lojas, mas não sabe se está tudo pronto.', 'Marina quiere crear el primer anuncio de Tiendas, pero no sabe si está todo listo.'),
+        gancho: L('Cinco ativos e as permissões certas: sem isso, nem o botão da loja aparece.', 'Cinco activos y los permisos correctos: sin eso, ni aparece el botón de la tienda.'),
+        objetivo: L('Conferir os 5 ativos exigidos e as permissões, e saber onde conferir identidade e catálogo da loja.', 'Revisar los 5 activos exigidos y los permisos, y saber dónde revisar identidad y catálogo de la tienda.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O que preciso ter antes de criar o anúncio? 😬', '¿Qué necesito tener antes de crear el anuncio? 😬')],
+            ['rafa', L('Cinco coisas: uma loja no Facebook e no Instagram; uma Página ou conta do Instagram conectada à loja; um catálogo conectado à loja; um Pixel da Meta conectado ao catálogo; e uma conta de anúncios.', 'Cinco cosas: una tienda en Facebook e Instagram; una página o cuenta de Instagram vinculada a la tienda; un catálogo vinculado a la tienda; un píxel de Meta vinculado al catálogo; y una cuenta publicitaria.')],
+            ['marina', L('E quem pode criar?', '¿Y quién puede crearlo?')],
+            ['rafa', L('Quem tem controle total desses ativos, ou a permissão certa: permissão de Lojas, permissão de anúncio, permissão para criar anúncios no catálogo e permissão para gerenciar campanhas na conta de anúncios.', 'Quien tiene control total de esos activos, o el permiso correcto: permiso de Tiendas, permiso de anuncios, permiso para crear anuncios en el catálogo y permiso para administrar campañas en la cuenta publicitaria.')],
+            ['pixel', L('A Central de Ajuda também ensina a conferir qual identidade e qual catálogo estão ligados à loja. É um bom primeiro passo quando algo não aparece.', 'El Centro de ayuda también enseña a revisar qué identidad y qué catálogo están vinculados a la tienda. Es un buen primer paso cuando algo no aparece.')]
+          ],
+          pontos: [
+            L('<b>5 ativos:</b> loja, Página/Instagram, catálogo, Pixel, conta de anúncios.', '<b>5 activos:</b> tienda, página/Instagram, catálogo, píxel, cuenta publicitaria.'),
+            L('<b>Permissões:</b> controle total ou a permissão específica de cada ativo.', '<b>Permisos:</b> control total o el permiso específico de cada activo.'),
+            L('<b>Conferir</b> identidade e catálogo ligados à loja.', '<b>Revisar</b> identidad y catálogo vinculados a la tienda.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'antes-shopads',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelos 5 ativos, acha o que falta e confere a loja.', 'En el simulador, el Pixel te guía por los 5 activos, encuentra lo que falta y revisa la tienda.'),
+          tour: 'antes-de-criar', pagina: 'meta-shopads.html?zerar=1'
+        },
+        atender: {
+          cena: L('Quero criar o anúncio das Lojas, mas a opção da loja nem aparece! 😠', '¡Quiero crear el anuncio de Tiendas, pero la opción de la tienda ni aparece! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Vamos conferir os ativos: precisa ter loja, Página ou Instagram ligados à loja, catálogo ligado, Pixel ligado ao catálogo e conta de anúncios, e as permissões certas. Também vale confirmar qual identidade e qual catálogo estão ligados à loja. E no Brasil o recurso está em beta aberto.”', '“Revisemos los activos: se necesita tienda, página o Instagram vinculados a la tienda, catálogo vinculado, píxel vinculado al catálogo y cuenta publicitaria, y los permisos correctos. También conviene confirmar qué identidad y qué catálogo están vinculados a la tienda. Y en Brasil la función está en beta abierto.”'), fb: L('Isso! Lista completa e honesta sobre o beta.', '¡Eso! Lista completa y honesta sobre el beta.') },
+            { certa: false, txt: L('“Crie outro anúncio normal, é igual.”', '“Crea otro anuncio normal, es igual.”'), fb: L('Um anúncio normal não usa a loja.', 'Un anuncio normal no usa la tienda.') },
+            { certa: false, txt: L('“Me passe a senha da conta que eu ligo.”', '“Pásame la contraseña de la cuenta y yo lo activo.”'), fb: L('Nunca peça senha: oriente.', 'Nunca pidas contraseñas: orienta.') },
+            { certa: false, txt: L('“Compre um plano premium.”', '“Compra un plan premium.”'), fb: L('Não existe plano para isso.', 'No existe un plan para eso.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual dos 5 ativos falta? Quem tem controle total da conta?', '¿Cuál de los 5 activos falta? ¿Quién tiene control total de la cuenta?'), L('A loja já está publicada?', '¿La tienda ya está publicada?')],
+          conferir: [FERR, L('Pixel e catálogo ligados.', 'Píxel y catálogo vinculados.')],
+          frase: L('Vamos conferir os cinco ativos do anúncio das Lojas, um por um, antes de criar a campanha.', 'Revisemos los cinco activos del anuncio de Tiendas, uno por uno, antes de crear la campaña.'),
+          passos: [L('Confira loja, Página/Instagram, catálogo, Pixel e conta de anúncios.', 'Revisa tienda, página/Instagram, catálogo, píxel y cuenta publicitaria.'), L('Veja as permissões de quem vai criar.', 'Mira los permisos de quien va a crear.')],
+          encaminhar: L('Dar permissão é decisão do dono do portfólio: oriente o cliente a ajustar em Configurações do negócio.', 'Dar permiso es decisión del dueño del portfolio: orienta al cliente a ajustar en Configuración del negocio.')
+        }
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('Criar o anúncio das Lojas', 'Crear el anuncio de Tiendas'),
+        antes: L('Os ativos da Marina estão em dia. Hora de criar a campanha.', 'Los activos de Marina están al día. Hora de crear la campaña.'),
+        gancho: L('Vendas, Site e o botão Loja: três escolhas que transformam um anúncio comum em um anúncio das Lojas.', 'Ventas, Sitio y el botón Tienda: tres elecciones que convierten un anuncio común en un anuncio de Tiendas.'),
+        objetivo: L('Criar um anúncio das Lojas: objetivo Vendas, local Site, evento de conversão compatível, botão Loja e destino da loja.', 'Crear un anuncio de Tiendas: objetivo Ventas, lugar Sitio web, evento de conversión compatible, botón Tienda y destino de la tienda.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Por onde começo? 😅', '¿Por dónde empiezo? 😅')],
+            ['rafa', L('No Gerenciador de Anúncios: Criar, objetivo Vendas, e a campanha de vendas Advantage+. No conjunto, o local da conversão é Site (o antigo “Site e loja” acabou) e o evento de conversão precisa ser compatível.', 'En el Administrador de anuncios: Crear, objetivo Ventas, y la campaña de ventas Advantage+. En el conjunto, el lugar de conversión es Sitio web (el antiguo “Sitio web y tienda” terminó) y el evento de conversión debe ser compatible.')],
+            ['marina', L('Quais eventos?', '¿Qué eventos?')],
+            ['rafa', L('Adicionar ao carrinho, Adicionar à lista de desejos, Iniciar finalização da compra, Compra e Conteúdo visualizado. Com outro evento, o botão Loja não aparece.', 'Agregar al carrito, Agregar a la lista de deseos, Iniciar compra, Compra y Contenido visto. Con otro evento, el botón Tienda no aparece.')],
+            ['pixel', L('No anúncio: destino principal Site com a URL, e em Destinos personalizados, aba Loja, ative o botão Loja e escolha o destino da loja (página inicial, produto ou coleção). Recomenda-se marcar a caixa que deixa a Meta escolher o melhor caminho. Depois, Publicar: o anúncio sai após a análise.', 'En el anuncio: destino principal Sitio web con la URL, y en Destinos personalizados, pestaña Tienda, activa el botón Tienda y elige el destino de la tienda (página de inicio, producto o colección). Se recomienda marcar la casilla que deja a Meta elegir el mejor camino. Luego, Publicar: el anuncio sale después de la revisión.')]
+          ],
+          pontos: [
+            L('<b>Vendas</b> + <b>local Site</b>; o “Site e loja” não existe mais.', '<b>Ventas</b> + <b>lugar Sitio web</b>; “Sitio web y tienda” ya no existe.'),
+            L('<b>Eventos compatíveis:</b> carrinho, lista de desejos, iniciar compra, compra, conteúdo visualizado.', '<b>Eventos compatibles:</b> carrito, lista de deseos, iniciar compra, compra, contenido visto.'),
+            L('<b>Botão Loja</b> em Destinos personalizados é o que torna o anúncio das Lojas.', '<b>El botón Tienda</b> en Destinos personalizados es lo que hace que sea un anuncio de Tiendas.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'criar-shopads',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelos 3 níveis (campanha, conjunto e anúncio) até publicar um anúncio das Lojas.', 'En el simulador, el Pixel te guía por los 3 niveles (campaña, conjunto y anuncio) hasta publicar un anuncio de Tiendas.'),
+          tour: 'criar-anuncio-lojas', pagina: 'meta-shopads.html?zerar=1'
+        },
+        atender: {
+          cena: L('Eu escolhi “Compra” e o botão Loja sumiu! Antes aparecia “Site e loja”! 😡', '¡Elegí “Compra” y el botón Tienda desapareció! ¡Antes aparecía “Sitio web y tienda”! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“O local ‘Site e loja’ não existe mais: agora o local da conversão é Site, e a loja entra em Destinos personalizados, ativando o botão Loja. Para o botão aparecer, o evento de conversão precisa ser um dos compatíveis; ‘Compra’ é. Vamos ver o destino principal e o evento.”', '“El lugar ‘Sitio web y tienda’ ya no existe: ahora el lugar de conversión es Sitio web, y la tienda entra en Destinos personalizados, activando el botón Tienda. Para que el botón aparezca, el evento de conversión debe ser uno de los compatibles; ‘Compra’ lo es. Veamos el destino principal y el evento.”'), fb: L('Isso! Explicou a mudança e o caminho.', '¡Eso! Explicaste el cambio y el camino.') },
+            { certa: false, txt: L('“Foi um bug, espere voltar.”', '“Fue un bug, espera a que vuelva.”'), fb: L('Não: o local mudou.', 'No: el lugar cambió.') },
+            { certa: false, txt: L('“Escolha o objetivo Tráfego.”', '“Elige el objetivo Tráfico.”'), fb: L('O caminho é o objetivo Vendas.', 'El camino es el objetivo Ventas.') },
+            { certa: false, txt: L('“Crie uma campanha por produto.”', '“Crea una campaña por producto.”'), fb: L('Não é isso.', 'No es eso.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o objetivo, o local da conversão e o evento escolhidos?', '¿Cuál es el objetivo, el lugar de conversión y el evento elegidos?'), L('O botão Loja aparece em Destinos personalizados?', '¿El botón Tienda aparece en Destinos personalizados?')],
+          conferir: [FERR, L('Evento de conversão e destino principal.', 'Evento de conversión y destino principal.')],
+          frase: L('Para o anúncio ser das Lojas, usamos o objetivo Vendas, local Site, um evento compatível e ativamos o botão Loja em Destinos personalizados. Vamos conferir cada um.', 'Para que el anuncio sea de Tiendas, usamos el objetivo Ventas, lugar Sitio web, un evento compatible y activamos el botón Tienda en Destinos personalizados. Revisemos cada uno.'),
+          passos: [L('Confira o evento de conversão.', 'Revisa el evento de conversión.'), L('Ative o botão Loja e escolha o destino da loja.', 'Activa el botón Tienda y elige el destino de la tienda.')],
+          encaminhar: L('Se o botão Loja continuar ausente com tudo certo, pode ser a limitação do beta no país: oriente o cliente a seguir os avisos da conta.', 'Si el botón Tienda sigue ausente con todo correcto, puede ser la limitación del beta en el país: orienta al cliente a seguir los avisos de la cuenta.')
+        }
+      },
+      {
+        id: '04', min: 9, status: 'pronta',
+        titulo: L('“Meu anúncio só leva ao site”', '“Mi anuncio solo lleva al sitio”'),
+        antes: L('A Marina notou que o anúncio das Lojas só manda as pessoas para o site.', 'Marina notó que el anuncio de Tiendas solo manda a las personas al sitio.'),
+        gancho: L('Existe uma lista oficial de requisitos. Basta um item errado para o tráfego ir só ao site.', 'Existe una lista oficial de requisitos. Basta un ítem mal para que el tráfico vaya solo al sitio.'),
+        objetivo: L('Usar os requisitos oficiais para achar por que o anúncio só envia pessoas ao site e corrigir.', 'Usar los requisitos oficiales para encontrar por qué el anuncio solo envía personas al sitio y corregirlo.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Meu anúncio das Lojas só manda gente para o site. 😩', 'Mi anuncio de Tiendas solo manda gente al sitio. 😩')],
+            ['rafa', L('Pode ser um problema técnico na loja ou uma opção que não cumpre os requisitos. Veja o conjunto: o público precisa incluir um país onde os anúncios das Lojas estão disponíveis; os posicionamentos precisam incluir Feed, Stories ou Reels; e o evento de conversão precisa ser compatível.', 'Puede ser un problema técnico en la tienda o una opción que no cumple los requisitos. Mira el conjunto: el público debe incluir un país donde los anuncios de Tiendas están disponibles; las ubicaciones deben incluir Feed, Historias o Reels; y el evento de conversión debe ser compatible.')],
+            ['marina', L('E no anúncio?', '¿Y en el anuncio?')],
+            ['rafa', L('O formato: sem catálogo, imagem única, vídeo único ou carrossel; com catálogo, só carrossel ou coleção. O destino precisa ser a loja: app, evento do Facebook ou experiência instantânea não levam à loja. E, com a Shopify, o conjunto de produtos só pode ter produtos de uma loja Shopify sediada nos EUA.', 'El formato: sin catálogo, imagen única, video único o secuencia; con catálogo, solo secuencia o colección. El destino debe ser la tienda: app, evento de Facebook o experiencia instantánea no llevan a la tienda. Y, con Shopify, el conjunto de productos solo puede tener productos de una tienda Shopify con sede en EE. UU.')],
+            ['pixel', L('Corrigiu o item? Edite o conjunto ou o anúncio e publique de novo: o anúncio passa a levar ao site e à loja.', '¿Corregiste el ítem? Edita el conjunto o el anuncio y publica de nuevo: el anuncio pasa a llevar al sitio y a la tienda.')]
+          ],
+          pontos: [
+            L('<b>Conjunto:</b> país disponível, posicionamentos compatíveis, evento compatível.', '<b>Conjunto:</b> país disponible, ubicaciones compatibles, evento compatible.'),
+            L('<b>Anúncio:</b> formato certo (com catálogo: carrossel/coleção) e destino = loja.', '<b>Anuncio:</b> formato correcto (con catálogo: secuencia/colección) y destino = tienda.'),
+            L('<b>Corrigiu?</b> Edite e publique de novo.', '<b>¿Corregiste?</b> Edita y publica de nuevo.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'so-site-shopads',
+        praticar: {
+          texto: L('No simulador, o anúncio só chega ao site por vários motivos. O Pixel te guia para corrigir um por um.', 'En el simulador, el anuncio solo llega al sitio por varios motivos. El Pixel te guía para corregir uno por uno.'),
+          tour: 'so-para-o-site', pagina: 'meta-shopads.html?problema=1'
+        },
+        atender: {
+          cena: L('Pago por anúncio das Lojas e ele só leva ao site! Vocês me enganaram! 😡', '¡Pago por un anuncio de Tiendas y solo lleva al sitio! ¡Me engañaron! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo. Isso costuma acontecer quando alguma opção não cumpre os requisitos: evento de conversão, posicionamentos, formato, destino ou algum ativo. Vamos conferir cada um; ao corrigir e publicar de novo, o anúncio volta a levar ao site e à loja, conforme a Meta decidir.”', '“Entiendo. Esto suele ocurrir cuando alguna opción no cumple los requisitos: evento de conversión, ubicaciones, formato, destino o algún activo. Revisemos cada uno; al corregir y publicar de nuevo, el anuncio vuelve a llevar al sitio y a la tienda, según decida Meta.”'), fb: L('Isso! Acolheu, deu a lista e o caminho.', '¡Eso! Acogiste, diste la lista y el camino.') },
+            { certa: false, txt: L('“Ninguém enganou, é assim mesmo.”', '“Nadie engañó, es así.”'), fb: L('Existe causa e correção.', 'Existe causa y corrección.') },
+            { certa: false, txt: L('“Aumente o orçamento.”', '“Aumenta el presupuesto.”'), fb: L('Orçamento não muda o destino.', 'El presupuesto no cambia el destino.') },
+            { certa: false, txt: L('“Apague a campanha e comece outra.”', '“Elimina la campaña y empieza otra.”'), fb: L('Basta corrigir e publicar de novo.', 'Basta corregir y publicar de nuevo.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quais eventos, posicionamentos, formato e destino foram escolhidos?', '¿Qué eventos, ubicaciones, formato y destino se eligieron?'), L('O botão Loja está ligado?', '¿El botón Tienda está activado?')],
+          conferir: [FERR, L('Conjunto de produtos e país do público.', 'Conjunto de productos y país del público.')],
+          frase: L('O anúncio só vai ao site quando alguma opção não cumpre os requisitos. Vamos revisar evento, posicionamentos, formato e destino, corrigir e publicar de novo.', 'El anuncio solo va al sitio cuando alguna opción no cumple los requisitos. Revisemos evento, ubicaciones, formato y destino, corrijamos y publiquemos de nuevo.'),
+          passos: [L('Compare cada opção com a lista de requisitos.', 'Compara cada opción con la lista de requisitos.'), L('Edite e publique de novo.', 'Edita y publica de nuevo.')],
+          encaminhar: L('Se tudo cumprir os requisitos e ainda for só ao site, pode ser um problema técnico na loja: oriente o cliente a falar com o suporte da Meta.', 'Si todo cumple los requisitos y aun así va solo al sitio, puede ser un problema técnico en la tienda: orienta al cliente a hablar con la asistencia de Meta.')
+        }
+      },
+      {
+        id: '05', min: 9, status: 'pronta',
+        titulo: L('Ler os resultados das Lojas', 'Leer los resultados de Tiendas'),
+        antes: L('Os primeiros anúncios das Lojas rodaram. A Marina abre o relatório e vê números estranhos.', 'Los primeros anuncios de Tiendas corrieron. Marina abre el informe y ve números extraños.'),
+        gancho: L('“Compras na Meta = 0”? Calma. É preciso saber quais métricas olhar.', '“¿Compras en Meta = 0?” Calma. Hay que saber qué métricas mirar.'),
+        objetivo: L('Escolher as métricas certas para os anúncios das Lojas e explicar “compras na Meta = 0” e diferenças com ferramentas de terceiros.', 'Elegir las métricas correctas para los anuncios de Tiendas y explicar “compras en Meta = 0” y diferencias con herramientas de terceros.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Que números devo olhar nos anúncios das Lojas? 🤔', '¿Qué números debo mirar en los anuncios de Tiendas? 🤔')],
+            ['rafa', L('Os anúncios otimizam para conversão: avalie pelos resultados no site e na loja. As métricas recomendadas incluem compras no site, compras, ROAS de compras, valor de conversão de compras, custo por compra, CTR, cliques no link e custo por clique único.', 'Los anuncios optimizan para conversión: evalúa por los resultados en el sitio y en la tienda. Las métricas recomendadas incluyen compras en el sitio, compras, ROAS de compras, valor de conversión de compras, costo por compra, CTR, clics en el enlace y costo por clic único.')],
+            ['marina', L('E “compras na Meta” zeradas?', '¿Y “compras en Meta” en cero?')],
+            ['rafa', L('Depois que a finalização da compra foi para o site, essa métrica não se aplica mais e aparece como 0. Use também as métricas das Lojas, como compras com assistência das lojas e cliques na loja, para entender o papel da loja.', 'Después de que la finalización de compra pasó al sitio, esa métrica ya no se aplica y aparece como 0. Usa también las métricas de Tiendas, como compras con asistencia de las tiendas y clics en la tienda, para entender el papel de la tienda.')],
+            ['pixel', L('Cuidado com cliques de saída e com ROAS de compras no site: não dão o panorama completo. E ferramentas de terceiros, como o Google Analytics, podem contar diferente: elas não veem as conversões na loja.', 'Cuidado con los clics de salida y con el ROAS de compras en el sitio: no dan el panorama completo. Y las herramientas de terceros, como Google Analytics, pueden contar distinto: no ven las conversiones en la tienda.')]
+          ],
+          pontos: [
+            L('<b>Recomendadas:</b> compras, ROAS de compras, valor de conversão, cliques no link.', '<b>Recomendadas:</b> compras, ROAS de compras, valor de conversión, clics en el enlace.'),
+            L('<b>Compras na Meta = 0:</b> não se aplica mais; não é erro.', '<b>Compras en Meta = 0:</b> ya no se aplica; no es un error.'),
+            L('<b>Terceiros</b> contam diferente; teste A/B para comparar.', '<b>Terceros</b> cuentan distinto; prueba A/B para comparar.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'resultados-shopads',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela tabela de métricas: o que é “compras na Meta = 0” e quais usar.', 'En el simulador, el Pixel te guía por la tabla de métricas: qué es “compras en Meta = 0” y cuáles usar.'),
+          tour: 'ler-relatorio-lojas', pagina: 'meta-shopads.html?relatorio=1'
+        },
+        atender: {
+          cena: L('O relatório diz zero compras na Meta, mas o Google Analytics mostra outro número! Qual está certo? 😠', '¡El informe dice cero compras en Meta, pero Google Analytics muestra otro número! ¿Cuál está bien? 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Compras na Meta aparece como zero porque a finalização da compra agora é no site: não é erro. E é normal haver diferença com o Google Analytics, que não vê as conversões na loja. Para avaliar, use métricas recomendadas como compras, ROAS de compras e valor de conversão de compras.”', '“Compras en Meta aparece como cero porque la finalización de compra ahora es en el sitio: no es un error. Y es normal que haya diferencia con Google Analytics, que no ve las conversiones en la tienda. Para evaluar, usa métricas recomendadas como compras, ROAS de compras y valor de conversión de compras.”'), fb: L('Isso! Explicou os dois motivos e as métricas certas.', '¡Eso! Explicaste los dos motivos y las métricas correctas.') },
+            { certa: false, txt: L('“O Google Analytics está sempre certo.”', '“Google Analytics siempre está bien.”'), fb: L('Ele pode não ver as conversões da loja.', 'Puede no ver las conversiones de la tienda.') },
+            { certa: false, txt: L('“O relatório da Meta está quebrado.”', '“El informe de Meta está roto.”'), fb: L('Não: a métrica não se aplica mais.', 'No: la métrica ya no se aplica.') },
+            { certa: false, txt: L('“Olhe só cliques de saída.”', '“Mira solo los clics de salida.”'), fb: L('Cliques de saída não dão o panorama completo.', 'Los clics de salida no dan el panorama completo.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quais métricas o cliente está olhando? Compara com outra ferramenta?', '¿Qué métricas está mirando el cliente? ¿Compara con otra herramienta?'), L('O período inclui datas antes da mudança da finalização da compra?', '¿El período incluye fechas antes del cambio de finalización de compra?')],
+          conferir: [L('Gerenciador de Anúncios › Colunas e relatórios.', 'Administrador de anuncios › Columnas e informes.'), L('Métricas recomendadas para anúncios das Lojas.', 'Métricas recomendadas para anuncios de Tiendas.')],
+          frase: L('Os anúncios das Lojas se avaliam pelos resultados no site e na loja. Vamos usar as métricas recomendadas e entender por que algumas aparecem como zero.', 'Los anuncios de Tiendas se evalúan por los resultados en el sitio y en la tienda. Usemos las métricas recomendadas y entendamos por qué algunas aparecen como cero.'),
+          passos: [L('Troque as colunas pelas métricas recomendadas.', 'Cambia las columnas por las métricas recomendadas.'), L('Explique as diferenças com ferramentas de terceiros.', 'Explica las diferencias con herramientas de terceros.')],
+          encaminhar: L('Para comparar anúncios das Lojas com campanhas só de site, use teste A/B. Se a diferença for grande e sem explicação, siga o suporte da Meta.', 'Para comparar anuncios de Tiendas con campañas solo de sitio, usa una prueba A/B. Si la diferencia es grande y sin explicación, sigue la asistencia de Meta.')
         }
       }
     ];

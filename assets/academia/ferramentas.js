@@ -1296,6 +1296,78 @@
         [{ pt: 'Que a conta foi bloqueada', es: 'Que la cuenta fue bloqueada' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] }
   ]);
 
+  /* ---------- 23. Shop Ads (anúncios das Lojas): cinco mini-quizzes (Shop Ads 01–05) ---------- */
+  quizCatalogo('o-que-e-shopads', { pt: 'O que são anúncios das Lojas?', es: '¿Qué son los anuncios de Tiendas?' }, { pt: 'Loja, destino e disponibilidade.', es: 'Tienda, destino y disponibilidad.' }, [
+    { q: { pt: 'Para onde os anúncios das Lojas enviam as pessoas?', es: '¿Adónde envían los anuncios de Tiendas a las personas?' },
+      o: [[{ pt: 'Sempre para a loja no Instagram', es: 'Siempre a la tienda en Instagram' }, 0, { pt: 'Não: depende de onde a conversão é mais provável.', es: 'No: depende de dónde la conversión es más probable.' }],
+        [{ pt: 'Para o destino com maior chance de conversão: o site ou a loja', es: 'Al destino con más probabilidad de conversión: el sitio o la tienda' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Sempre para o WhatsApp', es: 'Siempre a WhatsApp' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Para criar anúncios das Lojas, é obrigatório ter…', es: 'Para crear anuncios de Tiendas, es obligatorio tener…' },
+      o: [[{ pt: 'Uma loja', es: 'Una tienda' }, 1, { pt: 'Isso! Etiquetas de produto, não.', es: '¡Eso! Las etiquetas de producto, no.' }],
+        [{ pt: 'Meta Verified', es: 'Meta Verified' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }],
+        [{ pt: 'Um app próprio', es: 'Una app propia' }, 0, { pt: 'Não é necessário.', es: 'No es necesaria.' }]] },
+    { q: { pt: 'Como a Central de Ajuda classifica o Brasil para as Lojas?', es: '¿Cómo clasifica el Centro de ayuda a Brasil para las Tiendas?' },
+      o: [[{ pt: 'Experiência completa, igual aos EUA', es: 'Experiencia completa, igual que EE. UU.' }, 0, { pt: 'Os EUA têm a experiência completa.', es: 'EE. UU. tiene la experiencia completa.' }],
+        [{ pt: 'Sem suporte nenhum', es: 'Sin ninguna compatibilidad' }, 0, { pt: 'Está em beta aberto.', es: 'Está en beta abierto.' }],
+        [{ pt: 'Beta aberto: alguns vendedores podem não ter recursos completos', es: 'Beta abierto: algunos vendedores pueden no tener funciones completas' }, 1, { pt: 'Isso! Confirme na conta do cliente.', es: '¡Eso! Confirma en la cuenta del cliente.' }]] }
+  ]);
+  quizCatalogo('antes-shopads', { pt: 'O que preciso antes?', es: '¿Qué necesito antes?' }, { pt: 'Os 5 ativos e as permissões.', es: 'Los 5 activos y los permisos.' }, [
+    { q: { pt: 'Qual destes NÃO é um dos 5 ativos exigidos?', es: '¿Cuál de estos NO es uno de los 5 activos exigidos?' },
+      o: [[{ pt: 'Um catálogo conectado à loja', es: 'Un catálogo vinculado a la tienda' }, 0, { pt: 'É exigido.', es: 'Es exigido.' }],
+        [{ pt: 'Um canal do YouTube', es: 'Un canal de YouTube' }, 1, { pt: 'Isso! Não faz parte da lista.', es: '¡Eso! No es parte de la lista.' }],
+        [{ pt: 'Um Pixel da Meta conectado ao catálogo', es: 'Un píxel de Meta vinculado al catálogo' }, 0, { pt: 'É exigido.', es: 'Es exigido.' }]] },
+    { q: { pt: 'Quem pode criar o anúncio das Lojas?', es: '¿Quién puede crear el anuncio de Tiendas?' },
+      o: [[{ pt: 'Qualquer pessoa, sem permissão', es: 'Cualquier persona, sin permiso' }, 0, { pt: 'São exigidas permissões.', es: 'Se exigen permisos.' }],
+        [{ pt: 'Quem tem controle total dos ativos ou a permissão específica de cada um', es: 'Quien tiene control total de los activos o el permiso específico de cada uno' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só a Meta', es: 'Solo Meta' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Qual é um bom primeiro passo quando a loja ou o catálogo parecem errados?', es: '¿Cuál es un buen primer paso cuando la tienda o el catálogo parecen incorrectos?' },
+      o: [[{ pt: 'Conferir qual identidade e qual catálogo estão conectados à loja', es: 'Revisar qué identidad y qué catálogo están vinculados a la tienda' }, 1, { pt: 'Isso! A Central de Ajuda tem passos para isso.', es: '¡Eso! El Centro de ayuda tiene pasos para eso.' }],
+        [{ pt: 'Criar outra conta de anúncios', es: 'Crear otra cuenta publicitaria' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }],
+        [{ pt: 'Apagar o Pixel', es: 'Eliminar el píxel' }, 0, { pt: 'Isso piora.', es: 'Eso empeora.' }]] }
+  ]);
+  quizCatalogo('criar-shopads', { pt: 'Criando o anúncio', es: 'Creando el anuncio' }, { pt: 'Vendas, Site, evento e botão Loja.', es: 'Ventas, Sitio web, evento y botón Tienda.' }, [
+    { q: { pt: 'Qual objetivo e qual local da conversão usar?', es: '¿Qué objetivo y qué lugar de conversión usar?' },
+      o: [[{ pt: 'Tráfego e App', es: 'Tráfico y App' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Vendas e Site', es: 'Ventas y Sitio web' }, 1, { pt: 'Isso! O local “Site e loja” não existe mais.', es: '¡Eso! El lugar “Sitio web y tienda” ya no existe.' }],
+        [{ pt: 'Reconhecimento e Messenger', es: 'Reconocimiento y Messenger' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Qual destes eventos de conversão é compatível com as Lojas?', es: '¿Cuál de estos eventos de conversión es compatible con Tiendas?' },
+      o: [[{ pt: 'Cadastro concluído', es: 'Registro completado' }, 0, { pt: 'Não é compatível.', es: 'No es compatible.' }],
+        [{ pt: 'Adicionar informações de pagamento', es: 'Agregar información de pago' }, 0, { pt: 'Não é compatível.', es: 'No es compatible.' }],
+        [{ pt: 'Adicionar ao carrinho', es: 'Agregar al carrito' }, 1, { pt: 'Isso! Também lista de desejos, iniciar finalização, compra e conteúdo visualizado.', es: '¡Eso! También lista de deseos, iniciar compra, compra y contenido visto.' }]] },
+    { q: { pt: 'O que transforma o anúncio em um anúncio das Lojas?', es: '¿Qué convierte el anuncio en un anuncio de Tiendas?' },
+      o: [[{ pt: 'Ativar o botão Loja em Destinos personalizados e escolher o destino da loja', es: 'Activar el botón Tienda en Destinos personalizados y elegir el destino de la tienda' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Escolher uma imagem bonita', es: 'Elegir una imagen bonita' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }],
+        [{ pt: 'Usar um texto longo', es: 'Usar un texto largo' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] }
+  ]);
+  quizCatalogo('so-site-shopads', { pt: 'Por que só vai ao site?', es: '¿Por qué solo va al sitio?' }, { pt: 'Requisitos de conjunto e de anúncio.', es: 'Requisitos de conjunto y de anuncio.' }, [
+    { q: { pt: 'Com catálogo ativado, quais formatos funcionam nos anúncios das Lojas?', es: 'Con catálogo activado, ¿qué formatos funcionan en los anuncios de Tiendas?' },
+      o: [[{ pt: 'Só carrossel ou coleção', es: 'Solo secuencia o colección' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só imagem única', es: 'Solo imagen única' }, 0, { pt: 'Com catálogo, não.', es: 'Con catálogo, no.' }],
+        [{ pt: 'Qualquer formato', es: 'Cualquier formato' }, 0, { pt: 'Há restrição.', es: 'Hay restricción.' }]] },
+    { q: { pt: 'Um posicionamento “somente Messenger” faz o anúncio…', es: 'Una ubicación “solo Messenger” hace que el anuncio…' },
+      o: [[{ pt: 'Funcionar normalmente para as Lojas', es: 'Funcione normalmente para Tiendas' }, 0, { pt: 'Não: falta um posicionamento compatível.', es: 'No: falta una ubicación compatible.' }],
+        [{ pt: 'Enviar pessoas só ao site, por falta de posicionamento compatível', es: 'Envíe personas solo al sitio, por falta de ubicación compatible' }, 1, { pt: 'Isso! É preciso Feed, Stories ou Reels.', es: '¡Eso! Se necesita Feed, Historias o Reels.' }],
+        [{ pt: 'Ser reprovado sempre', es: 'Ser rechazado siempre' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Depois de corrigir a opção errada, o que fazer?', es: 'Después de corregir la opción incorrecta, ¿qué hacer?' },
+      o: [[{ pt: 'Apagar tudo e recomeçar', es: 'Borrar todo y empezar de nuevo' }, 0, { pt: 'Não precisa.', es: 'No hace falta.' }],
+        [{ pt: 'Esperar um mês', es: 'Esperar un mes' }, 0, { pt: 'Não precisa.', es: 'No hace falta.' }],
+        [{ pt: 'Editar o conjunto ou o anúncio e publicar de novo', es: 'Editar el conjunto o el anuncio y publicar de nuevo' }, 1, { pt: 'Isso! Aí ele passa a levar ao site e à loja.', es: '¡Eso! Así pasa a llevar al sitio y a la tienda.' }]] }
+  ]);
+  quizCatalogo('resultados-shopads', { pt: 'Quais métricas olhar?', es: '¿Qué métricas mirar?' }, { pt: 'Recomendadas, “compras na Meta = 0” e terceiros.', es: 'Recomendadas, “compras en Meta = 0” y terceros.' }, [
+    { q: { pt: 'Qual destas é uma métrica recomendada para anúncios das Lojas?', es: '¿Cuál de estas es una métrica recomendada para anuncios de Tiendas?' },
+      o: [[{ pt: 'Custo por clique de saída único', es: 'Costo por clic de salida único' }, 0, { pt: 'Não dá o panorama completo.', es: 'No da el panorama completo.' }],
+        [{ pt: 'ROAS de compras', es: 'ROAS de compras' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Compras na Meta', es: 'Compras en Meta' }, 0, { pt: 'Não se aplica mais.', es: 'Ya no se aplica.' }]] },
+    { q: { pt: '“Compras na Meta” aparece como 0. O que dizer ao cliente?', es: '“Compras en Meta” aparece como 0. ¿Qué decirle al cliente?' },
+      o: [[{ pt: 'Que as vendas pararam', es: 'Que las ventas se detuvieron' }, 0, { pt: 'Não: a métrica não se aplica mais.', es: 'No: la métrica ya no se aplica.' }],
+        [{ pt: 'Que não é erro: as compras agora acontecem no site, e a métrica não se aplica mais', es: 'Que no es un error: las compras ahora ocurren en el sitio, y la métrica ya no se aplica' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Que a conta foi bloqueada', es: 'Que la cuenta fue bloqueada' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'O Google Analytics mostra um número de compras diferente do Gerenciador de Anúncios. Por quê?', es: 'Google Analytics muestra un número de compras distinto al del Administrador de anuncios. ¿Por qué?' },
+      o: [[{ pt: 'Porque ferramentas de terceiros costumam medir só o site e não veem as conversões da loja', es: 'Porque las herramientas de terceros suelen medir solo el sitio y no ven las conversiones de la tienda' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Porque um dos dois está sempre quebrado', es: 'Porque uno de los dos siempre está roto' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Porque o cliente digitou errado', es: 'Porque el cliente escribió mal' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
