@@ -183,6 +183,8 @@ var ui = (function(){
     try{fetch(location.href).then(function(r){return r.text()}).then(mostra).catch(function(){mostra(document.documentElement.outerHTML)})}catch(e){mostra(document.documentElement.outerHTML)}}
   function redeReal(){try{return performance.getEntriesByType('resource').filter(function(r){return /facebook\.com\/tr|fbevents\.js|signals\/config/.test(r.name)}).map(function(r){var m=r.name.match(/[?&]ev=([^&]+)/);return{url:r.name,ev:m?decodeURIComponent(m[1]):(/fbevents/.test(r.name)?'fbevents.js (biblioteca)':'configuração do Pixel'),tipo:r.initiatorType}})}catch(e){return[]}}
   function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+  // na loja normal, os avisos de disparo aparecem só durante um tutorial guiado (ajudam quem está aprendendo; fora dele, o Consultor de Dados mostra)
+  function emTour(){try{return !!sessionStorage.getItem('tour.ativo')||/[?&]tour=/.test(location.search)||document.body.classList.contains('em-tour')}catch(e){return false}}
   function toast(msg){if(!toastBox)return;var t=document.createElement('div');t.className='ma-toast';t.innerHTML=msg;toastBox.appendChild(t);setTimeout(function(){t.classList.add('out')},3600);setTimeout(function(){t.remove()},4200)}
   function faixa(){var f=document.getElementById('maFaixa');if(!f)return;var ativos=LABS.filter(function(l){return LAB[l[0]]}).map(function(l){return l[1]});
     f.innerHTML='<a class="ma-plat" href="index.html">🎓 Plataforma</a><span>🧪 Loja de demonstração para treinamento · nenhuma compra é real</span><span class="ma-pix '+(LIVE?'live':'sim')+'">'+(LIVE?'● Pixel ao vivo':'○ Pixel em modo simulação')+'</span>'+(ativos.length?'<span class="ma-pix lab">Falhas ligadas: '+ativos.join(' ')+'</span>':'')+(LABON?'<a class="ma-pix lab" href="?lab=0" title="Voltar à loja normal">🔬 Modo laboratório · sair</a>':'')+
@@ -208,7 +210,7 @@ var ui = (function(){
     return '<svg width="32" height="30" shape-rendering="crispEdges">'+o+'</svg>'}
   function msgEv(ev){return ev.status==='perdido'?'😍 <b>Purchase</b> não foi disparado!':'📡 Pixel: <b>'+ev.nome+'</b> <small>'+({enviado:'enviado à Meta',simulado:'simulado',segurado:'segurado (sem consentimento)',bloqueado:'bloqueado'}[ev.status]||'')+'</small>'}
   function painel(on,ab){if(!panel)return;if(ab){aba=ab;lsSet('aulaAba',ab)}aberto=!!on;lsSet('aulaAberta',aberto);panel.classList.toggle('open',aberto);if(aberto)try{document.dispatchEvent(new CustomEvent('loja:ferramenta',{detail:'aula'}))}catch(e){}render()}
-  return {painel:painel,novo:function(ev){if(!LABON)return;if(!ready){pend.push(ev);return}badge.textContent=pageEvents.length;badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');toast(msgEv(ev));if(aberto)render()},
+  return {painel:painel,novo:function(ev){if(!LABON){if(emTour())setTimeout(function(){toast(msgEv(ev))},400);return}if(!ready){pend.push(ev);return}badge.textContent=pageEvents.length;badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');toast(msgEv(ev));if(aberto)render()},
     build:build,toast:function(m){toast(m)}};
 })();
 

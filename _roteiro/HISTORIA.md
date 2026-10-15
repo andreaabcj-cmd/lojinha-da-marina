@@ -102,6 +102,7 @@ Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do 
 - Destaque dentro de janela/painel: a janela fica inteira visível; só o fundo escurece.
 
 ## Pendências de revisão
+- **Tutorial guiado do F12 simulado (pedido do André, 14/10, para mais tarde):** separado, detalhe por detalhe, porque é mais técnico — cada aba (📹 Câmera, 🌐 Rede, 🔍 Lupa, 📄 Código, 🧪 Lab, 💡 Dica), o que cada coisa mostra e quando usar. Entra no Laboratório › Como fazer… (seção técnica).
 - [ ] **(depois)** Laboratório: todos os tutoriais guiados acessíveis como "Como fazer X" (criar o Pixel, convidar pessoa, criar conta de anúncios…), e a parte da loja/simulação da plataforma que estamos reconstruindo. O Laboratório também guiado.
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.
