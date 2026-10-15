@@ -547,6 +547,95 @@
     }
   };
 
+  /* ---------- 13. Catálogo: cinco mini-quizzes (Catálogo 01–05) ---------- */
+  function quizCatalogo(id, tit, res, itens) {
+    itens.forEach(function (s, i) { var r = (i + id.length) % s.o.length; s.o = s.o.slice(r).concat(s.o.slice(0, r)) });   // a certa não fica sempre em primeiro
+    F[id] = {
+      titulo: tit, resumo: res, paginas: '—', status: 'pronta',
+      montar: function (el, T) {
+        el.innerHTML = '<div class="qp">' + itens.map(function (s, i) {
+          return '<div class="qp-p" data-i="' + i + '"><div class="qp-n"><span>' + (i + 1) + '</span>' + T(s.q) + '</div><div class="qp-ops" style="flex-direction:column;align-items:stretch">' + s.o.map(function (o, j) { return '<button data-qc="' + i + ':' + j + '">' + T(o[0]) + '</button>' }).join('') + '</div><p class="qp-fb"></p></div>';
+        }).join('') + '</div>';
+        el.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-qc]'); if (!b) return; var v = b.getAttribute('data-qc').split(':'), o = itens[+v[0]].o[+v[1]], box = el.querySelector('.qp-p[data-i="' + v[0] + '"]');
+          box.querySelectorAll('[data-qc]').forEach(function (x) { x.classList.remove('certa', 'errada') }); b.classList.add(o[1] ? 'certa' : 'errada');
+          box.querySelector('.qp-fb').innerHTML = (o[1] ? '✅ ' : '❌ ') + T(o[2]);
+          if (o[1] && window.MOV && el.querySelectorAll('.certa').length === itens.length) MOV.confete(b);
+        });
+      }
+    };
+  }
+  quizCatalogo('um-ou-varios', { pt: 'Um catálogo ou vários?', es: '¿Un catálogo o varios?' }, { pt: 'Três situações da loja da Marina: escolha o melhor caminho.', es: 'Tres situaciones de la tienda de Marina: elige el mejor camino.' }, [
+    { q: { pt: 'A Marina vende canecas e camisetas. Ela pensa em criar um catálogo para cada tipo de produto.', es: 'Marina vende tazas y camisetas. Piensa en crear un catálogo para cada tipo de producto.' },
+      o: [[{ pt: 'Um só catálogo com tudo, e conjuntos de produtos para separar canecas e camisetas', es: 'Un solo catálogo con todo, y conjuntos de productos para separar tazas y camisetas' }, 1, { pt: 'Isso! A Meta recomenda um catálogo só para todo o estoque; os conjuntos servem para campanhas específicas.', es: '¡Eso! Meta recomienda un solo catálogo para todo el inventario; los conjuntos sirven para campañas específicas.' }],
+        [{ pt: 'Um catálogo para canecas e outro para camisetas', es: 'Un catálogo para tazas y otro para camisetas' }, 0, { pt: 'A tela até avisa: use um só catálogo e separe com conjuntos.', es: 'La pantalla incluso avisa: usa un solo catálogo y sepáralo con conjuntos.' }],
+        [{ pt: 'Um catálogo novo a cada mês', es: 'Un catálogo nuevo cada mes' }, 0, { pt: 'Não precisa: os itens do catálogo se atualizam, substituem ou excluem quando quiser.', es: 'No hace falta: los artículos del catálogo se actualizan, reemplazan o eliminan cuando quieras.' }]] },
+    { q: { pt: 'A Marina clica no “+” para criar catálogo e aparece o aviso “Tem certeza de que deseja criar um novo catálogo?”. O que ela faz?', es: 'Marina hace clic en “+” para crear un catálogo y aparece el aviso “¿Confirmas que quieres crear un nuevo catálogo?”. ¿Qué hace?' },
+      o: [[{ pt: 'Lê as alternativas do aviso: usar o catálogo que já existe, criar conjuntos ou pedir acesso', es: 'Lee las alternativas del aviso: usar el catálogo que ya existe, crear conjuntos o pedir acceso' }, 1, { pt: 'Isso! O aviso existe para evitar catálogos repetidos.', es: '¡Eso! El aviso existe para evitar catálogos repetidos.' }],
+        [{ pt: 'Fecha o aviso sem ler e continua', es: 'Cierra el aviso sin leer y continúa' }, 0, { pt: 'Quem cria catálogo duplicado depois não sabe qual alimenta os anúncios.', es: 'Quien crea un catálogo duplicado después no sabe cuál alimenta los anuncios.' }],
+        [{ pt: 'Desiste da loja', es: 'Desiste de la tienda' }, 0, { pt: 'Não precisa: é só um aviso de conferência.', es: 'No hace falta: es solo un aviso de revisión.' }]] },
+    { q: { pt: 'Na lista aparece um catálogo com o selo “Sem acesso”. O que isso quer dizer?', es: 'En la lista aparece un catálogo con la etiqueta “Sin acceso”. ¿Qué significa?' },
+      o: [[{ pt: 'O catálogo existe, mas a pessoa não tem permissão nele: dá para pedir acesso', es: 'El catálogo existe, pero la persona no tiene permiso en él: se puede pedir acceso' }, 1, { pt: 'Isso! Em vez de criar outro, peça acesso a quem administra.', es: '¡Eso! En lugar de crear otro, pide acceso a quien lo administra.' }],
+        [{ pt: 'O catálogo foi apagado', es: 'El catálogo fue eliminado' }, 0, { pt: 'Não: ele continua existindo, só sem permissão para essa pessoa.', es: 'No: sigue existiendo, solo que sin permiso para esa persona.' }],
+        [{ pt: 'O catálogo está sem produtos', es: 'El catálogo no tiene productos' }, 0, { pt: 'O selo fala de permissão, não de conteúdo.', es: 'La etiqueta habla de permiso, no de contenido.' }]] }
+  ]);
+  quizCatalogo('tipo-catalogo', { pt: 'Qual tipo escolher?', es: '¿Qué tipo elegir?' }, { pt: 'O tipo do catálogo não muda depois. Treine a escolha.', es: 'El tipo de catálogo no cambia después. Practica la elección.' }, [
+    { q: { pt: 'A Lojinha da Marina vende canecas e camisetas pelo site. Qual opção descreve melhor?', es: 'La Lojinha de Marina vende tazas y camisetas por el sitio. ¿Qué opción la describe mejor?' },
+      o: [[{ pt: 'Produtos online (artigos para casa, vestuário…)', es: 'Productos online (artículos para el hogar, ropa…)' }, 1, { pt: 'Isso! Produtos vendidos online.', es: '¡Eso! Productos que se venden online.' }],
+        [{ pt: 'Imóveis', es: 'Inmuebles' }, 0, { pt: 'Imóveis é para anúncios de casas e apartamentos.', es: 'Inmuebles es para anuncios de casas y departamentos.' }],
+        [{ pt: 'Serviços', es: 'Servicios' }, 0, { pt: 'Ela vende objetos, não serviços.', es: 'Vende objetos, no servicios.' }]] },
+    { q: { pt: 'A Marina escolheu o tipo errado e quer trocar depois. É possível?', es: 'Marina eligió el tipo equivocado y quiere cambiarlo después. ¿Se puede?' },
+      o: [[{ pt: 'Não: a própria tela avisa que não será possível alterar depois. Só criando outro catálogo', es: 'No: la propia pantalla avisa que no se podrá cambiar después. Solo creando otro catálogo' }, 1, { pt: 'Isso! Por isso vale conferir antes de avançar.', es: '¡Eso! Por eso conviene revisar antes de avanzar.' }],
+        [{ pt: 'Sim, nas Configurações do catálogo', es: 'Sí, en la configuración del catálogo' }, 0, { pt: 'Não: o aviso da tela diz o contrário.', es: 'No: el aviso de la pantalla dice lo contrario.' }],
+        [{ pt: 'Sim, pedindo ao suporte', es: 'Sí, pidiéndolo a soporte' }, 0, { pt: 'Não é caminho previsto: confira antes de avançar.', es: 'No es un camino previsto: revisa antes de avanzar.' }]] },
+    { q: { pt: 'Na hora de nomear e escolher o portfólio, o que a Marina deve conferir?', es: 'Al nombrarlo y elegir el portfolio, ¿qué debe revisar Marina?' },
+      o: [[{ pt: 'Que o portfólio empresarial é o da loja dela, e dar um nome que ela reconheça depois', es: 'Que el portfolio comercial sea el de su tienda, y darle un nombre que reconozca después' }, 1, { pt: 'Isso! O catálogo pertence a um portfólio.', es: '¡Eso! El catálogo pertenece a un portfolio.' }],
+        [{ pt: 'Nada: qualquer portfólio serve', es: 'Nada: cualquier portfolio sirve' }, 0, { pt: 'O catálogo fica no portfólio escolhido; quem não tem acesso a ele não verá o catálogo.', es: 'El catálogo queda en el portfolio elegido; quien no tenga acceso a él no verá el catálogo.' }],
+        [{ pt: 'Que o nome tenha só números', es: 'Que el nombre tenga solo números' }, 0, { pt: 'O nome é livre; escolha algo fácil de reconhecer.', es: 'El nombre es libre; elige algo fácil de reconocer.' }]] }
+  ]);
+  quizCatalogo('jeito-de-adicionar', { pt: 'Qual jeito de adicionar produtos?', es: '¿Qué forma de agregar productos?' }, { pt: 'Arquivo, manual, redes sociais ou depois: escolha conforme o caso.', es: 'Archivo, manual, redes sociales o después: elige según el caso.' }, [
+    { q: { pt: 'A loja tem 300 produtos e muda o estoque todo dia.', es: 'La tienda tiene 300 productos y cambia el stock todos los días.' },
+      o: [[{ pt: 'Carregar um arquivo de dados, com carregamento programado', es: 'Subir un archivo de datos, con subida programada' }, 1, { pt: 'Isso! O arquivo (feed) atualiza os produtos automaticamente na frequência escolhida.', es: '¡Eso! El archivo (feed) actualiza los productos automáticamente con la frecuencia elegida.' }],
+        [{ pt: 'Adicionar manualmente, um por um', es: 'Agregar manualmente, uno por uno' }, 0, { pt: 'Para 300 itens com estoque mudando, é trabalho demais e fácil de errar.', es: 'Para 300 artículos con stock cambiando, es demasiado trabajo y fácil de equivocarse.' }],
+        [{ pt: 'Deixar para depois e esquecer', es: 'Dejarlo para después y olvidarse' }, 0, { pt: 'Sem produtos, não há anúncio de catálogo.', es: 'Sin productos, no hay anuncio de catálogo.' }]] },
+    { q: { pt: 'Um cliente quer testar com só 5 produtos antes de ligar o site.', es: 'Un cliente quiere probar con solo 5 productos antes de conectar el sitio.' },
+      o: [[{ pt: 'Adicionar manualmente: a grade pede pelo menos 5 produtos para anúncios de catálogo Advantage+', es: 'Agregar manualmente: la cuadrícula pide al menos 5 productos para anuncios de catálogo Advantage+' }, 1, { pt: 'Isso! Bom para poucos itens e para aprender.', es: '¡Eso! Bueno para pocos artículos y para aprender.' }],
+        [{ pt: 'Criar um feed com a moeda errada', es: 'Crear un feed con la moneda equivocada' }, 0, { pt: 'Não é um jeito de adicionar; e moeda errada vira problema depois.', es: 'No es una forma de agregar; y la moneda equivocada se vuelve un problema después.' }],
+        [{ pt: 'Pedir ao cliente que mande foto de cada produto por mensagem', es: 'Pedir al cliente que mande foto de cada producto por mensaje' }, 0, { pt: 'Isso não alimenta o catálogo.', es: 'Eso no alimenta el catálogo.' }]] },
+    { q: { pt: 'Ao carregar o arquivo, a moeda padrão vem em dólar (USD), mas a loja vende em reais.', es: 'Al subir el archivo, la moneda predeterminada viene en dólares (USD), pero la tienda vende en reales.' },
+      o: [[{ pt: 'Trocar a moeda padrão para a da loja antes de carregar', es: 'Cambiar la moneda predeterminada a la de la tienda antes de subir' }, 1, { pt: 'Isso! Se o feed não trouxer a moeda em cada preço, os produtos entram na moeda padrão.', es: '¡Eso! Si el feed no trae la moneda en cada precio, los productos entran en la moneda predeterminada.' }],
+        [{ pt: 'Deixar em dólar: depois se ajusta', es: 'Dejar en dólares: después se ajusta' }, 0, { pt: 'Os preços aparecem na moeda errada nos anúncios.', es: 'Los precios aparecen en la moneda equivocada en los anuncios.' }],
+        [{ pt: 'Apagar o catálogo', es: 'Eliminar el catálogo' }, 0, { pt: 'Exagero: basta corrigir a moeda e carregar de novo.', es: 'Exagerado: basta corregir la moneda y subir de nuevo.' }]] }
+  ]);
+  quizCatalogo('ids-batem', { pt: 'Os IDs batem?', es: '¿Los IDs coinciden?' }, { pt: 'O Pixel e o catálogo precisam falar o mesmo “idioma” de produto.', es: 'El Pixel y el catálogo deben hablar el mismo “idioma” de producto.' }, [
+    { q: { pt: 'O catálogo tem o produto “CANECA_01”. O Pixel manda, no evento, content_ids = [“caneca-azul”]. O que acontece?', es: 'El catálogo tiene el producto “CANECA_01”. El Pixel manda, en el evento, content_ids = [“caneca-azul”]. ¿Qué pasa?' },
+      o: [[{ pt: 'Não bate: o evento não se liga ao produto do catálogo. É preciso igualar os IDs', es: 'No coincide: el evento no se vincula al producto del catálogo. Hay que igualar los IDs' }, 1, { pt: 'Isso! O content_id do evento tem que ser igual à Identificação do conteúdo do catálogo.', es: '¡Eso! El content_id del evento tiene que ser igual al Identificador de contenido del catálogo.' }],
+        [{ pt: 'Bate: a Meta adivinha pelo nome', es: 'Coincide: Meta adivina por el nombre' }, 0, { pt: 'A Meta compara IDs, não nomes.', es: 'Meta compara IDs, no nombres.' }],
+        [{ pt: 'Bate, só muda a cor da caneca', es: 'Coincide, solo cambia el color de la taza' }, 0, { pt: 'O ID é o que liga os dois lados.', es: 'El ID es lo que une los dos lados.' }]] },
+    { q: { pt: 'A camiseta tem tamanhos P, M e G, todos com a mesma “Identificação do grupo”. Que ID o Pixel deve mandar quando a pessoa vê a camiseta P?', es: 'La camiseta tiene tallas P, M y G, todas con el mismo “Identificador de grupo”. ¿Qué ID debe mandar el Pixel cuando la persona ve la camiseta P?' },
+      o: [[{ pt: 'O da variante que a pessoa viu (a Identificação do conteúdo do P)', es: 'El de la variante que la persona vio (el Identificador de contenido de la P)' }, 1, { pt: 'Isso! Cada variante tem o seu ID; o grupo só junta as variantes do mesmo produto.', es: '¡Eso! Cada variante tiene su ID; el grupo solo une las variantes del mismo producto.' }],
+        [{ pt: 'Sempre o ID do grupo', es: 'Siempre el ID del grupo' }, 0, { pt: 'O grupo organiza as variantes; o evento deve citar a variante.', es: 'El grupo organiza las variantes; el evento debe citar la variante.' }],
+        [{ pt: 'Um ID inventado pelo site', es: 'Un ID inventado por el sitio' }, 0, { pt: 'Se não existir no catálogo, o evento não encontra o produto.', es: 'Si no existe en el catálogo, el evento no encuentra el producto.' }]] },
+    { q: { pt: 'Onde conferir se os eventos do Pixel estão chegando ao catálogo?', es: '¿Dónde revisar si los eventos del Pixel están llegando al catálogo?' },
+      o: [[{ pt: 'No catálogo, na aba Eventos (e depois no Gerenciador de Eventos)', es: 'En el catálogo, en la pestaña Eventos (y luego en el Administrador de eventos)' }, 1, { pt: 'Isso! A aba Eventos mostra a fonte ligada ao catálogo.', es: '¡Eso! La pestaña Eventos muestra el origen conectado al catálogo.' }],
+        [{ pt: 'Na aba Produtos', es: 'En la pestaña Productos' }, 0, { pt: 'Produtos mostra o estoque; os eventos ficam na aba Eventos.', es: 'Productos muestra el inventario; los eventos están en la pestaña Eventos.' }],
+        [{ pt: 'Em Modelos de imagem', es: 'En Plantillas de imágenes' }, 0, { pt: 'Isso é para artes de anúncio, não para eventos.', es: 'Eso es para diseños de anuncios, no para eventos.' }]] }
+  ]);
+  quizCatalogo('por-que-nao-aparece', { pt: 'Por que o produto não aparece?', es: '¿Por qué no aparece el producto?' }, { pt: 'Três casos de “meu produto sumiu”: ache onde olhar primeiro.', es: 'Tres casos de “mi producto desapareció”: encuentra dónde mirar primero.' }, [
+    { q: { pt: 'O Moletom aparece no catálogo como “Indisponível”. A loja diz que tem estoque.', es: 'El Moletom aparece en el catálogo como “Agotado”. La tienda dice que hay stock.' },
+      o: [[{ pt: 'O estoque vem do arquivo (feed): corrija no site e depois use Atualizar na fonte de dados', es: 'El stock viene del archivo (feed): corrígelo en el sitio y luego usa Actualizar en el origen de datos' }, 1, { pt: 'Isso! O catálogo só repete o que o arquivo diz.', es: '¡Eso! El catálogo solo repite lo que dice el archivo.' }],
+        [{ pt: 'Apagar o produto e criar de novo', es: 'Eliminar el producto y crearlo de nuevo' }, 0, { pt: 'Na próxima atualização do arquivo ele voltaria como estava.', es: 'En la próxima actualización del archivo volvería como estaba.' }],
+        [{ pt: 'Criar outro catálogo', es: 'Crear otro catálogo' }, 0, { pt: 'O problema é a informação do arquivo, não o catálogo.', es: 'El problema es la información del archivo, no el catálogo.' }]] },
+    { q: { pt: 'O cliente diz: “mudei o preço no site e o catálogo continua com o antigo”.', es: 'El cliente dice: “cambié el precio en el sitio y el catálogo sigue con el anterior”.' },
+      o: [[{ pt: 'Ver na aba Fontes de dados quando foi a última atualização e a frequência; usar Atualizar', es: 'Ver en la pestaña Orígenes de datos cuándo fue la última actualización y la frecuencia; usar Actualizar' }, 1, { pt: 'Isso! O carregamento é programado (por exemplo, todos os dias).', es: '¡Eso! La subida es programada (por ejemplo, todos los días).' }],
+        [{ pt: 'Dizer que a Meta está com defeito', es: 'Decir que Meta está fallando' }, 0, { pt: 'Primeiro confira a data da última atualização.', es: 'Primero revisa la fecha de la última actualización.' }],
+        [{ pt: 'Pedir para o cliente refazer a loja', es: 'Pedir al cliente que rehaga la tienda' }, 0, { pt: 'Exagero: é questão de atualização.', es: 'Exagerado: es cuestión de actualización.' }]] },
+    { q: { pt: 'Um produto não está “Qualificado”: aparece com aviso na lista.', es: 'Un producto no está “Elegible”: aparece con aviso en la lista.' },
+      o: [[{ pt: 'Abrir o produto, ler o aviso, corrigir o dado no arquivo e atualizar. Se for recusa por política, seguir o encaminhamento do módulo', es: 'Abrir el producto, leer el aviso, corregir el dato en el archivo y actualizar. Si es rechazo por política, seguir la derivación del módulo' }, 1, { pt: 'Isso! Dados do arquivo você resolve; recusas por política vão para a área certa.', es: '¡Eso! Los datos del archivo los resuelves; los rechazos por política van al área correcta.' }],
+        [{ pt: 'Prometer ao cliente que a Meta vai aprovar', es: 'Prometer al cliente que Meta va a aprobar' }, 0, { pt: 'Nunca prometa aprovação.', es: 'Nunca prometas aprobación.' }],
+        [{ pt: 'Ignorar o aviso', es: 'Ignorar el aviso' }, 0, { pt: 'O aviso diz exatamente o que corrigir.', es: 'El aviso dice exactamente qué corregir.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

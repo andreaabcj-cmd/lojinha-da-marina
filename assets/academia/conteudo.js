@@ -18,7 +18,7 @@ window.MODULOS = [
   { id: 'pixel', fase: 1, status: 'construcao', icone: '📡', titulo: { pt: 'Pixel · básico', es: 'Pixel · básico' }, resumo: { pt: 'O que é, como criar, como saber se está funcionando, os eventos e os primeiros avisos.', es: 'Qué es, cómo crearlo, cómo saber si funciona, los eventos y los primeros avisos.' } },
   { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'planejado', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'O que são e erros comuns.', es: 'Qué son y errores comunes.' } },
-  { id: 'catalogo', fase: 2, status: 'planejado', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
+  { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
   { id: 'relatorios', fase: 3, status: 'planejado', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Criar e interpretar relatórios; o efeito das mudanças de privacidade do iOS.', es: 'Crear e interpretar informes; el efecto de los cambios de privacidad de iOS.' } },
   { id: 'segmentacao', fase: 3, status: 'planejado', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados (visitantes do site pelo Pixel, lista de clientes), públicos semelhantes, público Advantage+, categorias especiais e erros comuns.', es: 'Públicos personalizados (visitantes del sitio por el Pixel, lista de clientes), públicos similares, público Advantage+, categorías especiales y errores comunes.' } },
   { id: 'entrega', fase: 3, status: 'planejado', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'Como a entrega funciona, a fase de aprendizado e a solução de problemas.', es: 'Cómo funciona la entrega, la fase de aprendizaje y la solución de problemas.' } },
@@ -972,6 +972,241 @@ window.AULAS = {
       fontes: [
         { url: 'https://www.facebook.com/business/help/125897810822573', titulo: { pt: 'Como solucionar problemas ao criar ou publicar uma campanha de anúncios no Gerenciador de Anúncios da Meta', es: 'Cómo solucionar problemas al crear o publicar una campaña de anuncios en el Administrador de anuncios de Meta' }, conferido: '16/10/2026' }
       ]
+    }
+  ],
+  catalogo: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'O catálogo: um só para tudo', es: 'El catálogo: uno solo para todo' },
+      antes: { pt: 'O Pixel da Marina já mede o que acontece no site: visitas, carrinho, compra.', es: 'El Pixel de Marina ya mide lo que pasa en el sitio: visitas, carrito, compra.' },
+      gancho: { pt: '“Quero que o anúncio mostre exatamente a caneca que a pessoa olhou. Como a Meta sabe quais produtos eu tenho?” Vamos conhecer o catálogo.', es: '“Quiero que el anuncio muestre exactamente la taza que la persona miró. ¿Cómo sabe Meta qué productos tengo?” Vamos a conocer el catálogo.' },
+      objetivo: { pt: 'Entender o que é o catálogo, onde ele mora (Gerenciador de Comércio) e por que se usa um só para todo o estoque.', es: 'Entender qué es el catálogo, dónde vive (Administrador de ventas) y por qué se usa uno solo para todo el inventario.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Tenho canecas, camisetas, ecobag… Como a Meta fica sabendo de tudo isso? 🤔', es: 'Tengo tazas, camisetas, ecobag… ¿Cómo se entera Meta de todo eso? 🤔' }],
+          ['rafa', { pt: 'Pelo catálogo: é uma lista dos seus produtos, com nome, preço, foto, link e estoque. Ele mora no Gerenciador de Comércio e os anúncios usam essa lista.', es: 'Por el catálogo: es una lista de tus productos, con nombre, precio, foto, enlace y stock. Vive en el Administrador de ventas y los anuncios usan esa lista.' }],
+          ['marina', { pt: 'Posso fazer um catálogo para canecas e outro para camisetas?', es: '¿Puedo hacer un catálogo para tazas y otro para camisetas?' }],
+          ['rafa', { pt: 'A Meta recomenda um só catálogo para todo o estoque. Para separar, você cria conjuntos de produtos. A própria tela avisa isso quando você tenta criar outro.', es: 'Meta recomienda un solo catálogo para todo el inventario. Para separar, creas conjuntos de productos. La propia pantalla avisa eso cuando intentas crear otro.' }],
+          ['pixel', { pt: 'Dica: se aparece “Sem acesso” ao lado de um catálogo, ele existe, mas você não tem permissão. Peça acesso em vez de criar um novo.', es: 'Pista: si aparece “Sin acceso” junto a un catálogo, existe, pero no tienes permiso. Pide acceso en lugar de crear uno nuevo.' }]
+        ],
+        pontos: [
+          { pt: '<b>Catálogo</b> = a lista dos produtos que os anúncios e as lojas usam.', es: '<b>Catálogo</b> = la lista de productos que usan los anuncios y las tiendas.' },
+          { pt: '<b>Um só</b> para todo o estoque; <b>conjuntos</b> para separar por campanha.', es: '<b>Uno solo</b> para todo el inventario; <b>conjuntos</b> para separar por campaña.' },
+          { pt: 'Ele <b>pertence a um portfólio empresarial</b> e tem seu próprio ID.', es: 'Él <b>pertenece a un portfolio comercial</b> y tiene su propio ID.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (Gerenciador de Comércio › Ativos › Catálogos), com um catálogo de aula. Nomes de menus conferidos em português e em espanhol (Administrador de ventas).', es: 'Pantallas vistas de verdad el 16/10/2026 (Administrador de ventas › Activos › Catálogos), con un catálogo de práctica. Nombres de menús revisados en portugués y en español (Administrador de ventas).' }
+      },
+      ferramenta: 'um-ou-varios',
+      atender: {
+        cena: { pt: 'Vou vender canecas e camisetas. Criei um catálogo para cada um, mas meus anúncios ficaram bagunçados. O que fiz de errado? 😕', es: 'Voy a vender tazas y camisetas. Creé un catálogo para cada uno, pero mis anuncios quedaron desordenados. ¿Qué hice mal? 😕' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O ideal é um catálogo só para todo o estoque. Para separar canecas e camisetas, use conjuntos de produtos dentro dele. Vamos juntar tudo em um e criar os conjuntos.”', es: '“Lo ideal es un solo catálogo para todo el inventario. Para separar tazas y camisetas, usa conjuntos de productos dentro de él. Juntemos todo en uno y creemos los conjuntos.”' }, fb: { pt: 'Isso! Você explicou a regra e já indicou o caminho.', es: '¡Eso! Explicaste la regla y ya indicaste el camino.' } },
+          { certa: false, txt: { pt: '“Crie um terceiro catálogo para os dois.”', es: '“Crea un tercer catálogo para los dos.”' }, fb: { pt: 'Isso só aumenta a bagunça: o ideal é um catálogo único.', es: 'Eso solo aumenta el desorden: lo ideal es un catálogo único.' } },
+          { certa: false, txt: { pt: '“Apague a conta de anúncios e comece de novo.”', es: '“Elimina la cuenta publicitaria y empieza de nuevo.”' }, fb: { pt: 'Exagero: o problema é organizar o catálogo.', es: 'Exagerado: el problema es organizar el catálogo.' } },
+          { certa: false, txt: { pt: '“Isso é normal, a Meta embaralha os produtos.”', es: '“Eso es normal, Meta mezcla los productos.”' }, fb: { pt: 'Não é isso: a Meta recomenda um catálogo único.', es: 'No es eso: Meta recomienda un catálogo único.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Quantos catálogos existem hoje no portfólio? Algum aparece como “Sem acesso”?', es: '¿Cuántos catálogos existen hoy en el portfolio? ¿Alguno aparece como “Sin acceso”?' },
+          { pt: 'O que a pessoa quer separar: tipo de produto, campanha ou loja?', es: '¿Qué quiere separar la persona: tipo de producto, campaña o tienda?' }],
+        conferir: [{ pt: 'Gerenciador de Comércio › Ativos › Catálogos: a lista e os IDs.', es: 'Administrador de ventas › Activos › Catálogos: la lista y los IDs.' },
+          { pt: 'Para separar por campanha: aba Conjuntos do catálogo.', es: 'Para separar por campaña: pestaña Conjuntos del catálogo.' }],
+        frase: { pt: 'A Meta recomenda usar um só catálogo para todo o estoque. Para separar por tipo ou campanha, a gente cria conjuntos de produtos dentro dele.', es: 'Meta recomienda usar un solo catálogo para todo el inventario. Para separar por tipo o campaña, creamos conjuntos de productos dentro de él.' },
+        passos: [{ pt: 'Abra o catálogo principal e vá na aba Conjuntos.', es: 'Abre el catálogo principal y ve a la pestaña Conjuntos.' },
+          { pt: 'Crie um conjunto para cada grupo de produtos.', es: 'Crea un conjunto para cada grupo de productos.' }],
+        encaminhar: { pt: 'Se a pessoa não achar o catálogo ou não tiver acesso, confirme o portfólio e peça acesso a quem administra.', es: 'Si la persona no encuentra el catálogo o no tiene acceso, confirma el portfolio y pide acceso a quien lo administra.' }
+      }
+    },
+    {
+      id: '02', min: 8, status: 'pronta',
+      titulo: { pt: 'Criar o catálogo da Marina', es: 'Crear el catálogo de Marina' },
+      antes: { pt: 'A Marina entendeu: um catálogo só, com os produtos dentro.', es: 'Marina entendió: un solo catálogo, con los productos dentro.' },
+      gancho: { pt: '“Vou criar agora! Mas tem uma pergunta que diz que não dá para mudar depois…” Vamos passo a passo.', es: '“¡Lo voy a crear ahora! Pero hay una pregunta que dice que no se puede cambiar después…” Vamos paso a paso.' },
+      objetivo: { pt: 'Criar um catálogo: escolher o tipo certo, o portfólio e o nome, e saber o que ainda falta depois.', es: 'Crear un catálogo: elegir el tipo correcto, el portfolio y el nombre, y saber qué falta después.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Cliquei em “+” e apareceu um aviso perguntando se tenho certeza. Posso continuar? 🤔', es: 'Hice clic en “+” y apareció un aviso preguntando si estoy segura. ¿Puedo continuar? 🤔' }],
+          ['rafa', { pt: 'Pode. O aviso só lembra que um catálogo único é melhor. Se você ainda não tem nenhum, siga em frente.', es: 'Puedes. El aviso solo recuerda que un catálogo único es mejor. Si todavía no tienes ninguno, sigue adelante.' }],
+          ['marina', { pt: 'E essa pergunta de “o que descreve seus produtos”?', es: '¿Y esa pregunta de “qué describe tus productos”?' }],
+          ['rafa', { pt: 'Escolha com cuidado: a tela avisa que não dá para alterar depois. Para a loja da Marina, é “Produtos online”.', es: 'Elige con cuidado: la pantalla avisa que no se puede cambiar después. Para la tienda de Marina, es “Productos online”.' }],
+          ['pixel', { pt: 'Depois vêm o portfólio, o nome e, mais adiante, a conexão de dados (Pixel). O catálogo nasce vazio: os produtos entram no próximo passo.', es: 'Después vienen el portfolio, el nombre y, más adelante, la conexión de datos (Pixel). El catálogo nace vacío: los productos entran en el próximo paso.' }]
+        ],
+        pontos: [
+          { pt: '<b>O tipo não muda depois.</b> Escolha o que melhor descreve os produtos.', es: '<b>El tipo no cambia después.</b> Elige lo que mejor describa los productos.' },
+          { pt: '<b>Portfólio empresarial</b> certo, e um <b>nome</b> fácil de reconhecer.', es: '<b>Portfolio comercial</b> correcto y un <b>nombre</b> fácil de reconocer.' },
+          { pt: '<b>Conectar dados</b> liga o Pixel ao catálogo (dá para fazer depois, na aba Eventos).', es: '<b>Conectar datos</b> vincula el Pixel al catálogo (se puede hacer después, en la pestaña Eventos).' }
+        ],
+        notas: { pt: 'Fluxo visto de verdade em 16/10/2026 até a tela “Configure seu catálogo” (catálogo de aula). Opções 2 a 4 do tipo foram resumidas (a conferir).', es: 'Flujo visto de verdad el 16/10/2026 hasta la pantalla “Configurar tu catálogo” (catálogo de práctica). Las opciones 2 a 4 del tipo se resumieron (por confirmar).' }
+      },
+      ferramenta: 'tipo-catalogo',
+      praticar: {
+        texto: { pt: 'No simulador do Gerenciador de Comércio, o Pixel te guia para criar o catálogo da Marina, do “+” até o catálogo pronto.', es: 'En el simulador del Administrador de ventas, el Pixel te guía para crear el catálogo de Marina, del “+” hasta el catálogo listo.' },
+        tour: 'criar-catalogo', pagina: 'meta-catalogo.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Criei o catálogo como “Serviços” sem querer e agora quero mudar para “Produtos online”. Onde eu troco?? 😰', es: 'Creé el catálogo como “Servicios” sin querer y ahora quiero cambiarlo a “Productos online”. ¿Dónde lo cambio?? 😰' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Esse tipo não dá para alterar depois: a própria tela avisa. O caminho é criar um catálogo novo com o tipo certo e passar os produtos para ele. Se ainda estiver vazio, é rápido.”', es: '“Ese tipo no se puede cambiar después: la propia pantalla lo avisa. El camino es crear un catálogo nuevo con el tipo correcto y pasar los productos a él. Si todavía está vacío, es rápido.”' }, fb: { pt: 'Isso! Honesto sobre a limitação e já com o caminho.', es: '¡Eso! Honesto sobre la limitación y ya con el camino.' } },
+          { certa: false, txt: { pt: '“Vá em Configurações e troque o tipo.”', es: '“Ve a Configurar y cambia el tipo.”' }, fb: { pt: 'Esse campo não existe: o tipo não muda depois.', es: 'Ese campo no existe: el tipo no cambia después.' } },
+          { certa: false, txt: { pt: '“Peça ao suporte para trocar e aguarde.”', es: '“Pide a soporte que lo cambie y espera.”' }, fb: { pt: 'Não é um caminho previsto e atrasa o cliente.', es: 'No es un camino previsto y retrasa al cliente.' } },
+          { certa: false, txt: { pt: '“Deixe assim, não faz diferença.”', es: '“Déjalo así, no hace diferencia.”' }, fb: { pt: 'O tipo define como o catálogo é configurado: vale acertar.', es: 'El tipo define cómo se configura el catálogo: conviene acertar.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual tipo foi escolhido na criação? Ainda está vazio?', es: '¿Qué tipo se eligió al crear? ¿Todavía está vacío?' },
+          { pt: 'Em qual portfólio empresarial o catálogo foi criado?', es: '¿En qué portfolio comercial se creó el catálogo?' }],
+        conferir: [{ pt: 'Tipo do catálogo: não pode ser alterado depois.', es: 'Tipo de catálogo: no se puede cambiar después.' },
+          { pt: 'Portfólio e acesso das pessoas na aba Configurações › Permissões.', es: 'Portfolio y acceso de las personas en la pestaña Configurar › Permisos.' }],
+        frase: { pt: 'O tipo do catálogo não pode ser alterado depois. Se foi escolhido errado, o caminho é criar um catálogo novo com o tipo certo e levar os produtos para ele.', es: 'El tipo de catálogo no se puede cambiar después. Si se eligió mal, el camino es crear un catálogo nuevo con el tipo correcto y llevar los productos a él.' },
+        passos: [{ pt: 'Em Ativos › Catálogos, clique em “+” e crie o novo catálogo.', es: 'En Activos › Catálogos, haz clic en “+” y crea el nuevo catálogo.' },
+          { pt: 'Escolha o tipo certo, o portfólio e o nome.', es: 'Elige el tipo correcto, el portfolio y el nombre.' }],
+        encaminhar: { pt: 'Se o portfólio ou as permissões estiverem erradas, siga o módulo de Portfólio empresarial.', es: 'Si el portfolio o los permisos están mal, sigue el módulo de Portfolio comercial.' }
+      }
+    },
+    {
+      id: '03', min: 8, status: 'pronta',
+      titulo: { pt: 'Colocar os produtos no catálogo', es: 'Poner los productos en el catálogo' },
+      antes: { pt: 'O catálogo da Marina está criado, mas ainda vazio.', es: 'El catálogo de Marina está creado, pero todavía vacío.' },
+      gancho: { pt: '“Tenho uma planilha com meus produtos. Qual dos jeitos eu uso?” Vamos ver as opções e carregar o arquivo.', es: '“Tengo una hoja de cálculo con mis productos. ¿Cuál de las formas uso?” Vamos a ver las opciones y subir el archivo.' },
+      objetivo: { pt: 'Escolher o jeito de adicionar produtos, carregar um arquivo (feed) com a moeda certa e conferir o resultado.', es: 'Elegir la forma de agregar productos, subir un archivo (feed) con la moneda correcta y revisar el resultado.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Apareceram quatro jeitos de adicionar produtos. Qual escolho? 🤔', es: 'Aparecieron cuatro formas de agregar productos. ¿Cuál elijo? 🤔' }],
+          ['rafa', { pt: 'Com muitos produtos ou estoque que muda, use um arquivo de dados. Para poucos, dá para adicionar à mão. Também dá para trazer das redes sociais ou deixar para depois.', es: 'Con muchos productos o stock que cambia, usa un archivo de datos. Para pocos, se puede agregar a mano. También se puede traer de las redes sociales o dejarlo para después.' }],
+          ['marina', { pt: 'E o arquivo, de onde vem?', es: '¿Y el archivo, de dónde viene?' }],
+          ['rafa', { pt: 'Pode ser um link (URL) ou uma planilha do Google, e a Meta lê o arquivo na frequência que você escolher, por exemplo todos os dias.', es: 'Puede ser un enlace (URL) o una hoja de cálculo de Google, y Meta lee el archivo con la frecuencia que elijas, por ejemplo todos los días.' }],
+          ['pixel', { pt: 'Cuidado com a moeda padrão! Se o arquivo não trouxer a moeda em cada preço, os produtos entram na moeda padrão da tela. Confira antes de carregar.', es: '¡Cuidado con la moneda predeterminada! Si el archivo no trae la moneda en cada precio, los productos entran en la moneda predeterminada de la pantalla. Revísala antes de subir.' }]
+        ],
+        pontos: [
+          { pt: '<b>Arquivo de dados</b> (feed): atualiza sozinho na frequência escolhida.', es: '<b>Archivo de datos</b> (feed): se actualiza solo con la frecuencia elegida.' },
+          { pt: '<b>Manual</b>: bom para poucos produtos; a grade pede pelo menos 5 para anúncios de catálogo Advantage+.', es: '<b>Manual</b>: bueno para pocos productos; la cuadrícula pide al menos 5 para anuncios de catálogo Advantage+.' },
+          { pt: '<b>Moeda padrão</b> certa antes de carregar.', es: '<b>Moneda predeterminada</b> correcta antes de subir.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (feed de aula carregado por URL). A janela real de edição de produto ainda não foi vista (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (feed de práctica subido por URL). La ventana real de edición de producto todavía no se vio (por confirmar).' }
+      },
+      ferramenta: 'jeito-de-adicionar',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para carregar o arquivo de produtos da Marina com a moeda certa e ver os 8 produtos chegarem.', es: 'En el simulador, el Pixel te guía para subir el archivo de productos de Marina con la moneda correcta y ver llegar los 8 productos.' },
+        tour: 'adicionar-produtos', pagina: 'meta-catalogo.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Carreguei meu arquivo e os preços ficaram todos em dólar! Minha loja é em reais. 😱', es: '¡Subí mi archivo y los precios quedaron todos en dólares! Mi tienda es en reales. 😱' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Isso acontece quando o arquivo não traz a moeda em cada preço e a moeda padrão ficou em dólar. Vamos corrigir a moeda padrão da fonte de dados (ou colocar a moeda em cada preço no arquivo) e atualizar.”', es: '“Eso pasa cuando el archivo no trae la moneda en cada precio y la moneda predeterminada quedó en dólares. Corrijamos la moneda predeterminada del origen de datos (o pongamos la moneda en cada precio en el archivo) y actualicemos.”' }, fb: { pt: 'Isso! Você achou a causa provável e o caminho.', es: '¡Eso! Encontraste la causa probable y el camino.' } },
+          { certa: false, txt: { pt: '“A Meta converteu sozinha, é assim mesmo.”', es: '“Meta convirtió sola, es así.”' }, fb: { pt: 'Não: ela só usou a moeda padrão configurada.', es: 'No: solo usó la moneda predeterminada configurada.' } },
+          { certa: false, txt: { pt: '“Edite os 8 preços um por um na tela.”', es: '“Edita los 8 precios uno por uno en la pantalla.”' }, fb: { pt: 'Na próxima atualização do arquivo eles voltariam. Corrija na origem.', es: 'En la próxima actualización del archivo volverían. Corrige en el origen.' } },
+          { certa: false, txt: { pt: '“Apague o catálogo e crie outro.”', es: '“Elimina el catálogo y crea otro.”' }, fb: { pt: 'Exagero: basta corrigir a moeda e atualizar.', es: 'Exagerado: basta corregir la moneda y actualizar.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O arquivo é CSV, XML ou planilha? Está em um link público?', es: '¿El archivo es CSV, XML u hoja de cálculo? ¿Está en un enlace público?' },
+          { pt: 'Qual moeda padrão está na fonte de dados? Os preços do arquivo trazem a moeda?', es: '¿Qué moneda predeterminada está en el origen de datos? ¿Los precios del archivo traen la moneda?' }],
+        conferir: [{ pt: 'Aba Fontes de dados: tipo, frequência, última atualização, status.', es: 'Pestaña Orígenes de datos: tipo, frecuencia, última actualización, estado.' },
+          { pt: 'Aba Produtos: quantidade, preços e moeda.', es: 'Pestaña Productos: cantidad, precios y moneda.' }],
+        frase: { pt: 'Se o arquivo não traz a moeda em cada preço, a Meta usa a moeda padrão da fonte de dados. Vamos conferir qual está marcada e carregar de novo.', es: 'Si el archivo no trae la moneda en cada precio, Meta usa la moneda predeterminada del origen de datos. Revisemos cuál está marcada y subamos de nuevo.' },
+        passos: [{ pt: 'Abra a aba Fontes de dados e a fonte do arquivo.', es: 'Abre la pestaña Orígenes de datos y el origen del archivo.' },
+          { pt: 'Ajuste a moeda padrão e clique em Atualizar.', es: 'Ajusta la moneda predeterminada y haz clic en Actualizar.' }],
+        encaminhar: { pt: 'Se o arquivo em si está errado (colunas faltando, link fora do ar), o ajuste é na loja ou na plataforma do cliente; a Central de Ajuda da Meta explica o formato.', es: 'Si el archivo en sí está mal (columnas faltantes, enlace caído), el ajuste es en la tienda o en la plataforma del cliente; el Centro de ayuda de Meta explica el formato.' }
+      }
+    },
+    {
+      id: '04', min: 7, status: 'pronta',
+      titulo: { pt: 'Catálogo e Pixel falando a mesma língua', es: 'Catálogo y Pixel hablando el mismo idioma' },
+      antes: { pt: 'Os 8 produtos da Marina já estão no catálogo, e o Pixel mede o site.', es: 'Los 8 productos de Marina ya están en el catálogo, y el Pixel mide el sitio.' },
+      gancho: { pt: '“O anúncio não mostra a caneca que a pessoa viu!” Pode ser que os IDs não combinem. Vamos conferir.', es: '“¡El anuncio no muestra la taza que vio la persona!” Puede ser que los IDs no coincidan. Vamos a revisar.' },
+      objetivo: { pt: 'Entender que o ID do produto no catálogo e o content_id do evento do Pixel precisam ser iguais, e onde conferir cada um.', es: 'Entender que el ID del producto en el catálogo y el content_id del evento del Pixel deben ser iguales, y dónde revisar cada uno.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'O Pixel manda “caneca-azul” e o catálogo chama “CANECA_01”. Dá problema? 🤔', es: 'El Pixel manda “caneca-azul” y el catálogo se llama “CANECA_01”. ¿Hay problema? 🤔' }],
+          ['rafa', { pt: 'Dá. A Meta liga o evento ao produto pelo ID. Se o content_id do evento não for igual à Identificação do conteúdo do catálogo, ela não acha o produto.', es: 'Sí. Meta vincula el evento al producto por el ID. Si el content_id del evento no es igual al Identificador de contenido del catálogo, no encuentra el producto.' }],
+          ['marina', { pt: 'E a camiseta, que tem P, M e G?', es: '¿Y la camiseta, que tiene P, M y G?' }],
+          ['rafa', { pt: 'Cada tamanho é uma variante, com seu próprio ID. A “Identificação do grupo” só junta as variantes do mesmo produto. O evento deve citar a variante que a pessoa viu.', es: 'Cada talla es una variante, con su propio ID. El “Identificador de grupo” solo une las variantes del mismo producto. El evento debe citar la variante que la persona vio.' }],
+          ['pixel', { pt: 'Para ver se o catálogo está recebendo eventos, olhe a aba Eventos do catálogo; os detalhes dos eventos ficam no Gerenciador de Eventos.', es: 'Para ver si el catálogo está recibiendo eventos, mira la pestaña Eventos del catálogo; los detalles de los eventos están en el Administrador de eventos.' }]
+        ],
+        pontos: [
+          { pt: '<b>content_id do Pixel = Identificação do conteúdo do catálogo.</b>', es: '<b>content_id del Pixel = Identificador de contenido del catálogo.</b>' },
+          { pt: '<b>Variantes</b> têm ID próprio; o <b>grupo</b> só as agrupa.', es: '<b>Las variantes</b> tienen ID propio; el <b>grupo</b> solo las agrupa.' },
+          { pt: '<b>Aba Eventos</b> do catálogo mostra a fonte ligada.', es: '<b>La pestaña Eventos</b> del catálogo muestra el origen conectado.' }
+        ],
+        notas: { pt: 'Nomes das colunas e dos IDs vistos de verdade em 16/10/2026. A tela real da aba Eventos com o Pixel já ligado ainda não foi vista (a conferir).', es: 'Nombres de las columnas y de los IDs vistos de verdad el 16/10/2026. La pantalla real de la pestaña Eventos con el Pixel ya conectado todavía no se vio (por confirmar).' }
+      },
+      ferramenta: 'ids-batem',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva pelas colunas de ID do catálogo e pelas variantes da camiseta, e mostra onde conferir os eventos.', es: 'En el simulador, el Pixel te lleva por las columnas de ID del catálogo y por las variantes de la camiseta, y muestra dónde revisar los eventos.' },
+        tour: 'conferir-ids', pagina: 'meta-catalogo.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Meu anúncio de catálogo mostra produtos que nada têm a ver com o que o cliente olhou. O Pixel está funcionando! 😤', es: 'Mi anuncio de catálogo muestra productos que nada tienen que ver con lo que miró el cliente. ¡El Pixel está funcionando! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O Pixel funcionar não basta: o ID que ele manda no evento (content_id) precisa ser igual ao ID do produto no catálogo. Vamos comparar um exemplo: o ID do evento e a Identificação do conteúdo na aba Produtos.”', es: '“Que el Pixel funcione no basta: el ID que manda en el evento (content_id) debe ser igual al ID del producto en el catálogo. Comparemos un ejemplo: el ID del evento y el Identificador de contenido en la pestaña Productos.”' }, fb: { pt: 'Isso! Você apontou a causa mais comum e como conferir.', es: '¡Eso! Señalaste la causa más común y cómo revisar.' } },
+          { certa: false, txt: { pt: '“Aumente o orçamento do anúncio.”', es: '“Aumenta el presupuesto del anuncio.”' }, fb: { pt: 'Orçamento não muda quais produtos aparecem.', es: 'El presupuesto no cambia qué productos aparecen.' } },
+          { certa: false, txt: { pt: '“Recrie o Pixel do zero.”', es: '“Recrea el Pixel desde cero.”' }, fb: { pt: 'Exagero: o Pixel está funcionando; o problema é o ID.', es: 'Exagerado: el Pixel está funcionando; el problema es el ID.' } },
+          { certa: false, txt: { pt: '“Troque o nome dos produtos no catálogo.”', es: '“Cambia el nombre de los productos en el catálogo.”' }, fb: { pt: 'A Meta compara IDs, não nomes.', es: 'Meta compara IDs, no nombres.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual é o content_id que o evento manda? (Testar eventos, no Gerenciador de Eventos.)', es: '¿Cuál es el content_id que manda el evento? (Probar eventos, en el Administrador de eventos.)' },
+          { pt: 'Qual é a Identificação do conteúdo do mesmo produto no catálogo?', es: '¿Cuál es el Identificador de contenido del mismo producto en el catálogo?' },
+          { pt: 'O produto tem variantes (tamanho, cor)? O evento manda a variante certa?', es: '¿El producto tiene variantes (talla, color)? ¿El evento manda la variante correcta?' }],
+        conferir: [{ pt: 'content_id do evento igual à Identificação do conteúdo do catálogo.', es: 'content_id del evento igual al Identificador de contenido del catálogo.' },
+          { pt: 'Aba Eventos do catálogo: fonte ligada.', es: 'Pestaña Eventos del catálogo: origen conectado.' }],
+        frase: { pt: 'Para o catálogo e o Pixel se entenderem, o ID do produto no evento precisa ser igual ao ID no catálogo. Vamos comparar um exemplo.', es: 'Para que el catálogo y el Pixel se entiendan, el ID del producto en el evento debe ser igual al ID en el catálogo. Comparemos un ejemplo.' },
+        passos: [{ pt: 'Com Testar eventos, veja o content_id de um ViewContent.', es: 'Con Probar eventos, mira el content_id de un ViewContent.' },
+          { pt: 'No catálogo, aba Produtos, compare com a Identificação do conteúdo.', es: 'En el catálogo, pestaña Productos, compara con el Identificador de contenido.' }],
+        encaminhar: { pt: 'Se os IDs do site precisam mudar, o ajuste é feito no site ou na plataforma da loja do cliente (o módulo de Integrações explica).', es: 'Si los IDs del sitio necesitan cambiar, el ajuste se hace en el sitio o en la plataforma de la tienda del cliente (el módulo de Integraciones lo explica).' }
+      }
+    },
+    {
+      id: '05', min: 8, status: 'pronta',
+      titulo: { pt: 'Meu produto não aparece!', es: '¡Mi producto no aparece!' },
+      antes: { pt: 'Catálogo criado, produtos carregados, IDs combinando.', es: 'Catálogo creado, productos cargados, IDs coincidiendo.' },
+      gancho: { pt: '“O Moletom está como indisponível, mas eu tenho no estoque!” Vamos achar a causa.', es: '“¡El Moletom aparece como agotado, pero lo tengo en stock!” Vamos a encontrar la causa.' },
+      objetivo: { pt: 'Achar por que um produto não aparece como esperado: ler o status, a disponibilidade e a fonte de dados, e corrigir onde o dado nasce.', es: 'Encontrar por qué un producto no aparece como se espera: leer el estado, la disponibilidad y el origen de datos, y corregir donde nace el dato.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu Moletom aparece como “Indisponível” no catálogo. Eu tenho estoque! 😩', es: 'Mi Moletom aparece como “Agotado” en el catálogo. ¡Tengo stock! 😩' }],
+          ['rafa', { pt: 'O catálogo só repete o que o arquivo diz. Veja na aba Fontes de dados quando foi a última atualização. Se o estoque mudou no site depois, falta atualizar.', es: 'El catálogo solo repite lo que dice el archivo. Mira en la pestaña Orígenes de datos cuándo fue la última actualización. Si el stock cambió en el sitio después, falta actualizar.' }],
+          ['marina', { pt: 'Então corrijo o estoque no site e clico em Atualizar?', es: '¿Entonces corrijo el stock en el sitio y hago clic en Actualizar?' }],
+          ['rafa', { pt: 'Isso. Se você editar só no catálogo, a próxima leitura do arquivo desfaz a edição.', es: 'Eso. Si editas solo en el catálogo, la próxima lectura del archivo deshace la edición.' }],
+          ['pixel', { pt: 'Na lista, o status também diz se o produto está “Qualificado”. Se não estiver, abra o produto e leia o aviso.', es: 'En la lista, el estado también dice si el producto está “Elegible”. Si no lo está, abre el producto y lee el aviso.' }]
+        ],
+        pontos: [
+          { pt: '<b>Onde olhar primeiro:</b> status, disponibilidade e última atualização da fonte.', es: '<b>Dónde mirar primero:</b> estado, disponibilidad y última actualización del origen.' },
+          { pt: '<b>Corrija na origem</b> (o site ou o arquivo) e depois atualize.', es: '<b>Corrige en el origen</b> (el sitio o el archivo) y luego actualiza.' },
+          { pt: '<b>Produto não qualificado:</b> leia o aviso do produto.', es: '<b>Producto no elegible:</b> lee el aviso del producto.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (lista de produtos com “Qualificado”, Disponibilidade e Fontes de dados). A lista de motivos de produtos recusados não foi vista e não é escopo deste treinamento (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (lista de productos con “Elegible”, Disponibilidad y Orígenes de datos). La lista de motivos de productos rechazados no se vio y no es alcance de esta capacitación (por confirmar).' }
+      },
+      ferramenta: 'por-que-nao-aparece',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva a achar o Moletom indisponível, ver a fonte de dados e corrigir o estoque na origem.', es: 'En el simulador, el Pixel te lleva a encontrar el Moletom agotado, ver el origen de datos y corregir el stock en el origen.' },
+        tour: 'achar-produto', pagina: 'meta-catalogo.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Troquei o estoque do Moletom direto no catálogo e, no outro dia, voltou a ficar indisponível! 😡', es: '¡Cambié el stock del Moletom directo en el catálogo y, al otro día, volvió a quedar agotado! 😡' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Como os produtos vêm do arquivo, a leitura seguinte sobrescreve o que foi editado só no catálogo. Corrija o estoque no site (a origem) e clique em Atualizar na fonte de dados.”', es: '“Como los productos vienen del archivo, la lectura siguiente sobrescribe lo que se editó solo en el catálogo. Corrige el stock en el sitio (el origen) y haz clic en Actualizar en el origen de datos.”' }, fb: { pt: 'Isso! Você explicou por que voltou e onde corrigir.', es: '¡Eso! Explicaste por qué volvió y dónde corregir.' } },
+          { certa: false, txt: { pt: '“Edite de novo todo dia no catálogo.”', es: '“Edítalo de nuevo todos los días en el catálogo.”' }, fb: { pt: 'Isso é trabalho sem fim: corrija na origem.', es: 'Eso es trabajo sin fin: corrige en el origen.' } },
+          { certa: false, txt: { pt: '“É um bug da Meta, aguarde.”', es: '“Es un error de Meta, espera.”' }, fb: { pt: 'Não é bug: o arquivo mandou o estoque antigo.', es: 'No es un error: el archivo mandó el stock antiguo.' } },
+          { certa: false, txt: { pt: '“Prometo que a Meta aprova o produto hoje.”', es: '“Prometo que Meta aprueba el producto hoy.”' }, fb: { pt: 'Nunca prometa aprovação, e aqui o problema é o estoque do arquivo.', es: 'Nunca prometas aprobación, y aquí el problema es el stock del archivo.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual é o produto e qual status ou aviso aparece nele?', es: '¿Cuál es el producto y qué estado o aviso aparece en él?' },
+          { pt: 'Quando foi a última atualização da fonte de dados? Qual a frequência?', es: '¿Cuándo fue la última actualización del origen de datos? ¿Cuál es la frecuencia?' },
+          { pt: 'O dado (preço, estoque) está certo no site?', es: '¿El dato (precio, stock) está correcto en el sitio?' }],
+        conferir: [{ pt: 'Aba Produtos: status, disponibilidade, preço.', es: 'Pestaña Productos: estado, disponibilidad, precio.' },
+          { pt: 'Aba Fontes de dados: última atualização, frequência, status.', es: 'Pestaña Orígenes de datos: última actualización, frecuencia, estado.' }],
+        frase: { pt: 'O catálogo repete o que o arquivo diz. Vamos corrigir o dado na origem, no site, e atualizar a fonte de dados.', es: 'El catálogo repite lo que dice el archivo. Corrijamos el dato en el origen, en el sitio, y actualicemos el origen de datos.' },
+        passos: [{ pt: 'Corrija o estoque ou o preço no site.', es: 'Corrige el stock o el precio en el sitio.' },
+          { pt: 'No catálogo, aba Fontes de dados, clique em Atualizar e confira o produto.', es: 'En el catálogo, pestaña Orígenes de datos, haz clic en Actualizar y revisa el producto.' }],
+        encaminhar: { pt: 'Se o produto foi recusado por política ou o aviso não é sobre dados do arquivo, confirme o sintoma e siga a Central de Ajuda da Meta; esse tema é tratado por outra área.', es: 'Si el producto fue rechazado por política o el aviso no es sobre datos del archivo, confirma el síntoma y sigue el Centro de ayuda de Meta; ese tema lo trata otra área.' }
+      }
     }
   ],
   'pixel-avancado': [

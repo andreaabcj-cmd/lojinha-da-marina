@@ -34,3 +34,8 @@ Leia nesta ordem:
 - Trazer o Pixel para o portfólio da Lojinha (hoje está fora dele).
 - Espanhol em tudo (adiado; telas da Meta precisam dos textos reais em espanhol).
 - Tutorial guiado do F12 simulado (mais pra frente).
+
+## Catálogo (Foco) · 16/10/2026
+- Pronto em PT e ES: simulador `meta-catalogo.html` (Gerenciador de Comércio › Catálogo; `?zerar=1`, `?exemplo=1`, `?moeda=1`), 4 tutoriais (`criar-catalogo`, `adicionar-produtos`, `conferir-ids`, `achar-produto`), 5 aulas (`AULAS.catalogo`) e 5 quizzes (`um-ou-varios`, `tipo-catalogo`, `jeito-de-adicionar`, `ids-batem`, `por-que-nao-aparece`).
+- A conferir com a tela real: janela de editar produto, janela "Criar conjunto", textos das opções 2–4 do tipo, aba Eventos com Pixel já ligado. Produtos recusados por política = fora de escopo (uma linha de encaminhamento, sem detalhes internos).
+- Próximo na ordem do Foco: Anúncios no Feed.
