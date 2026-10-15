@@ -22,7 +22,7 @@ window.MODULOS = [
   { id: 'microdados', fase: 2, status: 'construcao', icone: '🔎', titulo: { pt: 'Microdata Debugger', es: 'Microdata Debugger' }, resumo: { pt: 'Conferir se as páginas de produto do site falam a língua do catálogo.', es: 'Revisar si las páginas de producto del sitio hablan el idioma del catálogo.' } },
   { id: 'relatorios', fase: 3, status: 'construcao', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Ler, montar e comparar relatórios; atribuição e relatórios vazios.', es: 'Leer, armar y comparar informes; atribución e informes vacíos.' } },
   { id: 'segmentacao', fase: 3, status: 'construcao', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados do site, semelhantes, salvos e controles; erros comuns.', es: 'Públicos personalizados del sitio, similares, guardados y controles; errores comunes.' } },
-  { id: 'entrega', fase: 3, status: 'planejado', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'Como a entrega funciona, a fase de aprendizado e a solução de problemas.', es: 'Cómo funciona la entrega, la fase de aprendizaje y la solución de problemas.' } },
+  { id: 'entrega', fase: 3, status: 'construcao', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'A fase de aprendizado, as edições significativas e o que fazer quando o anúncio não veicula.', es: 'La fase de aprendizaje, las ediciones significativas y qué hacer cuando el anuncio no entrega.' } },
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
   { id: 'pixel-avancado', fase: 3, status: 'planejado', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   { id: 'verified', fase: 4, status: 'planejado', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'O que é, recursos, escopo e casos.', es: 'Qué es, funciones, alcance y casos.' } },
@@ -2569,6 +2569,231 @@ window.AULAS = {
       }
     }
   ],
+  entrega: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA_CENTRAL = L('Conteúdo da Central de Ajuda da Meta lida em 16/10/2026 (fase de aprendizado, edições significativas, solução de problemas de veiculação). Colunas, status e avisos vistos de verdade no Gerenciador de Anúncios em português e espanhol. Os números do simulador (resultados, dias, o limiar de 50% do orçamento) e a caixa “?” são do treino (a conferir).', L('', '').es);
+    NOTA_CENTRAL.es = 'Contenido del Centro de ayuda de Meta leído el 16/10/2026 (fase de aprendizaje, ediciones significativas, solución de problemas de entrega). Columnas, estados y avisos vistos de verdad en el Administrador de anuncios en portugués y español. Los números del simulador (resultados, días, el umbral del 50 % del presupuesto) y la caja “?” son del entrenamiento (por confirmar).';
+    var FERR = L('Gerenciador de Anúncios › Conjuntos de anúncios.', 'Administrador de anuncios › Conjuntos de anuncios.');
+    return [
+      {
+        id: '01', min: 6, status: 'pronta',
+        titulo: L('A fase de aprendizado', 'La fase de aprendizaje'),
+        antes: L('A Marina publicou as campanhas da Lojinha. No dia seguinte, os conjuntos mostram “Aprendizado” e ela acha que algo quebrou.', 'Marina publicó las campañas de la Lojinha. Al día siguiente, los conjuntos muestran “Aprendizaje” y ella cree que algo se rompió.'),
+        gancho: L('“Está escrito Aprendizado, travou?” Calma: é o começo normal de todo anúncio.', '“Dice Aprendizaje, ¿se trabó?” Calma: es el comienzo normal de todo anuncio.'),
+        objetivo: L('Entender o que é a fase de aprendizado, quando ela aparece e por que não se deve mexer à toa.', 'Entender qué es la fase de aprendizaje, cuándo aparece y por qué no hay que tocar sin motivo.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Publiquei ontem e na tabela está “Aprendizado”. Os anúncios estão quebrados? 😰', 'Publiqué ayer y en la tabla dice “Aprendizaje”. ¿Los anuncios están rotos? 😰')],
+            ['rafa', L('Não. A fase de aprendizado é o período em que o sistema de veiculação ainda aprende como o conjunto pode ser veiculado e qual desempenho pode ter.', 'No. La fase de aprendizaje es el período en que el sistema de entrega todavía aprende cómo puede entregarse el conjunto y qué rendimiento puede tener.')],
+            ['marina', L('E quando acaba?', '¿Y cuándo termina?')],
+            ['rafa', L('Quando o desempenho se estabiliza: normalmente depois de cerca de 50 resultados na semana seguinte à última edição significativa.', 'Cuando el rendimiento se estabiliza: normalmente después de unos 50 resultados en la semana siguiente a la última edición significativa.')],
+            ['pixel', L('Aparece em conjunto novo e depois de uma edição significativa. Durante o aprendizado o desempenho é menos estável: por isso, quanto menos mexer, melhor.', 'Aparece en un conjunto nuevo y después de una edición significativa. Durante el aprendizaje el rendimiento es menos estable: por eso, cuanto menos se toque, mejor.')]
+          ],
+          pontos: [
+            L('<b>Aprendizado</b> = o sistema ainda está aprendendo; é normal no começo.', '<b>Aprendizaje</b> = el sistema todavía está aprendiendo; es normal al comienzo.'),
+            L('<b>Sai</b> quando estabiliza: cerca de 50 resultados na semana após a última edição significativa.', '<b>Sale</b> cuando se estabiliza: unos 50 resultados en la semana posterior a la última edición significativa.'),
+            L('<b>Volta</b> se houver uma edição significativa. Edite só com bom motivo.', '<b>Vuelve</b> si hay una edición significativa. Edita solo con buen motivo.')
+          ],
+          notas: NOTA_CENTRAL
+        },
+        ferramenta: 'o-que-e-aprendizado',
+        atender: {
+          cena: L('Meu anúncio está em “Aprendizado” há 2 dias. Está com defeito? Quero que você conserte! 😠', 'Mi anuncio está en “Aprendizaje” hace 2 días. ¿Tiene un defecto? ¡Quiero que lo arregles! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não é defeito: todo conjunto novo passa pela fase de aprendizado, em que o sistema ainda aprende como veicular. Ela costuma terminar depois de cerca de 50 resultados na semana. O melhor agora é não editar sem necessidade, porque algumas edições reiniciam o aprendizado.”', '“No es un defecto: todo conjunto nuevo pasa por la fase de aprendizaje, en la que el sistema todavía aprende cómo entregar. Suele terminar después de unos 50 resultados en la semana. Lo mejor ahora es no editar sin necesidad, porque algunas ediciones reinician el aprendizaje.”'), fb: L('Isso! Tranquilizou e deu a regra de ouro.', '¡Eso! Tranquilizaste y diste la regla de oro.') },
+            { certa: false, txt: L('“Sim, está quebrado. Vou apagar e criar de novo.”', '“Sí, está roto. Voy a borrarlo y crearlo de nuevo.”'), fb: L('Recriar só reinicia o aprendizado do zero.', 'Recrearlo solo reinicia el aprendizaje desde cero.') },
+            { certa: false, txt: L('“Aumente o orçamento em 10 vezes para sair logo.”', '“Aumenta el presupuesto 10 veces para salir pronto.”'), fb: L('Mudança grande de orçamento pode ser edição significativa e não garante sair do aprendizado.', 'Un cambio grande de presupuesto puede ser una edición significativa y no garantiza salir del aprendizaje.') },
+            { certa: false, txt: L('“Me passe o acesso à conta que eu mexo.”', '“Pásame el acceso a la cuenta y yo lo toco.”'), fb: L('Nunca peça acesso: oriente o cliente.', 'Nunca pidas acceso: orienta al cliente.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Há quantos dias o conjunto está publicado? Houve alguma edição?', '¿Hace cuántos días está publicado el conjunto? ¿Hubo alguna edición?'), L('O que aparece na coluna Veiculação?', '¿Qué aparece en la columna Entrega?')],
+          conferir: [FERR, L('Coluna Veiculação e a data da última edição significativa.', 'Columna Entrega y la fecha de la última edición significativa.')],
+          frase: L('A fase de aprendizado é normal em conjuntos novos: o sistema ainda aprende como veicular. Vamos esperar sem editar, porque algumas edições reiniciam o aprendizado.', 'La fase de aprendizaje es normal en conjuntos nuevos: el sistema todavía aprende cómo entregar. Esperemos sin editar, porque algunas ediciones reinician el aprendizaje.'),
+          passos: [L('Veja o status do conjunto na coluna Veiculação.', 'Mira el estado del conjunto en la columna Entrega.'), L('Combine com o cliente de esperar sem editar.', 'Acuerda con el cliente esperar sin editar.')],
+          encaminhar: L('Aprendizado não é problema para resolver: é orientar o cliente a esperar. Se aparecer outro aviso na conta, siga a mensagem e a Central de Ajuda da Meta.', 'El aprendizaje no es un problema para resolver: es orientar al cliente a esperar. Si aparece otro aviso en la cuenta, sigue el mensaje y el Centro de ayuda de Meta.')
+        }
+      },
+      {
+        id: '02', min: 7, status: 'pronta',
+        titulo: L('Ler a coluna Veiculação', 'Leer la columna Entrega'),
+        antes: L('A Marina quer saber como cada conjunto está, de uma olhada só.', 'Marina quiere saber cómo está cada conjunto, de un vistazo.'),
+        gancho: L('Uma coluna conta a história: Ativo, Aprendizado, Em análise, Desativado…', 'Una columna cuenta la historia: Activo, Aprendizaje, En revisión, Desactivado…'),
+        objetivo: L('Ler a coluna Veiculação, o card “% gastos na fase de aprendizado” e saber o que falta para sair do aprendizado.', 'Leer la columna Entrega, la tarjeta “% de gasto en la fase de aprendizaje” y saber qué falta para salir del aprendizaje.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Na tabela de conjuntos tem a coluna Veiculação. O que ela diz? 🤔', 'En la tabla de conjuntos hay una columna Entrega. ¿Qué dice? 🤔')],
+            ['rafa', L('Ela mostra o estado de cada conjunto: Ativo (veiculando bem), Aprendizado, Aprendizado limitado, Em análise, Desativado…', 'Muestra el estado de cada conjunto: Activo (entregando bien), Aprendizaje, Aprendizaje limitado, En revisión, Desactivado…')],
+            ['marina', L('E esses resultados ao lado?', '¿Y esos resultados al lado?')],
+            ['rafa', L('Contam os resultados desde a última edição significativa. Perto de 50 é o ponto em que o conjunto costuma sair do aprendizado.', 'Cuentan los resultados desde la última edición significativa. Cerca de 50 es el punto en que el conjunto suele salir del aprendizaje.')],
+            ['pixel', L('Ainda tem um card no topo: “% gastos na fase de aprendizado”. Mostra quanto do dinheiro gasto está em conjuntos que ainda aprendem.', 'Además hay una tarjeta arriba: “% de gasto en la fase de aprendizaje”. Muestra cuánto del dinero gastado está en conjuntos que todavía aprenden.')]
+          ],
+          pontos: [
+            L('<b>Veiculação</b> = estado de cada conjunto.', '<b>Entrega</b> = estado de cada conjunto.'),
+            L('<b>Resultados</b> contam desde a última edição significativa.', '<b>Resultados</b> cuentan desde la última edición significativa.'),
+            L('<b>% gastos no aprendizado</b> = peso do aprendizado no gasto total.', '<b>% de gasto en aprendizaje</b> = peso del aprendizaje en el gasto total.')
+          ],
+          notas: NOTA_CENTRAL
+        },
+        ferramenta: 'ler-veiculacao',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela coluna Veiculação e deixa o tempo passar para ver quem sai do aprendizado.', 'En el simulador, el Pixel te guía por la columna Entrega y deja pasar el tiempo para ver quién sale del aprendizaje.'),
+          tour: 'ler-aprendizado', pagina: 'meta-entrega.html?exemplo=1'
+        },
+        atender: {
+          cena: L('Minha caneca tem 27 resultados e a camiseta 9. Quando elas saem do aprendizado? ⏳', 'Mi taza tiene 27 resultados y la camiseta 9. ¿Cuándo salen del aprendizaje? ⏳'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Elas saem quando o desempenho se estabiliza, normalmente depois de cerca de 50 resultados na semana seguinte à última edição significativa. A caneca está mais perto. Se ninguém editar, a contagem segue sozinha.”', '“Salen cuando el rendimiento se estabiliza, normalmente después de unos 50 resultados en la semana siguiente a la última edición significativa. La taza está más cerca. Si nadie edita, el conteo sigue solo.”'), fb: L('Isso! Deu a referência e o que fazer.', '¡Eso! Diste la referencia y qué hacer.') },
+            { certa: false, txt: L('“Saem em 24 horas, sempre.”', '“Salen en 24 horas, siempre.”'), fb: L('Não há prazo fixo: depende dos resultados.', 'No hay plazo fijo: depende de los resultados.') },
+            { certa: false, txt: L('“Só saem se você pagar mais.”', '“Solo salen si pagas más.”'), fb: L('Pagar mais não é regra; depende de estabilizar.', 'Pagar más no es la regla; depende de estabilizarse.') },
+            { certa: false, txt: L('“Quando a Meta quiser.”', '“Cuando Meta quiera.”'), fb: L('Há uma referência clara: cerca de 50 resultados.', 'Hay una referencia clara: unos 50 resultados.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quantos resultados cada conjunto tem? Houve edição recente?', '¿Cuántos resultados tiene cada conjunto? ¿Hubo edición reciente?'), L('O card “% gastos na fase de aprendizado” mostra quanto?', '¿Cuánto muestra la tarjeta “% de gasto en la fase de aprendizaje”?')],
+          conferir: [FERR, L('Coluna Resultados e Última edição significativa.', 'Columna Resultados y Última edición significativa.')],
+          frase: L('O conjunto sai do aprendizado quando estabiliza, normalmente depois de cerca de 50 resultados na semana após a última edição significativa. Vamos acompanhar a coluna Veiculação.', 'El conjunto sale del aprendizaje cuando se estabiliza, normalmente después de unos 50 resultados en la semana posterior a la última edición significativa. Sigamos la columna Entrega.'),
+          passos: [L('Abra Conjuntos de anúncios e olhe Veiculação e Resultados.', 'Abre Conjuntos de anuncios y mira Entrega y Resultados.'), L('Compare com a data da última edição significativa.', 'Compara con la fecha de la última edición significativa.')],
+          encaminhar: L('Se o conjunto não chegar a resultados suficientes, veja a aula 04 (aprendizado limitado).', 'Si el conjunto no llega a resultados suficientes, mira la clase 04 (aprendizaje limitado).')
+        }
+      },
+      {
+        id: '03', min: 8, status: 'pronta',
+        titulo: L('Edições significativas', 'Ediciones significativas'),
+        antes: L('A Marina quer trocar o público e a foto da Caneca azul para “testar”.', 'Marina quiere cambiar el público y la foto de la Caneca azul para “probar”.'),
+        gancho: L('Nem toda edição é igual: algumas mexem pouco, outras zeram o aprendizado.', 'No toda edición es igual: algunas tocan poco, otras ponen a cero el aprendizaje.'),
+        objetivo: L('Saber quais edições reiniciam o aprendizado e decidir se vale editar.', 'Saber qué ediciones reinician el aprendizaje y decidir si vale editar.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Mudei o orçamento de 25 para 26 e nada aconteceu. Aí troquei o público e tudo zerou! 😵', 'Cambié el presupuesto de 25 a 26 y no pasó nada. Luego cambié el público y ¡todo se puso a cero! 😵')],
+            ['rafa', L('É isso: existem as edições significativas. Segundo a Central de Ajuda, são mudanças no direcionamento (público), no criativo, no evento de otimização, na estratégia de lance, adicionar um anúncio ou pausar por 7 dias ou mais.', 'Eso: existen las ediciones significativas. Según el Centro de ayuda, son cambios en la segmentación (público), en el creativo, en el evento de optimización, en la estrategia de puja, agregar un anuncio o pausar por 7 días o más.')],
+            ['marina', L('E o orçamento?', '¿Y el presupuesto?')],
+            ['rafa', L('Poderá ou não: depende do tamanho da mudança. De 100 para 101 provavelmente não; uma mudança grande pode.', 'Puede serlo o no: depende del tamaño del cambio. De 100 a 101 probablemente no; un cambio grande puede serlo.')],
+            ['pixel', L('Na dúvida, planeje as mudanças, faça de uma vez e espere os resultados. O botão Editar do simulador mostra o aviso na hora.', 'Ante la duda, planifica los cambios, hazlos de una vez y espera los resultados. El botón Editar del simulador muestra el aviso en el momento.')]
+          ],
+          pontos: [
+            L('<b>Reiniciam:</b> público, criativo, evento de otimização, lance, novo anúncio, pausa de 7+ dias.', '<b>Reinician:</b> público, creativo, evento de optimización, puja, anuncio nuevo, pausa de 7+ días.'),
+            L('<b>Orçamento:</b> poderá ou não, conforme o tamanho (no simulador, 50% ou mais).', '<b>Presupuesto:</b> puede serlo o no, según el tamaño (en el simulador, 50 % o más).'),
+            L('<b>Boa prática:</b> evite edições desnecessárias.', '<b>Buena práctica:</b> evita ediciones innecesarias.')
+          ],
+          notas: NOTA_CENTRAL
+        },
+        ferramenta: 'edicao-significativa-q',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por uma edição pequena (orçamento 25→26) e uma grande (trocar o público), e você vê o aprendizado zerar.', 'En el simulador, el Pixel te guía por una edición pequeña (presupuesto 25→26) y una grande (cambiar el público), y ves el aprendizaje ponerse a cero.'),
+          tour: 'edicao-significativa', pagina: 'meta-entrega.html?exemplo=1'
+        },
+        atender: {
+          cena: L('Eu troco o público e a foto todo dia pra ver qual funciona. Por que nunca sai do aprendizado? 😤', 'Cambio el público y la foto todos los días para ver cuál funciona. ¿Por qué nunca sale del aprendizaje? 😤'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Trocar o público ou o criativo é uma edição significativa: cada troca reinicia a fase de aprendizado e zera a contagem de resultados. Vamos planejar: fazer as mudanças de uma vez, esperar os resultados e só então decidir.”', '“Cambiar el público o el creativo es una edición significativa: cada cambio reinicia la fase de aprendizaje y pone a cero el conteo de resultados. Planifiquemos: hacer los cambios de una vez, esperar los resultados y solo entonces decidir.”'), fb: L('Isso! Explicou a causa e deu um plano.', '¡Eso! Explicaste la causa y diste un plan.') },
+            { certa: false, txt: L('“É um erro da Meta, vai passar.”', '“Es un error de Meta, ya pasará.”'), fb: L('Não é erro: é efeito das edições.', 'No es un error: es efecto de las ediciones.') },
+            { certa: false, txt: L('“Continue trocando, mais rápido.”', '“Sigue cambiando, más rápido.”'), fb: L('Isso piora: nunca sai do aprendizado.', 'Eso empeora: nunca sale del aprendizaje.') },
+            { certa: false, txt: L('“Crie uma conta nova.”', '“Crea una cuenta nueva.”'), fb: L('Exagero e não resolve a causa.', 'Exagerado y no resuelve la causa.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O que foi editado e quando?', '¿Qué se editó y cuándo?'), L('A coluna Última edição significativa mostra que dia?', '¿Qué día muestra la columna Última edición significativa?')],
+          conferir: [FERR, L('Central de Ajuda da Meta: edições significativas.', 'Centro de ayuda de Meta: ediciones significativas.')],
+          frase: L('Algumas edições reiniciam o aprendizado, como trocar público ou criativo. Vamos planejar as mudanças e fazê-las de uma vez.', 'Algunas ediciones reinician el aprendizaje, como cambiar público o creativo. Planifiquemos los cambios y hagámoslos de una vez.'),
+          passos: [L('Liste o que o cliente quer mudar.', 'Haz la lista de lo que el cliente quiere cambiar.'), L('Faça de uma vez e espere os resultados.', 'Hazlo de una vez y espera los resultados.')],
+          encaminhar: L('Se o cliente quiser testar versões, ajude a planejar o teste antes de editar o conjunto atual.', 'Si el cliente quiere probar versiones, ayúdalo a planificar la prueba antes de editar el conjunto actual.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Aprendizado limitado', 'Aprendizaje limitado'),
+        antes: L('A “Camiseta Montanha” da Marina passou dias e ficou em “Aprendizado limitado”.', 'La “Camiseta Montaña” de Marina pasó días y quedó en “Aprendizaje limitado”.'),
+        gancho: L('Não é defeito: é um aviso de que faltam resultados.', 'No es un defecto: es un aviso de que faltan resultados.'),
+        objetivo: L('Entender o “Aprendizado limitado” e o que fazer para o conjunto aprender.', 'Entender el “Aprendizaje limitado” y qué hacer para que el conjunto aprenda.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A camiseta passou da semana e continua “Aprendizado limitado”. Fiz algo errado? 😟', 'La camiseta pasó la semana y sigue en “Aprendizaje limitado”. ¿Hice algo mal? 😟')],
+            ['rafa', L('Não é erro. Quer dizer que o conjunto não está tendo resultados suficientes para sair do aprendizado.', 'No es un error. Quiere decir que el conjunto no está teniendo resultados suficientes para salir del aprendizaje.')],
+            ['marina', L('E o que eu faço?', '¿Y qué hago?')],
+            ['rafa', L('A Central de Ajuda dá boas práticas: usar orçamentos realistas, evitar edições desnecessárias e combinar conjuntos de anúncios semelhantes, porque assim os aprendizados também se combinam.', 'El Centro de ayuda da buenas prácticas: usar presupuestos realistas, evitar ediciones innecesarias y combinar conjuntos de anuncios parecidos, porque así los aprendizajes también se combinan.')],
+            ['pixel', L('Com poucos resultados, o desempenho fica menos estável e o custo por resultado costuma ser mais alto. Por isso vale agir.', 'Con pocos resultados, el rendimiento queda menos estable y el costo por resultado suele ser más alto. Por eso vale la pena actuar.')]
+          ],
+          pontos: [
+            L('<b>Limitado</b> = faltam resultados, não é defeito.', '<b>Limitado</b> = faltan resultados, no es un defecto.'),
+            L('<b>Orçamento realista</b> (nem baixo demais nem inflado).', '<b>Presupuesto realista</b> (ni demasiado bajo ni inflado).'),
+            L('<b>Combine</b> conjuntos semelhantes e evite editar à toa.', '<b>Combina</b> conjuntos parecidos y evita editar sin motivo.')
+          ],
+          notas: NOTA_CENTRAL
+        },
+        ferramenta: 'aprendizado-limitado-q',
+        praticar: {
+          texto: L('No simulador, a camiseta fica em “Aprendizado limitado”. O Pixel te guia pelos números e pelo “?” com o que fazer.', 'En el simulador, la camiseta queda en “Aprendizaje limitado”. El Pixel te guía por los números y por el “?” con qué hacer.'),
+          tour: 'aprendizado-limitado', pagina: 'meta-entrega.html?exemplo=1'
+        },
+        atender: {
+          cena: L('Meu conjunto está em “Aprendizado limitado”. O anúncio é ruim? Quero desistir! 😩', 'Mi conjunto está en “Aprendizaje limitado”. ¿El anuncio es malo? ¡Quiero rendirme! 😩'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não é um defeito nem quer dizer que o anúncio é ruim: o conjunto não teve resultados suficientes para sair do aprendizado. Vamos dar a ele condições de aprender: orçamento realista, poucas edições e, se houver conjuntos parecidos, combiná-los.”', '“No es un defecto ni quiere decir que el anuncio es malo: el conjunto no tuvo resultados suficientes para salir del aprendizaje. Démosle condiciones de aprender: presupuesto realista, pocas ediciones y, si hay conjuntos parecidos, combinarlos.”'), fb: L('Isso! Tirou o medo e deu o caminho.', '¡Eso! Quitaste el miedo y diste el camino.') },
+            { certa: false, txt: L('“Sim, é ruim. Apague.”', '“Sí, es malo. Bórralo.”'), fb: L('O aviso fala de resultados, não de qualidade.', 'El aviso habla de resultados, no de calidad.') },
+            { certa: false, txt: L('“Reduza o orçamento pela metade.”', '“Reduce el presupuesto a la mitad.”'), fb: L('Menos orçamento costuma dar ainda menos resultados.', 'Menos presupuesto suele dar aún menos resultados.') },
+            { certa: false, txt: L('“Edite o anúncio todo dia até funcionar.”', '“Edita el anuncio todos los días hasta que funcione.”'), fb: L('Edições significativas reiniciam o aprendizado.', 'Las ediciones significativas reinician el aprendizaje.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o orçamento diário e quantos resultados teve na semana?', '¿Cuál es el presupuesto diario y cuántos resultados tuvo en la semana?'), L('Há outros conjuntos parecidos que poderiam ser combinados?', '¿Hay otros conjuntos parecidos que se podrían combinar?')],
+          conferir: [FERR, L('Coluna Veiculação, Orçamento e Resultados.', 'Columna Entrega, Presupuesto y Resultados.')],
+          frase: L('Aprendizado limitado é um aviso de que faltam resultados, não um defeito. Vamos ajustar para o conjunto aprender: orçamento realista, poucas edições e conjuntos semelhantes combinados.', 'Aprendizaje limitado es un aviso de que faltan resultados, no un defecto. Ajustemos para que el conjunto aprenda: presupuesto realista, pocas ediciones y conjuntos parecidos combinados.'),
+          passos: [L('Veja orçamento e resultados do conjunto.', 'Mira presupuesto y resultados del conjunto.'), L('Proponha orçamento realista e combinar conjuntos.', 'Propón presupuesto realista y combinar conjuntos.')],
+          encaminhar: L('Combinar conjuntos e mexer no orçamento é decisão do cliente: explique as opções e deixe-o escolher.', 'Combinar conjuntos y tocar el presupuesto es decisión del cliente: explica las opciones y déjalo elegir.')
+        }
+      },
+      {
+        id: '05', min: 9, status: 'pronta',
+        titulo: L('“Meu anúncio não roda”', '“Mi anuncio no corre”'),
+        antes: L('A Marina diz que três conjuntos não estão veiculando.', 'Marina dice que tres conjuntos no están entregando.'),
+        gancho: L('Cada status tem uma resposta. Comece pela conta, depois pelo conjunto.', 'Cada estado tiene una respuesta. Empieza por la cuenta, luego por el conjunto.'),
+        objetivo: L('Seguir uma ordem para achar por que um anúncio não veicula: conta, status do conjunto e nível certo.', 'Seguir un orden para encontrar por qué un anuncio no entrega: cuenta, estado del conjunto y nivel correcto.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Três conjuntos parados! Por onde eu começo? 😱', '¡Tres conjuntos parados! ¿Por dónde empiezo? 😱')],
+            ['rafa', L('Pela conta: se ela quase atingiu o limite de gastos, os anúncios param. A tela avisa para aumentar, redefinir ou remover o limite.', 'Por la cuenta: si casi alcanzó el límite de gasto, los anuncios se detienen. La pantalla avisa para aumentar, restablecer o eliminar el límite.')],
+            ['marina', L('E depois?', '¿Y después?')],
+            ['rafa', L('Olhe o status de cada conjunto: Desativado (por quem? por uma regra automatizada?), Em análise (a Meta responde em até 24 horas) ou Programado (a data de início ainda não chegou).', 'Mira el estado de cada conjunto: Desactivado (¿por quién?, ¿por una regla automática?), En revisión (Meta responde en un plazo de 24 horas) o Programado (la fecha de inicio todavía no llegó).')],
+            ['pixel', L('A Central de Ajuda também organiza por nível: campanha, conjunto de anúncios e anúncio. Só depois pense em orçamento baixo ou aprendizado limitado.', 'El Centro de ayuda también organiza por nivel: campaña, conjunto de anuncios y anuncio. Solo después piensa en presupuesto bajo o aprendizaje limitado.')]
+          ],
+          pontos: [
+            L('<b>1º a conta:</b> limite de gastos.', '<b>1.º la cuenta:</b> límite de gasto.'),
+            L('<b>2º o status:</b> Desativado, Em análise, Programado.', '<b>2.º el estado:</b> Desactivado, En revisión, Programado.'),
+            L('<b>3º o resto:</b> orçamento, aprendizado limitado, nível certo.', '<b>3.º lo demás:</b> presupuesto, aprendizaje limitado, nivel correcto.')
+          ],
+          notas: NOTA_CENTRAL
+        },
+        ferramenta: 'nao-veicula-q',
+        praticar: {
+          texto: L('No simulador, três conjuntos não veiculam por razões diferentes e a conta tem aviso de limite. O Pixel te guia na ordem certa.', 'En el simulador, tres conjuntos no entregan por razones distintas y la cuenta tiene aviso de límite. El Pixel te guía en el orden correcto.'),
+          tour: 'nao-veicula', pagina: 'meta-entrega.html?problema=1'
+        },
+        atender: {
+          cena: L('Meus anúncios não rodam! Eu gastei tempo e dinheiro. Conserte agora! 😡', '¡Mis anuncios no corren! Gasté tiempo y dinero. ¡Arréglalo ya! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo a pressa. Vamos por ordem: primeiro vejo se a conta chegou ao limite de gastos; depois o status de cada conjunto (Desativado, Em análise, Programado). Cada um tem uma resposta diferente, e eu te digo qual é.”', '“Entiendo la urgencia. Vamos en orden: primero veo si la cuenta llegó al límite de gasto; después el estado de cada conjunto (Desactivado, En revisión, Programado). Cada uno tiene una respuesta distinta, y te digo cuál es.”'), fb: L('Isso! Acolheu e deu método.', '¡Eso! Acogiste y diste método.') },
+            { certa: false, txt: L('“Aumente o orçamento.”', '“Aumenta el presupuesto.”'), fb: L('Orçamento é só uma das possibilidades, e não a primeira.', 'El presupuesto es solo una posibilidad, y no la primera.') },
+            { certa: false, txt: L('“Espere uma semana.”', '“Espera una semana.”'), fb: L('Alguns casos pedem ação (limite de gastos, desativado).', 'Algunos casos piden acción (límite de gasto, desactivado).') },
+            { certa: false, txt: L('“Me passe a senha da conta.”', '“Pásame la contraseña de la cuenta.”'), fb: L('Nunca peça senha: oriente.', 'Nunca pidas la contraseña: orienta.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é o status de cada conjunto na coluna Veiculação?', '¿Cuál es el estado de cada conjunto en la columna Entrega?'), L('Há aviso de limite de gastos no topo da conta?', '¿Hay un aviso de límite de gasto arriba en la cuenta?')],
+          conferir: [FERR, L('Aviso de limite de gastos e as Regras automatizadas.', 'Aviso de límite de gasto y las Reglas automáticas.')],
+          frase: L('Vamos por ordem: primeiro o limite de gastos da conta, depois o status de cada conjunto, e só então orçamento e aprendizado.', 'Vamos en orden: primero el límite de gasto de la cuenta, luego el estado de cada conjunto, y solo después presupuesto y aprendizaje.'),
+          passos: [L('Veja o aviso de limite de gastos no topo.', 'Mira el aviso de límite de gasto arriba.'), L('Veja o status de cada conjunto e use o “?” do simulador como guia.', 'Mira el estado de cada conjunto y usa el “?” del simulador como guía.')],
+          encaminhar: L('Se o anúncio foi recusado ou a conta tem uma restrição, oriente o cliente a seguir as mensagens da própria conta e da Central de Ajuda da Meta.', 'Si el anuncio fue rechazado o la cuenta tiene una restricción, orienta al cliente a seguir los mensajes de la propia cuenta y del Centro de ayuda de Meta.')
+        }
+      }
+    ];
+  })(),
   'pixel-avancado': [
     { id: '01', titulo: { pt: 'Correspondência avançada', es: 'Coincidencia avanzada' }, status: 'planejada' },
     { id: '02', titulo: { pt: 'Qualidade do sinal', es: 'Calidad de la señal' }, status: 'planejada' },

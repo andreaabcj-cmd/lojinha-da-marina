@@ -1,0 +1,4 @@
+/* Simulador de Entrega · usa sim.css, sim-anuncios.css, sim-feed.css, sim-suite.css, sim-regras.css (tabela) */
+.ss-main .cm-tab td small{color:var(--muted)}
+.en-p{padding:0 8px;min-height:24px;margin-left:4px}
+.ga-aviso.verm{border-color:var(--red);background:#fff7f9}

@@ -71,4 +71,11 @@ Leia nesta ordem:
 - Pedido do André (esquecido na lista inicial). Ferramenta real: business.facebook.com/ads/microdata/debug ("Ferramenta de depuração de microdados do Facebook para catálogo"); testada de verdade com a página de produto pública da loja de aula (sucesso em PT; erro em ES numa nova tentativa, causa não apurada) e com o carrinho (erro "Falha na validação de dados"). Notas em `amostras_meta.md`.
 - Pronto em PT e ES: simulador `meta-microdados.html` (site de mentirinha lojinha.exemplo.com.br, páginas boas e com defeito), 3 tutoriais (`verificar-microdados`, `ler-campos`, `erro-microdados`), 4 aulas (`AULAS.microdados`) e 4 quizzes. Módulo 6 da Trilha Foco (agora 21 módulos).
 - A conferir: sucesso em ES, erros por campo específico (a tela real só diz "Falha na validação de dados"), artigo de ajuda 1175004275966513 não lido, lista completa de parâmetros.
-- Próximo: Entrega.
+- Próximo: Entrega (FEITO, ver abaixo).
+
+## Entrega (Foco) · 16/10/2026
+- Simulador `meta-entrega.html` (sim-entrega.js, sim-es-entrega.js, sim-entrega.css): tabela de Conjuntos de anúncios (colunas Veiculação, Resultados, Custo por resultado, Orçamento, Valor gasto), status Ativo/Aprendizado/Aprendizado limitado/Em análise/Desativado/Programado, card "% gastos na fase de aprendizado", aviso de limite de gastos, painel Editar que classifica edição significativa x não significativa, botão "?" (explicação do status). `?zerar=1 | ?exemplo=1 | ?problema=1`.
+- 4 tutoriais (ler-aprendizado, edicao-significativa, aprendizado-limitado, nao-veicula), 5 aulas, 5 quizzes; todos os tutoriais rodaram do começo ao fim (PT e ES) sem "falta" no tradutor.
+- Real (tela, PT e ES): colunas, status Ativo/Em análise/Rascunho, card de aprendizado, aviso de limite de gastos. Real (Central de Ajuda): fase de aprendizado (~50 resultados na semana após a última edição significativa), lista de edições significativas (público, criativo, evento de otimização, lance, novo anúncio, pausa de 7+ dias; orçamento "poderá ou não"), boas práticas (orçamento realista, evitar edições, combinar conjuntos) e solução de problemas por nível.
+- INVENTADO (a conferir): os conjuntos e números, o passar dos dias, o limiar de 50% do orçamento, o botão "?" e as explicações. Números específicos para lojas (compras no site/Meta) NÃO usados.
+- Próximo na ordem do Foco: Meta Verified, Commerce, Shop Ads…

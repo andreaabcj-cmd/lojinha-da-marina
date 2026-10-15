@@ -1066,6 +1066,78 @@
         [{ pt: 'Que a Meta bloqueou o site', es: 'Que Meta bloqueó el sitio' }, 0, { pt: 'Sem sinal disso.', es: 'Sin señal de eso.' }]] }
   ]);
 
+  /* ---------- 20. Entrega: cinco mini-quizzes (Entrega 01–05) ---------- */
+  quizCatalogo('o-que-e-aprendizado', { pt: 'O que é a fase de aprendizado?', es: '¿Qué es la fase de aprendizaje?' }, { pt: 'Quando aparece, quando termina e o que não fazer.', es: 'Cuándo aparece, cuándo termina y qué no hacer.' }, [
+    { q: { pt: 'O que é a fase de aprendizado?', es: '¿Qué es la fase de aprendizaje?' },
+      o: [[{ pt: 'Um defeito que precisa ser consertado', es: 'Un defecto que hay que arreglar' }, 0, { pt: 'Não é defeito: é o começo normal.', es: 'No es un defecto: es el comienzo normal.' }],
+        [{ pt: 'O período em que o sistema ainda aprende como veicular o conjunto e qual desempenho ele pode ter', es: 'El período en que el sistema todavía aprende cómo entregar el conjunto y qué rendimiento puede tener' }, 1, { pt: 'Isso! É assim que a Central de Ajuda descreve.', es: '¡Eso! Así lo describe el Centro de ayuda.' }],
+        [{ pt: 'Uma punição por anúncio ruim', es: 'Un castigo por un anuncio malo' }, 0, { pt: 'Não tem relação com punição.', es: 'No tiene relación con un castigo.' }]] },
+    { q: { pt: 'Quando um conjunto costuma sair do aprendizado?', es: '¿Cuándo suele salir un conjunto del aprendizaje?' },
+      o: [[{ pt: 'Em 24 horas, sempre', es: 'En 24 horas, siempre' }, 0, { pt: 'Não há prazo fixo.', es: 'No hay plazo fijo.' }],
+        [{ pt: 'Quando o orçamento dobra', es: 'Cuando el presupuesto se duplica' }, 0, { pt: 'Não é por orçamento, é por resultados estáveis.', es: 'No es por presupuesto, es por resultados estables.' }],
+        [{ pt: 'Quando o desempenho se estabiliza, normalmente depois de cerca de 50 resultados na semana seguinte à última edição significativa', es: 'Cuando el rendimiento se estabiliza, normalmente después de unos 50 resultados en la semana siguiente a la última edición significativa' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] },
+    { q: { pt: 'O cliente quer editar o conjunto todo dia durante o aprendizado. O que dizer?', es: 'El cliente quiere editar el conjunto todos los días durante el aprendizaje. ¿Qué decir?' },
+      o: [[{ pt: 'Que algumas edições reiniciam o aprendizado e que o melhor é evitar edições desnecessárias', es: 'Que algunas ediciones reinician el aprendizaje y que lo mejor es evitar ediciones innecesarias' }, 1, { pt: 'Isso! É uma boa prática oficial.', es: '¡Eso! Es una buena práctica oficial.' }],
+        [{ pt: 'Que pode editar à vontade, não muda nada', es: 'Que puede editar a gusto, no cambia nada' }, 0, { pt: 'Muda: edições significativas reiniciam.', es: 'Cambia: las ediciones significativas reinician.' }],
+        [{ pt: 'Que a Meta proíbe editar', es: 'Que Meta prohíbe editar' }, 0, { pt: 'Pode editar, mas com bom motivo.', es: 'Se puede editar, pero con buen motivo.' }]] }
+  ]);
+  quizCatalogo('ler-veiculacao', { pt: 'Lendo a coluna Veiculação', es: 'Leyendo la columna Entrega' }, { pt: 'Status, resultados e o card de aprendizado.', es: 'Estados, resultados y la tarjeta de aprendizaje.' }, [
+    { q: { pt: 'O que mostra a coluna Veiculação?', es: '¿Qué muestra la columna Entrega?' },
+      o: [[{ pt: 'O estado do conjunto: Ativo, Aprendizado, Aprendizado limitado, Em análise, Desativado…', es: 'El estado del conjunto: Activo, Aprendizaje, Aprendizaje limitado, En revisión, Desactivado…' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O nome do público', es: 'El nombre del público' }, 0, { pt: 'Isso é outra coluna.', es: 'Eso es otra columna.' }],
+        [{ pt: 'O lucro da loja', es: 'La ganancia de la tienda' }, 0, { pt: 'O Gerenciador não mostra lucro.', es: 'El Administrador no muestra ganancia.' }]] },
+    { q: { pt: 'Desde quando contam os Resultados na tabela do simulador?', es: '¿Desde cuándo cuentan los Resultados en la tabla del simulador?' },
+      o: [[{ pt: 'Desde que a conta foi criada', es: 'Desde que se creó la cuenta' }, 0, { pt: 'Não: recomeçam depois de uma edição significativa.', es: 'No: recomienzan después de una edición significativa.' }],
+        [{ pt: 'Desde a última edição significativa', es: 'Desde la última edición significativa' }, 1, { pt: 'Isso! Por isso edição significativa “zera” o aprendizado.', es: '¡Eso! Por eso la edición significativa “pone a cero” el aprendizaje.' }],
+        [{ pt: 'Só desde ontem', es: 'Solo desde ayer' }, 0, { pt: 'Não há esse corte.', es: 'No hay ese corte.' }]] },
+    { q: { pt: 'O card “% gastos na fase de aprendizado” mostra…', es: 'La tarjeta “% de gasto en la fase de aprendizaje” muestra…' },
+      o: [[{ pt: 'Quanto do dinheiro gasto está em conjuntos que ainda aprendem', es: 'Cuánto del dinero gastado está en conjuntos que todavía aprenden' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Quanto o cliente vai economizar', es: 'Cuánto va a ahorrar el cliente' }, 0, { pt: 'Não é economia.', es: 'No es ahorro.' }],
+        [{ pt: 'A nota do anúncio', es: 'La nota del anuncio' }, 0, { pt: 'Não há nota.', es: 'No hay nota.' }]] }
+  ]);
+  quizCatalogo('edicao-significativa-q', { pt: 'Esta edição reinicia o aprendizado?', es: '¿Esta edición reinicia el aprendizaje?' }, { pt: 'Público, criativo, lance, orçamento e pausa.', es: 'Público, creativo, puja, presupuesto y pausa.' }, [
+    { q: { pt: 'Qual destas é uma edição significativa?', es: '¿Cuál de estas es una edición significativa?' },
+      o: [[{ pt: 'Mudar o orçamento de 100 para 101', es: 'Cambiar el presupuesto de 100 a 101' }, 0, { pt: 'Provavelmente não reinicia, pelo exemplo da Central de Ajuda.', es: 'Probablemente no reinicia, según el ejemplo del Centro de ayuda.' }],
+        [{ pt: 'Mudar o público do conjunto', es: 'Cambiar el público del conjunto' }, 1, { pt: 'Isso! Mudar o direcionamento é edição significativa.', es: '¡Eso! Cambiar la segmentación es una edición significativa.' }],
+        [{ pt: 'Olhar a tabela de resultados', es: 'Mirar la tabla de resultados' }, 0, { pt: 'Olhar não edita nada.', es: 'Mirar no edita nada.' }]] },
+    { q: { pt: 'Adicionar um novo anúncio ao conjunto…', es: 'Agregar un anuncio nuevo al conjunto…' },
+      o: [[{ pt: 'Não muda nada', es: 'No cambia nada' }, 0, { pt: 'Pela lista, adicionar anúncio é significativa.', es: 'Según la lista, agregar un anuncio es significativa.' }],
+        [{ pt: 'Apaga a campanha', es: 'Borra la campaña' }, 0, { pt: 'Não apaga.', es: 'No borra.' }],
+        [{ pt: 'É uma edição significativa e reinicia o aprendizado', es: 'Es una edición significativa y reinicia el aprendizaje' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] },
+    { q: { pt: 'Pausar um conjunto por 7 dias ou mais e voltar…', es: 'Pausar un conjunto por 7 días o más y volver…' },
+      o: [[{ pt: 'Conta como edição significativa', es: 'Cuenta como edición significativa' }, 1, { pt: 'Isso! Está na lista da Central de Ajuda.', es: '¡Eso! Está en la lista del Centro de ayuda.' }],
+        [{ pt: 'Nunca afeta nada', es: 'Nunca afecta nada' }, 0, { pt: 'Pausas longas reiniciam.', es: 'Las pausas largas reinician.' }],
+        [{ pt: 'Dobra o orçamento', es: 'Duplica el presupuesto' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] }
+  ]);
+  quizCatalogo('aprendizado-limitado-q', { pt: 'Aprendizado limitado: o que fazer?', es: 'Aprendizaje limitado: ¿qué hacer?' }, { pt: 'Orçamento realista, poucas edições, conjuntos combinados.', es: 'Presupuesto realista, pocas ediciones, conjuntos combinados.' }, [
+    { q: { pt: 'O que significa “Aprendizado limitado”?', es: '¿Qué significa “Aprendizaje limitado”?' },
+      o: [[{ pt: 'Que o anúncio foi reprovado', es: 'Que el anuncio fue rechazado' }, 0, { pt: 'Reprovação aparece de outro jeito.', es: 'El rechazo aparece de otra forma.' }],
+        [{ pt: 'Que o conjunto não está tendo resultados suficientes para sair do aprendizado', es: 'Que el conjunto no está teniendo resultados suficientes para salir del aprendizaje' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Que a conta foi bloqueada', es: 'Que la cuenta fue bloqueada' }, 0, { pt: 'Não é bloqueio.', es: 'No es un bloqueo.' }]] },
+    { q: { pt: 'Qual é uma boa prática oficial para conjuntos em aprendizado limitado?', es: '¿Cuál es una buena práctica oficial para conjuntos en aprendizaje limitado?' },
+      o: [[{ pt: 'Editar todo dia', es: 'Editar todos los días' }, 0, { pt: 'Edições desnecessárias atrapalham.', es: 'Las ediciones innecesarias estorban.' }],
+        [{ pt: 'Zerar o orçamento', es: 'Poner el presupuesto en cero' }, 0, { pt: 'Sem orçamento, sem resultados.', es: 'Sin presupuesto, sin resultados.' }],
+        [{ pt: 'Usar orçamento realista, evitar edições desnecessárias e combinar conjuntos semelhantes', es: 'Usar presupuesto realista, evitar ediciones innecesarias y combinar conjuntos parecidos' }, 1, { pt: 'Isso! São as boas práticas da Central de Ajuda.', es: '¡Eso! Son las buenas prácticas del Centro de ayuda.' }]] },
+    { q: { pt: 'Por que combinar conjuntos de anúncios semelhantes ajuda?', es: '¿Por qué ayuda combinar conjuntos de anuncios parecidos?' },
+      o: [[{ pt: 'Porque os aprendizados também se combinam', es: 'Porque los aprendizajes también se combinan' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Porque o anúncio fica mais barato por lei', es: 'Porque el anuncio queda más barato por ley' }, 0, { pt: 'Não é por lei.', es: 'No es por ley.' }],
+        [{ pt: 'Porque a Meta dá um brinde', es: 'Porque Meta da un regalo' }, 0, { pt: 'Não há brinde.', es: 'No hay regalo.' }]] }
+  ]);
+  quizCatalogo('nao-veicula-q', { pt: 'Por que não veicula?', es: '¿Por qué no entrega?' }, { pt: 'Ordem: conta, status, nível.', es: 'Orden: cuenta, estado, nivel.' }, [
+    { q: { pt: 'Todos os anúncios pararam e o topo da conta avisa que quase atingiu o limite de gastos. O que fazer?', es: 'Todos los anuncios se detuvieron y arriba en la cuenta avisa que casi alcanzó el límite de gasto. ¿Qué hacer?' },
+      o: [[{ pt: 'Recriar todas as campanhas', es: 'Recrear todas las campañas' }, 0, { pt: 'O problema está na conta, não nas campanhas.', es: 'El problema está en la cuenta, no en las campañas.' }],
+        [{ pt: 'Aumentar, redefinir ou remover o limite de gastos', es: 'Aumentar, restablecer o eliminar el límite de gasto' }, 1, { pt: 'Isso! É o que o aviso real diz.', es: '¡Eso! Es lo que dice el aviso real.' }],
+        [{ pt: 'Esperar um mês', es: 'Esperar un mes' }, 0, { pt: 'Sem mudar o limite, não volta.', es: 'Sin cambiar el límite, no vuelve.' }]] },
+    { q: { pt: 'Um conjunto está “Em análise”. O que isso diz?', es: 'Un conjunto está “En revisión”. ¿Qué dice eso?' },
+      o: [[{ pt: 'Que a Meta avisa se o anúncio atende aos Padrões de Publicidade em até 24 horas', es: 'Que Meta avisa si el anuncio cumple las Normas de Publicidad en un plazo de 24 horas' }, 1, { pt: 'Isso! É o texto da tela real.', es: '¡Eso! Es el texto de la pantalla real.' }],
+        [{ pt: 'Que o cliente precisa pagar uma taxa', es: 'Que el cliente debe pagar una tasa' }, 0, { pt: 'Não há taxa.', es: 'No hay tasa.' }],
+        [{ pt: 'Que o anúncio foi apagado', es: 'Que el anuncio fue borrado' }, 0, { pt: 'Não foi.', es: 'No fue así.' }]] },
+    { q: { pt: 'Um conjunto está “Desativado” e ninguém lembra de ter desativado. Onde olhar?', es: 'Un conjunto está “Desactivado” y nadie recuerda haberlo desactivado. ¿Dónde mirar?' },
+      o: [[{ pt: 'No Instagram da loja', es: 'En el Instagram de la tienda' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }],
+        [{ pt: 'No catálogo', es: 'En el catálogo' }, 0, { pt: 'O catálogo não desativa conjuntos.', es: 'El catálogo no desactiva conjuntos.' }],
+        [{ pt: 'Nas Regras automatizadas: uma regra pode ter desativado', es: 'En las Reglas automáticas: una regla puede haberlo desactivado' }, 1, { pt: 'Isso! Lembra do módulo anterior.', es: '¡Eso! Recuerda el módulo anterior.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
