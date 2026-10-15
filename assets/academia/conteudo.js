@@ -31,7 +31,7 @@ window.MODULOS = [
   { id: 'shop-ads-offsite', fase: 4, status: 'construcao', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'A jornada até a compra no site, Pixel e catálogo, eventos duplicados, UTM e terceiros, e atualizar loja antiga.', es: 'El recorrido hasta la compra en el sitio, píxel y catálogo, eventos duplicados, UTM y terceros, y actualizar tienda antigua.' } },
   { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
   { id: 'mbe', fase: 5, status: 'construcao', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Galeria de parceiros, a janela do MBE, opções da API de Conversões, problemas comuns e acesso de parceiros.', es: 'Galería de socios, la ventana del MBE, opciones de la API de Conversiones, problemas comunes y acceso de socios.' } },
-  { id: 'integracoes', fase: 5, status: 'planejado', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Como integrar e os erros possíveis.', es: 'Cómo integrar y los errores posibles.' } },
+  { id: 'integracoes', fase: 5, status: 'construcao', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Conectar a plataforma (WooCommerce), ler os erros do Diagnóstico, Pixel como fonte do catálogo e manter ou desconectar.', es: 'Conectar la plataforma (WooCommerce), leer los errores del Diagnóstico, píxel como fuente del catálogo y mantener o desconectar.' } },
   { id: 'shopify', fase: 5, status: 'planejado', icone: '🧩', titulo: { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, resumo: { pt: 'Como integrar, solução de problemas e redirecionamento.', es: 'Cómo integrar, solución de problemas y redirección.' } },
   { id: 'pagamentos', extra: true, status: 'planejado', icone: '💳', titulo: { pt: 'Pagamentos e cobrança', es: 'Pagos y facturación' }, resumo: { pt: 'Formas de pagamento, saldo, limites de gastos e cobranças.', es: 'Métodos de pago, saldo, límites de gasto y cobros.' } },
   { id: 'acesso', extra: true, status: 'planejado', icone: '🔐', titulo: { pt: 'Acesso e login', es: 'Acceso e inicio de sesión' }, resumo: { pt: 'Senha, verificação em duas etapas e contas ou ativos comprometidos.', es: 'Contraseña, verificación en dos pasos y cuentas o activos comprometidos.' } },
@@ -4002,6 +4002,230 @@ window.AULAS = {
           frase: L('Para a agência ver o Pixel e a Página, quem tem controle total do portfólio compartilha os ativos com o portfólio dela, preferindo o acesso parcial. Vamos fazer juntos.', 'Para que la agencia vea el píxel y la página, quien tiene control total del portfolio comparte los activos con su portfolio, prefiriendo el acceso parcial. Hagámoslo juntos.'),
           passos: [L('Peça a identificação do portfólio da agência.', 'Pide la identificación del portfolio de la agencia.'), L('Atribua os ativos com acesso parcial.', 'Asigna los activos con acceso parcial.')],
           encaminhar: L('Se o cliente não tem controle total, quem é dono do portfólio precisa agir: oriente-o a falar com essa pessoa.', 'Si el cliente no tiene control total, quien es dueño del portfolio debe actuar: oriéntalo a hablar con esa persona.')
+        }
+      }
+    ];
+  })(),
+  integracoes: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Galeria de parceiros e página Integrações vistas de verdade no Gerenciador de Eventos da conta de aula em 16/10/2026 (PT e ES); a conta não tem conjunto de dados, então a aba Diagnóstico real não foi vista. Central de Ajuda da Meta para Empresas lida em português: “Como conectar sua conta do WooCommerce à Meta”, “Como solucionar mensagens de erro e aviso do Pixel da Meta no Gerenciador de Eventos da Meta” e “Sobre as Integrações de Parceiros para eventos do site”. Pixel como fonte do catálogo e Wix Premium vêm de páginas da Central de Ajuda achadas em pesquisa (inglês e espanhol), não lidas na íntegra (a conferir). As telas do simulador são do treino.', 'Galería de socios y página Integraciones vistas de verdad en el Administrador de eventos de la cuenta de clase el 16/10/2026 (PT y ES); la cuenta no tiene conjunto de datos, así que la pestaña Diagnóstico real no se vio. Centro de ayuda de Meta para Empresas leído en portugués: “Cómo conectar tu cuenta de WooCommerce a Meta”, “Cómo solucionar los mensajes de error y de advertencia del píxel de Meta en el Administrador de eventos de Meta” y “Acerca de las integraciones de socios para eventos del sitio web”. Píxel como fuente del catálogo y Wix Premium vienen de páginas del Centro de ayuda halladas en una búsqueda (inglés y español), no leídas completas (por confirmar). Las pantallas del simulador son del entrenamiento.');
+    var FERR = L('Gerenciador de Eventos › Integrações e Diagnóstico.', 'Administrador de eventos › Integraciones y Diagnóstico.');
+    return [
+      {
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('Como a integração com plataformas de terceiros funciona', 'Cómo funciona la integración con plataformas de terceros'),
+        antes: L('Os clientes da Marina usam plataformas diferentes: WooCommerce, Wix, Google Tag Manager…', 'Los clientes de Marina usan plataformas distintas: WooCommerce, Wix, Google Tag Manager…'),
+        gancho: L('Cada plataforma tem seu jeito de conectar, mas o objetivo é o mesmo: eventos chegando certos à Meta.', 'Cada plataforma tiene su forma de conectar, pero el objetivo es el mismo: eventos llegando bien a Meta.'),
+        objetivo: L('Saber os tipos de parceiro, o que cada integração entrega e o que fazer se a plataforma não estiver na lista.', 'Saber los tipos de socio, qué entrega cada integración y qué hacer si la plataforma no está en la lista.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cada cliente tem uma plataforma. Como a Meta se conecta a todas? 🤔', 'Cada cliente tiene una plataforma. ¿Cómo se conecta Meta a todas? 🤔')],
+            ['rafa', L('Pelas Integrações de Parceiros: plataformas de sites (WordPress, Shopify, Joomla), de comércio (WooCommerce, BigCommerce, Ecwid, OpenCart, PrestaShop, Magento/Adobe Commerce, SHOPLINE), gerenciadores de tags, plataformas de dados de clientes e mais. Elas capturam os eventos do site sem editar código.', 'Por las Integraciones de Socios: plataformas de sitios web (WordPress, Shopify, Joomla), de comercio (WooCommerce, BigCommerce, Ecwid, OpenCart, PrestaShop, Magento/Adobe Commerce, SHOPLINE), administradores de etiquetas, plataformas de datos de clientes y más. Capturan los eventos del sitio sin editar código.')],
+            ['marina', L('E o que elas entregam?', '¿Y qué entregan?')],
+            ['rafa', L('Pixel no navegador e API de Conversões no servidor, para dados mais precisos. Algumas, como o plugin do WooCommerce, também sincronizam os produtos com o Gerenciador de Comércio.', 'Píxel en el navegador y API de Conversiones en el servidor, para datos más precisos. Algunas, como el plugin de WooCommerce, también sincronizan los productos con el Administrador de ventas.')],
+            ['pixel', L('Se a plataforma não estiver listada, dá para configurar a API de Conversões manualmente ou chamar o provedor de serviços. E depois de conectar, vale monitorar o Gerenciador de Eventos e manter os plugins atualizados.', 'Si la plataforma no está en la lista, se puede configurar la API de Conversiones manualmente o llamar al proveedor de servicios. Y después de conectar, conviene monitorear el Administrador de eventos y mantener los plugins actualizados.')]
+          ],
+          pontos: [
+            L('<b>Parceiro</b> = eventos do site sem editar código (Pixel + API de Conversões).', '<b>Socio</b> = eventos del sitio sin editar código (píxel + API de Conversiones).'),
+            L('<b>Alguns plugins</b> também sincronizam produtos (ex.: WooCommerce).', '<b>Algunos plugins</b> también sincronizan productos (ej.: WooCommerce).'),
+            L('<b>Fora da lista:</b> API de Conversões manual ou provedor de serviços.', '<b>Fuera de la lista:</b> API de Conversiones manual o proveedor de servicios.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'visao-integ',
+        atender: {
+          cena: L('Uso uma plataforma que ninguém conhece. A Meta funciona comigo ou não? 😕', 'Uso una plataforma que nadie conoce. ¿Meta funciona conmigo o no? 😕'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Funciona. Primeiro vemos se a sua plataforma está na Galeria de parceiros, em Integrações no Gerenciador de Eventos. Se não estiver, dá para configurar a API de Conversões manualmente ou falar com o seu provedor de serviços.”', '“Funciona. Primero vemos si tu plataforma está en la Galería de socios, en Integraciones en el Administrador de eventos. Si no está, se puede configurar la API de Conversiones manualmente o hablar con tu proveedor de servicios.”'), fb: L('Isso! Caminho e alternativa.', '¡Eso! Camino y alternativa.') },
+            { certa: false, txt: L('“Não funciona, mude de plataforma.”', '“No funciona, cambia de plataforma.”'), fb: L('Há alternativa manual.', 'Hay alternativa manual.') },
+            { certa: false, txt: L('“Funciona sempre, sem fazer nada.”', '“Funciona siempre, sin hacer nada.”'), fb: L('É preciso conectar.', 'Hay que conectar.') },
+            { certa: false, txt: L('“Passe a senha da plataforma.”', '“Pásame la contraseña de la plataforma.”'), fb: L('Nunca peça senha.', 'Nunca pidas contraseñas.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é a plataforma? Está na Galeria de parceiros?', '¿Cuál es la plataforma? ¿Está en la Galería de socios?'), L('Já existe um Pixel ou outra integração ativa?', '¿Ya existe un píxel u otra integración activa?')],
+          conferir: [FERR],
+          frase: L('Vamos ver se a sua plataforma está na Galeria de parceiros; se estiver, conectamos sem editar código; se não, configuramos a API de Conversões manualmente.', 'Veamos si tu plataforma está en la Galería de socios; si está, conectamos sin editar código; si no, configuramos la API de Conversiones manualmente.'),
+          passos: [L('Abra Integrações › Galeria de parceiros.', 'Abre Integraciones › Galería de socios.'), L('Siga as instruções do parceiro.', 'Sigue las instrucciones del socio.')],
+          encaminhar: L('Detalhes da plataforma são do provedor dela: oriente o cliente a usar o suporte da plataforma.', 'Los detalles de la plataforma son de su proveedor: orienta al cliente a usar la asistencia de la plataforma.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Conectar o WooCommerce à Meta', 'Conectar WooCommerce a Meta'),
+        antes: L('Uma cliente da Marina tem loja em WordPress com WooCommerce.', 'Una clienta de Marina tiene tienda en WordPress con WooCommerce.'),
+        gancho: L('Quatro pré-requisitos, seis passos e uns 10 a 30 minutos de espera.', 'Cuatro requisitos previos, seis pasos y unos 10 a 30 minutos de espera.'),
+        objetivo: L('Conferir os pré-requisitos e seguir o passo a passo do plugin Meta para WooCommerce.', 'Revisar los requisitos previos y seguir el paso a paso del plugin Meta para WooCommerce.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O que a cliente precisa antes de começar? 😅', '¿Qué necesita la clienta antes de empezar? 😅')],
+            ['rafa', L('Um site WordPress com função de administrador, o plugin do WooCommerce, controle total do portfólio empresarial (ou permissão para gerenciar os ativos) e autenticação de dois fatores no portfólio.', 'Un sitio WordPress con rol de administrador, el plugin de WooCommerce, control total del portfolio comercial (o permiso para administrar los activos) y autenticación de dos factores en el portfolio.')],
+            ['marina', L('E depois?', '¿Y después?')],
+            ['rafa', L('Instala o plugin “Meta para WooCommerce”, ativa, vai em Marketing, Facebook, Começar, entra no Facebook, cria ou escolhe os ativos (portfólio, Página, Instagram, catálogo, conta de anúncios e Pixel), informa e-mail de contato, política de devolução e de privacidade e autoriza a conexão.', 'Instala el plugin “Meta para WooCommerce”, lo activa, va a Marketing, Facebook, Empezar, inicia sesión en Facebook, crea o elige los activos (portfolio, página, Instagram, catálogo, cuenta publicitaria y píxel), informa correo de contacto, política de devolución y de privacidad y autoriza la conexión.')],
+            ['pixel', L('Pronto: os produtos sincronizam com o Gerenciador de Comércio e o Pixel e a API de Conversões enviam eventos. A loja pode ser publicada sozinha em 10 a 30 minutos, então volte depois para conferir se terminou sem erros.', 'Listo: los productos se sincronizan con el Administrador de ventas y el píxel y la API de Conversiones envían eventos. La tienda puede publicarse sola en 10 a 30 minutos, así que vuelve después para revisar si terminó sin errores.')]
+          ],
+          pontos: [
+            L('<b>Pré-requisitos:</b> WordPress admin, WooCommerce, controle total (ou permissão) e 2FA.', '<b>Requisitos previos:</b> WordPress admin, WooCommerce, control total (o permiso) y 2FA.'),
+            L('<b>Passos:</b> instalar plugin › Marketing › Facebook › Começar › ativos › dados da loja › autorizar.', '<b>Pasos:</b> instalar plugin › Marketing › Facebook › Empezar › activos › datos de la tienda › autorizar.'),
+            L('<b>Depois:</b> 10 a 30 minutos; conferir se terminou sem erros.', '<b>Después:</b> 10 a 30 minutos; revisar si terminó sin errores.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'woo-integ',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelos pré-requisitos e pelos 6 passos de conexão do WooCommerce.', 'En el simulador, el Pixel te guía por los requisitos previos y los 6 pasos de conexión de WooCommerce.'),
+          tour: 'conectar-woocommerce', pagina: 'meta-terceiros.html?zerar=1'
+        },
+        atender: {
+          cena: L('Instalei o plugin, mas na hora de conectar não deixa! Que sistema horrível! 😠', '¡Instalé el plugin, pero a la hora de conectar no deja! ¡Qué sistema horrible! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Vamos conferir os pré-requisitos: se você tem a função de administrador no WordPress, se o WooCommerce está instalado, se tem controle total do portfólio empresarial (ou a permissão dos ativos) e se a autenticação de dois fatores está ativada no portfólio. Muitas vezes falta um desses.”', '“Revisemos los requisitos previos: si tienes el rol de administrador en WordPress, si WooCommerce está instalado, si tienes control total del portfolio comercial (o el permiso de los activos) y si la autenticación de dos factores está activada en el portfolio. Muchas veces falta uno de esos.”'), fb: L('Isso! Os quatro pré-requisitos reais.', '¡Eso! Los cuatro requisitos reales.') },
+            { certa: false, txt: L('“Desinstale tudo e use outra plataforma.”', '“Desinstala todo y usa otra plataforma.”'), fb: L('Antes confira os pré-requisitos.', 'Antes revisa los requisitos previos.') },
+            { certa: false, txt: L('“É um bug do plugin, espere.”', '“Es un bug del plugin, espera.”'), fb: L('Geralmente falta um pré-requisito.', 'Generalmente falta un requisito previo.') },
+            { certa: false, txt: L('“Me passe a senha do WordPress.”', '“Pásame la contraseña de WordPress.”'), fb: L('Nunca peça senha.', 'Nunca pidas contraseñas.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é a função da pessoa no WordPress? O WooCommerce está ativo?', '¿Cuál es el rol de la persona en WordPress? ¿WooCommerce está activo?'), L('Ela tem controle total do portfólio e 2FA ativado?', '¿Tiene control total del portfolio y 2FA activado?')],
+          conferir: [L('WordPress › Plugins; Meta Business Suite › Configurações do portfólio.', 'WordPress › Plugins; Meta Business Suite › Configuración del portfolio.'), FERR],
+          frase: L('Vamos conferir os quatro pré-requisitos e depois seguir o passo a passo do plugin Meta para WooCommerce.', 'Revisemos los cuatro requisitos previos y luego sigamos el paso a paso del plugin Meta para WooCommerce.'),
+          passos: [L('Confira os pré-requisitos.', 'Revisa los requisitos previos.'), L('Siga os 6 passos e espere 10 a 30 minutos.', 'Sigue los 6 pasos y espera 10 a 30 minutos.')],
+          encaminhar: L('Problemas dentro do WordPress ou do plugin são resolvidos com o suporte do plugin e da hospedagem; os da Meta, pelo suporte da Meta.', 'Los problemas dentro de WordPress o del plugin se resuelven con la asistencia del plugin y del hosting; los de Meta, con la asistencia de Meta.')
+        }
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('Ler os erros do Diagnóstico do Pixel', 'Leer los errores del Diagnóstico del píxel'),
+        antes: L('A cliente conectou a plataforma, mas o Gerenciador de Eventos mostra mensagens em vermelho e amarelo.', 'La clienta conectó la plataforma, pero el Administrador de eventos muestra mensajes en rojo y amarillo.'),
+        gancho: L('Doze mensagens, cada uma com causa e correção. Saber ler poupa horas.', 'Doce mensajes, cada uno con causa y corrección. Saber leer ahorra horas.'),
+        objetivo: L('Interpretar as mensagens do Diagnóstico e indicar a correção das mais comuns.', 'Interpretar los mensajes del Diagnóstico e indicar la corrección de las más comunes.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Apareceu “Eventos de compra redundantes”. Isso é grave? 😰', 'Apareció “Eventos de compra redundantes”. ¿Es grave? 😰')],
+            ['rafa', L('Aparece quando o Pixel recebe quatro ou mais eventos de compra para uma única compra: superestima os relatórios e pode atrapalhar a veiculação. Deixe o código de compra só na página de agradecimento (ou numa ação como Comprar agora) e nunca no cabeçalho do modelo do site.', 'Aparece cuando el píxel recibe cuatro o más eventos de compra para una sola compra: sobrestima los informes y puede estorbar la entrega. Deja el código de compra solo en la página de agradecimiento (o en una acción como Comprar ahora) y nunca en el encabezado de la plantilla del sitio.')],
+            ['marina', L('E “incompatibilidade de nome de evento”?', '¿Y “incompatibilidad de nombre de evento”?')],
+            ['rafa', L('Um evento parecido com um padrão, mas não idêntico. Os nomes diferenciam maiúsculas: “Compra”, não “compra”. O botão “Ver URLs afetados” mostra as páginas com o código errado.', 'Un evento parecido a uno estándar, pero no idéntico. Los nombres distinguen mayúsculas: “Compra”, no “compra”. El botón “Ver URLs afectadas” muestra las páginas con el código incorrecto.')],
+            ['pixel', L('Outras comuns: moeda ou valor ausente ou inválido (use ISO como BRL e número decimal sem símbolo), eventos duplicados com eventos automáticos, vários eventos numa ação, e as notificações de domínio novo, parâmetros bloqueados e dados restritos, que falam de privacidade e dos Termos das Ferramentas Comerciais.', 'Otras comunes: moneda o valor ausente o no válido (usa ISO como BRL y número decimal sin símbolo), eventos duplicados con eventos automáticos, varios eventos en una acción, y las notificaciones de dominio nuevo, parámetros bloqueados y datos restringidos, que hablan de privacidad y de las Condiciones de las Herramientas Comerciales.')]
+          ],
+          pontos: [
+            L('<b>Redundantes:</b> compra só na página de agradecimento, nunca no cabeçalho.', '<b>Redundantes:</b> compra solo en la página de agradecimiento, nunca en el encabezado.'),
+            L('<b>Nome:</b> “Compra”, não “compra”; use Ver URLs afetados.', '<b>Nombre:</b> “Compra”, no “compra”; usa Ver URLs afectadas.'),
+            L('<b>Valor e moeda:</b> ISO de 3 letras e número decimal sem símbolos.', '<b>Valor y moneda:</b> ISO de 3 letras y número decimal sin símbolos.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'diag-integ',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por duas mensagens reais do Diagnóstico: compras redundantes e nome de evento.', 'En el simulador, el Pixel te guía por dos mensajes reales del Diagnóstico: compras redundantes y nombre de evento.'),
+          tour: 'ler-diagnostico', pagina: 'meta-terceiros.html?zerar=1'
+        },
+        atender: {
+          cena: L('O Diagnóstico está cheio de erro, a Meta está sabotando meu Pixel! 😡', '¡El Diagnóstico está lleno de errores, Meta está saboteando mi píxel! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Ninguém sabota: cada mensagem tem causa e correção. Vamos abrir uma por uma e usar o botão Ver URLs afetados para achar as páginas. Por exemplo, compras redundantes costumam vir de código de compra no cabeçalho do site, e nome de evento errado costuma ser maiúscula versus minúscula.”', '“Nadie sabotea: cada mensaje tiene causa y corrección. Abramos uno por uno y usemos el botón Ver URLs afectadas para encontrar las páginas. Por ejemplo, las compras redundantes suelen venir de código de compra en el encabezado del sitio, y el nombre de evento incorrecto suele ser mayúscula versus minúscula.”'), fb: L('Isso! Acolheu e deu método.', '¡Eso! Acogiste y diste método.') },
+            { certa: false, txt: L('“Ignore os erros, não importa.”', '“Ignora los errores, no importa.”'), fb: L('Erros afetam relatórios e veiculação.', 'Los errores afectan informes y entrega.') },
+            { certa: false, txt: L('“Apague o Pixel.”', '“Elimina el píxel.”'), fb: L('Corrija a causa.', 'Corrige la causa.') },
+            { certa: false, txt: L('“Espere, some sozinho.”', '“Espera, desaparece solo.”'), fb: L('Precisa corrigir.', 'Hay que corregir.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual é a mensagem exata no Diagnóstico?', '¿Cuál es el mensaje exacto en el Diagnóstico?'), L('Quais URLs aparecem em Ver URLs afetados?', '¿Qué URL aparecen en Ver URLs afectadas?')],
+          conferir: [L('Gerenciador de Eventos › Pixel › Diagnóstico.', 'Administrador de eventos › píxel › Diagnóstico.'), FERR],
+          frase: L('Cada mensagem do Diagnóstico tem uma causa e uma correção. Vamos abrir a sua e ver as páginas afetadas.', 'Cada mensaje del Diagnóstico tiene una causa y una corrección. Abramos el tuyo y veamos las páginas afectadas.'),
+          passos: [L('Abra a mensagem e use Ver URLs afetados.', 'Abre el mensaje y usa Ver URLs afectadas.'), L('Corrija no site e confira de novo.', 'Corrige en el sitio y revisa de nuevo.')],
+          encaminhar: L('Se a correção for no código do site, oriente o cliente ou o desenvolvedor dele, mostrando a página e a mensagem.', 'Si la corrección es en el código del sitio, orienta al cliente o a su desarrollador, mostrando la página y el mensaje.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Pixel como fonte do catálogo', 'Píxel como fuente del catálogo'),
+        antes: L('A Marina quer que o catálogo se atualize sozinho conforme as pessoas veem os produtos.', 'Marina quiere que el catálogo se actualice solo según las personas ven los productos.'),
+        gancho: L('Cinco condições: se uma falha, o Pixel não alimenta o catálogo.', 'Cinco condiciones: si una falla, el píxel no alimenta el catálogo.'),
+        objetivo: L('Conferir as condições para usar o Pixel como fonte de dados do catálogo e saber os prazos.', 'Revisar las condiciones para usar el píxel como fuente de datos del catálogo y saber los plazos.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Dá para o Pixel atualizar o catálogo? 🤔', '¿El píxel puede actualizar el catálogo? 🤔')],
+            ['rafa', L('Dá, adicionando o Pixel como fonte de dados do catálogo, a cada vez que alguém interage com uma página de produto. Mas há condições.', 'Sí, agregando el píxel como fuente de datos del catálogo, cada vez que alguien interactúa con una página de producto. Pero hay condiciones.')],
+            ['marina', L('Quais?', '¿Cuáles?')],
+            ['rafa', L('Catálogo e Pixel no mesmo portfólio (ou compartilhados), permissão nos dois, evento ViewContent nas páginas de produto, tags de microdados nelas e o Pixel ter disparado nos últimos sete dias.', 'Catálogo y píxel en el mismo portfolio (o compartidos), permiso en los dos, evento ViewContent en las páginas de producto, etiquetas de microdatos en ellas y que el píxel se haya activado en los últimos siete días.')],
+            ['pixel', L('Depois de conectar, pode levar até 24 horas para ficar pronto; a partir daí, atualiza o catálogo em geral em até 15 minutos após cada interação. Sem microdados, o Pixel não consegue adicionar nem atualizar itens.', 'Después de conectar, puede tardar hasta 24 horas en estar listo; a partir de ahí, actualiza el catálogo por lo general en hasta 15 minutos tras cada interacción. Sin microdatos, el píxel no puede agregar ni actualizar artículos.')]
+          ],
+          pontos: [
+            L('<b>5 condições:</b> mesmo portfólio, permissões, ViewContent, microdados, disparo em 7 dias.', '<b>5 condiciones:</b> mismo portfolio, permisos, ViewContent, microdatos, activación en 7 días.'),
+            L('<b>Prazo:</b> até 24 horas para ficar pronto; depois ~15 minutos por interação.', '<b>Plazo:</b> hasta 24 horas para estar listo; después ~15 minutos por interacción.'),
+            L('<b>Sem microdados</b> não adiciona nem atualiza itens.', '<b>Sin microdatos</b> no agrega ni actualiza artículos.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'pixelfonte-integ',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelas 5 condições: duas falham (microdados e disparo recente).', 'En el simulador, el Pixel te guía por las 5 condiciones: dos fallan (microdatos y activación reciente).'),
+          tour: 'pixel-fonte-catalogo', pagina: 'meta-terceiros.html?zerar=1'
+        },
+        atender: {
+          cena: L('Adicionei o Pixel como fonte do catálogo e nada atualiza! 😠', '¡Agregué el píxel como fuente del catálogo y nada se actualiza! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Vamos conferir as condições: catálogo e Pixel no mesmo portfólio ou compartilhados, permissão nos dois, ViewContent e microdados nas páginas de produto e se o Pixel disparou nos últimos sete dias. E lembre que pode levar até 24 horas para ficar pronto.”', '“Revisemos las condiciones: catálogo y píxel en el mismo portfolio o compartidos, permiso en los dos, ViewContent y microdatos en las páginas de producto y si el píxel se activó en los últimos siete días. Y recuerda que puede tardar hasta 24 horas en estar listo.”'), fb: L('Isso! Lista e prazo reais.', '¡Eso! Lista y plazo reales.') },
+            { certa: false, txt: L('“Crie outro catálogo.”', '“Crea otro catálogo.”'), fb: L('Antes confira as condições.', 'Antes revisa las condiciones.') },
+            { certa: false, txt: L('“O Pixel nunca atualiza catálogo.”', '“El píxel nunca actualiza el catálogo.”'), fb: L('Atualiza, se as condições estiverem certas.', 'Actualiza, si las condiciones están correctas.') },
+            { certa: false, txt: L('“Espere um mês.”', '“Espera un mes.”'), fb: L('O prazo é de até 24 horas.', 'El plazo es de hasta 24 horas.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Catálogo e Pixel estão no mesmo portfólio? Há microdados nas páginas de produto?', '¿El catálogo y el píxel están en el mismo portfolio? ¿Hay microdatos en las páginas de producto?'), L('O Pixel recebeu um ViewContent nos últimos 7 dias?', '¿El píxel recibió un ViewContent en los últimos 7 días?')],
+          conferir: [L('Gerenciador de Comércio › catálogo › Fontes de dados.', 'Administrador de ventas › catálogo › Orígenes de datos.'), L('Microdata Debugger.', 'Microdata Debugger.')],
+          frase: L('Para o Pixel alimentar o catálogo, cinco condições precisam estar certas. Vamos conferir uma por uma.', 'Para que el píxel alimente el catálogo, cinco condiciones deben estar correctas. Revisemos una por una.'),
+          passos: [L('Confira as cinco condições.', 'Revisa las cinco condiciones.'), L('Adicione o Pixel como fonte e espere até 24 horas.', 'Agrega el píxel como fuente y espera hasta 24 horas.')],
+          encaminhar: L('Microdados no site são trabalho do site do cliente: oriente com o módulo Microdata Debugger.', 'Los microdatos en el sitio son trabajo del sitio del cliente: orienta con el módulo Microdata Debugger.')
+        }
+      },
+      {
+        id: '05', min: 7, status: 'pronta',
+        titulo: L('Manter e desconectar a integração', 'Mantener y desconectar la integración'),
+        antes: L('A cliente da Marina vai trocar de plataforma e quer desconectar o WooCommerce.', 'La clienta de Marina va a cambiar de plataforma y quiere desconectar WooCommerce.'),
+        gancho: L('Manter atualizado evita erros. Desconectar sem pensar deixa produtos para trás.', 'Mantener actualizado evita errores. Desconectar sin pensar deja productos atrás.'),
+        objetivo: L('Atualizar o plugin, ativar atualizações automáticas e desconectar sabendo o efeito nos produtos.', 'Actualizar el plugin, activar actualizaciones automáticas y desconectar sabiendo el efecto en los productos.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Como mantenho a integração em dia? 🤔', '¿Cómo mantengo la integración al día? 🤔')],
+            ['rafa', L('Atualize plugins e extensões com regularidade. No WordPress, em Plugins instalados, procure “Meta para WooCommerce” e clique em Atualizar agora, ou habilite as atualizações automáticas.', 'Actualiza plugins y extensiones con regularidad. En WordPress, en Plugins instalados, busca “Meta para WooCommerce” y haz clic en Actualizar ahora, o habilita las actualizaciones automáticas.')],
+            ['marina', L('E se ela quiser desconectar?', '¿Y si ella quiere desconectar?')],
+            ['rafa', L('Em Marketing, Facebook, aba Lojas, Configurações, Excluir conexão. A conta do WooCommerce deixa de ligar aos ativos da Meta e as atualizações de produtos param de sincronizar.', 'En Marketing, Facebook, pestaña Tiendas, Configuración, Eliminar conexión. La cuenta de WooCommerce deja de vincularse a los activos de Meta y las actualizaciones de productos dejan de sincronizarse.')],
+            ['pixel', L('Atenção: os produtos já sincronizados continuam no Gerenciador de Comércio, a menos que você cancele a sincronização antes ou os exclua à mão depois.', 'Atención: los productos ya sincronizados siguen en el Administrador de ventas, a menos que canceles la sincronización antes o los elimines a mano después.')]
+          ],
+          pontos: [
+            L('<b>Atualize</b> o plugin (ou ative atualização automática).', '<b>Actualiza</b> el plugin (o activa la actualización automática).'),
+            L('<b>Desconectar:</b> Marketing › Facebook › Lojas › Configurações › Excluir conexão.', '<b>Desconectar:</b> Marketing › Facebook › Tiendas › Configuración › Eliminar conexión.'),
+            L('<b>Produtos</b> ficam no Gerenciador de Comércio se a sincronização não for cancelada antes.', '<b>Los productos</b> quedan en el Administrador de ventas si la sincronización no se cancela antes.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'manter-integ',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia para atualizar o plugin e desconectar cancelando a sincronização antes.', 'En el simulador, el Pixel te guía para actualizar el plugin y desconectar cancelando la sincronización antes.'),
+          tour: 'manter-desconectar', pagina: 'meta-terceiros.html?zerar=1'
+        },
+        atender: {
+          cena: L('Desconectei o plugin e meus produtos continuam no catálogo da Meta! Eles roubaram meus dados? 😱', '¡Desconecté el plugin y mis productos siguen en el catálogo de Meta! ¿Robaron mis datos? 😱'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Calma, ninguém roubou nada: ao desconectar o plugin, os produtos que já tinham sido sincronizados permanecem no Gerenciador de Comércio, a menos que se cancele a sincronização antes ou se excluam manualmente depois. Podemos excluir os que você não quer lá.”', '“Calma, nadie robó nada: al desconectar el plugin, los productos que ya se habían sincronizado permanecen en el Administrador de ventas, a menos que se cancele la sincronización antes o se eliminen manualmente después. Podemos eliminar los que no quieres allí.”'), fb: L('Isso! Explicou o comportamento real.', '¡Eso! Explicaste el comportamiento real.') },
+            { certa: false, txt: L('“É um erro da Meta.”', '“Es un error de Meta.”'), fb: L('É o comportamento esperado.', 'Es el comportamiento esperado.') },
+            { certa: false, txt: L('“Reconecte para apagar.”', '“Reconecta para borrar.”'), fb: L('Dá para excluir no Gerenciador de Comércio.', 'Se puede eliminar en el Administrador de ventas.') },
+            { certa: false, txt: L('“Os produtos somem em 24 horas.”', '“Los productos desaparecen en 24 horas.”'), fb: L('Não somem sozinhos.', 'No desaparecen solos.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A sincronização foi cancelada antes de desconectar?', '¿Se canceló la sincronización antes de desconectar?'), L('O plugin estava atualizado?', '¿El plugin estaba actualizado?')],
+          conferir: [L('WordPress › Plugins instalados › Meta para WooCommerce.', 'WordPress › Plugins instalados › Meta para WooCommerce.'), L('Gerenciador de Comércio › catálogo › itens.', 'Administrador de ventas › catálogo › artículos.')],
+          frase: L('Ao desconectar, os produtos já sincronizados continuam no Gerenciador de Comércio até serem excluídos. Vamos limpar o que você não quer manter.', 'Al desconectar, los productos ya sincronizados siguen en el Administrador de ventas hasta que se eliminen. Limpiemos lo que no quieres mantener.'),
+          passos: [L('Cancele a sincronização antes de desconectar.', 'Cancela la sincronización antes de desconectar.'), L('Exclua os itens restantes, se necessário.', 'Elimina los artículos restantes, si es necesario.')],
+          encaminhar: L('Excluir produtos do catálogo é decisão do cliente: mostre onde fazer e deixe-o escolher.', 'Eliminar productos del catálogo es decisión del cliente: muestra dónde hacerlo y déjalo elegir.')
         }
       }
     ];

@@ -126,3 +126,12 @@ Leia nesta ordem:
 - Parte técnica do parceiro (tokens, permissões, review) ficou só em nota: o treino é para o atendimento ao lojista.
 - Nota de ambiente: o navegador interno recusou facebook.com por um tempo; usei o Chrome (extensão) para as páginas da Meta.
 - Próximo na ordem do Foco: integrações de terceiros, Shopify, WhatsApp (por último).
+
+## Integração com plataformas de terceiros (Foco) · 16/10/2026
+- Simulador `meta-terceiros.html` (sim-terceiros.js, sim-es-terceiros.js, sim-terceiros.css): abas Conectar a plataforma (WooCommerce, Wix, Google Tag Manager, outras), Erros do Pixel (Diagnóstico: 12 mensagens), Pixel como fonte do catálogo e Manter e desconectar. `?zerar=1`.
+- 4 tutoriais (conectar-woocommerce, ler-diagnostico, pixel-fonte-catalogo, manter-desconectar), 5 aulas, 5 quizzes; todos rodaram em ES (a lista de textos sem tradução ficou vazia depois dos ajustes).
+- REAL (tela, PT e ES): Gerenciador de Eventos › Integrações/Galeria (inclui "Configurar automaticamente / Status da automação" do Gerenciador de tags do Google) e "Conjuntos de dados" vazio ("Os dados precisam ser conectados antes de você poder ver os conjuntos de dados").
+- REAL (Central de Ajuda PT): 900699293402826 (WooCommerce: pré-requisitos, passos, 10–30 min, atualizar, desconectar), 490934944618455 (12 mensagens de erro/aviso do Pixel), 260370078559247 (integrações de parceiros). De pesquisa (inglês/espanhol, não lidas na íntegra): Pixel como fonte do catálogo (887775018036966, 1044262445604547) e Wix Premium (1897688327154623, página antiga).
+- NÃO visto (a conferir): aba Diagnóstico real (conta sem conjunto de dados), telas do plugin no WordPress, integração do Wix e do GTM funcionando, nomes de menu em espanhol do WordPress.
+- INVENTADO: telas, cenários, rótulo "tipo" (Erro/Aviso/Notificação) dos itens que o artigo não classifica.
+- Próximo na ordem do Foco: Shopify, depois WhatsApp (por último).

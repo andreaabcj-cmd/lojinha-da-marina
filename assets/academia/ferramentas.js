@@ -1526,6 +1526,78 @@
         [{ pt: 'Acesso parcial é mais caro', es: 'El acceso parcial es más caro' }, 0, { pt: 'Não tem preço.', es: 'No tiene precio.' }]] }
   ]);
 
+  /* ---------- 26. Integração com plataformas de terceiros: cinco mini-quizzes (Integrações 01–05) ---------- */
+  quizCatalogo('visao-integ', { pt: 'Integrações de terceiros: visão geral', es: 'Integraciones de terceros: visión general' }, { pt: 'O que entregam e o que fazer fora da lista.', es: 'Qué entregan y qué hacer fuera de la lista.' }, [
+    { q: { pt: 'O que as integrações de parceiros entregam para o site?', es: '¿Qué entregan las integraciones de socios para el sitio?' },
+      o: [[{ pt: 'Eventos do site capturados sem editar código, com Pixel e API de Conversões', es: 'Eventos del sitio capturados sin editar código, con píxel y API de Conversiones' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Um novo site pronto', es: 'Un nuevo sitio listo' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Criação automática de anúncios', es: 'Creación automática de anuncios' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Onde ver os parceiros disponíveis?', es: '¿Dónde ver los socios disponibles?' },
+      o: [[{ pt: 'No Gerenciador de Eventos, em Integrações › Galeria de parceiros', es: 'En el Administrador de eventos, en Integraciones › Galería de socios' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Na página inicial do Instagram', es: 'En la página de inicio de Instagram' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }],
+        [{ pt: 'No Gerenciador de Anúncios, em Públicos', es: 'En el Administrador de anuncios, en Públicos' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] },
+    { q: { pt: 'A plataforma do cliente não está na lista. O que fazer?', es: 'La plataforma del cliente no está en la lista. ¿Qué hacer?' },
+      o: [[{ pt: 'Configurar a API de Conversões manualmente ou falar com o provedor de serviços', es: 'Configurar la API de Conversiones manualmente o hablar con el proveedor de servicios' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Desistir da Meta', es: 'Desistir de Meta' }, 0, { pt: 'Há alternativa.', es: 'Hay alternativa.' }],
+        [{ pt: 'Esperar a plataforma entrar', es: 'Esperar a que la plataforma entre' }, 0, { pt: 'Há alternativa agora.', es: 'Hay alternativa ahora.' }]] }
+  ]);
+  quizCatalogo('woo-integ', { pt: 'Conectar o WooCommerce', es: 'Conectar WooCommerce' }, { pt: 'Pré-requisitos e passos.', es: 'Requisitos previos y pasos.' }, [
+    { q: { pt: 'Qual destes é um pré-requisito para conectar o WooCommerce à Meta?', es: '¿Cuál de estos es un requisito previo para conectar WooCommerce a Meta?' },
+      o: [[{ pt: 'Autenticação de dois fatores habilitada para o portfólio empresarial', es: 'Autenticación de dos factores habilitada para el portfolio comercial' }, 1, { pt: 'Isso! Também: administrador do WordPress, WooCommerce instalado e controle total (ou permissão).', es: '¡Eso! También: administrador de WordPress, WooCommerce instalado y control total (o permiso).' }],
+        [{ pt: 'Ter 10 mil seguidores', es: 'Tener 10 mil seguidores' }, 0, { pt: 'Não é exigido.', es: 'No se exige.' }],
+        [{ pt: 'Pagar uma taxa à Meta', es: 'Pagar una tasa a Meta' }, 0, { pt: 'Não é exigido.', es: 'No se exige.' }]] },
+    { q: { pt: 'Onde se inicia a conexão no painel do WordPress?', es: '¿Dónde se inicia la conexión en el panel de WordPress?' },
+      o: [[{ pt: 'Marketing › Facebook › Começar', es: 'Marketing › Facebook › Empezar' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Configurações › Geral', es: 'Ajustes › General' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }],
+        [{ pt: 'Aparência › Temas', es: 'Apariencia › Temas' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] },
+    { q: { pt: 'Depois de conectar, quanto pode levar para a loja ser publicada sozinha?', es: 'Después de conectar, ¿cuánto puede tardar la tienda en publicarse sola?' },
+      o: [[{ pt: 'De 10 a 30 minutos', es: 'De 10 a 30 minutos' }, 1, { pt: 'Isso! Volte depois para conferir.', es: '¡Eso! Vuelve después para revisar.' }],
+        [{ pt: 'Um ano', es: 'Un año' }, 0, { pt: 'Muito mais rápido.', es: 'Mucho más rápido.' }],
+        [{ pt: 'Nunca é publicada', es: 'Nunca se publica' }, 0, { pt: 'Se tudo certo, é publicada.', es: 'Si todo está bien, se publica.' }]] }
+  ]);
+  quizCatalogo('diag-integ', { pt: 'O que diz o Diagnóstico?', es: '¿Qué dice el Diagnóstico?' }, { pt: 'Causas e correções das mensagens.', es: 'Causas y correcciones de los mensajes.' }, [
+    { q: { pt: '“Eventos de compra redundantes” aparece quando…', es: '“Eventos de compra redundantes” aparece cuando…' },
+      o: [[{ pt: 'O Pixel recebe quatro ou mais eventos de compra para uma única compra', es: 'El píxel recibe cuatro o más eventos de compra para una sola compra' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O cliente não compra nada', es: 'El cliente no compra nada' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'O catálogo está vazio', es: 'El catálogo está vacío' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Qual escrita é a correta do evento de compra?', es: '¿Cuál es la escritura correcta del evento de compra?' },
+      o: [[{ pt: 'compra (minúscula)', es: 'compra (minúscula)' }, 0, { pt: 'Os nomes diferenciam maiúsculas.', es: 'Los nombres distinguen mayúsculas.' }],
+        [{ pt: 'Compra (com a inicial maiúscula)', es: 'Compra (con inicial mayúscula)' }, 1, { pt: 'Isso! Como o evento padrão.', es: '¡Eso! Como el evento estándar.' }],
+        [{ pt: 'COMPRAR!!!', es: '¡COMPRAR!' }, 0, { pt: 'Não é o padrão.', es: 'No es el estándar.' }]] },
+    { q: { pt: 'Como deve ser o parâmetro de valor de um evento?', es: '¿Cómo debe ser el parámetro de valor de un evento?' },
+      o: [[{ pt: 'Um número decimal maior ou igual a zero, sem letras, símbolos de moeda ou vírgulas', es: 'Un número decimal mayor o igual a cero, sin letras, símbolos de moneda ni comas' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O texto “R$ 49,90”', es: 'El texto “R$ 49,90”' }, 0, { pt: 'Isso não é aceito.', es: 'Eso no se acepta.' }],
+        [{ pt: 'Qualquer palavra', es: 'Cualquier palabra' }, 0, { pt: 'Precisa ser número.', es: 'Debe ser número.' }]] }
+  ]);
+  quizCatalogo('pixelfonte-integ', { pt: 'Pixel alimentando o catálogo', es: 'Píxel alimentando el catálogo' }, { pt: 'Condições e prazos.', es: 'Condiciones y plazos.' }, [
+    { q: { pt: 'Qual condição é exigida para o Pixel atualizar itens do catálogo?', es: '¿Qué condición se exige para que el píxel actualice artículos del catálogo?' },
+      o: [[{ pt: 'Tags de microdados nas páginas de produto', es: 'Etiquetas de microdatos en las páginas de producto' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Um vídeo no site', es: 'Un video en el sitio' }, 0, { pt: 'Não é exigido.', es: 'No se exige.' }],
+        [{ pt: 'Ter anúncios ativos', es: 'Tener anuncios activos' }, 0, { pt: 'Não é exigido.', es: 'No se exige.' }]] },
+    { q: { pt: 'O Pixel precisa ter disparado em qual período?', es: '¿En qué período debe haberse activado el píxel?' },
+      o: [[{ pt: 'Nos últimos sete dias', es: 'En los últimos siete días' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nos últimos 5 anos', es: 'En los últimos 5 años' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Hoje, às 3 da manhã', es: 'Hoy, a las 3 de la mañana' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Depois de adicionar o Pixel como fonte, quanto pode levar para ficar pronto?', es: 'Después de agregar el píxel como fuente, ¿cuánto puede tardar en estar listo?' },
+      o: [[{ pt: 'Até 24 horas', es: 'Hasta 24 horas' }, 1, { pt: 'Isso! Depois, atualiza em geral em até 15 minutos.', es: '¡Eso! Después, actualiza por lo general en hasta 15 minutos.' }],
+        [{ pt: 'Um mês', es: 'Un mes' }, 0, { pt: 'É até 24 horas.', es: 'Es hasta 24 horas.' }],
+        [{ pt: 'Fica pronto na hora, sempre', es: 'Queda listo al instante, siempre' }, 0, { pt: 'Pode levar até 24 horas.', es: 'Puede tardar hasta 24 horas.' }]] }
+  ]);
+  quizCatalogo('manter-integ', { pt: 'Manter e desconectar', es: 'Mantener y desconectar' }, { pt: 'Atualizações e efeito nos produtos.', es: 'Actualizaciones y efecto en los productos.' }, [
+    { q: { pt: 'Qual é uma boa prática com plugins de integração?', es: '¿Cuál es una buena práctica con plugins de integración?' },
+      o: [[{ pt: 'Atualizar regularmente, ou habilitar as atualizações automáticas', es: 'Actualizar regularmente, o habilitar las actualizaciones automáticas' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nunca atualizar', es: 'Nunca actualizar' }, 0, { pt: 'Atualize.', es: 'Actualiza.' }],
+        [{ pt: 'Trocar de plugin todo mês', es: 'Cambiar de plugin todos los meses' }, 0, { pt: 'Não é recomendado.', es: 'No se recomienda.' }]] },
+    { q: { pt: 'Ao desconectar o plugin, o que acontece com os produtos já sincronizados?', es: 'Al desconectar el plugin, ¿qué pasa con los productos ya sincronizados?' },
+      o: [[{ pt: 'Permanecem no Gerenciador de Comércio, a menos que a sincronização seja cancelada antes ou eles sejam excluídos à mão', es: 'Permanecen en el Administrador de ventas, a menos que la sincronización se cancele antes o se eliminen a mano' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'São apagados na hora', es: 'Se borran al instante' }, 0, { pt: 'Não são.', es: 'No se borran.' }],
+        [{ pt: 'Vão para a loja do Instagram', es: 'Van a la tienda de Instagram' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Onde se desconecta o WooCommerce da Meta?', es: '¿Dónde se desconecta WooCommerce de Meta?' },
+      o: [[{ pt: 'Marketing › Facebook › aba Lojas › Configurações › Excluir conexão', es: 'Marketing › Facebook › pestaña Tiendas › Configuración › Eliminar conexión' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'No Gerenciador de Anúncios', es: 'En el Administrador de anuncios' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }],
+        [{ pt: 'Apagando o site', es: 'Borrando el sitio' }, 0, { pt: 'Não é preciso.', es: 'No hace falta.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
