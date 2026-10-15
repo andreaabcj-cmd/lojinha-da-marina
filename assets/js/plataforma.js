@@ -74,17 +74,18 @@
     },
     aula: function () { return aulaTela() },
     simuladores: function () {
+      setTimeout(ligaRecomecar);
       var sims = [['meta-eventos.html', '📡', { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, { pt: 'Criar o Pixel, Testar eventos (com os eventos da Lojinha), Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos (con los eventos de la Lojinha), Diagnóstico y Configuración.' }, 'pronta'],
         ['meta-instagram.html', '📸', { pt: 'Instagram (perfil e conta profissional)', es: 'Instagram (perfil y cuenta profesional)' }, { pt: 'Virar conta profissional e editar o perfil, com as telas reais.', es: 'Volverse cuenta profesional y editar el perfil, con las pantallas reales.' }, 'pronta'],
         ['meta-portfolio.html', '🏢', { pt: 'Configurações do portfólio (Business Suite)', es: 'Configuración del portafolio (Business Suite)' }, { pt: 'Criar o portfólio, convidar pessoas, Páginas, contas de anúncios e Central de Segurança.', es: 'Crear el portafolio, invitar personas, Páginas, cuentas publicitarias y Centro de seguridad.' }, 'pronta'],
         [null, '🗂️', { pt: 'Gerenciador de Comércio', es: 'Administrador de ventas' }, { pt: 'Catálogo, itens, fontes de dados e correspondência com o Pixel.', es: 'Catálogo, artículos, fuentes de datos y coincidencia con el Pixel.' }, 'planejada'],
         [null, '📣', { pt: 'Gerenciador de Anúncios', es: 'Administrador de anuncios' }, { pt: 'Campanhas, conjuntos de anúncios, anúncios e relatórios.', es: 'Campañas, conjuntos de anuncios, anuncios e informes.' }, 'planejada']];
       return '<h1 class="pl-h1">🕹️ ' + T(U.simuladores) + '</h1><p class="pl-lead">' + T({ pt: 'Cópias de treino das ferramentas da Meta: o mesmo layout e os mesmos nomes, com o visual da Lojinha. Cada tela mostra a data em que foi conferida com a ferramenta real.', es: 'Copias de práctica de las herramientas de Meta: el mismo diseño y los mismos nombres, con el estilo de la Lojinha. Cada pantalla muestra la fecha en que se revisó con la herramienta real.' }) + '</p>' +
-        '<div class="grade">' + sims.map(function (s) { return (s[0] ? '<a class="item" href="' + s[0] + '">' : '<div class="item off">') + '<span class="ic">' + s[1] + '</span><b>' + T(s[2]) + '</b><p>' + T(s[3]) + '</p>' + selo(s[4]) + (s[0] ? '</a>' : '</div>') }).join('') + '</div>';
+        '<div class="grade">' + sims.map(function (s) { return (s[0] ? '<a class="item" href="' + s[0] + '">' : '<div class="item off">') + '<span class="ic">' + s[1] + '</span><b>' + T(s[2]) + '</b><p>' + T(s[3]) + '</p>' + selo(s[4]) + (s[0] ? '</a>' : '</div>') }).join('') + '</div>' + recomecarHTML();
     },
     laboratorio: function () {
       var F = window.FERRAMENTAS;
-      setTimeout(ligaComo);
+      setTimeout(ligaComo); setTimeout(ligaRecomecar);
       return '<h1 class="pl-h1">🧪 ' + T(U.laboratorio) + '</h1><p class="pl-lead">' + T({ pt: 'Tudo das aulas, solto: os tutoriais guiados (“como fazer…”), as ferramentas e a loja por dentro. Use para tirar uma dúvida ou mostrar um passo a passo sem seguir a aula inteira.', es: 'Todo lo de las clases, suelto: los tutoriales guiados (“cómo hacer…”), las herramientas y la tienda por dentro. Úsalo para resolver una duda o mostrar un paso a paso sin seguir la clase completa.' }) + '</p>' +
         comoFazer() +
         '<h2 class="pl-h2">🧰 ' + T({ pt: 'Ferramentas das aulas', es: 'Herramientas de las clases' }) + '</h2>' +
@@ -93,7 +94,7 @@
           return (ok ? '<a class="item" href="' + href + '">' : '<div class="item off">') + '<b>' + T(f.titulo) + '</b><p>' + T(f.resumo) + '</p>' + selo(f.status) + (ok ? '</a>' : '</div>')
         }).join('') + '</div>' +
         '<h2 class="pl-h2" id="loja-por-dentro">🔬 ' + T({ pt: 'A loja por dentro (F12)', es: 'La tienda por dentro (F12)' }) + '</h2>' +
-        '<a class="item dentro" href="loja.html?aula=camera"><b>' + T({ pt: 'Só mais um jeito de ver o Pixel', es: 'Solo otra forma de ver el Pixel' }) + '</b><p>' + T({ pt: 'É o mesmo Pixel e são os mesmos eventos que você vê no Consultor de Dados e no Gerenciador de Eventos, só que olhando por dentro do site, como no F12 (ferramentas de desenvolvedor). No atendimento não é preciso: serve para entender o que acontece por trás e para conversar com quem cuida do site.', es: 'Es el mismo Pixel y son los mismos eventos que ves en el Asesor de datos y en el Administrador de eventos, solo que mirando por dentro del sitio, como en el F12 (herramientas de desarrollador). En la atención no hace falta: sirve para entender lo que pasa por detrás y para hablar con quien cuida el sitio.' }) + '</p><p class="abas">' + T({ pt: 'Dentro dele: 📹 Câmera · 🌐 Rede · 🔍 Lupa · 📄 Código · 🧪 Falhas · 💡 Dica. Para voltar à loja normal, use “sair” na faixa amarela.', es: 'Adentro: 📹 Cámara · 🌐 Red · 🔍 Lupa · 📄 Código · 🧪 Fallas · 💡 Consejo. Para volver a la tienda normal, usa “salir” en la franja amarilla.' }) + '</p><em>' + T({ pt: 'Abrir a loja por dentro →', es: 'Abrir la tienda por dentro →' }) + '</em></a>';
+        '<a class="item dentro" href="loja.html?aula=camera"><b>' + T({ pt: 'Só mais um jeito de ver o Pixel', es: 'Solo otra forma de ver el Pixel' }) + '</b><p>' + T({ pt: 'É o mesmo Pixel e são os mesmos eventos que você vê no Consultor de Dados e no Gerenciador de Eventos, só que olhando por dentro do site, como no F12 (ferramentas de desenvolvedor). No atendimento não é preciso: serve para entender o que acontece por trás e para conversar com quem cuida do site.', es: 'Es el mismo Pixel y son los mismos eventos que ves en el Asesor de datos y en el Administrador de eventos, solo que mirando por dentro del sitio, como en el F12 (herramientas de desarrollador). En la atención no hace falta: sirve para entender lo que pasa por detrás y para hablar con quien cuida el sitio.' }) + '</p><p class="abas">' + T({ pt: 'Dentro dele: 📹 Câmera · 🌐 Rede · 🔍 Lupa · 📄 Código · 🧪 Falhas · 💡 Dica. Para voltar à loja normal, use “sair” na faixa amarela.', es: 'Adentro: 📹 Cámara · 🌐 Red · 🔍 Lupa · 📄 Código · 🧪 Fallas · 💡 Consejo. Para volver a la tienda normal, usa “salir” en la franja amarilla.' }) + '</p><em>' + T({ pt: 'Abrir a loja por dentro →', es: 'Abrir la tienda por dentro →' }) + '</em></a>' + recomecarHTML();
     },
     ferramenta: function () {
       var id = Q.get('f'), f = window.FERRAMENTAS[id]; if (!f || !f.montar) return '<p>' + T({ pt: 'Ferramenta não encontrada.', es: 'Herramienta no encontrada.' }) + '</p>';
@@ -101,6 +102,36 @@
       return '<p class="pl-trilha"><a href="laboratorio.html">' + T(U.laboratorio) + '</a> ›</p><h1 class="pl-h1">' + T(f.titulo) + '</h1><p class="pl-lead">' + T(f.resumo) + '</p><div class="palco"><div id="ferr"></div></div>';
     }
   };
+
+  /* ---------- 🧹 Recomeçar do zero: apaga o que a pessoa fez nos simuladores e na loja (só neste navegador) ---------- */
+  function recomecarHTML() {
+    return '<div class="recomecar" id="recomecar"><h2 class="pl-h2">🧹 ' + T({ pt: 'Recomeçar do zero', es: 'Empezar de cero' }) + '</h2>' +
+      '<p>' + T({ pt: 'Apaga o que você fez nos simuladores (Pixels criados, eventos, portfólios, convites, contas de anúncios, perfil do Instagram) e na loja (carrinho, pedidos, dados do checkout, cookies, falhas do Laboratório). Só neste navegador: não mexe no de mais ninguém.', es: 'Borra lo que hiciste en los simuladores (Pixels creados, eventos, portafolios, invitaciones, cuentas publicitarias, perfil de Instagram) y en la tienda (carrito, pedidos, datos del checkout, cookies, fallas del Laboratorio). Solo en este navegador: no toca el de nadie más.' }) + '</p>' +
+      '<label class="rc-ck"><input type="checkbox" id="rcProg"/> ' + T({ pt: 'Apagar também meu progresso nas aulas (os ✓)', es: 'Borrar también mi progreso en las clases (los ✓)' }) + '</label>' +
+      '<div class="rc-bts" id="rcBts"><button class="btn sec" id="rcIr">🧹 ' + T({ pt: 'Recomeçar do zero', es: 'Empezar de cero' }) + '</button></div></div>';
+  }
+  function ligaRecomecar() {
+    var box = document.getElementById('rcBts'); if (!box) return;
+    function inicial() {
+      box.innerHTML = '<button class="btn sec" id="rcIr">🧹 ' + T({ pt: 'Recomeçar do zero', es: 'Empezar de cero' }) + '</button>';
+      document.getElementById('rcIr').onclick = function () {
+        box.innerHTML = '<b>' + T({ pt: 'Tem certeza? Não dá para desfazer.', es: '¿Seguro? No se puede deshacer.' }) + '</b> <button class="btn" id="rcSim">' + T({ pt: 'Sim, apagar', es: 'Sí, borrar' }) + '</button> <button class="btn sec" id="rcNao">' + T({ pt: 'Cancelar', es: 'Cancelar' }) + '</button>';
+        document.getElementById('rcNao').onclick = inicial;
+        document.getElementById('rcSim').onclick = function () {
+          var prog = document.getElementById('rcProg').checked;
+          try {
+            Object.keys(localStorage).forEach(function (k) {
+              if (/^(sim\.|loja\.|aulaoPixel\.)/.test(k) || (prog && /^plat\.(feitas|praticas|ultima)$/.test(k))) localStorage.removeItem(k);   // fica: senha da porta (plat.ok) e idioma
+            });
+            Object.keys(sessionStorage).forEach(function (k) { if (/^(loja\.|tour\.)/.test(k)) sessionStorage.removeItem(k) });
+          } catch (e) { }
+          box.innerHTML = '✅ ' + T({ pt: 'Pronto! Tudo zerado' + (prog ? ', inclusive o progresso nas aulas.' : '. Seu progresso nas aulas foi mantido.'), es: '¡Listo! Todo en cero' + (prog ? ', incluido el progreso en las clases.' : '. Tu progreso en las clases se mantuvo.') });
+          setTimeout(inicial, 4000);
+        };
+      };
+    }
+    inicial();
+  }
 
   /* ---------- Laboratório › Como fazer…: todos os tutoriais guiados, na ordem da história da Marina ---------- */
   var COMO = [
