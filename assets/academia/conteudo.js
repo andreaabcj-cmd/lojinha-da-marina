@@ -55,7 +55,7 @@ window.TRILHAS[1].modulos = window.TRILHAS[0].modulos;   // a Completa começa p
 window.AULAS = {
   instagram: [
     {
-      id: '01', min: 6, status: 'pronta',
+      id: '01', soCompleta: true, min: 6, status: 'pronta',
       titulo: { pt: 'Pessoal ou profissional?', es: '¿Personal o profesional?' },
       antes: { pt: 'O portfólio da Marina está pronto, com pessoas e conta de anúncios.', es: 'El portfolio de Marina está listo, con personas y cuenta publicitaria.' },
       gancho: { pt: '“Virei profissional! E agora, o que eu coloco no perfil?” Vamos deixar o perfil com cara de loja.', es: '“¡Me volví profesional! ¿Y ahora qué pongo en el perfil?” Vamos a darle al perfil cara de tienda.' },
@@ -109,7 +109,7 @@ window.AULAS = {
       ]
     },
     {
-      id: '02', min: 6, status: 'pronta',
+      id: '02', soCompleta: true, min: 6, status: 'pronta',
       titulo: { pt: 'Um perfil que vende', es: 'Un perfil que vende' },
       antes: { pt: 'O Instagram da Marina virou conta profissional Comercial.', es: 'El Instagram de Marina se volvió cuenta profesional Comercial.' },
       gancho: { pt: '“Perfil pronto! Agora meu Instagram precisa entrar no portfólio, né?” Vamos juntar o Instagram à pasta da empresa.', es: '“¡Perfil listo! Ahora mi Instagram tiene que entrar al portfolio, ¿no?” Vamos a juntar el Instagram a la carpeta de la empresa.' },
@@ -162,7 +162,7 @@ window.AULAS = {
     {
       id: '03', min: 6, status: 'pronta',
       titulo: { pt: 'Instagram no portfólio', es: 'Instagram en el portfolio' },
-      antes: { pt: 'O perfil da Marina está com cara de loja.', es: 'El perfil de Marina tiene cara de tienda.' },
+      antes: { pt: 'O Instagram da Marina já é uma conta profissional.', es: 'El Instagram de Marina ya es una cuenta profesional.' },
       gancho: { pt: '“Instagram e Página no portfólio! Mas eles ainda não conversam entre si…” Vamos ligar os dois.', es: '“¡Instagram y Página en el portfolio! Pero todavía no se hablan entre sí…” Vamos a vincular los dos.' },
       objetivo: { pt: 'Saber adicionar o Instagram ao portfólio e os cuidados: só conta profissional, um ativo em um portfólio, e a conta de anúncios que vem junto.', es: 'Saber agregar el Instagram al portfolio y los cuidados: solo cuenta profesional, un activo en un portfolio, y la cuenta publicitaria que viene junto.' },
       entender: {
@@ -216,7 +216,7 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Instagram e Página juntos', es: 'Instagram y Página juntos' },
       antes: { pt: 'A Página e o Instagram da Marina estão no portfólio, mas ainda separados.', es: 'La Página y el Instagram de Marina están en el portfolio, pero todavía separados.' },
-      gancho: { pt: '“Portfólio, Instagram, Página… tudo pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“Portfolio, Instagram, Página… ¡todo listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
+      gancho: { pt: '“Portfólio, Instagram, Página… tudo ligado! Agora quero que os anúncios fracos parem sozinhos, sem eu ficar olhando.” Próximo módulo: Regras automatizadas.', es: '“Portfolio, Instagram, Página… ¡todo conectado! Ahora quiero que los anuncios flojos se detengan solos, sin que yo esté mirando.” Próximo módulo: Reglas automatizadas.' },
       objetivo: { pt: 'Saber ligar o Instagram à Página, o que é preciso antes e o que muda para quem ajuda a cuidar dos dois.', es: 'Saber vincular el Instagram a la Página, qué se necesita antes y qué cambia para quien ayuda a cuidar los dos.' },
       entender: {
         dialogo: [
@@ -431,7 +431,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Os ativos: Página e conta de anúncios', es: 'Los activos: Página y cuenta publicitaria' },
       antes: { pt: 'A Marina já tem portfólio e o sobrinho com o acesso certo.', es: 'Marina ya tiene portfolio y al sobrino con el acceso correcto.' },
-      gancho: { pt: '“Portfólio pronto! Mas meu Instagram é pessoal… preciso mudar alguma coisa?” Próximo módulo: Instagram para empresas.', es: '“¡Portfolio listo! Pero mi Instagram es personal… ¿tengo que cambiar algo?” Próximo módulo: Instagram para empresas.' },
+      gancho: { pt: '“Portfólio pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“¡Portfolio listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
       objetivo: { pt: 'Saber trazer uma Página que está em outro portfólio (pelos caminhos oficiais) e criar a conta de anúncios certa (moeda e fuso não mudam depois).', es: 'Saber traer una Página que está en otro portfolio (por los caminos oficiales) y crear la cuenta publicitaria correcta (moneda y zona horaria no cambian después).' },
       entender: {
         dialogo: [
@@ -474,7 +474,7 @@ window.AULAS = {
         passos: [{ pt: 'Página em outro portfólio: quem administra aquele portfólio vai em Configurações › Contas › Páginas, seleciona a Página e clica em Remover.', es: 'Página en otro portfolio: quien administra ese portfolio va a Configuración › Cuentas › Páginas, selecciona la Página y hace clic en Quitar.' },
           { pt: 'Depois, no seu portfólio: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Después, en tu portfolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
           { pt: 'Conta de anúncios: Contas › Contas de anúncios › Adicionar › Criar uma nova conta de anúncios (escolha a moeda e o fuso certos).', es: 'Cuenta publicitaria: Cuentas › Cuentas publicitarias › Agregar › Crear una nueva cuenta publicitaria (elige la moneda y la zona horaria correctas).' }],
-        encaminhar: { pt: 'Se quem administra o outro portfólio não responde ou não pode remover a Página, oriente a seguir a Central de Ajuda da Meta para Páginas.', es: 'Si quien administra el otro portfolio no responde o no puede quitar la Página, orienta a seguir el Centro de ayuda de Meta para Páginas.' }
+        encaminhar: { pt: 'Criar a conta de anúncios e mudar moeda ou fuso não são do seu escopo: confirme o que a cliente precisa e encaminhe à área de contas. Se quem administra o outro portfólio não responde ou não pode remover a Página, oriente a seguir a Central de Ajuda da Meta para Páginas.', es: 'Crear la cuenta publicitaria y cambiar moneda o zona horaria no son de tu alcance: confirma qué necesita la clienta y deriva al área de cuentas. Si quien administra el otro portfolio no responde o no puede quitar la Página, orienta a seguir el Centro de ayuda de Meta para Páginas.' }
       },
       fontes: [
         { url: 'https://www.facebook.com/business/help/531142997352616', titulo: { pt: 'Remover uma Página do portfólio (e adicionar em outro)', es: 'Quitar una Página del portfolio (y agregarla en otro)' }, conferido: '14/10/2026' },
@@ -486,7 +486,7 @@ window.AULAS = {
     {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'O que é o Pixel?', es: '¿Qué es el Pixel?' },
-      antes: { pt: 'A Marina já abriu o portfólio empresarial e conectou o Instagram. Agora uma amiga disse que ela “precisa colocar o Pixel”.', es: 'Marina ya abrió el portfolio comercial y conectó Instagram. Ahora una amiga le dijo que “tiene que poner el Pixel”.' },
+      antes: { pt: 'A Marina já tem o portfólio empresarial, com as pessoas e os ativos no lugar. Agora uma amiga disse que ela “precisa colocar o Pixel”.', es: 'Marina ya tiene el portfolio comercial, con las personas y los activos en su lugar. Ahora una amiga le dijo que “tiene que poner el Pixel”.' },
       gancho: { pt: '“Entendi! E como eu crio o meu?” A Marina quer o Pixel dela. Vamos criar e colocar no site.', es: '“¡Entendí! ¿Y cómo creo el mío?” Marina quiere su Pixel. Vamos a crearlo y ponerlo en el sitio.' },
       objetivo: { pt: 'Explicar o que o Pixel faz em linguagem simples: ele mede o que acontece no site para medir, melhorar os anúncios e criar públicos.', es: 'Explicar qué hace el Pixel en lenguaje simple: mide lo que pasa en el sitio para medir, mejorar los anuncios y crear públicos.' },
       entender: {
@@ -709,7 +709,7 @@ window.AULAS = {
     {
       id: '01', min: 7, status: 'pronta',
       titulo: { pt: 'Turbinar ou Gerenciador de Anúncios?', es: '¿Promocionar o Administrador de anuncios?' },
-      antes: { pt: 'A Marina tem Página, Instagram, conta de anúncios e o Pixel no site. Ela publicou um post e viu um botão azul: “Turbinar”.', es: 'Marina tiene Página, Instagram, cuenta publicitaria y el Pixel en el sitio. Publicó un post y vio un botón azul: “Promocionar”.' },
+      antes: { pt: 'A Marina tem a Página, a conta de anúncios e o Pixel no site. Ela publicou um post e viu um botão azul: “Turbinar”.', es: 'Marina tiene la Página, la cuenta publicitaria y el Pixel en el sitio. Publicó un post y vio un botón azul: “Promocionar”.' },
       gancho: { pt: '“Turbinei e deu certo! Mas eu quero vender de verdade, medindo as compras.” Vamos conhecer o Gerenciador de Anúncios e seus três níveis.', es: '“¡Promocioné y funcionó! Pero quiero vender de verdad, midiendo las compras.” Vamos a conocer el Administrador de anuncios y sus tres niveles.' },
       objetivo: { pt: 'Saber quando o Turbinar basta e quando é hora do Gerenciador, e fazer um turbinamento sem cair nas pegadinhas.', es: 'Saber cuándo basta Promocionar y cuándo es hora del Administrador, y hacer un promoción sin caer en las trampas.' },
       entender: {
@@ -924,7 +924,7 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: '“Meu anúncio não publica!”', es: '“¡Mi anuncio no se publica!”' },
       antes: { pt: 'A Marina já sabe criar, publicar e editar. Mas um dia o anúncio dela não publica, ou para de rodar.', es: 'Marina ya sabe crear, publicar y editar. Pero un día su anuncio no se publica, o deja de correr.' },
-      gancho: { pt: '“Consegui resolver! Agora quero entender os números: o que é alcance, o que é resultado?” Próxima fase: relatórios e métricas.', es: '“¡Logré resolverlo! Ahora quiero entender los números: ¿qué es alcance, qué es resultado?” Próxima fase: informes y métricas.' },
+      gancho: { pt: '“Consegui resolver! Mas onde esse anúncio aparece para as pessoas?” Próximo módulo: Anúncios no Feed.', es: '“¡Logré resolverlo! Pero ¿dónde aparece este anuncio para la gente?” Próximo módulo: Anuncios en el Feed.' },
       objetivo: { pt: 'Descobrir, em ordem, o que bloqueia um anúncio: telefone, limite de gastos, saldo, conjunto de dados e Página.', es: 'Descubrir, en orden, qué bloquea un anuncio: teléfono, límite de gastos, saldo, conjunto de datos y Página.' },
       entender: {
         dialogo: [
@@ -967,7 +967,7 @@ window.AULAS = {
         passos: [{ pt: 'Peça o texto exato do aviso (ou um print).', es: 'Pide el texto exacto del aviso (o una captura).' },
           { pt: 'Abra a Visão geral da conta e confira o limite de gastos e o saldo.', es: 'Abre la Visión general de la cuenta y revisa el límite de gastos y el saldo.' },
           { pt: 'Se o telefone não está verificado, oriente o responsável a usar Iniciar autenticação.', es: 'Si el teléfono no está verificado, orienta al responsable a usar Iniciar autenticación.' }],
-        encaminhar: { pt: 'Se nenhuma dessas causas explica, ou a conta está restrita ou o anúncio foi rejeitado, siga a Central de Ajuda da Meta (“Solucionar problemas ao criar ou publicar um anúncio” e “Solucionar problemas com uma conta desativada ou restrita”).', es: 'Si ninguna de estas causas lo explica, o la cuenta está restringida o el anuncio fue rechazado, sigue el Centro de ayuda de Meta (“Solucionar problemas al crear o publicar un anuncio” y “Solucionar problemas con una cuenta desactivada o restringida”).' }
+        encaminhar: { pt: 'Se a causa é pagamento, saldo ou limite de gastos da conta, confirme o sintoma e encaminhe à área de pagamentos (quem paga e muda limites é o responsável pela conta). Se nenhuma dessas causas explica, ou a conta está restrita ou o anúncio foi rejeitado, siga a Central de Ajuda da Meta (“Solucionar problemas ao criar ou publicar um anúncio” e “Solucionar problemas com uma conta desativada ou restrita”).', es: 'Si la causa es pago, saldo o límite de gastos de la cuenta, confirma el síntoma y deriva al área de pagos (quien paga y cambia límites es el responsable de la cuenta). Si ninguna de estas causas lo explica, o la cuenta está restringida o el anuncio fue rechazado, sigue el Centro de ayuda de Meta (“Solucionar problemas al crear o publicar un anuncio” y “Solucionar problemas con una cuenta desactivada o restringida”).' }
       },
       fontes: [
         { url: 'https://www.facebook.com/business/help/125897810822573', titulo: { pt: 'Como solucionar problemas ao criar ou publicar uma campanha de anúncios no Gerenciador de Anúncios da Meta', es: 'Cómo solucionar problemas al crear o publicar una campaña de anuncios en el Administrador de anuncios de Meta' }, conferido: '16/10/2026' }

@@ -46,6 +46,11 @@
   function modulosDaTrilha(tr) {
     return (tr.modulos || []).map(function (id) { return window.MODULOS.filter(function (m) { return m.id === id })[0] }).filter(Boolean);
   }
+  /* aulas de um módulo na trilha atual: na Foco, as que são só da Completa (soCompleta) ficam de fora */
+  function aulasDaTrilha(mid) {
+    var tr = trilhaAtual(), L = window.AULAS[mid] || [];
+    return tr.id === 'foco' ? L.filter(function (a) { return !a.soCompleta }) : L;
+  }
   function trilhaChip(m) {
     var tr = trilhaAtual(), ids = (tr.modulos || []).concat(tr.extras || []), k = ids.indexOf(m.id);
     return k < 0 ? '' : '<p class="trilha-chip">' + tr.icone + ' ' + T(tr.nome) + ' · ' + T({ pt: 'módulo', es: 'módulo' }) + ' ' + (k + 1) + ' ' + T({ pt: 'de', es: 'de' }) + ' ' + ids.length + '</p>';
@@ -85,7 +90,7 @@
       return h;
     },
     modulo: function () {
-      var m = window.MODULOS.filter(function (x) { return x.id === Q.get('m') })[0] || window.MODULOS[0], aulas = window.AULAS[m.id] || [], f = feitas();
+      var m = window.MODULOS.filter(function (x) { return x.id === Q.get('m') })[0] || window.MODULOS[0], aulas = aulasDaTrilha(m.id), f = feitas();
       return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + trilhaChip(m) + faseChip(m) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
@@ -295,7 +300,7 @@
     lsSet('plat.ultima', { m: mid, a: aid });
     var partes = ['entender', 'ferramenta', 'praticar', 'atender'].filter(function (p) { return a[p] });
     passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
-    var prox = lista[lista.indexOf(a) + 1], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
+    var prox = aulasDaTrilha(mid).filter(function (x) { return lista.indexOf(x) > lista.indexOf(a) })[0], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function desenha() {
       var p = partes[passoAtual], h = '';
