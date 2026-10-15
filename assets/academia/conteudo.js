@@ -24,7 +24,7 @@ window.MODULOS = [
   { id: 'segmentacao', fase: 3, status: 'construcao', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados do site, semelhantes, salvos e controles; erros comuns.', es: 'Públicos personalizados del sitio, similares, guardados y controles; errores comunes.' } },
   { id: 'entrega', fase: 3, status: 'construcao', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'A fase de aprendizado, as edições significativas e o que fazer quando o anúncio não veicula.', es: 'La fase de aprendizaje, las ediciones significativas y qué hacer cuando el anuncio no entrega.' } },
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
-  { id: 'pixel-avancado', fase: 3, status: 'planejado', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
+  { id: 'pixel-avancado', fase: 3, status: 'construcao', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
@@ -4454,10 +4454,188 @@ window.AULAS = {
       }
     ];
   })(),
-  'pixel-avancado': [
-    { id: '01', titulo: { pt: 'Correspondência avançada', es: 'Coincidencia avanzada' }, status: 'planejada' },
-    { id: '02', titulo: { pt: 'Qualidade do sinal', es: 'Calidad de la señal' }, status: 'planejada' },
-    { id: '03', titulo: { pt: 'API de Conversões e deduplicação', es: 'API de conversiones y deduplicación' }, status: 'planejada' },
-    { id: '04', titulo: { pt: 'Privacidade e regras', es: 'Privacidad y reglas' }, status: 'planejada' }
-  ]
+  'pixel-avancado': (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Sobre a correspondência avançada na web”, “Sobre a qualidade da correspondência de eventos”, “Sobre a desduplicação de eventos do Pixel da Meta e da API de Conversões”, “Requisitos de privacidade e uso de dados para as Ferramentas da Meta para Empresas” e “Comparar as opções de configuração da API de Conversões”. A conta de aula não tem conjunto de dados, então as telas reais de correspondência avançada, qualidade da correspondência de eventos e Eventos de teste não foram vistas: as telas do simulador, o cálculo da pontuação e o hash mostrado são do treino (a conferir).', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Acerca de la coincidencia avanzada en la web”, “Acerca de la calidad de la coincidencia de eventos”, “Acerca de la deduplicación de eventos del píxel de Meta y de la API de Conversiones”, “Requisitos de privacidad y uso de datos para las Herramientas de Meta para Empresas” y “Comparar las opciones de configuración de la API de Conversiones”. La cuenta de clase no tiene conjunto de datos, así que las pantallas reales de coincidencia avanzada, calidad de coincidencia de eventos y Probar eventos no se vieron: las pantallas del simulador, el cálculo de la puntuación y el hash mostrado son del entrenamiento (por confirmar).');
+    var FERR = L('Gerenciador de Eventos › seu Pixel › Visão geral, Eventos de teste e Diagnóstico.', 'Administrador de eventos › tu píxel › Descripción general, Probar eventos y Diagnóstico.');
+    return [
+      {
+        id: '01', min: 8, status: 'pronta',
+        titulo: L('Correspondência avançada', 'Coincidencia avanzada'),
+        antes: L('A Marina quer atribuir mais conversões sem gastar mais com anúncio.', 'Marina quiere atribuir más conversiones sin gastar más en anuncios.'),
+        gancho: L('Dá para a Meta reconhecer melhor quem comprou. A chave é o dado do cliente, protegido por hash.', 'Se puede lograr que Meta reconozca mejor quién compró. La clave es el dato del cliente, protegido por hash.'),
+        objetivo: L('Entender a correspondência avançada, as versões automática e manual e quando cada uma se aplica.', 'Entender la coincidencia avanzada, las versiones automática y manual y cuándo se aplica cada una.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O que é correspondência avançada? 🤔', '¿Qué es la coincidencia avanzada? 🤔')],
+            ['rafa', L('É enviar à Meta informações de clientes convertidas em hash, junto com os eventos do Pixel. Isso pode atribuir mais conversões, aumentar o tamanho do público personalizado e diminuir o custo por conversão.', 'Es enviar a Meta información de clientes convertida en hash, junto con los eventos del píxel. Eso puede atribuir más conversiones, aumentar el tamaño del público personalizado y disminuir el costo por conversión.')],
+            ['marina', L('Preciso programar?', '¿Necesito programar?')],
+            ['rafa', L('A automática não precisa de código: ativa no Gerenciador de Eventos, e o Pixel procura campos de formulário reconhecíveis e faz o hash no navegador do visitante. A manual pede mudar o código base do Pixel para passar a entrada do visitante, por exemplo o e-mail.', 'La automática no necesita código: se activa en el Administrador de eventos, y el píxel busca campos de formulario reconocibles y hace el hash en el navegador del visitante. La manual pide cambiar el código base del píxel para pasar la entrada del visitante, por ejemplo el correo.')],
+            ['pixel', L('Atenção: empresas em verticais restritas (bancos, empréstimos, serviços financeiros, seguros, farmacêuticos e saúde) ou com Pixel em iframe ou Pixel de imagem podem não ter a automática. Nesses casos, use a manual. E depois do hash e da correspondência, a Meta descarta o dado.', 'Atención: las empresas en verticales restringidas (bancos, préstamos, servicios financieros, seguros, farmacéuticos y salud) o con píxel en iframe o píxel de imagen pueden no tener la automática. En esos casos, usa la manual. Y después del hash y de la coincidencia, Meta descarta el dato.')]
+          ],
+          pontos: [
+            L('<b>Para quê:</b> mais conversões atribuídas, públicos maiores, custo por conversão menor.', '<b>Para qué:</b> más conversiones atribuidas, públicos más grandes, costo por conversión menor.'),
+            L('<b>Automática:</b> sem código, ativa no Gerenciador de Eventos; <b>manual:</b> muda o código base.', '<b>Automática:</b> sin código, se activa en el Administrador de eventos; <b>manual:</b> cambia el código base.'),
+            L('<b>Verticais restritas, iframe e Pixel de imagem:</b> sem automática; use a manual.', '<b>Verticales restringidas, iframe y píxel de imagen:</b> sin automática; usa la manual.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'corr-pa',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela correspondência automática e, para um banco, pela manual com o hash.', 'En el simulador, el Pixel te guía por la coincidencia automática y, para un banco, por la manual con el hash.'),
+          tour: 'correspondencia-avancada', pagina: 'meta-pixelavancado.html?zerar=1'
+        },
+        atender: {
+          cena: L('Quero mandar o e-mail dos meus clientes para a Meta. Isso é seguro? Vão ver meus dados? 😰', 'Quiero mandar el correo de mis clientes a Meta. ¿Es seguro? ¿Van a ver mis datos? 😰'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Na correspondência avançada, as informações do cliente são convertidas em hash no navegador antes de ir à Meta, que as usa para fazer a correspondência e depois as descarta. Você precisa ter base legal e consentimento para compartilhar, e não pode enviar informações proibidas. Vale conversar com a sua assessoria jurídica.”', '“En la coincidencia avanzada, la información del cliente se convierte en hash en el navegador antes de ir a Meta, que la usa para hacer la coincidencia y luego la descarta. Debes tener base legal y consentimiento para compartir, y no puedes enviar información prohibida. Conviene hablar con tu asesor jurídico.”'), fb: L('Isso! Explicou o hash, o descarte e a responsabilidade.', '¡Eso! Explicaste el hash, el descarte y la responsabilidad.') },
+            { certa: false, txt: L('“Totalmente seguro, nada a considerar.”', '“Totalmente seguro, nada que considerar.”'), fb: L('Há responsabilidade e consentimento.', 'Hay responsabilidad y consentimiento.') },
+            { certa: false, txt: L('“Envie o e-mail em texto aberto.”', '“Envía el correo en texto abierto.”'), fb: L('O dado é convertido em hash.', 'El dato se convierte en hash.') },
+            { certa: false, txt: L('“Manda tudo: saúde, cartão…”', '“Manda todo: salud, tarjeta…”'), fb: L('Informações proibidas não podem ser enviadas.', 'La información prohibida no puede enviarse.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A empresa é de um setor restrito? O Pixel está em iframe?', '¿La empresa es de un sector restringido? ¿El píxel está en un iframe?'), L('O cliente tem consentimento para compartilhar o dado?', '¿El cliente tiene consentimiento para compartir el dato?')],
+          conferir: [FERR],
+          frase: L('A correspondência avançada manda à Meta dados do cliente com hash para atribuir mais conversões. Se for permitida, ativamos a automática; se não, usamos a manual.', 'La coincidencia avanzada manda a Meta datos del cliente con hash para atribuir más conversiones. Si está permitida, activamos la automática; si no, usamos la manual.'),
+          passos: [L('Veja se a automática está disponível.', 'Mira si la automática está disponible.'), L('Se não, peça ao desenvolvedor a manual.', 'Si no, pide al desarrollador la manual.')],
+          encaminhar: L('A correspondência manual exige mudar o código do site: oriente o cliente ou o desenvolvedor dele com a documentação da Meta.', 'La coincidencia manual exige cambiar el código del sitio: orienta al cliente o a su desarrollador con la documentación de Meta.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Qualidade do sinal: correspondência de eventos', 'Calidad de la señal: coincidencia de eventos'),
+        antes: L('A Marina vê uma pontuação baixa nos eventos de compra do servidor.', 'Marina ve una puntuación baja en los eventos de compra del servidor.'),
+        gancho: L('De 0 a 10: quanto o evento do servidor ajuda a Meta a ligar a compra a uma pessoa.', 'De 0 a 10: cuánto ayuda el evento del servidor a Meta a vincular la compra con una persona.'),
+        objetivo: L('Ler a pontuação de qualidade da correspondência de eventos e saber quais parâmetros mais ajudam.', 'Leer la puntuación de calidad de la coincidencia de eventos y saber qué parámetros ayudan más.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O que é essa pontuação de 0 a 10? 😕', '¿Qué es esa puntuación de 0 a 10? 😕')],
+            ['rafa', L('É a qualidade da correspondência de eventos: indica o quanto as informações do cliente enviadas com o evento do servidor funcionam para ligar o evento a Contas Meta. Vale para eventos do site enviados pela API de Conversões.', 'Es la calidad de la coincidencia de eventos: indica cuánto funcionan las informaciones del cliente enviadas con el evento del servidor para vincular el evento con Cuentas Meta. Vale para eventos del sitio enviados por la API de Conversiones.')],
+            ['marina', L('Como melhoro?', '¿Cómo mejoro?')],
+            ['rafa', L('Enviando vários parâmetros de informações do cliente quando disponíveis. Os de prioridade alta são e-mail e identificação de clique; média, entre outros, telefone, país, data de nascimento e identificação externa; baixa, nome, sobrenome, cidade e CEP.', 'Enviando varios parámetros de información del cliente cuando estén disponibles. Los de prioridad alta son correo e identificación de clic; media, entre otros, teléfono, país, fecha de nacimiento e identificación externa; baja, nombre, apellido, ciudad y código postal.')],
+            ['pixel', L('A pontuação usa os dados das últimas 48 horas, então eventos regulares mantêm a nota em dia. Uma qualidade maior ajuda a atribuir conversões, a veicular para quem tem mais chance de converter e pode baixar o custo por ação. Sempre respeitando os termos de dados.', 'La puntuación usa los datos de las últimas 48 horas, así que eventos regulares mantienen la nota al día. Una calidad mayor ayuda a atribuir conversiones, a entregar a quien tiene más probabilidad de convertir y puede bajar el costo por acción. Siempre respetando los términos de datos.')]
+          ],
+          pontos: [
+            L('<b>Pontuação 0–10</b> para eventos do site enviados pela API de Conversões.', '<b>Puntuación 0–10</b> para eventos del sitio enviados por la API de Conversiones.'),
+            L('<b>Prioridade alta:</b> e-mail e identificação de clique; envie vários parâmetros.', '<b>Prioridad alta:</b> correo e identificación de clic; envía varios parámetros.'),
+            L('<b>48 horas:</b> a nota usa dados recentes; mande eventos com regularidade.', '<b>48 horas:</b> la nota usa datos recientes; manda eventos con regularidad.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'emq-pa',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia para subir a pontuação marcando os parâmetros de prioridade alta e média.', 'En el simulador, el Pixel te guía para subir la puntuación marcando los parámetros de prioridad alta y media.'),
+          tour: 'qualidade-sinal', pagina: 'meta-pixelavancado.html?zerar=1'
+        },
+        atender: {
+          cena: L('Minha pontuação é 3 de 10. Vocês estão me penalizando? Quero 10 agora! 😠', 'Mi puntuación es 3 de 10. ¿Me están penalizando? ¡Quiero 10 ya! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não é punição: a pontuação mostra o quanto as informações do cliente enviadas com o evento ajudam a Meta a ligá-lo a uma pessoa. Para subir, envie mais parâmetros quando você os tiver, sobretudo e-mail e identificação de clique, que têm prioridade alta, e mantenha os eventos chegando com regularidade.”', '“No es un castigo: la puntuación muestra cuánto ayudan las informaciones del cliente enviadas con el evento a Meta a vincularlo con una persona. Para subir, envía más parámetros cuando los tengas, sobre todo correo e identificación de clic, que tienen prioridad alta, y mantén los eventos llegando con regularidad.”'), fb: L('Isso! Explicou o que é e como subir.', '¡Eso! Explicaste qué es y cómo subir.') },
+            { certa: false, txt: L('“Pague mais para a Meta subir a nota.”', '“Paga más a Meta para que suba la nota.”'), fb: L('A nota não se compra.', 'La nota no se compra.') },
+            { certa: false, txt: L('“Mande dados falsos para aumentar.”', '“Manda datos falsos para aumentar.”'), fb: L('Dados falsos pioram e violam os termos.', 'Los datos falsos empeoran y violan los términos.') },
+            { certa: false, txt: L('“Ignore, não importa.”', '“Ignóralo, no importa.”'), fb: L('Ela influencia atribuição e veiculação.', 'Influye en la atribución y la entrega.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quais informações do cliente já estão sendo enviadas com o evento?', '¿Qué informaciones del cliente ya se están enviando con el evento?'), L('Os eventos do servidor chegam todos os dias?', '¿Los eventos del servidor llegan todos los días?')],
+          conferir: [L('Gerenciador de Eventos › Conjuntos de dados › Visão geral › qualidade da correspondência de eventos.', 'Administrador de eventos › Conjuntos de datos › Descripción general › calidad de la coincidencia de eventos.'), FERR],
+          frase: L('A pontuação indica o quanto os dados do cliente enviados com o evento ajudam a Meta a ligá-lo a uma pessoa. Vamos ver quais parâmetros faltam e mandar os de prioridade alta.', 'La puntuación indica cuánto ayudan los datos del cliente enviados con el evento a Meta a vincularlo con una persona. Veamos qué parámetros faltan y mandemos los de prioridad alta.'),
+          passos: [L('Veja as ações recomendadas no Gerenciador de Eventos.', 'Mira las acciones recomendadas en el Administrador de eventos.'), L('Envie mais parâmetros, respeitando os termos.', 'Envía más parámetros, respetando los términos.')],
+          encaminhar: L('Incluir novos parâmetros no envio do servidor é com o desenvolvedor ou a plataforma do cliente.', 'Incluir nuevos parámetros en el envío del servidor es con el desarrollador o la plataforma del cliente.')
+        }
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('API de Conversões e deduplicação', 'API de Conversiones y deduplicación'),
+        antes: L('A Marina ativou a API de Conversões e agora as compras aparecem em dobro.', 'Marina activó la API de Conversiones y ahora las compras aparecen duplicadas.'),
+        gancho: L('Navegador e servidor contando a mesma compra: sem deduplicação, vira duas.', 'Navegador y servidor contando la misma compra: sin deduplicación, se vuelven dos.'),
+        objetivo: L('Entender por que e quando desduplicar e como a Meta reconhece o mesmo evento.', 'Entender por qué y cuándo deduplicar y cómo reconoce Meta el mismo evento.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O Pixel e a API de Conversões mandam o mesmo evento. Por quê? 🤔', 'El píxel y la API de Conversiones mandan el mismo evento. ¿Por qué? 🤔')],
+            ['rafa', L('O Pixel roda no navegador e pode ser bloqueado por configurações do navegador ou conexão; a API de Conversões envia do servidor e é mais resistente. Muita gente envia a compra pelos dois para não perder evento.', 'El píxel corre en el navegador y puede ser bloqueado por configuraciones del navegador o la conexión; la API de Conversiones envía desde el servidor y es más resistente. Mucha gente envía la compra por los dos para no perder eventos.')],
+            ['marina', L('E aí conta em dobro?', '¿Y entonces cuenta doble?')],
+            ['rafa', L('Só se não houver desduplicação. A Meta desduplica quando o event_name é igual e o event_id é idêntico nos dois, ou quando o event_name e o external_ID ou o fbp combinam. Se forem parecidos, vale o que chegou primeiro.', 'Solo si no hay deduplicación. Meta deduplica cuando el event_name es igual y el event_id es idéntico en los dos, o cuando el event_name y el external_ID o el fbp coinciden. Si son parecidos, vale el que llegó primero.')],
+            ['pixel', L('Se você manda eventos diferentes de cada fonte (carrinho do navegador, compra do servidor), não precisa desduplicar. Parceiros como Shopify e WooCommerce costumam cuidar disso; na configuração manual, você adiciona event_name e event_id. Teste com Eventos de teste.', 'Si mandas eventos distintos de cada fuente (carrito del navegador, compra del servidor), no necesitas deduplicar. Socios como Shopify y WooCommerce suelen encargarse de eso; en la configuración manual, agregas event_name y event_id. Prueba con Probar eventos.')]
+          ],
+          pontos: [
+            L('<b>Desduplicar</b> quando o mesmo evento vem do navegador e do servidor.', '<b>Deduplicar</b> cuando el mismo evento viene del navegador y del servidor.'),
+            L('<b>Como:</b> mesmo event_name + mesmo event_id (ou external_ID/fbp).', '<b>Cómo:</b> mismo event_name + mismo event_id (o external_ID/fbp).'),
+            L('<b>Teste</b> com Eventos de teste: recebido, desduplicado ou descartado.', '<b>Prueba</b> con Probar eventos: recibido, deduplicado o descartado.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'dedup-pa',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por uma compra contada em dobro e o conserto com event_id idêntico.', 'En el simulador, el Pixel te guía por una compra contada dos veces y el arreglo con event_id idéntico.'),
+          tour: 'desduplicar-eventos', pagina: 'meta-pixelavancado.html?zerar=1'
+        },
+        atender: {
+          cena: L('Desde que ativei a API de Conversões, minhas vendas na Meta dobraram, mas no banco não mudou nada! 😡', '¡Desde que activé la API de Conversiones, mis ventas en Meta se duplicaron, pero en el banco no cambió nada! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Provavelmente as compras estão sendo contadas duas vezes, uma pelo Pixel e outra pelo servidor. A Meta desduplica quando o nome do evento e o event_id são idênticos nos dois (ou event_name com external_ID ou fbp). Vamos conferir o event_id e testar em Eventos de teste.”', '“Probablemente las compras se están contando dos veces, una por el píxel y otra por el servidor. Meta deduplica cuando el nombre del evento y el event_id son idénticos en los dos (o event_name con external_ID o fbp). Revisemos el event_id y probemos en Probar eventos.”'), fb: L('Isso! Causa provável e método.', '¡Eso! Causa probable y método.') },
+            { certa: false, txt: L('“As vendas realmente dobraram.”', '“Las ventas realmente se duplicaron.”'), fb: L('Confira antes a duplicação.', 'Revisa antes la duplicación.') },
+            { certa: false, txt: L('“Desligue a API de Conversões.”', '“Apaga la API de Conversiones.”'), fb: L('Ela ajuda; o ajuste é o event_id.', 'Ayuda; el ajuste es el event_id.') },
+            { certa: false, txt: L('“Use event_id diferente em cada.”', '“Usa event_id distinto en cada una.”'), fb: L('Precisa ser idêntico.', 'Debe ser idéntico.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Que eventos vêm do navegador e quais do servidor?', '¿Qué eventos vienen del navegador y cuáles del servidor?'), L('O event_id é o mesmo nos dois?', '¿El event_id es el mismo en los dos?')],
+          conferir: [FERR, L('Contagens de Compra no Gerenciador de Eventos × no banco de pedidos.', 'Conteos de Compra en el Administrador de eventos × en la base de pedidos.')],
+          frase: L('Se o mesmo evento chega por navegador e por servidor, a Meta só conta uma vez quando o event_name e o event_id são idênticos. Vamos conferir isso nos seus eventos.', 'Si el mismo evento llega por navegador y por servidor, Meta solo cuenta una vez cuando el event_name y el event_id son idénticos. Revisemos eso en tus eventos.'),
+          passos: [L('Veja os eventos e suas fontes.', 'Mira los eventos y sus fuentes.'), L('Garanta event_id idêntico e teste.', 'Asegura un event_id idéntico y prueba.')],
+          encaminhar: L('Ajustar o event_id é com o desenvolvedor ou a plataforma do cliente: mostre o evento e o que precisa mudar.', 'Ajustar el event_id es con el desarrollador o la plataforma del cliente: muestra el evento y qué debe cambiar.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Privacidade e regras', 'Privacidad y reglas'),
+        antes: L('Uma cliente da Marina de clínica quer rastrear tudo, inclusive a doença de cada paciente.', 'Una clienta de Marina de una clínica quiere rastrear todo, incluida la enfermedad de cada paciente.'),
+        gancho: L('Você é o responsável pelos dados que manda. E há coisas que nunca podem ir.', 'Tú eres el responsable de los datos que mandas. Y hay cosas que nunca pueden ir.'),
+        objetivo: L('Explicar consentimento, informações proibidas, responsabilidade do anunciante e as consequências.', 'Explicar consentimiento, información prohibida, responsabilidad del anunciante y las consecuencias.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Posso mandar qualquer dado do cliente para a Meta? 😅', '¿Puedo mandar cualquier dato del cliente a Meta? 😅')],
+            ['rafa', L('Não. Primeiro, é preciso base legal e consentimento antes de compartilhar. Em alguns lugares, como a União Europeia, é exigido consentimento informado para cookies. O Pixel não pode compartilhar dados até a pessoa aceitar, e a API de Conversões não deve enviar dados de quem não consentiu.', 'No. Primero, hace falta base legal y consentimiento antes de compartir. En algunos lugares, como la Unión Europea, se exige consentimiento informado para cookies. El píxel no puede compartir datos hasta que la persona acepte, y la API de Conversiones no debe enviar datos de quien no consintió.')],
+            ['marina', L('E o que nunca pode ir?', '¿Y qué nunca puede ir?')],
+            ['rafa', L('Informações proibidas: de saúde, financeiras e outras categorias sensíveis. Vale para todos os formatos, inclusive parâmetros de URL e eventos personalizados.', 'Información prohibida: de salud, financiera y otras categorías sensibles. Vale para todos los formatos, incluidos parámetros de URL y eventos personalizados.')],
+            ['pixel', L('Os sistemas da Meta tentam bloquear o que detectam, mas não substituem os seus controles: você é o responsável. Descumprir pode gerar problemas de desempenho, restrições de dados e até suspensão das ferramentas, e a Meta pode auditar. Explique ao cliente, em linguagem simples, o que coleta e com quem compartilha.', 'Los sistemas de Meta intentan bloquear lo que detectan, pero no sustituyen tus controles: tú eres el responsable. Incumplir puede generar problemas de rendimiento, restricciones de datos e incluso suspensión de las herramientas, y Meta puede auditar. Explica al cliente, en lenguaje simple, qué recopila y con quién comparte.')]
+          ],
+          pontos: [
+            L('<b>Consentimento antes</b> de compartilhar; Pixel e API respeitam a escolha da pessoa.', '<b>Consentimiento antes</b> de compartir; píxel y API respetan la elección de la persona.'),
+            L('<b>Proibido:</b> saúde, financeiro e outros sensíveis, inclusive em URL e eventos personalizados.', '<b>Prohibido:</b> salud, financiero y otros sensibles, incluso en URL y eventos personalizados.'),
+            L('<b>Você é o responsável;</b> descumprir pode restringir dados ou suspender as ferramentas.', '<b>Tú eres el responsable;</b> incumplir puede restringir datos o suspender las herramientas.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'priv-pa',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia para corrigir um site que dispara antes do consentimento e envia uma informação de saúde.', 'En el simulador, el Pixel te guía para corregir un sitio que dispara antes del consentimiento y envía una información de salud.'),
+          tour: 'privacidade-pixel', pagina: 'meta-pixelavancado.html?zerar=1'
+        },
+        atender: {
+          cena: L('A Meta bloqueou parâmetros do meu Pixel! Ela quer me impedir de vender! 😡', '¡Meta bloqueó parámetros de mi píxel! ¡Quiere impedirme vender! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo o susto. A Meta bloqueia parâmetros que parecem conter informações que podem violar os Termos das Ferramentas Comerciais, como dados de saúde ou financeiros, inclusive em parâmetros de URL e eventos personalizados. Vamos analisar o que o site está enviando, remover o que for proibido e depois pedir o desbloqueio no Gerenciador de Eventos.”', '“Entiendo el susto. Meta bloquea parámetros que parecen contener información que puede infringir las Condiciones de las Herramientas Comerciales, como datos de salud o financieros, incluso en parámetros de URL y eventos personalizados. Analicemos qué está enviando el sitio, quitemos lo que sea prohibido y luego pidamos el desbloqueo en el Administrador de eventos.”'), fb: L('Isso! Explicou a causa e o caminho.', '¡Eso! Explicaste la causa y el camino.') },
+            { certa: false, txt: L('“É perseguição, ignore.”', '“Es persecución, ignóralo.”'), fb: L('É por conformidade com os termos.', 'Es por cumplimiento de los términos.') },
+            { certa: false, txt: L('“Envie os mesmos dados por outro caminho.”', '“Envía los mismos datos por otro camino.”'), fb: L('Isso viola os termos.', 'Eso viola los términos.') },
+            { certa: false, txt: L('“Crie outro Pixel.”', '“Crea otro píxel.”'), fb: L('Não resolve a causa.', 'No resuelve la causa.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Que parâmetros foram bloqueados e o que eles continham?', '¿Qué parámetros fueron bloqueados y qué contenían?'), L('O site só dispara o Pixel depois do aceite de cookies?', '¿El sitio solo dispara el píxel después de aceptar las cookies?')],
+          conferir: [L('Gerenciador de Eventos › Diagnóstico (parâmetros bloqueados).', 'Administrador de eventos › Diagnóstico (parámetros bloqueados).'), FERR],
+          frase: L('A Meta bloqueia parâmetros que podem violar os termos. Vamos revisar o que o site envia, remover o proibido e confirmar que o Pixel só dispara com consentimento.', 'Meta bloquea parámetros que pueden infringir los términos. Revisemos qué envía el sitio, quitemos lo prohibido y confirmemos que el píxel solo se dispara con consentimiento.'),
+          passos: [L('Liste o que o site envia.', 'Haz la lista de lo que envía el sitio.'), L('Remova informações proibidas e confira o consentimento.', 'Quita información prohibida y revisa el consentimiento.')],
+          encaminhar: L('Questões legais são do jurídico do cliente: oriente-o a falar com a assessoria jurídica e não dê parecer.', 'Las cuestiones legales son del área jurídica del cliente: oriéntalo a hablar con su asesor jurídico y no des dictamen.')
+        }
+      }
+    ];
+  })()
 };

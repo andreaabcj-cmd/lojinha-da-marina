@@ -145,3 +145,8 @@ Leia nesta ordem:
 - INVENTADO: loja de exemplo, produtos, telas do app, jogo de classificar, triagem.
 - Ressalva: o artigo cita um teste de ROAS nos EUA (35%); NÃO usado nas aulas.
 - Próximo na ordem do Foco: WhatsApp (por último). Depois, Foco completo; restam aulas de Pixel avançado e Portfólio avançado e a trilha Completa.
+
+## Pixel avançado (Foco) — 16/10/2026
+- 4 aulas PT+ES (correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade), 4 tutoriais guiados (`correspondencia-avancada`, `qualidade-sinal`, `desduplicar-eventos`, `privacidade-pixel`), 4 quizzes (`corr-pa`, `emq-pa`, `dedup-pa`, `priv-pa`), simulador `meta-pixelavancado.html`.
+- Fonte: Central de Ajuda oficial (PT). A conta de aula NÃO tem conjunto de dados: telas reais de correspondência avançada, qualidade da correspondência e Eventos de teste não foram vistas — telas, pontuação e hash do simulador são do treino (a conferir).
+- Sem valores reais, IDs ou nomes; nada interno.

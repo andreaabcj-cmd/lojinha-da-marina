@@ -1670,6 +1670,64 @@
         [{ pt: 'No Instagram', es: 'En Instagram' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] }
   ]);
 
+  /* ---------- 28. Pixel avançado: quatro mini-quizzes (Pixel avançado 01–04) ---------- */
+  quizCatalogo('corr-pa', { pt: 'Correspondência avançada', es: 'Coincidencia avanzada' }, { pt: 'Automática, manual e o hash.', es: 'Automática, manual y el hash.' }, [
+    { q: { pt: 'O que a correspondência avançada envia à Meta com os eventos do Pixel?', es: '¿Qué envía la coincidencia avanzada a Meta con los eventos del píxel?' },
+      o: [[{ pt: 'Informações do cliente convertidas em hash', es: 'Información del cliente convertida en hash' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Senhas dos clientes', es: 'Contraseñas de los clientes' }, 0, { pt: 'Nunca.', es: 'Nunca.' }],
+        [{ pt: 'Nada: só muda a cor do Pixel', es: 'Nada: solo cambia el color del píxel' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Uma empresa de seguros pode usar a correspondência avançada automática?', es: '¿Una empresa de seguros puede usar la coincidencia avanzada automática?' },
+      o: [[{ pt: 'Não: é vertical restrita; use a manual', es: 'No: es vertical restringida; usa la manual' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Sim, sem restrições', es: 'Sí, sin restricciones' }, 0, { pt: 'Verticais restritas não têm a automática.', es: 'Las verticales restringidas no tienen la automática.' }],
+        [{ pt: 'Só se pagar uma taxa', es: 'Solo si paga una tarifa' }, 0, { pt: 'Não há taxa.', es: 'No hay tarifa.' }]] },
+    { q: { pt: 'O que a Meta faz com o dado depois do hash e da correspondência?', es: '¿Qué hace Meta con el dato después del hash y de la coincidencia?' },
+      o: [[{ pt: 'Descarta', es: 'Lo descarta' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Vende a terceiros', es: 'Lo vende a terceros' }, 0, { pt: 'Não.', es: 'No.' }],
+        [{ pt: 'Publica no perfil da pessoa', es: 'Lo publica en el perfil de la persona' }, 0, { pt: 'Não.', es: 'No.' }]] }
+  ]);
+  quizCatalogo('emq-pa', { pt: 'Qualidade da correspondência de eventos', es: 'Calidad de la coincidencia de eventos' }, { pt: 'A nota de 0 a 10.', es: 'La nota de 0 a 10.' }, [
+    { q: { pt: 'Quais parâmetros têm prioridade alta?', es: '¿Qué parámetros tienen prioridad alta?' },
+      o: [[{ pt: 'E-mail e identificação de clique', es: 'Correo e identificación de clic' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Cidade e CEP', es: 'Ciudad y código postal' }, 0, { pt: 'Esses são de prioridade baixa.', es: 'Esos son de prioridad baja.' }],
+        [{ pt: 'Nome e sobrenome', es: 'Nombre y apellido' }, 0, { pt: 'Prioridade baixa.', es: 'Prioridad baja.' }]] },
+    { q: { pt: 'A pontuação usa dados de qual período?', es: '¿La puntuación usa datos de qué período?' },
+      o: [[{ pt: 'Últimas 48 horas', es: 'Últimas 48 horas' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Último ano', es: 'Último año' }, 0, { pt: 'Não.', es: 'No.' }],
+        [{ pt: 'Só o dia da configuração', es: 'Solo el día de la configuración' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Como melhorar a pontuação?', es: '¿Cómo mejorar la puntuación?' },
+      o: [[{ pt: 'Enviar mais parâmetros do cliente, quando disponíveis e permitidos', es: 'Enviar más parámetros del cliente, cuando estén disponibles y permitidos' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Pagar mais por anúncio', es: 'Pagar más por anuncio' }, 0, { pt: 'A nota não se compra.', es: 'La nota no se compra.' }],
+        [{ pt: 'Enviar dados inventados', es: 'Enviar datos inventados' }, 0, { pt: 'Piora e viola os termos.', es: 'Empeora y viola los términos.' }]] }
+  ]);
+  quizCatalogo('dedup-pa', { pt: 'Deduplicação de eventos', es: 'Deduplicación de eventos' }, { pt: 'Navegador e servidor, uma compra só.', es: 'Navegador y servidor, una sola compra.' }, [
+    { q: { pt: 'O que precisa ser igual nos dois eventos para a Meta desduplicar?', es: '¿Qué debe ser igual en los dos eventos para que Meta deduplique?' },
+      o: [[{ pt: 'event_name e event_id', es: 'event_name y event_id' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só o valor da compra', es: 'Solo el valor de la compra' }, 0, { pt: 'Não basta.', es: 'No basta.' }],
+        [{ pt: 'A cor do botão', es: 'El color del botón' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Se os dois eventos chegam parecidos, qual vale?', es: 'Si los dos eventos llegan parecidos, ¿cuál vale?' },
+      o: [[{ pt: 'O que chegou primeiro', es: 'El que llegó primero' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Os dois, somados', es: 'Los dos, sumados' }, 0, { pt: 'Seria contar em dobro.', es: 'Sería contar doble.' }],
+        [{ pt: 'O que tem valor maior', es: 'El de mayor valor' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Onde testar se a deduplicação funciona?', es: '¿Dónde probar si la deduplicación funciona?' },
+      o: [[{ pt: 'Em Eventos de teste, no Gerenciador de Eventos', es: 'En Probar eventos, en el Administrador de eventos' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Esperando o fim do mês', es: 'Esperando el fin de mes' }, 0, { pt: 'Teste antes.', es: 'Prueba antes.' }],
+        [{ pt: 'Em nenhum lugar', es: 'En ningún lugar' }, 0, { pt: 'Há onde testar.', es: 'Hay dónde probar.' }]] }
+  ]);
+  quizCatalogo('priv-pa', { pt: 'Privacidade e regras do Pixel', es: 'Privacidad y reglas del píxel' }, { pt: 'Consentimento e informações proibidas.', es: 'Consentimiento e información prohibida.' }, [
+    { q: { pt: 'Quando o Pixel pode compartilhar dados em lugares que exigem consentimento de cookies?', es: '¿Cuándo puede el píxel compartir datos en lugares que exigen consentimiento de cookies?' },
+      o: [[{ pt: 'Só depois de a pessoa aceitar', es: 'Solo después de que la persona acepte' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Assim que a página abre', es: 'Apenas abre la página' }, 0, { pt: 'Antes do consentimento, não.', es: 'Antes del consentimiento, no.' }],
+        [{ pt: 'Nunca, em nenhum caso', es: 'Nunca, en ningún caso' }, 0, { pt: 'Pode, com consentimento.', es: 'Puede, con consentimiento.' }]] },
+    { q: { pt: 'Qual destas informações nunca deve ser enviada?', es: '¿Cuál de estas informaciones nunca debe enviarse?' },
+      o: [[{ pt: 'Dados de saúde, inclusive em parâmetro de URL', es: 'Datos de salud, incluso en parámetro de URL' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O nome do evento Purchase', es: 'El nombre del evento Purchase' }, 0, { pt: 'Isso é permitido.', es: 'Eso está permitido.' }],
+        [{ pt: 'O valor da compra', es: 'El valor de la compra' }, 0, { pt: 'Isso é permitido.', es: 'Eso está permitido.' }]] },
+    { q: { pt: 'Quem é responsável pelos dados enviados à Meta?', es: '¿Quién es responsable de los datos enviados a Meta?' },
+      o: [[{ pt: 'O anunciante', es: 'El anunciante' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só a Meta', es: 'Solo Meta' }, 0, { pt: 'Os sistemas da Meta não substituem os seus controles.', es: 'Los sistemas de Meta no sustituyen tus controles.' }],
+        [{ pt: 'O visitante do site', es: 'El visitante del sitio' }, 0, { pt: 'Não.', es: 'No.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
