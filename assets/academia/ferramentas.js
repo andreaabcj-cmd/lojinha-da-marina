@@ -1138,6 +1138,92 @@
         [{ pt: 'Nas Regras automatizadas: uma regra pode ter desativado', es: 'En las Reglas automáticas: una regla puede haberlo desactivado' }, 1, { pt: 'Isso! Lembra do módulo anterior.', es: '¡Eso! Recuerda el módulo anterior.' }]] }
   ]);
 
+  /* ---------- 21. Meta Verified para empresas: seis mini-quizzes (Verified 01–06) ---------- */
+  quizCatalogo('o-que-e-verified', { pt: 'O que é o Meta Verified?', es: '¿Qué es Meta Verified?' }, { pt: 'Assinatura paga: selo, suporte e proteção.', es: 'Suscripción paga: insignia, asistencia y protección.' }, [
+    { q: { pt: 'O que é o Meta Verified para empresas?', es: '¿Qué es Meta Verified para empresas?' },
+      o: [[{ pt: 'Um selo gratuito para toda Página', es: 'Una insignia gratuita para toda página' }, 0, { pt: 'Não é gratuito: é uma assinatura paga.', es: 'No es gratis: es una suscripción paga.' }],
+        [{ pt: 'Uma assinatura paga com selo, suporte e proteção contra falsificação de identidade', es: 'Una suscripción paga con insignia, asistencia y protección contra la suplantación de identidad' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Um tipo de campanha de anúncios', es: 'Un tipo de campaña de anuncios' }, 0, { pt: 'Não é um produto de anúncios.', es: 'No es un producto de anuncios.' }]] },
+    { q: { pt: 'Os benefícios do Meta Verified valem para…', es: 'Los beneficios de Meta Verified valen para…' },
+      o: [[{ pt: 'Todas as contas do portfólio empresarial', es: 'Todas las cuentas del portfolio comercial' }, 0, { pt: 'Só para os ativos assinados.', es: 'Solo para los activos suscritos.' }],
+        [{ pt: 'Só a Página, a conta do Instagram ou o número de WhatsApp assinados', es: 'Solo la página, la cuenta de Instagram o el número de WhatsApp suscritos' }, 1, { pt: 'Isso! A própria Meta explica assim.', es: '¡Eso! La propia Meta lo explica así.' }],
+        [{ pt: 'Qualquer pessoa que siga a empresa', es: 'Cualquier persona que siga a la empresa' }, 0, { pt: 'Não é por seguidores.', es: 'No es por seguidores.' }]] },
+    { q: { pt: 'Um cliente que já tem selo de verificado precisa fazer algo para mantê-lo?', es: 'Un cliente que ya tiene insignia de verificación, ¿necesita hacer algo para conservarla?' },
+      o: [[{ pt: 'Assinar imediatamente', es: 'Suscribirse de inmediato' }, 0, { pt: 'Não: nenhuma ação é necessária.', es: 'No: no se necesita ninguna acción.' }],
+        [{ pt: 'Pagar uma taxa anual', es: 'Pagar una tasa anual' }, 0, { pt: 'Não há essa taxa.', es: 'No hay esa tasa.' }],
+        [{ pt: 'Nenhuma ação; pode assinar só se quiser os benefícios extras', es: 'Ninguna acción; puede suscribirse solo si quiere los beneficios adicionales' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] }
+  ]);
+  quizCatalogo('planos-verified', { pt: 'Qual plano serve?', es: '¿Qué plan sirve?' }, { pt: 'Suporte e recursos por plano.', es: 'Asistencia y funciones por plan.' }, [
+    { q: { pt: 'Qual é o plano mais baixo que inclui ligação de um agente?', es: '¿Cuál es el plan más bajo que incluye la llamada de un agente?' },
+      o: [[{ pt: 'Business Básico', es: 'Business Standard' }, 0, { pt: 'O Básico tem chat e e-mail.', es: 'El Standard tiene chat y correo.' }],
+        [{ pt: 'Business Plus', es: 'Business Plus' }, 0, { pt: 'O Plus tem suporte priorizado, mas não ligação.', es: 'Plus tiene asistencia prioritaria, pero no llamada.' }],
+        [{ pt: 'Business Premium', es: 'Business Premium' }, 1, { pt: 'Isso! Premium e Max.', es: '¡Eso! Premium y Max.' }]] },
+    { q: { pt: 'O monitoramento dedicado de casos aparece em qual plano?', es: '¿En qué plan aparece el monitoreo dedicado de casos?' },
+      o: [[{ pt: 'Só no Business Max', es: 'Solo en Business Max' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Em todos', es: 'En todos' }, 0, { pt: 'Não: só no mais alto.', es: 'No: solo en el más alto.' }],
+        [{ pt: 'Só no Plus', es: 'Solo en Plus' }, 0, { pt: 'O Plus tem suporte priorizado.', es: 'Plus tiene asistencia prioritaria.' }]] },
+    { q: { pt: 'Por que um plano pode não aparecer para uma empresa?', es: '¿Por qué un plan puede no aparecer para una empresa?' },
+      o: [[{ pt: 'Porque a Meta esqueceu de mostrar', es: 'Porque Meta se olvidó de mostrarlo' }, 0, { pt: 'Não é esquecimento.', es: 'No es un olvido.' }],
+        [{ pt: 'Porque a empresa não pagou imposto', es: 'Porque la empresa no pagó impuestos' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }],
+        [{ pt: 'Porque a Meta define a disponibilidade com base na atividade da empresa nos apps e na região', es: 'Porque Meta define la disponibilidad según la actividad de la empresa en las apps y la región' }, 1, { pt: 'Isso! É o que a página oficial diz.', es: '¡Eso! Es lo que dice la página oficial.' }]] }
+  ]);
+  quizCatalogo('cadastro-verified', { pt: 'Cadastro passo a passo', es: 'Registro paso a paso' }, { pt: 'Etapas, métodos e prazo.', es: 'Etapas, métodos y plazo.' }, [
+    { q: { pt: 'Em quanto tempo a Meta dá o resultado da análise?', es: '¿En cuánto tiempo da Meta el resultado de la revisión?' },
+      o: [[{ pt: 'Em até 3 dias úteis', es: 'En un plazo de 3 días hábiles' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Na hora, sempre', es: 'Al instante, siempre' }, 0, { pt: 'Há análise.', es: 'Hay revisión.' }],
+        [{ pt: 'Em 6 meses', es: 'En 6 meses' }, 0, { pt: 'Muito mais rápido.', es: 'Mucho más rápido.' }]] },
+    { q: { pt: 'Quantos ativos dá para verificar numa assinatura pelo app?', es: '¿Cuántos activos se pueden verificar en una suscripción desde la app?' },
+      o: [[{ pt: 'Até dois do mesmo portfólio (até três pelo Meta Business Suite no computador)', es: 'Hasta dos del mismo portfolio (hasta tres desde Meta Business Suite en la computadora)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Ilimitados', es: 'Ilimitados' }, 0, { pt: 'Há limite.', es: 'Hay un límite.' }],
+        [{ pt: 'Só um, nunca mais', es: 'Solo uno, nunca más' }, 0, { pt: 'Dá para até dois ou três.', es: 'Se puede hasta dos o tres.' }]] },
+    { q: { pt: 'Qual destes é um método de verificação da empresa?', es: '¿Cuál de estos es un método de verificación de la empresa?' },
+      o: [[{ pt: 'Pagar a Meta para pular a análise', es: 'Pagarle a Meta para saltarse la revisión' }, 0, { pt: 'Não existe.', es: 'No existe.' }],
+        [{ pt: 'Detalhes da empresa que batem com um registro público', es: 'Detalles de la empresa que coinciden con un registro público' }, 1, { pt: 'Isso! Há também documentação, identificação oficial, conta bancária e presença estabelecida.', es: '¡Eso! También hay documentación, identificación oficial, cuenta bancaria y presencia establecida.' }],
+        [{ pt: 'Curtir a Página da Meta', es: 'Dar me gusta a la página de Meta' }, 0, { pt: 'Não verifica nada.', es: 'No verifica nada.' }]] }
+  ]);
+  quizCatalogo('nao-consigo-verified', { pt: 'A opção não aparece', es: 'La opción no aparece' }, { pt: 'Requisitos e Proteção Avançada.', es: 'Requisitos y Protección avanzada.' }, [
+    { q: { pt: 'A opção de cadastro não aparece. Qual é a causa mais comum?', es: 'La opción de registro no aparece. ¿Cuál es la causa más común?' },
+      o: [[{ pt: 'Algum requisito não foi atendido, por exemplo, uma pessoa com acesso sem Proteção Avançada', es: 'Algún requisito no se cumple, por ejemplo, una persona con acceso sin Protección avanzada' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O computador está lento', es: 'La computadora está lenta' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'O cliente deve esperar um ano', es: 'El cliente debe esperar un año' }, 0, { pt: 'Não há esse prazo.', es: 'No hay ese plazo.' }]] },
+    { q: { pt: 'Depois de todas as pessoas ativarem a Proteção Avançada, o que fazer?', es: 'Después de que todas las personas activen la Protección avanzada, ¿qué hacer?' },
+      o: [[{ pt: 'Apagar o portfólio', es: 'Eliminar el portfolio' }, 0, { pt: 'Não.', es: 'No.' }],
+        [{ pt: 'Aguardar até 24 horas e tentar de novo', es: 'Esperar hasta 24 horas e intentarlo de nuevo' }, 1, { pt: 'Isso! A mudança pode levar esse tempo.', es: '¡Eso! El cambio puede tardar ese tiempo.' }],
+        [{ pt: 'Pedir a senha de todos', es: 'Pedir la contraseña de todos' }, 0, { pt: 'Nunca peça senha.', es: 'Nunca pidas contraseñas.' }]] },
+    { q: { pt: 'O documento de identificação aceito deve…', es: 'El documento de identificación aceptado debe…' },
+      o: [[{ pt: 'Estar vencido, desde que legível', es: 'Estar vencido, siempre que sea legible' }, 0, { pt: 'Precisa ser válido, não expirado.', es: 'Debe ser válido, no vencido.' }],
+        [{ pt: 'Ter qualquer nome', es: 'Tener cualquier nombre' }, 0, { pt: 'O nome precisa ser semelhante ao do ativo.', es: 'El nombre debe ser parecido al del activo.' }],
+        [{ pt: 'Ser válido, legível e ter nome semelhante ao do ativo verificado', es: 'Ser válido, legible y tener un nombre parecido al del activo verificado' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] }
+  ]);
+  quizCatalogo('nome-perfil-verified', { pt: 'Este nome é aceito?', es: '¿Este nombre se acepta?' }, { pt: 'Regras e limites do nome do perfil.', es: 'Reglas y límites del nombre del perfil.' }, [
+    { q: { pt: 'Qual destes nomes de perfil costuma ser aceito?', es: '¿Cuál de estos nombres de perfil suele ser aceptado?' },
+      o: [[{ pt: 'Marina Silva (parecido com o nome civil)', es: 'Marina Silva (parecido al nombre legal)' }, 1, { pt: 'Isso! Variação semelhante ao nome civil.', es: '¡Eso! Variante parecida al nombre legal.' }],
+        [{ pt: 'Brigadeiros Gourmet 2000 (marca com número)', es: 'Brigadeiros Gourmet 2000 (marca con número)' }, 0, { pt: 'Números não são aceitos.', es: 'No se aceptan números.' }],
+        [{ pt: 'MaRiNa!!!', es: 'MaRiNa!!!' }, 0, { pt: 'Símbolos e uso estranho de letras não são aceitos.', es: 'No se aceptan símbolos ni un uso extraño de letras.' }]] },
+    { q: { pt: 'Qual é o limite de edições do nome no Instagram?', es: '¿Cuál es el límite de ediciones del nombre en Instagram?' },
+      o: [[{ pt: 'Ilimitado', es: 'Ilimitado' }, 0, { pt: 'Há limite.', es: 'Hay un límite.' }],
+        [{ pt: 'Duas vezes a cada 14 dias', es: 'Dos veces cada 14 días' }, 1, { pt: 'Isso! No Facebook é uma vez a cada 60 dias.', es: '¡Eso! En Facebook es una vez cada 60 días.' }],
+        [{ pt: 'Uma vez por ano', es: 'Una vez al año' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'O nome de marca é muito diferente do nome civil. O que ajuda?', es: 'El nombre de marca es muy distinto del nombre legal. ¿Qué ayuda?' },
+      o: [[{ pt: 'Atualizar o nome civil no portfólio empresarial ou escolher uma variação mais próxima', es: 'Actualizar el nombre legal en el portfolio comercial o elegir una variación más cercana' }, 1, { pt: 'Isso! É o que a Central de Ajuda orienta.', es: '¡Eso! Es lo que orienta el Centro de ayuda.' }],
+        [{ pt: 'Pagar um plano maior', es: 'Pagar un plan más grande' }, 0, { pt: 'Plano não muda a regra.', es: 'El plan no cambia la regla.' }],
+        [{ pt: 'Trocar várias vezes seguidas', es: 'Cambiarlo varias veces seguidas' }, 0, { pt: 'Há limite e a análise leva dias.', es: 'Hay un límite y la revisión tarda días.' }]] }
+  ]);
+  quizCatalogo('cancelar-verified', { pt: 'Cancelar ou revogada?', es: '¿Cancelar o revocada?' }, { pt: 'A diferença, o suporte e as causas.', es: 'La diferencia, la asistencia y las causas.' }, [
+    { q: { pt: 'Depois de cancelar, a assinatura…', es: 'Después de cancelar, la suscripción…' },
+      o: [[{ pt: 'Acaba na hora e devolve o dinheiro', es: 'Termina al instante y devuelve el dinero' }, 0, { pt: 'Não: não há reembolso por cancelamento.', es: 'No: no hay reembolso por cancelación.' }],
+        [{ pt: 'Continua ativa até o fim do ciclo atual', es: 'Sigue activa hasta el final del ciclo actual' }, 1, { pt: 'Isso! E depois os ativos perdem a verificação.', es: '¡Eso! Y después los activos pierden la verificación.' }],
+        [{ pt: 'Fica ativa para sempre', es: 'Queda activa para siempre' }, 0, { pt: 'Termina no fim do ciclo.', es: 'Termina al final del ciclo.' }]] },
+    { q: { pt: 'Qual destes pode causar uma revogação?', es: '¿Cuál de estos puede causar una revocación?' },
+      o: [[{ pt: 'Falha de pagamento sem forma de pagamento reserva', es: 'Falla de pago sin forma de pago de respaldo' }, 1, { pt: 'Isso! Há outras: verificação não aprovada, violação de políticas…', es: '¡Eso! Hay otras: verificación no aprobada, infracción de políticas…' }],
+        [{ pt: 'Postar uma foto nova', es: 'Publicar una foto nueva' }, 0, { pt: 'Isso não revoga.', es: 'Eso no revoca.' }],
+        [{ pt: 'Ter muitos seguidores', es: 'Tener muchos seguidores' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'O suporte por ligação de um agente está disponível a partir de qual plano?', es: '¿Desde qué plan está disponible la asistencia por llamada de un agente?' },
+      o: [[{ pt: 'Business Premium', es: 'Business Premium' }, 1, { pt: 'Isso! Premium e Max.', es: '¡Eso! Premium y Max.' }],
+        [{ pt: 'Business Básico', es: 'Business Standard' }, 0, { pt: 'Chat e e-mail apenas.', es: 'Solo chat y correo.' }],
+        [{ pt: 'Qualquer um, mesmo sem assinatura', es: 'Cualquiera, incluso sin suscripción' }, 0, { pt: 'O suporte otimizado vale só para assinatura ativa.', es: 'La asistencia mejorada vale solo para suscripción activa.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };
