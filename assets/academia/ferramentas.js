@@ -1598,6 +1598,78 @@
         [{ pt: 'Apagando o site', es: 'Borrando el sitio' }, 0, { pt: 'Não é preciso.', es: 'No hace falta.' }]] }
   ]);
 
+  /* ---------- 27. Shopify e Meta: cinco mini-quizzes (Shopify 01–05) ---------- */
+  quizCatalogo('visao-shopify', { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, { pt: 'O que a conexão entrega.', es: 'Qué entrega la conexión.' }, [
+    { q: { pt: 'O que a conexão Shopify e Meta permite?', es: '¿Qué permite la conexión Shopify y Meta?' },
+      o: [[{ pt: 'Sincronizar produtos, criar campanhas, vender no Facebook e Instagram e habilitar Pixel e API de Conversões', es: 'Sincronizar productos, crear campañas, vender en Facebook e Instagram y habilitar píxel y API de Conversiones' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só criar um logotipo', es: 'Solo crear un logotipo' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Trocar de plataforma automaticamente', es: 'Cambiar de plataforma automáticamente' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Onde acontecem os pedidos de uma loja Shopify conectada?', es: '¿Dónde ocurren los pedidos de una tienda Shopify conectada?' },
+      o: [[{ pt: 'Na loja da Shopify', es: 'En la tienda de Shopify' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'Foi descontinuado para pedidos novos.', es: 'Fue discontinuado para pedidos nuevos.' }],
+        [{ pt: 'No Instagram', es: 'En Instagram' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] },
+    { q: { pt: 'A Meta cobra tarifa adicional pelas vendas da loja Shopify conectada?', es: '¿Meta cobra una tarifa adicional por las ventas de la tienda Shopify conectada?' },
+      o: [[{ pt: 'Sim, 5% por venda', es: 'Sí, 5% por venta' }, 0, { pt: 'Não há essa tarifa.', es: 'No hay esa tarifa.' }],
+        [{ pt: 'Não: com o Shopify Payments, quem cobra as taxas é a Shopify', es: 'No: con Shopify Payments, quien cobra las tarifas es Shopify' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só em dezembro', es: 'Solo en diciembre' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }
+  ]);
+  quizCatalogo('conectar-shop', { pt: 'Conectar a Shopify', es: 'Conectar Shopify' }, { pt: 'Pré-requisitos e ajustes.', es: 'Requisitos previos y ajustes.' }, [
+    { q: { pt: 'Qual destes é um pré-requisito para conectar a Shopify?', es: '¿Cuál de estos es un requisito previo para conectar Shopify?' },
+      o: [[{ pt: 'Uma loja que não seja protegida por senha', es: 'Una tienda que no esté protegida por contraseña' }, 1, { pt: 'Isso! Também plano básico ou superior, Página, portfólio dono da Página e permissão de administrador.', es: '¡Eso! También plan básico o superior, página, portfolio dueño de la página y permiso de administrador.' }],
+        [{ pt: 'Ter 1000 produtos', es: 'Tener 1000 productos' }, 0, { pt: 'Não é exigido.', es: 'No se exige.' }],
+        [{ pt: 'Ter anúncios ativos', es: 'Tener anuncios activos' }, 0, { pt: 'Não é exigido.', es: 'No se exige.' }]] },
+    { q: { pt: 'Depois de conectar, qual compartilhamento de dados a Meta orienta escolher na Shopify?', es: 'Después de conectar, ¿qué uso compartido de datos orienta Meta a elegir en Shopify?' },
+      o: [[{ pt: 'Aprimorado ou Máximo', es: 'Mejorado o Máximo' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nenhum', es: 'Ninguno' }, 0, { pt: 'Escolha Aprimorado ou Máximo.', es: 'Elige Mejorado o Máximo.' }],
+        [{ pt: 'Só o básico', es: 'Solo el básico' }, 0, { pt: 'Escolha Aprimorado ou Máximo.', es: 'Elige Mejorado o Máximo.' }]] },
+    { q: { pt: 'Para o acesso a dados, qual opção a Meta recomenda?', es: 'Para el acceso a datos, ¿qué opción recomienda Meta?' },
+      o: [[{ pt: 'Sempre ativo (ou Otimizado)', es: 'Siempre activo (u Optimizado)' }, 1, { pt: 'Isso! Sempre ativo é a mais confiável.', es: '¡Eso! Siempre activo es la más confiable.' }],
+        [{ pt: 'Desligado', es: 'Apagado' }, 0, { pt: 'Isso reduz a qualidade.', es: 'Eso reduce la calidad.' }],
+        [{ pt: 'Aleatório', es: 'Aleatorio' }, 0, { pt: 'Não existe.', es: 'No existe.' }]] }
+  ]);
+  quizCatalogo('onde-shop', { pt: 'Onde se gerencia?', es: '¿Dónde se gestiona?' }, { pt: 'Shopify, app ou Gerenciador de Comércio.', es: 'Shopify, app o Administrador de ventas.' }, [
+    { q: { pt: 'Onde se gerenciam os pedidos?', es: '¿Dónde se gestionan los pedidos?' },
+      o: [[{ pt: 'No administrador da Shopify', es: 'En el administrador de Shopify' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'No Gerenciador de Anúncios', es: 'En el Administrador de anuncios' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }],
+        [{ pt: 'No Instagram', es: 'En Instagram' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] },
+    { q: { pt: 'Onde se define o tempo de processamento da loja?', es: '¿Dónde se define el tiempo de procesamiento de la tienda?' },
+      o: [[{ pt: 'No app Facebook e Instagram (Configurações de envio)', es: 'En la app Facebook e Instagram (Configuración de envío)' }, 1, { pt: 'Isso! O máximo é de 112 dias úteis.', es: '¡Eso! El máximo es de 112 días hábiles.' }],
+        [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }],
+        [{ pt: 'No WhatsApp', es: 'En WhatsApp' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] },
+    { q: { pt: 'O que se pode fazer no Gerenciador de Comércio com os produtos da Shopify?', es: '¿Qué se puede hacer en el Administrador de ventas con los productos de Shopify?' },
+      o: [[{ pt: 'Ver as sincronizações, filtrar problemas e personalizar a loja', es: 'Ver las sincronizaciones, filtrar problemas y personalizar la tienda' }, 1, { pt: 'Isso! A correção dos dados é na Shopify.', es: '¡Eso! La corrección de los datos es en Shopify.' }],
+        [{ pt: 'Corrigir os preços de forma permanente', es: 'Corregir los precios de forma permanente' }, 0, { pt: 'A sincronização substitui.', es: 'La sincronización reemplaza.' }],
+        [{ pt: 'Gerenciar os pedidos novos', es: 'Gestionar los pedidos nuevos' }, 0, { pt: 'Foi descontinuado.', es: 'Fue discontinuado.' }]] }
+  ]);
+  quizCatalogo('sinc-shop', { pt: 'Sincronização e redirecionamento', es: 'Sincronización y redirección' }, { pt: 'O que entra e onde editar.', es: 'Qué entra y dónde editar.' }, [
+    { q: { pt: 'Qual produto NÃO sincroniza com o Gerenciador de Comércio?', es: '¿Qué producto NO se sincroniza con el Administrador de ventas?' },
+      o: [[{ pt: 'Um produto arquivado na Shopify', es: 'Un producto archivado en Shopify' }, 1, { pt: 'Isso! Também os não incluídos no canal Facebook e Instagram.', es: '¡Eso! También los no incluidos en el canal Facebook e Instagram.' }],
+        [{ pt: 'Um produto incluído no canal', es: 'Un producto incluido en el canal' }, 0, { pt: 'Esse sincroniza.', es: 'Ese se sincroniza.' }],
+        [{ pt: 'Um produto novo incluído', es: 'Un producto nuevo incluido' }, 0, { pt: 'Esse sincroniza.', es: 'Ese se sincroniza.' }]] },
+    { q: { pt: 'Por que não se deve editar produtos sincronizados no Gerenciador de Comércio?', es: '¿Por qué no se deben editar productos sincronizados en el Administrador de ventas?' },
+      o: [[{ pt: 'A próxima sincronização da Shopify substitui as mudanças', es: 'La próxima sincronización de Shopify reemplaza los cambios' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Porque é proibido por lei', es: 'Porque está prohibido por ley' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Porque apaga a loja', es: 'Porque borra la tienda' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'O que é “Redirecionar para a Shopify para adicionar e editar itens”?', es: '¿Qué es “Redirigir a Shopify para agregar y editar artículos”?' },
+      o: [[{ pt: 'Uma configuração do catálogo: o Gerenciador pode levar a pessoa a editar na Shopify', es: 'Una configuración del catálogo: el Administrador puede llevar a la persona a editar en Shopify' }, 1, { pt: 'Isso! Está em Configurações › Catálogo.', es: '¡Eso! Está en Configuración › Catálogo.' }],
+        [{ pt: 'Um tipo de anúncio', es: 'Un tipo de anuncio' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Um erro do Pixel', es: 'Un error del píxel' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }
+  ]);
+  quizCatalogo('problemas-shop', { pt: 'Triagem Shopify e Meta', es: 'Clasificación Shopify y Meta' }, { pt: 'Queixas comuns e onde olhar.', es: 'Quejas comunes y dónde mirar.' }, [
+    { q: { pt: 'Compras aparecem em dobro. Qual é a orientação para a Shopify?', es: 'Las compras aparecen duplicadas. ¿Cuál es la orientación para Shopify?' },
+      o: [[{ pt: 'Enviar eventos só pelo canal Facebook e Instagram e tirar o Pixel de outros lugares (apps, tema, Gerenciador de tags do Google)', es: 'Enviar eventos solo por el canal Facebook e Instagram y sacar el píxel de otros lugares (apps, tema, Administrador de etiquetas de Google)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Instalar mais um Pixel', es: 'Instalar un píxel más' }, 0, { pt: 'Isso piora.', es: 'Eso empeora.' }],
+        [{ pt: 'Ignorar', es: 'Ignorar' }, 0, { pt: 'Distorce os relatórios.', es: 'Distorsiona los informes.' }]] },
+    { q: { pt: 'Os produtos não aparecem. O que conferir na Shopify?', es: 'Los productos no aparecen. ¿Qué revisar en Shopify?' },
+      o: [[{ pt: 'Se estão incluídos no canal Facebook e Instagram e não arquivados', es: 'Si están incluidos en el canal Facebook e Instagram y no archivados' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'A cor do tema', es: 'El color del tema' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }],
+        [{ pt: 'O nome do cliente', es: 'El nombre del cliente' }, 0, { pt: 'Não tem relação.', es: 'No tiene relación.' }]] },
+    { q: { pt: 'O código de desconto não aparece na loja. Onde se gerencia?', es: 'El código de descuento no aparece en la tienda. ¿Dónde se gestiona?' },
+      o: [[{ pt: 'No administrador da Shopify, com Facebook e Instagram como canal de vendas', es: 'En el administrador de Shopify, con Facebook e Instagram como canal de ventas' }, 1, { pt: 'Isso! No Gerenciador de Comércio só se visualiza.', es: '¡Eso! En el Administrador de ventas solo se visualiza.' }],
+        [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'Lá só dá para ver.', es: 'Allí solo se puede ver.' }],
+        [{ pt: 'No Instagram', es: 'En Instagram' }, 0, { pt: 'Não é lá.', es: 'No es allí.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

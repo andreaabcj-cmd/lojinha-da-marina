@@ -32,7 +32,7 @@ window.MODULOS = [
   { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
   { id: 'mbe', fase: 5, status: 'construcao', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Galeria de parceiros, a janela do MBE, opções da API de Conversões, problemas comuns e acesso de parceiros.', es: 'Galería de socios, la ventana del MBE, opciones de la API de Conversiones, problemas comunes y acceso de socios.' } },
   { id: 'integracoes', fase: 5, status: 'construcao', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Conectar a plataforma (WooCommerce), ler os erros do Diagnóstico, Pixel como fonte do catálogo e manter ou desconectar.', es: 'Conectar la plataforma (WooCommerce), leer los errores del Diagnóstico, píxel como fuente del catálogo y mantener o desconectar.' } },
-  { id: 'shopify', fase: 5, status: 'planejado', icone: '🧩', titulo: { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, resumo: { pt: 'Como integrar, solução de problemas e redirecionamento.', es: 'Cómo integrar, solución de problemas y redirección.' } },
+  { id: 'shopify', fase: 5, status: 'construcao', icone: '🧩', titulo: { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, resumo: { pt: 'Conectar a Shopify, quem gerencia o quê, sincronização e redirecionamento, e problemas comuns.', es: 'Conectar Shopify, quién gestiona qué, sincronización y redirección, y problemas comunes.' } },
   { id: 'pagamentos', extra: true, status: 'planejado', icone: '💳', titulo: { pt: 'Pagamentos e cobrança', es: 'Pagos y facturación' }, resumo: { pt: 'Formas de pagamento, saldo, limites de gastos e cobranças.', es: 'Métodos de pago, saldo, límites de gasto y cobros.' } },
   { id: 'acesso', extra: true, status: 'planejado', icone: '🔐', titulo: { pt: 'Acesso e login', es: 'Acceso e inicio de sesión' }, resumo: { pt: 'Senha, verificação em duas etapas e contas ou ativos comprometidos.', es: 'Contraseña, verificación en dos pasos y cuentas o activos comprometidos.' } },
   { id: 'restricoes', extra: true, status: 'planejado', icone: '🚧', titulo: { pt: 'Contas e restrições', es: 'Cuentas y restricciones' }, resumo: { pt: 'Contas desativadas ou restritas, limites de recursos e verificações.', es: 'Cuentas desactivadas o restringidas, límites de funciones y verificaciones.' } },
@@ -4226,6 +4226,230 @@ window.AULAS = {
           frase: L('Ao desconectar, os produtos já sincronizados continuam no Gerenciador de Comércio até serem excluídos. Vamos limpar o que você não quer manter.', 'Al desconectar, los productos ya sincronizados siguen en el Administrador de ventas hasta que se eliminen. Limpiemos lo que no quieres mantener.'),
           passos: [L('Cancele a sincronização antes de desconectar.', 'Cancela la sincronización antes de desconectar.'), L('Exclua os itens restantes, se necessário.', 'Elimina los artículos restantes, si es necesario.')],
           encaminhar: L('Excluir produtos do catálogo é decisão do cliente: mostre onde fazer e deixe-o escolher.', 'Eliminar productos del catálogo es decisión del cliente: muestra dónde hacerlo y déjalo elegir.')
+        }
+      }
+    ];
+  })(),
+  shopify: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Como conectar a Shopify ao Facebook e ao Instagram”, “Como criar uma loja e anúncios das Lojas… para vendedores da Shopify”, “Sobre o gerenciamento do seu catálogo com a Shopify” (inclui o redirecionamento para a Shopify), “Configurações e recursos da loja que os vendedores da Shopify precisam gerenciar” e “Como corrigir a duplicação do Pixel da Meta ao usar anúncios das Lojas”. A tela do Gerenciador de Eventos com a Shopify como integração recomendada e o botão “Configure para mim” foram vistos de verdade na conta de aula (PT e ES); o botão não foi clicado. O app dentro da Shopify e a configuração “Redirecionar para a Shopify…” no Gerenciador de Comércio não foram vistos (a conta de aula não tem loja Shopify); as telas do simulador são do treino (a conferir).', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Cómo conectar Shopify a Facebook e Instagram”, “Cómo crear una tienda y anuncios de Tiendas… para vendedores de Shopify”, “Acerca de la gestión de tu catálogo con Shopify” (incluye la redirección a Shopify), “Configuraciones y funciones de la tienda que los vendedores de Shopify deben gestionar” y “Cómo corregir la duplicación del píxel de Meta al usar anuncios de Tiendas”. La pantalla del Administrador de eventos con Shopify como integración recomendada y el botón “Configurar para mí” se vieron de verdad en la cuenta de clase (PT y ES); el botón no se hizo clic. La app dentro de Shopify y la configuración “Redirigir a Shopify…” en el Administrador de ventas no se vieron (la cuenta de clase no tiene tienda Shopify); las pantallas del simulador son del entrenamiento (por confirmar).');
+    var FERR = L('Administrador da Shopify, app Facebook e Instagram e Gerenciador de Comércio.', 'Administrador de Shopify, app Facebook e Instagram y Administrador de ventas.');
+    return [
+      {
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('O que a Shopify e a Meta fazem juntas', 'Qué hacen Shopify y Meta juntas'),
+        antes: L('A Marina agora atende lojistas que vendem pela Shopify.', 'Marina ahora atiende a comerciantes que venden por Shopify.'),
+        gancho: L('Um app, quatro benefícios: produtos, anúncios, vendas e dados.', 'Una app, cuatro beneficios: productos, anuncios, ventas y datos.'),
+        objetivo: L('Entender o que a conexão Shopify e Meta entrega e quem cuida de cada parte.', 'Entender qué entrega la conexión Shopify y Meta y quién se ocupa de cada parte.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Por que tanta gente usa a Shopify com a Meta? 🤔', '¿Por qué tanta gente usa Shopify con Meta? 🤔')],
+            ['rafa', L('Conectando a Shopify pelo app Facebook e Instagram, você sincroniza os produtos com o Gerenciador de Comércio, cria campanhas e vê insights, vende no Facebook e no Instagram e habilita o Pixel e a API de Conversões para compartilhar dados de forma confiável.', 'Conectando Shopify por la app Facebook e Instagram, sincronizas los productos con el Administrador de ventas, creas campañas y ves estadísticas, vendes en Facebook e Instagram y habilitas el píxel y la API de Conversiones para compartir datos de forma confiable.')],
+            ['marina', L('E a loja do Instagram, quem cuida dos pedidos?', '¿Y la tienda de Instagram, quién gestiona los pedidos?')],
+            ['rafa', L('Todos os pedidos acontecem na loja da Shopify, e pagamentos e pós-compra também são gerenciados lá. Se você usar o Shopify Payments, a Shopify cobra as taxas direto de você: não há custo adicional da Meta.', 'Todos los pedidos ocurren en la tienda de Shopify, y los pagos y el posventa también se gestionan allí. Si usas Shopify Payments, Shopify cobra las tarifas directamente: no hay costo adicional de Meta.')],
+            ['pixel', L('Você continua gerenciando os produtos como de costume na Shopify, e a sincronização cuida do resto. É por isso que o suporte precisa saber onde cada coisa se resolve: na Shopify, no app ou no Gerenciador de Comércio.', 'Sigues gestionando los productos como de costumbre en Shopify, y la sincronización se ocupa del resto. Por eso la asistencia necesita saber dónde se resuelve cada cosa: en Shopify, en la app o en el Administrador de ventas.')]
+          ],
+          pontos: [
+            L('<b>O app Facebook e Instagram</b> sincroniza produtos, liga anúncios, loja, Pixel e API de Conversões.', '<b>La app Facebook e Instagram</b> sincroniza productos, vincula anuncios, tienda, píxel y API de Conversiones.'),
+            L('<b>Pedidos e pagamentos:</b> na Shopify; sem custo extra da Meta.', '<b>Pedidos y pagos:</b> en Shopify; sin costo extra de Meta.'),
+            L('<b>Produtos:</b> gerenciados na Shopify e sincronizados.', '<b>Productos:</b> gestionados en Shopify y sincronizados.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'visao-shopify',
+        atender: {
+          cena: L('Se eu conectar a Shopify, a Meta cobra uma taxa por cada venda da minha loja? 💸', 'Si conecto Shopify, ¿Meta cobra una tarifa por cada venta de mi tienda? 💸'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Pelo que a Central de Ajuda diz, não há tarifa adicional da Meta: os pedidos e o processamento de pagamento são feitos na sua loja da Shopify, e se você usar o Shopify Payments, quem cobra as taxas é a Shopify.”', '“Según dice el Centro de ayuda, no hay tarifa adicional de Meta: los pedidos y el procesamiento de pagos se hacen en tu tienda de Shopify, y si usas Shopify Payments, quien cobra las tarifas es Shopify.”'), fb: L('Isso! Honesto e fiel à fonte.', '¡Eso! Honesto y fiel a la fuente.') },
+            { certa: false, txt: L('“Sim, 5% por venda.”', '“Sí, 5% por venta.”'), fb: L('Não há essa taxa da Meta.', 'No hay esa tarifa de Meta.') },
+            { certa: false, txt: L('“Depende do mês.”', '“Depende del mes.”'), fb: L('Não é isso.', 'No es eso.') },
+            { certa: false, txt: L('“A Meta processa o pagamento.”', '“Meta procesa el pago.”'), fb: L('Os pedidos e pagamentos são na Shopify.', 'Los pedidos y pagos son en Shopify.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A loja é hospedada na Shopify? Já tem o app Facebook e Instagram?', '¿La tienda está alojada en Shopify? ¿Ya tiene la app Facebook e Instagram?'), L('O objetivo é produtos, anúncios, loja ou dados?', '¿El objetivo es productos, anuncios, tienda o datos?')],
+          conferir: [FERR],
+          frase: L('Conectando a Shopify pelo app Facebook e Instagram, os produtos sincronizam, e os pedidos e pagamentos continuam na Shopify, sem tarifa adicional da Meta.', 'Conectando Shopify por la app Facebook e Instagram, los productos se sincronizan, y los pedidos y pagos siguen en Shopify, sin tarifa adicional de Meta.'),
+          passos: [L('Confirme que a loja é Shopify.', 'Confirma que la tienda es Shopify.'), L('Explique o que cada lado faz.', 'Explica qué hace cada lado.')],
+          encaminhar: L('Taxas e planos da Shopify são com a Shopify: oriente o cliente a falar com o suporte dela.', 'Las tarifas y planes de Shopify son con Shopify: orienta al cliente a hablar con su asistencia.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Conectar a Shopify à Meta', 'Conectar Shopify a Meta'),
+        antes: L('Um cliente da Marina quer conectar a loja Shopify dele.', 'Un cliente de Marina quiere conectar su tienda Shopify.'),
+        gancho: L('Cinco pré-requisitos, sete passos e dois ajustes de dados no final.', 'Cinco requisitos previos, siete pasos y dos ajustes de datos al final.'),
+        objetivo: L('Conferir os pré-requisitos, seguir os passos do app e ajustar compartilhamento e acesso a dados.', 'Revisar los requisitos previos, seguir los pasos de la app y ajustar uso compartido y acceso a datos.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Como conecto a Shopify? Preciso de quê? 😅', '¿Cómo conecto Shopify? ¿Qué necesito? 😅')],
+            ['rafa', L('Uma loja online da Shopify que não seja protegida por senha, o plano básico ou superior, uma Página do Facebook, um portfólio empresarial da Meta que seja dono da Página e permissões de administrador nesse portfólio.', 'Una tienda online de Shopify que no esté protegida por contraseña, el plan básico o superior, una página de Facebook, un portfolio comercial de Meta que sea dueño de la página y permisos de administrador en ese portfolio.')],
+            ['marina', L('E os passos?', '¿Y los pasos?')],
+            ['rafa', L('Na Shopify: Canais de vendas, Facebook e Instagram, Adicionar app, Adicionar canal de vendas, Iniciar configuração, Avançar, Entrar com o Facebook, seguir as instruções (comércio, anúncios e Pixel), aceitar os termos e Enviar.', 'En Shopify: Canales de ventas, Facebook e Instagram, Agregar app, Agregar canal de ventas, Iniciar configuración, Siguiente, Iniciar sesión con Facebook, seguir las instrucciones (comercio, anuncios y píxel), aceptar los términos y Enviar.')],
+            ['pixel', L('Depois de conectar, confira se os produtos sincronizaram e, nas configurações da Shopify, escolha compartilhamento de dados Aprimorado ou Máximo e acesso a dados Sempre ativo ou Otimizado. A Meta recomenda Sempre ativo.', 'Después de conectar, revisa si los productos se sincronizaron y, en la configuración de Shopify, elige uso compartido de datos Mejorado o Máximo y acceso a datos Siempre activo u Optimizado. Meta recomienda Siempre activo.')]
+          ],
+          pontos: [
+            L('<b>Pré-requisitos:</b> loja sem senha, plano básico+, Página, portfólio dono da Página, admin.', '<b>Requisitos previos:</b> tienda sin contraseña, plan básico+, página, portfolio dueño de la página, admin.'),
+            L('<b>Passo a passo:</b> Canais de vendas › Facebook e Instagram › instalar › Entrar com o Facebook › Enviar.', '<b>Paso a paso:</b> Canales de ventas › Facebook e Instagram › instalar › Iniciar sesión con Facebook › Enviar.'),
+            L('<b>Depois:</b> produtos sincronizados; dados Aprimorado/Máximo; acesso Sempre ativo/Otimizado.', '<b>Después:</b> productos sincronizados; datos Mejorado/Máximo; acceso Siempre activo/Optimizado.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'conectar-shop',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pelos 5 pré-requisitos, pelos 7 passos e pelos ajustes de dados.', 'En el simulador, el Pixel te guía por los 5 requisitos previos, por los 7 pasos y por los ajustes de datos.'),
+          tour: 'conectar-shopify', pagina: 'meta-shopify.html?zerar=1'
+        },
+        atender: {
+          cena: L('Instalei o app mas não consigo conectar! Minha loja ainda está em testes, com senha. 😕', '¡Instalé la app pero no puedo conectar! Mi tienda todavía está en pruebas, con contraseña. 😕'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Esse pode ser o motivo: um dos pré-requisitos é que a loja da Shopify não seja protegida por senha. Também confira se o plano é básico ou superior, se a Página existe e está num portfólio seu e se você tem permissão de administrador nesse portfólio.”', '“Ese puede ser el motivo: uno de los requisitos es que la tienda de Shopify no esté protegida por contraseña. Revisa también si el plan es básico o superior, si la página existe y está en un portfolio tuyo y si tienes permiso de administrador en ese portfolio.”'), fb: L('Isso! Achou a causa e deu a lista.', '¡Eso! Encontraste la causa y diste la lista.') },
+            { certa: false, txt: L('“O app está quebrado.”', '“La app está rota.”'), fb: L('Antes confira os pré-requisitos.', 'Antes revisa los requisitos previos.') },
+            { certa: false, txt: L('“Compre outro plano de anúncios.”', '“Compra otro plan de anuncios.”'), fb: L('Não tem relação.', 'No tiene relación.') },
+            { certa: false, txt: L('“Passe a senha da loja para eu tirar.”', '“Pásame la contraseña de la tienda y yo la quito.”'), fb: L('Nunca peça senha.', 'Nunca pidas contraseñas.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A loja tem senha? Qual é o plano da Shopify?', '¿La tienda tiene contraseña? ¿Cuál es el plan de Shopify?'), L('Qual portfólio é dono da Página? A pessoa é admin dele?', '¿Qué portfolio es dueño de la página? ¿La persona es admin de él?')],
+          conferir: [L('Shopify › Canais de vendas › Facebook e Instagram.', 'Shopify › Canales de ventas › Facebook e Instagram.'), FERR],
+          frase: L('Vamos conferir os pré-requisitos da conexão com a Shopify e depois seguir o passo a passo do app, um por um.', 'Revisemos los requisitos previos de la conexión con Shopify y luego sigamos el paso a paso de la app, uno por uno.'),
+          passos: [L('Confira os 5 pré-requisitos.', 'Revisa los 5 requisitos previos.'), L('Siga os passos e ajuste os dados no final.', 'Sigue los pasos y ajusta los datos al final.')],
+          encaminhar: L('Problemas dentro da Shopify são resolvidos com o suporte da Shopify; os da Meta, pelo suporte da Meta.', 'Los problemas dentro de Shopify se resuelven con la asistencia de Shopify; los de Meta, con la asistencia de Meta.')
+        }
+      },
+      {
+        id: '03', min: 8, status: 'pronta',
+        titulo: L('Quem gerencia o quê', 'Quién gestiona qué'),
+        antes: L('A Marina fica em dúvida: onde se muda o prazo de entrega? E o desconto?', 'Marina duda: ¿dónde se cambia el plazo de entrega? ¿Y el descuento?'),
+        gancho: L('Três lugares, e cada coisa tem o seu. Saber qual é evita muita ida e volta.', 'Tres lugares, y cada cosa tiene el suyo. Saber cuál es evita mucho ir y venir.'),
+        objetivo: L('Indicar se um recurso é gerenciado no administrador da Shopify, no app Facebook e Instagram ou no Gerenciador de Comércio.', 'Indicar si una función se gestiona en el administrador de Shopify, en la app Facebook e Instagram o en el Administrador de ventas.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Onde eu mexo no desconto e no prazo de entrega? 😵', '¿Dónde toco el descuento y el plazo de entrega? 😵')],
+            ['rafa', L('No administrador da Shopify ficam pedidos, descontos que serão sincronizados, perfis de envio, produtos e coleções.', 'En el administrador de Shopify están pedidos, descuentos que se sincronizarán, perfiles de envío, productos y colecciones.')],
+            ['marina', L('E o prazo?', '¿Y el plazo?')],
+            ['rafa', L('Tempos de processamento e prazos de transporte das taxas personalizadas ficam no app Facebook e Instagram, em Configurações de envio; as inscrições de e-mail, em Marketing. O máximo de processamento é de 112 dias úteis.', 'Los tiempos de procesamiento y los plazos de transporte de las tarifas personalizadas están en la app Facebook e Instagram, en Configuración de envío; las suscripciones por correo, en Marketing. El máximo de procesamiento es de 112 días hábiles.')],
+            ['pixel', L('No Gerenciador de Comércio você vê as sincronizações, filtra produtos com problemas e personaliza a loja. Mas para corrigir os dados de um produto, volta à Shopify.', 'En el Administrador de ventas ves las sincronizaciones, filtras productos con problemas y personalizas la tienda. Pero para corregir los datos de un producto, vuelves a Shopify.')]
+          ],
+          pontos: [
+            L('<b>Shopify:</b> pedidos, descontos, perfis de envio, produtos, coleções.', '<b>Shopify:</b> pedidos, descuentos, perfiles de envío, productos, colecciones.'),
+            L('<b>App Facebook e Instagram:</b> tempos de processamento, prazos de transporte, e-mails.', '<b>App Facebook e Instagram:</b> tiempos de procesamiento, plazos de transporte, correos.'),
+            L('<b>Gerenciador de Comércio:</b> ver sincronizações, problemas, personalizar a loja.', '<b>Administrador de ventas:</b> ver sincronizaciones, problemas, personalizar la tienda.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'onde-shop',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por três exemplos: pedidos, tempos de processamento e produtos com problemas.', 'En el simulador, el Pixel te guía por tres ejemplos: pedidos, tiempos de procesamiento y productos con problemas.'),
+          tour: 'onde-gerenciar', pagina: 'meta-shopify.html?zerar=1'
+        },
+        atender: {
+          cena: L('Mudei o prazo de entrega no Gerenciador de Comércio e a loja continua mostrando o antigo! 😠', '¡Cambié el plazo de entrega en el Administrador de ventas y la tienda sigue mostrando el antiguo! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Os perfis de envio são gerenciados na Shopify, e os tempos de processamento e os prazos de transporte das taxas personalizadas, no app Facebook e Instagram (Configurações, Configurações de envio). Vamos ajustar lá, não no Gerenciador de Comércio.”', '“Los perfiles de envío se gestionan en Shopify, y los tiempos de procesamiento y los plazos de transporte de las tarifas personalizadas, en la app Facebook e Instagram (Configuración, Configuración de envío). Ajustemos allí, no en el Administrador de ventas.”'), fb: L('Isso! Indicou o lugar certo.', '¡Eso! Indicaste el lugar correcto.') },
+            { certa: false, txt: L('“Espere, o Gerenciador demora a atualizar.”', '“Espera, el Administrador demora en actualizar.”'), fb: L('Não é demora: é o lugar errado.', 'No es demora: es el lugar equivocado.') },
+            { certa: false, txt: L('“Edite de novo, mais forte.”', '“Edita de nuevo, más fuerte.”'), fb: L('Não resolve.', 'No resuelve.') },
+            { certa: false, txt: L('“Apague a loja.”', '“Elimina la tienda.”'), fb: L('Exagero.', 'Exagerado.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O que o cliente quer mudar: pedido, desconto, envio, produto, e-mail?', '¿Qué quiere cambiar el cliente: pedido, descuento, envío, producto, correo?'), L('Em qual tela ele tentou mudar?', '¿En qué pantalla intentó cambiarlo?')],
+          conferir: [FERR],
+          frase: L('Cada recurso tem o seu lugar: pedidos e produtos na Shopify, prazos no app Facebook e Instagram, e acompanhamento no Gerenciador de Comércio. Vamos achar o lugar da sua mudança.', 'Cada función tiene su lugar: pedidos y productos en Shopify, plazos en la app Facebook e Instagram, y seguimiento en el Administrador de ventas. Busquemos el lugar de tu cambio.'),
+          passos: [L('Identifique o recurso.', 'Identifica la función.'), L('Mostre onde ele é gerenciado.', 'Muestra dónde se gestiona.')],
+          encaminhar: L('Recursos da Shopify são do suporte da Shopify: oriente o cliente a seguir os artigos de ajuda dela.', 'Las funciones de Shopify son de la asistencia de Shopify: orienta al cliente a seguir sus artículos de ayuda.')
+        }
+      },
+      {
+        id: '04', min: 9, status: 'pronta',
+        titulo: L('Sincronizar produtos e o redirecionamento', 'Sincronizar productos y la redirección'),
+        antes: L('Uma cliente edita produtos no Gerenciador de Comércio e as mudanças desaparecem.', 'Una clienta edita productos en el Administrador de ventas y los cambios desaparecen.'),
+        gancho: L('A Shopify manda: o que se edita fora dela é substituído.', 'Shopify manda: lo que se edita fuera de ella se reemplaza.'),
+        objetivo: L('Explicar quais produtos sincronizam, por que editar no Gerenciador de Comércio é inútil e o que é “Redirecionar para a Shopify”.', 'Explicar qué productos se sincronizan, por qué editar en el Administrador de ventas es inútil y qué es “Redirigir a Shopify”.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Quais produtos vão para o Gerenciador de Comércio? 🤔', '¿Qué productos van al Administrador de ventas? 🤔')],
+            ['rafa', L('Os que estão incluídos no canal de vendas Facebook e Instagram, na Shopify. Se você arquivar um produto na Shopify, ele não sincroniza, ou sai do Gerenciador de Comércio se já tinha sincronizado. Os dados atualizam a cada poucos minutos.', 'Los que están incluidos en el canal de ventas Facebook e Instagram, en Shopify. Si archivas un producto en Shopify, no se sincroniza, o sale del Administrador de ventas si ya se había sincronizado. Los datos se actualizan cada pocos minutos.')],
+            ['marina', L('E se eu editar no Gerenciador de Comércio?', '¿Y si edito en el Administrador de ventas?')],
+            ['rafa', L('Não edite produtos sincronizados lá: a próxima sincronização da Shopify substitui as mudanças. Por isso, se você tentar adicionar ou editar itens, o Gerenciador pode redirecionar você para a Shopify.', 'No edites productos sincronizados allí: la próxima sincronización de Shopify reemplaza los cambios. Por eso, si intentas agregar o editar artículos, el Administrador puede redirigirte a Shopify.')],
+            ['pixel', L('Esse redirecionamento se liga ou desliga em Configurações, Catálogo, Redirecionar para a Shopify para adicionar e editar itens, com o botão Editar. Para feeds avançados, dá até para deixar a Shopify atualizar só preço, disponibilidade e quantidade.', 'Esa redirección se activa o desactiva en Configuración, Catálogo, Redirigir a Shopify para agregar y editar artículos, con el botón Editar. Para feeds avanzados, incluso se puede dejar que Shopify actualice solo precio, disponibilidad y cantidad.')]
+          ],
+          pontos: [
+            L('<b>Sincronizam</b> os produtos incluídos no canal Facebook e Instagram e não arquivados.', '<b>Se sincronizan</b> los productos incluidos en el canal Facebook e Instagram y no archivados.'),
+            L('<b>Edite na Shopify:</b> mudanças no Gerenciador de Comércio são substituídas.', '<b>Edita en Shopify:</b> los cambios en el Administrador de ventas se reemplazan.'),
+            L('<b>Redirecionar para a Shopify:</b> configuração em Configurações › Catálogo.', '<b>Redirigir a Shopify:</b> configuración en Configuración › Catálogo.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'sinc-shop',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia: incluir um produto no canal, sincronizar e ver o redirecionamento ao tentar editar.', 'En el simulador, el Pixel te guía: incluir un producto en el canal, sincronizar y ver la redirección al intentar editar.'),
+          tour: 'sincronizar-produtos', pagina: 'meta-shopify.html?zerar=1'
+        },
+        atender: {
+          cena: L('Mudei o preço da caneca no Gerenciador de Comércio e voltou para o antigo sozinho! 😡', '¡Cambié el precio de la taza en el Administrador de ventas y volvió al antiguo solo! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Isso é esperado: com a Shopify conectada, o preço é gerenciado na Shopify, e a próxima sincronização substitui o que foi editado no Gerenciador de Comércio. Vamos mudar o preço na Shopify; em alguns minutos ele sincroniza.”', '“Eso es lo esperado: con Shopify conectada, el precio se gestiona en Shopify, y la próxima sincronización reemplaza lo editado en el Administrador de ventas. Cambiemos el precio en Shopify; en unos minutos se sincroniza.”'), fb: L('Isso! Explicou a regra e a solução.', '¡Eso! Explicaste la regla y la solución.') },
+            { certa: false, txt: L('“É um bug, a Meta vai corrigir.”', '“Es un bug, Meta lo va a corregir.”'), fb: L('É o comportamento esperado.', 'Es el comportamiento esperado.') },
+            { certa: false, txt: L('“Edite de novo toda vez.”', '“Edita de nuevo cada vez.”'), fb: L('Seria substituído de novo.', 'Se reemplazaría otra vez.') },
+            { certa: false, txt: L('“Desconecte a Shopify.”', '“Desconecta Shopify.”'), fb: L('Exagero: edite na Shopify.', 'Exagerado: edita en Shopify.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O produto está incluído no canal Facebook e Instagram e não está arquivado?', '¿El producto está incluido en el canal Facebook e Instagram y no está archivado?'), L('Onde o cliente fez a edição?', '¿Dónde hizo la edición el cliente?')],
+          conferir: [L('Shopify › Produtos › Canal de vendas › Facebook e Instagram.', 'Shopify › Productos › Canal de ventas › Facebook e Instagram.'), L('Gerenciador de Comércio › Catálogo › Fontes de dados.', 'Administrador de ventas › Catálogo › Orígenes de datos.')],
+          frase: L('Com a Shopify conectada, os produtos são editados na Shopify e sincronizam em alguns minutos. Edições feitas no Gerenciador de Comércio são substituídas.', 'Con Shopify conectada, los productos se editan en Shopify y se sincronizan en unos minutos. Las ediciones hechas en el Administrador de ventas se reemplazan.'),
+          passos: [L('Edite o produto na Shopify.', 'Edita el producto en Shopify.'), L('Confira a sincronização em Fontes de dados.', 'Revisa la sincronización en Orígenes de datos.')],
+          encaminhar: L('Se o produto não sincroniza mesmo incluído, siga a aula de problemas comuns e a ajuda da Shopify.', 'Si el producto no se sincroniza aun incluido, sigue la clase de problemas comunes y la ayuda de Shopify.')
+        }
+      },
+      {
+        id: '05', min: 8, status: 'pronta',
+        titulo: L('Problemas comuns Shopify e Meta', 'Problemas comunes Shopify y Meta'),
+        antes: L('Seis clientes da Marina, seis queixas diferentes.', 'Seis clientes de Marina, seis quejas distintas.'),
+        gancho: L('Quase sempre a resposta está em “quem gerencia o quê”.', 'Casi siempre la respuesta está en “quién gestiona qué”.'),
+        objetivo: L('Triar as queixas mais comuns e indicar onde olhar primeiro.', 'Clasificar las quejas más comunes e indicar dónde mirar primero.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Os produtos não aparecem no Gerenciador de Comércio. 😩', 'Los productos no aparecen en el Administrador de ventas. 😩')],
+            ['rafa', L('Na Shopify, veja se eles estão incluídos no canal Facebook e Instagram (filtre por Excluídos) e se não foram arquivados. Confira também se a loja não tem senha e se o plano é básico ou superior.', 'En Shopify, mira si están incluidos en el canal Facebook e Instagram (filtra por Excluidos) y si no fueron archivados. Revisa también si la tienda no tiene contraseña y si el plan es básico o superior.')],
+            ['marina', L('E as compras em dobro?', '¿Y las compras duplicadas?')],
+            ['rafa', L('Use só o canal Facebook e Instagram para enviar eventos e tire o Pixel de outros lugares da Shopify: apps, código do tema (theme.liquid) e o Gerenciador de tags do Google.', 'Usa solo el canal Facebook e Instagram para enviar eventos y saca el píxel de otros lugares de Shopify: apps, código del tema (theme.liquid) y el Administrador de etiquetas de Google.')],
+            ['pixel', L('Desconto que não aparece, prazo errado e pedidos faltando seguem a mesma lógica: desconto, pedidos e perfis de envio são da Shopify; processamento e transporte, do app. Pedidos novos não têm mais gerenciamento no Gerenciador de Comércio.', 'Descuento que no aparece, plazo equivocado y pedidos faltantes siguen la misma lógica: descuento, pedidos y perfiles de envío son de Shopify; procesamiento y transporte, de la app. Los pedidos nuevos ya no tienen gestión en el Administrador de ventas.')]
+          ],
+          pontos: [
+            L('<b>Sem produtos:</b> canal Facebook e Instagram, arquivados, senha, plano.', '<b>Sin productos:</b> canal Facebook e Instagram, archivados, contraseña, plan.'),
+            L('<b>Compras em dobro:</b> só o canal oficial envia o Pixel.', '<b>Compras duplicadas:</b> solo el canal oficial envía el píxel.'),
+            L('<b>Desconto, pedido, envio:</b> Shopify; processamento e transporte: app.', '<b>Descuento, pedido, envío:</b> Shopify; procesamiento y transporte: app.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'problemas-shop',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por três queixas: produtos sumidos, compras em dobro e pedidos.', 'En el simulador, el Pixel te guía por tres quejas: productos desaparecidos, compras duplicadas y pedidos.'),
+          tour: 'problemas-shopify', pagina: 'meta-shopify.html?zerar=1'
+        },
+        atender: {
+          cena: L('Meus pedidos sumiram do Gerenciador de Comércio! Perdi tudo! 😱', '¡Mis pedidos desaparecieron del Administrador de ventas! ¡Perdí todo! 😱'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Calma, nada se perdeu: os pedidos acontecem e são gerenciados na sua loja da Shopify. Com a finalização da compra no site, o gerenciamento de pedidos no Gerenciador de Comércio foi descontinuado para pedidos novos. É na Shopify que você vê e trata os pedidos.”', '“Calma, nada se perdió: los pedidos ocurren y se gestionan en tu tienda de Shopify. Con la finalización de compra en el sitio, la gestión de pedidos en el Administrador de ventas fue discontinuada para pedidos nuevos. Es en Shopify donde ves y tratas los pedidos.”'), fb: L('Isso! Tirou o susto e indicou o lugar.', '¡Eso! Quitaste el susto e indicaste el lugar.') },
+            { certa: false, txt: L('“Sim, perdeu, sinto muito.”', '“Sí, se perdió, lo lamento.”'), fb: L('Não perdeu: está na Shopify.', 'No se perdió: está en Shopify.') },
+            { certa: false, txt: L('“Reconecte a Shopify para recuperar.”', '“Reconecta Shopify para recuperar.”'), fb: L('Não é necessário.', 'No es necesario.') },
+            { certa: false, txt: L('“A Meta apagou por política.”', '“Meta borró por política.”'), fb: L('Não é isso.', 'No es eso.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O que exatamente o cliente não vê: produtos, pedidos, descontos, prazos?', '¿Qué es exactamente lo que el cliente no ve: productos, pedidos, descuentos, plazos?'), L('Onde ele procurou?', '¿Dónde buscó?')],
+          conferir: [FERR],
+          frase: L('Vamos descobrir onde esse recurso é gerenciado: Shopify, app Facebook e Instagram ou Gerenciador de Comércio, e conferir lá.', 'Descubramos dónde se gestiona esa función: Shopify, app Facebook e Instagram o Administrador de ventas, y revisemos allí.'),
+          passos: [L('Identifique o recurso.', 'Identifica la función.'), L('Confira no lugar certo.', 'Revisa en el lugar correcto.')],
+          encaminhar: L('Se tudo estiver certo e ainda houver problema, oriente o cliente a falar com o suporte da Shopify e o da Meta, cada um na sua parte.', 'Si todo está correcto y aún hay problema, orienta al cliente a hablar con la asistencia de Shopify y la de Meta, cada una en su parte.')
         }
       }
     ];

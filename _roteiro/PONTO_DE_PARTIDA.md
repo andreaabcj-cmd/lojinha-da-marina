@@ -135,3 +135,13 @@ Leia nesta ordem:
 - NÃO visto (a conferir): aba Diagnóstico real (conta sem conjunto de dados), telas do plugin no WordPress, integração do Wix e do GTM funcionando, nomes de menu em espanhol do WordPress.
 - INVENTADO: telas, cenários, rótulo "tipo" (Erro/Aviso/Notificação) dos itens que o artigo não classifica.
 - Próximo na ordem do Foco: Shopify, depois WhatsApp (por último).
+
+## Shopify e Meta (Foco) · 16/10/2026
+- Simulador `meta-shopify.html` (sim-shopify.js, sim-es-shopify.js, sim-shopify.css): abas Conectar a Shopify (pré-requisitos, 7 passos, compartilhamento e acesso a dados), Quem gerencia o quê (11 itens: Shopify × app × Gerenciador de Comércio), Catálogo e redirecionamento, Problemas comuns. `?zerar=1`.
+- 4 tutoriais (conectar-shopify, onde-gerenciar, sincronizar-produtos, problemas-shopify), 5 aulas, 5 quizzes; todos rodaram em ES sem "falta".
+- REAL (tela, PT e ES): Gerenciador de Eventos › Integrações: "Configure suas integrações" com Shopify recomendada e o botão "Configure para mim" (NÃO clicado).
+- REAL (Central de Ajuda PT, 16/10): 646757258759189 (conectar a Shopify), 139029445945711 (loja e anúncios das Lojas para vendedores da Shopify), 1046957249463415 (catálogo com a Shopify; inclui "Redirecionar para a Shopify para adicionar e editar itens"), 342672464318056 (o que gerenciar na Shopify), 1190564818451304 (duplicação do Pixel com Shopify).
+- NÃO visto (a conferir): o app dentro da Shopify (a conta de aula não tem loja Shopify), a configuração de redirecionamento no Gerenciador de Comércio, as opções exatas de compartilhamento/acesso a dados (só "Aprimorado ou Máximo" e "Sempre ativo ou Otimizado" aparecem no artigo; "Padrão" e "Desativado" são nossas).
+- INVENTADO: loja de exemplo, produtos, telas do app, jogo de classificar, triagem.
+- Ressalva: o artigo cita um teste de ROAS nos EUA (35%); NÃO usado nas aulas.
+- Próximo na ordem do Foco: WhatsApp (por último). Depois, Foco completo; restam aulas de Pixel avançado e Portfólio avançado e a trilha Completa.
