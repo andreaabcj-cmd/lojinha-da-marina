@@ -936,6 +936,78 @@
         [{ pt: 'Não: a Meta apagou as compras', es: 'No: Meta borró las compras' }, 0, { pt: 'Não há sinal disso.', es: 'No hay señal de eso.' }]] }
   ]);
 
+  /* ---------- 18. Segmentação: cinco mini-quizzes (Segmentação 01–05) ---------- */
+  quizCatalogo('tipo-publico', { pt: 'Que tipo de público é esse?', es: '¿Qué tipo de público es este?' }, { pt: 'Personalizado, semelhante, salvo ou automático (Advantage+).', es: 'Personalizado, similar, guardado o automático (Advantage+).' }, [
+    { q: { pt: 'Pessoas que já visitaram o site da Lojinha.', es: 'Personas que ya visitaron el sitio de la Lojinha.' },
+      o: [[{ pt: 'Público personalizado (fonte: Site, pelo Pixel)', es: 'Público personalizado (origen: Sitio web, por el Pixel)' }, 1, { pt: 'Isso! Quem já demonstrou interesse na sua empresa.', es: '¡Eso! Quien ya mostró interés en tu negocio.' }],
+        [{ pt: 'Público semelhante', es: 'Público similar' }, 0, { pt: 'O semelhante acha gente nova parecida com um público.', es: 'El similar encuentra gente nueva parecida a un público.' }],
+        [{ pt: 'Público salvo', es: 'Público guardado' }, 0, { pt: 'O salvo guarda opções de segmentação, não pessoas.', es: 'El guardado conserva opciones de segmentación, no personas.' }]] },
+    { q: { pt: 'Pessoas novas, parecidas com quem já comprou na loja.', es: 'Personas nuevas, parecidas a quien ya compró en la tienda.' },
+      o: [[{ pt: 'Público semelhante, com os compradores como fonte', es: 'Público similar, con los compradores como origen' }, 1, { pt: 'Isso! Chega a gente nova com o perfil dos clientes.', es: '¡Eso! Llega a gente nueva con el perfil de los clientes.' }],
+        [{ pt: 'Público personalizado do site', es: 'Público personalizado del sitio web' }, 0, { pt: 'Esse é de quem já visitou.', es: 'Ese es de quien ya visitó.' }],
+        [{ pt: 'Público salvo', es: 'Público guardado' }, 0, { pt: 'O salvo não é parecido com ninguém: é uma combinação de opções.', es: 'El guardado no se parece a nadie: es una combinación de opciones.' }]] },
+    { q: { pt: 'Localização Brasil, idade mínima 18, guardadas para reutilizar em vários anúncios.', es: 'Ubicación Brasil, edad mínima 18, guardadas para reutilizar en varios anuncios.' },
+      o: [[{ pt: 'Público salvo', es: 'Público guardado' }, 1, { pt: 'Isso! Guarda as opções de segmentação.', es: '¡Eso! Guarda las opciones de segmentación.' }],
+        [{ pt: 'Público semelhante', es: 'Público similar' }, 0, { pt: 'Semelhante parte de uma fonte de pessoas.', es: 'El similar parte de un origen de personas.' }],
+        [{ pt: 'Público personalizado', es: 'Público personalizado' }, 0, { pt: 'Personalizado parte de pessoas que já interagiram.', es: 'El personalizado parte de personas que ya interactuaron.' }]] }
+  ]);
+  quizCatalogo('fonte-publico', { pt: 'Qual fonte escolher?', es: '¿Qué origen elegir?' }, { pt: 'Site, lista de clientes, Instagram, Página… cada fonte vem de um lugar.', es: 'Sitio web, lista de clientes, Instagram, Página… cada origen viene de un lugar.' }, [
+    { q: { pt: 'Quem visitou a página de um produto no site da loja, medido pelo Pixel.', es: 'Quien visitó la página de un producto en el sitio de la tienda, medido por el Pixel.' },
+      o: [[{ pt: 'Fonte Site, com o evento ViewContent (ou páginas específicas)', es: 'Origen Sitio web, con el evento ViewContent (o páginas específicas)' }, 1, { pt: 'Isso! A origem é o Pixel da loja.', es: '¡Eso! El origen es el Pixel de la tienda.' }],
+        [{ pt: 'Fonte Lista de clientes', es: 'Origen Lista de clientes' }, 0, { pt: 'Lista de clientes é um arquivo de contatos, não visitas.', es: 'La lista de clientes es un archivo de contactos, no visitas.' }],
+        [{ pt: 'Fonte Atividade no app', es: 'Origen Actividad en la app' }, 0, { pt: 'Isso é para quem usou um app.', es: 'Eso es para quien usó una app.' }]] },
+    { q: { pt: 'Pessoas que interagiram com o perfil do Instagram da loja.', es: 'Personas que interactuaron con el perfil de Instagram de la tienda.' },
+      o: [[{ pt: 'Fontes da Meta › Perfil do Instagram', es: 'Orígenes de Meta › Perfil de Instagram' }, 1, { pt: 'Isso! Fica entre as fontes da Meta.', es: '¡Eso! Está entre los orígenes de Meta.' }],
+        [{ pt: 'Suas fontes › Site', es: 'Tus orígenes › Sitio web' }, 0, { pt: 'O Site é a atividade no seu site, não no Instagram.', es: 'El Sitio web es la actividad en tu sitio, no en Instagram.' }],
+        [{ pt: 'Suas fontes › Catálogo', es: 'Tus orígenes › Catálogo' }, 0, { pt: 'Catálogo é sobre produtos.', es: 'Catálogo es sobre productos.' }]] },
+    { q: { pt: 'Na retenção do público do site, a Marina quer que as pessoas fiquem 180 dias para compras. Dá?', es: 'En la retención del público del sitio, Marina quiere que las personas queden 180 días para compras. ¿Se puede?' },
+      o: [[{ pt: 'Dá: para eventos de compra, a tela diz que o máximo de retenção foi aumentado, até 730 dias', es: 'Se puede: para eventos de compra, la pantalla dice que la retención máxima fue aumentada, hasta 730 días' }, 1, { pt: 'Isso! O padrão é 30 dias.', es: '¡Eso! El valor predeterminado es 30 días.' }],
+        [{ pt: 'Não: o máximo é sempre 30 dias', es: 'No: el máximo es siempre 30 días' }, 0, { pt: '30 é o padrão, não o máximo.', es: '30 es el valor predeterminado, no el máximo.' }],
+        [{ pt: 'Não dá para mudar a retenção', es: 'No se puede cambiar la retención' }, 0, { pt: 'Dá: é um campo da tela.', es: 'Se puede: es un campo de la pantalla.' }]] }
+  ]);
+  quizCatalogo('semelhante-ok', { pt: 'O semelhante vai funcionar?', es: '¿El similar va a funcionar?' }, { pt: 'Fonte, localização e tamanho de 1% a 10%.', es: 'Origen, ubicación y tamaño de 1% a 10%.' }, [
+    { q: { pt: 'Qual fonte dá o melhor público semelhante?', es: '¿Qué origen da el mejor público similar?' },
+      o: [[{ pt: 'Uma fonte maior e de qualidade, como os compradores do site', es: 'Un origen mayor y de calidad, como los compradores del sitio' }, 1, { pt: 'Isso! Melhor e maior a fonte, melhor o semelhante.', es: '¡Eso! Cuanto mejor y mayor el origen, mejor el similar.' }],
+        [{ pt: 'Uma fonte com poucas dezenas de pessoas', es: 'Un origen con pocas decenas de personas' }, 0, { pt: 'Fonte pequena demais pode ser recusada.', es: 'Un origen demasiado pequeño puede ser rechazado.' }],
+        [{ pt: 'Qualquer uma, não faz diferença', es: 'Cualquiera, no hace diferencia' }, 0, { pt: 'Faz muita diferença.', es: 'Hace mucha diferencia.' }]] },
+    { q: { pt: 'A tela explica o 1%. O que acontece ao aumentar a porcentagem?', es: 'La pantalla explica el 1%. ¿Qué pasa al aumentar el porcentaje?' },
+      o: [[{ pt: 'O público fica maior e mais amplo, e menos parecido com a fonte', es: 'El público queda mayor y más amplio, y menos parecido al origen' }, 1, { pt: 'Isso! O 1% são os mais parecidos.', es: '¡Eso! El 1% son los más parecidos.' }],
+        [{ pt: 'O público fica menor e mais parecido', es: 'El público queda menor y más parecido' }, 0, { pt: 'É o contrário.', es: 'Es lo contrario.' }],
+        [{ pt: 'Nada muda', es: 'Nada cambia' }, 0, { pt: 'Muda o tamanho.', es: 'Cambia el tamaño.' }]] },
+    { q: { pt: 'A tela recusa criar o semelhante de uma fonte “Abaixo de 1.000”. O que fazer?', es: 'La pantalla rechaza crear el similar de un origen “Menos de 1.000”. ¿Qué hacer?' },
+      o: [[{ pt: 'Escolher uma fonte maior, ou esperar o site ganhar visitas', es: 'Elegir un origen mayor, o esperar a que el sitio gane visitas' }, 1, { pt: 'Isso! Não é defeito: faltam dados.', es: '¡Eso! No es un defecto: faltan datos.' }],
+        [{ pt: 'Abrir um chamado dizendo que a Meta quebrou', es: 'Abrir un caso diciendo que Meta se rompió' }, 0, { pt: 'É esperado com fonte pequena.', es: 'Se espera con un origen pequeño.' }],
+        [{ pt: 'Criar o mesmo público de novo, 10 vezes', es: 'Crear el mismo público de nuevo, 10 veces' }, 0, { pt: 'Com a mesma fonte, o resultado é o mesmo.', es: 'Con el mismo origen, el resultado es el mismo.' }]] }
+  ]);
+  quizCatalogo('salvo-ou-automatico', { pt: 'Salvo, controles ou categoria especial?', es: '¿Guardado, controles o categoría especial?' }, { pt: 'Reutilizar opções, limitar o alcance e declarar assuntos sensíveis.', es: 'Reutilizar opciones, limitar el alcance y declarar temas sensibles.' }, [
+    { q: { pt: 'A Marina quer que o anúncio nunca alcance menores de 18, mesmo com o público Advantage+ ativado.', es: 'Marina quiere que el anuncio nunca llegue a menores de 18, incluso con el público Advantage+ activado.' },
+      o: [[{ pt: 'Usar Controles: idade mínima 18 (a tela diz que não alcança pessoas fora desses controles, mesmo com Advantage+)', es: 'Usar Controles: edad mínima 18 (la pantalla dice que no llega a personas fuera de esos controles, incluso con Advantage+)' }, 1, { pt: 'Isso! Controles valem mesmo com Advantage+.', es: '¡Eso! Los controles valen incluso con Advantage+.' }],
+        [{ pt: 'Escrever “só maiores” no texto do anúncio', es: 'Escribir “solo mayores” en el texto del anuncio' }, 0, { pt: 'O texto não limita quem vê.', es: 'El texto no limita quién ve.' }],
+        [{ pt: 'Não dá', es: 'No se puede' }, 0, { pt: 'Dá: é um dos controles.', es: 'Se puede: es uno de los controles.' }]] },
+    { q: { pt: 'Um cliente de crédito pessoal quer anunciar empréstimos. O que a tela de campanha pede?', es: 'Un cliente de crédito personal quiere anunciar préstamos. ¿Qué pide la pantalla de campaña?' },
+      o: [[{ pt: 'Declarar a categoria especial (produtos e serviços financeiros), o que limita a segmentação', es: 'Declarar la categoría especial (productos y servicios financieros), lo que limita la segmentación' }, 1, { pt: 'Isso! A declaração ajuda a evitar rejeições; os requisitos variam por país.', es: '¡Eso! La declaración ayuda a evitar rechazos; los requisitos varían según el país.' }],
+        [{ pt: 'Nada: segmenta como qualquer outro', es: 'Nada: segmenta como cualquier otro' }, 0, { pt: 'Esses assuntos têm regras próprias.', es: 'Esos temas tienen reglas propias.' }],
+        [{ pt: 'Usar só público semelhante', es: 'Usar solo público similar' }, 0, { pt: 'O semelhante também fica restrito nessas categorias (a conferir).', es: 'El similar también queda restringido en esas categorías (por confirmar).' }]] },
+    { q: { pt: 'A Marina usa sempre as mesmas opções de segmentação em cinco anúncios. Que recurso ajuda?', es: 'Marina usa siempre las mismas opciones de segmentación en cinco anuncios. ¿Qué recurso ayuda?' },
+      o: [[{ pt: 'Criar um público salvo', es: 'Crear un público guardado' }, 1, { pt: 'Isso! Salva e reutiliza.', es: '¡Eso! Guarda y reutiliza.' }],
+        [{ pt: 'Criar um público semelhante', es: 'Crear un público similar' }, 0, { pt: 'Isso é outra coisa.', es: 'Eso es otra cosa.' }],
+        [{ pt: 'Exportar o relatório', es: 'Exportar el informe' }, 0, { pt: 'Relatório não guarda opções de segmentação.', es: 'El informe no guarda opciones de segmentación.' }]] }
+  ]);
+  quizCatalogo('publico-pequeno-q', { pt: 'Por que o público está pequeno?', es: '¿Por qué el público está pequeño?' }, { pt: 'Tamanho e status: o que cada um quer dizer.', es: 'Tamaño y estado: qué quiere decir cada uno.' }, [
+    { q: { pt: 'O público de visitantes mostra “Abaixo de 1.000”, “Tráfego baixo no site” e “Em preenchimento”. É defeito?', es: 'El público de visitantes muestra “Menos de 1.000”, “Poco tráfico en el sitio” y “Llenándose”. ¿Es un defecto?' },
+      o: [[{ pt: 'Não: o site tem pouco tráfego e o público ainda está se preenchendo, mas está disponível para usar', es: 'No: el sitio tiene poco tráfico y el público todavía se está llenando, pero está disponible para usar' }, 1, { pt: 'Isso! Loja nova tem pouco tráfego.', es: '¡Eso! Una tienda nueva tiene poco tráfico.' }],
+        [{ pt: 'Sim: o Pixel está desligado', es: 'Sí: el Pixel está apagado' }, 0, { pt: 'O status “Disponível para usar” não aponta Pixel desligado.', es: 'El estado “Disponible para usar” no indica Pixel apagado.' }],
+        [{ pt: 'Sim: o público foi excluído', es: 'Sí: el público fue eliminado' }, 0, { pt: 'Ele está na lista e disponível.', es: 'Está en la lista y disponible.' }]] },
+    { q: { pt: 'O cliente quer um semelhante hoje e só tem esse público pequeno. O que sugerir?', es: 'El cliente quiere un similar hoy y solo tiene ese público pequeño. ¿Qué sugerir?' },
+      o: [[{ pt: 'Esperar mais visitas, usar outra fonte maior (como a Página) ou rodar com público automático e controles de localização e idade', es: 'Esperar más visitas, usar otro origen mayor (como la Página) o correr con público automático y controles de ubicación y edad' }, 1, { pt: 'Isso! Caminhos reais enquanto os dados crescem.', es: '¡Eso! Caminos reales mientras los datos crecen.' }],
+        [{ pt: 'Prometer que o semelhante vai funcionar igual', es: 'Prometer que el similar va a funcionar igual' }, 0, { pt: 'Nunca prometa resultado.', es: 'Nunca prometas resultados.' }],
+        [{ pt: 'Comprar visitas para o site', es: 'Comprar visitas para el sitio' }, 0, { pt: 'Não sugira isso.', es: 'No sugieras eso.' }]] },
+    { q: { pt: 'Onde ver os públicos de uma conta?', es: '¿Dónde ver los públicos de una cuenta?' },
+      o: [[{ pt: 'No Gerenciador de Anúncios, página Públicos', es: 'En el Administrador de anuncios, página Públicos' }, 1, { pt: 'Isso! Lá estão a tabela e o botão Criar público.', es: '¡Eso! Ahí están la tabla y el botón Crear público.' }],
+        [{ pt: 'Na Caixa de Entrada', es: 'En Mensajes' }, 0, { pt: 'A Caixa de Entrada é de mensagens.', es: 'Mensajes es de mensajes.' }],
+        [{ pt: 'No Gerenciador de Comércio', es: 'En el Administrador de ventas' }, 0, { pt: 'O Comércio cuida do catálogo.', es: 'Ventas cuida del catálogo.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

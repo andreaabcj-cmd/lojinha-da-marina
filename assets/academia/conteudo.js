@@ -20,7 +20,7 @@ window.MODULOS = [
   { id: 'feed', fase: 2, status: 'construcao', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'Criativo, texto, destino, posicionamentos e erros comuns.', es: 'Contenido, texto, destino, ubicaciones y errores comunes.' } },
   { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
   { id: 'relatorios', fase: 3, status: 'construcao', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Ler, montar e comparar relatórios; atribuição e relatórios vazios.', es: 'Leer, armar y comparar informes; atribución e informes vacíos.' } },
-  { id: 'segmentacao', fase: 3, status: 'planejado', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados (visitantes do site pelo Pixel, lista de clientes), públicos semelhantes, público Advantage+, categorias especiais e erros comuns.', es: 'Públicos personalizados (visitantes del sitio por el Pixel, lista de clientes), públicos similares, público Advantage+, categorías especiales y errores comunes.' } },
+  { id: 'segmentacao', fase: 3, status: 'construcao', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados do site, semelhantes, salvos e controles; erros comuns.', es: 'Públicos personalizados del sitio, similares, guardados y controles; errores comunes.' } },
   { id: 'entrega', fase: 3, status: 'planejado', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'Como a entrega funciona, a fase de aprendizado e a solução de problemas.', es: 'Cómo funciona la entrega, la fase de aprendizaje y la solución de problemas.' } },
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
   { id: 'pixel-avancado', fase: 3, status: 'planejado', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
@@ -2146,6 +2146,239 @@ window.AULAS = {
         passos: [{ pt: 'Clique em Alterar data e escolha um período em que o anúncio rodou.', es: 'Haz clic en Cambiar fecha y elige un período en que el anuncio corrió.' },
           { pt: 'Se a conta sumir, desmarque Teve veiculação.', es: 'Si la cuenta desaparece, desmarca Con entrega.' }],
         encaminhar: { pt: 'Se o anúncio rodou naquele período e mesmo assim não há dados, siga a Central de Ajuda da Meta sobre anúncios sem dados ou métricas.', es: 'Si el anuncio corrió en ese período y aun así no hay datos, sigue el Centro de ayuda de Meta sobre anuncios sin datos o métricas.' }
+      }
+    }
+  ],
+  segmentacao: [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'Quem vê o anúncio: tipos de público', es: 'Quién ve el anuncio: tipos de público' },
+      antes: { pt: 'A Marina já mede e lê relatórios. Agora quer escolher melhor quem vê os anúncios.', es: 'Marina ya mide y lee informes. Ahora quiere elegir mejor quién ve los anuncios.' },
+      gancho: { pt: '“Quero mostrar o anúncio para quem já conhece a loja, e para gente parecida.” A página Públicos faz isso.', es: '“Quiero mostrar el anuncio a quien ya conoce la tienda, y a gente parecida.” La página Públicos hace eso.' },
+      objetivo: { pt: 'Distinguir os três tipos de público (personalizado, semelhante e salvo) e o público automático Advantage+ com controles.', es: 'Distinguir los tres tipos de público (personalizado, similar y guardado) y el público automático Advantage+ con controles.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Abri Públicos e vi três cartões. Qual uso? 🤔', es: 'Abrí Públicos y vi tres tarjetas. ¿Cuál uso? 🤔' }],
+          ['rafa', { pt: 'Depende do que você quer. Público personalizado: gente que já demonstrou interesse na loja, por site, app ou lista de clientes. Público semelhante: gente nova parecida com um público que você já tem. Público salvo: suas opções de segmentação guardadas.', es: 'Depende de lo que quieras. Público personalizado: gente que ya mostró interés en la tienda, por sitio, app o lista de clientes. Público similar: gente nueva parecida a un público que ya tienes. Público guardado: tus opciones de segmentación guardadas.' }],
+          ['marina', { pt: 'E no anúncio, onde eu escolho?', es: '¿Y en el anuncio, dónde elijo?' }],
+          ['rafa', { pt: 'No conjunto de anúncios, na seção Público. Nas campanhas de Vendas aparece “Advantage+ ativado”: a Meta encontra as pessoas sozinha, dentro dos Controles que você define (localização, idade mínima, idiomas).', es: 'En el conjunto de anuncios, en la sección Público. En las campañas de Ventas aparece “Advantage+ activado”: Meta encuentra a las personas sola, dentro de los Controles que defines (ubicación, edad mínima, idiomas).' }],
+          ['pixel', { pt: 'E os Controles são firmes: a tela diz que não alcança pessoas fora deles, mesmo com Advantage+ ativado.', es: 'Y los Controles son firmes: la pantalla dice que no llega a personas fuera de ellos, incluso con Advantage+ activado.' }]
+        ],
+        pontos: [
+          { pt: '<b>Personalizado</b> = quem já interagiu. <b>Semelhante</b> = gente nova parecida. <b>Salvo</b> = opções guardadas.', es: '<b>Personalizado</b> = quien ya interactuó. <b>Similar</b> = gente nueva parecida. <b>Guardado</b> = opciones guardadas.' },
+          { pt: '<b>Onde:</b> página Públicos (criar) e conjunto de anúncios › Público (usar).', es: '<b>Dónde:</b> página Públicos (crear) y conjunto de anuncios › Público (usar).' },
+          { pt: '<b>Advantage+ com Controles:</b> a Meta busca, mas respeita localização, idade mínima e idiomas.', es: '<b>Advantage+ con Controles:</b> Meta busca, pero respeta ubicación, edad mínima e idiomas.' }
+        ],
+        notas: { pt: 'Página Públicos (três cartões) vista de verdade em 15–16/10/2026 em português e espanhol, e a seção Público do conjunto de anúncios (Advantage+ e Controles) vista em 14–15/10/2026.', es: 'Página Públicos (tres tarjetas) vista de verdad el 15–16/10/2026 en portugués y español, y la sección Público del conjunto de anuncios (Advantage+ y Controles) vista el 14–15/10/2026.' }
+      },
+      ferramenta: 'tipo-publico',
+      atender: {
+        cena: { pt: 'Quero que meu anúncio apareça só para quem já viu minha loja, mas ele está aparecendo para todo mundo no Brasil! 😤', es: '¡Quiero que mi anuncio aparezca solo para quien ya vio mi tienda, pero está apareciendo para todo Brasil! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Para falar só com quem já conhece a loja, é preciso um público personalizado, como Visitantes do site, e escolhê-lo no conjunto de anúncios, na seção Público. Sem isso, o público é automático dentro da localização e idade que você definiu. Vamos criar o público primeiro.”', es: '“Para hablar solo con quien ya conoce la tienda, hace falta un público personalizado, como Visitantes del sitio, y elegirlo en el conjunto de anuncios, en la sección Público. Sin eso, el público es automático dentro de la ubicación y edad que definiste. Creemos el público primero.”' }, fb: { pt: 'Isso! Explicou o que falta e o caminho.', es: '¡Eso! Explicaste lo que falta y el camino.' } },
+          { certa: false, txt: { pt: '“O anúncio está com defeito, aguarde.”', es: '“El anuncio tiene un defecto, espera.”' }, fb: { pt: 'Não é defeito: sem público personalizado, ele é automático.', es: 'No es un defecto: sin público personalizado, es automático.' } },
+          { certa: false, txt: { pt: '“Escreva ‘só para clientes’ no texto.”', es: '“Escribe ‘solo para clientes’ en el texto.”' }, fb: { pt: 'O texto não limita quem vê.', es: 'El texto no limita quién ve.' } },
+          { certa: false, txt: { pt: '“Mude a campanha para outro objetivo.”', es: '“Cambia la campaña a otro objetivo.”' }, fb: { pt: 'O objetivo não define quem já conhece a loja.', es: 'El objetivo no define quién ya conoce la tienda.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Quem o cliente quer alcançar: gente que já conhece a loja, gente parecida ou todo mundo?', es: '¿A quién quiere llegar el cliente: gente que ya conoce la tienda, gente parecida o todos?' },
+          { pt: 'O conjunto de anúncios usa Advantage+ ou um público escolhido?', es: '¿El conjunto de anuncios usa Advantage+ o un público elegido?' }],
+        conferir: [{ pt: 'Conjunto de anúncios › Público e Controles.', es: 'Conjunto de anuncios › Público y Controles.' },
+          { pt: 'Página Públicos: que públicos existem.', es: 'Página Públicos: qué públicos existen.' }],
+        frase: { pt: 'Para falar só com quem já conhece a loja, criamos um público personalizado e o escolhemos no conjunto de anúncios. Sem isso, o público é automático dentro dos controles.', es: 'Para hablar solo con quien ya conoce la tienda, creamos un público personalizado y lo elegimos en el conjunto de anuncios. Sin eso, el público es automático dentro de los controles.' },
+        passos: [{ pt: 'Crie o público em Públicos.', es: 'Crea el público en Públicos.' },
+          { pt: 'No conjunto de anúncios, escolha-o na seção Público.', es: 'En el conjunto de anuncios, elígelo en la sección Público.' }],
+        encaminhar: { pt: 'Se o cliente quer segmentar por assuntos sensíveis, confira as categorias especiais e siga a Central de Ajuda da Meta; regras de política são tratadas por outra área.', es: 'Si el cliente quiere segmentar por temas sensibles, revisa las categorías especiales y sigue el Centro de ayuda de Meta; las reglas de política las trata otra área.' }
+      }
+    },
+    {
+      id: '02', min: 9, status: 'pronta',
+      titulo: { pt: 'Público de quem visitou o site', es: 'Público de quien visitó el sitio' },
+      antes: { pt: 'A Marina entendeu os tipos de público. Quer o primeiro: quem visitou a loja.', es: 'Marina entendió los tipos de público. Quiere el primero: quien visitó la tienda.' },
+      gancho: { pt: '“O Pixel já sabe quem visitou a loja. Como transformo isso em público?” Vamos criar.', es: '“El Pixel ya sabe quién visitó la tienda. ¿Cómo lo convierto en público?” Vamos a crearlo.' },
+      objetivo: { pt: 'Criar um público personalizado do site: fonte, evento, retenção e nome, e ler o tamanho e os status.', es: 'Crear un público personalizado del sitio web: origen, evento, retención y nombre, y leer el tamaño y los estados.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Cliquei em criar público personalizado e pediram uma “fonte”. O que é? 🤔', es: 'Hice clic en crear público personalizado y pidieron un “origen”. ¿Qué es? 🤔' }],
+          ['rafa', { pt: 'É de onde vêm as pessoas. Suas fontes: Site, Atividade no app, Catálogo, Lista de clientes, Atividade offline. Fontes da Meta: Vídeo, Formulário de lead, Perfil do Instagram, Página do Facebook… Para quem visitou a loja, é Site.', es: 'Es de dónde vienen las personas. Tus orígenes: Sitio web, Actividad en la app, Catálogo, Lista de clientes, Actividad offline. Orígenes de Meta: Video, Formulario para clientes potenciales, Perfil de Instagram, Página de Facebook… Para quien visitó la tienda, es Sitio web.' }],
+          ['marina', { pt: 'E depois?', es: '¿Y después?' }],
+          ['rafa', { pt: 'A Origem é o Pixel da loja. Em Eventos: Todos os visitantes do site, páginas específicas, tempo gasto, ou um evento do Pixel (PageView, ViewContent, AddToCart, Purchase). A Retenção é por quantos dias a pessoa fica no público: padrão 30; para compras, até 730.', es: 'El Origen es el Pixel de la tienda. En Eventos: Todos los visitantes del sitio web, páginas específicas, tiempo dedicado, o un evento del Pixel (PageView, ViewContent, AddToCart, Purchase). La Retención es por cuántos días la persona queda en el público: predeterminado 30; para compras, hasta 730.' }],
+          ['pixel', { pt: 'Depois de criar, o público começa pequeno: aparece “Abaixo de 1.000” e os status “Tráfego baixo no site”, “Em preenchimento” e “Disponível para usar”. É normal em loja nova.', es: 'Después de crear, el público empieza pequeño: aparece “Menos de 1.000” y los estados “Poco tráfico en el sitio”, “Llenándose” y “Disponible para usar”. Es normal en una tienda nueva.' }]
+        ],
+        pontos: [
+          { pt: '<b>Fonte Site</b> = o Pixel da loja. Sem Pixel funcionando, o público não enche (módulo Pixel).', es: '<b>Origen Sitio web</b> = el Pixel de la tienda. Sin Pixel funcionando, el público no se llena (módulo Pixel).' },
+          { pt: '<b>Evento + retenção:</b> quem, e por quantos dias.', es: '<b>Evento + retención:</b> quién, y por cuántos días.' },
+          { pt: '<b>Tamanho pequeno</b> no começo é esperado.', es: '<b>Tamaño pequeño</b> al comienzo es lo esperado.' }
+        ],
+        notas: { pt: 'Lista de fontes e formulário do público do site vistos de verdade em 15–16/10/2026 (a lista de fontes também em espanhol). O formulário em espanhol não abriu e segue o padrão da Meta (a conferir).', es: 'Lista de orígenes y formulario del público del sitio web vistos de verdad el 15–16/10/2026 (la lista de orígenes también en español). El formulario en español no abrió y sigue el estándar de Meta (por confirmar).' }
+      },
+      ferramenta: 'fonte-publico',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para criar o público “Visitantes do site 30 dias”, da fonte ao nome, e ler o resultado na lista.', es: 'En el simulador, el Pixel te guía para crear el público “Visitantes del sitio 30 días”, del origen al nombre, y leer el resultado en la lista.' },
+        tour: 'criar-publico-site', pagina: 'meta-publicos.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Criei o público de visitantes e ele diz “Abaixo de 1.000” e “Tráfego baixo no site”. Não deveria ter milhares? 😟', es: '¡Creé el público de visitantes y dice “Menos de 1.000” y “Poco tráfico en el sitio”. ¿No debería tener miles? 😟' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O tamanho do público depende do tráfego do site: se poucas pessoas visitaram, o público é pequeno. O status “Em preenchimento” mostra que ele ainda está enchendo, e “Disponível para usar” que já pode ser usado. Não é defeito.”', es: '“El tamaño del público depende del tráfico del sitio: si pocas personas visitaron, el público es pequeño. El estado “Llenándose” muestra que todavía se está llenando, y “Disponible para usar” que ya se puede usar. No es un defecto.”' }, fb: { pt: 'Isso! Leu os status em vez de se assustar.', es: '¡Eso! Leíste los estados en lugar de asustarte.' } },
+          { certa: false, txt: { pt: '“Recrie o Pixel.”', es: '“Recrea el Pixel.”' }, fb: { pt: 'Nada indica Pixel quebrado.', es: 'Nada indica un Pixel roto.' } },
+          { certa: false, txt: { pt: '“Aumente a retenção para 730 dias.”', es: '“Sube la retención a 730 días.”' }, fb: { pt: 'Isso vale só para compras e não cria visitantes que não existem.', es: 'Eso vale solo para compras y no crea visitantes que no existen.' } },
+          { certa: false, txt: { pt: '“Exclua o público e crie de novo.”', es: '“Elimina el público y créalo de nuevo.”' }, fb: { pt: 'Não muda o tráfego.', es: 'No cambia el tráfico.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual fonte e qual evento foram escolhidos? Qual a retenção?', es: '¿Qué origen y qué evento se eligieron? ¿Cuál es la retención?' },
+          { pt: 'O Pixel está recebendo eventos (Gerenciador de Eventos)?', es: '¿El Pixel está recibiendo eventos (Administrador de eventos)?' }],
+        conferir: [{ pt: 'Públicos › coluna Tamanho e Status.', es: 'Públicos › columna Tamaño y Estado.' },
+          { pt: 'Gerenciador de Eventos: o Pixel recebe visitas.', es: 'Administrador de eventos: el Pixel recibe visitas.' }],
+        frase: { pt: 'O público do site se enche conforme as pessoas visitam a loja. No começo ele é pequeno, e os status mostram em que etapa está.', es: 'El público del sitio se llena a medida que las personas visitan la tienda. Al comienzo es pequeño, y los estados muestran en qué etapa está.' },
+        passos: [{ pt: 'Em Públicos, leia o tamanho e os status.', es: 'En Públicos, lee el tamaño y los estados.' },
+          { pt: 'Confira no Gerenciador de Eventos se o Pixel recebe visitas.', es: 'Revisa en el Administrador de eventos si el Pixel recibe visitas.' }],
+        encaminhar: { pt: 'Se o Pixel não recebe eventos, siga as aulas do módulo Pixel; o público depende dele.', es: 'Si el Pixel no recibe eventos, sigue las clases del módulo Pixel; el público depende de él.' }
+      }
+    },
+    {
+      id: '03', min: 8, status: 'pronta',
+      titulo: { pt: 'Público semelhante', es: 'Público similar' },
+      antes: { pt: 'A Marina tem públicos personalizados. Agora quer achar gente nova parecida.', es: 'Marina tiene públicos personalizados. Ahora quiere encontrar gente nueva parecida.' },
+      gancho: { pt: '“Quero mais clientes como os que já compraram.” O público semelhante faz isso, se a fonte for boa.', es: '“Quiero más clientes como los que ya compraron.” El público similar hace eso, si el origen es bueno.' },
+      objetivo: { pt: 'Criar um público semelhante (fonte, localização, tamanho) e entender por que uma fonte pequena é recusada.', es: 'Crear un público similar (origen, ubicación, tamaño) y entender por qué un origen pequeño es rechazado.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Como funciona o semelhante? 🤔', es: '¿Cómo funciona el similar? 🤔' }],
+          ['rafa', { pt: 'Você escolhe uma fonte (um público seu, o Pixel ou a Página), um país e um tamanho. A Meta acha pessoas parecidas com a fonte, naquele país.', es: 'Eliges un origen (un público tuyo, el Pixel o la Página), un país y un tamaño. Meta encuentra personas parecidas al origen, en ese país.' }],
+          ['marina', { pt: 'E o tamanho?', es: '¿Y el tamaño?' }],
+          ['rafa', { pt: 'Vai de 1% a 10%. A tela explica: o 1% semelhante são as pessoas mais parecidas com a fonte; aumentar a porcentagem cria um público maior e mais amplo.', es: 'Va de 1% a 10%. La pantalla explica: el 1% similar son las personas más parecidas al origen; aumentar el porcentaje crea un público mayor y más amplio.' }],
+          ['pixel', { pt: 'Se a fonte for pequena demais, a criação é recusada. Aconteceu de verdade na conta de aula, com o público pequeno de visitantes.', es: 'Si el origen es demasiado pequeño, la creación es rechazada. Pasó de verdad en la cuenta de práctica, con el público pequeño de visitantes.' }]
+        ],
+        pontos: [
+          { pt: '<b>Fonte + país + tamanho</b> (1% a 10%).', es: '<b>Origen + país + tamaño</b> (1% a 10%).' },
+          { pt: '<b>1%</b> = os mais parecidos; mais % = maior e mais amplo.', es: '<b>1%</b> = los más parecidos; más % = mayor y más amplio.' },
+          { pt: '<b>Fonte pequena</b> = recusa. Melhor e maior a fonte, melhor o semelhante.', es: '<b>Origen pequeño</b> = rechazo. Cuanto mejor y mayor el origen, mejor el similar.' }
+        ],
+        notas: { pt: 'Passos do público semelhante e o texto do 1% vistos de verdade em 15/10/2026; a criação foi recusada com a fonte pequena da conta de aula. O texto exato da recusa e o mínimo de pessoas da fonte não foram anotados (a conferir). Os tamanhos de público no simulador são inventados.', es: 'Pasos del público similar y el texto del 1% vistos de verdad el 15/10/2026; la creación fue rechazada con el origen pequeño de la cuenta de práctica. El texto exacto del rechazo y el mínimo de personas del origen no se anotaron (por confirmar). Los tamaños de público en el simulador son inventados.' }
+      },
+      ferramenta: 'semelhante-ok',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva a tentar o semelhante com a fonte pequena, ver a recusa e refazer com os compradores.', es: 'En el simulador, el Pixel te lleva a intentar el similar con el origen pequeño, ver el rechazo y rehacerlo con los compradores.' },
+        tour: 'criar-semelhante', pagina: 'meta-publicos.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Tentei criar um público semelhante e a tela não deixa! Já tentei três vezes! 😠', es: '¡Intenté crear un público similar y la pantalla no deja! ¡Ya probé tres veces! 😠' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Repetir com a mesma fonte dá o mesmo resultado. Vamos ver qual fonte você escolheu: se for pequena (abaixo de 1.000), a tela recusa. Escolha uma fonte maior, como os compradores, ou espere o site ganhar visitas.”', es: '“Repetir con el mismo origen da el mismo resultado. Veamos qué origen elegiste: si es pequeño (menos de 1.000), la pantalla rechaza. Elige un origen mayor, como los compradores, o espera a que el sitio gane visitas.”' }, fb: { pt: 'Isso! Achou a causa provável.', es: '¡Eso! Encontraste la causa probable.' } },
+          { certa: false, txt: { pt: '“Tente de novo mais algumas vezes.”', es: '“Intenta de nuevo algunas veces más.”' }, fb: { pt: 'Com a mesma fonte, não muda.', es: 'Con el mismo origen, no cambia.' } },
+          { certa: false, txt: { pt: '“É bug da Meta.”', es: '“Es un error de Meta.”' }, fb: { pt: 'Não: é fonte pequena.', es: 'No: es un origen pequeño.' } },
+          { certa: false, txt: { pt: '“Aumente o tamanho para 10%.”', es: '“Sube el tamaño al 10%.”' }, fb: { pt: 'O tamanho não resolve fonte pequena.', es: 'El tamaño no resuelve un origen pequeño.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual fonte foi escolhida e quantas pessoas ela tem?', es: '¿Qué origen se eligió y cuántas personas tiene?' },
+          { pt: 'O que a tela diz ao recusar?', es: '¿Qué dice la pantalla al rechazar?' }],
+        conferir: [{ pt: 'Públicos › tamanho da fonte.', es: 'Públicos › tamaño del origen.' },
+          { pt: 'Criar semelhante: fonte, país e tamanho.', es: 'Crear similar: origen, país y tamaño.' }],
+        frase: { pt: 'O público semelhante precisa de uma fonte com pessoas suficientes. Se a fonte é pequena, a tela recusa; escolha uma fonte maior ou espere o site ganhar visitas.', es: 'El público similar necesita un origen con suficientes personas. Si el origen es pequeño, la pantalla rechaza; elige un origen mayor o espera a que el sitio gane visitas.' },
+        passos: [{ pt: 'Veja o tamanho da fonte em Públicos.', es: 'Mira el tamaño del origen en Públicos.' },
+          { pt: 'Escolha uma fonte maior e crie de novo.', es: 'Elige un origen mayor y crea de nuevo.' }],
+        encaminhar: { pt: 'Se a fonte é grande e mesmo assim a criação é recusada, confirme o texto da tela e siga a Central de Ajuda da Meta.', es: 'Si el origen es grande y aun así la creación es rechazada, confirma el texto de la pantalla y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '04', min: 8, status: 'pronta',
+      titulo: { pt: 'Público salvo, controles e categorias especiais', es: 'Público guardado, controles y categorías especiales' },
+      antes: { pt: 'A Marina cria públicos e quer reutilizar suas escolhas.', es: 'Marina crea públicos y quiere reutilizar sus elecciones.' },
+      gancho: { pt: '“Sempre ponho Brasil e 18+ de novo!” O público salvo e os controles resolvem. Mas há assuntos que pedem cuidado.', es: '“¡Siempre pongo Brasil y 18+ de nuevo!” El público guardado y los controles lo resuelven. Pero hay temas que piden cuidado.' },
+      objetivo: { pt: 'Criar um público salvo, entender os Controles do público Advantage+ e saber quando declarar uma categoria especial de anúncio.', es: 'Crear un público guardado, entender los Controles del público Advantage+ y saber cuándo declarar una categoría especial de anuncio.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Posso guardar minhas escolhas de segmentação? 🤔', es: '¿Puedo guardar mis elecciones de segmentación? 🤔' }],
+          ['rafa', { pt: 'Pode: é o público salvo. Você escolhe dados demográficos, interesses e comportamentos, salva, e reutiliza em outros anúncios.', es: 'Puedes: es el público guardado. Eliges datos demográficos, intereses y comportamientos, lo guardas, y lo reutilizas en otros anuncios.' }],
+          ['marina', { pt: 'E no conjunto de anúncios, o público é automático?', es: '¿Y en el conjunto de anuncios, el público es automático?' }],
+          ['rafa', { pt: 'Nas campanhas de Vendas aparece Advantage+ ativado, com Controles: localização, idade mínima, idiomas. A tela avisa: “Não vamos alcançar pessoas fora destas configurações, mesmo com o Advantage+ ativado”.', es: 'En las campañas de Ventas aparece Advantage+ activado, con Controles: ubicación, edad mínima, idiomas. La pantalla avisa: “No llegaremos a personas fuera de estas configuraciones, incluso con Advantage+ activado”.' }],
+          ['pixel', { pt: 'Cuidado com as categorias especiais: se o anúncio é sobre produtos e serviços financeiros, emprego, moradia, temas sociais, eleições ou política, é preciso declarar, para ajudar a evitar rejeições. Os requisitos variam por país.', es: 'Cuidado con las categorías especiales: si el anuncio es sobre productos y servicios financieros, empleo, vivienda, temas sociales, elecciones o política, hay que declararlo, para ayudar a evitar rechazos. Los requisitos varían según el país.' }]
+        ],
+        pontos: [
+          { pt: '<b>Público salvo:</b> guarda as opções de segmentação para reutilizar.', es: '<b>Público guardado:</b> guarda las opciones de segmentación para reutilizar.' },
+          { pt: '<b>Controles:</b> localização, idade mínima e idiomas valem mesmo com Advantage+.', es: '<b>Controles:</b> ubicación, edad mínima e idiomas valen incluso con Advantage+.' },
+          { pt: '<b>Categorias especiais:</b> declare quando o assunto for financeiro, emprego, moradia, social ou político.', es: '<b>Categorías especiales:</b> declara cuando el tema sea financiero, empleo, vivienda, social o político.' }
+        ],
+        notas: { pt: 'Controles e a frase “Não vamos alcançar pessoas fora destas configurações…” vistos de verdade em 14–15/10/2026; o texto das categorias especiais vem da tela de campanha. O cartão Público salvo foi visto; a janela de criação do público salvo e interesses/comportamentos não foram vistos (a conferir).', es: 'Controles y la frase “No llegaremos a personas fuera de estas configuraciones…” vistos de verdad el 14–15/10/2026; el texto de las categorías especiales viene de la pantalla de campaña. La tarjeta Público guardado se vio; la ventana de creación del público guardado e intereses/comportamientos no se vieron (por confirmar).' }
+      },
+      ferramenta: 'salvo-ou-automatico',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia para criar o público salvo “Brasil 18+” e mostra o aviso das categorias especiais.', es: 'En el simulador, el Pixel te guía para crear el público guardado “Brasil 18+” y muestra el aviso de las categorías especiales.' },
+        tour: 'criar-salvo', pagina: 'meta-publicos.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Vou anunciar empréstimos pessoais e não consigo segmentar por idade como sempre faço! Que absurdo! 😡', es: '¡Voy a anunciar préstamos personales y no puedo segmentar por edad como siempre hago! ¡Qué absurdo! 😡' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Anúncios sobre produtos e serviços financeiros entram em uma categoria especial de anúncio, que precisa ser declarada na campanha e limita algumas opções de segmentação. Os requisitos variam por país. Vamos declarar a categoria e ver o que continua disponível.”', es: '“Los anuncios sobre productos y servicios financieros entran en una categoría especial de anuncios, que debe declararse en la campaña y limita algunas opciones de segmentación. Los requisitos varían según el país. Declaremos la categoría y veamos qué sigue disponible.”' }, fb: { pt: 'Isso! Explicou a regra sem prometer nada.', es: '¡Eso! Explicaste la regla sin prometer nada.' } },
+          { certa: false, txt: { pt: '“Não declare a categoria para ter mais opções.”', es: '“No declares la categoría para tener más opciones.”' }, fb: { pt: 'Não declarar pode levar a rejeições: nunca oriente a esconder.', es: 'No declarar puede llevar a rechazos: nunca orientes a esconder.' } },
+          { certa: false, txt: { pt: '“Use um público salvo, ele ignora a regra.”', es: '“Usa un público guardado, ignora la regla.”' }, fb: { pt: 'Nenhum público ignora as regras das categorias.', es: 'Ningún público ignora las reglas de las categorías.' } },
+          { certa: false, txt: { pt: '“É um bug, espere uns dias.”', es: '“Es un error, espera unos días.”' }, fb: { pt: 'Não é bug: é regra para esse assunto.', es: 'No es un error: es una regla para ese tema.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O anúncio é sobre produtos e serviços financeiros, emprego, moradia, temas sociais, eleições ou política?', es: '¿El anuncio es sobre productos y servicios financieros, empleo, vivienda, temas sociales, elecciones o política?' },
+          { pt: 'Qual categoria está declarada na campanha?', es: '¿Qué categoría está declarada en la campaña?' }],
+        conferir: [{ pt: 'Campanha › Categorias de anúncio especiais.', es: 'Campaña › Categorías de anuncios especiales.' },
+          { pt: 'Conjunto de anúncios › Público e Controles.', es: 'Conjunto de anuncios › Público y Controles.' }],
+        frase: { pt: 'Alguns assuntos exigem uma categoria especial de anúncio, e isso limita a segmentação. Vamos declarar a categoria certa e ver o que continua disponível.', es: 'Algunos temas exigen una categoría especial de anuncios, y eso limita la segmentación. Declaremos la categoría correcta y veamos qué sigue disponible.' },
+        passos: [{ pt: 'Na campanha, declare a categoria especial.', es: 'En la campaña, declara la categoría especial.' },
+          { pt: 'No conjunto de anúncios, confira o que mudou em Público.', es: 'En el conjunto de anuncios, revisa qué cambió en Público.' }],
+        encaminhar: { pt: 'Rejeições e regras de política dessas categorias são tratadas por outra área: confirme o sintoma, siga a Central de Ajuda da Meta e não prometa aprovação.', es: 'Los rechazos y las reglas de política de esas categorías los trata otra área: confirma el síntoma, sigue el Centro de ayuda de Meta y no prometas aprobación.' }
+      }
+    },
+    {
+      id: '05', min: 7, status: 'pronta',
+      titulo: { pt: 'Meu público não funciona!', es: '¡Mi público no funciona!' },
+      antes: { pt: 'A Marina criou públicos e anúncios, mas os números do público parecem baixos.', es: 'Marina creó públicos y anuncios, pero los números del público parecen bajos.' },
+      gancho: { pt: '“Meu público está quebrado!” Quase nunca: costuma ser tráfego pequeno, uma fonte pequena ou falta de tempo.', es: '“¡Mi público está roto!” Casi nunca: suele ser poco tráfico, un origen pequeño o falta de tiempo.' },
+      objetivo: { pt: 'Diagnosticar um público pequeno ou um semelhante recusado, e dizer ao cliente o que fazer enquanto os dados crescem.', es: 'Diagnosticar un público pequeño o un similar rechazado, y decirle al cliente qué hacer mientras los datos crecen.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu público de visitantes tem “Abaixo de 1.000”. E meu semelhante foi recusado. O que está errado? 😩', es: 'Mi público de visitantes tiene “Menos de 1.000”. Y mi similar fue rechazado. ¿Qué está mal? 😩' }],
+          ['rafa', { pt: 'Provavelmente nada: leia os status. “Tráfego baixo no site” e “Em preenchimento” dizem que o público ainda está pequeno e enchendo. “Disponível para usar” diz que já pode ser usado.', es: 'Probablemente nada: lee los estados. “Poco tráfico en el sitio” y “Llenándose” dicen que el público todavía es pequeño y se está llenando. “Disponible para usar” dice que ya se puede usar.' }],
+          ['marina', { pt: 'E o semelhante?', es: '¿Y el similar?' }],
+          ['rafa', { pt: 'Foi recusado porque a fonte é pequena. Com poucos dados, não dá para o semelhante aprender o padrão.', es: 'Fue rechazado porque el origen es pequeño. Con pocos datos, el similar no puede aprender el patrón.' }],
+          ['pixel', { pt: 'Enquanto o site ganha visitas: use o público automático (Advantage+) com controles de localização e idade, ou outra fonte maior, como a Página. E nunca prometa o resultado do semelhante.', es: 'Mientras el sitio gana visitas: usa el público automático (Advantage+) con controles de ubicación y edad, u otro origen mayor, como la Página. Y nunca prometas el resultado del similar.' }]
+        ],
+        pontos: [
+          { pt: '<b>Leia os status</b> antes de concluir que há defeito.', es: '<b>Lee los estados</b> antes de concluir que hay un defecto.' },
+          { pt: '<b>Semelhante recusado</b> = fonte pequena.', es: '<b>Similar rechazado</b> = origen pequeño.' },
+          { pt: '<b>Enquanto os dados crescem:</b> Advantage+ com controles, ou outra fonte maior.', es: '<b>Mientras los datos crecen:</b> Advantage+ con controles, u otro origen mayor.' }
+        ],
+        notas: { pt: 'Tamanho “Abaixo de 1.000” e os status “Tráfego baixo no site”, “Em preenchimento” e “Disponível para usar” vistos de verdade em 15/10/2026 na conta de aula; a recusa do semelhante também. Os conselhos para o cliente são boas práticas de atendimento, não texto da tela.', es: 'Tamaño “Menos de 1.000” y los estados “Poco tráfico en el sitio”, “Llenándose” y “Disponible para usar” vistos de verdad el 15/10/2026 en la cuenta de práctica; el rechazo del similar también. Los consejos para el cliente son buenas prácticas de atención, no texto de la pantalla.' }
+      },
+      ferramenta: 'publico-pequeno-q',
+      praticar: {
+        texto: { pt: 'No simulador, o público de visitantes está pequeno. O Pixel te guia: ler os status, tentar o semelhante e ver a recusa.', es: 'En el simulador, el público de visitantes está pequeño. El Pixel te guía: leer los estados, intentar el similar y ver el rechazo.' },
+        tour: 'publico-pequeno', pagina: 'meta-publicos.html?pequeno=1'
+      },
+      atender: {
+        cena: { pt: 'Meu público é pequeno demais, a Meta não me deixa criar o semelhante e eu preciso de vendas já! Faça funcionar! 😤', es: '¡Mi público es demasiado pequeño, Meta no me deja crear el similar y necesito ventas ya! ¡Haz que funcione! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Entendo a urgência. O público ainda é pequeno porque o site tem pouco tráfego, e o semelhante precisa de uma fonte maior. Por enquanto, podemos rodar com público automático (Advantage+), com controles de localização e idade, e criar o semelhante quando o público crescer. Não posso prometer resultado, mas é o caminho disponível.”', es: '“Entiendo la urgencia. El público todavía es pequeño porque el sitio tiene poco tráfico, y el similar necesita un origen mayor. Por ahora, podemos correr con público automático (Advantage+), con controles de ubicación y edad, y crear el similar cuando el público crezca. No puedo prometer resultados, pero es el camino disponible.”' }, fb: { pt: 'Isso! Acolheu, explicou e deu alternativa honesta.', es: '¡Eso! Acogiste, explicaste y diste una alternativa honesta.' } },
+          { certa: false, txt: { pt: '“Prometo que o semelhante vai vender.”', es: '“Prometo que el similar va a vender.”' }, fb: { pt: 'Nunca prometa resultado.', es: 'Nunca prometas resultados.' } },
+          { certa: false, txt: { pt: '“Compre tráfego para o site.”', es: '“Compra tráfico para el sitio.”' }, fb: { pt: 'Não é um conselho seguro nem pedido.', es: 'No es un consejo seguro ni pedido.' } },
+          { certa: false, txt: { pt: '“Sem semelhante não dá para anunciar.”', es: '“Sin similar no se puede anunciar.”' }, fb: { pt: 'Dá para anunciar com público automático e controles.', es: 'Se puede anunciar con público automático y controles.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual o tamanho do público e que status aparecem?', es: '¿Cuál es el tamaño del público y qué estados aparecen?' },
+          { pt: 'Qual fonte foi usada para o semelhante e o que a tela disse?', es: '¿Qué origen se usó para el similar y qué dijo la pantalla?' }],
+        conferir: [{ pt: 'Públicos › Tamanho estimado e Status.', es: 'Públicos › Tamaño estimado y Estado.' },
+          { pt: 'Pixel recebendo eventos no Gerenciador de Eventos.', es: 'Pixel recibiendo eventos en el Administrador de eventos.' }],
+        frase: { pt: 'Público pequeno e semelhante recusado vêm de pouco tráfego e pouca fonte, e não de defeito. Enquanto os dados crescem, podemos usar público automático com controles.', es: 'Un público pequeño y un similar rechazado vienen de poco tráfico y poco origen, y no de un defecto. Mientras los datos crecen, podemos usar público automático con controles.' },
+        passos: [{ pt: 'Leia os status do público em Públicos.', es: 'Lee los estados del público en Públicos.' },
+          { pt: 'Rode com Advantage+ e controles, e volte ao semelhante depois.', es: 'Corre con Advantage+ y controles, y vuelve al similar después.' }],
+        encaminhar: { pt: 'Se o público não enche mesmo com tráfego no site, confira o Pixel (módulo Pixel) e siga a Central de Ajuda da Meta.', es: 'Si el público no se llena aun con tráfico en el sitio, revisa el Pixel (módulo Pixel) y sigue el Centro de ayuda de Meta.' }
       }
     }
   ],

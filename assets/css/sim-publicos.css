@@ -1,0 +1,5 @@
+/* Simulador dos Públicos · usa sim.css, sim-anuncios.css, sim-feed.css, sim-suite.css, sim-regras.css, sim-relatorios.css */
+.pb-hero h2{margin:0 0 6px}.pb-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+.pb-card{background:#fff;border:2px solid var(--ink);border-radius:var(--r);box-shadow:3px 3px 0 var(--ink);padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.pb-card h3{margin:0}.pb-card p{margin:0;color:var(--ink2);font-size:14px;flex:1}
+.pb-fontes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px}

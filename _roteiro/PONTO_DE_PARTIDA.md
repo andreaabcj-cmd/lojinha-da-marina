@@ -60,3 +60,9 @@ Leia nesta ordem:
 - Pronto em PT e ES: simulador `meta-relatorios.html` (Relatórios de Anúncios; os números da conta de aula são REAIS: 69/71/1,03/R$ 2,77; divisões, campanha de exemplo `?exemplo=1` e troca de janela de atribuição são inventadas), 4 tutoriais (`ler-relatorio`, `montar-relatorio`, `comparar-atribuicao`, `relatorio-vazio`), 5 aulas (`AULAS.relatorios`) e 5 quizzes (`onde-olhar`, `ler-numeros`, `detalhe-ou-metrica`, `janela-atribuicao`, `por-que-vazio`).
 - A conferir: Salvar/Exportar/Compartilhar, comparação real de janelas, efeitos de privacidade do iOS (nada lido ainda), conteúdo do artigo de diferenças de contagem.
 - Próximo na ordem do Foco: Segmentação (públicos).
+
+## Segmentação / Públicos (Foco) · 16/10/2026
+- Pronto em PT e ES: simulador `meta-publicos.html` (página Públicos com os 3 cartões reais, fonte do público, formulário do público do site, semelhante e salvo; `?zerar=1`, `?exemplo=1`, `?pequeno=1`), 4 tutoriais (`criar-publico-site`, `criar-semelhante`, `criar-salvo`, `publico-pequeno`), 5 aulas (`AULAS.segmentacao`) e 5 quizzes (`tipo-publico`, `fonte-publico`, `semelhante-ok`, `salvo-ou-automatico`, `publico-pequeno-q`).
+- A conferir: formulário do público do site em ES, janela do público salvo, texto exato da recusa do semelhante e mínimo da fonte. Tamanhos de público do simulador são inventados (exceto "Abaixo de 1.000").
+- **PENDENTE (André, 16/10): módulo "Microdata Debugger" vem logo DEPOIS do Catálogo na lista do treinamento e ainda não foi feito.** Fazer em seguida (pesquisar a ferramenta real antes).
+- Próximo na ordem do Foco depois dele: Entrega, Meta Verified, Commerce, Shop Ads…
