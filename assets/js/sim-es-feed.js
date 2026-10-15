@@ -74,6 +74,12 @@
     'Anúncio em análise': 'Anuncio en revisión', 'Seu anúncio está sendo criado.': 'Se está creando tu anuncio.', 'Avisaremos se ele atende aos Padrões de Publicidade da Meta em até 24 horas. Você também pode receber atualizações na Central de Anúncios.': 'Te avisaremos si cumple las Normas de Publicidad de Meta en un plazo de 24 horas. También puedes recibir actualizaciones en el Centro de anuncios.',
     'No simulador, nada foi enviado à Meta.': 'En el simulador, no se envió nada a Meta.'
   };
+  A['Perfil do Instagram'] = 'Perfil de Instagram'; A['Usar a Página do Facebook'] = 'Usar la Página de Facebook';
+  A['O perfil lojinhadamarina.aula não aparece na lista.'] = 'El perfil lojinhadamarina.aula no aparece en la lista.';
+  A['Confira, nesta ordem: 1) é uma conta profissional? 2) foi adicionada ao portfólio empresarial? 3) está ligada à Página do Facebook? (aulas 03 e 04). A lista do simulador mostra só “Usar a Página do Facebook” enquanto isso não for feito (a tela real da lista vazia não foi vista: a conferir).'] = 'Revisa, en este orden: 1) ¿es una cuenta profesional? 2) ¿se agregó al portfolio comercial? 3) ¿está vinculada a la Página de Facebook? (clases 03 y 04). La lista del simulador muestra solo “Usar la Página de Facebook” mientras no se haga eso (la pantalla real de la lista vacía no se vio: por confirmar).';
+  A['(simulador) Já liguei o Instagram à Página'] = '(simulador) Ya vinculé el Instagram a la Página';
+  A['Perfil do Threads: usar conta do Instagram · Marca: Inativo'] = 'Perfil de Threads: usar cuenta de Instagram · Imagen de marca: Inactivo';
+  A['Anúncio · Instagram'] = 'Anuncio · Instagram'; A['lojinhadamarina.aula'] = 'lojinhadamarina.aula';
   for (var k in A) D[k] = A[k];
   P.push([/^Editando (\d+) posicionamentos$/, function (m) { return 'Editar ' + m[1] + ' ubicaciones' }]);
   P.push([/^(\d+) posicionamentos · corte: (Original|Quadrado|Horizontal|Vertical em tela cheia|Vertical)( [\d:,]+)?$/, function (m) { var n = { 'Original': 'Original', 'Quadrado': 'Cuadrado', 'Horizontal': 'Horizontal', 'Vertical em tela cheia': 'Vertical en pantalla completa', 'Vertical': 'Vertical' }; return m[1] + ' ubicaciones · recorte: ' + n[m[2]] + (m[3] || '') }]);

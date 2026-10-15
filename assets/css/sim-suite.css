@@ -1,0 +1,39 @@
+/* Simulador do Meta Business Suite · usa sim.css, sim-anuncios.css e sim-feed.css */
+.ss{position:fixed;top:32px;left:0;right:0;bottom:0;display:grid;grid-template-columns:230px 1fr;background:var(--paper)}
+.ss.ss-cria{grid-template-columns:1fr}
+@media(max-width:820px){.ss{grid-template-columns:1fr}.ss-nav{display:none}}
+.ss-nav{background:#fff;border-right:2px solid var(--ink);padding:12px 10px;overflow:auto}
+.ss-it{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:8px 10px;margin:2px 0;border:0;border-radius:9px;background:none;font-weight:600;color:var(--ink2);cursor:pointer}
+.ss-it.on{background:var(--blue-l);color:var(--blue)}.ss-it[disabled]{opacity:.45;cursor:default}
+.ss-bol{margin-left:auto;background:var(--red);color:#fff;border-radius:999px;padding:0 7px;font-size:12px}
+.ss-main{overflow:auto;padding:16px 22px 30px}
+.ss-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.ss-topo h1{margin:0;font-size:22px}.ss-sub{margin:2px 0 0;color:var(--ink2)}.ss-bt{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ss-card{background:#fff;border:2px solid var(--ink);border-radius:var(--r);box-shadow:3px 3px 0 var(--ink);padding:14px 16px;margin-bottom:14px}.ss-card h3{margin:0 0 6px}
+.ss-acoes{display:flex;gap:6px;flex-wrap:wrap}
+.ss-main.ss-form{padding-bottom:90px}
+.ss-dois{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:18px}
+@media(max-width:980px){.ss-dois{grid-template-columns:1fr}}
+.ss-prev{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:10px;position:sticky;top:8px}
+.ss-prev-topo{margin-bottom:8px}
+.ss-ph{background:#EEF1F6;border-radius:6px;margin:6px 9px;height:14px}
+.ss-vazio{padding:20px;text-align:center;color:var(--muted);font-size:26px}
+.ss-x{border:0;background:none;cursor:pointer;float:right;font-size:14px}
+.ss-tg{display:flex;align-items:center;gap:6px;font-weight:700}
+.miudo.err{color:#9B1240;font-weight:700}
+.ss-filtros{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.ss-cx{display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:12px;min-height:280px}
+@media(max-width:820px){.ss-cx{grid-template-columns:1fr}}
+.ss-lista{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:6px;overflow:auto}
+.ss-msg{display:flex;gap:8px;width:100%;text-align:left;padding:8px;border:0;border-radius:9px;background:none;cursor:pointer}
+.ss-msg:hover,.ss-msg.on{background:var(--blue-l)}.ss-msg.nova b::after{content:" ●";color:var(--blue)}
+.ss-msg small{display:block;color:var(--muted)}.ss-av{font-size:22px}
+.ss-leitura{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:12px}
+.ss-bal{display:inline-block;max-width:80%;background:#EEF1F6;border-radius:12px;padding:8px 12px;margin:4px 0}.ss-bal.eu{background:var(--blue-l);float:right;clear:both}
+.ss-conv .btn{margin-top:6px}
+.ss-ent{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.ss-sub-nav{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.ss-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.ss-cartao{background:#fff;border:2px solid var(--ink);border-radius:var(--r);padding:12px;display:flex;flex-direction:column;gap:4px}
+.ss-num{font-size:32px;font-weight:800}.ss-cartao small{color:var(--muted)}
+.ss-cria .ga-rod{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;border-top:2px solid var(--ink);padding:10px 22px;display:flex;gap:8px;align-items:center}
+.ss-cria .ga-rod .esq{flex:1}

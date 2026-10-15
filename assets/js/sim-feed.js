@@ -28,7 +28,7 @@
 
   function inicial() {
     return { pagina: '', formato: 'unica', multi: true, url: '', linkVis: false, midia: '', principal: '', titulo: '', desc: '', cta: 'Ver detalhes', tentou: false, publicado: false,
-      aprim: { sobrep: false, retoques: false, texto: false, cta: false, etiq: false, musica: true, animacao: true },
+      ig: 'perfil', igLigado: true, aprim: { sobrep: false, retoques: false, texto: false, cta: false, etiq: false, musica: true, animacao: true },
       corte: { feeds: 'orig', stories: 'orig', coluna: 'orig' } };
   }
   function comMidia(s) { s.pagina = PAGINA; s.midia = 'm1'; s.principal = 'Canecas feitas com carinho. Peça a sua!'; s.titulo = 'Caneca azul'; s.cta = 'Ver detalhes'; return s }
@@ -36,6 +36,7 @@
   if (params.get('zerar')) S = inicial();
   if (params.get('exemplo')) { S = comMidia(inicial()) }
   if (params.get('problemas')) { S = comMidia(inicial()) }
+  if (params.get('igsem')) { S = comMidia(inicial()); S.igLigado = false; S.ig = 'pagina' }
   var W = { passo: -1, sel: '', menu: false };     // assistente de mídia
   var G = { g: '', sel: '' };                      // janela "Editar grupo"
   var P = 'todo';                                  // aba da prévia
@@ -68,8 +69,9 @@
     return '<div class="fd-quadro" style="aspect-ratio:' + f.toFixed(4) + '"><div class="fd-img" style="aspect-ratio:' + r.toFixed(4) + ';' + ajuste + ';' + img + '" data-t="img-' + g + '"></div></div>';
   }
   function cartao(g) {
+    var quem = (g === 'stories' && S.ig === 'perfil' && S.igLigado) ? '@lojinhadamarina.aula' : PAGINA, rot = quem === PAGINA ? 'Anúncio' : 'Anúncio · Instagram';
     var btn = S.cta === 'Nenhum botão' ? '' : '<span class="fd-cta">' + esc(S.cta) + '</span>';
-    return '<div class="fd-card" data-t="card-' + g + '"><div class="fd-cab"><b>' + PAGINA + '</b><small>Anúncio</small></div>' +
+    return '<div class="fd-card" data-t="card-' + g + '"><div class="fd-cab"><b>' + quem + '</b><small>' + rot + '</small></div>' +
       (S.principal ? '<p class="fd-txt">' + esc(S.principal) + '</p>' : '') + quadro(g) +
       '<div class="fd-rod"><div><b>' + esc(S.titulo || 'Título') + '</b>' + (S.desc ? '<small>' + esc(S.desc) + '</small>' : '') + '</div>' + btn + '</div>' +
       '<div class="fd-acoes"><span>Curtir</span><span>Comentar</span><span>Compartilhar</span></div></div>';
@@ -127,7 +129,9 @@
     return '<div class="ga-sec"><h3>Nome do anúncio</h3><input class="ga-in" value="Novo anúncio de Vendas" disabled/></div>' +
       '<div class="ga-sec" data-t="an-identidade"><h3>Identidade</h3><p class="miudo">Os perfis e elementos de marca que serão usados no seu anúncio.</p><p><b><span class="ga-req">*</span> Página do Facebook</b></p>' +
       '<label class="ga-lin' + (S.pagina ? ' on' : erro(1)) + '" data-t="pg-lojinha"><input type="radio" name="fdPg"' + (S.pagina ? ' checked' : '') + '/><span><b>' + PAGINA + '</b></span></label>' +
-      '<p class="miudo">Perfil do Instagram: lojinhadamarina.aula · Perfil do Threads: usar conta do Instagram · Marca: Inativo</p></div>' +
+      '<p><b>Perfil do Instagram</b></p><select class="ga-in" id="fIg" data-t="sel-ig">' + (S.igLigado ? '<option value="perfil"' + (S.ig === 'perfil' ? ' selected' : '') + '>lojinhadamarina.aula</option>' : '') + '<option value="pagina"' + (S.ig === 'pagina' || !S.igLigado ? ' selected' : '') + '>Usar a Página do Facebook</option></select>' +
+      (S.igLigado ? '' : '<div class="ga-aviso" data-t="ig-checklist"><b>O perfil lojinhadamarina.aula não aparece na lista.</b><br><small>Confira, nesta ordem: 1) é uma conta profissional? 2) foi adicionada ao portfólio empresarial? 3) está ligada à Página do Facebook? (aulas 03 e 04). A lista do simulador mostra só “Usar a Página do Facebook” enquanto isso não for feito (a tela real da lista vazia não foi vista: a conferir).</small><p><button class="btn sec" data-acao="liga-ig" data-t="btn-ligar-ig">(simulador) Já liguei o Instagram à Página</button></p></div>') +
+      '<p class="miudo">Perfil do Threads: usar conta do Instagram · Marca: Inativo</p></div>' +
       '<div class="ga-sec" data-t="sec-formato"><h3>Configuração do anúncio</h3><p class="miudo">Selecione um post existente ou crie um novo · <b>Criar anúncio</b></p><p><b>Fonte do criativo</b></p><p class="miudo">Escolha como você quer fornecer a mídia para seu anúncio.</p>' +
       '<label class="ga-lin on"><input type="radio" name="fdFonte" checked/><span><b>Upload manual</b></span></label><label class="ga-lin"><input type="radio" name="fdFonte" disabled/><span><b>Mídia do produto</b><small>Mostre imagens e vídeos relevantes do seu catálogo.</small></span></label>' +
       '<p><b>Formato</b></p><p class="miudo">Escolha um layout para o criativo do anúncio.</p>' +
@@ -231,6 +235,7 @@
     else if (ac === 'salva-grupo') { S.corte[G.g] = G.sel; G = { g: '', sel: '' }; grava(); render() }
     else if (ac === 'fechar') { vai('anu'); render() }
     else if (ac === 'publicar') { S.tentou = true; if (faltas().length) { grava(); if (rota() !== 'anu') vai('anu'); else render(); return } S.publicado = true; grava(); render() }
+    else if (ac === 'liga-ig') { S.igLigado = true; S.ig = 'perfil'; grava(); render() }
     else if (ac === 'fecha-analise') { S.publicado = false; grava(); render() }
   });
   document.addEventListener('change', function (ev) {
@@ -238,6 +243,7 @@
     if (t.name === 'fdPg') { S.pagina = PAGINA }
     else if (t.name === 'fdFmt') { S.formato = t.value }
     else if (t.id === 'fMulti') { S.multi = t.checked }
+    else if (t.id === 'fIg') { S.ig = t.value }
     else if (t.id === 'fLink') { S.linkVis = t.checked }
     else if (t.id === 'fCta' || t.id === 'wCta') { S.cta = t.value }
     else if (t.hasAttribute && t.hasAttribute('data-apr')) { S.aprim[t.getAttribute('data-apr')] = t.checked }
@@ -258,7 +264,7 @@
     if (foco) { var el = document.getElementById(foco); if (el && el.focus) { el.focus(); try { var l = el.value.length; el.setSelectionRange(l, l) } catch (e) { } } }
     window.__simFd = { S: S, W: W, G: G };
   }
-  window.SIMFD = { vai: vai, estado: function () { return { S: S, W: W, G: G } }, exemplo: function () { var c = S.corte, u = S.url; if (!S.midia || !S.pagina) { S = comMidia(inicial()); S.corte = c || S.corte; S.url = u || ''; grava() } }, zera: function () { S = inicial(); W = { passo: -1, sel: '', menu: false }; G = { g: '', sel: '' }; P = 'todo'; grava() },
+  window.SIMFD = { ig: function (o) { for (var k in o) S[k] = o[k]; grava() }, vai: vai, estado: function () { return { S: S, W: W, G: G } }, exemplo: function () { var c = S.corte, u = S.url; if (!S.midia || !S.pagina) { S = comMidia(inicial()); S.corte = c || S.corte; S.url = u || ''; grava() } }, zera: function () { S = inicial(); W = { passo: -1, sel: '', menu: false }; G = { g: '', sel: '' }; P = 'todo'; grava() },
     wiz: function (o) { for (var k in o) W[k] = o[k]; grava() }, grupo: function (g, sel) { G.g = g; G.sel = sel || S.corte[g]; grava() }, aba: function (a) { P = a }, cortes: function (o) { for (var k in o) S.corte[k] = o[k]; grava() }, pronto: function () { render() } };
   render();
 
@@ -330,5 +336,20 @@
     { alvo: '[data-t=grupo-salvar]', clique: true, garante: function () { sim().grupo('stories', '9:16'); location.hash = 'anu'; render() }, tit: T('Salvar', 'Guardar'), txt: T('Clique em Salvar.', 'Haz clic en Guardar.') },
     { alvo: '[data-t=publicar]', clique: true, garante: function () { if (!/^https?:/.test(fd().S.url)) S.url = 'https://lojinha.exemplo.com.br/caneca-azul'; S.corte.stories = '9:16'; S.tentou = true; grava(); location.hash = 'anu'; render() }, tit: T('Tentar de novo', 'Intentar de nuevo'), txt: T('O URL está preenchido e o Story, ajustado. Clique em Publicar. No simulador, nada vai para a Meta.', 'La URL está completa y el Story, ajustado. Haz clic en Publicar. En el simulador, nada va a Meta.') },
     { alvo: '[data-t=jan-analise]', fim: true, semVolta: true, garante: function () { if (!/^https?:/.test(fd().S.url)) S.url = 'https://lojinha.exemplo.com.br/caneca-azul'; S.corte.stories = '9:16'; S.tentou = true; S.publicado = true; grava(); location.hash = 'anu'; render() }, tit: T('Anúncio em análise! 🎉', '¡Anuncio en revisión! 🎉'), txt: T('Agora a tela aceita: “Anúncio em análise”. Resumo do caso: faltava o URL (destino) e o Story estava com corte Original. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Ahora la pantalla acepta: “Anuncio en revisión”. Resumen del caso: faltaba la URL (destino) y el Story estaba con recorte Original. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
+  TOURS['identidade-instagram'] = [
+    { alvo: '[data-t=an-identidade]', garante: function () { sim().exemplo(); sim().ig({ ig: 'pagina', igLigado: true }); location.hash = 'anu'; render() },
+      tit: T('Quem assina o anúncio', 'Quién firma el anuncio'), txt: T('A Identidade diz quem aparece como dono do anúncio. A Página do Facebook é obrigatória (tem asterisco). O perfil do Instagram é opcional. Agora o Instagram está em “Usar a Página do Facebook”. Clique em Próximo.', 'La Identidad dice quién aparece como dueño del anuncio. La Página de Facebook es obligatoria (tiene asterisco). El perfil de Instagram es opcional. Ahora el Instagram está en “Usar la Página de Facebook”. Haz clic en Siguiente.') },
+    { alvo: '[data-t=sel-ig]', garante: function () { sim().exemplo(); sim().ig({ ig: 'pagina', igLigado: true }); location.hash = 'anu'; render() }, cond: function () { return fd().S.ig === 'perfil' },
+      tit: T('Escolher o perfil do Instagram', 'Elegir el perfil de Instagram'), txt: T('Abra a lista de Perfil do Instagram e escolha lojinhadamarina.aula. Assim o anúncio aparece no Instagram com o nome e a foto da loja, e não com os da Página.', 'Abre la lista de Perfil de Instagram y elige lojinhadamarina.aula. Así el anuncio aparece en Instagram con el nombre y la foto de la tienda, y no con los de la Página.'), dica: T('Escolha “lojinhadamarina.aula” na lista.', 'Elige “lojinhadamarina.aula” en la lista.') },
+    { alvo: '[data-t=aba-stories]', clique: true, garante: function () { sim().exemplo(); sim().ig({ ig: 'perfil', igLigado: true }); sim().aba('todo'); location.hash = 'anu'; render() }, tit: T('Ver no Instagram', 'Ver en Instagram'), txt: T('Vamos conferir na prévia: clique na aba de Stories e Reels, que é um lugar do Instagram.', 'Vamos a revisar en la vista previa: haz clic en la pestaña de Stories y Reels, que es un lugar de Instagram.') },
+    { alvo: '[data-t=card-stories]', fim: true, semVolta: true, garante: function () { sim().exemplo(); sim().ig({ ig: 'perfil', igLigado: true }); sim().aba('stories'); location.hash = 'anu'; render() }, tit: T('Com a cara da loja! 🎉', '¡Con la cara de la tienda! 🎉'), txt: T('No cartão do Instagram aparece “@lojinhadamarina.aula”. Se o perfil não estivesse escolhido, apareceria o nome da Página. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'En la tarjeta de Instagram aparece “@lojinhadamarina.aula”. Si el perfil no estuviera elegido, aparecería el nombre de la Página. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
+  TOURS['perfil-nao-aparece'] = [
+    { alvo: '[data-t=sel-ig]', garante: function () { S = comMidia(inicial()); S.igLigado = false; S.ig = 'pagina'; grava(); location.hash = 'anu'; render() }, tit: T('“Meu Instagram não aparece!”', '“¡Mi Instagram no aparece!”'), txt: T('A Marina abriu a lista de Perfil do Instagram e só vê “Usar a Página do Facebook”: o @ da loja não aparece. Clique em Próximo e vamos investigar.', 'Marina abrió la lista de Perfil de Instagram y solo ve “Usar la Página de Facebook”: el @ de la tienda no aparece. Haz clic en Siguiente y vamos a investigar.') },
+    { alvo: '[data-t=ig-checklist]', garante: function () { S = comMidia(inicial()); S.igLigado = false; S.ig = 'pagina'; grava(); location.hash = 'anu'; render() }, tit: T('A lista de conferência', 'La lista de revisión'), txt: T('Três coisas, nesta ordem: 1) é uma conta profissional? 2) foi adicionada ao portfólio empresarial? 3) está ligada à Página do Facebook? Quase sempre é a terceira. Isso se faz nas configurações do portfólio e da Página (aulas 03 e 04). Clique em Próximo.', 'Tres cosas, en este orden: 1) ¿es una cuenta profesional? 2) ¿se agregó al portfolio comercial? 3) ¿está vinculada a la Página de Facebook? Casi siempre es la tercera. Eso se hace en la configuración del portfolio y de la Página (clases 03 y 04). Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-ligar-ig]', clique: true, garante: function () { S = comMidia(inicial()); S.igLigado = false; S.ig = 'pagina'; grava(); location.hash = 'anu'; render() }, tit: T('Depois de ligar', 'Después de vincular'), txt: T('Imagine que a Marina foi às configurações e ligou o Instagram à Página (você viu como nas aulas 03 e 04). No simulador, clique neste botão para fazer de conta que já foi feito.', 'Imagina que Marina fue a la configuración y vinculó el Instagram a la Página (viste cómo en las clases 03 y 04). En el simulador, haz clic en este botón para hacer de cuenta que ya se hizo.') },
+    { alvo: '[data-t=sel-ig]', garante: function () { sim().ig({ igLigado: true, ig: 'pagina' }); location.hash = 'anu'; render() }, cond: function () { return fd().S.ig === 'perfil' }, tit: T('Agora aparece', 'Ahora aparece'), txt: T('Abra a lista de novo: agora o perfil lojinhadamarina.aula está lá. Escolha-o.', 'Abre la lista de nuevo: ahora el perfil lojinhadamarina.aula está ahí. Elígelo.'), dica: T('Escolha “lojinhadamarina.aula”.', 'Elige “lojinhadamarina.aula”.') },
+    { alvo: '[data-t=an-identidade]', fim: true, semVolta: true, garante: function () { sim().ig({ igLigado: true, ig: 'perfil' }); location.hash = 'anu'; render() }, tit: T('Resolvido! 🎉', '¡Resuelto! 🎉'), txt: T('O perfil apareceu porque agora está ligado à Página. Resumo: quando o Instagram não aparece na lista, o problema quase nunca está no anúncio: está na ligação entre Instagram, portfólio e Página. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'El perfil apareció porque ahora está vinculado a la Página. Resumen: cuando el Instagram no aparece en la lista, el problema casi nunca está en el anuncio: está en el vínculo entre Instagram, portfolio y Página. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
   ];
 })();

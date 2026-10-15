@@ -216,7 +216,7 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Instagram e Página juntos', es: 'Instagram y Página juntos' },
       antes: { pt: 'A Página e o Instagram da Marina estão no portfólio, mas ainda separados.', es: 'La Página y el Instagram de Marina están en el portfolio, pero todavía separados.' },
-      gancho: { pt: '“Portfólio, Instagram, Página… tudo ligado! Agora quero que os anúncios fracos parem sozinhos, sem eu ficar olhando.” Próximo módulo: Regras automatizadas.', es: '“Portfolio, Instagram, Página… ¡todo conectado! Ahora quiero que los anuncios flojos se detengan solos, sin que yo esté mirando.” Próximo módulo: Reglas automatizadas.' },
+      gancho: { pt: '“Portfólio, Instagram, Página… tudo ligado! Agora quero usar o Instagram de verdade: nos anúncios, nos posts e nas mensagens.” Vamos lá.', es: '“Portfolio, Instagram, Página… ¡todo conectado! Ahora quiero usar el Instagram de verdad: en los anuncios, en las publicaciones y en los mensajes.” Vamos.' },
       objetivo: { pt: 'Saber ligar o Instagram à Página, o que é preciso antes e o que muda para quem ajuda a cuidar dos dois.', es: 'Saber vincular el Instagram a la Página, qué se necesita antes y qué cambia para quien ayuda a cuidar los dos.' },
       entender: {
         dialogo: [
@@ -266,6 +266,243 @@ window.AULAS = {
       fontes: [
         { url: 'https://www.facebook.com/business/help/898752960195806', titulo: { pt: 'Como conectar ou desconectar sua conta profissional do Instagram e uma Página do Facebook', es: 'Cómo conectar o desconectar tu cuenta profesional de Instagram y una Página de Facebook' }, conferido: '14/10/2026' }
       ]
+    },
+    {
+      id: '05', min: 7, status: 'pronta',
+      titulo: { pt: 'O Instagram no anúncio', es: 'El Instagram en el anuncio' },
+      antes: { pt: 'A Marina ligou o Instagram à Página e já sabe montar o criativo do anúncio.', es: 'Marina vinculó el Instagram a la Página y ya sabe armar el contenido del anuncio.' },
+      gancho: { pt: '“No Instagram, o anúncio aparece com o nome da Página! Eu queria o @ da minha loja.” Vamos ao campo certo.', es: '“¡En Instagram, el anuncio aparece con el nombre de la Página! Yo quería el @ de mi tienda.” Vamos al campo correcto.' },
+      objetivo: { pt: 'Escolher o perfil do Instagram na Identidade do anúncio e ver o efeito na prévia.', es: 'Elegir el perfil de Instagram en la Identidad del anuncio y ver el efecto en la vista previa.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'O anúncio da Marina aparece no Instagram com o nome da Página do Facebook. Dá para usar o @ da loja? 🤔', es: 'El anuncio de Marina aparece en Instagram con el nombre de la Página de Facebook. ¿Se puede usar el @ de la tienda? 🤔' }],
+          ['rafa', { pt: 'Dá: na Identidade do anúncio tem o campo Perfil do Instagram. Escolhendo o perfil, nos lugares do Instagram o anúncio aparece com o nome e o @ da loja.', es: 'Se puede: en la Identidad del anuncio está el campo Perfil de Instagram. Al elegir el perfil, en los lugares de Instagram el anuncio aparece con el nombre y el @ de la tienda.' }],
+          ['marina', { pt: 'E se eu não escolher nada?', es: '¿Y si no elijo nada?' }],
+          ['rafa', { pt: 'O anúncio continua publicando: só a Página é obrigatória. O Instagram usa a Página como identidade, e a lista mostra “Usar a Página do Facebook”.', es: 'El anuncio igual se publica: solo la Página es obligatoria. Instagram usa la Página como identidad, y la lista muestra “Usar la Página de Facebook”.' }],
+          ['pixel', { pt: 'Na mesma seção tem “Anúncio em parceria”, que vem Desativado: serve para veicular com criadores de conteúdo, marcas e outras empresas.', es: 'En la misma sección está “Anuncio en colaboración”, que viene Desactivado: sirve para publicar con creadores de contenido, marcas y otras empresas.' }]
+        ],
+        pontos: [
+          { pt: '<b>Página do Facebook:</b> obrigatória. <b>Perfil do Instagram:</b> opcional, mas dá a cara da loja.', es: '<b>Página de Facebook:</b> obligatoria. <b>Perfil de Instagram:</b> opcional, pero le da la cara a la tienda.' },
+          { pt: '<b>Na prévia</b>, o cartão dos lugares do Instagram mostra o perfil escolhido.', es: '<b>En la vista previa</b>, la tarjeta de los lugares de Instagram muestra el perfil elegido.' },
+          { pt: '<b>Anúncio em parceria:</b> desativado por padrão, para anunciar junto com outros perfis.', es: '<b>Anuncio en colaboración:</b> desactivado de forma predeterminada, para anunciar junto con otros perfiles.' }
+        ],
+        notas: { pt: 'Campos da Identidade vistos de verdade em 14–16/10/2026 (Página do Facebook, Perfil do Instagram, Threads, WhatsApp, Anúncio em parceria). Como o perfil aparece em cada lugar na prévia real, e as opções exatas da lista do Instagram, não foram vistos (a conferir).', es: 'Campos de la Identidad vistos de verdad el 14–16/10/2026 (Página de Facebook, Perfil de Instagram, Threads, WhatsApp, Anuncio en colaboración). Cómo aparece el perfil en cada lugar en la vista previa real, y las opciones exactas de la lista de Instagram, no se vieron (por confirmar).' }
+      },
+      ferramenta: 'identidade-ig',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva à Identidade do anúncio, escolhe o perfil do Instagram e confere o resultado na prévia de Stories e Reels.', es: 'En el simulador, el Pixel te lleva a la Identidad del anuncio, elige el perfil de Instagram y revisa el resultado en la vista previa de Stories y Reels.' },
+        tour: 'identidade-instagram', pagina: 'meta-feed.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Meu anúncio aparece no Instagram com o nome da Página, não com o @ da minha loja. Está errado? 😕', es: '¡Mi anuncio aparece en Instagram con el nombre de la Página, no con el @ de mi tienda! ¿Está mal? 😕' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Não está errado: sem perfil escolhido, o Instagram usa a Página. Abra o anúncio, vá em Identidade e escolha seu perfil em Perfil do Instagram. Depois confira na prévia de Stories e Reels.”', es: '“No está mal: sin perfil elegido, Instagram usa la Página. Abre el anuncio, ve a Identidad y elige tu perfil en Perfil de Instagram. Después revisa en la vista previa de Stories y Reels.”' }, fb: { pt: 'Isso! Explicou o porquê e mostrou o campo.', es: '¡Eso! Explicaste el porqué y mostraste el campo.' } },
+          { certa: false, txt: { pt: '“Troque o nome da Página para @lojinha.”', es: '“Cambia el nombre de la Página a @lojinha.”' }, fb: { pt: 'Não precisa mexer na Página: o campo é Perfil do Instagram.', es: 'No hace falta tocar la Página: el campo es Perfil de Instagram.' } },
+          { certa: false, txt: { pt: '“É assim mesmo e não dá para mudar.”', es: '“Es así y no se puede cambiar.”' }, fb: { pt: 'Dá para mudar: é só escolher o perfil.', es: 'Se puede cambiar: solo hay que elegir el perfil.' } },
+          { certa: false, txt: { pt: '“Crie um anúncio novo no app do Instagram.”', es: '“Crea un anuncio nuevo en la app de Instagram.”' }, fb: { pt: 'Não precisa: o ajuste é na Identidade do mesmo anúncio.', es: 'No hace falta: el ajuste es en la Identidad del mismo anuncio.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual perfil do Instagram aparece escolhido na Identidade do anúncio?', es: '¿Qué perfil de Instagram aparece elegido en la Identidad del anuncio?' },
+          { pt: 'O anúncio foi visto em qual lugar (Feed, Stories, Reels)?', es: '¿En qué lugar se vio el anuncio (Feed, Stories, Reels)?' }],
+        conferir: [{ pt: 'Identidade › Perfil do Instagram.', es: 'Identidad › Perfil de Instagram.' },
+          { pt: 'Prévia, aba de Stories e Reels.', es: 'Vista previa, pestaña de Stories y Reels.' }],
+        frase: { pt: 'Sem escolher o perfil do Instagram, o anúncio aparece com a Página. Em Identidade, escolha o perfil da loja e confira na prévia.', es: 'Sin elegir el perfil de Instagram, el anuncio aparece con la Página. En Identidad, elige el perfil de la tienda y revisa en la vista previa.' },
+        passos: [{ pt: 'No anúncio, abra Identidade e escolha o Perfil do Instagram.', es: 'En el anuncio, abre Identidad y elige el Perfil de Instagram.' },
+          { pt: 'Confira a prévia de Stories e Reels.', es: 'Revisa la vista previa de Stories y Reels.' }],
+        encaminhar: { pt: 'Se o perfil não aparece na lista, siga a próxima aula (Meu Instagram não aparece no anúncio).', es: 'Si el perfil no aparece en la lista, sigue la próxima clase (Mi Instagram no aparece en el anuncio).' }
+      }
+    },
+    {
+      id: '06', min: 7, status: 'pronta',
+      titulo: { pt: 'Meu Instagram não aparece no anúncio', es: 'Mi Instagram no aparece en el anuncio' },
+      antes: { pt: 'A Marina quer escolher o @ da loja no anúncio.', es: 'Marina quiere elegir el @ de la tienda en el anuncio.' },
+      gancho: { pt: '“Abri a lista de Perfil do Instagram e o meu @ não está lá!” Quase sempre a causa está na ligação, não no anúncio.', es: '“¡Abrí la lista de Perfil de Instagram y mi @ no está ahí!” Casi siempre la causa está en el vínculo, no en el anuncio.' },
+      objetivo: { pt: 'Diagnosticar por que o Instagram não aparece na lista, na ordem certa: conta profissional, portfólio e ligação com a Página.', es: 'Diagnosticar por qué el Instagram no aparece en la lista, en el orden correcto: cuenta profesional, portfolio y vínculo con la Página.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu @ não aparece na lista do anúncio! Será que o anúncio está com defeito? 😟', es: '¡Mi @ no aparece en la lista del anuncio! ¿Será que el anuncio tiene un defecto? 😟' }],
+          ['rafa', { pt: 'Não é o anúncio. A lista mostra os perfis que a Página enxerga. Se o Instagram não está ligado à Página, ele não aparece.', es: 'No es el anuncio. La lista muestra los perfiles que la Página ve. Si el Instagram no está vinculado a la Página, no aparece.' }],
+          ['marina', { pt: 'E o que eu confiro?', es: '¿Y qué reviso?' }],
+          ['rafa', { pt: 'Três coisas, nesta ordem: 1) é conta profissional? 2) foi adicionada ao portfólio empresarial? 3) está ligada à Página? Foram as aulas 01, 03 e 04.', es: 'Tres cosas, en este orden: 1) ¿es cuenta profesional? 2) ¿se agregó al portfolio comercial? 3) ¿está vinculada a la Página? Fueron las clases 01, 03 y 04.' }],
+          ['pixel', { pt: 'Lembre: nunca peça a senha do cliente. Mostre onde clicar e deixe que ele mesmo faça.', es: 'Recuerda: nunca pidas la contraseña del cliente. Muestra dónde hacer clic y deja que lo haga él mismo.' }]
+        ],
+        pontos: [
+          { pt: '<b>Lista sem o perfil:</b> o problema quase nunca é o anúncio.', es: '<b>Lista sin el perfil:</b> el problema casi nunca es el anuncio.' },
+          { pt: '<b>Ordem:</b> conta profissional › no portfólio › ligada à Página.', es: '<b>Orden:</b> cuenta profesional › en el portfolio › vinculada a la Página.' },
+          { pt: '<b>Segurança:</b> nunca peça senha; guie o cliente.', es: '<b>Seguridad:</b> nunca pidas contraseña; guía al cliente.' }
+        ],
+        notas: { pt: 'A lista de perfis com o Instagram fora do ar (vazia) não foi vista na tela real: o simulador mostra só “Usar a Página do Facebook” (a conferir). Os três passos de conferência vêm das aulas 01, 03 e 04, vistas de verdade em 14–15/10/2026.', es: 'La lista de perfiles con el Instagram sin vincular (vacía) no se vio en la pantalla real: el simulador muestra solo “Usar la Página de Facebook” (por confirmar). Los tres pasos de revisión vienen de las clases 01, 03 y 04, vistas de verdad el 14–15/10/2026.' }
+      },
+      ferramenta: 'ig-nao-aparece',
+      praticar: {
+        texto: { pt: 'No simulador, o Instagram da Marina não aparece na lista. O Pixel te guia pela lista de conferência até ele aparecer.', es: 'En el simulador, el Instagram de Marina no aparece en la lista. El Pixel te guía por la lista de revisión hasta que aparezca.' },
+        tour: 'perfil-nao-aparece', pagina: 'meta-feed.html?igsem=1'
+      },
+      atender: {
+        cena: { pt: 'O Instagram da minha loja não aparece na lista do anúncio e já tentei de tudo! Pode entrar no meu Instagram e arrumar? Minha senha é… 😭', es: '¡El Instagram de mi tienda no aparece en la lista del anuncio y ya probé de todo! ¿Puedes entrar en mi Instagram y arreglarlo? Mi contraseña es… 😭' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Não precisa me passar a senha, e nunca passe a ninguém. Vamos conferir juntos, passo a passo, que você mesma faz: sua conta é profissional? Está no portfólio? Está ligada à Página?”', es: '“No hace falta que me pases la contraseña, y nunca se la pases a nadie. Revisemos juntos, paso a paso, y lo haces tú misma: ¿tu cuenta es profesional? ¿Está en el portfolio? ¿Está vinculada a la Página?”' }, fb: { pt: 'Isso! Protegeu o cliente e abriu o diagnóstico.', es: '¡Eso! Protegiste al cliente y abriste el diagnóstico.' } },
+          { certa: false, txt: { pt: '“Pode mandar a senha, eu resolvo rapidinho.”', es: '“Puedes mandarme la contraseña, lo resuelvo rapidito.”' }, fb: { pt: 'Nunca peça nem aceite senha de cliente.', es: 'Nunca pidas ni aceptes contraseña de un cliente.' } },
+          { certa: false, txt: { pt: '“Crie um Instagram novo.”', es: '“Crea un Instagram nuevo.”' }, fb: { pt: 'Exagero: perderia os seguidores. Primeiro confira a ligação.', es: 'Exagerado: perdería los seguidores. Primero revisa el vínculo.' } },
+          { certa: false, txt: { pt: '“Isso é bug da Meta, espere uns dias.”', es: '“Eso es un error de Meta, espera unos días.”' }, fb: { pt: 'Quase sempre é falta de ligação, que se resolve na hora.', es: 'Casi siempre es falta de vínculo, que se resuelve al momento.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'A conta do Instagram é profissional (Comercial ou Criador de conteúdo)?', es: '¿La cuenta de Instagram es profesional (Comercial o Creador de contenido)?' },
+          { pt: 'O Instagram aparece em Contas do Instagram no portfólio? E está ligado à Página?', es: '¿El Instagram aparece en Cuentas de Instagram en el portfolio? ¿Y está vinculado a la Página?' },
+          { pt: 'A pessoa que está escolhendo o perfil tem acesso à conta de anúncios e ao Instagram no portfólio?', es: '¿La persona que está eligiendo el perfil tiene acceso a la cuenta publicitaria y al Instagram en el portfolio?' }],
+        conferir: [{ pt: 'Perfil do Instagram: conta profissional.', es: 'Perfil de Instagram: cuenta profesional.' },
+          { pt: 'Configurações da empresa › Contas › Contas do Instagram, e a ligação com a Página.', es: 'Configuración del negocio › Cuentas › Cuentas de Instagram, y el vínculo con la Página.' }],
+        frase: { pt: 'Vamos conferir três coisas, nesta ordem: se a conta é profissional, se está no portfólio e se está ligada à Página. Você faz cada passo e me conta o que vê. Nunca precisa me passar sua senha.', es: 'Vamos a revisar tres cosas, en este orden: si la cuenta es profesional, si está en el portfolio y si está vinculada a la Página. Tú haces cada paso y me cuentas qué ves. Nunca necesitas pasarme tu contraseña.' },
+        passos: [{ pt: 'Confirme que a conta é profissional (aula 01).', es: 'Confirma que la cuenta es profesional (clase 01).' },
+          { pt: 'Adicione ao portfólio e ligue à Página (aulas 03 e 04), depois recarregue o anúncio.', es: 'Agrégala al portfolio y vincúlala a la Página (clases 03 y 04), después recarga el anuncio.' }],
+        encaminhar: { pt: 'Se tudo está ligado e mesmo assim o perfil não aparece, confirme o que a tela mostra e as permissões da pessoa, e siga a Central de Ajuda da Meta.', es: 'Si todo está vinculado y aun así el perfil no aparece, confirma lo que muestra la pantalla y los permisos de la persona, y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '07', min: 8, status: 'pronta',
+      titulo: { pt: 'Postar no Facebook e no Instagram juntos', es: 'Publicar en Facebook y en Instagram a la vez' },
+      antes: { pt: 'A Marina ligou o Instagram à Página e sabe usar a identidade nos anúncios.', es: 'Marina vinculó el Instagram a la Página y sabe usar la identidad en los anuncios.' },
+      gancho: { pt: '“Tenho que postar a mesma foto duas vezes, uma em cada rede?” Não: o Business Suite posta nas duas de uma vez.', es: '“¿Tengo que publicar la misma foto dos veces, una en cada red?” No: Business Suite publica en las dos a la vez.' },
+      objetivo: { pt: 'Criar um post no Business Suite e escolher onde ele vai: Facebook, Instagram ou os dois.', es: 'Crear una publicación en Business Suite y elegir adónde va: Facebook, Instagram o los dos.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Quero postar a foto da Caneca azul nas duas redes. Preciso entrar em cada app? 🤔', es: 'Quiero publicar la foto de la Caneca azul en las dos redes. ¿Tengo que entrar en cada app? 🤔' }],
+          ['rafa', { pt: 'Não. No Meta Business Suite, clique em Criar post. Em “Postar em” aparecem a Página e o perfil do Instagram. Marque onde quer postar.', es: 'No. En Meta Business Suite, haz clic en Crear publicación. En “Publicar en” aparecen la Página y el perfil de Instagram. Marca dónde quieres publicar.' }],
+          ['marina', { pt: 'E se eu quiser um texto diferente em cada rede?', es: '¿Y si quiero un texto distinto en cada red?' }],
+          ['rafa', { pt: 'Ligue “Personalizar post para o Facebook e o Instagram”. Também dá para programar o post (Definir data e hora) e compartilhar como Story do Facebook.', es: 'Activa “Personalizar la publicación para Facebook e Instagram”. También se puede programar la publicación (Establecer fecha y hora) y compartir como historia de Facebook.' }],
+          ['pixel', { pt: 'Cuidado com o interruptor Turbinar, no rodapé: ligado, ele leva a transformar o post em anúncio. E lembre: os posts do Instagram não podem ter mais de 10 fotos.', es: 'Cuidado con el interruptor Promocionar, al pie: activado, lleva a convertir la publicación en anuncio. Y recuerda: las publicaciones de Instagram no pueden tener más de 10 fotos.' }]
+        ],
+        pontos: [
+          { pt: '<b>Postar em:</b> Página, Instagram ou os dois (o chamado post cruzado).', es: '<b>Publicar en:</b> Página, Instagram o los dos.' },
+          { pt: '<b>Limites e extras:</b> até 10 fotos no Instagram; texto por rede; programar; Story do Facebook.', es: '<b>Límites y extras:</b> hasta 10 fotos en Instagram; texto por red; programar; historia de Facebook.' },
+          { pt: '<b>Turbinar:</b> só ligue se o cliente quer transformar o post em anúncio.', es: '<b>Promocionar:</b> solo actívalo si el cliente quiere convertir la publicación en anuncio.' }
+        ],
+        notas: { pt: 'Tela de Criar post vista de verdade em 14–16/10/2026 (aviso de post de anúncio, Mídia, Detalhes do post, Programar, Compartilhar em, privacidade, Turbinar, prévia). A lista do seletor “Postar em” e o texto separado por rede ao personalizar não foram abertos (a conferir).', es: 'Pantalla de Crear publicación vista de verdad el 14–16/10/2026 (aviso de publicación de anuncio, Contenido multimedia, Detalles de la publicación, Programar, Compartir en, privacidad, Promocionar, vista previa). La lista del selector “Publicar en” y el texto separado por red al personalizar no se abrieron (por confirmar).' }
+      },
+      ferramenta: 'onde-posto',
+      praticar: {
+        texto: { pt: 'No simulador do Business Suite, o Pixel te guia para criar o post da Caneca azul e publicar no Facebook e no Instagram.', es: 'En el simulador de Business Suite, el Pixel te guía para crear la publicación de la Caneca azul y publicarla en Facebook y en Instagram.' },
+        tour: 'publicar-dois', pagina: 'meta-suite.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Postei e a foto só saiu no Facebook, não no Instagram! O que aconteceu? 😕', es: '¡Publiqué y la foto salió solo en Facebook, no en Instagram! ¿Qué pasó? 😕' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Na hora de criar o post, em “Postar em”, o perfil do Instagram precisa estar marcado junto com a Página. Se ele nem aparece ali, falta ligar o Instagram à Página. Vamos conferir os dois.”', es: '“Al crear la publicación, en “Publicar en”, el perfil de Instagram tiene que estar marcado junto con la Página. Si ni siquiera aparece ahí, falta vincular el Instagram a la Página. Revisemos los dos.”' }, fb: { pt: 'Isso! Duas causas prováveis, nesta ordem.', es: '¡Eso! Dos causas probables, en este orden.' } },
+          { certa: false, txt: { pt: '“O Instagram demora dias para publicar.”', es: '“Instagram demora días en publicar.”' }, fb: { pt: 'Não é demora: é onde o post foi marcado para ir.', es: 'No es demora: es adónde se marcó que fuera la publicación.' } },
+          { certa: false, txt: { pt: '“Poste de novo, mas no app do Instagram.”', es: '“Publica de nuevo, pero en la app de Instagram.”' }, fb: { pt: 'Dá para resolver no mesmo Business Suite, sem duplicar.', es: 'Se puede resolver en el mismo Business Suite, sin duplicar.' } },
+          { certa: false, txt: { pt: '“Ligue o Turbinar para forçar o Instagram.”', es: '“Activa Promocionar para forzar Instagram.”' }, fb: { pt: 'Turbinar cria anúncio e gasta dinheiro; não serve para isso.', es: 'Promocionar crea un anuncio y gasta dinero; no sirve para eso.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Em “Postar em”, quais perfis apareciam marcados na hora de postar?', es: 'En “Publicar en”, ¿qué perfiles aparecían marcados al publicar?' },
+          { pt: 'O post tinha mais de 10 fotos?', es: '¿La publicación tenía más de 10 fotos?' }],
+        conferir: [{ pt: 'Criar post › Postar em: Página e Instagram marcados.', es: 'Crear publicación › Publicar en: Página e Instagram marcados.' },
+          { pt: 'Se o Instagram não aparece: ligação com a Página (aula 04).', es: 'Si el Instagram no aparece: vínculo con la Página (clase 04).' }],
+        frase: { pt: 'No Business Suite, em Postar em, você escolhe onde o post vai. Vamos conferir se o Instagram estava marcado e, se nem aparecia, se está ligado à Página.', es: 'En Business Suite, en Publicar en, eliges adónde va la publicación. Revisemos si el Instagram estaba marcado y, si ni aparecía, si está vinculado a la Página.' },
+        passos: [{ pt: 'Abra Criar post e olhe Postar em.', es: 'Abre Crear publicación y mira Publicar en.' },
+          { pt: 'Marque os dois e publique; se o Instagram não aparecer, ligue-o à Página.', es: 'Marca los dos y publica; si el Instagram no aparece, vincúlalo a la Página.' }],
+        encaminhar: { pt: 'Se o post sumiu ou foi removido, confirme o sintoma e siga a Central de Ajuda da Meta; regras de conteúdo são tratadas por outra área.', es: 'Si la publicación desapareció o fue eliminada, confirma el síntoma y sigue el Centro de ayuda de Meta; las reglas de contenido las trata otra área.' }
+      }
+    },
+    {
+      id: '08', min: 8, status: 'pronta',
+      titulo: { pt: 'A Caixa de Entrada: mensagens e comentários', es: 'Mensajes: mensajes y comentarios' },
+      antes: { pt: 'Os posts da Marina estão no ar nas duas redes. As primeiras perguntas chegaram.', es: 'Las publicaciones de Marina están en las dos redes. Llegaron las primeras preguntas.' },
+      gancho: { pt: '“Alguém perguntou o preço, mas não sei onde! Mensagem? Comentário?” Tudo cai na Caixa de Entrada.', es: '“¡Alguien preguntó el precio, pero no sé dónde! ¿Mensaje? ¿Comentario?” Todo llega a Mensajes.' },
+      objetivo: { pt: 'Achar e responder mensagens e comentários do Instagram e do Facebook na Caixa de Entrada.', es: 'Encontrar y responder mensajes y comentarios de Instagram y de Facebook en Mensajes.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Onde vejo o que chega no Instagram e no Facebook? 🤔', es: '¿Dónde veo lo que llega a Instagram y a Facebook? 🤔' }],
+          ['rafa', { pt: 'Na Caixa de Entrada do Business Suite. Em cima ficam os canais: Todas as mensagens, Messenger, Instagram, WhatsApp, Comentários do Facebook e Comentários do Instagram.', es: 'En Mensajes de Business Suite. Arriba están los canales: Todos los mensajes, Messenger, Instagram, WhatsApp, Comentarios de Facebook y Comentarios de Instagram.' }],
+          ['marina', { pt: 'E se eu tiver muitas conversas?', es: '¿Y si tengo muchas conversaciones?' }],
+          ['rafa', { pt: 'Use os filtros: Não lidas, Prioridade e Respostas a anúncios. Mensagem direta e comentário são canais diferentes: quem comenta no post não aparece como mensagem.', es: 'Usa los filtros: No leídos, Prioridad y Respuestas de anuncios. Mensaje directo y comentario son canales distintos: quien comenta en la publicación no aparece como mensaje.' }],
+          ['pixel', { pt: 'No topo também há Automações, Criar anúncio de mensagens e o seu Status de disponibilidade (“Disponível”).', es: 'Arriba también hay Automatizaciones, Crear anuncio de mensajes y tu Estado de disponibilidad (“Disponible”).' }]
+        ],
+        pontos: [
+          { pt: '<b>Canais:</b> mensagens (Messenger, Instagram, WhatsApp) e comentários (Facebook e Instagram) em abas separadas.', es: '<b>Canales:</b> mensajes (Messenger, Instagram, WhatsApp) y comentarios (Facebook e Instagram) en pestañas separadas.' },
+          { pt: '<b>Filtros:</b> Não lidas, Prioridade, Respostas a anúncios.', es: '<b>Filtros:</b> No leídos, Prioridad, Respuestas de anuncios.' },
+          { pt: '<b>Responder rápido</b> e no canal certo.', es: '<b>Responder rápido</b> y en el canal correcto.' }
+        ],
+        notas: { pt: 'Caixa de Entrada vista de verdade em 14–16/10/2026 em português e espanhol: canais, filtros e botões do topo. A conta de aula não tem conversas, então as conversas do simulador são de exemplo e a tela de uma conversa aberta (campo de resposta) foi montada pela documentação (a conferir).', es: 'Mensajes vistos de verdad el 14–16/10/2026 en portugués y español: canales, filtros y botones de arriba. La cuenta de práctica no tiene conversaciones, así que las conversaciones del simulador son de ejemplo y la pantalla de una conversación abierta (campo de respuesta) se armó con la documentación (por confirmar).' }
+      },
+      ferramenta: 'canal-certo',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva pela Caixa de Entrada: canais, uma conversa do Instagram (exemplo), um comentário e o filtro Não lidas.', es: 'En el simulador, el Pixel te lleva por Mensajes: canales, una conversación de Instagram (ejemplo), un comentario y el filtro No leídos.' },
+        tour: 'responder-mensagens', pagina: 'meta-suite.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Uma cliente disse que comentou no meu post perguntando o preço e eu não vi nada na caixa de mensagens! 😤', es: '¡Una clienta dijo que comentó en mi publicación preguntando el precio y no vi nada en la bandeja de mensajes! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Comentário não chega como mensagem: fica em outro canal. Abra a Caixa de Entrada e clique em Comentários do Instagram (ou do Facebook, se foi lá). Vamos achar o comentário e responder.”', es: '“El comentario no llega como mensaje: queda en otro canal. Abre Mensajes y haz clic en Comentarios de Instagram (o de Facebook, si fue ahí). Busquemos el comentario y respondámoslo.”' }, fb: { pt: 'Isso! Mensagem e comentário são canais diferentes.', es: '¡Eso! Mensaje y comentario son canales distintos.' } },
+          { certa: false, txt: { pt: '“A cliente deve ter errado, comentários não chegam.”', es: '“La clienta debe haberse equivocado, los comentarios no llegan.”' }, fb: { pt: 'Chegam, mas num canal próprio.', es: 'Llegan, pero en un canal propio.' } },
+          { certa: false, txt: { pt: '“Peça para ela mandar mensagem de novo.”', es: '“Pídele que mande mensaje de nuevo.”' }, fb: { pt: 'Primeiro olhe o canal de comentários: o recado já está lá.', es: 'Primero mira el canal de comentarios: el mensaje ya está ahí.' } },
+          { certa: false, txt: { pt: '“Aguarde: comentários demoram a aparecer.”', es: '“Espera: los comentarios tardan en aparecer.”' }, fb: { pt: 'Não é demora: é o canal certo a abrir.', es: 'No es demora: es el canal correcto que hay que abrir.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Foi mensagem direta ou comentário em um post?', es: '¿Fue mensaje directo o comentario en una publicación?' },
+          { pt: 'Em qual rede (Instagram, Facebook, Messenger)?', es: '¿En qué red (Instagram, Facebook, Messenger)?' }],
+        conferir: [{ pt: 'Caixa de Entrada › canal certo (mensagens × comentários).', es: 'Mensajes › canal correcto (mensajes × comentarios).' },
+          { pt: 'Filtro Não lidas.', es: 'Filtro No leídos.' }],
+        frase: { pt: 'Mensagens diretas e comentários ficam em canais diferentes da Caixa de Entrada. Vamos abrir o canal certo e filtrar por Não lidas.', es: 'Los mensajes directos y los comentarios están en canales distintos de Mensajes. Abramos el canal correcto y filtremos por No leídos.' },
+        passos: [{ pt: 'Abra a Caixa de Entrada e escolha o canal.', es: 'Abre Mensajes y elige el canal.' },
+          { pt: 'Use o filtro Não lidas e responda.', es: 'Usa el filtro No leídos y responde.' }],
+        encaminhar: { pt: 'Se um canal (como o WhatsApp) não está conectado, confirme o que a tela mostra e siga a Central de Ajuda da Meta.', es: 'Si un canal (como WhatsApp) no está conectado, confirma lo que muestra la pantalla y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '09', min: 7, status: 'pronta',
+      titulo: { pt: 'Insights do Instagram: ler os números', es: 'Estadísticas de Instagram: leer los números' },
+      antes: { pt: 'A Marina já posta, responde e anuncia. Agora quer saber se está funcionando.', es: 'Marina ya publica, responde y anuncia. Ahora quiere saber si está funcionando.' },
+      gancho: { pt: '“Os números do Instagram estão tudo zero! Está quebrado?” Antes de se preocupar, vamos aprender a ler os Insights. Depois, as Regras automatizadas.', es: '“¡Los números de Instagram están todos en cero! ¿Está roto?” Antes de preocuparte, vamos a aprender a leer las Estadísticas. Después, las Reglas automáticas.' },
+      objetivo: { pt: 'Ler os Insights do Instagram e do Facebook, trocar de entidade e entender zeros e a aba Público.', es: 'Leer las Estadísticas de Instagram y de Facebook, cambiar de entidad y entender los ceros y la pestaña Público.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Entrei em Insights e vi números do Facebook. E o Instagram? 🤔', es: 'Entré en Estadísticas y vi números de Facebook. ¿Y Instagram? 🤔' }],
+          ['rafa', { pt: 'Em cima tem o Seletor de entidade: Facebook ou Instagram. Os números são separados. O período padrão é Últimos 28 dias.', es: 'Arriba está el Selector de entidad: Facebook o Instagram. Los números son separados. El período predeterminado es Últimos 28 días.' }],
+          ['marina', { pt: 'Que cartões eu vejo?', es: '¿Qué tarjetas veo?' }],
+          ['rafa', { pt: 'Na aba Resultados: Visualizações, Visualizadores, Interações com o conteúdo e Cliques no link (no Facebook também Visitas e Seguidores). Cada um tem o botão Exportar.', es: 'En la pestaña Resultados: Visualizaciones, Espectadores, Interacciones con el contenido y Clics en el enlace (en Facebook también Visitas y Seguidores). Cada una tiene el botón Exportar.' }],
+          ['pixel', { pt: 'E na aba Público do Instagram a tela explica: só dá para saber mais sobre o público quando a conta tem pelo menos 100 seguidores.', es: 'Y en la pestaña Público de Instagram la pantalla explica: solo se puede saber más sobre el público cuando la cuenta tiene al menos 100 seguidores.' }]
+        ],
+        pontos: [
+          { pt: '<b>Seletor de entidade:</b> Facebook e Instagram têm números separados.', es: '<b>Selector de entidad:</b> Facebook e Instagram tienen números separados.' },
+          { pt: '<b>Visualizações × Visualizadores:</b> vezes que foi visto × pessoas diferentes.', es: '<b>Visualizaciones × Espectadores:</b> veces que se vio × personas distintas.' },
+          { pt: '<b>Zero:</b> confira o período e se houve atividade. <b>Público:</b> só com 100 seguidores.', es: '<b>Cero:</b> revisa el período y si hubo actividad. <b>Público:</b> solo con 100 seguidores.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 15–16/10/2026 em português e espanhol (Insights › Resultados com o seletor de entidade; no Instagram os cartões estavam zerados e a aba Público mostrava o aviso dos 100 seguidores). Os números do Facebook no simulador são os da conta de aula. As demais abas (Visão geral, Plano, Mensagens) não foram abertas (a conferir).', es: 'Pantallas vistas de verdad el 15–16/10/2026 en portugués y español (Estadísticas › Resultados con el selector de entidad; en Instagram las tarjetas estaban en cero y la pestaña Público mostraba el aviso de los 100 seguidores). Los números de Facebook en el simulador son los de la cuenta de práctica. Las demás pestañas (Resumen, Plan, Mensajes) no se abrieron (por confirmar).' }
+      },
+      ferramenta: 'ler-numero',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te leva pelos Insights: cartões do Facebook, troca para o Instagram, zeros e a aba Público.', es: 'En el simulador, el Pixel te lleva por las Estadísticas: tarjetas de Facebook, cambio a Instagram, ceros y la pestaña Público.' },
+        tour: 'ler-insights', pagina: 'meta-suite.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Minha conta do Instagram tem só 40 seguidores e a aba Público está vazia. Está com defeito? 😟', es: '¡Mi cuenta de Instagram tiene solo 40 seguidores y la pestaña Público está vacía! ¿Tiene un defecto? 😟' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Não está com defeito: a própria tela explica que os dados de público do Instagram só aparecem quando a conta tem pelo menos 100 seguidores. Quando chegar lá, eles aparecem.”', es: '“No tiene un defecto: la propia pantalla explica que los datos de público de Instagram solo aparecen cuando la cuenta tiene al menos 100 seguidores. Cuando llegues ahí, aparecen.”' }, fb: { pt: 'Isso! Citou a regra que a tela mostra.', es: '¡Eso! Citaste la regla que muestra la pantalla.' } },
+          { certa: false, txt: { pt: '“Sua conta foi limitada pela Meta.”', es: '“Tu cuenta fue limitada por Meta.”' }, fb: { pt: 'Não há sinal disso: é o limite de 100 seguidores.', es: 'No hay señal de eso: es el límite de 100 seguidores.' } },
+          { certa: false, txt: { pt: '“Recrie a conta para os dados voltarem.”', es: '“Recrea la cuenta para que vuelvan los datos.”' }, fb: { pt: 'Exagero: perderia os seguidores.', es: 'Exagerado: perdería los seguidores.' } },
+          { certa: false, txt: { pt: '“Compre seguidores para chegar a 100.”', es: '“Compra seguidores para llegar a 100.”' }, fb: { pt: 'Nunca sugira isso: fere as regras e a confiança.', es: 'Nunca sugieras eso: va contra las reglas y la confianza.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual entidade está no seletor (Facebook ou Instagram) e qual período?', es: '¿Qué entidad está en el selector (Facebook o Instagram) y qué período?' },
+          { pt: 'Houve posts ou anúncios nesse período?', es: '¿Hubo publicaciones o anuncios en ese período?' },
+          { pt: 'Quantos seguidores a conta tem?', es: '¿Cuántos seguidores tiene la cuenta?' }],
+        conferir: [{ pt: 'Insights › Seletor de entidade e período.', es: 'Estadísticas › Selector de entidad y período.' },
+          { pt: 'Aba Público: aviso dos 100 seguidores.', es: 'Pestaña Público: aviso de los 100 seguidores.' }],
+        frase: { pt: 'Os números do Facebook e do Instagram são separados, e o período importa. Vamos conferir a entidade, o período e se houve atividade nele.', es: 'Los números de Facebook y de Instagram son separados, y el período importa. Revisemos la entidad, el período y si hubo actividad en él.' },
+        passos: [{ pt: 'Em Insights, escolha a entidade e o período.', es: 'En Estadísticas, elige la entidad y el período.' },
+          { pt: 'Na aba Público, leia o aviso da tela.', es: 'En la pestaña Público, lee el aviso de la pantalla.' }],
+        encaminhar: { pt: 'Se os números não batem com o que o cliente vê, confirme período e entidade e siga a Central de Ajuda da Meta.', es: 'Si los números no coinciden con lo que ve el cliente, confirma período y entidad y sigue el Centro de ayuda de Meta.' }
+      }
     }
   ],
   portfolio: [
