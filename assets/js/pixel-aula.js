@@ -77,7 +77,7 @@ function trUrl(nome,params,eid,custom){var q=['id='+PID,'ev='+encodeURIComponent
   return 'https://www.facebook.com/tr/?'+q.join('&')}
 function track(nome,params,opts){
   params=JSON.parse(JSON.stringify(params||{}));opts=opts||{};var custom=!!opts.custom;var nota=[];
-  if(nome==='Purchase'&&LAB.mocaBonita){registra({nome:nome,params:params,status:'perdido',motivo:'😍 Chegou uma moça bonita e o Pixel se distraiu: o Purchase NÃO foi disparado.',custom:custom});return}
+  if(nome==='Purchase'&&LAB.mocaBonita){registra({nome:nome,params:params,status:'perdido',motivo:'⛔ Laboratório: o acionador da compra falhou e o Purchase NÃO foi disparado.',custom:custom});return}
   if(nome==='Purchase'&&LAB.semPreco){delete params.value;delete params.currency;nota.push('💸 Laboratório: value e currency removidos.')}
   if(LAB.codigoErrado&&params.content_ids){params.content_ids=params.content_ids.map(function(id){var p=achaProduto(id);return p?p.titulo.toLowerCase():id});if(params.contents)params.contents.forEach(function(c){var p=achaProduto(c.id);if(p)c.id=p.titulo.toLowerCase()});nota.push('🏷️ Laboratório: códigos trocados pelo nome do produto.')}
   var eid=opts.eventID||idEvento(nome);var segurado=C.pedirConsentimento&&consent!=='grant';
@@ -117,7 +117,7 @@ var DICAS = {
   produtos:{t:'Lista de produtos',d:'Busque algo: dispara <b>Search</b>. Clique no coração ♥: dispara <b>AddToWishlist</b>.',ev:['PageView','Search','AddToWishlist']},
   produto:{t:'Página do produto',d:'Ao abrir, dispara <b>ViewContent</b> com o código do produto (content_ids). Nas camisetas, compare antes e depois de escolher o tamanho: <b>product_group</b> × <b>product</b>. O botão do carrinho dispara <b>AddToCart</b> no clique.',ev:['PageView','ViewContent','AddToCart','AddToWishlist']},
   carrinho:{t:'Carrinho',d:'Esta página só dispara PageView. O AddToCart já aconteceu lá no botão do produto: o evento vem da AÇÃO, não da página.',ev:['PageView']},
-  checkout:{t:'Checkout',d:'Ao abrir: <b>InitiateCheckout</b>. Ao escolher a forma de pagamento: <b>AddPaymentInfo</b>. Os dados do formulário alimentam a <b>correspondência avançada</b> (o “cartão fidelidade”), que o Pixel envia com hash.',ev:['PageView','InitiateCheckout','AddPaymentInfo']},
+  checkout:{t:'Checkout',d:'Ao abrir: <b>InitiateCheckout</b>. Ao escolher a forma de pagamento: <b>AddPaymentInfo</b>. Os dados do formulário alimentam a <b>correspondência avançada</b>, que o Pixel envia com hash.',ev:['PageView','InitiateCheckout','AddPaymentInfo']},
   obrigado:{t:'Página de obrigado',d:'Aqui dispara o <b>Purchase</b>, com value, currency, produtos e o nº do pedido como <b>eventID</b>. Recarregue a página: o site protege contra disparo duplicado (a não ser que o laboratório desligue a proteção).',ev:['PageView','Purchase']},
   orcamento:{t:'Orçamento',d:'Enviar o formulário dispara <b>Lead</b>: a pessoa deixou os dados para ser contatada.',ev:['PageView','Lead']},
   oficina:{t:'Oficina de pintura',d:'Agendar dispara <b>Schedule</b>. O botão de conversa dispara <b>Contact</b>.',ev:['PageView','Schedule','Contact']},
@@ -154,24 +154,25 @@ var ui = (function(){
       h='<div class="ma-dica"><span class="ma-tag big">Nesta página</span><h3>'+esc(d.t)+'</h3><p>'+d.d+'</p><h4>Eventos esperados aqui</h4><div class="ma-evs">'+d.ev.map(function(e){return '<span>'+esc(e)+'</span>'}).join('')+'</div>'+
         '<h4>Para conferir do lado da Meta</h4><ol class="ma-ol"><li>Portfólio da loja</li><li>Gerenciador de Eventos</li><li>Pixel da loja (confira o <b>ID</b>)</li><li>Aba <b>Testar eventos</b></li></ol><p class="ma-mut">Se os menus mudarem de lugar, procure por “testar eventos” / “test events”.</p></div>'}
     c.innerHTML=h;var lb=document.getElementById('maLimpaLog');if(lb)lb.onclick=function(){log=[];ssSet('log',[]);render()};wireLab()}
-  function lupa(){var st=!LIVE?['sim','Simulação','Configure o ID do Pixel em assets/js/config.js.']:BLOQ?['bad','Inativo','Alguém tapou os olhos do Pixel: ele foi bloqueado (laboratório).']:LAB.duplicado?['warn','Aviso','Código do Pixel duplicado: eventos em dobro.']:LAB.cadernoErrado?['warn','Aviso','O Pixel desta página não é o Pixel esperado da loja.']:['ok','Ativo','Pixel detectado e enviando eventos.'];
+  function lupa(){var st=!LIVE?['sim','Simulação','Configure o ID do Pixel em assets/js/config.js.']:BLOQ?['bad','Inativo','Pixel bloqueado no navegador (laboratório): nenhum evento sai.']:LAB.duplicado?['warn','Aviso','Código do Pixel duplicado: eventos em dobro.']:LAB.cadernoErrado?['warn','Aviso','O Pixel desta página não é o Pixel esperado da loja.']:['ok','Ativo','Pixel detectado e enviando eventos.'];
     var linhas=pageEvents.map(function(ev){var prob=[];if(ev.status==='perdido')prob.push('não disparou');if(ev.nome==='Purchase'&&ev.status!=='perdido'&&(ev.params.value==null||!ev.params.currency))prob.push('sem value/currency');
       (ev.params.content_ids||[]).forEach(function(id){if(!noCatalogo(id))prob.push('“'+id+'” não está no catálogo')});
       var cls=prob.length?(ev.status==='perdido'?'bad':'warn'):'ok';return '<div class="ma-lrow '+cls+'"><b>'+esc(ev.nome)+'</b><span>'+(prob.length?esc(prob.join(' · ')):'Ativo')+'</span></div>'}).join('');
     var cat=pageEvents.filter(function(e){return e.params&&e.params.content_ids}).map(function(e){return e.params.content_ids.map(function(id){return '<div class="ma-lrow '+(noCatalogo(id)?'ok':'bad')+'"><code>'+esc(id)+'</code><span>'+(noCatalogo(id)?'produto encontrado no catálogo':'não encontrado no catálogo')+'</span></div>'}).join('')}).join('');
-    var amH='';if(AM&&cliente){var n=normaliza(cliente);amH='<h4>Correspondência avançada (o “cartão fidelidade”)</h4>'+Object.keys(n).map(function(k){return '<div class="ma-lrow ok"><code>'+k+'</code><span title="'+esc(n[k])+'">'+(k==='country'||k==='external_id'?esc(n[k]):sha256(n[k]).slice(0,22)+'…')+'</span></div>'}).join('')+'<p class="ma-mut">O Pixel aplica o hash SHA-256 antes de enviar: a Meta nunca recebe o e-mail “às claras”.</p>'}
-    return '<p class="ma-intro">🔍 <b>A lupa do inspetor:</b> o que a extensão <b>Meta Ads Data Advisor</b> (antigo Pixel Helper) mostraria nesta página.</p>'+
+    var amH='';if(AM&&cliente){var n=normaliza(cliente);amH='<h4>Correspondência avançada</h4>'+Object.keys(n).map(function(k){return '<div class="ma-lrow ok"><code>'+k+'</code><span title="'+esc(n[k])+'">'+(k==='country'||k==='external_id'?esc(n[k]):sha256(n[k]).slice(0,22)+'…')+'</span></div>'}).join('')+'<p class="ma-mut">O Pixel aplica o hash SHA-256 antes de enviar: a Meta nunca recebe o e-mail “às claras”.</p>'}
+    return '<p class="ma-intro">🔍 <b>Lupa:</b> o que a extensão <b>Meta Ads Data Advisor</b> (antigo Pixel Helper) mostraria nesta página.</p>'+
       '<div class="ma-pixel"><div><b>Pixel '+esc(String(PID).replace(/^(\d{4})\d+(\d{4})$/,'$1…$2'))+'</b><span class="ma-st '+st[0]+'">'+st[1]+'</span></div><p class="ma-mut">'+st[2]+'</p></div>'+
       '<h4>Eventos desta página</h4>'+(linhas||'<p class="ma-mut">nenhum</p>')+(cat?'<h4>Catálogo</h4>'+cat:'')+amH}
-  var LABS=[['mocaBonita','😍','Chegou uma moça bonita e eu me distraí.','O Purchase não dispara (acionador falhou).'],
-    ['duplicado','👯','Anotei duas vezes, por via das dúvidas.','PageView em dobro: Pixel instalado duas vezes.'],
-    ['semPreco','💸','Anotei a compra, mas esqueci o preço.','Purchase sem value e currency.'],
-    ['codigoErrado','🏷️','Escrevi “caneca azul” em vez de CANECA_01.','content_ids não batem com o catálogo.'],
-    ['cadernoErrado','📓','Anotei no caderno errado.','Os eventos vão para outro ID de Pixel.'],
-    ['olhosTapados','🙈','Alguém tapou meus olhos.','Bloqueador: nada sai do navegador.'],
-    ['recarregaDuplica','🔁','Anotei a compra de novo quando recarregaram.','A página de obrigado dispara o Purchase a cada recarga.']];
+  // falhas do laboratório: nomes técnicos, sem analogias (pedido do André, 15/10)
+  var LABS=[['mocaBonita','⛔','Purchase não dispara','O pedido é criado, mas o acionador da compra falha e o evento Purchase não é enviado.'],
+    ['duplicado','👯','Pixel instalado duas vezes','O código-base está duas vezes na página: cada PageView é enviado em dobro.'],
+    ['semPreco','💸','Purchase sem value e currency','A compra é enviada sem os parâmetros de valor e moeda.'],
+    ['codigoErrado','🏷️','content_ids diferentes do catálogo','Os eventos usam o nome do produto (ex.: “caneca azul”) em vez do ID do catálogo (CANECA_01).'],
+    ['cadernoErrado','🆔','ID de Pixel errado','O código usa outro ID de Pixel: os eventos vão para um Pixel diferente do da loja.'],
+    ['olhosTapados','🚫','Pixel bloqueado no navegador','Um bloqueador impede o carregamento do Pixel: nenhum evento sai do navegador.'],
+    ['recarregaDuplica','🔁','Purchase repetido ao recarregar','A página de confirmação envia o Purchase de novo a cada recarga.']];
   function labHTML(){return '<p class="ma-intro">🧪 <b>Laboratório de falhas.</b> Ligue uma desculpa do Pixel, mostre o problema na tela (Câmera, Rede, Lupa) e no Gerenciador de Eventos, e depois desligue. <b>Algumas valem a partir da próxima página aberta.</b></p>'+
-    LABS.map(function(l){return '<label class="ma-lab '+(LAB[l[0]]?'on':'')+'"><input type="checkbox" data-lab="'+l[0]+'"'+(LAB[l[0]]?' checked':'')+'><span class="ma-sw"></span><span><b>'+l[1]+' “'+esc(l[2])+'”</b><small>Na vida real: '+esc(l[3])+'</small></span></label>'}).join('')+
+    LABS.map(function(l){return '<label class="ma-lab '+(LAB[l[0]]?'on':'')+'"><input type="checkbox" data-lab="'+l[0]+'"'+(LAB[l[0]]?' checked':'')+'><span class="ma-sw"></span><span><b>'+l[1]+' '+esc(l[2])+'</b><small>'+esc(l[3])+'</small></span></label>'}).join('')+
     '<h4>Configurações da aula</h4><label class="ma-lab '+(AM?'on':'')+'"><input type="checkbox" data-am'+(AM?' checked':'')+'><span class="ma-sw"></span><span><b>💳 Correspondência avançada</b><small>Envia os dados de teste do checkout (com hash) no init do Pixel.</small></span></label>'+
     '<div class="ma-row"><button class="ma-btn ghost" id="maCookies">Mostrar o banner de cookies de novo</button><button class="ma-btn ghost" id="maReset">Desligar todo o laboratório</button><button class="ma-btn ghost" id="maZerar">Zerar carrinho e pedidos</button></div>'}
   function wireLab(){$$('[data-lab]').forEach(function(i){i.onchange=function(){LAB[i.getAttribute('data-lab')]=i.checked;lsSet('lab',LAB);toast('🧪 Laboratório '+(i.checked?'ligado':'desligado')+'. Recarregue ou navegue para ver o efeito.');render();faixa()}});

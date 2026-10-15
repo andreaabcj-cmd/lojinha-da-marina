@@ -102,6 +102,8 @@ Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do 
 - Destaque dentro de janela/painel: a janela fica inteira visível; só o fundo escurece.
 
 ## Pendências de revisão
+- **Espanhol em TUDO (André, 15/10 — “muito trabalho, fazemos depois”):** hoje só plataforma, aulas, ferramentas e balões dos tutoriais têm ES. Faltam: loja (textos e páginas), F12 simulado, avisos/faixa/cookies, extensão simulada e as telas da Meta nos simuladores. As telas da Meta precisam dos textos REAIS em espanhol (trocar o idioma do Facebook por um tempo e anotar) — não inventar.
+- **Simulador do Gerenciador de Eventos, “Conectar uma nova fonte de dados” (André, 15/10: “no futuro ter tudo”):** hoje só Web (Pixel) funciona; App, Offline, CRM e Mensagens ficam para quando forem conferidos na tela real.
 - **Tutorial guiado do F12 simulado (pedido do André, 14/10, para mais tarde):** separado, detalhe por detalhe, porque é mais técnico — cada aba (📹 Câmera, 🌐 Rede, 🔍 Lupa, 📄 Código, 🧪 Lab, 💡 Dica), o que cada coisa mostra e quando usar. Entra no Laboratório › Como fazer… (seção técnica).
 - [ ] **(depois)** Laboratório: todos os tutoriais guiados acessíveis como "Como fazer X" (criar o Pixel, convidar pessoa, criar conta de anúncios…), e a parte da loja/simulação da plataforma que estamos reconstruindo. O Laboratório também guiado.
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).

@@ -247,3 +247,17 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .pf-insta{max-width:380px;margin:0 auto}
 .pf-abas{display:flex;gap:6px;margin:14px 0 10px;border-bottom:1px solid var(--line)}.pf-abas button{border:0;background:none;padding:8px 10px;font:inherit;font-weight:600;color:var(--muted);border-radius:8px 8px 0 0;cursor:pointer}.pf-abas button.on{background:var(--blue-l);color:var(--ink)}.pf-abas button:disabled{cursor:default}
 .pf-par{font-size:30px;text-align:center;margin:6px 0}
+
+/* Business Suite: tela inicial com o seletor de portfólios aberto (sem portfólio escolhido) */
+.bs{position:fixed;top:32px;left:0;right:0;bottom:0;display:grid;grid-template-columns:64px 1fr;background:#F2F5FA}
+.bs-lado{display:flex;flex-direction:column;align-items:center;gap:18px;padding:16px 0;background:#fff;border-right:2px solid var(--ink)}.bs-lado span{opacity:.55;font-size:20px}.bs-logo{font-size:26px;color:var(--blue)}
+.bs-corpo{position:relative;overflow:auto;padding:0 24px 24px}
+.bs-topo{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}.bs-marca{font-size:18px}.bs-topo .sim-avatar{margin-left:auto}
+.bs-seletor{padding:8px 14px;border:2px solid var(--ink);border-radius:10px;background:#fff;font:inherit;font-weight:700}
+.bs-drop{position:absolute;top:64px;left:24px;z-index:5;width:min(420px,calc(100% - 48px));padding:14px;background:#fff;border:2px solid var(--ink);border-radius:var(--r);box-shadow:4px 4px 0 var(--ink)}
+.bs-drop h3{margin:14px 0 6px;font-size:14px}.bs-busca{width:100%;padding:9px 12px;border:2px solid var(--line);border-radius:10px;font:inherit}
+.bs-criar{width:100%;margin-top:14px;justify-content:center}
+.bs-fundo{opacity:.45;padding-top:24px;pointer-events:none}.bs-fundo h2{margin:0 0 14px}
+.bs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 14px}.bs-cards.dois{grid-template-columns:2fr 1fr}.bs-cards i{height:150px;border-radius:14px;background:#fff;border:2px solid var(--line)}
+.bs .conferido{position:relative;margin-top:8px}
+@media (max-width:700px){.bs{grid-template-columns:1fr}.bs-lado{display:none}.bs-cards{grid-template-columns:1fr}}

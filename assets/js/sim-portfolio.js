@@ -67,11 +67,17 @@
 
   /* ---------- telas ---------- */
   var TELAS = {
-    inicio: function () {
-      var h = '<div class="cartao pf-lista"><h2>Portfólios empresariais <span class="i">ⓘ</span></h2>' +
-        (S.pfs.length ? S.pfs.map(function (p) { var n = p.paginas.length + p.contas.length; return '<button class="pf-linha" data-pf="' + p.id + '"><span class="L">L</span><span><b>' + esc(p.nome) + '</b><small>' + n + (n === 1 ? ' ativo de negócios' : ' ativos de negócios') + '</small></span></button>' }).join('') : '<p class="miudo">Você ainda não tem um portfólio empresarial.</p>') +
-        '<button class="btn sec" style="width:100%;margin-top:10px" data-acao="criar" data-t="criar-pf">Criar um portfólio empresarial</button></div>';
-      return esqueleto(h, CONF.criar);
+    inicio: function () {   // como no Business Suite real (print de 13/10): o seletor de portfólios aberto, no topo à esquerda
+      var lista = S.pfs.length ? S.pfs.map(function (p) { var n = p.paginas.length + p.contas.length; return '<button class="pf-linha" data-pf="' + p.id + '"><span class="L">L</span><span><b>' + esc(p.nome) + '</b><small>' + n + (n === 1 ? ' ativo de negócios' : ' ativos de negócios') + '</small></span></button>' }).join('') : '<p class="miudo">Você ainda não tem um portfólio empresarial.</p>';
+      return '<div class="sim-faixa">🧪 Simulador de treinamento do Meta Business Suite · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
+        '<div class="bs"><aside class="bs-lado"><b class="bs-logo">∞</b>' + ['🏠', '🔔', '✉️', '📝', '📣', '📊', '⚙️'].map(function (x) { return '<span>' + x + '</span>' }).join('') + '</aside>' +
+        '<div class="bs-corpo"><header class="bs-topo"><span class="bs-marca"><b>Meta</b> Business Suite</span><button class="bs-seletor">' + (S.pfs.length ? 'Escolher um portfólio' : 'Lojinha da Marina') + ' ▾</button><span class="sim-avatar">M</span></header>' +
+        '<div class="bs-drop pf-lista" data-t="seletor"><input class="bs-busca" placeholder="Procurar um ativo de negócios" aria-label="Procurar"/>' +
+        '<h3>Portfólios empresariais <span class="i">ⓘ</span></h3>' + lista +
+        '<h3>Outros ativos <span class="i">ⓘ</span></h3><p class="miudo">Nenhum ativo fora de um portfólio.</p>' +
+        '<button class="btn sec bs-criar" data-acao="criar" data-t="criar-pf">Criar um portfólio empresarial</button></div>' +
+        '<div class="bs-fundo"><h2>Página inicial</h2><div class="bs-cards"><i></i><i></i><i></i></div><div class="bs-cards dois"><i></i><i></i></div></div>' +
+        '<p class="conferido">✓ Seletor de portfólios conferido com a tela real em ' + CONF.criar + '</p></div></div>';
     },
     info: function () {
       var p = pf();

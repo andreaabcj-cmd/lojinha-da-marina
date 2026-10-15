@@ -12,7 +12,7 @@
 window.LOJA_CONFIG = {
   pixelId: '1779103133372149',   // "Pixel da Mari" (criado em 14/10/2026)
 
-  // Um segundo ID, usado só no laboratório "Anotei no caderno errado".
+  // Um segundo ID, usado só no laboratório "ID de Pixel errado".
   // Pode deixar assim; se quiser mostrar o erro de verdade, crie um 2º Pixel de teste.
   pixelIdErrado: '000000000000000',
 
