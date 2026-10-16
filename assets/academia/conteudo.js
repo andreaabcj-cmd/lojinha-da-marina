@@ -25,6 +25,7 @@ window.MODULOS = [
   { id: 'entrega', fase: 3, status: 'construcao', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'A fase de aprendizado, as edições significativas e o que fazer quando o anúncio não veicula.', es: 'La fase de aprendizaje, las ediciones significativas y qué hacer cuando el anuncio no entrega.' } },
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
   { id: 'pixel-avancado', fase: 3, status: 'construcao', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
+  { id: 'diagnostico', fase: 3, status: 'construcao', icone: '🩺', titulo: { pt: 'Diagnóstico de casos', es: 'Diagnóstico de casos' }, resumo: { pt: 'Investigar casos fora da rota padrão: Purchase que não chega, duplicado ou com valor errado, colar o código do Pixel, plataforma conectada que não envia e queda de eventos.', es: 'Investigar casos fuera de la ruta estándar: Purchase que no llega, duplicado o con valor incorrecto, pegar el código del píxel, plataforma conectada que no envía y caída de eventos.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
@@ -46,7 +47,7 @@ window.MODULOS = [
 window.TRILHAS = [
   { id: 'foco', icone: '🎯', nome: { pt: 'Trilha Foco', es: 'Ruta Foco' }, sub: { pt: 'Anúncios, medição e comércio', es: 'Anuncios, medición y comercio' },
     resumo: { pt: 'A ordem de estudo de quem atende anúncios, medição e comércio. Foca no que você resolve e, quando um caso é de outra área, mostra só uma linha de encaminhamento.', es: 'El orden de estudio de quien atiende anuncios, medición y comercio. Se centra en lo que tú resuelves y, cuando un caso es de otra área, muestra solo una línea de derivación.' },
-    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
+    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'diagnostico', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
   { id: 'completa', icone: '🧭', nome: { pt: 'Trilha Completa', es: 'Ruta Completa' }, sub: { pt: 'Tudo do Foco e mais', es: 'Todo el Foco y más' },
     resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
     modulos: null, extras: ['pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
@@ -4818,6 +4819,226 @@ window.AULAS = {
           frase: L('Excluir o portfólio é definitivo. Se a ideia é parar de anunciar, desativamos as contas de anúncios. Se quiser excluir mesmo, vamos resolver as pendências uma a uma.', 'Eliminar el portafolio es definitivo. Si la idea es dejar de anunciar, desactivamos las cuentas publicitarias. Si realmente quieres eliminar, resolvamos los pendientes uno a uno.'),
           passos: [L('Confirme a intenção do cliente.', 'Confirma la intención del cliente.'), L('Resolva cada bloqueio e deixe o cliente executar.', 'Resuelve cada bloqueo y deja que el cliente ejecute.')],
           encaminhar: L('Saldo devedor pode levar até duas semanas para processar: oriente o cliente a quitar e aguardar.', 'El saldo deudor puede tardar hasta dos semanas en procesarse: orienta al cliente a pagarlo y esperar.')
+        }
+      }
+    ];
+  })(),
+  diagnostico: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var PG = 'meta-diagnostico.html?zerar=1';
+    var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Como configurar e instalar o Pixel da Meta”, “Boas práticas para a configuração de eventos padrão com o Pixel da Meta”, “Como definir o valor e a moeda dos seus eventos padrão do Pixel da Meta”, “Como solucionar mensagens de erro e aviso do Pixel da Meta no Gerenciador de Eventos da Meta” e “O que fazer se o Pixel da Meta registrar menos eventos do site”. A conta de aula não tem conjunto de dados, então as telas reais de Eventos de teste e Diagnóstico não foram vistas: os clientes, os relatos, as fontes de cada caso e o comportamento exato de cada plataforma parceira são do treino (a conferir).', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Cómo configurar e instalar el píxel de Meta”, “Prácticas recomendadas para la configuración de eventos estándar con el píxel de Meta”, “Cómo definir el valor y la moneda de tus eventos estándar del píxel de Meta”, “Cómo solucionar mensajes de error y aviso del píxel de Meta en el Administrador de eventos de Meta” y “Qué hacer si el píxel de Meta registra menos eventos del sitio”. La cuenta de clase no tiene conjunto de datos, así que las pantallas reales de Probar eventos y Diagnóstico no se vieron: los clientes, los relatos, las fuentes de cada caso y el comportamiento exacto de cada plataforma socia son del entrenamiento (por confirmar).');
+    var FERR = L('Gerenciador de Eventos › seu Pixel › Visão geral, Eventos de teste e Diagnóstico; a plataforma do cliente.', 'Administrador de eventos › tu píxel › Descripción general, Probar eventos y Diagnóstico; la plataforma del cliente.');
+    return [
+      {
+        id: '01', min: 8, status: 'pronta',
+        titulo: L('Como investigar um caso', 'Cómo investigar un caso'),
+        antes: L('A Marina ouviu de uma cliente: “Vendo todo dia, mas o Gerenciador não mostra nenhuma compra”.', 'Marina oyó de una clienta: “Vendo todos los días, pero el Administrador no muestra ninguna compra”.'),
+        gancho: L('Um sintoma, várias causas possíveis. O segredo é olhar as fontes na ordem certa.', 'Un síntoma, varias causas posibles. El secreto es mirar las fuentes en el orden correcto.'),
+        objetivo: L('Aplicar um método: relato, fontes (Eventos de teste, Diagnóstico, código, plataforma), causa, solução, teste.', 'Aplicar un método: relato, fuentes (Probar eventos, Diagnóstico, código, plataforma), causa, solución, prueba.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Por onde eu começo quando o Purchase não chega? 😵', '¿Por dónde empiezo cuando el Purchase no llega? 😵')],
+            ['rafa', L('Pelo método, não pelo palpite. Primeiro o relato: o que o cliente vê e o que ele esperava. Depois as fontes: Eventos de teste (o que chega agora), Diagnóstico (erros e avisos), o código da página e a plataforma que ele usa.', 'Por el método, no por la corazonada. Primero el relato: qué ve el cliente y qué esperaba. Después las fuentes: Probar eventos (qué llega ahora), Diagnóstico (errores y avisos), el código de la página y la plataforma que usa.')],
+            ['marina', L('E se só o Purchase falta?', '¿Y si solo falta el Purchase?')],
+            ['rafa', L('Se PageView, ViewContent e AddToCart chegam, o pixel está vivo. O problema está só no Purchase: o código do evento ausente, na página errada, com nome errado, ou a compra termina fora do caminho.', 'Si PageView, ViewContent y AddToCart llegan, el píxel está vivo. El problema está solo en el Purchase: el código del evento ausente, en la página equivocada, con nombre equivocado, o la compra termina fuera del camino.')],
+            ['pixel', L('Dica: depois de achar a causa, diga ao cliente o que fazer em palavras simples e peça uma compra de teste para confirmar em Eventos de teste. Se for código, a correção é do desenvolvedor dele.', 'Consejo: después de hallar la causa, dile al cliente qué hacer en palabras simples y pide una compra de prueba para confirmar en Probar eventos. Si es código, la corrección es de su desarrollador.')]
+          ],
+          pontos: [
+            L('<b>Relato primeiro,</b> depois as fontes: Eventos de teste, Diagnóstico, código, plataforma.', '<b>Relato primero,</b> después las fuentes: Probar eventos, Diagnóstico, código, plataforma.'),
+            L('<b>Quais eventos chegam</b> dizem onde está o problema (só o Purchase falta = problema no Purchase).', '<b>Qué eventos llegan</b> dice dónde está el problema (solo falta el Purchase = problema en el Purchase).'),
+            L('<b>Fechar com teste:</b> uma compra de verdade e conferir em Eventos de teste.', '<b>Cerrar con prueba:</b> una compra de verdad y confirmar en Probar eventos.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'met-dg',
+        praticar: { texto: L('No simulador, o Pixel te guia por um caso real de Purchase que não chega: pistas, causa e solução.', 'En el simulador, el Pixel te guía por un caso de Purchase que no llega: pistas, causa y solución.'), tour: 'investigar-purchase', pagina: PG },
+        atender: {
+          cena: L('Meu Pixel não funciona! Vendo todo dia e a Meta não mostra nada. Quero que vocês arrumem agora! 😠', '¡Mi píxel no funciona! Vendo todos los días y Meta no muestra nada. ¡Quiero que lo arreglen ya! 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Vamos descobrir onde está o problema. Vou ver quais eventos chegam e o que o Diagnóstico diz. Se só a compra falta, provavelmente o código do evento de compra precisa de ajuste, e aí a correção é do seu desenvolvedor. Depois fazemos uma compra de teste para confirmar.”', '“Vamos a descubrir dónde está el problema. Voy a ver qué eventos llegan y qué dice el Diagnóstico. Si solo falta la compra, probablemente el código del evento de compra necesita un ajuste, y entonces la corrección es de tu desarrollador. Después hacemos una compra de prueba para confirmar.”'), fb: L('Isso! Método, expectativa e quem corrige.', '¡Eso! Método, expectativa y quién corrige.') },
+            { certa: false, txt: L('“Crie um pixel novo.”', '“Crea un píxel nuevo.”'), fb: L('Antes de trocar qualquer coisa, descubra a causa.', 'Antes de cambiar nada, descubre la causa.') },
+            { certa: false, txt: L('“É problema da Meta, aguarde.”', '“Es problema de Meta, espera.”'), fb: L('Quase sempre é configuração do lado do cliente; investigue.', 'Casi siempre es configuración del lado del cliente; investiga.') },
+            { certa: false, txt: L('“Me passe a senha do site para eu mexer.”', '“Pásame la contraseña del sitio para que yo lo toque.”'), fb: L('Nunca peça senha: oriente o cliente ou o desenvolvedor.', 'Nunca pidas contraseña: orienta al cliente o a su desarrollador.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Quais eventos chegam em Eventos de teste (PageView, ViewContent, AddToCart, Purchase)?', '¿Qué eventos llegan en Probar eventos (PageView, ViewContent, AddToCart, Purchase)?'), L('O Diagnóstico mostra algum erro ou aviso?', '¿El Diagnóstico muestra algún error o aviso?'), L('O site usa uma plataforma de parceiro ou código colado à mão?', '¿El sitio usa una plataforma socia o código pegado a mano?')],
+          conferir: [FERR],
+          frase: L('Vamos olhar o que chega, o que o Diagnóstico diz e como está instalado. Quando acharmos a causa, eu te explico o ajuste e fazemos uma compra de teste para confirmar.', 'Veamos qué llega, qué dice el Diagnóstico y cómo está instalado. Cuando hallemos la causa, te explico el ajuste y hacemos una compra de prueba para confirmar.'),
+          passos: [L('Peça o relato e uma compra de teste.', 'Pide el relato y una compra de prueba.'), L('Abra Eventos de teste e o Diagnóstico.', 'Abre Probar eventos y el Diagnóstico.')],
+          encaminhar: L('Se a correção for no código do site, oriente o cliente a passar o ajuste ao desenvolvedor dele.', 'Si la corrección es en el código del sitio, orienta al cliente a pasar el ajuste a su desarrollador.')
+        }
+      },
+      {
+        id: '02', min: 9, status: 'pronta',
+        titulo: L('Colar o código do Pixel à mão', 'Pegar el código del píxel a mano'),
+        antes: L('O site da cliente não tem integração pronta: o código vai na mão.', 'El sitio de la clienta no tiene integración lista: el código va a mano.'),
+        gancho: L('Código base em todas as páginas, código do evento só onde a ação acontece.', 'Código base en todas las páginas, código del evento solo donde ocurre la acción.'),
+        objetivo: L('Saber onde colar o código base e o do Purchase, com valor e moeda, e como orientar o cliente e o desenvolvedor.', 'Saber dónde pegar el código base y el del Purchase, con valor y moneda, y cómo orientar al cliente y al desarrollador.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Como se coloca o Pixel num site sem integração? 🤔', '¿Cómo se coloca el píxel en un sitio sin integración? 🤔')],
+            ['rafa', L('São duas etapas: criar o pixel no Gerenciador de Eventos e colocar o código base no site; depois configurar os eventos, como a compra. Quando há integração de parceiro, dá para fazer por ela; senão, o código vai à mão e talvez precise de um desenvolvedor.', 'Son dos etapas: crear el píxel en el Administrador de eventos y poner el código base en el sitio; después configurar los eventos, como la compra. Cuando hay integración de socio, se puede hacer por ella; si no, el código va a mano y quizá haga falta un desarrollador.')],
+            ['marina', L('Onde exatamente vai o código?', '¿Dónde exactamente va el código?')],
+            ['rafa', L('O código base vai na seção head de cada página; ele já envia o PageView. O código do evento (por exemplo, Purchase) vai só na página que indica a ação, como o pedido concluído, depois do código base. No Purchase, defina o valor e a moeda: value com número decimal e ponto, e currency com 3 letras, como BRL.', 'El código base va en la sección head de cada página; ya envía el PageView. El código del evento (por ejemplo, Purchase) va solo en la página que indica la acción, como el pedido completado, después del código base. En el Purchase, define el valor y la moneda: value con número decimal y punto, y currency con 3 letras, como BRL.')],
+            ['pixel', L('Cuidado: os nomes dos eventos diferenciam maiúsculas e minúsculas. fbq(\'track\', \'purchase\') cria um evento personalizado chamado purchase, que não é o Purchase padrão. E o único código da Meta no cabeçalho deve ser o código base.', 'Cuidado: los nombres de los eventos distinguen mayúsculas y minúsculas. fbq(\'track\', \'purchase\') crea un evento personalizado llamado purchase, que no es el Purchase estándar. Y el único código de Meta en el encabezado debe ser el código base.')]
+          ],
+          pontos: [
+            L('<b>Código base:</b> head de todas as páginas (envia o PageView).', '<b>Código base:</b> head de todas las páginas (envía el PageView).'),
+            L('<b>Evento Purchase:</b> só na página de pedido concluído, com value (ponto decimal) e currency (3 letras).', '<b>Evento Purchase:</b> solo en la página de pedido completado, con value (punto decimal) y currency (3 letras).'),
+            L('<b>Maiúsculas importam:</b> Purchase, não purchase. Teste sempre em Eventos de teste.', '<b>Las mayúsculas importan:</b> Purchase, no purchase. Prueba siempre en Probar eventos.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'cod-dg',
+        praticar: { texto: L('No simulador, o Pixel te guia por colar o ID, o lugar do código base e o Purchase com valor e moeda.', 'En el simulador, el Pixel te guía por pegar el ID, el lugar del código base y el Purchase con valor y moneda.'), tour: 'colar-codigo', pagina: PG },
+        atender: {
+          cena: L('Meu desenvolvedor colou o código do Pixel só na página inicial. Está certo? E tenho que colar o Purchase em todas as páginas? 🤷', 'Mi desarrollador pegó el código del píxel solo en la página de inicio. ¿Está bien? ¿Y tengo que pegar el Purchase en todas las páginas? 🤷'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“O código base precisa estar na seção head de todas as páginas, não só na inicial. Já o código do Purchase vai só na página que indica a compra, o pedido concluído, com o valor e a moeda. Peça ao seu desenvolvedor para ajustar e depois testamos com uma compra.”', '“El código base debe estar en la sección head de todas las páginas, no solo en la de inicio. En cambio, el código del Purchase va solo en la página que indica la compra, el pedido completado, con el valor y la moneda. Pídele a tu desarrollador que lo ajuste y luego probamos con una compra.”'), fb: L('Isso! Base em todas, evento só onde a ação acontece.', '¡Eso! Base en todas, evento solo donde ocurre la acción.') },
+            { certa: false, txt: L('“Cole o Purchase também no cabeçalho de todas as páginas.”', '“Pega el Purchase también en el encabezado de todas las páginas.”'), fb: L('Isso gera compras duplicadas e avisos no Diagnóstico.', 'Eso genera compras duplicadas y avisos en el Diagnóstico.') },
+            { certa: false, txt: L('“Só a página inicial basta.”', '“Solo la página de inicio basta.”'), fb: L('Sem o código base nas outras páginas, as ações lá não são medidas.', 'Sin el código base en las otras páginas, las acciones allí no se miden.') },
+            { certa: false, txt: L('“Escreva value: R$ 99,90.”', '“Escribe value: R$ 99,90.”'), fb: L('O valor é só número com ponto decimal, e a moeda vai em currency.', 'El valor es solo número con punto decimal, y la moneda va en currency.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Onde está o código base: no head de todas as páginas?', '¿Dónde está el código base: en el head de todas las páginas?'), L('O Purchase está só na página de pedido concluído, com value e currency?', '¿El Purchase está solo en la página de pedido completado, con value y currency?')],
+          conferir: [FERR],
+          frase: L('O código base vai no head de todas as páginas e o código da compra vai só na página de pedido concluído, com valor e moeda. Seu desenvolvedor faz o ajuste e nós confirmamos com uma compra de teste.', 'El código base va en el head de todas las páginas y el código de la compra va solo en la página de pedido completado, con valor y moneda. Tu desarrollador hace el ajuste y lo confirmamos con una compra de prueba.'),
+          passos: [L('Peça a página do pedido concluído e o código dela.', 'Pide la página del pedido completado y su código.'), L('Compare com o formato do Gerenciador de Eventos.', 'Compara con el formato del Administrador de eventos.')],
+          encaminhar: L('Mexer no código do site é com o cliente ou o desenvolvedor dele: explique o ajuste e nunca peça senha.', 'Tocar el código del sitio es con el cliente o su desarrollador: explica el ajuste y nunca pidas contraseña.')
+        }
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('Purchase duplicado e valor errado', 'Purchase duplicado y valor incorrecto'),
+        antes: L('Dois clientes da Marina com o mesmo problema de outro jeito: dobro de vendas e valor zero.', 'Dos clientes de Marina con el mismo problema de otra manera: el doble de ventas y valor cero.'),
+        gancho: L('Dois casos fora da rota padrão, cada um com sua causa e sua solução.', 'Dos casos fuera de la ruta estándar, cada uno con su causa y su solución.'),
+        objetivo: L('Reconhecer o Purchase duplicado (vários lugares) e o valor errado (formato do value e da moeda) e orientar a correção.', 'Reconocer el Purchase duplicado (varios lugares) y el valor incorrecto (formato del value y de la moneda) y orientar la corrección.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cliente diz que as vendas dobraram, mas o banco não mudou. 🤨', 'Un cliente dice que las ventas se duplicaron, pero el banco no cambió. 🤨')],
+            ['rafa', L('Veja o Diagnóstico: “Vários eventos em uma ação” aparece quando o pixel manda mais de um evento para uma única ação do visitante, e “Eventos de compra redundantes” aparece com quatro ou mais compras para uma só. A causa comum é o código de Purchase repetido: cabeçalho, página de pedido concluído e app da plataforma.', 'Mira el Diagnóstico: “Varios eventos en una acción” aparece cuando el píxel manda más de un evento para una sola acción del visitante, y “Eventos de compra redundantes” aparece con cuatro o más compras para una sola. La causa común es el código de Purchase repetido: encabezado, página de pedido completado y app de la plataforma.')],
+            ['marina', L('E quando chega com valor zero?', '¿Y cuando llega con valor cero?')],
+            ['rafa', L('O Diagnóstico avisa “Preço ausente ou inválido no parâmetro de valor” e/ou o código de moeda inválido. O value precisa ser número decimal com ponto, sem letras, símbolos de moeda nem vírgulas, e o currency precisa ter 3 letras (BRL, USD). O padrão do código é 0.00 USD até alguém trocar.', 'El Diagnóstico avisa “Precio ausente o inválido en el parámetro de valor” y/o el código de moneda inválido. El value debe ser número decimal con punto, sin letras, símbolos de moneda ni comas, y el currency debe tener 3 letras (BRL, USD). El valor por defecto del código es 0.00 USD hasta que alguien lo cambie.')],
+            ['pixel', L('Regra de ouro: um evento por ação. O Purchase fica em um lugar só (idealmente a integração, ou a página de pedido concluído), nunca no cabeçalho. Se há integração conectada, o código manual sobra.', 'Regla de oro: un evento por acción. El Purchase queda en un solo lugar (idealmente la integración, o la página de pedido completado), nunca en el encabezado. Si hay integración conectada, el código manual sobra.')]
+          ],
+          pontos: [
+            L('<b>Duplicado:</b> Purchase em mais de um lugar. Deixe em um só e teste.', '<b>Duplicado:</b> Purchase en más de un lugar. Déjalo en uno solo y prueba.'),
+            L('<b>Valor errado:</b> value numérico com ponto (99.90), currency de 3 letras (BRL).', '<b>Valor incorrecto:</b> value numérico con punto (99.90), currency de 3 letras (BRL).'),
+            L('<b>O Diagnóstico</b> costuma dizer exatamente o que está errado: leia a mensagem.', '<b>El Diagnóstico</b> suele decir exactamente qué está mal: lee el mensaje.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'dup-dg',
+        praticar: {
+          texto: L('Escolha um caso. O Pixel te guia pela investigação e pela solução. Você pode fazer os dois.', 'Elige un caso. El Pixel te guía por la investigación y por la solución. Puedes hacer los dos.'),
+          opcoes: [
+            { id: 'duplicado', icone: '🔁', pagina: PG, tour: 'corrigir-duplicado', selo: L('mais comum', 'más común'), tit: L('Purchase duplicado', 'Purchase duplicado'), txt: L('Vendas em dobro: onde o Purchase está sendo enviado?', 'Ventas dobles: ¿dónde se está enviando el Purchase?') },
+            { id: 'valor', icone: '💲', pagina: PG, tour: 'corrigir-valor', tit: L('Valor errado', 'Valor incorrecto'), txt: L('Compras com valor zero: o que o Diagnóstico aponta no value e na moeda.', 'Compras con valor cero: qué señala el Diagnóstico en el value y la moneda.') }
+          ]
+        },
+        atender: {
+          cena: L('As vendas na Meta dobraram, mas no meu banco não mudou nada! Vocês estão inflando os números para eu gastar mais? 😡', '¡Las ventas en Meta se duplicaron, pero en mi banco no cambió nada! ¿Están inflando los números para que gaste más? 😡'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo a preocupação. O mais provável é que a compra esteja sendo enviada mais de uma vez, por exemplo por um código manual além da integração. Vamos ver o Diagnóstico e o código para achar onde o Purchase está repetido, deixar em um só lugar e testar de novo.”', '“Entiendo la preocupación. Lo más probable es que la compra se esté enviando más de una vez, por ejemplo por un código manual además de la integración. Veamos el Diagnóstico y el código para hallar dónde está repetido el Purchase, dejarlo en un solo lugar y probar de nuevo.”'), fb: L('Isso! Causa provável, método e correção.', '¡Eso! Causa probable, método y corrección.') },
+            { certa: false, txt: L('“Suas vendas realmente dobraram.”', '“Tus ventas realmente se duplicaron.”'), fb: L('Confirme antes de afirmar: o banco não mudou.', 'Confirma antes de afirmar: el banco no cambió.') },
+            { certa: false, txt: L('“É normal, a Meta sempre conta dobrado.”', '“Es normal, Meta siempre cuenta doble.”'), fb: L('Não é normal: é sinal de evento repetido.', 'No es normal: es señal de evento repetido.') },
+            { certa: false, txt: L('“Apague o Pixel e crie outro.”', '“Borra el píxel y crea otro.”'), fb: L('Trocar de pixel não resolve o código repetido.', 'Cambiar de píxel no resuelve el código repetido.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Cada compra de teste mostra quantos Purchase?', '¿Cuántos Purchase muestra cada compra de prueba?'), L('Há Purchase no cabeçalho, na página de pedido concluído e no app ao mesmo tempo?', '¿Hay Purchase en el encabezado, en la página de pedido completado y en la app al mismo tiempo?'), L('O Diagnóstico mostra aviso de valor ou de moeda?', '¿El Diagnóstico muestra aviso de valor o de moneda?')],
+          conferir: [FERR],
+          frase: L('Se a compra chega mais de uma vez, vamos achar onde o Purchase está sendo enviado e deixar em um só lugar. Se chega com valor zero, vamos ajustar o valor e a moeda no formato que a Meta pede.', 'Si la compra llega más de una vez, vamos a hallar dónde se está enviando el Purchase y dejarlo en un solo lugar. Si llega con valor cero, ajustaremos el valor y la moneda en el formato que pide Meta.'),
+          passos: [L('Faça uma compra de teste e conte os eventos.', 'Haz una compra de prueba y cuenta los eventos.'), L('Leia a mensagem do Diagnóstico e o código.', 'Lee el mensaje del Diagnóstico y el código.')],
+          encaminhar: L('Se o cliente quer corrigir a contagem de vendas antigas, oriente-o a olhar os relatórios com o período certo e a não esperar que o histórico mude.', 'Si el cliente quiere corregir el conteo de ventas antiguas, oriéntalo a mirar los informes con el período correcto y a no esperar que el historial cambie.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Plataforma conectada e o Purchase não chega', 'Plataforma conectada y el Purchase no llega'),
+        antes: L('O cliente garante: “Já conectei a plataforma à Meta”.', 'El cliente asegura: “Ya conecté la plataforma a Meta”.'),
+        gancho: L('Conectado não quer dizer que está tudo certo: confira nível, pagamento, consentimento e o pixel.', 'Conectado no quiere decir que todo está bien: revisa nivel, pago, consentimiento y el píxel.'),
+        objetivo: L('Investigar uma loja em plataforma de parceiro já conectada cujo Purchase não chega e escolher o ajuste.', 'Investigar una tienda en plataforma socia ya conectada cuyo Purchase no llega y elegir el ajuste.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Já está conectado, por que o Purchase não chega? 🤔', 'Ya está conectado, ¿por qué el Purchase no llega? 🤔')],
+            ['rafa', L('A integração de parceiro cuida do pixel e dos eventos por você, mas ainda dá para falhar. Confira em ordem: o pixel conectado é o da conta de anúncios do cliente? Qual o nível de compartilhamento de dados (só o navegador ou também o servidor)? O pagamento termina dentro da loja? O visitante aceitou os cookies?', 'La integración de socio se encarga del píxel y de los eventos por ti, pero aun así puede fallar. Revisa en orden: ¿el píxel conectado es el de la cuenta publicitaria del cliente? ¿Cuál es el nivel de compartir datos (solo el navegador o también el servidor)? ¿El pago termina dentro de la tienda? ¿El visitante aceptó las cookies?')],
+            ['marina', L('E posso colar um código para consertar?', '¿Y puedo pegar un código para arreglarlo?')],
+            ['rafa', L('Evite. Código manual por cima de uma integração costuma duplicar o evento. Prefira ajustar a integração. A Meta recomenda usar o pixel junto com a API de Conversões e compartilhar os mesmos eventos pelos dois, porque o servidor cobre o que o navegador perde.', 'Evítalo. El código manual encima de una integración suele duplicar el evento. Prefiere ajustar la integración. Meta recomienda usar el píxel junto con la API de Conversiones y compartir los mismos eventos por los dos, porque el servidor cubre lo que el navegador pierde.')],
+            ['pixel', L('Cada plataforma tem seus nomes e opções. Confirme na plataforma do cliente (ou na ajuda dela) antes de afirmar um passo exato.', 'Cada plataforma tiene sus nombres y opciones. Confirma en la plataforma del cliente (o en su ayuda) antes de afirmar un paso exacto.')]
+          ],
+          pontos: [
+            L('<b>Pixel certo?</b> O da conta de anúncios do cliente.', '<b>¿Píxel correcto?</b> El de la cuenta publicitaria del cliente.'),
+            L('<b>Nível de dados:</b> pixel + servidor (API de Conversões) pega o que o navegador perde.', '<b>Nivel de datos:</b> píxel + servidor (API de Conversiones) recoge lo que el navegador pierde.'),
+            L('<b>Sem código manual por cima</b> da integração: duplica. Pagamento externo e consentimento mudam o resultado.', '<b>Sin código manual encima</b> de la integración: duplica. Pago externo y consentimiento cambian el resultado.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'plat-dg',
+        praticar: { texto: L('No simulador, o Pixel te guia por uma loja conectada cujo Purchase se perde: o nível de compartilhamento muda tudo.', 'En el simulador, el Pixel te guía por una tienda conectada cuyo Purchase se pierde: el nivel de compartir cambia todo.'), tour: 'plataforma-conectada', pagina: PG },
+        atender: {
+          cena: L('Já está conectado com a Meta, mas o Purchase não aparece. Vocês me venderam uma coisa que não funciona! 😤', 'Ya está conectado con Meta, pero el Purchase no aparece. ¡Me vendieron algo que no funciona! 😤'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Conectado é o primeiro passo, e ainda há alguns pontos para conferir: se é o pixel certo, o nível de compartilhamento de dados (o servidor também envia?), como o pagamento termina e se não há código manual duplicando. Me conte esses pontos e fazemos uma compra de teste para ver o que chega.”', '“Conectado es el primer paso, y aún hay algunos puntos para revisar: si es el píxel correcto, el nivel de compartir datos (¿el servidor también envía?), cómo termina el pago y si no hay código manual duplicando. Cuéntame esos puntos y hacemos una compra de prueba para ver qué llega.”'), fb: L('Isso! Acolheu e listou os pontos reais.', '¡Eso! Acogiste y listaste los puntos reales.') },
+            { certa: false, txt: L('“Então o problema é a sua plataforma.”', '“Entonces el problema es tu plataforma.”'), fb: L('Sem investigar, não dá para culpar ninguém.', 'Sin investigar no se puede culpar a nadie.') },
+            { certa: false, txt: L('“Cole este código do Purchase no seu tema.”', '“Pega este código del Purchase en tu tema.”'), fb: L('Por cima da integração, isso duplica.', 'Encima de la integración, esto duplica.') },
+            { certa: false, txt: L('“Desconecte tudo e conecte de novo.”', '“Desconecta todo y conecta de nuevo.”'), fb: L('Antes de refazer, descubra o que está faltando.', 'Antes de rehacer, descubre qué falta.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O pixel conectado é o da conta de anúncios do cliente?', '¿El píxel conectado es el de la cuenta publicitaria del cliente?'), L('Qual o nível de compartilhamento de dados e onde o pagamento termina?', '¿Cuál es el nivel de compartir datos y dónde termina el pago?'), L('Há código do Pixel colado à mão além da integração?', '¿Hay código del píxel pegado a mano además de la integración?')],
+          conferir: [FERR],
+          frase: L('A integração está conectada; vamos conferir o pixel, o nível de compartilhamento de dados, o pagamento e se não há código duplicado. Depois fazemos uma compra de teste.', 'La integración está conectada; revisemos el píxel, el nivel de compartir datos, el pago y si no hay código duplicado. Después hacemos una compra de prueba.'),
+          passos: [L('Veja qual pixel está conectado.', 'Mira qué píxel está conectado.'), L('Ajuste o nível e teste.', 'Ajusta el nivel y prueba.')],
+          encaminhar: L('Opções específicas da plataforma (como o pagamento externo funciona nela) são com o suporte da própria plataforma: oriente o cliente a falar com ele.', 'Las opciones específicas de la plataforma (cómo funciona en ella el pago externo) son con el soporte de la propia plataforma: orienta al cliente a hablar con él.')
+        }
+      },
+      {
+        id: '05', min: 8, status: 'pronta',
+        titulo: L('Quando os eventos caem', 'Cuando los eventos caen'),
+        antes: L('Depois de uma atualização do site, o Gerenciador mandou um alerta.', 'Después de una actualización del sitio, el Administrador mandó una alerta.'),
+        gancho: L('Do alerta à causa: o roteiro que a própria Central de Ajuda recomenda.', 'De la alerta a la causa: el guion que recomienda el propio Centro de ayuda.'),
+        objetivo: L('Seguir os passos para investigar uma queda de eventos e propor a prevenção.', 'Seguir los pasos para investigar una caída de eventos y proponer la prevención.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Chegou um alerta de redução de eventos. O que faço? 😟', 'Llegó una alerta de reducción de eventos. ¿Qué hago? 😟')],
+            ['rafa', L('A Meta avisa quando os eventos usados em campanhas ou públicos caem de forma considerável em relação à semana anterior e à média dos últimos sete dias. Os motivos comuns: problema no código base (ausente, apagado ou mal posicionado, muitas vezes depois de uma mudança), problema no código do evento, flutuação natural de tráfego, links quebrados, site fora do ar e lista de domínios permitidos ou bloqueados errada.', 'Meta avisa cuando los eventos usados en campañas o públicos caen de forma considerable respecto a la semana anterior y al promedio de los últimos siete días. Los motivos comunes: problema en el código base (ausente, borrado o mal ubicado, muchas veces después de un cambio), problema en el código del evento, fluctuación natural de tráfico, enlaces rotos, sitio caído y lista de dominios permitidos o bloqueados equivocada.')],
+            ['marina', L('Qual é o roteiro?', '¿Cuál es el guion?')],
+            ['rafa', L('Um: confirmar a redução (todos os eventos ou só alguns? compare com outra ferramenta de análise). Dois: conferir o código base no head de cada página, principalmente se o site foi atualizado. Três: testar em Eventos de teste e olhar o Diagnóstico. Quatro: links, site no ar e permissões de tráfego.', 'Uno: confirmar la reducción (¿todos los eventos o solo algunos? compara con otra herramienta de análisis). Dos: revisar el código base en el head de cada página, sobre todo si el sitio fue actualizado. Tres: probar en Probar eventos y mirar el Diagnóstico. Cuatro: enlaces, sitio en línea y permisos de tráfico.')],
+            ['pixel', L('Para prevenir: monitore o Gerenciador regularmente, teste o pixel sempre que o site mudar e combine com o desenvolvedor de conferir o código base depois de cada atualização do cabeçalho.', 'Para prevenir: monitorea el Administrador con regularidad, prueba el píxel siempre que el sitio cambie y acuerda con el desarrollador revisar el código base después de cada actualización del encabezado.')]
+          ],
+          pontos: [
+            L('<b>Confirme a queda</b> e se são todos os eventos ou só alguns.', '<b>Confirma la caída</b> y si son todos los eventos o solo algunos.'),
+            L('<b>Código base no head</b> de cada página: costuma sumir em atualizações de tema.', '<b>Código base en el head</b> de cada página: suele desaparecer en actualizaciones de tema.'),
+            L('<b>Teste e prevenção:</b> Eventos de teste, Diagnóstico e testar após cada mudança no site.', '<b>Prueba y prevención:</b> Probar eventos, Diagnóstico y probar después de cada cambio en el sitio.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'queda-dg',
+        praticar: { texto: L('No simulador, o Pixel te guia por uma queda de eventos depois da troca de tema: pistas, causa e solução.', 'En el simulador, el Pixel te guía por una caída de eventos después del cambio de tema: pistas, causa y solución.'), tour: 'caso-queda', pagina: PG },
+        atender: {
+          cena: L('Desde que o site mudou de tema, minhas campanhas pararam de entregar direito e recebi um alerta. O que vocês fizeram? 😠', 'Desde que el sitio cambió de tema, mis campañas dejaron de entregar bien y recibí una alerta. ¿Qué hicieron ustedes? 😠'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não foi uma mudança nossa. A mudança de tema pode ter removido o código base do Pixel do cabeçalho, que é uma causa comum de queda de eventos. Vamos conferir em Eventos de teste se o PageView chega e, se não chegar, o seu desenvolvedor reinstala o código base no head de todas as páginas.”', '“No fue un cambio nuestro. El cambio de tema puede haber eliminado el código base del píxel del encabezado, que es una causa común de caída de eventos. Vamos a confirmar en Probar eventos si el PageView llega y, si no llega, tu desarrollador reinstala el código base en el head de todas las páginas.”'), fb: L('Isso! Explicou a causa provável e o teste.', '¡Eso! Explicaste la causa probable y la prueba.') },
+            { certa: false, txt: L('“Espere uns dias, volta sozinho.”', '“Espera unos días, vuelve solo.”'), fb: L('Código base ausente não volta sozinho.', 'El código base ausente no vuelve solo.') },
+            { certa: false, txt: L('“Troque a conta de anúncios.”', '“Cambia la cuenta publicitaria.”'), fb: L('A conta não é a causa.', 'La cuenta no es la causa.') },
+            { certa: false, txt: L('“Crie campanhas novas.”', '“Crea campañas nuevas.”'), fb: L('Sem eventos chegando, as novas também não otimizam.', 'Sin eventos llegando, las nuevas tampoco optimizan.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A queda é em todos os eventos ou só em alguns?', '¿La caída es en todos los eventos o solo en algunos?'), L('O site foi atualizado ou mudou de tema recentemente?', '¿El sitio fue actualizado o cambió de tema recientemente?'), L('O PageView chega em Eventos de teste?', '¿El PageView llega en Probar eventos?')],
+          conferir: [FERR],
+          frase: L('Vamos seguir o roteiro da Central de Ajuda: confirmar a queda, conferir o código base no head de cada página, testar em Eventos de teste e olhar o Diagnóstico. Depois combinamos como prevenir.', 'Sigamos el guion del Centro de ayuda: confirmar la caída, revisar el código base en el head de cada página, probar en Probar eventos y mirar el Diagnóstico. Después acordamos cómo prevenir.'),
+          passos: [L('Confirme a queda e quando começou.', 'Confirma la caída y cuándo empezó.'), L('Cruze com a data de mudança do site.', 'Cruza con la fecha de cambio del sitio.')],
+          encaminhar: L('Se o site está fora do ar ou a hospedagem tem problema, oriente o cliente a falar com o desenvolvedor ou a hospedagem dele.', 'Si el sitio está caído o el hosting tiene un problema, orienta al cliente a hablar con su desarrollador o su hosting.')
         }
       }
     ];

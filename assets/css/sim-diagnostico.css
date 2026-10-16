@@ -1,0 +1,6 @@
+/* Simulador do Diagnóstico de casos · usa sim.css, sim-anuncios.css, sim-feed.css, sim-suite.css, sim-casca.css */
+.dg-btns{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.dg-cod{background:#F3F6FB;border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 Consolas,monospace;overflow:auto;white-space:pre;max-height:180px}
+.dg-ta{width:100%;font:13px Consolas,monospace}
+.ss-main ul.miudo,.ss-main .ga-aviso ul{padding-left:18px}
+.ga-aviso.verm{border-color:var(--red);background:#fff7f9}

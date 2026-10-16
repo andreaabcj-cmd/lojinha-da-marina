@@ -1786,6 +1786,78 @@
         [{ pt: 'Criar outro portfólio', es: 'Crear otro portafolio' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }]] }
   ]);
 
+  /* ---------- 30. Diagnóstico de casos: cinco mini-quizzes (Diagnóstico 01–05) ---------- */
+  quizCatalogo('met-dg', { pt: 'Como investigar um caso', es: 'Cómo investigar un caso' }, { pt: 'O método: relato, fontes, causa, solução, teste.', es: 'El método: relato, fuentes, causa, solución, prueba.' }, [
+    { q: { pt: 'PageView, ViewContent e AddToCart chegam, mas o Purchase não. O que isso indica?', es: 'PageView, ViewContent y AddToCart llegan, pero el Purchase no. ¿Qué indica eso?' },
+      o: [[{ pt: 'O pixel está vivo; o problema está no Purchase', es: 'El píxel está vivo; el problema está en el Purchase' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O pixel não está instalado', es: 'El píxel no está instalado' }, 0, { pt: 'Se os outros chegam, está instalado.', es: 'Si los otros llegan, está instalado.' }],
+        [{ pt: 'A conta de anúncios foi desativada', es: 'La cuenta publicitaria fue desactivada' }, 0, { pt: 'Não há relação.', es: 'No hay relación.' }]] },
+    { q: { pt: 'Quais são as fontes para investigar?', es: '¿Cuáles son las fuentes para investigar?' },
+      o: [[{ pt: 'Eventos de teste, Diagnóstico, código da página e plataforma', es: 'Probar eventos, Diagnóstico, código de la página y plataforma' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só o palpite do cliente', es: 'Solo la corazonada del cliente' }, 0, { pt: 'Use as fontes.', es: 'Usa las fuentes.' }],
+        [{ pt: 'Só o relatório de vendas', es: 'Solo el informe de ventas' }, 0, { pt: 'Não basta.', es: 'No basta.' }]] },
+    { q: { pt: 'Como fechar a investigação?', es: '¿Cómo cerrar la investigación?' },
+      o: [[{ pt: 'Com uma compra de teste conferida em Eventos de teste', es: 'Con una compra de prueba revisada en Probar eventos' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Esperando uma semana', es: 'Esperando una semana' }, 0, { pt: 'Teste antes.', es: 'Prueba antes.' }],
+        [{ pt: 'Criando outro pixel', es: 'Creando otro píxel' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }]] }
+  ]);
+  quizCatalogo('cod-dg', { pt: 'Colar o código do Pixel', es: 'Pegar el código del píxel' }, { pt: 'Onde cada código vai.', es: 'Dónde va cada código.' }, [
+    { q: { pt: 'Onde vai o código base do Pixel?', es: '¿Dónde va el código base del píxel?' },
+      o: [[{ pt: 'Na seção head de todas as páginas', es: 'En la sección head de todas las páginas' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Só na página inicial', es: 'Solo en la página de inicio' }, 0, { pt: 'Precisa ser em todas.', es: 'Debe ser en todas.' }],
+        [{ pt: 'Só na página de pedido concluído', es: 'Solo en la página de pedido completado' }, 0, { pt: 'Isso é do evento Purchase.', es: 'Eso es del evento Purchase.' }]] },
+    { q: { pt: 'Qual é a forma certa do valor no Purchase?', es: '¿Cuál es la forma correcta del valor en el Purchase?' },
+      o: [[{ pt: 'value: 99.90, currency: \'BRL\'', es: 'value: 99.90, currency: \'BRL\'' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'value: \'R$ 99,90\'', es: 'value: \'R$ 99,90\'' }, 0, { pt: 'Sem símbolo nem vírgula.', es: 'Sin símbolo ni coma.' }],
+        [{ pt: 'value: 99,90, currency: reais', es: 'value: 99,90, currency: reais' }, 0, { pt: 'Ponto decimal e 3 letras.', es: 'Punto decimal y 3 letras.' }]] },
+    { q: { pt: 'fbq(\'track\', \'purchase\') (com p minúsculo) cria o quê?', es: 'fbq(\'track\', \'purchase\') (con p minúscula) ¿qué crea?' },
+      o: [[{ pt: 'Um evento personalizado chamado purchase, não o Purchase padrão', es: 'Un evento personalizado llamado purchase, no el Purchase estándar' }, 1, { pt: 'Isso! Os nomes diferenciam maiúsculas e minúsculas.', es: '¡Eso! Los nombres distinguen mayúsculas y minúsculas.' }],
+        [{ pt: 'O Purchase padrão, igual', es: 'El Purchase estándar, igual' }, 0, { pt: 'Não é igual.', es: 'No es igual.' }],
+        [{ pt: 'Nada', es: 'Nada' }, 0, { pt: 'Cria um evento personalizado.', es: 'Crea un evento personalizado.' }]] }
+  ]);
+  quizCatalogo('dup-dg', { pt: 'Duplicado e valor errado', es: 'Duplicado y valor incorrecto' }, { pt: 'Um evento por ação.', es: 'Un evento por acción.' }, [
+    { q: { pt: 'Qual a causa comum do Purchase duplicado?', es: '¿Cuál es la causa común del Purchase duplicado?' },
+      o: [[{ pt: 'O código do Purchase está em mais de um lugar', es: 'El código del Purchase está en más de un lugar' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O cliente comprou duas vezes', es: 'El cliente compró dos veces' }, 0, { pt: 'Confira antes.', es: 'Confirma antes.' }],
+        [{ pt: 'A Meta conta sempre dobrado', es: 'Meta siempre cuenta doble' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Qual código da Meta deve ficar no cabeçalho do site?', es: '¿Qué código de Meta debe quedar en el encabezado del sitio?' },
+      o: [[{ pt: 'Só o código base do Pixel', es: 'Solo el código base del píxel' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O código base e o Purchase', es: 'El código base y el Purchase' }, 0, { pt: 'O Purchase não fica no cabeçalho.', es: 'El Purchase no va en el encabezado.' }],
+        [{ pt: 'Nenhum', es: 'Ninguno' }, 0, { pt: 'O base fica no head.', es: 'El base va en el head.' }]] },
+    { q: { pt: 'O Purchase chega com valor zero e o Diagnóstico avisa de valor e moeda. O que corrigir?', es: 'El Purchase llega con valor cero y el Diagnóstico avisa de valor y moneda. ¿Qué corregir?' },
+      o: [[{ pt: 'Value numérico com ponto decimal e currency de 3 letras', es: 'Value numérico con punto decimal y currency de 3 letras' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Criar outro pixel', es: 'Crear otro píxel' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }],
+        [{ pt: 'Esperar o Diagnóstico sumir', es: 'Esperar que el Diagnóstico desaparezca' }, 0, { pt: 'O erro fica até corrigir.', es: 'El error queda hasta corregir.' }]] }
+  ]);
+  quizCatalogo('plat-dg', { pt: 'Plataforma conectada', es: 'Plataforma conectada' }, { pt: 'Conectado não é tudo certo.', es: 'Conectado no es todo bien.' }, [
+    { q: { pt: 'A plataforma está conectada, mas o Purchase não chega. O que conferir primeiro?', es: 'La plataforma está conectada, pero el Purchase no llega. ¿Qué revisar primero?' },
+      o: [[{ pt: 'Pixel certo, nível de dados, pagamento e código duplicado', es: 'Píxel correcto, nivel de datos, pago y código duplicado' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Trocar de plataforma', es: 'Cambiar de plataforma' }, 0, { pt: 'Exagero.', es: 'Exagerado.' }],
+        [{ pt: 'Colar código manual por cima', es: 'Pegar código manual encima' }, 0, { pt: 'Duplica.', es: 'Duplica.' }]] },
+    { q: { pt: 'Por que usar o pixel junto com a API de Conversões?', es: '¿Por qué usar el píxel junto con la API de Conversiones?' },
+      o: [[{ pt: 'O servidor cobre eventos que o navegador pode perder', es: 'El servidor cubre eventos que el navegador puede perder' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Para cobrar menos', es: 'Para cobrar menos' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
+        [{ pt: 'Para trocar o ID do pixel', es: 'Para cambiar el ID del píxel' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Quem confirma o comportamento exato de uma plataforma parceira?', es: '¿Quién confirma el comportamiento exacto de una plataforma socia?' },
+      o: [[{ pt: 'A própria plataforma (a ajuda ou o suporte dela)', es: 'La propia plataforma (su ayuda o su soporte)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Um palpite', es: 'Una corazonada' }, 0, { pt: 'Confirme.', es: 'Confirma.' }],
+        [{ pt: 'O cliente, de cabeça', es: 'El cliente, de memoria' }, 0, { pt: 'Confirme na fonte.', es: 'Confirma en la fuente.' }]] }
+  ]);
+  quizCatalogo('queda-dg', { pt: 'Quando os eventos caem', es: 'Cuando los eventos caen' }, { pt: 'O roteiro da Central de Ajuda.', es: 'El guion del Centro de ayuda.' }, [
+    { q: { pt: 'Depois de uma troca de tema, os eventos caíram a zero. Causa comum?', es: 'Después de un cambio de tema, los eventos cayeron a cero. ¿Causa común?' },
+      o: [[{ pt: 'O código base foi removido do cabeçalho', es: 'El código base se eliminó del encabezado' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'A moeda da conta mudou', es: 'La moneda de la cuenta cambió' }, 0, { pt: 'Não.', es: 'No.' }],
+        [{ pt: 'O cliente mudou de nome', es: 'El cliente cambió de nombre' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Qual é o primeiro passo do roteiro?', es: '¿Cuál es el primer paso del guion?' },
+      o: [[{ pt: 'Confirmar a redução (todos os eventos ou só alguns)', es: 'Confirmar la reducción (todos los eventos o solo algunos)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Criar campanhas novas', es: 'Crear campañas nuevas' }, 0, { pt: 'Primeiro entenda.', es: 'Primero entiende.' }],
+        [{ pt: 'Apagar o pixel', es: 'Borrar el píxel' }, 0, { pt: 'Nunca.', es: 'Nunca.' }]] },
+    { q: { pt: 'Como prevenir a queda no futuro?', es: '¿Cómo prevenir la caída en el futuro?' },
+      o: [[{ pt: 'Testar o pixel sempre que o site mudar e monitorar o Gerenciador', es: 'Probar el píxel siempre que el sitio cambie y monitorear el Administrador' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nunca mexer no site', es: 'Nunca tocar el sitio' }, 0, { pt: 'Não é realista.', es: 'No es realista.' }],
+        [{ pt: 'Trocar de pixel todo mês', es: 'Cambiar de píxel todos los meses' }, 0, { pt: 'Não.', es: 'No.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

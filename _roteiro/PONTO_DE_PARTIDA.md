@@ -173,3 +173,9 @@ Leia nesta ordem:
 - Site publicado: só as ABAS Simuladores e Laboratório ficam escondidas (menu e cartões da página inicial). Módulos (aulas, práticas guiadas, atendimento), Loja, Colas e as telas dos simuladores abertas pelas aulas continuam como estão.
 - Local (localhost) nada muda. Pré-visualizar o público no computador: `?publico=1` (e `?publico=0` volta).
 - Reverter: `ESCONDER_ABAS = false` em `assets/js/modo-publico.js`.
+
+## Diagnóstico de casos (Foco, novo módulo) — 16/10/2026
+- 5 aulas PT+ES (investigar um caso, colar o código do Pixel à mão, Purchase duplicado e valor errado, plataforma conectada que não envia, quando os eventos caem), 6 tutoriais (`investigar-purchase`, `colar-codigo`, `corrigir-duplicado`, `corrigir-valor`, `plataforma-conectada`, `caso-queda`), 5 quizzes (`met-dg`, `cod-dg`, `dup-dg`, `plat-dg`, `queda-dg`), simulador `meta-diagnostico.html` (clínica de 5 casos + colar o código + plataforma conectada).
+- Pedido do André (16/10): casos fora da rota padrão com várias soluções; ensinar a colar o código à mão E a reconhecer/orientar o cliente. Módulo novo, não dentro do Pixel.
+- Fontes: Central de Ajuda oficial (PT): instalar o Pixel, boas práticas de eventos padrão, valor e moeda, mensagens do Diagnóstico, queda de eventos. A conta de aula não tem conjunto de dados: Eventos de teste e Diagnóstico reais não foram vistos; os casos, clientes e o comportamento exato de plataformas parceiras (nível de compartilhamento, pagamento externo, consentimento) são do treino (a conferir). O código base mostrado é uma versão de treino.
+- Falta (ideias): aula Pixel 05 (avisos) continua "planejada"; casos extras (API de Conversões sem event_id, domínio bloqueado).
