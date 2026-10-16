@@ -1,0 +1,9 @@
+.fb-form{display:grid;gap:12px;max-width:640px;background:#fff;border:2px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);padding:18px}
+.fb-form label{display:grid;gap:5px;font-weight:700}
+.fb-form input,.fb-form select,.fb-form textarea,#fbSenha{font:16px "Segoe UI",sans-serif;padding:9px 10px;border:2px solid var(--ink);border-radius:10px;background:#fff;font-weight:400}
+.fb-isca{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fb-msg{font-weight:700;color:var(--ink2)}
+.fb-aviso{max-width:640px;margin:0 0 14px;padding:10px 14px;border:2px solid #C98E1A;border-radius:12px;background:#FFF4D6}
+.fb-equipe{margin-top:26px;max-width:640px}.fb-equipe summary{cursor:pointer;font-weight:800}
+.fb-lista{list-style:none;padding:0;display:grid;gap:10px}.fb-lista li{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:10px 12px}
+.fb-lista em{font-size:12px;background:#E6F0FF;border-radius:999px;padding:1px 8px;margin-left:6px}

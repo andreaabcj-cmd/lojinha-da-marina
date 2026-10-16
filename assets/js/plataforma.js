@@ -9,7 +9,7 @@
   var T = window.T = function (o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') };
   var U = {
     inicio: { pt: 'Início', es: 'Inicio' }, modulos: { pt: 'Módulos', es: 'Módulos' }, loja: { pt: 'Loja', es: 'Tienda' },
-    simuladores: { pt: 'Simuladores', es: 'Simuladores' }, laboratorio: { pt: 'Laboratório', es: 'Laboratorio' },
+    feedback: { pt: 'Feedback', es: 'Feedback' }, simuladores: { pt: 'Simuladores', es: 'Simuladores' }, laboratorio: { pt: 'Laboratório', es: 'Laboratorio' },
     sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
     planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
@@ -26,6 +26,7 @@
   function topo(ativo) {
     var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['colas.html', 'colas']];
     if (window.MODO_PUBLICO) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // site publicado: as abas Simuladores e Laboratório ficam escondidas
+    if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
       '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div></header>';
@@ -485,16 +486,19 @@
     return h;
   };
 
+  TELAS.feedback = function () { return window.FEEDBACK ? window.FEEDBACK.html(T) : '' };
+
   /* ---------- montagem ---------- */
   function monta() {
     var tela = document.body.getAttribute('data-tela');
     if (!tela) return;   // páginas da loja/simulador só usam a porta
-    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas' }[tela];
+    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', feedback: 'feedback' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
     var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
     tg.forEach(function (x) { document.body.appendChild(x) });
     if (tela !== 'aula') mov().cascata($('.pl-main'));
+    if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);
   }
   function inicia() {
     // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial peel objetivode
