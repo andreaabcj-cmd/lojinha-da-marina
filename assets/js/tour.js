@@ -47,8 +47,12 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     '.tg-ctrl span{display:flex;gap:6px;align-items:center;white-space:nowrap}' +
     '.tg-btn{padding:7px 12px;border-radius:9px;border:2px solid #16294A;background:#2F6FD6;color:#fff;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 #16294A}.tg-btn.sec{background:#fff;color:#16294A}.tg-btn[disabled]{opacity:.45;cursor:default}' +
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
+    '.tg-balao.folha,.tg-balao.folha.compacto{width:auto!important;max-width:none!important}' +
+    '.tg-balao.folha{left:8px!important;right:8px!important;top:auto!important;bottom:8px!important;width:auto;max-width:none;padding:9px 12px 8px;font-size:13.5px;line-height:1.35;cursor:default;transition:none;box-shadow:3px 3px 0 #16294A}' +
+    '.tg-balao.folha.folha-topo{bottom:auto!important}.tg-balao.folha .tg-masc,.tg-balao.folha .tg-bal-min{display:none}.tg-balao.folha b{display:inline;font-size:14px;margin:0 6px 0 0}.tg-balao.folha p{display:inline;margin:0}' +
+    '.tg-balao.folha .tg-dica{margin-top:5px;padding:4px 8px;font-size:12.5px}.tg-balao.folha .tg-ctrl{margin-top:6px}.tg-balao.folha .tg-sair{position:static;float:right;margin:-2px 0 0 8px}' +
     '.tg-balao{cursor:grab}.tg-balao.arrasta{cursor:grabbing;transition:none;user-select:none}.tg-balao button{cursor:pointer}' +
-    '.tg-balao.compacto{width:300px;padding-left:14px;font-size:14px}.tg-balao.compacto .tg-masc{display:none}.tg-bal-min{position:absolute;top:4px;right:124px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
+    '.tg-balao.compacto{width:300px;padding-left:14px;font-size:14px}.tg-balao.compacto .tg-masc{display:none}.tg-balao.fino{width:232px;padding:22px 10px 10px;font-size:13px;line-height:1.35}.tg-balao.fino .tg-masc{display:none}.tg-balao.fino .tg-sair{right:6px}.tg-balao.fino .tg-bal-min{left:10px;right:auto}.tg-bal-min{position:absolute;top:4px;right:124px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
   var holo, balao, recorte, tour, nome, passo = 0, timer, ouvindo = false, manual = null, compacto = (function () { try { var v = sessionStorage.getItem('tour.compacto'); return v === null ? innerWidth < 760 : v === '1' } catch (e) { return false } })();
   var voltar = null, paginas = {};
@@ -72,7 +76,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     // arrastar o balão: a pessoa escolhe onde ele fica para poder ler o que está marcado
     var drag = null;
     balao.addEventListener('mousedown', function (e) {
-      if (e.button || e.target.closest('button, a, input, select')) return; var r0 = balao.getBoundingClientRect(); drag = [e.clientX - r0.left, e.clientY - r0.top]; balao.classList.add('arrasta'); e.preventDefault();
+      if (e.button || balao.classList.contains('folha') || e.target.closest('button, a, input, select')) return; var r0 = balao.getBoundingClientRect(); drag = [e.clientX - r0.left, e.clientY - r0.top]; balao.classList.add('arrasta'); e.preventDefault();
     });
     document.addEventListener('mousemove', function (e) { if (!drag || !balao) return; manual = [Math.max(0, Math.min(e.clientX - drag[0], innerWidth - 60)), Math.max(0, Math.min(e.clientY - drag[1], innerHeight - 40))]; balao.style.left = manual[0] + 'px'; balao.style.top = manual[1] + 'px' });
     document.addEventListener('mouseup', function () { if (drag && balao) balao.classList.remove('arrasta'); drag = null });
@@ -126,8 +130,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
   }
   function desenha() {
-    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null;
-    balao.classList.toggle('compacto', compacto);
+    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null; p._sig = null; p._sigF = null; p._fn = 0; p._dock = false;
+    balao.classList.toggle('compacto', compacto); balao.classList.remove('fino');
     balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><button class="tg-bal-min" data-tg="compacta" title="' + T({ pt: 'Balão menor / maior (e dá para arrastá-lo)', es: 'Globo más pequeño / grande (y se puede arrastrar)' }) + '">' + T({ pt: '↔ menor/maior', es: '↔ menor/mayor' }) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
       '<div class="tg-ctrl"><small>' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
@@ -135,37 +139,40 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     p.antes && p.antes();
     posiciona();
   }
-  // região "de contexto" do destaque: o próprio destaque + o grupo em que ele está + os irmãos logo abaixo/acima (o texto que a pessoa precisa ler)
-  var GRUPO = 'fieldset, .vf-caixa, .cartao, .card, ul, ol, table, form, section, [role=radiogroup], [role=list], .ga-grupo';
-  function contexto(el, r) {
-    var H = innerHeight, u = { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
-    function uniao(b) { if (!b || !b.width || !b.height) return; u.left = Math.min(u.left, b.left); u.top = Math.min(u.top, b.top); u.right = Math.max(u.right, b.right); u.bottom = Math.max(u.bottom, b.bottom) }
-    try {
-      var g = el.parentElement && el.parentElement.closest(GRUPO); if (g) { var rg = g.getBoundingClientRect(); if (rg.height < H * .8 && rg.width < innerWidth * .98) uniao(rg) }
-      var n = el, k;
-      for (k = 0; k < 3 && (n = n.nextElementSibling); k++) { var rn = n.getBoundingClientRect(); if (rn.top - u.bottom < 60) uniao(rn) }
-      n = el; for (k = 0; k < 1 && (n = n.previousElementSibling); k++) { var rp = n.getBoundingClientRect(); if (u.top - rp.bottom < 40) uniao(rp) }
-    } catch (e) { }
-    u.width = u.right - u.left; u.height = u.bottom - u.top; return u;
+  // Onde pôr o balão: o lugar que cubra MENOS texto da tela (cada linha de texto e cada controle visível conta), nunca o destaque.
+  // Se mesmo assim cobrir demais (lista comprida em tela estreita), rola o destaque para o alto e encaixa o balão embaixo.
+  function textos() {
+    var out = [], W = innerWidth, H = innerHeight, rg = document.createRange(), n, rs, k;
+    function ok(r) { return r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < H && r.right > 0 && r.left < W }
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: function (x) {
+      if (!/\S/.test(x.nodeValue)) return 2; var q = x.parentElement; return !q || q.closest('.tg-balao,.tg-holo,.tg-recorte,script,style,noscript,[hidden]') ? 2 : 1 } });
+    while ((n = w.nextNode())) { rg.selectNodeContents(n); rs = rg.getClientRects(); for (k = 0; k < rs.length; k++) if (ok(rs[k])) out.push(rs[k]) }
+    [].forEach.call(document.querySelectorAll('input,select,textarea,button,img,svg'), function (e) { if (e.closest('.tg-balao,.tg-holo,.tg-recorte')) return; var r = e.getBoundingClientRect(); if (ok(r)) out.push(r) });
+    return out;
   }
-  function lugarBalao(caixa, alvo, bw, bh, topo, ctx) {
-    var W = innerWidth, H = innerHeight, m = 12, cx = ctx || caixa, c = [];
-    function add(x, y) { c.push([x, y]) }
-    [caixa, cx].forEach(function (b) {
+  function inter(x, y, w, h, r) { var a = Math.max(0, Math.min(x + w, r.right) - Math.max(x, r.left)), b = Math.max(0, Math.min(y + h, r.bottom) - Math.max(y, r.top)); return a * b }
+  function melhorLugar(alvo, caixa, R, bw, bh, topo) {
+    var W = innerWidth, H = innerHeight, m = 12, c = [], i, j;
+    function add(x, y) { c.push([Math.max(m, Math.min(x, W - bw - m)), Math.max(topo, Math.min(y, H - bh - m))]) }
+    var xs = Math.max(16, (W - bw - 2 * m) / 14), ys = Math.max(16, (H - bh - topo - m) / 14);
+    for (i = m; i <= W - bw - m + 1; i += xs) for (j = topo; j <= H - bh - m + 1; j += ys) add(i, j);
+    [alvo, caixa].forEach(function (b) { if (!b) return;
       add(b.right + 18, b.top); add(b.right + 18, b.bottom - bh); add(b.left - bw - 18, b.top); add(b.left - bw - 18, b.bottom - bh);
-      add(b.left, b.bottom + 16); add(b.right - bw, b.bottom + 16); add(b.left, b.top - bh - 16); add(b.right - bw, b.top - bh - 16);
-    });
-    add(W - bw - m, H - bh - m); add(m, H - bh - m); add((W - bw) / 2, H - bh - m); add(W - bw - m, topo); add(m, topo); add((W - bw) / 2, topo);
-    function ajusta(p) { return [Math.max(m, Math.min(p[0], W - bw - m)), Math.max(topo, Math.min(p[1], H - bh - m))] }
-    function cobre(p, r) { var x = Math.max(0, Math.min(p[0] + bw, r.right) - Math.max(p[0], r.left)), y = Math.max(0, Math.min(p[1] + bh, r.bottom) - Math.max(p[1], r.top)); return x * y }
-    var melhor = null, nota = 1e18, ax = (alvo.left + alvo.right) / 2, ay = (alvo.top + alvo.bottom) / 2;
+      add(b.left, b.bottom + 16); add(b.right - bw, b.bottom + 16); add(b.left, b.top - bh - 16); add(b.right - bw, b.top - bh - 16) });
+    add((W - bw) / 2, H - bh - m); add((W - bw) / 2, topo);
+    var ax = (alvo.left + alvo.right) / 2, ay = (alvo.top + alvo.bottom) / 2, melhor = null, nota = 1e18, k;
     c.forEach(function (p) {
-      var a = ajusta(p), d = Math.abs(a[0] + bw / 2 - ax) + Math.abs(a[1] + bh / 2 - ay);
-      var n = cobre(a, alvo) * 1e6 + cobre(a, caixa) * 1e3 + cobre(a, cx) * 20 + d;   // nunca cobre o destaque; depois a janela; depois o texto em volta; por fim fica perto
-      if (n < nota) { nota = n; melhor = a }
+      var n = inter(p[0], p[1], bw, bh, alvo) * 1e4 + (caixa ? inter(p[0], p[1], bw, bh, caixa) * 0.05 : 0);
+      for (k = 0; k < R.length && n < nota; k++) n += inter(p[0], p[1], bw, bh, R[k]);
+      n += (Math.abs(p[0] + bw / 2 - ax) + Math.abs(p[1] + bh / 2 - ay)) * 0.3;
+      if (n < nota) { nota = n; melhor = [p[0], p[1], n] }
     });
     return melhor;
   }
+  function topoFixo() {   // quanto da parte de cima da tela está ocupado por faixas/cabeçalhos fixos da página
+    var m = 0; [].forEach.call(document.querySelectorAll('body > *, #app > *'), function (e) { if (e.closest('.tg-balao,.tg-holo,.tg-recorte')) return; var c = getComputedStyle(e); if (c.position === 'fixed') { var r = e.getBoundingClientRect(); if (r.top < 100 && r.height < 130 && r.width > innerWidth * .5) m = Math.max(m, r.bottom) } }); return m;
+  }
+  function paiRolavel(el) { var n = el.parentElement; while (n && n !== document.body) { var o = getComputedStyle(n).overflowY; if ((o === 'auto' || o === 'scroll') && n.scrollHeight > n.clientHeight + 4) return n; n = n.parentElement } return null }
   function posiciona() {
     if (!tour || !holo) return; var p = tour[passo]; if (!p) return; var el = alvoEl(p);
     var bt = balao.querySelector('[data-tg=prox]'); if (bt && p.cond) bt.disabled = !p.cond();
@@ -180,9 +187,39 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (cx) { var rc = cx.getBoundingClientRect(); recorte.style.opacity = 1; recorte.style.left = rc.left + 'px'; recorte.style.top = rc.top + 'px'; recorte.style.width = rc.width + 'px'; recorte.style.height = rc.height + 'px'; recorte.style.borderRadius = getComputedStyle(cx).borderTopLeftRadius }
     else recorte.style.opacity = 0;
     holo.style.left = r.left - 4 + 'px'; holo.style.top = r.top - 4 + 'px'; holo.style.width = r.width + 8 + 'px'; holo.style.height = r.height + 8 + 'px';
+    // telas estreitas: o balão vira uma "folha" colada embaixo e a página rola para o destaque ficar em cima dela (nada fica escondido atrás do balão)
+    var folha = innerWidth < 760; balao.classList.toggle('folha', folha);
+    if (folha) {
+      var hS = balao.offsetHeight, tf = topoFixo(), H = innerHeight, sobra = function (a, b) { return Math.max(0, Math.min(r.bottom, b) - Math.max(r.top, a)) };
+      var ovB = sobra(H - hS - 8, H), ovT = sobra(tf + 6, tf + 6 + hS), ok = r.bottom > tf && r.top < H;   // quanto do destaque ficaria atrás da folha embaixo / em cima
+      // o destaque está embaixo na tela? a folha vai para cima; senão fica embaixo e, se preciso, a página rola para o destaque ficar acima dela
+      if (ovB > 0 && ovT === 0 && ok) { balao.classList.add('folha-topo'); balao.style.setProperty('top', (tf + 6) + 'px', 'important') }
+      else { balao.classList.remove('folha-topo'); balao.style.removeProperty('top') }
+      var sg = [r.top | 0, r.height | 0, H, hS, passo, ovB > 0 ? 1 : 0].join();
+      if (p._sigF !== sg && !p._folhaRolou2 && (ovB > 0 && (ovT > 0 || !ok) || r.top < tf + 4 || !ok)) {
+        p._sigF = sg; var dy = r.top - (tf + 12);
+        if (Math.abs(dy) > 6 && (p._fn = (p._fn || 0) + 1) <= 3) { p._folhaRolou2 = true; var sp2 = paiRolavel(el); if (sp2) sp2.scrollBy({ top: dy, behavior: 'smooth' }); else window.scrollBy({ top: dy, behavior: 'smooth' }); setTimeout(function () { p._folhaRolou2 = false; posiciona() }, 600) }
+      }
+      return;
+    }
     if (manual) { balao.style.left = manual[0] + 'px'; balao.style.top = manual[1] + 'px'; return }
-    var pos = lugarBalao(cx ? cx.getBoundingClientRect() : r, r, balao.offsetWidth, balao.offsetHeight, 10, cx ? null : contexto(el, r));
-    balao.style.left = pos[0] + 'px'; balao.style.top = pos[1] + 'px';
+    var sig = [r.left | 0, r.top | 0, r.width | 0, r.height | 0, innerWidth, innerHeight, passo, compacto, p._dock ? 1 : 0].join();
+    if (p._sig === sig) return; p._sig = sig;   // nada mudou: não recalcula (o relógio chama isto a cada 0,5 s)
+    var R = textos(), cb = cx ? cx.getBoundingClientRect() : null, opcoes = [];
+    (compacto ? ['compacto', 'fino'] : ['', 'compacto', 'fino']).forEach(function (v) {   // três larguras: normal, compacta e fina (cabe numa faixa vazia ao lado)
+      balao.classList.toggle('compacto', v === 'compacto'); balao.classList.toggle('fino', v === 'fino');
+      var bw = balao.offsetWidth, bh = balao.offsetHeight, q = melhorLugar(r, cb, R, bw, bh, 10); q[2] += v === 'fino' ? 400 : v === 'compacto' && !compacto ? 150 : 0;   // o menor só ganha se for bem melhor
+      opcoes.push({ q: q, v: v });
+    });
+    opcoes.sort(function (a, b) { return a.q[2] - b.q[2] }); var o = opcoes[0]; window.__tgOpcoes = opcoes;   // (para depurar a escolha)
+    balao.classList.toggle('compacto', o.v === 'compacto'); balao.classList.toggle('fino', o.v === 'fino');
+    // ainda cobre muito texto (lista comprida em tela estreita): rola o destaque para cima e encaixa o balão embaixo, uma vez por passo
+    if (o.q[2] > 2500 && !p._dock && r.top > 120) {
+      p._dock = true; var sp = paiRolavel(el), d = r.top - 90;
+      if (sp) sp.scrollBy({ top: d, behavior: 'smooth' }); else window.scrollBy({ top: d, behavior: 'smooth' });
+      p._sig = null; setTimeout(posiciona, 450); return;
+    }
+    balao.style.left = o.q[0] + 'px'; balao.style.top = o.q[1] + 'px';
   }
   function termina(concluiu) {
     var v = voltar; tour = null; salva(); clearInterval(timer);

@@ -8,3 +8,5 @@ body.com-casca .ss-nav{border-right:2px solid var(--ink)}
 body.com-casca .ss-main h1{font-size:21px}
 body.com-casca .vf-caixa,body.com-casca .ss-card{background:#fff;border:2px solid var(--ink);border-radius:var(--r,12px);box-shadow:3px 3px 0 var(--ink);padding:14px 16px}
 body.com-casca .cm-tab{border:2px solid var(--ink);border-radius:var(--r,12px);overflow:hidden;box-shadow:3px 3px 0 var(--ink);background:#fff}
+/* janelas baixas (ex.: painel do app): sem o cabeçalho, para sobrar espaço ao conteúdo e ao balão do tutorial */
+@media(max-height:640px){.ssc-cab{display:none}body.com-casca .ss{top:32px}.ssc-trilho{top:32px}}

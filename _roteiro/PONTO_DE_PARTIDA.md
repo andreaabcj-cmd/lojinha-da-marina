@@ -161,3 +161,10 @@ Leia nesta ordem:
 - **Piloto do trilho** (`trilho.js`, isolado): o 1º tutorial do Portfólio avançado (`verificar-empresa`) começa em index.html e leva Início › Módulos › módulo › aula › Praticar › simulador; os demais tutoriais não mudam. Só entra pela lista "Como fazer…" (laboratório). Desligar = apagar a linha em TRILHOS.
 - **Casca comum** (`sim-casca.js/.css`): trilho de ícones + cabeçalho com o portfólio da Marina (iguais ao Gerenciador de Eventos) nos simuladores da família Business Suite (.ss) e cartões com o mesmo contorno grosso.
 - **Bug achado:** o simulador do Feed e a fila de eventos do Pixel usavam a mesma chave `sim.feed` no navegador; quem abria o Feed deixava o Gerenciador de Eventos em branco. Feed agora usa `sim.anuncio-feed` (migra o estado antigo) e o Eventos ignora lixo na chave.
+
+## Balão + trilho geral — 16/10/2026 (2ª rodada)
+- **Backup antes de estender o trilho:** tag Git `antes-trilho-geral` + `D:\Projects\_backups_lojinha\LojinhaPixel_antes-trilho-geral_2026-10-16.zip` (arquivos) e `.bundle` (Git inteiro). Voltar: `git checkout antes-trilho-geral` (ou descompactar o zip).
+- **Desligar o trilho sem mexer em mais nada:** `TRILHO_LIGADO = false` no topo de `assets/js/trilho.js`.
+- **Trilho em todos os módulos:** o 1º tutorial de cada módulo (o primeiro cuja aula aparece na trilha Foco) começa pela página inicial. 20/20 testados em tela estreita e larga. No Instagram o 1º visível é `adicionar-instagram` (aulas 01-02 são só da Completa).
+- **Balão (tour.js):** escolhe o lugar que cobre MENOS texto (cada linha de texto e cada controle conta; nunca o destaque), em 3 larguras (normal, compacta, fina). Em tela estreita (<760 px) vira uma "folha" colada embaixo (ou em cima, se o destaque estiver embaixo) e a página rola para o destaque ficar livre. Arrastável (telas largas).
+- **Por que o André via a sobreposição antiga:** os arquivos tinham o mesmo "carimbo" de versão (`?v=`), então o navegador mostrava o tour.js antigo em cache. Os carimbos foram trocados (`20261016030000`) em todos os HTML; sempre trocar o carimbo ao mudar JS/CSS.
