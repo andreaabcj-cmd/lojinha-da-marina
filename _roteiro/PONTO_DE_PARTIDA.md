@@ -155,3 +155,9 @@ Leia nesta ordem:
 - 4 aulas PT+ES (verificação da empresa, documentos recusados/verificação travada, permissões, excluir o portfólio), 4 tutoriais (`verificar-empresa`, `corrigir-documento`, `corrigir-permissao`, `excluir-portfolio`), 4 quizzes (`ver-pv`, `doc-pv`, `perm-pv`, `excl-pv`), simulador `meta-portfolioav.html`.
 - Fonte: Central de Ajuda oficial (PT). NÃO foram clicados botões irreversíveis na conta de aula (enviar verificação, excluir empresa): essas telas são do treino (a conferir). Pessoas (Ana, Bia, Caio) e pendências do simulador são inventadas.
 - Orientações fora do escopo: uma frase simples de encaminhamento, sem siglas nem regras internas.
+
+## Ajustes de 16/10/2026 (feedback do André)
+- **Balão do tutorial** (`tour.js`): agora evita cobrir o destaque *e o texto em volta* (grupo + irmãos logo abaixo/acima); dá para **arrastar** o balão e há o botão "↔ menor/maior" (automático em telas estreitas).
+- **Piloto do trilho** (`trilho.js`, isolado): o 1º tutorial do Portfólio avançado (`verificar-empresa`) começa em index.html e leva Início › Módulos › módulo › aula › Praticar › simulador; os demais tutoriais não mudam. Só entra pela lista "Como fazer…" (laboratório). Desligar = apagar a linha em TRILHOS.
+- **Casca comum** (`sim-casca.js/.css`): trilho de ícones + cabeçalho com o portfólio da Marina (iguais ao Gerenciador de Eventos) nos simuladores da família Business Suite (.ss) e cartões com o mesmo contorno grosso.
+- **Bug achado:** o simulador do Feed e a fila de eventos do Pixel usavam a mesma chave `sim.feed` no navegador; quem abria o Feed deixava o Gerenciador de Eventos em branco. Feed agora usa `sim.anuncio-feed` (migra o estado antigo) e o Eventos ignora lixo na chave.

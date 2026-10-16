@@ -37,7 +37,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function ler(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d } catch (e) { return d } }
   function grava() { try { localStorage.setItem('sim.eventos', JSON.stringify(S)) } catch (e) { } }
   var S = ler('sim.eventos', null) || { datasets: [], testeDesde: 0 };
-  function feed() { return ler('sim.feed', []) }
+  function feed() { var f = ler('sim.feed', []); return Array.isArray(f) ? f : [] }   // se sobrou um estado antigo do simulador do Feed nessa chave, ignora (a fila do Pixel é uma lista)
   function ds(id) { return S.datasets.filter(function (d) { return d.id === id })[0] }
   function novoId() { var s = '1'; for (var i = 0; i < 14; i++) s += Math.floor(Math.random() * 10); return s }   // 15 dígitos, como um ID real
   function quando(t) { var d = Math.round((Date.now() - t) / 1000); return d < 60 ? 'há ' + Math.max(1, d) + ' s' : d < 3600 ? 'há ' + Math.round(d / 60) + ' min' : new Date(t).toLocaleString('pt-BR') }

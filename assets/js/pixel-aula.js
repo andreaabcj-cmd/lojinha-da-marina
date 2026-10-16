@@ -90,7 +90,7 @@ function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=locati
   pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev);
   try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}
   // entrega o evento ao Gerenciador de Eventos simulado (mesmo navegador, outra aba): só o que o Pixel de fato enviaria
-  if(ev.status!=='perdido'&&ev.status!=='bloqueado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');
+  if(ev.status!=='perdido'&&ev.status!=='bloqueado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');if(!Array.isArray(f))f=[];
     f.push({t:Date.now(),pid:PID,nome:ev.nome,params:ev.params,eid:ev.eid,href:ev.href,ud:ev.ud?Object.keys(ev.ud):[],custom:!!ev.custom,nota:ev.nota||''});
     localStorage.setItem('sim.feed',JSON.stringify(f.slice(-300)))}catch(e){}}}
 function achaProduto(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){var p=ps[i];if(p.id===id)return p;if(p.variantes)for(var j=0;j<p.variantes.length;j++)if(p.variantes[j].id===id)return p}return null}

@@ -1,5 +1,5 @@
 /* Simulador do Gerenciador de Anúncios › nível do anúncio (criativo, texto, destino, posicionamentos e prévia) — layout fiel, visual da Lojinha.
-   Estado no navegador (localStorage "sim.feed"); nada é enviado à Meta.
+   Estado no navegador (localStorage "sim.anuncio-feed"); nada é enviado à Meta.
    Textos copiados das telas reais (conta de aula, rascunho de Vendas, 16/10/2026), em português e em espanhol (?locale=es_LA).
    O que não foi visto de verdade fica marcado "a conferir". Ver _roteiro/telas_gerenciador_anuncios.md.
    URL: meta-feed.html?zerar=1 (anúncio vazio) · ?exemplo=1 (já com mídia e texto) · ?problemas=1 (mídia em Original, sem URL)
@@ -32,7 +32,10 @@
       corte: { feeds: 'orig', stories: 'orig', coluna: 'orig' } };
   }
   function comMidia(s) { s.pagina = PAGINA; s.midia = 'm1'; s.principal = 'Canecas feitas com carinho. Peça a sua!'; s.titulo = 'Caneca azul'; s.cta = 'Ver detalhes'; return s }
-  var S = ler('sim.feed', null) || inicial();
+  // A chave antiga 'sim.feed' era do mesmo nome da fila de eventos do Pixel (Loja → Gerenciador de Eventos) e as duas se atropelavam:
+  // quem abria este simulador deixava o Gerenciador de Eventos em branco. Agora o estado daqui tem chave própria; se sobrou um estado antigo, ele é migrado e a fila do Pixel é devolvida.
+  var LEGADO = null; try { var lg = JSON.parse(localStorage.getItem('sim.feed') || 'null'); if (lg && !Array.isArray(lg) && typeof lg === 'object') { LEGADO = lg; localStorage.removeItem('sim.feed') } } catch (e) { }
+  var S = ler('sim.anuncio-feed', null) || LEGADO || inicial();
   if (params.get('zerar')) S = inicial();
   if (params.get('exemplo')) { S = comMidia(inicial()) }
   if (params.get('problemas')) { S = comMidia(inicial()) }
@@ -40,7 +43,7 @@
   var W = { passo: -1, sel: '', menu: false };     // assistente de mídia
   var G = { g: '', sel: '' };                      // janela "Editar grupo"
   var P = 'todo';                                  // aba da prévia
-  function grava() { try { localStorage.setItem('sim.feed', JSON.stringify(S)) } catch (e) { } window.__simFd = { S: S, W: W, G: G } }
+  function grava() { try { localStorage.setItem('sim.anuncio-feed', JSON.stringify(S)) } catch (e) { } window.__simFd = { S: S, W: W, G: G } }
   grava();
 
   function rota() { return (location.hash || '#anu').slice(1) }

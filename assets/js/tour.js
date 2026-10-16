@@ -47,8 +47,10 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     '.tg-ctrl span{display:flex;gap:6px;align-items:center;white-space:nowrap}' +
     '.tg-btn{padding:7px 12px;border-radius:9px;border:2px solid #16294A;background:#2F6FD6;color:#fff;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 #16294A}.tg-btn.sec{background:#fff;color:#16294A}.tg-btn[disabled]{opacity:.45;cursor:default}' +
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
+    '.tg-balao{cursor:grab}.tg-balao.arrasta{cursor:grabbing;transition:none;user-select:none}.tg-balao button{cursor:pointer}' +
+    '.tg-balao.compacto{width:300px;padding-left:14px;font-size:14px}.tg-balao.compacto .tg-masc{display:none}.tg-bal-min{position:absolute;top:4px;right:124px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
-  var holo, balao, recorte, tour, nome, passo = 0, timer, ouvindo = false;
+  var holo, balao, recorte, tour, nome, passo = 0, timer, ouvindo = false, manual = null, compacto = (function () { try { var v = sessionStorage.getItem('tour.compacto'); return v === null ? innerWidth < 760 : v === '1' } catch (e) { return false } })();
   var voltar = null, paginas = {};
   // ?voltar= só aceita uma página da própria Lojinha (nada de javascript: nem site de fora num link montado por alguém)
   function seguro(v) { return typeof v === 'string' && /^[a-z0-9_-]+\.html([?#][^\s<>\"']*)?$/i.test(v) ? v : null }   // paginas[passo] = página onde o passo foi mostrado (para o ◀ voltar)
@@ -64,8 +66,16 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour');
     balao.addEventListener('click', function (e) {
       var b = e.target.closest('[data-tg]'); if (!b) return; var a = b.getAttribute('data-tg');
+      if (a === 'compacta') { compacto = !compacto; try { sessionStorage.setItem('tour.compacto', compacto ? '1' : '0') } catch (x) { } balao.classList.toggle('compacto', compacto); posiciona(); return }
       if (a === 'prox') vai(passo + 1); else if (a === 'volta') volta(); else if (a === 'fim' || a === 'sair') termina(a === 'fim');
     });
+    // arrastar o balão: a pessoa escolhe onde ele fica para poder ler o que está marcado
+    var drag = null;
+    balao.addEventListener('mousedown', function (e) {
+      if (e.button || e.target.closest('button, a, input, select')) return; var r0 = balao.getBoundingClientRect(); drag = [e.clientX - r0.left, e.clientY - r0.top]; balao.classList.add('arrasta'); e.preventDefault();
+    });
+    document.addEventListener('mousemove', function (e) { if (!drag || !balao) return; manual = [Math.max(0, Math.min(e.clientX - drag[0], innerWidth - 60)), Math.max(0, Math.min(e.clientY - drag[1], innerHeight - 40))]; balao.style.left = manual[0] + 'px'; balao.style.top = manual[1] + 'px' });
+    document.addEventListener('mouseup', function () { if (drag && balao) balao.classList.remove('arrasta'); drag = null });
     if (ouvindo) return; ouvindo = true;   // os 'ouvidos' da página são ligados UMA vez (antes, cada tutorial novo duplicava os cliques)
     // modo guiado sem erros: só o destaque e o balão aceitam clique (se o destaque sumiu, não trava a pessoa)
     document.addEventListener('click', function (e) {
@@ -116,22 +126,44 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
   }
   function desenha() {
-    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false;
-    balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
+    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null;
+    balao.classList.toggle('compacto', compacto);
+    balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><button class="tg-bal-min" data-tg="compacta" title="' + T({ pt: 'Balão menor / maior (e dá para arrastá-lo)', es: 'Globo más pequeño / grande (y se puede arrastrar)' }) + '">' + T({ pt: '↔ menor/maior', es: '↔ menor/mayor' }) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
       '<div class="tg-ctrl"><small>' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
       (p.fim ? '<button class="tg-btn" data-tg="fim">' + T(UI.fim) + '</button>' : prox ? '<button class="tg-btn" data-tg="prox">' + T(UI.prox) + '</button>' : '<small>' + T(UI.clique) + '</small>') + '</span></div>';
     p.antes && p.antes();
     posiciona();
   }
-  function lugarBalao(caixa, alvo, bw, bh, topo) {
-    var W = innerWidth, H = innerHeight, m = 12, c = [
-      [caixa.right + 18, caixa.top], [caixa.left - bw - 18, caixa.top], [caixa.left, caixa.bottom + 16], [caixa.left, caixa.top - bh - 16],
-      [W - bw - m, H - bh - m], [m, H - bh - m], [W - bw - m, topo], [m, topo]];
+  // região "de contexto" do destaque: o próprio destaque + o grupo em que ele está + os irmãos logo abaixo/acima (o texto que a pessoa precisa ler)
+  var GRUPO = 'fieldset, .vf-caixa, .cartao, .card, ul, ol, table, form, section, [role=radiogroup], [role=list], .ga-grupo';
+  function contexto(el, r) {
+    var H = innerHeight, u = { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
+    function uniao(b) { if (!b || !b.width || !b.height) return; u.left = Math.min(u.left, b.left); u.top = Math.min(u.top, b.top); u.right = Math.max(u.right, b.right); u.bottom = Math.max(u.bottom, b.bottom) }
+    try {
+      var g = el.parentElement && el.parentElement.closest(GRUPO); if (g) { var rg = g.getBoundingClientRect(); if (rg.height < H * .8 && rg.width < innerWidth * .98) uniao(rg) }
+      var n = el, k;
+      for (k = 0; k < 3 && (n = n.nextElementSibling); k++) { var rn = n.getBoundingClientRect(); if (rn.top - u.bottom < 60) uniao(rn) }
+      n = el; for (k = 0; k < 1 && (n = n.previousElementSibling); k++) { var rp = n.getBoundingClientRect(); if (u.top - rp.bottom < 40) uniao(rp) }
+    } catch (e) { }
+    u.width = u.right - u.left; u.height = u.bottom - u.top; return u;
+  }
+  function lugarBalao(caixa, alvo, bw, bh, topo, ctx) {
+    var W = innerWidth, H = innerHeight, m = 12, cx = ctx || caixa, c = [];
+    function add(x, y) { c.push([x, y]) }
+    [caixa, cx].forEach(function (b) {
+      add(b.right + 18, b.top); add(b.right + 18, b.bottom - bh); add(b.left - bw - 18, b.top); add(b.left - bw - 18, b.bottom - bh);
+      add(b.left, b.bottom + 16); add(b.right - bw, b.bottom + 16); add(b.left, b.top - bh - 16); add(b.right - bw, b.top - bh - 16);
+    });
+    add(W - bw - m, H - bh - m); add(m, H - bh - m); add((W - bw) / 2, H - bh - m); add(W - bw - m, topo); add(m, topo); add((W - bw) / 2, topo);
     function ajusta(p) { return [Math.max(m, Math.min(p[0], W - bw - m)), Math.max(topo, Math.min(p[1], H - bh - m))] }
     function cobre(p, r) { var x = Math.max(0, Math.min(p[0] + bw, r.right) - Math.max(p[0], r.left)), y = Math.max(0, Math.min(p[1] + bh, r.bottom) - Math.max(p[1], r.top)); return x * y }
-    for (var i = 0; i < 4; i++) { var a = ajusta(c[i]); if (!cobre(a, caixa)) return a }
-    var melhor = null, nota = 1e12; c.forEach(function (p) { var a = ajusta(p), n = cobre(a, alvo) * 1000 + cobre(a, caixa); if (n < nota) { nota = n; melhor = a } });
+    var melhor = null, nota = 1e18, ax = (alvo.left + alvo.right) / 2, ay = (alvo.top + alvo.bottom) / 2;
+    c.forEach(function (p) {
+      var a = ajusta(p), d = Math.abs(a[0] + bw / 2 - ax) + Math.abs(a[1] + bh / 2 - ay);
+      var n = cobre(a, alvo) * 1e6 + cobre(a, caixa) * 1e3 + cobre(a, cx) * 20 + d;   // nunca cobre o destaque; depois a janela; depois o texto em volta; por fim fica perto
+      if (n < nota) { nota = n; melhor = a }
+    });
     return melhor;
   }
   function posiciona() {
@@ -148,7 +180,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (cx) { var rc = cx.getBoundingClientRect(); recorte.style.opacity = 1; recorte.style.left = rc.left + 'px'; recorte.style.top = rc.top + 'px'; recorte.style.width = rc.width + 'px'; recorte.style.height = rc.height + 'px'; recorte.style.borderRadius = getComputedStyle(cx).borderTopLeftRadius }
     else recorte.style.opacity = 0;
     holo.style.left = r.left - 4 + 'px'; holo.style.top = r.top - 4 + 'px'; holo.style.width = r.width + 8 + 'px'; holo.style.height = r.height + 8 + 'px';
-    var pos = lugarBalao(cx ? cx.getBoundingClientRect() : r, r, balao.offsetWidth, balao.offsetHeight, 10);
+    if (manual) { balao.style.left = manual[0] + 'px'; balao.style.top = manual[1] + 'px'; return }
+    var pos = lugarBalao(cx ? cx.getBoundingClientRect() : r, r, balao.offsetWidth, balao.offsetHeight, 10, cx ? null : contexto(el, r));
     balao.style.left = pos[0] + 'px'; balao.style.top = pos[1] + 'px';
   }
   function termina(concluiu) {
