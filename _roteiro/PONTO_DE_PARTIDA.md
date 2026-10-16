@@ -146,10 +146,12 @@ Leia nesta ordem:
 - Ressalva: o artigo cita um teste de ROAS nos EUA (35%); NÃO usado nas aulas.
 - Próximo na ordem do Foco: WhatsApp (por último). Depois, Foco completo; restam aulas de Pixel avançado e Portfólio avançado e a trilha Completa.
 
-## Pixel avançado (Foco) — 16/10/2026
-- 4 aulas PT+ES (correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade), 4 tutoriais guiados (`correspondencia-avancada`, `qualidade-sinal`, `desduplicar-eventos`, `privacidade-pixel`), 4 quizzes (`corr-pa`, `emq-pa`, `dedup-pa`, `priv-pa`), simulador `meta-pixelavancado.html`.
-- Fonte: Central de Ajuda oficial (PT). A conta de aula NÃO tem conjunto de dados: telas reais de correspondência avançada, qualidade da correspondência e Eventos de teste não foram vistas — telas, pontuação e hash do simulador são do treino (a conferir).
-- Sem valores reais, IDs ou nomes; nada interno.
+## Pixel avançado (Foco) — REFEITO em telas reais, 16/10/2026
+- Telas: Gerenciador de Eventos (Visão geral, Testar eventos, Diagnóstico, Configurações), código-fonte, editor de arquivos do site e banner de cookies, tudo sobre o site da Lojinha (`site-estado.js`). O simulador antigo (`meta-pixelavancado.html`, `sim-pixelav.*`) foi REMOVIDO.
+- 4 aulas PT+ES; 5 tutoriais: `correspondencia-avancada` (caso am-desligada), `qualidade-sinal` (emq-baixa), `desduplicar-eventos` (capi-sem-eventid), `info-proibida` e `consentimento-pixel` (aula 04, duas opções). Arquivo: `assets/js/tours-pixelav.js`. Trilho do módulo: `correspondencia-avancada` (cauda 29).
+- Novidades no Eventos: cartão de qualidade da correspondência (0–10, a conferir), chip “Desduplicado”, aviso de duplicidade Pixel×API e de parâmetros bloqueados, “Navegador e servidor”.
+- Fonte: Central de Ajuda oficial (PT). A conta de aula NÃO tem conjunto de dados: pontuação, textos de aviso e telas internas são do treino (a conferir). Sem valores reais, IDs ou nomes; nada interno.
+- Verificado de ponta a ponta com executor automático: os 5 tutoriais + trilho (34 passos).
 
 ## Portfólio avançado (Foco) — 16/10/2026
 - 4 aulas PT+ES (verificação da empresa, documentos recusados/verificação travada, permissões, excluir o portfólio), 4 tutoriais (`verificar-empresa`, `corrigir-documento`, `corrigir-permissao`, `excluir-portfolio`), 4 quizzes (`ver-pv`, `doc-pv`, `perm-pv`, `excl-pv`), simulador `meta-portfolioav.html`.

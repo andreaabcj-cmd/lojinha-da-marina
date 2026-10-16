@@ -96,15 +96,22 @@ function trackFx(nome,params,opts,F){
   var eid=opts.eventID||idEvento(nome);
   fbqSafe(opts.custom?'trackCustom':'track',nome,params,{eventID:eid});
   var lista=window.SITE.copias(nome,params,F);
-  lista.forEach(function(c,i){
-    registra({nome:c.nome,params:c.params,eid:(i&&c.fonte!=='servidor')?idEvento(c.nome):eid,status:c.status,custom:c.custom,pid:c.pid,fonte:c.fonte,nota:c.fonte==='servidor'?'🖥️ Enviado pelo servidor (API de Conversões).':''});
+  lista.forEach(function(c){
+    var eidc=(c.fonte==='servidor'||c.eidModo==='shop')?eid:idEvento(c.nome);
+    var st=c.status;
+    if(st==='enviado'&&c.fonte==='navegador'){   // consentimento (Meta: fbq('consent','revoke') antes do init segura os eventos até o aceite)
+      if(F.consentGate&&consent!=='grant')st='segurado';
+      else if(!F.consentGate&&C.pedirConsentimento&&consent!=='grant')st='antesAceite';
+    }
+    var u=null;if(c.ud&&cliente){var n=normaliza(cliente);if(c.ud==='all')u=n;else{u={};c.ud.forEach(function(k){if(n[k]!==undefined)u[k]=n[k]})}}   // correspondência avançada (hash): todos os campos ou só os do init manual
+    registra({nome:c.nome,params:c.params,eid:eidc,status:st,custom:c.custom,pid:c.pid,fonte:c.fonte,ud:u,fx:true,nota:c.fonte==='servidor'?'🖥️ Enviado pelo servidor (API de Conversões).':''});
   });
 }
-function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=location.href.split('#')[0];ev.ud=(AM&&cliente)?normaliza(cliente):null;ev.pagina=document.body?document.body.getAttribute('data-pagina'):'';ev.url=trUrl(ev.nome,ev.params,ev.eid,ev.custom);
+function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=location.href.split('#')[0];if(!('ud' in ev))ev.ud=(AM&&cliente)?normaliza(cliente):null;ev.pagina=document.body?document.body.getAttribute('data-pagina'):'';ev.url=trUrl(ev.nome,ev.params,ev.eid,ev.custom);
   pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev);
   try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}
   // entrega o evento ao Gerenciador de Eventos simulado (mesmo navegador, outra aba): só o que o Pixel de fato enviaria
-  if(ev.status!=='perdido'&&ev.status!=='bloqueado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');if(!Array.isArray(f))f=[];
+  if(ev.status!=='perdido'&&ev.status!=='bloqueado'&&!(ev.fx&&ev.status==='segurado')){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');if(!Array.isArray(f))f=[];
     f.push({t:Date.now(),pid:ev.pid||PID,fonte:ev.fonte||'navegador',nome:ev.nome,params:ev.params,eid:ev.eid,href:ev.href,ud:ev.ud?Object.keys(ev.ud):[],custom:!!ev.custom,nota:ev.nota||''});
     localStorage.setItem('sim.feed',JSON.stringify(f.slice(-300)))}catch(e){}}}
 function achaProduto(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){var p=ps[i];if(p.id===id)return p;if(p.variantes)for(var j=0;j<p.variantes.length;j++)if(p.variantes[j].id===id)return p}return null}
@@ -145,7 +152,7 @@ var ui = (function(){
 (function(){try{var q=new URLSearchParams(location.search).get('aula');if(q&&/^(camera|rede|lupa|codigo|lab|dica)$/.test(q)){aba=q;aberto=true;lsSet('aulaAba',q);lsSet('aulaAberta',true)}}catch(e){}})();
   var root,badge,panel,toastBox,ready=false;
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function stChip(s){var m={enviado:['ok','enviado à Meta'],simulado:['sim','simulado'],segurado:['warn','segurado: sem consentimento'],bloqueado:['bad','bloqueado'],perdido:['bad','NÃO disparou'],erro:['bad','erro']}[s]||['sim',s];return '<span class="ma-st '+m[0]+'">'+m[1]+'</span>'}
+  function stChip(s){var m={enviado:['ok','enviado à Meta'],simulado:['sim','simulado'],segurado:['warn','segurado: sem consentimento'],antesAceite:['bad','enviado ANTES do aceite'],bloqueado:['bad','bloqueado'],perdido:['bad','NÃO disparou'],erro:['bad','erro']}[s]||['sim',s];return '<span class="ma-st '+m[0]+'">'+m[1]+'</span>'}
   function codigo(ev){if(ev.status==='perdido')return '// (nada foi enviado)';var p=JSON.stringify(ev.params,null,2);return "fbq('"+(ev.custom?'trackCustom':'track')+"', '"+ev.nome+"'"+(p!=='{}'?', '+p:(ev.eid?', {}':''))+(ev.eid?", {eventID: '"+ev.eid+"'}":'')+');'}
   function evHTML(ev,i){var ex=EXPL[ev.nome]||[ev.custom?'Evento personalizado':'Evento','Nome criado pela loja (trackCustom). Use só quando nenhum evento padrão descreve a ação.'];
     var params=Object.keys(ev.params||{}).map(function(k){return '<div><code>'+esc(k)+'</code> '+esc(JSON.stringify(ev.params[k]))+'</div>'}).join('')||'<div class="ma-mut">sem parâmetros</div>';

@@ -21,7 +21,7 @@
   function base(id, comPageView) {
     return "<!-- Meta Pixel Code -->\n<script>\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;\nn.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,\ndocument,'script','https://connect.facebook.net/en_US/fbevents.js');\nfbq('init', '" + id + "');\n" + (comPageView === false ? '' : "fbq('track', 'PageView');\n") + "</script>\n<!-- End Meta Pixel Code -->";
   }
-  var COMPRA = function (v, c, nome) { return "<script>\n  fbq('track', '" + (nome || 'Purchase') + "', {value: " + v + ", currency: " + c + "});\n</script>" };
+  var COMPRA = function (v, c, nome, eventId) { return "<script>\n  fbq('track', '" + (nome || 'Purchase') + "', {value: " + v + ", currency: " + c + "}" + (eventId ? ", {eventID: '{{ pedido.id }}'}" : "") + ");\n</script>" };
   /* theme.liquid do tema do cliente (faz-de-conta): o código do Pixel colado à mão fica entre <head> e </head> */
   function tema(codigo) {
     var L = ["<!doctype html>", "<html lang=\"pt-BR\">", "<head>", "  <meta charset=\"utf-8\">", "  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">", "  <title>{{ page_title }}</title>", "  {{ content_for_header }}"];
@@ -32,8 +32,8 @@
   var DIN = '{{ pedido.total }}';   // valor dinâmico: o site coloca o total do pedido
   function padrao() {
     var id = idCerto();
-    return { ativo: false, caso: '', tipo: 'proprio', exigeConsent: false,
-      proprio: { cabecalho: base(id), obrigado: COMPRA(DIN, "'BRL'") },
+    return { ativo: false, caso: '', tipo: 'proprio', exigeConsent: false, ds: { am: true, capi: false },
+      proprio: { cabecalho: base(id), obrigado: COMPRA(DIN, "'BRL'", 'Purchase', true) },
       shopify: { app: { on: true, nivel: 'standard', pixel: 'certo' }, tema: tema('') },
       visitante: { bloqueador: false } };
   }
@@ -44,7 +44,13 @@
     'queda-tema': function (s) { s.caso = 'Eventos caíram depois da troca de tema'; s.proprio.cabecalho = ''; return s },
     'pixel-errado': function (s) { s.caso = 'Eventos chegam em outro pixel'; s.proprio.cabecalho = base('000000000000000'); return s },
     'bloqueador': function (s) { s.caso = 'Compra some para quem usa bloqueador'; s.tipo = 'shopify'; s.visitante.bloqueador = true; return s },
-    'novo-site': function (s) { s.caso = 'Site novo sem Pixel'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; return s }
+    'novo-site': function (s) { s.caso = 'Site novo sem Pixel'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; return s },
+    /* Pixel avançado */
+    'am-desligada': function (s) { s.caso = 'Correspondência avançada desligada'; s.ds = { am: false, capi: false }; return s },
+    'emq-baixa': function (s) { s.caso = 'Qualidade do sinal baixa'; s.ds = { am: false, capi: true }; s.proprio.obrigado = COMPRA(DIN, "'BRL'", 'Purchase', true); return s },
+    'capi-sem-eventid': function (s) { s.caso = 'Compras duplicadas entre navegador e servidor'; s.ds = { am: true, capi: true }; s.proprio.obrigado = COMPRA(DIN, "'BRL'"); return s },
+    'info-proibida': function (s) { s.caso = 'Informação sensível nos eventos'; s.ds = { am: true, capi: false }; s.proprio.obrigado = COMPRA(DIN, "'BRL'") + "\n<script>\n  fbq('trackCustom', 'AgendouConsulta', {doenca: 'diabetes', especialidade: 'endocrinologia'});\n</script>"; return s },
+    'sem-consentimento': function (s) { s.caso = 'Pixel dispara antes do aceite de cookies'; s.ds = { am: true, capi: false }; return s }
   };
   /* o caso precisa de um conjunto de dados (Pixel) criado no Gerenciador de Eventos simulado: cria o da Mari se ainda não existir */
   function ensureDataset() {
@@ -53,17 +59,22 @@
       if (!e.datasets || !e.datasets.length) { e.datasets = [{ id: String((window.LOJA_CONFIG || {}).pixelId || '1779103133372149'), nome: 'Pixel da Mari', criado: Date.now(), capi: false, am: true, cookies: true, auto: false }]; localStorage.setItem('sim.eventos', JSON.stringify(e)) }
     } catch (x) { }
   }
+  function dsGet() { try { var e = JSON.parse(localStorage.getItem('sim.eventos') || 'null'); return (e && e.datasets && e.datasets[0]) || {} } catch (x) { return {} } }
+  function dsSet(p) { try { var e = JSON.parse(localStorage.getItem('sim.eventos') || 'null'); if (e && e.datasets && e.datasets[0]) { for (var k in p) e.datasets[0][k] = p[k]; localStorage.setItem('sim.eventos', JSON.stringify(e)) } } catch (x) { } }
   function get() { var s = lsGet(); if (!s) s = padrao(); s.proprio = s.proprio || padrao().proprio; s.shopify = s.shopify || padrao().shopify; s.visitante = s.visitante || { bloqueador: false }; return s }
   function set(s) { lsSet(s); pillRender(); try { window.dispatchEvent(new CustomEvent('site:mudou')) } catch (e) { } }
 
   /* ---------- lê um trecho de código ---------- */
+  function pares(ps) { var o = {}; String(ps || '').replace(/(\w+)\s*:\s*('[^']*'|"[^"]*"|\{\{.*?\}\}|[^,}\s]+)/g, function (m, k, v) { var s = /^['"](.*)['"]$/.exec(v); o[k] = s ? s[1] : (/^\d+(\.\d+)?$/.test(v) ? +v : v) }); return o }
   function le(texto) {
-    var t = String(texto || ''), r = { carregador: /connect\.facebook\.net\/[a-z_A-Z]+\/fbevents\.js/.test(t) && /!function\(f,b,e,v,n,t,s\)/.test(t), ids: [], pv: 0, compras: [] };
-    t.replace(/fbq\(\s*['"]init['"]\s*,\s*['"](\d+)['"]/g, function (m, id) { r.ids.push(id) });
-    t.replace(/fbq\(\s*['"]track(Custom)?['"]\s*,\s*['"]([^'"]+)['"]\s*(?:,\s*\{((?:[^{}]|\{\{.*?\}\})*)\})?\s*\)/g, function (m, cust, nome, ps) {
+    var t = String(texto || ''), r = { carregador: /connect\.facebook\.net\/[a-z_A-Z]+\/fbevents\.js/.test(t) && /!function\(f,b,e,v,n,t,s\)/.test(t), ids: [], pv: 0, compras: [], eventos: [], initParams: [], consentRevoke: false };
+    var iInit = t.search(/fbq\(\s*['"]init['"]/), iRev = t.search(/fbq\(\s*['"]consent['"]\s*,\s*['"]revoke['"]/);
+    r.consentRevoke = iRev >= 0 && (iInit < 0 || iRev < iInit);   // o consentimento é revogado ANTES do init: o Pixel espera o aceite
+    t.replace(/fbq\(\s*['"]init['"]\s*,\s*['"](\d+)['"]\s*(?:,\s*\{([^}]*)\})?/g, function (m, id, ps) { r.ids.push(id); String(ps || '').replace(/(\w+)\s*:/g, function (x, k) { if (r.initParams.indexOf(k) < 0) r.initParams.push(k) }) });
+    t.replace(/fbq\(\s*['"]track(Custom)?['"]\s*,\s*['"]([^'"]+)['"]\s*(?:,\s*\{((?:[^{}]|\{\{.*?\}\})*)\})?\s*(?:,\s*\{((?:[^{}]|\{\{.*?\}\})*)\})?\s*\)/g, function (m, cust, nome, ps, opts) {
       if (nome === 'PageView') { r.pv++; return }
-      var v = /value\s*:\s*('[^']*'|"[^"]*"|\{\{.*?\}\}|[^,}\s]+)/.exec(ps || ''), c = /currency\s*:\s*('[^']*'|"[^"]*"|[^,}\s]+)/.exec(ps || ''), item = { nome: nome, custom: !!cust, valorTxt: v ? v[1].trim() : null, moedaTxt: c ? c[1].trim() : null };
-      if (/^purchase$/i.test(nome)) r.compras.push(item);
+      var v = /value\s*:\s*('[^']*'|"[^"]*"|\{\{.*?\}\}|[^,}\s]+)/.exec(ps || ''), c = /currency\s*:\s*('[^']*'|"[^"]*"|[^,}\s]+)/.exec(ps || ''), item = { nome: nome, custom: !!cust, valorTxt: v ? v[1].trim() : null, moedaTxt: c ? c[1].trim() : null, temEventId: /eventID/i.test(opts || ''), params: pares(ps) };
+      r.eventos.push(item); if (/^purchase$/i.test(nome)) r.compras.push(item);
     });
     return r;
   }
@@ -78,14 +89,17 @@
     if (s.tipo === 'proprio') { r.comprasPagina = le(s.proprio.obrigado).compras }
     if (hc.carregador) r.comprasCabecalho = hc.compras;
     if (s.tipo === 'shopify' && s.shopify.app.on && s.shopify.app.pixel !== 'nenhum') r.app = { id: s.shopify.app.pixel === 'certo' ? good : '000000000000000', nivel: s.shopify.app.nivel };
+    var ds = dsGet(); r.ds = { am: !!ds.am, capi: !!ds.capi }; r.amManual = hc.initParams.filter(function (k) { return ['em', 'ph', 'fn', 'ln', 'ct', 'st', 'zp', 'country', 'external_id'].indexOf(k) >= 0 }); r.consentGate = !!hc.consentRevoke;
+    r.eventosPagina = s.tipo === 'proprio' ? le(s.proprio.obrigado).eventos.filter(function (e) { return !/^purchase$/i.test(e.nome) }) : [];
     r.temPixel = !!(r.head || r.app);
     r.idPrincipal = r.head ? r.head.ids[0] : r.app ? r.app.id : null;
     return r;
   }
   /* copias(nome, params, pagina) → lista de {nome, params, custom, pid, status, fonte} que o site envia ao disparar o evento `nome` */
-  function copias(nome, params, F, ehPaginaObrigado) {
+  function copias(nome, params, F) {
     var out = [], bl = F.bloqueador;
-    function add(n, p, custom, pid, fonte) { out.push({ nome: n, params: p, custom: !!custom, pid: pid, fonte: fonte || 'navegador', status: (bl && (fonte || 'navegador') === 'navegador') ? 'bloqueado' : 'enviado' }) }
+    var udHead = F.ds && F.ds.am ? 'all' : (F.amManual && F.amManual.length ? F.amManual : null);   // correspondência avançada: automática (liga/desliga no Gerenciador de Eventos) ou manual (no init do código)
+    function add(n, p, custom, pid, fonte, eidModo, ud) { out.push({ nome: n, params: p, custom: !!custom, pid: pid, fonte: fonte || 'navegador', eidModo: eidModo || 'random', ud: ud === undefined ? null : ud, status: (bl && (fonte || 'navegador') === 'navegador') ? 'bloqueado' : 'enviado' }) }
     function compraParams(c) {
       var p = JSON.parse(JSON.stringify(params || {})), v = c.valorTxt;
       if (v == null) delete p.value; else if (v === '{{ pedido.total }}') { /* valor dinâmico: o do pedido */ } else { var n = numeroOuNull(v), sl = strLit(v); p.value = n != null ? n : sl != null ? sl : v }
@@ -93,18 +107,21 @@
       return p;
     }
     if (nome === 'PageView') {
-      if (F.head) F.head.ids.forEach(function (id) { for (var i = 0; i < F.head.pv; i++) add('PageView', {}, false, id) });
-      if (F.app) add('PageView', {}, false, F.app.id);
-      F.comprasCabecalho.forEach(function (c) { (F.head ? F.head.ids : []).forEach(function (id) { add(c.nome, compraParams(c), c.nome !== 'Purchase', id) }) });
+      if (F.head) F.head.ids.forEach(function (id) { for (var i = 0; i < F.head.pv; i++) add('PageView', {}, false, id, 'navegador', 'random', udHead) });
+      if (F.app) add('PageView', {}, false, F.app.id, 'navegador', 'random', F.app.nivel !== 'standard' ? 'all' : null);
+      F.comprasCabecalho.forEach(function (c) { (F.head ? F.head.ids : []).forEach(function (id) { add(c.nome, compraParams(c), c.nome !== 'Purchase', id, 'navegador', c.temEventId ? 'shop' : 'random', udHead) }) });
       return out;
     }
     if (nome === 'Purchase') {
-      if (F.head) F.comprasPagina.forEach(function (c) { F.head.ids.forEach(function (id) { add(c.nome, compraParams(c), c.nome !== 'Purchase', id) }) });
-      if (F.app) { add('Purchase', params, false, F.app.id); if (F.app.nivel !== 'standard') add('Purchase', params, false, F.app.id, 'servidor') }
+      if (F.head) F.comprasPagina.forEach(function (c) { F.head.ids.forEach(function (id) { add(c.nome, compraParams(c), c.nome !== 'Purchase', id, 'navegador', c.temEventId ? 'shop' : 'random', udHead) }) });
+      if (F.head) F.eventosPagina.forEach(function (c) { F.head.ids.forEach(function (id) { add(c.nome, c.params, c.custom, id, 'navegador', 'random', udHead) }) });
+      // API de Conversões (site próprio): com a opção ligada no Gerenciador de Eventos, a compra também vai do servidor, com o mesmo event_id da Loja
+      if (F.tipo === 'proprio' && F.ds && F.ds.capi && F.head && F.comprasPagina.length) add('Purchase', params, false, F.head.ids[0], 'servidor', 'shop', udHead);
+      if (F.app) { add('Purchase', params, false, F.app.id, 'navegador', 'shop', F.app.nivel !== 'standard' ? 'all' : null); if (F.app.nivel !== 'standard') add('Purchase', params, false, F.app.id, 'servidor', 'shop', 'all') }
       return out;
     }
-    if (F.head && F.tipo === 'proprio') F.head.ids.forEach(function (id) { add(nome, params, false, id) });   // no site próprio o código dos eventos é do site; na plataforma só o app envia os demais eventos
-    if (F.app) add(nome, params, false, F.app.id);
+    if (F.head && F.tipo === 'proprio') F.head.ids.forEach(function (id) { add(nome, params, false, id, 'navegador', 'random', udHead) });   // no site próprio o código dos eventos é do site; na plataforma só o app envia os demais eventos
+    if (F.app) add(nome, params, false, F.app.id, 'navegador', 'random', F.app.nivel !== 'standard' ? 'all' : null);
     return out;
   }
 
@@ -121,7 +138,8 @@
   window.SITE = {
     tema: tema, get: get, set: set, fx: fx, le: le, copias: copias, base: base, compra: COMPRA, idCerto: idCerto, padrao: padrao,
     ativo: function () { return !!get().ativo },
-    preset: function (nome) { ensureDataset(); var s = PRESETS[nome](padrao()); s.ativo = true; set(s); try { localStorage.removeItem('sim.feed'); sessionStorage.removeItem('loja.log'); localStorage.removeItem('loja.pedidosDisparados') } catch (e) { } },   // começa um caso do zero (sem eventos antigos)
+    dataset: function () { return dsGet() }, setDataset: dsSet,
+    preset: function (nome) { ensureDataset(); var s = PRESETS[nome](padrao()); s.ativo = true; dsSet(s.ds || { am: true, capi: false }); try { if (nome === 'sem-consentimento') localStorage.removeItem('loja.consent') } catch (e) { } set(s); try { localStorage.removeItem('sim.feed'); sessionStorage.removeItem('loja.log'); localStorage.removeItem('loja.pedidosDisparados') } catch (e) { } },   // começa um caso do zero (sem eventos antigos)
     encerra: function () { var s = get(); s.ativo = false; set(s) },
     reseta: function () { set(padrao()) }
   };

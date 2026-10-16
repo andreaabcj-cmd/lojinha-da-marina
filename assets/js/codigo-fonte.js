@@ -24,13 +24,13 @@
     if (s.tipo === 'shopify') {   // plataforma: o tema (theme.liquid) já vem montado; a plataforma preenche os trechos entre chaves
       var topo = corpo[0], resto = corpo.slice(1).join('\n');
       return String(s.shopify.tema).replace('{{ page_title }}', ROTAS[pag][1]).replace('{{ content_for_header }}', '<!-- scripts da plataforma (apps e pixels de apps não aparecem aqui) -->')
-        .replace("{% section 'header' %}", topo).replace("{% section 'footer' %}", '<footer>…</footer>').replace('{{ content_for_layout }}', resto).replace(/\{\{ pedido\.total \}\}/g, total).split('\n');
+        .replace("{% section 'header' %}", topo).replace("{% section 'footer' %}", '<footer>…</footer>').replace('{{ content_for_layout }}', resto).replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n');
     }
     var linhas = ['<!DOCTYPE html>', '<html lang="pt-BR">', '<head>', '<meta charset="utf-8">', '<title>' + ROTAS[pag][1] + '</title>', '<link rel="stylesheet" href="/assets/css/loja.css">'];
-    if (cab && cab.trim()) cab.replace(/\{\{ pedido\.total \}\}/g, total).split('\n').forEach(function (l) { linhas.push(l) });
+    if (cab && cab.trim()) cab.replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n').forEach(function (l) { linhas.push(l) });
     linhas.push('</head>', '<body>');
     corpo.forEach(function (l) { linhas.push(l) });
-    if (pag === 'obrigado' && s.tipo === 'proprio' && s.proprio.obrigado && s.proprio.obrigado.trim()) s.proprio.obrigado.replace(/\{\{ pedido\.total \}\}/g, total).split('\n').forEach(function (l) { linhas.push(l) });
+    if (pag === 'obrigado' && s.tipo === 'proprio' && s.proprio.obrigado && s.proprio.obrigado.trim()) s.proprio.obrigado.replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n').forEach(function (l) { linhas.push(l) });
     linhas.push('<script src="/assets/js/loja.js"></script>', '</body>', '</html>');
     return linhas;
   }

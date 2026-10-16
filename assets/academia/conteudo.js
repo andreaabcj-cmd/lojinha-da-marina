@@ -4458,7 +4458,7 @@ window.AULAS = {
   'pixel-avancado': (function () {
     function L(pt, es) { return { pt: pt, es: es } }
     var PERG = L('O que você responde?', '¿Qué respondes?');
-    var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Sobre a correspondência avançada na web”, “Sobre a qualidade da correspondência de eventos”, “Sobre a desduplicação de eventos do Pixel da Meta e da API de Conversões”, “Requisitos de privacidade e uso de dados para as Ferramentas da Meta para Empresas” e “Comparar as opções de configuração da API de Conversões”. A conta de aula não tem conjunto de dados, então as telas reais de correspondência avançada, qualidade da correspondência de eventos e Eventos de teste não foram vistas: as telas do simulador, o cálculo da pontuação e o hash mostrado são do treino (a conferir).', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Acerca de la coincidencia avanzada en la web”, “Acerca de la calidad de la coincidencia de eventos”, “Acerca de la deduplicación de eventos del píxel de Meta y de la API de Conversiones”, “Requisitos de privacidad y uso de datos para las Herramientas de Meta para Empresas” y “Comparar las opciones de configuración de la API de Conversiones”. La cuenta de clase no tiene conjunto de datos, así que las pantallas reales de coincidencia avanzada, calidad de coincidencia de eventos y Probar eventos no se vieron: las pantallas del simulador, el cálculo de la puntuación y el hash mostrado son del entrenamiento (por confirmar).');
+    var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Sobre a correspondência avançada na web”, “Sobre a qualidade da correspondência de eventos”, “Sobre a desduplicação de eventos do Pixel da Meta e da API de Conversões”, “Requisitos de privacidade e uso de dados para as Ferramentas da Meta para Empresas” e “Comparar as opções de configuração da API de Conversões”. A conta de aula não tem conjunto de dados, então as telas reais de correspondência avançada, qualidade da correspondência de eventos e Eventos de teste não foram vistas: a prática recria essas telas com o site da Lojinha da Marina, e a pontuação e os textos de aviso são do treino (a conferir).', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Acerca de la coincidencia avanzada en la web”, “Acerca de la calidad de la coincidencia de eventos”, “Acerca de la deduplicación de eventos del píxel de Meta y de la API de Conversiones”, “Requisitos de privacidad y uso de datos para las Herramientas de Meta para Empresas” y “Comparar las opciones de configuración de la API de Conversiones”. La cuenta de clase no tiene conjunto de datos, así que las pantallas reales de coincidencia avanzada, calidad de coincidencia de eventos y Probar eventos no se vieron: la práctica recrea esas pantallas con el sitio de la Lojinha de Marina, y la puntuación y los textos de aviso son del entrenamiento (por confirmar).');
     var FERR = L('Gerenciador de Eventos › seu Pixel › Visão geral, Eventos de teste e Diagnóstico.', 'Administrador de eventos › tu píxel › Descripción general, Probar eventos y Diagnóstico.');
     return [
       {
@@ -4484,8 +4484,8 @@ window.AULAS = {
         },
         ferramenta: 'corr-pa',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela correspondência automática e, para um banco, pela manual com o hash.', 'En el simulador, el Pixel te guía por la coincidencia automática y, para un banco, por la manual con el hash.'),
-          tour: 'correspondencia-avancada', pagina: 'meta-pixelavancado.html?zerar=1'
+          texto: L('A cliente quer atribuir mais compras. Você faz uma compra de teste na Lojinha, vê no Gerenciador de Eventos que a Meta não recebeu dados do cliente, liga a correspondência avançada em Configurações e confere o resultado em Eventos de teste. O Pixel te guia.', 'La clienta quiere atribuir más compras. Haces una compra de prueba en la Lojinha, ves en el Administrador de eventos que Meta no recibió datos del cliente, activas la coincidencia avanzada en Configuración y compruebas el resultado en Probar eventos. El Pixel te guía.'),
+          tour: 'correspondencia-avancada', pagina: 'loja.html'
         },
         atender: {
           cena: L('Quero mandar o e-mail dos meus clientes para a Meta. Isso é seguro? Vão ver meus dados? 😰', 'Quiero mandar el correo de mis clientes a Meta. ¿Es seguro? ¿Van a ver mis datos? 😰'),
@@ -4528,8 +4528,8 @@ window.AULAS = {
         },
         ferramenta: 'emq-pa',
         praticar: {
-          texto: L('No simulador, o Pixel te guia para subir a pontuação marcando os parâmetros de prioridade alta e média.', 'En el simulador, el Pixel te guía para subir la puntuación marcando los parámetros de prioridad alta y media.'),
-          tour: 'qualidade-sinal', pagina: 'meta-pixelavancado.html?zerar=1'
+          texto: L('O cliente usa a API de Conversões e a nota está baixa. Você faz uma compra de teste, olha o cartão de qualidade da correspondência de eventos na Visão geral, liga a correspondência avançada e vê a nota subir. O Pixel te guia.', 'El cliente usa la API de Conversiones y la nota está baja. Haces una compra de prueba, miras la tarjeta de calidad de la coincidencia de eventos en la Descripción general, activas la coincidencia avanzada y ves subir la nota. El Pixel te guía.'),
+          tour: 'qualidade-sinal', pagina: 'loja.html'
         },
         atender: {
           cena: L('Minha pontuação é 3 de 10. Vocês estão me penalizando? Quero 10 agora! 😠', 'Mi puntuación es 3 de 10. ¿Me están penalizando? ¡Quiero 10 ya! 😠'),
@@ -4572,8 +4572,8 @@ window.AULAS = {
         },
         ferramenta: 'dedup-pa',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por uma compra contada em dobro e o conserto com event_id idêntico.', 'En el simulador, el Pixel te guía por una compra contada dos veces y el arreglo con event_id idéntico.'),
-          tour: 'desduplicar-eventos', pagina: 'meta-pixelavancado.html?zerar=1'
+          texto: L('A compra aparece em dobro. Você faz a compra de teste, vê as duas fontes e o aviso no Diagnóstico, acha no código-fonte o Purchase sem eventID, corrige no arquivo do site (como o desenvolvedor) e confirma em Eventos de teste que ficou “Desduplicado”. O Pixel te guia.', 'La compra aparece doble. Haces la compra de prueba, ves las dos fuentes y el aviso en el Diagnóstico, encuentras en el código fuente el Purchase sin eventID, lo corriges en el archivo del sitio (como el desarrollador) y confirmas en Probar eventos que quedó “Deduplicado”. El Pixel te guía.'),
+          tour: 'desduplicar-eventos', pagina: 'loja.html'
         },
         atender: {
           cena: L('Desde que ativei a API de Conversões, minhas vendas na Meta dobraram, mas no banco não mudou nada! 😡', '¡Desde que activé la API de Conversiones, mis ventas en Meta se duplicaron, pero en el banco no cambió nada! 😡'),
@@ -4616,8 +4616,13 @@ window.AULAS = {
         },
         ferramenta: 'priv-pa',
         praticar: {
-          texto: L('No simulador, o Pixel te guia para corrigir um site que dispara antes do consentimento e envia uma informação de saúde.', 'En el simulador, el Pixel te guía para corregir un sitio que dispara antes del consentimiento y envía una información de salud.'),
-          tour: 'privacidade-pixel', pagina: 'meta-pixelavancado.html?zerar=1'
+          texto: L('Há dois casos de privacidade. Escolha um e o Pixel te guia; faça os dois se quiser.', 'Hay dos casos de privacidad. Elige uno y el Pixel te guía; haz los dos si quieres.'),
+          opcoes: [
+            { id: 'sensivel', icone: '🩺', pagina: 'loja.html', tour: 'info-proibida', selo: L('mais comum', 'más común'),
+              tit: L('Informação de saúde nos eventos', 'Información de salud en los eventos'), txt: L('A Meta bloqueou parâmetros: achar no Diagnóstico e no código-fonte e remover o que é proibido.', 'Meta bloqueó parámetros: encontrarlos en el Diagnóstico y en el código fuente y quitar lo prohibido.') },
+            { id: 'consentimento', icone: '🍪', pagina: 'loja.html', tour: 'consentimento-pixel',
+              tit: L('Pixel antes do aceite de cookies', 'Píxel antes de aceptar las cookies'), txt: L('Ver o Pixel disparando com o banner na tela e corrigir o código para esperar o aceite.', 'Ver el píxel disparándose con el banner en pantalla y corregir el código para esperar la aceptación.') }
+          ]
         },
         atender: {
           cena: L('A Meta bloqueou parâmetros do meu Pixel! Ela quer me impedir de vender! 😡', '¡Meta bloqueó parámetros de mi píxel! ¡Quiere impedirme vender! 😡'),

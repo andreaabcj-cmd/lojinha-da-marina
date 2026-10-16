@@ -261,3 +261,9 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .bs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 14px}.bs-cards.dois{grid-template-columns:2fr 1fr}.bs-cards i{height:150px;border-radius:14px;background:#fff;border:2px solid var(--line)}
 .bs .conferido{position:relative;margin-top:8px}
 @media (max-width:700px){.bs{grid-template-columns:1fr}.bs-lado{display:none}.bs-cards{grid-template-columns:1fr}}
+/* Eventos: desduplicação, qualidade da correspondência e parâmetros bloqueados */
+.st.dup i{background:#9AA5B5}
+.emq-lin{padding:8px 0;border-top:1px solid var(--line)}.emq-lin:first-of-type{border-top:0}
+.emq-nota{display:inline-block;border-radius:999px;padding:2px 10px;font-weight:800;margin:0 6px}.emq-nota.ok{background:#E3F6EA;color:#0B6B33}.emq-nota.med{background:#FFF3D1;color:#7A5600}.emq-nota.ruim{background:#FDE8EF;color:#9B1240}
+.emq-rec{margin-top:4px;color:var(--ink2);font-size:13px}.emq-rec.ok{color:#0B6B33}
+.proib{color:#9B1240;font-size:12px}

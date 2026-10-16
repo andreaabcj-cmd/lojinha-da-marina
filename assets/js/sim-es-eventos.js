@@ -88,4 +88,22 @@
   P.push([/^(\d+) eventos?$/, function (m) { return m[1] + (m[1] === '1' ? ' evento' : ' eventos') }]);
   P.push([/^Navegador · há (\d+) ?(s|min|h|d)$/, function (m) { return 'Navegador · hace ' + m[1] + un(m[2]) }]);
   P.push([/^há (\d+) ?(s|min|h|d)$/, function (m) { return 'hace ' + m[1] + un(m[2]) }]);
+  /* Pixel avanzado: calidad de la coincidencia, deduplicación e información prohibida (textos de entrenamiento, por confirmar) */
+  A['Navegador e servidor'] = 'Navegador y servidor';
+  A['Qualidade da correspondência de eventos'] = 'Calidad de la coincidencia de eventos';
+  A['Para eventos do site enviados pela API de Conversões. A pontuação vai de 0 a 10 e mostra o quanto as informações do cliente enviadas com o evento ajudam a ligá-lo a uma Conta Meta.'] = 'Para eventos del sitio enviados por la API de Conversiones. La puntuación va de 0 a 10 y muestra cuánto ayudan las informaciones del cliente enviadas con el evento a vincularlo con una cuenta de Meta.';
+  A['Ainda não há eventos enviados pelo servidor (API de Conversões). A qualidade da correspondência só aparece para eles.'] = 'Aún no hay eventos enviados por el servidor (API de Conversiones). La calidad de la coincidencia solo aparece para ellos.';
+  A['Ações recomendadas:'] = 'Acciones recomendadas:';
+  A['Boa cobertura de parâmetros do cliente.'] = 'Buena cobertura de parámetros del cliente.';
+  A['⚠ Pontuação do treino (a Meta só informa que depende da qualidade dos parâmetros e da porcentagem de eventos com correspondência): a conferir com a tela real.'] = '⚠ Puntuación del entrenamiento (Meta solo informa que depende de la calidad de los parámetros y del porcentaje de eventos con coincidencia): por confirmar con la pantalla real.';
+  A['Desduplicado'] = 'Deduplicado';
+  A['⛔ bloqueado pela Meta: possível informação proibida'] = '⛔ bloqueado por Meta: posible información prohibida';
+  A['⚠️ Eventos duplicados do Pixel e da API de Conversões'] = '⚠️ Eventos duplicados del píxel y de la API de Conversiones';
+  A['O mesmo evento chegou pelo navegador e pelo servidor sem o mesmo event_id. Para desduplicar, o event_name e o event_id precisam ser idênticos nos dois: sem isso, a compra é contada duas vezes. (a conferir com a mensagem real)'] = 'El mismo evento llegó por el navegador y por el servidor sin el mismo event_id. Para deduplicar, el event_name y el event_id deben ser idénticos en los dos: sin eso, la compra se cuenta dos veces. (por confirmar con el mensaje real)';
+  A['⛔ Parâmetros bloqueados: possível informação proibida'] = '⛔ Parámetros bloqueados: posible información prohibida';
+  P.push([/^(\d+) evento\(s\) · últimas 48 horas$/, function (m) { return m[1] + ' evento(s) · últimas 48 horas' }]);
+  P.push([/^enviar (.+)\.$/, function (m) {
+    var d = { 'e-mail (prioridade alta)': 'correo (prioridad alta)', 'telefone (prioridade média)': 'teléfono (prioridad media)', 'ID externo (prioridade média)': 'ID externo (prioridad media)', 'país (prioridade média)': 'país (prioridad media)', 'primeiro nome (prioridade baixa)': 'nombre (prioridad baja)', 'sobrenome (prioridade baixa)': 'apellido (prioridad baja)', 'cidade (prioridade baixa)': 'ciudad (prioridad baja)', 'CEP (prioridade baixa)': 'código postal (prioridad baja)', 'estado (prioridade baixa)': 'estado (prioridad baja)' };
+    return 'enviar ' + m[1].split(', ').map(function (x) { return d[x] || x }).join(', ') + '.' }]);
+  P.push([/^Detectamos parâmetros com informações possivelmente sensíveis \(ex\.: “(.+)” no evento (.+)\)\. Informações de saúde, financeiras e outras categorias sensíveis não podem ser compartilhadas \(vale para parâmetros de URL e eventos personalizados\)\. O anunciante é o responsável\. \(a conferir com a mensagem real\)$/, function (m) { return 'Detectamos parámetros con información posiblemente sensible (ej.: “' + m[1] + '” en el evento ' + m[2] + '). La información de salud, financiera y otras categorías sensibles no puede compartirse (vale para parámetros de URL y eventos personalizados). El anunciante es el responsable. (por confirmar con el mensaje real)' }]);
 })();

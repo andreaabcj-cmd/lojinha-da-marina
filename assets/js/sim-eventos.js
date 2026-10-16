@@ -132,20 +132,56 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     return esqueleto(d.nome, 'conjuntos', h, null);
   }
 
+  /* ---------- desduplicação (Pixel × API de Conversões) e qualidade da correspondência ---------- */
+  // Meta: o mesmo evento chegando pelo navegador e pelo servidor só conta uma vez se o event_name e o event_id forem iguais nos dois (vale o primeiro recebido).
+  function marcaDup(lista) {
+    var vistos = {}, out = lista.map(function (e) { return e });
+    out.slice().sort(function (a, b) { return a.t - b.t }).forEach(function (e) {
+      if (!e.eid) return; var k = e.nome + '|' + e.eid, o = vistos[k];
+      if (o && o.fonte !== e.fonte) e.dup = true; else if (!o) vistos[k] = e;
+    });
+    return out;
+  }
+  var PROIBIDO = /(doen|saude|saúde|health|diagn|medic|cpf|cartao|cartão|card|senha|password|religi|etnia|orienta|salario|salário)/i;
+  function proibidos(ev) {
+    var r = []; ev.forEach(function (e) { Object.keys(e.params || {}).forEach(function (k) { if (PROIBIDO.test(k)) r.push({ evento: e.nome, param: k }) }) });
+    return r;
+  }
+  var PESOS = [['em', 3, 'e-mail (prioridade alta)'], ['ph', 1.5, 'telefone (prioridade média)'], ['external_id', 1.5, 'ID externo (prioridade média)'], ['country', 1, 'país (prioridade média)'], ['fn', 0.7, 'primeiro nome (prioridade baixa)'], ['ln', 0.7, 'sobrenome (prioridade baixa)'], ['ct', 0.5, 'cidade (prioridade baixa)'], ['zp', 0.5, 'CEP (prioridade baixa)'], ['st', 0.3, 'estado (prioridade baixa)']];
+  function qualidade(ev) {   // só eventos enviados pelo servidor (API de Conversões); pontuação de 0 a 10 do treino (a conferir)
+    var srv = ev.filter(function (e) { return e.fonte === 'servidor' }); if (!srv.length) return null;
+    var por = {}; srv.forEach(function (e) { var p = por[e.nome] = por[e.nome] || { n: 0, chaves: {} }; p.n++; (e.ud || []).forEach(function (c) { p.chaves[c] = true }) });
+    return Object.keys(por).map(function (nome) {
+      var ch = por[nome].chaves, s = 1; PESOS.forEach(function (w) { if (ch[w[0]]) s += w[1] });
+      return { nome: nome, n: por[nome].n, nota: Math.min(10, Math.round(s * 10) / 10), falta: PESOS.filter(function (w) { return !ch[w[0]] }).map(function (w) { return w[2] }) };
+    });
+  }
+  function cartaoQualidade(ev) {
+    var q = qualidade(ev);
+    var h = '<div class="cartao" data-t="emq-card"><h2>Qualidade da correspondência de eventos</h2><p class="miudo">Para eventos do site enviados pela API de Conversões. A pontuação vai de 0 a 10 e mostra o quanto as informações do cliente enviadas com o evento ajudam a ligá-lo a uma Conta Meta.</p>';
+    if (!q) return h + '<div class="vazio"><p>Ainda não há eventos enviados pelo servidor (API de Conversões). A qualidade da correspondência só aparece para eles.</p></div></div>';
+    h += q.map(function (x) {
+      return '<div class="emq-lin" data-t="emq-' + esc(x.nome) + '"><b>' + esc(x.nome) + '</b> <span class="emq-nota ' + (x.nota >= 8 ? 'ok' : x.nota >= 5 ? 'med' : 'ruim') + '" data-t="emq-nota-' + esc(x.nome) + '">' + x.nota.toFixed(1).replace('.', ',') + ' / 10</span> <small>' + x.n + ' evento(s) · últimas 48 horas</small>' +
+        (x.falta.length ? '<div class="emq-rec" data-t="emq-rec-' + esc(x.nome) + '"><b>Ações recomendadas:</b> enviar ' + x.falta.slice(0, 3).map(esc).join(', ') + '.</div>' : '<div class="emq-rec ok">Boa cobertura de parâmetros do cliente.</div>') + '</div>';
+    }).join('');
+    return h + '<p class="miudo">⚠ Pontuação do treino (a Meta só informa que depende da qualidade dos parâmetros e da porcentagem de eventos com correspondência): a conferir com a tela real.</p></div>';
+  }
+
   function abaVisao(d, ev) {
     var agora = Date.now(), barras = [];
     for (var i = 11; i >= 0; i--) { var a = agora - (i + 1) * 3600e3, b = agora - i * 3600e3; barras.push(ev.filter(function (e) { return e.t >= a && e.t < b }).length) }
     var max = Math.max.apply(null, barras.concat([1]));
-    var porNome = {}; ev.forEach(function (e) { var p = porNome[e.nome] = porNome[e.nome] || { n: 0, t: 0 }; p.n++; p.t = Math.max(p.t, e.t) });
+    var evOrig = ev; ev = marcaDup(ev).filter(function (e) { return !e.dup });   // desduplicados: o mesmo evento do navegador e do servidor conta uma vez
+    var porNome = {}; ev.forEach(function (e) { var p = porNome[e.nome] = porNome[e.nome] || { n: 0, t: 0, srv: false, nav: false }; p.n++; p.t = Math.max(p.t, e.t); if (e.fonte === 'servidor') p.srv = true; else p.nav = true });
     var h = '<div class="cartao"><h2>Eventos nas últimas 12 horas</h2><div class="grafico">' + barras.map(function (n) { return '<span style="height:' + Math.round(n / max * 100) + '%" title="' + n + ' eventos"></span>' }).join('') + '</div>';
     if (!ev.length) h += '<div class="vazio"><p>Nenhum evento recebido ainda. Abra a Lojinha (aba <b>Testar eventos</b> › Abrir site) e navegue: os eventos aparecem aqui.</p></div>';
-    else h += '<table class="tabela"><tr><th>Eventos</th><th>Integração</th><th>Total de eventos</th><th>Última atividade</th><th>Status</th></tr>' +
-      Object.keys(porNome).map(function (k) { return '<tr><td><b>' + esc(k) + '</b></td><td>Navegador</td><td>' + porNome[k].n + '</td><td>' + quando(porNome[k].t) + '</td><td>' + status(1) + '</td></tr>' }).join('') + '</table>';
-    return h + '</div>';
+    else h += '<table class="tabela" data-t="tabela-visao"><tr><th>Eventos</th><th>Integração</th><th>Total de eventos</th><th>Última atividade</th><th>Status</th></tr>' +
+      Object.keys(porNome).map(function (k) { return '<tr><td><b>' + esc(k) + '</b></td><td>' + (porNome[k].srv && porNome[k].nav ? 'Navegador e servidor' : porNome[k].srv ? 'Servidor' : 'Navegador') + '</td><td>' + porNome[k].n + '</td><td>' + quando(porNome[k].t) + '</td><td>' + status(1) + '</td></tr>' }).join('') + '</table>';
+    return h + '</div>' + cartaoQualidade(evOrig);
   }
 
   function abaTeste(d, ev) {
-    var lista = ev.filter(function (e) { return e.t >= (S.testeDesde || 0) }).slice().reverse();
+    var lista = marcaDup(ev.filter(function (e) { return e.t >= (S.testeDesde || 0) })).slice().reverse();
     var url = new URL('loja.html', location.href).href;
     var h = '<div class="cartao"><h2>Testar eventos do navegador</h2><p>Confirme se os eventos do navegador estão configurados corretamente. Abra o site, faça as ações (ver produto, pôr no carrinho, comprar) e acompanhe os eventos chegando aqui.</p>' +
       '<div class="linha-url"><input id="urlTeste" value="' + esc(url) + '" aria-label="URL do site"/><button class="btn" data-acao="abrir-site" data-t="abrir-site">Abrir site</button></div></div>' +
@@ -157,10 +193,10 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   var abertos = {};
   function evLinha(e, i) {
     var k = e.t + e.nome, on = abertos[k];
-    var h = '<div class="ev"><button class="ev-cab" data-ev="' + esc(k) + '" data-t="ev-' + i + '"><b>' + esc(e.nome) + '</b><span class="st"><i></i>Processado</span><small>' + (e.fonte === 'servidor' ? 'Servidor' : 'Navegador') + ' · ' + quando(e.t) + '</small><span class="seta">' + (on ? '▴' : '▾') + '</span></button>';
+    var h = '<div class="ev"><button class="ev-cab" data-ev="' + esc(k) + '" data-t="ev-' + i + '"><b>' + esc(e.nome) + '</b><span class="st' + (e.dup ? ' dup' : '') + '"><i></i>' + (e.dup ? 'Desduplicado' : 'Processado') + '</span><small>' + (e.fonte === 'servidor' ? 'Servidor' : 'Navegador') + ' · ' + quando(e.t) + '</small><span class="seta">' + (on ? '▴' : '▾') + '</span></button>';
     if (on) {
       var ps = Object.keys(e.params || {});
-      h += '<div class="ev-corpo"><h4>Parâmetros personalizados</h4>' + (ps.length ? '<table>' + ps.map(function (p) { var v = e.params[p]; return '<tr><td>' + esc(p) + '</td><td>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</td></tr>' }).join('') + '</table>' : '<p class="miudo">Nenhum parâmetro.</p>') +
+      h += '<div class="ev-corpo"><h4>Parâmetros personalizados</h4>' + (ps.length ? '<table>' + ps.map(function (p) { var v = e.params[p]; return '<tr><td>' + esc(p) + '</td><td>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + (PROIBIDO.test(p) ? ' <b class="proib">⛔ bloqueado pela Meta: possível informação proibida</b>' : '') + '</td></tr>' }).join('') + '</table>' : '<p class="miudo">Nenhum parâmetro.</p>') +
         '<h4>Informações do evento</h4><table><tr><td>URL</td><td>' + esc(e.href || '') + '</td></tr><tr><td>ID do evento</td><td>' + esc(e.eid || '—') + '</td></tr><tr><td>Recebido de</td><td>' + (e.fonte === 'servidor' ? 'Servidor (API de Conversões)' : 'Navegador (Pixel da Meta)') + '</td></tr></table>' +
         (e.ud && e.ud.length ? '<h4>Correspondência avançada</h4><table>' + e.ud.map(function (c) { return '<tr><td>' + esc(c) + '</td><td>enviado com hash (SHA-256)</td></tr>' }).join('') + '</table>' : '') + '</div>';
     }
@@ -179,6 +215,10 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var padrao = ['PageView', 'ViewContent', 'Search', 'AddToCart', 'AddToWishlist', 'InitiateCheckout', 'AddPaymentInfo', 'Purchase', 'Lead', 'CompleteRegistration', 'Schedule', 'Contact'];
     var parecidos = ev.filter(function (e) { return e.custom && padrao.indexOf(e.nome) < 0 && padrao.some(function (p) { return p.toLowerCase() === String(e.nome).toLowerCase() }) });
     if (parecidos.length) problemas.push(['aviso', 'Incompatibilidade de nome de evento', 'O evento “' + parecidos[0].nome + '” é parecido com o evento padrão, mas não idêntico. Os nomes diferenciam maiúsculas de minúsculas: para medir como evento padrão, o código precisa usar exatamente “' + padrao.filter(function (p) { return p.toLowerCase() === String(parecidos[0].nome).toLowerCase() })[0] + '”.']);
+    // Pixel e API de Conversões mandando o mesmo evento sem o mesmo event_id: a Meta não consegue desduplicar
+    var dupSemId = false; ev.forEach(function (a1) { if (a1.fonte === 'servidor') ev.forEach(function (b1) { if (b1.fonte !== 'servidor' && b1.nome === a1.nome && Math.abs(b1.t - a1.t) < 5000 && b1.eid !== a1.eid) dupSemId = true }) });
+    if (dupSemId) problemas.push(['aviso', 'Eventos duplicados do Pixel e da API de Conversões', 'O mesmo evento chegou pelo navegador e pelo servidor sem o mesmo event_id. Para desduplicar, o event_name e o event_id precisam ser idênticos nos dois: sem isso, a compra é contada duas vezes. (a conferir com a mensagem real)']);
+    var prb = proibidos(ev); if (prb.length) problemas.push(['erro', 'Parâmetros bloqueados: possível informação proibida', 'Detectamos parâmetros com informações possivelmente sensíveis (ex.: “' + esc(prb[0].param) + '” no evento ' + esc(prb[0].evento) + '). Informações de saúde, financeiras e outras categorias sensíveis não podem ser compartilhadas (vale para parâmetros de URL e eventos personalizados). O anunciante é o responsável. (a conferir com a mensagem real)']);
     var foraObrigado = compras.filter(function (e) { return !/obrigado/.test(e.href || '') });
     var mesmaPagina = {}; compras.forEach(function (e) { var k = e.href; mesmaPagina[k] = (mesmaPagina[k] || 0) + 1 });
     var maxMesma = Math.max.apply(null, Object.keys(mesmaPagina).map(function (k) { return mesmaPagina[k] }).concat([0]));

@@ -188,4 +188,5 @@
     eventosTeste(dep(t('O PageView voltou a chegar.', 'El PageView volvió a llegar.')), false),
     [final(t('Eventos de volta 🎉', '¡Eventos de vuelta! 🎉'), t('Causa: o código base do Pixel foi removido do cabeçalho na troca de tema. Solução: reinstalar no head de todas as páginas e testar. Prevenção: combine com o desenvolvedor de conferir o Pixel depois de cada mudança no cabeçalho do site.', 'Causa: el código base del píxel se eliminó del encabezado en el cambio de tema. Solución: reinstalarlo en el head de todas las páginas y probar. Prevención: acuerda con el desarrollador revisar el píxel después de cada cambio en el encabezado del sitio.'), '[data-t=feed]', P.eventos)]
   );
+  window.TOURS_H = { t: t, P: P, aqui: aqui, preset: preset, hash: hash, irDs: irDs, dep: dep, compra: compra, obrigadoLer: obrigadoLer, consultor: consultor, consultorVazio: consultorVazio, eventosTeste: eventosTeste, eventosDiag: eventosDiag, fonteBuscar: fonteBuscar, limparViaEventos: limparViaEventos, limparEventosPrimeiro: limparEventosPrimeiro, abrirLojaHome: abrirLojaHome, final: final, ctxt: ctxt, FIM: FIM };   // usado por tours-pixelav.js
 })();
