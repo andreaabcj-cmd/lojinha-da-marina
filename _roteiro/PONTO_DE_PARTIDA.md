@@ -170,6 +170,6 @@ Leia nesta ordem:
 - **Por que o André via a sobreposição antiga:** os arquivos tinham o mesmo "carimbo" de versão (`?v=`), então o navegador mostrava o tour.js antigo em cache. Os carimbos foram trocados (`20261016030000`) em todos os HTML; sempre trocar o carimbo ao mudar JS/CSS.
 
 ## Modo público (16/10/2026)
-- Site publicado mostra só **Módulos e Loja**. Simuladores, Laboratório, Colas, ferramenta/tutorial e todos os `meta-*.html` ficam escondidos (arquivos mantidos; quem abre a URL volta para a página inicial). Nas aulas, a parte "Praticar" que leva a simulador some (a da Loja fica).
+- Site publicado: só as ABAS Simuladores e Laboratório ficam escondidas (menu e cartões da página inicial). Módulos (aulas, práticas guiadas, atendimento), Loja, Colas e as telas dos simuladores abertas pelas aulas continuam como estão.
 - Local (localhost) nada muda. Pré-visualizar o público no computador: `?publico=1` (e `?publico=0` volta).
-- Reverter: `ESCONDER_SITE = false` em `assets/js/modo-publico.js`.
+- Reverter: `ESCONDER_ABAS = false` em `assets/js/modo-publico.js`.
