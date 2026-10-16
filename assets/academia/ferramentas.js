@@ -1728,6 +1728,64 @@
         [{ pt: 'O visitante do site', es: 'El visitante del sitio' }, 0, { pt: 'Não.', es: 'No.' }]] }
   ]);
 
+  /* ---------- 29. Portfólio avançado: quatro mini-quizzes (Portfólio avançado 01–04) ---------- */
+  quizCatalogo('ver-pv', { pt: 'Verificação da empresa', es: 'Verificación de la empresa' }, { pt: 'O que é, quem inicia e quanto leva.', es: 'Qué es, quién inicia y cuánto tarda.' }, [
+    { q: { pt: 'A verificação da empresa dá o selo azul de verificado?', es: '¿La verificación de la empresa da la insignia azul de verificado?' },
+      o: [[{ pt: 'Não: o selo é o Meta Verified, outra coisa', es: 'No: la insignia es Meta Verified, otra cosa' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Sim, é o mesmo', es: 'Sí, es lo mismo' }, 0, { pt: 'São coisas diferentes.', es: 'Son cosas distintas.' }],
+        [{ pt: 'Só para empresas grandes', es: 'Solo para empresas grandes' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
+    { q: { pt: 'Quem consegue iniciar a verificação na Central de Segurança?', es: '¿Quién puede iniciar la verificación en el Centro de seguridad?' },
+      o: [[{ pt: 'Quem tem controle total do portfólio', es: 'Quien tiene control total del portafolio' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Qualquer pessoa com acesso a uma Página', es: 'Cualquier persona con acceso a una página' }, 0, { pt: 'Precisa de controle total do portfólio.', es: 'Necesita control total del portafolio.' }],
+        [{ pt: 'Só o suporte da Meta', es: 'Solo el soporte de Meta' }, 0, { pt: 'O dono faz.', es: 'Lo hace el dueño.' }]] },
+    { q: { pt: 'Quanto pode levar a decisão?', es: '¿Cuánto puede tardar la decisión?' },
+      o: [[{ pt: 'Até 14 dias úteis', es: 'Hasta 14 días hábiles' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Na hora', es: 'Al instante' }, 0, { pt: 'Pode levar dias.', es: 'Puede tardar días.' }],
+        [{ pt: 'Um ano', es: 'Un año' }, 0, { pt: 'Não tanto.', es: 'No tanto.' }]] }
+  ]);
+  quizCatalogo('doc-pv', { pt: 'Documentos da verificação', es: 'Documentos de la verificación' }, { pt: 'O que a Meta aceita e por que recusa.', es: 'Qué acepta Meta y por qué rechaza.' }, [
+    { q: { pt: 'A conta de luz serve para provar o quê?', es: '¿Para qué sirve la factura de luz?' },
+      o: [[{ pt: 'Endereço e telefone, não a razão social', es: 'Dirección y teléfono, no la razón social' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'A razão social', es: 'La razón social' }, 0, { pt: 'Não serve para isso.', es: 'No sirve para eso.' }],
+        [{ pt: 'Nada', es: 'Nada' }, 0, { pt: 'Serve para endereço e telefone.', es: 'Sirve para dirección y teléfono.' }]] },
+    { q: { pt: 'Qual destes documentos é aceito para a razão social?', es: '¿Cuál de estos documentos se acepta para la razón social?' },
+      o: [[{ pt: 'Contrato ou certificado social', es: 'Contrato o certificado social' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Formulário preenchido sem assinatura nem carimbo', es: 'Formulario completado sin firma ni sello' }, 0, { pt: 'Não é aceito.', es: 'No se acepta.' }],
+        [{ pt: 'Foto desfocada do documento', es: 'Foto borrosa del documento' }, 0, { pt: 'Precisa estar legível.', es: 'Debe estar legible.' }]] },
+    { q: { pt: 'O que fazer com o CPF que aparece no documento?', es: '¿Qué hacer con el CPF que aparece en el documento?' },
+      o: [[{ pt: 'Cobrir, porque a Meta não precisa dele', es: 'Cubrirlo, porque Meta no lo necesita' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Mandar em destaque', es: 'Mandarlo destacado' }, 0, { pt: 'Proteja dados pessoais.', es: 'Protege datos personales.' }],
+        [{ pt: 'Trocar por outro número', es: 'Cambiarlo por otro número' }, 0, { pt: 'Nunca altere documentos.', es: 'Nunca alteres documentos.' }]] }
+  ]);
+  quizCatalogo('perm-pv', { pt: 'Permissões no portfólio', es: 'Permisos en el portafolio' }, { pt: 'Controle total e como ajustar.', es: 'Control total y cómo ajustar.' }, [
+    { q: { pt: 'Por que o menu Pessoas pode não aparecer?', es: '¿Por qué el menú Personas puede no aparecer?' },
+      o: [[{ pt: 'Você não tem controle total do portfólio', es: 'No tienes control total del portafolio' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O navegador está lento', es: 'El navegador está lento' }, 0, { pt: 'É questão de permissão.', es: 'Es cuestión de permiso.' }],
+        [{ pt: 'Só aparece em feriados', es: 'Solo aparece en feriados' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Qual o caminho para alterar o acesso de alguém?', es: '¿Cuál es el camino para cambiar el acceso de alguien?' },
+      o: [[{ pt: 'Configurações › Pessoas › nome › Gerenciar › Salvar', es: 'Configuración › Personas › nombre › Administrar › Guardar' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Pelo e-mail da pessoa', es: 'Por el correo de la persona' }, 0, { pt: 'É nas configurações.', es: 'Es en configuración.' }],
+        [{ pt: 'Apagando o portfólio', es: 'Borrando el portafolio' }, 0, { pt: 'Nunca por isso.', es: 'Nunca por eso.' }]] },
+    { q: { pt: 'Um parceiro compartilhou um ativo com você. O que vale?', es: 'Un socio compartió un activo contigo. ¿Qué vale?' },
+      o: [[{ pt: 'As permissões que o parceiro atribuiu', es: 'Los permisos que el socio asignó' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Você sempre tem controle total', es: 'Siempre tienes control total' }, 0, { pt: 'Não necessariamente.', es: 'No necesariamente.' }],
+        [{ pt: 'Nenhuma permissão', es: 'Ningún permiso' }, 0, { pt: 'Tem as atribuídas.', es: 'Tienes las asignadas.' }]] }
+  ]);
+  quizCatalogo('excl-pv', { pt: 'Excluir o portfólio', es: 'Eliminar el portafolio' }, { pt: 'Irreversível: o que impede e a alternativa.', es: 'Irreversible: qué impide y la alternativa.' }, [
+    { q: { pt: 'Depois de excluir, dá para reabrir o portfólio?', es: 'Después de eliminar, ¿se puede reabrir el portafolio?' },
+      o: [[{ pt: 'Não: fica pendente por 24 horas e depois não reabre', es: 'No: queda pendiente por 24 horas y luego no se reabre' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Sim, a qualquer momento', es: 'Sí, en cualquier momento' }, 0, { pt: 'Não.', es: 'No.' }],
+        [{ pt: 'Só pagando', es: 'Solo pagando' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'Qual destes pode impedir a exclusão?', es: '¿Cuál de estos puede impedir la eliminación?' },
+      o: [[{ pt: 'Formas de pagamento e apps conectados', es: 'Formas de pago y apps conectadas' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'A cor do logotipo', es: 'El color del logotipo' }, 0, { pt: 'Não.', es: 'No.' }],
+        [{ pt: 'O idioma do navegador', es: 'El idioma del navegador' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'O cliente só quer parar de anunciar. O que você sugere?', es: 'El cliente solo quiere dejar de anunciar. ¿Qué sugieres?' },
+      o: [[{ pt: 'Desativar as contas de anúncios', es: 'Desactivar las cuentas publicitarias' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Excluir o portfólio sem avisar', es: 'Eliminar el portafolio sin avisar' }, 0, { pt: 'É irreversível.', es: 'Es irreversible.' }],
+        [{ pt: 'Criar outro portfólio', es: 'Crear otro portafolio' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }]] }
+  ]);
+
   /* ---------- ferramentas que já existem em outros lugares do site ---------- */
   F['gerenciador-eventos'] = { titulo: { pt: 'Gerenciador de Eventos (simulador)', es: 'Administrador de eventos (simulador)' }, resumo: { pt: 'Criar o Pixel, Testar eventos com os eventos da Lojinha, Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos con los eventos de la Lojinha, Diagnóstico y Configuración.' }, paginas: '29', status: 'pronta', link: 'meta-eventos.html' };
   F['consultor-dados'] = { titulo: { pt: 'Consultor de Dados de Anúncios (simulação)', es: 'Asesor de datos de anuncios (simulación)' }, resumo: { pt: 'O painel da extensão da Meta, simulado. Abra a Lojinha e clique em “Consultor de Dados” na faixa amarela.', es: 'El panel de la extensión de Meta, simulado. Abre la Lojinha y haz clic en “Consultor de Dados” en la franja amarilla.' }, status: 'pronta', link: 'loja.html' };

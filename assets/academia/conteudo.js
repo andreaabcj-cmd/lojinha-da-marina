@@ -29,7 +29,7 @@ window.MODULOS = [
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
   { id: 'shop-ads-offsite', fase: 4, status: 'construcao', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'A jornada até a compra no site, Pixel e catálogo, eventos duplicados, UTM e terceiros, e atualizar loja antiga.', es: 'El recorrido hasta la compra en el sitio, píxel y catálogo, eventos duplicados, UTM y terceros, y actualizar tienda antigua.' } },
-  { id: 'portfolio-avancado', fase: 5, status: 'planejado', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
+  { id: 'portfolio-avancado', fase: 5, status: 'construcao', icone: '🧰', titulo: { pt: 'Portfólio empresarial · avançado', es: 'Portfolio comercial · avanzado' }, resumo: { pt: 'Como verificar e corrigir erros no portfólio.', es: 'Cómo verificar y corregir errores en el portfolio.' } },
   { id: 'mbe', fase: 5, status: 'construcao', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Galeria de parceiros, a janela do MBE, opções da API de Conversões, problemas comuns e acesso de parceiros.', es: 'Galería de socios, la ventana del MBE, opciones de la API de Conversiones, problemas comunes y acceso de socios.' } },
   { id: 'integracoes', fase: 5, status: 'construcao', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Conectar a plataforma (WooCommerce), ler os erros do Diagnóstico, Pixel como fonte do catálogo e manter ou desconectar.', es: 'Conectar la plataforma (WooCommerce), leer los errores del Diagnóstico, píxel como fuente del catálogo y mantener o desconectar.' } },
   { id: 'shopify', fase: 5, status: 'construcao', icone: '🧩', titulo: { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, resumo: { pt: 'Conectar a Shopify, quem gerencia o quê, sincronização e redirecionamento, e problemas comuns.', es: 'Conectar Shopify, quién gestiona qué, sincronización y redirección, y problemas comunes.' } },
@@ -4634,6 +4634,190 @@ window.AULAS = {
           frase: L('A Meta bloqueia parâmetros que podem violar os termos. Vamos revisar o que o site envia, remover o proibido e confirmar que o Pixel só dispara com consentimento.', 'Meta bloquea parámetros que pueden infringir los términos. Revisemos qué envía el sitio, quitemos lo prohibido y confirmemos que el píxel solo se dispara con consentimiento.'),
           passos: [L('Liste o que o site envia.', 'Haz la lista de lo que envía el sitio.'), L('Remova informações proibidas e confira o consentimento.', 'Quita información prohibida y revisa el consentimiento.')],
           encaminhar: L('Questões legais são do jurídico do cliente: oriente-o a falar com a assessoria jurídica e não dê parecer.', 'Las cuestiones legales son del área jurídica del cliente: oriéntalo a hablar con su asesor jurídico y no des dictamen.')
+        }
+      }
+    ];
+  })(),
+  'portfolio-avancado': (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Sobre a verificação da empresa no Meta Business Suite”, “Como verificar sua empresa…”, “Por que não consigo iniciar a verificação da empresa…”, “Por que os documentos que enviei… não foram suficientes?”, “Quais documentos oficiais preciso carregar…”, “Como alterar as permissões de uma pessoa…”, “Como excluir o portfólio empresarial” e “Entenda por que você não consegue excluir seu portfólio empresarial”. Nenhum botão irreversível foi clicado na conta de aula (envio da verificação e exclusão ficaram só no simulador): as telas do simulador são do treino (a conferir).', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Acerca de la verificación de la empresa en Meta Business Suite”, “Cómo verificar tu empresa…”, “Por qué no puedo iniciar la verificación de la empresa…”, “¿Por qué los documentos que envié… no fueron suficientes?”, “¿Qué documentos oficiales debo subir…?”, “Cómo cambiar los permisos de una persona…”, “Cómo eliminar el portafolio comercial” y “Entiende por qué no puedes eliminar tu portafolio comercial”. Ningún botón irreversible se pulsó en la cuenta de clase (el envío de la verificación y la eliminación quedaron solo en el simulador): las pantallas del simulador son del entrenamiento (por confirmar).');
+    var FERR = L('Configurações do portfólio › Central de Segurança, Pessoas e Informações da empresa.', 'Configuración del portafolio › Centro de seguridad, Personas e Información de la empresa.');
+    return [
+      {
+        id: '01', min: 8, status: 'pronta',
+        titulo: L('Verificação da empresa', 'Verificación de la empresa'),
+        antes: L('A Marina quer liberar um recurso que pede “empresa verificada”.', 'Marina quiere liberar una función que pide “empresa verificada”.'),
+        gancho: L('Prova de que a empresa existe e de que quem pede a representa.', 'Prueba de que la empresa existe y de que quien lo pide la representa.'),
+        objetivo: L('Entender o que é a verificação da empresa, quem pode iniciá-la e os passos até a decisão.', 'Entender qué es la verificación de la empresa, quién puede iniciarla y los pasos hasta la decisión.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O que é verificar a empresa? É o selo azul? 🤔', '¿Qué es verificar la empresa? ¿Es la insignia azul? 🤔')],
+            ['rafa', L('Não. É confirmar que o portfólio pertence a uma empresa legítima e que você é um representante autorizado. Não dá selo de verificado: isso é o Meta Verified, outra coisa.', 'No. Es confirmar que el portafolio pertenece a una empresa legítima y que eres un representante autorizado. No da insignia de verificado: eso es Meta Verified, otra cosa.')],
+            ['marina', L('Quem faz e onde?', '¿Quién lo hace y dónde?')],
+            ['rafa', L('Quem tem controle total do portfólio, na Central de Segurança, em Iniciar verificação. Você informa razão social, endereço, telefone e site (que precisa carregar e começar com https://), confirma a conexão por e-mail, telefone, SMS, WhatsApp ou domínio e conclui.', 'Quien tiene control total del portafolio, en el Centro de seguridad, en Iniciar verificación. Informas razón social, dirección, teléfono y sitio (que debe cargar y empezar por https://), confirmas la conexión por correo, teléfono, SMS, WhatsApp o dominio y concluyes.')],
+            ['pixel', L('A decisão pode levar até 14 dias úteis. Nem toda empresa precisa ou pode verificar: pode aparecer “Não se qualifica para verificação”. E se você editar os dados depois, terá de verificar de novo.', 'La decisión puede tardar hasta 14 días hábiles. No toda empresa necesita o puede verificar: puede aparecer “No califica para verificación”. Y si editas los datos después, tendrás que verificar de nuevo.')]
+          ],
+          pontos: [
+            L('<b>Não é selo:</b> verificar a empresa é diferente do Meta Verified.', '<b>No es insignia:</b> verificar la empresa es distinto de Meta Verified.'),
+            L('<b>Controle total</b> do portfólio para iniciar; dados iguais ao registro oficial; site com https.', '<b>Control total</b> del portafolio para iniciar; datos iguales al registro oficial; sitio con https.'),
+            L('<b>Prazo:</b> até 14 dias úteis; informação falsa pode levar a restrições.', '<b>Plazo:</b> hasta 14 días hábiles; la información falsa puede llevar a restricciones.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'ver-pv',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia pela verificação: dados, https, método de confirmação e envio.', 'En el simulador, el Pixel te guía por la verificación: datos, https, método de confirmación y envío.'),
+          tour: 'verificar-empresa', pagina: 'meta-portfolioav.html?zerar=1'
+        },
+        atender: {
+          cena: L('Preciso verificar minha empresa para liberar um recurso, mas já tenho o selo azul no Instagram. Não basta? 😕', 'Necesito verificar mi empresa para liberar una función, pero ya tengo la insignia azul en Instagram. ¿No basta? 😕'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“São coisas diferentes: o selo azul é o Meta Verified; a verificação da empresa confirma que o portfólio pertence a uma empresa legítima e é exigida para alguns recursos. Quem tem controle total do portfólio inicia na Central de Segurança.”', '“Son cosas distintas: la insignia azul es Meta Verified; la verificación de la empresa confirma que el portafolio pertenece a una empresa legítima y se exige para algunas funciones. Quien tiene control total del portafolio inicia en el Centro de seguridad.”'), fb: L('Isso! Separou as duas coisas e disse quem inicia.', '¡Eso! Separaste las dos cosas y dijiste quién inicia.') },
+            { certa: false, txt: L('“Sim, o selo azul já conta como verificação.”', '“Sí, la insignia azul ya cuenta como verificación.”'), fb: L('Não conta: são coisas diferentes.', 'No cuenta: son cosas distintas.') },
+            { certa: false, txt: L('“Mande os dados de outra empresa que esteja verificada.”', '“Manda los datos de otra empresa que esté verificada.”'), fb: L('Informação falsa pode bloquear a verificação.', 'La información falsa puede bloquear la verificación.') },
+            { certa: false, txt: L('“Pague uma taxa para acelerar.”', '“Paga una tarifa para acelerar.”'), fb: L('Não existe essa taxa.', 'No existe esa tarifa.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A pessoa tem controle total do portfólio?', '¿La persona tiene control total del portafolio?'), L('A Central de Segurança mostra Iniciar verificação ou Não se qualifica?', '¿El Centro de seguridad muestra Iniciar verificación o No califica?')],
+          conferir: [FERR],
+          frase: L('A verificação da empresa confirma que o portfólio é de uma empresa legítima e não dá selo azul. Quem tem controle total inicia na Central de Segurança, e a decisão leva até 14 dias úteis.', 'La verificación de la empresa confirma que el portafolio es de una empresa legítima y no da insignia azul. Quien tiene control total inicia en el Centro de seguridad, y la decisión tarda hasta 14 días hábiles.'),
+          passos: [L('Veja se há Iniciar verificação.', 'Mira si hay Iniciar verificación.'), L('Confira se os dados são iguais ao registro oficial.', 'Revisa que los datos sean iguales al registro oficial.')],
+          encaminhar: L('Se o portfólio não se qualifica ou o cliente não tem controle total, oriente o cliente a ver as instruções que a Meta enviar por e-mail ou notificação.', 'Si el portafolio no califica o el cliente no tiene control total, orienta al cliente a seguir las instrucciones que Meta envíe por correo o notificación.')
+        }
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Verificação travada ou documentos recusados', 'Verificación trabada o documentos rechazados'),
+        antes: L('A Marina recebeu o aviso de que o documento enviado não foi suficiente.', 'Marina recibió el aviso de que el documento enviado no fue suficiente.'),
+        gancho: L('Quase sempre a causa é o documento ou o nome que não bate.', 'Casi siempre la causa es el documento o el nombre que no coincide.'),
+        objetivo: L('Descobrir por que a verificação não inicia ou foi recusada e orientar o reenvio.', 'Descubrir por qué la verificación no inicia o fue rechazada y orientar el reenvío.'),
+        entender: {
+          dialogo: [
+            ['marina', L('O botão Iniciar verificação está desativado. Por quê? 😕', 'El botón Iniciar verificación está desactivado. ¿Por qué? 😕')],
+            ['rafa', L('Três causas: o portfólio pode não se qualificar no momento; se é desenvolvedor de apps, é preciso conectar um app ao portfólio antes; ou a pessoa não tem controle total.', 'Tres causas: el portafolio puede no calificar por ahora; si es desarrollador de apps, hay que conectar una app al portafolio antes; o la persona no tiene control total.')],
+            ['marina', L('E se enviou e voltou recusado?', '¿Y si lo envió y volvió rechazado?')],
+            ['rafa', L('Veja o motivo: tipo de documento não aceito, só o formulário de registro sem assinatura ou carimbo, idioma não aceito, arquivo ilegível, documento vencido, razão social, endereço ou telefone que não batem. Conta de serviços públicos só vale para endereço e telefone, nunca para a razão social.', 'Mira el motivo: tipo de documento no aceptado, solo el formulario de registro sin firma o sello, idioma no aceptado, archivo ilegible, documento vencido, razón social, dirección o teléfono que no coinciden. La factura de servicios públicos solo vale para dirección y teléfono, nunca para la razón social.')],
+            ['pixel', L('Aceitos: contrato ou certificado social, inscrição ou licença, documento fiscal emitido pelo governo, extrato bancário. Cubra o CPF. Se pedirem mais informação e você não responder em uma semana, a verificação reinicia.', 'Aceptados: contrato o certificado social, inscripción o licencia, documento fiscal emitido por el gobierno, extracto bancario. Cubre el CPF. Si piden más información y no respondes en una semana, la verificación reinicia.')]
+          ],
+          pontos: [
+            L('<b>Botão desativado:</b> não qualifica, falta app conectado (desenvolvedor) ou falta controle total.', '<b>Botón desactivado:</b> no califica, falta app conectada (desarrollador) o falta control total.'),
+            L('<b>Recusa:</b> o nome, o endereço e o telefone do documento têm de bater com as Informações da empresa.', '<b>Rechazo:</b> el nombre, la dirección y el teléfono del documento deben coincidir con la Información de la empresa.'),
+            L('<b>Conta de luz</b> só para endereço e telefone, não para razão social.', '<b>Factura de luz</b> solo para dirección y teléfono, no para razón social.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'doc-pv',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia para trocar uma conta de luz por um contrato social válido e reenviar.', 'En el simulador, el Pixel te guía para cambiar una factura de luz por un contrato social válido y reenviar.'),
+          tour: 'corrigir-documento', pagina: 'meta-portfolioav.html?zerar=1'
+        },
+        atender: {
+          cena: L('Enviei minha conta de luz e vocês recusaram! Ela tem meu endereço e o nome da minha loja! 😤', '¡Envié mi factura de luz y la rechazaron! ¡Tiene mi dirección y el nombre de mi tienda! 😤'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Entendo. Conta de serviços públicos só vale para comprovar endereço e telefone, não a razão social. Envie um documento oficial como o contrato social ou a licença da empresa, legível, vigente e com a razão social igual à das Informações da empresa. Cubra o CPF.”', '“Entiendo. La factura de servicios públicos solo vale para comprobar dirección y teléfono, no la razón social. Envía un documento oficial como el contrato social o la licencia de la empresa, legible, vigente y con la razón social igual a la de la Información de la empresa. Cubre el CPF.”'), fb: L('Isso! Explicou a causa e o que enviar.', '¡Eso! Explicaste la causa y qué enviar.') },
+            { certa: false, txt: L('“Reenvie a mesma conta de luz até aceitar.”', '“Reenvía la misma factura de luz hasta que la acepten.”'), fb: L('Vai ser recusada de novo.', 'Será rechazada de nuevo.') },
+            { certa: false, txt: L('“Altere o nome no documento.”', '“Cambia el nombre en el documento.”'), fb: L('Nunca altere documentos.', 'Nunca alteres documentos.') },
+            { certa: false, txt: L('“Crie outra empresa.”', '“Crea otra empresa.”'), fb: L('Não resolve.', 'No resuelve.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual foi o motivo informado na recusa?', '¿Cuál fue el motivo informado en el rechazo?'), L('O nome e o endereço do documento são iguais aos das Informações da empresa?', '¿El nombre y la dirección del documento son iguales a los de la Información de la empresa?')],
+          conferir: [FERR],
+          frase: L('Vamos ver o motivo da recusa. Em geral é o tipo do documento ou um dado que não bate com as Informações da empresa. Envie um documento oficial legível e vigente.', 'Veamos el motivo del rechazo. En general es el tipo de documento o un dato que no coincide con la Información de la empresa. Envía un documento oficial legible y vigente.'),
+          passos: [L('Leia o motivo no aviso.', 'Lee el motivo en el aviso.'), L('Corrija e reenvie em até uma semana.', 'Corrige y reenvía en hasta una semana.')],
+          encaminhar: L('Se o documento não puder ser aceito no país do cliente, oriente-o a usar os canais de ajuda que a Meta indicar no aviso.', 'Si el documento no puede aceptarse en el país del cliente, oriéntalo a usar los canales de ayuda que Meta indique en el aviso.')
+        }
+      },
+      {
+        id: '03', min: 7, status: 'pronta',
+        titulo: L('Permissões: quem pode o quê', 'Permisos: quién puede qué'),
+        antes: L('A Marina deu controle total a um estagiário sem pensar.', 'Marina dio control total a un pasante sin pensarlo.'),
+        gancho: L('Controle total é a chave do portfólio. Dê só o necessário.', 'El control total es la llave del portafolio. Da solo lo necesario.'),
+        objetivo: L('Alterar ou remover o acesso de uma pessoa e entender por que alguns menus não aparecem.', 'Cambiar o quitar el acceso de una persona y entender por qué algunos menús no aparecen.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Não vejo o menu Pessoas. Sumiu? 🤔', 'No veo el menú Personas. ¿Desapareció? 🤔')],
+            ['rafa', L('Provavelmente você não tem controle total do portfólio: só quem tem vê Pessoas e consegue mudar permissões, verificar a empresa ou excluir o portfólio.', 'Probablemente no tienes control total del portafolio: solo quien lo tiene ve Personas y puede cambiar permisos, verificar la empresa o eliminar el portafolio.')],
+            ['marina', L('E como mudo o acesso de alguém?', '¿Y cómo cambio el acceso de alguien?')],
+            ['rafa', L('Configurações › Pessoas › clique no nome › Gerenciar na linha do portfólio ou de um ativo › altere e Salvar, ou Remover acesso e confirme. A pessoa precisa já estar no portfólio.', 'Configuración › Personas › clic en el nombre › Administrar en la línea del portafolio o de un activo › cambia y Guardar, o Quitar acceso y confirma. La persona ya debe estar en el portafolio.')],
+            ['pixel', L('Se uma agência parceira compartilhou um ativo com você, você só tem as permissões que ela atribuiu e talvez não possa dar controle total daquele ativo.', 'Si una agencia socia compartió un activo contigo, solo tienes los permisos que ella asignó y quizá no puedas dar control total de ese activo.')]
+          ],
+          pontos: [
+            L('<b>Controle total</b> é o nível mais alto; só quem o tem vê Pessoas e muda permissões.', '<b>Control total</b> es el nivel más alto; solo quien lo tiene ve Personas y cambia permisos.'),
+            L('<b>Caminho:</b> Configurações › Pessoas › nome › Gerenciar › Salvar (ou Remover acesso).', '<b>Camino:</b> Configuración › Personas › nombre › Administrar › Guardar (o Quitar acceso).'),
+            L('<b>Ativo de parceiro:</b> vale o que o parceiro permitiu.', '<b>Activo de un socio:</b> vale lo que el socio permitió.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'perm-pv',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia para reduzir o acesso do estagiário de controle total para só anúncios.', 'En el simulador, el Pixel te guía para reducir el acceso del pasante de control total a solo anuncios.'),
+          tour: 'corrigir-permissao', pagina: 'meta-portfolioav.html?zerar=1'
+        },
+        atender: {
+          cena: L('Contratei uma agência e agora não consigo tirar o acesso de um funcionário a um ativo que ela compartilhou. O botão não deixa! 😤', 'Contraté una agencia y ahora no puedo quitar el acceso de un empleado a un activo que ella compartió. ¡El botón no me deja! 😤'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Quando um parceiro compartilha um ativo, você só tem as permissões específicas que ele atribuiu, e isso pode limitar o que você muda. Peça à agência para ajustar o acesso ou liberar a permissão necessária.”', '“Cuando un socio comparte un activo, solo tienes los permisos específicos que él asignó, y eso puede limitar lo que cambias. Pídele a la agencia que ajuste el acceso o libere el permiso necesario.”'), fb: L('Isso! Explicou a limitação e o caminho.', '¡Eso! Explicaste la limitación y el camino.') },
+            { certa: false, txt: L('“Exclua o portfólio e comece de novo.”', '“Elimina el portafolio y empieza de nuevo.”'), fb: L('Exagerado e irreversível.', 'Exagerado e irreversible.') },
+            { certa: false, txt: L('“Use a senha da agência para entrar.”', '“Usa la contraseña de la agencia para entrar.”'), fb: L('Nunca compartilhe nem peça senha.', 'Nunca compartas ni pidas contraseña.') },
+            { certa: false, txt: L('“Ignore, não é importante.”', '“Ignóralo, no es importante.”'), fb: L('Acesso demais é risco.', 'Demasiado acceso es riesgo.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A pessoa tem controle total do portfólio?', '¿La persona tiene control total del portafolio?'), L('O ativo foi compartilhado por um parceiro?', '¿El activo fue compartido por un socio?')],
+          conferir: [FERR],
+          frase: L('Para mudar o acesso de alguém é preciso ter controle total do portfólio. Vamos em Configurações, Pessoas, e ajustamos só o que a pessoa precisa.', 'Para cambiar el acceso de alguien hay que tener control total del portafolio. Vamos a Configuración, Personas, y ajustamos solo lo que la persona necesita.'),
+          passos: [L('Abra Pessoas e o nome.', 'Abre Personas y el nombre.'), L('Gerenciar, ajuste e Salvar.', 'Administrar, ajusta y Guardar.')],
+          encaminhar: L('Se o cliente perdeu o acesso de controle total, oriente-o a pedir a quem ainda tem esse acesso que o devolva, e nunca peça senhas.', 'Si el cliente perdió el acceso de control total, oriéntalo a pedir a quien aún lo tiene que se lo devuelva, y nunca pidas contraseñas.')
+        }
+      },
+      {
+        id: '04', min: 8, status: 'pronta',
+        titulo: L('Excluir o portfólio: o que impede e o que muda', 'Eliminar el portafolio: qué lo impide y qué cambia'),
+        antes: L('Um cliente quer apagar o portfólio, mas aparece um erro.', 'Un cliente quiere borrar el portafolio, pero aparece un error.'),
+        gancho: L('Excluir não tem volta. Antes de tudo, confirme se é isso mesmo que ele quer.', 'Eliminar no tiene vuelta. Antes de todo, confirma si es eso lo que realmente quiere.'),
+        objetivo: L('Explicar o que a exclusão apaga, o que impede e como resolver cada bloqueio.', 'Explicar qué borra la eliminación, qué la impide y cómo resolver cada bloqueo.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Quero excluir o portfólio, mas dá erro. 😕', 'Quiero eliminar el portafolio, pero da error. 😕')],
+            ['rafa', L('Antes: excluir é definitivo e apaga, entre outras coisas, grupos de origens de eventos, a biblioteca de ativos e projetos, e remove seu acesso a ativos de outras empresas. Fica pendente por 24 horas; depois não dá para reabrir. Se só quer parar de anunciar, desative as contas de anúncios.', 'Antes: eliminar es definitivo y borra, entre otras cosas, grupos de orígenes de eventos, la biblioteca de activos y proyectos, y quita tu acceso a activos de otras empresas. Queda pendiente por 24 horas; después no se puede reabrir. Si solo quieres dejar de anunciar, desactiva las cuentas publicitarias.')],
+            ['marina', L('E o erro?', '¿Y el error?')],
+            ['rafa', L('Vem de bloqueios: contas de anúncios com saldo devedor, formas de pagamento, apps conectados, usuários do sistema, conta profissional do Instagram, conta do WhatsApp Business com número, acesso personalizado a leads e rótulos de anúncios políticos nos EUA. Resolva um por um.', 'Viene de bloqueos: cuentas publicitarias con saldo deudor, formas de pago, apps conectadas, usuarios del sistema, cuenta profesional de Instagram, cuenta de WhatsApp Business con número, acceso personalizado a leads y etiquetas de anuncios políticos en EE. UU. Resuélvelos uno por uno.')],
+            ['pixel', L('Cada Página precisa ficar com pelo menos uma pessoa com controle total, senão todos perdem o acesso. Só quem tem controle total exclui: Configurações › Informações da empresa › Excluir empresa permanentemente.', 'Cada página debe quedar con al menos una persona con control total, si no todos pierden el acceso. Solo quien tiene control total elimina: Configuración › Información de la empresa › Eliminar empresa permanentemente.')]
+          ],
+          pontos: [
+            L('<b>Sem volta:</b> pendente por 24 horas e depois não reabre; desativar as contas de anúncios é a alternativa.', '<b>Sin vuelta:</b> pendiente por 24 horas y luego no se reabre; desactivar las cuentas publicitarias es la alternativa.'),
+            L('<b>Bloqueios:</b> saldo, pagamento, apps, usuários do sistema, Instagram, WhatsApp, leads.', '<b>Bloqueos:</b> saldo, pago, apps, usuarios del sistema, Instagram, WhatsApp, leads.'),
+            L('<b>Páginas:</b> cada uma com ao menos uma pessoa de controle total.', '<b>Páginas:</b> cada una con al menos una persona de control total.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'excl-pv',
+        praticar: {
+          texto: L('No simulador, o Pixel te guia por resolver os bloqueios e chegar à exclusão (só no treino, nada é apagado).', 'En el simulador, el Pixel te guía para resolver los bloqueos y llegar a la eliminación (solo en el entrenamiento, nada se borra).'),
+          tour: 'excluir-portfolio', pagina: 'meta-portfolioav.html?zerar=1'
+        },
+        atender: {
+          cena: L('Quero excluir meu portfólio agora! Mas o botão dá erro, e eu só quero parar de pagar anúncio! 😤', '¡Quiero eliminar mi portafolio ahora! ¡Pero el botón da error, y yo solo quiero dejar de pagar anuncios! 😤'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Se o que você quer é parar de anunciar, não precisa excluir: pode desativar as contas de anúncios. Excluir o portfólio é definitivo e apaga itens como a biblioteca de ativos. Se mesmo assim quiser, o erro costuma vir de pendências como saldo, forma de pagamento ou apps conectados; vamos resolver cada uma.”', '“Si lo que quieres es dejar de anunciar, no necesitas eliminar: puedes desactivar las cuentas publicitarias. Eliminar el portafolio es definitivo y borra elementos como la biblioteca de activos. Si aun así quieres, el error suele venir de pendientes como saldo, forma de pago o apps conectadas; resolvamos cada una.”'), fb: L('Isso! Ofereceu a alternativa segura e o caminho.', '¡Eso! Ofreciste la alternativa segura y el camino.') },
+            { certa: false, txt: L('“Vou excluir por você agora.”', '“Lo elimino por ti ahora.”'), fb: L('É irreversível: só o cliente, com controle total, decide e executa.', 'Es irreversible: solo el cliente, con control total, decide y ejecuta.') },
+            { certa: false, txt: L('“Ignore o erro e clique de novo.”', '“Ignora el error y haz clic de nuevo.”'), fb: L('O erro mostra o bloqueio real.', 'El error muestra el bloqueo real.') },
+            { certa: false, txt: L('“Basta tirar as Páginas.”', '“Basta quitar las páginas.”'), fb: L('Há outros bloqueios; e cada Página precisa ficar com alguém.', 'Hay otros bloqueos; y cada página debe quedar con alguien.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O cliente quer mesmo excluir ou só parar de anunciar?', '¿El cliente realmente quiere eliminar o solo dejar de anunciar?'), L('Qual bloqueio aparece: saldo, pagamento, apps, Instagram, WhatsApp, leads?', '¿Qué bloqueo aparece: saldo, pago, apps, Instagram, WhatsApp, leads?')],
+          conferir: [FERR],
+          frase: L('Excluir o portfólio é definitivo. Se a ideia é parar de anunciar, desativamos as contas de anúncios. Se quiser excluir mesmo, vamos resolver as pendências uma a uma.', 'Eliminar el portafolio es definitivo. Si la idea es dejar de anunciar, desactivamos las cuentas publicitarias. Si realmente quieres eliminar, resolvamos los pendientes uno a uno.'),
+          passos: [L('Confirme a intenção do cliente.', 'Confirma la intención del cliente.'), L('Resolva cada bloqueio e deixe o cliente executar.', 'Resuelve cada bloqueo y deja que el cliente ejecute.')],
+          encaminhar: L('Saldo devedor pode levar até duas semanas para processar: oriente o cliente a quitar e aguardar.', 'El saldo deudor puede tardar hasta dos semanas en procesarse: orienta al cliente a pagarlo y esperar.')
         }
       }
     ];

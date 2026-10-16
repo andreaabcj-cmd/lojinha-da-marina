@@ -150,3 +150,8 @@ Leia nesta ordem:
 - 4 aulas PT+ES (correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade), 4 tutoriais guiados (`correspondencia-avancada`, `qualidade-sinal`, `desduplicar-eventos`, `privacidade-pixel`), 4 quizzes (`corr-pa`, `emq-pa`, `dedup-pa`, `priv-pa`), simulador `meta-pixelavancado.html`.
 - Fonte: Central de Ajuda oficial (PT). A conta de aula NÃO tem conjunto de dados: telas reais de correspondência avançada, qualidade da correspondência e Eventos de teste não foram vistas — telas, pontuação e hash do simulador são do treino (a conferir).
 - Sem valores reais, IDs ou nomes; nada interno.
+
+## Portfólio avançado (Foco) — 16/10/2026
+- 4 aulas PT+ES (verificação da empresa, documentos recusados/verificação travada, permissões, excluir o portfólio), 4 tutoriais (`verificar-empresa`, `corrigir-documento`, `corrigir-permissao`, `excluir-portfolio`), 4 quizzes (`ver-pv`, `doc-pv`, `perm-pv`, `excl-pv`), simulador `meta-portfolioav.html`.
+- Fonte: Central de Ajuda oficial (PT). NÃO foram clicados botões irreversíveis na conta de aula (enviar verificação, excluir empresa): essas telas são do treino (a conferir). Pessoas (Ana, Bia, Caio) e pendências do simulador são inventadas.
+- Orientações fora do escopo: uma frase simples de encaminhamento, sem siglas nem regras internas.
