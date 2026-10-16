@@ -168,3 +168,8 @@ Leia nesta ordem:
 - **Trilho em todos os módulos:** o 1º tutorial de cada módulo (o primeiro cuja aula aparece na trilha Foco) começa pela página inicial. 20/20 testados em tela estreita e larga. No Instagram o 1º visível é `adicionar-instagram` (aulas 01-02 são só da Completa).
 - **Balão (tour.js):** escolhe o lugar que cobre MENOS texto (cada linha de texto e cada controle conta; nunca o destaque), em 3 larguras (normal, compacta, fina). Em tela estreita (<760 px) vira uma "folha" colada embaixo (ou em cima, se o destaque estiver embaixo) e a página rola para o destaque ficar livre. Arrastável (telas largas).
 - **Por que o André via a sobreposição antiga:** os arquivos tinham o mesmo "carimbo" de versão (`?v=`), então o navegador mostrava o tour.js antigo em cache. Os carimbos foram trocados (`20261016030000`) em todos os HTML; sempre trocar o carimbo ao mudar JS/CSS.
+
+## Modo público (16/10/2026)
+- Site publicado mostra só **Módulos e Loja**. Simuladores, Laboratório, Colas, ferramenta/tutorial e todos os `meta-*.html` ficam escondidos (arquivos mantidos; quem abre a URL volta para a página inicial). Nas aulas, a parte "Praticar" que leva a simulador some (a da Loja fica).
+- Local (localhost) nada muda. Pré-visualizar o público no computador: `?publico=1` (e `?publico=0` volta).
+- Reverter: `ESCONDER_SITE = false` em `assets/js/modo-publico.js`.
