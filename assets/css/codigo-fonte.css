@@ -1,0 +1,15 @@
+/* Código-fonte da página (view-source) e demais telas do site do cliente */
+body{margin:0;background:#fff;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:#16294A}
+.cf-barra{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 12px;background:#F1F3F4;border-bottom:1px solid #DADCE0;margin-top:32px}
+.cf-url{flex:1;min-width:220px;background:#fff;border:1px solid #DADCE0;border-radius:999px;padding:6px 14px;font:13px Consolas,monospace;color:#3C4043;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cf-pags{display:flex;gap:6px}
+.cf-bt{border:1px solid #B9C0CC;background:#fff;border-radius:8px;padding:5px 10px;font:700 12px "Segoe UI",sans-serif;cursor:pointer;color:#16294A}.cf-bt.on{background:#16294A;color:#fff}
+.cf-busca{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 12px;background:#FFF8E1;border-bottom:1px solid #E8D9A0}
+.cf-busca label{font-weight:700}.cf-busca input{padding:5px 8px;border:1px solid #B9C0CC;border-radius:6px;font:14px Consolas,monospace;min-width:180px}
+.cf-cod{font:13px/1.5 Consolas,"Courier New",monospace;padding:6px 0;overflow:auto;background:#fff}
+.cf-l{display:flex;white-space:pre-wrap;word-break:break-all}.cf-l:hover{background:#F6F8FA}
+.cf-n{flex:0 0 52px;text-align:right;padding-right:12px;color:#8A94A6;user-select:none}
+.cf-l code{flex:1;font:inherit}
+.cf-t{color:#1A56C2;font-weight:400}.cf-c{color:#2E7D32;font-style:normal}
+.cf-hit{background:#FFEB3B;border-radius:2px}.cf-hit.on{background:#FF9800;color:#000}
+.cf-nota{margin:8px 12px 80px;color:#5A6B86;font-size:13px}

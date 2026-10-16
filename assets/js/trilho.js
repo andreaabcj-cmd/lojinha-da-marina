@@ -12,7 +12,7 @@
   if (!TRILHO_LIGADO) return;
   var TRILHOS = {
     'conhecer-portfolio': { modulo: 'portfolio', aula: '01', cauda: 8 },
-    'investigar-purchase': { modulo: 'diagnostico', aula: '01', cauda: 7 },
+    'investigar-purchase': { modulo: 'diagnostico', aula: '01', cauda: 20 },
     'adicionar-instagram': { modulo: 'instagram', aula: '03', cauda: 9 },   // na trilha Foco as aulas 01-02 do Instagram não aparecem (só da Completa): o 1º tutorial visível é este
     'pixel-em-acao': { modulo: 'pixel', aula: '01', cauda: 5 },
     'correspondencia-avancada': { modulo: 'pixel-avancado', aula: '01', cauda: 7 },

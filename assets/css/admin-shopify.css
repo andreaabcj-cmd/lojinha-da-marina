@@ -1,0 +1,29 @@
+/* Admin da Shopify (faz-de-conta) */
+body{margin:0;background:#F1F1F1;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:#202223}
+.sh-topo{margin-top:32px;background:#1A1A1A;color:#fff;display:flex;align-items:center;gap:16px;padding:8px 16px}
+.sh-logo{font-weight:800;font-size:16px;color:#95BF47}.sh-busca{flex:1;max-width:480px;background:#303030;border:1px solid #4A4A4A;border-radius:8px;padding:6px 10px;color:#fff}
+.sh-loja{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:600}.sh-loja i{font-style:normal;background:#6D7175;border-radius:6px;padding:3px 6px;font-size:12px}
+.sh-corpo{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 80px)}
+@media(max-width:760px){.sh-corpo{grid-template-columns:1fr}}
+.sh-menu{background:#EBEBEB;padding:10px 8px;border-right:1px solid #D2D5D8}
+.sh-n{display:block;width:100%;text-align:left;border:0;background:none;padding:7px 10px;border-radius:8px;font:600 14px "Segoe UI",sans-serif;color:#202223;cursor:pointer}
+.sh-n:hover{background:#E0E0E0}.sh-n.on{background:#fff;box-shadow:0 0 0 1px #D2D5D8}.sh-n.off{color:#8C9196;cursor:default}.sh-n.sub{padding-left:30px;font-weight:500}
+.sh-sec{margin:12px 10px 4px;font:700 11px "Segoe UI",sans-serif;color:#6D7175;text-transform:uppercase}
+.sh-main{padding:16px 20px 90px;max-width:900px}.sh-main h1{font-size:20px;margin:4px 0 12px}
+.sh-cartao{background:#fff;border-radius:12px;box-shadow:0 0 0 1px #E1E3E5,0 1px 2px rgba(0,0,0,.08);padding:16px;margin-bottom:14px}.sh-cartao h2{font-size:15px;margin:0 0 8px}.sh-cartao h3{font-size:14px;margin:16px 0 6px}
+.sh-bt{border:1px solid #C9CCCF;background:#fff;border-radius:8px;padding:6px 12px;font:600 13px "Segoe UI",sans-serif;cursor:pointer;color:#202223}.sh-bt.prim{background:#303030;color:#fff;border-color:#303030}.sh-bt[disabled]{opacity:.5;cursor:default}
+.sh-tema{display:flex;gap:14px;align-items:center}.sh-mini{width:96px;height:64px;background:#E3E5E7;border-radius:8px;display:grid;place-items:center;font-size:24px}
+.sh-chip{background:#AEE9D1;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:700}.sh-mud{color:#6D7175;margin:2px 0}
+.sh-acoes{margin-left:auto;display:flex;gap:8px;align-items:center}.sh-pos{position:relative}
+.sh-menu-pop{position:absolute;right:0;top:34px;z-index:5;background:#fff;border-radius:10px;box-shadow:0 0 0 1px #D2D5D8,0 8px 20px rgba(0,0,0,.18);min-width:210px;padding:6px}
+.sh-it{display:block;width:100%;text-align:left;border:0;background:none;padding:7px 10px;border-radius:6px;font:14px "Segoe UI",sans-serif;cursor:pointer}.sh-it:hover:not(.off){background:#F1F1F1}.sh-it.off{color:#8C9196;cursor:default}
+.sh-ed-topo{display:flex;align-items:center;gap:8px;background:#fff;padding:10px 14px;border-radius:12px 12px 0 0;border:1px solid #E1E3E5}
+.sh-ed-corpo{display:grid;grid-template-columns:200px 1fr;border:1px solid #E1E3E5;border-top:0;background:#fff;min-height:420px}
+.sh-arvore{border-right:1px solid #E1E3E5;padding:8px;background:#FAFBFB}.sh-pasta{padding:4px 6px;font-weight:700;color:#6D7175}.sh-arq{padding:4px 12px;border-radius:6px;font-family:Consolas,monospace;font-size:13px}.sh-arq.on{background:#E8F0FE;color:#0B3D91;font-weight:700}.sh-arq.off{color:#8C9196}
+.sh-ed{display:flex;overflow:hidden}.sh-num{margin:0;padding:10px 8px;background:#F6F6F7;color:#8C9196;text-align:right;font:13px/1.5 Consolas,monospace;user-select:none;min-width:32px}
+#shTema{flex:1;min-height:420px;border:0;outline:0;padding:10px;font:13px/1.5 Consolas,monospace;resize:vertical;white-space:pre;overflow:auto}
+.sh-rodape{background:#fff;border:1px solid #E1E3E5;border-top:0;border-radius:0 0 12px 12px;padding:8px 14px;font-weight:700;color:#4A4A4A}
+.sh-rad,.sh-tg{display:flex;gap:10px;align-items:flex-start;padding:8px 6px;border-radius:8px;cursor:pointer}.sh-rad small{display:block;color:#6D7175;font-weight:400}
+.sh-pix{display:flex;justify-content:space-between;align-items:center;border:1px solid #E1E3E5;border-radius:8px;padding:8px 12px;margin:6px 0}.sh-pix.on{border-color:#2C6ECB;background:#F2F7FE}
+.sh-aviso{background:#FFF5EA;border:1px solid #FFD79D;border-radius:8px;padding:8px 12px;margin:12px 0}
+.sh-ok{font-weight:700;color:#0C5132;margin-left:8px}.sh-nota{color:#6D7175;font-size:12px;margin:10px 0 80px}

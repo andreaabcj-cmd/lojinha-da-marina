@@ -1829,19 +1829,19 @@
         [{ pt: 'Criar outro pixel', es: 'Crear otro píxel' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }],
         [{ pt: 'Esperar o Diagnóstico sumir', es: 'Esperar que el Diagnóstico desaparezca' }, 0, { pt: 'O erro fica até corrigir.', es: 'El error queda hasta corregir.' }]] }
   ]);
-  quizCatalogo('plat-dg', { pt: 'Plataforma conectada', es: 'Plataforma conectada' }, { pt: 'Conectado não é tudo certo.', es: 'Conectado no es todo bien.' }, [
-    { q: { pt: 'A plataforma está conectada, mas o Purchase não chega. O que conferir primeiro?', es: 'La plataforma está conectada, pero el Purchase no llega. ¿Qué revisar primero?' },
-      o: [[{ pt: 'Pixel certo, nível de dados, pagamento e código duplicado', es: 'Píxel correcto, nivel de datos, pago y código duplicado' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
-        [{ pt: 'Trocar de plataforma', es: 'Cambiar de plataforma' }, 0, { pt: 'Exagero.', es: 'Exagerado.' }],
-        [{ pt: 'Colar código manual por cima', es: 'Pegar código manual encima' }, 0, { pt: 'Duplica.', es: 'Duplica.' }]] },
-    { q: { pt: 'Por que usar o pixel junto com a API de Conversões?', es: '¿Por qué usar el píxel junto con la API de Conversiones?' },
-      o: [[{ pt: 'O servidor cobre eventos que o navegador pode perder', es: 'El servidor cubre eventos que el navegador puede perder' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
-        [{ pt: 'Para cobrar menos', es: 'Para cobrar menos' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }],
-        [{ pt: 'Para trocar o ID do pixel', es: 'Para cambiar el ID del píxel' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] },
-    { q: { pt: 'Quem confirma o comportamento exato de uma plataforma parceira?', es: '¿Quién confirma el comportamiento exacto de una plataforma socia?' },
-      o: [[{ pt: 'A própria plataforma (a ajuda ou o suporte dela)', es: 'La propia plataforma (su ayuda o su soporte)' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
-        [{ pt: 'Um palpite', es: 'Una corazonada' }, 0, { pt: 'Confirme.', es: 'Confirma.' }],
-        [{ pt: 'O cliente, de cabeça', es: 'El cliente, de memoria' }, 0, { pt: 'Confirme na fonte.', es: 'Confirma en la fuente.' }]] }
+  quizCatalogo('plat-dg', { pt: 'Plataforma conectada: níveis de dados', es: 'Plataforma conectada: niveles de datos' }, { pt: 'Padrão, Avançado e Máximo na Shopify.', es: 'Estándar, Avanzado y Máximo en Shopify.' }, [
+    { q: { pt: 'No nível Padrão (Standard), quem envia os dados?', es: 'En el nivel Estándar (Standard), ¿quién envía los datos?' },
+      o: [[{ pt: 'Só o pixel do navegador, que um bloqueador de anúncios pode impedir', es: 'Solo el píxel del navegador, que un bloqueador de anuncios puede impedir' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'O pixel e a API de Conversões', es: 'El píxel y la API de Conversiones' }, 0, { pt: 'Isso é Avançado e Máximo.', es: 'Eso es Avanzado y Máximo.' }],
+        [{ pt: 'Ninguém: fica desligado', es: 'Nadie: queda desactivado' }, 0, { pt: 'O pixel envia.', es: 'El píxel envía.' }]] },
+    { q: { pt: 'Por que Avançado ou Máximo podem recuperar compras de quem usa bloqueador?', es: '¿Por qué Avanzado o Máximo pueden recuperar compras de quien usa bloqueador?' },
+      o: [[{ pt: 'A API de Conversões envia a compra de servidor para servidor, sem passar pelo navegador', es: 'La API de Conversiones envía la compra de servidor a servidor, sin pasar por el navegador' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Porque desligam o bloqueador do cliente', es: 'Porque desactivan el bloqueador del cliente' }, 0, { pt: 'Não mexem no navegador do cliente.', es: 'No tocan el navegador del cliente.' }],
+        [{ pt: 'Porque mudam o ID do pixel', es: 'Porque cambian el ID del píxel' }, 0, { pt: 'Não.', es: 'No.' }]] },
+    { q: { pt: 'O que avisar ao cliente antes de recomendar Avançado ou Máximo?', es: '¿Qué avisar al cliente antes de recomendar Avanzado o Máximo?' },
+      o: [[{ pt: 'Que compartilham dados pessoais (nome, local, e-mail, telefone) e a política de privacidade precisa informar', es: 'Que comparten datos personales (nombre, ubicación, correo, teléfono) y la política de privacidad debe informarlo' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Nada: é sempre melhor', es: 'Nada: siempre es mejor' }, 0, { pt: 'O cliente decide e informa.', es: 'El cliente decide e informa.' }],
+        [{ pt: 'Que a Meta cobra a mais', es: 'Que Meta cobra más' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }
   ]);
   quizCatalogo('queda-dg', { pt: 'Quando os eventos caem', es: 'Cuando los eventos caen' }, { pt: 'O roteiro da Central de Ajuda.', es: 'El guion del Centro de ayuda.' }, [
     { q: { pt: 'Depois de uma troca de tema, os eventos caíram a zero. Causa comum?', es: 'Después de un cambio de tema, los eventos cayeron a cero. ¿Causa común?' },

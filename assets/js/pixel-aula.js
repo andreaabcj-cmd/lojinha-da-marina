@@ -32,6 +32,8 @@ var SIM_PID = (function(){try{var e=JSON.parse(localStorage.getItem('sim.eventos
    - PID_REAL = o de verdade (config.js): recebe os eventos por trás, para a extensão real e o Gerenciador real. */
 var PID_REAL = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : C.pixelId;
 var PID = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : (SIM_PID || C.pixelId);
+/* Caso de cliente em andamento (site-estado.js): o ID que aparece é o que está no código do site / no app. */
+(function(){try{var f0=window.SITE_FX&&window.SITE_FX();if(f0&&f0.idPrincipal)PID=f0.idPrincipal}catch(e){}})();
 
 /* ---------- SHA-256 (para MOSTRAR o hash na aula; o Pixel faz o próprio) ---------- */
 function sha256(ascii){function rr(v,a){return(v>>>a)|(v<<(32-a))}var K=[],H=[],p=2,c=0,isP=function(n){for(var f=2;f*f<=n;f++)if(n%f===0)return false;return true};
@@ -77,6 +79,8 @@ function trUrl(nome,params,eid,custom){var q=['id='+PID,'ev='+encodeURIComponent
   return 'https://www.facebook.com/tr/?'+q.join('&')}
 function track(nome,params,opts){
   params=JSON.parse(JSON.stringify(params||{}));opts=opts||{};var custom=!!opts.custom;var nota=[];
+  var FXs=null;try{FXs=window.SITE_FX&&window.SITE_FX()}catch(e){}
+  if(FXs){trackFx(nome,params,opts,FXs);return}   // caso de cliente: o site de faz-de-conta decide o que é enviado
   if(nome==='Purchase'&&LAB.mocaBonita){registra({nome:nome,params:params,status:'perdido',motivo:'⛔ Laboratório: o acionador da compra falhou e o Purchase NÃO foi disparado.',custom:custom});return}
   if(nome==='Purchase'&&LAB.semPreco){delete params.value;delete params.currency;nota.push('💸 Laboratório: value e currency removidos.')}
   if(LAB.codigoErrado&&params.content_ids){params.content_ids=params.content_ids.map(function(id){var p=achaProduto(id);return p?p.titulo.toLowerCase():id});if(params.contents)params.contents.forEach(function(c){var p=achaProduto(c.id);if(p)c.id=p.titulo.toLowerCase()});nota.push('🏷️ Laboratório: códigos trocados pelo nome do produto.')}
@@ -86,12 +90,22 @@ function track(nome,params,opts){
   registra({nome:nome,params:params,eid:eid,status:status,custom:custom,nota:nota.join(' ')});
   if(nome==='PageView'&&LAB.duplicado){var e2=idEvento(nome);fbqSafe('track','PageView',{}, {eventID:e2});registra({nome:'PageView',params:{},eid:e2,status:status,nota:'👯 Laboratório: o mesmo PageView foi disparado DE NOVO (Pixel duplicado).'})}
 }
+/* Caso de cliente: o evento da Loja vira as "cópias" que o site do cliente de fato enviaria (0, 1 ou várias; no navegador ou pelo servidor).
+   O Pixel de verdade recebe só o evento normal, como sempre (a aula não muda). */
+function trackFx(nome,params,opts,F){
+  var eid=opts.eventID||idEvento(nome);
+  fbqSafe(opts.custom?'trackCustom':'track',nome,params,{eventID:eid});
+  var lista=window.SITE.copias(nome,params,F);
+  lista.forEach(function(c,i){
+    registra({nome:c.nome,params:c.params,eid:(i&&c.fonte!=='servidor')?idEvento(c.nome):eid,status:c.status,custom:c.custom,pid:c.pid,fonte:c.fonte,nota:c.fonte==='servidor'?'🖥️ Enviado pelo servidor (API de Conversões).':''});
+  });
+}
 function registra(ev){ev.t=new Date().toLocaleTimeString('pt-BR');ev.href=location.href.split('#')[0];ev.ud=(AM&&cliente)?normaliza(cliente):null;ev.pagina=document.body?document.body.getAttribute('data-pagina'):'';ev.url=trUrl(ev.nome,ev.params,ev.eid,ev.custom);
   pageEvents.push(ev);log.unshift(ev);log=log.slice(0,60);ssSet('log',log);ui.novo(ev);
   try{document.dispatchEvent(new CustomEvent('loja:evento',{detail:ev}))}catch(e){}
   // entrega o evento ao Gerenciador de Eventos simulado (mesmo navegador, outra aba): só o que o Pixel de fato enviaria
   if(ev.status!=='perdido'&&ev.status!=='bloqueado'){try{var f=JSON.parse(localStorage.getItem('sim.feed')||'[]');if(!Array.isArray(f))f=[];
-    f.push({t:Date.now(),pid:PID,nome:ev.nome,params:ev.params,eid:ev.eid,href:ev.href,ud:ev.ud?Object.keys(ev.ud):[],custom:!!ev.custom,nota:ev.nota||''});
+    f.push({t:Date.now(),pid:ev.pid||PID,fonte:ev.fonte||'navegador',nome:ev.nome,params:ev.params,eid:ev.eid,href:ev.href,ud:ev.ud?Object.keys(ev.ud):[],custom:!!ev.custom,nota:ev.nota||''});
     localStorage.setItem('sim.feed',JSON.stringify(f.slice(-300)))}catch(e){}}}
 function achaProduto(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){var p=ps[i];if(p.id===id)return p;if(p.variantes)for(var j=0;j<p.variantes.length;j++)if(p.variantes[j].id===id)return p}return null}
 function noCatalogo(id){var ps=window.PRODUTOS||[];for(var i=0;i<ps.length;i++){if(ps[i].id===id&&!ps[i].variantes)return true;if(ps[i].variantes)for(var j=0;j<ps[i].variantes.length;j++)if(ps[i].variantes[j].id===id)return true;if(ps[i].id===id)return true}return false}

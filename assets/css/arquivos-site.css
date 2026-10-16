@@ -1,0 +1,19 @@
+/* Editor de arquivos do site (hospedagem do cliente, faz-de-conta) */
+body{margin:0;background:#F6F7F9;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:#1F2937}
+.ae-topo{margin-top:32px;background:#1F2937;color:#fff;padding:10px 16px}.ae-site{opacity:.7;font-family:Consolas,monospace;margin-left:8px}
+.ae-corpo{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 80px)}
+@media(max-width:700px){.ae-corpo{grid-template-columns:1fr}.ae-arvore{border-right:0;border-bottom:1px solid #D5DAE1}}
+.ae-arvore{background:#fff;border-right:1px solid #D5DAE1;padding:10px 8px;overflow:auto}
+.ae-pasta{padding:4px 6px;font-weight:700;color:#475569}.ae-n1{padding-left:20px}.ae-n2{padding-left:36px}
+.ae-arq{display:block;width:100%;text-align:left;border:0;background:none;padding:5px 8px;border-radius:6px;font:13px "Segoe UI",sans-serif;color:#1F2937;cursor:pointer}
+.ae-arq:hover{background:#EEF2F7}.ae-arq.on{background:#DCEBFF;color:#0B3D91;font-weight:700}.ae-arq.off{color:#94A3B8;cursor:default}
+.ae-main{padding:14px 18px}
+.ae-cab{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.ae-caminho{font:13px Consolas,monospace;color:#475569}.ae-caminho b{color:#0F172A}
+.ae-btns{display:flex;gap:8px}.ae-bt{border:1px solid #B9C0CC;background:#fff;border-radius:8px;padding:6px 12px;font:700 13px "Segoe UI",sans-serif;cursor:pointer}.ae-bt.prim{background:#16A34A;border-color:#15803D;color:#fff}
+.ae-desc{margin:8px 0;color:#475569}
+.ae-ed{display:flex;border:1px solid #B9C0CC;border-radius:8px;background:#fff;overflow:hidden}
+.ae-num{margin:0;padding:10px 8px;background:#F1F5F9;color:#94A3B8;text-align:right;font:13px/1.5 Consolas,monospace;user-select:none;min-width:34px}
+#aeTexto{flex:1;min-height:340px;border:0;outline:0;padding:10px;font:13px/1.5 Consolas,monospace;resize:vertical;white-space:pre;overflow:auto}
+.ae-rodape{margin-top:8px;font-weight:700;color:#334155}
+.ae-nota{margin:14px 0 80px;color:#64748B;font-size:13px}

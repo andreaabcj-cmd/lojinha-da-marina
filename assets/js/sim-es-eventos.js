@@ -61,6 +61,30 @@
   };
   for (var k in A) D[k] = A[k];
   var un = function (u) { return u === 's' ? 's' : u === 'min' ? ' min' : u === 'h' ? ' h' : ' ' + u };
+  /* --- Diagnóstico de casos (16/10/2026): avisos do Diagnóstico, origem Servidor e janela "Instalar o código manualmente" --- */
+  var N = {
+    '⛔ Preço ausente ou inválido no parâmetro de valor': '⛔ Precio ausente o inválido en el parámetro de valor',
+    'O value do Purchase está vazio ou fora do formato: precisa ser um número decimal maior ou igual a zero, com ponto decimal, sem letras, símbolos de moeda nem vírgulas (ex.: 99.90).': 'El value del Purchase está vacío o fuera del formato: debe ser un número decimal mayor o igual a cero, con punto decimal, sin letras, símbolos de moneda ni comas (ej.: 99.90).',
+    '⛔ O parâmetro de moeda tem um código de 3 letras ausente e/ou inválido': '⛔ El parámetro de moneda tiene un código de 3 letras ausente y/o inválido',
+    'O currency precisa ser o código de 3 letras da moeda (ex.: BRL ou USD).': 'El currency debe ser el código de 3 letras de la moneda (ej.: BRL o USD).',
+    'O mesmo evento PageView chegou duas vezes da mesma página ao mesmo tempo. Confira se o código base não foi instalado duas vezes (por exemplo, colado à mão e também pela integração).': 'El mismo evento PageView llegó dos veces de la misma página al mismo tiempo. Revisa que el código base no se haya instalado dos veces (por ejemplo, pegado a mano y también por la integración).',
+    '⚠️ Incompatibilidade de nome de evento': '⚠️ Incompatibilidad de nombre de evento',
+    '⛔ Vários eventos em uma ação': '⛔ Varios eventos en una acción',
+    '⛔ Eventos de compra redundantes': '⛔ Eventos de compra redundantes',
+    '⚠️ Vários eventos em uma ação': '⚠️ Varios eventos en una acción',
+    'O pixel recebeu quatro ou mais eventos de compra para uma única compra. Isso superestima as vendas. Deixe o Purchase em um só lugar.': 'El píxel recibió cuatro o más eventos de compra para una sola compra. Eso sobreestima las ventas. Deja el Purchase en un solo lugar.',
+    'O pixel enviou mais de um evento de compra para uma única ação do visitante. Confira se o Purchase está em mais de um lugar (código manual e integração, por exemplo).': 'El píxel envió más de un evento de compra para una sola acción del visitante. Revisa si el Purchase está en más de un lugar (código manual e integración, por ejemplo).',
+    '1. Código base do Pixel': '1. Código base del píxel', 'Copiar código base': 'Copiar código base',
+    '2. Código de um evento (exemplo: Purchase)': '2. Código de un evento (ejemplo: Purchase)',
+    'O código do evento vai SÓ na página da ação (para a compra, a página de pedido concluído), depois do código base. O valor e a moeda padrão são 0.00 e USD: troque pelos reais.': 'El código del evento va SOLO en la página de la acción (para la compra, la página de pedido completado), después del código base. El valor y la moneda por defecto son 0.00 y USD: cámbialos por los reales.',
+    'Copiar código do Purchase': 'Copiar código del Purchase',
+    'Pixel da Mari': 'Pixel da Mari', 'Purchase': 'Purchase', 'purchase': 'purchase', 'PageView': 'PageView', '<head>': '<head>', 'andreaabcj-cmd.github.io': 'andreaabcj-cmd.github.io', 'http://localhost:8765/loja.html': 'http://localhost:8765/loja.html'
+  };
+  for (var kk in N) D[kk] = N[kk];
+  P.push([/^Marina · ([\d\/]+)$/, function (m) { return 'Marina · ' + m[1] }]);
+  P.push([/^Servidor · há (\d+) ?(s|min|h|d)$/, function (m) { return 'Servidor · hace ' + m[1] + un(m[2]) }]);
+  P.push([/^O Purchase está chegando de páginas que não são de compra \(ex\.: (.+)\)\. O pixel deve enviar um evento por ação do visitante\. Verifique o cabeçalho do modelo HTML: o único código da Meta no cabeçalho deve ser o código base\. O Purchase vai só na página que indica a compra\.$/, function (m) { return 'El Purchase está llegando de páginas que no son de compra (ej.: ' + m[1] + '). El píxel debe enviar un evento por acción del visitante. Revisa el encabezado de la plantilla HTML: el único código de Meta en el encabezado debe ser el código base. El Purchase va solo en la página que indica la compra.' }]);
+  P.push([/^O evento “(.+)” é parecido com o evento padrão, mas não idêntico\. Os nomes diferenciam maiúsculas de minúsculas: para medir como evento padrão, o código precisa usar exatamente “(.+)”\.$/, function (m) { return 'El evento “' + m[1] + '” es parecido al evento estándar, pero no idéntico. Los nombres distinguen mayúsculas de minúsculas: para medir como evento estándar, el código debe usar exactamente “' + m[2] + '”.' }]);
   P.push([/^(\d+) eventos?$/, function (m) { return m[1] + (m[1] === '1' ? ' evento' : ' eventos') }]);
   P.push([/^Navegador · há (\d+) ?(s|min|h|d)$/, function (m) { return 'Navegador · hace ' + m[1] + un(m[2]) }]);
   P.push([/^há (\d+) ?(s|min|h|d)$/, function (m) { return 'hace ' + m[1] + un(m[2]) }]);

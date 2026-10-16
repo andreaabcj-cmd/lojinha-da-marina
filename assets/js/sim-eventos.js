@@ -157,27 +157,39 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   var abertos = {};
   function evLinha(e, i) {
     var k = e.t + e.nome, on = abertos[k];
-    var h = '<div class="ev"><button class="ev-cab" data-ev="' + esc(k) + '" data-t="ev-' + i + '"><b>' + esc(e.nome) + '</b><span class="st"><i></i>Processado</span><small>Navegador · ' + quando(e.t) + '</small><span class="seta">' + (on ? '▴' : '▾') + '</span></button>';
+    var h = '<div class="ev"><button class="ev-cab" data-ev="' + esc(k) + '" data-t="ev-' + i + '"><b>' + esc(e.nome) + '</b><span class="st"><i></i>Processado</span><small>' + (e.fonte === 'servidor' ? 'Servidor' : 'Navegador') + ' · ' + quando(e.t) + '</small><span class="seta">' + (on ? '▴' : '▾') + '</span></button>';
     if (on) {
       var ps = Object.keys(e.params || {});
       h += '<div class="ev-corpo"><h4>Parâmetros personalizados</h4>' + (ps.length ? '<table>' + ps.map(function (p) { var v = e.params[p]; return '<tr><td>' + esc(p) + '</td><td>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</td></tr>' }).join('') + '</table>' : '<p class="miudo">Nenhum parâmetro.</p>') +
-        '<h4>Informações do evento</h4><table><tr><td>URL</td><td>' + esc(e.href || '') + '</td></tr><tr><td>ID do evento</td><td>' + esc(e.eid || '—') + '</td></tr><tr><td>Recebido de</td><td>Navegador (Pixel da Meta)</td></tr></table>' +
+        '<h4>Informações do evento</h4><table><tr><td>URL</td><td>' + esc(e.href || '') + '</td></tr><tr><td>ID do evento</td><td>' + esc(e.eid || '—') + '</td></tr><tr><td>Recebido de</td><td>' + (e.fonte === 'servidor' ? 'Servidor (API de Conversões)' : 'Navegador (Pixel da Meta)') + '</td></tr></table>' +
         (e.ud && e.ud.length ? '<h4>Correspondência avançada</h4><table>' + e.ud.map(function (c) { return '<tr><td>' + esc(c) + '</td><td>enviado com hash (SHA-256)</td></tr>' }).join('') + '</table>' : '') + '</div>';
     }
     return h + '</div>';
   }
 
   function abaDiag(d, ev) {
+    ev = ev.filter(function (e) { return e.t >= (S.testeDesde || 0) });   // “Limpar atividade” recomeça também o diagnóstico
     var problemas = [];
     var compras = ev.filter(function (e) { return e.nome === 'Purchase' });
-    if (compras.some(function (e) { return e.params.value === undefined || !e.params.currency })) problemas.push(['erro', 'Parâmetro obrigatório ausente no evento Purchase', 'Alguns eventos Purchase chegaram sem value ou currency. Sem eles a Meta não calcula o valor das compras nem otimiza por valor.']);
+    var vBad = compras.some(function (e) { return typeof e.params.value !== 'number' || isNaN(e.params.value) }), cBad = compras.some(function (e) { return !/^[A-Z]{3}$/.test(String(e.params.currency || '')) });
+    if (vBad) problemas.push(['erro', 'Preço ausente ou inválido no parâmetro de valor', 'O value do Purchase está vazio ou fora do formato: precisa ser um número decimal maior ou igual a zero, com ponto decimal, sem letras, símbolos de moeda nem vírgulas (ex.: 99.90).']);
+    if (cBad) problemas.push(['erro', 'O parâmetro de moeda tem um código de 3 letras ausente e/ou inválido', 'O currency precisa ser o código de 3 letras da moeda (ex.: BRL ou USD).']);
     var pv = ev.filter(function (e) { return e.nome === 'PageView' });
-    for (var i = 1; i < pv.length; i++) if (pv[i].href === pv[i - 1].href && pv[i].t - pv[i - 1].t < 1500) { problemas.push(['aviso', 'Possível código do Pixel duplicado', 'O mesmo evento PageView chegou duas vezes da mesma página ao mesmo tempo. Confira se o código base não foi instalado duas vezes.']); break }
+    for (var i = 1; i < pv.length; i++) if (pv[i].href === pv[i - 1].href && pv[i].t - pv[i - 1].t < 1500) { problemas.push(['aviso', 'Possível código do Pixel duplicado', 'O mesmo evento PageView chegou duas vezes da mesma página ao mesmo tempo. Confira se o código base não foi instalado duas vezes (por exemplo, colado à mão e também pela integração).']); break }
+    var padrao = ['PageView', 'ViewContent', 'Search', 'AddToCart', 'AddToWishlist', 'InitiateCheckout', 'AddPaymentInfo', 'Purchase', 'Lead', 'CompleteRegistration', 'Schedule', 'Contact'];
+    var parecidos = ev.filter(function (e) { return e.custom && padrao.indexOf(e.nome) < 0 && padrao.some(function (p) { return p.toLowerCase() === String(e.nome).toLowerCase() }) });
+    if (parecidos.length) problemas.push(['aviso', 'Incompatibilidade de nome de evento', 'O evento “' + parecidos[0].nome + '” é parecido com o evento padrão, mas não idêntico. Os nomes diferenciam maiúsculas de minúsculas: para medir como evento padrão, o código precisa usar exatamente “' + padrao.filter(function (p) { return p.toLowerCase() === String(parecidos[0].nome).toLowerCase() })[0] + '”.']);
+    var foraObrigado = compras.filter(function (e) { return !/obrigado/.test(e.href || '') });
+    var mesmaPagina = {}; compras.forEach(function (e) { var k = e.href; mesmaPagina[k] = (mesmaPagina[k] || 0) + 1 });
+    var maxMesma = Math.max.apply(null, Object.keys(mesmaPagina).map(function (k) { return mesmaPagina[k] }).concat([0]));
+    if (foraObrigado.length) problemas.push(['erro', 'Vários eventos em uma ação', 'O Purchase está chegando de páginas que não são de compra (ex.: ' + esc((foraObrigado[0].href || '').split('/').pop().split('?')[0]) + '). O pixel deve enviar um evento por ação do visitante. Verifique o cabeçalho do modelo HTML: o único código da Meta no cabeçalho deve ser o código base. O Purchase vai só na página que indica a compra.']);
+    else if (maxMesma >= 4) problemas.push(['erro', 'Eventos de compra redundantes', 'O pixel recebeu quatro ou mais eventos de compra para uma única compra. Isso superestima as vendas. Deixe o Purchase em um só lugar.']);
+    else if (maxMesma >= 2) problemas.push(['aviso', 'Vários eventos em uma ação', 'O pixel enviou mais de um evento de compra para uma única ação do visitante. Confira se o Purchase está em mais de um lugar (código manual e integração, por exemplo).']);
     var ids = (window.PRODUTOS || []).reduce(function (a, p) { a.push(p.id); (p.variantes || []).forEach(function (v) { a.push(v.id) }); return a }, []);
     if (ids.length && ev.some(function (e) { return (e.params.content_ids || []).some(function (c) { return ids.indexOf(c) < 0 }) })) problemas.push(['aviso', 'IDs de conteúdo não correspondem ao catálogo', 'Alguns eventos enviaram content_ids que não existem no catálogo (ex.: o nome do produto no lugar do código).']);
     var h = '<div class="cartao"><h2>Diagnóstico</h2><p>Problemas encontrados nos eventos recebidos por este conjunto de dados.</p>';
-    if (!problemas.length) h += '<div class="alerta ok"><b>Nenhum problema ativo</b>' + (ev.length ? 'Os eventos recebidos não mostram problemas.' : 'Ainda não há eventos para analisar.') + '</div>';
-    h += problemas.map(function (p) { return '<div class="alerta ' + p[0] + '"><b>' + (p[0] === 'erro' ? '⛔ ' : '⚠️ ') + p[1] + '</b>' + p[2] + '</div>' }).join('');
+    if (!problemas.length) h += '<div class="alerta ok" data-t="diag-ok"><b>Nenhum problema ativo</b>' + (ev.length ? 'Os eventos recebidos não mostram problemas.' : 'Ainda não há eventos para analisar.') + '</div>';
+    h += problemas.map(function (p, i) { return '<div class="alerta ' + p[0] + '" data-t="diag-' + i + '"><b>' + (p[0] === 'erro' ? '⛔ ' : '⚠️ ') + p[1] + '</b>' + p[2] + '</div>' }).join('');
     return h + '</div>';
   }
 
@@ -224,8 +236,11 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     } else if (janela === 'codigo') {
       var d = ds(rota().id);
       h = '<h3>Instalar o código manualmente<button class="x" data-acao="fechar">✕</button></h3><p>Copie o código base do Pixel e cole no <b>&lt;head&gt;</b> de todas as páginas do site, antes de &lt;/head&gt;. Se a loja é de uma plataforma parceira, dá para usar a integração em vez de colar o código.</p>' +
-        '<div class="codigo">&lt;!-- Meta Pixel Code --&gt;\n&lt;script&gt;\n!function(f,b,e,v,n,t,s){...}(window, document,\'script\',\n\'https://connect.facebook.net/en_US/fbevents.js\');\nfbq(\'init\', \'' + (d ? d.id : '') + '\');\nfbq(\'track\', \'PageView\');\n&lt;/script&gt;\n&lt;!-- End Meta Pixel Code --&gt;</div>' +
-        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Fechar</button><button class="btn" data-acao="copiar" data-v="' + (d ? d.id : '') + '">Copiar ID</button></div><p class="conferido pendente">⚠ Tela montada pela documentação da Meta · a conferir com a tela real</p>';
+        '<h4>1. ' + 'Código base do Pixel' + '</h4><pre class="codigo" data-t="cod-base">' + esc(window.SITE ? SITE.base(d ? d.id : '') : '') + '</pre>' +
+        '<div class="rodape-jan"><span></span><button class="btn" data-acao="copiar-base" data-t="btn-copiar-base">Copiar código base</button></div>' +
+        '<h4>2. ' + 'Código de um evento (exemplo: Purchase)' + '</h4><p class="miudo">O código do evento vai SÓ na página da ação (para a compra, a página de pedido concluído), depois do código base. O valor e a moeda padrão são 0.00 e USD: troque pelos reais.</p>' +
+        '<pre class="codigo" data-t="cod-purchase">' + esc("fbq('track', 'Purchase', {value: 0.00, currency: 'USD'});") + '</pre>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Fechar</button><button class="btn" data-acao="copiar-purchase" data-t="btn-copiar-purchase">Copiar código do Purchase</button></div><p class="conferido pendente">⚠ Tela montada pela documentação da Meta · a conferir com a tela real</p>';
     }
     f.innerHTML = '<div class="janela" role="dialog" aria-modal="true">' + h + '</div>';
     document.body.appendChild(f);
@@ -253,6 +268,12 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       S.datasets.unshift(d2); S.recemCriado = d2.id; S.testeDesde = Date.now(); grava(); fechaJanela(); vai('ds/' + d2.id + '/visao');
     }
     else if (ac === 'codigo') { S.recemCriado = null; grava(); render(); abreJanela('codigo') }
+    else if (ac === 'copiar-base' || ac === 'copiar-purchase') {
+      var d3 = ds(rota().id), txt = ac === 'copiar-base' ? SITE.base(d3 ? d3.id : '') : "<script>\nfbq('track', 'Purchase', {value: 0.00, currency: 'USD'});\n</script>";
+      function plano() { var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy') } catch (e) { } ta.remove() }
+      try { navigator.clipboard.writeText(txt).catch(plano) } catch (e) { plano() }
+      window.__copiado = ac === 'copiar-base' ? 'base' : 'purchase'; a.textContent = 'Copiado ✓'; tourClique(a);
+    }
     else if (ac === 'copiar') { try { navigator.clipboard.writeText(a.getAttribute('data-v')) } catch (e) { } a.textContent = 'Copiado ✓' }
     else if (ac === 'abrir-site') { S.testeDesde = Date.now(); grava(); window.open($('#urlTeste').value, '_blank'); render() }
     else if (ac === 'limpar') { S.testeDesde = Date.now(); grava(); render() }
