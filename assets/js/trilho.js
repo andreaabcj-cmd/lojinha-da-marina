@@ -16,7 +16,7 @@
     'adicionar-instagram': { modulo: 'instagram', aula: '03', cauda: 9 },   // na trilha Foco as aulas 01-02 do Instagram não aparecem (só da Completa): o 1º tutorial visível é este
     'pixel-em-acao': { modulo: 'pixel', aula: '01', cauda: 5 },
     'correspondencia-avancada': { modulo: 'pixel-avancado', aula: '01', cauda: 29 },
-    'verificar-empresa': { modulo: 'portfolio-avancado', aula: '01', cauda: 6 },
+    'verificar-empresa': { modulo: 'portfolio-avancado', aula: '01', cauda: 10 },
     'criar-publico-site': { modulo: 'segmentacao', aula: '02', cauda: 11 },
     'ler-relatorio': { modulo: 'relatorios', aula: '02', cauda: 5 },
     'criar-regra': { modulo: 'regras', aula: '02', cauda: 10 },

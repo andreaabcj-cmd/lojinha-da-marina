@@ -191,3 +191,7 @@ Pedido do André: o módulo ficar no FIM da trilha, por temas; as práticas não
 - Mantidos (já eram telas reais da Meta): `galeria-parceiros`, `escolher-capi`, `dar-acesso-parceiro` (meta-mbe.html). PENDENTE: `pixel-fonte-catalogo` ainda usa a página meta-terceiros (checklist inventado).
 - Fontes: Central de Ajuda da Shopify (Set up Facebook & Instagram, Publishing products, Meta pixel), documentação do WooCommerce e da Meta; telas internas das plataformas e a janela do MBE são do treino (a conferir). Removidos: meta-shopify.html e sim-shopify.*.
 - Verificado de ponta a ponta com executor automático: 7 tutoriais novos + 2 trilhos.
+
+## Portfólio avançado — REFEITO dentro das telas reais do portfólio, 17/10/2026
+- Os 4 tutoriais (`verificar-empresa`, `corrigir-documento`, `corrigir-permissao`, `excluir-portfolio`) agora rodam em `meta-portfolio.html` (Configurações do portfólio, telas já conferidas): Central de Segurança › Verificação da empresa (Iniciar verificação, documentos recusados), Pessoas › Detalhes › acesso, Informações da empresa › Excluir portfólio. Código novo: `assets/js/sim-portfolio-av.js` (estado em p.av de cada portfólio; casos `PFAV.caso`). Removidos: meta-portfolioav.html e sim-portfolioav.*.
+- Janelas de verificação, envio de documentos e exclusão são do treino (não clicadas de verdade; a conferir). Verificado de ponta a ponta com executor automático: 4 tutoriais + trilho (cauda 10).

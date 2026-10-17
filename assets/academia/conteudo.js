@@ -4688,8 +4688,8 @@ window.AULAS = {
         },
         ferramenta: 'ver-pv',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela verificação: dados, https, método de confirmação e envio.', 'En el simulador, el Pixel te guía por la verificación: datos, https, método de confirmación y envío.'),
-          tour: 'verificar-empresa', pagina: 'meta-portfolioav.html?zerar=1'
+          texto: L('Nas Configurações do portfólio da Marina, você abre a Central de Segurança, inicia a verificação, preenche a razão social e o site com https, escolhe como confirmar a conexão e envia. O Pixel te guia, nas telas do portfólio.', 'En la Configuración del portafolio de Marina, abres el Centro de seguridad, inicias la verificación, completas la razón social y el sitio con https, eliges cómo confirmar la conexión y envías. El Pixel te guía, en las pantallas del portafolio.'),
+          tour: 'verificar-empresa', pagina: 'meta-portfolio.html'
         },
         atender: {
           cena: L('Preciso verificar minha empresa para liberar um recurso, mas já tenho o selo azul no Instagram. Não basta? 😕', 'Necesito verificar mi empresa para liberar una función, pero ya tengo la insignia azul en Instagram. ¿No basta? 😕'),
@@ -4732,8 +4732,8 @@ window.AULAS = {
         },
         ferramenta: 'doc-pv',
         praticar: {
-          texto: L('No simulador, o Pixel te guia para trocar uma conta de luz por um contrato social válido e reenviar.', 'En el simulador, el Pixel te guía para cambiar una factura de luz por un contrato social válido y reenviar.'),
-          tour: 'corrigir-documento', pagina: 'meta-portfolioav.html?zerar=1'
+          texto: L('A verificação da Marina foi recusada. Na Central de Segurança você lê o motivo e reenvia um documento que comprove a razão social, conferindo nome, legibilidade, validade e dados pessoais. O Pixel te guia.', 'La verificación de Marina fue rechazada. En el Centro de seguridad lees el motivo y reenvías un documento que compruebe la razón social, revisando nombre, legibilidad, vigencia y datos personales. El Pixel te guía.'),
+          tour: 'corrigir-documento', pagina: 'meta-portfolio.html'
         },
         atender: {
           cena: L('Enviei minha conta de luz e vocês recusaram! Ela tem meu endereço e o nome da minha loja! 😤', '¡Envié mi factura de luz y la rechazaron! ¡Tiene mi dirección y el nombre de mi tienda! 😤'),
@@ -4776,8 +4776,8 @@ window.AULAS = {
         },
         ferramenta: 'perm-pv',
         praticar: {
-          texto: L('No simulador, o Pixel te guia para reduzir o acesso do estagiário de controle total para só anúncios.', 'En el simulador, el Pixel te guía para reducir el acceso del pasante de control total a solo anuncios.'),
-          tour: 'corrigir-permissao', pagina: 'meta-portfolioav.html?zerar=1'
+          texto: L('O estagiário Caio tem controle total. Em Pessoas, você abre os Detalhes dele e reduz o acesso para só anúncios. O Pixel te guia.', 'El pasante Caio tiene control total. En Personas, abres sus Detalles y reduces el acceso a solo anuncios. El Pixel te guía.'),
+          tour: 'corrigir-permissao', pagina: 'meta-portfolio.html'
         },
         atender: {
           cena: L('Contratei uma agência e agora não consigo tirar o acesso de um funcionário a um ativo que ela compartilhou. O botão não deixa! 😤', 'Contraté una agencia y ahora no puedo quitar el acceso de un empleado a un activo que ella compartió. ¡El botón no me deja! 😤'),
@@ -4820,8 +4820,8 @@ window.AULAS = {
         },
         ferramenta: 'excl-pv',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por resolver os bloqueios e chegar à exclusão (só no treino, nada é apagado).', 'En el simulador, el Pixel te guía para resolver los bloqueos y llegar a la eliminación (solo en el entrenamiento, nada se borra).'),
-          tour: 'excluir-portfolio', pagina: 'meta-portfolioav.html?zerar=1'
+          texto: L('A Marina quer excluir o portfólio. Em Informações da empresa, você abre a exclusão, resolve as pendências (pagamento, app e leads), confirma que entende que é definitivo e vê o que acontece. Nada é excluído de verdade. O Pixel te guia.', 'Marina quiere eliminar el portafolio. En Información de la empresa, abres la eliminación, resuelves los pendientes (pago, app y leads), confirmas que entiendes que es definitivo y ves qué pasa. Nada se elimina de verdad. El Pixel te guía.'),
+          tour: 'excluir-portfolio', pagina: 'meta-portfolio.html'
         },
         atender: {
           cena: L('Quero excluir meu portfólio agora! Mas o botão dá erro, e eu só quero parar de pagar anúncio! 😤', '¡Quiero eliminar mi portafolio ahora! ¡Pero el botón da error, y yo solo quiero dejar de pagar anuncios! 😤'),

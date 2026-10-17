@@ -82,14 +82,14 @@
     info: function () {
       var p = pf();
       return esqueleto('<div class="cartao"><h2>Informações do portfólio empresarial</h2><p><b>' + esc(p.nome) + '</b></p><p class="miudo">Identificação do portfólio empresarial: <span class="id" data-t="pf-id">' + p.id + '</span><br>Página principal: ' + (p.paginas[0] ? esc(p.paginas[0]) : 'nenhuma') + '</p></div>' +
-        '<div class="cartao"><h2>Detalhes da empresa</h2><table class="tabela"><tr><td>Razão social da empresa</td><td>Lojinha da Marina (empresa fictícia)</td></tr><tr><td>Site</td><td>andreaabcj-cmd.github.io/lojinha-da-marina</td></tr><tr><td>Status de verificação da empresa</td><td>Não verificada</td></tr></table></div>' +
-        '<div class="cartao"><h2>Opções da empresa</h2><p><b>Autenticação de dois fatores</b><br><span class="miudo">Exigir um código de login para acessar este portfólio empresarial em navegadores desconhecidos.</span></p></div>', CONF.info);
+        '<div class="cartao"><h2>Detalhes da empresa</h2><table class="tabela"><tr><td>Razão social da empresa</td><td>Lojinha da Marina (empresa fictícia)</td></tr><tr><td>Site</td><td>andreaabcj-cmd.github.io/lojinha-da-marina</td></tr><tr><td>Status de verificação da empresa</td><td data-t="status-verificacao">' + (window.PFAV ? PFAV.statusTxt() : 'Não verificada') + '</td></tr></table></div>' +
+        '<div class="cartao"><h2>Opções da empresa</h2><p><b>Autenticação de dois fatores</b><br><span class="miudo">Exigir um código de login para acessar este portfólio empresarial em navegadores desconhecidos.</span></p></div>' + (window.PFAV ? PFAV.cartoes('info') : ''), CONF.info);
     },
     pessoas: function () {
       var p = pf();
-      var h = cabTela('Pessoas', '<button class="btn sec">Exportar</button><button class="btn" data-acao="convidar" data-t="convidar">' + IC.mais + ' Convidar pessoas</button>') +
+      var h = (window.PFAV ? PFAV.msgPerm() : '') + cabTela('Pessoas', '<button class="btn sec">Exportar</button><button class="btn" data-acao="convidar" data-t="convidar">' + IC.mais + ' Convidar pessoas</button>') +
         '<div class="cartao" data-t="lista-pessoas"><table class="tabela"><tr><th>Nome</th><th>Acesso ao portfólio empresarial</th><th>Última sessão ativa</th><th></th></tr>' +
-        p.pessoas.map(function (x) { return '<tr><td><b>' + esc(x.nome) + '</b><br><span class="miudo">' + esc(x.email) + '</span></td><td>' + esc(x.acesso) + '<br><span class="miudo">' + (x.acesso === 'Acesso total' ? 'Tudo' : 'Básico') + '</span></td><td><span class="st' + (x.status === 'Ativo' ? '' : ' cinza') + '"><i></i>' + esc(x.status) + '</span></td><td><button class="lnk">Detalhes</button></td></tr>' }).join('') + '</table></div>';
+        p.pessoas.map(function (x) { return '<tr><td><b>' + esc(x.nome) + '</b><br><span class="miudo">' + esc(x.email) + '</span></td><td>' + esc(x.acesso) + '<br><span class="miudo">' + (x.acesso === 'Acesso total' ? 'Tudo' : 'Básico') + '</span></td><td><span class="st' + (x.status === 'Ativo' ? '' : ' cinza') + '"><i></i>' + esc(x.status) + '</span></td><td>' + (window.PFAV ? PFAV.btnDet(x) : '<button class="lnk">Detalhes</button>') + '</td></tr>' }).join('') + '</table></div>';
       return esqueleto(h, CONF.pessoas);
     },
     paginas: function () {
@@ -129,7 +129,7 @@
         '<div class="cartao"><h2>Action needed</h2><p class="miudo">Realize as ações recomendadas e aumente a segurança do seu portfólio empresarial.</p><table class="tabela"><tr><th>Description of risk</th><th>Recommendation to lower risk</th><th></th></tr>' +
         '<tr><td><b>1 usuário without passkey enabled</b><br><span class="miudo">Passkeys are the most secure way to protect users.</span></td><td>Remove users without passkeys from your business portfolio.</td><td><button class="btn sec">Agir</button></td></tr>' +
         '<tr><td><b>1 usuário com um domínio de email público</b><br><span class="miudo">Com frequência, os criminosos digitais usam domínios de email públicos de provedores de serviços de email grátis.</span></td><td>Remova do seu portfólio empresarial os usuários com domínios de email públicos.</td><td><button class="btn sec">Agir</button></td></tr></table></div>' +
-        '<div class="cartao" data-t="dois-fatores"><h2>Autenticação de dois fatores</h2><p class="miudo">A autenticação de dois fatores dificulta para outras pessoas obterem acesso ao seu portfólio empresarial e assumirem o controle dos seus ativos.</p><p><b>Quem precisa ativar a autenticação de dois fatores?</b> Todos</p></div>' +
+        '' + (window.PFAV ? PFAV.cartoes('seguranca') : '') + '<div class="cartao" data-t="dois-fatores"><h2>Autenticação de dois fatores</h2><p class="miudo">A autenticação de dois fatores dificulta para outras pessoas obterem acesso ao seu portfólio empresarial e assumirem o controle dos seus ativos.</p><p><b>Quem precisa ativar a autenticação de dois fatores?</b> Todos</p></div>' +
         '<div class="cartao"><h2>Administrador secundário</h2><p class="miudo">Ter pelo menos um outro administrador neste portfólio ajuda se você perder acesso à sua conta.</p></div>', CONF.seguranca);
     }
   };
@@ -332,12 +332,14 @@
     // aula 04 do Instagram: Página e Instagram já no portfólio, ainda sem ligação
     garanteAula4: function () { this.garanteExemplo(); var p = pf(); p.igs = p.igs || []; p.conex = p.conex || {}; if (!p.paginas.length) p.paginas.push('Lojinha da Marina'); if (!p.igs.length) p.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); if (p.conex[p.paginas[0]] && !SIMPF._ligando) delete p.conex[p.paginas[0]]; grava(); render() },
     aba: function (x) { abaPag = x; render() },
-    estado: function () { return { jan: jan, passo: passoJ, F: F, pf: pf() } }
+    estado: function () { return { jan: jan, passo: passoJ, F: F, pf: pf() } },
+    render: function () { render() }, pf: function () { return pf() }, grava: function () { grava() }, vai: function (h) { vai(h) }
   };
 
   function render() {
     var r = rota(); if (!pf() && r !== 'inicio') r = 'inicio';
     $('#app').innerHTML = (TELAS[r] || TELAS.info)();
+    if (window.PFAV) PFAV.aposRender();
   }
   render();
   if (params.get('aula') === 'ig4') SIMPF.garanteAula4();   // aula 04 do Instagram: Página + Instagram no portfólio, sem ligação
