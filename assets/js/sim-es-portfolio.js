@@ -137,4 +137,11 @@
   P.push([/^(\d+) ativos? de negócios$/, function (m) { return m[1] + (m[1] === '1' ? ' activo comercial' : ' activos comerciales') }]);
   P.push([/^Convidar com (\d+) ativos?$/, function (m) { return 'Invitar con ' + m[1] + (m[1] === '1' ? ' activo' : ' activos') }]);
   P.push([/^(\d+) pessoas? (?:têm|tem) acesso$/, function (m) { return m[1] + ' personas tienen acceso' }]);
+  /* Diagnóstico · Contas 02 (19/10/2026): o portfólio antigo da Marina e o detalhe da Página nele */
+  (function () {
+    var D = window.SIM_ES = window.SIM_ES || {}, P = window.SIM_ES_PADROES = window.SIM_ES_PADROES || [];
+    D['Portfólio antigo da Mari'] = 'Portafolio antiguo de Mari';
+    P.push([/^Propriedade de: Portfólio antigo da Mari$/, function () { return 'Propiedad de: Portafolio antiguo de Mari' }]);
+    P.push([/^(\d+) pessoas? (?:está|estão) atribuídas? a essa Página do Facebook$/, function (m) { return m[1] + (m[1] === '1' ? ' persona está asignada' : ' personas están asignadas') + ' a esta página de Facebook' }]);
+  })();
 })();

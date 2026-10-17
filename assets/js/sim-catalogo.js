@@ -55,7 +55,7 @@
     if (c) {
       lado += '<p class="cm-sec" style="margin-top:0">' + esc(c.nome) + '</p>' + item('Visão geral', 'cat/' + c.id + '/visao', a === 'visao') + '<p class="cm-sec">Catálogo</p>' +
         item('Produtos', 'cat/' + c.id + '/produtos', a === 'produtos', 'menu-produtos') + item('Conjuntos', 'cat/' + c.id + '/conjuntos', a === 'conjuntos', 'menu-conjuntos') + item('Fontes de dados', 'cat/' + c.id + '/fontes', a === 'fontes', 'menu-fontes') +
-        item('Eventos', 'cat/' + c.id + '/eventos', a === 'eventos', 'menu-eventos') + item('Modelos de imagem', '', false) + item('Ofertas', '', false) + item('Lojas', '', false) + item('Lista de tarefas', '', false) + item('Configurações', 'cat/' + c.id + '/config', a === 'config', 'menu-config');
+        item('Eventos', 'cat/' + c.id + '/eventos', a === 'eventos', 'menu-eventos') + item('Problemas', 'cat/' + c.id + '/problemas', a === 'problemas', 'menu-problemas') + item('Modelos de imagem', '', false) + item('Ofertas', '', false) + item('Lojas', '', false) + item('Lista de tarefas', '', false) + item('Configurações', 'cat/' + c.id + '/config', a === 'config', 'menu-config');
     } else lado += item('Ativos', 'inicio', true, 'menu-ativos') + item('Todas as ferramentas', '', false);
     lado += '<p class="cm-sec">Usadas com frequência</p>' + item('Gerenciador de Anúncios', '', false) + item('Gerenciador de Eventos', '', false) + item('Regras automatizadas', '', false) + '</aside>';
     return '<div class="sim-faixa">🧪 Simulador de treinamento do Gerenciador de Comércio · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div><div class="cm">' + lado + '<main class="cm-corpo">' + corpo + '<p class="conferido">✓ Telas conferidas com o Gerenciador de Comércio real em ' + CONF + ' (catálogo de aula)</p></main></div>';
@@ -173,6 +173,35 @@
       '<div class="cm-card"><table class="cm-tab"><thead><tr><th>Nome</th><th>Tipo</th><th>Produtos</th><th>Status</th><th>Última atualização</th><th></th></tr></thead><tbody>' + corpo + '</tbody></table></div>' +
       (PX.jan ? janelaPixel(c) : '') + (c.fontes.some(function (x) { return x.tipo === 'Pixel' }) ? '<div class="ga-aviso ok" data-t="msg-px"><b>✓ Pixel adicionado como fonte.</b> Pode levar até 24 horas para ficar pronto; depois atualiza o catálogo a cada interação, normalmente em até 15 minutos.</div>' : '') + (f ? '<p class="cm-set" data-t="cm-simulador">🧪 <b>Só no simulador:</b> o estoque mora no <b>site</b>, não aqui. <label><input type="checkbox" id="cmSite"' + (c.siteCorrigido ? ' checked' : '') + ' data-t="chk-site"/> o estoque do Moletom já foi corrigido no site</label> · depois clique em Atualizar.</p>' : ''), r);
   }
+  /* PROBLEMAS do catálogo (Central de Ajuda da Meta, 19/10/2026: “Como usar a aba Problemas do catálogo”: erros em vermelho impedem o item de aparecer;
+     avisos em amarelo não impedem; Revisar › corrigir; item de plataforma/arquivo se corrige NA FONTE e a próxima atualização leva a correção; rejeição por política: dá para
+     pedir outra análise). O visual da aba e os textos exatos são do treino (a conferir com a tela real). */
+  var PB = { aberto: '' };
+  function probsAtivos(c) { return (c.probs || []).filter(function (x) { return x.st !== 'ok' }) }
+  function telaProblemas(c, r) {
+    var L = c.probs || [], erros = L.filter(function (x) { return x.tipo === 'erro' && !x.st }).length, avisos = L.filter(function (x) { return x.tipo === 'aviso' }).length, analise = L.filter(function (x) { return x.st === 'analise' }).length;
+    var linhas = L.filter(function (x) { return x.st !== 'ok' }).map(function (x) {
+      var ab = PB.aberto === x.id, det = '';
+      if (ab) {
+        if (x.id === 'img') det = '<p>' + x.det + '</p><p><b>Como corrigir:</b> o item vem do arquivo de dados (o site). Corrija o link da imagem na fonte e atualize a fonte de dados; a correção chega na próxima atualização.</p><p class="cm-set">🧪 <b>Só no simulador:</b> <label><input type="checkbox" id="cmImg"' + (c.imgCorrigida ? ' checked' : '') + ' data-t="chk-img"/> a imagem do Moletom já foi corrigida no site</label></p><button class="btn sec" data-ir="cat/' + c.id + '/fontes" data-t="ir-fontes">Ir para Fontes de dados</button>';
+        else if (x.id === 'pol') det = '<p>' + x.det + '</p>' + (x.st === 'analise' ? '<p class="ga-aviso" data-t="pol-analise">Outra análise solicitada. O item é revisado de novo; enquanto isso, ele continua fora dos anúncios e da loja.</p>' : '<p>Se o item foi rejeitado por engano, peça outra análise. Se ele realmente não segue as políticas, edite o item na fonte ou remova.</p><button class="btn" data-acao="outra-analise" data-t="btn-outra-analise">Solicitar outra análise</button>');
+        else det = '<p>' + x.det + '</p><p>Avisos não impedem o item de aparecer, mas podem piorar a qualidade do catálogo.</p>';
+      }
+      return '<tr data-t="prob-' + x.id + '"><td><span class="ga-tag ' + (x.tipo === 'erro' ? 'vm' : 'am') + '">' + (x.tipo === 'erro' ? '● Erro' : '▲ Aviso') + '</span></td><td><b>' + esc(x.tit) + '</b><br><small>' + esc(x.nome) + (x.st === 'analise' ? ' · em análise' : '') + '</small></td><td><button class="btn sec" data-acao="prob-rev" data-p="' + x.id + '" data-t="btn-rev-' + x.id + '">' + (ab ? 'Fechar' : 'Revisar') + '</button></td></tr>' + (ab ? '<tr data-t="prob-det-' + x.id + '"><td colspan="3">' + det + '</td></tr>' : '');
+    }).join('');
+    return casca('<h1>Problemas</h1><p class="cm-sub">Veja o que impede os itens de aparecer nos anúncios e na loja e como corrigir.</p>' +
+      '<div class="cm-card" data-t="prob-resumo"><b>' + erros + (erros === 1 ? ' erro' : ' erros') + '</b> · ' + avisos + (avisos === 1 ? ' aviso' : ' avisos') + (analise ? ' · ' + analise + ' em análise' : '') + (erros ? '' : ' <span class="cm-st"><i></i>Nenhum erro impedindo itens</span>') + '</div>' +
+      '<div class="cm-card"><table class="cm-tab" data-t="tab-problemas"><tbody>' + (linhas || '<tr><td>Nenhum problema.</td></tr>') + '</tbody></table></div>' +
+      '<p class="conferido pendente">⚠ Aba montada pela Central de Ajuda da Meta · a conferir com a tela real</p>', r);
+  }
+  function casoProblemas() {
+    if (!S.cats.length) S.cats.push(exemplo());
+    var c = S.cats[0]; c.imgCorrigida = false; PB.aberto = '';
+    c.probs = [{ id: 'img', tipo: 'erro', nome: 'Moletom Marinho (MOLETOM_01)', tit: 'Imagem inválida', det: 'O link da imagem não abre (a página devolve erro). Sem imagem válida, o item não aparece nos anúncios nem na loja.' },
+      { id: 'pol', tipo: 'erro', nome: 'Boné Azul (BONE_01)', tit: 'Rejeitado: não segue as Políticas de Comércio', det: 'O item foi rejeitado na análise de política. É um boné comum, então a rejeição parece engano.' },
+      { id: 'cat', tipo: 'aviso', nome: 'Caneca azul (CANECA_01)', tit: 'Falta a categoria do Google', det: 'Sem a categoria do produto, o item aparece, mas pode ser menos relevante.' }];
+    grava(); return c.id;
+  }
   function telaEventos(c, r) {
     return casca('<h1>Eventos</h1><div class="cm-card" data-t="cm-eventos"><h3>Conecte seus dados para acompanhar e personalizar melhor seus anúncios</h3><p>Conecte uma fonte de dados ao seu site ou app para:</p><ul><li>Encontrar novos clientes e garantir que seus anúncios apareçam para as pessoas certas.</li><li>Redirecionar pessoas que mostraram interesse nos produtos do seu site.</li><li>Fazer venda cruzada ou upsell de produtos relacionados para aumentar o valor da compra dos seus clientes.</li></ul>' +
       '<p><a>Como configurar o acompanhamento de eventos</a></p><a class="btn" href="meta-eventos.html" data-t="btn-eventos">Configurar no Gerenciador de Eventos</a></div>', r);
@@ -199,7 +228,7 @@
     novo: novo, 'novo-produtos': novoProdutos, 'novo-arquivo': novoArquivo, 'novo-manual': novoManual,
     cat: function () {
       var r = rota(), c = cat(r.id); if (!c) return inicio();
-      var t = r.aba === 'produtos' ? telaProdutos(c, r) : r.aba === 'conjuntos' ? telaConjuntos(c, r) : r.aba === 'fontes' ? telaFontes(c, r) : r.aba === 'eventos' ? telaEventos(c, r) : r.aba === 'config' ? telaConfig(c, r) : visao(c, r);
+      var t = r.aba === 'produtos' ? telaProdutos(c, r) : r.aba === 'conjuntos' ? telaConjuntos(c, r) : r.aba === 'fontes' ? telaFontes(c, r) : r.aba === 'eventos' ? telaEventos(c, r) : r.aba === 'problemas' ? telaProblemas(c, r) : r.aba === 'config' ? telaConfig(c, r) : visao(c, r);
       return t + (ED ? modalIdioma() : '');
     }
   };
@@ -220,7 +249,9 @@
     else if (ac === 'carregar-arquivo') { var moeda = W.moeda; criaCatalogo(itensBase(moeda), [{ nome: W.nomeFeed || 'Novo feed de dados', tipo: 'Arquivo de dados', sub: 'Carregamento programado', n: 12, quando: 'Substituído todos os dias', moeda: moeda }]) }
     else if (ac === 'novo-produto') { W.linhas.push({}); render() }
     else if (ac === 'carregar-manual') { var itens = W.linhas.filter(function (l) { return l.titulo && l.preco && l.id }).map(function (l) { return { id: l.id, grupo: '', nome: l.titulo, preco: parseFloat(String(l.preco).replace(',', '.')) || 0, disp: 1, moeda: 'BRL' } }); criaCatalogo(itens, []) }
-    else if (ac === 'atualizar-feed') { var c = cat(rota().id); if (c) { if (c.siteCorrigido) c.itens.forEach(function (i) { if (i.id === 'MOLETOM_01') i.disp = 1 }); grava(); render() } }
+    else if (ac === 'prob-rev') { var pid = a.getAttribute('data-p'); PB.aberto = PB.aberto === pid ? '' : pid; render() }
+    else if (ac === 'outra-analise') { var cp = cat(rota().id); (cp.probs || []).forEach(function (x) { if (x.id === 'pol') x.st = 'analise' }); grava(); render() }
+    else if (ac === 'atualizar-feed') { var c = cat(rota().id); if (c) { if (c.imgCorrigida && c.probs) c.probs.forEach(function (x) { if (x.id === 'img') x.st = 'ok' }); if (c.siteCorrigido) c.itens.forEach(function (i) { if (i.id === 'MOLETOM_01') i.disp = 1 }); grava(); render() } }
     else if (ac === 'fonte-menu') { PX.menu = !PX.menu; render() }
     else if (ac === 'fonte-pixel') { PX.menu = false; PX.jan = true; render() }
     else if (ac === 'fonte-fecha') { PX.jan = false; render() }
@@ -235,6 +266,7 @@
     else if (t.name === 'cmComo') { W.como = t.value; window.__simCm = { S: S, W: W }; render() }
     else if (t.id === 'cmMoeda') { W.moeda = t.value; window.__simCm = { S: S, W: W }; render() }
     else if (t.id === 'cmFreq') { W.freq = t.value }
+    else if (t.id === 'cmImg') { var ci = cat(rota().id); if (ci) { ci.imgCorrigida = t.checked; grava() } }
     else if (t.id === 'cmSite') { var c = cat(rota().id); if (c) { c.siteCorrigido = t.checked; grava() } }
   });
   document.addEventListener('input', function (ev) {
@@ -248,7 +280,7 @@
   });
   window.addEventListener('hashchange', function () { ED = false; render() });
   function render() { var r = rota(); if (/^novo/.test(r.tela) === false && r.tela !== 'inicio' && r.tela !== 'confirmar' && r.tela !== 'cat') r.tela = 'inicio'; $('#app').innerHTML = (TELAS[r.tela] || TELAS.inicio)(); window.__simCm = { S: S, W: W } }
-  window.SIMCM = { vai: vai, estado: function () { return { S: S, W: W } }, exemplo: function () { if (!S.cats.length) { S.cats.push(exemplo()); grava() } return S.cats[0].id }, limpa: function () { S = { cats: [] }; grava() }, wiz: function (o) { for (var k in o) W[k] = o[k] } };
+  window.SIMCM = { vai: vai, estado: function () { return { S: S, W: W } }, exemplo: function () { if (!S.cats.length) { S.cats.push(exemplo()); grava() } return S.cats[0].id }, limpa: function () { S = { cats: [] }; grava() }, wiz: function (o) { for (var k in o) W[k] = o[k] }, casoProblemas: casoProblemas, abreProb: function (id) { PB.aberto = id; render() } };
   render();
 
   /* ---------- tutoriais guiados ---------- */
@@ -309,5 +341,22 @@
     { alvo: '[data-t=btn-atualizar]', clique: true, garante: function () { location.hash = 'cat/' + cid() + '/fontes'; cm().S.cats[0].siteCorrigido = true; render() }, tit: T('Atualizar', 'Actualizar'), txt: T('Em vez de esperar a leitura diária, clique em Atualizar para o catálogo ler o feed agora.', 'En vez de esperar la lectura diaria, haz clic en Actualizar para que el catálogo lea el feed ahora.') },
     { alvo: '[data-t=menu-produtos]', clique: true, garante: function () { location.hash = 'cat/' + cid() + '/fontes' }, tit: T('Conferir', 'Revisar'), txt: T('Volte aos Produtos para conferir.', 'Vuelve a Productos para revisar.') },
     { alvo: '[data-t=disp-moletom_01]', fim: true, semVolta: true, garante: function () { location.hash = 'cat/' + cid() + '/produtos' }, tit: T('Moletom disponível! 🎉', '¡Buzo disponible! 🎉'), txt: T('Agora está “Em estoque”. Lição: quando um produto “some”, olhe a Disponibilidade, depois a fonte de dados, e corrija na origem (o site). Clique em Concluir.', 'Ahora está “Disponible”. Lección: cuando un producto “desaparece”, mira la Disponibilidad, luego la fuente de datos, y corrige en el origen (el sitio). Haz clic en Terminar.') }
+  ];
+
+  /* Diagnóstico · Catálogo 02 — produto recusado / com erro (aba Problemas) */
+  function cp() { return cm().S.cats[0] }
+  function irProb() { var id = cid(); if (location.hash !== '#cat/' + id + '/problemas') location.hash = 'cat/' + id + '/problemas' }
+  TOURS['catalogo-problemas'] = [
+    { antes: function () { SIMCM.casoProblemas(); location.hash = 'cat/' + cid() + '/visao' }, alvo: '[data-t=menu-problemas]', clique: true, garante: function () { SIMCM.casoProblemas(); location.hash = 'cat/' + cid() + '/visao' }, tit: T('Marina: “produto recusado”', 'Marina: “producto rechazado”'), txt: T('O catálogo da Marina avisa que há itens com problema e alguns produtos não aparecem nos anúncios. Clique em Problemas.', 'El catálogo de Marina avisa que hay artículos con problemas y algunos productos no aparecen en los anuncios. Haz clic en Problemas.') },
+    { alvo: '[data-t=prob-resumo]', garante: irProb, tit: T('Erros e avisos', 'Errores y avisos'), txt: T('Dois erros e um aviso. Erro (vermelho) impede o item de aparecer; aviso (amarelo) não impede. Comece pelos erros. Clique em Próximo.', 'Dos errores y un aviso. Error (rojo) impide que el artículo aparezca; aviso (amarillo) no lo impide. Empieza por los errores. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-rev-img]', clique: true, garante: function () { irProb(); SIMCM.abreProb('') }, tit: T('Revisar o primeiro erro', 'Revisar el primer error'), txt: T('Clique em Revisar no erro “Imagem inválida”.', 'Haz clic en Revisar en el error “Imagen inválida”.') },
+    { alvo: '[data-t=prob-det-img]', garante: function () { irProb(); SIMCM.abreProb('img') }, tit: T('Onde se corrige', 'Dónde se corrige'), txt: T('O item vem do arquivo de dados do site. Então a correção é NA FONTE: a Marina (ou o desenvolvedor) corrige o link da imagem no site e depois a fonte de dados é atualizada. Clique em Próximo.', 'El artículo viene del archivo de datos del sitio. Entonces la corrección es EN LA FUENTE: Marina (o el desarrollador) corrige el enlace de la imagen en el sitio y luego se actualiza la fuente de datos. Haz clic en Siguiente.') },
+    { alvo: '[data-t=chk-img]', clique: true, garante: function () { irProb(); SIMCM.abreProb('img'); var c = cp(); if (c.imgCorrigida) { c.imgCorrigida = false; SIMCM.abreProb('img') } }, tit: T('A imagem foi corrigida no site', 'La imagen se corrigió en el sitio'), txt: T('No simulador, marque que a imagem já foi corrigida no site.', 'En el simulador, marca que la imagen ya se corrigió en el sitio.') },
+    { alvo: '[data-t=menu-fontes]', clique: true, garante: function () { irProb(); cp().imgCorrigida = true; SIMCM.abreProb('img') }, tit: T('Atualizar a fonte', 'Actualizar la fuente'), txt: T('Agora vá a Fontes de dados.', 'Ahora ve a Fuentes de datos.') },
+    { alvo: '[data-t=btn-atualizar]', clique: true, garante: function () { location.hash = 'cat/' + cid() + '/fontes'; cp().imgCorrigida = true }, tit: T('Atualizar', 'Actualizar'), txt: T('Clique em Atualizar para buscar o arquivo de novo.', 'Haz clic en Actualizar para buscar el archivo de nuevo.') },
+    { alvo: '[data-t=menu-problemas]', clique: true, garante: function () { location.hash = 'cat/' + cid() + '/fontes' }, tit: T('Conferir', 'Revisar'), txt: T('Volte a Problemas para conferir.', 'Vuelve a Problemas para revisar.') },
+    { alvo: '[data-t=btn-rev-pol]', clique: true, garante: function () { irProb(); SIMCM.abreProb(''); (cp().probs || []).forEach(function (x) { if (x.id === 'img') x.st = 'ok'; if (x.id === 'pol') delete x.st }) }, tit: T('O segundo erro', 'El segundo error'), txt: T('O erro da imagem sumiu. Agora revise o Boné: “Rejeitado”.', 'El error de la imagen desapareció. Ahora revisa la Gorra: “Rechazado”.') },
+    { alvo: '[data-t=btn-outra-analise]', clique: true, garante: function () { irProb(); SIMCM.abreProb('pol') }, tit: T('Pedir outra análise', 'Pedir otra revisión'), txt: T('É um boné comum: a rejeição parece engano. Clique em Solicitar outra análise.', 'Es una gorra común: el rechazo parece un error. Haz clic en Solicitar otra revisión.') },
+    { alvo: '[data-t=prob-resumo]', fim: true, semVolta: true, garante: irProb, tit: T('Nenhum erro impedindo itens 🎉', '¡Ningún error impidiendo artículos! 🎉'), txt: T('Zero erros: a imagem foi corrigida na fonte e o Boné está em análise de novo. Ao cliente: erro vermelho impede o item; corrija na fonte (site, arquivo ou plataforma), atualize e, se a rejeição for engano, peça outra análise. Clique em Concluir.', 'Cero errores: la imagen se corrigió en la fuente y la Gorra está en revisión de nuevo. Al cliente: error rojo impide el artículo; corrige en la fuente (sitio, archivo o plataforma), actualiza y, si el rechazo es un error, pide otra revisión. Haz clic en Terminar.') }
   ];
 })();

@@ -80,5 +80,7 @@ Pagamentos e cobrança · conta de anúncios desativada ou restrita · anúncios
 6. **Contas**: X1 e X3.
 Commerce fica por último (telas a conferir).
 
+**Construídos em 19/10/2026 (ordem acima, aprovada pelo André):** P6 (dg-pixel 05), P7 (dg-pixel 06), A1 e A2 (dg-anuncios 01–02), C1 e C2 (dg-catalogo 01–02), I1 (dg-instagram 01), G1 e G2 (dg-integracoes 02–03), X1 e X3 (dg-contas 01–02). Cada tutorial termina conferindo que o problema sumiu (ex.: só 1 Purchase e só na página de pedido; Purchase chegando do navegador e do servidor; zero erros no catálogo; Página no portfólio novo e fora do antigo).
+
 ## Fontes da pesquisa de frequência (não usadas para a solução)
 Comunidade da Shopify (sincronização e lojas que não aparecem), guias de solução de veiculação (Jon Loomer, Revealbot e outros), guias de rastreamento (Trackingplan, Cometly), guias de conexão do Instagram de ferramentas de anúncios. Lidos em 19/10/2026.

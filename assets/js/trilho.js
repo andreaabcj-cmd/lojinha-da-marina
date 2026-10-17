@@ -14,6 +14,11 @@
     'conhecer-portfolio': { modulo: 'portfolio', aula: '01', cauda: 8 },
     'investigar-purchase': { modulo: 'dg-pixel', aula: '01', cauda: 20, area: true },   // área Diagnóstico: Início › Diagnóstico › bloco › caso › Resolver
     'plataforma-conectada': { modulo: 'dg-integracoes', aula: '01', cauda: 36, area: true },
+    // tutoriais reaproveitados de módulos: a chave é um apelido e `tour` é o tutorial (o link do módulo de origem continua normal)
+    'dg-anuncios-01': { tour: 'nao-veicula', modulo: 'dg-anuncios', aula: '01', cauda: 14, area: true },
+    'dg-catalogo-01': { tour: 'produtos-sumidos', modulo: 'dg-catalogo', aula: '01', cauda: 9, area: true },
+    'dg-instagram-01': { tour: 'perfil-nao-aparece', modulo: 'dg-instagram', aula: '01', cauda: 5, area: true },
+    'dg-contas-01': { tour: 'conectar-extensao', modulo: 'dg-contas', aula: '01', cauda: 14, area: true },
     'adicionar-instagram': { modulo: 'instagram', aula: '03', cauda: 9 },   // na trilha Foco as aulas 01-02 do Instagram não aparecem (só da Completa): o 1º tutorial visível é este
     'pixel-em-acao': { modulo: 'pixel', aula: '01', cauda: 5 },
     'correspondencia-avancada': { modulo: 'pixel-avancado', aula: '01', cauda: 29 },
@@ -39,8 +44,8 @@
   var TOURS = window.TOURS = window.TOURS || {};
   var N = 5;   // passos do caminho até o simulador
 
-  Object.keys(TRILHOS).forEach(function (base) {
-    var cfg = TRILHOS[base], id = 'trilho-' + base, mod = cfg.modulo, aula = cfg.aula, dg = !!cfg.area;
+  Object.keys(TRILHOS).forEach(function (chave) {
+    var cfg = TRILHOS[chave], base = cfg.tour || chave, id = 'trilho-' + chave, mod = cfg.modulo, aula = cfg.aula, dg = !!cfg.area;
     var prefixo = [
       { tit: T('Vamos achar o tutorial 🧭', '¡Vamos a encontrar el tutorial! 🧭'),
         txt: dg ? T('Vou te levar da página inicial até o caso, como você faria sozinha. Primeiro, clique em Diagnóstico.', 'Te llevaré desde la página de inicio hasta el caso, como lo harías sola. Primero, haz clic en Diagnóstico.') : T('Vou te levar da página inicial até o simulador, como você faria sozinha. Primeiro, clique em Módulos.', 'Te llevaré desde la página de inicio hasta el simulador, como lo harías sola. Primero, haz clic en Módulos.'), clique: true,
@@ -82,9 +87,11 @@
   // entrada: na lista “Como fazer…”, o link do primeiro tutorial de cada módulo começa pela página inicial
   function religa() {
     [].forEach.call(document.querySelectorAll('a.como-ir'), function (a) {
-      var m = /[?&]tour=([a-z0-9_-]+)/i.exec(a.getAttribute('href') || ''); if (!m || !TRILHOS[m[1]] || a.getAttribute('data-trilho')) return;
+      var m = /[?&]tour=([a-z0-9_-]+)/i.exec(a.getAttribute('href') || ''); if (!m || a.getAttribute('data-trilho')) return;
+      var ma = a.parentNode && a.parentNode.querySelector('.como-aula'), mod = ma ? (/[?&]m=([^&]+)/.exec(ma.getAttribute('href')) || [])[1] : null;
+      var chave = Object.keys(TRILHOS).filter(function (k) { return (TRILHOS[k].tour || k) === m[1] && (!TRILHOS[k].tour || TRILHOS[k].modulo === mod) })[0]; if (!chave) return;
       var v = /[?&]voltar=([^&]+)/.exec(a.getAttribute('href')); a.setAttribute('data-trilho', '1');
-      a.setAttribute('href', 'index.html?tour=trilho-' + m[1] + (v ? '&voltar=' + v[1] : ''));
+      a.setAttribute('href', 'index.html?tour=trilho-' + chave + (v ? '&voltar=' + v[1] : ''));
       a.title = (LANG === 'es' ? 'Empieza en la página de inicio y te lleva hasta el simulador. ' : 'Começa na página inicial e leva até o simulador. ') + (a.title || '');
     });
   }

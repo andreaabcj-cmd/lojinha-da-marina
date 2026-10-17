@@ -99,7 +99,7 @@
       var n = p.paginas[0], ig = p.conex[n];
       h += '<div class="pf-duas"><div class="cartao">' + p.paginas.map(function (x) { return '<div class="pf-linha on"><span class="L">f</span><span><b>' + esc(x) + '</b></span></div>' }).join('') + '</div>' +
         '<div class="cartao" data-t="pag-detalhe"><h2>' + esc(n) + '</h2><p class="miudo">Identificação: <span class="id">4196' + String(p.id || '').slice(-11) + '</span><br>Propriedade de: ' + esc(p.nome) + '</p>' +
-        '<p><button class="btn sec">Ver no Facebook</button> <button class="btn sec">Boost</button> <button class="btn sec">Remover</button></p>' +
+        '<p><button class="btn sec">Ver no Facebook</button> <button class="btn sec">Boost</button> ' + (window.PFAV ? '<button class="btn sec" data-av="pag-remover" data-t="btn-remover-pag">Remover</button>' : '<button class="btn sec">Remover</button>') + '</p>' +
         '<p><button class="btn sec">Atribuir pessoas</button> <button class="btn sec">Atribuir parceiro</button> <button class="btn sec" data-acao="conectar-ativos" data-t="conectar-ativos">Conectar ativos</button></p>' +
         '<div class="pf-abas"><button data-acao="aba-pag" data-aba="pessoas" class="' + (abaPag === 'pessoas' ? 'on' : '') + '">Pessoas</button><button disabled>Parceiros</button><button data-acao="aba-pag" data-aba="ativos" data-t="aba-ativos" class="' + (abaPag === 'ativos' ? 'on' : '') + '">Ativos conectados</button></div>' +
         (abaPag === 'ativos' ? '<div data-t="pag-ativos">' + (ig ? '<h3>1 ativo está conectado a esta Página do Facebook</h3><p class="miudo">Você pode conectar ativos ou desconectá-los.</p><b>Conta do Instagram</b><div class="pf-linha"><span class="L">📸</span><span><b>' + esc(ig) + '</b><small>Conta do Instagram</small></span><button class="btn sec">Desconectar</button></div>' :
@@ -139,7 +139,7 @@
       ['Adicionar uma Página do Facebook existente', 'Ideal para: quando você precisa gerenciar uma Página no mesmo portfólio empresarial que outras Páginas do Facebook, perfis do Instagram ou outros ativos de negócios.'],
       ['Solicitar acesso compartilhado a uma Página do Facebook', 'Access is shared with this business portfolio without connecting the Page. Best for: Agencies who need access to their client\'s Page.'],
       ['Criar uma nova Página do Facebook', 'Conecte-se e compartilhe com clientes novos e existentes no Facebook.']
-    ].map(function (o) { return '<button data-acao="op-pagina"><b>' + o[0] + '</b><small>' + o[1] + '</small></button>' }).join('') + '</div>';
+    ].map(function (o, i) { return (i === 0 && window.PFAV ? '<button data-av="pag-add" data-t="op-pag-existente">' : '<button data-acao="op-pagina">') + '<b>' + o[0] + '</b><small>' + o[1] + '</small></button>' }).join('') + '</div>';
   }
 
   /* ---------- janelas ---------- */
@@ -327,6 +327,7 @@
 
   /* ---------- para os tutoriais arrumarem a tela quando a pessoa volta um passo ---------- */
   window.SIMPF = {
+    dados: function () { return S }, novoId: novoId, fechaMenu: function () { menuPag = false },
     fecha: fecha, abre: function (q, p) { if (jan !== q) abre(q); if (p != null && passoJ !== p) { passoJ = p; desenha() } },
     garanteExemplo: function () { if (!S.pfs.length) { var e = exemplo(); S.pfs.push(e); S.atual = e.id; grava(); render() } },
     // aula 04 do Instagram: Página e Instagram já no portfólio, ainda sem ligação

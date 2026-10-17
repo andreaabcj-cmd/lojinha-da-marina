@@ -101,6 +101,7 @@
   A['⚠️ Eventos duplicados do Pixel e da API de Conversões'] = '⚠️ Eventos duplicados del píxel y de la API de Conversiones';
   A['O mesmo evento chegou pelo navegador e pelo servidor sem o mesmo event_id. Para desduplicar, o event_name e o event_id precisam ser idênticos nos dois: sem isso, a compra é contada duas vezes. (a conferir com a mensagem real)'] = 'El mismo evento llegó por el navegador y por el servidor sin el mismo event_id. Para deduplicar, el event_name y el event_id deben ser idénticos en los dos: sin eso, la compra se cuenta dos veces. (por confirmar con el mensaje real)';
   A['⛔ Parâmetros bloqueados: possível informação proibida'] = '⛔ Parámetros bloqueados: posible información prohibida';
+  for (var k3 in A) D[k3] = A[k3];   // as linhas acima vieram depois da cópia para o dicionário (19/10: estavam sem efeito)
   P.push([/^(\d+) evento\(s\) · últimas 48 horas$/, function (m) { return m[1] + ' evento(s) · últimas 48 horas' }]);
   P.push([/^enviar (.+)\.$/, function (m) {
     var d = { 'e-mail (prioridade alta)': 'correo (prioridad alta)', 'telefone (prioridade média)': 'teléfono (prioridad media)', 'ID externo (prioridade média)': 'ID externo (prioridad media)', 'país (prioridade média)': 'país (prioridad media)', 'primeiro nome (prioridade baixa)': 'nombre (prioridad baja)', 'sobrenome (prioridade baixa)': 'apellido (prioridad baja)', 'cidade (prioridade baixa)': 'ciudad (prioridad baja)', 'CEP (prioridade baixa)': 'código postal (prioridad baja)', 'estado (prioridade baixa)': 'estado (prioridad baja)' };

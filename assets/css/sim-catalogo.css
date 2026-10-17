@@ -39,3 +39,6 @@
 .cm-nao{color:var(--muted);font-size:12px}
 .cm-rod{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
 .cm-set{margin:6px 0 0;padding:10px 12px;border-radius:10px;background:var(--yellow-l);border:2px solid var(--yellow);font-size:13px}
+
+.ga-tag.vm{background:#FDECEA;color:#B42318}
+.ga-tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:12px;font-weight:800;background:#E8EDF5}.ga-tag.am{background:#FFF1C9;color:#7A5600}.ga-tag.vm{background:#FDECEA;color:#B42318}

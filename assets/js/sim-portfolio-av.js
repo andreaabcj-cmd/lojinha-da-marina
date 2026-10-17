@@ -28,12 +28,21 @@
 
   /* ---------- casos de treino (usados pelos tutoriais) ---------- */
   function caso(nome) {
-    SIMPF.garanteExemplo(); var p = pf();
+    SIMPF.garanteExemplo();
+    var D0 = SIMPF.dados(), cur = D0.pfs.filter(function (x) { return x.id === D0.atual })[0];
+    if (cur && cur.antigo) { D0.pfs = D0.pfs.filter(function (x) { return !x.antigo }); D0.atual = D0.pfs[0].id }   // recomeçar a partir do portfólio do caso anterior: volta ao da aula
+    var p = pf();
     p.pessoas = [{ nome: 'Marina (você)', email: 'marina@lojinha.exemplo', acesso: 'Acesso total', status: 'Ativo', k: 'marina' }, { nome: 'Ana', email: 'ana@lojinha.exemplo', acesso: 'Acesso total', status: 'Ativo', k: 'ana' }, { nome: 'Bia', email: 'bia@lojinha.exemplo', acesso: 'Acesso parcial', status: 'Ativo', k: 'bia' }, { nome: 'Caio (estagiário)', email: 'caio@lojinha.exemplo', acesso: 'Acesso total', status: 'Ativo', k: 'caio' }];
     if (!p.paginas.length) p.paginas.push('Lojinha da Marina');
     var a = p.av = padrao();
     if (nome === 'recusada') { a.verif.status = 'recusada'; a.verif.razao = 'Lojinha da Marina LTDA'; a.verif.site = 'https://lojinha.exemplo.com.br'; a.verif.metodo = 'dominio' }
     if (nome === 'excluir') a.bloq = { pagamento: true, apps: true, leads: true };
+    if (nome === 'pagina-outro') {   // a Página da loja ficou no portfólio antigo da Marina; o novo está sem Página
+      p.paginas = []; p.conex = {};
+      var D = SIMPF.dados(); D.pfs = D.pfs.filter(function (x) { return x === p || !x.antigo });
+      D.pfs.push({ id: SIMPF.novoId(), nome: 'Portfólio antigo da Mari', criado: Date.now(), antigo: true, pessoas: [{ nome: 'Marina (você)', email: 'marina@lojinha.exemplo', acesso: 'Acesso total', status: 'Ativo', k: 'marina' }], paginas: ['Lojinha da Marina'], contas: [], igs: [] });
+      D.atual = p.id;
+    }
     salva(); location.hash = nome === 'verificar' || nome === 'recusada' ? 'info' : nome === 'permissao' ? 'info' : 'info'; SIMPF.render(); aposRender();
   }
 
@@ -98,6 +107,14 @@
         (cur === 'total' && x.k === 'caio' ? '<div class="av-aviso" data-t="aviso-caio">' + Tx('O Caio é estagiário e tem controle total: acesso demais. Dê só o que ele precisa.', 'Caio es pasante y tiene control total: demasiado acceso. Dale solo lo que necesita.') + '</div>' : '') +
         '<p><b>' + Tx('Gerenciar acesso', 'Administrar acceso') + '</b></p>' + sel('avPerm', O(PERM), novo, 'sel-perm') + '<p class="miudo">' + Tx('Se um parceiro compartilhou o ativo, você só tem as permissões que ele deu.', 'Si un socio compartió el activo, solo tienes los permisos que él dio.') + '</p>' +
         '<div class="rodape-jan"><button class="btn sec" data-av="fechar">' + Tx('Cancelar', 'Cancelar') + '</button><button class="btn" data-av="perm-salvar" data-t="btn-salvar-perm">' + Tx('Salvar', 'Guardar') + '</button></div>';
+    } else if (j.t === 'pag-add') {
+      h = '<h3>' + Tx('Adicionar uma Página do Facebook existente', 'Agregar una Página de Facebook existente') + X + '</h3><p>' + Tx('Digite o nome ou o endereço da Página. Você precisa ser administrador dela.', 'Escribe el nombre o la dirección de la Página. Debes ser administrador de ella.') + '</p>' +
+        '<label class="campo"><b>' + Tx('Página do Facebook', 'Página de Facebook') + '</b><input id="avPag" class="av-in" value="' + esc(j.nome || '') + '" data-t="pag-nome"/></label>' +
+        (j.erro ? '<div class="av-aviso verm" data-t="pag-erro">' + j.erro + '</div>' : '') +
+        '<div class="rodape-jan"><button class="btn sec" data-av="fechar" data-t="btn-pag-fechar">' + Tx('Fechar', 'Cerrar') + '</button><button class="btn" data-av="pag-add-ok" data-t="btn-pag-add">' + Tx('Adicionar Página', 'Agregar Página') + '</button></div>';
+    } else if (j.t === 'pag-remover') {
+      h = '<h3>' + Tx('Remover Página do portfólio?', '¿Quitar la Página del portafolio?') + X + '</h3><p>' + Tx('A Página “Lojinha da Marina” sai deste portfólio empresarial. Quem tinha acesso a ela por este portfólio perde o acesso. A Página NÃO é excluída do Facebook.', 'La Página “Lojinha da Marina” sale de este portafolio comercial. Quien tenía acceso a ella por este portafolio pierde el acceso. La Página NO se elimina de Facebook.') + '</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-av="fechar">' + Tx('Cancelar', 'Cancelar') + '</button><button class="btn" data-av="pag-remover-ok" data-t="btn-confirma-remover">' + Tx('Remover', 'Quitar') + '</button></div>';
     } else if (j.t === 'excl') {
       var ativos = BLOQ.filter(function (b) { return a.bloq[b[0]] });
       h = '<h3>' + Tx('Excluir portfólio empresarial', 'Eliminar portafolio comercial') + X + '</h3><p>' + Tx('Antes de excluir, resolva o que impede:', 'Antes de eliminar, resuelve lo que lo impide:') + '</p>' +
@@ -127,12 +144,22 @@
     else if (ac === 'docs-enviar') { a.verif.status = 'analise2'; a.jan = null; refaz() }
     else if (ac === 'det') { a.jan = { t: 'det', k: b.getAttribute('data-k') }; refaz() }
     else if (ac === 'perm-salvar') { var x = pfPessoa(a.jan.k), n = a.jan.perm || (x.acesso === 'Acesso total' ? 'total' : 'parcial'); if (n === 'remover') pf().pessoas = pf().pessoas.filter(function (y) { return y !== x }); else x.acesso = n === 'total' ? 'Acesso total' : 'Acesso parcial (só anúncios)'; a.msgPerm = '✓ ' + x.nome + ': ' + (n === 'remover' ? 'acesso removido' : x.acesso); a.jan = null; refaz() }
+    else if (ac === 'pag-add') { SIMPF.fechaMenu(); a.jan = { t: 'pag-add', nome: '' }; refaz() }
+    else if (ac === 'pag-add-ok') {
+      var nome = String(a.jan.nome || '').trim(), dono = SIMPF.dados().pfs.filter(function (x) { return x !== pf() && (x.paginas || []).some(function (n) { return n.toLowerCase() === nome.toLowerCase() }) })[0];
+      if (!nome) { a.jan.erro = Tx('Digite o nome da Página.', 'Escribe el nombre de la Página.'); refaz() }
+      else if (dono) { a.jan.erro = Tx('Não foi possível adicionar: esta Página já pertence a outro portfólio empresarial (' + esc(dono.nome) + '). Uma Página só pode pertencer a um portfólio. Remova-a do outro portfólio ou peça acesso compartilhado.', 'No se pudo agregar: esta Página ya pertenece a otro portafolio comercial (' + esc(dono.antigo ? 'Portafolio antiguo de Mari' : dono.nome) + '). Una Página solo puede pertenecer a un portafolio. Quítala del otro portafolio o pide acceso compartido.'); refaz() }
+      else { if (pf().paginas.indexOf('Lojinha da Marina') < 0) pf().paginas.push('Lojinha da Marina'); a.jan = null; refaz() }
+    }
+    else if (ac === 'pag-remover') { a.jan = { t: 'pag-remover' }; refaz() }
+    else if (ac === 'pag-remover-ok') { pf().paginas = pf().paginas.filter(function (n) { return n !== 'Lojinha da Marina' }); a.jan = null; refaz() }
     else if (ac === 'excl-abrir') { a.jan = { t: 'excl' }; a.ciente = false; refaz() }
     else if (ac === 'resolve') { a.bloq[b.getAttribute('data-b')] = false; refaz() }
     else if (ac === 'excl-ok') { a.pendente = true; a.jan = null; refaz() }
   });
   document.addEventListener('input', function (e) {
     var a = av(); if (!a || !a.jan) return;
+    if (e.target.id === 'avPag') { a.jan.nome = e.target.value; a.jan.erro = ''; window.__avFoco = 'avPag'; refaz(); return }
     if (e.target.id === 'avRazao') { a.verif.razao = e.target.value; window.__avFoco = 'avRazao'; refaz() } else if (e.target.id === 'avSite') { a.verif.site = e.target.value; window.__avFoco = 'avSite'; refaz() }
   });
   document.addEventListener('change', function (e) {
@@ -201,5 +228,34 @@
     { alvo: '[data-t=chk-ciente]', clique: true, garante: function () { var a = av(); if (!a) return; ir0('info')(); a.bloq = { pagamento: false, apps: false, leads: false }; a.ciente = false; a.pendente = false; a.jan = { t: 'excl' }; SIMPF.grava(); SIMPF.render(); PFAV.aposRender() }, tit: t('Estou ciente', 'Estoy enterado'), txt: t('Sem pendências. Confirme que entendeu que não pode ser revertido.', 'Sin pendientes. Confirma que entendiste que no se puede revertir.') },
     { alvo: '[data-t=btn-excluir]', clique: true, garante: function () { var a = av(); if (!a) return; ir0('info')(); a.bloq = { pagamento: false, apps: false, leads: false }; a.ciente = true; a.pendente = false; a.jan = { t: 'excl' }; SIMPF.grava(); SIMPF.render(); PFAV.aposRender() }, tit: t('Excluir (só no treino)', 'Eliminar (solo en la práctica)'), txt: t('Neste treino nada é excluído de verdade. Clique no botão.', 'En esta práctica nada se elimina de verdad. Haz clic en el botón.') },
     fim(t('Pendente por 24 horas', 'Pendiente por 24 horas'), 'Na vida real, a exclusão fica pendente por 24 horas; depois não dá para reabrir. Sempre confirme com o cliente antes.', 'En la vida real, la eliminación queda pendiente por 24 horas; después no se puede reabrir. Siempre confirma con el cliente antes.', '[data-t=status-excl]')
+  ];
+
+  /* Diagnóstico · Contas 02 — a Página da loja está em outro portfólio (um ativo, um portfólio) */
+  function irPf(nomeRx) { return function () { var b = [].slice.call(document.querySelectorAll('[data-pf]')).filter(function (x) { return nomeRx.test(x.textContent) })[0]; return b } }
+  function ondeEstou(rx, h) { return function () { var D = SIMPF.dados(); var alvo = D.pfs.filter(function (x) { return rx.test(x.nome) })[0]; if (alvo && D.atual !== alvo.id) { D.atual = alvo.id; SIMPF.grava() } ir0(h)(); SIMPF.render(); PFAV.aposRender() } }
+  var NOVO = { test: function (s) { return !/antig/i.test(s) } }, ANTIGO = /antig/i;   // “antigo” (PT) e “antiguo” (ES, nome traduzido na tela)   // o novo é o da aula (o nome pode mudar); o antigo é o do caso
+  function abrePagAdd() { var a = av(); if (a && (!a.jan || a.jan.t !== 'pag-add')) { a.jan = { t: 'pag-add', nome: '' }; SIMPF.grava(); SIMPF.render(); PFAV.aposRender() } }
+  TOURS['pagina-outro-portfolio'] = [
+    { antes: Z('pagina-outro'), alvo: '[data-t=chip]', garante: function () { if (!SIMPF.dados().pfs.some(function (x) { return x.antigo })) PFAV.caso('pagina-outro') }, tit: t('Marina: “a Página não entra”', 'Marina: “la Página no entra”'), txt: dep(t('A Marina criou um portfólio novo, mas não consegue colocar a Página da loja nele. Confira o nome do portfólio aberto: é o novo.', 'Marina creó un portafolio nuevo, pero no logra poner la Página de la tienda en él. Revisa el nombre del portafolio abierto: es el nuevo.')) },
+    menu('paginas', 'Páginas', 'Páginas'),
+    { alvo: '[data-t=add-pagina]', clique: true, garante: ondeEstou(NOVO, 'paginas'), tit: t('Adicionar', 'Agregar'), txt: t('Clique em Adicionar.', 'Haz clic en Agregar.') },
+    { alvo: '[data-t=op-pag-existente]', clique: true, garante: function () { ondeEstou(NOVO, 'paginas')(); var b = document.querySelector('[data-t=add-pagina]'); if (b && !document.querySelector('[data-t=op-pag-existente]')) b.click() }, tit: t('Página existente', 'Página existente'), txt: t('Escolha Adicionar uma Página do Facebook existente.', 'Elige Agregar una Página de Facebook existente.') },
+    { alvo: '[data-t=pag-nome]', garante: function () { ondeEstou(NOVO, 'paginas')(); abrePagAdd() }, cond: function () { return /lojinha/i.test((av().jan || {}).nome || '') }, tit: t('A Página da loja', 'La Página de la tienda'), txt: t('Digite o nome da Página: Lojinha da Marina.', 'Escribe el nombre de la Página: Lojinha da Marina.'), dica: t('Digite Lojinha da Marina.', 'Escribe Lojinha da Marina.') },
+    { alvo: '[data-t=btn-pag-add]', clique: true, tit: t('Adicionar Página', 'Agregar Página'), txt: t('Clique em Adicionar Página.', 'Haz clic en Agregar Página.') },
+    { alvo: '[data-t=pag-erro]', garante: function () { ondeEstou(NOVO, 'paginas')(); var a = av(); a.jan = { t: 'pag-add', nome: 'Lojinha da Marina' }; SIMPF.grava(); PFAV.aposRender(); var b = document.querySelector('[data-t=btn-pag-add]'); if (b) b.click() }, tit: t('O problema', 'El problema'), txt: dep(t('A Página já pertence a outro portfólio: o portfólio antigo da Marina. Uma Página só pode pertencer a UM portfólio. Como a Marina controla os dois, ela tira a Página do antigo e põe no novo.', 'La Página ya pertenece a otro portafolio: el portafolio antiguo de Marina. Una Página solo puede pertenecer a UN portafolio. Como Marina controla los dos, la quita del antiguo y la pone en el nuevo.')) },
+    { alvo: '[data-t=btn-pag-fechar]', clique: true, tit: t('Fechar', 'Cerrar'), txt: t('Feche esta janela.', 'Cierra esta ventana.') },
+    { alvo: '[data-t=chip]', clique: true, garante: ondeEstou(NOVO, 'paginas'), tit: t('Trocar de portfólio', 'Cambiar de portafolio'), txt: t('Clique no nome do portfólio, lá em cima, para trocar.', 'Haz clic en el nombre del portafolio, arriba, para cambiar.') },
+    { alvo: irPf(ANTIGO), clique: true, garante: function () { if (location.hash !== '#inicio') location.hash = 'inicio' }, tit: t('O portfólio antigo', 'El portafolio antiguo'), txt: t('Abra o Portfólio antigo da Mari.', 'Abre el Portafolio antiguo de Mari.') },
+    menu('paginas', 'Páginas', 'Páginas'),
+    { alvo: '[data-t=btn-remover-pag]', clique: true, garante: ondeEstou(ANTIGO, 'paginas'), tit: t('Tirar a Página daqui', 'Quitar la Página de aquí'), txt: t('Aqui está a Página da loja. Clique em Remover (ela sai do portfólio, mas NÃO é excluída do Facebook).', 'Aquí está la Página de la tienda. Haz clic en Quitar (sale del portafolio, pero NO se elimina de Facebook).') },
+    { alvo: '[data-t=btn-confirma-remover]', clique: true, garante: function () { ondeEstou(ANTIGO, 'paginas')(); var a = av(); if (a && !a.jan) { a.jan = { t: 'pag-remover' }; SIMPF.grava(); PFAV.aposRender() } }, tit: t('Confirmar', 'Confirmar'), txt: t('Confirme em Remover.', 'Confirma en Quitar.') },
+    { alvo: '[data-t=chip]', clique: true, garante: ondeEstou(ANTIGO, 'paginas'), tit: t('Voltar ao portfólio novo', 'Volver al portafolio nuevo'), txt: t('Agora troque para o portfólio novo.', 'Ahora cambia al portafolio nuevo.') },
+    { alvo: irPf(NOVO), clique: true, garante: function () { if (location.hash !== '#inicio') location.hash = 'inicio' }, tit: t('O portfólio novo', 'El portafolio nuevo'), txt: t('Abra o portfólio novo (o que não é o antigo).', 'Abre el portafolio nuevo (el que no es el antiguo).') },
+    menu('paginas', 'Páginas', 'Páginas'),
+    { alvo: '[data-t=add-pagina]', clique: true, garante: ondeEstou(NOVO, 'paginas'), tit: t('Adicionar de novo', 'Agregar de nuevo'), txt: t('Clique em Adicionar.', 'Haz clic en Agregar.') },
+    { alvo: '[data-t=op-pag-existente]', clique: true, garante: function () { ondeEstou(NOVO, 'paginas')(); var b = document.querySelector('[data-t=add-pagina]'); if (b && !document.querySelector('[data-t=op-pag-existente]')) b.click() }, tit: t('Página existente', 'Página existente'), txt: t('Escolha Adicionar uma Página do Facebook existente.', 'Elige Agregar una Página de Facebook existente.') },
+    { alvo: '[data-t=pag-nome]', garante: function () { ondeEstou(NOVO, 'paginas')(); abrePagAdd() }, cond: function () { return /lojinha/i.test((av().jan || {}).nome || '') }, tit: t('A Página da loja', 'La Página de la tienda'), txt: t('Digite: Lojinha da Marina.', 'Escribe: Lojinha da Marina.'), dica: t('Digite Lojinha da Marina.', 'Escribe Lojinha da Marina.') },
+    { alvo: '[data-t=btn-pag-add]', clique: true, tit: t('Adicionar Página', 'Agregar Página'), txt: t('Clique em Adicionar Página.', 'Haz clic en Agregar Página.') },
+    fim(t('Página no portfólio novo 🎉', '¡Página en el portafolio nuevo! 🎉'), 'A Página agora pertence ao portfólio novo. Ao cliente: uma Página só pode estar em um portfólio. Se o outro portfólio for dele, ele remove de lá e adiciona aqui; se for de uma agência ou de outra pessoa, peça para eles removerem ou peça acesso compartilhado.', 'La Página ahora pertenece al portafolio nuevo. Al cliente: una Página solo puede estar en un portafolio. Si el otro portafolio es suyo, la quita de allí y la agrega aquí; si es de una agencia o de otra persona, pide que la quiten o pide acceso compartido.', '[data-t=pag-detalhe]')
   ];
 })();

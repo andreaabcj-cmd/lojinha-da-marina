@@ -53,6 +53,9 @@
     'pixel-errado': function (s) { s.caso = 'Eventos chegam em outro pixel'; s.proprio.cabecalho = base('000000000000000'); return s },
     'bloqueador': function (s) { s.caso = 'Compra some para quem usa bloqueador'; s.tipo = 'shopify'; s.visitante.bloqueador = true; return s },
     'novo-site': function (s) { s.caso = 'Site novo sem Pixel'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; return s },
+    /* Diagnóstico: Purchase no cabeçalho (dispara em todas as páginas) e Shopify conectada sem Pixel no canal */
+    'purchase-cabecalho': function (s) { s.caso = 'Purchase em todas as páginas'; s.proprio.cabecalho = base(idCerto()) + '\n' + COMPRA(DIN, "'BRL'"); s.proprio.obrigado = ''; return s },
+    'shopify-sem-pixel': function (s) { s.caso = 'Shopify conectada, mas sem compras'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.tema = tema(''); return s },
     /* Integrações: Shopify e WooCommerce */
     'shopify-novo': function (s) { s.caso = 'Loja Shopify nova, ainda sem a Meta'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.canal = { instalado: false, conectado: false }; s.shopify.tema = tema(''); return s },
     'shopify-conectada': function (s) { s.caso = 'Loja Shopify conectada à Meta'; s.tipo = 'shopify'; s.shopify.app = { on: true, nivel: 'enhanced', pixel: 'certo' }; return s },

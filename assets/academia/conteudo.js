@@ -27,12 +27,12 @@ window.MODULOS = [
   { id: 'pixel-avancado', fase: 3, status: 'construcao', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   /* ÁREA DIAGNÓSTICO (fora das trilhas): casos de verdade, por categoria. Cada bloco é um "módulo" com area: 'diagnostico' e cada caso é uma "aula"
      no formato de caso: a Marina reclama → tutorial guiado → o porquê → Atender e Cola. */
-  { id: 'dg-pixel', area: 'diagnostico', status: 'construcao', icone: '📡', titulo: { pt: 'Pixel e eventos', es: 'Píxel y eventos' }, resumo: { pt: 'Compra que não chega, código colado à mão, compras em dobro, valor errado e queda de eventos.', es: 'Compra que no llega, código pegado a mano, compras duplicadas, valor incorrecto y caída de eventos.' } },
+  { id: 'dg-pixel', area: 'diagnostico', status: 'construcao', icone: '📡', titulo: { pt: 'Pixel e eventos', es: 'Píxel y eventos' }, resumo: { pt: 'Compra que não chega, código colado à mão, compras em dobro, valor errado, queda de eventos e Purchase em todas as páginas.', es: 'Compra que no llega, código pegado a mano, compras duplicadas, valor incorrecto, caída de eventos y Purchase en todas las páginas.' } },
   { id: 'dg-integracoes', area: 'diagnostico', status: 'construcao', icone: '🧩', titulo: { pt: 'Integrações e plataformas', es: 'Integraciones y plataformas' }, resumo: { pt: 'Loja conectada pela Shopify, WooCommerce ou parceiro que não envia o que devia.', es: 'Tienda conectada por Shopify, WooCommerce o socio que no envía lo que debería.' } },
-  { id: 'dg-anuncios', area: 'diagnostico', status: 'planejado', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar.', es: 'Anuncio que no se publica, no entrega o dejó de entregar.' } },
-  { id: 'dg-catalogo', area: 'diagnostico', status: 'planejado', icone: '🗂️', titulo: { pt: 'Catálogo e produtos', es: 'Catálogo y productos' }, resumo: { pt: 'Produtos que não aparecem, não sincronizam ou não batem com o Pixel.', es: 'Productos que no aparecen, no se sincronizan o no coinciden con el píxel.' } },
-  { id: 'dg-contas', area: 'diagnostico', status: 'planejado', icone: '🏢', titulo: { pt: 'Contas, acessos e portfólio', es: 'Cuentas, accesos y portafolio' }, resumo: { pt: 'Quem tem acesso a quê, ativos no portfólio errado e verificação da empresa.', es: 'Quién tiene acceso a qué, activos en el portafolio equivocado y verificación de la empresa.' } },
-  { id: 'dg-instagram', area: 'diagnostico', status: 'planejado', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta ou não aparece no anúncio.', es: 'Instagram que no se conecta o no aparece en el anuncio.' } },
+  { id: 'dg-anuncios', area: 'diagnostico', status: 'construcao', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar.', es: 'Anuncio que no se publica, no entrega o dejó de entregar.' } },
+  { id: 'dg-catalogo', area: 'diagnostico', status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo e produtos', es: 'Catálogo y productos' }, resumo: { pt: 'Produtos que não aparecem, não sincronizam ou não batem com o Pixel.', es: 'Productos que no aparecen, no se sincronizan o no coinciden con el píxel.' } },
+  { id: 'dg-contas', area: 'diagnostico', status: 'construcao', icone: '🏢', titulo: { pt: 'Contas, acessos e portfólio', es: 'Cuentas, accesos y portafolio' }, resumo: { pt: 'Quem tem acesso a quê, ativos no portfólio errado e verificação da empresa.', es: 'Quién tiene acceso a qué, activos en el portafolio equivocado y verificación de la empresa.' } },
+  { id: 'dg-instagram', area: 'diagnostico', status: 'construcao', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta ou não aparece no anúncio.', es: 'Instagram que no se conecta o no aparece en el anuncio.' } },
   { id: 'dg-commerce', area: 'diagnostico', status: 'planejado', icone: '🛍️', titulo: { pt: 'Commerce e lojas', es: 'Commerce y tiendas' }, resumo: { pt: 'Loja que não fica visível e anúncios das Lojas que só levam ao site.', es: 'Tienda que no queda visible y anuncios de Tiendas que solo llevan al sitio.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
@@ -5105,4 +5105,463 @@ window.AULAS = {
   window.AULAS['dg-pixel'] = [caso('01', '01'), caso('02', '02'), caso('03', '03'), caso('05', '04')];
   window.AULAS['dg-integracoes'] = [caso('04', '01')];
   delete window.AULAS.diagnostico;
+})();
+/* Área Diagnóstico — casos novos (pesquisa de 17/10/2026, _roteiro/DIAGNOSTICO_PESQUISA.md): cada caso começa com a Marina reclamando,
+   depois o tutorial guiado resolve nas telas de treino e confere que o problema sumiu. Os tutoriais vêm dos módulos (mesmo id) ou são próprios do Diagnóstico. */
+(function () {
+  var A = window.AULAS; if (!A) return;
+  function L(pt, es) { return { pt: pt, es: es } }
+  var PERG = L('O que você responde?', '¿Qué respondes?');
+  var NOTA = L('Casos montados a partir da Central de Ajuda da Meta para Empresas, da Central de Ajuda da Shopify e das queixas mais repetidas em fóruns públicos (usados só para medir frequência), lidos em 17/10/2026. As telas são recriações de treino a partir dessas páginas (a conferir com as telas reais). A cliente é a Marina, da Lojinha da Marina, de faz-de-conta.', 'Casos armados a partir del Centro de ayuda de Meta para Empresas, del Centro de ayuda de Shopify y de las quejas más repetidas en foros públicos (usados solo para medir frecuencia), leídos el 17/10/2026. Las pantallas son recreaciones de práctica a partir de esas páginas (por confirmar con las pantallas reales). La clienta es Marina, de la Lojinha da Marina, de mentira.');
+  function op(certa, txt, fb) { return { certa: certa, txt: txt, fb: fb } }
+  function caso(o) { o.status = 'pronta'; o.entender.notas = NOTA; o.atender.pergunta = PERG; return o }
+  function poe(bloco, lista) { A[bloco] = (A[bloco] || []).concat(lista) }
+
+  /* ================= Pixel e eventos ================= */
+  poe('dg-pixel', [
+    caso({ id: '05', min: 10,
+      titulo: L('API de Conversões: compras contadas duas vezes', 'API de Conversiones: compras contadas dos veces'),
+      reclamacao: [
+        ['marina', L('Liguei a tal API de Conversões, como vocês recomendaram, e agora cada venda aparece duas vezes no Gerenciador! Piorou! 😤', '¡Activé la famosa API de Conversiones, como ustedes recomendaron, y ahora cada venta aparece dos veces en el Administrador! ¡Empeoró! 😤')],
+        ['rafa', L('A API não é o problema: ela precisa “combinar” com o Pixel. Vamos fazer uma compra e ver se os dois mandam o mesmo número de pedido.', 'La API no es el problema: debe “coincidir” con el píxel. Hagamos una compra y veamos si los dos mandan el mismo número de pedido.')]
+      ],
+      objetivo: L('Achar por que a compra conta em dobro com Pixel + API de Conversões (falta o event_id igual), corrigir e confirmar que a Meta desduplica.', 'Hallar por qué la compra cuenta doble con píxel + API de Conversiones (falta el event_id igual), corregir y confirmar que Meta deduplica.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Então a API manda a mesma compra que o Pixel?', '¿Entonces la API manda la misma compra que el píxel?')],
+          ['rafa', L('Sim, de propósito: se o navegador falhar, o servidor garante. Para a Meta contar uma vez só, os dois precisam mandar o mesmo nome de evento e o mesmo event_id. Sem isso, ela vê duas compras.', 'Sí, a propósito: si el navegador falla, el servidor lo garantiza. Para que Meta cuente una sola vez, los dos deben mandar el mismo nombre de evento y el mismo event_id. Sin eso, ve dos compras.')],
+          ['pixel', L('No Pixel, o eventID vai no último argumento do fbq. O servidor usa o mesmo número (o do pedido, por exemplo). Plataformas como a Shopify já fazem isso sozinhas.', 'En el píxel, el eventID va en el último argumento del fbq. El servidor usa el mismo número (el del pedido, por ejemplo). Plataformas como Shopify ya lo hacen solas.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> Purchase “Navegador e servidor” com 2 eventos para 1 compra, e aviso no Diagnóstico.', '<b>Señal:</b> Purchase “Navegador y servidor” con 2 eventos para 1 compra, y aviso en el Diagnóstico.'),
+          L('<b>Causa:</b> event_id diferente (ou ausente) entre Pixel e servidor.', '<b>Causa:</b> event_id diferente (o ausente) entre píxel y servidor.'),
+          L('<b>Prova:</b> nova compra de teste mostra um dos Purchase como “Desduplicado”.', '<b>Prueba:</b> una nueva compra de prueba muestra uno de los Purchase como “Deduplicado”.')
+        ]
+      },
+      ferramenta: 'dedup-pa',
+      praticar: { texto: L('Você faz a compra, lê a contagem e o Diagnóstico, acha o código sem eventID, corrige como o desenvolvedor e confere com uma nova compra.', 'Haces la compra, lees el conteo y el Diagnóstico, hallas el código sin eventID, corriges como el desarrollador y verificas con una nueva compra.'), tour: 'desduplicar-eventos', pagina: 'loja.html' },
+      atender: {
+        cena: L('Desde que liguei a API de Conversões, as vendas dobraram no Gerenciador. Desligo tudo?', 'Desde que activé la API de Conversiones, las ventas se duplicaron en el Administrador. ¿Apago todo?'),
+        opcoes: [
+          op(true, L('“Não precisa desligar. O Pixel e a API mandam a mesma compra; para a Meta contar uma vez, os dois precisam do mesmo event_id. Vamos pedir ao desenvolvedor para enviar o número do pedido nos dois e testar com uma compra.”', '“No hace falta apagar. El píxel y la API mandan la misma compra; para que Meta cuente una vez, los dos necesitan el mismo event_id. Pidamos al desarrollador que envíe el número del pedido en los dos y probemos con una compra.”'), L('Isso! Causa, correção e teste.', '¡Eso! Causa, corrección y prueba.')),
+          op(false, L('“Desligue a API de Conversões.”', '“Apaga la API de Conversiones.”'), L('Resolve a contagem, mas perde a garantia do servidor. A correção é o event_id.', 'Resuelve el conteo, pero pierde la garantía del servidor. La corrección es el event_id.')),
+          op(false, L('“É normal contar em dobro no começo.”', '“Es normal contar doble al principio.”'), L('Não é normal: é falta de desduplicação.', 'No es normal: es falta de deduplicación.')),
+          op(false, L('“Crie outro Pixel só para a API.”', '“Crea otro píxel solo para la API.”'), L('Dois pixels só complicam. Os dois envios devem ir ao mesmo, com o mesmo event_id.', 'Dos píxeles solo complican. Los dos envíos deben ir al mismo, con el mismo event_id.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Uma compra aparece como 2 eventos “Navegador e servidor”?', '¿Una compra aparece como 2 eventos “Navegador y servidor”?'), L('O código do Purchase tem eventID?', '¿El código del Purchase tiene eventID?'), L('O servidor manda o mesmo número?', '¿El servidor manda el mismo número?')],
+        conferir: [L('Gerenciador de Eventos › seu Pixel › Visão geral e Diagnóstico.', 'Administrador de eventos › tu píxel › Descripción general y Diagnóstico.')],
+        frase: L('O Pixel e a API mandam a mesma compra de propósito; vamos fazer os dois enviarem o mesmo número de pedido para a Meta contar uma vez só.', 'El píxel y la API mandan la misma compra a propósito; haremos que los dos envíen el mismo número de pedido para que Meta cuente una sola vez.'),
+        passos: [L('Compra de teste e contagem.', 'Compra de prueba y conteo.'), L('eventID igual nos dois envios.', 'eventID igual en los dos envíos.'), L('Nova compra: um aparece “Desduplicado”.', 'Nueva compra: uno aparece “Deduplicado”.')],
+        encaminhar: L('Se a API foi ligada por um parceiro ou plataforma e o cliente não tem acesso ao código, oriente-o a pedir a correção a quem fez a integração.', 'Si la API la activó un socio o plataforma y el cliente no tiene acceso al código, oriéntalo a pedir la corrección a quien hizo la integración.')
+      }
+    }),
+    caso({ id: '06', min: 10,
+      titulo: L('Purchase em todas as páginas', 'Purchase en todas las páginas'),
+      reclamacao: [
+        ['marina', L('O Gerenciador diz que eu vendi muito mais do que vendi de verdade. Tem “compra” até de gente que só olhou a loja! 🤯', '¡El Administrador dice que vendí mucho más de lo que vendí de verdad! ¡Hay “compras” hasta de gente que solo miró la tienda! 🤯')],
+        ['rafa', L('Isso tem cara de código no lugar errado. Vamos visitar a loja sem comprar e ver o que o Pixel manda.', 'Eso tiene cara de código en el lugar equivocado. Visitemos la tienda sin comprar y veamos qué manda el píxel.')]
+      ],
+      objetivo: L('Descobrir que o Purchase foi colado no cabeçalho (que entra em todas as páginas), mover para a página de pedido concluído e confirmar: uma compra = um Purchase.', 'Descubrir que el Purchase se pegó en el encabezado (que entra en todas las páginas), moverlo a la página de pedido completado y confirmar: una compra = un Purchase.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas por que uma visita vira compra?', '¿Pero por qué una visita se vuelve compra?')],
+          ['rafa', L('O cabeçalho do site entra em TODAS as páginas. Quem colou o código do Purchase ali fez cada página aberta mandar uma “compra”. A Meta avisa no Diagnóstico: “Vários eventos em uma ação”.', 'El encabezado del sitio entra en TODAS las páginas. Quien pegó el código del Purchase ahí hizo que cada página abierta mande una “compra”. Meta avisa en el Diagnóstico: “Varios eventos en una acción”.')],
+          ['pixel', L('A regra: no cabeçalho, só o código base (init e PageView). O Purchase vai só na página que confirma a compra, com valor e moeda.', 'La regla: en el encabezado, solo el código base (init y PageView). El Purchase va solo en la página que confirma la compra, con valor y moneda.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> Purchase chegando de páginas que não são de compra (e sem valor).', '<b>Señal:</b> Purchase llegando de páginas que no son de compra (y sin valor).'),
+          L('<b>Causa:</b> código do Purchase no cabeçalho.', '<b>Causa:</b> código del Purchase en el encabezado.'),
+          L('<b>Prova:</b> depois da correção, uma compra de teste = um Purchase, e o Diagnóstico fica limpo.', '<b>Prueba:</b> después de la corrección, una compra de prueba = un Purchase, y el Diagnóstico queda limpio.')
+        ]
+      },
+      ferramenta: 'dup-dg',
+      praticar: { texto: L('Você visita a loja sem comprar, vê o Purchase chegando, lê o Diagnóstico, acha o código no cabeçalho, move para a página certa e testa com uma compra.', 'Visitas la tienda sin comprar, ves el Purchase llegando, lees el Diagnóstico, hallas el código en el encabezado, lo mueves a la página correcta y pruebas con una compra.'), tour: 'purchase-cabecalho', pagina: 'loja.html' },
+      atender: {
+        cena: L('Meu Gerenciador mostra 40 vendas hoje, mas eu vendi 3. O que está acontecendo?', 'Mi Administrador muestra 40 ventas hoy, pero vendí 3. ¿Qué está pasando?'),
+        opcoes: [
+          op(true, L('“Parece que o código da compra está num lugar que aparece em todas as páginas, então cada visita conta como compra. Vamos conferir o Diagnóstico e o código: o Purchase deve ficar só na página de pedido concluído. Depois testamos com uma compra.”', '“Parece que el código de la compra está en un lugar que aparece en todas las páginas, entonces cada visita cuenta como compra. Revisemos el Diagnóstico y el código: el Purchase debe quedar solo en la página de pedido completado. Después probamos con una compra.”'), L('Isso! Causa, onde corrigir e como confirmar.', '¡Eso! Causa, dónde corregir y cómo confirmar.')),
+          op(false, L('“A Meta estima vendas, é normal ser diferente.”', '“Meta estima ventas, es normal que sea diferente.”'), L('40 contra 3 não é estimativa: é código errado.', '40 contra 3 no es estimación: es código incorrecto.')),
+          op(false, L('“Apague o Pixel do site.”', '“Borra el píxel del sitio.”'), L('O código base deve ficar. Só o Purchase muda de lugar.', 'El código base debe quedar. Solo el Purchase cambia de lugar.')),
+          op(false, L('“Espere uns dias que estabiliza.”', '“Espera unos días que se estabiliza.”'), L('Não estabiliza: enquanto o código estiver no cabeçalho, cada visita vira compra.', 'No se estabiliza: mientras el código esté en el encabezado, cada visita se vuelve compra.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Uma visita sem compra já manda Purchase?', '¿Una visita sin compra ya manda Purchase?'), L('O Diagnóstico mostra “Vários eventos em uma ação”?', '¿El Diagnóstico muestra “Varios eventos en una acción”?'), L('Onde está o fbq(\'track\', \'Purchase\')?', '¿Dónde está el fbq(\'track\', \'Purchase\')?')],
+        conferir: [L('Consultor de Dados, Gerenciador de Eventos (Testar eventos e Diagnóstico) e o código-fonte da página.', 'Asesor de datos, Administrador de eventos (Probar eventos y Diagnóstico) y el código fuente de la página.')],
+        frase: L('O código da compra está num lugar que aparece em todas as páginas; vamos deixá-lo só na página de pedido concluído e testar.', 'El código de la compra está en un lugar que aparece en todas las páginas; lo dejaremos solo en la página de pedido completado y probaremos.'),
+        passos: [L('Visita sem compra: há Purchase?', 'Visita sin compra: ¿hay Purchase?'), L('Tirar o Purchase do cabeçalho.', 'Quitar el Purchase del encabezado.'), L('Colocar na página de pedido concluído e testar.', 'Ponerlo en la página de pedido completado y probar.')],
+        encaminhar: L('Se o cliente quer corrigir os números de dias passados, explique que o histórico não muda: vale a contagem a partir da correção.', 'Si el cliente quiere corregir los números de días pasados, explica que el historial no cambia: vale el conteo a partir de la corrección.')
+      }
+    })
+  ]);
+
+  /* ================= Anúncios ================= */
+  poe('dg-anuncios', [
+    caso({ id: '01', min: 10,
+      titulo: L('Meus anúncios não estão rodando', 'Mis anuncios no están corriendo'),
+      reclamacao: [
+        ['marina', L('Paguei, criei tudo direitinho e os anúncios não rodam! Não aparece nada pra ninguém! 😩', '¡Pagué, creé todo bien y los anuncios no corren! ¡No le aparece nada a nadie! 😩')],
+        ['rafa', L('Vamos pela ordem que a Meta recomenda: primeiro a conta, depois campanha, conjunto e anúncio, olhando a coluna Veiculação.', 'Vamos en el orden que Meta recomienda: primero la cuenta, después campaña, conjunto y anuncio, mirando la columna Entrega.')]
+      ],
+      objetivo: L('Ler a coluna Veiculação nos três níveis, achar o que está desligado ou em análise, usar o Histórico de atividades e religar o que parou.', 'Leer la columna Entrega en los tres niveles, hallar lo que está apagado o en revisión, usar el Historial de actividades y reactivar lo que se detuvo.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas a campanha aparece ativa!', '¡Pero la campaña aparece activa!')],
+          ['rafa', L('A campanha pode estar ativa e algo dentro dela, não. A coluna Veiculação mostra um ícone por nível: erro, aviso, pendente, ativo ou inativo. O Histórico de atividades mostra quem mudou o quê e quando.', 'La campaña puede estar activa y algo dentro de ella, no. La columna Entrega muestra un ícono por nivel: error, aviso, pendiente, activo o inactivo. El Historial de actividades muestra quién cambió qué y cuándo.')],
+          ['pixel', L('Cada status tem uma resposta: Desativado = religar; Em análise ou Programado = esperar; Rejeitado = corrigir o anúncio; limite de gastos da conta atingido = ajustar a cobrança.', 'Cada estado tiene una respuesta: Desactivado = reactivar; En revisión o Programado = esperar; Rechazado = corregir el anuncio; límite de gastos de la cuenta alcanzado = ajustar la facturación.')]
+        ],
+        pontos: [
+          L('<b>Ordem:</b> conta › campanha › conjunto › anúncio.', '<b>Orden:</b> cuenta › campaña › conjunto › anuncio.'),
+          L('<b>Ferramentas:</b> coluna Veiculação e Histórico de atividades.', '<b>Herramientas:</b> columna Entrega e Historial de actividades.'),
+          L('<b>Prova:</b> o conjunto desligado volta a ficar ativo.', '<b>Prueba:</b> el conjunto apagado vuelve a quedar activo.')
+        ]
+      },
+      ferramenta: 'nao-veicula-q',
+      praticar: { texto: L('No Gerenciador de Anúncios de treino, você confere a conta, desce pelos níveis, lê os status, abre o Histórico de atividades e religa o conjunto desligado.', 'En el Administrador de anuncios de práctica, revisas la cuenta, bajas por los niveles, lees los estados, abres el Historial de actividades y reactivas el conjunto apagado.'), tour: 'nao-veicula', pagina: 'meta-entrega.html?problema=1' },
+      atender: {
+        cena: L('Meus anúncios estão ativos, mas não gastam nada e ninguém vê. Vocês estão me bloqueando?', 'Mis anuncios están activos, pero no gastan nada y nadie los ve. ¿Me están bloqueando?'),
+        opcoes: [
+          op(true, L('“Vamos conferir juntos: primeiro avisos da conta, depois o status em cada nível na coluna Veiculação. Às vezes a campanha está ativa, mas o conjunto está desligado ou o anúncio está em análise. O Histórico de atividades mostra o que mudou.”', '“Revisemos juntos: primero avisos de la cuenta, después el estado en cada nivel en la columna Entrega. A veces la campaña está activa, pero el conjunto está apagado o el anuncio está en revisión. El Historial de actividades muestra qué cambió.”'), L('Isso! Método em ordem, sem culpar ninguém.', '¡Eso! Método en orden, sin culpar a nadie.')),
+          op(false, L('“Aumente o orçamento que ele começa a rodar.”', '“Aumenta el presupuesto y empieza a correr.”'), L('Mais orçamento não religa um conjunto desligado.', 'Más presupuesto no reactiva un conjunto apagado.')),
+          op(false, L('“Crie a campanha de novo.”', '“Crea la campaña de nuevo.”'), L('Antes de refazer, ache a causa: pode ser só um interruptor.', 'Antes de rehacer, halla la causa: puede ser solo un interruptor.')),
+          op(false, L('“É instabilidade da Meta, espere.”', '“Es inestabilidad de Meta, espera.”'), L('Sem conferir os status, não dá para afirmar isso.', 'Sin revisar los estados, no se puede afirmar eso.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Há aviso no topo da conta?', '¿Hay aviso arriba en la cuenta?'), L('Qual o status em cada nível?', '¿Cuál es el estado en cada nivel?'), L('O que mudou no Histórico de atividades?', '¿Qué cambió en el Historial de actividades?')],
+        conferir: [L('Gerenciador de Anúncios › coluna Veiculação e Histórico de atividades.', 'Administrador de anuncios › columna Entrega e Historial de actividades.')],
+        frase: L('Vamos olhar o status de cada nível para achar exatamente o que está segurando a veiculação.', 'Miremos el estado de cada nivel para hallar exactamente qué está frenando la entrega.'),
+        passos: [L('Conta.', 'Cuenta.'), L('Campanha, conjunto, anúncio.', 'Campaña, conjunto, anuncio.'), L('Histórico e correção.', 'Historial y corrección.')],
+        encaminhar: L('Se o anúncio foi rejeitado e o cliente discorda, oriente-o a pedir uma nova análise pelo próprio anúncio.', 'Si el anuncio fue rechazado y el cliente no está de acuerdo, oriéntalo a pedir una nueva revisión desde el propio anuncio.')
+      }
+    }),
+    caso({ id: '02', min: 8,
+      titulo: L('O botão Publicar não acende', 'El botón Publicar no se enciende'),
+      reclamacao: [
+        ['marina', L('Quero turbinar um post e o botão Publicar fica apagado! Já tentei mil vezes! 😫', '¡Quiero promocionar un post y el botón Publicar queda apagado! ¡Ya lo intenté mil veces! 😫')],
+        ['rafa', L('Quando o Publicar não acende, a Meta mostra o motivo em avisos. Vamos ler de cima para baixo e resolver um de cada vez.', 'Cuando Publicar no se enciende, Meta muestra el motivo en avisos. Leamos de arriba hacia abajo y resolvamos uno a la vez.')]
+      ],
+      objetivo: L('Ler os avisos que bloqueiam a publicação (telefone, limite de gastos, saldo), resolver um por um e publicar.', 'Leer los avisos que bloquean la publicación (teléfono, límite de gastos, saldo), resolverlos uno por uno y publicar.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas nada diz “erro”…', 'Pero nada dice “error”…')],
+          ['rafa', L('Os avisos ficam no topo e dentro do orçamento. Os mais comuns: telefone não verificado na conta, limite de gastos quase atingido e saldo que não cobre o valor.', 'Los avisos están arriba y dentro del presupuesto. Los más comunes: teléfono no verificado en la cuenta, límite de gastos casi alcanzado y saldo que no cubre el valor.')],
+          ['pixel', L('Pagamento e limite são da cliente: o agente orienta onde fica, mas nunca paga nem mexe na cobrança por ela.', 'El pago y el límite son de la clienta: el agente orienta dónde está, pero nunca paga ni toca la facturación por ella.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> Publicar apagado e avisos na tela.', '<b>Señal:</b> Publicar apagado y avisos en la pantalla.'),
+          L('<b>Método:</b> um bloqueio de cada vez, de cima para baixo.', '<b>Método:</b> un bloqueo a la vez, de arriba hacia abajo.'),
+          L('<b>Prova:</b> o Publicar acende e o anúncio vai para análise.', '<b>Prueba:</b> Publicar se enciende y el anuncio pasa a revisión.')
+        ]
+      },
+      ferramenta: 'o-que-bloqueia',
+      praticar: { texto: L('No Turbinar de treino, você lê e resolve os três bloqueios e publica.', 'En Promocionar de práctica, lees y resuelves los tres bloqueos y publicas.'), tour: 'resolver-publicacao', pagina: 'meta-turbinar.html?zerar=1&problemas=1' },
+      atender: {
+        cena: L('O botão de publicar não funciona. O sistema de vocês está com defeito?', 'El botón de publicar no funciona. ¿El sistema de ustedes tiene un defecto?'),
+        opcoes: [
+          op(true, L('“Quando o Publicar fica apagado, a tela mostra o motivo em avisos. Vamos ler juntos: pode ser o telefone da conta, o limite de gastos ou o saldo. Resolvendo um por um, ele acende.”', '“Cuando Publicar queda apagado, la pantalla muestra el motivo en avisos. Leámoslos juntos: puede ser el teléfono de la cuenta, el límite de gastos o el saldo. Resolviendo uno por uno, se enciende.”'), L('Isso! Leitura dos avisos e ordem.', '¡Eso! Lectura de los avisos y orden.')),
+          op(false, L('“Me passe os dados do cartão que eu resolvo.”', '“Pásame los datos de la tarjeta y lo resuelvo.”'), L('Nunca peça dados de pagamento: a cliente resolve na conta dela.', 'Nunca pidas datos de pago: la clienta lo resuelve en su cuenta.')),
+          op(false, L('“Tente em outro navegador.”', '“Intenta en otro navegador.”'), L('Os avisos já dizem o motivo; não é o navegador.', 'Los avisos ya dicen el motivo; no es el navegador.')),
+          op(false, L('“Use o Gerenciador de Anúncios em vez do Turbinar.”', '“Usa el Administrador de anuncios en lugar de Promocionar.”'), L('Os mesmos bloqueios valem lá também.', 'Los mismos bloqueos valen allí también.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Que avisos aparecem na tela?', '¿Qué avisos aparecen en la pantalla?'), L('O telefone da conta está verificado?', '¿El teléfono de la cuenta está verificado?'), L('Limite e saldo cobrem o valor?', '¿El límite y el saldo cubren el valor?')],
+        conferir: [L('Turbinar › avisos do topo e do orçamento; configurações de cobrança da conta.', 'Promocionar › avisos de arriba y del presupuesto; configuración de facturación de la cuenta.')],
+        frase: L('O botão fica apagado até os avisos serem resolvidos; vamos resolver um de cada vez.', 'El botón queda apagado hasta que se resuelvan los avisos; vamos a resolver uno a la vez.'),
+        passos: [L('Telefone.', 'Teléfono.'), L('Limite de gastos.', 'Límite de gastos.'), L('Saldo e publicar.', 'Saldo y publicar.')],
+        encaminhar: L('Se o problema for uma cobrança recusada ou contestada, oriente o cliente a falar com o banco e a conferir as configurações de cobrança da conta.', 'Si el problema es un cobro rechazado o disputado, orienta al cliente a hablar con su banco y a revisar la configuración de facturación de la cuenta.')
+      }
+    })
+  ]);
+
+  /* ================= Catálogo ================= */
+  poe('dg-catalogo', [
+    caso({ id: '01', min: 8,
+      titulo: L('Produtos da Shopify que não aparecem na Meta', 'Productos de Shopify que no aparecen en Meta'),
+      reclamacao: [
+        ['marina', L('Cadastrei a Ecobag e o Boné na Shopify, mas no catálogo da Meta eles não existem! Sumiram! 😠', '¡Registré la Ecobag y la Gorra en Shopify, pero en el catálogo de Meta no existen! ¡Desaparecieron! 😠')],
+        ['rafa', L('A Shopify só manda à Meta o que está disponível no canal Facebook e Instagram. Vamos conferir isso primeiro.', 'Shopify solo manda a Meta lo que está disponible en el canal Facebook e Instagram. Revisemos eso primero.')]
+      ],
+      objetivo: L('Filtrar os produtos indisponíveis no canal, tornar disponível o que deve ir à Meta e reconhecer o que não sincroniza (arquivado).', 'Filtrar los productos no disponibles en el canal, hacer disponible lo que debe ir a Meta y reconocer lo que no se sincroniza (archivado).'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas o produto está na loja!', '¡Pero el producto está en la tienda!')],
+          ['rafa', L('Estar na loja virtual não basta: cada produto escolhe em quais canais aparece. E produto arquivado não sincroniza nunca.', 'Estar en la tienda online no basta: cada producto elige en qué canales aparece. Y un producto archivado no se sincroniza nunca.')],
+          ['pixel', L('Checklist: disponível no canal? arquivado? imagem e categoria preenchidas? loja sem senha e plano ativo?', 'Checklist: ¿disponible en el canal? ¿archivado? ¿imagen y categoría completas? ¿tienda sin contraseña y plan activo?')]
+        ],
+        pontos: [
+          L('<b>Onde olhar:</b> admin da Shopify › Produtos › Disponibilidade.', '<b>Dónde mirar:</b> admin de Shopify › Productos › Disponibilidad.'),
+          L('<b>Correção:</b> Mais ações › Adicionar canal › Facebook e Instagram.', '<b>Corrección:</b> Más acciones › Agregar canal › Facebook e Instagram.'),
+          L('<b>Prova:</b> o produto sai da lista de indisponíveis.', '<b>Prueba:</b> el producto sale de la lista de no disponibles.')
+        ]
+      },
+      ferramenta: 'por-que-nao-aparece',
+      praticar: { texto: L('No admin da Shopify de treino, você filtra os indisponíveis, adiciona o canal à Ecobag e descobre por que o Boné fica de fora.', 'En el admin de Shopify de práctica, filtras los no disponibles, agregas el canal a la Ecobag y descubres por qué la Gorra queda fuera.'), tour: 'produtos-sumidos', pagina: 'admin-shopify.html' },
+      atender: {
+        cena: L('Meus produtos novos não aparecem no catálogo da Meta. A integração quebrou?', 'Mis productos nuevos no aparecen en el catálogo de Meta. ¿Se rompió la integración?'),
+        opcoes: [
+          op(true, L('“Provavelmente não quebrou. Na Shopify, cada produto escolhe os canais. Vamos filtrar os que não estão disponíveis no Facebook e Instagram, adicionar o canal e conferir se algum está arquivado.”', '“Probablemente no se rompió. En Shopify, cada producto elige los canales. Filtremos los que no están disponibles en Facebook e Instagram, agreguemos el canal y revisemos si alguno está archivado.”'), L('Isso! Causa comum e caminho.', '¡Eso! Causa común y camino.')),
+          op(false, L('“Desconecte e conecte a Shopify de novo.”', '“Desconecta y conecta Shopify de nuevo.”'), L('Reconectar não muda a disponibilidade do produto.', 'Reconectar no cambia la disponibilidad del producto.')),
+          op(false, L('“Cadastre os produtos direto no Gerenciador de Comércio.”', '“Registra los productos directo en el Administrador de comercio.”'), L('Com a Shopify conectada, os produtos se editam na Shopify.', 'Con Shopify conectada, los productos se editan en Shopify.')),
+          op(false, L('“Demora uma semana para sincronizar.”', '“Tarda una semana en sincronizar.”'), L('Depois de disponível, leva minutos, não semanas.', 'Una vez disponible, tarda minutos, no semanas.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O produto está disponível no canal Facebook e Instagram?', '¿El producto está disponible en el canal Facebook e Instagram?'), L('Está arquivado?', '¿Está archivado?'), L('Tem imagem e categoria?', '¿Tiene imagen y categoría?')],
+        conferir: [L('Admin da Shopify › Produtos e o canal Facebook e Instagram.', 'Admin de Shopify › Productos y el canal Facebook e Instagram.')],
+        frase: L('Na Shopify, cada produto escolhe onde aparece; vamos deixá-lo disponível no canal da Meta.', 'En Shopify, cada producto elige dónde aparece; vamos a dejarlo disponible en el canal de Meta.'),
+        passos: [L('Filtrar indisponíveis.', 'Filtrar no disponibles.'), L('Adicionar o canal.', 'Agregar el canal.'), L('Conferir arquivados.', 'Revisar archivados.')],
+        encaminhar: L('Se a dúvida for sobre o plano ou a senha da loja na Shopify, oriente o cliente a falar com o suporte da Shopify.', 'Si la duda es sobre el plan o la contraseña de la tienda en Shopify, orienta al cliente a hablar con el soporte de Shopify.')
+      }
+    }),
+    caso({ id: '02', min: 10,
+      titulo: L('Itens rejeitados no catálogo', 'Artículos rechazados en el catálogo'),
+      reclamacao: [
+        ['marina', L('O catálogo diz que tenho produtos com problema e alguns nem aparecem nos anúncios. Um deles foi “rejeitado”… é só um boné! 😤', '¡El catálogo dice que tengo productos con problemas y algunos ni aparecen en los anuncios! Uno fue “rechazado”… ¡es solo una gorra! 😤')],
+        ['rafa', L('O catálogo tem uma área de Problemas que diz exatamente o que impede cada item. Vamos lá.', 'El catálogo tiene un área de Problemas que dice exactamente qué impide cada artículo. Vamos allá.')]
+      ],
+      objetivo: L('Ler a área de Problemas, separar erro de aviso, corrigir na fonte, atualizar e pedir outra análise quando a rejeição parecer engano.', 'Leer el área de Problemas, separar error de aviso, corregir en la fuente, actualizar y pedir otra revisión cuando el rechazo parezca un error.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Posso corrigir direto no catálogo?', '¿Puedo corregir directo en el catálogo?')],
+          ['rafa', L('Depende de onde o item vem. Se vem de um arquivo de dados ou de uma plataforma, a correção é na fonte; senão, a próxima atualização desfaz.', 'Depende de dónde viene el artículo. Si viene de un archivo de datos o de una plataforma, la corrección es en la fuente; si no, la próxima actualización la deshace.')],
+          ['pixel', L('Erro (vermelho) impede o item; aviso (amarelo) não impede. Rejeição por política que parece engano: Solicitar outra análise.', 'Error (rojo) impide el artículo; aviso (amarillo) no lo impide. Rechazo por política que parece un error: Solicitar otra revisión.')]
+        ],
+        pontos: [
+          L('<b>Onde olhar:</b> Gerenciador de Comércio › catálogo › Problemas.', '<b>Dónde mirar:</b> Administrador de comercio › catálogo › Problemas.'),
+          L('<b>Correção:</b> na fonte e depois Atualizar a fonte de dados.', '<b>Corrección:</b> en la fuente y después Actualizar la fuente de datos.'),
+          L('<b>Prova:</b> nenhum erro impedindo itens.', '<b>Prueba:</b> ningún error impidiendo artículos.')
+        ]
+      },
+      ferramenta: 'por-que-nao-aparece',
+      praticar: { texto: L('No catálogo de treino, você lê os problemas, corrige a imagem na fonte, atualiza e pede outra análise para o Boné.', 'En el catálogo de práctica, lees los problemas, corriges la imagen en la fuente, actualizas y pides otra revisión para la Gorra.'), tour: 'catalogo-problemas', pagina: 'meta-catalogo.html?exemplo=1' },
+      atender: {
+        cena: L('Vocês rejeitaram meu boné! É um boné! Isso é perseguição?', '¡Rechazaron mi gorra! ¡Es una gorra! ¿Es persecución?'),
+        opcoes: [
+          op(true, L('“Entendo. A rejeição pode ser engano da análise automática: na área de Problemas do catálogo dá para Solicitar outra análise. E vamos ver os outros erros: se for imagem, a correção é no site e depois atualizamos a fonte.”', '“Entiendo. El rechazo puede ser un error del análisis automático: en el área de Problemas del catálogo se puede Solicitar otra revisión. Y veamos los otros errores: si es imagen, la corrección es en el sitio y después actualizamos la fuente.”'), L('Isso! Acolhe, explica e dá o caminho.', '¡Eso! Acoge, explica y da el camino.')),
+          op(false, L('“Apague o produto e cadastre de novo.”', '“Borra el producto y regístralo de nuevo.”'), L('Recadastrar não muda a análise e perde o histórico.', 'Volver a registrar no cambia el análisis y pierde el historial.')),
+          op(false, L('“Não dá para fazer nada.”', '“No se puede hacer nada.”'), L('Dá sim: pedir outra análise.', 'Sí se puede: pedir otra revisión.')),
+          op(false, L('“Mude o nome para outra coisa.”', '“Cambia el nombre a otra cosa.”'), L('Disfarçar o produto vai contra as políticas.', 'Disfrazar el producto va contra las políticas.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('É erro ou aviso?', '¿Es error o aviso?'), L('De onde vem o item (arquivo, plataforma, manual)?', '¿De dónde viene el artículo (archivo, plataforma, manual)?'), L('A rejeição parece engano?', '¿El rechazo parece un error?')],
+        conferir: [L('Gerenciador de Comércio › catálogo › Problemas e Fontes de dados.', 'Administrador de comercio › catálogo › Problemas y Fuentes de datos.')],
+        frase: L('Cada item com problema mostra o motivo; vamos corrigir na origem e, se for engano, pedir outra análise.', 'Cada artículo con problema muestra el motivo; vamos a corregir en el origen y, si es un error, pedir otra revisión.'),
+        passos: [L('Ler Problemas.', 'Leer Problemas.'), L('Corrigir na fonte e atualizar.', 'Corregir en la fuente y actualizar.'), L('Pedir outra análise.', 'Pedir otra revisión.')],
+        encaminhar: L('Se a outra análise mantiver a rejeição, oriente o cliente a ler a política indicada no item e a ajustar o produto ou o anúncio.', 'Si la otra revisión mantiene el rechazo, orienta al cliente a leer la política indicada en el artículo y a ajustar el producto o el anuncio.')
+      }
+    })
+  ]);
+
+  /* ================= Instagram ================= */
+  poe('dg-instagram', [
+    caso({ id: '01', min: 10,
+      titulo: L('O Instagram não aparece no anúncio', 'El Instagram no aparece en el anuncio'),
+      reclamacao: [
+        ['marina', L('Fui criar o anúncio e o meu Instagram não aparece na lista! Só tem “Usar a Página do Facebook”. Cadê o meu @? 😩', '¡Fui a crear el anuncio y mi Instagram no aparece en la lista! Solo está “Usar la Página de Facebook”. ¿Dónde está mi @? 😩')],
+        ['rafa', L('O problema quase nunca está no anúncio: está na ligação entre Instagram, portfólio e Página. Vamos conferir.', 'El problema casi nunca está en el anuncio: está en el vínculo entre Instagram, portafolio y Página. Revisemos.')]
+      ],
+      objetivo: L('Seguir a lista de conferência (conta profissional, portfólio, ligação com a Página), ligar o Instagram e confirmar que o @ aparece no anúncio.', 'Seguir la lista de revisión (cuenta profesional, portafolio, vínculo con la Página), vincular el Instagram y confirmar que el @ aparece en el anuncio.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas eu entro no Instagram todo dia!', '¡Pero entro a Instagram todos los días!')],
+          ['rafa', L('Para anunciar, a conta precisa ser profissional, estar no portfólio empresarial e estar ligada à Página do Facebook. Quase sempre falta a terceira.', 'Para anunciar, la cuenta debe ser profesional, estar en el portafolio comercial y estar vinculada a la Página de Facebook. Casi siempre falta la tercera.')],
+          ['pixel', L('A ligação se faz nas configurações do portfólio (Contas do Instagram) ou da Página. Depois disso, o @ aparece na lista de identidade.', 'El vínculo se hace en la configuración del portafolio (Cuentas de Instagram) o de la Página. Después de eso, el @ aparece en la lista de identidad.')]
+        ],
+        pontos: [
+          L('<b>1)</b> Conta profissional?', '<b>1)</b> ¿Cuenta profesional?'),
+          L('<b>2)</b> No portfólio empresarial?', '<b>2)</b> ¿En el portafolio comercial?'),
+          L('<b>3)</b> Ligada à Página? <b>Prova:</b> o @ aparece no anúncio.', '<b>3)</b> ¿Vinculada a la Página? <b>Prueba:</b> el @ aparece en el anuncio.')
+        ]
+      },
+      ferramenta: 'ig-nao-aparece',
+      praticar: {
+        texto: L('Comece pelo anúncio (onde a Marina viu o problema) e, se quiser, faça a ligação nas configurações do portfólio.', 'Empieza por el anuncio (donde Marina vio el problema) y, si quieres, haz el vínculo en la configuración del portafolio.'),
+        opcoes: [
+          { id: 'anuncio', icone: '🔎', pagina: 'meta-feed.html?igsem=1', tour: 'perfil-nao-aparece', selo: L('comece aqui', 'empieza aquí'), tit: L('Investigar no anúncio', 'Investigar en el anuncio'), txt: L('A lista de identidade sem o @, a conferência e a confirmação.', 'La lista de identidad sin el @, la revisión y la confirmación.') },
+          { id: 'ligar', icone: '🔗', pagina: 'meta-portfolio.html?exemplo=1&aula=ig4', tour: 'conectar-instagram', tit: L('Ligar o Instagram no portfólio', 'Vincular el Instagram en el portafolio'), txt: L('O caminho completo nas configurações do portfólio.', 'El camino completo en la configuración del portafolio.') }
+        ]
+      },
+      atender: {
+        cena: L('Meu Instagram não aparece quando vou criar o anúncio. Vocês bloquearam minha conta?', 'Mi Instagram no aparece cuando voy a crear el anuncio. ¿Bloquearon mi cuenta?'),
+        opcoes: [
+          op(true, L('“Não parece bloqueio. Para aparecer, o Instagram precisa ser profissional, estar no seu portfólio e estar ligado à Página. Vamos conferir esses três pontos; normalmente falta a ligação com a Página.”', '“No parece un bloqueo. Para aparecer, el Instagram debe ser profesional, estar en tu portafolio y estar vinculado a la Página. Revisemos esos tres puntos; normalmente falta el vínculo con la Página.”'), L('Isso! Lista de conferência em ordem.', '¡Eso! Lista de revisión en orden.')),
+          op(false, L('“Use a Página do Facebook no lugar.”', '“Usa la Página de Facebook en su lugar.”'), L('Funciona, mas não resolve o que ela pediu.', 'Funciona, pero no resuelve lo que pidió.')),
+          op(false, L('“Crie um Instagram novo.”', '“Crea un Instagram nuevo.”'), L('Ela perde seguidores; o problema é a ligação.', 'Pierde seguidores; el problema es el vínculo.')),
+          op(false, L('“Me passe a senha do Instagram que eu ligo.”', '“Pásame la contraseña del Instagram y lo vinculo.”'), L('Nunca peça senha.', 'Nunca pidas contraseña.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('A conta é profissional?', '¿La cuenta es profesional?'), L('Está no portfólio empresarial?', '¿Está en el portafolio comercial?'), L('Está ligada à Página?', '¿Está vinculada a la Página?')],
+        conferir: [L('Configurações do portfólio › Contas do Instagram; lista de identidade no anúncio.', 'Configuración del portafolio › Cuentas de Instagram; lista de identidad en el anuncio.')],
+        frase: L('O Instagram aparece no anúncio quando está ligado à sua Página no portfólio; vamos conferir essa ligação.', 'El Instagram aparece en el anuncio cuando está vinculado a tu Página en el portafolio; revisemos ese vínculo.'),
+        passos: [L('Profissional.', 'Profesional.'), L('Portfólio.', 'Portafolio.'), L('Ligação com a Página.', 'Vínculo con la Página.')],
+        encaminhar: L('Se o Instagram estiver desativado ou com acesso perdido, oriente o cliente a recuperar a conta pela central de ajuda do Instagram.', 'Si el Instagram está desactivado o con acceso perdido, orienta al cliente a recuperar la cuenta por el centro de ayuda de Instagram.')
+      }
+    })
+  ]);
+
+  /* ================= Integrações ================= */
+  poe('dg-integracoes', [
+    caso({ id: '02', min: 10,
+      titulo: L('Shopify conectada, mas nenhuma compra chega', 'Shopify conectada, pero no llega ninguna compra'),
+      reclamacao: [
+        ['marina', L('Conectei a Shopify com a Meta, apareceu tudo verdinho… e nenhuma venda aparece no Gerenciador! 🤨', 'Conecté Shopify con Meta, apareció todo en verde… ¡y ninguna venta aparece en el Administrador! 🤨')],
+        ['rafa', L('Conectar a conta não liga o Pixel sozinho. Vamos fazer uma compra e ver o que chega.', 'Conectar la cuenta no enciende el píxel solo. Hagamos una compra y veamos qué llega.')]
+      ],
+      objetivo: L('Confirmar que nada chega, achar no canal Facebook e Instagram que não há Pixel nem compartilhamento, ativar e confirmar a compra chegando.', 'Confirmar que no llega nada, hallar en el canal Facebook e Instagram que no hay píxel ni compartir datos, activar y confirmar la compra llegando.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas a conexão deu certo!', '¡Pero la conexión salió bien!')],
+          ['rafa', L('A conexão liga a loja ao portfólio. O envio de eventos é outra configuração: Compartilhamento de dados do cliente, com nível e Pixel escolhidos.', 'La conexión une la tienda al portafolio. El envío de eventos es otra configuración: Compartir datos del cliente, con nivel y píxel elegidos.')],
+          ['pixel', L('Nível Padrão = só o Pixel; Avançado ou Máximo = Pixel + API de Conversões (a compra também vem do servidor).', 'Nivel Estándar = solo el píxel; Mejorado o Máximo = píxel + API de Conversiones (la compra también viene del servidor).')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> o Consultor de Dados não acha Pixel e nenhuma compra chega.', '<b>Señal:</b> el Asesor de datos no encuentra píxel y no llega ninguna compra.'),
+          L('<b>Causa:</b> canal conectado sem Pixel e com compartilhamento desligado.', '<b>Causa:</b> canal conectado sin píxel y con compartir apagado.'),
+          L('<b>Prova:</b> nova compra chega do navegador e do servidor.', '<b>Prueba:</b> una nueva compra llega del navegador y del servidor.')
+        ]
+      },
+      ferramenta: 'plat-dg',
+      praticar: { texto: L('Você compra na loja, vê que nada chega, abre o canal na Shopify, ativa o compartilhamento com o Pixel certo e confirma com outra compra.', 'Compras en la tienda, ves que no llega nada, abres el canal en Shopify, activas compartir datos con el píxel correcto y confirmas con otra compra.'), tour: 'shopify-sem-pixel', pagina: 'loja.html' },
+      atender: {
+        cena: L('Conectei a Shopify e as vendas não aparecem na Meta. A integração de vocês não funciona!', 'Conecté Shopify y las ventas no aparecen en Meta. ¡La integración de ustedes no funciona!'),
+        opcoes: [
+          op(true, L('“A conexão costuma estar certa; o que falta é ligar o envio de dados. No canal Facebook e Instagram, em Configurações › Compartilhamento de dados, ative, escolha o nível e o seu Pixel. Depois fazemos uma compra de teste.”', '“La conexión suele estar bien; lo que falta es activar el envío de datos. En el canal Facebook e Instagram, en Configuración › Compartir datos, actívalo, elige el nivel y tu píxel. Después hacemos una compra de prueba.”'), L('Isso! Diferença entre conectar e enviar dados.', '¡Eso! Diferencia entre conectar y enviar datos.')),
+          op(false, L('“Cole o código do Pixel no tema.”', '“Pega el código del píxel en el tema.”'), L('Na Shopify, o Pixel vem pelo canal; código manual duplica depois.', 'En Shopify, el píxel viene por el canal; código manual duplica después.')),
+          op(false, L('“Espere 48 horas.”', '“Espera 48 horas.”'), L('Sem compartilhamento ligado, nada chega, por mais que espere.', 'Sin compartir activado, no llega nada, por más que espere.')),
+          op(false, L('“Desinstale o app e instale de novo.”', '“Desinstala la app e instálala de nuevo.”'), L('Não precisa: é uma configuração dentro do canal.', 'No hace falta: es una configuración dentro del canal.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O Consultor de Dados acha algum Pixel na loja?', '¿El Asesor de datos encuentra algún píxel en la tienda?'), L('O compartilhamento de dados está ativo?', '¿Compartir datos está activo?'), L('Qual Pixel e qual nível?', '¿Qué píxel y qué nivel?')],
+        conferir: [L('Admin da Shopify › Facebook e Instagram › Configurações › Compartilhamento de dados.', 'Admin de Shopify › Facebook e Instagram › Configuración › Compartir datos.')],
+        frase: L('A loja está conectada, mas o envio de dados está desligado; vamos ligar e escolher o seu Pixel.', 'La tienda está conectada, pero el envío de datos está apagado; vamos a activarlo y elegir tu píxel.'),
+        passos: [L('Compra de teste.', 'Compra de prueba.'), L('Ativar compartilhamento, nível e Pixel.', 'Activar compartir, nivel y píxel.'), L('Nova compra.', 'Nueva compra.')],
+        encaminhar: L('Se o canal Facebook e Instagram não abre ou dá erro dentro da Shopify, oriente o cliente a falar com o suporte da Shopify.', 'Si el canal Facebook e Instagram no abre o da error dentro de Shopify, orienta al cliente a hablar con el soporte de Shopify.')
+      }
+    }),
+    caso({ id: '03', min: 10,
+      titulo: L('Produto que não sincroniza e produto com problema', 'Producto que no se sincroniza y producto con problema'),
+      reclamacao: [
+        ['marina', L('Quero vender a Ecobag no Instagram e ela não chega à Meta. E o canal diz que tem “1 produto com problema”. Que problema?! 😵', '¡Quiero vender la Ecobag en Instagram y no llega a Meta! Y el canal dice que hay “1 producto con problema”. ¡¿Qué problema?! 😵')],
+        ['rafa', L('Dois casos em um: um produto fora do canal e outro sem um dado obrigatório. Vamos resolver os dois na Shopify.', 'Dos casos en uno: un producto fuera del canal y otro sin un dato obligatorio. Resolvamos los dos en Shopify.')]
+      ],
+      objetivo: L('Tornar a Ecobag disponível no canal, completar a categoria da Camiseta e confirmar 0 produtos com problema.', 'Hacer la Ecobag disponible en el canal, completar la categoría de la Camiseta y confirmar 0 productos con problema.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Posso arrumar no Gerenciador de Comércio?', '¿Puedo arreglarlo en el Administrador de comercio?')],
+          ['rafa', L('Com a Shopify conectada, os produtos se editam na Shopify. O que for mudado na Meta é substituído na próxima sincronização.', 'Con Shopify conectada, los productos se editan en Shopify. Lo que se cambie en Meta se reemplaza en la próxima sincronización.')],
+          ['pixel', L('O status dos produtos, no canal, mostra quantos sincronizaram e quantos têm problema. É ali que se confere o resultado.', 'El estado de los productos, en el canal, muestra cuántos se sincronizaron y cuántos tienen problema. Ahí se verifica el resultado.')]
+        ],
+        pontos: [
+          L('<b>Disponibilidade:</b> o produto precisa estar no canal Facebook e Instagram.', '<b>Disponibilidad:</b> el producto debe estar en el canal Facebook e Instagram.'),
+          L('<b>Dados:</b> imagem e categoria preenchidas.', '<b>Datos:</b> imagen y categoría completas.'),
+          L('<b>Prova:</b> status com 0 produtos com problema.', '<b>Prueba:</b> estado con 0 productos con problema.')
+        ]
+      },
+      ferramenta: 'sinc-shop',
+      praticar: { texto: L('No admin da Shopify de treino, você deixa a Ecobag disponível no canal, completa a categoria da Camiseta e confere o status.', 'En el admin de Shopify de práctica, dejas la Ecobag disponible en el canal, completas la categoría de la Camiseta y verificas el estado.'), tour: 'sincronizar-produtos', pagina: 'admin-shopify.html' },
+      atender: {
+        cena: L('O canal da Meta na Shopify diz que tenho produto com problema, mas não diz qual. O que eu faço?', 'El canal de Meta en Shopify dice que tengo un producto con problema, pero no dice cuál. ¿Qué hago?'),
+        opcoes: [
+          op(true, L('“No canal Facebook e Instagram, em Ver produtos, aparece qual é e o que falta (por exemplo, a categoria). A correção é feita na Shopify; depois o status volta a 0 com problema.”', '“En el canal Facebook e Instagram, en Ver productos, aparece cuál es y qué falta (por ejemplo, la categoría). La corrección se hace en Shopify; después el estado vuelve a 0 con problema.”'), L('Isso! Onde ver e onde corrigir.', '¡Eso! Dónde ver y dónde corregir.')),
+          op(false, L('“Corrija no Gerenciador de Comércio.”', '“Corrige en el Administrador de comercio.”'), L('A próxima sincronização desfaz.', 'La próxima sincronización lo deshace.')),
+          op(false, L('“Ignore, é só um aviso.”', '“Ignóralo, es solo un aviso.”'), L('Produto com problema pode ficar fora dos anúncios.', 'Un producto con problema puede quedar fuera de los anuncios.')),
+          op(false, L('“Apague o produto.”', '“Borra el producto.”'), L('Basta completar o dado que falta.', 'Basta completar el dato que falta.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O produto está disponível no canal?', '¿El producto está disponible en el canal?'), L('Qual dado falta (imagem, categoria)?', '¿Qué dato falta (imagen, categoría)?'), L('O status do canal mostra quantos com problema?', '¿El estado del canal muestra cuántos con problema?')],
+        conferir: [L('Admin da Shopify › Produtos e Facebook e Instagram › Ver produtos.', 'Admin de Shopify › Productos y Facebook e Instagram › Ver productos.')],
+        frase: L('Vamos deixar o produto disponível no canal e completar o dado que falta, tudo na Shopify.', 'Vamos a dejar el producto disponible en el canal y completar el dato que falta, todo en Shopify.'),
+        passos: [L('Disponibilidade.', 'Disponibilidad.'), L('Categoria.', 'Categoría.'), L('Status do canal.', 'Estado del canal.')],
+        encaminhar: L('Se o erro for de um app da própria Shopify, oriente o cliente a falar com o suporte da Shopify.', 'Si el error es de una app de la propia Shopify, orienta al cliente a hablar con el soporte de Shopify.')
+      }
+    })
+  ]);
+
+  /* ================= Contas e portfólio ================= */
+  poe('dg-contas', [
+    caso({ id: '01', min: 8,
+      titulo: L('A Página não aparece ao conectar a loja', 'La Página no aparece al conectar la tienda'),
+      reclamacao: [
+        ['marina', L('Fui conectar a Shopify com a Meta e, na hora de escolher a Página, a lista está vazia! A minha Página existe! 😡', '¡Fui a conectar Shopify con Meta y, a la hora de elegir la Página, la lista está vacía! ¡Mi Página existe! 😡')],
+        ['rafa', L('Na janela de conexão, a lista de Páginas depende do portfólio escolhido. Vamos refazer o caminho e ver qual foi.', 'En la ventana de conexión, la lista de Páginas depende del portafolio elegido. Rehagamos el camino y veamos cuál fue.')]
+      ],
+      objetivo: L('Reproduzir o erro (portfólio errado), trocar para o portfólio dono da Página e concluir a conexão.', 'Reproducir el error (portafolio equivocado), cambiar al portafolio dueño de la Página y concluir la conexión.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Eu escolhi o primeiro portfólio que apareceu…', 'Elegí el primer portafolio que apareció…')],
+          ['rafa', L('Esse é o erro mais comum: escolher o portfólio pessoal. A Página só aparece se o portfólio escolhido for o dono dela.', 'Ese es el error más común: elegir el portafolio personal. La Página solo aparece si el portafolio elegido es su dueño.')],
+          ['pixel', L('E quem conecta precisa ter controle total do portfólio e da Página.', 'Y quien conecta necesita control total del portafolio y de la Página.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> lista de Páginas vazia na janela de conexão.', '<b>Señal:</b> lista de Páginas vacía en la ventana de conexión.'),
+          L('<b>Causa:</b> portfólio que não é o dono da Página.', '<b>Causa:</b> portafolio que no es el dueño de la Página.'),
+          L('<b>Prova:</b> a Shopify mostra portfólio e Página conectados.', '<b>Prueba:</b> Shopify muestra portafolio y Página conectados.')
+        ]
+      },
+      ferramenta: 'conectar-mbe',
+      praticar: { texto: L('Você abre a janela de conexão pela Shopify, repete o erro do portfólio pessoal, troca para o certo e conclui.', 'Abres la ventana de conexión desde Shopify, repites el error del portafolio personal, cambias al correcto y concluyes.'), tour: 'conectar-extensao', pagina: 'admin-shopify.html' },
+      atender: {
+        cena: L('Na hora de conectar, minha Página não aparece. Vocês apagaram minha Página?', 'A la hora de conectar, mi Página no aparece. ¿Borraron mi Página?'),
+        opcoes: [
+          op(true, L('“Sua Página está lá. A lista mostra só as Páginas do portfólio escolhido. Vamos voltar e escolher o portfólio da empresa, que é o dono da Página.”', '“Tu Página está ahí. La lista muestra solo las Páginas del portafolio elegido. Volvamos y elijamos el portafolio de la empresa, que es el dueño de la Página.”'), L('Isso! Tranquiliza e corrige.', '¡Eso! Tranquiliza y corrige.')),
+          op(false, L('“Crie uma Página nova.”', '“Crea una Página nueva.”'), L('Ela perde seguidores e o problema continua.', 'Pierde seguidores y el problema sigue.')),
+          op(false, L('“É erro da Shopify.”', '“Es error de Shopify.”'), L('Não é: é a escolha do portfólio.', 'No lo es: es la elección del portafolio.')),
+          op(false, L('“Me dê acesso ao seu Facebook.”', '“Dame acceso a tu Facebook.”'), L('Nunca peça acesso à conta pessoal.', 'Nunca pidas acceso a la cuenta personal.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual portfólio foi escolhido na janela?', '¿Qué portafolio se eligió en la ventana?'), L('Esse portfólio é o dono da Página?', '¿Ese portafolio es el dueño de la Página?'), L('Quem conecta tem controle total?', '¿Quien conecta tiene control total?')],
+        conferir: [L('Janela de conexão da Meta (pela Shopify) e Configurações do portfólio › Páginas.', 'Ventana de conexión de Meta (desde Shopify) y Configuración del portafolio › Páginas.')],
+        frase: L('A Página aparece quando escolhemos o portfólio que é dono dela; vamos refazer com o portfólio certo.', 'La Página aparece cuando elegimos el portafolio que es su dueño; rehagámoslo con el portafolio correcto.'),
+        passos: [L('Abrir a janela.', 'Abrir la ventana.'), L('Portfólio da empresa.', 'Portafolio de la empresa.'), L('Página e Concluir.', 'Página y Concluir.')],
+        encaminhar: L('Se a Página estiver no portfólio de outra pessoa ou agência, oriente o cliente a pedir que a removam de lá ou que compartilhem o acesso.', 'Si la Página está en el portafolio de otra persona o agencia, orienta al cliente a pedir que la quiten de allí o que compartan el acceso.')
+      }
+    }),
+    caso({ id: '02', min: 10,
+      titulo: L('A Página está presa em outro portfólio', 'La Página está atrapada en otro portafolio'),
+      reclamacao: [
+        ['marina', L('Criei um portfólio novo e não consigo colocar a Página da loja nele! Dá erro! 😤', '¡Creé un portafolio nuevo y no logro poner la Página de la tienda en él! ¡Da error! 😤')],
+        ['rafa', L('Uma Página só pode pertencer a um portfólio. Se ela já está em outro, primeiro sai de lá. Vamos ver onde ela está.', 'Una Página solo puede pertenecer a un portafolio. Si ya está en otro, primero sale de allí. Veamos dónde está.')]
+      ],
+      objetivo: L('Ler o erro, achar a Página no portfólio antigo, remover de lá (sem excluir do Facebook) e adicionar no novo.', 'Leer el error, hallar la Página en el portafolio antiguo, quitarla de allí (sin eliminarla de Facebook) y agregarla en el nuevo.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Remover a Página não apaga ela?', '¿Quitar la Página no la borra?')],
+          ['rafa', L('Não: remover do portfólio só tira a Página daquela “pasta”. Ela continua no Facebook, com seguidores e posts.', 'No: quitar del portafolio solo saca la Página de esa “carpeta”. Sigue en Facebook, con seguidores y posts.')],
+          ['pixel', L('Se o outro portfólio é da própria cliente, ela remove e adiciona. Se é de agência ou de outra pessoa, ela pede para removerem ou para compartilharem o acesso.', 'Si el otro portafolio es de la propia clienta, ella quita y agrega. Si es de una agencia o de otra persona, pide que la quiten o que compartan el acceso.')]
+        ],
+        pontos: [
+          L('<b>Regra:</b> um ativo, um portfólio dono.', '<b>Regla:</b> un activo, un portafolio dueño.'),
+          L('<b>Correção:</b> remover do antigo, adicionar no novo.', '<b>Corrección:</b> quitar del antiguo, agregar en el nuevo.'),
+          L('<b>Prova:</b> a Página aparece no portfólio novo e sumiu do antigo.', '<b>Prueba:</b> la Página aparece en el portafolio nuevo y desapareció del antiguo.')
+        ]
+      },
+      ferramenta: 'de-quem-e',
+      praticar: { texto: L('Nas Configurações do portfólio de treino, você tenta adicionar, lê o erro, vai ao portfólio antigo, remove a Página e adiciona no novo.', 'En la Configuración del portafolio de práctica, intentas agregar, lees el error, vas al portafolio antiguo, quitas la Página y la agregas en el nuevo.'), tour: 'pagina-outro-portfolio', pagina: 'meta-portfolio.html' },
+      atender: {
+        cena: L('Diz que minha Página já pertence a outro portfólio. Mas a Página é minha!', 'Dice que mi Página ya pertenece a otro portafolio. ¡Pero la Página es mía!'),
+        opcoes: [
+          op(true, L('“Ela é sua, sim; só está guardada em outro portfólio, e cada Página só pode estar em um. Se o outro portfólio também é seu, removemos de lá (ela não é excluída) e adicionamos no novo. Se for de uma agência, eles precisam remover.”', '“Es tuya, sí; solo está guardada en otro portafolio, y cada Página solo puede estar en uno. Si el otro portafolio también es tuyo, la quitamos de allí (no se elimina) y la agregamos en el nuevo. Si es de una agencia, ellos deben quitarla.”'), L('Isso! Regra clara e os dois caminhos.', '¡Eso! Regla clara y los dos caminos.')),
+          op(false, L('“Exclua o portfólio antigo.”', '“Elimina el portafolio antiguo.”'), L('Exclusão é definitiva e desnecessária: basta remover a Página.', 'La eliminación es definitiva e innecesaria: basta quitar la Página.')),
+          op(false, L('“Crie uma Página nova para o portfólio novo.”', '“Crea una Página nueva para el portafolio nuevo.”'), L('Perde seguidores; a Página certa pode mudar de portfólio.', 'Pierde seguidores; la Página correcta puede cambiar de portafolio.')),
+          op(false, L('“Não tem como mudar.”', '“No hay cómo cambiar.”'), L('Tem: remover de um e adicionar no outro.', 'Sí hay: quitar de uno y agregar en el otro.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Em qual portfólio a Página está hoje?', '¿En qué portafolio está hoy la Página?'), L('Esse portfólio é da cliente?', '¿Ese portafolio es de la clienta?'), L('Ela tem controle total nos dois?', '¿Tiene control total en los dos?')],
+        conferir: [L('Configurações do portfólio › Contas › Páginas (nos dois portfólios).', 'Configuración del portafolio › Cuentas › Páginas (en los dos portafolios).')],
+        frase: L('Cada Página fica em um portfólio só; vamos tirá-la do antigo, sem excluir, e colocar no novo.', 'Cada Página queda en un solo portafolio; vamos a quitarla del antiguo, sin eliminarla, y ponerla en el nuevo.'),
+        passos: [L('Ler o erro.', 'Leer el error.'), L('Remover do antigo.', 'Quitar del antiguo.'), L('Adicionar no novo.', 'Agregar en el nuevo.')],
+        encaminhar: L('Se o portfólio antigo for de alguém que não responde e a cliente não tem acesso, oriente-a a usar a opção de solicitar acesso à Página e acompanhar pela Central de Ajuda.', 'Si el portafolio antiguo es de alguien que no responde y la clienta no tiene acceso, oriéntala a usar la opción de solicitar acceso a la Página y seguir por el Centro de ayuda.')
+      }
+    })
+  ]);
 })();

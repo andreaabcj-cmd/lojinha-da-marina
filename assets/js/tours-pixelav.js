@@ -68,7 +68,7 @@
 
   /* ============ 3) API de Conversões e desduplicação — Aula 03 ============ */
   TOURS['desduplicar-eventos'] = [].concat(
-    [{ antes: preset('capi-sem-eventid'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('capi-sem-eventid'), tit: t('Caio: “as compras dobraram”', 'Caio: “las compras se duplicaron”'), txt: dep(t('O cliente ligou a API de Conversões e agora vê o dobro de compras. Faça uma compra de teste.', 'El cliente activó la API de Conversiones y ahora ve el doble de compras. Haz una compra de prueba.')) }],
+    [{ antes: preset('capi-sem-eventid'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('capi-sem-eventid'), tit: t('Marina: “as compras dobraram”', 'Marina: “las compras se duplicaron”'), txt: dep(t('A Marina ligou a API de Conversões e agora vê o dobro de compras. Faça uma compra de teste.', 'Marina activó la API de Conversiones y ahora ve el doble de compras. Haz una compra de prueba.')) }],
     H.compra(),
     H.obrigadoLer(dep(t('Uma compra só. Veja como a Meta contou.', 'Una sola compra. Mira cómo contó Meta.'))),
     menuDs(),

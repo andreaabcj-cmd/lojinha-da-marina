@@ -228,9 +228,25 @@
       ['colar-codigo-compra', 'meta-eventos.html', 'dg-pixel', '02', { pt: 'Como colar o código do Purchase com valor e moeda', es: 'Cómo pegar el código del Purchase con valor y moneda' }],
       ['corrigir-duplicado', 'loja.html', 'dg-pixel', '03', { pt: 'Como achar e corrigir compras em dobro (Shopify: app + código manual)', es: 'Cómo hallar y corregir compras dobles (Shopify: app + código manual)' }],
       ['corrigir-valor', 'loja.html', 'dg-pixel', '03', { pt: 'Como corrigir o valor e a moeda do Purchase', es: 'Cómo corregir el valor y la moneda del Purchase' }],
-      ['caso-queda', 'loja.html', 'dg-pixel', '04', { pt: 'Como investigar uma queda de eventos depois da troca de tema', es: 'Cómo investigar una caída de eventos después del cambio de tema' }] ] },
+      ['caso-queda', 'loja.html', 'dg-pixel', '04', { pt: 'Como investigar uma queda de eventos depois da troca de tema', es: 'Cómo investigar una caída de eventos después del cambio de tema' }],
+      ['desduplicar-eventos', 'loja.html', 'dg-pixel', '05', { pt: 'Como resolver compras em dobro com Pixel + API de Conversões (event_id)', es: 'Cómo resolver compras dobles con píxel + API de Conversiones (event_id)' }],
+      ['purchase-cabecalho', 'loja.html', 'dg-pixel', '06', { pt: 'Como resolver o Purchase que dispara em todas as páginas', es: 'Cómo resolver el Purchase que se dispara en todas las páginas' }] ] },
     { m: 'dg-integracoes', itens: [
-      ['plataforma-conectada', 'loja.html', 'dg-integracoes', '01', { pt: 'Como investigar uma plataforma conectada em que a compra some (níveis de dados)', es: 'Cómo investigar una plataforma conectada en la que la compra desaparece (niveles de datos)' }] ] },
+      ['plataforma-conectada', 'loja.html', 'dg-integracoes', '01', { pt: 'Como investigar uma plataforma conectada em que a compra some (níveis de dados)', es: 'Cómo investigar una plataforma conectada en la que la compra desaparece (niveles de datos)' }],
+      ['shopify-sem-pixel', 'loja.html', 'dg-integracoes', '02', { pt: 'Como resolver Shopify conectada sem compras chegando (canal sem Pixel)', es: 'Cómo resolver Shopify conectada sin compras llegando (canal sin píxel)' }],
+      ['sincronizar-produtos', 'admin-shopify.html', 'dg-integracoes', '03', { pt: 'Como resolver produto que não sincroniza e produto com problema', es: 'Cómo resolver producto que no se sincroniza y producto con problema' }] ] },
+    { m: 'dg-anuncios', itens: [
+      ['nao-veicula', 'meta-entrega.html?problema=1', 'dg-anuncios', '01', { pt: 'Como investigar anúncios que não rodam (Veiculação nos três níveis)', es: 'Cómo investigar anuncios que no corren (Entrega en los tres niveles)' }],
+      ['resolver-publicacao', 'meta-turbinar.html?zerar=1&problemas=1', 'dg-anuncios', '02', { pt: 'Como resolver o botão Publicar apagado (telefone, limite, saldo)', es: 'Cómo resolver el botón Publicar apagado (teléfono, límite, saldo)' }] ] },
+    { m: 'dg-catalogo', itens: [
+      ['produtos-sumidos', 'admin-shopify.html', 'dg-catalogo', '01', { pt: 'Como resolver produtos da Shopify que não aparecem na Meta', es: 'Cómo resolver productos de Shopify que no aparecen en Meta' }],
+      ['catalogo-problemas', 'meta-catalogo.html?exemplo=1', 'dg-catalogo', '02', { pt: 'Como resolver itens com erro ou rejeitados no catálogo', es: 'Cómo resolver artículos con error o rechazados en el catálogo' }] ] },
+    { m: 'dg-instagram', itens: [
+      ['perfil-nao-aparece', 'meta-feed.html?igsem=1', 'dg-instagram', '01', { pt: 'Como investigar o Instagram que não aparece no anúncio', es: 'Cómo investigar el Instagram que no aparece en el anuncio' }],
+      ['conectar-instagram', 'meta-portfolio.html?exemplo=1&aula=ig4', 'dg-instagram', '01', { pt: 'Como ligar o Instagram no portfólio', es: 'Cómo vincular el Instagram en el portafolio' }] ] },
+    { m: 'dg-contas', itens: [
+      ['conectar-extensao', 'admin-shopify.html', 'dg-contas', '01', { pt: 'Como resolver a Página que não aparece ao conectar a loja', es: 'Cómo resolver la Página que no aparece al conectar la tienda' }],
+      ['pagina-outro-portfolio', 'meta-portfolio.html', 'dg-contas', '02', { pt: 'Como tirar a Página de outro portfólio e colocar no novo', es: 'Cómo sacar la Página de otro portafolio y ponerla en el nuevo' }] ] },
     { m: 'segmentacao', itens: [
       ['criar-publico-site', 'meta-publicos.html?zerar=1', 'segmentacao', '02', { pt: 'Como criar um público de quem visitou o site', es: 'Cómo crear un público de quien visitó el sitio' }],
       ['criar-semelhante', 'meta-publicos.html?exemplo=1', 'segmentacao', '03', { pt: 'Como criar um público semelhante', es: 'Cómo crear un público similar' }],

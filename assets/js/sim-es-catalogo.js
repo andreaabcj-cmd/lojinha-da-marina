@@ -81,7 +81,33 @@
     'Idioma padrão:': 'Idioma predeterminado:', 'País padrão:': 'País predeterminado:', 'Clique em Editar para atualizar': 'Haz clic en "Editar" para actualizar', 'Idioma padrão': 'Idioma predeterminado', 'País padrão': 'País predeterminado', 'Selecione': 'Selecciona', 'Português (Brasil)': 'Portugués (Brasil)', 'Espanhol (América Latina)': 'Español (Latinoamérica)', 'Inglês (EUA)': 'Inglés (EE. UU.)', 'Brasil': 'Brasil', 'México': 'México', 'Colômbia': 'Colombia', 'Salvar': 'Guardar',
     'Permissões': 'Permisos', 'Gerencie quem tem acesso ao seu catálogo.': 'Administra quién tiene acceso a tu catálogo.', '2 pessoas têm acesso ao seu catálogo · Permissões automáticas ativadas para seu catálogo': '2 personas tienen acceso a tu catálogo · Los permisos automáticos están activados para tu catálogo',
     'Produtos no Instagram e Facebook': 'Productos en Instagram y Facebook', 'Gerencie quais produtos aparecem para as pessoas adicionarem ao próprio conteúdo. Elas ainda poderão adicionar seus produtos diretamente usando um URL.': 'Administra qué productos aparecen para que las personas los agreguen a su contenido. Las personas podrán seguir agregando tus productos directamente con una URL.',
-    'Contas impedidas de adicionar produtos: 0 contas do Instagram • 0 contas do Facebook': 'Cuentas que no pueden agregar productos: 0 cuentas de Instagram • 0 cuentas de Facebook', 'Termos e Condições': 'Términos y condiciones', 'Você aceitou o Acordo do Vendedor da Meta.': 'Aceptaste el Acuerdo del vendedor de Meta.', 'ID': 'ID', '∞ Meta': '∞ Meta'
+    'Contas impedidas de adicionar produtos: 0 contas do Instagram • 0 contas do Facebook': 'Cuentas que no pueden agregar productos: 0 cuentas de Instagram • 0 cuentas de Facebook', 'Termos e Condições': 'Términos y condiciones', 'Você aceitou o Acordo do Vendedor da Meta.': 'Aceptaste el Acuerdo del vendedor de Meta.', 'ID': 'ID', '∞ Meta': '∞ Meta',
+    /* aba Problemas (Diagnóstico · Catálogo 02, 19/10/2026; termos do padrão da Meta em espanhol, a conferir) */
+    'Problemas': 'Problemas',
+    'Veja o que impede os itens de aparecer nos anúncios e na loja e como corrigir.': 'Mira qué impide que los artículos aparezcan en los anuncios y en la tienda, y cómo corregirlo.',
+    '● Erro': '● Error',
+    '▲ Aviso': '▲ Advertencia',
+    'Imagem inválida': 'Imagen no válida',
+    'Rejeitado: não segue as Políticas de Comércio': 'Rechazado: no cumple las Políticas de comercio',
+    'Falta a categoria do Google': 'Falta la categoría de Google',
+    'Revisar': 'Revisar',
+    'Fechar': 'Cerrar',
+    'Nenhum problema.': 'Ningún problema.',
+    'Nenhum erro impedindo itens': 'Ningún error impide artículos',
+    '⚠ Aba montada pela Central de Ajuda da Meta · a conferir com a tela real': '⚠ Pestaña armada con el Centro de ayuda de Meta · por confirmar con la pantalla real',
+    'O link da imagem não abre (a página devolve erro). Sem imagem válida, o item não aparece nos anúncios nem na loja.': 'El enlace de la imagen no abre (la página devuelve un error). Sin una imagen válida, el artículo no aparece en los anuncios ni en la tienda.',
+    'Como corrigir:': 'Cómo corregirlo:',
+    'o item vem do arquivo de dados (o site). Corrija o link da imagem na fonte e atualize a fonte de dados; a correção chega na próxima atualização.': 'el artículo viene del archivo de datos (el sitio). Corrige el enlace de la imagen en la fuente y actualiza la fuente de datos; la corrección llega en la próxima actualización.',
+    '🧪': '🧪',
+    'Só no simulador:': 'Solo en el simulador:',
+    'a imagem do Moletom já foi corrigida no site': 'la imagen del Buzo ya se corrigió en el sitio',
+    'Ir para Fontes de dados': 'Ir a Fuentes de datos',
+    'O item foi rejeitado na análise de política. É um boné comum, então a rejeição parece engano.': 'El artículo fue rechazado en la revisión de políticas. Es una gorra común, así que el rechazo parece un error.',
+    'Se o item foi rejeitado por engano, peça outra análise. Se ele realmente não segue as políticas, edite o item na fonte ou remova.': 'Si el artículo se rechazó por error, pide otra revisión. Si realmente no cumple las políticas, edita el artículo en la fuente o elimínalo.',
+    'Solicitar outra análise': 'Solicitar otra revisión',
+    'Outra análise solicitada. O item é revisado de novo; enquanto isso, ele continua fora dos anúncios e da loja.': 'Se solicitó otra revisión. El artículo se revisa de nuevo; mientras tanto, sigue fuera de los anuncios y de la tienda.',
+    'Sem a categoria do produto, o item aparece, mas pode ser menos relevante.': 'Sin la categoría del producto, el artículo aparece, pero puede ser menos relevante.',
+    'Avisos não impedem o item de aparecer, mas podem piorar a qualidade do catálogo.': 'Las advertencias no impiden que el artículo aparezca, pero pueden empeorar la calidad del catálogo.',
   };
   for (var k in A) D[k] = A[k];
   var n = function (x) { return x };
@@ -93,4 +119,7 @@
   P.push([/^(\d+) variantes$/, function (m) { return m[1] + ' variantes' }]);
   P.push([/^Visibilidade do produto: Todos os produtos · (\d+) produtos$/, function (m) { return 'Visibilidad del producto: Todos los productos · ' + m[1] + ' productos' }]);
   P.push([/^(US\$|R\$)([\d,.]+)$/, function (m) { return m[1] + m[2] }]);
+  P.push([/^(\d+) erros?$/, function (m) { return m[1] + (m[1] === '1' ? ' error' : ' errores') }]);
+  P.push([/^· (\d+) avisos?(?: · (\d+) em análise)?$/, function (m) { return '· ' + m[1] + (m[1] === '1' ? ' advertencia' : ' advertencias') + (m[2] ? ' · ' + m[2] + ' en revisión' : '') }]);
+  P.push([/^(.+) · em análise$/, function (m) { return m[1] + ' · en revisión' }]);
 })();

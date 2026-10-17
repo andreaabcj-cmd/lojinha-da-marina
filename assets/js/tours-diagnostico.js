@@ -188,5 +188,21 @@
     eventosTeste(dep(t('O PageView voltou a chegar.', 'El PageView volvió a llegar.')), false),
     [final(t('Eventos de volta 🎉', '¡Eventos de vuelta! 🎉'), t('Causa: o código base do Pixel foi removido do cabeçalho na troca de tema. Solução: reinstalar no head de todas as páginas e testar. Prevenção: combine com o desenvolvedor de conferir o Pixel depois de cada mudança no cabeçalho do site.', 'Causa: el código base del píxel se eliminó del encabezado en el cambio de tema. Solución: reinstalarlo en el head de todas las páginas y probar. Prevención: acuerda con el desarrollador revisar el píxel después de cada cambio en el encabezado del sitio.'), '[data-t=feed]', P.eventos)]
   );
+  /* “Salve” no editor só vale com o arquivo certo e o texto certo: se a página recarregou antes de salvar, o texto colado se perde
+     (teste teimoso de 19/10). O passo Salvar herda a conferência do passo de edição anterior e deixa colar de novo ali mesmo. */
+  function reforcaSalvar() {
+    Object.keys(TOURS).forEach(function (k) {
+      if (/^trilho-/.test(k)) return; var L = TOURS[k]; if (!Array.isArray(L)) return;
+      L.forEach(function (s, i) {
+        var a = L[i - 1]; if (!s || s.valida || s.alvo !== '[data-t=btn-salvar]' || !s.clique || !a || a.alvo !== '[data-t=ed-texto]' || !a.cond) return;
+        var g = null; for (var j = i - 1; j >= 0 && L[j].alvo === '[data-t=ed-texto]'; j--) if (L[j].garante) { g = L[j].garante; break }
+        s.valida = function () { try { return !!a.cond() } catch (e) { return false } };
+        s.livre = '#aeTexto, [data-f]';
+        s.erro = t('O arquivo ainda não está como pedido. Confira o arquivo aberto e o texto (se a página recarregou, cole de novo) e depois salve.', 'El archivo todavía no está como se pidió. Revisa el archivo abierto y el texto (si la página se recargó, pega de nuevo) y después guarda.');
+        if (g && !s.garante) s.garante = g;
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', reforcaSalvar); else setTimeout(reforcaSalvar, 0);
   window.TOURS_H = { t: t, P: P, aqui: aqui, preset: preset, hash: hash, irDs: irDs, dep: dep, compra: compra, obrigadoLer: obrigadoLer, consultor: consultor, consultorVazio: consultorVazio, eventosTeste: eventosTeste, eventosDiag: eventosDiag, fonteBuscar: fonteBuscar, limparViaEventos: limparViaEventos, limparEventosPrimeiro: limparEventosPrimeiro, abrirLojaHome: abrirLojaHome, final: final, ctxt: ctxt, FIM: FIM };   // usado por tours-pixelav.js
 })();
