@@ -155,7 +155,7 @@
   });
   window.addEventListener('hashchange', render);
   function render() { var r = rota(); $('#app').innerHTML = (TELAS[r] || TELAS.posts)(); window.__simTb = { S: S, M: M } }
-  window.SIMTB = { vai: vai, estado: function () { return { S: S, M: M } }, problemas: function (q) { if (!S.limite && !S.publicado) { problemasIniciais() } if (q) { if (q.tel) S.tel = true; if (q.limite && S.limite) S.limite.max = 50; if (q.saldo) S.saldo = 13 } grava() } };
+  window.SIMTB = { vai: vai, estado: function () { return { S: S, M: M } }, problemas: function (q) { problemasIniciais(); if (!(q && q.saldo)) S.publicado = false; if (q) { if (q.tel) S.tel = true; if (q.limite && S.limite) S.limite.max = 50; if (q.saldo) S.saldo = 13 } grava() } };
   if (params.get('tour') === 'resolver-publicacao' || params.get('tour') === 'turbinar-post' && false) { if (rota() === 'posts') location.hash = 'turbinar' }   // este tutorial começa na tela do Turbinar
   render();
 

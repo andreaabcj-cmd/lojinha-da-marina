@@ -51,7 +51,7 @@
     if (ac === 'ativar') { grava(function (x) { x.plugin = 'ativo' }); msg = T('Plugin ativado.', 'Plugin activado.'); render() }
     else if (ac === 'desativar') { grava(function (x) { x.plugin = 'inativo' }); msg = T('Plugin desativado.', 'Plugin desactivado.'); render() }
     else if (ac === 'atualizar') { grava(function (x) { x.atualizacao = false }); msg = T('Meta for WooCommerce atualizado para a versão 3.2.1.', 'Meta for WooCommerce actualizado a la versión 3.2.1.'); render() }
-    else if (ac === 'comecar') MBEJ.abrir({ plataforma: 'WooCommerce', campos: ['portfolio', 'pagina', 'conta', 'pixel', 'catalogo'] });
+    else if (ac === 'comecar') MBEJ.abrir({ plataforma: 'WooCommerce', loja: true, campos: ['portfolio', 'pagina', 'conta', 'pixel', 'catalogo'] });
     else if (ac === 'gerenciar') MBEJ.abrir({ plataforma: 'WooCommerce', modo: 'gerenciar', ativos: w().ativos });
     else if (ac === 'sync') { grava(function (x) { x.sincronizou = true }); render() }
   });

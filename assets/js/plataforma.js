@@ -253,9 +253,7 @@
       ['escolher-capi', 'meta-mbe.html?zerar=1', 'mbe', '04', { pt: 'Como escolher a configuração da API de Conversões', es: 'Cómo elegir la configuración de la API de Conversiones' }],
       ['dar-acesso-parceiro', 'meta-mbe.html?zerar=1', 'mbe', '06', { pt: 'Como dar acesso a um parceiro (agência)', es: 'Cómo dar acceso a un socio (agencia)' }] ] },
     { m: 'shop-ads-offsite', itens: [
-      ['jornada-compra-site', 'meta-checkoutsite.html?zerar=1', 'shop-ads-offsite', '01', { pt: 'Como é a jornada do anúncio das Lojas até a compra no site', es: 'Cómo es el recorrido del anuncio de Tiendas hasta la compra en el sitio' }],
-      ['pixel-e-catalogo', 'meta-checkoutsite.html?zerar=1', 'shop-ads-offsite', '02', { pt: 'Como conferir Pixel e catálogo (Content ID)', es: 'Cómo revisar píxel y catálogo (Content ID)' }],
-      ['achar-duplicacao', 'meta-checkoutsite.html?zerar=1', 'shop-ads-offsite', '03', { pt: 'Como achar e corrigir eventos de compra duplicados', es: 'Cómo encontrar y corregir eventos de compra duplicados' }],
+      ['jornada-compra-site', 'loja.html', 'shop-ads-offsite', '01', { pt: 'Como é a jornada do anúncio das Lojas até a compra no site', es: 'Cómo es el recorrido del anuncio de Tiendas hasta la compra en el sitio' }],
       ['comparar-terceiros', 'meta-checkoutsite.html?zerar=1', 'shop-ads-offsite', '04', { pt: 'Como explicar a diferença entre a Meta e o Google Analytics', es: 'Cómo explicar la diferencia entre Meta y Google Analytics' }],
       ['atualizar-loja-antiga', 'meta-checkoutsite.html?zerar=1', 'shop-ads-offsite', '05', { pt: 'Como atualizar uma loja que usava a finalização da compra na Meta', es: 'Cómo actualizar una tienda que usaba la finalización de compra en Meta' }] ] },
     { m: 'shop-ads', itens: [

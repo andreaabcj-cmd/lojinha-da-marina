@@ -3540,8 +3540,8 @@ window.AULAS = {
         },
         ferramenta: 'jornada-offsite',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelas 5 etapas da jornada e mostra os eventos do Pixel que aparecem em cada uma.', 'En el simulador, el Pixel te guía por las 5 etapas del recorrido y muestra los eventos del píxel que aparecen en cada una.'),
-          tour: 'jornada-compra-site', pagina: 'meta-checkoutsite.html?zerar=1'
+          texto: L('Você faz a jornada de um cliente na loja da Marina (abrir um produto, carrinho, pagamento) e vê no Gerenciador de Eventos os eventos que o Pixel mandou em cada etapa. O Pixel te guia.', 'Haces el recorrido de un cliente en la tienda de Marina (abrir un producto, carrito, pago) y ves en el Administrador de eventos los eventos que el píxel mandó en cada etapa. El Pixel te guía.'),
+          tour: 'jornada-compra-site', pagina: 'loja.html'
         },
         atender: {
           cena: L('Se a compra é no site, por que eu preciso de loja no Instagram? E quem trata meus pedidos? 😕', 'Si la compra es en el sitio, ¿por qué necesito una tienda en Instagram? ¿Y quién gestiona mis pedidos? 😕'),
@@ -3584,8 +3584,8 @@ window.AULAS = {
         },
         ferramenta: 'pixel-offsite',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelas 4 conferências e acha um Content ID diferente entre catálogo e site.', 'En el simulador, el Pixel te guía por las 4 revisiones y encuentra un Content ID distinto entre catálogo y sitio.'),
-          tour: 'pixel-e-catalogo', pagina: 'meta-checkoutsite.html?zerar=1'
+          texto: L('Você confere no catálogo a Identificação do conteúdo dos produtos, que precisa ser a mesma que o Pixel manda nos eventos. É o mesmo tutorial do módulo Catálogo. O Pixel te guia.', 'Compruebas en el catálogo el Identificador de contenido de los productos, que debe ser el mismo que el píxel manda en los eventos. Es el mismo tutorial del módulo Catálogo. El Pixel te guía.'),
+          tour: 'conferir-ids', pagina: 'meta-catalogo.html?exemplo=1'
         },
         atender: {
           cena: L('Os anúncios vendem, mas a Meta não mostra quais produtos foram comprados! 😠', '¡Los anuncios venden, pero Meta no muestra qué productos se compraron! 😠'),
@@ -3628,8 +3628,8 @@ window.AULAS = {
         },
         ferramenta: 'duplicacao-offsite',
         praticar: {
-          texto: L('No simulador, o Pixel te guia para ver dois eventos iguais, achar a origem e remover o do Gerenciador de tags do Google.', 'En el simulador, el Pixel te guía para ver dos eventos iguales, encontrar el origen y quitar el del Administrador de etiquetas de Google.'),
-          tour: 'achar-duplicacao', pagina: 'meta-checkoutsite.html?zerar=1'
+          texto: L('Uma loja Shopify com compras em dobro: você faz uma compra de teste, acha a duplicação (Gerenciador de Eventos e código-fonte) e remove o código manual do tema, deixando só o canal da Shopify. O Pixel te guia.', 'Una tienda Shopify con compras duplicadas: haces una compra de prueba, encuentras la duplicación (Administrador de eventos y código fuente) y quitas el código manual del tema, dejando solo el canal de Shopify. El Pixel te guía.'),
+          tour: 'corrigir-duplicado', pagina: 'loja.html'
         },
         atender: {
           cena: L('Meu ROAS está lindo, mas as vendas reais são metade! Vocês inflaram meus números! 😡', '¡Mi ROAS está lindo, pero las ventas reales son la mitad! ¡Inflaron mis números! 😡'),

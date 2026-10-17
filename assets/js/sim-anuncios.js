@@ -200,7 +200,7 @@
   window.addEventListener('hashchange', render);
   function render() { var r = rota(); if (!S.rasc && /^(camp|conj|anu|revisar)$/.test(r)) r = 'lista'; if (!S.pub && /^(editpub|editpub-conj|editpub-anu|pubok)$/.test(r)) r = 'lista'; $('#app').innerHTML = (TELAS[r] || TELAS.lista)(); window.__simGa = { S: S, O: O } }
   window.SIMGA = { vai: vai, estado: function () { return { S: S, O: O } },
-    pub: function (sel) { if (!S.pub) S.pub = pubInicial(); if (sel) S.pub.sel = true; grava() },
+    pub: function (sel) { if (!S.pub) S.pub = pubInicial(); if (sel === true) S.pub.sel = true; else if (sel === false) S.pub.sel = false; grava() },
     rascunho: function () { if (!S.rasc) { O.obj = 'Vendas'; S.camp.nome = 'Nova campanha de Vendas'; S.rasc = true; grava() } } };
   if (params.get('tour') === 'editar-publicado' && !S.pub) { S.pub = pubInicial(); grava() }
   if (params.get('tour') === 'conhecer-niveis') { SIMGA.rascunho(); if (rota() === 'lista') location.hash = 'camp' }   // este tutorial começa com um rascunho pronto
@@ -213,7 +213,7 @@
   TOURS['editar-publicado'] = [
     { alvo: '[data-t=linha-pub]', garante: function () { location.hash = 'lista' },
       tit: T('Uma campanha já rodando', 'Una campaña ya corriendo'), txt: T('Esta campanha já está publicada: o status é Ativo e ela está gastando R$ 5,27 por dia. Editar uma campanha que está no ar pede cuidado. Clique em Próximo.', 'Esta campaña ya está publicada: el estado es Activo y está gastando R$ 5,27 por día. Editar una campaña que está en el aire pide cuidado. Haz clic en Siguiente.') },
-    { alvo: '[data-t=chk-pub]', clique: true, garante: function () { SIMGA.pub(); location.hash = 'lista' }, tit: T('Marcar a campanha', 'Marcar la campaña'), txt: T('Para editar, primeiro marque a caixinha da campanha.', 'Para editar, primero marca la casilla de la campaña.') },
+    { alvo: '[data-t=chk-pub]', clique: true, garante: function () { SIMGA.pub(false); location.hash = 'lista' }, tit: T('Marcar a campanha', 'Marcar la campaña'), txt: T('Para editar, primeiro marque a caixinha da campanha.', 'Para editar, primero marca la casilla de la campaña.') },
     { alvo: '[data-t=btn-editar]', clique: true, garante: function () { SIMGA.pub(true); location.hash = 'lista' }, tit: T('Editar', 'Editar'), txt: T('Agora o botão Editar acendeu. Clique nele.', 'Ahora el botón Editar se encendió. Haz clic en él.') },
     { alvo: '[data-t=pub-fixos]', garante: function () { SIMGA.pub(); location.hash = 'editpub' }, tit: T('O que não muda', 'Lo que no cambia'), txt: T('Repare: Tipo de compra e Objetivo estão em cinza. Depois de publicada, a campanha não troca de objetivo. Se a Marina quisesse Vendas em vez de Engajamento, teria de criar uma campanha nova. Clique em Próximo.', 'Fíjate: Tipo de compra y Objetivo están en gris. Una vez publicada, la campaña no cambia de objetivo. Si Marina quisiera Ventas en vez de Interacción, tendría que crear una campaña nueva. Haz clic en Siguiente.') },
     { alvo: '[data-t=pub-orc]', garante: function () { SIMGA.pub(); location.hash = 'editpub' }, cond: function () { return Math.abs(ga().S.pub.edit - ga().S.pub.valor) > 0.001 },
