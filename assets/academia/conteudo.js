@@ -3852,8 +3852,8 @@ window.AULAS = {
         },
         ferramenta: 'conectar-mbe',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelas escolhas da janela do MBE até “Conectado”.', 'En el simulador, el Pixel te guía por las elecciones de la ventana del MBE hasta “Conectado”.'),
-          tour: 'conectar-extensao', pagina: 'meta-mbe.html?zerar=1'
+          texto: L('Você abre a janela do MBE de dentro da Shopify, vê o erro mais comum (o portfólio que não é dono da Página) e conecta do jeito certo. O Pixel te guia.', 'Abres la ventana del MBE desde dentro de Shopify, ves el error más común (el portafolio que no es dueño de la Página) y conectas de la forma correcta. El Pixel te guía.'),
+          tour: 'conectar-extensao', pagina: 'admin-shopify.html'
         },
         atender: {
           cena: L('Conectei, mas meu catálogo não apareceu, e ainda criei um Pixel novo por engano! 😰', '¡Conecté, pero mi catálogo no apareció, y además creé un píxel nuevo por error! 😰'),
@@ -3940,8 +3940,13 @@ window.AULAS = {
         },
         ferramenta: 'problemas-mbe',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por dois sintomas: “não chegam eventos” e “o catálogo não aparece”.', 'En el simulador, el Pixel te guía por dos síntomas: “no llegan eventos” y “el catálogo no aparece”.'),
-          tour: 'eventos-nao-chegam', pagina: 'meta-mbe.html?zerar=1'
+          texto: L('Dois sintomas. Escolha um e o Pixel te guia; faça os dois se quiser.', 'Dos síntomas. Elige uno y el Pixel te guía; haz los dos si quieres.'),
+          opcoes: [
+            { id: 'eventos', icone: '📡', pagina: 'loja.html', tour: 'plataforma-conectada', selo: L('mais comum', 'más común'),
+              tit: L('Os eventos não chegam', 'Los eventos no llegan'), txt: L('Fazer uma compra, ver que nada chega e ajustar o compartilhamento de dados na plataforma.', 'Hacer una compra, ver que no llega nada y ajustar compartir datos en la plataforma.') },
+            { id: 'catalogo', icone: '🗂️', pagina: 'admin-shopify.html', tour: 'produtos-sumidos',
+              tit: L('O catálogo não aparece', 'El catálogo no aparece'), txt: L('Achar os produtos que não estão disponíveis no canal e corrigir.', 'Encontrar los productos que no están disponibles en el canal y corregir.') }
+          ]
         },
         atender: {
           cena: L('A integração está quebrada! Desde que conectei, nada funciona! Quero cancelar tudo! 😡', '¡La integración está rota! ¡Desde que conecté, nada funciona! ¡Quiero cancelar todo! 😡'),
@@ -4076,8 +4081,8 @@ window.AULAS = {
         },
         ferramenta: 'woo-integ',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelos pré-requisitos e pelos 6 passos de conexão do WooCommerce.', 'En el simulador, el Pixel te guía por los requisitos previos y los 6 pasos de conexión de WooCommerce.'),
-          tour: 'conectar-woocommerce', pagina: 'meta-terceiros.html?zerar=1'
+          texto: L('Rita tem uma loja WooCommerce. Você ativa o plugin Meta for WooCommerce, abre Marketing › Facebook, conecta pela janela da Meta (portfólio, Página, conta de anúncios, Pixel e catálogo), sincroniza os produtos e confere com uma compra de teste. O Pixel te guia, no admin do WordPress.', 'Rita tiene una tienda WooCommerce. Activas el plugin Meta for WooCommerce, abres Marketing › Facebook, conectas por la ventana de Meta (portafolio, Página, cuenta publicitaria, píxel y catálogo), sincronizas los productos y compruebas con una compra de prueba. El Pixel te guía, en el admin de WordPress.'),
+          tour: 'conectar-woocommerce', pagina: 'admin-woo.html'
         },
         atender: {
           cena: L('Instalei o plugin, mas na hora de conectar não deixa! Que sistema horrível! 😠', '¡Instalé el plugin, pero a la hora de conectar no deja! ¡Qué sistema horrible! 😠'),
@@ -4120,8 +4125,13 @@ window.AULAS = {
         },
         ferramenta: 'diag-integ',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por duas mensagens reais do Diagnóstico: compras redundantes e nome de evento.', 'En el simulador, el Pixel te guía por dos mensajes reales del Diagnóstico: compras redundantes y nombre de evento.'),
-          tour: 'ler-diagnostico', pagina: 'meta-terceiros.html?zerar=1'
+          texto: L('Dois avisos reais do Diagnóstico. Escolha um e o Pixel te guia; faça os dois se quiser.', 'Dos avisos reales del Diagnóstico. Elige uno y el Pixel te guía; haz los dos si quieres.'),
+          opcoes: [
+            { id: 'redundante', icone: '🔁', pagina: 'loja.html', tour: 'corrigir-duplicado', selo: L('mais comum', 'más común'),
+              tit: L('Compras redundantes, vários eventos', 'Compras redundantes, varios eventos'), txt: L('Fazer uma compra, ler o aviso no Diagnóstico e achar a causa.', 'Hacer una compra, leer el aviso en el Diagnóstico y encontrar la causa.') },
+            { id: 'valor', icone: '💲', pagina: 'loja.html', tour: 'corrigir-valor',
+              tit: L('Valor e moeda inválidos', 'Valor y moneda inválidos'), txt: L('Ler os avisos de valor e moeda e corrigir o código.', 'Leer los avisos de valor y moneda y corregir el código.') }
+          ]
         },
         atender: {
           cena: L('O Diagnóstico está cheio de erro, a Meta está sabotando meu Pixel! 😡', '¡El Diagnóstico está lleno de errores, Meta está saboteando mi píxel! 😡'),
@@ -4208,8 +4218,8 @@ window.AULAS = {
         },
         ferramenta: 'manter-integ',
         praticar: {
-          texto: L('No simulador, o Pixel te guia para atualizar o plugin e desconectar cancelando a sincronização antes.', 'En el simulador, el Pixel te guía para actualizar el plugin y desconectar cancelando la sincronización antes.'),
-          tour: 'manter-desconectar', pagina: 'meta-terceiros.html?zerar=1'
+          texto: L('A integração da Rita está com o plugin desatualizado. Você atualiza o plugin, para a sincronização e desconecta pela janela da Meta. O Pixel te guia.', 'La integración de Rita tiene el plugin desactualizado. Actualizas el plugin, detienes la sincronización y desconectas por la ventana de Meta. El Pixel te guía.'),
+          tour: 'manter-desconectar', pagina: 'admin-woo.html'
         },
         atender: {
           cena: L('Desconectei o plugin e meus produtos continuam no catálogo da Meta! Eles roubaram meus dados? 😱', '¡Desconecté el plugin y mis productos siguen en el catálogo de Meta! ¿Robaron mis datos? 😱'),
@@ -4300,8 +4310,8 @@ window.AULAS = {
         },
         ferramenta: 'conectar-shop',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelos 5 pré-requisitos, pelos 7 passos e pelos ajustes de dados.', 'En el simulador, el Pixel te guía por los 5 requisitos previos, por los 7 pasos y por los ajustes de datos.'),
-          tour: 'conectar-shopify', pagina: 'meta-shopify.html?zerar=1'
+          texto: L('Davi tem uma loja Shopify nova. Você instala o canal Facebook e Instagram pelo App Store, conecta a conta na janela da Meta, aceita os termos, liga o compartilhamento de dados com o Pixel certo e confere com uma compra de teste. O Pixel te guia, nas telas do admin da Shopify.', 'Davi tiene una tienda Shopify nueva. Instalas el canal Facebook e Instagram desde la App Store, conectas la cuenta en la ventana de Meta, aceptas los términos, activas compartir datos con el píxel correcto y compruebas con una compra de prueba. El Pixel te guía, en las pantallas del admin de Shopify.'),
+          tour: 'conectar-shopify', pagina: 'admin-shopify.html'
         },
         atender: {
           cena: L('Instalei o app mas não consigo conectar! Minha loja ainda está em testes, com senha. 😕', '¡Instalé la app pero no puedo conectar! Mi tienda todavía está en pruebas, con contraseña. 😕'),
@@ -4344,8 +4354,8 @@ window.AULAS = {
         },
         ferramenta: 'onde-shop',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por três exemplos: pedidos, tempos de processamento e produtos com problemas.', 'En el simulador, el Pixel te guía por tres ejemplos: pedidos, tiempos de procesamiento y productos con problemas.'),
-          tour: 'onde-gerenciar', pagina: 'meta-shopify.html?zerar=1'
+          texto: L('Você passeia pelo admin da Shopify da Mari: Pedidos, Produtos, o canal Facebook e Instagram (envio e status dos produtos) e entende onde cada coisa é gerenciada. O Pixel te guia.', 'Recorres el admin de Shopify de la Mari: Pedidos, Productos, el canal Facebook e Instagram (envío y estado de los productos) y entiendes dónde se gestiona cada cosa. El Pixel te guía.'),
+          tour: 'onde-gerenciar', pagina: 'admin-shopify.html'
         },
         atender: {
           cena: L('Mudei o prazo de entrega no Gerenciador de Comércio e a loja continua mostrando o antigo! 😠', '¡Cambié el plazo de entrega en el Administrador de ventas y la tienda sigue mostrando el antiguo! 😠'),
@@ -4388,8 +4398,8 @@ window.AULAS = {
         },
         ferramenta: 'sinc-shop',
         praticar: {
-          texto: L('No simulador, o Pixel te guia: incluir um produto no canal, sincronizar e ver o redirecionamento ao tentar editar.', 'En el simulador, el Pixel te guía: incluir un producto en el canal, sincronizar y ver la redirección al intentar editar.'),
-          tour: 'sincronizar-produtos', pagina: 'meta-shopify.html?zerar=1'
+          texto: L('A Ecobag não chegou à Meta. Você abre o produto na Shopify, torna ele disponível no canal Facebook e Instagram, confere o status dos produtos e corrige o problema da Camiseta. O Pixel te guia.', 'La Ecobag no llegó a Meta. Abres el producto en Shopify, lo haces disponible en el canal Facebook e Instagram, revisas el estado de los productos y corriges el problema de la Camiseta. El Pixel te guía.'),
+          tour: 'sincronizar-produtos', pagina: 'admin-shopify.html'
         },
         atender: {
           cena: L('Mudei o preço da caneca no Gerenciador de Comércio e voltou para o antigo sozinho! 😡', '¡Cambié el precio de la taza en el Administrador de ventas y volvió al antiguo solo! 😡'),
@@ -4432,8 +4442,13 @@ window.AULAS = {
         },
         ferramenta: 'problemas-shop',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por três queixas: produtos sumidos, compras em dobro e pedidos.', 'En el simulador, el Pixel te guía por tres quejas: productos desaparecidos, compras duplicadas y pedidos.'),
-          tour: 'problemas-shopify', pagina: 'meta-shopify.html?zerar=1'
+          texto: L('Dois problemas comuns. Escolha um e o Pixel te guia; faça os dois se quiser.', 'Dos problemas comunes. Elige uno y el Pixel te guía; haz los dos si quieres.'),
+          opcoes: [
+            { id: 'produtos', icone: '🏷️', pagina: 'admin-shopify.html', tour: 'produtos-sumidos', selo: L('mais comum', 'más común'),
+              tit: L('Os produtos não aparecem na Meta', 'Los productos no aparecen en Meta'), txt: L('Filtrar na Shopify o que não está no canal e tornar disponível.', 'Filtrar en Shopify lo que no está en el canal y hacerlo disponible.') },
+            { id: 'dobro', icone: '🔁', pagina: 'loja.html', tour: 'corrigir-duplicado',
+              tit: L('As compras aparecem em dobro', 'Las compras aparecen duplicadas'), txt: L('Achar o código manual no tema e tirar, deixando só o canal.', 'Encontrar el código manual en el tema y quitarlo, dejando solo el canal.') }
+          ]
         },
         atender: {
           cena: L('Meus pedidos sumiram do Gerenciador de Comércio! Perdi tudo! 😱', '¡Mis pedidos desaparecieron del Administrador de ventas! ¡Perdí todo! 😱'),

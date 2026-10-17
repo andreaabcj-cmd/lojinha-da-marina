@@ -30,11 +30,19 @@
     return L.join('\n');
   }
   var DIN = '{{ pedido.total }}';   // valor dinâmico: o site coloca o total do pedido
+  /* produtos da loja Shopify de treino: fb = disponível no canal Facebook e Instagram; arq = arquivado; img/cat = dados que o Facebook exige (imagem e categoria do Google) */
+  function prods() {
+    return [{ id: 1, nome: 'Caneca azul', preco: 'R$ 49,90', fb: true, arq: false, img: true, cat: 'Casa e jardim > Cozinha' },
+      { id: 2, nome: 'Camiseta Montanha', preco: 'R$ 79,90', fb: true, arq: false, img: true, cat: '' },
+      { id: 3, nome: 'Ecobag Folha', preco: 'R$ 34,90', fb: false, arq: false, img: true, cat: 'Vestuário e acessórios > Bolsas' },
+      { id: 4, nome: 'Boné Azul', preco: 'R$ 59,90', fb: false, arq: true, img: true, cat: 'Vestuário e acessórios > Chapéus' }];
+  }
   function padrao() {
     var id = idCerto();
     return { ativo: false, caso: '', tipo: 'proprio', exigeConsent: false, ds: { am: true, capi: false },
       proprio: { cabecalho: base(id), obrigado: COMPRA(DIN, "'BRL'", 'Purchase', true) },
-      shopify: { app: { on: true, nivel: 'standard', pixel: 'certo' }, tema: tema('') },
+      shopify: { app: { on: true, nivel: 'standard', pixel: 'certo' }, tema: tema(''), canal: { instalado: true, conectado: true }, prods: prods() },
+      woo: { plugin: 'ativo', atualizacao: false, conectado: false, sync: true, sincronizou: false },
       visitante: { bloqueador: false } };
   }
   var PRESETS = {
@@ -45,6 +53,12 @@
     'pixel-errado': function (s) { s.caso = 'Eventos chegam em outro pixel'; s.proprio.cabecalho = base('000000000000000'); return s },
     'bloqueador': function (s) { s.caso = 'Compra some para quem usa bloqueador'; s.tipo = 'shopify'; s.visitante.bloqueador = true; return s },
     'novo-site': function (s) { s.caso = 'Site novo sem Pixel'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; return s },
+    /* Integrações: Shopify e WooCommerce */
+    'shopify-novo': function (s) { s.caso = 'Loja Shopify nova, ainda sem a Meta'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.canal = { instalado: false, conectado: false }; s.shopify.tema = tema(''); return s },
+    'shopify-conectada': function (s) { s.caso = 'Loja Shopify conectada à Meta'; s.tipo = 'shopify'; s.shopify.app = { on: true, nivel: 'enhanced', pixel: 'certo' }; return s },
+    'shopify-produtos': function (s) { s.caso = 'Produtos que não chegam à Meta'; s.tipo = 'shopify'; s.shopify.app = { on: true, nivel: 'enhanced', pixel: 'certo' }; return s },
+    'woo-novo': function (s) { s.caso = 'Loja WooCommerce nova, ainda sem a Meta'; s.tipo = 'woo'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; s.woo = { plugin: 'inativo', atualizacao: false, conectado: false, sync: true, sincronizou: false }; return s },
+    'woo-conectada': function (s) { s.caso = 'Loja WooCommerce conectada, plugin desatualizado'; s.tipo = 'woo'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; s.woo = { plugin: 'ativo', atualizacao: true, conectado: true, sync: true, sincronizou: true }; return s },
     /* Pixel avançado */
     'am-desligada': function (s) { s.caso = 'Correspondência avançada desligada'; s.ds = { am: false, capi: false }; return s },
     'emq-baixa': function (s) { s.caso = 'Qualidade do sinal baixa'; s.ds = { am: false, capi: true }; s.proprio.obrigado = COMPRA(DIN, "'BRL'", 'Purchase', true); return s },
@@ -61,7 +75,7 @@
   }
   function dsGet() { try { var e = JSON.parse(localStorage.getItem('sim.eventos') || 'null'); return (e && e.datasets && e.datasets[0]) || {} } catch (x) { return {} } }
   function dsSet(p) { try { var e = JSON.parse(localStorage.getItem('sim.eventos') || 'null'); if (e && e.datasets && e.datasets[0]) { for (var k in p) e.datasets[0][k] = p[k]; localStorage.setItem('sim.eventos', JSON.stringify(e)) } } catch (x) { } }
-  function get() { var s = lsGet(); if (!s) s = padrao(); s.proprio = s.proprio || padrao().proprio; s.shopify = s.shopify || padrao().shopify; s.visitante = s.visitante || { bloqueador: false }; return s }
+  function get() { var s = lsGet(); if (!s) s = padrao(); s.proprio = s.proprio || padrao().proprio; s.shopify = s.shopify || padrao().shopify; s.shopify.canal = s.shopify.canal || { instalado: true, conectado: true }; s.shopify.prods = s.shopify.prods || prods(); s.woo = s.woo || padrao().woo; s.visitante = s.visitante || { bloqueador: false }; return s }
   function set(s) { lsSet(s); pillRender(); try { window.dispatchEvent(new CustomEvent('site:mudou')) } catch (e) { } }
 
   /* ---------- lê um trecho de código ---------- */
@@ -84,11 +98,12 @@
   /* ---------- deriva o que o site de fato envia ---------- */
   function fx() {
     var s = get(); if (!s.ativo) return null;
-    var good = idCerto(), cab = s.tipo === 'proprio' ? s.proprio.cabecalho : s.shopify.tema, hc = le(cab), r = { caso: s.caso, tipo: s.tipo, bloqueador: !!s.visitante.bloqueador, good: good, head: null, app: null, comprasPagina: [], comprasCabecalho: [] };
+    var good = idCerto(), cab = s.tipo === 'shopify' ? s.shopify.tema : s.proprio.cabecalho, hc = le(cab), r = { caso: s.caso, tipo: s.tipo, bloqueador: !!s.visitante.bloqueador, good: good, head: null, app: null, comprasPagina: [], comprasCabecalho: [] };
     if (hc.carregador && hc.ids.length) r.head = { ids: hc.ids.filter(function (x, i, a) { return a.indexOf(x) === i }), pv: hc.pv };
     if (s.tipo === 'proprio') { r.comprasPagina = le(s.proprio.obrigado).compras }
     if (hc.carregador) r.comprasCabecalho = hc.compras;
     if (s.tipo === 'shopify' && s.shopify.app.on && s.shopify.app.pixel !== 'nenhum') r.app = { id: s.shopify.app.pixel === 'certo' ? good : '000000000000000', nivel: s.shopify.app.nivel };
+    if (s.tipo === 'woo' && s.woo.conectado && s.woo.plugin === 'ativo') r.app = { id: good, nivel: 'enhanced' };   // plugin Meta for WooCommerce: pixel + API de Conversões
     var ds = dsGet(); r.ds = { am: !!ds.am, capi: !!ds.capi }; r.amManual = hc.initParams.filter(function (k) { return ['em', 'ph', 'fn', 'ln', 'ct', 'st', 'zp', 'country', 'external_id'].indexOf(k) >= 0 }); r.consentGate = !!hc.consentRevoke;
     r.eventosPagina = s.tipo === 'proprio' ? le(s.proprio.obrigado).eventos.filter(function (e) { return !/^purchase$/i.test(e.nome) }) : [];
     r.temPixel = !!(r.head || r.app);
@@ -136,7 +151,7 @@
     var b = document.getElementById('siteCasoFim'); if (b) b.onclick = function () { SITE.encerra() };
   }
   window.SITE = {
-    tema: tema, get: get, set: set, fx: fx, le: le, copias: copias, base: base, compra: COMPRA, idCerto: idCerto, padrao: padrao,
+    tema: tema, get: get, set: set, fx: fx, le: le, copias: copias, base: base, compra: COMPRA, idCerto: idCerto, padrao: padrao, prods: prods,
     ativo: function () { return !!get().ativo },
     dataset: function () { return dsGet() }, setDataset: dsSet,
     preset: function (nome) { ensureDataset(); var s = PRESETS[nome](padrao()); s.ativo = true; dsSet(s.ds || { am: true, capi: false }); try { if (nome === 'sem-consentimento') localStorage.removeItem('loja.consent') } catch (e) { } set(s); try { localStorage.removeItem('sim.feed'); sessionStorage.removeItem('loja.log'); localStorage.removeItem('loja.pedidosDisparados') } catch (e) { } },   // começa um caso do zero (sem eventos antigos)

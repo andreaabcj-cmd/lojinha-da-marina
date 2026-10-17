@@ -1,0 +1,13 @@
+/* Admin do WordPress/WooCommerce (faz-de-conta) */
+body{margin:0;background:#F0F0F1;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:#1D2327}
+.wp-topo{margin-top:32px;background:#1D2327;color:#fff;display:flex;align-items:center;gap:10px;padding:8px 14px}.wp-logo{background:#2271B1;border-radius:50%;width:22px;height:22px;display:inline-grid;place-items:center;font-weight:800;font-size:12px}.wp-mud{color:#8C8F94}.wp-upd{margin-left:auto;background:#D63638;border-radius:999px;padding:1px 8px;font-size:12px}
+.wp-corpo{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 80px)}@media(max-width:760px){.wp-corpo{grid-template-columns:1fr}}
+.wp-menu{background:#1D2327;padding:8px 0}.wp-n{display:block;width:100%;text-align:left;border:0;background:none;color:#C3C4C7;padding:8px 14px;font:14px "Segoe UI",sans-serif;cursor:pointer}.wp-n.off{color:#787C82;cursor:default}.wp-n:not(.off):hover{color:#72AEE6}.wp-n.on{background:#2271B1;color:#fff}.wp-n.sub{padding-left:34px;background:#2C3338}.wp-bolha{background:#D63638;color:#fff;border-radius:999px;padding:0 6px;font-size:11px}
+.wp-main{padding:14px 22px 90px;max-width:900px}.wp-main h1{font-size:23px;font-weight:400;margin:6px 0 14px}
+.wp-cx{background:#fff;border:1px solid #C3C4C7;padding:14px 16px;margin-bottom:14px}.wp-cx h2{margin:0 0 8px;font-size:16px}
+.wp-tab{width:100%;border-collapse:collapse}.wp-tab th{text-align:left;padding:8px;border-bottom:1px solid #C3C4C7}.wp-tab td{padding:10px 8px;border-bottom:1px solid #F0F0F1;vertical-align:top}.wp-ativo td:first-child{border-left:4px solid #2271B1}.wp-aviso-l td{background:#FCF9E8;border-left:4px solid #DBA617}
+.wp-lk{border:0;background:none;color:#2271B1;font:14px "Segoe UI",sans-serif;cursor:pointer;padding:0}.wp-lk:hover{color:#135E96;text-decoration:underline}.wp-acs{margin-top:4px}
+.wp-bt{border:1px solid #2271B1;background:#F6F7F7;color:#2271B1;border-radius:3px;padding:6px 14px;font:14px "Segoe UI",sans-serif;cursor:pointer}.wp-bt.prim{background:#2271B1;color:#fff}.wp-bt:disabled{opacity:.5;cursor:not-allowed}
+.wp-abas{display:flex;gap:2px;border-bottom:1px solid #C3C4C7;margin-bottom:12px}.wp-ab{border:1px solid #C3C4C7;border-bottom:0;background:#E9E9EA;padding:7px 14px;cursor:pointer;font:14px "Segoe UI",sans-serif}.wp-ab.on{background:#fff;font-weight:600}
+.wp-chip{background:#D5F0DA;border-radius:999px;padding:1px 9px;font-weight:700;font-size:12px}.wp-ul{padding-left:18px}.wp-tg{display:flex;gap:8px;align-items:center;margin:6px 0}
+.wp-ok{font-weight:700;color:#00632B}.wp-nota{color:#646970;font-size:12px}.wp-bv{text-align:center;padding:30px}

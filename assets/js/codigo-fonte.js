@@ -15,7 +15,7 @@
     return '129.90';
   }
   function fonte() {
-    var s = SITE.get(), cab = s.tipo === 'proprio' ? s.proprio.cabecalho : s.shopify.tema, total = ultimoTotal();
+    var s = SITE.get(), cab = s.tipo === 'shopify' ? s.shopify.tema : s.proprio.cabecalho, total = ultimoTotal();
     var corpo = {
       home: ['<header class="topo"><a href="/">Lojinha da Marina</a><nav>…</nav></header>', '<main>', '  <h1>Bem-vinda à Lojinha da Marina</h1>', '  <section id="destaques">…</section>', '</main>'],
       produto: ['<header class="topo"><a href="/">Lojinha da Marina</a><nav>…</nav></header>', '<main>', '  <h1>Caneca azul</h1>', '  <button id="addCart">Adicionar ao carrinho</button>', '</main>'],
@@ -27,10 +27,11 @@
         .replace("{% section 'header' %}", topo).replace("{% section 'footer' %}", '<footer>…</footer>').replace('{{ content_for_layout }}', resto).replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n');
     }
     var linhas = ['<!DOCTYPE html>', '<html lang="pt-BR">', '<head>', '<meta charset="utf-8">', '<title>' + ROTAS[pag][1] + '</title>', '<link rel="stylesheet" href="/assets/css/loja.css">'];
+    if (s.tipo === 'woo') linhas.push('<!-- scripts do plugin (pixels de plugins como o Meta for WooCommerce não aparecem aqui) -->');
     if (cab && cab.trim()) cab.replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n').forEach(function (l) { linhas.push(l) });
     linhas.push('</head>', '<body>');
     corpo.forEach(function (l) { linhas.push(l) });
-    if (pag === 'obrigado' && s.tipo === 'proprio' && s.proprio.obrigado && s.proprio.obrigado.trim()) s.proprio.obrigado.replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n').forEach(function (l) { linhas.push(l) });
+    if (pag === 'obrigado' && s.tipo !== 'shopify' && s.proprio.obrigado && s.proprio.obrigado.trim()) s.proprio.obrigado.replace(/\{\{ pedido\.total \}\}/g, total).replace(/\{\{ pedido\.id \}\}/g, 'LM104233').split('\n').forEach(function (l) { linhas.push(l) });
     linhas.push('<script src="/assets/js/loja.js"></script>', '</body>', '</html>');
     return linhas;
   }
