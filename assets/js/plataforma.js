@@ -8,7 +8,7 @@
   function mov() { return (window.MOV || { chat: function (c, f) { f && f() }, cascata: function () { }, confete: function () { } }) }
   var T = window.T = function (o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') };
   var U = {
-    inicio: { pt: 'Início', es: 'Inicio' }, modulos: { pt: 'Módulos', es: 'Módulos' }, loja: { pt: 'Loja', es: 'Tienda' },
+    inicio: { pt: 'Início', es: 'Inicio' }, modulos: { pt: 'Módulos', es: 'Módulos' }, diagnostico: { pt: 'Diagnóstico', es: 'Diagnóstico' }, reclamacao: { pt: 'A Marina reclama', es: 'Marina reclama' }, resolver: { pt: 'Resolver', es: 'Resolver' }, porque: { pt: 'Por que aconteceu', es: 'Por qué pasó' }, loja: { pt: 'Loja', es: 'Tienda' },
     feedback: { pt: 'Feedback', es: 'Feedback' }, simuladores: { pt: 'Simuladores', es: 'Simuladores' }, laboratorio: { pt: 'Laboratório', es: 'Laboratorio' },
     sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
@@ -24,7 +24,7 @@
 
   /* ---------- topo ---------- */
   function topo(ativo) {
-    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['colas.html', 'colas']];
+    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['diagnostico.html', 'diagnostico'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['colas.html', 'colas']];
     if (window.MODO_PUBLICO) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // site publicado: as abas Simuladores e Laboratório ficam escondidas
     if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
@@ -68,6 +68,7 @@
         (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
         '<div class="portas">' + [
           ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
+          ['diagnostico.html', '🩺', U.diagnostico, { pt: 'Resolver: casos de verdade, do jeito que o cliente reclama, com o tutorial guiado até o problema sumir.', es: 'Resolver: casos reales, tal como el cliente reclama, con el tutorial guiado hasta que el problema desaparece.' }],
           ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Consultor de Dados.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Asesor de datos.' }],
           ['simuladores.html', '🕹️', U.simuladores, { pt: 'Ferramentas da Meta de treino: clique à vontade, nada vai para a Meta.', es: 'Herramientas de Meta de práctica: haz clic sin miedo, nada va a Meta.' }],
           ['laboratorio.html', '🧪', U.laboratorio, { pt: 'Explorar: as ferramentas das aulas, soltas, para explicar e testar.', es: 'Explorar: las herramientas de las clases, sueltas, para explicar y probar.' }]
@@ -93,13 +94,24 @@
     },
     modulo: function () {
       var m = window.MODULOS.filter(function (x) { return x.id === Q.get('m') })[0] || window.MODULOS[0], aulas = aulasDaTrilha(m.id), f = feitas();
-      return '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + trilhaChip(m) + faseChip(m) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
+      var dg = m.area === 'diagnostico';
+      return '<p class="pl-trilha"><a href="' + (dg ? 'diagnostico.html' : 'modulos.html') + '">' + T(dg ? U.diagnostico : U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + (dg ? '' : trilhaChip(m) + faseChip(m)) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
           return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><b>' + T(a.titulo) + '</b><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
         }).join('') + '</div>';
     },
     aula: function () { return aulaTela() },
+    diagnostico: function () {
+      var B = window.MODULOS.filter(function (m) { return m.area === 'diagnostico' }), n = 0, f = feitas();
+      return '<h1 class="pl-h1">🩺 ' + T({ pt: 'Diagnóstico de casos', es: 'Diagnóstico de casos' }) + '</h1>' +
+        '<p class="pl-lead">' + T({ pt: 'Fora da rota das trilhas: problemas que os clientes trazem de verdade, separados por assunto. Cada caso começa com a Marina reclamando, do jeito que um cliente fala; depois o Pixel te guia, nas telas reais, até o problema sumir. No fim: por que aconteceu, como responder e a cola.', es: 'Fuera de la ruta de las rutas de estudio: problemas que los clientes traen de verdad, separados por tema. Cada caso empieza con Marina reclamando, tal como habla un cliente; luego el Pixel te guía, en las pantallas reales, hasta que el problema desaparece. Al final: por qué pasó, cómo responder y la guía rápida.' }) + '</p>' +
+        '<div class="grade">' + B.map(function (m) {
+          n++; var casos = (window.AULAS[m.id] || []).filter(function (a) { return a.status === 'pronta' }), ok = casos.length, fe = casos.filter(function (a) { return f[m.id + '/' + a.id] }).length;
+          return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="num">' + n + '</span><span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' +
+            (ok ? '<span class="selo construcao">' + casos.length + ' ' + T(casos.length === 1 ? { pt: 'caso', es: 'caso' } : { pt: 'casos', es: 'casos' }) + (fe ? ' · ' + fe + ' ✓' : '') + '</span>' : selo('planejado')) + (ok ? '</a>' : '</div>');
+        }).join('') + '</div>';
+    },
     simuladores: function () {
       setTimeout(ligaRecomecar);
       var sims = [['meta-eventos.html', '📡', { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, { pt: 'Criar o Pixel, Testar eventos (com os eventos da Lojinha), Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos (con los eventos de la Lojinha), Diagnóstico y Configuración.' }, 'pronta'],
@@ -210,14 +222,15 @@
       ['corrigir-documento', 'meta-portfolio.html', 'portfolio-avancado', '02', { pt: 'Como corrigir documentos recusados da verificação', es: 'Cómo corregir documentos rechazados de la verificación' }],
       ['corrigir-permissao', 'meta-portfolio.html', 'portfolio-avancado', '03', { pt: 'Como alterar o acesso de uma pessoa ao portfólio', es: 'Cómo cambiar el acceso de una persona al portafolio' }],
       ['excluir-portfolio', 'meta-portfolio.html', 'portfolio-avancado', '04', { pt: 'Como entender e resolver o que impede excluir o portfólio', es: 'Cómo entender y resolver lo que impide eliminar el portafolio' }] ] },
-    { m: 'diagnostico', itens: [
-      ['investigar-purchase', 'loja.html', 'diagnostico', '01', { pt: 'Como investigar um Purchase que não chega (compra de teste, Eventos de teste, código-fonte)', es: 'Cómo investigar un Purchase que no llega (compra de prueba, Probar eventos, código fuente)' }],
-      ['colar-codigo-base', 'meta-eventos.html', 'diagnostico', '02', { pt: 'Como colar o código base do Pixel (copiar, colar no head, salvar, testar)', es: 'Cómo pegar el código base del píxel (copiar, pegar en el head, guardar, probar)' }],
-      ['colar-codigo-compra', 'meta-eventos.html', 'diagnostico', '02', { pt: 'Como colar o código do Purchase com valor e moeda', es: 'Cómo pegar el código del Purchase con valor y moneda' }],
-      ['corrigir-duplicado', 'loja.html', 'diagnostico', '03', { pt: 'Como achar e corrigir compras em dobro (Shopify: app + código manual)', es: 'Cómo hallar y corregir compras dobles (Shopify: app + código manual)' }],
-      ['corrigir-valor', 'loja.html', 'diagnostico', '03', { pt: 'Como corrigir o valor e a moeda do Purchase', es: 'Cómo corregir el valor y la moneda del Purchase' }],
-      ['plataforma-conectada', 'loja.html', 'diagnostico', '04', { pt: 'Como investigar uma plataforma conectada em que a compra some (níveis de dados)', es: 'Cómo investigar una plataforma conectada en la que la compra desaparece (niveles de datos)' }],
-      ['caso-queda', 'loja.html', 'diagnostico', '05', { pt: 'Como investigar uma queda de eventos depois da troca de tema', es: 'Cómo investigar una caída de eventos después del cambio de tema' }] ] },
+    { m: 'dg-pixel', itens: [
+      ['investigar-purchase', 'loja.html', 'dg-pixel', '01', { pt: 'Como investigar um Purchase que não chega (compra de teste, Eventos de teste, código-fonte)', es: 'Cómo investigar un Purchase que no llega (compra de prueba, Probar eventos, código fuente)' }],
+      ['colar-codigo-base', 'meta-eventos.html', 'dg-pixel', '02', { pt: 'Como colar o código base do Pixel (copiar, colar no head, salvar, testar)', es: 'Cómo pegar el código base del píxel (copiar, pegar en el head, guardar, probar)' }],
+      ['colar-codigo-compra', 'meta-eventos.html', 'dg-pixel', '02', { pt: 'Como colar o código do Purchase com valor e moeda', es: 'Cómo pegar el código del Purchase con valor y moneda' }],
+      ['corrigir-duplicado', 'loja.html', 'dg-pixel', '03', { pt: 'Como achar e corrigir compras em dobro (Shopify: app + código manual)', es: 'Cómo hallar y corregir compras dobles (Shopify: app + código manual)' }],
+      ['corrigir-valor', 'loja.html', 'dg-pixel', '03', { pt: 'Como corrigir o valor e a moeda do Purchase', es: 'Cómo corregir el valor y la moneda del Purchase' }],
+      ['caso-queda', 'loja.html', 'dg-pixel', '04', { pt: 'Como investigar uma queda de eventos depois da troca de tema', es: 'Cómo investigar una caída de eventos después del cambio de tema' }] ] },
+    { m: 'dg-integracoes', itens: [
+      ['plataforma-conectada', 'loja.html', 'dg-integracoes', '01', { pt: 'Como investigar uma plataforma conectada em que a compra some (níveis de dados)', es: 'Cómo investigar una plataforma conectada en la que la compra desaparece (niveles de datos)' }] ] },
     { m: 'segmentacao', itens: [
       ['criar-publico-site', 'meta-publicos.html?zerar=1', 'segmentacao', '02', { pt: 'Como criar um público de quem visitou o site', es: 'Cómo crear un público de quien visitó el sitio' }],
       ['criar-semelhante', 'meta-publicos.html?exemplo=1', 'segmentacao', '03', { pt: 'Como criar um público semelhante', es: 'Cómo crear un público similar' }],
@@ -300,7 +313,7 @@
       '<input class="como-busca" id="comoBusca" type="search" placeholder="' + T({ pt: '🔎 O que você quer fazer? (ex.: convidar, Pixel, Instagram)', es: '🔎 ¿Qué quieres hacer? (ej.: invitar, Pixel, Instagram)' }) + '" aria-label="' + T({ pt: 'Buscar tutorial', es: 'Buscar tutorial' }) + '"/>' +
       '<div class="como-cols">' + COMO.map(function (g) {
         var mod = window.MODULOS.filter(function (x) { return x.id === g.m })[0] || { icone: '', titulo: { pt: g.m, es: g.m } };
-        return '<div class="como-grupo"><h3>' + mod.icone + ' ' + T(mod.titulo) + '</h3>' + g.itens.map(function (it) {
+        return '<div class="como-grupo"><h3>' + mod.icone + ' ' + (mod.area ? T(U.diagnostico) + ' · ' : '') + T(mod.titulo) + '</h3>' + g.itens.map(function (it) {
           var href = it[1] + (it[1].indexOf('?') < 0 ? '?' : '&') + 'tour=' + it[0] + '&voltar=' + volta;
           var t = T(it[4]).replace(/^C[oó]mo /, ''); t = t.charAt(0).toUpperCase() + t.slice(1);   // o título da seção já diz "Como fazer…"
           return '<div class="como-it"><a class="como-ir" href="' + href + '" title="' + T(it[4]) + '">' + t + '</a>' + (((window.AULAS[it[2]] || []).filter(function (a) { return a.id === it[3] && a.status === 'pronta' }).length) ? '<a class="como-aula" href="aula-plataforma.html?m=' + it[2] + '&a=' + it[3] + '">' + T({ pt: 'aula', es: 'clase' }) + ' ' + it[3] + '</a>' : '') + '</div>';
@@ -404,13 +417,15 @@
     var a = lista.filter(function (x) { return x.id === aid })[0];
     if (!m || !a || a.status !== 'pronta') return '<p>' + T({ pt: 'Aula não encontrada.', es: 'Clase no encontrada.' }) + ' <a href="modulos.html">' + T(U.modulos) + '</a></p>';
     lsSet('plat.ultima', { m: mid, a: aid });
-    var partes = ['entender', 'ferramenta', 'praticar', 'atender'].filter(function (p) { return a[p] });
+    var dg = m.area === 'diagnostico';   // caso do Diagnóstico: a Marina reclama → o tutorial guiado → por que aconteceu → atender
+    var partes = (dg ? ['reclamacao', 'praticar', 'entender', 'ferramenta', 'atender'] : ['entender', 'ferramenta', 'praticar', 'atender']).filter(function (p) { return a[p] });
     passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
     var prox = aulasDaTrilha(mid).filter(function (x) { return lista.indexOf(x) > lista.indexOf(a) })[0], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function desenha() {
       var p = partes[passoAtual], h = '';
-      if (p === 'entender') h = '<h2>💬 ' + T(U.entender) + '</h2>' + (a.antes ? '<p class="fio antes">📖 <b>' + T({ pt: 'Onde paramos:', es: 'Dónde quedamos:' }) + '</b> ' + T(a.antes) + '</p>' : '') + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
+      if (p === 'reclamacao') h = '<h2>🗣️ ' + T(U.reclamacao) + '</h2>' + chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T({ pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' }) + '</button></p>';
+      else if (p === 'entender') h = '<h2>💬 ' + T(dg ? U.porque : U.entender) + '</h2>' + (a.antes ? '<p class="fio antes">📖 <b>' + T({ pt: 'Onde paramos:', es: 'Dónde quedamos:' }) + '</b> ' + T(a.antes) + '</p>' : '') + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🔍 ' + T(U.ferramenta) + '</h2><div class="ferr-box" id="ferr"></div><p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>'; setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
       else if (p === 'praticar') {
         var volta = function (id) { return encodeURIComponent(aqui + '&passo=' + (passoAtual + (a.praticar.opcoes ? 1 : 2)) + '&feito=' + id) },   // várias práticas: volta para escolher outra; uma só: segue para o Atender
@@ -424,8 +439,9 @@
           }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T({ pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' }) + '</p>');
       }
       else if (p === 'atender') h = '<h2>🎧 ' + T(U.atender) + '</h2>' + chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + ordemOpcoes(a.atender.opcoes, mid + '/' + aid).map(function (i) { var o = a.atender.opcoes[i]; return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
-        (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '') + (a.gancho ? '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>' : '');
+        (a.cola ? colaHtml(a.cola, 'cola__' + mid + '__' + aid) : '') + (a.gancho && !dg ? '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>' : '');
       $('#palco').innerHTML = h; $('#palco').classList.remove('mv-troca'); void $('#palco').offsetWidth; $('#palco').classList.add('mv-troca'); mov().cascata($('#palco'));
+      if (p === 'reclamacao') { var bR = $('#bResolver'); if (bR) bR.onclick = function () { $('#bProx').click() }; if (!chatVisto) { chatVisto = true; mov().chat($('#palco'), function () { }) } }
       if (p === 'entender' && !chatVisto) { chatVisto = true; var pts = $('#palco .pontos'); if (pts) pts.classList.add('mv-oculta'); mov().chat($('#palco'), function () { if (pts) { pts.classList.remove('mv-oculta'); pts.classList.add('mv-chega') } }) }
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
       $('#bAnt').disabled = passoAtual === 0;
@@ -452,9 +468,9 @@
       document.addEventListener('keydown', function (e) { if (e.target.closest('input,textarea')) return; if (e.key === 'ArrowRight') $('#bProx').click(); if (e.key === 'ArrowLeft') $('#bAnt').click(); if (e.key === 'n' || e.key === 'N') $('#bNotas').click() });
     });
     return '<div class="barra-apr"><button class="btn sec" id="bNotas">' + T(U.notas) + '</button><button class="btn sec" id="bApr">' + T(U.apresentar) + '</button></div>' +
-      '<p class="pl-trilha"><a href="modulos.html">' + T(U.modulos) + '</a> › <a href="modulo.html?m=' + mid + '">' + T(m.titulo) + '</a> › ' + T({ pt: 'Aula', es: 'Clase' }) + ' ' + a.id + '</p>' +
-      '<h1 class="pl-h1">' + T(a.titulo) + '</h1>' + faseChip(m) + '<p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
-      '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(U[p]) + '</button>' }).join('') + '</div>' +
+      '<p class="pl-trilha"><a href="' + (dg ? 'diagnostico.html' : 'modulos.html') + '">' + T(dg ? U.diagnostico : U.modulos) + '</a> › <a href="modulo.html?m=' + mid + '">' + T(m.titulo) + '</a> › ' + T(dg ? { pt: 'Caso', es: 'Caso' } : { pt: 'Aula', es: 'Clase' }) + ' ' + a.id + '</p>' +
+      '<h1 class="pl-h1">' + T(a.titulo) + '</h1>' + (dg ? '' : faseChip(m)) + '<p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
+      '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(dg && p === 'praticar' ? U.resolver : dg && p === 'entender' ? U.porque : U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
       '<div class="notas"><b>📝 ' + T({ pt: 'Notas para quem apresenta', es: 'Notas para quien presenta' }) + ':</b> ' + T(a.entender.notas) + '</div>' +
       '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +
@@ -482,7 +498,7 @@
     window.MODULOS.forEach(function (m) {
       var aulas = (window.AULAS[m.id] || []).filter(function (a) { return a.cola });
       if (!aulas.length) return;
-      h += '<h2 class="secao-tit">' + m.icone + ' ' + T(m.titulo) + '</h2>' + aulas.map(function (a) { return '<h3>' + a.id + ' · ' + T(a.titulo) + ' <a class="miudo" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' + T({ pt: 'abrir aula', es: 'abrir clase' }) + '</a></h3>' + colaHtml(a.cola, 'cola__' + m.id + '__' + a.id) }).join('');
+      h += '<h2 class="secao-tit">' + m.icone + ' ' + (m.area ? T(U.diagnostico) + ' · ' : '') + T(m.titulo) + '</h2>' + aulas.map(function (a) { return '<h3>' + a.id + ' · ' + T(a.titulo) + ' <a class="miudo" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' + T({ pt: 'abrir aula', es: 'abrir clase' }) + '</a></h3>' + colaHtml(a.cola, 'cola__' + m.id + '__' + a.id) }).join('');
     });
     return h;
   };
@@ -493,7 +509,8 @@
   function monta() {
     var tela = document.body.getAttribute('data-tela');
     if (!tela) return;   // páginas da loja/simulador só usam a porta
-    var ativo = { inicio: 'inicio', modulos: 'modulos', modulo: 'modulos', aula: 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', feedback: 'feedback' }[tela];
+    var mAtual = (window.MODULOS || []).filter(function (x) { return x.id === Q.get('m') })[0], naArea = !!(mAtual && mAtual.area === 'diagnostico');
+    var ativo = { inicio: 'inicio', modulos: 'modulos', diagnostico: 'diagnostico', modulo: naArea ? 'diagnostico' : 'modulos', aula: naArea ? 'diagnostico' : 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', feedback: 'feedback' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
     var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';

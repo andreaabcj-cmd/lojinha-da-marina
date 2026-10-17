@@ -68,7 +68,7 @@
 
   /* ============ 1) Purchase não chega (site próprio) — Aula 01 ============ */
   TOURS['investigar-purchase'] = [].concat(
-    [{ antes: preset('compra-ausente'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('compra-ausente'), tit: t('Júlia: “não vejo nenhuma compra”', 'Julia: “no veo ninguna compra”'), txt: dep(t('A cliente vende todos os dias, mas o Gerenciador não mostra compras. Para investigar, faça o que a cliente faz: uma compra de teste na loja dela.', 'La clienta vende todos los días, pero el Administrador no muestra compras. Para investigar, haz lo que hace la clienta: una compra de prueba en su tienda.')) }],
+    [{ antes: preset('compra-ausente'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('compra-ausente'), tit: t('Marina: “não vejo nenhuma compra”', 'Marina: “no veo ninguna compra”'), txt: dep(t('A Marina vende todos os dias, mas o Gerenciador não mostra compras. Para investigar, faça o que uma cliente dela faz: uma compra de teste na loja.', 'Marina vende todos los días, pero el Administrador no muestra compras. Para investigar, haz lo que hace una clienta suya: una compra de prueba en la tienda.')) }],
     compra(),
     obrigadoLer(dep(t('Para a cliente, deu tudo certo. Mas e para a Meta? Vamos ver o que o Pixel contou.', 'Para la clienta, todo salió bien. ¿Y para Meta? Veamos qué contó el píxel.'))),
     consultor(dep(t('Aparece o PageView (a página abriu), mas nenhum Purchase.', 'Aparece el PageView (la página se abrió), pero ningún Purchase.'))),
@@ -113,7 +113,7 @@
 
   /* ============ 3a) Compras em dobro (Shopify: app + código manual) — Aula 03 ============ */
   TOURS['corrigir-duplicado'] = [].concat(
-    [{ antes: preset('duplicado-shopify'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('duplicado-shopify'), tit: t('Caio: “o dobro de vendas”', 'Caio: “el doble de ventas”'), txt: dep(t('O cliente tem uma loja Shopify com o app Facebook e Instagram conectado e vê o dobro de vendas. Faça uma compra de teste para investigar.', 'El cliente tiene una tienda Shopify con la app Facebook e Instagram conectada y ve el doble de ventas. Haz una compra de prueba para investigar.')) }],
+    [{ antes: preset('duplicado-shopify'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('duplicado-shopify'), tit: t('Marina: “o dobro de vendas”', 'Marina: “el doble de ventas”'), txt: dep(t('A loja da Marina é Shopify, com o app Facebook e Instagram conectado, e ela vê o dobro de vendas. Faça uma compra de teste para investigar.', 'La tienda de Marina es Shopify, con la app Facebook e Instagram conectada, y ella ve el doble de ventas. Haz una compra de prueba para investigar.')) }],
     compra(),
     obrigadoLer(dep(t('Pedido feito. Veja o que chegou à Meta.', 'Pedido hecho. Mira lo que llegó a Meta.'))),
     eventosTeste(dep(t('Há dois PageView por página e o Purchase aparece em páginas que não são a de compra. Algo está enviando em dobro.', 'Hay dos PageView por página y el Purchase aparece en páginas que no son la de compra. Algo está enviando doble.'))),
@@ -142,7 +142,7 @@
 
   /* ============ 3b) Valor errado (site próprio) ============ */
   TOURS['corrigir-valor'] = [].concat(
-    [{ antes: preset('valor-errado'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('valor-errado'), tit: t('Rita: “o ROAS está estranho”', 'Rita: “el ROAS está raro”'), txt: dep(t('A cliente vê as compras, mas com valor estranho. Faça uma compra de teste.', 'La clienta ve las compras, pero con valor raro. Haz una compra de prueba.')) }],
+    [{ antes: preset('valor-errado'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('valor-errado'), tit: t('Marina: “o valor está estranho”', 'Marina: “el valor está raro”'), txt: dep(t('A Marina vê as compras, mas com valor estranho. Faça uma compra de teste.', 'Marina ve las compras, pero con valor raro. Haz una compra de prueba.')) }],
     compra(),
     obrigadoLer(dep(t('Pedido feito. Veja o que chegou à Meta.', 'Pedido hecho. Mira lo que llegó a Meta.'))),
     eventosDiag(dep(t('Avisos reais da Meta: “Preço ausente ou inválido no parâmetro de valor” e “O parâmetro de moeda tem um código de 3 letras ausente e/ou inválido”.', 'Avisos reales de Meta: “Precio ausente o inválido en el parámetro de valor” y “El parámetro de moneda tiene un código de 3 letras ausente y/o inválido”.')), '[data-t=diag-0]'),
@@ -160,7 +160,7 @@
 
   /* ============ 4) Plataforma conectada e a compra some para quem usa bloqueador — Aula 04 ============ */
   TOURS['plataforma-conectada'] = [].concat(
-    [{ antes: preset('bloqueador'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('bloqueador'), tit: t('Davi: “já está conectado, e as compras somem”', 'Davi: “ya está conectado, y las compras desaparecen”'), txt: dep(t('Loja Shopify com o app Facebook e Instagram conectado. O cliente nota compras que faltam nos relatórios, principalmente de quem usa bloqueador de anúncios. Faça uma compra de teste como essa pessoa (o bloqueador já está ligado nesta simulação).', 'Tienda Shopify con la app Facebook e Instagram conectada. El cliente nota compras que faltan en los informes, sobre todo de quien usa bloqueador de anuncios. Haz una compra de prueba como esa persona (el bloqueador ya está activado en esta simulación).')) }],
+    [{ antes: preset('bloqueador'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('bloqueador'), tit: t('Marina: “já está conectado, e as compras somem”', 'Marina: “ya está conectado, y las compras desaparecen”'), txt: dep(t('A loja da Marina é Shopify, com o app Facebook e Instagram conectado. Ela nota compras que faltam nos relatórios, principalmente de quem usa bloqueador de anúncios. Faça uma compra de teste como essa pessoa (o bloqueador já está ligado nesta simulação).', 'La tienda de Marina es Shopify, con la app Facebook e Instagram conectada. Ella nota compras que faltan en los informes, sobre todo de quien usa bloqueador de anuncios. Haz una compra de prueba como esa persona (el bloqueador ya está activado en esta simulación).')) }],
     compra(),
     obrigadoLer(dep(t('Pedido feito. Veja o que o Pixel conseguiu mandar.', 'Pedido hecho. Mira lo que el píxel logró enviar.'))),
     consultorVazio(dep(t('Nada aparece: o bloqueador impediu o Pixel de carregar, então a extensão não vê nenhum evento. Para o cliente, o site “parece” sem Pixel para essa pessoa.', 'No aparece nada: el bloqueador impidió que el píxel cargara, así que la extensión no ve ningún evento. Para el cliente, el sitio “parece” sin píxel para esa persona.'))),
@@ -180,7 +180,7 @@
 
   /* ============ 5) Eventos caíram depois da troca de tema (site próprio) — Aula 05 ============ */
   TOURS['caso-queda'] = [].concat(
-    [{ antes: preset('queda-tema'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('queda-tema'), tit: t('Beto: “depois da troca de tema, caiu tudo”', 'Beto: “después del cambio de tema, cayó todo”'), txt: dep(t('Depois de trocar o tema do site, o Gerenciador mandou um alerta de queda de eventos. Abra a loja como uma cliente.', 'Después de cambiar el tema del sitio, el Administrador mandó una alerta de caída de eventos. Abre la tienda como una clienta.')) }],
+    [{ antes: preset('queda-tema'), alvo: '#destaques, #lista', pagina: P.loja, garante: preset('queda-tema'), tit: t('Marina: “depois da troca de tema, caiu tudo”', 'Marina: “después del cambio de tema, cayó todo”'), txt: dep(t('Depois de trocar o tema do site, o Gerenciador mandou um alerta de queda de eventos. Abra a loja como uma cliente.', 'Después de cambiar el tema del sitio, el Administrador mandó una alerta de caída de eventos. Abre la tienda como una clienta.')) }],
     eventosTeste(dep(t('“Aguardando eventos…”: nem o PageView chega. Quando nenhum evento chega, desconfie do código base.', '“Esperando eventos…”: ni siquiera llega el PageView. Cuando no llega ningún evento, desconfía del código base.'))),
     fonteBuscar(t('Procure por fbq no código-fonte da loja.', 'Busca fbq en el código fuente de la tienda.'), dep(t('Nenhum resultado: o tema novo não tem o código do Pixel. Foi removido na troca.', 'Ningún resultado: el tema nuevo no tiene el código del píxel. Se eliminó en el cambio.')), 'home'),
     EDIT_BASE.map(function (s, i) { var o = {}, k; for (k in s) o[k] = s[k]; delete o.antes; return o }),

@@ -12,7 +12,8 @@
   if (!TRILHO_LIGADO) return;
   var TRILHOS = {
     'conhecer-portfolio': { modulo: 'portfolio', aula: '01', cauda: 8 },
-    'investigar-purchase': { modulo: 'diagnostico', aula: '01', cauda: 20 },
+    'investigar-purchase': { modulo: 'dg-pixel', aula: '01', cauda: 20, area: true },   // área Diagnóstico: Início › Diagnóstico › bloco › caso › Resolver
+    'plataforma-conectada': { modulo: 'dg-integracoes', aula: '01', cauda: 36, area: true },
     'adicionar-instagram': { modulo: 'instagram', aula: '03', cauda: 9 },   // na trilha Foco as aulas 01-02 do Instagram não aparecem (só da Completa): o 1º tutorial visível é este
     'pixel-em-acao': { modulo: 'pixel', aula: '01', cauda: 5 },
     'correspondencia-avancada': { modulo: 'pixel-avancado', aula: '01', cauda: 29 },
@@ -39,17 +40,17 @@
   var N = 5;   // passos do caminho até o simulador
 
   Object.keys(TRILHOS).forEach(function (base) {
-    var cfg = TRILHOS[base], id = 'trilho-' + base, mod = cfg.modulo, aula = cfg.aula;
+    var cfg = TRILHOS[base], id = 'trilho-' + base, mod = cfg.modulo, aula = cfg.aula, dg = !!cfg.area;
     var prefixo = [
       { tit: T('Vamos achar o tutorial 🧭', '¡Vamos a encontrar el tutorial! 🧭'),
-        txt: T('Vou te levar da página inicial até o simulador, como você faria sozinha. Primeiro, clique em Módulos.', 'Te llevaré desde la página de inicio hasta el simulador, como lo harías sola. Primero, haz clic en Módulos.'), clique: true,
-        alvo: function () { return document.querySelector('header nav a[href="modulos.html"]') || document.querySelector('a[href="modulos.html"]') } },
-      { tit: T('O módulo', 'El módulo'), txt: T('Aqui estão todos os módulos. Clique no módulo do tutorial.', 'Aquí están todos los módulos. Haz clic en el módulo del tutorial.'), clique: true,
+        txt: dg ? T('Vou te levar da página inicial até o caso, como você faria sozinha. Primeiro, clique em Diagnóstico.', 'Te llevaré desde la página de inicio hasta el caso, como lo harías sola. Primero, haz clic en Diagnóstico.') : T('Vou te levar da página inicial até o simulador, como você faria sozinha. Primeiro, clique em Módulos.', 'Te llevaré desde la página de inicio hasta el simulador, como lo harías sola. Primero, haz clic en Módulos.'), clique: true,
+        alvo: function () { var h = dg ? 'diagnostico.html' : 'modulos.html'; return document.querySelector('header nav a[href="' + h + '"]') || document.querySelector('a[href="' + h + '"]') } },
+      { tit: dg ? T('O assunto', 'El tema') : T('O módulo', 'El módulo'), txt: dg ? T('Os casos ficam separados por assunto. Clique no assunto deste caso.', 'Los casos están separados por tema. Haz clic en el tema de este caso.') : T('Aqui estão todos os módulos. Clique no módulo do tutorial.', 'Aquí están todos los módulos. Haz clic en el módulo del tutorial.'), clique: true,
         alvo: function () { return document.querySelector('a.item[href="modulo.html?m=' + mod + '"]') } },
-      { tit: T('A aula', 'La clase'), txt: T('Cada módulo tem aulas. Este tutorial é da aula ' + aula + ': clique nela.', 'Cada módulo tiene clases. Este tutorial es de la clase ' + aula + ': haz clic en ella.'), clique: true,
+      { tit: dg ? T('O caso', 'El caso') : T('A aula', 'La clase'), txt: dg ? T('Clique no caso ' + aula + '.', 'Haz clic en el caso ' + aula + '.') : T('Cada módulo tem aulas. Este tutorial é da aula ' + aula + ': clique nela.', 'Cada módulo tiene clases. Este tutorial es de la clase ' + aula + ': haz clic en ella.'), clique: true,
         alvo: function () { return document.querySelector('a.aula-l[href*="a=' + aula + '"]') } },
-      { tit: T('As etapas da aula', 'Las etapas de la clase'), txt: T('A aula tem etapas: Entender, Ver de perto, Praticar e Atender. O tutorial guiado fica em Praticar: clique nele.', 'La clase tiene etapas: Entender, Ver de cerca, Practicar y Atender. El tutorial guiado está en Practicar: haz clic en él.'), clique: true,
-        alvo: function () { return [].slice.call(document.querySelectorAll('button')).filter(function (b) { return /Praticar|Practicar/.test(b.textContent) && /\d/.test(b.textContent) })[0] } },
+      { tit: dg ? T('A Marina reclama', 'Marina reclama') : T('As etapas da aula', 'Las etapas de la clase'), txt: dg ? T('Todo caso começa assim: a reclamação da cliente, do jeito que ela fala. Leia e clique em Resolver.', 'Todo caso empieza así: el reclamo de la clienta, tal como ella habla. Lee y haz clic en Resolver.') : T('A aula tem etapas: Entender, Ver de perto, Praticar e Atender. O tutorial guiado fica em Praticar: clique nele.', 'La clase tiene etapas: Entender, Ver de cerca, Practicar y Atender. El tutorial guiado está en Practicar: haz clic en él.'), clique: true,
+        alvo: function () { return [].slice.call(document.querySelectorAll('button')).filter(function (b) { return (dg ? /Resolver/ : /Praticar|Practicar/).test(b.textContent) && /\d/.test(b.textContent) })[0] } },
       { tit: T('Começar a prática', 'Empezar la práctica'), txt: T('Este é o botão da prática guiada. Clique para abrir o simulador.', 'Este es el botón de la práctica guiada. Haz clic para abrir el simulador.'), clique: true,
         alvo: function () { return document.querySelector('a[href*="tour=' + base + '&"], a[href$="tour=' + base + '"]') } }
     ];

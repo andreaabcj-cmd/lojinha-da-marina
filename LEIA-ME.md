@@ -9,6 +9,7 @@ Idiomas: **PT | ES** desde o início. Progresso: só no navegador de cada pessoa
 | Área | Página | Para quê |
 |---|---|---|
 | 🎓 Módulos | `modulos.html` → `modulo.html?m=` → `aula-plataforma.html?m=&a=` | Aprender (aulas de 5–10 min) |
+| 🩺 Diagnóstico | `diagnostico.html` → `modulo.html?m=dg-…` → `aula-plataforma.html?m=dg-…&a=` | Resolver casos reais, fora das trilhas, por assunto: a Marina reclama → tutorial guiado → por que aconteceu → atender |
 | 🏪 Loja | `loja.html` (+ produtos, checkout…) | Praticar como no atendimento: a loja com Pixel e o Consultor de Dados (faixa amarela) |
 | 🕹️ Simuladores | `simuladores.html`, `meta-eventos.html` | Cópias de treino das ferramentas da Meta (layout fiel, visual da Lojinha, data de conferência) |
 | 🧪 Laboratório | `laboratorio.html`, `ferramenta.html?f=` | As ferramentas das aulas, soltas e completas (inclui os detalhes técnicos) + **A loja por dentro**: o F12 (tipo F12), que só aparece com `loja.html?aula=aba` ou `?lab=1` e some com `?lab=0` |

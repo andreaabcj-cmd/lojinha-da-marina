@@ -25,7 +25,15 @@ window.MODULOS = [
   { id: 'entrega', fase: 3, status: 'construcao', icone: '🚚', titulo: { pt: 'Entrega de anúncios', es: 'Entrega de anuncios' }, resumo: { pt: 'A fase de aprendizado, as edições significativas e o que fazer quando o anúncio não veicula.', es: 'La fase de aprendizaje, las ediciones significativas y qué hacer cuando el anuncio no entrega.' } },
     { id: 'regras', fase: 3, status: 'construcao', icone: '⚙️', titulo: { pt: 'Gerenciador de Anúncios · regras automatizadas', es: 'Administrador de anuncios · reglas automáticas' }, resumo: { pt: 'O que são, como criar sem falso positivo, acompanhar e corrigir.', es: 'Qué son, cómo crearlas sin falso positivo, seguirlas y corregirlas.' } },
   { id: 'pixel-avancado', fase: 3, status: 'construcao', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
-  { id: 'diagnostico', fase: 5, status: 'construcao', icone: '🩺', titulo: { pt: 'Diagnóstico de casos', es: 'Diagnóstico de casos' }, resumo: { pt: 'Casos de verdade, fora da rota padrão, por tema: investigar na loja do cliente, colar o código do Pixel, compras em dobro e valor errado, plataforma conectada que não envia e queda de eventos.', es: 'Casos de verdad, fuera de la ruta estándar, por tema: investigar en la tienda del cliente, pegar el código del píxel, compras dobles y valor incorrecto, plataforma conectada que no envía y caída de eventos.' } },
+  /* ÁREA DIAGNÓSTICO (fora das trilhas): casos de verdade, por categoria. Cada bloco é um "módulo" com area: 'diagnostico' e cada caso é uma "aula"
+     no formato de caso: a Marina reclama → tutorial guiado → o porquê → Atender e Cola. */
+  { id: 'dg-pixel', area: 'diagnostico', status: 'construcao', icone: '📡', titulo: { pt: 'Pixel e eventos', es: 'Píxel y eventos' }, resumo: { pt: 'Compra que não chega, código colado à mão, compras em dobro, valor errado e queda de eventos.', es: 'Compra que no llega, código pegado a mano, compras duplicadas, valor incorrecto y caída de eventos.' } },
+  { id: 'dg-integracoes', area: 'diagnostico', status: 'construcao', icone: '🧩', titulo: { pt: 'Integrações e plataformas', es: 'Integraciones y plataformas' }, resumo: { pt: 'Loja conectada pela Shopify, WooCommerce ou parceiro que não envia o que devia.', es: 'Tienda conectada por Shopify, WooCommerce o socio que no envía lo que debería.' } },
+  { id: 'dg-anuncios', area: 'diagnostico', status: 'planejado', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar.', es: 'Anuncio que no se publica, no entrega o dejó de entregar.' } },
+  { id: 'dg-catalogo', area: 'diagnostico', status: 'planejado', icone: '🗂️', titulo: { pt: 'Catálogo e produtos', es: 'Catálogo y productos' }, resumo: { pt: 'Produtos que não aparecem, não sincronizam ou não batem com o Pixel.', es: 'Productos que no aparecen, no se sincronizan o no coinciden con el píxel.' } },
+  { id: 'dg-contas', area: 'diagnostico', status: 'planejado', icone: '🏢', titulo: { pt: 'Contas, acessos e portfólio', es: 'Cuentas, accesos y portafolio' }, resumo: { pt: 'Quem tem acesso a quê, ativos no portfólio errado e verificação da empresa.', es: 'Quién tiene acceso a qué, activos en el portafolio equivocado y verificación de la empresa.' } },
+  { id: 'dg-instagram', area: 'diagnostico', status: 'planejado', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta ou não aparece no anúncio.', es: 'Instagram que no se conecta o no aparece en el anuncio.' } },
+  { id: 'dg-commerce', area: 'diagnostico', status: 'planejado', icone: '🛍️', titulo: { pt: 'Commerce e lojas', es: 'Commerce y tiendas' }, resumo: { pt: 'Loja que não fica visível e anúncios das Lojas que só levam ao site.', es: 'Tienda que no queda visible y anuncios de Tiendas que solo llevan al sitio.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
@@ -47,7 +55,7 @@ window.MODULOS = [
 window.TRILHAS = [
   { id: 'foco', icone: '🎯', nome: { pt: 'Trilha Foco', es: 'Ruta Foco' }, sub: { pt: 'Anúncios, medição e comércio', es: 'Anuncios, medición y comercio' },
     resumo: { pt: 'A ordem de estudo de quem atende anúncios, medição e comércio. Foca no que você resolve e, quando um caso é de outra área, mostra só uma linha de encaminhamento.', es: 'El orden de estudio de quien atiende anuncios, medición y comercio. Se centra en lo que tú resuelves y, cuando un caso es de otra área, muestra solo una línea de derivación.' },
-    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp', 'diagnostico'] },
+    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
   { id: 'completa', icone: '🧭', nome: { pt: 'Trilha Completa', es: 'Ruta Completa' }, sub: { pt: 'Tudo do Foco e mais', es: 'Todo el Foco y más' },
     resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
     modulos: null, extras: ['pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
@@ -4852,6 +4860,10 @@ window.AULAS = {
       {
         id: '01', min: 10, status: 'pronta',
         titulo: L('Método: investigar um caso (Purchase que não chega)', 'Método: investigar un caso (Purchase que no llega)'),
+        reclamacao: [
+          ['marina', L('Socorro! Eu vendo todo dia na loja, mas o Gerenciador de Eventos mostra zero compras. O Pixel quebrou?! 😫', '¡Socorro! Vendo todos los días en la tienda, pero el Administrador de eventos muestra cero compras. ¿Se rompió el píxel?! 😫')],
+          ['rafa', L('Calma, Marina, vamos descobrir juntos. Vou fazer uma compra de teste no seu site, igual a uma cliente, e ver o que chega para a Meta.', 'Tranquila, Marina, vamos a descubrirlo juntos. Haré una compra de prueba en tu sitio, igual que una clienta, y veré qué le llega a Meta.')]
+        ],
         antes: L('A Marina ouviu de uma cliente: “Vendo todo dia, mas o Gerenciador não mostra nenhuma compra”.', 'Marina oyó de una clienta: “Vendo todos los días, pero el Administrador no muestra ninguna compra”.'),
         gancho: L('Um sintoma, várias causas possíveis. O segredo é refazer o que o cliente faz e olhar as fontes na ordem certa.', 'Un síntoma, varias causas posibles. El secreto es rehacer lo que hace el cliente y mirar las fuentes en el orden correcto.'),
         objetivo: L('Reproduzir o caso numa compra de teste e investigar com o Consultor de Dados, Eventos de teste, Diagnóstico e o código-fonte.', 'Reproducir el caso en una compra de prueba e investigar con el Asesor de datos, Probar eventos, Diagnóstico y el código fuente.'),
@@ -4893,6 +4905,10 @@ window.AULAS = {
       {
         id: '02', min: 12, status: 'pronta',
         titulo: L('Pixel: colar o código à mão', 'Píxel: pegar el código a mano'),
+        reclamacao: [
+          ['marina', L('Meu site novo não tem nenhum app da Meta. O desenvolvedor sumiu e me disseram para “colar o código do Pixel”. Colar onde?? 😰', 'Mi sitio nuevo no tiene ninguna app de Meta. El desarrollador desapareció y me dijeron que “pegue el código del píxel”. ¿¿Pegar dónde?? 😰')],
+          ['rafa', L('Te mostro passo a passo: onde pegar o código, em que lugar do site ele vai e como a gente confirma no fim que está funcionando.', 'Te muestro paso a paso: dónde tomar el código, en qué lugar del sitio va y cómo confirmamos al final que funciona.')]
+        ],
         antes: L('O site da cliente não tem integração pronta: o código vai na mão.', 'El sitio de la clienta no tiene integración lista: el código va a mano.'),
         gancho: L('Copiar do Gerenciador de Eventos, colar no lugar certo, salvar e testar.', 'Copiar del Administrador de eventos, pegar en el lugar correcto, guardar y probar.'),
         objetivo: L('Saber onde colar o código base e o do Purchase, com valor e moeda, e como orientar o cliente e o desenvolvedor.', 'Saber dónde pegar el código base y el del Purchase, con valor y moneda, y cómo orientar al cliente y al desarrollador.'),
@@ -4940,6 +4956,10 @@ window.AULAS = {
       {
         id: '03', min: 12, status: 'pronta',
         titulo: L('Pixel: compras em dobro e valor errado', 'Píxel: compras dobles y valor incorrecto'),
+        reclamacao: [
+          ['marina', L('As vendas no Gerenciador estão o dobro do que entrou no caixa… e o valor aparece estranho! Estou pagando anúncio olhando número errado? 😡', 'Las ventas en el Administrador son el doble de lo que entró en caja… ¡y el valor aparece raro! ¿Estoy pagando anuncios mirando un número equivocado? 😡')],
+          ['rafa', L('Pode ser a compra contada duas vezes ou o valor enviado no formato errado. Vamos refazer uma compra e ver exatamente o que a Meta recebe.', 'Puede ser la compra contada dos veces o el valor enviado en el formato incorrecto. Rehagamos una compra y veamos exactamente qué recibe Meta.')]
+        ],
         antes: L('Dois clientes da Marina com o mesmo tipo de problema: o dobro de vendas e o valor zerado.', 'Dos clientes de Marina con el mismo tipo de problema: el doble de ventas y el valor en cero.'),
         gancho: L('Dois casos fora da rota padrão, cada um com sua causa, sua tela e sua solução.', 'Dos casos fuera de la ruta estándar, cada uno con su causa, su pantalla y su solución.'),
         objetivo: L('Reconhecer o Purchase duplicado (pixel em dois lugares) e o valor errado (formato do value e da moeda) e orientar a correção.', 'Reconocer el Purchase duplicado (píxel en dos lugares) y el valor incorrecto (formato del value y de la moneda) y orientar la corrección.'),
@@ -4987,6 +5007,10 @@ window.AULAS = {
       {
         id: '04', min: 10, status: 'pronta',
         titulo: L('Plataformas: conectada, mas a compra some', 'Plataformas: conectada, pero la compra desaparece'),
+        reclamacao: [
+          ['marina', L('Minha loja é Shopify e já está conectada com a Meta, mas tem compra que simplesmente não aparece. Se está conectado, por que some? 🤔', 'Mi tienda es Shopify y ya está conectada con Meta, pero hay compras que simplemente no aparecen. Si está conectado, ¿por qué desaparecen? 🤔')],
+          ['rafa', L('Vamos testar como uma cliente que usa bloqueador de anúncios e conferir o nível de compartilhamento de dados na sua Shopify.', 'Probemos como una clienta que usa bloqueador de anuncios y revisemos el nivel de compartir datos en tu Shopify.')]
+        ],
         antes: L('O cliente garante: “Já conectei a Shopify à Meta”, mas algumas compras não aparecem.', 'El cliente asegura: “Ya conecté Shopify a Meta”, pero algunas compras no aparecen.'),
         gancho: L('Conectado não quer dizer que tudo chega: o nível de compartilhamento de dados decide.', 'Conectado no quiere decir que todo llega: el nivel de compartir datos decide.'),
         objetivo: L('Investigar uma loja Shopify conectada cujas compras somem para quem usa bloqueador e escolher o nível de dados certo.', 'Investigar una tienda Shopify conectada cuyas compras desaparecen para quien usa bloqueador y elegir el nivel de datos correcto.'),
@@ -5028,6 +5052,10 @@ window.AULAS = {
       {
         id: '05', min: 10, status: 'pronta',
         titulo: L('Pixel: quando os eventos caem', 'Píxel: cuando los eventos caen'),
+        reclamacao: [
+          ['marina', L('Troquei o tema do site ontem e hoje chegou um alerta de queda de eventos. Eu não mexi em nada da Meta! 😱', 'Cambié el tema del sitio ayer y hoy llegó una alerta de caída de eventos. ¡No toqué nada de Meta! 😱')],
+          ['rafa', L('Troca de tema muitas vezes leva o código junto. Vou abrir a sua loja e conferir se o Pixel ainda está lá.', 'Un cambio de tema muchas veces se lleva el código. Voy a abrir tu tienda y revisar si el píxel sigue ahí.')]
+        ],
         antes: L('Depois de uma atualização do site, o Gerenciador mandou um alerta.', 'Después de una actualización del sitio, el Administrador mandó una alerta.'),
         gancho: L('Do alerta à causa: o roteiro que a própria Central de Ajuda recomenda.', 'De la alerta a la causa: el guion que recomienda el propio Centro de ayuda.'),
         objetivo: L('Seguir os passos para investigar uma queda de eventos, reinstalar o código base e propor a prevenção.', 'Seguir los pasos para investigar una caída de eventos, reinstalar el código base y proponer la prevención.'),
@@ -5069,3 +5097,12 @@ window.AULAS = {
     ];
   })()
 };
+/* Área Diagnóstico: os casos (escritos acima, em AULAS.diagnostico) são distribuídos pelos blocos da área. Os ids dos tutoriais não mudam. */
+(function () {
+  var D = window.AULAS.diagnostico; if (!D) return;
+  var por = {}; D.forEach(function (a) { por[a.id] = a });   // pega todos antes de renumerar
+  function caso(id, novo) { var a = por[id]; a.id = novo; return a }
+  window.AULAS['dg-pixel'] = [caso('01', '01'), caso('02', '02'), caso('03', '03'), caso('05', '04')];
+  window.AULAS['dg-integracoes'] = [caso('04', '01')];
+  delete window.AULAS.diagnostico;
+})();

@@ -75,6 +75,10 @@ Reaproveite antes de criar: casos de Pixel usam `site-estado.js` (presets `SITE.
 4. Tarefa 2, Passo B: um bloco por vez; cada caso com aula PT+ES, quiz, tutorial guiado testado (normal e teimoso), cola; commit por bloco; atualizar `PONTO_DE_PARTIDA.md` e `PENTE_FINO.md` a cada bloco.
 5. Nunca publicar. No fim de cada etapa, dizer ao André, em português simples, o que mudou, o que ficou "a conferir" e o que ele precisa testar.
 
+## Como todo caso começa (pedido do André, 18/10)
+
+Igual à trilha: **primeiro a Marina reclama** (a fala dela no chat, do jeito que um cliente fala de verdade, com a emoção e as palavras erradas que os clientes usam), o Rafa acolhe e diz o que vai fazer, e **logo depois vem o tutorial guiado de como resolver**. A explicação (Entender, Ver de perto) fica mais curta que numa aula normal e pode vir depois; o centro do caso é: reclamação → tutorial guiado → problema comprovadamente resolvido → Atender e Cola.
+
 ## Validar que o problema foi resolvido (obrigatório em todo caso)
 
 Não basta o tutorial "chegar ao fim". Em cada caso, prove que o problema **sumiu** — no tutorial e no teste:
