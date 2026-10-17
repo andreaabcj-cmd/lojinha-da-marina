@@ -23,7 +23,7 @@
     else for (i = 0; i < 6; i++) r.push({ alvo: 'body', tit: '', txt: '' });
     return r;
   }
-  function obrigadoLer(txt) { return [{ alvo: '#obrigadoBox', tit: t('Pedido feito 🛒', 'Pedido hecho 🛒'), txt: txt }] }
+  function obrigadoLer(txt) { return [{ alvo: '#obrigadoBox', semVolta: true, tit: t('Pedido feito 🛒', 'Pedido hecho 🛒'), txt: txt }] }
   function consultor(txtLista) {   // abre o Consultor de Dados (a extensão) e lê a lista de eventos da página
     return [
       { alvo: '#maExt', clique: true, pagina: P.obrigado, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() }, tit: t('Consultor de Dados', 'Asesor de datos'), txt: t('Abra o Consultor de Dados, na faixa amarela: é a extensão que o agente pede para o cliente instalar.', 'Abre el Asesor de datos, en la franja amarilla: es la extensión que el agente le pide al cliente que instale.') },

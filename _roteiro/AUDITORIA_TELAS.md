@@ -24,3 +24,7 @@ Gerenciador de Anúncios (anuncios, feed, publicos, relatorios, regras*), Busine
 
 ## Ordem sugerida
 1) Pixel avançado (usa as telas já reais de Eventos + Loja) → 2) Integrações + Shopify e Meta + MBE (usam `admin-shopify`) → 3) Portfólio avançado → 4) Entrega → 5) Commerce, Verified, Shop Ads.
+
+## Situação em 17/10/2026 (fim da rodada)
+- REFEITOS em telas reais: Diagnóstico de casos, Pixel avançado, Integrações (WooCommerce, MBE), Shopify e Meta, Portfólio avançado (dentro das Configurações do portfólio), Entrega (status real da coluna Veiculação) e Pixel como fonte do catálogo (dentro do Catálogo).
+- MANTIDOS COM AVISO “a conferir” (dependem de telas que não dá para abrir: loja publicada, assinatura paga, botão Loja): Commerce (checklist “Minha loja”), Meta Verified (fluxo de assinatura) e Shop Ads (aba Loja). Decisão do André (17/10): manter marcado; só refazer se ele trouxer prints reais.

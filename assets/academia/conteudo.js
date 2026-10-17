@@ -4174,8 +4174,8 @@ window.AULAS = {
         },
         ferramenta: 'pixelfonte-integ',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelas 5 condições: duas falham (microdados e disparo recente).', 'En el simulador, el Pixel te guía por las 5 condiciones: dos fallan (microdatos y activación reciente).'),
-          tour: 'pixel-fonte-catalogo', pagina: 'meta-terceiros.html?zerar=1'
+          texto: L('A Marina quer que o Pixel adicione e atualize os itens do catálogo sozinho. Você vai ao catálogo (Fontes de dados › Adicionar › Pixel da Meta), vê as cinco condições, resolve as que falham (microdados no Microdata Debugger e ViewContent na loja) e adiciona o Pixel como fonte. O Pixel te guia por três telas.', 'Marina quiere que el píxel agregue y actualice los artículos del catálogo solo. Vas al catálogo (Fuentes de datos › Agregar › Píxel de Meta), ves las cinco condiciones, resuelves las que fallan (microdatos en el Microdata Debugger y ViewContent en la tienda) y agregas el píxel como fuente. El Pixel te guía por tres pantallas.'),
+          tour: 'pixel-fonte-catalogo', pagina: 'meta-catalogo.html'
         },
         atender: {
           cena: L('Adicionei o Pixel como fonte do catálogo e nada atualiza! 😠', '¡Agregué el píxel como fuente del catálogo y nada se actualiza! 😠'),

@@ -144,13 +144,34 @@
     return casca('<h1>Conjuntos de produtos</h1><p class="cm-sub">Crie e gerencie conjuntos de produtos no seu catálogo. Saiba mais</p><div style="display:flex;gap:8px;margin-bottom:10px"><button class="btn" data-acao="criar-conjunto">Criar conjunto</button><span class="cm-nao">Pesquisar conjuntos · Filtros</span></div>' +
       '<div class="cm-card"><table class="cm-tab" data-t="tab-conjuntos"><thead><tr><th>Conjuntos</th><th>Usado em</th><th>Data de criação</th><th>Ações</th></tr></thead><tbody><tr><td class="nome"><b>All Products</b><small>' + ps.length + ' produtos · ' + c.itens.length + ' variantes</small></td><td>—</td><td>15 de out de 2026</td><td><button class="btn sec" disabled>Mais</button></td></tr></tbody></table><p class="cm-sub">Escolha onde usar esse conjunto, crie um conjunto semelhante ou exclua-o.</p></div>' + pendente('A janela de “Criar conjunto” ainda não foi vista'), r);
   }
+  /* Pixel como fonte de itens do catálogo: as 5 condições vêm da Central de Ajuda; aqui lemos o que as outras telas do treino já guardaram */
+  var PX = { menu: false, jan: false };
+  function lsj(k) { try { return JSON.parse(localStorage.getItem(k) || 'null') } catch (e) { return null } }
+  function condPx() {
+    var ev = lsj('sim.eventos'), ds = ev && ev.datasets && ev.datasets[0], feed = lsj('sim.feed') || [], md = lsj('sim.microdados'), agora = Date.now(), semana = 7 * 24 * 3600 * 1000;
+    var vc = feed.some(function (e) { return e.nome === 'ViewContent' }), rec = feed.some(function (e) { return agora - (e.t || agora) < semana });
+    return [
+      { id: 'portf', ok: !!ds, txt: 'O Pixel e o catálogo estão no mesmo portfólio empresarial', ajuda: 'Crie ou conecte o Pixel no Gerenciador de Eventos.', link: 'meta-eventos.html', lk: 'Abrir o Gerenciador de Eventos' },
+      { id: 'perm', ok: true, txt: 'Você tem controle total do catálogo e do Pixel', ajuda: '' },
+      { id: 'vc', ok: vc, txt: 'O Pixel recebeu o evento ViewContent com a Identificação do conteúdo', ajuda: 'Abra um produto na loja (isso dispara o ViewContent) e confira em Testar eventos.', link: 'loja.html', lk: 'Abrir a loja' },
+      { id: 'micro', ok: !!(md && md.res && md.res.ok), txt: 'As páginas de produto têm microdados (tags) corretos', ajuda: 'Verifique uma página de produto no Microdata Debugger.', link: 'meta-microdados.html', lk: 'Abrir o Microdata Debugger' },
+      { id: 'sete', ok: rec, txt: 'O Pixel disparou nos últimos sete dias', ajuda: 'Abra uma página da loja para o Pixel disparar.', link: 'loja.html', lk: 'Abrir a loja' }
+    ];
+  }
+  function janelaPixel(c) {
+    var L = condPx(), tudo = L.every(function (x) { return x.ok });
+    return '<div class="fundo" data-t="jan-pixel"><div class="janela"><h3>Adicionar itens com o Pixel<button class="x" data-acao="fonte-fecha">✕</button></h3><p>O Pixel pode adicionar e atualizar itens do catálogo quando alguém vê um produto. Cinco condições:</p><div data-t="lista-px">' +
+      L.map(function (x) { return '<div class="pf-linha" data-t="cond-' + x.id + '"><span class="L">' + (x.ok ? '✓' : '✕') + '</span><span><b>' + x.txt + '</b>' + (x.ok ? '' : '<small>' + x.ajuda + (x.link ? ' <a href="' + x.link + '">' + x.lk + '</a>' : '') + '</small>') + '</span></div>' }).join('') + '</div>' +
+      '<p class="miudo">Pode levar até 24 horas para ficar pronto; depois atualiza o catálogo a cada interação, normalmente em até 15 minutos. ⚠ Janela montada pela Central de Ajuda (a conferir).</p>' +
+      '<div class="rodape-jan"><button class="btn sec" data-acao="fonte-fecha">Cancelar</button><button class="btn" data-acao="fonte-pixel-ok" data-t="btn-add-pixel"' + (tudo ? '' : ' disabled') + '>Adicionar</button></div></div></div>';
+  }
   function telaFontes(c, r) {
-    var f = c.fontes[0];
-    var corpo = f ? '<tr data-t="fonte-linha"><td class="nome"><b>' + esc(f.nome) + '</b></td><td>' + f.tipo + '<br><small>' + f.sub + '</small></td><td>' + c.itens.length + '</td><td><span class="cm-st"><i></i>Tudo certo</span></td><td>15 de out às 01:20<br><small>' + f.quando + '</small></td><td><button class="btn sec" data-acao="atualizar-feed" data-t="btn-atualizar">Atualizar</button></td></tr>' : '<tr><td colspan="6" class="cm-vazio">Nenhuma fonte de dados ainda.</td></tr>';
-    return casca('<h1>Fontes de dados</h1><p class="cm-sub">Gerencie as fontes de dados que fornecem informações sobre os produtos no seu catálogo. Saiba mais</p><div style="margin-bottom:10px"><button class="btn" disabled>Adicionar</button></div>' +
+    var f = c.fontes[0], extra = c.fontes.slice(1).map(function (x) { return '<tr data-t="fonte-linha-2"><td class="nome"><b>' + esc(x.nome) + '</b></td><td>' + x.tipo + '<br><small>' + x.sub + '</small></td><td>' + c.itens.length + '</td><td><span class="cm-st"><i></i>Tudo certo</span></td><td>agora<br><small>' + x.quando + '</small></td><td></td></tr>' }).join('');
+    var corpo = f ? '<tr data-t="fonte-linha"><td class="nome"><b>' + esc(f.nome) + '</b></td><td>' + f.tipo + '<br><small>' + f.sub + '</small></td><td>' + c.itens.length + '</td><td><span class="cm-st"><i></i>Tudo certo</span></td><td>15 de out às 01:20<br><small>' + f.quando + '</small></td><td><button class="btn sec" data-acao="atualizar-feed" data-t="btn-atualizar">Atualizar</button></td></tr>' + extra : '<tr><td colspan="6" class="cm-vazio">Nenhuma fonte de dados ainda.</td></tr>';
+    return casca('<h1>Fontes de dados</h1><p class="cm-sub">Gerencie as fontes de dados que fornecem informações sobre os produtos no seu catálogo. Saiba mais</p><div style="margin-bottom:10px;position:relative"><button class="btn" data-acao="fonte-menu" data-t="btn-add-fonte">Adicionar</button>' + (PX.menu ? '<div class="cm-card" data-t="menu-add-fonte" style="position:absolute;z-index:5;min-width:280px;margin-top:4px"><b>Adicionar itens</b><p class="cm-sub">Escolha de onde vêm os produtos.</p><button class="btn sec" disabled>Carregar um arquivo de dados</button> <button class="btn sec" disabled>API de Catálogo</button> <button class="btn" data-acao="fonte-pixel" data-t="op-pixel">Pixel da Meta</button><p class="cm-sub">⚠ Opções do menu montadas pela Central de Ajuda (a conferir com a tela real).</p></div>' : '') + '</div>' +
       '<p class="ga-aviso">Adicione produtos do seu site usando a API de Catálogo — A API de catálogo sincroniza produtos do seu site em tempo real. Crie um app para conectar e manter seu catálogo atualizado.</p>' +
       '<div class="cm-card"><table class="cm-tab"><thead><tr><th>Nome</th><th>Tipo</th><th>Produtos</th><th>Status</th><th>Última atualização</th><th></th></tr></thead><tbody>' + corpo + '</tbody></table></div>' +
-      (f ? '<p class="cm-set" data-t="cm-simulador">🧪 <b>Só no simulador:</b> o estoque mora no <b>site</b>, não aqui. <label><input type="checkbox" id="cmSite"' + (c.siteCorrigido ? ' checked' : '') + ' data-t="chk-site"/> o estoque do Moletom já foi corrigido no site</label> · depois clique em Atualizar.</p>' : ''), r);
+      (PX.jan ? janelaPixel(c) : '') + (c.fontes.some(function (x) { return x.tipo === 'Pixel' }) ? '<div class="ga-aviso ok" data-t="msg-px"><b>✓ Pixel adicionado como fonte.</b> Pode levar até 24 horas para ficar pronto; depois atualiza o catálogo a cada interação, normalmente em até 15 minutos.</div>' : '') + (f ? '<p class="cm-set" data-t="cm-simulador">🧪 <b>Só no simulador:</b> o estoque mora no <b>site</b>, não aqui. <label><input type="checkbox" id="cmSite"' + (c.siteCorrigido ? ' checked' : '') + ' data-t="chk-site"/> o estoque do Moletom já foi corrigido no site</label> · depois clique em Atualizar.</p>' : ''), r);
   }
   function telaEventos(c, r) {
     return casca('<h1>Eventos</h1><div class="cm-card" data-t="cm-eventos"><h3>Conecte seus dados para acompanhar e personalizar melhor seus anúncios</h3><p>Conecte uma fonte de dados ao seu site ou app para:</p><ul><li>Encontrar novos clientes e garantir que seus anúncios apareçam para as pessoas certas.</li><li>Redirecionar pessoas que mostraram interesse nos produtos do seu site.</li><li>Fazer venda cruzada ou upsell de produtos relacionados para aumentar o valor da compra dos seus clientes.</li></ul>' +
@@ -200,6 +221,10 @@
     else if (ac === 'novo-produto') { W.linhas.push({}); render() }
     else if (ac === 'carregar-manual') { var itens = W.linhas.filter(function (l) { return l.titulo && l.preco && l.id }).map(function (l) { return { id: l.id, grupo: '', nome: l.titulo, preco: parseFloat(String(l.preco).replace(',', '.')) || 0, disp: 1, moeda: 'BRL' } }); criaCatalogo(itens, []) }
     else if (ac === 'atualizar-feed') { var c = cat(rota().id); if (c) { if (c.siteCorrigido) c.itens.forEach(function (i) { if (i.id === 'MOLETOM_01') i.disp = 1 }); grava(); render() } }
+    else if (ac === 'fonte-menu') { PX.menu = !PX.menu; render() }
+    else if (ac === 'fonte-pixel') { PX.menu = false; PX.jan = true; render() }
+    else if (ac === 'fonte-fecha') { PX.jan = false; render() }
+    else if (ac === 'fonte-pixel-ok') { var cp = cat(rota().id); if (cp && !cp.fontes.some(function (x) { return x.tipo === 'Pixel' })) cp.fontes.push({ nome: 'Pixel da Mari', tipo: 'Pixel', sub: 'Atualização a cada interação', n: cp.itens.length, quando: 'Atualiza a cada interação' }); PX.jan = false; grava(); render() }
     else if (ac === 'editar-idioma') { ED = true; render() }
     else if (ac === 'salvar-idioma') { var c2 = cat(rota().id), i1 = $('#cmIdi'), p1 = $('#cmPais'); if (c2) { c2.idioma = i1.value || c2.idioma; c2.pais = p1.value || c2.pais; grava() } ED = false; render() }
     else if (ac === 'criar-conjunto') { alert('No simulador, a janela “Criar conjunto” ainda não está montada (a tela real não foi vista).') }
