@@ -75,8 +75,18 @@ Reaproveite antes de criar: casos de Pixel usam `site-estado.js` (presets `SITE.
 4. Tarefa 2, Passo B: um bloco por vez; cada caso com aula PT+ES, quiz, tutorial guiado testado (normal e teimoso), cola; commit por bloco; atualizar `PONTO_DE_PARTIDA.md` e `PENTE_FINO.md` a cada bloco.
 5. Nunca publicar. No fim de cada etapa, dizer ao André, em português simples, o que mudou, o que ficou "a conferir" e o que ele precisa testar.
 
+## Validar que o problema foi resolvido (obrigatório em todo caso)
+
+Não basta o tutorial "chegar ao fim". Em cada caso, prove que o problema **sumiu** — no tutorial e no teste:
+
+1. **Antes:** o tutorial mostra o sintoma numa tela real (ex.: Purchase ausente em Testar eventos, aviso no Diagnóstico, status "Desativado" na coluna Veiculação, produto fora do canal).
+2. **Correção:** feita no lugar certo (site do cliente, admin da plataforma, Gerenciador…).
+3. **Depois:** o tutorial refaz a verificação na MESMA tela do sintoma (nova compra de teste depois de "Limpar atividade", Diagnóstico sem o aviso, status mudou, produto sincronizado) e o passo final só aparece se o sintoma sumiu de fato (use `cond` que lê o estado, não só um clique).
+4. **No executor de testes:** depois de cada tutorial, confira o estado final por código (ex.: `sim.feed` com um único Purchase com valor e moeda; `SITE.fx()` sem cópia duplicada; diagnóstico sem o problema; `loja.site`/`sim.*` com o valor corrigido). Registre no relatório: caso · sintoma antes · estado depois · passou/falhou. Tutorial que termina com o sintoma ainda presente = falha, mesmo que todos os passos tenham sido clicados.
+5. **Regressão:** depois de cada bloco, rode de novo os tutoriais antigos que usam as mesmas telas e confirme que continuam resolvendo o problema deles.
+
 ## Critérios de aceite
 
 - Diagnóstico aparece como área própria (início + navegação), fora das trilhas; grade de módulos renumerada; nada quebrou (todas as páginas abrem sem erro no console; progresso e colas continuam).
-- Cada caso novo: fala do cliente realista; solução oficial com fonte e data; tutorial em telas reais, do começo do atendimento até a confirmação por teste; PT e ES completos (`window.__falta` vazio nas telas usadas); passa no executor nos dois modos; cola com uma linha de encaminhamento quando a solução é de outra área.
+- Cada caso novo: fala do cliente realista; sintoma visível antes e comprovadamente ausente depois (tela + checagem de estado no executor); solução oficial com fonte e data; tutorial em telas reais, do começo do atendimento até a confirmação por teste; PT e ES completos (`window.__falta` vazio nas telas usadas); passa no executor nos dois modos; cola com uma linha de encaminhamento quando a solução é de outra área.
 - Nada interno ou pessoal no repositório; nada publicado.
