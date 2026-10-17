@@ -2728,7 +2728,7 @@ window.AULAS = {
         },
         ferramenta: 'aprendizado-limitado-q',
         praticar: {
-          texto: L('No simulador, a camiseta fica em “Aprendizado limitado”. O Pixel te guia pelos números e pelo “?” com o que fazer.', 'En el simulador, la camiseta queda en “Aprendizaje limitado”. El Pixel te guía por los números y por el “?” con qué hacer.'),
+          texto: L('No simulador, a camiseta fica em “Aprendizado limitado” (ícone de aviso). O Pixel te guia pelos números e pelo significado do status, com o que fazer.', 'En el simulador, la camiseta queda en “Aprendizaje limitado” (ícono de aviso). El Pixel te guía por los números y por el significado del estado, con qué hacer.'),
           tour: 'aprendizado-limitado', pagina: 'meta-entrega.html?exemplo=1'
         },
         atender: {
@@ -2772,7 +2772,7 @@ window.AULAS = {
         },
         ferramenta: 'nao-veicula-q',
         praticar: {
-          texto: L('No simulador, três conjuntos não veiculam por razões diferentes e a conta tem aviso de limite. O Pixel te guia na ordem certa.', 'En el simulador, tres conjuntos no entregan por razones distintas y la cuenta tiene aviso de límite. El Pixel te guía en el orden correcto.'),
+          texto: L('No simulador, você confere o status em todos os níveis (campanha e conjunto de anúncios), lê os ícones da coluna Veiculação e usa o Histórico de atividades para achar o que mudou. O Pixel te guia na ordem certa.', 'En el simulador, revisas el estado en todos los niveles (campaña y conjunto de anuncios), lees los íconos de la columna Entrega y usas el Historial de actividades para encontrar lo que cambió. El Pixel te guía en el orden correcto.'),
           tour: 'nao-veicula', pagina: 'meta-entrega.html?problema=1'
         },
         atender: {
