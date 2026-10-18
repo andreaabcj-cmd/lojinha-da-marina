@@ -13,12 +13,12 @@
   var TRILHOS = {
     'conhecer-portfolio': { modulo: 'portfolio', aula: '01', cauda: 8 },
     'investigar-purchase': { modulo: 'dg-pixel', aula: '01', cauda: 20, area: true },   // área Diagnóstico: Início › Diagnóstico › bloco › caso › Resolver
-    'plataforma-conectada': { modulo: 'dg-integracoes', aula: '01', cauda: 36, area: true },
+    'plataforma-conectada': { modulo: 'dg-integracoes', aula: '01', cauda: 38, area: true },
     // tutoriais reaproveitados de módulos: a chave é um apelido e `tour` é o tutorial (o link do módulo de origem continua normal)
     'dg-anuncios-01': { tour: 'nao-veicula', modulo: 'dg-anuncios', aula: '01', cauda: 14, area: true },
     'dg-catalogo-01': { tour: 'produtos-sumidos', modulo: 'dg-catalogo', aula: '01', cauda: 9, area: true },
     'dg-instagram-01': { tour: 'perfil-nao-aparece', modulo: 'dg-instagram', aula: '01', cauda: 5, area: true },
-    'dg-contas-01': { tour: 'conectar-extensao', modulo: 'dg-contas', aula: '01', cauda: 14, area: true },
+    'dg-contas-01': { tour: 'conectar-extensao', modulo: 'dg-contas', aula: '01', cauda: 15, area: true },
     'adicionar-instagram': { modulo: 'instagram', aula: '03', cauda: 9 },   // na trilha Foco as aulas 01-02 do Instagram não aparecem (só da Completa): o 1º tutorial visível é este
     'pixel-em-acao': { modulo: 'pixel', aula: '01', cauda: 5 },
     'correspondencia-avancada': { modulo: 'pixel-avancado', aula: '01', cauda: 29 },
@@ -27,7 +27,7 @@
     'ler-relatorio': { modulo: 'relatorios', aula: '02', cauda: 5 },
     'criar-regra': { modulo: 'regras', aula: '02', cauda: 10 },
     'montar-criativo': { modulo: 'feed', aula: '02', cauda: 15 },
-    'conectar-shopify': { modulo: 'shopify', aula: '02', cauda: 33 },
+    'conectar-shopify': { modulo: 'shopify', aula: '02', cauda: 34 },
     'conectar-woocommerce': { modulo: 'integracoes', aula: '02', cauda: 34 },
     'galeria-parceiros': { modulo: 'mbe', aula: '02', cauda: 5 },
     'jornada-compra-site': { modulo: 'shop-ads-offsite', aula: '01', cauda: 13 },

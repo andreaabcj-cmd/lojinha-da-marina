@@ -1829,16 +1829,16 @@
         [{ pt: 'Criar outro pixel', es: 'Crear otro píxel' }, 0, { pt: 'Não resolve.', es: 'No resuelve.' }],
         [{ pt: 'Esperar o Diagnóstico sumir', es: 'Esperar que el Diagnóstico desaparezca' }, 0, { pt: 'O erro fica até corrigir.', es: 'El error queda hasta corregir.' }]] }
   ]);
-  quizCatalogo('plat-dg', { pt: 'Plataforma conectada: níveis de dados', es: 'Plataforma conectada: niveles de datos' }, { pt: 'Padrão, Avançado e Máximo na Shopify.', es: 'Estándar, Avanzado y Máximo en Shopify.' }, [
-    { q: { pt: 'No nível Padrão (Standard), quem envia os dados?', es: 'En el nivel Estándar (Standard), ¿quién envía los datos?' },
+  quizCatalogo('plat-dg', { pt: 'Plataforma conectada: níveis de dados', es: 'Plataforma conectada: niveles de datos' }, { pt: 'Conservador, Aprimorado e Máximo na Shopify.', es: 'Conservador, Mejorado y Máximo en Shopify.' }, [
+    { q: { pt: 'Na preferência Conservador, quem envia os dados?', es: 'En la preferencia Conservador, ¿quién envía los datos?' },
       o: [[{ pt: 'Só o pixel do navegador, que um bloqueador de anúncios pode impedir', es: 'Solo el píxel del navegador, que un bloqueador de anuncios puede impedir' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
-        [{ pt: 'O pixel e a API de Conversões', es: 'El píxel y la API de Conversiones' }, 0, { pt: 'Isso é Avançado e Máximo.', es: 'Eso es Avanzado y Máximo.' }],
+        [{ pt: 'O pixel e a API de Conversões', es: 'El píxel y la API de Conversiones' }, 0, { pt: 'Isso é Aprimorado e Máximo.', es: 'Eso es Mejorado y Máximo.' }],
         [{ pt: 'Ninguém: fica desligado', es: 'Nadie: queda desactivado' }, 0, { pt: 'O pixel envia.', es: 'El píxel envía.' }]] },
-    { q: { pt: 'Por que Avançado ou Máximo podem recuperar compras de quem usa bloqueador?', es: '¿Por qué Avanzado o Máximo pueden recuperar compras de quien usa bloqueador?' },
+    { q: { pt: 'Por que Aprimorado ou Máximo podem recuperar compras de quem usa bloqueador?', es: '¿Por qué Mejorado o Máximo pueden recuperar compras de quien usa bloqueador?' },
       o: [[{ pt: 'A API de Conversões envia a compra de servidor para servidor, sem passar pelo navegador', es: 'La API de Conversiones envía la compra de servidor a servidor, sin pasar por el navegador' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
         [{ pt: 'Porque desligam o bloqueador do cliente', es: 'Porque desactivan el bloqueador del cliente' }, 0, { pt: 'Não mexem no navegador do cliente.', es: 'No tocan el navegador del cliente.' }],
         [{ pt: 'Porque mudam o ID do pixel', es: 'Porque cambian el ID del píxel' }, 0, { pt: 'Não.', es: 'No.' }]] },
-    { q: { pt: 'O que avisar ao cliente antes de recomendar Avançado ou Máximo?', es: '¿Qué avisar al cliente antes de recomendar Avanzado o Máximo?' },
+    { q: { pt: 'O que avisar ao cliente antes de recomendar Aprimorado ou Máximo?', es: '¿Qué avisar al cliente antes de recomendar Mejorado o Máximo?' },
       o: [[{ pt: 'Que compartilham dados pessoais (nome, local, e-mail, telefone) e a política de privacidade precisa informar', es: 'Que comparten datos personales (nombre, ubicación, correo, teléfono) y la política de privacidad debe informarlo' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
         [{ pt: 'Nada: é sempre melhor', es: 'Nada: siempre es mejor' }, 0, { pt: 'O cliente decide e informa.', es: 'El cliente decide e informa.' }],
         [{ pt: 'Que a Meta cobra a mais', es: 'Que Meta cobra más' }, 0, { pt: 'Não é isso.', es: 'No es eso.' }]] }

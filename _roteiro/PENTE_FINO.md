@@ -28,7 +28,7 @@ Regra de ouro do André: cada prática acontece numa tela que existe na vida rea
 | Shop Ads fora da Meta | Loja + Eventos (jornada, duplicação) + Catálogo (Content ID) | números Meta × GA | refeito 18/10 com telas reais; comparar números e atualizar loja antiga ainda são explicativos |
 | MBE | Galeria de parceiros, tabela de opções, Pessoas (reais) + janela do MBE | janela dentro da Shopify/Woo | real + janela “a conferir” (agora com as telas de “Loja” descritas por parceira) |
 | Integrações | WooCommerce (admin do WordPress), Catálogo, Diagnóstico | plugin | real/recriado |
-| Shopify e Meta | admin da Shopify (App Store, canal, produtos, configurações) | janela do MBE | recriado |
+| Shopify e Meta | admin da Shopify CONFERIDO numa loja real em 19/10 (Publicação, Canais de vendas, Eventos de clientes, App Store e permissões, Configure sua loja, preferências de dados Conservador/Aprimorado/Máximo, Horizon e editor de código) | canal já configurado; nomes em ES | real (exceto o resumo do canal configurado) |
 | WhatsApp | — | — | fica para depois (decisão do André) |
 | Diagnóstico de casos | Loja + Eventos + código-fonte + editor + admin Shopify; desde 19/10 também Entrega, Turbinar, Catálogo (aba Problemas), Feed, Portfólio (Páginas) e janela do MBE | casos | real/recriado; área própria com 17 casos em 6 blocos (Commerce planejado) |
 

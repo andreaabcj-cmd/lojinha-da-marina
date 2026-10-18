@@ -22,11 +22,13 @@
     return "<!-- Meta Pixel Code -->\n<script>\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;\nn.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,\ndocument,'script','https://connect.facebook.net/en_US/fbevents.js');\nfbq('init', '" + id + "');\n" + (comPageView === false ? '' : "fbq('track', 'PageView');\n") + "</script>\n<!-- End Meta Pixel Code -->";
   }
   var COMPRA = function (v, c, nome, eventId) { return "<script>\n  fbq('track', '" + (nome || 'Purchase') + "', {value: " + v + ", currency: " + c + "}" + (eventId ? ", {eventID: '{{ pedido.id }}'}" : "") + ");\n</script>" };
-  /* theme.liquid do tema do cliente (faz-de-conta): o código do Pixel colado à mão fica entre <head> e </head> */
+  /* theme.liquid do tema do cliente: o início do arquivo do tema Horizon como está numa loja real (conferido em 19/10/2026);
+     o código do Pixel colado à mão fica entre {{ content_for_header }} e </head> */
   function tema(codigo) {
-    var L = ["<!doctype html>", "<html lang=\"pt-BR\">", "<head>", "  <meta charset=\"utf-8\">", "  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">", "  <title>{{ page_title }}</title>", "  {{ content_for_header }}"];
+    var L = ["<!doctype html>", "<html", "  {% if request.design_mode %}", "    class=\"shopify-design-mode\"", "  {% endif %}", "  lang=\"{{ request.locale.iso_code }}\"", "  dir=\"{{ request.locale.direction | default: 'ltr' }}\"", ">",
+      "  <head>", "    {%- render 'meta-tags' -%}", "    {%- render 'stylesheets' -%}", "    {%- render 'scripts' -%}", "    {%- render 'theme-styles-variables' -%}", "    {%- render 'color-palette' -%}", "", "    {{ content_for_header }}"];
     if (codigo) L.push(codigo);
-    L = L.concat(["</head>", "<body>", "  {% section 'header' %}", "  <main>", "    {{ content_for_layout }}", "  </main>", "  {% section 'footer' %}", "</body>", "</html>"]);
+    L = L.concat(["  </head>", "", "  <body class=\"page-width-{{ settings.page_width }}\">", "    {% sections 'header-group' %}", "    <main id=\"MainContent\">", "      {{ content_for_layout }}", "    </main>", "    {% sections 'footer-group' %}", "  </body>", "</html>"]);
     return L.join('\n');
   }
   var DIN = '{{ pedido.total }}';   // valor dinâmico: o site coloca o total do pedido

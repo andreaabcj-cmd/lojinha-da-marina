@@ -104,7 +104,8 @@ window.TOURS['compra-completa'] = [
   { alvo: '.pags', cond: function () { return !!document.querySelector('[name=pag]:checked') },
     tit: { pt: 'Forma de pagamento', es: 'Forma de pago' },
     txt: { pt: 'Os dados de teste já estão preenchidos (nada aqui é real). Escolha uma forma de pagamento simulada e clique em Próximo.', es: 'Los datos de prueba ya están completos (nada aquí es real). Elige una forma de pago simulada y haz clic en Siguiente.' } },
-  { alvo: '#formCheckout button.btn', clique: true,
+  { alvo: '#formCheckout button.btn', clique: true, livre: '.pags', valida: function () { return !!document.querySelector('[name=pag]:checked') },   // se a página recarregou, a forma de pagamento some: sem ela o pedido não fecha
+    erro: { pt: 'Primeiro escolha uma forma de pagamento (a página recarregou e ela foi desmarcada). 🙂', es: 'Primero elige una forma de pago (la página se recargó y se desmarcó). 🙂' },
     tit: { pt: 'Finalize o pedido', es: 'Finaliza el pedido' },
     txt: { pt: 'Clique em Finalizar pedido.', es: 'Haz clic en Finalizar pedido.' } },
   { alvo: '#maExt', clique: true, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() },
