@@ -1454,6 +1454,50 @@ window.AULAS = {
           { pt: 'No catálogo, aba Fontes de dados, clique em Atualizar e confira o produto.', es: 'En el catálogo, pestaña Orígenes de datos, haz clic en Actualizar y revisa el producto.' }],
         encaminhar: { pt: 'Se o produto foi recusado por política ou o aviso não é sobre dados do arquivo, confirme o sintoma e siga a Central de Ajuda da Meta; esse tema é tratado por outra área.', es: 'Si el producto fue rechazado por política o el aviso no es sobre datos del archivo, confirma el síntoma y sigue el Centro de ayuda de Meta; ese tema lo trata otra área.' }
       }
+    },
+    {
+      id: '06', min: 14, status: 'pronta',
+      titulo: { pt: 'Conferir a planilha do catálogo', es: 'Revisar la planilla del catálogo' },
+      antes: { pt: 'O catálogo já recebe produtos por arquivo de dados. Agora: como saber se a planilha está certa?', es: 'El catálogo ya recibe productos por archivo de datos. Ahora: ¿cómo saber si la planilla está bien?' },
+      gancho: { pt: '“Preenchi o modelo da Meta e só metade dos produtos entrou!” Vamos conferir a planilha antes e depois de carregar.', es: '“¡Llené la plantilla de Meta y solo entró la mitad de los productos!” Vamos a revisar la planilla antes y después de subirla.' },
+      objetivo: { pt: 'Conferir uma planilha de catálogo como a Meta pede: o modelo, o cabeçalho, as linhas de exemplo, os valores aceitos; depois carregar, ler o Resumo do upload e o relatório de problemas, corrigir na planilha e recarregar.', es: 'Revisar una planilla de catálogo como pide Meta: la plantilla, el encabezado, las filas de ejemplo, los valores aceptados; después subirla, leer el Resumen de la carga y el informe de problemas, corregir en la planilla y volver a subir.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Baixei o modelo, preenchi tudo em português, direitinho… e metade não entrou. 😩', es: 'Descargué la plantilla, llené todo en portugués, bien prolijo… y la mitad no entró. 😩' }],
+          ['rafa', { pt: 'O modelo sai de Fontes de dados › Adicionar › Arquivo de dados › Baixar modelo (Excel ou CSV). O cabeçalho fica em inglês, exatamente como vem, e alguns campos só aceitam certos valores: availability é in stock ou out of stock; condition é new, refurbished ou used.', es: 'La plantilla sale de Fuentes de datos › Agregar › Archivo de datos › Descargar plantilla (Excel o CSV). El encabezado queda en inglés, exactamente como viene, y algunos campos solo aceptan ciertos valores: availability es in stock u out of stock; condition es new, refurbished o used.' }],
+          ['marina', { pt: 'E o preço? Escrevi R$ 54,90…', es: '¿Y el precio? Escribí R$ 54,90…' }],
+          ['rafa', { pt: 'Número com ponto, um espaço e a moeda de 3 letras: 54.90 BRL. Sem símbolo e sem vírgula. E cada produto precisa de um id só dele, link começando com https:// e marca (brand) ou gtin/mpn.', es: 'Número con punto, un espacio y la moneda de 3 letras: 54.90 BRL. Sin símbolo y sin coma. Y cada producto necesita un id propio, enlace que empiece con https:// y marca (brand) o gtin/mpn.' }],
+          ['pixel', { pt: 'Depois de carregar, a visão geral do feed mostra o Resumo do upload dos produtos: Atualizados ou adicionados, Removidos, Falha no upload e Problemas. O Baixar relatório de problemas diz qual produto e qual campo. Corrija na planilha e use Recarregar arquivo de dados.', es: 'Después de subir, la vista general del feed muestra el Resumen de la carga de productos: actualizados o agregados, eliminados, errores de carga y problemas. Descargar el informe de problemas dice qué producto y qué campo. Corrige en la planilla y vuelve a subir el archivo.' }]
+        ],
+        pontos: [
+          { pt: '<b>Antes de carregar:</b> cabeçalho em inglês sem mudanças, sem linhas de exemplo, um produto por linha, arquivo salvo.', es: '<b>Antes de subir:</b> encabezado en inglés sin cambios, sin filas de ejemplo, un producto por fila, archivo guardado.' },
+          { pt: '<b>Formatos:</b> price 54.90 BRL · availability in stock/out of stock · condition new/refurbished/used · links com https:// · id único · brand, gtin ou mpn.', es: '<b>Formatos:</b> price 54.90 BRL · availability in stock/out of stock · condition new/refurbished/used · enlaces con https:// · id único · brand, gtin o mpn.' },
+          { pt: '<b>Depois de carregar:</b> Resumo do upload + relatório de problemas → corrigir na planilha → Recarregar arquivo de dados.', es: '<b>Después de subir:</b> Resumen de la carga + informe de problemas → corregir en la planilla → volver a subir el archivo.' }
+        ],
+        notas: { pt: 'Telas vistas de verdade em 19/10/2026 no catálogo de aula: menu Adicionar das Fontes de dados, “Carregar arquivo de dados” (Baixar modelo: Modelo padrão .xlsx/.csv e Modelo personalizado) e a visão geral do feed com o Resumo do upload dos produtos. Regras e nomes dos erros: Central de Ajuda da Meta para Empresas (PT-BR), “Como criar um feed de dados para seu catálogo usando um modelo” e “Como solucionar erros de feed de dados no catálogo”. A planilha e a lista de problemas da sessão são de treino (o relatório real é um arquivo baixado: a conferir).', es: 'Pantallas vistas de verdad el 19/10/2026 en el catálogo de práctica: menú Agregar de Fuentes de datos, “Subir archivo de datos” (Descargar plantilla: estándar .xlsx/.csv y personalizada) y la vista general del feed con el Resumen de la carga. Reglas y nombres de los errores: Centro de ayuda de Meta para Empresas (PT-BR), “Cómo crear un feed de datos con una plantilla” y “Cómo solucionar errores de feed de datos en el catálogo”. La planilla y la lista de problemas de la sesión son de práctica (el informe real es un archivo descargado: por confirmar).' }
+      },
+      ferramenta: 'planilha-ok',
+      praticar: {
+        texto: { pt: 'No simulador, você acha o modelo, abre a planilha da Marina, apaga a linha de exemplo, carrega, lê o resumo e o relatório, corrige as 6 células e recarrega até não sobrar problema.', es: 'En el simulador, encuentras la plantilla, abres la planilla de Marina, borras la fila de ejemplo, la subes, lees el resumen y el informe, corriges las 6 celdas y vuelves a subir hasta que no quede ningún problema.' },
+        tour: 'conferir-planilha', pagina: 'meta-catalogo.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Carreguei a planilha e só entraram 2 produtos de 6! O sistema de vocês está com problema? 😤', es: '¡Subí la planilla y solo entraron 2 productos de 6! ¿Su sistema tiene un problema? 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Vamos abrir a fonte de dados: o Resumo do upload mostra quantos falharam, e o relatório de problemas diz o produto e o campo. Normalmente é formato: preço como 54.90 BRL, availability em inglês, id repetido ou link sem https://. Corrigimos na planilha e recarregamos.”', es: '“Abramos la fuente de datos: el Resumen de la carga muestra cuántos fallaron, y el informe de problemas dice el producto y el campo. Normalmente es formato: precio como 54.90 BRL, availability en inglés, id repetido o enlace sin https://. Corregimos en la planilla y volvemos a subir.”' }, fb: { pt: 'Isso! Onde olhar, causas comuns e como confirmar.', es: '¡Eso! Dónde mirar, causas comunes y cómo confirmar.' } },
+          { certa: false, txt: { pt: '“Traduza o cabeçalho para português, fica mais fácil.”', es: '“Traduce el encabezado al español, es más fácil.”' }, fb: { pt: 'O cabeçalho tem que ficar em inglês, igual às especificações.', es: 'El encabezado debe quedar en inglés, igual a las especificaciones.' } },
+          { certa: false, txt: { pt: '“Cadastre os produtos que faltaram um por um, à mão.”', es: '“Carga a mano, uno por uno, los productos que faltaron.”' }, fb: { pt: 'Resolve hoje e quebra amanhã: a fonte continua errada.', es: 'Resuelve hoy y se rompe mañana: la fuente sigue mal.' } },
+          { certa: false, txt: { pt: '“É instabilidade, carregue de novo sem mudar nada.”', es: '“Es inestabilidad, súbela de nuevo sin cambiar nada.”' }, fb: { pt: 'Sem corrigir, os mesmos itens falham de novo.', es: 'Sin corregir, los mismos artículos vuelven a fallar.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O que diz o Resumo do upload (falha no upload, problemas)?', es: '¿Qué dice el Resumen de la carga (errores de carga, problemas)?' }, { pt: 'Qual produto e qual campo o relatório de problemas aponta?', es: '¿Qué producto y qué campo señala el informe de problemas?' }, { pt: 'A planilha ainda tem a linha de exemplo do modelo?', es: '¿La planilla todavía tiene la fila de ejemplo de la plantilla?' }],
+        conferir: [{ pt: 'Gerenciador de Comércio › catálogo › Fontes de dados › o feed › Visão geral (Resumo do upload) e Baixar relatório de problemas.', es: 'Administrador de ventas › catálogo › Fuentes de datos › el feed › Vista general (Resumen de la carga) y Descargar informe de problemas.' }],
+        frase: { pt: 'A Meta diz exatamente qual produto e qual campo ficaram fora; vamos corrigir na planilha e recarregar.', es: 'Meta dice exactamente qué producto y qué campo quedaron fuera; vamos a corregir en la planilla y volver a subir.' },
+        passos: [{ pt: 'Ler o Resumo do upload e o relatório.', es: 'Leer el Resumen de la carga y el informe.' }, { pt: 'Corrigir na planilha (formatos e valores aceitos) e salvar.', es: 'Corregir en la planilla (formatos y valores aceptados) y guardar.' }, { pt: 'Recarregar arquivo de dados e conferir.', es: 'Volver a subir el archivo y revisar.' }],
+        encaminhar: { pt: 'Se o arquivo nem carrega (URL que não abre, formato não aceito), confira o endereço e o formato; problemas no servidor do cliente são com o desenvolvedor ou a hospedagem dele.', es: 'Si el archivo ni siquiera se sube (URL que no abre, formato no aceptado), revisa la dirección y el formato; los problemas en el servidor del cliente son con su desarrollador o su hosting.' }
+      }
     }
   ],
   feed: [

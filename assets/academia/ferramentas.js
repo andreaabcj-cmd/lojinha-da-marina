@@ -621,6 +621,24 @@
         [{ pt: 'Na aba Produtos', es: 'En la pestaña Productos' }, 0, { pt: 'Produtos mostra o estoque; os eventos ficam na aba Eventos.', es: 'Productos muestra el inventario; los eventos están en la pestaña Eventos.' }],
         [{ pt: 'Em Modelos de imagem', es: 'En Plantillas de imágenes' }, 0, { pt: 'Isso é para artes de anúncio, não para eventos.', es: 'Eso es para diseños de anuncios, no para eventos.' }]] }
   ]);
+  quizCatalogo('planilha-ok', { pt: 'A planilha está certa?', es: '¿La planilla está bien?' }, { pt: 'Ache o que a Meta recusaria em cada linha.', es: 'Encuentra lo que Meta rechazaría en cada fila.' }, [
+    { q: { pt: 'price: R$ 54,90', es: 'price: R$ 54,90' },
+      o: [[{ pt: 'Errado: tem que ser 54.90 BRL (número com ponto, espaço, moeda de 3 letras)', es: 'Mal: debe ser 54.90 BRL (número con punto, espacio, moneda de 3 letras)' }, 1, { pt: 'Isso! “Erros de preço ou moeda ausente ou inválida”.', es: '¡Eso! Error de precio o moneda faltante o no válida.' }],
+        [{ pt: 'Certo: é o jeito brasileiro', es: 'Bien: es el formato brasileño' }, 0, { pt: 'A Meta pede ponto decimal e código ISO, sem símbolo.', es: 'Meta pide punto decimal y código ISO, sin símbolo.' }],
+        [{ pt: 'Certo, desde que a loja seja brasileira', es: 'Bien, siempre que la tienda sea brasileña' }, 0, { pt: 'O formato é o mesmo para todas as moedas.', es: 'El formato es el mismo para todas las monedas.' }]] },
+    { q: { pt: 'availability: em estoque', es: 'availability: em estoque' },
+      o: [[{ pt: 'Errado: os valores aceitos são in stock ou out of stock', es: 'Mal: los valores aceptados son in stock u out of stock' }, 1, { pt: 'Isso! “Valores inválidos”.', es: '¡Eso! Valores no válidos.' }],
+        [{ pt: 'Certo, a Meta traduz', es: 'Bien, Meta traduce' }, 0, { pt: 'Não traduz: só aceita os valores em inglês.', es: 'No traduce: solo acepta los valores en inglés.' }],
+        [{ pt: 'Tanto faz, é opcional', es: 'Da igual, es opcional' }, 0, { pt: 'availability é obrigatório.', es: 'availability es obligatorio.' }]] },
+    { q: { pt: 'Duas linhas com id CANECA_01 (Caneca azul e Caneca amarela)', es: 'Dos filas con id CANECA_01 (Caneca azul y Caneca amarela)' },
+      o: [[{ pt: 'Errado: cada produto precisa de um id único', es: 'Mal: cada producto necesita un id único' }, 1, { pt: 'Isso! “Não pode haver identificações duplicadas”.', es: '¡Eso! No puede haber identificadores duplicados.' }],
+        [{ pt: 'Certo: são canecas', es: 'Bien: son tazas' }, 0, { pt: 'Mesmo parecidos, cada produto tem o seu id.', es: 'Aunque sean parecidos, cada producto tiene su id.' }],
+        [{ pt: 'Certo, se o preço for igual', es: 'Bien, si el precio es igual' }, 0, { pt: 'O id identifica o produto, não o preço.', es: 'El id identifica el producto, no el precio.' }]] },
+    { q: { pt: 'A linha “Tapete listrado · Jasper\'s Market” que veio no modelo', es: 'La fila “Tapete listrado · Jasper\'s Market” que vino en la plantilla' },
+      o: [[{ pt: 'Apagar antes de carregar: senão vira um produto no catálogo', es: 'Borrarla antes de subir: si no, se vuelve un producto en el catálogo' }, 1, { pt: 'Isso! A Meta pede para excluir as linhas de exemplo.', es: '¡Eso! Meta pide eliminar las filas de ejemplo.' }],
+        [{ pt: 'Deixar: a Meta ignora', es: 'Dejarla: Meta la ignora' }, 0, { pt: 'Não ignora: é uma linha válida e entra no catálogo.', es: 'No la ignora: es una fila válida y entra al catálogo.' }],
+        [{ pt: 'Deixar como modelo para o próximo produto', es: 'Dejarla como modelo para el próximo producto' }, 0, { pt: 'Ela entraria como produto de verdade.', es: 'Entraría como producto de verdad.' }]] }
+  ]);
   quizCatalogo('por-que-nao-aparece', { pt: 'Por que o produto não aparece?', es: '¿Por qué no aparece el producto?' }, { pt: 'Três casos de “meu produto sumiu”: ache onde olhar primeiro.', es: 'Tres casos de “mi producto desapareció”: encuentra dónde mirar primero.' }, [
     { q: { pt: 'O Moletom aparece no catálogo como “Indisponível”. A loja diz que tem estoque.', es: 'El Moletom aparece en el catálogo como “Agotado”. La tienda dice que hay stock.' },
       o: [[{ pt: 'O estoque vem do arquivo (feed): corrija no site e depois use Atualizar na fonte de dados', es: 'El stock viene del archivo (feed): corrígelo en el sitio y luego usa Actualizar en el origen de datos' }, 1, { pt: 'Isso! O catálogo só repete o que o arquivo diz.', es: '¡Eso! El catálogo solo repite lo que dice el archivo.' }],

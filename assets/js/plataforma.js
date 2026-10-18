@@ -316,7 +316,8 @@
       ['criar-catalogo', 'meta-catalogo.html?zerar=1', 'catalogo', '02', { pt: 'Como criar um catálogo no Gerenciador de Comércio', es: 'Cómo crear un catálogo en el Administrador de ventas' }],
       ['adicionar-produtos', 'meta-catalogo.html?zerar=1', 'catalogo', '03', { pt: 'Como carregar os produtos por arquivo (feed)', es: 'Cómo subir los productos por archivo (feed)' }],
       ['conferir-ids', 'meta-catalogo.html?exemplo=1', 'catalogo', '04', { pt: 'Como conferir os IDs dos produtos', es: 'Cómo revisar los IDs de los productos' }],
-      ['achar-produto', 'meta-catalogo.html?exemplo=1', 'catalogo', '05', { pt: 'Como achar e corrigir um produto que não aparece', es: 'Cómo encontrar y corregir un producto que no aparece' }] ] },
+      ['achar-produto', 'meta-catalogo.html?exemplo=1', 'catalogo', '05', { pt: 'Como achar e corrigir um produto que não aparece', es: 'Cómo encontrar y corregir un producto que no aparece' }],
+      ['conferir-planilha', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como conferir a planilha do catálogo (modelo, formatos, Resumo do upload e relatório de problemas)', es: 'Cómo revisar la planilla del catálogo (plantilla, formatos, Resumen de la carga e informe de problemas)' }] ] },
     { m: 'anuncios', itens: [
       ['turbinar-post', 'meta-turbinar.html?zerar=1', 'anuncios', '01', { pt: 'Como turbinar um post', es: 'Cómo promocionar un post' }],
       ['conhecer-niveis', 'meta-anuncios.html?zerar=1', 'anuncios', '02', { pt: 'Como achar cada coisa: campanha, conjunto e anúncio', es: 'Cómo encontrar cada cosa: campaña, conjunto y anuncio' }],

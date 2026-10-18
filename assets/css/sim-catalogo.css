@@ -42,3 +42,13 @@
 
 .ga-tag.vm{background:#FDECEA;color:#B42318}
 .ga-tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:12px;font-weight:800;background:#E8EDF5}.ga-tag.am{background:#FFF1C9;color:#7A5600}.ga-tag.vm{background:#FDECEA;color:#B42318}
+
+/* planilha de treino e telas de carregar feed (19/10/2026) */
+.cm-duas{display:grid;grid-template-columns:1fr 240px;gap:14px}@media(max-width:800px){.cm-duas{grid-template-columns:1fr}}
+.cm-pop{position:absolute;right:0;top:36px;z-index:6;min-width:200px}
+.cm-menu .cm-mi{display:block;width:100%;text-align:left;border:0;background:none;padding:6px 6px;border-radius:6px;cursor:pointer;font:inherit}.cm-menu .cm-mi small{display:block;color:#64748B}.cm-menu .cm-mi:hover:not([disabled]){background:#EEF2F7}.cm-menu .cm-mi[disabled]{color:#94A3B8;cursor:default}.cm-menu>b{display:block;margin:8px 6px 2px;font-size:12px;color:#475569}
+.cm-meta{display:flex;gap:24px;flex-wrap:wrap;margin:10px 0}.cm-meta span{display:flex;flex-direction:column}.cm-meta small{color:#64748B;font-weight:700}.cm-abas{margin:6px 0 0;color:#475569}
+.cm-conts{display:flex;gap:28px;flex-wrap:wrap;margin:8px 0 12px}.cm-cont{display:flex;flex-direction:column}.cm-cont small{color:#475569}.cm-cont b{font-size:24px}.vm-txt{color:#B42318}.am-txt{color:#B54708}
+.pl{margin-top:8px;background:#fff;border:1px solid #CBD5E1;border-radius:10px;overflow:hidden}.pl-topo{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#E8F5E9;padding:8px 12px;border-bottom:1px solid #CBD5E1}.pl-st{color:#475569;font-size:13px}.pl-acoes{margin-left:auto;display:flex;gap:8px}
+.pl-grade{overflow:auto;max-width:100%}.pl-tab{border-collapse:collapse;font:12.5px Consolas,monospace;min-width:1200px}.pl-tab th{background:#F1F5F9;color:#64748B;font-weight:600;border:1px solid #E2E8F0;padding:2px 6px;min-width:22px}.pl-tab td{border:1px solid #E2E8F0;padding:0}.pl-cab td{background:#F8FAFC;padding:4px 6px}
+.pl-cel{width:100%;min-width:110px;border:0;padding:4px 6px;font:12.5px Consolas,monospace;background:transparent}.pl-cel:focus{outline:2px solid #1A73E8;background:#fff}.pl-del{border:0;background:none;cursor:pointer;padding:2px 6px}
