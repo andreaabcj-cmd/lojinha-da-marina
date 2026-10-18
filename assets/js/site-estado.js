@@ -62,6 +62,7 @@
     'novo-site': function (s) { s.caso = 'Site novo sem Pixel'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; return s },
     /* Diagnóstico: Purchase no cabeçalho (dispara em todas as páginas) e Shopify conectada sem Pixel no canal */
     'purchase-cabecalho': function (s) { s.caso = 'Purchase em todas as páginas'; s.proprio.cabecalho = base(idCerto()) + '\n' + COMPRA(DIN, "'BRL'"); s.proprio.obrigado = ''; return s },
+    'pixel-personalizado-html': function (s) { s.caso = 'O pixel personalizado não salva'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.canal = { instalado: false, conectado: false }; s.shopify.tema = tema(''); s.shopify.pixelCustom = { nome: 'Meta Pixel (manual)', on: false, salvo: false, codigo: '<script>\n' + pixelCustom(idCerto()) + '\n</script>' }; return s },
     'pixel-personalizado-dobro': function (s) { s.caso = 'Compras em dobro: pixel personalizado + app'; s.tipo = 'shopify'; s.shopify.app = { on: true, nivel: 'enhanced', pixel: 'certo' }; s.shopify.canal = { instalado: true, conectado: true, ativos: { portfolio: 'Lojinha da Marina (portfólio)', pagina: 'Lojinha da Marina' } }; s.shopify.pixelCustom = { nome: 'Meta Pixel (manual)', on: true, codigo: pixelCustom(idCerto()) }; return s },
     'shopify-sem-pixel': function (s) { s.caso = 'Shopify conectada, mas sem compras'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.tema = tema(''); return s },
     /* Integrações: Shopify e WooCommerce */
@@ -115,7 +116,7 @@
     if (hc.carregador) r.comprasCabecalho = hc.compras;
     if (s.tipo === 'shopify' && s.shopify.app.on && s.shopify.app.pixel !== 'nenhum') r.app = { id: s.shopify.app.pixel === 'certo' ? good : '000000000000000', nivel: s.shopify.app.nivel };
     if (s.tipo === 'woo' && s.woo.conectado && s.woo.plugin === 'ativo') r.app = { id: good, nivel: 'enhanced' };   // plugin Meta for WooCommerce: pixel + API de Conversões
-    var pc = s.tipo === 'shopify' && s.shopify.pixelCustom; if (pc && pc.on) { var lc = le(pc.codigo); if (lc.carregador && lc.ids.length) r.custom = { id: lc.ids[0], pv: /analytics\.subscribe\(\s*['"]page_viewed/.test(pc.codigo) && /fbq\(\s*['"]track['"]\s*,\s*['"]PageView/.test(pc.codigo), compra: /analytics\.subscribe\(\s*['"]checkout_completed/.test(pc.codigo) && /['"]Purchase['"]/.test(pc.codigo) } }
+    var pc = s.tipo === 'shopify' && s.shopify.pixelCustom; if (pc && pc.on && !/<\/?(script|noscript|img)\b/i.test(pc.codigo)) { var lc = le(pc.codigo); if (lc.carregador && lc.ids.length) r.custom = { id: lc.ids[0], pv: /analytics\.subscribe\(\s*['"]page_viewed/.test(pc.codigo) && /fbq\(\s*['"]track['"]\s*,\s*['"]PageView/.test(pc.codigo), compra: /analytics\.subscribe\(\s*['"]checkout_completed/.test(pc.codigo) && /['"]Purchase['"]/.test(pc.codigo) } }
     var ds = dsGet(); r.ds = { am: !!ds.am, capi: !!ds.capi }; r.amManual = hc.initParams.filter(function (k) { return ['em', 'ph', 'fn', 'ln', 'ct', 'st', 'zp', 'country', 'external_id'].indexOf(k) >= 0 }); r.consentGate = !!hc.consentRevoke;
     r.eventosPagina = s.tipo === 'proprio' ? le(s.proprio.obrigado).eventos.filter(function (e) { return !/^purchase$/i.test(e.nome) }) : [];
     r.temPixel = !!(r.head || r.app || r.custom);
@@ -165,7 +166,7 @@
     var b = document.getElementById('siteCasoFim'); if (b) b.onclick = function () { SITE.encerra() };
   }
   window.SITE = {
-    tema: tema, get: get, set: set, fx: fx, le: le, copias: copias, base: base, compra: COMPRA, idCerto: idCerto, padrao: padrao, prods: prods,
+    pixelCustom: pixelCustom, tema: tema, get: get, set: set, fx: fx, le: le, copias: copias, base: base, compra: COMPRA, idCerto: idCerto, padrao: padrao, prods: prods,
     ativo: function () { return !!get().ativo },
     dataset: function () { return dsGet() }, setDataset: dsSet,
     preset: function (nome) { ensureDataset(); var s = PRESETS[nome](padrao()); s.ativo = true; dsSet(s.ds || { am: true, capi: false }); try { if (nome === 'sem-consentimento') localStorage.removeItem('loja.consent') } catch (e) { } set(s); try { localStorage.removeItem('sim.feed'); sessionStorage.removeItem('loja.log'); localStorage.removeItem('loja.pedidosDisparados') } catch (e) { } },   // começa um caso do zero (sem eventos antigos)

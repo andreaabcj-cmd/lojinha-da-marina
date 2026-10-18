@@ -235,7 +235,8 @@
       ['plataforma-conectada', 'loja.html', 'dg-integracoes', '01', { pt: 'Como investigar uma plataforma conectada em que a compra some (níveis de dados)', es: 'Cómo investigar una plataforma conectada en la que la compra desaparece (niveles de datos)' }],
       ['shopify-sem-pixel', 'loja.html', 'dg-integracoes', '02', { pt: 'Como resolver Shopify conectada sem compras chegando (canal sem Pixel)', es: 'Cómo resolver Shopify conectada sin compras llegando (canal sin píxel)' }],
       ['sincronizar-produtos', 'admin-shopify.html', 'dg-integracoes', '03', { pt: 'Como resolver produto que não sincroniza e produto com problema', es: 'Cómo resolver producto que no se sincroniza y producto con problema' }],
-      ['pixel-personalizado-dobro', 'loja.html', 'dg-integracoes', '04', { pt: 'Como achar um pixel personalizado da Shopify que duplica as compras', es: 'Cómo hallar un píxel personalizado de Shopify que duplica las compras' }] ] },
+      ['pixel-personalizado-dobro', 'loja.html', 'dg-integracoes', '04', { pt: 'Como achar um pixel personalizado da Shopify que duplica as compras', es: 'Cómo hallar un píxel personalizado de Shopify que duplica las compras' }],
+      ['pixel-personalizado-html', 'admin-shopify.html', 'dg-integracoes', '05', { pt: 'Como resolver o pixel personalizado da Shopify que não salva (código com HTML)', es: 'Cómo resolver el píxel personalizado de Shopify que no se guarda (código con HTML)' }] ] },
     { m: 'dg-anuncios', itens: [
       ['nao-veicula', 'meta-entrega.html?problema=1', 'dg-anuncios', '01', { pt: 'Como investigar anúncios que não rodam (Veiculação nos três níveis)', es: 'Cómo investigar anuncios que no corren (Entrega en los tres niveles)' }],
       ['resolver-publicacao', 'meta-turbinar.html?zerar=1&problemas=1', 'dg-anuncios', '02', { pt: 'Como resolver o botão Publicar apagado (telefone, limite, saldo)', es: 'Cómo resolver el botón Publicar apagado (teléfono, límite, saldo)' }] ] },

@@ -53,6 +53,9 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     '.tg-balao.folha .tg-dica{margin-top:5px;padding:4px 8px;font-size:12.5px}.tg-balao.folha .tg-ctrl{margin-top:6px}.tg-balao.folha .tg-sair{position:static;float:right;margin:-2px 0 0 8px}' +
     '.tg-balao{cursor:grab}.tg-balao.arrasta{cursor:grabbing;transition:none;user-select:none}.tg-balao button{cursor:pointer}' +
     '.tg-balao.compacto{width:300px;padding-left:14px;font-size:14px}.tg-balao.compacto .tg-masc{display:none}.tg-balao.fino{width:232px;padding:22px 10px 10px;font-size:13px;line-height:1.35}.tg-balao.fino .tg-masc{display:none}.tg-balao.fino .tg-sair{right:6px}.tg-balao.fino .tg-bal-min{left:10px;right:auto}.tg-bal-min{position:absolute;top:4px;right:124px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
+    '.tg-passo-bt{border:0;background:none;color:#64748B;font:inherit;font-size:12.5px;cursor:pointer;padding:2px 4px;border-radius:6px;white-space:nowrap;text-decoration:underline dotted}.tg-passo-bt:hover{background:#EEF2F7;color:#16294A}' +
+    '.tg-passos{margin-top:8px;max-height:230px;overflow:auto;border:2px solid #16294A;border-radius:10px;background:#F8FAFC;padding:4px}.tg-passos b{display:block;font-size:12px;color:#64748B;margin:2px 6px 4px}' +
+    '.tg-passos button{display:flex;gap:8px;width:100%;text-align:left;border:0;background:none;padding:5px 6px;border-radius:7px;font:13px/1.3 "Segoe UI",system-ui,Arial,sans-serif;color:#16294A;cursor:pointer}.tg-passos button:hover{background:#FFE07A}.tg-passos button.on{background:#16294A;color:#fff}.tg-passos button i{font-style:normal;min-width:22px;color:inherit;opacity:.7}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
   var holo, balao, recorte, tour, nome, passo = 0, timer, ouvindo = false, manual = null, compacto = (function () { try { var v = sessionStorage.getItem('tour.compacto'); return v === null ? innerWidth < 760 : v === '1' } catch (e) { return false } })();
   var voltar = null, paginas = {};
@@ -71,6 +74,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     balao.addEventListener('click', function (e) {
       var b = e.target.closest('[data-tg]'); if (!b) return; var a = b.getAttribute('data-tg');
       if (a === 'compacta') { compacto = !compacto; try { sessionStorage.setItem('tour.compacto', compacto ? '1' : '0') } catch (x) { } balao.classList.toggle('compacto', compacto); posiciona(); return }
+      if (a === 'passos') { listaPassos(); return }
+      if (a === 'ir') { irPara(+b.getAttribute('data-n')); return }
       if (a === 'prox') vai(passo + 1); else if (a === 'volta') volta(); else if (a === 'fim' || a === 'sair') termina(a === 'fim');
     });
     // arrastar o balão: a pessoa escolhe onde ele fica para poder ler o que está marcado
@@ -118,6 +123,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     }
     if (p.pula && p.pula()) return vai(n + 1);
     if (p.pagina && location.pathname.split('/').pop() !== p.pagina) { location.href = p.pagina; return }
+    var salto = false; try { if (sessionStorage.getItem('tour.salto') === String(n)) { sessionStorage.removeItem('tour.salto'); salto = true } } catch (e) { }
+    if (salto) { if (p.garante) try { p.garante() } catch (e) { } return setTimeout(desenha, 250) }   // chegou por “Selecionar passo”: arruma a tela deste passo
     desenha();
   }
   var avisoT, faltou = 0;
@@ -125,6 +132,27 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (!balao) return; var a = balao.querySelector('.tg-avisa'); if (!a) { a = document.createElement('div'); a.className = 'tg-avisa'; balao.appendChild(a) }
     a.textContent = txt ? T(txt) : T({ pt: '👆 Siga o destaque amarelo (ou use os botões do balão).', es: '👆 Sigue lo destacado en amarillo (o usa los botones del globo).' });
     balao.classList.remove('tg-treme'); void balao.offsetWidth; balao.classList.add('tg-treme'); clearTimeout(avisoT); avisoT = setTimeout(function () { if (a.parentNode) a.remove() }, 3500);
+  }
+  /* Selecionar passo: a pessoa escolhe qualquer passo na lista. Passo já visto = como o ◀ (abre a página onde ele aconteceu);
+     passo adiante = abre a página do passo (ou a do último passo antes dele que tem página) e o garante() arruma a tela. */
+  function listaPassos() {
+    var l = balao.querySelector('.tg-passos'); if (l) { l.remove(); posiciona(); return }
+    l = document.createElement('div'); l.className = 'tg-passos';
+    l.innerHTML = '<b>' + T({ pt: 'Selecionar passo', es: 'Seleccionar paso' }) + '</b>' + tour.map(function (q, i) {
+      var tit = String(T(q.tit) || '').replace(/<[^>]*>/g, '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) || '…';
+      return '<button data-tg="ir" data-n="' + i + '"' + (i === passo ? ' class="on"' : '') + '><i>' + (i + 1) + '</i><span>' + tit + '</span></button>' }).join('');
+    balao.appendChild(l); var on = l.querySelector('.on'); if (on) l.scrollTop = Math.max(0, on.offsetTop - 60); posiciona();
+  }
+  function irPara(n) {
+    if (!tour || n === passo || n < 0 || n >= tour.length) { var l0 = balao && balao.querySelector('.tg-passos'); if (l0) l0.remove(); return }
+    if (n in paginas) return vai(n, true);
+    if (!tour[n].pagina) { var j = n; while (j > 0 && !tour[j - 1].pagina && !(j - 1 in paginas)) j--; if (j !== n && j > 0) n = j }   // meio de um caminho sem página fixa (ex.: a compra): começa do início dele
+    if (n in paginas) return vai(n, true);
+    var pg = null; for (var k = n; k >= 0; k--) if (tour[k].pagina) { pg = tour[k].pagina; break }
+    passo = n; salva();
+    if (pg && pg !== location.pathname.split('/').pop()) { try { sessionStorage.setItem('tour.salto', String(n)) } catch (e) { } location.href = pg; return }
+    var p = tour[n]; if (p.garante) try { p.garante() } catch (e) { }
+    setTimeout(desenha, 250);
   }
   function volta() {   // volta ao passo anterior que mostra algo (pula para trás os que foram pulados)
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
@@ -134,7 +162,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     balao.classList.toggle('compacto', compacto); balao.classList.remove('fino');
     balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><button class="tg-bal-min" data-tg="compacta" title="' + T({ pt: 'Balão menor / maior (e dá para arrastá-lo)', es: 'Globo más pequeño / grande (y se puede arrastrar)' }) + '">' + T({ pt: '↔ menor/maior', es: '↔ menor/mayor' }) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
-      '<div class="tg-ctrl"><small>' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + '</small><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
+      '<div class="tg-ctrl"><button class="tg-passo-bt" data-tg="passos" title="' + T({ pt: 'Selecionar passo: escolher um passo na lista', es: 'Seleccionar paso: elegir un paso de la lista' }) + '">' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + ' ▾</button><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
       (p.fim ? '<button class="tg-btn" data-tg="fim">' + T(UI.fim) + '</button>' : prox ? '<button class="tg-btn" data-tg="prox">' + T(UI.prox) + '</button>' : '<small>' + T(UI.clique) + '</small>') + '</span></div>';
     p.antes && p.antes();
     posiciona();

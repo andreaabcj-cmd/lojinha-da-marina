@@ -5611,3 +5611,49 @@ window.AULAS = {
     }
   }]);
 })();
+/* Diagnóstico · Integrações 05 (19/10/2026): o pixel personalizado não salva porque o código tem HTML (erro conferido numa loja real) */
+(function () {
+  var A = window.AULAS; if (!A) return;
+  function L(pt, es) { return { pt: pt, es: es } }
+  A['dg-integracoes'] = (A['dg-integracoes'] || []).concat([{
+    id: '05', min: 10, status: 'pronta',
+    titulo: L('Shopify: o pixel personalizado não salva', 'Shopify: el píxel personalizado no se guarda'),
+    reclamacao: [
+      ['marina', L('Copiei o código do Pixel, colei na Shopify em “pixel personalizado” e ela não deixa salvar! Diz que tem erro, mas eu copiei certinho! 😤', '¡Copié el código del píxel, lo pegué en Shopify en “píxel personalizado” y no me deja guardar! Dice que hay un error, ¡pero lo copié perfecto! 😤')],
+      ['rafa', L('Você copiou certo, só que para o lugar errado: aquele código é feito para colar no site. Vamos ver a mensagem e ajustar.', 'Lo copiaste bien, solo que para el lugar equivocado: ese código está hecho para pegar en el sitio. Veamos el mensaje y ajustemos.')]
+    ],
+    objetivo: L('Entender o erro “Corrija o erro de código destacado.”, tirar o HTML do pixel personalizado, salvar, conectar e conferir que os eventos chegam.', 'Entender el error “Corrige el error de código resaltado.”, quitar el HTML del píxel personalizado, guardar, conectar y verificar que los eventos llegan.'),
+    entender: {
+      dialogo: [
+        ['marina', L('Por que o código do Gerenciador de Eventos não funciona lá?', '¿Por qué el código del Administrador de eventos no funciona ahí?')],
+        ['rafa', L('O código do Gerenciador vem embrulhado em HTML (&lt;script&gt;, e às vezes &lt;noscript&gt; com uma imagem), para ir no &lt;head&gt; do site. O pixel personalizado da Shopify aceita só JavaScript. A própria tela avisa: “certifique-se de excluir o HTML”.', 'El código del Administrador viene envuelto en HTML (&lt;script&gt;, y a veces &lt;noscript&gt; con una imagen), para ir en el &lt;head&gt; del sitio. El píxel personalizado de Shopify acepta solo JavaScript. La propia pantalla avisa: “asegúrate de excluir el HTML”.')],
+        ['pixel', L('E na Shopify o caminho mais simples é o app Facebook &amp; Instagram: ele instala o Pixel, manda a compra também pelo servidor e não precisa de código. Pixel personalizado e app ao mesmo tempo duplicam as compras.', 'Y en Shopify el camino más simple es la app Facebook &amp; Instagram: instala el píxel, envía la compra también por el servidor y no necesita código. Píxel personalizado y app al mismo tiempo duplican las compras.')]
+      ],
+      pontos: [
+        L('<b>Sinal:</b> Salvar não funciona e aparece “Corrija o erro de código destacado.”.', '<b>Señal:</b> Guardar no funciona y aparece “Corrige el error de código resaltado.”.'),
+        L('<b>Causa:</b> tags HTML (&lt;script&gt;, &lt;noscript&gt;) no pixel personalizado.', '<b>Causa:</b> etiquetas HTML (&lt;script&gt;, &lt;noscript&gt;) en el píxel personalizado.'),
+        L('<b>Prova:</b> salva, conecta e uma compra de teste mostra PageView e Purchase chegando.', '<b>Prueba:</b> se guarda, se conecta y una compra de prueba muestra PageView y Purchase llegando.')
+      ],
+      notas: L('Erro conferido numa loja Shopify de teste real em 19/10/2026: com &lt;script&gt; no pixel personalizado, Salvar não grava e aparece “Corrija o erro de código destacado.”. O editor traz o aviso “certifique-se de excluir o HTML” e o exemplo com analytics.subscribe. O que aparece ao Conectar: a conferir. A loja da Marina é de faz-de-conta.', 'Error revisado en una tienda Shopify de prueba real el 19/10/2026: con &lt;script&gt; en el píxel personalizado, Guardar no graba y aparece el mensaje de error de código resaltado (texto en español: por confirmar). El editor trae el aviso de excluir el HTML y el ejemplo con analytics.subscribe. Lo que aparece al Conectar: por confirmar. La tienda de Marina es de mentira.')
+    },
+    ferramenta: 'cod-dg',
+    praticar: { texto: L('No admin da Shopify, você tenta salvar o pixel com HTML, lê o erro, tira as tags, salva, conecta e confere com uma compra de teste.', 'En el admin de Shopify, intentas guardar el píxel con HTML, lees el error, quitas las etiquetas, guardas, conectas y verificas con una compra de prueba.'), tour: 'pixel-personalizado-html', pagina: 'admin-shopify.html' },
+    atender: {
+      cena: L('A Shopify diz “Corrija o erro de código destacado” no código do Pixel que eu copiei de vocês. O código de vocês está errado?', 'Shopify dice que corrija el error de código resaltado en el código del píxel que copié de ustedes. ¿Su código está mal?'),
+      pergunta: L('O que você responde?', '¿Qué respondes?'),
+      opcoes: [
+        { certa: true, txt: L('“O código está certo para colar no site, mas o pixel personalizado da Shopify aceita só JavaScript. É só apagar as tags &lt;script&gt; e &lt;/script&gt; e salvar. E, se preferir, o app Facebook &amp; Instagram instala o Pixel sem código; só não use os dois juntos.”', '“El código está bien para pegar en el sitio, pero el píxel personalizado de Shopify acepta solo JavaScript. Solo borra las etiquetas &lt;script&gt; y &lt;/script&gt; y guarda. Y, si prefieres, la app Facebook &amp; Instagram instala el píxel sin código; solo no uses los dos juntos.”'), fb: L('Isso! Causa, correção e o caminho recomendado.', '¡Eso! Causa, corrección y el camino recomendado.') },
+        { certa: false, txt: L('“Gere um Pixel novo e copie de novo.”', '“Genera un píxel nuevo y cópialo otra vez.”'), fb: L('O novo vem com o mesmo HTML: o erro continua.', 'El nuevo viene con el mismo HTML: el error sigue.') },
+        { certa: false, txt: L('“Cole no tema e no pixel personalizado, para garantir.”', '“Pégalo en el tema y en el píxel personalizado, para asegurar.”'), fb: L('Dois lugares = compras em dobro.', 'Dos lugares = compras dobles.') },
+        { certa: false, txt: L('“É um problema da Shopify, fale com eles.”', '“Es un problema de Shopify, habla con ellos.”'), fb: L('Dá para resolver agora: é o formato do código.', 'Se puede resolver ahora: es el formato del código.') }
+      ]
+    },
+    cola: {
+      perguntas: [L('A mensagem é “Corrija o erro de código destacado”?', '¿El mensaje dice que corrija el error de código resaltado?'), L('O código tem &lt;script&gt; ou &lt;noscript&gt;?', '¿El código tiene &lt;script&gt; o &lt;noscript&gt;?'), L('A loja já usa o app Facebook &amp; Instagram?', '¿La tienda ya usa la app Facebook &amp; Instagram?')],
+      conferir: [L('Admin da Shopify › Configurações › Eventos de clientes › o pixel personalizado; e Testar eventos no Gerenciador de Eventos.', 'Admin de Shopify › Configuración › Eventos de clientes › el píxel personalizado; y Probar eventos en el Administrador de eventos.')],
+      frase: L('O pixel personalizado da Shopify aceita só JavaScript; vamos tirar as tags HTML, salvar e conectar, ou usar o app da Meta, sem os dois juntos.', 'El píxel personalizado de Shopify acepta solo JavaScript; vamos a quitar las etiquetas HTML, guardar y conectar, o usar la app de Meta, sin los dos juntos.'),
+      passos: [L('Ler o erro.', 'Leer el error.'), L('Apagar &lt;script&gt; e &lt;/script&gt;.', 'Borrar &lt;script&gt; y &lt;/script&gt;.'), L('Salvar, conectar e testar.', 'Guardar, conectar y probar.')],
+      encaminhar: L('Se o cliente precisar de eventos personalizados mais complexos no pixel personalizado, oriente-o a pedir ajuda a um desenvolvedor de Shopify.', 'Si el cliente necesita eventos personalizados más complejos en el píxel personalizado, oriéntalo a pedir ayuda a un desarrollador de Shopify.')
+    }
+  }]);
+})();
