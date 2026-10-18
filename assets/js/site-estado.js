@@ -31,6 +31,11 @@
     L = L.concat(["  </head>", "", "  <body class=\"page-width-{{ settings.page_width }}\">", "    {% sections 'header-group' %}", "    <main id=\"MainContent\">", "      {{ content_for_layout }}", "    </main>", "    {% sections 'footer-group' %}", "  </body>", "</html>"]);
     return L.join('\n');
   }
+  /* pixel personalizado da Shopify (Configurações › Eventos de clientes › Adicionar pixel personalizado): só JavaScript, sem HTML;
+     roda isolado, fora do tema (NÃO aparece no código-fonte da página) e recebe os eventos da loja por analytics.subscribe (conferido em 19/10/2026) */
+  function pixelCustom(id) {
+    return ["!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?", "n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;", "n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;", "t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,", "document,'script','https://connect.facebook.net/en_US/fbevents.js');", "fbq('init', '" + id + "');", "", "analytics.subscribe('page_viewed', function (event) {", "  fbq('track', 'PageView');", "});", "", "analytics.subscribe('checkout_completed', function (event) {", "  fbq('track', 'Purchase', {", "    value: event.data.checkout.totalPrice.amount,", "    currency: event.data.checkout.currencyCode", "  });", "});"].join('\n');
+  }
   var DIN = '{{ pedido.total }}';   // valor dinâmico: o site coloca o total do pedido
   /* produtos da loja Shopify de treino: fb = disponível no canal Facebook e Instagram; arq = arquivado; img/cat = dados que o Facebook exige (imagem e categoria do Google) */
   function prods() {
@@ -57,6 +62,7 @@
     'novo-site': function (s) { s.caso = 'Site novo sem Pixel'; s.proprio.cabecalho = ''; s.proprio.obrigado = ''; return s },
     /* Diagnóstico: Purchase no cabeçalho (dispara em todas as páginas) e Shopify conectada sem Pixel no canal */
     'purchase-cabecalho': function (s) { s.caso = 'Purchase em todas as páginas'; s.proprio.cabecalho = base(idCerto()) + '\n' + COMPRA(DIN, "'BRL'"); s.proprio.obrigado = ''; return s },
+    'pixel-personalizado-dobro': function (s) { s.caso = 'Compras em dobro: pixel personalizado + app'; s.tipo = 'shopify'; s.shopify.app = { on: true, nivel: 'enhanced', pixel: 'certo' }; s.shopify.canal = { instalado: true, conectado: true, ativos: { portfolio: 'Lojinha da Marina (portfólio)', pagina: 'Lojinha da Marina' } }; s.shopify.pixelCustom = { nome: 'Meta Pixel (manual)', on: true, codigo: pixelCustom(idCerto()) }; return s },
     'shopify-sem-pixel': function (s) { s.caso = 'Shopify conectada, mas sem compras'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.tema = tema(''); return s },
     /* Integrações: Shopify e WooCommerce */
     'shopify-novo': function (s) { s.caso = 'Loja Shopify nova, ainda sem a Meta'; s.tipo = 'shopify'; s.shopify.app = { on: false, nivel: 'standard', pixel: 'nenhum' }; s.shopify.canal = { instalado: false, conectado: false }; s.shopify.tema = tema(''); return s },
@@ -109,9 +115,10 @@
     if (hc.carregador) r.comprasCabecalho = hc.compras;
     if (s.tipo === 'shopify' && s.shopify.app.on && s.shopify.app.pixel !== 'nenhum') r.app = { id: s.shopify.app.pixel === 'certo' ? good : '000000000000000', nivel: s.shopify.app.nivel };
     if (s.tipo === 'woo' && s.woo.conectado && s.woo.plugin === 'ativo') r.app = { id: good, nivel: 'enhanced' };   // plugin Meta for WooCommerce: pixel + API de Conversões
+    var pc = s.tipo === 'shopify' && s.shopify.pixelCustom; if (pc && pc.on) { var lc = le(pc.codigo); if (lc.carregador && lc.ids.length) r.custom = { id: lc.ids[0], pv: /analytics\.subscribe\(\s*['"]page_viewed/.test(pc.codigo) && /fbq\(\s*['"]track['"]\s*,\s*['"]PageView/.test(pc.codigo), compra: /analytics\.subscribe\(\s*['"]checkout_completed/.test(pc.codigo) && /['"]Purchase['"]/.test(pc.codigo) } }
     var ds = dsGet(); r.ds = { am: !!ds.am, capi: !!ds.capi }; r.amManual = hc.initParams.filter(function (k) { return ['em', 'ph', 'fn', 'ln', 'ct', 'st', 'zp', 'country', 'external_id'].indexOf(k) >= 0 }); r.consentGate = !!hc.consentRevoke;
     r.eventosPagina = s.tipo === 'proprio' ? le(s.proprio.obrigado).eventos.filter(function (e) { return !/^purchase$/i.test(e.nome) }) : [];
-    r.temPixel = !!(r.head || r.app);
+    r.temPixel = !!(r.head || r.app || r.custom);
     r.idPrincipal = r.head ? r.head.ids[0] : r.app ? r.app.id : null;
     return r;
   }
@@ -130,6 +137,7 @@
       if (F.head) F.head.ids.forEach(function (id) { for (var i = 0; i < F.head.pv; i++) add('PageView', {}, false, id, 'navegador', 'random', udHead) });
       if (F.app) add('PageView', {}, false, F.app.id, 'navegador', 'random', F.app.nivel !== 'standard' ? 'all' : null);
       F.comprasCabecalho.forEach(function (c) { (F.head ? F.head.ids : []).forEach(function (id) { add(c.nome, compraParams(c), c.nome !== 'Purchase', id, 'navegador', c.temEventId ? 'shop' : 'random', udHead) }) });
+      if (F.custom && F.custom.pv) add('PageView', {}, false, F.custom.id, 'navegador', 'random', null);   // pixel personalizado: outro PageView, com outro event_id
       return out;
     }
     if (nome === 'Purchase') {
@@ -138,6 +146,7 @@
       // API de Conversões (site próprio): com a opção ligada no Gerenciador de Eventos, a compra também vai do servidor, com o mesmo event_id da Loja
       if (F.tipo === 'proprio' && F.ds && F.ds.capi && F.head && F.comprasPagina.length) add('Purchase', params, false, F.head.ids[0], 'servidor', 'shop', udHead);
       if (F.app) { add('Purchase', params, false, F.app.id, 'navegador', 'shop', F.app.nivel !== 'standard' ? 'all' : null); if (F.app.nivel !== 'standard') add('Purchase', params, false, F.app.id, 'servidor', 'shop', 'all') }
+      if (F.custom && F.custom.compra) add('Purchase', params, false, F.custom.id, 'navegador', 'random', null);   // pixel personalizado: a mesma compra de novo, sem o event_id do app
       return out;
     }
     if (F.head && F.tipo === 'proprio') F.head.ids.forEach(function (id) { add(nome, params, false, id, 'navegador', 'random', udHead) });   // no site próprio o código dos eventos é do site; na plataforma só o app envia os demais eventos

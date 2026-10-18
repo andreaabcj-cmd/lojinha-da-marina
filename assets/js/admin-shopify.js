@@ -24,7 +24,7 @@
   function s() { return SITE.get() }
   function grava(f) { var st = s(); f(st); SITE.set(st) }
   function ir(r) { rota = r; menuAberto = false; maisAberto = false; dlgCanal = false; dlgDisp = false; pref = false; msg = ''; if (location.hash !== '#' + r) history.replaceState(null, '', '#' + r); render() }
-  function nav(id, txt, cls) { var on = rota === id || (id === 'loja' && /^(temas|codigo)$/.test(rota)) || (id === 'fb' && /^fb/.test(rota)) || (id === 'produtos' && /^produto-/.test(rota)) || (id === 'config' && /^(canais|eventos|appstore|instalar)$/.test(rota));
+  function nav(id, txt, cls) { var on = rota === id || (id === 'loja' && /^(temas|codigo)$/.test(rota)) || (id === 'fb' && /^fb/.test(rota)) || (id === 'produtos' && /^produto-/.test(rota)) || (id === 'config' && /^(canais|eventos|pixel-custom|appstore|instalar)$/.test(rota));
     return '<button class="sh-n' + (on ? ' on' : '') + (cls ? ' ' + cls : '') + '" data-ir="' + id + '" data-t="nav-' + id + '">' + txt + '</button>' }
   function off(txt) { return '<div class="sh-n off">' + txt + '</div>' }
   var FB = 'Facebook &amp; Instagram';
@@ -92,10 +92,18 @@
   function telaEventos() {
     var c = s().shopify.canal, a = s().shopify.app, cp = s().shopify.pixelCustom;
     var linhas = (c.instalado ? '<tr data-t="px-app"><td>∞ <b>' + FB + '</b></td><td><span class="sh-chip' + (c.conectado && a.on && a.pixel !== 'nenhum' ? '' : ' cinza') + '">' + (c.conectado && a.on && a.pixel !== 'nenhum' ? T('Conectado', 'Conectado') : '○ Web') + '</span></td><td>' + (c.conectado && a.on && a.pixel !== 'nenhum' ? T('Coletando', 'Recopilando') : '—') + '</td><td>⋯</td></tr>' : '') +
-      (cp ? '<tr data-t="px-custom"><td>{ } <b>' + esc(cp.nome) + '</b> <small class="sh-mud">' + T('pixel personalizado', 'píxel personalizado') + '</small></td><td><span class="sh-chip' + (cp.on ? '' : ' cinza') + '">' + (cp.on ? T('Conectado', 'Conectado') : T('Desconectado', 'Desconectado')) + '</span></td><td>—</td><td>⋯</td></tr>' : '');
+      (cp ? '<tr data-t="px-custom"><td>{ } <button class="sh-lk" data-ir="pixel-custom" data-t="px-custom-abrir">' + esc(cp.nome) + '</button> <small class="sh-mud">' + T('pixel personalizado', 'píxel personalizado') + '</small></td><td><span class="sh-chip' + (cp.on ? '' : ' cinza') + '">' + (cp.on ? T('Conectado', 'Conectado') : T('Desconectado', 'Desconectado')) + '</span></td><td>—</td><td>⋯</td></tr>' : '');
     return cfg('<div class="sh-h1"><h1>' + T('Eventos de clientes', 'Eventos de clientes') + '</h1><span class="sh-acoes"><button class="sh-bt" tabindex="-1">' + T('Adicionar pixel personalizado', 'Agregar píxel personalizado') + '</button><button class="sh-bt prim" tabindex="-1">' + T('Explorar apps de pixel', 'Explorar apps de píxel') + '</button></span></div>' +
       '<div class="sh-cartao" data-t="lista-pixels"><h2>Pixels</h2>' + (linhas ? '<table class="sh-tab"><tr><th>Pixel</th><th>Status</th><th>' + T('Dados', 'Datos') + '</th><th></th></tr>' + linhas + '</table>' : '<p class="sh-centro"><b>' + T('Aqui você gerencia os pixels', 'Aquí administras los píxeles') + '</b><br><span class="sh-mud">' + T('Colete eventos de clientes por meio de integrações de pixel de app ou pixel personalizado.', 'Recopila eventos de clientes mediante integraciones de píxel de app o píxel personalizado.') + '</span></p>') + '</div>' +
       '<p class="sh-nota">' + T('✓ Tela conferida no admin real (19/10/2026). O pixel personalizado aceita só JavaScript (“certifique-se de excluir o HTML”) e envia eventos com analytics.subscribe(). Pixel personalizado + app da Meta ligados ao mesmo Pixel = eventos em dobro.', '✓ Pantalla revisada en el admin real (19/10/2026). El píxel personalizado acepta solo JavaScript (“asegúrate de excluir el HTML”) y envía eventos con analytics.subscribe(). Píxel personalizado + app de Meta conectados al mismo píxel = eventos duplicados.') + '</p>');
+  }
+  function telaPixelCustom() {   // Configurações › Eventos de clientes › (pixel personalizado): conferido em 19/10/2026 (com o pixel desconectado; o botão Desconectar: a conferir)
+    var cp = s().shopify.pixelCustom; if (!cp) return telaEventos();
+    return cfg('<div class="sh-h1"><h1><button class="sh-lk" data-ir="eventos">⚙</button> › ' + esc(cp.nome) + ' <span class="sh-chip' + (cp.on ? '' : ' cinza') + '" data-t="px-status">' + (cp.on ? T('Conectado', 'Conectado') : T('Desconectado', 'Desconectado')) + '</span></h1><span class="sh-acoes"><button class="sh-bt" tabindex="-1" disabled>' + T('Testar', 'Probar') + '</button><button class="sh-bt" tabindex="-1">' + T('Mais ações', 'Más acciones') + ' ⌄</button>' +
+      (cp.on ? '<button class="sh-bt" data-ac="px-desconectar" data-t="btn-px-desconectar">' + T('Desconectar', 'Desconectar') + '</button>' : '<button class="sh-bt prim" tabindex="-1" disabled>' + T('Conectar', 'Conectar') + '</button>') + '</span></div>' +
+      '<div class="sh-cartao"><h2>' + T('Privacidade do cliente', 'Privacidad del cliente') + '</h2><p><b>' + T('Permissão', 'Permiso') + ':</b> ' + T('Obrigatório — o pixel coletará dados quando a permissão for concedida para Marketing e Análises.', 'Obligatorio: el píxel recopilará datos cuando se conceda el permiso para Marketing y Análisis.') + '</p></div>' +
+      '<div class="sh-cartao" data-t="px-codigo"><h2>' + T('Código', 'Código') + '</h2><div class="sh-info">ⓘ ' + T('O pixel personalizado roda isolado, fora do tema: este código não aparece no código-fonte da loja.', 'El píxel personalizado funciona aislado, fuera del tema: este código no aparece en el código fuente de la tienda.') + '</div><pre class="sh-cod">' + esc(cp.codigo) + '</pre></div>' +
+      '<p class="sh-nota">' + T('✓ Página do pixel personalizado conferida no admin real (19/10/2026): Privacidade do cliente (Permissão), Código e os botões Testar · Mais ações · Conectar. ⚠ O botão Desconectar (pixel já conectado): a conferir.', '✓ Página del píxel personalizado revisada en el admin real (19/10/2026): Privacidad del cliente (Permiso), Código y los botones Probar · Más acciones · Conectar. ⚠ El botón Desconectar (píxel ya conectado): por confirmar.') + '</p>');
   }
   function telaAppStore() {
     var c = s().shopify.canal;
@@ -197,7 +205,7 @@
     var corpo, r = rota;
     if (r === 'temas' || r === 'loja') corpo = telaTemas(); else if (r === 'codigo') corpo = telaCodigo(); else if (r === 'fb' || r === 'fb-setup') corpo = telaFb(); else if (r === 'fb-dados') corpo = telaDados(); else if (r === 'fb-prods') corpo = telaFbProds();
     else if (r === 'pedidos') corpo = telaPedidos(); else if (r === 'produtos') corpo = telaProdutos(); else if (/^produto-/.test(r)) corpo = telaProduto(r.slice(8));
-    else if (r === 'config') corpo = telaConfig(); else if (r === 'canais') corpo = telaCanais(); else if (r === 'eventos') corpo = telaEventos(); else if (r === 'appstore') corpo = telaAppStore(); else if (r === 'instalar') corpo = telaInstalar(); else corpo = telaInicio();
+    else if (r === 'config') corpo = telaConfig(); else if (r === 'canais') corpo = telaCanais(); else if (r === 'eventos') corpo = telaEventos(); else if (r === 'pixel-custom') corpo = telaPixelCustom(); else if (r === 'appstore') corpo = telaAppStore(); else if (r === 'instalar') corpo = telaInstalar(); else corpo = telaInicio();
     var foco = document.activeElement && document.activeElement.id, pos = null; if (foco === 'shTema') { try { pos = document.activeElement.selectionStart } catch (e) { } }
     $('#app').innerHTML = esqueleto(corpo);
     if (foco === 'shTema') { var el = $('#shTema'); if (el) { el.focus(); try { el.setSelectionRange(pos, pos) } catch (e) { } } }
@@ -219,6 +227,7 @@
     else if (/^conectar-(certo|outro)$/.test(ac)) { dr().pixel = ac.replace('conectar-', ''); render() }
     else if (ac === 'trocar-pixel') { dr().pixel = 'nenhum'; render() }
     else if (ac === 'confirmar') { var st2 = s(), d = draftFb || st2.shopify.app; st2.shopify.app = { on: d.on, nivel: d.nivel, pixel: d.on ? d.pixel : 'nenhum' }; if (rota === 'fb-setup' && d.on && d.pixel !== 'nenhum') st2.shopify.canal.dadosOk = true; SITE.set(st2); draftFb = null; msg = '✓ ' + T('Configurações salvas.', 'Configuración guardada.'); render() }
+    else if (ac === 'px-desconectar') { grava(function (x) { if (x.shopify.pixelCustom) x.shopify.pixelCustom.on = false }); msg = ''; render() }
     else if (ac === 'appstore') ir('appstore')
     else if (ac === 'add-fb') ir('instalar')
     else if (ac === 'instalar-app') { grava(function (x) { x.shopify.canal = { instalado: true, conectado: false } }); ir('fb') }

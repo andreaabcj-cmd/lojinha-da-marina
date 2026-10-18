@@ -5565,3 +5565,49 @@ window.AULAS = {
     })
   ]);
 })();
+/* Diagnóstico · Integrações 04 (19/10/2026): pixel personalizado da Shopify + app = compras em dobro (telas conferidas numa loja real) */
+(function () {
+  var A = window.AULAS; if (!A) return;
+  function L(pt, es) { return { pt: pt, es: es } }
+  A['dg-integracoes'] = (A['dg-integracoes'] || []).concat([{
+    id: '04', min: 12, status: 'pronta',
+    titulo: L('Shopify: compras em dobro com pixel personalizado', 'Shopify: compras dobles con píxel personalizado'),
+    reclamacao: [
+      ['marina', L('Meu sobrinho “instalou o Pixel” na Shopify e agora o Gerenciador mostra o dobro de vendas! Mas eu já tinha o app da Meta… 🤯', '¡Mi sobrino “instaló el píxel” en Shopify y ahora el Administrador muestra el doble de ventas! Pero yo ya tenía la app de Meta… 🤯')],
+      ['rafa', L('O código não aparece no tema? Na Shopify existe outro lugar: os pixels personalizados. Vamos comprar e procurar.', '¿El código no aparece en el tema? En Shopify hay otro lugar: los píxeles personalizados. Compremos y busquemos.')]
+    ],
+    objetivo: L('Achar o segundo Pixel num pixel personalizado (Configurações › Eventos de clientes), que não aparece no código-fonte, desconectar e confirmar uma compra só.', 'Hallar el segundo píxel en un píxel personalizado (Configuración › Eventos de clientes), que no aparece en el código fuente, desconectarlo y confirmar una sola compra.'),
+    entender: {
+      dialogo: [
+        ['marina', L('Mas eu procurei “fbq” na página e não achei nada!', '¡Pero busqué “fbq” en la página y no encontré nada!')],
+        ['rafa', L('Na Shopify, o app Facebook & Instagram e os pixels personalizados rodam isolados, fora do tema: não aparecem no código-fonte. A lista completa fica em Configurações › Eventos de clientes.', 'En Shopify, la app Facebook & Instagram y los píxeles personalizados funcionan aislados, fuera del tema: no aparecen en el código fuente. La lista completa está en Configuración › Eventos de clientes.')],
+        ['pixel', L('O pixel personalizado aceita só JavaScript (a própria Shopify avisa: “certifique-se de excluir o HTML”) e recebe os eventos por analytics.subscribe. Se ele manda PageView e Purchase para o mesmo Pixel que o app, cada compra conta de novo, com outro event_id.', 'El píxel personalizado acepta solo JavaScript (la propia Shopify avisa: “asegúrate de excluir el HTML”) y recibe los eventos por analytics.subscribe. Si envía PageView y Purchase al mismo píxel que la app, cada compra cuenta otra vez, con otro event_id.')]
+      ],
+      pontos: [
+        L('<b>Sinal:</b> dois PageView por página e Purchase a mais, com event_id diferente do app.', '<b>Señal:</b> dos PageView por página y Purchase de más, con event_id distinto al de la app.'),
+        L('<b>Onde está:</b> Configurações › Eventos de clientes › pixel personalizado (não aparece no código-fonte).', '<b>Dónde está:</b> Configuración › Eventos de clientes › píxel personalizado (no aparece en el código fuente).'),
+        L('<b>Correção e prova:</b> desconectar o pixel personalizado, ficar só com o app e fazer uma compra de teste.', '<b>Corrección y prueba:</b> desconectar el píxel personalizado, quedarse solo con la app y hacer una compra de prueba.')
+      ],
+      notas: L('Telas da Shopify conferidas numa loja de teste real em 19/10/2026 (Configurações › Eventos de clientes, página do pixel personalizado com Privacidade do cliente e Código, e o pixel do app Facebook & Instagram). O botão Desconectar de um pixel personalizado já conectado: a conferir. Avisos do Diagnóstico: Central de Ajuda da Meta para Empresas. A loja da Marina é de faz-de-conta.', 'Pantallas de Shopify revisadas en una tienda de prueba real el 19/10/2026 (Configuración › Eventos de clientes, página del píxel personalizado con Privacidad del cliente y Código, y el píxel de la app Facebook & Instagram). El botón Desconectar de un píxel personalizado ya conectado: por confirmar. Avisos del Diagnóstico: Centro de ayuda de Meta para Empresas. La tienda de Marina es de mentira.')
+    },
+    ferramenta: 'dup-dg',
+    praticar: { texto: L('Você compra, vê tudo em dobro, procura no código-fonte (e não acha), encontra o pixel personalizado em Eventos de clientes, desconecta e confere com outra compra.', 'Compras, ves todo doble, buscas en el código fuente (y no encuentras), hallas el píxel personalizado en Eventos de clientes, lo desconectas y verificas con otra compra.'), tour: 'pixel-personalizado-dobro', pagina: 'loja.html' },
+    atender: {
+      cena: L('Já procurei o código do Pixel no meu site e não tem nada duplicado. Por que as compras estão em dobro?', 'Ya busqué el código del píxel en mi sitio y no hay nada duplicado. ¿Por qué las compras están dobles?'),
+      pergunta: L('O que você responde?', '¿Qué respondes?'),
+      opcoes: [
+        { certa: true, txt: L('“Na Shopify, alguns pixels não aparecem no código da página. Vamos abrir Configurações › Eventos de clientes: se tiver um pixel personalizado da Meta além do app, ele envia a compra de novo. Desconectamos o personalizado e fazemos uma compra de teste.”', '“En Shopify, algunos píxeles no aparecen en el código de la página. Abramos Configuración › Eventos de clientes: si hay un píxel personalizado de Meta además de la app, envía la compra otra vez. Desconectamos el personalizado y hacemos una compra de prueba.”'), fb: L('Isso! Lugar certo, causa e prova.', '¡Eso! Lugar correcto, causa y prueba.') },
+        { certa: false, txt: L('“Então é erro da Meta, ela está contando em dobro.”', '“Entonces es error de Meta, está contando doble.”'), fb: L('Não: o site está enviando duas vezes, só que por fora do tema.', 'No: el sitio está enviando dos veces, solo que por fuera del tema.') },
+        { certa: false, txt: L('“Desinstale o app Facebook & Instagram.”', '“Desinstala la app Facebook & Instagram.”'), fb: L('O app é o caminho recomendado (e manda pelo servidor). Quem sobra é o pixel personalizado.', 'La app es el camino recomendado (y envía por el servidor). Lo que sobra es el píxel personalizado.') },
+        { certa: false, txt: L('“Crie um Pixel novo para separar.”', '“Crea un píxel nuevo para separar.”'), fb: L('Dois pixels só complicam a medição.', 'Dos píxeles solo complican la medición.') }
+      ]
+    },
+    cola: {
+      perguntas: [L('Cada página manda dois PageView?', '¿Cada página envía dos PageView?'), L('Há Purchase com event_id diferente do app?', '¿Hay Purchase con event_id distinto al de la app?'), L('O que aparece em Configurações › Eventos de clientes?', '¿Qué aparece en Configuración › Eventos de clientes?')],
+      conferir: [L('Gerenciador de Eventos (Testar eventos e Diagnóstico) e admin da Shopify › Configurações › Eventos de clientes.', 'Administrador de eventos (Probar eventos y Diagnóstico) y admin de Shopify › Configuración › Eventos de clientes.')],
+      frase: L('Na Shopify, o Pixel pode estar num pixel personalizado que não aparece no código da página; vamos conferir em Eventos de clientes e deixar só o app.', 'En Shopify, el píxel puede estar en un píxel personalizado que no aparece en el código de la página; revisemos Eventos de clientes y dejemos solo la app.'),
+      passos: [L('Compra de teste.', 'Compra de prueba.'), L('Configurações › Eventos de clientes.', 'Configuración › Eventos de clientes.'), L('Desconectar o pixel personalizado e testar.', 'Desconectar el píxel personalizado y probar.')],
+      encaminhar: L('Se quem colou o pixel personalizado foi uma agência ou um desenvolvedor, oriente o cliente a combinar com eles antes de desconectar.', 'Si quien pegó el píxel personalizado fue una agencia o un desarrollador, orienta al cliente a acordarlo con ellos antes de desconectarlo.')
+    }
+  }]);
+})();
