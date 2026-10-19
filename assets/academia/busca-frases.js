@@ -169,8 +169,8 @@ window.BUSCA_FRASES = (function () {
       'campos de microdatos | id title price availability | campos obligatorios'),
     'microdados/04': F('falha na validação de dados | erro no microdata debugger | microdados com erro | página de produto com erro',
       'error al validar los datos | error en el microdata debugger | microdatos con error'),
-    'microdados/05': F('configurar microdados | como colocar as tags de produto no site | que código o desenvolvedor coloca para o catálogo | og:title product:price | tags opengraph de produto | json-ld de produto | schema product | copiei o exemplo da meta e não funciona | retailer_item_id | item_group_id | product:availability',
-      'configurar microdatos | cómo poner las etiquetas de producto en el sitio | qué código pone el desarrollador | etiquetas opengraph de producto | json-ld de producto | copié el ejemplo de meta y no funciona'),
+    'microdados/05': F('configurar microdados | o que é opengraph | o que é json-ld | o que é jsonld | o que é schema.org | microdados schema | itemprop | itemscope | ld+json | ficha do produto no script | falta vírgula no json | meta property og | nomes difíceis dos microdados | como colocar as tags de produto no site | que código o desenvolvedor coloca para o catálogo | og:title product:price | tags opengraph de produto | json-ld de produto | schema product | copiei o exemplo da meta e não funciona | retailer_item_id | item_group_id | product:availability',
+      'qué es opengraph | qué es json-ld | qué es schema.org | itemprop | falta una coma en el json | configurar microdatos | cómo poner las etiquetas de producto en el sitio | qué código pone el desarrollador | etiquetas opengraph de producto | json-ld de producto | copié el ejemplo de meta y no funciona'),
     'm:microdados': F('microdados | microdata', 'microdatos'),
 
     /* ---------- Relatórios ---------- */
@@ -282,7 +282,7 @@ window.BUSCA_FRASES = (function () {
       'galería de socios | mi plataforma no aparece'),
     'mbe/03': F('janela do mbe | conectar pela plataforma | criei pixel novo por engano | catálogo não apareceu ao conectar | pixel duplicado na conexão',
       'ventana de mbe | conectar desde la plataforma | creé un píxel nuevo por error'),
-    'mbe/04': F('configuração da api de conversões | qual opção de api usar | gateway | loja física | configuração manual ou parceiro',
+    'mbe/04': F('configuração da api de conversões | gateway da api de conversões | quanto custa o gateway | aws | google cloud | configurar manualmente api | qual opção de api usar | gateway | loja física | configuração manual ou parceiro',
       'configuración de la api de conversiones | qué opción usar | tienda física'),
     'mbe/05': F('integração deu problema | integração quebrada | nada funciona depois de conectar | cancelar integração',
       'la integración tiene problemas | integración rota'),

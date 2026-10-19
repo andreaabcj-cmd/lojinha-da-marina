@@ -54,13 +54,13 @@
     'price-falta': 'falta o preço (product:price:amount ou price)', 'price-formato': 'o preço é só o número, com ponto nos centavos: 39.90 (sem R$ e sem vírgula)',
     'currency-falta': 'falta a moeda (product:price:currency ou priceCurrency)', 'currency-moeda': 'a moeda é o código de 3 letras maiúsculas: BRL (não “R$” nem “reais”)',
     'json-sintaxe': 'o bloco JSON-LD tem um erro de escrita (vírgula, aspas ou chave faltando) e não pôde ser lido',
-    'tags-falta': 'a página não tem tags de produto (nem OpenGraph nem JSON-LD)'
+    'tags-falta': 'a página não tem tags de produto (nem OpenGraph, nem JSON-LD, nem schema.org)'
   };
   var AVISO = { 'id-catalogo': 'o id desta página não é o do catálogo: lá a Ecobag é ECOBAG_03. Com outro id, a Meta não liga a página ao produto do catálogo nem aos eventos do Pixel', 'exemplo-exemplo': 'ainda há valores do exemplo da Meta (como fb_tshirts ou facebook_tshirt_001): troque pelos da Ecobag ou apague a linha' };
   function analisaDyn() {
     if (!window.MDPAG) return { erro: true, motivo: 'Página não encontrada no site de mentirinha' };
-    var v = MDPAG.valida(), c = v.og || v.ld || {}, vistos = {};
-    var pg = { dyn: true, id: c.id, t: c.title, d: c.description, og: !!v.og, ld: !!v.ld, vOg: v.og, vLd: v.ld };
+    var v = MDPAG.valida(), c = v.og || v.ld || v.sc || {}, vistos = {};
+    var pg = { dyn: true, id: c.id, t: c.title, d: c.description, og: !!v.og, ld: !!v.ld, sc: !!v.sc, vOg: v.og, vLd: v.ld, vSc: v.sc };
     var avisos = v.avisos.map(function (a) { return AVISO[a.campo + '-' + a.tipo] }).filter(function (x) { if (!x || vistos[x]) return false; vistos[x] = 1; return true });
     if (v.problemas.length) {
       var ex = [], nomes = [], vx = {};
@@ -70,7 +70,7 @@
     return { ok: true, pg: pg, avisos: avisos };
   }
   function tabelaDyn(pg, tipo) {
-    var c = tipo === 'og' ? pg.vOg : pg.vLd, L = [['id', c.id], ['title', c.title], ['description', c.description], ['price', c.amount + ' ' + c.currency], ['link', c.link], ['image_link', c.image_link], ['availability', c.availability], ['condition', c.condition], ['brand', c.brand]];
+    var c = tipo === 'og' ? pg.vOg : tipo === 'sc' ? pg.vSc : pg.vLd, L = [['id', c.id], ['title', c.title], ['description', c.description], ['price', c.amount + ' ' + c.currency], ['link', c.link], ['image_link', c.image_link], ['availability', c.availability], ['condition', c.condition], ['brand', c.brand]];
     if (c.item_group_id) L.push(['item_group_id', c.item_group_id]);
     return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td data-sem-traduzir="1">' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
   }
@@ -93,7 +93,7 @@
     }
     var pg = r.pg;
     return '<div class="md-res" data-t="resultado-ok"><h3>Prévia</h3><p>É assim que os microdados são configurados no seu site. Corrija os erros abaixo para que todos os produtos no seu site possam ser adicionados automaticamente ao seu catálogo.</p>' +
-      (pg.og ? '<h4>OpenGraph</h4>' + tabela(pg, 'og') : '') + (pg.ld ? '<h4>JSON-LD</h4>' + tabela(pg, 'ld') : '') + '<p class="md-ok" data-t="parabens">Parabéns! Seus microdados parecem ótimos!</p>' + (pg.dyn ? avisosDyn(r) : '') + '</div>';
+      (pg.og ? '<h4>OpenGraph</h4>' + tabela(pg, 'og') : '') + (pg.ld ? '<h4>JSON-LD</h4>' + tabela(pg, 'ld') : '') + (pg.sc ? '<h4>Schema.org</h4>' + tabela(pg, 'sc') + '<p class="conferido" data-t="sc-conferir">⚠ Como a ferramenta real mostra os microdados schema.org (o nome e a ordem desta tabela) não foi visto: a conferir. Os campos são os da documentação oficial “Microdata tags”.</p>' : '') + '<p class="md-ok" data-t="parabens">Parabéns! Seus microdados parecem ótimos!</p>' + (pg.dyn ? avisosDyn(r) : '') + '</div>';
   }
   function pagina() {
     var exemplos = Object.keys(PAG).map(function (k) { return '<option value="' + BASE + k + '">' + k + '</option>' }).join('');

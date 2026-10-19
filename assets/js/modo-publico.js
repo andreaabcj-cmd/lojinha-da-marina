@@ -13,7 +13,7 @@
   window.PUB_ESCONDIDA = function (url) { return PUB && ABAS.test(String(url || '').split(/[?#]/)[0].split('/').pop()) };
   /* Conteúdo ainda não conferido em tela real: some do site publicado (módulos, listas, colas, busca, "Na próxima aula").
      No computador do André continua aparecendo. Para liberar, tirar daqui. (20/10/2026) */
-  var OCULTOS = { modulos: [], aulas: ['microdados/05', 'apps-ios/02', 'apps-ios/03', 'apps-ios/04'] };   // iOS 14: só a aula 01 foi conferida em tela real (20/10)
+  var OCULTOS = { modulos: [], aulas: ['apps-ios/02', 'apps-ios/03', 'apps-ios/04'] };   // iOS 14: só a aula 01 foi conferida em tela real (20/10)
   window.PUB_OCULTA = function (mod, aula) { return PUB && (OCULTOS.modulos.indexOf(mod) >= 0 || OCULTOS.aulas.indexOf(mod + '/' + aula) >= 0) };
   // chamado no fim de conteudo.js: tira o conteúdo oculto antes de qualquer tela usá-lo
   window.PUB_LIMPA = function () {
