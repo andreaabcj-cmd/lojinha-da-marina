@@ -116,6 +116,11 @@
     pausar: 'pausar; pausou; pausei; pausado; pausada; pausados; desativar; desativou; desativei; desativado; desativada; desligar; desligou; desligado; desligada; apagou; pausa; desactivar; desactivo; desactivado; apagado',
     obrigado: 'pagina de obrigado; obrigado; thank you page; thank you; pagina de agradecimento; pedido concluido; pedido confirmado; pagina de confirmacao; order confirmation; pagina de gracias; pedido completado',
     plataforma: 'plataforma; plataformas; plataforma de terceiros; nuvemshop; tray; loja integrada; vtex; wix; magento; bigcommerce; prestashop; yampi; squarespace; tiendanube; mercado shops',
+    ios: 'ios; ios 14; ios 14.5; ios14; iphone; iphones; ipad; apple',
+    sdk: 'sdk; sdk do facebook; sdk da meta; facebook sdk; meta sdk; eventos do app; eventos de app; app events; eventos de la app; sdk de facebook',
+    aem: 'mensuracao de eventos agregados; eventos agregados; aem; aggregated event measurement; medicion de eventos agregados',
+    skan: 'skadnetwork; skan; sk ad network; sk adnetwork',
+    att: 'att; app tracking transparency; aviso de rastreamento; rastreamento; rastrear; rastreie; nao rastrear; idfa; rastreo; rastrear; no rastree',
     loja_site: 'site; loja virtual; loja online; ecommerce; e-commerce; sitio; sitio web; tienda online; tienda en linea'
   };
   var FRASE = {}, PALAVRA = {};   // FRASE['nao aparece'] = ['some'], PALAVRA['duplicado'] = ['dup']

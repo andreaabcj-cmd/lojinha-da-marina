@@ -120,6 +120,16 @@ window.BUSCA_FRASES = (function () {
       'el anuncio no se publica | el anuncio dejó de circular | límite de gasto | saldo de la cuenta'),
     'm:anuncios': F('gerenciador de anúncios | criar anúncio | anúncio', 'administrador de anuncios | crear anuncio | anuncio'),
 
+    /* ---------- Apps e iOS 14 ---------- */
+    'apps-ios/01': F('o que mudou com o ios 14 | ios 14 acabou com o pixel | iphone bloqueia o pixel | preciso configurar 8 eventos | priorizar 8 eventos | verificar domínio por causa do ios | aba mensuração de eventos agregados sumiu | o que é mensuração de eventos agregados | o que é aem | aviso de rastreamento do iphone | pedir ao app para não rastrear | att | idfa zerado',
+      'qué cambió con ios 14 | ios 14 acabó con el píxel | configurar 8 eventos | priorizar 8 eventos | verificar dominio por ios | qué es la medición de eventos agregados | aviso de rastreo del iphone | att'),
+    'apps-ios/02': F('vendas do iphone não aparecem | meta mostra menos vendas que a loja | número da loja diferente da meta | modelagem estatística | resultados estimados | relatório atrasado | skadnetwork atraso 24 horas | público personalizado diminuiu | público encolheu depois do ios',
+      'ventas del iphone no aparecen | meta muestra menos ventas que la tienda | modelado estadístico | informe con retraso | el público se achicó'),
+    'apps-ios/03': F('o que é sdk | sdk do facebook | sdk da meta | eventos do app | pixel no aplicativo | colei o pixel no app | app não envia eventos | instalações do app | compra dentro do app | app ads helper | testar eventos do app | meu app não aparece no gerenciador de eventos',
+      'qué es el sdk | sdk de facebook | eventos de la app | píxel en la app | pegué el píxel en la app | la app no envía eventos | probar eventos de la app'),
+    'apps-ios/04': F('anúncio de app para iphone | campanha de instalação ios | app não está qualificado | qualificação do app | verificar qualificação do app | skadnetwork ou aem | configurar skadnetwork | promoção do app ios 14 | pendente qualificação | 63 eventos',
+      'anuncio de app para iphone | la app no es apta | elegibilidad de la app | comprobar elegibilidad | skadnetwork o aem | configurar skadnetwork'),
+    'm:apps-ios': F('ios 14 | apps | sdk | iphone', 'ios 14 | apps | sdk | iphone'),
     /* ---------- Feed ---------- */
     'feed/01': F('partes do anúncio | texto principal título descrição | onde coloca o link do anúncio | link no texto não funciona | botão do anúncio | o que a pessoa vê no feed',
       'partes del anuncio | texto principal título descripción | dónde pongo el enlace | el enlace en el texto no funciona'),

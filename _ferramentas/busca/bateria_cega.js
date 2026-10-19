@@ -32,7 +32,7 @@ const B = [
  ['availability in stock', ['catalogo/06','microdados/03','catalogo/05']],
  ['content ids nao batem com o catalogo', ['catalogo/04','shop-ads-offsite/02','microdados/03']],
  ['produtos sumiram do catalogo', ['catalogo/05','dg-catalogo/01','integracoes/05']],
- ['og:price', ['microdados/03','microdados/01']],
+ ['og:price', ['microdados/03','microdados/01','microdados/05']],
  ['debugger de microdados', ['microdados/02']],
  ['quantas pessoas viram meu anuncio', ['relatorios/02']],
  ['comparar meta com google', ['shop-ads-offsite/04']],

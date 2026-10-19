@@ -19,6 +19,7 @@ window.MODULOS = [
   { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'construcao', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'Criativo, texto, destino, posicionamentos e erros comuns.', es: 'Contenido, texto, destino, ubicaciones y errores comunes.' } },
   { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
+  { id: 'apps-ios', fase: 3, status: 'construcao', icone: '📱', titulo: { pt: 'Apps e iOS 14', es: 'Apps e iOS 14' }, resumo: { pt: 'O aviso de rastreamento do iPhone, a Mensuração de Eventos Agregados, o SDK da Meta nos apps e as campanhas de app para iOS 14+.', es: 'El aviso de rastreo del iPhone, la Medición de eventos agregados, el SDK de Meta en las apps y las campañas de app para iOS 14+.' } },
   { id: 'microdados', fase: 2, status: 'construcao', icone: '🔎', titulo: { pt: 'Microdata Debugger', es: 'Microdata Debugger' }, resumo: { pt: 'Conferir se as páginas de produto do site falam a língua do catálogo.', es: 'Revisar si las páginas de producto del sitio hablan el idioma del catálogo.' } },
   { id: 'relatorios', fase: 3, status: 'construcao', icone: '📊', titulo: { pt: 'Relatórios e métricas', es: 'Informes y métricas' }, resumo: { pt: 'Ler, montar e comparar relatórios; atribuição e relatórios vazios.', es: 'Leer, armar y comparar informes; atribución e informes vacíos.' } },
   { id: 'segmentacao', fase: 3, status: 'construcao', icone: '🎯', titulo: { pt: 'Públicos e segmentação', es: 'Públicos y segmentación' }, resumo: { pt: 'Públicos personalizados do site, semelhantes, salvos e controles; erros comuns.', es: 'Públicos personalizados del sitio, similares, guardados y controles; errores comunes.' } },
@@ -55,7 +56,7 @@ window.MODULOS = [
 window.TRILHAS = [
   { id: 'foco', icone: '🎯', nome: { pt: 'Trilha Foco', es: 'Ruta Foco' }, sub: { pt: 'Anúncios, medição e comércio', es: 'Anuncios, medición y comercio' },
     resumo: { pt: 'A ordem de estudo de quem atende anúncios, medição e comércio. Foca no que você resolve e, quando um caso é de outra área, mostra só uma linha de encaminhamento.', es: 'El orden de estudio de quien atiende anuncios, medición y comercio. Se centra en lo que tú resuelves y, cuando un caso es de otra área, muestra solo una línea de derivación.' },
-    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
+    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'apps-ios', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
   { id: 'completa', icone: '🧭', nome: { pt: 'Trilha Completa', es: 'Ruta Completa' }, sub: { pt: 'Tudo do Foco e mais', es: 'Todo el Foco y más' },
     resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
     modulos: null, extras: ['pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
@@ -1740,7 +1741,7 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Regras automatizadas: para que servem', es: 'Reglas automáticas: para qué sirven' },
       antes: { pt: 'A Marina já posta, anuncia e responde clientes. Agora ela passa o dia olhando os anúncios.', es: 'Marina ya publica, anuncia y responde clientes. Ahora se pasa el día mirando los anuncios.' },
-      gancho: { pt: '“Queria que o anúncio fraco parasse sozinho, sem eu ficar olhando.” Existe: são as regras automatizadas.', es: '“Quería que el anuncio flojo se detuviera solo, sin que yo esté mirando.” Existe: son las reglas automáticas.' },
+      gancho: { pt: '“Cliquei em Criar regra e apareceu um formulário enorme!” Vamos preencher peça por peça.', es: '“¡Hice clic en Crear regla y apareció un formulario enorme!” Vamos a completarlo pieza por pieza.' },
       objetivo: { pt: 'Saber o que é uma regra automatizada, onde ela mora e onde criá-la conforme o alcance (algumas campanhas ou todas).', es: 'Saber qué es una regla automática, dónde vive y dónde crearla según el alcance (algunas campañas o todas).' },
       entender: {
         dialogo: [
@@ -1783,7 +1784,7 @@ window.AULAS = {
       id: '02', min: 9, status: 'pronta',
       titulo: { pt: 'Criar a primeira regra', es: 'Crear la primera regla' },
       antes: { pt: 'A Marina entendeu: regra = “se isto, então aquilo”.', es: 'Marina entendió: regla = “si esto, entonces aquello”.' },
-      gancho: { pt: '“Cliquei em Criar regra e apareceu um formulário enorme!” Vamos preencher peça por peça.', es: '“¡Hice clic en Crear regla y apareció un formulario enorme!” Vamos a completarlo pieza por pieza.' },
+      gancho: { pt: '“Se eu desativar tudo que gasta mais de R$ 20, resolvo!” Cuidado: é assim que se desativa o anúncio que vende.', es: '“¡Si desactivo todo lo que gasta más de R$ 20, resuelvo!” Cuidado: así se desactiva el anuncio que vende.' },
       objetivo: { pt: 'Preencher a janela “Crie uma regra personalizada”: nome, onde aplica, ação, condição, intervalo e programação.', es: 'Completar la ventana “Crea una regla personalizada”: nombre, dónde se aplica, acción, condición, intervalo y programación.' },
       entender: {
         dialogo: [
@@ -1830,7 +1831,7 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Regra segura: intervalo e condições', es: 'Regla segura: intervalo y condiciones' },
       antes: { pt: 'A Marina criou uma regra de aviso. Agora quer uma que desative.', es: 'Marina creó una regla de aviso. Ahora quiere una que desactive.' },
-      gancho: { pt: '“Se eu desativar tudo que gasta mais de R$ 20, resolvo!” Cuidado: é assim que se desativa o anúncio que vende.', es: '“¡Si desactivo todo lo que gasta más de R$ 20, resuelvo!” Cuidado: así se desactiva el anuncio que vende.' },
+      gancho: { pt: '“Criei, e agora? Como sei se a regra fez alguma coisa, e se eu quiser mudar?” Vamos acompanhar.', es: '“Creé, ¿y ahora? ¿Cómo sé si la regla hizo algo, y si quiero cambiarla?” Vamos a hacer el seguimiento.' },
       objetivo: { pt: 'Entender o intervalo de tempo e o falso positivo, e montar uma regra que só atinge quem gastou e não teve resultado.', es: 'Entender el intervalo de tiempo y el falso positivo, y armar una regla que solo alcance a quien gastó y no tuvo resultado.' },
       entender: {
         dialogo: [
@@ -1877,7 +1878,7 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Acompanhar, editar e excluir', es: 'Seguir, editar y eliminar' },
       antes: { pt: 'A regra da Marina está criada e ativa.', es: 'La regla de Marina está creada y activa.' },
-      gancho: { pt: '“Criei, e agora? Como sei se a regra fez alguma coisa, e se eu quiser mudar?” Vamos acompanhar.', es: '“Creé, ¿y ahora? ¿Cómo sé si la regla hizo algo, y si quiero cambiarla?” Vamos a hacer el seguimiento.' },
+      gancho: { pt: '“Dois anúncios pararam e ninguém mexeu!” Quando algo para sem ninguém mexer, olhe as regras.', es: '“¡Dos anuncios se detuvieron y nadie los tocó!” Cuando algo se detiene sin que nadie lo toque, mira las reglas.' },
       objetivo: { pt: 'Ler a tabela de regras, ver o que a regra fez, e saber o que dá e o que não dá para editar.', es: 'Leer la tabla de reglas, ver qué hizo la regla, y saber qué se puede y qué no se puede editar.' },
       entender: {
         dialogo: [
@@ -1924,7 +1925,6 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meus anúncios pararam sozinhos!', es: '¡Mis anuncios se detuvieron solos!' },
       antes: { pt: 'A Marina tem regras e sabe lê-las. Um dia, a campanha amanhece diferente.', es: 'Marina tiene reglas y sabe leerlas. Un día, la campaña amanece distinta.' },
-      gancho: { pt: '“Dois anúncios pararam e ninguém mexeu!” Quando algo para sem ninguém mexer, olhe as regras.', es: '“¡Dos anuncios se detuvieron y nadie los tocó!” Cuando algo se detiene sin que nadie lo toque, mira las reglas.' },
       objetivo: { pt: 'Descobrir se uma regra desativou algo, achar qual e por quê, corrigi-la e reativar o que for preciso.', es: 'Descubrir si una regla desactivó algo, encontrar cuál y por qué, corregirla y reactivar lo que haga falta.' },
       entender: {
         dialogo: [
@@ -1974,7 +1974,7 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Onde ficam os números', es: 'Dónde están los números' },
       antes: { pt: 'A Marina tem anúncios, regras e posts. Agora quer saber se tudo isso está funcionando.', es: 'Marina tiene anuncios, reglas y publicaciones. Ahora quiere saber si todo eso está funcionando.' },
-      gancho: { pt: '“Onde eu vejo quanto gastei e quantas pessoas viram?” Há mais de um lugar, e cada um serve para uma coisa.', es: '“¿Dónde veo cuánto gasté y cuántas personas vieron?” Hay más de un lugar, y cada uno sirve para una cosa.' },
+      gancho: { pt: '“Tem 69, 71, 1,03… o que significa cada número?” Vamos ler a tabela com os números reais do anúncio de teste.', es: '“Hay 69, 71, 1,03… ¿qué significa cada número?” Vamos a leer la tabla con los números reales del anuncio de prueba.' },
       objetivo: { pt: 'Saber os lugares onde se veem números (Gerenciador, Relatórios de Anúncios, Insights, Gerenciador de Eventos) e qual usar em cada caso.', es: 'Saber los lugares donde se ven números (Administrador, Informes de anuncios, Estadísticas, Administrador de eventos) y cuál usar en cada caso.' },
       entender: {
         dialogo: [
@@ -2017,7 +2017,7 @@ window.AULAS = {
       id: '02', min: 7, status: 'pronta',
       titulo: { pt: 'Ler o relatório: alcance, impressões, gasto', es: 'Leer el informe: alcance, impresiones, gasto' },
       antes: { pt: 'A Marina abriu os Relatórios de Anúncios pela primeira vez.', es: 'Marina abrió los Informes de anuncios por primera vez.' },
-      gancho: { pt: '“Tem 69, 71, 1,03… o que significa cada número?” Vamos ler a tabela com os números reais do anúncio de teste.', es: '“Hay 69, 71, 1,03… ¿qué significa cada número?” Vamos a leer la tabla con los números reales del anuncio de prueba.' },
+      gancho: { pt: '“Quero ver por campanha e por plataforma, com cliques e compras!” Isso se monta em Personalizar.', es: '“¡Quiero ver por campaña y por plataforma, con clics y compras!” Eso se arma en Personalizar.' },
       objetivo: { pt: 'Ler as colunas padrão (Alcance, Impressões, Frequência, Valor gasto, Configuração de atribuição) e o efeito do período.', es: 'Leer las columnas predeterminadas (Alcance, Impresiones, Frecuencia, Monto gastado, Configuración de atribución) y el efecto del período.' },
       entender: {
         dialogo: [
@@ -2064,7 +2064,7 @@ window.AULAS = {
       id: '03', min: 9, status: 'pronta',
       titulo: { pt: 'Montar o seu relatório', es: 'Armar tu informe' },
       antes: { pt: 'A Marina sabe ler a tabela padrão, mas quer mais detalhe.', es: 'Marina sabe leer la tabla predeterminada, pero quiere más detalle.' },
-      gancho: { pt: '“Quero ver por campanha e por plataforma, com cliques e compras!” Isso se monta em Personalizar.', es: '“¡Quiero ver por campaña y por plataforma, con clics y compras!” Eso se arma en Personalizar.' },
+      gancho: { pt: '“De onde saíram essas 14 compras? Um amigo viu 8 na tela dele!” A resposta está na janela de atribuição.', es: '“¿De dónde salieron esas 14 compras? ¡Un amigo vio 8 en su pantalla!” La respuesta está en la ventana de atribución.' },
       objetivo: { pt: 'Usar Personalizar para escolher detalhamentos (como dividir) e métricas (os números), e salvar o relatório.', es: 'Usar Personalizar para elegir desgloses (cómo dividir) y métricas (los números), y guardar el informe.' },
       entender: {
         dialogo: [
@@ -2111,7 +2111,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Atribuição: de onde vêm as compras', es: 'Atribución: de dónde vienen las compras' },
       antes: { pt: 'A Marina montou o relatório e viu 14 compras numa campanha de exemplo.', es: 'Marina armó el informe y vio 14 compras en una campaña de ejemplo.' },
-      gancho: { pt: '“De onde saíram essas 14 compras? Um amigo viu 8 na tela dele!” A resposta está na janela de atribuição.', es: '“¿De dónde salieron esas 14 compras? ¡Un amigo vio 8 en su pantalla!” La respuesta está en la ventana de atribución.' },
+      gancho: { pt: '“Meu relatório sumiu! Está tudo vazio!” Quase nunca é defeito: costuma ser período ou filtro.', es: '“¡Mi informe desapareció! ¡Está todo vacío!” Casi nunca es un defecto: suele ser período o filtro.' },
       objetivo: { pt: 'Entender a Configuração de atribuição (como uma compra é contada para o anúncio) e por que só se compara igual com igual.', es: 'Entender la Configuración de atribución (cómo se cuenta una compra para el anuncio) y por qué solo se compara igual con igual.' },
       entender: {
         dialogo: [
@@ -2126,7 +2126,7 @@ window.AULAS = {
           { pt: '<b>Fora do anúncio</b> (compra no site): atribuída por uma janela de dias.', es: '<b>Fuera del anuncio</b> (compra en el sitio): atribuida por una ventana de días.' },
           { pt: '<b>Comparar:</b> mesma janela e mesmo período.', es: '<b>Comparar:</b> misma ventana y mismo período.' }
         ],
-        notas: { pt: 'Coluna Configuração de atribuição vista de verdade em 16/10/2026. As regras (ações no anúncio × fora do anúncio; atribuição definida no conjunto) vêm da Central de Ajuda da Meta, “Sobre o sistema de atribuição do Facebook”, lida em 16/10/2026. A troca de janela dentro do relatório e os números da campanha de exemplo são do simulador (a conferir). Os efeitos das mudanças de privacidade (como as do iOS) sobre os relatórios não foram lidos nesta aula (a conferir).', es: 'Columna Configuración de atribución vista de verdad el 16/10/2026. Las reglas (acciones en el anuncio × fuera del anuncio; atribución definida en el conjunto) vienen del Centro de ayuda de Meta, “Acerca del sistema de atribución de Facebook”, leído el 16/10/2026. El cambio de ventana dentro del informe y los números de la campaña de ejemplo son del simulador (por confirmar). Los efectos de los cambios de privacidad (como los de iOS) sobre los informes no se leyeron en esta clase (por confirmar).' }
+        notas: { pt: 'Coluna Configuração de atribuição vista de verdade em 16/10/2026. As regras (ações no anúncio × fora do anúncio; atribuição definida no conjunto) vêm da Central de Ajuda da Meta, “Sobre o sistema de atribuição do Facebook”, lida em 16/10/2026. A troca de janela dentro do relatório e os números da campanha de exemplo são do simulador (a conferir). Os efeitos das mudanças de privacidade do iPhone (iOS 14+) sobre os relatórios estão no módulo Apps e iOS 14, aula 02.', es: 'Columna Configuración de atribución vista de verdad el 16/10/2026. Las reglas (acciones en el anuncio × fuera del anuncio; atribución definida en el conjunto) vienen del Centro de ayuda de Meta, “Acerca del sistema de atribución de Facebook”, leído el 16/10/2026. El cambio de ventana dentro del informe y los números de la campaña de ejemplo son del simulador (por confirmar). Los efectos de los cambios de privacidad del iPhone (iOS 14+) sobre los informes están en el módulo Apps e iOS 14, clase 02.' }
       },
       ferramenta: 'janela-atribuicao',
       praticar: {
@@ -2158,7 +2158,6 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'Relatório vazio, zerado ou diferente', es: 'Informe vacío, en cero o distinto' },
       antes: { pt: 'A Marina já lê, monta e compara relatórios. Um dia, a tela amanhece vazia.', es: 'Marina ya lee, arma y compara informes. Un día, la pantalla amanece vacía.' },
-      gancho: { pt: '“Meu relatório sumiu! Está tudo vazio!” Quase nunca é defeito: costuma ser período ou filtro.', es: '“¡Mi informe desapareció! ¡Está todo vacío!” Casi nunca es un defecto: suele ser período o filtro.' },
       objetivo: { pt: 'Diagnosticar relatório vazio ou zerado: período, filtro Teve veiculação, objetivo da campanha.', es: 'Diagnosticar informe vacío o en cero: período, filtro Con entrega, objetivo de la campaña.' },
       entender: {
         dialogo: [
@@ -2208,7 +2207,7 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Quem vê o anúncio: tipos de público', es: 'Quién ve el anuncio: tipos de público' },
       antes: { pt: 'A Marina já mede e lê relatórios. Agora quer escolher melhor quem vê os anúncios.', es: 'Marina ya mide y lee informes. Ahora quiere elegir mejor quién ve los anuncios.' },
-      gancho: { pt: '“Quero mostrar o anúncio para quem já conhece a loja, e para gente parecida.” A página Públicos faz isso.', es: '“Quiero mostrar el anuncio a quien ya conoce la tienda, y a gente parecida.” La página Públicos hace eso.' },
+      gancho: { pt: '“O Pixel já sabe quem visitou a loja. Como transformo isso em público?” Vamos criar.', es: '“El Pixel ya sabe quién visitó la tienda. ¿Cómo lo convierto en público?” Vamos a crearlo.' },
       objetivo: { pt: 'Distinguir os três tipos de público (personalizado, semelhante e salvo) e o público automático Advantage+ com controles.', es: 'Distinguir los tres tipos de público (personalizado, similar y guardado) y el público automático Advantage+ con controles.' },
       entender: {
         dialogo: [
@@ -2251,7 +2250,7 @@ window.AULAS = {
       id: '02', min: 9, status: 'pronta',
       titulo: { pt: 'Público de quem visitou o site', es: 'Público de quien visitó el sitio' },
       antes: { pt: 'A Marina entendeu os tipos de público. Quer o primeiro: quem visitou a loja.', es: 'Marina entendió los tipos de público. Quiere el primero: quien visitó la tienda.' },
-      gancho: { pt: '“O Pixel já sabe quem visitou a loja. Como transformo isso em público?” Vamos criar.', es: '“El Pixel ya sabe quién visitó la tienda. ¿Cómo lo convierto en público?” Vamos a crearlo.' },
+      gancho: { pt: '“Quero mais clientes como os que já compraram.” O público semelhante faz isso, se a fonte for boa.', es: '“Quiero más clientes como los que ya compraron.” El público similar hace eso, si el origen es bueno.' },
       objetivo: { pt: 'Criar um público personalizado do site: fonte, evento, retenção e nome, e ler o tamanho e os status.', es: 'Crear un público personalizado del sitio web: origen, evento, retención y nombre, y leer el tamaño y los estados.' },
       entender: {
         dialogo: [
@@ -2298,7 +2297,7 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Público semelhante', es: 'Público similar' },
       antes: { pt: 'A Marina tem públicos personalizados. Agora quer achar gente nova parecida.', es: 'Marina tiene públicos personalizados. Ahora quiere encontrar gente nueva parecida.' },
-      gancho: { pt: '“Quero mais clientes como os que já compraram.” O público semelhante faz isso, se a fonte for boa.', es: '“Quiero más clientes como los que ya compraron.” El público similar hace eso, si el origen es bueno.' },
+      gancho: { pt: '“Sempre ponho Brasil e 18+ de novo!” O público salvo e os controles resolvem. Mas há assuntos que pedem cuidado.', es: '“¡Siempre pongo Brasil y 18+ de nuevo!” El público guardado y los controles lo resuelven. Pero hay temas que piden cuidado.' },
       objetivo: { pt: 'Criar um público semelhante (fonte, localização, tamanho) e entender por que uma fonte pequena é recusada.', es: 'Crear un público similar (origen, ubicación, tamaño) y entender por qué un origen pequeño es rechazado.' },
       entender: {
         dialogo: [
@@ -2345,7 +2344,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Público salvo, controles e categorias especiais', es: 'Público guardado, controles y categorías especiales' },
       antes: { pt: 'A Marina cria públicos e quer reutilizar suas escolhas.', es: 'Marina crea públicos y quiere reutilizar sus elecciones.' },
-      gancho: { pt: '“Sempre ponho Brasil e 18+ de novo!” O público salvo e os controles resolvem. Mas há assuntos que pedem cuidado.', es: '“¡Siempre pongo Brasil y 18+ de nuevo!” El público guardado y los controles lo resuelven. Pero hay temas que piden cuidado.' },
+      gancho: { pt: '“Meu público está quebrado!” Quase nunca: costuma ser tráfego pequeno, uma fonte pequena ou falta de tempo.', es: '“¡Mi público está roto!” Casi nunca: suele ser poco tráfico, un origen pequeño o falta de tiempo.' },
       objetivo: { pt: 'Criar um público salvo, entender os Controles do público Advantage+ e saber quando declarar uma categoria especial de anúncio.', es: 'Crear un público guardado, entender los Controles del público Advantage+ y saber cuándo declarar una categoría especial de anuncio.' },
       entender: {
         dialogo: [
@@ -2392,7 +2391,6 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'Meu público não funciona!', es: '¡Mi público no funciona!' },
       antes: { pt: 'A Marina criou públicos e anúncios, mas os números do público parecem baixos.', es: 'Marina creó públicos y anuncios, pero los números del público parecen bajos.' },
-      gancho: { pt: '“Meu público está quebrado!” Quase nunca: costuma ser tráfego pequeno, uma fonte pequena ou falta de tempo.', es: '“¡Mi público está roto!” Casi nunca: suele ser poco tráfico, un origen pequeño o falta de tiempo.' },
       objetivo: { pt: 'Diagnosticar um público pequeno ou um semelhante recusado, e dizer ao cliente o que fazer enquanto os dados crescem.', es: 'Diagnosticar un público pequeño o un similar rechazado, y decirle al cliente qué hacer mientras los datos crecen.' },
       entender: {
         dialogo: [
@@ -2441,7 +2439,7 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Microdados: como o site fala com o catálogo', es: 'Microdatos: cómo habla el sitio con el catálogo' },
       antes: { pt: 'A Marina tem o catálogo pronto, com 8 produtos que entraram por um arquivo.', es: 'Marina tiene el catálogo listo, con 8 productos que entraron por un archivo.' },
-      gancho: { pt: '“E se os produtos do site entrassem sozinhos no catálogo?” Isso depende de um detalhe no código das páginas: os microdados.', es: '“¿Y si los productos del sitio entraran solos en el catálogo?” Eso depende de un detalle en el código de las páginas: los microdatos.' },
+      gancho: { pt: '“Como eu sei se o meu site está certo?” Cola a URL, clica, e a Meta mostra o que enxergou.', es: '“¿Cómo sé si mi sitio está bien?” Pegas la URL, haces clic, y Meta muestra lo que vio.' },
       objetivo: { pt: 'Entender o que são microdados, por que o catálogo precisa deles e qual é a ferramenta para conferir.', es: 'Entender qué son los microdatos, por qué el catálogo los necesita y cuál es la herramienta para revisarlos.' },
       entender: {
         dialogo: [
@@ -2484,7 +2482,7 @@ window.AULAS = {
       id: '02', min: 7, status: 'pronta',
       titulo: { pt: 'Usar o Microdata Debugger', es: 'Usar el Microdata Debugger' },
       antes: { pt: 'A Marina sabe que o site precisa de microdados. Quer conferir os da Caneca azul.', es: 'Marina sabe que el sitio necesita microdatos. Quiere revisar los de la Caneca azul.' },
-      gancho: { pt: '“Como eu sei se o meu site está certo?” Cola a URL, clica, e a Meta mostra o que enxergou.', es: '“¿Cómo sé si mi sitio está bien?” Pegas la URL, haces clic, y Meta muestra lo que vio.' },
+      gancho: { pt: '“id, title, price, availability… o que cada um faz?” Vamos ler a tabela como quem lê uma ficha.', es: '“id, title, price, availability… ¿qué hace cada uno?” Vamos a leer la tabla como quien lee una ficha.' },
       objetivo: { pt: 'Abrir a ferramenta, verificar uma página de produto e ler a Prévia e a mensagem final.', es: 'Abrir la herramienta, verificar una página de producto y leer la vista previa y el mensaje final.' },
       entender: {
         dialogo: [
@@ -2531,7 +2529,7 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Os campos que o catálogo precisa', es: 'Los campos que necesita el catálogo' },
       antes: { pt: 'A Marina viu as tabelas da Prévia, cheias de siglas.', es: 'Marina vio las tablas de la vista previa, llenas de siglas.' },
-      gancho: { pt: '“id, title, price, availability… o que cada um faz?” Vamos ler a tabela como quem lê uma ficha.', es: '“id, title, price, availability… ¿qué hace cada uno?” Vamos a leer la tabla como quien lee una ficha.' },
+      gancho: { pt: '“Deu erro e não diz o quê!” Vamos achar a causa comparando com uma página que funciona.', es: '“¡Dio error y no dice qué!” Vamos a encontrar la causa comparando con una página que funciona.' },
       objetivo: { pt: 'Ler os parâmetros principais (id, title, description, price, link, image_link, availability, condition, brand) e ligar o id ao catálogo e ao Pixel.', es: 'Leer los parámetros principales (id, title, description, price, link, image_link, availability, condition, brand) y vincular el id con el catálogo y el Pixel.' },
       entender: {
         dialogo: [
@@ -2578,7 +2576,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: '“Falha na validação de dados”', es: '“Error al validar los datos”' },
       antes: { pt: 'A Marina testou a página do Boné e a ferramenta mostrou Erros.', es: 'Marina probó la página de la Gorra y la herramienta mostró Errores.' },
-      gancho: { pt: '“Deu erro e não diz o quê!” Vamos achar a causa comparando com uma página que funciona.', es: '“¡Dio error y no dice qué!” Vamos a encontrar la causa comparando con una página que funciona.' },
+      gancho: { pt: '“Meu desenvolvedor perguntou que código colocar.” Vamos ver como são as tags e corrigir as da Ecobag, do jeito que ele faria.', es: '“Mi desarrollador preguntó qué código poner.” Vamos a ver cómo son las etiquetas y corregir las de la Ecobag, como él lo haría.' },
       objetivo: { pt: 'Ler a tela de erro, achar a causa comparando com uma página boa e orientar o cliente sem mexer no site.', es: 'Leer la pantalla de error, encontrar la causa comparando con una página buena y orientar al cliente sin tocar el sitio.' },
       entender: {
         dialogo: [
@@ -2625,7 +2623,6 @@ window.AULAS = {
       id: '05', min: 10, status: 'pronta',
       titulo: { pt: 'Configurar as tags na página do produto', es: 'Configurar las etiquetas en la página del producto' },
       antes: { pt: 'A Marina já sabe conferir uma página no Microdata Debugger e achar o que falta.', es: 'Marina ya sabe revisar una página en el Microdata Debugger y encontrar lo que falta.' },
-      gancho: { pt: '“Meu desenvolvedor perguntou que código colocar.” Vamos ver como são as tags e corrigir as da Ecobag, do jeito que ele faria.', es: '“Mi desarrollador preguntó qué código poner.” Vamos a ver cómo son las etiquetas y corregir las de la Ecobag, como él lo haría.' },
       objetivo: { pt: 'Saber como as tags de microdados são escritas (OpenGraph ou JSON-LD), quais valores o catálogo exige e o que pedir ao desenvolvedor, conferindo depois no Microdata Debugger.', es: 'Saber cómo se escriben las etiquetas de microdatos (OpenGraph o JSON-LD), qué valores exige el catálogo y qué pedirle al desarrollador, revisando después en el Microdata Debugger.' },
       entender: {
         dialogo: [
@@ -2676,6 +2673,187 @@ window.AULAS = {
       ]
     }
   ],
+  'apps-ios': (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    function op(certa, txt, fb) { return { certa: certa, txt: txt, fb: fb } }
+    var NOTA = L('Conteúdo lido na Central de Ajuda da Meta para Empresas (Mensuração de Eventos Agregados; anúncios para iOS 14.5 ou posterior; conceitos-chave da AEM e da SKAdNetwork; relatórios da SKAdNetwork; resultados calculados de forma diferente; qualificação do app), na documentação de eventos do app do SDK do Facebook (Meta for Developers) e na página da Apple sobre privacidade e uso de dados (App Tracking Transparency), em 20/10/2026. As telas do app da Lojinha e do aviso do iPhone desta aula são recriações de treino (a conferir).',
+      'Contenido leído en el Centro de ayuda de Meta para empresas (Medición de eventos agregados; anuncios para iOS 14.5 o posterior; conceptos clave de la AEM y de SKAdNetwork; informes de SKAdNetwork; resultados calculados de forma distinta; elegibilidad de la app), en la documentación de eventos de la app del SDK de Facebook (Meta for Developers) y en la página de Apple sobre privacidad y uso de datos (App Tracking Transparency), el 20/10/2026. Las pantallas de la app de la Lojinha y del aviso del iPhone de esta clase son recreaciones de entrenamiento (por confirmar).');
+    var F_AEM = { url: 'https://www.facebook.com/business/help/721422165168355', titulo: L('Sobre a Mensuração de Eventos Agregados da Meta', 'Información sobre la Medición de eventos agregados de Meta'), conferido: '20/10/2026' };
+    var F_IOS = { url: 'https://www.facebook.com/business/help/331612538028890', titulo: L('Como alcançar pessoas usando o iOS 14.5 ou posterior com os anúncios da Meta', 'Cómo llegar a personas con iOS 14.5 o posterior con los anuncios de Meta'), conferido: '20/10/2026' };
+    var F_CONC = { url: 'https://www.facebook.com/business/help/387440828988900', titulo: L('Conceitos-chave para a Mensuração de Eventos Agregados e a SKAdNetwork', 'Conceptos clave de la Medición de eventos agregados y SKAdNetwork'), conferido: '20/10/2026' };
+    var F_SKAN = { url: 'https://www.facebook.com/business/help/584603712214119', titulo: L('Relatórios do Gerenciador de Anúncios para a SKAdNetwork da Apple', 'Informes del Administrador de anuncios para SKAdNetwork de Apple'), conferido: '20/10/2026' };
+    var F_CALC = { url: 'https://www.facebook.com/business/help/1329822420714248', titulo: L('Entenda como os resultados às vezes são calculados de forma diferente', 'Por qué los resultados a veces se calculan de forma distinta'), conferido: '20/10/2026' };
+    var F_QUAL = { url: 'https://www.facebook.com/business/help/617021863580582', titulo: L('Verificar se os eventos do app estão qualificados para a Mensuração de Eventos Agregados', 'Comprobar si los eventos de la app son aptos para la Medición de eventos agregados'), conferido: '20/10/2026' };
+    var F_SDKI = { url: 'https://developers.facebook.com/docs/app-events/getting-started-app-events-ios', titulo: L('Eventos do app: primeiros passos no iOS (Meta for Developers)', 'Eventos de la app: primeros pasos en iOS (Meta for Developers)'), conferido: '20/10/2026' };
+    var F_SDKA = { url: 'https://developers.facebook.com/docs/app-events/getting-started-app-events-android', titulo: L('Eventos do app: primeiros passos no Android (Meta for Developers)', 'Eventos de la app: primeros pasos en Android (Meta for Developers)'), conferido: '20/10/2026' };
+    var F_APPLE = { url: 'https://developer.apple.com/app-store/user-privacy-and-data-use/', titulo: L('Apple: privacidade e uso de dados (App Tracking Transparency)', 'Apple: privacidad y uso de datos (App Tracking Transparency)'), conferido: '20/10/2026' };
+    return [
+      {
+        id: '01', min: 8, status: 'pronta',
+        titulo: L('iOS 14: o que mudou de verdade', 'iOS 14: qué cambió de verdad'),
+        antes: L('A Lojinha vende bem e muitos clientes da Marina compram pelo iPhone.', 'La Lojinha vende bien y muchos clientes de Marina compran desde el iPhone.'),
+        gancho: L('“A minha loja diz uma coisa e a Meta diz outra!” Vamos entender por que os números do iPhone ficaram diferentes.', '“¡Mi tienda dice una cosa y Meta dice otra!” Vamos a entender por qué los números del iPhone quedaron distintos.'),
+        objetivo: L('Explicar o aviso de rastreamento do iPhone (ATT), o que é a Mensuração de Eventos Agregados e por que configurar 8 eventos e verificar o domínio para os eventos não é mais necessário.', 'Explicar el aviso de rastreo del iPhone (ATT), qué es la Medición de eventos agregados y por qué ya no es necesario configurar 8 eventos ni verificar el dominio para los eventos.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Uma amiga disse que, desde o iOS 14, o iPhone “bloqueia” o Pixel. Minhas vendas pelo iPhone sumiram da Meta? 😰', 'Una amiga dijo que, desde iOS 14, el iPhone “bloquea” el píxel. ¿Mis ventas desde el iPhone desaparecieron de Meta? 😰')],
+            ['rafa', L('Não sumiram. Desde o iOS 14.5, os apps do iPhone precisam perguntar se a pessoa deixa ser rastreada entre apps e sites de outras empresas. Quem não deixa fica com o identificador de anúncios zerado.', 'No desaparecieron. Desde iOS 14.5, las apps del iPhone deben preguntar si la persona permite que la rastreen entre apps y sitios de otras empresas. Quien no lo permite queda con el identificador de anuncios en ceros.')],
+            ['marina', L('E aí a Meta não vê mais nada?', '¿Y entonces Meta ya no ve nada?')],
+            ['rafa', L('Vê, mas de outro jeito. A Meta usa a Mensuração de Eventos Agregados: processa os eventos com proteção de privacidade, sem identificar a pessoa e somando os dados de muita gente. Por isso a personalização e os relatórios podem ficar mais limitados.', 'Ve, pero de otra forma. Meta usa la Medición de eventos agregados: procesa los eventos con protección de privacidad, sin identificar a la persona y sumando los datos de mucha gente. Por eso la personalización y los informes pueden quedar más limitados.')],
+            ['pixel', L('E atenção ao mito: hoje NÃO precisa mais priorizar 8 eventos, a aba de Mensuração de Eventos Agregados saiu do Gerenciador de Eventos e não é preciso verificar o domínio para configurar eventos. Para o site, nenhuma ação é necessária.', 'Y ojo con el mito: hoy YA NO hace falta priorizar 8 eventos, la pestaña de Medición de eventos agregados salió del Administrador de eventos y no hay que verificar el dominio para configurar eventos. Para el sitio, no hace falta ninguna acción.')]
+          ],
+          pontos: [
+            L('<b>ATT (iOS 14.5+):</b> o app pergunta se pode rastrear; sem permissão, o identificador de anúncios vem zerado.', '<b>ATT (iOS 14.5+):</b> la app pregunta si puede rastrear; sin permiso, el identificador de anuncios viene en ceros.'),
+            L('<b>Mensuração de Eventos Agregados:</b> a Meta continua medindo, com privacidade (dados agregados, sem identificar a pessoa).', '<b>Medición de eventos agregados:</b> Meta sigue midiendo, con privacidad (datos agregados, sin identificar a la persona).'),
+            L('<b>Mito velho:</b> não precisa mais priorizar 8 eventos nem verificar o domínio para os eventos; para o site, nenhuma ação é necessária.', '<b>Mito viejo:</b> ya no hace falta priorizar 8 eventos ni verificar el dominio para los eventos; para el sitio, no hace falta ninguna acción.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'att-aviso',
+        atender: {
+          cena: L('A agência disse que, por causa do iOS 14, eu preciso escolher meus 8 eventos e verificar o domínio, senão as vendas não contam! Onde eu faço isso?! 😰', '¡La agencia dijo que, por iOS 14, tengo que elegir mis 8 eventos y verificar el dominio, si no las ventas no cuentan! ¡¿Dónde hago eso?! 😰'),
+          pergunta: PERG,
+          opcoes: [
+            op(true, L('“Pode ficar tranquila: essa configuração não é mais necessária. Hoje a Meta processa os eventos do site na Mensuração de Eventos Agregados sem você fazer nada, e a aba dos 8 eventos até saiu do Gerenciador de Eventos. A verificação de domínio pode servir para outras coisas, mas não para os eventos.”', '“Puedes estar tranquila: esa configuración ya no es necesaria. Hoy Meta procesa los eventos del sitio en la Medición de eventos agregados sin que hagas nada, y la pestaña de los 8 eventos incluso salió del Administrador de eventos. La verificación de dominio puede servir para otras cosas, pero no para los eventos.”'), null),
+            op(false, L('“Vá em Gerenciador de Eventos › Mensuração de Eventos Agregados e escolha os 8 eventos.”', '“Ve a Administrador de eventos › Medición de eventos agregados y elige los 8 eventos.”'), L('Essa aba foi removida: era o processo antigo.', 'Esa pestaña se eliminó: era el proceso antiguo.')),
+            op(false, L('“Desligue o Pixel para o iPhone não bloquear a loja.”', '“Apaga el píxel para que el iPhone no bloquee la tienda.”'), L('Sem Pixel, nada é medido. O iPhone não bloqueia a loja.', 'Sin píxel no se mide nada. El iPhone no bloquea la tienda.')),
+            op(false, L('“Com o iOS 14 não dá mais para anunciar para quem usa iPhone.”', '“Con iOS 14 ya no se puede anunciar a quien usa iPhone.”'), L('Dá sim: a medição só fica mais limitada.', 'Sí se puede: la medición solo queda más limitada.'))
+          ]
+        },
+        cola: {
+          perguntas: [L('A dúvida é sobre o site (Pixel) ou sobre um app?', '¿La duda es sobre el sitio (píxel) o sobre una app?'), L('Quem disse que precisa configurar 8 eventos? Quando?', '¿Quién dijo que hay que configurar 8 eventos? ¿Cuándo?')],
+          conferir: [L('Site: nenhuma ação é necessária para a Mensuração de Eventos Agregados.', 'Sitio: no hace falta ninguna acción para la Medición de eventos agregados.'), L('A aba Mensuração de Eventos Agregados não existe mais no Gerenciador de Eventos.', 'La pestaña Medición de eventos agregados ya no existe en el Administrador de eventos.')],
+          frase: L('Desde o iOS 14.5, a Meta mede as conversões de quem usa iPhone com a Mensuração de Eventos Agregados, que protege a privacidade. Para o seu site, não há nada para configurar.', 'Desde iOS 14.5, Meta mide las conversiones de quien usa iPhone con la Medición de eventos agregados, que protege la privacidad. Para tu sitio, no hay nada que configurar.'),
+          passos: [L('Explique o aviso de rastreamento (ATT).', 'Explica el aviso de rastreo (ATT).'), L('Desfaça o mito dos 8 eventos e do domínio.', 'Desmiente el mito de los 8 eventos y del dominio.'), L('Se for app, siga para a aula 04.', 'Si es app, sigue a la clase 04.')],
+          encaminhar: L('Dúvidas de configuração de app (SDK, SKAdNetwork) são do desenvolvedor do app.', 'Las dudas de configuración de la app (SDK, SKAdNetwork) son del desarrollador de la app.')
+        },
+        fontes: [F_AEM, F_CONC, F_APPLE]
+      },
+      {
+        id: '02', min: 8, status: 'pronta',
+        titulo: L('Números menores no iPhone: relatórios e públicos', 'Números menores en iPhone: informes y públicos'),
+        antes: L('A Marina entendeu o aviso do iPhone e a Mensuração de Eventos Agregados.', 'Marina entendió el aviso del iPhone y la Medición de eventos agregados.'),
+        gancho: L('“Colei o Pixel no app e nada aparece!” No app, quem mede não é o Pixel: é o SDK.', '“¡Pegué el píxel en la app y no aparece nada!” En la app, quien mide no es el píxel: es el SDK.'),
+        objetivo: L('Explicar por que os resultados de pessoas com iOS 14+ podem vir parciais, modelados ou atrasados, e por que os públicos personalizados tendem a diminuir.', 'Explicar por qué los resultados de personas con iOS 14+ pueden venir parciales, modelados o con retraso, y por qué los públicos personalizados tienden a disminuir.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A loja registrou 30 vendas e o Gerenciador de Anúncios mostra menos. A Meta está escondendo vendas? 😠', 'La tienda registró 30 ventas y el Administrador de anuncios muestra menos. ¿Meta está escondiendo ventas? 😠')],
+            ['rafa', L('Não está escondendo. Com as regras de privacidade, parte das conversões chega parcial ou nem chega. Para completar a visão, a Meta pode usar modelagem estatística; quando não usa, os resultados podem não incluir todas as conversões.', 'No está escondiendo. Con las reglas de privacidad, parte de las conversiones llega parcial o no llega. Para completar la visión, Meta puede usar modelado estadístico; cuando no lo usa, los resultados pueden no incluir todas las conversiones.')],
+            ['marina', L('E por que o meu público de quem visitou o site encolheu?', '¿Y por qué se achicó mi público de quienes visitaron el sitio?')],
+            ['rafa', L('A própria Meta avisa: com mais aparelhos no iOS 14 ou posterior, os públicos personalizados de site e de app tendem a diminuir. A sugestão é usar público amplo ou a expansão de direcionamento.', 'La propia Meta avisa: con más dispositivos en iOS 14 o posterior, los públicos personalizados de sitio y de app tienden a disminuir. La sugerencia es usar público amplio o la expansión de la segmentación.')],
+            ['pixel', L('E em campanha de app que usa a SKAdNetwork da Apple, os dados chegam com pelo menos 24 horas de atraso e contam no dia em que chegaram, não no dia da compra. Por isso, compare sempre igual com igual.', 'Y en campañas de app que usan SKAdNetwork de Apple, los datos llegan con al menos 24 horas de retraso y cuentan el día en que llegaron, no el día de la compra. Por eso, compara siempre igual con igual.')]
+          ],
+          pontos: [
+            L('<b>Parcial ou modelado:</b> parte das conversões pode faltar; a modelagem estatística pode completar a visão.', '<b>Parcial o modelado:</b> parte de las conversiones puede faltar; el modelado estadístico puede completar la visión.'),
+            L('<b>Públicos menores:</b> públicos de site e de app tendem a diminuir; use público amplo ou a expansão de direcionamento.', '<b>Públicos menores:</b> los públicos de sitio y de app tienden a disminuir; usa público amplio o la expansión de la segmentación.'),
+            L('<b>SKAdNetwork (app):</b> atraso de pelo menos 24 h e sem as janelas de 1, 7 ou 28 dias.', '<b>SKAdNetwork (app):</b> retraso de al menos 24 h y sin las ventanas de 1, 7 o 28 días.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'ios-numeros',
+        atender: {
+          cena: L('Minha loja vendeu 30 e o Gerenciador mostra 22. Desde que todo mundo atualizou o iPhone, a Meta perde metade das minhas vendas! Quero meu dinheiro de volta! 😡', '¡Mi tienda vendió 30 y el Administrador muestra 22! ¡Desde que todos actualizaron el iPhone, Meta pierde la mitad de mis ventas! ¡Quiero mi dinero de vuelta! 😡'),
+          pergunta: PERG,
+          opcoes: [
+            op(true, L('“Entendo a preocupação. Com as regras de privacidade do iPhone, parte das conversões chega parcial à Meta, que às vezes completa com modelagem estatística; por isso o número não bate exatamente com a loja. Vamos olhar a tendência, comparar sempre o mesmo período e a mesma configuração de atribuição, e considerar um público mais amplo.”', '“Entiendo la preocupación. Con las reglas de privacidad del iPhone, parte de las conversiones llega parcial a Meta, que a veces completa con modelado estadístico; por eso el número no coincide exactamente con la tienda. Miremos la tendencia, comparemos siempre el mismo período y la misma configuración de atribución, y consideremos un público más amplio.”'), null),
+            op(false, L('“É erro do sistema; vou pedir reembolso.”', '“Es un error del sistema; voy a pedir un reembolso.”'), L('Não é erro: é efeito das regras de privacidade, explicado pela Meta.', 'No es un error: es efecto de las reglas de privacidad, explicado por Meta.')),
+            op(false, L('“Os números da Meta estão errados; ignore o Gerenciador.”', '“Los números de Meta están mal; ignora el Administrador.”'), L('Os números continuam úteis para comparar e otimizar; só não batem um a um com a loja.', 'Los números siguen siendo útiles para comparar y optimizar; solo no coinciden uno a uno con la tienda.')),
+            op(false, L('“Pare de anunciar para quem usa iPhone.”', '“Deja de anunciar a quien usa iPhone.”'), L('Seria perder clientes: a medição fica limitada, mas a entrega continua.', 'Sería perder clientes: la medición queda limitada, pero la entrega continúa.'))
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual número a loja mostra e qual o Gerenciador mostra, no mesmo período?', '¿Qué número muestra la tienda y cuál el Administrador, en el mismo período?'), L('A campanha é de site ou de app? Usa SKAdNetwork?', '¿La campaña es de sitio o de app? ¿Usa SKAdNetwork?')],
+          conferir: [L('Mesma configuração de atribuição e mesmo período nas comparações.', 'Misma configuración de atribución y mismo período en las comparaciones.'), L('Notas de modelagem estatística ou de SKAdNetwork no relatório.', 'Notas de modelado estadístico o de SKAdNetwork en el informe.')],
+          frase: L('Com as regras de privacidade do iPhone, parte dos resultados chega parcial ou modelada, então os números da Meta e da loja não batem um a um. O importante é comparar sempre igual com igual.', 'Con las reglas de privacidad del iPhone, parte de los resultados llega parcial o modelada, así que los números de Meta y de la tienda no coinciden uno a uno. Lo importante es comparar siempre igual con igual.'),
+          passos: [L('Compare os mesmos períodos e a mesma atribuição.', 'Compara los mismos períodos y la misma atribución.'), L('Passe o mouse nas notas do relatório para ler a explicação.', 'Pasa el mouse por las notas del informe para leer la explicación.'), L('Sugira público amplo se o público personalizado encolheu.', 'Sugiere público amplio si el público personalizado se achicó.')],
+          encaminhar: L('Se a diferença for enorme e repentina, investigue o Pixel (Diagnóstico) antes de culpar o iOS.', 'Si la diferencia es enorme y repentina, investiga el píxel (Diagnóstico) antes de culpar a iOS.')
+        },
+        fontes: [F_IOS, F_CALC, F_SKAN]
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('O SDK da Meta: os eventos do app', 'El SDK de Meta: los eventos de la app'),
+        antes: L('A Lojinha ganhou um app para iPhone e Android.', 'La Lojinha tiene ahora una app para iPhone y Android.'),
+        gancho: L('“Minha campanha do app para iPhone não sai do lugar!” Vamos ver os dois jeitos de medir app no iOS 14+ e onde conferir se o app está pronto.', '“¡Mi campaña de la app para iPhone no avanza!” Vamos a ver las dos formas de medir apps en iOS 14+ y dónde revisar si la app está lista.'),
+        objetivo: L('Saber que no site se usa o Pixel e no app se usa o SDK do Facebook (eventos do app), o que ele registra sozinho, o que o desenvolvedor configura e como testar.', 'Saber que en el sitio se usa el píxel y en la app se usa el SDK de Facebook (eventos de la app), qué registra solo, qué configura el desarrollador y cómo probar.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Pedi ao programador para colar o código do Pixel no app da Lojinha, e no Gerenciador de Eventos não chega nada. 😩', 'Le pedí al programador que pegara el código del píxel en la app de la Lojinha, y en el Administrador de eventos no llega nada. 😩')],
+            ['rafa', L('O Pixel é para páginas da web. Num app de celular, o certo é o SDK do Facebook para iOS e Android: ele envia os “eventos do app” para o Gerenciador de Eventos.', 'El píxel es para páginas web. En una app de celular, lo correcto es el SDK de Facebook para iOS y Android: envía los “eventos de la app” al Administrador de eventos.')],
+            ['marina', L('E o que ele registra?', '¿Y qué registra?')],
+            ['rafa', L('Sozinho, ele já registra instalações, aberturas do app e compras dentro do app. Os outros eventos, como a compra da loja com valor e moeda, o desenvolvedor adiciona. Para anúncio de catálogo, o id do produto no evento tem que ser o mesmo do catálogo.', 'Solo, ya registra instalaciones, aperturas de la app y compras dentro de la app. Los otros eventos, como la compra de la tienda con valor y moneda, los agrega el desarrollador. Para anuncios de catálogo, el id del producto en el evento debe ser el mismo del catálogo.')],
+            ['pixel', L('Para testar, o desenvolvedor usa o App Ads Helper (Testar eventos do app) e confere no Gerenciador de Eventos. E, a partir do iOS 14.5, ele precisa informar ao SDK se a pessoa permitiu o rastreamento no aviso do iPhone.', 'Para probar, el desarrollador usa el App Ads Helper (Probar eventos de la app) y revisa en el Administrador de eventos. Y, desde iOS 14.5, debe informar al SDK si la persona permitió el rastreo en el aviso del iPhone.')]
+          ],
+          pontos: [
+            L('<b>Site = Pixel. App = SDK.</b> O SDK do Facebook (iOS e Android) envia os eventos do app.', '<b>Sitio = píxel. App = SDK.</b> El SDK de Facebook (iOS y Android) envía los eventos de la app.'),
+            L('<b>Automático:</b> instalações, aberturas e compras no app. O resto o desenvolvedor configura (valor e moeda na compra).', '<b>Automático:</b> instalaciones, aperturas y compras en la app. El resto lo configura el desarrollador (valor y moneda en la compra).'),
+            L('<b>Testar:</b> App Ads Helper e Gerenciador de Eventos. Quem instala e testa é o desenvolvedor.', '<b>Probar:</b> App Ads Helper y Administrador de eventos. Quien instala y prueba es el desarrollador.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'sdk-ou-pixel',
+        atender: {
+          cena: L('Lancei o app da Lojinha! Meu programador colou o código do Pixel nele e o Gerenciador de Eventos não mostra nenhuma compra do app. O Pixel não funciona em celular? 🤔', '¡Lancé la app de la Lojinha! Mi programador pegó el código del píxel en ella y el Administrador de eventos no muestra ninguna compra de la app. ¿El píxel no funciona en celular? 🤔'),
+          pergunta: PERG,
+          opcoes: [
+            op(true, L('“O Pixel é para o site. No app, o caminho é o SDK do Facebook para iOS e Android: ele registra sozinho instalações, aberturas e compras no app, e o programador adiciona os outros eventos, como a compra com valor e moeda. Depois ele testa no App Ads Helper e a gente confere no Gerenciador de Eventos.”', '“El píxel es para el sitio. En la app, el camino es el SDK de Facebook para iOS y Android: registra solo instalaciones, aperturas y compras en la app, y el programador agrega los otros eventos, como la compra con valor y moneda. Después lo prueba en el App Ads Helper y revisamos en el Administrador de eventos.”'), null),
+            op(false, L('“Cole o Pixel em todas as telas do app.”', '“Pega el píxel en todas las pantallas de la app.”'), L('O Pixel não é feito para apps; o certo é o SDK.', 'El píxel no está hecho para apps; lo correcto es el SDK.')),
+            op(false, L('“Apps não podem ser medidos depois do iOS 14.”', '“Las apps no se pueden medir después de iOS 14.”'), L('Podem sim: o SDK e a Mensuração de Eventos Agregados medem eventos do app.', 'Sí se puede: el SDK y la Medición de eventos agregados miden eventos de la app.')),
+            op(false, L('“Me mande o código do app que eu instalo o SDK.”', '“Mándame el código de la app y yo instalo el SDK.”'), L('Quem instala é o desenvolvedor: você orienta e confere.', 'Quien instala es el desarrollador: tú orientas y revisas.'))
+          ]
+        },
+        cola: {
+          perguntas: [L('O problema é no site ou no app?', '¿El problema es en el sitio o en la app?'), L('O app tem o SDK do Facebook? iOS, Android ou os dois?', '¿La app tiene el SDK de Facebook? ¿iOS, Android o ambos?'), L('Os eventos de teste aparecem no App Ads Helper?', '¿Los eventos de prueba aparecen en el App Ads Helper?')],
+          conferir: [L('Instalações e aberturas chegando (são automáticas).', 'Instalaciones y aperturas llegando (son automáticas).'), L('Compra com valor e moeda; id do produto igual ao do catálogo.', 'Compra con valor y moneda; id del producto igual al del catálogo.')],
+          frase: L('No site quem mede é o Pixel; no app, é o SDK do Facebook. O seu desenvolvedor instala o SDK, configura os eventos e testa; depois conferimos juntos no Gerenciador de Eventos.', 'En el sitio quien mide es el píxel; en la app, es el SDK de Facebook. Tu desarrollador instala el SDK, configura los eventos y prueba; después revisamos juntos en el Administrador de eventos.'),
+          passos: [L('Confirme que o app usa o SDK (não o Pixel).', 'Confirma que la app usa el SDK (no el píxel).'), L('Peça ao desenvolvedor o teste no App Ads Helper.', 'Pide al desarrollador la prueba en el App Ads Helper.'), L('Confira os eventos no Gerenciador de Eventos.', 'Revisa los eventos en el Administrador de eventos.')],
+          encaminhar: L('Instalação e código do SDK são do desenvolvedor do app, com a documentação oficial de eventos do app (Meta for Developers).', 'La instalación y el código del SDK son del desarrollador de la app, con la documentación oficial de eventos de la app (Meta for Developers).')
+        },
+        fontes: [F_SDKI, F_SDKA, F_CONC]
+      },
+      {
+        id: '04', min: 9, status: 'pronta',
+        titulo: L('Anúncios de app para iPhone: AEM ou SKAdNetwork', 'Anuncios de app para iPhone: AEM o SKAdNetwork'),
+        antes: L('O app da Lojinha já envia eventos pelo SDK.', 'La app de la Lojinha ya envía eventos por el SDK.'),
+        objetivo: L('Saber que campanhas de app para iOS 14+ usam a Mensuração de Eventos Agregados ou a SKAdNetwork da Apple, as diferenças de relatório e onde verificar a qualificação do app no Gerenciador de Eventos.', 'Saber que las campañas de app para iOS 14+ usan la Medición de eventos agregados o SKAdNetwork de Apple, las diferencias de informes y dónde comprobar la elegibilidad de la app en el Administrador de eventos.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Quero anunciar o app da Lojinha para quem tem iPhone. O que muda? 📱', 'Quiero anunciar la app de la Lojinha a quien tiene iPhone. ¿Qué cambia? 📱')],
+            ['rafa', L('Campanhas de app para iOS 14 ou posterior medem de dois jeitos: pela Mensuração de Eventos Agregados da Meta, se o app estiver qualificado, ou pela SKAdNetwork da Apple, que precisa ser configurada no Gerenciador de Eventos.', 'Las campañas de app para iOS 14 o posterior miden de dos formas: con la Medición de eventos agregados de Meta, si la app es apta, o con SKAdNetwork de Apple, que debe configurarse en el Administrador de eventos.')],
+            ['marina', L('Qual é melhor?', '¿Cuál es mejor?')],
+            ['rafa', L('Na Mensuração de Eventos Agregados, os relatórios saem quase em tempo real e há janelas de clique de 1 e 7 dias. Na SKAdNetwork, os dados chegam com pelo menos 24 horas de atraso, há limite de 63 eventos e não há as janelas de 1, 7 ou 28 dias.', 'En la Medición de eventos agregados, los informes salen casi en tiempo real y hay ventanas de clic de 1 y 7 días. En SKAdNetwork, los datos llegan con al menos 24 horas de retraso, hay un límite de 63 eventos y no hay ventanas de 1, 7 o 28 días.')],
+            ['pixel', L('Para ver se o app está qualificado: Gerenciador de Eventos › Conjuntos de dados › o conjunto do app › Configurações › Tarefas de configuração para eventos do app iOS › Atribuição da Meta para iOS 14+ › Verificar qualificação do app. A coluna Qualificação mostra o que falta.', 'Para ver si la app es apta: Administrador de eventos › Conjuntos de datos › el conjunto de la app › Configuración › Tareas de configuración de eventos de la app iOS › Atribución de Meta para iOS 14+ › Comprobar elegibilidad de la app. La columna de elegibilidad muestra lo que falta.')]
+          ],
+          pontos: [
+            L('<b>Dois caminhos no iOS 14+:</b> Mensuração de Eventos Agregados (app qualificado) ou SKAdNetwork da Apple (configurada no Gerenciador de Eventos).', '<b>Dos caminos en iOS 14+:</b> Medición de eventos agregados (app apta) o SKAdNetwork de Apple (configurada en el Administrador de eventos).'),
+            L('<b>AEM:</b> relatórios quase em tempo real, clique de 1 e 7 dias. <b>SKAdNetwork:</b> atraso de 24 h ou mais, até 63 eventos.', '<b>AEM:</b> informes casi en tiempo real, clic de 1 y 7 días. <b>SKAdNetwork:</b> retraso de 24 h o más, hasta 63 eventos.'),
+            L('<b>Qualificação:</b> conferida no Gerenciador de Eventos; “pendente” quer dizer que a Meta ainda está verificando a integração.', '<b>Elegibilidad:</b> se revisa en el Administrador de eventos; “pendiente” quiere decir que Meta todavía está verificando la integración.')
+          ],
+          notas: NOTA
+        },
+        ferramenta: 'aem-ou-skan',
+        atender: {
+          cena: L('Quero anunciar meu app para iPhone e o Gerenciador diz que o app não está qualificado. Vocês não querem que eu anuncie? 😤', 'Quiero anunciar mi app para iPhone y el Administrador dice que la app no es apta. ¿No quieren que anuncie? 😤'),
+          pergunta: PERG,
+          opcoes: [
+            op(true, L('“Queremos sim! Vamos ver o que falta: no Gerenciador de Eventos, no conjunto de dados do app, em Configurações, clique em Verificar qualificação do app. A coluna Qualificação mostra o problema e o que fazer; o seu desenvolvedor corrige, e depois verificamos de novo. Outra opção é configurar a SKAdNetwork da Apple.”', '“¡Claro que sí! Veamos qué falta: en el Administrador de eventos, en el conjunto de datos de la app, en Configuración, haz clic en Comprobar elegibilidad de la app. La columna de elegibilidad muestra el problema y qué hacer; tu desarrollador lo corrige, y después comprobamos de nuevo. Otra opción es configurar SKAdNetwork de Apple.”'), null),
+            op(false, L('“Configure os 8 eventos na aba de Mensuração de Eventos Agregados.”', '“Configura los 8 eventos en la pestaña de Medición de eventos agregados.”'), L('Essa aba e esse processo eram da web e não existem mais.', 'Esa pestaña y ese proceso eran de la web y ya no existen.')),
+            op(false, L('“Anuncie só para Android, iPhone não dá.”', '“Anuncia solo para Android, iPhone no se puede.”'), L('Dá: com a Mensuração de Eventos Agregados ou com a SKAdNetwork.', 'Se puede: con la Medición de eventos agregados o con SKAdNetwork.')),
+            op(false, L('“Crie outra conta de anúncios só para iPhone.”', '“Crea otra cuenta publicitaria solo para iPhone.”'), L('Não resolve a qualificação do app; o caminho é o Gerenciador de Eventos.', 'No resuelve la elegibilidad de la app; el camino es el Administrador de eventos.'))
+          ]
+        },
+        cola: {
+          perguntas: [L('A campanha é de promoção do app ou de reengajamento?', '¿La campaña es de promoción de la app o de reconexión?'), L('O app já está qualificado para a Mensuração de Eventos Agregados?', '¿La app ya es apta para la Medición de eventos agregados?'), L('A SKAdNetwork está configurada?', '¿SKAdNetwork está configurada?')],
+          conferir: [L('Gerenciador de Eventos › conjunto do app › Configurações › Verificar qualificação do app.', 'Administrador de eventos › conjunto de la app › Configuración › Comprobar elegibilidad de la app.'), L('Relatórios: AEM quase em tempo real; SKAdNetwork com atraso de 24 h ou mais.', 'Informes: AEM casi en tiempo real; SKAdNetwork con retraso de 24 h o más.')],
+          frase: L('No iPhone, as campanhas de app medem pela Mensuração de Eventos Agregados ou pela SKAdNetwork da Apple. Vamos verificar a qualificação do app no Gerenciador de Eventos para saber o que falta.', 'En el iPhone, las campañas de app miden con la Medición de eventos agregados o con SKAdNetwork de Apple. Vamos a comprobar la elegibilidad de la app en el Administrador de eventos para saber qué falta.'),
+          passos: [L('Verificar qualificação do app no Gerenciador de Eventos.', 'Comprobar la elegibilidad de la app en el Administrador de eventos.'), L('Corrigir o que a coluna Qualificação indicar (desenvolvedor).', 'Corregir lo que indique la columna de elegibilidad (desarrollador).'), L('Verificar de novo; “pendente” = aguardar.', 'Comprobar de nuevo; “pendiente” = esperar.')],
+          encaminhar: L('Correções no app (deep link, SDK, SKAdNetwork) são do desenvolvedor. Os nomes das telas em espanhol estão “a conferir”.', 'Las correcciones en la app (deep link, SDK, SKAdNetwork) son del desarrollador. Los nombres de las pantallas en español están “por confirmar”.')
+        },
+        fontes: [F_QUAL, F_IOS, F_SKAN, F_AEM]
+      }
+    ];
+  })(),
   entrega: (function () {
 
     function L(pt, es) { return { pt: pt, es: es } }
@@ -2688,7 +2866,7 @@ window.AULAS = {
         id: '01', min: 6, status: 'pronta',
         titulo: L('A fase de aprendizado', 'La fase de aprendizaje'),
         antes: L('A Marina publicou as campanhas da Lojinha. No dia seguinte, os conjuntos mostram “Aprendizado” e ela acha que algo quebrou.', 'Marina publicó las campañas de la Lojinha. Al día siguiente, los conjuntos muestran “Aprendizaje” y ella cree que algo se rompió.'),
-        gancho: L('“Está escrito Aprendizado, travou?” Calma: é o começo normal de todo anúncio.', '“Dice Aprendizaje, ¿se trabó?” Calma: es el comienzo normal de todo anuncio.'),
+        gancho: L('Uma coluna conta a história: Ativo, Aprendizado, Em análise, Desativado…', 'Una columna cuenta la historia: Activo, Aprendizaje, En revisión, Desactivado…'),
         objetivo: L('Entender o que é a fase de aprendizado, quando ela aparece e por que não se deve mexer à toa.', 'Entender qué es la fase de aprendizaje, cuándo aparece y por qué no hay que tocar sin motivo.'),
         entender: {
           dialogo: [
@@ -2728,7 +2906,7 @@ window.AULAS = {
         id: '02', min: 7, status: 'pronta',
         titulo: L('Ler a coluna Veiculação', 'Leer la columna Entrega'),
         antes: L('A Marina quer saber como cada conjunto está, de uma olhada só.', 'Marina quiere saber cómo está cada conjunto, de un vistazo.'),
-        gancho: L('Uma coluna conta a história: Ativo, Aprendizado, Em análise, Desativado…', 'Una columna cuenta la historia: Activo, Aprendizaje, En revisión, Desactivado…'),
+        gancho: L('Nem toda edição é igual: algumas mexem pouco, outras zeram o aprendizado.', 'No toda edición es igual: algunas tocan poco, otras ponen a cero el aprendizaje.'),
         objetivo: L('Ler a coluna Veiculação, o card “% gastos na fase de aprendizado” e saber o que falta para sair do aprendizado.', 'Leer la columna Entrega, la tarjeta “% de gasto en la fase de aprendizaje” y saber qué falta para salir del aprendizaje.'),
         entender: {
           dialogo: [
@@ -2772,7 +2950,7 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Edições significativas', 'Ediciones significativas'),
         antes: L('A Marina quer trocar o público e a foto da Caneca azul para “testar”.', 'Marina quiere cambiar el público y la foto de la Caneca azul para “probar”.'),
-        gancho: L('Nem toda edição é igual: algumas mexem pouco, outras zeram o aprendizado.', 'No toda edición es igual: algunas tocan poco, otras ponen a cero el aprendizaje.'),
+        gancho: L('Não é defeito: é um aviso de que faltam resultados.', 'No es un defecto: es un aviso de que faltan resultados.'),
         objetivo: L('Saber quais edições reiniciam o aprendizado e decidir se vale editar.', 'Saber qué ediciones reinician el aprendizaje y decidir si vale editar.'),
         entender: {
           dialogo: [
@@ -2816,7 +2994,7 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Aprendizado limitado', 'Aprendizaje limitado'),
         antes: L('A “Camiseta Montanha” da Marina passou dias e ficou em “Aprendizado limitado”.', 'La “Camiseta Montaña” de Marina pasó días y quedó en “Aprendizaje limitado”.'),
-        gancho: L('Não é defeito: é um aviso de que faltam resultados.', 'No es un defecto: es un aviso de que faltan resultados.'),
+        gancho: L('Cada status tem uma resposta. Comece pela conta, depois pelo conjunto.', 'Cada estado tiene una respuesta. Empieza por la cuenta, luego por el conjunto.'),
         objetivo: L('Entender o “Aprendizado limitado” e o que fazer para o conjunto aprender.', 'Entender el “Aprendizaje limitado” y qué hacer para que el conjunto aprenda.'),
         entender: {
           dialogo: [
@@ -2860,7 +3038,6 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('“Meu anúncio não roda”', '“Mi anuncio no corre”'),
         antes: L('A Marina diz que três conjuntos não estão veiculando.', 'Marina dice que tres conjuntos no están entregando.'),
-        gancho: L('Cada status tem uma resposta. Comece pela conta, depois pelo conjunto.', 'Cada estado tiene una respuesta. Empieza por la cuenta, luego por el conjunto.'),
         objetivo: L('Seguir uma ordem para achar por que um anúncio não veicula: conta, status do conjunto e nível certo.', 'Seguir un orden para encontrar por qué un anuncio no entrega: cuenta, estado del conjunto y nivel correcto.'),
         entender: {
           dialogo: [
@@ -2912,7 +3089,7 @@ window.AULAS = {
         id: '01', min: 6, status: 'pronta',
         titulo: L('O que é o Meta Verified para empresas', 'Qué es Meta Verified para empresas'),
         antes: L('A Marina viu o selo azul em outras lojas e quer saber se a Lojinha deveria ter um.', 'Marina vio la insignia azul en otras tiendas y quiere saber si la Lojinha debería tener una.'),
-        gancho: L('“Quero o selo azul!” Antes de assinar, é bom saber o que ele é e o que não é.', '“¡Quiero la insignia azul!” Antes de suscribirse, conviene saber qué es y qué no es.'),
+        gancho: L('Quatro planos, preços diferentes e suporte diferente: o certo depende do que o cliente precisa.', 'Cuatro planes, precios distintos y asistencia distinta: el correcto depende de lo que necesita el cliente.'),
         objetivo: L('Entender o que é o Meta Verified para empresas, o que a assinatura inclui e onde o selo aparece.', 'Entender qué es Meta Verified para empresas, qué incluye la suscripción y dónde aparece la insignia.'),
         entender: {
           dialogo: [
@@ -2952,7 +3129,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Planos e benefícios', 'Planes y beneficios'),
         antes: L('A Marina quer entender qual dos quatro planos serve para a Lojinha.', 'Marina quiere entender cuál de los cuatro planes sirve para la Lojinha.'),
-        gancho: L('Quatro planos, preços diferentes e suporte diferente: o certo depende do que o cliente precisa.', 'Cuatro planes, precios distintos y asistencia distinta: el correcto depende de lo que necesita el cliente.'),
+        gancho: L('Plano, ativos, pagamento, verificação e confirmação: cada etapa tem uma regra.', 'Plan, activos, pago, verificación y confirmación: cada etapa tiene una regla.'),
         objetivo: L('Comparar os planos, ler o suporte de cada um e saber por que nem todos aparecem para todo mundo.', 'Comparar los planes, leer la asistencia de cada uno y saber por qué no todos aparecen para todos.'),
         entender: {
           dialogo: [
@@ -2996,7 +3173,7 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Cadastrar a empresa', 'Registrar la empresa'),
         antes: L('A Marina decidiu: quer o Plus para o Instagram da Lojinha.', 'Marina decidió: quiere Plus para el Instagram de la Lojinha.'),
-        gancho: L('Plano, ativos, pagamento, verificação e confirmação: cada etapa tem uma regra.', 'Plan, activos, pago, verificación y confirmación: cada etapa tiene una regla.'),
+        gancho: L('Quando a opção some, quase sempre falta um requisito. Vamos conferir um por um.', 'Cuando la opción desaparece, casi siempre falta un requisito. Revisemos uno por uno.'),
         objetivo: L('Seguir as etapas do cadastro, entender os métodos de verificação e saber o prazo de análise.', 'Seguir las etapas del registro, entender los métodos de verificación y saber el plazo de revisión.'),
         entender: {
           dialogo: [
@@ -3040,7 +3217,7 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('“Não consigo cadastrar”', '“No puedo registrar”'),
         antes: L('A Marina abriu o Meta Business Suite e a opção de cadastro nem aparece.', 'Marina abrió Meta Business Suite y la opción de registro ni aparece.'),
-        gancho: L('Quando a opção some, quase sempre falta um requisito. Vamos conferir um por um.', 'Cuando la opción desaparece, casi siempre falta un requisito. Revisemos uno por uno.'),
+        gancho: L('O nome do perfil verificado segue regras: precisa lembrar o nome civil.', 'El nombre del perfil verificado sigue reglas: debe recordar el nombre legal.'),
         objetivo: L('Conferir os requisitos (perfil completo, controle total, ativo qualificado, Proteção Avançada de todos) e entender a identificação.', 'Revisar los requisitos (perfil completo, control total, activo que cumple, Protección avanzada de todos) y entender la identificación.'),
         entender: {
           dialogo: [
@@ -3084,7 +3261,7 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Nome do perfil verificado', 'Nombre del perfil verificado'),
         antes: L('A Marina quer trocar o nome do perfil para o nome de marca.', 'Marina quiere cambiar el nombre del perfil por el nombre de marca.'),
-        gancho: L('O nome do perfil verificado segue regras: precisa lembrar o nome civil.', 'El nombre del perfil verificado sigue reglas: debe recordar el nombre legal.'),
+        gancho: L('Cancelar e revogar parecem iguais, mas não são. E quem tem assinatura ativa tem um suporte especial.', 'Cancelar y revocar parecen iguales, pero no lo son. Y quien tiene una suscripción activa tiene una asistencia especial.'),
         objetivo: L('Saber o que a Meta aceita e recusa ao trocar o nome do perfil e os limites de edição.', 'Saber qué acepta y rechaza Meta al cambiar el nombre del perfil y los límites de edición.'),
         entender: {
           dialogo: [
@@ -3128,7 +3305,6 @@ window.AULAS = {
         id: '06', min: 9, status: 'pronta',
         titulo: L('Cancelar, revogada e suporte', 'Cancelar, revocada y asistencia'),
         antes: L('A Marina pensa em cancelar. E uma amiga teve a assinatura revogada.', 'Marina piensa en cancelar. Y una amiga tuvo la suscripción revocada.'),
-        gancho: L('Cancelar e revogar parecem iguais, mas não são. E quem tem assinatura ativa tem um suporte especial.', 'Cancelar y revocar parecen iguales, pero no lo son. Y quien tiene una suscripción activa tiene una asistencia especial.'),
         objetivo: L('Explicar as regras de cancelamento, listar causas de revogação e indicar o suporte de cada plano.', 'Explicar las reglas de cancelación, listar causas de revocación e indicar la asistencia de cada plan.'),
         entender: {
           dialogo: [
@@ -3180,7 +3356,7 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que é o Commerce da Meta', 'Qué es Commerce de Meta'),
         antes: L('A Marina tem catálogo e anúncios. Agora quer uma vitrine dentro do Instagram e do Facebook.', 'Marina tiene catálogo y anuncios. Ahora quiere una vitrina dentro de Instagram y Facebook.'),
-        gancho: L('“Dá para vender direto no Instagram?” Quase: a loja mostra, e a compra termina no site.', '“¿Se puede vender directo en Instagram?” Casi: la tienda muestra, y la compra termina en el sitio.'),
+        gancho: L('Cinco telas, um catálogo e uma escolha importante: onde a compra termina.', 'Cinco pantallas, un catálogo y una elección importante: dónde termina la compra.'),
         objetivo: L('Entender o que é o Gerenciador de Comércio, o que é uma loja da Meta e o que ela faz (e não faz).', 'Entender qué es el Administrador de ventas, qué es una tienda de Meta y qué hace (y qué no).'),
         entender: {
           dialogo: [
@@ -3220,7 +3396,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Criar a loja', 'Crear la tienda'),
         antes: L('A Marina decidiu: quer a loja da Lojinha no Instagram e no Facebook.', 'Marina decidió: quiere la tienda de la Lojinha en Instagram y Facebook.'),
-        gancho: L('Cinco telas, um catálogo e uma escolha importante: onde a compra termina.', 'Cinco pantallas, un catálogo y una elección importante: dónde termina la compra.'),
+        gancho: L('Seis tarefas e um botão: Publicar loja só liga quando as obrigatórias terminam.', 'Seis tareas y un botón: Publicar tienda solo se enciende cuando terminan las obligatorias.'),
         objetivo: L('Percorrer o assistente de criação da loja: país, plataforma de parceiro, canais, catálogo e prévia.', 'Recorrer el asistente de creación de la tienda: país, plataforma de un socio, canales, catálogo y vista previa.'),
         entender: {
           dialogo: [
@@ -3264,7 +3440,7 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Configurar e publicar a loja', 'Configurar y publicar la tienda'),
         antes: L('A loja da Marina foi criada e enviada para análise. Agora falta deixá-la pronta.', 'La tienda de Marina fue creada y enviada a revisión. Ahora falta dejarla lista.'),
-        gancho: L('Seis tarefas e um botão: Publicar loja só liga quando as obrigatórias terminam.', 'Seis tareas y un botón: Publicar tienda solo se enciende cuando terminan las obligatorias.'),
+        gancho: L('Quase sempre é um requisito, uma etapa do checklist ou o status. Vamos por ordem.', 'Casi siempre es un requisito, una etapa de la lista o el estado. Vamos en orden.'),
         objetivo: L('Saber as tarefas de “Configurar sua loja”, o prazo da análise e como o perfil de envio e o URL de finalização da compra funcionam.', 'Saber las tareas de “Configurar tu tienda”, el plazo de la revisión y cómo funcionan el perfil de envío y la URL de finalización de compra.'),
         entender: {
           dialogo: [
@@ -3308,7 +3484,7 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('“Minha loja não aparece”', '“Mi tienda no aparece”'),
         antes: L('A Marina diz que a loja ainda não aparece para os clientes.', 'Marina dice que la tienda todavía no aparece para los clientes.'),
-        gancho: L('Quase sempre é um requisito, uma etapa do checklist ou o status. Vamos por ordem.', 'Casi siempre es un requisito, una etapa de la lista o el estado. Vamos en orden.'),
+        gancho: L('Desde setembro de 2025, tudo que vem depois do clique em “comprar” acontece no site.', 'Desde septiembre de 2025, todo lo que viene después del clic en “comprar” ocurre en el sitio.'),
         objetivo: L('Conferir os 5 requisitos de qualificação, o domínio e a política de devolução e seguir a ordem de conferência.', 'Revisar los 5 requisitos de calificación, el dominio y la política de devolución y seguir el orden de revisión.'),
         entender: {
           dialogo: [
@@ -3352,7 +3528,6 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Finalização da compra no site: o que mudou', 'Finalización de compra en el sitio: qué cambió'),
         antes: L('Uma cliente antiga da Marina pergunta onde foram parar os pedidos e as devoluções da loja dela.', 'Una clienta antigua de Marina pregunta adónde fueron los pedidos y las devoluciones de su tienda.'),
-        gancho: L('Desde setembro de 2025, tudo que vem depois do clique em “comprar” acontece no site.', 'Desde septiembre de 2025, todo lo que viene después del clic en “comprar” ocurre en el sitio.'),
         objetivo: L('Explicar o que foi descontinuado e o que continua nas Lojas, e como ficam os anúncios e os relatórios.', 'Explicar qué fue discontinuado y qué continúa en las Tiendas, y cómo quedan los anuncios y los informes.'),
         entender: {
           dialogo: [
@@ -3404,7 +3579,7 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que são os anúncios das Lojas', 'Qué son los anuncios de Tiendas'),
         antes: L('A Marina já tem a loja. Agora quer anúncios que levem as pessoas até ela.', 'Marina ya tiene la tienda. Ahora quiere anuncios que lleven a las personas hasta ella.'),
-        gancho: L('“Anúncio da loja” não é só um anúncio com link: a Meta decide para onde a pessoa vai.', '“Anuncio de la tienda” no es solo un anuncio con enlace: Meta decide adónde va la persona.'),
+        gancho: L('Cinco ativos e as permissões certas: sem isso, nem o botão da loja aparece.', 'Cinco activos y los permisos correctos: sin eso, ni aparece el botón de la tienda.'),
         objetivo: L('Entender o que são os anúncios das Lojas, para quem servem e onde estão disponíveis (inclusive o Brasil).', 'Entender qué son los anuncios de Tiendas, para quién sirven y dónde están disponibles (incluido Brasil).'),
         entender: {
           dialogo: [
@@ -3444,7 +3619,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Antes de criar o anúncio', 'Antes de crear el anuncio'),
         antes: L('A Marina quer criar o primeiro anúncio das Lojas, mas não sabe se está tudo pronto.', 'Marina quiere crear el primer anuncio de Tiendas, pero no sabe si está todo listo.'),
-        gancho: L('Cinco ativos e as permissões certas: sem isso, nem o botão da loja aparece.', 'Cinco activos y los permisos correctos: sin eso, ni aparece el botón de la tienda.'),
+        gancho: L('Vendas, Site e o botão Loja: três escolhas que transformam um anúncio comum em um anúncio das Lojas.', 'Ventas, Sitio y el botón Tienda: tres elecciones que convierten un anuncio común en un anuncio de Tiendas.'),
         objetivo: L('Conferir os 5 ativos exigidos e as permissões, e saber onde conferir identidade e catálogo da loja.', 'Revisar los 5 activos exigidos y los permisos, y saber dónde revisar identidad y catálogo de la tienda.'),
         entender: {
           dialogo: [
@@ -3488,7 +3663,7 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Criar o anúncio das Lojas', 'Crear el anuncio de Tiendas'),
         antes: L('Os ativos da Marina estão em dia. Hora de criar a campanha.', 'Los activos de Marina están al día. Hora de crear la campaña.'),
-        gancho: L('Vendas, Site e o botão Loja: três escolhas que transformam um anúncio comum em um anúncio das Lojas.', 'Ventas, Sitio y el botón Tienda: tres elecciones que convierten un anuncio común en un anuncio de Tiendas.'),
+        gancho: L('Existe uma lista oficial de requisitos. Basta um item errado para o tráfego ir só ao site.', 'Existe una lista oficial de requisitos. Basta un ítem mal para que el tráfico vaya solo al sitio.'),
         objetivo: L('Criar um anúncio das Lojas: objetivo Vendas, local Site, evento de conversão compatível, botão Loja e destino da loja.', 'Crear un anuncio de Tiendas: objetivo Ventas, lugar Sitio web, evento de conversión compatible, botón Tienda y destino de la tienda.'),
         entender: {
           dialogo: [
@@ -3532,7 +3707,7 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('“Meu anúncio só leva ao site”', '“Mi anuncio solo lleva al sitio”'),
         antes: L('A Marina notou que o anúncio das Lojas só manda as pessoas para o site.', 'Marina notó que el anuncio de Tiendas solo manda a las personas al sitio.'),
-        gancho: L('Existe uma lista oficial de requisitos. Basta um item errado para o tráfego ir só ao site.', 'Existe una lista oficial de requisitos. Basta un ítem mal para que el tráfico vaya solo al sitio.'),
+        gancho: L('“Compras na Meta = 0”? Calma. É preciso saber quais métricas olhar.', '“¿Compras en Meta = 0?” Calma. Hay que saber qué métricas mirar.'),
         objetivo: L('Usar os requisitos oficiais para achar por que o anúncio só envia pessoas ao site e corrigir.', 'Usar los requisitos oficiales para encontrar por qué el anuncio solo envía personas al sitio y corregirlo.'),
         entender: {
           dialogo: [
@@ -3576,7 +3751,6 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Ler os resultados das Lojas', 'Leer los resultados de Tiendas'),
         antes: L('Os primeiros anúncios das Lojas rodaram. A Marina abre o relatório e vê números estranhos.', 'Los primeros anuncios de Tiendas corrieron. Marina abre el informe y ve números extraños.'),
-        gancho: L('“Compras na Meta = 0”? Calma. É preciso saber quais métricas olhar.', '“¿Compras en Meta = 0?” Calma. Hay que saber qué métricas mirar.'),
         objetivo: L('Escolher as métricas certas para os anúncios das Lojas e explicar “compras na Meta = 0” e diferenças com ferramentas de terceiros.', 'Elegir las métricas correctas para los anuncios de Tiendas y explicar “compras en Meta = 0” y diferencias con herramientas de terceros.'),
         entender: {
           dialogo: [
@@ -3628,7 +3802,7 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('Do anúncio à compra no site', 'Del anuncio a la compra en el sitio'),
         antes: L('A Marina quer entender o caminho completo: o cliente clica no anúncio das Lojas e… onde compra?', 'Marina quiere entender el camino completo: la clienta hace clic en el anuncio de Tiendas y… ¿dónde compra?'),
-        gancho: L('A compra termina sempre no site. Entender isso explica quase todas as dúvidas de medição.', 'La compra termina siempre en el sitio. Entender eso explica casi todas las dudas de medición.'),
+        gancho: L('Se Pixel e catálogo não combinam, a Meta não liga o produto ao evento.', 'Si píxel y catálogo no coinciden, Meta no vincula el producto con el evento.'),
         objetivo: L('Descrever a jornada do anúncio das Lojas à compra no site e saber qual evento o Pixel registra em cada etapa.', 'Describir el recorrido del anuncio de Tiendas a la compra en el sitio y saber qué evento registra el píxel en cada etapa.'),
         entender: {
           dialogo: [
@@ -3672,7 +3846,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Pixel e catálogo falando a mesma língua', 'Píxel y catálogo hablando el mismo idioma'),
         antes: L('Os anúncios da Marina rodam, mas as compras não aparecem direito.', 'Los anuncios de Marina corren, pero las compras no aparecen bien.'),
-        gancho: L('Se Pixel e catálogo não combinam, a Meta não liga o produto ao evento.', 'Si píxel y catálogo no coinciden, Meta no vincula el producto con el evento.'),
+        gancho: L('Mesmo evento, dois caminhos: Shopify e Gerenciador de tags do Google brigando.', 'Mismo evento, dos caminos: Shopify y el Administrador de etiquetas de Google peleando.'),
         objetivo: L('Aplicar as 4 dicas oficiais: Pixel ligado ao catálogo, Content ID igual, sem duplicação e teste com Eventos de teste.', 'Aplicar los 4 consejos oficiales: píxel vinculado al catálogo, Content ID igual, sin duplicación y prueba con Probar eventos.'),
         entender: {
           dialogo: [
@@ -3716,7 +3890,7 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Compras contadas em dobro', 'Compras contadas dos veces'),
         antes: L('A Marina viu 2 compras para um pedido só.', 'Marina vio 2 compras para un solo pedido.'),
-        gancho: L('Mesmo evento, dois caminhos: Shopify e Gerenciador de tags do Google brigando.', 'Mismo evento, dos caminos: Shopify y el Administrador de etiquetas de Google peleando.'),
+        gancho: L('Duas ferramentas, duas formas de contar. Dá para reduzir a diferença, mas não zerar.', 'Dos herramientas, dos formas de contar. Se puede reducir la diferencia, pero no eliminarla.'),
         objetivo: L('Achar eventos de compra duplicados no Gerenciador de Eventos, descobrir a origem e remover só o evento repetido.', 'Encontrar eventos de compra duplicados en el Administrador de eventos, descubrir el origen y quitar solo el evento repetido.'),
         entender: {
           dialogo: [
@@ -3760,7 +3934,7 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Meta × Google Analytics: números diferentes', 'Meta × Google Analytics: números distintos'),
         antes: L('A Marina compara o Gerenciador de Anúncios com o Google Analytics e os números não batem.', 'Marina compara el Administrador de anuncios con Google Analytics y los números no coinciden.'),
-        gancho: L('Duas ferramentas, duas formas de contar. Dá para reduzir a diferença, mas não zerar.', 'Dos herramientas, dos formas de contar. Se puede reducir la diferencia, pero no eliminarla.'),
+        gancho: L('Atualizar a loja existente é melhor do que criar outra. E há uma lista do que fazer.', 'Actualizar la tienda existente es mejor que crear otra. Y hay una lista de qué hacer.'),
         objetivo: L('Usar UTM e tags de marketing de terceiros e explicar por que terceiros não veem tudo.', 'Usar UTM y etiquetas de marketing de terceros y explicar por qué los terceros no ven todo.'),
         entender: {
           dialogo: [
@@ -3804,7 +3978,6 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Atualizar uma loja que usava a finalização da compra na Meta', 'Actualizar una tienda que usaba la finalización de compra en Meta'),
         antes: L('Uma cliente antiga da Marina tinha loja com finalização da compra dentro do Instagram. Agora a loja mudou.', 'Una clienta antigua de Marina tenía tienda con finalización de compra dentro de Instagram. Ahora la tienda cambió.'),
-        gancho: L('Atualizar a loja existente é melhor do que criar outra. E há uma lista do que fazer.', 'Actualizar la tienda existente es mejor que crear otra. Y hay una lista de qué hacer.'),
         objetivo: L('Listar o que fazer para atualizar uma loja antiga para a finalização da compra no site e o que acontece com campanhas e rascunhos.', 'Listar qué hacer para actualizar una tienda antigua a la finalización de compra en el sitio y qué pasa con campañas y borradores.'),
         entender: {
           dialogo: [
@@ -3856,7 +4029,7 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que são as integrações de parceiros e o MBE', 'Qué son las integraciones de socios y el MBE'),
         antes: L('A Marina usa uma plataforma de loja virtual e não quer mexer no código do site.', 'Marina usa una plataforma de tienda virtual y no quiere tocar el código del sitio.'),
-        gancho: L('“Dá para ligar o Pixel sem programar?” Dá: é para isso que servem os parceiros e o MBE.', '“¿Se puede activar el píxel sin programar?” Sí: para eso sirven los socios y el MBE.'),
+        gancho: L('A galeria lista dezenas de parceiros por categoria. Saber filtrar poupa tempo.', 'La galería lista decenas de socios por categoría. Saber filtrar ahorra tiempo.'),
         objetivo: L('Entender o que é uma integração de parceiro, o que é o Meta Business Extension e o que ele conecta (e o que não conecta).', 'Entender qué es una integración de socio, qué es Meta Business Extension y qué conecta (y qué no).'),
         entender: {
           dialogo: [
@@ -3896,7 +4069,7 @@ window.AULAS = {
         id: '02', min: 7, status: 'pronta',
         titulo: L('Achar o parceiro na galeria', 'Encontrar el socio en la galería'),
         antes: L('A Marina quer saber se a plataforma do cliente dela tem integração.', 'Marina quiere saber si la plataforma de su cliente tiene integración.'),
-        gancho: L('A galeria lista dezenas de parceiros por categoria. Saber filtrar poupa tempo.', 'La galería lista decenas de socios por categoría. Saber filtrar ahorra tiempo.'),
+        gancho: L('Quatro escolhas e um resumo: portfólio, Página, Pixel e conta de anúncios.', 'Cuatro elecciones y un resumen: portfolio, página, píxel y cuenta publicitaria.'),
         objetivo: L('Usar a página Integrações: recomendações, Galeria de parceiros, categorias e o tipo de evento de cada parceiro.', 'Usar la página Integraciones: recomendaciones, Galería de socios, categorías y el tipo de evento de cada socio.'),
         entender: {
           dialogo: [
@@ -3940,7 +4113,7 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Conectar pela plataforma (a janela do MBE)', 'Conectar desde la plataforma (la ventana del MBE)'),
         antes: L('A Marina vai conectar a loja pela plataforma, mas quer saber o que vai aparecer.', 'Marina va a conectar la tienda por la plataforma, pero quiere saber qué va a aparecer.'),
-        gancho: L('Quatro escolhas e um resumo: portfólio, Página, Pixel e conta de anúncios.', 'Cuatro elecciones y un resumen: portfolio, página, píxel y cuenta publicitaria.'),
+        gancho: L('Um clique, um desenvolvedor ou um parceiro? A resposta depende do cliente.', '¿Un clic, un desarrollador o un socio? La respuesta depende del cliente.'),
         objetivo: L('Descrever o que o lojista escolhe na janela do MBE, o que ela não inclui e o risco de Pixel duplicado.', 'Describir qué elige el comerciante en la ventana del MBE, qué no incluye y el riesgo de píxel duplicado.'),
         entender: {
           dialogo: [
@@ -3984,7 +4157,7 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Escolher a configuração da API de Conversões', 'Elegir la configuración de la API de Conversiones'),
         antes: L('Três clientes da Marina, três situações diferentes.', 'Tres clientes de Marina, tres situaciones distintas.'),
-        gancho: L('Um clique, um desenvolvedor ou um parceiro? A resposta depende do cliente.', '¿Un clic, un desarrollador o un socio? La respuesta depende del cliente.'),
+        gancho: L('Cinco sintomas comuns e o primeiro lugar para olhar em cada um.', 'Cinco síntomas comunes y el primer lugar para mirar en cada uno.'),
         objetivo: L('Comparar as três opções por custo, tempo e recursos e indicar a certa para cada cliente.', 'Comparar las tres opciones por costo, tiempo y recursos e indicar la correcta para cada cliente.'),
         entender: {
           dialogo: [
@@ -4028,7 +4201,7 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Quando a integração dá problema', 'Cuando la integración da problemas'),
         antes: L('Um cliente conectou a plataforma, mas os resultados não aparecem como esperado.', 'Un cliente conectó la plataforma, pero los resultados no aparecen como se esperaba.'),
-        gancho: L('Cinco sintomas comuns e o primeiro lugar para olhar em cada um.', 'Cinco síntomas comunes y el primer lugar para mirar en cada uno.'),
+        gancho: L('Controle total só para quem precisa. Para os outros, acesso parcial.', 'Control total solo para quien lo necesita. Para los demás, acceso parcial.'),
         objetivo: L('Triar os problemas mais comuns de integração e indicar o primeiro passo de conferência.', 'Clasificar los problemas más comunes de integración e indicar el primer paso de revisión.'),
         entender: {
           dialogo: [
@@ -4077,7 +4250,6 @@ window.AULAS = {
         id: '06', min: 8, status: 'pronta',
         titulo: L('Dar acesso a um parceiro', 'Dar acceso a un socio'),
         antes: L('A agência da Marina precisa ver o Pixel e a Página do cliente.', 'La agencia de Marina necesita ver el píxel y la página del cliente.'),
-        gancho: L('Controle total só para quem precisa. Para os outros, acesso parcial.', 'Control total solo para quien lo necesita. Para los demás, acceso parcial.'),
         objetivo: L('Conceder a um parceiro acesso aos ativos do portfólio: pré-requisitos, passos e a diferença entre controle total e acesso parcial.', 'Conceder a un socio acceso a los activos del portfolio: requisitos previos, pasos y la diferencia entre control total y acceso parcial.'),
         entender: {
           dialogo: [
@@ -4129,7 +4301,7 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('Como a integração com plataformas de terceiros funciona', 'Cómo funciona la integración con plataformas de terceros'),
         antes: L('Os clientes da Marina usam plataformas diferentes: WooCommerce, Wix, Google Tag Manager…', 'Los clientes de Marina usan plataformas distintas: WooCommerce, Wix, Google Tag Manager…'),
-        gancho: L('Cada plataforma tem seu jeito de conectar, mas o objetivo é o mesmo: eventos chegando certos à Meta.', 'Cada plataforma tiene su forma de conectar, pero el objetivo es el mismo: eventos llegando bien a Meta.'),
+        gancho: L('Quatro pré-requisitos, seis passos e uns 10 a 30 minutos de espera.', 'Cuatro requisitos previos, seis pasos y unos 10 a 30 minutos de espera.'),
         objetivo: L('Saber os tipos de parceiro, o que cada integração entrega e o que fazer se a plataforma não estiver na lista.', 'Saber los tipos de socio, qué entrega cada integración y qué hacer si la plataforma no está en la lista.'),
         entender: {
           dialogo: [
@@ -4169,7 +4341,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Conectar o WooCommerce à Meta', 'Conectar WooCommerce a Meta'),
         antes: L('Uma cliente da Marina tem loja em WordPress com WooCommerce.', 'Una clienta de Marina tiene tienda en WordPress con WooCommerce.'),
-        gancho: L('Quatro pré-requisitos, seis passos e uns 10 a 30 minutos de espera.', 'Cuatro requisitos previos, seis pasos y unos 10 a 30 minutos de espera.'),
+        gancho: L('Doze mensagens, cada uma com causa e correção. Saber ler poupa horas.', 'Doce mensajes, cada uno con causa y corrección. Saber leer ahorra horas.'),
         objetivo: L('Conferir os pré-requisitos e seguir o passo a passo do plugin Meta para WooCommerce.', 'Revisar los requisitos previos y seguir el paso a paso del plugin Meta para WooCommerce.'),
         entender: {
           dialogo: [
@@ -4213,7 +4385,7 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Ler os erros do Diagnóstico do Pixel', 'Leer los errores del Diagnóstico del píxel'),
         antes: L('A cliente conectou a plataforma, mas o Gerenciador de Eventos mostra mensagens em vermelho e amarelo.', 'La clienta conectó la plataforma, pero el Administrador de eventos muestra mensajes en rojo y amarillo.'),
-        gancho: L('Doze mensagens, cada uma com causa e correção. Saber ler poupa horas.', 'Doce mensajes, cada uno con causa y corrección. Saber leer ahorra horas.'),
+        gancho: L('Cinco condições: se uma falha, o Pixel não alimenta o catálogo.', 'Cinco condiciones: si una falla, el píxel no alimenta el catálogo.'),
         objetivo: L('Interpretar as mensagens do Diagnóstico e indicar a correção das mais comuns.', 'Interpretar los mensajes del Diagnóstico e indicar la corrección de las más comunes.'),
         entender: {
           dialogo: [
@@ -4262,7 +4434,7 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Pixel como fonte do catálogo', 'Píxel como fuente del catálogo'),
         antes: L('A Marina quer que o catálogo se atualize sozinho conforme as pessoas veem os produtos.', 'Marina quiere que el catálogo se actualice solo según las personas ven los productos.'),
-        gancho: L('Cinco condições: se uma falha, o Pixel não alimenta o catálogo.', 'Cinco condiciones: si una falla, el píxel no alimenta el catálogo.'),
+        gancho: L('Manter atualizado evita erros. Desconectar sem pensar deixa produtos para trás.', 'Mantener actualizado evita errores. Desconectar sin pensar deja productos atrás.'),
         objetivo: L('Conferir as condições para usar o Pixel como fonte de dados do catálogo e saber os prazos.', 'Revisar las condiciones para usar el píxel como fuente de datos del catálogo y saber los plazos.'),
         entender: {
           dialogo: [
@@ -4306,7 +4478,6 @@ window.AULAS = {
         id: '05', min: 7, status: 'pronta',
         titulo: L('Manter e desconectar a integração', 'Mantener y desconectar la integración'),
         antes: L('A cliente da Marina vai trocar de plataforma e quer desconectar o WooCommerce.', 'La clienta de Marina va a cambiar de plataforma y quiere desconectar WooCommerce.'),
-        gancho: L('Manter atualizado evita erros. Desconectar sem pensar deixa produtos para trás.', 'Mantener actualizado evita errores. Desconectar sin pensar deja productos atrás.'),
         objetivo: L('Atualizar o plugin, ativar atualizações automáticas e desconectar sabendo o efeito nos produtos.', 'Actualizar el plugin, activar actualizaciones automáticas y desconectar sabiendo el efecto en los productos.'),
         entender: {
           dialogo: [
@@ -4358,7 +4529,7 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que a Shopify e a Meta fazem juntas', 'Qué hacen Shopify y Meta juntas'),
         antes: L('A Marina agora atende lojistas que vendem pela Shopify.', 'Marina ahora atiende a comerciantes que venden por Shopify.'),
-        gancho: L('Um app, quatro benefícios: produtos, anúncios, vendas e dados.', 'Una app, cuatro beneficios: productos, anuncios, ventas y datos.'),
+        gancho: L('Cinco pré-requisitos, sete passos e dois ajustes de dados no final.', 'Cinco requisitos previos, siete pasos y dos ajustes de datos al final.'),
         objetivo: L('Entender o que a conexão Shopify e Meta entrega e quem cuida de cada parte.', 'Entender qué entrega la conexión Shopify y Meta y quién se ocupa de cada parte.'),
         entender: {
           dialogo: [
@@ -4398,7 +4569,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Conectar a Shopify à Meta', 'Conectar Shopify a Meta'),
         antes: L('Um cliente da Marina quer conectar a loja Shopify dele.', 'Un cliente de Marina quiere conectar su tienda Shopify.'),
-        gancho: L('Cinco pré-requisitos, sete passos e dois ajustes de dados no final.', 'Cinco requisitos previos, siete pasos y dos ajustes de datos al final.'),
+        gancho: L('Três lugares, e cada coisa tem o seu. Saber qual é evita muita ida e volta.', 'Tres lugares, y cada cosa tiene el suyo. Saber cuál es evita mucho ir y venir.'),
         objetivo: L('Conferir os pré-requisitos, seguir os passos do app e ajustar compartilhamento e acesso a dados.', 'Revisar los requisitos previos, seguir los pasos de la app y ajustar uso compartido y acceso a datos.'),
         entender: {
           dialogo: [
@@ -4442,7 +4613,7 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Quem gerencia o quê', 'Quién gestiona qué'),
         antes: L('A Marina fica em dúvida: onde se muda o prazo de entrega? E o desconto?', 'Marina duda: ¿dónde se cambia el plazo de entrega? ¿Y el descuento?'),
-        gancho: L('Três lugares, e cada coisa tem o seu. Saber qual é evita muita ida e volta.', 'Tres lugares, y cada cosa tiene el suyo. Saber cuál es evita mucho ir y venir.'),
+        gancho: L('A Shopify manda: o que se edita fora dela é substituído.', 'Shopify manda: lo que se edita fuera de ella se reemplaza.'),
         objetivo: L('Indicar se um recurso é gerenciado no administrador da Shopify, no app Facebook e Instagram ou no Gerenciador de Comércio.', 'Indicar si una función se gestiona en el administrador de Shopify, en la app Facebook e Instagram o en el Administrador de ventas.'),
         entender: {
           dialogo: [
@@ -4486,7 +4657,7 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('Sincronizar produtos e o redirecionamento', 'Sincronizar productos y la redirección'),
         antes: L('Uma cliente edita produtos no Gerenciador de Comércio e as mudanças desaparecem.', 'Una clienta edita productos en el Administrador de ventas y los cambios desaparecen.'),
-        gancho: L('A Shopify manda: o que se edita fora dela é substituído.', 'Shopify manda: lo que se edita fuera de ella se reemplaza.'),
+        gancho: L('Quase sempre a resposta está em “quem gerencia o quê”.', 'Casi siempre la respuesta está en “quién gestiona qué”.'),
         objetivo: L('Explicar quais produtos sincronizam, por que editar no Gerenciador de Comércio é inútil e o que é “Redirecionar para a Shopify”.', 'Explicar qué productos se sincronizan, por qué editar en el Administrador de ventas es inútil y qué es “Redirigir a Shopify”.'),
         entender: {
           dialogo: [
@@ -4530,7 +4701,6 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Problemas comuns Shopify e Meta', 'Problemas comunes Shopify y Meta'),
         antes: L('Seis clientes da Marina, seis queixas diferentes.', 'Seis clientes de Marina, seis quejas distintas.'),
-        gancho: L('Quase sempre a resposta está em “quem gerencia o quê”.', 'Casi siempre la respuesta está en “quién gestiona qué”.'),
         objetivo: L('Triar as queixas mais comuns e indicar onde olhar primeiro.', 'Clasificar las quejas más comunes e indicar dónde mirar primero.'),
         entender: {
           dialogo: [
@@ -4587,7 +4757,7 @@ window.AULAS = {
         id: '01', min: 8, status: 'pronta',
         titulo: L('Correspondência avançada', 'Coincidencia avanzada'),
         antes: L('A Marina quer atribuir mais conversões sem gastar mais com anúncio.', 'Marina quiere atribuir más conversiones sin gastar más en anuncios.'),
-        gancho: L('Dá para a Meta reconhecer melhor quem comprou. A chave é o dado do cliente, protegido por hash.', 'Se puede lograr que Meta reconozca mejor quién compró. La clave es el dato del cliente, protegido por hash.'),
+        gancho: L('De 0 a 10: quanto o evento do servidor ajuda a Meta a ligar a compra a uma pessoa.', 'De 0 a 10: cuánto ayuda el evento del servidor a Meta a vincular la compra con una persona.'),
         objetivo: L('Entender a correspondência avançada, as versões automática e manual e quando cada uma se aplica.', 'Entender la coincidencia avanzada, las versiones automática y manual y cuándo se aplica cada una.'),
         entender: {
           dialogo: [
@@ -4631,7 +4801,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Qualidade do sinal: correspondência de eventos', 'Calidad de la señal: coincidencia de eventos'),
         antes: L('A Marina vê uma pontuação baixa nos eventos de compra do servidor.', 'Marina ve una puntuación baja en los eventos de compra del servidor.'),
-        gancho: L('De 0 a 10: quanto o evento do servidor ajuda a Meta a ligar a compra a uma pessoa.', 'De 0 a 10: cuánto ayuda el evento del servidor a Meta a vincular la compra con una persona.'),
+        gancho: L('Navegador e servidor contando a mesma compra: sem deduplicação, vira duas.', 'Navegador y servidor contando la misma compra: sin deduplicación, se vuelven dos.'),
         objetivo: L('Ler a pontuação de qualidade da correspondência de eventos e saber quais parâmetros mais ajudam.', 'Leer la puntuación de calidad de la coincidencia de eventos y saber qué parámetros ayudan más.'),
         entender: {
           dialogo: [
@@ -4675,7 +4845,7 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('API de Conversões e deduplicação', 'API de Conversiones y deduplicación'),
         antes: L('A Marina ativou a API de Conversões e agora as compras aparecem em dobro.', 'Marina activó la API de Conversiones y ahora las compras aparecen duplicadas.'),
-        gancho: L('Navegador e servidor contando a mesma compra: sem deduplicação, vira duas.', 'Navegador y servidor contando la misma compra: sin deduplicación, se vuelven dos.'),
+        gancho: L('Você é o responsável pelos dados que manda. E há coisas que nunca podem ir.', 'Tú eres el responsable de los datos que mandas. Y hay cosas que nunca pueden ir.'),
         objetivo: L('Entender por que e quando desduplicar e como a Meta reconhece o mesmo evento.', 'Entender por qué y cuándo deduplicar y cómo reconoce Meta el mismo evento.'),
         entender: {
           dialogo: [
@@ -4719,7 +4889,6 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Privacidade e regras', 'Privacidad y reglas'),
         antes: L('Uma cliente da Marina de clínica quer rastrear tudo, inclusive a doença de cada paciente.', 'Una clienta de Marina de una clínica quiere rastrear todo, incluida la enfermedad de cada paciente.'),
-        gancho: L('Você é o responsável pelos dados que manda. E há coisas que nunca podem ir.', 'Tú eres el responsable de los datos que mandas. Y hay cosas que nunca pueden ir.'),
         objetivo: L('Explicar consentimento, informações proibidas, responsabilidade do anunciante e as consequências.', 'Explicar consentimiento, información prohibida, responsabilidad del anunciante y las consecuencias.'),
         entender: {
           dialogo: [
@@ -4776,7 +4945,7 @@ window.AULAS = {
         id: '01', min: 8, status: 'pronta',
         titulo: L('Verificação da empresa', 'Verificación de la empresa'),
         antes: L('A Marina quer liberar um recurso que pede “empresa verificada”.', 'Marina quiere liberar una función que pide “empresa verificada”.'),
-        gancho: L('Prova de que a empresa existe e de que quem pede a representa.', 'Prueba de que la empresa existe y de que quien lo pide la representa.'),
+        gancho: L('Quase sempre a causa é o documento ou o nome que não bate.', 'Casi siempre la causa es el documento o el nombre que no coincide.'),
         objetivo: L('Entender o que é a verificação da empresa, quem pode iniciá-la e os passos até a decisão.', 'Entender qué es la verificación de la empresa, quién puede iniciarla y los pasos hasta la decisión.'),
         entender: {
           dialogo: [
@@ -4820,7 +4989,7 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Verificação travada ou documentos recusados', 'Verificación trabada o documentos rechazados'),
         antes: L('A Marina recebeu o aviso de que o documento enviado não foi suficiente.', 'Marina recibió el aviso de que el documento enviado no fue suficiente.'),
-        gancho: L('Quase sempre a causa é o documento ou o nome que não bate.', 'Casi siempre la causa es el documento o el nombre que no coincide.'),
+        gancho: L('Controle total é a chave do portfólio. Dê só o necessário.', 'El control total es la llave del portafolio. Da solo lo necesario.'),
         objetivo: L('Descobrir por que a verificação não inicia ou foi recusada e orientar o reenvio.', 'Descubrir por qué la verificación no inicia o fue rechazada y orientar el reenvío.'),
         entender: {
           dialogo: [
@@ -4864,7 +5033,7 @@ window.AULAS = {
         id: '03', min: 7, status: 'pronta',
         titulo: L('Permissões: quem pode o quê', 'Permisos: quién puede qué'),
         antes: L('A Marina deu controle total a um estagiário sem pensar.', 'Marina dio control total a un pasante sin pensarlo.'),
-        gancho: L('Controle total é a chave do portfólio. Dê só o necessário.', 'El control total es la llave del portafolio. Da solo lo necesario.'),
+        gancho: L('Excluir não tem volta. Antes de tudo, confirme se é isso mesmo que ele quer.', 'Eliminar no tiene vuelta. Antes de todo, confirma si es eso lo que realmente quiere.'),
         objetivo: L('Alterar ou remover o acesso de uma pessoa e entender por que alguns menus não aparecem.', 'Cambiar o quitar el acceso de una persona y entender por qué algunos menús no aparecen.'),
         entender: {
           dialogo: [
@@ -4908,7 +5077,6 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Excluir o portfólio: o que impede e o que muda', 'Eliminar el portafolio: qué lo impide y qué cambia'),
         antes: L('Um cliente quer apagar o portfólio, mas aparece um erro.', 'Un cliente quiere borrar el portafolio, pero aparece un error.'),
-        gancho: L('Excluir não tem volta. Antes de tudo, confirme se é isso mesmo que ele quer.', 'Eliminar no tiene vuelta. Antes de todo, confirma si es eso lo que realmente quiere.'),
         objetivo: L('Explicar o que a exclusão apaga, o que impede e como resolver cada bloqueio.', 'Explicar qué borra la eliminación, qué la impide y cómo resolver cada bloqueo.'),
         entender: {
           dialogo: [

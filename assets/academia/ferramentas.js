@@ -621,6 +621,93 @@
         [{ pt: 'Na aba Produtos', es: 'En la pestaña Productos' }, 0, { pt: 'Produtos mostra o estoque; os eventos ficam na aba Eventos.', es: 'Productos muestra el inventario; los eventos están en la pestaña Eventos.' }],
         [{ pt: 'Em Modelos de imagem', es: 'En Plantillas de imágenes' }, 0, { pt: 'Isso é para artes de anúncio, não para eventos.', es: 'Eso es para diseños de anuncios, no para eventos.' }]] }
   ]);
+  /* ---------- Apps e iOS 14: o aviso de rastreamento do iPhone (ATT) ---------- */
+  F['att-aviso'] = {
+    titulo: { pt: 'O aviso do iPhone (rastreamento)', es: 'El aviso del iPhone (rastreo)' }, resumo: { pt: 'Responda ao aviso como um cliente da Lojinha e veja o que muda para a medição.', es: 'Responde al aviso como un cliente de la Lojinha y mira qué cambia para la medición.' }, paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      var TX = {
+        app: { pt: 'Lojinha', es: 'Lojinha' },
+        tit: { pt: 'Permitir que “Lojinha” rastreie sua atividade em apps e sites de outras empresas?', es: '¿Permitir que “Lojinha” rastree tu actividad en apps y sitios web de otras empresas?' },
+        motivo: { pt: 'Usamos isso para mostrar ofertas da Lojinha que combinam com você.', es: 'Usamos esto para mostrarte ofertas de la Lojinha que van contigo.' },
+        nao: { pt: 'Pedir ao app para não rastrear', es: 'Pedir a la app que no rastree' }, sim: { pt: 'Permitir', es: 'Permitir' },
+        idfa: { pt: 'Identificador de anúncios do aparelho', es: 'Identificador de anuncios del dispositivo' },
+        rNao: { pt: 'O SDK avisa à Meta que o rastreamento NÃO foi permitido. A compra feita no app ainda pode ser medida, mas de forma agregada e com proteção de privacidade (Mensuração de Eventos Agregados): sem identificar a pessoa e com relatórios e personalização mais limitados.', es: 'El SDK avisa a Meta que el rastreo NO fue permitido. La compra hecha en la app aún puede medirse, pero de forma agregada y con protección de privacidad (Medición de eventos agregados): sin identificar a la persona y con informes y personalización más limitados.' },
+        rSim: { pt: 'O SDK avisa à Meta que o rastreamento foi permitido. O identificador de anúncios pode ser usado, e a medição e a personalização dos anúncios ficam menos limitadas para esta pessoa.', es: 'El SDK avisa a Meta que el rastreo fue permitido. El identificador de anuncios puede usarse, y la medición y la personalización de los anuncios quedan menos limitadas para esta persona.' },
+        de: { pt: '↺ Ver o aviso de novo', es: '↺ Ver el aviso de nuevo' },
+        quem: { pt: 'Quem escolhe é o cliente, não a loja. O app só escreve a frase do meio (o motivo) e não pode oferecer prêmio em troca do “Permitir”.', es: 'Quien elige es el cliente, no la tienda. La app solo escribe la frase del medio (el motivo) y no puede ofrecer premios a cambio del “Permitir”.' },
+        nota: { pt: 'Recriação de treino. Regras da Apple (App Tracking Transparency, iOS 14.5+): sem permissão, o identificador de anúncios vem zerado. O texto exato do aviso em português no iPhone está a conferir.', es: 'Recreación de entrenamiento. Reglas de Apple (App Tracking Transparency, iOS 14.5+): sin permiso, el identificador de anuncios viene en ceros. El texto exacto del aviso en español en el iPhone está por confirmar.' }
+      };
+      function aviso() {
+        return '<div class="att-cel" style="max-width:300px;margin:6px auto;border:3px solid #16294A;border-radius:28px;padding:14px;background:#EEF2F7">' +
+          '<div style="text-align:center;font-weight:800;color:#64748B;margin-bottom:8px">' + T(TX.app) + '</div>' +
+          '<div style="background:rgba(255,255,255,.96);border-radius:14px;text-align:center;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.15)">' +
+          '<p style="margin:0;padding:14px 14px 4px;font-weight:700;font-size:15px">' + T(TX.tit) + '</p><p style="margin:0;padding:0 14px 12px;font-size:13px">' + T(TX.motivo) + '</p>' +
+          '<button data-att="nao" style="display:block;width:100%;border:0;border-top:1px solid #CBD5E1;background:none;padding:11px;color:#2F6FD6;font:15px \'Segoe UI\',sans-serif;cursor:pointer">' + T(TX.nao) + '</button>' +
+          '<button data-att="sim" style="display:block;width:100%;border:0;border-top:1px solid #CBD5E1;background:none;padding:11px;color:#2F6FD6;font:15px \'Segoe UI\',sans-serif;cursor:pointer">' + T(TX.sim) + '</button></div></div>';
+      }
+      function resultado(sim) {
+        var id = sim ? '6D92078A-8246-4BA4-AE5B-76104861E7DC' : '00000000-0000-0000-0000-000000000000';
+        return '<div style="border:2px solid #16294A;border-radius:12px;padding:12px;margin:8px 0;background:' + (sim ? '#E3F7EA' : '#FFF4D6') + '"><b>' + (sim ? '✅ ' + T(TX.sim) : '🙅 ' + T(TX.nao)) + '</b>' +
+          '<p style="margin:8px 0 4px">' + T(TX.idfa) + ':<br><code>' + id + '</code></p><p style="margin:6px 0">' + T(sim ? TX.rSim : TX.rNao) + '</p>' +
+          '<button class="btn sec" data-att="de" style="margin-top:4px">' + T(TX.de) + '</button></div>';
+      }
+      function desenha(r) { el.innerHTML = (r == null ? aviso() : resultado(r)) + '<p class="mais-lab">💡 ' + T(TX.quem) + '</p><p class="mais-lab"><small>' + T(TX.nota) + '</small></p>' }
+      el.addEventListener('click', function (e) { var b = e.target.closest('[data-att]'); if (!b) return; var a = b.getAttribute('data-att'); desenha(a === 'de' ? null : a === 'sim') });
+      desenha(null);
+    }
+  };
+  quizCatalogo('ios-numeros', { pt: 'Por que o número é diferente?', es: '¿Por qué el número es distinto?' }, { pt: 'Situações reais de relatório depois do iOS 14: escolha a melhor explicação.', es: 'Situaciones reales de informes después de iOS 14: elige la mejor explicación.' }, [
+    { q: { pt: 'A loja registrou 30 vendas no mês e o Gerenciador de Anúncios mostra 22 para a campanha.', es: 'La tienda registró 30 ventas en el mes y el Administrador de anuncios muestra 22 para la campaña.' },
+      o: [[{ pt: 'Normal: com a privacidade do iPhone, parte das conversões chega parcial; e a loja conta vendas que não vieram do anúncio', es: 'Normal: con la privacidad del iPhone, parte de las conversiones llega parcial; y la tienda cuenta ventas que no vinieron del anuncio' }, 1, { pt: 'Isso! Os números não batem um a um; compare tendências.', es: '¡Eso! Los números no coinciden uno a uno; compara tendencias.' }],
+        [{ pt: 'Erro da Meta: pedir reembolso', es: 'Error de Meta: pedir reembolso' }, 0, { pt: 'Não é erro: é efeito das regras de privacidade.', es: 'No es error: es efecto de las reglas de privacidad.' }],
+        [{ pt: 'O Pixel parou: reinstalar já', es: 'El píxel se detuvo: reinstalarlo ya' }, 0, { pt: 'Diferença pequena e constante não é Pixel parado; investigue só se a queda for brusca.', es: 'Una diferencia pequeña y constante no es un píxel detenido; investiga solo si la caída es brusca.' }]] },
+    { q: { pt: 'Ao passar o mouse num número, o relatório avisa que foi usada modelagem estatística.', es: 'Al pasar el mouse sobre un número, el informe avisa que se usó modelado estadístico.' },
+      o: [[{ pt: 'A Meta completou dados parciais ou ausentes com modelos para dar uma visão mais completa', es: 'Meta completó datos parciales o faltantes con modelos para dar una visión más completa' }, 1, { pt: 'Isso! Sem modelagem, os resultados poderiam não incluir todas as conversões.', es: '¡Eso! Sin modelado, los resultados podrían no incluir todas las conversiones.' }],
+        [{ pt: 'O número é inventado e deve ser ignorado', es: 'El número es inventado y hay que ignorarlo' }, 0, { pt: 'É uma estimativa baseada em dados de várias fontes, explicada pela Meta.', es: 'Es una estimación basada en datos de varias fuentes, explicada por Meta.' }],
+        [{ pt: 'O anúncio foi reprovado', es: 'El anuncio fue rechazado' }, 0, { pt: 'Modelagem não tem relação com reprovação.', es: 'El modelado no tiene relación con un rechazo.' }]] },
+    { q: { pt: 'Numa campanha de app que usa a SKAdNetwork, as instalações de ontem ainda não aparecem.', es: 'En una campaña de app que usa SKAdNetwork, las instalaciones de ayer todavía no aparecen.' },
+      o: [[{ pt: 'Normal: a SKAdNetwork envia com pelo menos 24 horas de atraso e conta no dia em que chegou', es: 'Normal: SKAdNetwork envía con al menos 24 horas de retraso y cuenta el día en que llegó' }, 1, { pt: 'Isso! O resultado entra na data em que foi informado à Meta.', es: '¡Eso! El resultado entra en la fecha en que se informó a Meta.' }],
+        [{ pt: 'O app parou de funcionar', es: 'La app dejó de funcionar' }, 0, { pt: 'Atraso de relatório não é app quebrado.', es: 'El retraso del informe no es una app rota.' }],
+        [{ pt: 'Trocar a janela de atribuição para 28 dias resolve', es: 'Cambiar la ventana de atribución a 28 días lo resuelve' }, 0, { pt: 'A SKAdNetwork não usa as janelas de 1, 7 ou 28 dias.', es: 'SKAdNetwork no usa las ventanas de 1, 7 o 28 días.' }]] },
+    { q: { pt: 'O público de quem visitou o site encolheu desde o ano passado.', es: 'El público de quienes visitaron el sitio se achicó desde el año pasado.' },
+      o: [[{ pt: 'Esperado com mais aparelhos no iOS 14+: considerar público amplo ou a expansão de direcionamento', es: 'Esperado con más dispositivos en iOS 14+: considerar público amplio o la expansión de la segmentación' }, 1, { pt: 'Isso! É a própria recomendação da Meta.', es: '¡Eso! Es la propia recomendación de Meta.' }],
+        [{ pt: 'Apagar o público e criar de novo', es: 'Borrar el público y crearlo de nuevo' }, 0, { pt: 'O público novo encolheria do mesmo jeito.', es: 'El público nuevo se achicaría igual.' }],
+        [{ pt: 'Configurar 8 eventos na Mensuração de Eventos Agregados', es: 'Configurar 8 eventos en la Medición de eventos agregados' }, 0, { pt: 'Esse processo não existe mais e não muda o tamanho do público.', es: 'Ese proceso ya no existe y no cambia el tamaño del público.' }]] }
+  ]);
+  quizCatalogo('sdk-ou-pixel', { pt: 'Pixel, SDK ou API?', es: '¿Píxel, SDK o API?' }, { pt: 'Para cada situação, qual ferramenta mede o evento?', es: 'Para cada situación, ¿qué herramienta mide el evento?' }, [
+    { q: { pt: 'Compra no site da Lojinha (navegador).', es: 'Compra en el sitio de la Lojinha (navegador).' },
+      o: [[{ pt: 'Pixel (e, se quiser, a API de Conversões pelo servidor)', es: 'Píxel (y, si quieres, la API de Conversiones por el servidor)' }, 1, { pt: 'Isso! Site = Pixel; a API de Conversões complementa.', es: '¡Eso! Sitio = píxel; la API de Conversiones complementa.' }],
+        [{ pt: 'SDK do Facebook', es: 'SDK de Facebook' }, 0, { pt: 'O SDK é para apps de celular.', es: 'El SDK es para apps de celular.' }],
+        [{ pt: 'SKAdNetwork', es: 'SKAdNetwork' }, 0, { pt: 'SKAdNetwork é da Apple, para campanhas de app no iOS.', es: 'SKAdNetwork es de Apple, para campañas de app en iOS.' }]] },
+    { q: { pt: 'Alguém instala o app da Lojinha e abre pela primeira vez.', es: 'Alguien instala la app de la Lojinha y la abre por primera vez.' },
+      o: [[{ pt: 'O SDK do Facebook registra sozinho (instalação e abertura)', es: 'El SDK de Facebook lo registra solo (instalación y apertura)' }, 1, { pt: 'Isso! São eventos registrados automaticamente.', es: '¡Eso! Son eventos registrados automáticamente.' }],
+        [{ pt: 'O Pixel, colado na tela inicial do app', es: 'El píxel, pegado en la pantalla de inicio de la app' }, 0, { pt: 'Pixel não é para apps.', es: 'El píxel no es para apps.' }],
+        [{ pt: 'Ninguém: instalação não dá para medir', es: 'Nadie: la instalación no se puede medir' }, 0, { pt: 'O SDK mede instalações automaticamente.', es: 'El SDK mide instalaciones automáticamente.' }]] },
+    { q: { pt: 'Compra de uma caneca dentro do app, para anúncio de catálogo.', es: 'Compra de una taza dentro de la app, para anuncio de catálogo.' },
+      o: [[{ pt: 'Evento de compra do SDK com valor, moeda e o id do produto igual ao do catálogo', es: 'Evento de compra del SDK con valor, moneda y el id del producto igual al del catálogo' }, 1, { pt: 'Isso! O id liga o evento ao produto do catálogo.', es: '¡Eso! El id une el evento al producto del catálogo.' }],
+        [{ pt: 'Qualquer evento, sem id', es: 'Cualquier evento, sin id' }, 0, { pt: 'Sem id do produto, o anúncio de catálogo não sabe o que foi comprado.', es: 'Sin id del producto, el anuncio de catálogo no sabe qué se compró.' }],
+        [{ pt: 'Só o Pixel do site', es: 'Solo el píxel del sitio' }, 0, { pt: 'A compra foi no app: quem registra é o SDK.', es: 'La compra fue en la app: quien la registra es el SDK.' }]] },
+    { q: { pt: 'Como o desenvolvedor testa se os eventos do app chegam?', es: '¿Cómo prueba el desarrollador si los eventos de la app llegan?' },
+      o: [[{ pt: 'App Ads Helper (Testar eventos do app) e Gerenciador de Eventos', es: 'App Ads Helper (Probar eventos de la app) y Administrador de eventos' }, 1, { pt: 'Isso! São as ferramentas indicadas na documentação.', es: '¡Eso! Son las herramientas indicadas en la documentación.' }],
+        [{ pt: 'Microdata Debugger', es: 'Microdata Debugger' }, 0, { pt: 'O Microdata Debugger confere páginas de produto do site.', es: 'El Microdata Debugger revisa páginas de producto del sitio.' }],
+        [{ pt: 'Esperar 30 dias e olhar o relatório', es: 'Esperar 30 días y mirar el informe' }, 0, { pt: 'Teste antes: o App Ads Helper mostra os eventos na hora.', es: 'Prueba antes: el App Ads Helper muestra los eventos al momento.' }]] }
+  ]);
+  quizCatalogo('aem-ou-skan', { pt: 'AEM ou SKAdNetwork?', es: '¿AEM o SKAdNetwork?' }, { pt: 'Campanhas de app para iOS 14+: o que vale para cada caminho?', es: 'Campañas de app para iOS 14+: ¿qué vale para cada camino?' }, [
+    { q: { pt: 'Relatórios quase em tempo real e janelas de clique de 1 e 7 dias.', es: 'Informes casi en tiempo real y ventanas de clic de 1 y 7 días.' },
+      o: [[{ pt: 'Mensuração de Eventos Agregados (AEM)', es: 'Medición de eventos agregados (AEM)' }, 1, { pt: 'Isso! É uma das vantagens da AEM para campanhas de app.', es: '¡Eso! Es una de las ventajas de la AEM para campañas de app.' }],
+        [{ pt: 'SKAdNetwork', es: 'SKAdNetwork' }, 0, { pt: 'A SKAdNetwork tem atraso de 24 h ou mais e não usa essas janelas.', es: 'SKAdNetwork tiene retraso de 24 h o más y no usa esas ventanas.' }]] },
+    { q: { pt: 'Limite de 63 eventos do app e configuração no Gerenciador de Eventos.', es: 'Límite de 63 eventos de la app y configuración en el Administrador de eventos.' },
+      o: [[{ pt: 'SKAdNetwork da Apple', es: 'SKAdNetwork de Apple' }, 1, { pt: 'Isso! A API da SKAdNetwork limita os apps a 63 eventos.', es: '¡Eso! La API de SKAdNetwork limita las apps a 63 eventos.' }],
+        [{ pt: 'Mensuração de Eventos Agregados', es: 'Medición de eventos agregados' }, 0, { pt: 'Na AEM o que se confere é a qualificação do app.', es: 'En la AEM lo que se revisa es la elegibilidad de la app.' }]] },
+    { q: { pt: 'O Gerenciador diz que o app não está qualificado. Onde conferir?', es: 'El Administrador dice que la app no es apta. ¿Dónde revisarlo?' },
+      o: [[{ pt: 'Gerenciador de Eventos › conjunto de dados do app › Configurações › Verificar qualificação do app', es: 'Administrador de eventos › conjunto de datos de la app › Configuración › Comprobar elegibilidad de la app' }, 1, { pt: 'Isso! A coluna Qualificação mostra o que falta.', es: '¡Eso! La columna de elegibilidad muestra lo que falta.' }],
+        [{ pt: 'Na aba Mensuração de Eventos Agregados (8 eventos)', es: 'En la pestaña Medición de eventos agregados (8 eventos)' }, 0, { pt: 'Essa aba foi removida.', es: 'Esa pestaña se eliminó.' }],
+        [{ pt: 'Nas configurações do iPhone', es: 'En la configuración del iPhone' }, 0, { pt: 'A qualificação é da integração do app com a Meta.', es: 'La elegibilidad es de la integración de la app con Meta.' }]] },
+    { q: { pt: 'A qualificação do app aparece como “pendente”.', es: 'La elegibilidad de la app aparece como “pendiente”.' },
+      o: [[{ pt: 'A Meta ainda está aguardando ou verificando informações da integração', es: 'Meta todavía está esperando o verificando información de la integración' }, 1, { pt: 'Isso! É esperar e verificar de novo.', es: '¡Eso! Hay que esperar y comprobar de nuevo.' }],
+        [{ pt: 'O app foi reprovado para sempre', es: 'La app fue rechazada para siempre' }, 0, { pt: 'Pendente não é reprovado.', es: 'Pendiente no es rechazado.' }],
+        [{ pt: 'É preciso criar outro app', es: 'Hay que crear otra app' }, 0, { pt: 'Não: aguarde a verificação.', es: 'No: espera la verificación.' }]] }
+  ]);
   quizCatalogo('tags-microdados', { pt: 'A tag está certa?', es: '¿La etiqueta está bien?' }, { pt: 'Tags de microdados da página de produto: ache o que o catálogo não entenderia.', es: 'Etiquetas de microdatos de la página de producto: encuentra lo que el catálogo no entendería.' }, [
     { q: { pt: '<code>&lt;meta property="product:price:amount" content="R$ 39,90"&gt;</code>', es: '<code>&lt;meta property="product:price:amount" content="R$ 39,90"&gt;</code>' },
       o: [[{ pt: 'Errada: o preço é só o número com ponto (39.90) e a moeda vai em product:price:currency (BRL)', es: 'Mal: el precio es solo el número con punto (39.90) y la moneda va en product:price:currency (BRL)' }, 1, { pt: 'Isso! Número e moeda ficam em tags separadas.', es: '¡Eso! Número y moneda van en etiquetas separadas.' }],
