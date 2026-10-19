@@ -5924,3 +5924,5 @@ window.AULAS = {
     }
   }]);
 })();
+/* Site publicado: tira o conteúdo ainda não conferido (lista em modo-publico.js). */
+if (window.PUB_LIMPA) window.PUB_LIMPA();

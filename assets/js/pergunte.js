@@ -187,6 +187,7 @@
     COMO.forEach(function (g) {
       g.itens.forEach(function (it) {
         var k = it[2] + '/' + it[3]; if (docs.some(function (d) { return d.id === k })) return;
+        if (G.PUB_OCULTA && G.PUB_OCULTA(it[2], it[3])) return;   // tutorial de aula oculta no site publicado
         docs.push({ id: 't:' + it[0], tipo: 'tutorial', mod: porMod[g.m] || porMod[it[2]], tuts: [{ tour: it[0], url: it[1], titulo: it[4] }], url: null, campos: { tit: ambos(it[4]), frases: fr('t:' + it[0]) } });
       });
     });
