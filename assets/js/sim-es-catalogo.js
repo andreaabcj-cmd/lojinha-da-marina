@@ -192,6 +192,46 @@
     '📗 catalogo-marina.csv': '📗 catalogo-marina.csv',
     '⤒ catalogo-marina.csv': '⤒ catalogo-marina.csv',
   };
+  /* menu Agregar e Entrada manual: textos copiados da tela real em espanhol (?locale=es_LA, 20/10/2026) */
+  [['Adicionar produtos via', 'Agregar productos mediante'], ['Arquivo de dados', 'Archivo de datos'],
+    ['Adicione vários produtos usando um arquivo CSV ou do Excel preenchido automaticamente', 'Agrega varios productos usando un archivo predefinido en formato Excel o CSV'],
+    ['Página do Facebook ou perfil do Instagram', 'Página de Facebook o perfil de Instagram'],
+    ['Depois que você escolher uma Página do Facebook ou perfil do Instagram, adicionaremos automaticamente os produtos encontrados nos seus posts nos últimos 45 dias.', 'Elige una página de Facebook o un perfil de Instagram y agregaremos automáticamente los productos que encontremos en tus publicaciones de los últimos 45 días.'],
+    ['Entrada manual', 'Entrada manual'], ['Adicione um produto de cada vez preenchendo um formulário', 'Llena un formulario para agregar de a un producto por vez'],
+    ['Plataforma de parceiro', 'Plataforma de socios'], ['Sincronize produtos de uma plataforma conectada, por exemplo, Shopify', 'Sincroniza los productos desde una plataforma conectada, como Shopify'],
+    ['Pixel', 'Píxel'], ['Adicione produtos do seu site usando a identificação do Pixel', 'Agrega productos desde tu sitio web usando un identificador de píxel'],
+    ['Carregar informações adicionais', 'Subir documentación adicional'], ['Dados de país ou idioma', 'Datos de países o idiomas'],
+    ['Adicione dados de produtos localizados, como preço, moeda ou disponibilidade na região.', 'Agrega datos localizados de productos, como el precio, la divisa y la disponibilidad según la región.'],
+    ['Dados de conteúdo do parceiro', 'Datos de contenido de socios'], ['Adicione conteúdo de parceiro para vincular a produtos no seu catálogo.', 'Agrega contenido de socios para vincularlo a productos de tu catálogo.'],
+    ['Dados complementares', 'Datos complementarios'], ['Adicione mais dados dos produtos que possam estar ausentes ou incompletos no seu catálogo.', 'Agrega a los productos datos adicionales que podrían faltar o estar incompletos en el catálogo.'],
+    ['✓ Menu conferido com a tela real (19 e 20/10/2026)', '✓ Menú revisado con la pantalla real (19 y 20/10/2026)'], ['+ Adicionar ▾', '+ Agregar ▾'],
+    ['Adicionar produtos', 'Agrega productos'], ['Produtos', 'Productos'], ['Produto', 'Producto'], ['Variantes', 'Variantes'], ['Variante', 'Variante'],
+    ['Imagens e vídeos', 'Imágenes y videos'], ['Título', 'Título'], ['Descrição', 'Descripción'], ['Link do site', 'Enlace al sitio web'], ['Preço', 'Precio'],
+    ['Preço promocional ·', 'Precio de oferta ·'], ['Opcional', 'Opcional'], ['Categoria de produto do Facebook ·', 'Categoría del producto de Facebook ·'], ['Condição', 'Condición'],
+    ['Disponibilidade', 'Disponibilidad'], ['Status', 'Estado'], ['Marca ·', 'Marca ·'], ['Identificação do conteúdo ·', 'ID de contenido ·'],
+    ['Insira um título curto', 'Ingresa un título breve'], ['Descreva os recursos e benefícios', 'Describe las características y ventajas'], ['https://exemplo.com/produto', 'https://ejemplo.com/producto'],
+    ['Selecione uma categoria', 'Selecciona una categoría'], ['Novo', 'Nuevo'], ['Recondicionado', 'Reacondicionado'], ['Usado (estado de novo)', 'Usado (como nuevo)'], ['Usado (boas condições)', 'Usado (buen estado)'], ['Usado (condições razoáveis)', 'Usado (aceptable)'],
+    ['Em estoque', 'Disponible'], ['Mostrar', 'Mostrar'], ['Excluir linha', 'Eliminar fila'], ['Opções', 'Opciones'], ['Adicionar variante', 'Agregar variante'], ['Duplicar produto', 'Duplicar producto'],
+    ['+ Novo produto', '+ Nuevo producto'], ['Abrir menu suspenso', 'Abrir menú desplegable'], ['5 produtos', '5 productos'], ['10 produtos', '10 productos'],
+    ['Cancelar', 'Cancelar'], ['Carregar produtos', 'Subir productos'], ['Sair da adição de produtos?', '¿Salir de la sección para agregar productos?'], ['Todas as informações fornecidas serão perdidas.', 'Se perderá toda la información que proporcionaste.'], ['Sair', 'Salir'],
+    ['Essas mídias aparecerão às pessoas que talvez tenham interesse no seu produto.', 'Este contenido multimedia se mostrará a las personas a las que les podría interesar tu producto.'],
+    ['Ao adicionar um título, você nos ajuda a mostrar seu produto aos consumidores certos.', 'Agrega un título para que mostremos tu producto a los compradores adecuados.'],
+    ['As descrições informam aos consumidores os recursos e benefícios do seu produto.', 'Las descripciones especifican a los compradores cuáles son las características y los beneficios de tu producto.'],
+    ['Os links ajudam as pessoas a encontrar o produto específico que procuram.', 'Los enlaces ayudan a las personas a encontrar el producto específico que buscan.'],
+    ['O preço informa às pessoas quanto você está cobrando pelo seu produto. O valor deve ser maior que 0 e incluir uma moeda.', 'Los precios informan a las personas cuál es el costo de tu producto. El valor debe ser superior a 0 e incluir una divisa.'],
+    ['O preço promocional permite que as pessoas saibam se o produto está com desconto.', 'El precio en oferta permite saber si el producto tiene un descuento.'],
+    ['Isso controla se o produto é mostrado ou ocultado no seu catálogo. As pessoas só conseguem ver produtos mostrados.', 'Controla si el producto se muestra u oculta en el catálogo. Las personas solo pueden ver los productos que se muestran.'],
+    ['Forneça um nome de marca para veicular anúncios dinâmicos.', 'Proporciona un nombre de marca para publicar anuncios dinámicos.'],
+    ['Isso pode ser um SKU ou outro identificador único. Você precisará fornecer uma identificação do conteúdo, se quiser veicular anúncios dinâmicos.', 'Puede tratarse de un SKU u otro identificador único. Deberás proporcionar un identificador de contenido si quieres volver a publicar anuncios dinámicos.'],
+    /* o que é do simulador (não visto na tela real) */
+    ['Imagens e vídeos ', 'Imágenes y videos '], ['Escolha a imagem do produto. Requisitos da Meta: pelo menos uma imagem, de pelo menos 500 x 500 pixels, até 8 MB, em JPEG ou PNG.', 'Elige la imagen del producto. Requisitos de Meta: al menos una imagen, de al menos 500 x 500 píxeles, hasta 8 MB, en JPEG o PNG.'],
+    ['⚠ Treino: na tela real, aqui você carrega a imagem do computador; esta janela não foi vista (a conferir).', '⚠ Entrenamiento: en la pantalla real, aquí subes la imagen desde la computadora; esta ventana no se vio (por confirmar).'],
+    ['Kit Presente (caixa)', 'Kit Regalo (caja)'], ['No treino ainda não (a conferir)', 'En el entrenamiento todavía no (por confirmar)'],
+    ['Dica do simulador:', 'Pista del simulador:'], ['ainda falta preencher campos obrigatórios (os que não dizem “Opcional”).', 'todavía faltan campos obligatorios (los que no dicen “Opcional”).'],
+    ['(O que a tela real mostra nesse caso não foi visto: a conferir.)', '(No se vio qué muestra la pantalla real en este caso: por confirmar.)'],
+    ['✓ Tabela, colunas, dicas (ⓘ), menus e a janela de sair conferidos com a tela real em 20/10/2026 (PT e ES). ⚠ O seletor de imagem, o aviso de campo faltando e o status logo após carregar não foram vistos (a conferir).', '✓ Tabla, columnas, pistas (ⓘ), menús y la ventana de salir revisados con la pantalla real el 20/10/2026 (PT y ES). ⚠ El selector de imagen, el aviso de campo faltante y el estado justo después de subir no se vieron (por confirmar).']
+  ].forEach(function (x) { A[x[0]] = x[1] });
+  P.push([/^Linha (\d+): falta (.+)$/, function (m) { return 'Fila ' + m[1] + ': falta ' + m[2].replace('a imagem', 'la imagen').replace('o título', 'el título').replace('a descrição', 'la descripción').replace('o link do site (completo, com https://)', 'el enlace del sitio (completo, con https://)').replace('o preço (maior que 0)', 'el precio (mayor que 0)') }]);
   for (var k in A) D[k] = A[k];
   var n = function (x) { return x };
   P.push([/^ID do catálogo: (\d+)$/, function (m) { return 'Identificador del catálogo: ' + m[1] }]);

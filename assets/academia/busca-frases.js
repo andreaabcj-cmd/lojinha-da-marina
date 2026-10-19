@@ -156,6 +156,8 @@ window.BUSCA_FRASES = (function () {
       'catálogo y píxel | content_id igual al id del catálogo | el anuncio de catálogo muestra otro producto'),
     'catalogo/05': F('produto não aparece | produto não aparece no catálogo | produto indisponível | estoque voltou sozinho | editar direto no catálogo | status do produto | fonte de dados do produto',
       'el producto no aparece | producto no disponible | el stock volvió solo | estado del producto'),
+    'catalogo/07': F('entrada manual | tenho só 5 produtos como coloco no catálogo | tenho poucos produtos | loja pequena com poucos produtos | cadastrar produto à mão | adicionar produto manualmente | adicionar um produto só | produto avulso no catálogo | produto de temporada | kit presente | poucos produtos | menos de 50 produtos | formulário de produtos | adicionar variante | duplicar produto | carregar produtos | imagem do produto 500 x 500 | identificação do conteúdo opcional | sair da adição de produtos',
+      'entrada manual | cargar producto a mano | agregar producto manualmente | un solo producto | producto de temporada | kit regalo | pocos productos | menos de 50 productos | agregar variante | duplicar producto | subir productos | id de contenido opcional'),
     'catalogo/06': F('conferir planilha do catálogo | planilha com erro | só entraram 2 produtos | modelo da planilha | resumo do upload | relatório de problemas | erro no csv | formato do preço | campo obrigatório ausente | id duplicado na planilha | baixar modelo',
       'revisar la planilla del catálogo | planilla con errores | plantilla | resumen de la carga | informe de problemas | campo obligatorio | id duplicado'),
     'm:catalogo': F('catálogo de produtos', 'catálogo de productos'),

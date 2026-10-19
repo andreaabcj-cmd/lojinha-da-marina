@@ -322,6 +322,7 @@
       ['adicionar-produtos', 'meta-catalogo.html?zerar=1', 'catalogo', '03', { pt: 'Como carregar os produtos por arquivo (feed)', es: 'Cómo subir los productos por archivo (feed)' }],
       ['conferir-ids', 'meta-catalogo.html?exemplo=1', 'catalogo', '04', { pt: 'Como conferir os IDs dos produtos', es: 'Cómo revisar los IDs de los productos' }],
       ['achar-produto', 'meta-catalogo.html?exemplo=1', 'catalogo', '05', { pt: 'Como achar e corrigir um produto que não aparece', es: 'Cómo encontrar y corregir un producto que no aparece' }],
+      ['entrada-manual', 'meta-catalogo.html?exemplo=1', 'catalogo', '07', { pt: 'Como cadastrar um produto à mão no catálogo (Entrada manual)', es: 'Cómo cargar un producto a mano en el catálogo (Entrada manual)' }],
       ['conferir-planilha', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como conferir a planilha do catálogo (modelo, formatos, Resumo do upload e relatório de problemas)', es: 'Cómo revisar la planilla del catálogo (plantilla, formatos, Resumen de la carga e informe de problemas)' }] ] },
     { m: 'anuncios', itens: [
       ['turbinar-post', 'meta-turbinar.html?zerar=1', 'anuncios', '01', { pt: 'Como turbinar um post', es: 'Cómo promocionar un post' }],

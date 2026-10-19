@@ -269,6 +269,13 @@ Pedido do André: o módulo ficar no FIM da trilha, por temas; as práticas não
 - A verificação de domínio fica no PORTFÓLIO (não no Gerenciador de Eventos) — conferido na tela real e no artigo oficial.
 - Tutoriais `controles-pixel` (tours-pixelav.js) e `dominio-portfolio` (sim-portfolio.js), quiz `controles-dados`, “Como fazer…”, frases da busca, espanhol nos dicionários dos simuladores. Testado normal/teimoso/ES.
 
+## Microdados 05 com os 3 formatos + MBE 04 + Catálogo 07 “à mão” (20/10/2026, ordem A → C → B aprovada pelo André)
+- **Microdados 05 LIBERADA** (saiu de `OCULTOS`). Abertura traduz os “nomes monstro”: OpenGraph = etiquetas no topo; JSON-LD = ficha num bloco; schema.org = adesivos (itemprop) na página. Três práticas (`configurar-microdados`, `configurar-jsonld` com a vírgula que falta, `configurar-schema`), todas no editor de arquivos + Microdata Debugger (`?mdzerar=og|ld|sc`). `md-pagina.js` lê schema.org (DOMParser). A tabela “Schema.org” do Debugger NÃO foi vista na ferramenta real (marcada a conferir) — dá para conferir depois de publicar, testando a página pública no Debugger real.
+- Bug antigo corrigido: o balão do tutorial lê HTML, então “<head>”/“<script>” escritos no texto sumiam (tours-md.js escapa; descrição do editor também).
+- **MBE 04:** nomes reais dos botões nas Configurações do Pixel (“Configurar manualmente”, “integração direta”, “integração de parceiros”; “habilitada pela Meta” não apareceu na conta de aula) + Gateway (AWS/Google Cloud, nuvem a partir de US$ 30/mês, só explicação).
+- **Catálogo 07 “Cadastrar um produto à mão”:** tela real da Entrada manual vista em PT e ES (só olhando; linha de teste descartada com “Sair”). Simulador: Produtos › “+ Adicionar ▾” (menu real, agora com descrições) › Entrada manual (`#cat/<id>/manual`); tutorial `entrada-manual` (Kit Presente, KIT_01); quiz `manual-ou-planilha`. Não visto (a conferir): seletor de imagem, aviso de campo faltando, status logo após carregar.
+- Ganchos do módulo Catálogo também descreviam a própria aula: passaram para a aula anterior (a 07 ficou sem gancho, como as outras últimas).
+
 ## PENDÊNCIAS (pausa em 18/10/2026)
 1. **André testar** o que foi feito (nada publicado): Pergunte ao Pixel (busca), aviso “📍 Onde você está” nos tutoriais, 12+2 casos novos do Diagnóstico, simulador da Shopify refeito, casos do pixel personalizado (Integrações 04 e 05), “Passo X de Y ▾” (selecionar passo) e a aula 06 do Catálogo (conferir a planilha). Publicar só quando ele pedir.
 2. **Microdados aula 05 (configurar tags):** feita em 20/10, OCULTA no site publicado até o André liberar.

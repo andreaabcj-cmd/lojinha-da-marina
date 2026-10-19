@@ -1227,7 +1227,7 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'O catálogo: um só para tudo', es: 'El catálogo: uno solo para todo' },
       antes: { pt: 'O Pixel da Marina já mede o que acontece no site: visitas, carrinho, compra.', es: 'El Pixel de Marina ya mide lo que pasa en el sitio: visitas, carrito, compra.' },
-      gancho: { pt: '“Quero que o anúncio mostre exatamente a caneca que a pessoa olhou. Como a Meta sabe quais produtos eu tenho?” Vamos conhecer o catálogo.', es: '“Quiero que el anuncio muestre exactamente la taza que la persona miró. ¿Cómo sabe Meta qué productos tengo?” Vamos a conocer el catálogo.' },
+      gancho: { pt: '“Vou criar agora! Mas tem uma pergunta que diz que não dá para mudar depois…” Vamos passo a passo.', es: '“¡Lo voy a crear ahora! Pero hay una pregunta que dice que no se puede cambiar después…” Vamos paso a paso.' },
       objetivo: { pt: 'Entender o que é o catálogo, onde ele mora (Gerenciador de Comércio) e por que se usa um só para todo o estoque.', es: 'Entender qué es el catálogo, dónde vive (Administrador de ventas) y por qué se usa uno solo para todo el inventario.' },
       entender: {
         dialogo: [
@@ -1270,7 +1270,7 @@ window.AULAS = {
       id: '02', min: 8, status: 'pronta',
       titulo: { pt: 'Criar o catálogo da Marina', es: 'Crear el catálogo de Marina' },
       antes: { pt: 'A Marina entendeu: um catálogo só, com os produtos dentro.', es: 'Marina entendió: un solo catálogo, con los productos dentro.' },
-      gancho: { pt: '“Vou criar agora! Mas tem uma pergunta que diz que não dá para mudar depois…” Vamos passo a passo.', es: '“¡Lo voy a crear ahora! Pero hay una pregunta que dice que no se puede cambiar después…” Vamos paso a paso.' },
+      gancho: { pt: '“Tenho uma planilha com meus produtos. Qual dos jeitos eu uso?” Vamos ver as opções e carregar o arquivo.', es: '“Tengo una hoja de cálculo con mis productos. ¿Cuál de las formas uso?” Vamos a ver las opciones y subir el archivo.' },
       objetivo: { pt: 'Criar um catálogo: escolher o tipo certo, o portfólio e o nome, e saber o que ainda falta depois.', es: 'Crear un catálogo: elegir el tipo correcto, el portfolio y el nombre, y saber qué falta después.' },
       entender: {
         dialogo: [
@@ -1317,7 +1317,7 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Colocar os produtos no catálogo', es: 'Poner los productos en el catálogo' },
       antes: { pt: 'O catálogo da Marina está criado, mas ainda vazio.', es: 'El catálogo de Marina está creado, pero todavía vacío.' },
-      gancho: { pt: '“Tenho uma planilha com meus produtos. Qual dos jeitos eu uso?” Vamos ver as opções e carregar o arquivo.', es: '“Tengo una hoja de cálculo con mis productos. ¿Cuál de las formas uso?” Vamos a ver las opciones y subir el archivo.' },
+      gancho: { pt: '“O anúncio não mostra a caneca que a pessoa viu!” Pode ser que os IDs não combinem. Vamos conferir.', es: '“¡El anuncio no muestra la taza que vio la persona!” Puede ser que los IDs no coincidan. Vamos a revisar.' },
       objetivo: { pt: 'Escolher o jeito de adicionar produtos, carregar um arquivo (feed) com a moeda certa e conferir o resultado.', es: 'Elegir la forma de agregar productos, subir un archivo (feed) con la moneda correcta y revisar el resultado.' },
       entender: {
         dialogo: [
@@ -1364,7 +1364,7 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Catálogo e Pixel falando a mesma língua', es: 'Catálogo y Pixel hablando el mismo idioma' },
       antes: { pt: 'Os 8 produtos da Marina já estão no catálogo, e o Pixel mede o site.', es: 'Los 8 productos de Marina ya están en el catálogo, y el Pixel mide el sitio.' },
-      gancho: { pt: '“O anúncio não mostra a caneca que a pessoa viu!” Pode ser que os IDs não combinem. Vamos conferir.', es: '“¡El anuncio no muestra la taza que vio la persona!” Puede ser que los IDs no coincidan. Vamos a revisar.' },
+      gancho: { pt: '“O Moletom está como indisponível, mas eu tenho no estoque!” Vamos achar a causa.', es: '“¡El Moletom aparece como agotado, pero lo tengo en stock!” Vamos a encontrar la causa.' },
       objetivo: { pt: 'Entender que o ID do produto no catálogo e o content_id do evento do Pixel precisam ser iguais, e onde conferir cada um.', es: 'Entender que el ID del producto en el catálogo y el content_id del evento del Pixel deben ser iguales, y dónde revisar cada uno.' },
       entender: {
         dialogo: [
@@ -1412,7 +1412,7 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meu produto não aparece!', es: '¡Mi producto no aparece!' },
       antes: { pt: 'Catálogo criado, produtos carregados, IDs combinando.', es: 'Catálogo creado, productos cargados, IDs coincidiendo.' },
-      gancho: { pt: '“O Moletom está como indisponível, mas eu tenho no estoque!” Vamos achar a causa.', es: '“¡El Moletom aparece como agotado, pero lo tengo en stock!” Vamos a encontrar la causa.' },
+      gancho: { pt: '“Preenchi o modelo da Meta e só metade dos produtos entrou!” Vamos conferir a planilha antes e depois de carregar.', es: '“¡Llené la plantilla de Meta y solo entró la mitad de los productos!” Vamos a revisar la planilla antes y después de subirla.' },
       objetivo: { pt: 'Achar por que um produto não aparece como esperado: ler o status, a disponibilidade e a fonte de dados, e corrigir onde o dado nasce.', es: 'Encontrar por qué un producto no aparece como se espera: leer el estado, la disponibilidad y el origen de datos, y corregir donde nace el dato.' },
       entender: {
         dialogo: [
@@ -1460,7 +1460,7 @@ window.AULAS = {
       id: '06', min: 14, status: 'pronta',
       titulo: { pt: 'Conferir a planilha do catálogo', es: 'Revisar la planilla del catálogo' },
       antes: { pt: 'O catálogo já recebe produtos por arquivo de dados. Agora: como saber se a planilha está certa?', es: 'El catálogo ya recibe productos por archivo de datos. Ahora: ¿cómo saber si la planilla está bien?' },
-      gancho: { pt: '“Preenchi o modelo da Meta e só metade dos produtos entrou!” Vamos conferir a planilha antes e depois de carregar.', es: '“¡Llené la plantilla de Meta y solo entró la mitad de los productos!” Vamos a revisar la planilla antes y después de subirla.' },
+      gancho: { pt: '“Vou vender um Kit Presente só neste mês. Preciso mexer na planilha inteira por um produto?” Vamos cadastrar à mão.', es: '“Voy a vender un Kit Regalo solo este mes. ¿Tengo que tocar toda la planilla por un producto?” Vamos a cargarlo a mano.' },
       objetivo: { pt: 'Conferir uma planilha de catálogo como a Meta pede: o modelo, o cabeçalho, as linhas de exemplo, os valores aceitos; depois carregar, ler o Resumo do upload e o relatório de problemas, corrigir na planilha e recarregar.', es: 'Revisar una planilla de catálogo como pide Meta: la plantilla, el encabezado, las filas de ejemplo, los valores aceptados; después subirla, leer el Resumen de la carga y el informe de problemas, corregir en la planilla y volver a subir.' },
       entender: {
         dialogo: [
@@ -1499,6 +1499,52 @@ window.AULAS = {
         passos: [{ pt: 'Ler o Resumo do upload e o relatório.', es: 'Leer el Resumen de la carga y el informe.' }, { pt: 'Corrigir na planilha (formatos e valores aceitos) e salvar.', es: 'Corregir en la planilla (formatos y valores aceptados) y guardar.' }, { pt: 'Recarregar arquivo de dados e conferir.', es: 'Volver a subir el archivo y revisar.' }],
         encaminhar: { pt: 'Se o arquivo nem carrega (URL que não abre, formato não aceito), confira o endereço e o formato; problemas no servidor do cliente são com o desenvolvedor ou a hospedagem dele.', es: 'Si el archivo ni siquiera se sube (URL que no abre, formato no aceptado), revisa la dirección y el formato; los problemas en el servidor del cliente son con su desarrollador o su hosting.' }
       }
+    },
+    {
+      id: '07', min: 8, status: 'pronta',
+      titulo: { pt: 'Cadastrar um produto à mão', es: 'Cargar un producto a mano' },
+      antes: { pt: 'O catálogo da Marina já recebe os produtos pela planilha. Agora chegou um produto que não está nela.', es: 'El catálogo de Marina ya recibe los productos por la planilla. Ahora llegó un producto que no está en ella.' },
+      objetivo: { pt: 'Saber quando usar a Entrada manual, preencher a tabela “Adicionar produtos” (imagem, título, descrição, link, preço, marca e identificação do conteúdo) e saber onde editar depois.', es: 'Saber cuándo usar la Entrada manual, completar la tabla “Agrega productos” (imagen, título, descripción, enlace, precio, marca e ID de contenido) y saber dónde editar después.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Vou vender um Kit Presente só neste mês. Preciso mexer na planilha inteira por causa de um produto? 🎁', es: 'Voy a vender un Kit Regalo solo este mes. ¿Tengo que tocar toda la planilla por un solo producto? 🎁' }],
+          ['rafa', { pt: 'Para poucos produtos existe a Entrada manual: Produtos › Adicionar › Entrada manual. A Meta recomenda esse jeito para quem tem menos de 50 produtos. É uma tabela: cada linha é um produto.', es: 'Para pocos productos existe la Entrada manual: Productos › Agregar › Entrada manual. Meta recomienda esta forma para quien tiene menos de 50 productos. Es una tabla: cada fila es un producto.' }],
+          ['marina', { pt: 'E o que é obrigatório?', es: '¿Y qué es obligatorio?' }],
+          ['rafa', { pt: 'Tudo o que não diz “Opcional”: pelo menos uma imagem (500 x 500 pixels, até 8 MB, JPEG ou PNG), título, descrição, link da página do produto e preço maior que 0. Condição, disponibilidade e status já vêm preenchidos.', es: 'Todo lo que no dice “Opcional”: al menos una imagen (500 x 500 píxeles, hasta 8 MB, JPEG o PNG), título, descripción, enlace de la página del producto y precio mayor que 0. Condición, disponibilidad y estado ya vienen completos.' }],
+          ['pixel', { pt: 'Pegadinha: a Identificação do conteúdo diz “Opcional”, mas para anúncios de catálogo ela tem que ser igual ao content_id do Pixel naquela página. Sem isso, o anúncio não liga o produto à visita.', es: 'Trampa: el ID de contenido dice “Opcional”, pero para anuncios de catálogo debe ser igual al content_id del píxel en esa página. Sin eso, el anuncio no une el producto a la visita.' }]
+        ],
+        pontos: [
+          { pt: '<b>Quando:</b> poucos produtos (menos de 50) ou um produto avulso. Catálogo grande: planilha, plataforma ou Pixel.', es: '<b>Cuándo:</b> pocos productos (menos de 50) o un producto suelto. Catálogo grande: planilla, plataforma o píxel.' },
+          { pt: '<b>Obrigatório:</b> imagem, título, descrição, link e preço (maior que 0). <b>Identificação do conteúdo</b> igual à do Pixel.', es: '<b>Obligatorio:</b> imagen, título, descripción, enlace y precio (mayor que 0). <b>ID de contenido</b> igual al del píxel.' },
+          { pt: '<b>Editar depois:</b> produto feito à mão se edita à mão em Produtos; produto da planilha se corrige na planilha.', es: '<b>Editar después:</b> el producto hecho a mano se edita a mano en Productos; el de la planilla se corrige en la planilla.' }
+        ],
+        notas: { pt: 'Tela “Adicionar produtos” (Entrada manual) vista de verdade no catálogo de aula em 20/10/2026, em português e espanhol (?locale=es_LA): o menu Adicionar, as colunas, as dicas (ⓘ) de cada coluna, as opções de Condição, os menus “+ Novo produto” (5 ou 10 produtos) e da linha (Adicionar variante, Duplicar produto) e a janela “Sair da adição de produtos?”. Nada foi carregado: a linha de teste foi descartada. Regras: Central de Ajuda da Meta, “Como adicionar produtos ao seu catálogo manualmente” (lida em 20/10/2026). O seletor de imagem, o aviso quando falta campo e o status do produto logo depois de carregar não foram vistos: no simulador são do treino (a conferir). O Kit Presente é da história da Marina.', es: 'Pantalla “Agrega productos” (Entrada manual) vista de verdad en el catálogo de clase el 20/10/2026, en portugués y español (?locale=es_LA): el menú Agregar, las columnas, las pistas (ⓘ) de cada columna, las opciones de Condición, los menús “+ Nuevo producto” (5 o 10 productos) y de la fila (Agregar variante, Duplicar producto) y la ventana “¿Salir de la sección para agregar productos?”. No se subió nada: la fila de prueba se descartó. Reglas: Centro de ayuda de Meta, “Cómo agregar productos a tu catálogo manualmente” (leído el 20/10/2026). El selector de imagen, el aviso cuando falta un campo y el estado del producto justo después de subir no se vieron: en el simulador son del entrenamiento (por confirmar). El Kit Regalo es de la historia de Marina.' }
+      },
+      ferramenta: 'manual-ou-planilha',
+      praticar: {
+        texto: { pt: 'No simulador, você abre a Entrada manual e cadastra o Kit Presente da Marina, campo por campo, até ele aparecer em Produtos.', es: 'En el simulador, abres la Entrada manual y cargas el Kit Regalo de Marina, campo por campo, hasta que aparece en Productos.' },
+        tour: 'entrada-manual', pagina: 'meta-catalogo.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Tenho uma loja com 300 produtos e o preço muda toda semana. Posso cadastrar tudo à mão, que eu prefiro? 🤔', es: 'Tengo una tienda con 300 productos y el precio cambia cada semana. ¿Puedo cargar todo a mano, que lo prefiero? 🤔' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Poder, pode, mas a Meta recomenda a Entrada manual para menos de 50 produtos. Com 300 e preço mudando toda semana, o melhor é um arquivo de dados com carregamento programado (ou a integração da sua plataforma): você atualiza num lugar só e o catálogo acompanha.”', es: '“Poder, puedes, pero Meta recomienda la Entrada manual para menos de 50 productos. Con 300 y el precio cambiando cada semana, lo mejor es un archivo de datos con carga programada (o la integración de tu plataforma): actualizas en un solo lugar y el catálogo acompaña.”' }, fb: { pt: 'Isso! Respeitou a preferência e explicou o porquê com a regra oficial.', es: '¡Eso! Respetaste la preferencia y explicaste el porqué con la regla oficial.' } },
+          { certa: false, txt: { pt: '“Não pode: a Entrada manual aceita no máximo 50 produtos.”', es: '“No se puede: la Entrada manual acepta como máximo 50 productos.”' }, fb: { pt: 'Não é um limite: os 50 são uma recomendação da Meta.', es: 'No es un límite: los 50 son una recomendación de Meta.' } },
+          { certa: false, txt: { pt: '“Pode sim, é o jeito mais seguro.”', es: '“Sí, es la forma más segura.”' }, fb: { pt: 'Com 300 produtos mudando toda semana, o manual vira retrabalho e erro.', es: 'Con 300 productos cambiando cada semana, lo manual se vuelve retrabajo y error.' } },
+          { certa: false, txt: { pt: '“Cadastre à mão e deixe a identificação do conteúdo em branco, que é opcional.”', es: '“Cárgalos a mano y deja el ID de contenido vacío, que es opcional.”' }, fb: { pt: 'Para anúncios de catálogo, a identificação tem que ser igual à do Pixel.', es: 'Para anuncios de catálogo, el ID debe ser igual al del píxel.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Quantos produtos são? Os dados mudam com frequência?', es: '¿Cuántos productos son? ¿Los datos cambian seguido?' }, { pt: 'Qual é a identificação do conteúdo que o Pixel manda na página do produto?', es: '¿Cuál es el ID de contenido que manda el píxel en la página del producto?' }],
+        conferir: [{ pt: 'Gerenciador de Comércio › catálogo › Produtos › Adicionar › Entrada manual.', es: 'Administrador de ventas › catálogo › Productos › Agregar › Entrada manual.' }, { pt: 'Imagem, título, descrição, link, preço maior que 0; identificação do conteúdo igual à do Pixel.', es: 'Imagen, título, descripción, enlace, precio mayor que 0; ID de contenido igual al del píxel.' }],
+        frase: { pt: 'Para poucos produtos, a Entrada manual é o caminho mais rápido; só não esqueça a identificação do conteúdo igual à do Pixel.', es: 'Para pocos productos, la Entrada manual es el camino más rápido; solo no olvides el ID de contenido igual al del píxel.' },
+        passos: [{ pt: 'Produtos › Adicionar › Entrada manual.', es: 'Productos › Agregar › Entrada manual.' }, { pt: 'Uma linha por produto; preencher o obrigatório e a identificação do conteúdo.', es: 'Una fila por producto; completar lo obligatorio y el ID de contenido.' }, { pt: 'Carregar produtos e conferir em Produtos.', es: 'Subir productos y revisar en Productos.' }],
+        encaminhar: { pt: 'Catálogo grande ou que muda muito: oriente arquivo de dados com carregamento programado, plataforma parceira ou Pixel como fonte.', es: 'Catálogo grande o que cambia mucho: orienta archivo de datos con carga programada, plataforma socia o píxel como fuente.' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1670875312991238', titulo: { pt: 'Como adicionar produtos ao seu catálogo manualmente no Gerenciador de Comércio', es: 'Cómo agregar productos a tu catálogo manualmente en el Administrador de ventas' }, conferido: '20/10/2026' }
+      ]
     }
   ],
   feed: [

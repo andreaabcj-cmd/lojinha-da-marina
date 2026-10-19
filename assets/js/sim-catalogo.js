@@ -3,7 +3,7 @@
    Textos copiados das telas reais (conta de aula, 15–16/10/2026), em português e em espanhol (?locale=es_LA).
    O que não foi visto de verdade fica marcado "a conferir". Ver _roteiro/amostras_meta.md.
    URL: meta-catalogo.html?zerar=1 (sem catálogo) · ?exemplo=1 (o catálogo de aula) · ?moeda=1 (feed em dólar)
-   Tutoriais (tour.js): ?tour=criar-catalogo | adicionar-produtos | conferir-ids | achar-produto | conhecer-catalogo */
+   Tutoriais (tour.js): ?tour=criar-catalogo | adicionar-produtos | conferir-ids | achar-produto | conhecer-catalogo | conferir-planilha | entrada-manual */
 (function () {
   var CONF = '16/10/2026';
   var $ = function (s, r) { return (r || document).querySelector(s) };
@@ -129,6 +129,17 @@
       '<p><b>Destaque seus anúncios com modelos de imagem personalizados</b></p><p class="cm-sub">Crie um modelo de imagem que combine elementos da marca, como seu logotipo, fontes e cores, com informações dos produtos do seu catálogo.</p></div>' +
       '<div class="cm-card"><h3>Perguntas frequentes</h3><p>Por que os clientes não conseguem ver alguns dos meus produtos?</p><p>Como controlo quais produtos aparecem nas experiências de navegação de produtos?</p><p>Como posso oferecer promoções aos clientes?</p></div>', r);
   }
+  /* menu “Adicionar produtos via” (o mesmo em Produtos e em Fontes de dados; conferido com a tela real em 19 e 20/10/2026, PT e ES) */
+  function menuAdd(t, naProd) {
+    return '<div class="cm-card cm-menu" data-t="' + t + '" style="position:absolute;z-index:5;min-width:300px;max-width:360px;margin-top:4px' + (naProd ? ';right:0' : '') + '"><b>Adicionar produtos via</b>' +
+      '<button class="cm-mi" data-acao="fonte-arquivo" data-t="op-arquivo"><b>Arquivo de dados</b><small>Adicione vários produtos usando um arquivo CSV ou do Excel preenchido automaticamente</small></button>' +
+      '<button class="cm-mi" disabled><b>Página do Facebook ou perfil do Instagram</b><small>Depois que você escolher uma Página do Facebook ou perfil do Instagram, adicionaremos automaticamente os produtos encontrados nos seus posts nos últimos 45 dias.</small></button>' +
+      '<button class="cm-mi" data-acao="mn-abrir" data-t="op-manual"><b>Entrada manual</b><small>Adicione um produto de cada vez preenchendo um formulário</small></button>' +
+      '<button class="cm-mi" disabled><b>Plataforma de parceiro</b><small>Sincronize produtos de uma plataforma conectada, por exemplo, Shopify</small></button>' +
+      '<button class="cm-mi" data-acao="' + (naProd ? 'mn-pixel' : 'fonte-pixel') + '" data-t="op-pixel"><b>Pixel</b><small>Adicione produtos do seu site usando a identificação do Pixel</small></button>' +
+      '<b>Carregar informações adicionais</b><button class="cm-mi" disabled><b>Dados de país ou idioma</b><small>Adicione dados de produtos localizados, como preço, moeda ou disponibilidade na região.</small></button><button class="cm-mi" disabled><b>Dados de conteúdo do parceiro</b><small>Adicione conteúdo de parceiro para vincular a produtos no seu catálogo.</small></button><button class="cm-mi" disabled><b>Dados complementares</b><small>Adicione mais dados dos produtos que possam estar ausentes ou incompletos no seu catálogo.</small></button>' +
+      '<p class="cm-sub">✓ Menu conferido com a tela real (19 e 20/10/2026)</p></div>';
+  }
   function telaProdutos(c, r) {
     var ps = produtos(c);
     var linhas = ps.map(function (p) {
@@ -136,7 +147,7 @@
       return '<tr data-t="prod-' + p.chave.toLowerCase() + '"><td class="nome"><b>' + esc(p.nome) + '</b><small>' + (p.grupo ? 'Identificação do grupo: ' : 'Identificação do conteúdo: ') + '<span data-t="idc-' + p.chave.toLowerCase() + '">' + p.chave + '</span></small></td><td><span class="cm-st"><i></i>' + (p.grupo ? 'Qualificadas' : 'Qualificado') + '</span></td><td>' + (p.grupo ? p.vars : '—') + '</td><td><span class="cm-st' + (esg ? ' verm' : '') + '" data-t="disp-' + p.chave.toLowerCase() + '"><i></i>' + (esg ? 'Indisponível' : 'Em estoque') + '</span>' + (p.grupo ? '<br><small>' + p.vars + ' variantes</small>' : '') + '</td><td>' + preco(p) + (p.moeda === 'USD' ? ' <span class="ga-tag am">dólar</span>' : '') + '</td><td>15 de out às 01:20</td><td><button class="btn sec" disabled>Ações</button></td></tr>';
     }).join('');
     return casca('<h1>Produtos</h1><p class="cm-sub">Veja e gerencie todos os ' + ps.length + ' produtos no seu catálogo. Você pode encontrar produtos específicos rapidamente usando a pesquisa ou os filtros.</p>' +
-      '<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap"><button class="btn sec" disabled>Criar campanha</button><button class="btn" data-ir="cat/' + c.id + '/produtos" data-t="btn-adicionar-prod">Adicionar</button><span class="ga-tag">Todos os produtos ' + ps.length + '</span><span class="ga-tag am">Ações 2</span><button class="btn sec" disabled>Criar conjunto</button></div>' +
+      '<div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap"><button class="btn sec" disabled>Criar campanha</button><span style="position:relative;display:inline-block"><button class="btn" data-acao="mn-menu" data-t="btn-adicionar-prod">+ Adicionar ▾</button>' + (PX.menuProd ? menuAdd('menu-add-prod', false) : '') + '</span><span class="ga-tag">Todos os produtos ' + ps.length + '</span><span class="ga-tag am">Ações 2</span><button class="btn sec" disabled>Criar conjunto</button></div>' +
       (ps.length ? '<div class="cm-card"><div class="cm-grade"><table class="cm-tab" data-t="tab-produtos"><thead><tr><th>Nome</th><th>Status</th><th>Variantes</th><th>Disponibilidade</th><th>Preço</th><th>Última atualização</th><th></th></tr></thead><tbody>' + linhas + '</tbody></table></div></div>' : '<div class="cm-card cm-vazio">Nenhum produto ainda. Adicione produtos ou conecte uma fonte de dados.</div>'), r);
   }
   function telaConjuntos(c, r) {
@@ -169,7 +180,7 @@
     var f = c.fontes[0], extra = c.fontes.slice(1).map(function (x) { return '<tr data-t="fonte-linha-2"><td class="nome"><b>' + esc(x.nome) + '</b></td><td>' + x.tipo + '<br><small>' + x.sub + '</small></td><td>' + c.itens.length + '</td><td><span class="cm-st"><i></i>Tudo certo</span></td><td>agora<br><small>' + x.quando + '</small></td><td></td></tr>' }).join('');
     var P0 = S.plan, s0 = P0 && P0.subiu && P0.sessoes[0], extraMarina = s0 ? '<tr data-t="fonte-marina"><td class="nome"><b><a data-ir="cat/' + c.id + '/feed" data-t="link-feed-marina">catalogo-marina.csv</a></b></td><td>Arquivo de dados<br><small>Carregamento único</small></td><td>' + s0.ok + '</td><td><span class="cm-st' + (s0.falha ? ' verm' : '') + '"><i></i>' + (s0.falha ? 'Falha no upload de itens' : 'Tudo certo') + '</span></td><td>' + s0.quando + '</td><td></td></tr>' : '';
     var corpo = f ? '<tr data-t="fonte-linha"><td class="nome"><b>' + esc(f.nome) + '</b></td><td>' + f.tipo + '<br><small>' + f.sub + '</small></td><td>' + c.itens.length + '</td><td><span class="cm-st"><i></i>Tudo certo</span></td><td>15 de out às 01:20<br><small>' + f.quando + '</small></td><td><button class="btn sec" data-acao="atualizar-feed" data-t="btn-atualizar">Atualizar</button></td></tr>' + extra + extraMarina : '<tr><td colspan="6" class="cm-vazio">Nenhuma fonte de dados ainda.</td></tr>';
-    return casca('<h1>Fontes de dados</h1><p class="cm-sub">Gerencie as fontes de dados que fornecem informações sobre os produtos no seu catálogo. Saiba mais</p><div style="margin-bottom:10px;position:relative"><button class="btn" data-acao="fonte-menu" data-t="btn-add-fonte">Adicionar</button>' + (PX.menu ? '<div class="cm-card cm-menu" data-t="menu-add-fonte" style="position:absolute;z-index:5;min-width:300px;margin-top:4px"><b>Adicionar produtos via</b><button class="cm-mi" data-acao="fonte-arquivo" data-t="op-arquivo"><b>Arquivo de dados</b><small>Adicione vários produtos usando um arquivo CSV ou do Excel preenchido automaticamente</small></button><button class="cm-mi" disabled><b>Página do Facebook ou perfil do Instagram</b></button><button class="cm-mi" disabled><b>Entrada manual</b></button><button class="cm-mi" disabled><b>Plataforma de parceiro</b><small>Sincronize produtos de uma plataforma conectada, por exemplo, Shopify</small></button><button class="cm-mi" data-acao="fonte-pixel" data-t="op-pixel"><b>Pixel</b><small>Adicione produtos do seu site usando a identificação do Pixel</small></button><b>Carregar informações adicionais</b><button class="cm-mi" disabled>Dados de país ou idioma</button><button class="cm-mi" disabled>Dados de conteúdo do parceiro</button><button class="cm-mi" disabled>Dados complementares</button><p class="cm-sub">✓ Menu conferido com a tela real (19/10/2026)</p></div>' : '') + '</div>' +
+    return casca('<h1>Fontes de dados</h1><p class="cm-sub">Gerencie as fontes de dados que fornecem informações sobre os produtos no seu catálogo. Saiba mais</p><div style="margin-bottom:10px;position:relative"><button class="btn" data-acao="fonte-menu" data-t="btn-add-fonte">Adicionar</button>' + (PX.menu ? menuAdd('menu-add-fonte', false) : '') + '</div>' +
       '<p class="ga-aviso">Adicione produtos do seu site usando a API de Catálogo — A API de catálogo sincroniza produtos do seu site em tempo real. Crie um app para conectar e manter seu catálogo atualizado.</p>' +
       '<div class="cm-card"><table class="cm-tab"><thead><tr><th>Nome</th><th>Tipo</th><th>Produtos</th><th>Status</th><th>Última atualização</th><th></th></tr></thead><tbody>' + corpo + '</tbody></table></div>' +
       (PX.jan ? janelaPixel(c) : '') + (c.fontes.some(function (x) { return x.tipo === 'Pixel' }) ? '<div class="ga-aviso ok" data-t="msg-px"><b>✓ Pixel adicionado como fonte.</b> Pode levar até 24 horas para ficar pronto; depois atualiza o catálogo a cada interação, normalmente em até 15 minutos.</div>' : '') + (f ? '<p class="cm-set" data-t="cm-simulador">🧪 <b>Só no simulador:</b> o estoque mora no <b>site</b>, não aqui. <label><input type="checkbox" id="cmSite"' + (c.siteCorrigido ? ' checked' : '') + ' data-t="chk-site"/> o estoque do Moletom já foi corrigido no site</label> · depois clique em Atualizar.</p>' : ''), r);
@@ -297,6 +308,125 @@
       (s.probs.length ? '<button class="btn" data-acao="pl-relatorio" data-t="btn-relatorio">Baixar relatório de problemas</button>' : '<p class="ga-aviso ok" data-t="feed-ok"><b>✓ Nenhum problema nesta sessão.</b> Todos os itens foram atualizados ou adicionados.</p>') + '</div>' + rel +
       '<p class="conferido pendente">⚠ Visão geral e contadores conferidos com a tela real (19/10/2026); a lista de problemas da sessão e os textos dos erros vêm da Central de Ajuda · a conferir com a tela real</p>', r);
   }
+  /* ---------- Entrada manual (Produtos › Adicionar ▾ › Entrada manual) ----------
+     Real (20/10/2026, catálogo de aula, PT e ES ?locale=es_LA): tabela “Adicionar produtos”, um produto por linha; contador Produtos/Variantes;
+     colunas Imagens e vídeos, Título (0/200), Descrição (0/9999), Link do site, Preço (BRL + R$), Preço promocional · Opcional, Categoria de produto do
+     Facebook · Opcional, Condição (Novo, Recondicionado, Usado ×3), Disponibilidade (Em estoque), Status (Mostrar), Marca · Opcional (0/100),
+     Identificação do conteúdo · Opcional (0/100); lixeira e menu da linha (Adicionar variante, Duplicar produto); “+ Novo produto” ▾ (5 produtos,
+     10 produtos); Cancelar → “Sair da adição de produtos?”; Carregar produtos (liberado quando há algo escrito). Dicas (ⓘ) copiadas da tela real.
+     Regras: Central de Ajuda “Como adicionar produtos ao seu catálogo manualmente” (menos de 50 produtos; pelo menos uma imagem 500 x 500,
+     até 8 MB, JPEG ou PNG; identificação do conteúdo igual à do Pixel para anúncios de catálogo Advantage+).
+     NÃO visto (a conferir): o seletor de imagem, o que aparece ao carregar com campo faltando e o status do produto logo depois de carregar. */
+  var MN_K = 'sim.cm.manual';
+  function mnLinha() { return { img: '', titulo: '', desc: '', link: '', preco: '', promo: false, promoV: '', cond: 'Novo', disp: true, status: true, marca: '', id: '' } }
+  function mnIni() { return { linhas: [mnLinha()], menuNovo: false, menuLinha: -1, sair: false, foto: -1, erros: null } }
+  var MN = (function () { try { return JSON.parse(sessionStorage.getItem(MN_K)) || mnIni() } catch (e) { return mnIni() } })();
+  function mnGrava() { try { sessionStorage.setItem(MN_K, JSON.stringify(MN)) } catch (e) { } window.__simCmManual = MN }
+  function mnTem(l) { return !!(l.img || l.titulo || l.desc || l.link || l.preco || l.marca || l.id) }
+  function mnNum(v) { var s = String(v || '').replace(/[^\d,\.]/g, ''); if (s.indexOf(',') >= 0) s = s.replace(/\./g, '').replace(',', '.'); var n = parseFloat(s); return isNaN(n) ? 0 : n }
+  function mnFmt(n) { return n.toFixed(2).replace('.', ',') }
+  var MN_FOTOS = [['kit', 'Kit Presente (caixa)'], ['caneca_01', 'caneca_01.png'], ['caneca_02', 'caneca_02.png'], ['caneca_03', 'caneca_03.png'], ['ecobag_03', 'ecobag_03.png'], ['bone_01', 'bone_01.png'], ['camiseta_02', 'camiseta_02.png'], ['moletom_01', 'moletom_01.png']];
+  function mnFoto(k, cls) { return k === 'kit' ? '<span class="mn-kit ' + (cls || '') + '"><img src="assets/img/caneca_01.png" alt=""><img src="assets/img/ecobag_03.png" alt=""></span>' : '<img class="' + (cls || '') + '" src="assets/img/' + k + '.png" alt="">' }
+  var MN_DICA = {
+    img: 'Essas mídias aparecerão às pessoas que talvez tenham interesse no seu produto.', titulo: 'Ao adicionar um título, você nos ajuda a mostrar seu produto aos consumidores certos.',
+    desc: 'As descrições informam aos consumidores os recursos e benefícios do seu produto.', link: 'Os links ajudam as pessoas a encontrar o produto específico que procuram.',
+    preco: 'O preço informa às pessoas quanto você está cobrando pelo seu produto. O valor deve ser maior que 0 e incluir uma moeda.', promo: 'O preço promocional permite que as pessoas saibam se o produto está com desconto.',
+    status: 'Isso controla se o produto é mostrado ou ocultado no seu catálogo. As pessoas só conseguem ver produtos mostrados.', marca: 'Forneça um nome de marca para veicular anúncios dinâmicos.',
+    id: 'Isso pode ser um SKU ou outro identificador único. Você precisará fornecer uma identificação do conteúdo, se quiser veicular anúncios dinâmicos.'
+  };
+  function mnI(k) { return ' <i class="mn-i" title="' + esc(MN_DICA[k]) + '">ⓘ</i>' }
+  function mnErros() {   // conferência do simulador (a tela real, ao carregar com algo faltando, não foi vista)
+    var E = [];
+    MN.linhas.forEach(function (l, i) {
+      if (!mnTem(l)) return; var f = [];
+      if (!l.img) f.push('a imagem'); if (!l.titulo.trim()) f.push('o título'); if (!l.desc.trim()) f.push('a descrição');
+      if (!/^https?:\/\/\S+\.\S+/.test(l.link.trim())) f.push('o link do site (completo, com https://)'); if (!(mnNum(l.preco) > 0)) f.push('o preço (maior que 0)');
+      if (f.length) E.push({ i: i, txt: 'Linha ' + (i + 1) + ': falta ' + f.join(', ') });
+    });
+    return E;
+  }
+  function telaManual(c) {
+    var L = MN.linhas, nP = L.filter(mnTem).length;
+    var linhas = L.map(function (l, i) {
+      var p = 'data-mn="' + i + '" data-c=';
+      return '<tr data-t="mn-linha-' + i + '"><td class="mn-ac"><button class="btn sec mn-b" data-acao="mn-del" data-i="' + i + '" title="Excluir linha" data-t="mn-del-' + i + '">🗑</button><span style="position:relative;display:inline-block"><button class="btn sec mn-b" data-acao="mn-linha-menu" data-i="' + i + '" title="Opções" data-t="mn-opcoes-' + i + '">⧉ ▾</button>' +
+        (MN.menuLinha === i ? '<div class="cm-card cm-menu mn-pop" data-t="mn-menu-linha"><button class="cm-mi" disabled title="No treino ainda não (a conferir)">Adicionar variante</button><button class="cm-mi" data-acao="mn-duplicar" data-i="' + i + '" data-t="mn-duplicar">Duplicar produto</button></div>' : '') + '</span></td>' +
+        '<td><button class="mn-img' + (l.img ? ' tem' : '') + '" data-acao="mn-foto" data-i="' + i + '" data-t="mn-img-' + i + '">' + (l.img ? mnFoto(l.img) : '🖼️+') + '</button></td>' +
+        '<td><span class="mn-cx"><input ' + p + '"titulo" maxlength="200" placeholder="Insira um título curto" value="' + esc(l.titulo) + '" data-t="mn-titulo-' + i + '"><small>' + l.titulo.length + '/200</small></span></td>' +
+        '<td><span class="mn-cx"><input ' + p + '"desc" maxlength="9999" placeholder="Descreva os recursos e benefícios" value="' + esc(l.desc) + '" data-t="mn-desc-' + i + '"><small>' + l.desc.length + '/9999</small></span></td>' +
+        '<td><input ' + p + '"link" placeholder="https://exemplo.com/produto" value="' + esc(l.link) + '" data-t="mn-link-' + i + '"></td>' +
+        '<td><div class="mn-preco"><select disabled><option>BRL</option></select><span class="mn-cx"><b>R$</b><input ' + p + '"preco" inputmode="decimal" value="' + esc(l.preco) + '" data-t="mn-preco-' + i + '"></span></div></td>' +
+        '<td><div class="mn-preco"><input type="checkbox" ' + p + '"promo"' + (l.promo ? ' checked' : '') + '><input ' + p + '"promoV"' + (l.promo ? '' : ' disabled') + ' value="' + esc(l.promoV) + '"></div></td>' +
+        '<td><select disabled><option>Selecione uma categoria</option></select></td>' +
+        '<td><select ' + p + '"cond" data-t="mn-cond-' + i + '">' + ['Novo', 'Recondicionado', 'Usado (estado de novo)', 'Usado (boas condições)', 'Usado (condições razoáveis)'].map(function (o) { return '<option' + (l.cond === o ? ' selected' : '') + '>' + o + '</option>' }).join('') + '</select></td>' +
+        '<td><label class="mn-sw"><input type="checkbox" ' + p + '"disp"' + (l.disp ? ' checked' : '') + ' data-t="mn-disp-' + i + '"><i></i>Em estoque</label></td>' +
+        '<td><label class="mn-sw"><input type="checkbox" ' + p + '"status"' + (l.status ? ' checked' : '') + '><i></i>Mostrar</label></td>' +
+        '<td><span class="mn-cx"><input ' + p + '"marca" maxlength="100" value="' + esc(l.marca) + '" data-t="mn-marca-' + i + '"><small>' + l.marca.length + '/100</small></span></td>' +
+        '<td><span class="mn-cx"><input ' + p + '"id" maxlength="100" value="' + esc(l.id) + '" data-t="mn-id-' + i + '"><small>' + l.id.length + '/100</small></span></td></tr>';
+    }).join('');
+    var foto = MN.foto >= 0 ? '<div class="ga-fundo"><div class="ga-jan" data-t="mn-jan-foto"><h3>Imagens e vídeos</h3><p class="cm-sub">Escolha a imagem do produto. Requisitos da Meta: pelo menos uma imagem, de pelo menos 500 x 500 pixels, até 8 MB, em JPEG ou PNG.</p><div class="mn-fotos">' +
+      MN_FOTOS.map(function (f) { return '<button class="mn-ft" data-acao="mn-foto-ok" data-f="' + f[0] + '" data-t="mn-foto-' + f[0] + '">' + mnFoto(f[0]) + '<small>' + f[1] + '</small></button>' }).join('') + '</div><p class="cm-sub">⚠ Treino: na tela real, aqui você carrega a imagem do computador; esta janela não foi vista (a conferir).</p><p style="text-align:right"><button class="btn sec" data-acao="mn-foto-fecha">Cancelar</button></p></div></div>' : '';
+    var sair = MN.sair ? '<div class="ga-fundo"><div class="ga-jan" data-t="mn-jan-sair"><h3>Sair da adição de produtos?</h3><p>Todas as informações fornecidas serão perdidas.</p><p style="text-align:right"><button class="btn sec" data-acao="mn-sair-nao" data-t="mn-sair-cancelar">Cancelar</button> <button class="btn" data-acao="mn-sair-sim" data-t="mn-sair-sim">Sair</button></p></div></div>' : '';
+    var erros = MN.erros && MN.erros.length ? '<div class="ga-aviso" data-t="mn-erros"><b>Dica do simulador:</b> ainda falta preencher campos obrigatórios (os que não dizem “Opcional”).<ul>' + MN.erros.map(function (e) { return '<li>' + esc(e.txt) + '</li>' }).join('') + '</ul><small>(O que a tela real mostra nesse caso não foi visto: a conferir.)</small></div>' : '';
+    return '<div class="sim-faixa">🧪 Simulador de treinamento do Gerenciador de Comércio · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
+      '<div class="cm" style="grid-template-columns:1fr"><main class="cm-corpo"><div class="mn" data-t="mn-editor"><h1>Adicionar produtos</h1><div class="cm-card"><div class="mn-cont" data-t="mn-contador"><span><b>' + nP + '</b><small>' + (nP === 1 ? 'Produto' : 'Produtos') + '</small></span><span><b>' + nP + '</b><small>' + (nP === 1 ? 'Variante' : 'Variantes') + '</small></span></div>' +
+      '<div class="cm-grade"><table class="cm-tab mn-tab" data-t="mn-tabela"><thead><tr><th></th><th>Imagens e vídeos' + mnI('img') + '</th><th>Título' + mnI('titulo') + '</th><th>Descrição' + mnI('desc') + '</th><th>Link do site' + mnI('link') + '</th><th>Preço' + mnI('preco') + '</th><th>Preço promocional · <small>Opcional</small>' + mnI('promo') + '</th><th>Categoria de produto do Facebook · <small>Opcional</small></th><th>Condição</th><th>Disponibilidade</th><th>Status' + mnI('status') + '</th><th>Marca · <small>Opcional</small>' + mnI('marca') + '</th><th>Identificação do conteúdo · <small>Opcional</small>' + mnI('id') + '</th></tr></thead><tbody>' + linhas + '</tbody></table></div>' +
+      '<div style="position:relative;margin-top:10px"><span class="mn-split"><button class="btn" data-acao="mn-novo" data-t="mn-novo">+ Novo produto</button><button class="btn" data-acao="mn-novo-menu" data-t="mn-novo-menu" title="Abrir menu suspenso">▾</button></span>' +
+      (MN.menuNovo ? '<div class="cm-card cm-menu mn-pop" data-t="mn-menu-novo"><button class="cm-mi" data-acao="mn-novo-n" data-n="5">5 produtos</button><button class="cm-mi" data-acao="mn-novo-n" data-n="10">10 produtos</button></div>' : '') + '</div>' + erros + '</div>' +
+      '<div class="mn-rod"><button class="btn sec" data-acao="mn-cancelar" data-t="mn-cancelar">Cancelar</button><button class="btn" data-acao="mn-carregar" data-t="mn-carregar"' + (nP ? '' : ' disabled') + '>Carregar produtos</button></div>' +
+      '<p class="conferido">✓ Tabela, colunas, dicas (ⓘ), menus e a janela de sair conferidos com a tela real em 20/10/2026 (PT e ES). ⚠ O seletor de imagem, o aviso de campo faltando e o status logo após carregar não foram vistos (a conferir).</p></div></main></div>' + foto + sair;
+  }
+  function mnCarrega(c) {
+    MN.erros = mnErros(); if (MN.erros.length) { mnGrava(); render(); return }
+    MN.linhas.filter(mnTem).forEach(function (l, k) {
+      var id = l.id.trim() || ('manual_' + Date.now() + '_' + k);
+      c.itens = c.itens.filter(function (x) { return x.id !== id });
+      c.itens.unshift({ id: id, grupo: '', nome: l.titulo.trim(), preco: mnNum(l.preco), disp: l.disp ? 1 : 0, moeda: 'BRL', manual: true, img: l.img, marca: l.marca.trim(), semId: !l.id.trim() });
+    });
+    MN = mnIni(); mnGrava(); grava(); vai('cat/' + c.id + '/produtos');
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest('[data-acao^="mn-"]'); if (!a || a.disabled) return;
+    var ac = a.getAttribute('data-acao'), i = +a.getAttribute('data-i'), c = cat(rota().id);
+    if (ac !== 'mn-linha-menu') MN.menuLinha = -1; if (ac !== 'mn-novo-menu') MN.menuNovo = false;
+    if (ac === 'mn-novo') MN.linhas.push(mnLinha());
+    else if (ac === 'mn-novo-menu') MN.menuNovo = !MN.menuNovo;
+    else if (ac === 'mn-novo-n') { for (var n = +a.getAttribute('data-n'); n > 0; n--) MN.linhas.push(mnLinha()) }
+    else if (ac === 'mn-del') { MN.linhas.splice(i, 1); if (!MN.linhas.length) MN.linhas.push(mnLinha()) }
+    else if (ac === 'mn-linha-menu') MN.menuLinha = MN.menuLinha === i ? -1 : i;
+    else if (ac === 'mn-duplicar') MN.linhas.splice(i + 1, 0, JSON.parse(JSON.stringify(MN.linhas[i])));
+    else if (ac === 'mn-foto') MN.foto = i;
+    else if (ac === 'mn-foto-ok') { if (MN.linhas[MN.foto]) MN.linhas[MN.foto].img = a.getAttribute('data-f'); MN.foto = -1 }
+    else if (ac === 'mn-foto-fecha') MN.foto = -1;
+    else if (ac === 'mn-cancelar') { if (MN.linhas.some(mnTem)) MN.sair = true; else { MN = mnIni(); mnGrava(); vai('cat/' + c.id + '/produtos'); return } }
+    else if (ac === 'mn-sair-nao') MN.sair = false;
+    else if (ac === 'mn-sair-sim') { MN = mnIni(); mnGrava(); vai('cat/' + c.id + '/produtos'); return }
+    else if (ac === 'mn-carregar') { if (c) mnCarrega(c); return }
+    else if (ac === 'mn-menu') { PX.menuProd = !PX.menuProd; render(); return }
+    else if (ac === 'mn-pixel') { PX.menuProd = false; PX.jan = true; vai('cat/' + c.id + '/fontes'); return }
+    else if (ac === 'mn-abrir') { PX.menuProd = false; PX.menu = false; MN = mnIni(); mnGrava(); vai('cat/' + c.id + '/manual'); return }
+    if (MN.erros) MN.erros = mnErros();
+    mnGrava(); render();
+  });
+  function mnCampo(t) {
+    var i = +t.getAttribute('data-mn'), k = t.getAttribute('data-c'), l = MN.linhas[i]; if (!l) return;
+    l[k] = t.type === 'checkbox' ? t.checked : t.value;
+    var cx = t.parentNode && t.parentNode.querySelector('small'); if (cx && /\/\d+$/.test(cx.textContent)) cx.textContent = t.value.length + cx.textContent.replace(/^\d+/, '');
+    if (MN.erros) MN.erros = mnErros();
+    mnGrava();
+    var nP = MN.linhas.filter(mnTem).length, ct = $('[data-t=mn-contador]'), b = $('[data-t=mn-carregar]');
+    if (ct) ct.innerHTML = '<span><b>' + nP + '</b><small>' + (nP === 1 ? 'Produto' : 'Produtos') + '</small></span><span><b>' + nP + '</b><small>' + (nP === 1 ? 'Variante' : 'Variantes') + '</small></span>';
+    if (b) b.disabled = !nP;
+    if (t.type === 'checkbox' || t.tagName === 'SELECT') render();
+  }
+  document.addEventListener('input', function (ev) { var t = ev.target; if (t.hasAttribute && t.hasAttribute('data-mn') && t.type !== 'checkbox' && t.tagName !== 'SELECT') mnCampo(t) });
+  document.addEventListener('change', function (ev) {
+    var t = ev.target; if (!(t.hasAttribute && t.hasAttribute('data-mn'))) return;
+    if (t.getAttribute('data-c') === 'preco' || t.getAttribute('data-c') === 'promoV') { var n = mnNum(t.value); if (t.value.trim()) t.value = mnFmt(n) }   // a tela real formata o preço (R$ 0,00)
+    mnCampo(t);
+  });
+  window.SIMCM_MN = { estado: function () { return MN }, zera: function () { MN = mnIni(); mnGrava() }, set: function (i, o) { var l = MN.linhas[i] || (MN.linhas[i] = mnLinha()); for (var k in o) l[k] = o[k]; mnGrava() }, menu: function (on) { PX.menuProd = !!on; PX.menu = false; render() }, linha: mnLinha };
+
   var ED = false;
   var TELAS = {
     inicio: function () { return inicio() },
@@ -305,6 +435,7 @@
     cat: function () {
       var r = rota(), c = cat(r.id); if (!c) return inicio();
       if (r.aba === 'planilha') return telaPlanilha();
+      if (r.aba === 'manual') return telaManual(c);
       if (r.aba === 'carregar') return telaCarregar(c, r);
       if (r.aba === 'feed') return telaFeed(c, r);
       var t = r.aba === 'produtos' ? telaProdutos(c, r) : r.aba === 'conjuntos' ? telaConjuntos(c, r) : r.aba === 'fontes' ? telaFontes(c, r) : r.aba === 'eventos' ? telaEventos(c, r) : r.aba === 'problemas' ? telaProblemas(c, r) : r.aba === 'config' ? telaConfig(c, r) : visao(c, r);
@@ -367,7 +498,7 @@
     else return;
     window.__simCm = { S: S, W: W };
   });
-  window.addEventListener('hashchange', function () { ED = false; render() });
+  window.addEventListener('hashchange', function () { ED = false; PX.menuProd = false; render() });
   function render() { var r = rota(); if (/^novo/.test(r.tela) === false && r.tela !== 'inicio' && r.tela !== 'confirmar' && r.tela !== 'cat') r.tela = 'inicio'; $('#app').innerHTML = (TELAS[r.tela] || TELAS.inicio)(); window.__simCm = { S: S, W: W } }
   window.SIMCM = { vai: vai, estado: function () { return { S: S, W: W } }, exemplo: function () { if (!S.cats.length) { S.cats.push(exemplo()); grava() } return S.cats[0].id }, limpa: function () { S = { cats: [] }; grava() }, wiz: function (o) { for (var k in o) W[k] = o[k] }, casoProblemas: casoProblemas, abreProb: function (id) { PB.aberto = id; render() }, planZera: planZera, plan: plan, menuFonte: function (on) { PX.menu = !!on; render() }, validar: validar, planInicial: planInicial, plSet: function (o) { var P = plan(); for (var k in o) P[k] = o[k]; grava(); render() }, sessao: function () { sessaoNova(); render() } };
   render();
@@ -483,5 +614,46 @@
     { alvo: '[data-t=btn-voltar-cm]', clique: true, garante: plPronta(6, false), tit: T('Voltar ao feed', 'Volver al feed'), txt: T('Volte ao Gerenciador de Comércio.', 'Vuelve al Administrador de ventas.') },
     { alvo: '[data-t=btn-recarregar]', clique: true, garante: function () { plPronta(6, false)(); rotaCat('feed')() }, tit: T('Recarregar', 'Volver a subir'), txt: T('Clique em Recarregar arquivo de dados: a Meta lê a planilha corrigida numa nova sessão.', 'Haz clic en Volver a subir el archivo de datos: Meta lee la planilla corregida en una nueva sesión.') },
     { alvo: '[data-t=feed-ok], [data-t=resumo-upload]', fim: true, semVolta: true, garante: function () { var P = SIMCM.plan(); if (!P.sessoes[0] || P.sessoes[0].falha) { plPronta(6, false)(); SIMCM.sessao() } rotaCat('feed')() }, tit: T('Planilha aprovada 🎉', '¡Planilla aprobada! 🎉'), txt: T('Nova sessão: 6 atualizados ou adicionados, 0 falhas, 0 problemas. Para conferir uma planilha: cabeçalho em inglês sem mudanças, sem linhas de exemplo, um id único por produto, price como 54.90 BRL, availability e condition só com os valores aceitos, links com https://, brand (ou gtin/mpn) e nada só em maiúsculas. Depois de carregar, leia o Resumo do upload e o relatório de problemas, corrija na planilha e recarregue. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Nueva sesión: 6 actualizados o agregados, 0 errores, 0 problemas. Para revisar una planilla: encabezado en inglés sin cambios, sin filas de ejemplo, un id único por producto, price como 54.90 BRL, availability y condition solo con los valores aceptados, enlaces con https://, brand (o gtin/mpn) y nada solo en mayúsculas. Después de subir, lee el Resumen de la carga y el informe de problemas, corrige en la planilla y vuelve a subir. Haz clic en Terminar. Después, explora a gusto: el botón ↩ de la esquina te lleva de vuelta.') }
+  ];
+  /* Entrada manual: a Marina cadastra à mão o Kit Presente (produto de temporada, fora da planilha) */
+  var KIT = [['img', 'kit'], ['titulo', 'Kit Presente Caneca + Ecobag'], ['desc', 'Caneca azul e Ecobag Folha numa caixa de presente.'], ['link', 'https://lojinha.exemplo.com.br/produto-kit_01.html'], ['preco', '79,90'], ['marca', 'Lojinha da Marina'], ['id', 'KIT_01']];
+  function mnL() { var M = window.SIMCM_MN && SIMCM_MN.estado(); return (M && M.linhas[0]) || {} }
+  function mnAte(n) {   // abre a entrada manual com os n primeiros campos do Kit já preenchidos (para quem volta, recarrega ou pula)
+    return function () {
+      rotaCat('manual')(); var l = mnL(), o = {};
+      KIT.slice(0, n).forEach(function (f) { if (String(l[f[0]] || '') !== f[1]) o[f[0]] = f[1] });
+      var M = SIMCM_MN.estado(); if (Object.keys(o).length || M.foto >= 0 || M.sair) { SIMCM_MN.set(0, o); M.foto = -1; M.sair = false; render() }
+    };
+  }
+  function mnOk(k, v) { function n(s) { return String(s || '').trim().replace(/\.$/, '') } return function () { var x = n(mnL()[k]); return k === 'preco' ? Math.abs(parseFloat(x.replace(/\./g, '').replace(',', '.')) - 79.9) < 0.001 : x === n(v) } }   // o ponto final não conta
+  TOURS['entrada-manual'] = [
+    { alvo: '[data-t=btn-adicionar-prod]', clique: true, antes: function () { SIMCM.exemplo(); SIMCM_MN.zera() }, garante: function () { SIMCM.exemplo(); rotaCat('produtos')(); SIMCM_MN.menu(false) },
+      tit: T('Um produto de temporada', 'Un producto de temporada'), txt: T('A Marina vai vender um Kit Presente só neste mês: uma caneca e uma ecobag numa caixa. É um produto só, e ele não está na planilha. Para poucos produtos (a Meta recomenda para menos de 50), o jeito mais fácil é a Entrada manual. Em Produtos, clique em Adicionar.', 'Marina va a vender un Kit Regalo solo este mes: una taza y una ecobag en una caja. Es un solo producto, y no está en la planilla. Para pocos productos (Meta lo recomienda para menos de 50), la forma más fácil es la Entrada manual. En Productos, haz clic en Agregar.') },
+    { alvo: '[data-t=op-manual]', clique: true, garante: function () { rotaCat('produtos')(); SIMCM_MN.menu(true) },
+      tit: T('Entrada manual', 'Entrada manual'), txt: T('O menu mostra todas as formas de pôr produtos no catálogo. Clique em Entrada manual: “Adicione um produto de cada vez preenchendo um formulário”.', 'El menú muestra todas las formas de poner productos en el catálogo. Haz clic en Entrada manual: “Llena un formulario para agregar de a un producto por vez”.') },
+    { alvo: '[data-t=mn-tabela]', garante: mnAte(0),
+      tit: T('Uma linha = um produto', 'Una fila = un producto'), txt: T('É uma tabela: cada linha é um produto, e as colunas são os dados. O que não diz “Opcional” é obrigatório. Passe o mouse no ⓘ de cada coluna para ler a dica da Meta. Clique em Próximo.', 'Es una tabla: cada fila es un producto, y las columnas son los datos. Lo que no dice “Opcional” es obligatorio. Pasa el mouse por el ⓘ de cada columna para leer la pista de Meta. Haz clic en Siguiente.') },
+    { alvo: '[data-t=mn-img-0]', clique: true, garante: mnAte(0),
+      tit: T('1 · a imagem', '1 · la imagen'), txt: T('Todo produto precisa de pelo menos uma imagem (no mínimo 500 x 500 pixels, até 8 MB, JPEG ou PNG). Clique no quadradinho de Imagens e vídeos.', 'Todo producto necesita al menos una imagen (mínimo 500 x 500 píxeles, hasta 8 MB, JPEG o PNG). Haz clic en el cuadrito de Imágenes y videos.') },
+    { alvo: '[data-t=mn-foto-kit]', clique: true, garante: function () { mnAte(0)(); if (!mnL().img) { SIMCM_MN.estado().foto = 0; render() } },
+      tit: T('Escolher a foto', 'Elegir la foto'), txt: T('Escolha a foto do Kit Presente: a caixa com a caneca e a ecobag. Clique nela.', 'Elige la foto del Kit Regalo: la caja con la taza y la ecobag. Haz clic en ella.') },
+    { alvo: '[data-t=mn-titulo-0]', garante: mnAte(1), cond: mnOk('titulo', 'Kit Presente Caneca + Ecobag'),
+      tit: T('2 · o título', '2 · el título'), txt: T('O título é o nome que aparece no anúncio (até 200 caracteres). Escreva Kit Presente Caneca + Ecobag e clique em Próximo.', 'El título es el nombre que aparece en el anuncio (hasta 200 caracteres). Escribe Kit Presente Caneca + Ecobag y haz clic en Siguiente.'), dica: T('Digite “Kit Presente Caneca + Ecobag”.', 'Escribe “Kit Presente Caneca + Ecobag”.') },
+    { alvo: '[data-t=mn-desc-0]', garante: mnAte(2), cond: mnOk('desc', 'Caneca azul e Ecobag Folha numa caixa de presente.'),
+      tit: T('3 · a descrição', '3 · la descripción'), txt: T('A descrição conta o que vem no produto. Escreva Caneca azul e Ecobag Folha numa caixa de presente. e clique em Próximo.', 'La descripción cuenta qué trae el producto. Escribe Caneca azul e Ecobag Folha numa caixa de presente. y haz clic en Siguiente.'), dica: T('Digite “Caneca azul e Ecobag Folha numa caixa de presente.”.', 'Escribe “Caneca azul e Ecobag Folha numa caixa de presente.”.') },
+    { alvo: '[data-t=mn-link-0]', garante: mnAte(3), cond: mnOk('link', 'https://lojinha.exemplo.com.br/produto-kit_01.html'),
+      tit: T('4 · o link do site', '4 · el enlace del sitio'), txt: T('O link leva a pessoa direto à página DESTE produto (não à página inicial), começando com https://. Escreva https://lojinha.exemplo.com.br/produto-kit_01.html e clique em Próximo.', 'El enlace lleva a la persona directo a la página de ESTE producto (no a la página de inicio), empezando con https://. Escribe https://lojinha.exemplo.com.br/produto-kit_01.html y haz clic en Siguiente.'), dica: T('Digite “https://lojinha.exemplo.com.br/produto-kit_01.html”.', 'Escribe “https://lojinha.exemplo.com.br/produto-kit_01.html”.') },
+    { alvo: '[data-t=mn-preco-0]', garante: mnAte(4), cond: mnOk('preco', '79,90'),
+      tit: T('5 · o preço', '5 · el precio'), txt: T('Aqui é diferente da planilha: a moeda (BRL) já está escolhida ao lado e o campo aceita o preço do jeito brasileiro. Escreva 79,90 e clique em Próximo. O valor tem que ser maior que 0.', 'Aquí es distinto de la planilla: la moneda (BRL) ya está elegida al lado y el campo acepta el precio con coma. Escribe 79,90 y haz clic en Siguiente. El valor debe ser mayor que 0.'), dica: T('Digite “79,90”.', 'Escribe “79,90”.') },
+    { alvo: '[data-t=mn-cond-0]', garante: mnAte(5),
+      tit: T('O que já vem pronto', 'Lo que ya viene listo'), txt: T('Condição já vem como Novo, Disponibilidade como Em estoque e Status como Mostrar (produto visível). Preço promocional e Categoria são opcionais. Para o Kit, está tudo certo assim. Clique em Próximo.', 'Condición ya viene como Nuevo, Disponibilidad como Disponible y Estado como Mostrar (producto visible). Precio de oferta y Categoría son opcionales. Para el Kit, todo está bien así. Haz clic en Siguiente.') },
+    { alvo: '[data-t=mn-marca-0]', garante: mnAte(5), cond: mnOk('marca', 'Lojinha da Marina'),
+      tit: T('6 · a marca', '6 · la marca'), txt: T('Diz “Opcional”, mas a dica da Meta avisa: a marca é usada nos anúncios dinâmicos. Escreva Lojinha da Marina e clique em Próximo.', 'Dice “Opcional”, pero la pista de Meta avisa: la marca se usa en los anuncios dinámicos. Escribe Lojinha da Marina y haz clic en Siguiente.'), dica: T('Digite “Lojinha da Marina”.', 'Escribe “Lojinha da Marina”.') },
+    { alvo: '[data-t=mn-id-0]', garante: mnAte(6), cond: mnOk('id', 'KIT_01'),
+      tit: T('7 · a identificação do conteúdo', '7 · el ID de contenido'), txt: T('Também diz “Opcional”, mas é a mais importante para anúncios: tem que ser IGUAL ao content_id que o Pixel manda na página do Kit (aula 04 do Catálogo). A página do Kit manda KIT_01: escreva KIT_01 e clique em Próximo.', 'También dice “Opcional”, pero es lo más importante para anuncios: debe ser IGUAL al content_id que manda el píxel en la página del Kit (clase 04 del Catálogo). La página del Kit manda KIT_01: escribe KIT_01 y haz clic en Siguiente.'), dica: T('Digite “KIT_01”.', 'Escribe “KIT_01”.') },
+    { alvo: '[data-t=mn-carregar]', clique: true, livre: '[data-mn], [data-acao^="mn-"]', valida: function () { return KIT.every(function (f) { return mnOk(f[0], f[1])() }) }, erro: T('Ainda falta algo: confira imagem, título, descrição, link, preço, marca e KIT_01. 🙂', 'Todavía falta algo: revisa imagen, título, descripción, enlace, precio, marca y KIT_01. 🙂'), garante: mnAte(7),
+      tit: T('Carregar produtos', 'Subir productos'), txt: T('Tudo preenchido. Clique em Carregar produtos.', 'Todo completo. Haz clic en Subir productos.') },
+    { alvo: '[data-t=prod-kit_01]', fim: true, semVolta: true, garante: function () { var c = cat(cid()); if (c && !c.itens.some(function (x) { return x.id === 'KIT_01' })) { c.itens.unshift({ id: 'KIT_01', grupo: '', nome: 'Kit Presente Caneca + Ecobag', preco: 79.9, disp: 1, moeda: 'BRL', manual: true, img: 'kit', marca: 'Lojinha da Marina' }); grava() } SIMCM_MN.zera(); rotaCat('produtos')() },
+      tit: T('Kit no catálogo! 🎉', '¡Kit en el catálogo! 🎉'), txt: T('O Kit Presente aparece em Produtos com a Identificação do conteúdo KIT_01. Regra de ouro: produto cadastrado à mão se edita à mão, aqui em Produtos; produto que veio da planilha se corrige na planilha. (O status logo depois de carregar não foi visto na tela real: a conferir.) Clique em Concluir.', 'El Kit Regalo aparece en Productos con el ID de contenido KIT_01. Regla de oro: producto cargado a mano se edita a mano, aquí en Productos; producto que vino de la planilla se corrige en la planilla. (El estado justo después de subir no se vio en la pantalla real: por confirmar.) Haz clic en Terminar.') }
   ];
 })();
