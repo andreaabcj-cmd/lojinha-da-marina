@@ -19,6 +19,7 @@
     'produto-sem-preco.html': { id: 'BONE_01', t: 'Boné Azul', d: 'Boné azul ajustável.', p: '', av: 'in stock', img: 'assets/img/bone_01.png', og: true, ld: true, falta: ['price'] },
     'produto-sem-id.html': { id: '', t: 'Caneca amarela', d: 'Caneca de cerâmica amarela, 300 ml.', p: '49.90', av: 'in stock', img: 'assets/img/caneca_02.png', og: true, ld: true, falta: ['id'] },
     'produto-preco-texto.html': { id: 'CANECA_03', t: 'Caneca Boas Ideias', d: 'Caneca com frases bonitas.', p: 'R$ 54,90', av: 'in stock', img: 'assets/img/caneca_03.png', og: true, ld: true, falta: ['price-formato'] },
+    'produto-ecobag_03.html': { dyn: true },   // lida do Editor de arquivos do site (md-pagina.js): é a página que o aluno configura
     'carrinho.html': { sem: true },
     'index.html': { sem: true }
   };
@@ -36,23 +37,63 @@
     if (!m) return { erro: true, motivo: 'Este endereço não é do site de mentirinha do simulador (a ferramenta real lê qualquer página pública da internet)' };
     var pg = PAG[m[1]]; if (!pg) return { erro: true, motivo: 'Página não encontrada no site de mentirinha' };
     if (pg.sem) return { erro: true, motivo: 'A página não traz microdados de produto' };
+    if (pg.dyn) return analisaDyn();
     if (pg.falta && pg.falta.length) return { erro: true, motivo: 'Falta ou está errado: ' + pg.falta.map(function (f) { return f === 'price-formato' ? 'o formato do preço' : f === 'id' ? 'o id' : 'o preço' }).join(', '), falta: pg.falta, pg: pg };
     return { ok: true, pg: pg };
   }
+  /* a página configurada pelo aluno: lê as tags que estão salvas no Editor de arquivos do site */
+  var NOME = { id: 'o id', title: 'o título (title)', description: 'a descrição (description)', link: 'o link', image_link: 'a imagem (image_link)', brand: 'a marca (brand)', availability: 'a disponibilidade (availability)', condition: 'a condição (condition)', price: 'o preço', currency: 'a moeda', json: 'o bloco JSON-LD', tags: 'as tags de produto' };
+  var EXPL = {
+    'id-falta': 'falta o id (product:retailer_item_id ou productID): é a Identificação do conteúdo do produto no catálogo',
+    'title-falta': 'falta o título (og:title ou name)', 'description-falta': 'falta a descrição (og:description ou description)',
+    'link-falta': 'falta o link da página (og:url ou url)', 'link-url': 'o link precisa ser o endereço completo da página, começando com https://',
+    'image_link-falta': 'falta a imagem (og:image ou image)', 'image_link-url': 'a imagem precisa ser um endereço completo, começando com https://',
+    'brand-falta': 'falta a marca (product:brand ou brand)',
+    'availability-falta': 'falta a disponibilidade (product:availability ou availability)', 'availability-valor': 'a disponibilidade só aceita valores em inglês: in stock ou out of stock (também preorder, available for order e discontinued); “em estoque” não é entendido',
+    'condition-falta': 'falta a condição (product:condition ou itemCondition)', 'condition-valor': 'a condição aceita new, refurbished ou used, em inglês',
+    'price-falta': 'falta o preço (product:price:amount ou price)', 'price-formato': 'o preço é só o número, com ponto nos centavos: 39.90 (sem R$ e sem vírgula)',
+    'currency-falta': 'falta a moeda (product:price:currency ou priceCurrency)', 'currency-moeda': 'a moeda é o código de 3 letras maiúsculas: BRL (não “R$” nem “reais”)',
+    'json-sintaxe': 'o bloco JSON-LD tem um erro de escrita (vírgula, aspas ou chave faltando) e não pôde ser lido',
+    'tags-falta': 'a página não tem tags de produto (nem OpenGraph nem JSON-LD)'
+  };
+  var AVISO = { 'id-catalogo': 'o id desta página não é o do catálogo: lá a Ecobag é ECOBAG_03. Com outro id, a Meta não liga a página ao produto do catálogo nem aos eventos do Pixel', 'exemplo-exemplo': 'ainda há valores do exemplo da Meta (como fb_tshirts ou facebook_tshirt_001): troque pelos da Ecobag ou apague a linha' };
+  function analisaDyn() {
+    if (!window.MDPAG) return { erro: true, motivo: 'Página não encontrada no site de mentirinha' };
+    var v = MDPAG.valida(), c = v.og || v.ld || {}, vistos = {};
+    var pg = { dyn: true, id: c.id, t: c.title, d: c.description, og: !!v.og, ld: !!v.ld, vOg: v.og, vLd: v.ld };
+    var avisos = v.avisos.map(function (a) { return AVISO[a.campo + '-' + a.tipo] }).filter(function (x) { if (!x || vistos[x]) return false; vistos[x] = 1; return true });
+    if (v.problemas.length) {
+      var ex = [], nomes = [], vx = {};
+      v.problemas.forEach(function (q) { var e = EXPL[q.campo + '-' + q.tipo]; if (e && !vx[e]) { vx[e] = 1; ex.push(e); nomes.push(NOME[q.campo]) } });
+      return { erro: true, dyn: true, motivo: 'Falta ou está errado:', nomes: nomes, expl: ex, avisos: avisos, pg: pg };
+    }
+    return { ok: true, pg: pg, avisos: avisos };
+  }
+  function tabelaDyn(pg, tipo) {
+    var c = tipo === 'og' ? pg.vOg : pg.vLd, L = [['id', c.id], ['title', c.title], ['description', c.description], ['price', c.amount + ' ' + c.currency], ['link', c.link], ['image_link', c.image_link], ['availability', c.availability], ['condition', c.condition], ['brand', c.brand]];
+    if (c.item_group_id) L.push(['item_group_id', c.item_group_id]);
+    return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td data-sem-traduzir="1">' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
+  }
+  function avisosDyn(r) { return r.avisos && r.avisos.length ? '<div class="ga-aviso" data-t="md-avisos"><b>Dica do simulador:</b> ' + r.avisos.map(function (a) { return '<span>' + esc(a) + '</span>' }).join(' · ') + '</div>' : '' }
   function tabela(pg, tipo) {
+    if (pg.dyn) return tabelaDyn(pg, tipo);
     var L = [['id', pg.id], ['title', pg.t], ['description', pg.d], ['price', pg.p + ' BRL'], ['link', BASE + (Object.keys(PAG).filter(function (k) { return PAG[k] === pg })[0] || '')], ['image_link', BASE + pg.img], ['availability', pg.av]];
     if (tipo === 'og') { L.push(['condition', 'new']); L.push(['brand', 'Lojinha da Marina']); L.push(['additional_image_link', BASE + pg.img]) } else L.push(['brand', 'Lojinha da Marina']);
     return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td>' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
   }
   function resultado() {
     var r = S.res; if (!r) return '';
+    if (r.erro && r.dyn) {
+      return '<div class="md-res erro" data-t="resultado-erro"><h3>Erros</h3><p>Os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas.</p><div class="md-linha"><b>Erros</b><span>Falha na validação de dados.</span></div>' +
+        '<div class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span><ul>' + r.expl.map(function (e) { return '<li><span>' + esc(e) + '</span></li>' }).join('') + '</ul><small>(A tela real mostra só “Falha na validação de dados”; esta dica é do simulador, para você aprender a achar a causa: a conferir.)</small></div>' + avisosDyn(r) + '</div>';
+    }
     if (r.erro || r.falta) {
       return '<div class="md-res erro" data-t="resultado-erro"><h3>Erros</h3><p>Os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas.</p><div class="md-linha"><b>Erros</b><span>Falha na validação de dados.</span></div>' +
         '<p class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span>' + (r.falta ? '. <span>' + r.falta.map(function (f) { return AJUDA[f] }).filter(Boolean).join('</span>; <span>') + '</span>.' : '') + ' <small>(A tela real mostra só “Falha na validação de dados”; esta dica é do simulador, para você aprender a achar a causa: a conferir.)</small></p></div>';
     }
     var pg = r.pg;
     return '<div class="md-res" data-t="resultado-ok"><h3>Prévia</h3><p>É assim que os microdados são configurados no seu site. Corrija os erros abaixo para que todos os produtos no seu site possam ser adicionados automaticamente ao seu catálogo.</p>' +
-      (pg.og ? '<h4>OpenGraph</h4>' + tabela(pg, 'og') : '') + (pg.ld ? '<h4>JSON-LD</h4>' + tabela(pg, 'ld') : '') + '<p class="md-ok" data-t="parabens">Parabéns! Seus microdados parecem ótimos!</p></div>';
+      (pg.og ? '<h4>OpenGraph</h4>' + tabela(pg, 'og') : '') + (pg.ld ? '<h4>JSON-LD</h4>' + tabela(pg, 'ld') : '') + '<p class="md-ok" data-t="parabens">Parabéns! Seus microdados parecem ótimos!</p>' + (pg.dyn ? avisosDyn(r) : '') + '</div>';
   }
   function pagina() {
     var exemplos = Object.keys(PAG).map(function (k) { return '<option value="' + BASE + k + '">' + k + '</option>' }).join('');

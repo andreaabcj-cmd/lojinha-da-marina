@@ -313,7 +313,8 @@
     { m: 'microdados', itens: [
       ['verificar-microdados', 'meta-microdados.html?zerar=1', 'microdados', '02', { pt: 'Como verificar uma página de produto no Microdata Debugger', es: 'Cómo verificar una página de producto en el Microdata Debugger' }],
       ['ler-campos', 'meta-microdados.html?zerar=1', 'microdados', '03', { pt: 'Como ler os campos da Prévia (id, preço, estoque)', es: 'Cómo leer los campos de la vista previa (id, precio, stock)' }],
-      ['erro-microdados', 'meta-microdados.html?zerar=1', 'microdados', '04', { pt: 'Como achar a causa de “Falha na validação de dados”', es: 'Cómo encontrar la causa de “Error al validar los datos”' }] ] },
+      ['erro-microdados', 'meta-microdados.html?zerar=1', 'microdados', '04', { pt: 'Como achar a causa de “Falha na validação de dados”', es: 'Cómo encontrar la causa de “Error al validar los datos”' }],
+      ['configurar-microdados', 'arquivos-site.html?arq=ecobag&mdzerar=1', 'microdados', '05', { pt: 'Como configurar as tags de microdados numa página de produto', es: 'Cómo configurar las etiquetas de microdatos en una página de producto' }] ] },
     { m: 'catalogo', itens: [
       ['criar-catalogo', 'meta-catalogo.html?zerar=1', 'catalogo', '02', { pt: 'Como criar um catálogo no Gerenciador de Comércio', es: 'Cómo crear un catálogo en el Administrador de ventas' }],
       ['adicionar-produtos', 'meta-catalogo.html?zerar=1', 'catalogo', '03', { pt: 'Como carregar os produtos por arquivo (feed)', es: 'Cómo subir los productos por archivo (feed)' }],

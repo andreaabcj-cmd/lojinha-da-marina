@@ -157,6 +157,8 @@ window.BUSCA_FRASES = (function () {
       'campos de microdatos | id title price availability | campos obligatorios'),
     'microdados/04': F('falha na validação de dados | erro no microdata debugger | microdados com erro | página de produto com erro',
       'error al validar los datos | error en el microdata debugger | microdatos con error'),
+    'microdados/05': F('configurar microdados | como colocar as tags de produto no site | que código o desenvolvedor coloca para o catálogo | og:title product:price | tags opengraph de produto | json-ld de produto | schema product | copiei o exemplo da meta e não funciona | retailer_item_id | item_group_id | product:availability',
+      'configurar microdatos | cómo poner las etiquetas de producto en el sitio | qué código pone el desarrollador | etiquetas opengraph de producto | json-ld de producto | copié el ejemplo de meta y no funciona'),
     'm:microdados': F('microdados | microdata', 'microdatos'),
 
     /* ---------- Relatórios ---------- */

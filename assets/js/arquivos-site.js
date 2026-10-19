@@ -13,15 +13,18 @@
   var ARQ = {
     cabecalho: { nome: 'cabecalho.html', pasta: 'public_html/includes/', campo: 'cabecalho', desc: T('Trecho incluído no <head> de TODAS as páginas do site.', 'Fragmento incluido en el <head> de TODAS las páginas del sitio.'), dica: '<!-- ' + T('Cole aqui o código base do Pixel', 'Pega aquí el código base del píxel') + ' -->' },
     obrigado: { nome: 'obrigado-fim.html', pasta: 'public_html/includes/', campo: 'obrigado', desc: T('Trecho incluído no fim da página de pedido concluído (só nela).', 'Fragmento incluido al final de la página de pedido completado (solo en ella).'), dica: '<!-- ' + T('Cole aqui o código do evento Purchase', 'Pega aquí el código del evento Purchase') + ' -->' }
+    ,ecobag: { nome: 'produto-ecobag_03.html', pasta: 'public_html/', md: true, desc: T('O <head> da página de produto da Ecobag Folha. Aqui vão as tags de microdados (OpenGraph ou JSON-LD) que o catálogo da Meta lê; confira o resultado no Microdata Debugger.', 'El <head> de la página de producto de la Ecobag Folha. Aquí van las etiquetas de microdatos (OpenGraph o JSON-LD) que lee el catálogo de Meta; revisa el resultado en el Microdata Debugger.'), dica: '<!-- ' + T('Tags de microdados do produto', 'Etiquetas de microdatos del producto') + ' -->' }
   };
   var OUTROS = [['produto.html', 'public_html/'], ['carrinho.html', 'public_html/'], ['checkout.html', 'public_html/'], ['loja.css', 'public_html/assets/css/'], ['loja.js', 'public_html/assets/js/']];
-  var atual = 'cabecalho', rascunho = {}, salvoEm = null, msg = '';
-  function texto(k) { if (rascunho[k] != null) return rascunho[k]; return SITE.get().proprio[ARQ[k].campo] || '' }
+  var Q0 = new URLSearchParams(location.search); if (Q0.get('mdzerar') && window.MDPAG) { MDPAG.zera(); try { sessionStorage.removeItem('ae.rasc.ecobag') } catch (x) { } }   // prática dos microdados começa com o exemplo colado pelo desenvolvedor
+  var atual = (Q0.get('arq') === 'ecobag' && window.MDPAG) ? 'ecobag' : 'cabecalho', rascunho = (function () { try { var r = sessionStorage.getItem('ae.rasc.ecobag'); return r != null ? { ecobag: r } : {} } catch (x) { return {} } })(), salvoEm = null, msg = '';
+  function texto(k) { if (rascunho[k] != null) return rascunho[k]; if (ARQ[k].md) return window.MDPAG ? MDPAG.get() : ''; return SITE.get().proprio[ARQ[k].campo] || '' }
   function render() {
     var s = SITE.get(), a = ARQ[atual], t = texto(atual), linhas = Math.max(12, t.split('\n').length + 2), n = '';
     for (var i = 1; i <= linhas; i++) n += i + '\n';
-    var arvore = '<div class="ae-pasta">📁 public_html</div><div class="ae-pasta ae-n1">📁 includes</div>' + Object.keys(ARQ).map(function (k) {
+    var arvore = '<div class="ae-pasta">📁 public_html</div><div class="ae-pasta ae-n1">📁 includes</div>' + Object.keys(ARQ).filter(function (k) { return !ARQ[k].md }).map(function (k) {
       return '<button class="ae-arq ae-n2' + (atual === k ? ' on' : '') + '" data-f="' + k + '" data-t="arq-' + k + '">📄 ' + ARQ[k].nome + (rascunho[k] != null ? ' ●' : '') + '</button>' }).join('') +
+      Object.keys(ARQ).filter(function (k) { return ARQ[k].md && window.MDPAG }).map(function (k) { return '<button class="ae-arq ae-n1' + (atual === k ? ' on' : '') + '" data-f="' + k + '" data-t="arq-' + k + '">📄 ' + ARQ[k].nome + (rascunho[k] != null ? ' ●' : '') + '</button>' }).join('') +
       OUTROS.map(function (o) { return '<div class="ae-arq off ae-n1" title="' + T('Somente leitura neste treino', 'Solo lectura en este entrenamiento') + '">📄 ' + o[0] + '</div>' }).join('');
     $('#app').innerHTML = '<div data-sem-traduzir="1"><div class="ae-topo"><b>' + T('Editor de código', 'Editor de código') + '</b> · ' + T('Hospedagem do site', 'Hosting del sitio') + ' <span class="ae-site">lojinhadamarina.exemplo</span></div>' +
       '<div class="ae-corpo"><aside class="ae-arvore" data-t="arvore">' + arvore + '</aside><main class="ae-main">' +
@@ -36,11 +39,11 @@
     var b = e.target.closest('[data-f]'); if (b) { atual = b.getAttribute('data-f'); msg = ''; render(); return }
     b = e.target.closest('[data-ac]'); if (!b) return;
     if (b.getAttribute('data-ac') === 'salvar') {
-      var s = SITE.get(), k = atual; if (rascunho[k] != null) { s.proprio[ARQ[k].campo] = rascunho[k]; delete rascunho[k]; SITE.set(s) }
+      var s = SITE.get(), k = atual; if (rascunho[k] != null) { if (ARQ[k].md) { MDPAG.set(rascunho[k]); try { sessionStorage.removeItem('ae.rasc.ecobag') } catch (x) { } } else { s.proprio[ARQ[k].campo] = rascunho[k]; SITE.set(s) } delete rascunho[k] }
       var d = new Date(); salvoEm = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); msg = ''; render();
     } else if (b.getAttribute('data-ac') === 'recarregar') { delete rascunho[atual]; msg = ''; render() }
   });
-  document.addEventListener('input', function (e) { if (e.target.id === 'aeTexto') { rascunho[atual] = e.target.value; var st = $('#aeStatus'); if (st) st.textContent = T('● Alterações não salvas.', '● Cambios sin guardar.'); var n = $('.ae-num'); if (n) { var l = Math.max(12, e.target.value.split('\n').length + 2), x = ''; for (var i = 1; i <= l; i++) x += i + '\n'; n.textContent = x } var tr = document.querySelector('[data-f=' + atual + ']'); if (tr && !/●/.test(tr.textContent)) tr.textContent += ' ●' } });
+  document.addEventListener('input', function (e) { if (e.target.id === 'aeTexto') { rascunho[atual] = e.target.value; if (ARQ[atual].md) try { sessionStorage.setItem('ae.rasc.ecobag', e.target.value) } catch (x) { }; var st = $('#aeStatus'); if (st) st.textContent = T('● Alterações não salvas.', '● Cambios sin guardar.'); var n = $('.ae-num'); if (n) { var l = Math.max(12, e.target.value.split('\n').length + 2), x = ''; for (var i = 1; i <= l; i++) x += i + '\n'; n.textContent = x } var tr = document.querySelector('[data-f=' + atual + ']'); if (tr && !/●/.test(tr.textContent)) tr.textContent += ' ●' } });
   window.addEventListener('site:mudou', function () { /* outro lugar mudou o site */ if (!Object.keys(rascunho).length) render() });
   window.AE = { render: render, abre: function (k) { atual = k; render() }, estado: function () { return { atual: atual, rascunho: rascunho } } };
   render();

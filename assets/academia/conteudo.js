@@ -2620,9 +2620,64 @@ window.AULAS = {
           { pt: 'Mostre ao cliente a diferença entre as tabelas.', es: 'Muestra al cliente la diferencia entre las tablas.' }],
         encaminhar: { pt: 'Corrigir microdados é mudança no site: a plataforma da loja ou o desenvolvedor do cliente faz. Se ainda houver dúvida, siga a Central de Ajuda da Meta (artigo da ferramenta).', es: 'Corregir microdatos es un cambio en el sitio: lo hace la plataforma de la tienda o el desarrollador del cliente. Si aún hay duda, sigue el Centro de ayuda de Meta (artículo de la herramienta).' }
       }
+    },
+    {
+      id: '05', min: 10, status: 'pronta',
+      titulo: { pt: 'Configurar as tags na página do produto', es: 'Configurar las etiquetas en la página del producto' },
+      antes: { pt: 'A Marina já sabe conferir uma página no Microdata Debugger e achar o que falta.', es: 'Marina ya sabe revisar una página en el Microdata Debugger y encontrar lo que falta.' },
+      gancho: { pt: '“Meu desenvolvedor perguntou que código colocar.” Vamos ver como são as tags e corrigir as da Ecobag, do jeito que ele faria.', es: '“Mi desarrollador preguntó qué código poner.” Vamos a ver cómo son las etiquetas y corregir las de la Ecobag, como él lo haría.' },
+      objetivo: { pt: 'Saber como as tags de microdados são escritas (OpenGraph ou JSON-LD), quais valores o catálogo exige e o que pedir ao desenvolvedor, conferindo depois no Microdata Debugger.', es: 'Saber cómo se escriben las etiquetas de microdatos (OpenGraph o JSON-LD), qué valores exige el catálogo y qué pedirle al desarrollador, revisando después en el Microdata Debugger.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Meu desenvolvedor quer saber exatamente o que colocar na página do produto para o catálogo puxar sozinho. O que eu passo para ele? 🤔', es: 'Mi desarrollador quiere saber exactamente qué poner en la página del producto para que el catálogo lo tome solo. ¿Qué le paso? 🤔' }],
+          ['rafa', { pt: 'A Meta tem um exemplo oficial (“Microdata tags”). São três formatos aceitos: OpenGraph, que vai no &lt;head&gt; da página; schema.org, espalhado pela página; e JSON-LD, dentro de um &lt;script&gt;. Basta um deles.', es: 'Meta tiene un ejemplo oficial (“Microdata tags”). Hay tres formatos aceptados: OpenGraph, que va en el &lt;head&gt; de la página; schema.org, repartido por la página; y JSON-LD, dentro de un &lt;script&gt;. Basta con uno.' }],
+          ['marina', { pt: 'E ele copia o exemplo e pronto?', es: '¿Y copia el ejemplo y listo?' }],
+          ['rafa', { pt: 'Copia o modelo, mas troca TODOS os valores pelos do produto. O id tem que ser igual ao do catálogo, o preço é número com ponto e a moeda vem em código (39.90 e BRL), e disponibilidade e condição vão em inglês (in stock, new).', es: 'Copia el modelo, pero cambia TODOS los valores por los del producto. El id debe ser igual al del catálogo, el precio es un número con punto y la moneda va en código (39.90 y BRL), y la disponibilidad y la condición van en inglés (in stock, new).' }],
+          ['pixel', { pt: 'Depois de publicar, confira a página no Microdata Debugger. E lembre: a Meta só atualiza o produto no Gerenciador de Comércio depois que o Pixel disparar naquela página pelo menos uma vez.', es: 'Después de publicar, revisa la página en el Microdata Debugger. Y recuerda: Meta solo actualiza el producto en el Administrador de ventas después de que el píxel se dispare en esa página al menos una vez.' }]
+        ],
+        pontos: [
+          { pt: '<b>Três formatos:</b> OpenGraph (no <code>&lt;head&gt;</code>), schema.org (na página) ou JSON-LD (num <code>&lt;script&gt;</code>). Um basta.', es: '<b>Tres formatos:</b> OpenGraph (en el <code>&lt;head&gt;</code>), schema.org (en la página) o JSON-LD (en un <code>&lt;script&gt;</code>). Con uno basta.' },
+          { pt: '<b>Os valores:</b> id igual ao do catálogo, preço <code>39.90</code> e moeda <code>BRL</code>, disponibilidade e condição em inglês.', es: '<b>Los valores:</b> id igual al del catálogo, precio <code>39.90</code> y moneda <code>BRL</code>, disponibilidad y condición en inglés.' },
+          { pt: '<b>Quem faz:</b> o desenvolvedor ou a plataforma da loja. Você explica o que pedir e confere no Microdata Debugger.', es: '<b>Quién lo hace:</b> el desarrollador o la plataforma de la tienda. Tú explicas qué pedir y revisas en el Microdata Debugger.' }
+        ],
+        notas: { pt: 'Formatos, lugares e nomes das tags lidos na documentação oficial “Microdata tags” (Meta for Developers, catálogo) em 20/10/2026: OpenGraph og:title, og:description, og:url, og:image, product:brand, product:availability, product:condition, product:price:amount, product:price:currency, product:retailer_item_id e product:item_group_id; JSON-LD com productID, name, description, url, image, brand e offers. A documentação diz que só catálogos de e-commerce usam este caminho e que o produto só é atualizado depois de o Pixel disparar. A página da Ecobag, o editor de arquivos e as dicas campo a campo do simulador são do treino (a ferramenta real só diz “Falha na validação de dados”).', es: 'Formatos, lugares y nombres de las etiquetas leídos en la documentación oficial “Microdata tags” (Meta for Developers, catálogo) el 20/10/2026: OpenGraph og:title, og:description, og:url, og:image, product:brand, product:availability, product:condition, product:price:amount, product:price:currency, product:retailer_item_id y product:item_group_id; JSON-LD con productID, name, description, url, image, brand y offers. La documentación dice que solo los catálogos de e-commerce usan este camino y que el producto solo se actualiza después de que se dispare el píxel. La página de la Ecobag, el editor de archivos y las pistas campo por campo del simulador son del entrenamiento (la herramienta real solo dice “Error al validar los datos”).' }
+      },
+      ferramenta: 'tags-microdados',
+      praticar: {
+        texto: { pt: 'No editor de arquivos do site, a página da Ecobag está com o exemplo da Meta pela metade. O Pixel te guia para corrigir as tags, salvar e conferir no Microdata Debugger.', es: 'En el editor de archivos del sitio, la página de la Ecobag tiene el ejemplo de Meta a medias. El Pixel te guía para corregir las etiquetas, guardar y revisar en el Microdata Debugger.' },
+        tour: 'configurar-microdados', pagina: 'arquivos-site.html?arq=ecobag&mdzerar=1'
+      },
+      atender: {
+        cena: { pt: 'Meu desenvolvedor copiou o código de exemplo da Meta na página, mas o produto não entra no catálogo. Ele jura que fez igualzinho! 😤', es: 'Mi desarrollador copió el código de ejemplo de Meta en la página, pero el producto no entra al catálogo. ¡Jura que lo hizo igualito! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“O exemplo é só o modelo: cada valor precisa ser trocado pelos do produto. Vamos testar a página no Microdata Debugger e conferir com ele: id igual ao do catálogo, preço como 39.90 com a moeda BRL e disponibilidade em inglês (in stock).”', es: '“El ejemplo es solo el modelo: cada valor debe cambiarse por los del producto. Probemos la página en el Microdata Debugger y revisemos con él: id igual al del catálogo, precio como 39.90 con la moneda BRL y disponibilidad en inglés (in stock).”' } },
+          { certa: false, txt: { pt: '“Se ele copiou igualzinho, está certo; é só esperar.”', es: '“Si lo copió igualito, está bien; solo hay que esperar.”' }, fb: { pt: 'Copiar igualzinho é o problema: os valores do exemplo (como facebook_tshirt_001) não são do produto.', es: 'Copiar igualito es el problema: los valores del ejemplo (como facebook_tshirt_001) no son del producto.' } },
+          { certa: false, txt: { pt: '“Me passe o acesso ao site que eu arrumo as tags.”', es: '“Pásame el acceso al sitio y yo arreglo las etiquetas.”' }, fb: { pt: 'Nunca peça acesso: oriente o que corrigir e confira com a ferramenta.', es: 'Nunca pidas acceso: orienta qué corregir y revisa con la herramienta.' } },
+          { certa: false, txt: { pt: '“Escreva o preço como R$ 39,90, que fica mais claro para o cliente.”', es: '“Escribe el precio como R$ 39,90, que queda más claro para el cliente.”' }, fb: { pt: 'A tag é para a Meta ler, não para o cliente: número com ponto e moeda em código (39.90 e BRL).', es: 'La etiqueta es para que Meta la lea, no para el cliente: número con punto y moneda en código (39.90 y BRL).' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual formato o site usa: OpenGraph, schema.org ou JSON-LD?', es: '¿Qué formato usa el sitio: OpenGraph, schema.org o JSON-LD?' },
+          { pt: 'O id da página é o mesmo do catálogo?', es: '¿El id de la página es el mismo del catálogo?' },
+          { pt: 'O Pixel está instalado nessa página?', es: '¿El píxel está instalado en esa página?' }],
+        conferir: [{ pt: 'Preço só com número e ponto (39.90) e moeda em código (BRL).', es: 'Precio solo con número y punto (39.90) y moneda en código (BRL).' },
+          { pt: 'Disponibilidade e condição em inglês: in stock / out of stock; new.', es: 'Disponibilidad y condición en inglés: in stock / out of stock; new.' },
+          { pt: 'Nenhum valor do exemplo da Meta esquecido (facebook_tshirt_001, fb_tshirts).', es: 'Ningún valor del ejemplo de Meta olvidado (facebook_tshirt_001, fb_tshirts).' }],
+        frase: { pt: 'O exemplo da Meta é um modelo: o seu desenvolvedor precisa trocar cada valor pelos do produto. Depois a gente confere a página no Microdata Debugger.', es: 'El ejemplo de Meta es un modelo: tu desarrollador necesita cambiar cada valor por los del producto. Después revisamos la página en el Microdata Debugger.' },
+        passos: [{ pt: 'Envie ao desenvolvedor a documentação oficial “Microdata tags” da Meta.', es: 'Envía al desarrollador la documentación oficial “Microdata tags” de Meta.' },
+          { pt: 'Peça o id igual ao do catálogo e os valores no formato certo.', es: 'Pide el id igual al del catálogo y los valores en el formato correcto.' },
+          { pt: 'Teste a página no Microdata Debugger até aparecer “Parabéns!”.', es: 'Prueba la página en el Microdata Debugger hasta que aparezca “¡Felicitaciones!”.' }],
+        encaminhar: { pt: 'Escrever as tags é trabalho do desenvolvedor ou da plataforma da loja. Se o site é Shopify ou WooCommerce, o caminho mais simples costuma ser a integração oficial, que leva os produtos ao catálogo.', es: 'Escribir las etiquetas es trabajo del desarrollador o de la plataforma de la tienda. Si el sitio es Shopify o WooCommerce, el camino más simple suele ser la integración oficial, que lleva los productos al catálogo.' }
+      },
+      fontes: [
+        { url: 'https://developers.facebook.com/docs/marketing-api/catalog/guides/microdata-tags', titulo: { pt: 'Microdata tags (Meta for Developers)', es: 'Microdata tags (Meta for Developers)' }, conferido: '20/10/2026' },
+        { url: 'https://business.facebook.com/ads/microdata/debug', titulo: { pt: 'Ferramenta de depuração de microdados', es: 'Herramienta de depuración de microdatos' }, conferido: '20/10/2026' }
+      ]
     }
   ],
   entrega: (function () {
+
     function L(pt, es) { return { pt: pt, es: es } }
     var PERG = L('O que você responde?', '¿Qué respondes?');
     var NOTA_CENTRAL = L('Conteúdo da Central de Ajuda da Meta lida em 16/10/2026 (fase de aprendizado, edições significativas, solução de problemas de veiculação). Colunas, status e avisos vistos de verdade no Gerenciador de Anúncios em português e espanhol. Os números do simulador (resultados, dias, o limiar de 50% do orçamento) e a caixa “?” são do treino (a conferir).', L('', '').es);

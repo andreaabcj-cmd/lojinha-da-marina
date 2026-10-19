@@ -154,7 +154,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       return setTimeout(desenha, 250);
     }
     if (p.pula && p.pula()) return vai(n + 1);
-    if (p.pagina && location.pathname.split('/').pop() !== p.pagina) { location.href = p.pagina; return }
+    if (p.pagina && location.pathname.split('/').pop() !== p.pagina.split('?')[0]) { location.href = p.pagina; return }   // a página pode vir com ?parâmetros: compara só o nome
     var salto = false; try { if (sessionStorage.getItem('tour.salto') === String(n)) { sessionStorage.removeItem('tour.salto'); salto = true } } catch (e) { }
     if (salto) { if (p.garante) try { p.garante() } catch (e) { } return setTimeout(desenha, 250) }   // chegou por “Selecionar passo”: arruma a tela deste passo
     desenha();
@@ -182,7 +182,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (n in paginas) return vai(n, true);
     var pg = null; for (var k = n; k >= 0; k--) if (tour[k].pagina) { pg = tour[k].pagina; break }
     passo = n; salva();
-    if (pg && pg !== location.pathname.split('/').pop()) { try { sessionStorage.setItem('tour.salto', String(n)) } catch (e) { } location.href = pg; return }
+    if (pg && pg.split('?')[0] !== location.pathname.split('/').pop()) { try { sessionStorage.setItem('tour.salto', String(n)) } catch (e) { } location.href = pg; return }
     var p = tour[n]; if (p.garante) try { p.garante() } catch (e) { }
     setTimeout(desenha, 250);
   }
