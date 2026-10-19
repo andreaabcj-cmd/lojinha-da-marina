@@ -54,6 +54,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     '.tg-balao{cursor:grab}.tg-balao.arrasta{cursor:grabbing;transition:none;user-select:none}.tg-balao button{cursor:pointer}' +
     '.tg-balao.compacto{width:300px;padding-left:14px;font-size:14px}.tg-balao.compacto .tg-masc{display:none}.tg-balao.fino{width:232px;padding:22px 10px 10px;font-size:13px;line-height:1.35}.tg-balao.fino .tg-masc{display:none}.tg-balao.fino .tg-sair{right:6px}.tg-balao.fino .tg-bal-min{left:10px;right:auto}.tg-bal-min{position:absolute;top:4px;right:124px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +
     '.tg-passo-bt{border:0;background:none;color:#64748B;font:inherit;font-size:12.5px;cursor:pointer;padding:2px 4px;border-radius:6px;white-space:nowrap;text-decoration:underline dotted}.tg-passo-bt:hover{background:#EEF2F7;color:#16294A}' +
+    '.tg-onde{background:#E0F2FE;border:2px solid #16294A;border-radius:9px;padding:5px 8px;margin:2px 0 7px;font-size:13px;line-height:1.3;color:#16294A}.tg-onde small{display:block;font-size:12px;color:#475569}' +
     '.tg-passos{margin-top:8px;max-height:230px;overflow:auto;border:2px solid #16294A;border-radius:10px;background:#F8FAFC;padding:4px}.tg-passos b{display:block;font-size:12px;color:#64748B;margin:2px 6px 4px}' +
     '.tg-passos button{display:flex;gap:8px;width:100%;text-align:left;border:0;background:none;padding:5px 6px;border-radius:7px;font:13px/1.3 "Segoe UI",system-ui,Arial,sans-serif;color:#16294A;cursor:pointer}.tg-passos button:hover{background:#FFE07A}.tg-passos button.on{background:#16294A;color:#fff}.tg-passos button i{font-style:normal;min-width:22px;color:inherit;opacity:.7}' +
     '@media (max-width:480px){.tg-ctrl{flex-wrap:wrap}.tg-balao{padding-left:14px}.tg-balao .tg-masc{display:none}}';
@@ -65,6 +66,37 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function salva() { try { if (tour) sessionStorage.setItem('tour.ativo', JSON.stringify({ nome: nome, passo: passo, voltar: voltar, paginas: paginas })); else sessionStorage.removeItem('tour.ativo') } catch (e) { } }
   function alvoEl(p) { try { return typeof p.alvo === 'function' ? p.alvo() : document.querySelector(p.alvo) } catch (e) { return null } }
   function masc() { return window.PERSONAGEM ? window.PERSONAGEM('pixel', 3) : '' }
+  // "Você está no…": na 1ª vez que o tutorial chega numa página, o balão diz qual ferramenta real ela imita
+  var LOJA = { pt: 'Site da Lojinha da Marina|a loja como o cliente vê', es: 'Sitio de la Lojinha da Marina|la tienda como la ve el cliente' };
+  var GA = function (s, e) { return { pt: 'Gerenciador de Anúncios' + (s ? ' · ' + s : '') + '|onde se criam e acompanham as campanhas', es: 'Administrador de anuncios' + (e ? ' · ' + e : '') + '|donde se crean y siguen las campañas' } };
+  var ONDE = {
+    'meta-portfolio.html': { pt: 'Configurações do portfólio empresarial (Meta Business Suite)|pessoas, páginas, contas e pixels da empresa', es: 'Configuración del portfolio comercial (Meta Business Suite)|personas, páginas, cuentas y píxeles de la empresa' },
+    'meta-suite.html': { pt: 'Meta Business Suite|posts, mensagens e as contas do Facebook e do Instagram', es: 'Meta Business Suite|publicaciones, mensajes y las cuentas de Facebook e Instagram' },
+    'meta-anuncios.html': GA(), 'meta-feed.html': GA('anúncio no Feed', 'anuncio en el Feed'), 'meta-publicos.html': GA('Públicos', 'Públicos'),
+    'meta-regras.html': GA('Regras automatizadas', 'Reglas automatizadas'), 'meta-relatorios.html': GA('Relatórios', 'Informes'), 'meta-entrega.html': GA('entrega dos anúncios', 'entrega de los anuncios'),
+    'meta-shopads.html': GA('Anúncios das Lojas', 'Anuncios de Tiendas'),
+    'meta-catalogo.html': { pt: 'Gerenciador de Comércio|o catálogo de produtos e as fontes de dados', es: 'Administrador de ventas|el catálogo de productos y las fuentes de datos' },
+    'meta-commerce.html': { pt: 'Gerenciador de Comércio|a loja no Facebook e no Instagram', es: 'Administrador de ventas|la tienda en Facebook e Instagram' },
+    'meta-eventos.html': { pt: 'Gerenciador de Eventos|o Pixel, a API de Conversões e os eventos do site', es: 'Administrador de eventos|el píxel, la API de conversiones y los eventos del sitio' },
+    'meta-mbe.html': { pt: 'Integração de parceiro da Meta (Meta Business Extension)|a janela que a plataforma da loja abre para ligar à Meta', es: 'Integración de socio de Meta (Meta Business Extension)|la ventana que abre la plataforma de la tienda para conectarse con Meta' },
+    'meta-microdados.html': { pt: 'Ferramenta de depuração de microdados (Meta)|confere as etiquetas de produto de uma página', es: 'Herramienta de depuración de microdatos (Meta)|revisa las etiquetas de producto de una página' },
+    'meta-instagram.html': { pt: 'Instagram|o perfil da loja como as pessoas veem', es: 'Instagram|el perfil de la tienda como lo ve la gente' },
+    'meta-turbinar.html': { pt: 'Turbinar post (Página do Facebook / Instagram)|o atalho para anunciar um post pronto', es: 'Promocionar publicación (página de Facebook / Instagram)|el atajo para anunciar una publicación lista' },
+    'meta-verified.html': { pt: 'Meta Verified para empresas|a assinatura de selo e suporte', es: 'Meta Verified para empresas|la suscripción de insignia y soporte' },
+    'meta-checkoutsite.html': { pt: 'Compra no site (vinda de um anúncio)|o que o cliente vê depois de clicar no anúncio', es: 'Compra en el sitio (desde un anuncio)|lo que ve el cliente después de hacer clic en el anuncio' },
+    'admin-shopify.html': { pt: 'Admin da Shopify|o painel onde a dona da loja Shopify cuida dela', es: 'Admin de Shopify|el panel donde la dueña de la tienda Shopify la administra' },
+    'admin-woo.html': { pt: 'Painel do WordPress (WooCommerce)|onde a dona da loja WooCommerce cuida dela', es: 'Panel de WordPress (WooCommerce)|donde la dueña de la tienda WooCommerce la administra' },
+    'arquivos-site.html': { pt: 'Editor de arquivos do site|os arquivos da hospedagem, onde fica o código', es: 'Editor de archivos del sitio|los archivos del alojamiento, donde está el código' },
+    'codigo-fonte.html': { pt: 'Código-fonte da página (Ctrl+U no navegador)|o código que o navegador recebeu', es: 'Código fuente de la página (Ctrl+U en el navegador)|el código que recibió el navegador' },
+    'loja.html': LOJA, 'produtos.html': LOJA, 'catalogo.html': LOJA, 'produto.html': LOJA, 'carrinho.html': LOJA, 'checkout.html': LOJA, 'obrigado.html': LOJA
+  };
+  function onde() {   // só no 1º passo do tutorial mostrado nesta página
+    function de(f) { return ONDE[f] || (/^produto-/.test(f) ? LOJA : null) }
+    var o = de(aqui().split('#')[0]); if (!o) return '';
+    for (var k in paginas) if (+k < passo && de(String(paginas[k]).split('#')[0]) === o) return '';   // as páginas da loja contam como um lugar só
+    var s = String(T(o)).split('|');
+    return '<div class="tg-onde">📍 ' + T({ pt: 'Onde você está', es: 'Dónde estás' }) + ': <b>' + s[0] + '</b>' + (s[1] ? '<small>' + s[1] + '</small>' : '') + '</div>';
+  }
   function monta() {
     if (holo) return;
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
@@ -158,9 +190,9 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
   }
   function desenha() {
-    var p = tour[passo], prox = !p.clique && !p.fim; paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null; p._sig = null; p._sigF = null; p._fn = 0; p._dock = false;
+    var p = tour[passo], prox = !p.clique && !p.fim, ond = onde(); paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null; p._sig = null; p._sigF = null; p._fn = 0; p._dock = false;
     balao.classList.toggle('compacto', compacto); balao.classList.remove('fino');
-    balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><button class="tg-bal-min" data-tg="compacta" title="' + T({ pt: 'Balão menor / maior (e dá para arrastá-lo)', es: 'Globo más pequeño / grande (y se puede arrastrar)' }) + '">' + T({ pt: '↔ menor/maior', es: '↔ menor/mayor' }) + '</button><span class="tg-masc">' + masc() + '</span><b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
+    balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><button class="tg-bal-min" data-tg="compacta" title="' + T({ pt: 'Balão menor / maior (e dá para arrastá-lo)', es: 'Globo más pequeño / grande (y se puede arrastrar)' }) + '">' + T({ pt: '↔ menor/maior', es: '↔ menor/mayor' }) + '</button><span class="tg-masc">' + masc() + '</span>' + ond + '<b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
       '<div class="tg-ctrl"><button class="tg-passo-bt" data-tg="passos" title="' + T({ pt: 'Selecionar passo: escolher um passo na lista', es: 'Seleccionar paso: elegir un paso de la lista' }) + '">' + T(UI.passo) + ' ' + (passo + 1) + ' ' + T(UI.de) + ' ' + tour.length + ' ▾</button><span>' + (passo && !p.semVolta ? '<button class="tg-btn sec" data-tg="volta" title="' + T({ pt: 'Passo anterior', es: 'Paso anterior' }) + '">◀</button>' : '') +
       (p.fim ? '<button class="tg-btn" data-tg="fim">' + T(UI.fim) + '</button>' : prox ? '<button class="tg-btn" data-tg="prox">' + T(UI.prox) + '</button>' : '<small>' + T(UI.clique) + '</small>') + '</span></div>';
