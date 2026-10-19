@@ -131,6 +131,44 @@
     'Jasper\'s Market': 'Jasper\'s Market', 'Saiba mais': 'Más información', 'Analisar': 'Revisar', 'Cancelar': 'Cancelar', 'Concluir': 'Terminar', 'Confirmar': 'Confirmar', 'Continuar': 'Continuar', 'Voltar': 'Volver', 'Avançar': 'Siguiente', 'Criar': 'Crear',
     '(GMT-03:00) America/Sao Paulo (padrão)': '(GMT-03:00) America/Sao Paulo (predeterminado)'
   };
+  /* Controles de dados do Pixel e Domínios (telas reais 20/10/2026; espanhol traduzido por nós, a conferir) */
+  A['✓ Layout conferido com a tela real em 20/10/2026'] = '✓ Diseño revisado con la pantalla real el 20/10/2026';
+  A['Adequação e segurança para marcas'] = 'Adecuación y seguridad de la marca';
+  A['Domínios'] = 'Dominios';
+  A['Listas de bloqueio de publishers'] = 'Listas de bloqueo de publishers';
+  A['Domains'] = 'Domains';
+  A['Adicionar'] = 'Agregar';
+  A['Nenhum domínio adicionado'] = 'No se agregó ningún dominio';
+  A['Adicione domínios a este portfólio empresarial para gerenciar todos os seus ativos de negócios em um só local.'] = 'Agrega dominios a este portfolio comercial para gestionar todos tus activos comerciales en un solo lugar.';
+  A['O que você quer fazer?'] = '¿Qué quieres hacer?';
+  A['Criar um domínio'] = 'Crear un dominio';
+  A['Você precisa de um novo domínio para sua empresa.'] = 'Necesitas un dominio nuevo para tu empresa.';
+  A['Solicitar acesso a um domínio'] = 'Solicitar acceso a un dominio';
+  A['Sua empresa precisa usar este ativo em nome de outra empresa.'] = 'Tu empresa necesita usar este activo en nombre de otra empresa.';
+  A['Adicionar um domínio'] = 'Agregar un dominio';
+  A['Adicione o domínio formatado corretamente que você deseja associar à sua empresa.'] = 'Agrega el dominio con el formato correcto que quieres asociar a tu empresa.';
+  A['Você só pode verificar o domínio raiz (exemplo.com), e não um subdomínio (loja.exemplo.com) ou uma subpágina (exemplo.com/loja). Não adicione prefixos (http:// ou https://) no início.'] = 'Solo puedes verificar el dominio raíz (ejemplo.com), no un subdominio (tienda.ejemplo.com) ni una subpágina (ejemplo.com/tienda). No agregues prefijos (http:// o https://) al principio.';
+  A['Seu domínio'] = 'Tu dominio';
+  A['exemplo.com ou exemplo.com.br'] = 'ejemplo.com o ejemplo.com.br';
+  A['Os domínios só podem ser adicionados a uma empresa, mas podem ser compartilhados com parceiros designados.'] = 'Los dominios solo se pueden agregar a una empresa, pero se pueden compartir con socios designados.';
+  A['Cancelar'] = 'Cancelar';
+  A['(dica do simulador)'] = '(pista del simulador)';
+  A['Escreva o domínio.'] = 'Escribe el dominio.';
+  A['Sem prefixo: tire o http:// ou https:// do começo.'] = 'Sin prefijo: quita el http:// o https:// del principio.';
+  A['Só o domínio raiz: tire a parte depois da barra (a subpágina).'] = 'Solo el dominio raíz: quita la parte después de la barra (la subpágina).';
+  A['Escreva só o domínio, como exemplo.com.br.'] = 'Escribe solo el dominio, como ejemplo.com.br.';
+  A['Nada foi adicionado de verdade: a etapa seguinte (provar que o domínio é seu) não foi conferida na tela real.'] = 'No se agregó nada de verdad: la etapa siguiente (probar que el dominio es tuyo) no se revisó en la pantalla real.';
+  A['🧪 O simulador para aqui'] = '🧪 El simulador se detiene aquí';
+  A['Você informou'] = 'Ingresaste';
+  A['. Na vida real, depois de Adicionar, a Meta mostra como provar que o domínio é seu. Essa tela não foi conferida no portfólio de aula, então não está no simulador.'] = '. En la vida real, después de Agregar, Meta muestra cómo probar que el dominio es tuyo. Esa pantalla no se revisó en el portfolio de clase, así que no está en el simulador.';
+  A['Pela Central de Ajuda da Meta, são 3 jeitos'] = 'Según el Centro de ayuda de Meta, hay 3 formas';
+  A['(e depois o botão Verificar domínio):'] = '(y después el botón Verificar dominio):';
+  A['colar uma metatag no <head> da página inicial do site;'] = 'pegar una metaetiqueta en el <head> de la página de inicio del sitio;';
+  A['carregar um arquivo HTML na pasta raiz do site;'] = 'subir un archivo HTML a la carpeta raíz del sitio;';
+  A['adicionar um registro TXT no DNS, no site onde o domínio foi registrado.'] = 'agregar un registro TXT en el DNS, en el sitio donde se registró el dominio.';
+  A['Quem faz é o desenvolvedor do site ou quem administra o domínio. Precisa de controle total do portfólio e acesso de administrador ou desenvolvedor ao domínio. Depois de verificado, a metatag, o arquivo ou o registro podem ser removidos.'] = 'Lo hace el desarrollador del sitio o quien administra el dominio. Se necesita control total del portfolio y acceso de administrador o desarrollador al dominio. Una vez verificado, la metaetiqueta, el archivo o el registro se pueden quitar.';
+  P.push([/^Isso é um subdomínio \((.+)\.\)\. Use o domínio raiz: (.+)\.$/, function (m) { return 'Eso es un subdominio (' + m[1] + '.). Usa el dominio raíz: ' + m[2] + '.' }]);
+  P.push([/^🧪 No simulador você informou (.+)\.$/, function (m) { return '🧪 En el simulador ingresaste ' + m[1] + '.' }]);
   for (var k in A) D[k] = A[k];
   P.push([/^Página principal: (.+)$/, function (m) { return 'Página principal: ' + m[1] }]);
   P.push([/^(\d+) ativos? selecionados?$/, function (m) { return m[1] + (m[1] === '1' ? ' activo seleccionado' : ' activos seleccionados') }]);

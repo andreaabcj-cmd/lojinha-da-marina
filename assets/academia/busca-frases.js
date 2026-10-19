@@ -59,6 +59,8 @@ window.BUSCA_FRASES = (function () {
       'calidad de la coincidencia de eventos | puntuación baja | mejorar la calidad de la señal'),
     'pixel-avancado/03': F('api de conversões | o que é capi | deduplicação | desduplicar eventos | evento duplicado pixel e servidor | vendas dobraram depois da api | event_id | pixel e api juntos',
       'api de conversiones | qué es capi | deduplicación | eventos duplicados píxel y servidor | event_id'),
+    'pixel-avancado/05': F('site desconhecido usando meu pixel | outro site mandando eventos para o meu pixel | fui hackeada pixel | email de novo domínio enviando eventos | lista de permissão de tráfego | lista de bloqueio | permissões de tráfego | bloquear domínio no pixel | configuração básica | configuração core | parâmetros sumiram | categoria da fonte de dados | restrição de dados | verificar domínio | verificação de domínio | onde verifico o domínio | domínio raiz',
+      'sitio desconocido usando mi píxel | otro sitio envía eventos a mi píxel | lista de permitidos de tráfico | permisos de tráfico | configuración básica | categoría de la fuente de datos | restricción de datos | verificar dominio | verificación de dominio'),
     'pixel-avancado/04': F('privacidade do pixel | consentimento de cookies | lgpd | meta bloqueou parâmetros | informações proibidas | dados sensíveis no pixel | parâmetros restringidos',
       'privacidad del píxel | consentimiento | la meta bloqueó parámetros | información prohibida | datos sensibles'),
     'm:pixel': F('pixel | pixel da meta', 'píxel | píxel de meta'),

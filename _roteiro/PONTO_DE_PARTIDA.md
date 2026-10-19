@@ -263,6 +263,12 @@ Pedido do André: o módulo ficar no FIM da trilha, por temas; as práticas não
 - Simulador (sim-eventos.js, aba Configurações) atualizado com essas linhas; tutorial novo `ios-aem` (tours-pixelav.js); aula apps-ios/01 reescrita (medição no aparelho, prática guiada, quiz `ios-mitos` no lugar do aviso do iPhone, que não foi visto). Módulo renomeado “iOS 14 e a medição”.
 - No site publicado: só a aula 01 do módulo aparece. Aula 02 continua oculta: as notas de modelagem estatística só aparecem em campanhas com resultado (a conta de aula só tem rascunhos; ver exigiria gastar). Aulas 03 e 04 (app) ocultas até existir um app de teste na Meta.
 
+## Pixel avançado · aula 05 “Controles de dados” (20/10/2026)
+- Roteiro e insumos completos em `_roteiro/ROTEIRO_CONTROLES_PIXEL.md` (telas reais vistas só olhando + 7 artigos da Central de Ajuda).
+- Simuladores: Gerenciador de Eventos › Configurações ganhou “Gerencie as categorias de fontes de dados” (janela real), Controles de dados (bloqueio de parâmetros/eventos, Configuração básica com Ativar desligado) e “Permissões de tráfego” (botão dividido permissão/bloqueio e a janela real com “Tráfego de domínio mais relevante”); Configurações do portfólio ganhou “Adequação e segurança para marcas › Domínios” (O que você quer fazer? › Adicionar um domínio). Onde a tela real não foi vista, o simulador PARA e explica (lista de tráfego salva; métodos de verificação de domínio).
+- A verificação de domínio fica no PORTFÓLIO (não no Gerenciador de Eventos) — conferido na tela real e no artigo oficial.
+- Tutoriais `controles-pixel` (tours-pixelav.js) e `dominio-portfolio` (sim-portfolio.js), quiz `controles-dados`, “Como fazer…”, frases da busca, espanhol nos dicionários dos simuladores. Testado normal/teimoso/ES.
+
 ## PENDÊNCIAS (pausa em 18/10/2026)
 1. **André testar** o que foi feito (nada publicado): Pergunte ao Pixel (busca), aviso “📍 Onde você está” nos tutoriais, 12+2 casos novos do Diagnóstico, simulador da Shopify refeito, casos do pixel personalizado (Integrações 04 e 05), “Passo X de Y ▾” (selecionar passo) e a aula 06 do Catálogo (conferir a planilha). Publicar só quando ele pedir.
 2. **Microdados aula 05 (configurar tags):** feita em 20/10, OCULTA no site publicado até o André liberar.

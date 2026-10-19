@@ -237,22 +237,29 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     function status(dt, rot, est, sub, txt) { return '<div class="config-linha" data-t="' + dt + '"><div><b>' + rot + '</b><p><span class="est">' + est + '</span>' + (sub ? ' · <small>' + sub + '</small>' : '') + '</p><p>' + txt + '</p></div></div>' }
     function chave(k, rot, txt) { return '<div class="config-linha"><div><b>' + rot + '</b><p>' + txt + '</p></div><span class="chave' + (d[k] ? ' on' : '') + '" role="switch" aria-checked="' + !!d[k] + '" data-chave="' + k + '" data-t="chave-' + k + '"></span></div>' }
     return '<div class="cartao"><h2>Detalhes</h2><div class="config-linha"><div><b>Nome</b><p>' + esc(d.nome) + '</p></div></div><div class="config-linha"><div><b>Identificação do conjunto de dados</b><p><span class="id">' + d.id + '</span></p></div></div>' +
-      '<div class="config-linha"><div><b>Proprietário</b><p>' + PORTFOLIO + '</p></div></div><div class="config-linha"><div><b>Criado por</b><p>' + USUARIO + ' · ' + new Date(d.criado).toLocaleDateString('pt-BR') + '</p></div></div></div>' +
+      '<div class="config-linha"><div><b>Proprietário</b><p>' + PORTFOLIO + '</p></div></div><div class="config-linha"><div><b>Criado por</b><p>' + USUARIO + ' · ' + new Date(d.criado).toLocaleDateString('pt-BR') + '</p></div></div>' +
+      '<div class="config-linha" data-t="cfg-categorias"><div><b>Gerencie as categorias de fontes de dados</b><p>Podemos usar a categoria das fontes de dados para determinar o tipo de informações que você pode compartilhar usando as Ferramentas Comerciais da Meta. <a class="lnk">Saiba mais</a></p></div><button class="btn sec" data-acao="categorias" data-t="btn-categorias">Gerenciar</button></div></div>' +
       '<div class="cartao" data-t="cfg-meta"><h2>Configurações do Pixel da Meta</h2>' +   // como na tela real (Gerenciador de Eventos, 20/10/2026)
       status('cfg-detalhes', 'Incluir automaticamente informações mais detalhadas de páginas e produtos', 'Ativado', '', 'Esse recurso usa IA para identificar e enviar mais detalhes do site, como informações básicas da página, avaliações e preços, além dos dados existentes do seu Pixel da Meta.') +
       status('cfg-dispositivo', 'Mensure as conversões nos dispositivos dos clientes', 'Ativado', 'Mensuração a partir de 12 de novembro de 2026', 'A Meta mensura as conversões dos seus anúncios para que você possa ver quais deles estão funcionando. Com esse recurso ativado, a mensuração acontece no dispositivo do cliente em vez de apenas nos servidores da Meta.') + '</div>' +
       '<div class="cartao" data-t="cfg-controles"><h2>Controles de dados</h2>' +
-      status('cfg-basica', 'Configuração básica', 'Desativada', '', 'Quando ativadas, as Ferramentas Comerciais da Meta podem restringir dados como parâmetros personalizado e partes de URL após o domínio.') + '</div>' +
+      '<div class="config-linha"><div><b>Gerencie o bloqueio de parâmetros</b><p>Analise os parâmetros que foram bloqueados porque eles talvez não sigam nossos Termos das Ferramentas Comerciais da Meta. Você pode solicitar que os parâmetros corrigidos sejam desbloqueados ou mantê-los bloqueados.</p></div><button class="btn sec" disabled title="Fora do simulador (tela não conferida)">Analisar</button></div>' +
+      '<div class="config-linha"><div><b>Gerencie o bloqueio de eventos</b><p>Analise e acompanhe os status dos eventos.</p></div><button class="btn sec" disabled title="Fora do simulador (tela não conferida)">Analisar</button></div>' +
+      '<div class="config-linha" data-t="cfg-basica"><div><b>Configuração básica: desativada</b><p>Quando ativadas, as Ferramentas Comerciais da Meta podem restringir dados como parâmetros personalizado e partes de URL após o domínio. <a class="lnk">Saiba mais</a></p></div><button class="btn sec" disabled title="Não simulado: na tela real o botão liga a restrição na hora">Ativar</button></div></div>' +
       '<div class="cartao"><h2>Configurações do site</h2>' +
       chave('am', 'Correspondência avançada automática', 'Usa informações que a pessoa digita no site (como email e telefone) para associar os eventos às contas, sempre com hash.') +
       chave('cookies', 'Usar cookies primários', 'Grava o cookie _fbp no domínio do próprio site, o que ajuda a medir as conversões.') +
       chave('auto', 'Rastrear eventos automaticamente sem código', 'A Meta sugere e detecta eventos padrão pelo comportamento do site, sem programar.') +
       chave('capi', 'API de Conversões com a Meta', 'Envia também os eventos pelo servidor da Meta. Na aula deixamos desligada para estudar o Pixel sozinho.') +
-      '<div class="config-linha"><div><b>Tráfego permitido</b><p>Só aceita eventos destes domínios (vazio = todos):</p><p><span class="id">andreaabcj-cmd.github.io</span></p></div></div></div>';
+      '</div>' +
+      '<div class="cartao" data-t="cfg-trafego"><h2>Permissões de tráfego</h2><p>Use uma lista de bloqueio ou de permissão para controlar se os domínios podem enviar eventos do Facebook pelo seu pixel. Sugerimos o uso de uma lista de permissão porque ajuda a garantir que o pixel não seja usado para enviar eventos por domínios não autorizados. <a class="lnk">Saiba mais</a></p>' +
+      '<p>Lista de permissão: só os domínios adicionados à lista de permissão podem enviar eventos por esse pixel para o Facebook. Os domínios que não estiverem na lista de permissão não poderão enviar eventos.<br>Lista de bloqueio: só os domínios adicionados à lista de bloqueio não poderão enviar eventos por esse pixel para o Facebook. Os domínios que não estiverem na lista de bloqueio poderão enviar eventos.</p>' +
+      '<span class="split"><button class="btn sec" data-acao="trafego" data-t="trafego-criar">' + (tmodo === 'bloqueio' ? 'Criar lista de bloqueio' : 'Criar lista de permissão') + '</button><button class="btn sec" data-acao="trafego-menu" data-t="trafego-menu" aria-label="Abrir menu suspenso">▾</button>' +
+      (tmenu ? '<span class="menu-drop" data-t="trafego-opcoes"><button data-acao="trafego-modo" data-modo="permissao" data-t="trafego-op-permissao">Criar lista de permissão</button><button data-acao="trafego-modo" data-modo="bloqueio" data-t="trafego-op-bloqueio">Criar lista de bloqueio</button></span>' : '') + '</span></div>';
   }
 
   /* ---------- janelas ---------- */
-  var janela = null, escolha = null, cats = false;
+  var janela = null, escolha = null, cats = false, tmodo = 'permissao', tmenu = false, tnota = '';   // tmodo/tmenu/tnota: Permissões de tráfego
   function abreJanela(qual) { janela = qual; escolha = null; cats = false; desenhaJanela() }
   function fechaJanela() { janela = null; var f = $('#fundo'); if (f) f.remove() }
   function desenhaJanela() {
@@ -288,6 +295,19 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
         '<pre class="codigo" data-t="cod-purchase">' + esc("fbq('track', 'Purchase', {value: 0.00, currency: 'USD'});") + '</pre>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Fechar</button><button class="btn" data-acao="copiar-purchase" data-t="btn-copiar-purchase">Copiar código do Purchase</button></div><p class="conferido pendente">⚠ Tela montada pela documentação da Meta · a conferir com a tela real</p>';
     }
+    if (janela === 'categorias') {
+      h = '<div data-t="jan-categorias"><h3>Gerenciar categorias de fontes de dados<button class="x" data-acao="fechar" data-t="cat-fechar">✕</button></h3><p>Analise as categorias das suas fontes de dados. Podemos usar essas categorias para ajudar a determinar e restringir certos tipos de informações que você pode compartilhar por meio das Ferramentas Comerciais da Meta. Essa categorização ajuda a evitar o compartilhamento com dados da Meta que sejam inconsistentes com nossos <a class="lnk">Termos das Ferramentas Comerciais da Meta</a>. Para saber mais, incluindo informações sobre quais restrições são aplicadas à sua fonte de dados, selecione Ver detalhes. <a class="lnk">Sobre as restrições</a></p>' +
+        '<div class="linha-url"><input placeholder="Pesquisar fontes de dados" aria-label="Pesquisar fontes de dados"/></div><p class="miudo">Filtrar por <span class="pill">Canal ▾</span> <span class="pill">Categoria ▾</span> <span class="pill">Status da análise ▾</span></p>' +
+        '<table class="tabela"><tr><th>Fonte de dados</th><th>Canal</th><th>Categoria</th><th>Status da análise</th></tr><tr><td colspan="4" style="text-align:center;padding:26px">🔭<br>Nenhuma fonte de dados tem categorias aplicadas no momento.</td></tr></table></div>';
+    } else if (janela === 'trafego') {
+      var DOMS = [['lojinha.exemplo.com.br', '1,9 mil', 'recebido pela última vez há 3 horas'], ['localhost', '121', 'Recebido pela última vez há 5 dias'], ['ofertas-canecas.exemplo', '36', 'recebido pela última vez há 2 horas']];
+      var perm = tmodo !== 'bloqueio';
+      h = '<div data-t="jan-trafego"><h3>Gerenciar permissões de tráfego<button class="x" data-acao="fechar">✕</button></h3><p>' + (perm ? 'Permita somente que determinados domínios enviem dados de tráfego e evento para você adicionando-os a uma lista de permissão. Você não receberá mais dados de tráfego e evento de todos os outros domínios que não estiverem na lista de permissão e que tiverem esse pixel instalado.' : 'Bloqueie domínios específicos e impeça-os de usar seu pixel adicionando o nome do domínio que você deseja bloquear a uma lista de bloqueio. Você continuará recebendo dados de tráfego e evento de todos os outros domínios que não estiverem incluídos na lista de bloqueio e que tiverem o código de base desse pixel instalado.') + '</p>' +
+        '<b>Insira um domínio</b><div class="linha-url"><input id="tDom" placeholder="Pesquise ou insira um domínio (por exemplo, amostra.com)" data-t="trafego-campo"/><button class="btn sec" data-acao="trafego-avancar" data-t="trafego-avancar">Avançar ›</button></div>' +
+        '<b>Tráfego de domínio mais relevante ⓘ</b><table class="tabela" data-t="trafego-tabela"><tr><th>Domínio</th><th>Eventos recebidos</th><th>Permissões</th></tr>' + DOMS.map(function (x, i) { return '<tr data-t="trafego-linha-' + i + '"><td>' + x[0] + '</td><td>' + x[1] + '<br><small class="miudo">' + x[2] + '</small></td><td><span class="st"><i></i>Permitido</span><br><button class="lnk" data-acao="trafego-add" data-dom="' + x[0] + '" data-t="trafego-add-' + i + '">Adicionar à lista de ' + (perm ? 'permissão' : 'bloqueio') + '</button></td></tr>' }).join('') + '</table>' +
+        (tnota ? '<div class="alerta aviso" data-t="trafego-nota"><b>🧪 O simulador para aqui</b>Você escolheu <b data-sem-traduzir="1">' + esc(tnota) + '</b> para a lista de ' + (perm ? 'permissão' : 'bloqueio') + '. A tela que aparece depois disso não foi conferida, então não está no simulador. ' + (perm ? 'Lembre: com a lista de permissão, os outros domínios ficam bloqueados na hora, e os eventos perdidos enquanto um domínio está bloqueado não voltam.' : 'Lembre: com a lista de bloqueio, só os domínios da lista deixam de enviar eventos; os outros continuam.') + '</div>' : '') +
+        '<div class="rodape-jan"><span></span><button class="btn" data-acao="fechar" data-t="trafego-fechar">Fechar</button></div></div>';
+    }
     f.innerHTML = '<div class="janela" role="dialog" aria-modal="true">' + h + '</div>';
     document.body.appendChild(f);
     var inp = $('#nomeDs'); if (inp) { inp.oninput = function () { window.__nomeDs = inp.value; window.__erroCriar = false; var b = $('[data-acao=criar]'); if (b) b.disabled = !inp.value.trim() }; if (document.activeElement === document.body) inp.focus() }
@@ -304,7 +324,13 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (a.hasAttribute('data-chave')) { var d = ds(rota().id); if (d) { var c = a.getAttribute('data-chave'); d[c] = !d[c]; grava(); render() } return }
     var ac = a.getAttribute('data-acao');
     if (ac === 'conectar') abreJanela('conectar');
-    else if (ac === 'fechar') fechaJanela();
+    else if (ac === 'fechar') { fechaJanela(); tnota = '' }
+    else if (ac === 'categorias') abreJanela('categorias');
+    else if (ac === 'trafego') { tmenu = false; tnota = ''; abreJanela('trafego') }
+    else if (ac === 'trafego-menu') { tmenu = !tmenu; render() }
+    else if (ac === 'trafego-modo') { tmodo = a.getAttribute('data-modo'); tmenu = false; render() }
+    else if (ac === 'trafego-add') { tnota = a.getAttribute('data-dom'); desenhaJanela() }
+    else if (ac === 'trafego-avancar') { var tv = ($('#tDom') || {}).value; if (tv && tv.trim()) { tnota = tv.trim(); desenhaJanela() } }
     else if (ac === 'avancar') { if (escolha === 'web') { window.__nomeDs = ''; window.__capi = true; window.__erroCriar = false; abreJanela('criar') } }
     else if (ac === 'cats') { cats = !cats; desenhaJanela() }
     else if (ac === 'criar') {
@@ -332,6 +358,13 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     $('#app').innerHTML = h; document.title = 'Simulador · Gerenciador de Eventos';
     desenhaJanela(); tourAtualiza();
   }
+  // para os tutoriais arrumarem a tela (Controles de dados: categorias e permissões de tráfego)
+  window.SIMEV = {
+    abre: function (q, o) { o = o || {}; if (o.modo) tmodo = o.modo; tnota = o.nota || ''; tmenu = false; if (janela !== q) abreJanela(q); else desenhaJanela() },
+    fecha: function () { tnota = ''; tmenu = false; if (janela) fechaJanela(); render() },
+    modo: function (m) { tmodo = m; tmenu = false; render() },
+    estado: function () { return { janela: janela, tmodo: tmodo, tmenu: tmenu, tnota: tnota } }
+  };
   window.addEventListener('hashchange', render);
   // eventos chegando da Lojinha (outra aba) — atualiza a tela na hora
   window.addEventListener('storage', function (e) { if (e.key === 'sim.feed' || e.key === 'sim.eventos') { S = ler('sim.eventos', S); if (!janela) render(); tourChecaCondicao() } });

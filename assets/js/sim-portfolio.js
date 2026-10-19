@@ -5,7 +5,7 @@
    - Tutoriais guiados (assets/js/tour.js): meta-portfolio.html?tour=conhecer-portfolio | criar-portfolio | convidar-pessoa | criar-conta-anuncios
    - ?zerar=1 começa sem portfólio · ?exemplo=1 garante o portfólio de exemplo da Marina. */
 (function () {
-  var CONF = { menu: '14/10/2026', pessoas: '14/10/2026', convidar1: '14/10/2026', paginas: '14/10/2026', contas: '14/10/2026', seguranca: '14/10/2026', info: '14/10/2026', criar: '13/10/2026' };
+  var CONF = { menu: '14/10/2026', pessoas: '14/10/2026', convidar1: '14/10/2026', paginas: '14/10/2026', contas: '14/10/2026', seguranca: '14/10/2026', dominios: '20/10/2026', info: '14/10/2026', criar: '13/10/2026' };
   var $ = function (s, r) { return (r || document).querySelector(s) };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)) };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
@@ -40,6 +40,7 @@
     ['Usuários', null, IC.user, [['Pessoas', 'pessoas'], ['Parceiros'], ['Usuários do sistema']]],
     ['Contas', null, IC.conta, [['Páginas', 'paginas'], ['Contas de anúncios', 'contas'], ['Grupos de ativos de negócios'], ['Apps'], ['Perfis do Instagram', 'instagram'], ['Contas do WhatsApp'], ['Perfis do Threads']]],
     ['Fontes de dados', null, IC.dados, [['Catálogos'], ['Conjuntos de dados e pixels', 'pixel'], ['Conjuntos de eventos offline'], ['Conversões personalizadas'], ['Públicos compartilhados'], ['Pastas de criativos da empresa']]],
+    ['Adequação e segurança para marcas', null, IC.escudo, [['Domínios', 'dominios'], ['Listas de bloqueio de publishers']]],   // tela real 20/10/2026
     ['Central de Segurança', 'seguranca', IC.escudo]
   ];
   function rota() { var h = (location.hash || '').slice(1); return h || (pf() ? 'info' : 'inicio') }
@@ -123,6 +124,13 @@
       else h += '<div class="pf-duas"><div class="cartao">' + p.igs.map(function (g) { return '<div class="pf-linha on"><span class="L">📸</span><span><b>@' + esc(g.user) + '</b></span></div>' }).join('') + '</div>' +
         p.igs.slice(0, 1).map(function (g) { return '<div class="cartao" data-t="ig-detalhe"><h2>@' + esc(g.user) + '</h2><p class="miudo">Identificação: <span class="id">' + g.id + '</span><br>Propriedade de: ' + esc(p.nome) + '</p><p><button class="btn sec">Atribuir pessoas</button> <button class="btn sec">Atribuir parceiro</button> <button class="btn sec">Conectar ativos</button></p><p class="miudo">Pessoas · Parceiros · Ativos conectados</p></div>' }).join('') + '</div>';
       return esqueleto(h, CONF.menu);
+    },
+    dominios: function () {   // tela real 20/10/2026 (título em inglês na tela real)
+      var p = pf();
+      var h = '<div class="pf-tit"><h1>Domains</h1><div class="pf-acoes"><button class="btn" data-acao="add-dominio" data-t="add-dominio">' + IC.mais + ' Adicionar</button></div></div>' +
+        (p.dominioInformado ? '<div class="pf-nota" data-t="dom-informado"><b>🧪 No simulador você informou ' + esc(p.dominioInformado) + '.</b><p>Nada foi adicionado de verdade: a etapa seguinte (provar que o domínio é seu) não foi conferida na tela real.</p></div>' : '') +
+        '<div class="cartao">' + vazio('Nenhum domínio adicionado', 'Adicione domínios a este portfólio empresarial para gerenciar todos os seus ativos de negócios em um só local.', '<button class="btn" data-acao="add-dominio" data-t="add-dominio-2">' + IC.mais + ' Adicionar</button>') + '</div>';
+      return esqueleto(h, CONF.dominios);
     },
     seguranca: function () {
       return esqueleto('<div class="pf-tit"><h1>Central de Segurança</h1></div>' +
@@ -259,6 +267,19 @@
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="con-ligar" data-t="con-adicionar">Adicionar</button></div>';
       else h = '<div style="text-align:center;font-size:44px">✅</div><h3 style="justify-content:center">Instagram conectado</h3><p style="text-align:center">A Página do Facebook <b>' + esc(pg) + '</b> agora está conectada ao perfil do Instagram <b>@lojinhadamarina</b>.</p>' +
         '<div class="rodape-jan"><button class="btn" data-acao="con-fim" data-t="con-concluir">Concluir</button></div>';
+    } else if (jan === 'dominio') {   // telas reais 20/10/2026 até “Adicionar um domínio”; a etapa seguinte não foi vista
+      if (passoJ === 0) h = '<h3>O que você quer fazer?<button class="x" data-acao="fechar">✕</button></h3>' +
+        '<button class="pf-op" data-acao="dom-criar" data-t="dom-criar"><span>🌐</span><span><b>Criar um domínio</b><small>Você precisa de um novo domínio para sua empresa.</small></span></button>' +
+        '<button class="pf-op" data-acao="dom-solicitar"><span>🤝</span><span><b>Solicitar acesso a um domínio</b><small>Sua empresa precisa usar este ativo em nome de outra empresa.</small></span></button>';
+      else if (passoJ === 1) h = '<h3>Adicionar um domínio<button class="x" data-acao="fechar">✕</button></h3><p>Adicione o domínio formatado corretamente que você deseja associar à sua empresa.</p>' +
+        '<p class="miudo" data-t="dom-regra">Você só pode verificar o domínio raiz (exemplo.com), e não um subdomínio (loja.exemplo.com) ou uma subpágina (exemplo.com/loja). Não adicione prefixos (http:// ou https://) no início.</p>' +
+        '<label class="campo" data-t="dom-campo"><b>Seu domínio</b><input id="fDom" placeholder="exemplo.com ou exemplo.com.br" value="' + esc(F.dom || '') + '" class="' + (F.domErro ? 'erro' : '') + '"/>' + (F.domErro ? '<small class="erro-txt" data-t="dom-erro">' + F.domErro + ' <i>(dica do simulador)</i></small>' : '') + '</label>' +
+        '<p class="miudo">Os domínios só podem ser adicionados a uma empresa, mas podem ser compartilhados com parceiros designados.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="dom-add" data-t="dom-adicionar" ' + ((F.dom || '').trim() ? '' : 'disabled') + '>Adicionar</button></div>';
+      else { conf = false; h = '<h3>🧪 O simulador para aqui<button class="x" data-acao="fechar">✕</button></h3><div data-t="dom-metodos"><p>Você informou <b data-sem-traduzir="1">' + esc(F.dom) + '</b>. Na vida real, depois de Adicionar, a Meta mostra como provar que o domínio é seu. Essa tela não foi conferida no portfólio de aula, então não está no simulador.</p>' +
+        '<p><b>Pela Central de Ajuda da Meta, são 3 jeitos</b> (e depois o botão Verificar domínio):</p><ul><li>colar uma metatag no &lt;head&gt; da página inicial do site;</li><li>carregar um arquivo HTML na pasta raiz do site;</li><li>adicionar um registro TXT no DNS, no site onde o domínio foi registrado.</li></ul>' +
+        '<p class="miudo">Quem faz é o desenvolvedor do site ou quem administra o domínio. Precisa de controle total do portfólio e acesso de administrador ou desenvolvedor ao domínio. Depois de verificado, a metatag, o arquivo ou o registro podem ser removidos.</p></div>' +
+        '<div class="rodape-jan"><button class="btn" data-acao="fechar" data-t="dom-fechar">Fechar</button></div>' }
     } else if (jan === 'aviso') {
       conf = false;
       h = '<h3>Fora do simulador por enquanto<button class="x" data-acao="fechar">✕</button></h3><p>Esta etapa ainda não está montada no simulador, porque ainda não conferimos a tela real dela. Na vida real, siga a Central de Ajuda da Meta.</p><div class="rodape-jan"><button class="btn" data-acao="fechar">Entendi</button></div>';
@@ -266,6 +287,16 @@
     f.innerHTML = '<div class="janela' + (larga ? ' larga' : '') + '" role="dialog" aria-modal="true">' + h +
       '<p class="conferido' + (conf ? '' : ' pendente') + '">' + (conf ? '✓ Conferido com a tela real' : '⚠ Tela montada pela documentação da Meta · a conferir com a tela real') + '</p></div>';
     liga();
+  }
+  // a regra da tela real: só o domínio raiz, sem prefixo, sem subdomínio nem subpágina (as mensagens são do simulador)
+  function domErro(v) {
+    v = String(v || '').trim().toLowerCase(); if (!v) return 'Escreva o domínio.';
+    if (/^https?:\/\//.test(v)) return 'Sem prefixo: tire o http:// ou https:// do começo.';
+    if (/\//.test(v)) return 'Só o domínio raiz: tire a parte depois da barra (a subpágina).';
+    if (/\s/.test(v) || !/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(v)) return 'Escreva só o domínio, como exemplo.com.br.';
+    var partes = v.split('.'), raiz = /\.(com|net|org|gov|edu|art|blog|eco|app|dev)\.[a-z]{2}$/.test(v) ? 3 : 2;
+    if (partes.length > raiz) return 'Isso é um subdomínio (' + partes.slice(0, partes.length - raiz).join('.') + '.). Use o domínio raiz: ' + partes.slice(-raiz).join('.') + '.';
+    return '';
   }
   function nAtivos() { return F.ativos ? Object.keys(F.ativos).filter(function (k) { return F.ativos[k] }).length : 0 }
   function okCriar() { return F.nomePf.trim() && !ESPECIAL.test(F.nomePf) && F.nome.trim() && F.sobrenome.trim() && /.+@.+\..+/.test(F.email) }
@@ -280,6 +311,7 @@
     campo('fTermos', 'termos', function () { botao('[data-acao=conta-criar]', F.termos) });
     campo('fGerenciar', 'gerenciar');
     campo('fMsgIg', 'msgIg');
+    campo('fDom', 'dom', function () { botao('[data-acao=dom-add]', !!(F.dom || '').trim()) });
     $$('[data-ativo]').forEach(function (c) { c.onchange = function () { F.ativos = F.ativos || {}; F.ativos[c.getAttribute('data-ativo')] = c.checked; desenha() } });
     $$('[data-todos]').forEach(function (c) { c.onchange = function () { F.ativos = {}; $$('[data-ativo]').forEach(function (x) { F.ativos[x.getAttribute('data-ativo')] = c.checked }); desenha() } });
     $$('[name=uso]').forEach(function (r) { r.onchange = function () { F.uso = r.value; window.__simPf = F; desenha() } });
@@ -316,6 +348,10 @@
     else if (ac === 'con-ligar') { var p1 = pf(); p1.conex = p1.conex || {}; p1.conex[p1.paginas[0]] = 'lojinhadamarina'; p1.igs = p1.igs || []; if (!p1.igs.length) p1.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 5; desenha() }
     else if (ac === 'con-fim') { fecha(); abaPag = 'ativos'; render() }
     else if (ac === 'add-ig') abre('add-ig');
+    else if (ac === 'add-dominio') abre('dominio');
+    else if (ac === 'dom-criar') { passoJ = 1; desenha() }
+    else if (ac === 'dom-solicitar') abre('aviso');
+    else if (ac === 'dom-add') { F.domErro = domErro(F.dom); if (F.domErro) { desenha(); return } F.dom = F.dom.trim().toLowerCase(); pf().dominioInformado = F.dom; grava(); passoJ = 2; desenha(); render() }
     else if (ac === 'ig-login') { passoJ = 1; desenha() }
     else if (ac === 'ig-entrar') { var p0 = pf(); p0.igs = p0.igs || []; if (!p0.igs.length) p0.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 2; desenha(); render() }
     else if (ac === 'conta-nova') { var keep = jan; abre('conta') }
@@ -334,7 +370,8 @@
     garanteAula4: function () { this.garanteExemplo(); var p = pf(); p.igs = p.igs || []; p.conex = p.conex || {}; if (!p.paginas.length) p.paginas.push('Lojinha da Marina'); if (!p.igs.length) p.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); if (p.conex[p.paginas[0]] && !SIMPF._ligando) delete p.conex[p.paginas[0]]; grava(); render() },
     aba: function (x) { abaPag = x; render() },
     estado: function () { return { jan: jan, passo: passoJ, F: F, pf: pf() } },
-    render: function () { render() }, pf: function () { return pf() }, grava: function () { grava() }, vai: function (h) { vai(h) }
+    render: function () { render() }, pf: function () { return pf() }, grava: function () { grava() }, vai: function (h) { vai(h) },
+    domErro: function (v) { return domErro(v) }, redesenha: function () { desenha() }
   };
 
   function render() {
@@ -430,5 +467,18 @@
       tit: T('Confirmar', 'Confirmar'), txt: T('Leia o aviso: depois de adicionada, a conta não pode ser removida do portfólio. Marque a caixinha dos termos e clique em Próximo.', 'Lee el aviso: después de agregada, la cuenta no puede quitarse del portfolio. Marca la casilla de condiciones y haz clic en Siguiente.') },
     { alvo: '[data-t=conta-criar]', clique: true, garante: function () { SIMPF.abre('conta', 2) }, tit: T('Criar', 'Crear'), txt: T('Clique em Criar conta de anúncios.', 'Haz clic en Crear cuenta publicitaria.') },
     { alvo: '[data-t=conta-detalhe]', fim: true, semVolta: true, tit: T('Conta criada! 🎉', '¡Cuenta creada! 🎉'), txt: T('Repare: moeda BRL e fuso de São Paulo, para sempre. Criar a conta não cobra nada; a forma de pagamento só entra quando for anunciar. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Fíjate: moneda BRL y zona de São Paulo, para siempre. Crear la cuenta no cobra nada; la forma de pago solo entra al anunciar. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
+  /* Pixel avançado · aula 05: verificação de domínio — tela real vista em 20/10/2026 (Configurações › Adequação e segurança para marcas › Domínios,
+     “O que você quer fazer?”, “Adicionar um domínio”). A etapa dos métodos (metatag, HTML, DNS) não foi vista: o simulador para e explica pelo artigo oficial. */
+  function domTela(passo, dom) { return function () { SIMPF.garanteExemplo(); SIMPF.vai('dominios'); if (passo == null) { SIMPF.fecha(); return } var e = SIMPF.estado(); SIMPF.abre('dominio', passo); if (dom != null) { SIMPF.estado().F.dom = dom; SIMPF.redesenha() } } }
+  var DOM_OK = 'lojinhadamarina.com.br';
+  TOURS['dominio-portfolio'] = [
+    { alvo: '[data-t=menu-dominios]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha(); SIMPF.vai('info') }, tit: T('Onde se verifica o domínio', 'Dónde se verifica el dominio'), txt: T('Não é no Gerenciador de Eventos: a verificação de domínio fica nas Configurações do portfólio. No menu, em “Adequação e segurança para marcas”, clique em Domínios.', 'No es en el Administrador de eventos: la verificación de dominio está en la Configuración del portfolio. En el menú, en “Adecuación y seguridad de la marca”, haz clic en Dominios.') },
+    { alvo: '[data-t=add-dominio]', clique: true, garante: domTela(null), tit: T('Nenhum domínio ainda', 'Ningún dominio todavía'), txt: T('“Nenhum domínio adicionado”. Clique em + Adicionar.', '“No se agregó ningún dominio”. Haz clic en + Agregar.') },
+    { alvo: '[data-t=dom-criar]', clique: true, garante: domTela(0), tit: T('Criar ou pedir acesso', 'Crear o pedir acceso'), txt: T('Criar um domínio: o domínio é da empresa. Solicitar acesso: a empresa usa o domínio de outra. O site da Marina é dela: clique em Criar um domínio.', 'Crear un dominio: el dominio es de la empresa. Solicitar acceso: la empresa usa el dominio de otra. El sitio de Marina es suyo: haz clic en Crear un dominio.') },
+    { alvo: '[data-t=dom-campo]', garante: domTela(1), cond: function () { return String((SIMPF.estado().F || {}).dom || '').trim().toLowerCase() === DOM_OK }, tit: T('Só o domínio raiz ⭐', 'Solo el dominio raíz ⭐'), txt: T('Leia a regra acima do campo. O endereço da loja é https://www.lojinhadamarina.com.br/loja, mas o domínio raiz é só lojinhadamarina.com.br: sem https://, sem www. e sem /loja. Escreva e clique em Próximo.', 'Lee la regla arriba del campo. La dirección de la tienda es https://www.lojinhadamarina.com.br/loja, pero el dominio raíz es solo lojinhadamarina.com.br: sin https://, sin www. y sin /loja. Escríbelo y haz clic en Siguiente.'), dica: T('Digite “lojinhadamarina.com.br” (sem as aspas).', 'Escribe “lojinhadamarina.com.br” (sin las comillas).') },
+    { alvo: '[data-t=dom-adicionar]', clique: true, livre: '#fDom', valida: function () { return !SIMPF.domErro(SIMPF.estado().F.dom) && String(SIMPF.estado().F.dom).trim().toLowerCase() === DOM_OK }, erro: T('Confira o domínio: só lojinhadamarina.com.br, sem https://, www. ou /loja. 🙂', 'Revisa el dominio: solo lojinhadamarina.com.br, sin https://, www. ni /loja. 🙂'), garante: domTela(1, DOM_OK), tit: T('Adicionar', 'Agregar'), txt: T('Clique em Adicionar.', 'Haz clic en Agregar.') },
+    { alvo: '[data-t=dom-metodos]', garante: domTela(2, DOM_OK), tit: T('Provar que o domínio é seu', 'Probar que el dominio es tuyo'), txt: T('Aqui o simulador para: a tela seguinte não foi vista no portfólio de aula. Pela Central de Ajuda são 3 jeitos (metatag, arquivo HTML ou registro TXT no DNS) e depois o botão Verificar domínio. Quem faz é o desenvolvedor ou quem cuida do domínio. Clique em Próximo.', 'Aquí el simulador se detiene: la pantalla siguiente no se vio en el portfolio de clase. Según el Centro de ayuda hay 3 formas (metaetiqueta, archivo HTML o registro TXT en el DNS) y después el botón Verificar dominio. Lo hace el desarrollador o quien administra el dominio. Haz clic en Siguiente.') },
+    { alvo: '[data-t=dom-metodos]', fim: true, semVolta: true, garante: domTela(2, DOM_OK), tit: T('Domínio entendido 🎉', '¡Dominio entendido! 🎉'), txt: T('Para o cliente: verificar o domínio NÃO é preciso para os eventos do Pixel. Serve para controlar quem edita os links dos anúncios, vender nos espaços de Comércio e verificar a empresa quando não há telefone ou email comercial. Clique em Concluir.', 'Para el cliente: verificar el dominio NO es necesario para los eventos del píxel. Sirve para controlar quién edita los enlaces de los anuncios, vender en los espacios de Comercio y verificar la empresa cuando no hay teléfono o correo comercial. Haz clic en Terminar.') }
   ];
 })();

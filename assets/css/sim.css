@@ -270,3 +270,7 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 
 /* Portfólio avançado (janelas e avisos dentro das Configurações do portfólio) */
 .av-aviso{background:#FFF5EA;border:2px solid #FFD79D;border-radius:10px;padding:8px 12px;margin:10px 0;color:var(--ink)}.av-aviso.verm{background:#FDECEA;border-color:#F3B7B1}.av-aviso.ok{background:#E8F7EE;border-color:#A9DDBD}.av-in{width:100%;box-sizing:border-box;padding:8px 10px;border:2px solid var(--ink);border-radius:10px;font:14px 'Segoe UI',sans-serif;margin:4px 0}.av-lin{display:flex;gap:8px;align-items:flex-start;margin:6px 0;font-size:14px}.av-pas{font-size:12px;color:var(--mute,#667)}.av-pas .on{font-weight:800;color:var(--ink)}
+/* Permissões de tráfego e categorias (Gerenciador de Eventos, tela real 20/10/2026) */
+.split{position:relative;display:inline-flex;gap:0}.split .btn:first-child{border-top-right-radius:0;border-bottom-right-radius:0}.split .btn+.btn{border-top-left-radius:0;border-bottom-left-radius:0;border-left:0;padding-left:10px;padding-right:10px}
+.menu-drop{position:absolute;top:100%;left:0;z-index:5;display:flex;flex-direction:column;min-width:220px;background:#fff;border:1px solid #CBD5E1;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.12);padding:4px;margin-top:4px}.menu-drop button{border:0;background:none;text-align:left;padding:8px 10px;border-radius:6px;cursor:pointer;font:inherit}.menu-drop button:hover{background:#EEF2F7}
+.pill{display:inline-block;border:1px solid #CBD5E1;border-radius:6px;padding:2px 8px;margin-left:4px;background:#fff}

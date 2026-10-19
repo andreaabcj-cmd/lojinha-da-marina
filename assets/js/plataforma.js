@@ -218,7 +218,9 @@
       ['qualidade-sinal', 'loja.html', 'pixel-avancado', '02', { pt: 'Como subir a pontuação de qualidade da correspondência de eventos', es: 'Cómo subir la puntuación de calidad de la coincidencia de eventos' }],
       ['desduplicar-eventos', 'loja.html', 'pixel-avancado', '03', { pt: 'Como desduplicar eventos do navegador e do servidor', es: 'Cómo deduplicar eventos del navegador y del servidor' }],
       ['info-proibida', 'loja.html', 'pixel-avancado', '04', { pt: 'Como achar e remover informação sensível dos eventos', es: 'Cómo encontrar y quitar información sensible de los eventos' }],
-      ['consentimento-pixel', 'loja.html', 'pixel-avancado', '04', { pt: 'Como fazer o Pixel esperar o aceite de cookies', es: 'Cómo hacer que el píxel espere la aceptación de cookies' }] ] },
+      ['consentimento-pixel', 'loja.html', 'pixel-avancado', '04', { pt: 'Como fazer o Pixel esperar o aceite de cookies', es: 'Cómo hacer que el píxel espere la aceptación de cookies' }],
+      ['controles-pixel', 'meta-eventos.html', 'pixel-avancado', '05', { pt: 'Como ver a categoria da fonte, a configuração básica e criar a lista de permissão de tráfego', es: 'Cómo ver la categoría de la fuente, la configuración básica y crear la lista de permitidos de tráfico' }],
+      ['dominio-portfolio', 'meta-portfolio.html?exemplo=1', 'pixel-avancado', '05', { pt: 'Como achar a verificação de domínio e escrever o domínio raiz', es: 'Cómo encontrar la verificación de dominio y escribir el dominio raíz' }] ] },
     { m: 'portfolio-avancado', itens: [
       ['verificar-empresa', 'meta-portfolio.html', 'portfolio-avancado', '01', { pt: 'Como verificar a empresa na Central de Segurança', es: 'Cómo verificar la empresa en el Centro de seguridad' }],
       ['corrigir-documento', 'meta-portfolio.html', 'portfolio-avancado', '02', { pt: 'Como corrigir documentos recusados da verificação', es: 'Cómo corregir documentos rechazados de la verificación' }],
