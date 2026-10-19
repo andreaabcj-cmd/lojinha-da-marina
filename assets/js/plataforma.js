@@ -29,6 +29,7 @@
     if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
+      (window.BUSCA ? '<button class="pp-botao" data-pergunte title="' + T({ pt: 'Pergunte ao Pixel (atalho: tecla /)', es: 'Pregúntale al Pixel (atajo: tecla /)' }) + '">🔎 <span>' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '</span></button>' : '') +
       '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div></header>';
   }
   document.addEventListener('click', function (e) {
@@ -65,6 +66,7 @@
       return '<div class="pl-ola">' + PERSONAGEM('marina', 4) + PERSONAGEM('rafa', 4) + PERSONAGEM('pixel', 4) + '</div>' +
         '<h1 class="pl-h1">' + T({ pt: 'Bem-vindo à Lojinha da Marina', es: 'Bienvenido a la Lojinha da Marina' }) + '</h1>' +
         '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online e quer crescer com a Meta. O Rafa é do suporte e ajuda a Marina em cada fase. O Pixel, nosso mascote, te guia pelo caminho. Escolha por onde começar.', es: 'Marina tiene una tienda online y quiere crecer con Meta. Rafa es del soporte y ayuda a Marina en cada fase. El Pixel, nuestra mascota, te guía en el camino. Elige por dónde empezar.' }) + '</p>' +
+        (window.BUSCA ? '<form class="pp-hero" role="search"><input type="search" placeholder="' + T({ pt: '🔎 Pergunte ao Pixel: escreva sua dúvida do seu jeito', es: '🔎 Pregúntale al Pixel: escribe tu duda a tu manera' }) + '" aria-label="' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '"/><button class="btn amarelo">' + T({ pt: 'Perguntar', es: 'Preguntar' }) + '</button></form>' : '') +
         (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
         '<div class="portas">' + [
           ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
@@ -325,6 +327,7 @@
       ['editar-publicado', 'meta-anuncios.html?zerar=1', 'anuncios', '04', { pt: 'Como editar uma campanha que já está rodando', es: 'Cómo editar una campaña que ya está corriendo' }],
       ['resolver-publicacao', 'meta-turbinar.html?zerar=1&problemas=1', 'anuncios', '05', { pt: 'Como destravar um anúncio que não publica', es: 'Cómo destrabar un anuncio que no se publica' }] ] }
   ];
+  window.COMO = COMO;   // a busca (Pergunte ao Pixel) também lê os tutoriais
   function comoFazer() {
     var volta = encodeURIComponent('laboratorio.html#como');
     return '<h2 class="pl-h2" id="como">🧭 ' + T({ pt: 'Como fazer…', es: 'Cómo hacer…' }) + '</h2>' +
