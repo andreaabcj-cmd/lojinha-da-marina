@@ -59,6 +59,19 @@
     'Os eventos recebidos não mostram problemas.': 'Los eventos recibidos no muestran problemas.',
     'Cancelar': 'Cancelar', 'Avançar': 'Siguiente', 'Fechar': 'Cerrar'
   };
+  /* Configurações reais do Pixel (20/10/2026); espanhol traduzido por nós, a conferir */
+  A['Configurações do Pixel da Meta'] = 'Configuración del píxel de Meta';
+  A['Incluir automaticamente informações mais detalhadas de páginas e produtos'] = 'Incluir automáticamente información más detallada de páginas y productos';
+  A['Ativado'] = 'Activado';
+  A['Desativada'] = 'Desactivada';
+  A['Esse recurso usa IA para identificar e enviar mais detalhes do site, como informações básicas da página, avaliações e preços, além dos dados existentes do seu Pixel da Meta.'] = 'Esta función usa IA para identificar y enviar más detalles del sitio, como información básica de la página, opiniones y precios, además de los datos existentes de tu píxel de Meta.';
+  A['Mensure as conversões nos dispositivos dos clientes'] = 'Mide las conversiones en los dispositivos de los clientes';
+  A['Mensuração a partir de 12 de novembro de 2026'] = 'Medición a partir del 12 de noviembre de 2026';
+  A['A Meta mensura as conversões dos seus anúncios para que você possa ver quais deles estão funcionando. Com esse recurso ativado, a mensuração acontece no dispositivo do cliente em vez de apenas nos servidores da Meta.'] = 'Meta mide las conversiones de tus anuncios para que puedas ver cuáles funcionan. Con esta función activada, la medición ocurre en el dispositivo del cliente en lugar de solo en los servidores de Meta.';
+  A['Controles de dados'] = 'Controles de datos';
+  A['Configuração básica'] = 'Configuración básica';
+  A['Quando ativadas, as Ferramentas Comerciais da Meta podem restringir dados como parâmetros personalizado e partes de URL após o domínio.'] = 'Cuando están activadas, las Herramientas para empresas de Meta pueden restringir datos como parámetros personalizados y partes de la URL después del dominio.';
+  A['Configurações do site'] = 'Configuración del sitio';
   for (var k in A) D[k] = A[k];
   var un = function (u) { return u === 's' ? 's' : u === 'min' ? ' min' : u === 'h' ? ' h' : ' ' + u };
   /* --- Diagnóstico de casos (16/10/2026): avisos do Diagnóstico, origem Servidor e janela "Instalar o código manualmente" --- */

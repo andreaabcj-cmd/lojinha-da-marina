@@ -234,10 +234,16 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   }
 
   function abaConfig(d) {
+    function status(dt, rot, est, sub, txt) { return '<div class="config-linha" data-t="' + dt + '"><div><b>' + rot + '</b><p><span class="est">' + est + '</span>' + (sub ? ' · <small>' + sub + '</small>' : '') + '</p><p>' + txt + '</p></div></div>' }
     function chave(k, rot, txt) { return '<div class="config-linha"><div><b>' + rot + '</b><p>' + txt + '</p></div><span class="chave' + (d[k] ? ' on' : '') + '" role="switch" aria-checked="' + !!d[k] + '" data-chave="' + k + '" data-t="chave-' + k + '"></span></div>' }
     return '<div class="cartao"><h2>Detalhes</h2><div class="config-linha"><div><b>Nome</b><p>' + esc(d.nome) + '</p></div></div><div class="config-linha"><div><b>Identificação do conjunto de dados</b><p><span class="id">' + d.id + '</span></p></div></div>' +
       '<div class="config-linha"><div><b>Proprietário</b><p>' + PORTFOLIO + '</p></div></div><div class="config-linha"><div><b>Criado por</b><p>' + USUARIO + ' · ' + new Date(d.criado).toLocaleDateString('pt-BR') + '</p></div></div></div>' +
-      '<div class="cartao"><h2>Configurações do Pixel</h2>' +
+      '<div class="cartao" data-t="cfg-meta"><h2>Configurações do Pixel da Meta</h2>' +   // como na tela real (Gerenciador de Eventos, 20/10/2026)
+      status('cfg-detalhes', 'Incluir automaticamente informações mais detalhadas de páginas e produtos', 'Ativado', '', 'Esse recurso usa IA para identificar e enviar mais detalhes do site, como informações básicas da página, avaliações e preços, além dos dados existentes do seu Pixel da Meta.') +
+      status('cfg-dispositivo', 'Mensure as conversões nos dispositivos dos clientes', 'Ativado', 'Mensuração a partir de 12 de novembro de 2026', 'A Meta mensura as conversões dos seus anúncios para que você possa ver quais deles estão funcionando. Com esse recurso ativado, a mensuração acontece no dispositivo do cliente em vez de apenas nos servidores da Meta.') + '</div>' +
+      '<div class="cartao" data-t="cfg-controles"><h2>Controles de dados</h2>' +
+      status('cfg-basica', 'Configuração básica', 'Desativada', '', 'Quando ativadas, as Ferramentas Comerciais da Meta podem restringir dados como parâmetros personalizado e partes de URL após o domínio.') + '</div>' +
+      '<div class="cartao"><h2>Configurações do site</h2>' +
       chave('am', 'Correspondência avançada automática', 'Usa informações que a pessoa digita no site (como email e telefone) para associar os eventos às contas, sempre com hash.') +
       chave('cookies', 'Usar cookies primários', 'Grava o cookie _fbp no domínio do próprio site, o que ajuda a medir as conversões.') +
       chave('auto', 'Rastrear eventos automaticamente sem código', 'A Meta sugere e detecta eventos padrão pelo comportamento do site, sem programar.') +
