@@ -2684,6 +2684,7 @@ window.AULAS = {
           { pt: '<b>OpenGraph</b> = etiquetas no topo da página: <code>&lt;meta property="product:price:amount" content="39.90"&gt;</code>.', es: '<b>OpenGraph</b> = etiquetas arriba de la página: <code>&lt;meta property="product:price:amount" content="39.90"&gt;</code>.' },
           { pt: '<b>JSON-LD</b> = a ficha do produto num bloco <code>&lt;script&gt;</code>: <code>"price": "39.90",</code> (aspas e vírgulas contam!).', es: '<b>JSON-LD</b> = la ficha del producto en un bloque <code>&lt;script&gt;</code>: <code>"price": "39.90",</code> (¡las comillas y las comas cuentan!).' },
           { pt: '<b>schema.org</b> = adesivos na própria página: <code>&lt;meta itemprop="price" content="39.90"&gt;</code>. Um formato basta.', es: '<b>schema.org</b> = pegatinas en la propia página: <code>&lt;meta itemprop="price" content="39.90"&gt;</code>. Con un formato basta.' },
+          { pt: '<b>Para que mais servem:</b> as tags OpenGraph (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>) também definem a prévia do link quando a página é compartilhada no Facebook (título, descrição e imagem). O schema.org (em JSON-LD ou nos adesivos) também ajuda o Google a entender a página; o Google recomenda o JSON-LD. Para o catálogo da Meta, os três servem.', es: '<b>Para qué más sirven:</b> las etiquetas OpenGraph (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>) también definen la vista previa del enlace cuando la página se comparte en Facebook (título, descripción e imagen). schema.org (en JSON-LD o en las pegatinas) también ayuda a Google a entender la página; Google recomienda JSON-LD. Para el catálogo de Meta, los tres sirven.' },
           { pt: '<b>Os valores:</b> id igual ao do catálogo, preço <code>39.90</code> e moeda <code>BRL</code>, disponibilidade e condição em inglês.', es: '<b>Los valores:</b> id igual al del catálogo, precio <code>39.90</code> y moneda <code>BRL</code>, disponibilidad y condición en inglés.' },
           { pt: '<b>Quem faz:</b> o desenvolvedor ou a plataforma da loja. Você explica o que pedir e confere no Microdata Debugger.', es: '<b>Quién lo hace:</b> el desarrollador o la plataforma de la tienda. Tú explicas qué pedir y revisas en el Microdata Debugger.' }
         ],
@@ -2726,6 +2727,8 @@ window.AULAS = {
       },
       fontes: [
         { url: 'https://developers.facebook.com/docs/marketing-api/catalog/guides/microdata-tags', titulo: { pt: 'Microdata tags (Meta for Developers)', es: 'Microdata tags (Meta for Developers)' }, conferido: '20/10/2026' },
+        { url: 'https://developers.facebook.com/docs/sharing/webmasters/', titulo: { pt: 'Compartilhamento: tags Open Graph para a prévia do link (Meta for Developers)', es: 'Compartir: etiquetas Open Graph para la vista previa del enlace (Meta for Developers)' }, conferido: '20/10/2026' },
+        { url: 'https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data', titulo: { pt: 'Dados estruturados (Google Search Central)', es: 'Datos estructurados (Google Search Central)' }, conferido: '20/10/2026' },
         { url: 'https://business.facebook.com/ads/microdata/debug', titulo: { pt: 'Ferramenta de depuração de microdados', es: 'Herramienta de depuración de microdatos' }, conferido: '20/10/2026' }
       ]
     }
