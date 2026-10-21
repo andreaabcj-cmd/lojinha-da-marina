@@ -12,9 +12,9 @@
   var BASE = 'https://lojinha.exemplo.com.br/';
   /* páginas do site de mentirinha: id, título, preço, disponibilidade + o que o site publica */
   var PAG = {
-    'produto-caneca_01.html': { id: 'CANECA_01', t: 'Caneca azul', d: 'Caneca de cerâmica azul, 300 ml. Vai ao micro-ondas e à lava-louças.', p: '49.90', av: 'in stock', img: 'assets/img/caneca_01.png', og: true, ld: true },
-    'produto-camiseta_02.html': { id: 'CAMISETA_02_P', t: 'Camiseta Montanha - P', d: 'Camiseta de algodão com estampa de montanha.', p: '69.90', av: 'in stock', img: 'assets/img/camiseta_02.png', og: true, ld: true },
-    'produto-moletom_01.html': { id: 'MOLETOM_01', t: 'Moletom Marinho', d: 'Moletom azul-marinho com capuz.', p: '149.90', av: 'out of stock', img: 'assets/img/moletom_01.png', og: true, ld: true },
+    'produto-caneca_01.html': { id: 'CANECA_01', t: 'Caneca azul', d: 'Caneca de cerâmica azul, 300 ml. Vai ao micro-ondas e à lava-louças.', p: '49.90', av: 'in stock', img: 'assets/img/caneca_01.png', og: true, ld: true, sc: true },
+    'produto-camiseta_02.html': { id: 'CAMISETA_02_P', t: 'Camiseta Montanha - P', d: 'Camiseta de algodão com estampa de montanha.', p: '69.90', av: 'in stock', img: 'assets/img/camiseta_02.png', og: true, ld: true, sc: true },
+    'produto-moletom_01.html': { id: 'MOLETOM_01', t: 'Moletom Marinho', d: 'Moletom azul-marinho com capuz.', p: '149.90', av: 'out of stock', img: 'assets/img/moletom_01.png', og: true, ld: true, sc: true },
     'produto-so-jsonld.html': { id: 'ECOBAG_03', t: 'Ecobag Folha', d: 'Ecobag de algodão cru com estampa de folha.', p: '39.90', av: 'in stock', img: 'assets/img/ecobag_03.png', og: false, ld: true },
     'produto-sem-preco.html': { id: 'BONE_01', t: 'Boné Azul', d: 'Boné azul ajustável.', p: '', av: 'in stock', img: 'assets/img/bone_01.png', og: true, ld: true, falta: ['price'] },
     'produto-sem-id.html': { id: '', t: 'Caneca amarela', d: 'Caneca de cerâmica amarela, 300 ml.', p: '49.90', av: 'in stock', img: 'assets/img/caneca_02.png', og: true, ld: true, falta: ['id'] },
@@ -69,16 +69,21 @@
     }
     return { ok: true, pg: pg, avisos: avisos };
   }
+  /* Na ferramenta real (20/10/2026, página da Caneca azul), a tabela Schema.org mostra só id, title, description, price, availability e brand */
+  function soSc(L, tipo) { return tipo !== 'sc' ? L : L.filter(function (x) { return /^(id|title|description|price|availability|brand)$/.test(x[0]) }) }
   function tabelaDyn(pg, tipo) {
     var c = tipo === 'og' ? pg.vOg : tipo === 'sc' ? pg.vSc : pg.vLd, L = [['id', c.id], ['title', c.title], ['description', c.description], ['price', c.amount + ' ' + c.currency], ['link', c.link], ['image_link', c.image_link], ['availability', c.availability], ['condition', c.condition], ['brand', c.brand]];
     if (c.item_group_id) L.push(['item_group_id', c.item_group_id]);
+    L = soSc(L, tipo);
     return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td data-sem-traduzir="1">' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
   }
   function avisosDyn(r) { return r.avisos && r.avisos.length ? '<div class="ga-aviso" data-t="md-avisos"><b>Dica do simulador:</b> ' + r.avisos.map(function (a) { return '<span>' + esc(a) + '</span>' }).join(' · ') + '</div>' : '' }
   function tabela(pg, tipo) {
     if (pg.dyn) return tabelaDyn(pg, tipo);
     var L = [['id', pg.id], ['title', pg.t], ['description', pg.d], ['price', pg.p + ' BRL'], ['link', BASE + (Object.keys(PAG).filter(function (k) { return PAG[k] === pg })[0] || '')], ['image_link', BASE + pg.img], ['availability', pg.av]];
-    if (tipo === 'og') { L.push(['condition', 'new']); L.push(['brand', 'Lojinha da Marina']); L.push(['additional_image_link', BASE + pg.img]) } else L.push(['brand', 'Lojinha da Marina']);
+    L.push(['condition', 'new']); L.push(['brand', 'Lojinha da Marina']);
+    if (tipo === 'og') L.push(['additional_image_link', BASE + pg.img]);
+    L = soSc(L, tipo);
     return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td>' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
   }
   function resultado() {
@@ -93,7 +98,7 @@
     }
     var pg = r.pg;
     return '<div class="md-res" data-t="resultado-ok"><h3>Prévia</h3><p>É assim que os microdados são configurados no seu site. Corrija os erros abaixo para que todos os produtos no seu site possam ser adicionados automaticamente ao seu catálogo.</p>' +
-      (pg.og ? '<h4>OpenGraph</h4>' + tabela(pg, 'og') : '') + (pg.ld ? '<h4>JSON-LD</h4>' + tabela(pg, 'ld') : '') + (pg.sc ? '<h4>Schema.org</h4>' + tabela(pg, 'sc') + '<p class="conferido" data-t="sc-conferir">⚠ Como a ferramenta real mostra os microdados schema.org (o nome e a ordem desta tabela) não foi visto: a conferir. Os campos são os da documentação oficial “Microdata tags”.</p>' : '') + '<p class="md-ok" data-t="parabens">Parabéns! Seus microdados parecem ótimos!</p>' + (pg.dyn ? avisosDyn(r) : '') + '</div>';
+      (pg.og ? '<h4>OpenGraph</h4>' + tabela(pg, 'og') : '') + (pg.ld ? '<h4>JSON-LD</h4>' + tabela(pg, 'ld') : '') + (pg.sc ? '<h4>Schema.org</h4>' + tabela(pg, 'sc') + '<p class="conferido" data-t="sc-conferir">✓ Tabela Schema.org conferida na ferramenta real em 20/10/2026: ela mostra menos campos que as outras (sem link, imagem e condição).</p>' : '') + '<p class="md-ok" data-t="parabens">Parabéns! Seus microdados parecem ótimos!</p>' + (pg.dyn ? avisosDyn(r) : '') + '</div>';
   }
   function pagina() {
     var exemplos = Object.keys(PAG).map(function (k) { return '<option value="' + BASE + k + '">' + k + '</option>' }).join('');

@@ -13,7 +13,7 @@
     sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
     planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
-    entender: { pt: 'Entender', es: 'Entender' }, ferramenta: { pt: 'Ver de perto', es: 'Ver de cerca' }, praticar: { pt: 'Praticar', es: 'Practicar' }, atender: { pt: 'Atender', es: 'Atender' }, colas: { pt: 'Colas', es: 'Guías' },
+    entender: { pt: 'Entender', es: 'Entender' }, ferramenta: { pt: 'Ver de perto', es: 'Ver de cerca' }, praticar: { pt: 'Praticar', es: 'Practicar' }, atender: { pt: 'Atender', es: 'Atender' }, colas: { pt: 'Colas', es: 'Guías' }, faq: { pt: 'FAQ', es: 'FAQ' },
     ant: { pt: '◀ Anterior', es: '◀ Anterior' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, proxAula: { pt: 'Próxima aula ▶', es: 'Siguiente clase ▶' }, fimMod: { pt: 'Voltar ao módulo', es: 'Volver al módulo' },
     apresentar: { pt: '🎤 Apresentar', es: '🎤 Presentar' }, sairApr: { pt: '✕ Sair da apresentação', es: '✕ Salir de la presentación' }, notas: { pt: '📝 Notas', es: '📝 Notas' },
     fontes: { pt: 'Fontes oficiais', es: 'Fuentes oficiales' }, conferido: { pt: 'conferido em', es: 'revisado el' }, min: { pt: 'min', es: 'min' }
@@ -24,7 +24,7 @@
 
   /* ---------- topo ---------- */
   function topo(ativo) {
-    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['diagnostico.html', 'diagnostico'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['colas.html', 'colas']];
+    var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['diagnostico.html', 'diagnostico'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['colas.html', 'colas'], ['faq.html', 'faq']];
     if (window.MODO_PUBLICO) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // site publicado: as abas Simuladores e Laboratório ficam escondidas
     if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
@@ -323,7 +323,8 @@
       ['conferir-ids', 'meta-catalogo.html?exemplo=1', 'catalogo', '04', { pt: 'Como conferir os IDs dos produtos', es: 'Cómo revisar los IDs de los productos' }],
       ['achar-produto', 'meta-catalogo.html?exemplo=1', 'catalogo', '05', { pt: 'Como achar e corrigir um produto que não aparece', es: 'Cómo encontrar y corregir un producto que no aparece' }],
       ['entrada-manual', 'meta-catalogo.html?exemplo=1', 'catalogo', '07', { pt: 'Como cadastrar um produto à mão no catálogo (Entrada manual)', es: 'Cómo cargar un producto a mano en el catálogo (Entrada manual)' }],
-      ['conferir-planilha', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como conferir a planilha do catálogo (modelo, formatos, Resumo do upload e relatório de problemas)', es: 'Cómo revisar la planilla del catálogo (plantilla, formatos, Resumen de la carga e informe de problemas)' }] ] },
+      ['conferir-planilha', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como conferir a planilha do catálogo (modelo, formatos, Resumo do upload e relatório de problemas)', es: 'Cómo revisar la planilla del catálogo (plantilla, formatos, Resumen de la carga e informe de problemas)' }],
+      ['programar-feed', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como ver a programação do feed: substituições ou atualizações', es: 'Cómo ver la programación del feed: reemplazo o actualización' }] ] },
     { m: 'anuncios', itens: [
       ['turbinar-post', 'meta-turbinar.html?zerar=1', 'anuncios', '01', { pt: 'Como turbinar um post', es: 'Cómo promocionar un post' }],
       ['conhecer-niveis', 'meta-anuncios.html?zerar=1', 'anuncios', '02', { pt: 'Como achar cada coisa: campanha, conjunto e anúncio', es: 'Cómo encontrar cada cosa: campaña, conjunto y anuncio' }],
@@ -450,7 +451,7 @@
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function desenha() {
       var p = partes[passoAtual], h = '';
-      if (p === 'reclamacao') h = '<h2>🗣️ ' + T(U.reclamacao) + '</h2>' + chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T({ pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' }) + '</button></p>';
+      if (p === 'reclamacao') h = '<h2>🗣️ ' + T(U.reclamacao) + '</h2>' + chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T(a.praticar ? { pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' } : { pt: 'Ver por que acontece', es: 'Ver por qué pasa' }) + '</button></p>';
       else if (p === 'entender') h = '<h2>💬 ' + T(dg ? U.porque : U.entender) + '</h2>' + (a.antes ? '<p class="fio antes">📖 <b>' + T({ pt: 'Onde paramos:', es: 'Dónde quedamos:' }) + '</b> ' + T(a.antes) + '</p>' : '') + chat(a.entender.dialogo) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<h2>🔍 ' + T(U.ferramenta) + '</h2><div class="ferr-box" id="ferr"></div><p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>'; setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
       else if (p === 'praticar') {
@@ -495,12 +496,12 @@
     });
     return '<div class="barra-apr"><button class="btn sec" id="bNotas">' + T(U.notas) + '</button><button class="btn sec" id="bApr">' + T(U.apresentar) + '</button></div>' +
       '<p class="pl-trilha"><a href="' + (dg ? 'diagnostico.html' : 'modulos.html') + '">' + T(dg ? U.diagnostico : U.modulos) + '</a> › <a href="modulo.html?m=' + mid + '">' + T(m.titulo) + '</a> › ' + T(dg ? { pt: 'Caso', es: 'Caso' } : { pt: 'Aula', es: 'Clase' }) + ' ' + a.id + '</p>' +
-      '<h1 class="pl-h1">' + T(a.titulo) + '</h1>' + (dg ? '' : faseChip(m)) + '<p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
+      '<h1 class="pl-h1">' + T(a.titulo) + '</h1>' + (dg ? '' : faseChip(m)) + (mid === 'dg-workaround' ? '<p class="ga-aviso">🧪 <b>' + T({ pt: 'Workaround plausível:', es: 'Workaround plausible:' }) + '</b> ' + T({ pt: 'a Meta não documenta esta saída; a comunidade relata que costuma funcionar. Use só como tentativa, depois do caminho oficial, e nunca prometa resultado.', es: 'Meta no documenta esta salida; la comunidad relata que suele funcionar. Úsala solo como intento, después del camino oficial, y nunca prometas resultado.' }) + '</p>' : '') + '<p class="pl-lead">🎯 ' + T(a.objetivo) + ' <small>· ' + a.min + ' ' + T(U.min) + '</small></p>' +
       '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(dg && p === 'praticar' ? U.resolver : dg && p === 'entender' ? U.porque : U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
       '<div class="notas"><b>📝 ' + T({ pt: 'Notas para quem apresenta', es: 'Notas para quien presenta' }) + ':</b> ' + T(a.entender.notas) + '</div>' +
       '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +
-      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '');
+      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(mid === 'dg-workaround' ? { pt: 'Fontes da comunidade (não oficiais)', es: 'Fuentes de la comunidad (no oficiales)' } : U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '');
   }
 
   /* prática guiada feita na própria plataforma (ex.: pedir e ler o print do cliente) */
@@ -529,6 +530,24 @@
     return h;
   };
 
+  /* FAQ: mitos e correções + dúvidas comuns de atendimento (conteúdo em assets/academia/faq.js) */
+  TELAS.faq = function () {
+    var S = window.FAQ || [], q = (Q.get('q') || '').toLowerCase();
+    var h = '<h1 class="pl-h1">❓ ' + T({ pt: 'Perguntas frequentes', es: 'Preguntas frecuentes' }) + '</h1><p class="pl-lead">' + T({ pt: 'O que circula por aí e não é bem assim, e as dúvidas que mais aparecem no atendimento. Cada resposta foi conferida na Central de Ajuda da Meta ou na tela real; o link leva à aula ou ao caso.', es: 'Lo que circula por ahí y no es así, y las dudas que más aparecen en la atención. Cada respuesta se revisó en el Centro de ayuda de Meta o en la pantalla real; el enlace lleva a la clase o al caso.' }) + '</p>' +
+      '<p class="faq-indice">' + S.map(function (s) { return '<a href="#faq-' + s.id + '">' + s.icone + ' ' + T(s.titulo) + '</a>' }).join(' · ') + '</p>';
+    S.forEach(function (s) {
+      h += '<h2 class="secao-tit" id="faq-' + s.id + '">' + s.icone + ' ' + T(s.titulo) + '</h2>' + (s.sub ? '<p class="miudo">' + T(s.sub) + '</p>' : '') +
+        s.itens.map(function (it, i) {
+          var m = it.aula && (window.MODULOS || []).filter(function (x) { return x.id === it.aula[0] })[0];
+          var lk = it.aula ? ' <a class="miudo" href="aula-plataforma.html?m=' + it.aula[0] + '&a=' + it.aula[1] + '">' + T(m && m.area ? { pt: 'abrir o caso', es: 'abrir el caso' } : { pt: 'abrir a aula', es: 'abrir la clase' }) + ' ›</a>' : '';
+          var fo = it.fonte ? ' <a class="miudo" href="' + it.fonte + '" target="_blank" rel="noopener">📚 ' + T({ pt: 'fonte', es: 'fuente' }) + '</a>' : '';
+          var aberto = q && (T(it.p) + ' ' + T(it.r)).toLowerCase().indexOf(q) >= 0;
+          return '<details class="faq-it" id="faq-' + s.id + '-' + i + '"' + (aberto ? ' open' : '') + '><summary>' + T(it.p) + '</summary><p>' + T(it.r) + lk + fo + '</p></details>';
+        }).join('');
+    });
+    return h;
+  };
+
   TELAS.feedback = function () { return window.FEEDBACK ? window.FEEDBACK.html(T) : '' };
 
   /* ---------- montagem ---------- */
@@ -536,7 +555,7 @@
     var tela = document.body.getAttribute('data-tela');
     if (!tela) return;   // páginas da loja/simulador só usam a porta
     var mAtual = (window.MODULOS || []).filter(function (x) { return x.id === Q.get('m') })[0], naArea = !!(mAtual && mAtual.area === 'diagnostico');
-    var ativo = { inicio: 'inicio', modulos: 'modulos', diagnostico: 'diagnostico', modulo: naArea ? 'diagnostico' : 'modulos', aula: naArea ? 'diagnostico' : 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', feedback: 'feedback' }[tela];
+    var ativo = { inicio: 'inicio', modulos: 'modulos', diagnostico: 'diagnostico', modulo: naArea ? 'diagnostico' : 'modulos', aula: naArea ? 'diagnostico' : 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', faq: 'faq', feedback: 'feedback' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
     var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';

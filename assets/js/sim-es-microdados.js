@@ -45,7 +45,7 @@
   A['o bloco JSON-LD tem um erro de escrita (vírgula, aspas ou chave faltando) e não pôde ser lido'] = 'el bloque JSON-LD tiene un error de escritura (falta una coma, comillas o llave) y no se pudo leer';
   A['a página não tem tags de produto (nem OpenGraph, nem JSON-LD, nem schema.org)'] = 'la página no tiene etiquetas de producto (ni OpenGraph, ni JSON-LD, ni schema.org)';
   A['Schema.org'] = 'Schema.org';
-  A['⚠ Como a ferramenta real mostra os microdados schema.org (o nome e a ordem desta tabela) não foi visto: a conferir. Os campos são os da documentação oficial “Microdata tags”.'] = '⚠ No se vio cómo la herramienta real muestra los microdatos schema.org (el nombre y el orden de esta tabla): por confirmar. Los campos son los de la documentación oficial “Microdata tags”.';
+  A['✓ Tabela Schema.org conferida na ferramenta real em 20/10/2026: ela mostra menos campos que as outras (sem link, imagem e condição).'] = '✓ Tabla Schema.org revisada en la herramienta real el 20/10/2026: muestra menos campos que las otras (sin enlace, imagen ni condición).';
   A['o id desta página não é o do catálogo: lá a Ecobag é ECOBAG_03. Com outro id, a Meta não liga a página ao produto do catálogo nem aos eventos do Pixel'] = 'el id de esta página no es el del catálogo: allí la Ecobag es ECOBAG_03. Con otro id, Meta no une la página con el producto del catálogo ni con los eventos del píxel';
   A['ainda há valores do exemplo da Meta (como fb_tshirts ou facebook_tshirt_001): troque pelos da Ecobag ou apague a linha'] = 'todavía hay valores del ejemplo de Meta (como fb_tshirts o facebook_tshirt_001): cámbialos por los de la Ecobag o borra la línea';
   for (var k in A) D[k] = A[k];

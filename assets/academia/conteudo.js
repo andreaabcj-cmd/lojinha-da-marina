@@ -28,12 +28,13 @@ window.MODULOS = [
   { id: 'pixel-avancado', fase: 3, status: 'construcao', icone: '🛰️', titulo: { pt: 'Pixel · avançado', es: 'Pixel · avanzado' }, resumo: { pt: 'Correspondência avançada, qualidade do sinal, API de Conversões e deduplicação, privacidade.', es: 'Coincidencia avanzada, calidad de la señal, API de conversiones y deduplicación, privacidad.' } },
   /* ÁREA DIAGNÓSTICO (fora das trilhas): casos de verdade, por categoria. Cada bloco é um "módulo" com area: 'diagnostico' e cada caso é uma "aula"
      no formato de caso: a Marina reclama → tutorial guiado → o porquê → Atender e Cola. */
-  { id: 'dg-pixel', area: 'diagnostico', status: 'construcao', icone: '📡', titulo: { pt: 'Pixel e eventos', es: 'Píxel y eventos' }, resumo: { pt: 'Compra que não chega, código colado à mão, compras em dobro, valor errado, queda de eventos e Purchase em todas as páginas.', es: 'Compra que no llega, código pegado a mano, compras duplicadas, valor incorrecto, caída de eventos y Purchase en todas las páginas.' } },
+  { id: 'dg-pixel', area: 'diagnostico', status: 'construcao', icone: '📡', titulo: { pt: 'Pixel e eventos', es: 'Píxel y eventos' }, resumo: { pt: 'Compra que não chega, código colado à mão, compras em dobro, valor errado, queda de eventos, Purchase em todas as páginas e compras a mais que as vendas.', es: 'Compra que no llega, código pegado a mano, compras duplicadas, valor incorrecto, caída de eventos, Purchase en todas las páginas y más compras que ventas.' } },
   { id: 'dg-integracoes', area: 'diagnostico', status: 'construcao', icone: '🧩', titulo: { pt: 'Integrações e plataformas', es: 'Integraciones y plataformas' }, resumo: { pt: 'Loja conectada pela Shopify, WooCommerce ou parceiro que não envia o que devia.', es: 'Tienda conectada por Shopify, WooCommerce o socio que no envía lo que debería.' } },
-  { id: 'dg-anuncios', area: 'diagnostico', status: 'construcao', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar.', es: 'Anuncio que no se publica, no entrega o dejó de entregar.' } },
-  { id: 'dg-catalogo', area: 'diagnostico', status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo e produtos', es: 'Catálogo y productos' }, resumo: { pt: 'Produtos que não aparecem, não sincronizam ou não batem com o Pixel.', es: 'Productos que no aparecen, no se sincronizan o no coinciden con el píxel.' } },
-  { id: 'dg-contas', area: 'diagnostico', status: 'construcao', icone: '🏢', titulo: { pt: 'Contas, acessos e portfólio', es: 'Cuentas, accesos y portafolio' }, resumo: { pt: 'Quem tem acesso a quê, ativos no portfólio errado e verificação da empresa.', es: 'Quién tiene acceso a qué, activos en el portafolio equivocado y verificación de la empresa.' } },
-  { id: 'dg-instagram', area: 'diagnostico', status: 'construcao', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta ou não aparece no anúncio.', es: 'Instagram que no se conecta o no aparece en el anuncio.' } },
+  { id: 'dg-anuncios', area: 'diagnostico', status: 'construcao', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar; orçamento que varia, comentários ofensivos, cidade vizinha, link com erro e anúncio cortado no celular.', es: 'Anuncio que no se publica, no entrega o dejó de entregar; presupuesto que varía, comentarios ofensivos, ciudad vecina, enlace con error y anuncio cortado en el celular.' } },
+  { id: 'dg-catalogo', area: 'diagnostico', status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo e produtos', es: 'Catálogo y productos' }, resumo: { pt: 'Produtos que não aparecem, não sincronizam ou não batem com o Pixel; produto oculto que volta, planilha do Google e esgotado só na Meta.', es: 'Productos que no aparecen, no se sincronizan o no coinciden con el píxel; producto oculto que vuelve, hoja de Google y agotado solo en Meta.' } },
+  { id: 'dg-contas', area: 'diagnostico', status: 'construcao', icone: '🏢', titulo: { pt: 'Contas, acessos e portfólio', es: 'Cuentas, accesos y portafolio' }, resumo: { pt: 'Quem tem acesso a quê, ativos no portfólio errado, convite que não chega, limite de contas de anúncios e portfólio novo restrito.', es: 'Quién tiene acceso a qué, activos en el portafolio equivocado, invitación que no llega, límite de cuentas publicitarias y portafolio nuevo restringido.' } },
+  { id: 'dg-instagram', area: 'diagnostico', status: 'construcao', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta, não aparece no anúncio ou não pode anunciar (assinatura sem anúncios).', es: 'Instagram que no se conecta, no aparece en el anuncio o no puede anunciar (suscripción sin anuncios).' } },
+  { id: 'dg-workaround', area: 'diagnostico', status: 'construcao', icone: '🧪', titulo: { pt: 'Workaround plausível', es: 'Workaround plausible' }, resumo: { pt: 'Saídas que a comunidade relata e que costumam funcionar, mas que a Meta não documenta. Só como tentativa, depois do caminho oficial, sem prometer resultado.', es: 'Salidas que la comunidad relata y que suelen funcionar, pero que Meta no documenta. Solo como intento, después del camino oficial, sin prometer resultado.' } },
   { id: 'dg-commerce', area: 'diagnostico', status: 'planejado', icone: '🛍️', titulo: { pt: 'Commerce e lojas', es: 'Commerce y tiendas' }, resumo: { pt: 'Loja que não fica visível e anúncios das Lojas que só levam ao site.', es: 'Tienda que no queda visible y anuncios de Tiendas que solo llevan al sitio.' } },
   { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
@@ -437,9 +438,10 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Canais:</b> mensagens (Messenger, Instagram, WhatsApp) e comentários (Facebook e Instagram) em abas separadas.', es: '<b>Canales:</b> mensajes (Messenger, Instagram, WhatsApp) y comentarios (Facebook e Instagram) en pestañas separadas.' },
           { pt: '<b>Filtros:</b> Não lidas, Prioridade, Respostas a anúncios.', es: '<b>Filtros:</b> No leídos, Prioridad, Respuestas de anuncios.' },
-          { pt: '<b>Responder rápido</b> e no canal certo.', es: '<b>Responder rápido</b> y en el canal correcto.' }
+          { pt: '<b>Responder rápido</b> e no canal certo.', es: '<b>Responder rápido</b> y en el canal correcto.' },
+          { pt: '<b>Comentário ofensivo no anúncio:</b> dá para ocultar (só quem escreveu e os amigos dele continuam vendo), excluir ou denunciar. Para prevenir, a moderação da Página bloqueia palavras e filtra palavrões, e isso vale também para os anúncios; no Instagram, a ferramenta é Palavras ocultas.', es: '<b>Comentario ofensivo en el anuncio:</b> se puede ocultar (solo quien lo escribió y sus amigos lo siguen viendo), eliminar o denunciar. Para prevenir, la moderación de la Página bloquea palabras y filtra groserías, y eso vale también para los anuncios; en Instagram, la herramienta es Palabras ocultas.' }
         ],
-        notas: { pt: 'Caixa de Entrada vista de verdade em 14–16/10/2026 em português e espanhol: canais, filtros e botões do topo. A conta de aula não tem conversas, então as conversas do simulador são de exemplo e a tela de uma conversa aberta (campo de resposta) foi montada pela documentação (a conferir).', es: 'Mensajes vistos de verdad el 14–16/10/2026 en portugués y español: canales, filtros y botones de arriba. La cuenta de práctica no tiene conversaciones, así que las conversaciones del simulador son de ejemplo y la pantalla de una conversación abierta (campo de respuesta) se armó con la documentación (por confirmar).' }
+        notas: { pt: 'Caixa de Entrada vista de verdade em 14–16/10/2026 em português e espanhol: canais, filtros e botões do topo. A conta de aula não tem conversas, então as conversas do simulador são de exemplo e a tela de uma conversa aberta (campo de resposta) foi montada pela documentação (a conferir). Moderação de comentários (ocultar, excluir, denunciar, palavras bloqueadas e filtro de palavrões; Palavras ocultas no Instagram): Central de Ajuda da Meta, “Gerenciar comentários nos anúncios” e “Moderação da Página”, lidas em 20/10/2026; essas telas não foram vistas (a conferir).', es: 'Mensajes vistos de verdad el 14–16/10/2026 en portugués y español: canales, filtros y botones de arriba. La cuenta de práctica no tiene conversaciones, así que las conversaciones del simulador son de ejemplo y la pantalla de una conversación abierta (campo de respuesta) se armó con la documentación (por confirmar). Moderación de comentarios (ocultar, eliminar, denunciar, palabras bloqueadas y filtro de groserías; Palabras ocultas en Instagram): Centro de ayuda de Meta, leído el 20/10/2026; esas pantallas no se vieron (por confirmar).' }
       },
       ferramenta: 'canal-certo',
       praticar: {
@@ -584,7 +586,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Nome:</b> o nome público da empresa. Os parênteses dão erro de caracteres especiais (visto de verdade).', es: '<b>Nombre:</b> el nombre público de la empresa. Los paréntesis dan error de caracteres especiales (visto de verdad).' },
           { pt: '<b>Contato:</b> nome, sobrenome e email comercial de quem cria (vira administrador).', es: '<b>Contacto:</b> nombre, apellido y correo comercial de quien crea (se vuelve administrador).' },
-          { pt: '<b>Depois:</b> escolher os ativos, chamar pessoas (pode pular) e confirmar. Dá para editar tudo mais tarde.', es: '<b>Después:</b> elegir los activos, invitar personas (se puede saltar) y confirmar. Se puede editar todo más tarde.' }
+          { pt: '<b>Depois:</b> escolher os ativos, chamar pessoas (pode pular) e confirmar. Dá para editar tudo mais tarde.', es: '<b>Después:</b> elegir los activos, invitar personas (se puede saltar) y confirmar. Se puede editar todo más tarde.' },
+          { pt: '<b>Limite:</b> cada pessoa pode criar até 2 portfólios (e participar de quantos quiser). Se não deixa criar outro, veja se ela já criou dois.', es: '<b>Límite:</b> cada persona puede crear hasta 2 portfolios (y participar en todos los que quiera). Si no deja crear otro, revisa si ya creó dos.' }
         ],
         notas: { pt: 'O erro dos parênteses aconteceu de verdade quando criamos o portfólio da Lojinha em 13/10/2026. Use isso: é um caso real e comum.', es: 'El error de los paréntesis pasó de verdad cuando creamos el portfolio de la Lojinha el 13/10/2026. Úsalo: es un caso real y común.' }
       },
@@ -637,7 +640,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Acesso total (“Tudo”):</b> para quem administra a empresa. Mexe em tudo, dá acesso total a outros e pode até excluir o portfólio.', es: '<b>Acceso total (“Todo”):</b> para quien administra la empresa. Toca todo, da acceso total a otros y puede hasta eliminar el portfolio.' },
           { pt: '<b>Acesso básico (padrão) + ativos atribuídos:</b> a pessoa trabalha só no que você der, com acesso parcial ou total àquele ativo.', es: '<b>Acceso básico (predeterminado) + activos asignados:</b> la persona trabaja solo en lo que le des, con acceso parcial o total a ese activo.' },
-          { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro. E ative a autenticação de dois fatores.', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio. Y activa la autenticación en dos pasos.' }
+          { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro. E ative a autenticação de dois fatores.', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio. Y activa la autenticación en dos pasos.' },
+          { pt: '<b>Convite que não chega:</b> o e-mail convidado tem que ser o mesmo da conta do Facebook da pessoa. Olhe o spam e reenvie em Pessoas. Às vezes o convite espera a aprovação de outra pessoa com controle total, ou quem convidou ainda precisa confirmar o próprio e-mail.', es: '<b>Invitación que no llega:</b> el correo invitado tiene que ser el mismo de la cuenta de Facebook de la persona. Mira el spam y vuelve a enviarla en Personas. A veces la invitación espera la aprobación de otra persona con control total, o quien invitó todavía tiene que confirmar su propio correo.' }
         ],
         notas: { pt: 'Erro clássico: dar controle total para todo mundo “porque é mais fácil”. Mostre o risco com calma. As 4 etapas do convite no simulador foram conferidas na tela real (14/10/2026). Na tela real, o acesso total aparece como “Tudo · Gerenciar” e avisa que a pessoa pode até excluir o portfólio.', es: 'Error clásico: dar control total a todos “porque es más fácil”. Muestra el riesgo con calma. Las 4 etapas de la invitación en el simulador se revisaron en la pantalla real (14/10/2026). En la pantalla real, el acceso total aparece como “Todo · Gestionar” y avisa que la persona puede hasta eliminar el portfolio.' }
       },
@@ -692,7 +696,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Página em outro portfólio:</b> quem administra aquele portfólio remove a Página; depois a dona adiciona no portfólio dela. Não existe transferência direta.', es: '<b>Página en otro portfolio:</b> quien administra ese portfolio quita la Página; después la dueña la agrega en su portfolio. No existe transferencia directa.' },
           { pt: '<b>Agência?</b> Não precisa mudar o dono: ela pede “acesso compartilhado” à Página do cliente.', es: '<b>¿Agencia?</b> No hace falta cambiar el dueño: pide “acceso compartido” a la Página del cliente.' },
-          { pt: '<b>Conta de anúncios:</b> moeda e fuso horário NÃO mudam depois, e a conta não pode ser removida do portfólio. Criar não cobra nada.', es: '<b>Cuenta publicitaria:</b> moneda y zona horaria NO cambian después, y la cuenta no se puede quitar del portfolio. Crearla no cobra nada.' }
+          { pt: '<b>Conta de anúncios:</b> moeda e fuso horário NÃO mudam depois, e a conta não pode ser removida do portfólio. Criar não cobra nada.', es: '<b>Cuenta publicitaria:</b> moneda y zona horaria NO cambian después, y la cuenta no se puede quitar del portfolio. Crearla no cobra nada.' },
+          { pt: '<b>Quantas contas?</b> Em Informações da empresa aparece o “Limite de criação de contas de anúncios”. Portfólio novo começa com 1, até fazer um pagamento confirmado; o limite sobe com o histórico de gastos, e contas desativadas também contam.', es: '<b>¿Cuántas cuentas?</b> En la información del negocio aparece el “Límite de creación de cuentas publicitarias”. Un portfolio nuevo empieza con 1, hasta hacer un pago confirmado; el límite sube con el historial de gastos, y las cuentas desactivadas también cuentan.' }
         ],
         notas: { pt: 'O caso da Página “presa” em outro portfólio aconteceu de verdade com a nossa Lojinha. O fuso e a moeda errados (o padrão é dólar e horário de Los Angeles) são erros muito comuns de cliente nova.', es: 'El caso de la Página “atrapada” en otro portfolio pasó de verdad con nuestra Lojinha. La zona y la moneda equivocadas (lo predeterminado es dólar y horario de Los Ángeles) son errores muy comunes de clienta nueva.' }
       },
@@ -1078,7 +1083,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Vendas com local “Site”</b> exige o conjunto de dados (Pixel). Sem ele, a tela avisa e não deixa publicar.', es: '<b>Ventas con lugar “Sitio”</b> exige el conjunto de datos (Pixel). Sin él, la pantalla avisa y no deja publicar.' },
           { pt: '<b>A Página do Facebook é obrigatória</b> no anúncio (Identidade). O Instagram é opcional.', es: '<b>La Página de Facebook es obligatoria</b> en el anuncio (Identidad). El Instagram es opcional.' },
-          { pt: '<b>Rascunho não gasta nada.</b> Só depois de Publicar vai para análise, e depois fica ativo.', es: '<b>El borrador no gasta nada.</b> Solo después de Publicar va a revisión, y luego queda activo.' }
+          { pt: '<b>Rascunho não gasta nada.</b> Só depois de Publicar vai para análise, e depois fica ativo.', es: '<b>El borrador no gasta nada.</b> Solo después de Publicar va a revisión, y luego queda activo.' },
+          { pt: '<b>Orçamento diário é uma média:</b> num dia a Meta pode gastar até 75% a mais (no máximo 175% do valor) e em outro gastar menos; na semana, nunca passa de 7 vezes o orçamento diário.', es: '<b>El presupuesto diario es un promedio:</b> un día Meta puede gastar hasta un 75% más (como máximo el 175% del valor) y otro día gastar menos; en la semana, nunca pasa de 7 veces el presupuesto diario.' }
         ],
         notas: { pt: 'Telas vistas de verdade em 14–15/10/2026 (conta de aula, sempre em rascunho). A tela de “Conferir e publicar” ainda é montada a partir da documentação (a conferir). Anúncio em análise e anúncio ativo foram vistos em 15–16/10/2026 no Turbinar.', es: 'Pantallas vistas de verdad el 14–15/10/2026 (cuenta de aula, siempre en borrador). La pantalla de “Revisar y publicar” todavía se arma a partir de la documentación (por confirmar). Anuncio en revisión y anuncio activo se vieron el 15–16/10/2026 en Promocionar.' }
       },
@@ -1111,7 +1117,8 @@ window.AULAS = {
         encaminhar: { pt: 'Se o Pixel não aparece na lista ou a Página não deixa escolher, revise permissões e o portfólio e siga a Central de Ajuda da Meta (solução de problemas ao criar ou publicar um anúncio).', es: 'Si el Pixel no aparece en la lista o la Página no deja elegirse, revisa permisos y el portfolio y sigue el Centro de ayuda de Meta (solución de problemas al crear o publicar un anuncio).' }
       },
       fontes: [
-        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta? (lista “Solucionar problemas ao criar ou publicar um anúncio”)', es: '¿Cuáles son los niveles de publicidad en el Administrador de anuncios de Meta? (lista “Solucionar problemas al crear o publicar un anuncio”)' }, conferido: '16/10/2026' }
+        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Quais são os níveis de publicidade no Gerenciador de Anúncios da Meta? (lista “Solucionar problemas ao criar ou publicar um anúncio”)', es: '¿Cuáles son los niveles de publicidad en el Administrador de anuncios de Meta? (lista “Solucionar problemas al crear o publicar un anuncio”)' }, conferido: '16/10/2026' },
+        { url: 'https://www.facebook.com/business/help/190490051321426', titulo: { pt: 'Sobre os orçamentos diários (até 75% a mais num dia; 175% no dia e 7 vezes na semana)', es: 'Acerca de los presupuestos diarios (hasta un 75% más en un día; 175% en el día y 7 veces en la semana)' }, conferido: '20/10/2026' }
       ]
     },
     {
@@ -1240,9 +1247,10 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Catálogo</b> = a lista dos produtos que os anúncios e as lojas usam.', es: '<b>Catálogo</b> = la lista de productos que usan los anuncios y las tiendas.' },
           { pt: '<b>Um só</b> para todo o estoque; <b>conjuntos</b> para separar por campanha.', es: '<b>Uno solo</b> para todo el inventario; <b>conjuntos</b> para separar por campaña.' },
-          { pt: 'Ele <b>pertence a um portfólio empresarial</b> e tem seu próprio ID.', es: 'Él <b>pertenece a un portfolio comercial</b> y tiene su propio ID.' }
+          { pt: 'Ele <b>pertence a um portfólio empresarial</b> e tem seu próprio ID.', es: 'Él <b>pertenece a un portfolio comercial</b> y tiene su propio ID.' },
+          { pt: '<b>Conjunto × coleção:</b> o conjunto de produtos (aba Conjuntos) escolhe o que vai nos <b>anúncios</b>; a coleção organiza a <b>loja</b>. O anúncio de coleção pede um conjunto com pelo menos 4 produtos; o carrossel mostra de 2 a 10 cartões.', es: '<b>Conjunto × colección:</b> el conjunto de productos (pestaña Conjuntos) elige lo que va en los <b>anuncios</b>; la colección organiza la <b>tienda</b>. El anuncio de colección pide un conjunto con al menos 4 productos; el carrusel muestra de 2 a 10 tarjetas.' }
         ],
-        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (Gerenciador de Comércio › Ativos › Catálogos), com um catálogo de aula. Nomes de menus conferidos em português e em espanhol (Administrador de ventas).', es: 'Pantallas vistas de verdad el 16/10/2026 (Administrador de ventas › Activos › Catálogos), con un catálogo de práctica. Nombres de menús revisados en portugués y en español (Administrador de ventas).' }
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (Gerenciador de Comércio › Ativos › Catálogos), com um catálogo de aula. Nomes de menus conferidos em português e em espanhol (Administrador de ventas). A aba Conjuntos (“Conjuntos de produtos”, com o conjunto All Products que a Meta cria sozinha) foi vista em 20/10/2026. Os mínimos do anúncio de coleção e do carrossel vêm da Central de Ajuda da Meta (“Escolha os produtos a serem exibidos em um anúncio de coleção” e as especificações do carrossel).', es: 'Pantallas vistas de verdad el 16/10/2026 (Administrador de ventas › Activos › Catálogos), con un catálogo de práctica. Nombres de menús revisados en portugués y en español (Administrador de ventas). La pestaña Conjuntos (“Conjuntos de productos”, con el conjunto All Products que Meta crea sola) se vio el 20/10/2026. Los mínimos del anuncio de colección y del carrusel vienen del Centro de ayuda de Meta (“Elige los productos que se mostrarán en un anuncio de colección” y las especificaciones del carrusel).' }
       },
       ferramenta: 'um-ou-varios',
       atender: {
@@ -1330,9 +1338,10 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Arquivo de dados</b> (feed): atualiza sozinho na frequência escolhida.', es: '<b>Archivo de datos</b> (feed): se actualiza solo con la frecuencia elegida.' },
           { pt: '<b>Manual</b>: bom para poucos produtos; a grade pede pelo menos 5 para anúncios de catálogo Advantage+.', es: '<b>Manual</b>: bueno para pocos productos; la cuadrícula pide al menos 5 para anuncios de catálogo Advantage+.' },
-          { pt: '<b>Moeda padrão</b> certa antes de carregar.', es: '<b>Moneda predeterminada</b> correcta antes de subir.' }
+          { pt: '<b>Moeda padrão</b> certa antes de carregar.', es: '<b>Moneda predeterminada</b> correcta antes de subir.' },
+          { pt: '<b>Planilha do Google:</b> ela precisa estar compartilhada como “Qualquer pessoa com o link”. Conta Google de empresa às vezes bloqueia esse compartilhamento: aí a Meta não consegue ler o arquivo.', es: '<b>Hoja de cálculo de Google:</b> tiene que estar compartida como “Cualquier persona con el enlace”. Una cuenta de Google de empresa a veces bloquea ese uso compartido: entonces Meta no puede leer el archivo.' }
         ],
-        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (feed de aula carregado por URL). A janela real de edição de produto ainda não foi vista (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (feed de práctica subido por URL). La ventana real de edición de producto todavía no se vio (por confirmar).' }
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (feed de aula carregado por URL). A janela real de edição de produto ainda não foi vista (a conferir). A regra do compartilhamento da planilha do Google é da Central de Ajuda da Meta (“Uploads programados de feed de dados”).', es: 'Pantallas vistas de verdad el 16/10/2026 (feed de práctica subido por URL). La ventana real de edición de producto todavía no se vio (por confirmar). La regla de compartir la hoja de cálculo de Google es del Centro de ayuda de Meta (“Subidas programadas de feeds de datos”).' }
       },
       ferramenta: 'jeito-de-adicionar',
       praticar: {
@@ -1473,14 +1482,20 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Antes de carregar:</b> cabeçalho em inglês sem mudanças, sem linhas de exemplo, um produto por linha, arquivo salvo.', es: '<b>Antes de subir:</b> encabezado en inglés sin cambios, sin filas de ejemplo, un producto por fila, archivo guardado.' },
           { pt: '<b>Formatos:</b> price 54.90 BRL · availability in stock/out of stock · condition new/refurbished/used · links com https:// · id único · brand, gtin ou mpn.', es: '<b>Formatos:</b> price 54.90 BRL · availability in stock/out of stock · condition new/refurbished/used · enlaces con https:// · id único · brand, gtin o mpn.' },
-          { pt: '<b>Depois de carregar:</b> Resumo do upload + relatório de problemas → corrigir na planilha → Recarregar arquivo de dados.', es: '<b>Después de subir:</b> Resumen de la carga + informe de problemas → corregir en la planilla → volver a subir el archivo.' }
+          { pt: '<b>Depois de carregar:</b> Resumo do upload + relatório de problemas → corrigir na planilha → Recarregar arquivo de dados.', es: '<b>Después de subir:</b> Resumen de la carga + informe de problemas → corregir en la planilla → volver a subir el archivo.' },
+          { pt: '<b>Programar (aba Configurações do feed):</b> a <b>Programação de substituições</b> troca o catálogo pelo arquivo, e o que saiu do arquivo sai do catálogo. A <b>Programação de atualizações</b> só atualiza informações: a tela avisa que ela “não adicionará nem removerá produtos”.', es: '<b>Programar (pestaña Configurar del feed):</b> <b>Programar reemplazo</b> cambia el catálogo por el archivo, y lo que salió del archivo sale del catálogo. <b>Programar actualización</b> solo actualiza información: la pantalla avisa que “no se agregarán ni se quitarán productos”.' }
         ],
-        notas: { pt: 'Telas vistas de verdade em 19/10/2026 no catálogo de aula: menu Adicionar das Fontes de dados, “Carregar arquivo de dados” (Baixar modelo: Modelo padrão .xlsx/.csv e Modelo personalizado) e a visão geral do feed com o Resumo do upload dos produtos. Regras e nomes dos erros: Central de Ajuda da Meta para Empresas (PT-BR), “Como criar um feed de dados para seu catálogo usando um modelo” e “Como solucionar erros de feed de dados no catálogo”. A planilha e a lista de problemas da sessão são de treino (o relatório real é um arquivo baixado: a conferir).', es: 'Pantallas vistas de verdad el 19/10/2026 en el catálogo de práctica: menú Agregar de Fuentes de datos, “Subir archivo de datos” (Descargar plantilla: estándar .xlsx/.csv y personalizada) y la vista general del feed con el Resumen de la carga. Reglas y nombres de los errores: Centro de ayuda de Meta para Empresas (PT-BR), “Cómo crear un feed de datos con una plantilla” y “Cómo solucionar errores de feed de datos en el catálogo”. La planilla y la lista de problemas de la sesión son de práctica (el informe real es un archivo descargado: por confirmar).' }
+        notas: { pt: 'Telas vistas de verdade em 19/10/2026 no catálogo de aula: menu Adicionar das Fontes de dados, “Carregar arquivo de dados” (Baixar modelo: Modelo padrão .xlsx/.csv e Modelo personalizado) e a visão geral do feed com o Resumo do upload dos produtos. Regras e nomes dos erros: Central de Ajuda da Meta para Empresas (PT-BR), “Como criar um feed de dados para seu catálogo usando um modelo” e “Como solucionar erros de feed de dados no catálogo”. A planilha e a lista de problemas da sessão são de treino (o relatório real é um arquivo baixado: a conferir). A aba Configurações do feed (Programações: “Programação de atualizações” e “Programação de substituições”) foi vista em 20/10/2026 em português e espanhol.', es:'Pantallas vistas de verdad el 19/10/2026 en el catálogo de práctica: menú Agregar de Fuentes de datos, “Subir archivo de datos” (Descargar plantilla: estándar .xlsx/.csv y personalizada) y la vista general del feed con el Resumen de la carga. Reglas y nombres de los errores: Centro de ayuda de Meta para Empresas (PT-BR), “Cómo crear un feed de datos con una plantilla” y “Cómo solucionar errores de feed de datos en el catálogo”. La planilla y la lista de problemas de la sesión son de práctica (el informe real es un archivo descargado: por confirmar). La pestaña Configurar del feed (Programaciones: “Programar actualización” y “Programar reemplazo”) se vio el 20/10/2026 en portugués y español.' }
       },
       ferramenta: 'planilha-ok',
       praticar: {
-        texto: { pt: 'No simulador, você acha o modelo, abre a planilha da Marina, apaga a linha de exemplo, carrega, lê o resumo e o relatório, corrige as 6 células e recarrega até não sobrar problema.', es: 'En el simulador, encuentras la plantilla, abres la planilla de Marina, borras la fila de ejemplo, la subes, lees el resumen y el informe, corriges las 6 celdas y vuelves a subir hasta que no quede ningún problema.' },
-        tour: 'conferir-planilha', pagina: 'meta-catalogo.html?exemplo=1'
+        texto: { pt: 'Duas práticas no simulador. Na primeira, você acha o modelo, abre a planilha da Marina, apaga a linha de exemplo, carrega, lê o resumo e o relatório, corrige as 6 células e recarrega até não sobrar problema. Na segunda, você abre as Configurações do feed e escolhe entre a programação de substituições e a de atualizações.', es: 'Dos prácticas en el simulador. En la primera, encuentras la plantilla, abres la planilla de Marina, borras la fila de ejemplo, la subes, lees el resumen y el informe, corriges las 6 celdas y vuelves a subir hasta que no quede ningún problema. En la segunda, abres la pestaña Configurar del feed y eliges entre programar reemplazo y programar actualización.' },
+        opcoes: [
+          { id: 'planilha', icone: '📗', pagina: 'meta-catalogo.html?exemplo=1', tour: 'conferir-planilha', selo: { pt: 'comece aqui', es: 'empieza aquí' },
+            tit: { pt: 'Conferir e corrigir a planilha', es: 'Revisar y corregir la planilla' }, txt: { pt: 'Modelo, linha de exemplo, Resumo do upload, relatório de problemas e recarregar.', es: 'Plantilla, fila de ejemplo, Resumen de la carga, informe de problemas y volver a subir.' } },
+          { id: 'programar', icone: '🔁', pagina: 'meta-catalogo.html?exemplo=1', tour: 'programar-feed',
+            tit: { pt: 'Substituir ou só atualizar?', es: '¿Reemplazar o solo actualizar?' }, txt: { pt: 'As duas programações do feed e qual delas tira do catálogo o produto que saiu do arquivo.', es: 'Las dos programaciones del feed y cuál de ellas quita del catálogo el producto que salió del archivo.' } }
+        ]
       },
       atender: {
         cena: { pt: 'Carreguei a planilha e só entraram 2 produtos de 6! O sistema de vocês está com problema? 😤', es: '¡Subí la planilla y solo entraron 2 productos de 6! ¿Su sistema tiene un problema? 😤' },
@@ -1510,7 +1525,7 @@ window.AULAS = {
           ['marina', { pt: 'Vou vender um Kit Presente só neste mês. Preciso mexer na planilha inteira por causa de um produto? 🎁', es: 'Voy a vender un Kit Regalo solo este mes. ¿Tengo que tocar toda la planilla por un solo producto? 🎁' }],
           ['rafa', { pt: 'Para poucos produtos existe a Entrada manual: Produtos › Adicionar › Entrada manual. A Meta recomenda esse jeito para quem tem menos de 50 produtos. É uma tabela: cada linha é um produto.', es: 'Para pocos productos existe la Entrada manual: Productos › Agregar › Entrada manual. Meta recomienda esta forma para quien tiene menos de 50 productos. Es una tabla: cada fila es un producto.' }],
           ['marina', { pt: 'E o que é obrigatório?', es: '¿Y qué es obligatorio?' }],
-          ['rafa', { pt: 'Tudo o que não diz “Opcional”: pelo menos uma imagem (500 x 500 pixels, até 8 MB, JPEG ou PNG), título, descrição, link da página do produto e preço maior que 0. Condição, disponibilidade e status já vêm preenchidos.', es: 'Todo lo que no dice “Opcional”: al menos una imagen (500 x 500 píxeles, hasta 8 MB, JPEG o PNG), título, descripción, enlace de la página del producto y precio mayor que 0. Condición, disponibilidad y estado ya vienen completos.' }],
+          ['rafa', { pt: 'Tudo o que não diz “Opcional”: pelo menos uma imagem (no mínimo 500 x 500 pixels, até 8 MB, JPEG ou PNG; 1024 x 1024 é o tamanho recomendado, não o máximo), título, descrição, link da página do produto e preço maior que 0. Condição, disponibilidade e status já vêm preenchidos.', es: 'Todo lo que no dice “Opcional”: al menos una imagen (mínimo 500 x 500 píxeles, hasta 8 MB, JPEG o PNG; 1024 x 1024 es el tamaño recomendado, no el máximo), título, descripción, enlace de la página del producto y precio mayor que 0. Condición, disponibilidad y estado ya vienen completos.' }],
           ['pixel', { pt: 'Pegadinha: a Identificação do conteúdo diz “Opcional”, mas para anúncios de catálogo ela tem que ser igual ao content_id do Pixel naquela página. Sem isso, o anúncio não liga o produto à visita.', es: 'Trampa: el ID de contenido dice “Opcional”, pero para anuncios de catálogo debe ser igual al content_id del píxel en esa página. Sin eso, el anuncio no une el producto a la visita.' }]
         ],
         pontos: [
@@ -1655,9 +1670,10 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Posicionamentos</b> ficam no conjunto de anúncios; com Advantage+ a Meta escolhe os lugares.', es: '<b>Las ubicaciones</b> están en el conjunto de anuncios; con Advantage+ Meta elige los lugares.' },
           { pt: '<b>Três grupos</b> na prévia e em Editar grupo, cada um com o seu corte.', es: '<b>Tres grupos</b> en la vista previa y en Editar grupo, cada uno con su recorte.' },
-          { pt: '<b>Recomendados:</b> Feeds 1:1 · Stories e Reels 9:16.', es: '<b>Recomendados:</b> Feeds 1:1 · Stories y Reels 9:16.' }
+          { pt: '<b>Recomendados:</b> Feeds 1:1 · Stories e Reels 9:16.', es: '<b>Recomendados:</b> Feeds 1:1 · Stories y Reels 9:16.' },
+          { pt: '<b>“No meu celular aparece cortado!”</b> A prévia mostra cada posicionamento. Ao lado dela fica o botão de compartilhar (a seta ↪), que manda a prévia para ver em outro aparelho. Se no outro aparelho está certo, o problema é o app ou o aparelho do cliente, não o anúncio.', es: '<b>“¡En mi celular aparece cortado!”</b> La vista previa muestra cada ubicación. Al lado está el botón de compartir (la flecha ↪), que manda la vista previa para verla en otro dispositivo. Si en el otro dispositivo se ve bien, el problema es la app o el dispositivo del cliente, no el anuncio.' }
         ],
-        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (prévia por grupo, janela Editar grupo com os cortes de Feeds e de Stories, seção Posicionamentos Advantage+). O corte do grupo Coluna da direita e a escolha manual de posicionamentos não foram vistos (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (vista previa por grupo, ventana Editar grupo con los recortes de Feeds y de Stories, sección Ubicaciones Advantage+). El recorte del grupo Columna derecha y la elección manual de ubicaciones no se vieron (por confirmar).' }
+        notas: { pt: 'Telas vistas de verdade em 16/10/2026 (prévia por grupo, janela Editar grupo com os cortes de Feeds e de Stories, seção Posicionamentos Advantage+). O corte do grupo Coluna da direita e a escolha manual de posicionamentos não foram vistos (a conferir). O botão de compartilhar a prévia foi visto em 20/10/2026 num anúncio em rascunho sem mídia, que dizia “Nenhuma opção de compartilhamento de prévia está disponível para o anúncio atual”; as opções dele num anúncio com mídia não foram vistas (a conferir).', es: 'Pantallas vistas de verdad el 16/10/2026 (vista previa por grupo, ventana Editar grupo con los recortes de Feeds y de Stories, sección Ubicaciones Advantage+). El recorte del grupo Columna derecha y la elección manual de ubicaciones no se vieron (por confirmar). El botón de compartir la vista previa se vio el 20/10/2026 en un anuncio en borrador sin contenido, que decía que no había opciones para compartir; sus opciones en un anuncio con contenido no se vieron (por confirmar).' }
       },
       ferramenta: 'qual-corte',
       praticar: {
@@ -2075,7 +2091,7 @@ window.AULAS = {
         ],
         pontos: [
           { pt: '<b>Alcance</b> = pessoas. <b>Impressões</b> = vezes. <b>Frequência</b> = impressões ÷ alcance.', es: '<b>Alcance</b> = personas. <b>Impresiones</b> = veces. <b>Frecuencia</b> = impresiones ÷ alcance.' },
-          { pt: '<b>Valor gasto</b> = o que foi cobrado, não o orçamento.', es: '<b>Monto gastado</b> = lo que se cobró, no el presupuesto.' },
+          { pt: '<b>Valor gasto</b> = o que foi cobrado, não o orçamento. Num dia pode ficar abaixo ou acima do orçamento diário (até 75% a mais); o que vale é a média da semana.', es: '<b>Monto gastado</b> = lo que se cobró, no el presupuesto. Un día puede quedar por debajo o por encima del presupuesto diario (hasta un 75% más); lo que vale es el promedio de la semana.' },
           { pt: '<b>Sempre olhe o período</b> e a configuração de atribuição.', es: '<b>Siempre mira el período</b> y la configuración de atribución.' }
         ],
         notas: { pt: 'Linha e linha de total vistas de verdade em 16/10/2026 (conta de aula): Alcance 69 (rótulo “Contas Meta”), Impressões 71 (“Total”), Frequência 1,03 (“Por Conta Meta”), Valor gasto R$ 2,77 (“Total usado”) e atribuição “Clique de 7 dias ou visualização de 1 dias”.', es: 'Fila y fila de total vistas de verdad el 16/10/2026 (cuenta de práctica): Alcance 69 (etiqueta “Cuentas de Meta”), Impresiones 71 (“Total”), Frecuencia 1,03 (“Por cuenta de Meta”), Monto gastado R$ 2,77 (“Gasto total”) y atribución “7 días tras clic o 1 días tras visualización”.' }
@@ -2403,9 +2419,10 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Público salvo:</b> guarda as opções de segmentação para reutilizar.', es: '<b>Público guardado:</b> guarda las opciones de segmentación para reutilizar.' },
           { pt: '<b>Controles:</b> localização, idade mínima e idiomas valem mesmo com Advantage+.', es: '<b>Controles:</b> ubicación, edad mínima e idiomas valen incluso con Advantage+.' },
+          { pt: '<b>Localização não é “só quem mora”:</b> a tela avisa que mostra o anúncio para quem mora lá, esteve lá recentemente ou costuma ir. E a caixa “Alcançar mais pessoas com probabilidade de responder aos seus anúncios” inclui também quem tem interesse na cidade (por exemplo, para viajar). Por isso aparece gente da cidade vizinha.', es: '<b>Ubicación no es “solo quien vive ahí”:</b> la pantalla avisa que muestra el anuncio a quien vive ahí, estuvo recientemente o suele ir. Y la casilla de alcanzar más personas con probabilidad de responder incluye también a quien tiene interés en la ciudad (por ejemplo, para viajar). Por eso aparece gente de la ciudad vecina.' },
           { pt: '<b>Categorias especiais:</b> declare quando o assunto for financeiro, emprego, moradia, social ou político.', es: '<b>Categorías especiales:</b> declara cuando el tema sea financiero, empleo, vivienda, social o político.' }
         ],
-        notas: { pt: 'Controles e a frase “Não vamos alcançar pessoas fora destas configurações…” vistos de verdade em 14–15/10/2026; o texto das categorias especiais vem da tela de campanha. O cartão Público salvo foi visto; a janela de criação do público salvo e interesses/comportamentos não foram vistos (a conferir).', es: 'Controles y la frase “No llegaremos a personas fuera de estas configuraciones…” vistos de verdad el 14–15/10/2026; el texto de las categorías especiales viene de la pantalla de campaña. La tarjeta Público guardado se vio; la ventana de creación del público guardado e intereses/comportamientos no se vieron (por confirmar).' }
+        notas: { pt: 'Controles e a frase “Não vamos alcançar pessoas fora destas configurações…” vistos de verdade em 14–15/10/2026; o texto das categorias especiais vem da tela de campanha. O cartão Público salvo foi visto; a janela de criação do público salvo e interesses/comportamentos não foram vistos (a conferir). O bloco Localizações (aviso “pessoas que passam tempo nas suas localizações, como para quem mora lá, esteve lá recentemente ou costuma ir com frequência” e a caixa “Alcançar mais pessoas com probabilidade de responder aos seus anúncios”) foi visto em 20/10/2026, num conjunto em rascunho; a antiga escolha “Pessoas que moram neste local” não apareceu.', es:'Controles y la frase “No llegaremos a personas fuera de estas configuraciones…” vistos de verdad el 14–15/10/2026; el texto de las categorías especiales viene de la pantalla de campaña. La tarjeta Público guardado se vio; la ventana de creación del público guardado e intereses/comportamientos no se vieron (por confirmar). El bloque Ubicaciones (aviso de que muestra a quien vive ahí, estuvo recientemente o suele ir, y la casilla de alcanzar más personas con probabilidad de responder) se vio el 20/10/2026 en portugués, en un conjunto en borrador; la antigua opción “Personas que viven en esta ubicación” no apareció (el texto exacto en español: por confirmar).' }
       },
       ferramenta: 'salvo-ou-automatico',
       praticar: {
@@ -2537,15 +2554,15 @@ window.AULAS = {
           ['marina', { pt: 'Abri a ferramenta e só tem um campo. 🤔', es: 'Abrí la herramienta y solo hay un campo. 🤔' }],
           ['rafa', { pt: 'É isso: Link do site. Coloque a URL de uma página de produto, com detalhes do inventário, e clique em Verificar microdados.', es: 'Es eso: Enlace al sitio web. Pon la URL de una página de producto, con detalles de inventario, y haz clic en Comprobar microdatos.' }],
           ['marina', { pt: 'E o que aparece?', es: '¿Y qué aparece?' }],
-          ['rafa', { pt: 'Uma Prévia: “É assim que os microdados são configurados no seu site”. Embaixo, tabelas com Parâmetro e Valor: uma para OpenGraph e outra para JSON-LD (dois dos três formatos aceitos; a página mostra o formato que tiver).', es: 'Una vista previa: “Así se configuran los microdatos en tu sitio web”. Abajo, tablas con Parámetro y Valor: una para OpenGraph y otra para JSON-LD (dos de los tres formatos aceptados; la página muestra el formato que tenga).' }],
+          ['rafa', { pt: 'Uma Prévia: “É assim que os microdados são configurados no seu site”. Embaixo, uma tabela com Parâmetro e Valor para cada formato que a página tiver: OpenGraph, JSON-LD e Schema.org. A do Schema.org é mais curta: mostra id, title, description, price, availability e brand.', es: 'Una vista previa: “Así se configuran los microdatos en tu sitio web”. Abajo, una tabla con Parámetro y Valor para cada formato que tenga la página: OpenGraph, JSON-LD y Schema.org. La de Schema.org es más corta: muestra id, title, description, price, availability y brand.' }],
           ['pixel', { pt: 'Se estiver tudo certo, termina com “Parabéns! Seus microdados parecem ótimos!”. Isso vale para aquela página: teste outras também.', es: 'Si está todo bien, termina con “¡Felicitaciones! ¡Tus microdatos se ven muy bien!”. Eso vale para esa página: prueba otras también.' }]
         ],
         pontos: [
           { pt: '<b>Uma página de produto por vez</b> (não a loja inteira).', es: '<b>Una página de producto por vez</b> (no toda la tienda).' },
-          { pt: '<b>Tabelas OpenGraph e JSON-LD:</b> os mesmos dados em formatos diferentes; se o site tiver os dois, os valores devem combinar.', es: '<b>Tablas OpenGraph y JSON-LD:</b> los mismos datos en formatos distintos; si el sitio tiene los dos, los valores deben coincidir.' },
+          { pt: '<b>Tabelas OpenGraph, JSON-LD e Schema.org:</b> os mesmos dados em formatos diferentes; se o site tiver mais de um, os valores devem combinar.', es: '<b>Tablas OpenGraph, JSON-LD y Schema.org:</b> los mismos datos en formatos distintos; si el sitio tiene más de uno, los valores deben coincidir.' },
           { pt: '<b>“Parabéns”</b> vale só para a página testada.', es: '<b>“Felicitaciones”</b> vale solo para la página probada.' }
         ],
-        notas: { pt: 'Resultado de sucesso visto de verdade em português em 16/10/2026 com a página da Caneca azul (Prévia, OpenGraph, JSON-LD e “Parabéns!”). Em espanhol, uma nova tentativa da mesma página deu erro, e o texto de sucesso em espanhol não foi visto (a conferir).', es: 'Resultado de éxito visto de verdad en portugués el 16/10/2026 con la página de la Caneca azul (vista previa, OpenGraph, JSON-LD y “¡Felicitaciones!”). En español, un nuevo intento de la misma página dio error, y el texto de éxito en español no se vio (por confirmar).' }
+        notas: { pt: 'Resultado de sucesso visto de verdade em português em 16/10/2026 com a página da Caneca azul (Prévia, OpenGraph, JSON-LD e “Parabéns!”). Em espanhol, uma nova tentativa da mesma página deu erro, e o texto de sucesso em espanhol não foi visto (a conferir). Em 20/10/2026, depois que as páginas de produto da Lojinha ganharam os três formatos, a ferramenta real mostrou as três tabelas (OpenGraph, JSON-LD e Schema.org) para a Caneca azul.', es: 'Resultado de éxito visto de verdad en portugués el 16/10/2026 con la página de la Caneca azul (vista previa, OpenGraph, JSON-LD y “¡Felicitaciones!”). En español, un nuevo intento de la misma página dio error, y el texto de éxito en español no se vio (por confirmar). El 20/10/2026, después de que las páginas de producto de la Lojinha recibieran los tres formatos, la herramienta real mostró las tres tablas (OpenGraph, JSON-LD y Schema.org) para la Caneca azul.' }
       },
       ferramenta: 'usar-debugger',
       praticar: {
@@ -2565,7 +2582,7 @@ window.AULAS = {
       cola: {
         perguntas: [{ pt: 'Qual URL foi testada? É de um produto?', es: '¿Qué URL se probó? ¿Es de un producto?' },
           { pt: 'O resultado foi Prévia com “Parabéns” ou Erros?', es: '¿El resultado fue vista previa con “Felicitaciones” o Errores?' }],
-        conferir: [{ pt: 'Tabelas OpenGraph e JSON-LD da Prévia.', es: 'Tablas OpenGraph y JSON-LD de la vista previa.' },
+        conferir: [{ pt: 'Tabelas OpenGraph, JSON-LD e Schema.org da Prévia.', es: 'Tablas OpenGraph, JSON-LD y Schema.org de la vista previa.' },
           { pt: 'Outras páginas de produto, de tipos diferentes.', es: 'Otras páginas de producto, de tipos distintos.' }],
         frase: { pt: 'A ferramenta confere uma página de produto por vez. Vamos testar algumas páginas diferentes e comparar os resultados.', es: 'La herramienta revisa una página de producto por vez. Probemos algunas páginas distintas y comparemos los resultados.' },
         passos: [{ pt: 'Cole a URL de um produto e verifique.', es: 'Pega la URL de un producto y verifica.' },
@@ -2690,7 +2707,7 @@ window.AULAS = {
           { pt: '<b>Os valores:</b> id igual ao do catálogo, preço <code>39.90</code> e moeda <code>BRL</code>, disponibilidade e condição em inglês.', es: '<b>Los valores:</b> id igual al del catálogo, precio <code>39.90</code> y moneda <code>BRL</code>, disponibilidad y condición en inglés.' },
           { pt: '<b>Quem faz:</b> o desenvolvedor ou a plataforma da loja. Você explica o que pedir e confere no Microdata Debugger.', es: '<b>Quién lo hace:</b> el desarrollador o la plataforma de la tienda. Tú explicas qué pedir y revisas en el Microdata Debugger.' }
         ],
-        notas: { pt: 'Formatos, lugares e nomes das tags lidos na documentação oficial “Microdata tags” (Meta for Developers, catálogo) em 20/10/2026: OpenGraph og:title, og:description, og:url, og:image, product:brand, product:availability, product:condition, product:price:amount, product:price:currency, product:retailer_item_id e product:item_group_id; JSON-LD com productID, name, description, url, image, brand e offers; schema.org com itemscope/itemtype Product e itemprop com os mesmos nomes do JSON-LD. A documentação diz que só catálogos de e-commerce usam este caminho e que o produto só é atualizado depois de o Pixel disparar. A página da Ecobag, o editor de arquivos e as dicas campo a campo do simulador são do treino (a ferramenta real só diz “Falha na validação de dados”). As tabelas OpenGraph e JSON-LD do Microdata Debugger foram vistas na ferramenta real (16/10/2026); a tabela do schema.org não (a conferir).', es: 'Formatos, lugares y nombres de las etiquetas leídos en la documentación oficial “Microdata tags” (Meta for Developers, catálogo) el 20/10/2026: OpenGraph og:title, og:description, og:url, og:image, product:brand, product:availability, product:condition, product:price:amount, product:price:currency, product:retailer_item_id y product:item_group_id; JSON-LD con productID, name, description, url, image, brand y offers; schema.org con itemscope/itemtype Product e itemprop con los mismos nombres de JSON-LD. La documentación dice que solo los catálogos de e-commerce usan este camino y que el producto solo se actualiza después de que se dispare el píxel. La página de la Ecobag, el editor de archivos y las pistas campo por campo del simulador son del entrenamiento (la herramienta real solo dice “Error al validar los datos”). Las tablas OpenGraph y JSON-LD del Microdata Debugger se vieron en la herramienta real (16/10/2026); la tabla de schema.org no (por confirmar).' }
+        notas: { pt: 'Formatos, lugares e nomes das tags lidos na documentação oficial “Microdata tags” (Meta for Developers, catálogo) em 20/10/2026: OpenGraph og:title, og:description, og:url, og:image, product:brand, product:availability, product:condition, product:price:amount, product:price:currency, product:retailer_item_id e product:item_group_id; JSON-LD com productID, name, description, url, image, brand e offers; schema.org com itemscope/itemtype Product e itemprop com os mesmos nomes do JSON-LD. A documentação diz que só catálogos de e-commerce usam este caminho e que o produto só é atualizado depois de o Pixel disparar. A página da Ecobag, o editor de arquivos e as dicas campo a campo do simulador são do treino (a ferramenta real só diz “Falha na validação de dados”). As tabelas OpenGraph e JSON-LD do Microdata Debugger foram vistas na ferramenta real em 16/10/2026, e a tabela Schema.org em 20/10/2026 (página da Caneca azul da Lojinha).', es:'Formatos, lugares y nombres de las etiquetas leídos en la documentación oficial “Microdata tags” (Meta for Developers, catálogo) el 20/10/2026: OpenGraph og:title, og:description, og:url, og:image, product:brand, product:availability, product:condition, product:price:amount, product:price:currency, product:retailer_item_id y product:item_group_id; JSON-LD con productID, name, description, url, image, brand y offers; schema.org con itemscope/itemtype Product e itemprop con los mismos nombres de JSON-LD. La documentación dice que solo los catálogos de e-commerce usan este camino y que el producto solo se actualiza después de que se dispare el píxel. La página de la Ecobag, el editor de archivos y las pistas campo por campo del simulador son del entrenamiento (la herramienta real solo dice “Error al validar los datos”). Las tablas OpenGraph y JSON-LD del Microdata Debugger se vieron en la herramienta real el 16/10/2026, y la tabla Schema.org el 20/10/2026 (página de la Caneca azul de la Lojinha).' }
       },
       ferramenta: 'tags-microdados',
       praticar: {
@@ -2948,7 +2965,8 @@ window.AULAS = {
           pontos: [
             L('<b>Aprendizado</b> = o sistema ainda está aprendendo; é normal no começo.', '<b>Aprendizaje</b> = el sistema todavía está aprendiendo; es normal al comienzo.'),
             L('<b>Sai</b> quando estabiliza: cerca de 50 resultados na semana após a última edição significativa.', '<b>Sale</b> cuando se estabiliza: unos 50 resultados en la semana posterior a la última edición significativa.'),
-            L('<b>Volta</b> se houver uma edição significativa. Edite só com bom motivo.', '<b>Vuelve</b> si hay una edición significativa. Edita solo con buen motivo.')
+            L('<b>Volta</b> se houver uma edição significativa. Edite só com bom motivo.', '<b>Vuelve</b> si hay una edición significativa. Edita solo con buen motivo.'),
+            L('<b>Quem aparece é decidido num leilão:</b> ganha o maior valor total = lance × chance estimada de a pessoa agir + qualidade do anúncio. Bom criativo ajuda, mas o lance também pesa (Central de Ajuda da Meta, “Leilão de anúncios”).', '<b>Quién aparece se decide en una subasta:</b> gana el mayor valor total = puja × probabilidad estimada de que la persona actúe + calidad del anuncio. Un buen contenido ayuda, pero la puja también pesa (Centro de ayuda de Meta, “Subasta de anuncios”).')
           ],
           notas: NOTA_CENTRAL
         },
@@ -4521,7 +4539,8 @@ window.AULAS = {
           pontos: [
             L('<b>5 condições:</b> mesmo portfólio, permissões, ViewContent, microdados, disparo em 7 dias.', '<b>5 condiciones:</b> mismo portfolio, permisos, ViewContent, microdatos, activación en 7 días.'),
             L('<b>Prazo:</b> até 24 horas para ficar pronto; depois ~15 minutos por interação.', '<b>Plazo:</b> hasta 24 horas para estar listo; después ~15 minutos por interacción.'),
-            L('<b>Sem microdados</b> não adiciona nem atualiza itens.', '<b>Sin microdatos</b> no agrega ni actualiza artículos.')
+            L('<b>Sem microdados</b> não adiciona nem atualiza itens.', '<b>Sin microdatos</b> no agrega ni actualiza artículos.'),
+            L('<b>Pixel + planilha no mesmo catálogo:</b> um sobrescreve o outro e vale o dado que chegou por último. Se o preço “volta” sozinho, veja se as duas fontes dizem a mesma coisa (Central de Ajuda da Meta: “Adicionar e atualizar itens do catálogo com um pixel”).', '<b>Píxel + planilla en el mismo catálogo:</b> uno sobrescribe al otro y vale el dato que llegó último. Si el precio “vuelve” solo, revisa si las dos fuentes dicen lo mismo (Centro de ayuda de Meta: “Agregar y actualizar artículos del catálogo con un píxel”).')
           ],
           notas: NOTA
         },
@@ -5177,7 +5196,8 @@ window.AULAS = {
           pontos: [
             L('<b>Controle total</b> é o nível mais alto; só quem o tem vê Pessoas e muda permissões.', '<b>Control total</b> es el nivel más alto; solo quien lo tiene ve Personas y cambia permisos.'),
             L('<b>Caminho:</b> Configurações › Pessoas › nome › Gerenciar › Salvar (ou Remover acesso).', '<b>Camino:</b> Configuración › Personas › nombre › Administrar › Guardar (o Quitar acceso).'),
-            L('<b>Ativo de parceiro:</b> vale o que o parceiro permitiu.', '<b>Activo de un socio:</b> vale lo que el socio permitió.')
+            L('<b>Ativo de parceiro:</b> vale o que o parceiro permitiu.', '<b>Activo de un socio:</b> vale lo que el socio permitió.'),
+            L('<b>Segurança do portfólio:</b> em Informações da empresa › Opções da empresa, a “Autenticação de dois fatores” pode ser exigida de todos. Tenha pelo menos duas pessoas com controle total, para o portfólio não ficar sem dono se alguém perder o acesso.', '<b>Seguridad del portfolio:</b> en la información del negocio › opciones, la “Autenticación en dos pasos” se puede exigir a todos. Ten al menos dos personas con control total, para que el portfolio no quede sin dueño si alguien pierde el acceso.')
           ],
           notas: NOTA
         },
@@ -6054,6 +6074,682 @@ window.AULAS = {
       encaminhar: L('Se o cliente precisar de eventos personalizados mais complexos no pixel personalizado, oriente-o a pedir ajuda a um desenvolvedor de Shopify.', 'Si el cliente necesita eventos personalizados más complejos en el píxel personalizado, oriéntalo a pedir ayuda a un desarrollador de Shopify.')
     }
   }]);
+})();
+/* Diagnóstico · casos novos de 20/10/2026 (dúvidas comuns de atendimento, sem nomes). Cada solução foi conferida
+   na Central de Ajuda da Meta (fontes no fim de cada caso). Sem tutorial próprio: quando já existe uma prática guiada parecida, ela é usada.
+   Soluções que só a comunidade confirma ficam no bloco “Workaround plausível” (dg-workaround), separado. */
+(function () {
+  var A = window.AULAS; if (!A) return;
+  function L(pt, es) { return { pt: pt, es: es } }
+  var PERG = L('O que você responde?', '¿Qué respondes?');
+  var NOTA = L('Caso montado a partir de dúvidas comuns de atendimento, com a Marina, de faz-de-conta. A solução foi conferida na Central de Ajuda da Meta (veja as fontes). Quando o caso usa uma prática guiada, ela é a do módulo, nas telas de treino.', 'Caso armado a partir de dudas comunes de atención, con Marina, de mentira. La solución se revisó en el Centro de ayuda de Meta (mira las fuentes). Cuando el caso usa una práctica guiada, es la del módulo, en las pantallas de práctica.');
+  function op(certa, txt, fb) { return { certa: certa, txt: txt, fb: fb } }
+  function F(url, pt, es, quando) { return { url: url, titulo: L(pt, es), conferido: quando || '20/10/2026' } }
+  function caso(o) { o.status = 'pronta'; o.entender.notas = o.entender.notas || NOTA; o.atender.pergunta = PERG; return o }
+  function poe(bloco, lista) { A[bloco] = (A[bloco] || []).concat(lista) }
+
+  /* ================= Catálogo ================= */
+  poe('dg-catalogo', [
+    caso({ id: '03', min: 7,
+      titulo: L('Ocultei ou apaguei o produto e ele continua aparecendo', 'Oculté o borré el producto y sigue apareciendo'),
+      reclamacao: [
+        ['marina', L('Ocultei o Boné no Gerenciador de Comércio ontem e hoje ele voltou! Apaguei e voltou de novo! O botão não funciona? 😠', '¡Oculté la Gorra en el Administrador de ventas ayer y hoy volvió! ¡La borré y volvió otra vez! ¿El botón no funciona? 😠')],
+        ['rafa', L('O botão funciona, mas o Boné vem da planilha. Na leitura seguinte, a planilha manda ele de volta. Vamos ver de onde ele vem.', 'El botón funciona, pero la Gorra viene de la planilla. En la siguiente lectura, la planilla la manda de vuelta. Veamos de dónde viene.')]
+      ],
+      objetivo: L('Descobrir de onde vem o item (planilha, plataforma, Pixel ou manual) e mudar na origem, não só no catálogo.', 'Descubrir de dónde viene el artículo (planilla, plataforma, píxel o manual) y cambiarlo en el origen, no solo en el catálogo.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Então mexer no catálogo não adianta?', '¿Entonces tocar el catálogo no sirve?')],
+          ['rafa', L('Para item que veio de arquivo, plataforma ou Pixel, a mudança feita à mão é desfeita na próxima atualização. Item de feed nem deixa excluir à mão: isso se faz no arquivo. Só o produto cadastrado à mão se edita à mão.', 'Para un artículo que vino de archivo, plataforma o píxel, el cambio hecho a mano se deshace en la siguiente actualización. Un artículo de feed ni deja borrarse a mano: eso se hace en el archivo. Solo el producto cargado a mano se edita a mano.')],
+          ['pixel', L('Para tirar o Boné: apague a linha na planilha (se a programação for de substituições) ou mude a coluna status para archived. Na Shopify, tire o produto do canal Facebook & Instagram.', 'Para quitar la Gorra: borra la fila en la planilla (si la programación es de reemplazo) o cambia la columna status a archived. En Shopify, saca el producto del canal Facebook & Instagram.')]
+        ],
+        pontos: [
+          L('<b>Primeira pergunta:</b> como esse produto entrou no catálogo? Planilha, plataforma, Pixel ou manual?', '<b>Primera pregunta:</b> ¿cómo entró ese producto al catálogo? ¿Planilla, plataforma, píxel o manual?'),
+          L('<b>Correção:</b> na origem. Planilha: apagar a linha ou status archived. Plataforma: tirar do canal. Manual: no catálogo mesmo.', '<b>Corrección:</b> en el origen. Planilla: borrar la fila o status archived. Plataforma: quitar del canal. Manual: en el propio catálogo.'),
+          L('<b>Prova:</b> depois da próxima leitura do feed, o produto continua fora.', '<b>Prueba:</b> después de la siguiente lectura del feed, el producto sigue fuera.')
+        ]
+      },
+      praticar: { texto: L('Na prática do Catálogo 06, você vê a programação do feed e descobre qual delas tira do catálogo o produto que saiu do arquivo.', 'En la práctica de Catálogo 06, ves la programación del feed y descubres cuál de ellas quita del catálogo el producto que salió del archivo.'), tour: 'programar-feed', pagina: 'meta-catalogo.html?exemplo=1' },
+      atender: {
+        cena: L('Já ocultei esse produto três vezes no catálogo e ele sempre volta. Vocês podem travar ele escondido?', 'Ya oculté este producto tres veces en el catálogo y siempre vuelve. ¿Pueden trabarlo escondido?'),
+        opcoes: [
+          op(true, L('“Ele volta porque vem da sua planilha: a cada leitura, ela manda o produto de novo. Vamos tirar na origem: apagar a linha (ou pôr status archived) na planilha. Aí ele sai e não volta.”', '“Vuelve porque viene de tu planilla: en cada lectura, ella manda el producto otra vez. Saquémoslo en el origen: borrar la fila (o poner status archived) en la planilla. Así sale y no vuelve.”'), L('Isso! Origem, correção e por que voltava.', '¡Eso! Origen, corrección y por qué volvía.')),
+          op(false, L('“Oculte de novo e espere.”', '“Ocúltalo otra vez y espera.”'), L('Vai voltar na próxima leitura do arquivo.', 'Va a volver en la siguiente lectura del archivo.')),
+          op(false, L('“Apague o catálogo e crie outro.”', '“Borra el catálogo y crea otro.”'), L('Exagero, e o arquivo traria o produto de volta no novo também.', 'Exagerado, y el archivo traería el producto de vuelta en el nuevo también.')),
+          op(false, L('“É um erro do sistema, vou abrir um chamado.”', '“Es un error del sistema, voy a abrir un caso.”'), L('Não é erro: é a fonte de dados mandando o item.', 'No es un error: es la fuente de datos mandando el artículo.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Como esse produto entrou no catálogo?', '¿Cómo entró este producto al catálogo?'), L('Onde você está editando: no catálogo ou na planilha/plataforma?', '¿Dónde estás editando: en el catálogo o en la planilla/plataforma?')],
+        conferir: [L('Gerenciador de Comércio › catálogo › Fontes de dados (tipo da fonte e programação).', 'Administrador de ventas › catálogo › Orígenes de datos (tipo de origen y programación).')],
+        frase: L('Como o produto vem da sua planilha, a mudança tem que ser feita lá; no catálogo ela é desfeita na próxima atualização.', 'Como el producto viene de tu planilla, el cambio tiene que hacerse ahí; en el catálogo se deshace en la siguiente actualización.'),
+        passos: [L('Ver a fonte do item.', 'Ver el origen del artículo.'), L('Mudar na origem (linha, status ou canal).', 'Cambiar en el origen (fila, status o canal).'), L('Conferir depois da próxima leitura.', 'Revisar después de la siguiente lectura.')],
+        encaminhar: L('Se a origem é uma plataforma parceira, a mudança é no painel da plataforma, com quem administra a loja.', 'Si el origen es una plataforma socia, el cambio es en el panel de la plataforma, con quien administra la tienda.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/867365410484801', 'Corrigir informações erradas ou desatualizadas do produto', 'Corregir información incorrecta o desactualizada del producto'), F('https://www.facebook.com/business/help/428079314773256', 'Como excluir itens do catálogo', 'Cómo eliminar artículos del catálogo')]
+    }),
+    caso({ id: '04', min: 5,
+      titulo: L('A planilha do Google não carrega no catálogo', 'La hoja de cálculo de Google no se carga en el catálogo'),
+      reclamacao: [
+        ['marina', L('Colei o link da minha planilha do Google no catálogo e dá erro, não lê nada! A planilha está certinha! 😩', '¡Pegué el enlace de mi hoja de cálculo de Google en el catálogo y da error, no lee nada! ¡La planilla está perfecta! 😩')],
+        ['rafa', L('Quase sempre não é a planilha, é o compartilhamento: a Meta precisa conseguir abrir o link. Vamos conferir.', 'Casi siempre no es la planilla, es el uso compartido: Meta tiene que poder abrir el enlace. Revisemos.')]
+      ],
+      objetivo: L('Conferir o compartilhamento da planilha do Google (“Qualquer pessoa com o link”) e a conta Google usada.', 'Revisar el uso compartido de la hoja de Google (“Cualquier persona con el enlace”) y la cuenta de Google usada.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas ela está compartilhada comigo!', '¡Pero está compartida conmigo!')],
+          ['rafa', L('Compartilhada com você não basta: a Meta não é você. Ela precisa estar como “Qualquer pessoa com o link”.', 'Compartida contigo no basta: Meta no eres tú. Tiene que estar como “Cualquier persona con el enlace”.')],
+          ['pixel', L('Conta Google de empresa às vezes bloqueia compartilhar fora da empresa. Se a opção não aparece, a planilha precisa ficar numa conta que permita.', 'Una cuenta de Google de empresa a veces bloquea compartir fuera de la empresa. Si la opción no aparece, la planilla tiene que estar en una cuenta que lo permita.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> o catálogo não consegue ler o link da planilha.', '<b>Señal:</b> el catálogo no logra leer el enlace de la planilla.'),
+          L('<b>Causa:</b> planilha não está como “Qualquer pessoa com o link”, ou a conta de empresa bloqueia.', '<b>Causa:</b> la planilla no está como “Cualquier persona con el enlace”, o la cuenta de empresa lo bloquea.'),
+          L('<b>Prova:</b> abrir o link numa janela anônima, sem login: se abre, a Meta também consegue.', '<b>Prueba:</b> abrir el enlace en una ventana de incógnito, sin sesión: si abre, Meta también puede.')
+        ]
+      },
+      atender: {
+        cena: L('A planilha está compartilhada comigo e com minha sócia, e mesmo assim o catálogo não lê. O que mais falta?', 'La planilla está compartida conmigo y con mi socia, y aun así el catálogo no la lee. ¿Qué más falta?'),
+        opcoes: [
+          op(true, L('“Para a Meta ler, a planilha precisa estar como ‘Qualquer pessoa com o link’. Se a sua conta Google é de empresa e não deixa, use uma conta que permita. Um teste rápido: abrir o link numa janela anônima.”', '“Para que Meta la lea, la planilla tiene que estar como ‘Cualquier persona con el enlace’. Si tu cuenta de Google es de empresa y no deja, usa una cuenta que lo permita. Una prueba rápida: abrir el enlace en una ventana de incógnito.”'), L('Isso! Causa e um teste simples.', '¡Eso! Causa y una prueba simple.')),
+          op(false, L('“Mande a planilha por e-mail para a Meta.”', '“Manda la planilla por correo a Meta.”'), L('Não existe esse caminho: a Meta lê pelo link.', 'No existe ese camino: Meta la lee por el enlace.')),
+          op(false, L('“Troque para CSV, planilha do Google não funciona.”', '“Cámbiala a CSV, la hoja de Google no funciona.”'), L('Funciona sim; o problema é o compartilhamento.', 'Sí funciona; el problema es el uso compartido.')),
+          op(false, L('“Espere uns dias, a Meta demora.”', '“Espera unos días, Meta demora.”'), L('Sem acesso ao link, esperar não resolve.', 'Sin acceso al enlace, esperar no resuelve.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Como a planilha está compartilhada?', '¿Cómo está compartida la planilla?'), L('A conta Google é pessoal ou de empresa?', '¿La cuenta de Google es personal o de empresa?')],
+        conferir: [L('Google Planilhas › Compartilhar › Acesso geral; e o link colado em Fontes de dados.', 'Hojas de cálculo de Google › Compartir › Acceso general; y el enlace pegado en Orígenes de datos.')],
+        frase: L('A Meta precisa abrir sua planilha pelo link; vamos deixar como “Qualquer pessoa com o link” e testar numa janela anônima.', 'Meta tiene que abrir tu planilla por el enlace; dejémosla como “Cualquier persona con el enlace” y probemos en una ventana de incógnito.'),
+        passos: [L('Compartilhar como “Qualquer pessoa com o link”.', 'Compartir como “Cualquier persona con el enlace”.'), L('Testar o link em janela anônima.', 'Probar el enlace en ventana de incógnito.'), L('Atualizar a fonte de dados.', 'Actualizar el origen de datos.')],
+        encaminhar: L('Se a conta de empresa bloqueia o compartilhamento, quem libera é o administrador do Google dela.', 'Si la cuenta de empresa bloquea el uso compartido, quien lo habilita es su administrador de Google.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/2284463181837648', 'Uploads programados de feed de dados', 'Subidas programadas de feeds de datos', '19/10/2026')]
+    }),
+    caso({ id: '05', min: 6,
+      titulo: L('Em estoque na loja, esgotado na Meta', 'Con stock en la tienda, agotado en Meta'),
+      reclamacao: [
+        ['marina', L('O Moletom tem estoque na minha loja, mas no catálogo da Meta aparece esgotado! E aí não aparece nos anúncios! 😤', '¡El Buzo tiene stock en mi tienda, pero en el catálogo de Meta aparece agotado! ¡Y entonces no aparece en los anuncios! 😤')],
+        ['rafa', L('O catálogo só repete o que a fonte diz. Vamos ver se a fonte já leu o estoque novo.', 'El catálogo solo repite lo que dice el origen. Veamos si el origen ya leyó el stock nuevo.')]
+      ],
+      objetivo: L('Ver de onde vem a disponibilidade, quando foi a última leitura e corrigir na origem.', 'Ver de dónde viene la disponibilidad, cuándo fue la última lectura y corregir en el origen.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Eu atualizei o estoque hoje cedo!', '¡Actualicé el stock hoy temprano!')],
+          ['rafa', L('Se o feed é lido uma vez por dia, a mudança só chega na próxima leitura. Dá para pedir a leitura agora. E, se vem de plataforma, a sincronização é dela.', 'Si el feed se lee una vez por día, el cambio solo llega en la siguiente lectura. Se puede pedir la lectura ahora. Y, si viene de una plataforma, la sincronización es de ella.')],
+          ['pixel', L('Se o produto também é atualizado pelo Pixel, os dois se sobrescrevem: vale o dado que chegou por último.', 'Si el producto también se actualiza por el píxel, los dos se sobrescriben: vale el dato que llegó último.')]
+        ],
+        pontos: [
+          L('<b>Onde olhar:</b> Fontes de dados (última atualização) e a disponibilidade do produto em Produtos.', '<b>Dónde mirar:</b> Orígenes de datos (última actualización) y la disponibilidad del producto en Productos.'),
+          L('<b>Correção:</b> corrigir na origem e pedir a atualização da fonte, sem editar à mão no catálogo.', '<b>Corrección:</b> corregir en el origen y pedir la actualización del origen, sin editar a mano en el catálogo.'),
+          L('<b>Cuidado:</b> duas fontes (planilha e Pixel) podem trocar o estoque uma da outra.', '<b>Cuidado:</b> dos orígenes (planilla y píxel) pueden cambiarse el stock uno al otro.')
+        ]
+      },
+      praticar: { texto: L('A prática do Catálogo 05: o Moletom aparece Indisponível; você segue até a fonte, “corrige o site” e atualiza o feed.', 'La práctica de Catálogo 05: el Buzo aparece Agotado; sigues hasta el origen, “corriges el sitio” y actualizas el feed.'), tour: 'achar-produto', pagina: 'meta-catalogo.html?exemplo=1' },
+      atender: {
+        cena: L('Na minha loja o produto tem 20 unidades e na Meta está esgotado. Arruma aí para mim?', 'En mi tienda el producto tiene 20 unidades y en Meta está agotado. ¿Me lo arreglas?'),
+        opcoes: [
+          op(true, L('“O catálogo mostra o que a sua fonte mandou na última leitura. Vamos ver quando foi e pedir uma atualização agora; se ainda vier esgotado, o estoque está saindo errado da loja ou da plataforma.”', '“El catálogo muestra lo que tu origen mandó en la última lectura. Veamos cuándo fue y pidamos una actualización ahora; si sigue viniendo agotado, el stock está saliendo mal de la tienda o de la plataforma.”'), L('Isso! Leitura, atualização e onde está o erro.', '¡Eso! Lectura, actualización y dónde está el error.')),
+          op(false, L('“Mude para Em estoque direto no catálogo.”', '“Cámbialo a Con stock directo en el catálogo.”'), L('A próxima leitura desfaz a mudança.', 'La siguiente lectura deshace el cambio.')),
+          op(false, L('“É atraso da Meta, espere uma semana.”', '“Es demora de Meta, espera una semana.”'), L('Dá para conferir a leitura e pedir atualização agora.', 'Se puede revisar la lectura y pedir actualización ahora.')),
+          op(false, L('“Crie o produto de novo.”', '“Crea el producto otra vez.”'), L('Vira duplicado, e a fonte continua errada.', 'Se vuelve duplicado, y el origen sigue mal.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('De onde vem o produto (planilha, plataforma, Pixel)?', '¿De dónde viene el producto (planilla, plataforma, píxel)?'), L('Quando foi a última leitura da fonte?', '¿Cuándo fue la última lectura del origen?')],
+        conferir: [L('Gerenciador de Comércio › Produtos (disponibilidade) e Fontes de dados (última atualização).', 'Administrador de ventas › Productos (disponibilidad) y Orígenes de datos (última actualización).')],
+        frase: L('O catálogo repete o que a fonte manda; vamos conferir a última leitura e pedir uma atualização.', 'El catálogo repite lo que manda el origen; revisemos la última lectura y pidamos una actualización.'),
+        passos: [L('Ver a última leitura.', 'Ver la última lectura.'), L('Corrigir na origem.', 'Corregir en el origen.'), L('Atualizar a fonte e conferir.', 'Actualizar el origen y revisar.')],
+        encaminhar: L('Se a plataforma não envia o estoque certo, o ajuste é no painel dela ou com o suporte dela.', 'Si la plataforma no envía el stock correcto, el ajuste es en su panel o con su soporte.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/867365410484801', 'Corrigir informações erradas ou desatualizadas do produto', 'Corregir información incorrecta o desactualizada del producto'), F('https://en-gb.facebook.com/business/help/887775018036966', 'Adicionar e atualizar itens do catálogo com um pixel', 'Agregar y actualizar artículos del catálogo con un píxel')]
+    })
+  ]);
+
+  /* ================= Pixel ================= */
+  poe('dg-pixel', [
+    caso({ id: '07', min: 6,
+      titulo: L('Marcou mais compras do que as vendas', 'Marcó más compras que las ventas'),
+      reclamacao: [
+        ['marina', L('O Gerenciador diz 6 compras ontem, mas eu vendi só 4! E não é Pixel duplicado, já conferi! 🤔', '¡El Administrador dice 6 compras ayer, pero vendí solo 4! ¡Y no es píxel duplicado, ya revisé! 🤔')],
+        ['rafa', L('Pergunta: o Purchase dispara quando a pessoa clica em “Finalizar” ou quando o pedido aparece como concluído?', 'Pregunta: ¿el Purchase se dispara cuando la persona hace clic en “Finalizar” o cuando el pedido aparece como completado?')]
+      ],
+      objetivo: L('Ver em que momento o Purchase dispara e mover para a página de pedido concluído.', 'Ver en qué momento se dispara el Purchase y moverlo a la página de pedido completado.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Faz diferença? É quase a mesma coisa.', '¿Hace diferencia? Es casi lo mismo.')],
+          ['rafa', L('Faz. Quem clica em Finalizar pode ter o cartão recusado ou desistir. Se o Purchase está no clique, ele conta compra que não aconteceu.', 'Hace. Quien hace clic en Finalizar puede tener la tarjeta rechazada o desistir. Si el Purchase está en el clic, cuenta una compra que no ocurrió.')],
+          ['pixel', L('No clique do botão, o certo é o InitiateCheckout (ou AddPaymentInfo). O Purchase vai só na página de pedido concluído (“obrigado pela compra”), com valor e moeda.', 'En el clic del botón, lo correcto es el InitiateCheckout (o AddPaymentInfo). El Purchase va solo en la página de pedido completado (“gracias por tu compra”), con valor y moneda.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> mais Purchase do que pedidos pagos, sem pixel em dobro.', '<b>Señal:</b> más Purchase que pedidos pagados, sin píxel doble.'),
+          L('<b>Causa:</b> Purchase no clique de “Finalizar”, antes de o pagamento ser aprovado.', '<b>Causa:</b> Purchase en el clic de “Finalizar”, antes de que se apruebe el pago.'),
+          L('<b>Correção e prova:</b> Purchase só na página de pedido concluído; uma compra recusada não deve gerar Purchase.', '<b>Corrección y prueba:</b> Purchase solo en la página de pedido completado; una compra rechazada no debe generar Purchase.')
+        ]
+      },
+      atender: {
+        cena: L('O Pixel diz que tive mais compras do que entrou no caixa. O Pixel está mentindo?', 'El píxel dice que tuve más compras de las que entraron en caja. ¿El píxel miente?'),
+        opcoes: [
+          op(true, L('“Provavelmente o Purchase está no clique do botão Finalizar, e aí conta também quem desistiu ou teve o cartão recusado. O certo é ele ficar só na página de pedido concluído. Vamos pedir ao desenvolvedor para mover e testar.”', '“Probablemente el Purchase está en el clic del botón Finalizar, y entonces cuenta también a quien desistió o tuvo la tarjeta rechazada. Lo correcto es que esté solo en la página de pedido completado. Pidamos al desarrollador que lo mueva y probemos.”'), L('Isso! Causa provável e onde o evento deve ficar.', '¡Eso! Causa probable y dónde debe estar el evento.')),
+          op(false, L('“O Pixel sempre erra, ignore.”', '“El píxel siempre se equivoca, ignóralo.”'), L('Não erra à toa: ele conta onde foi colocado.', 'No se equivoca porque sí: cuenta donde fue colocado.')),
+          op(false, L('“Ponha o Purchase também no botão Adicionar ao carrinho.”', '“Pon el Purchase también en el botón Agregar al carrito.”'), L('Pioraria: no carrinho o evento é AddToCart.', 'Empeoraría: en el carrito el evento es AddToCart.')),
+          op(false, L('“Desligue o Pixel.”', '“Apaga el píxel.”'), L('Perde toda a medição; basta mudar o lugar do evento.', 'Pierde toda la medición; basta cambiar el lugar del evento.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O Purchase dispara no clique ou na página de pedido concluído?', '¿El Purchase se dispara en el clic o en la página de pedido completado?'), L('Houve pagamentos recusados ou desistências no dia?', '¿Hubo pagos rechazados o abandonos ese día?')],
+        conferir: [L('Consultor de Dados ao clicar em Finalizar; Gerenciador de Eventos › Testar eventos.', 'Asesor de datos al hacer clic en Finalizar; Administrador de eventos › Probar eventos.')],
+        frase: L('O Purchase precisa disparar só quando a compra é concluída; no botão Finalizar ele conta também quem não pagou.', 'El Purchase tiene que dispararse solo cuando la compra se completa; en el botón Finalizar cuenta también a quien no pagó.'),
+        passos: [L('Clicar em Finalizar e ver se já chega Purchase.', 'Hacer clic en Finalizar y ver si ya llega Purchase.'), L('Mover o Purchase para a página de pedido concluído.', 'Mover el Purchase a la página de pedido completado.'), L('Testar com uma compra.', 'Probar con una compra.')],
+        encaminhar: L('A mudança no código é com o desenvolvedor ou a plataforma do cliente.', 'El cambio en el código es con el desarrollador o la plataforma del cliente.')
+      },
+      fontes: [F('https://developers.facebook.com/docs/meta-pixel/implementation/conversion-tracking/', 'Rastreamento de conversões (eventos padrão)', 'Seguimiento de conversiones (eventos estándar)', '19/10/2026')]
+    })
+  ]);
+
+  /* ================= Anúncios ================= */
+  poe('dg-anuncios', [
+    caso({ id: '03', min: 5,
+      titulo: L('O anúncio gastou diferente do orçamento', 'El anuncio gastó distinto del presupuesto'),
+      reclamacao: [
+        ['marina', L('Coloquei R$ 5,27 por dia. Ontem gastou R$ 4,83 e hoje passou de R$ 8! Vocês cobram o que querem? 😡', 'Puse R$ 5,27 por día. ¡Ayer gastó R$ 4,83 y hoy pasó de R$ 8! ¿Cobran lo que quieren? 😡')],
+        ['rafa', L('O orçamento diário é uma média, não um teto do dia. Vamos ver a regra e a semana inteira.', 'El presupuesto diario es un promedio, no un tope del día. Veamos la regla y la semana entera.')]
+      ],
+      objetivo: L('Explicar a regra do orçamento diário (até 75% a mais num dia, 175% no dia, 7 vezes na semana) e conferir a semana.', 'Explicar la regla del presupuesto diario (hasta 75% más en un día, 175% en el día, 7 veces en la semana) y revisar la semana.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Então eu posso pagar mais do que coloquei?', '¿Entonces puedo pagar más de lo que puse?')],
+          ['rafa', L('Num dia, sim: até 75% a mais, quando há mais chance de resultado, e menos em outro dia. Mas no dia nunca passa de 175% do orçamento, e na semana nunca passa de 7 vezes o valor diário.', 'En un día, sí: hasta 75% más, cuando hay más probabilidad de resultado, y menos otro día. Pero en el día nunca pasa del 175% del presupuesto, y en la semana nunca pasa de 7 veces el valor diario.')],
+          ['pixel', L('Com R$ 5,27 por dia: num dia pode chegar a uns R$ 9,22, e a semana fica em até R$ 36,89.', 'Con R$ 5,27 por día: un día puede llegar a unos R$ 9,22, y la semana queda en hasta R$ 36,89.')]
+        ],
+        pontos: [
+          L('<b>Regra:</b> até 75% a mais num dia; teto de 175% no dia e de 7× na semana.', '<b>Regla:</b> hasta 75% más en un día; tope de 175% en el día y de 7× en la semana.'),
+          L('<b>Onde conferir:</b> Valor gasto por dia no relatório, olhando a semana toda.', '<b>Dónde revisar:</b> Monto gastado por día en el informe, mirando toda la semana.'),
+          L('<b>Se passou da regra:</b> aí sim é caso de cobrança, para quem cuida de pagamentos.', '<b>Si pasó la regla:</b> entonces sí es un caso de facturación, para quien cuida los pagos.')
+        ]
+      },
+      atender: {
+        cena: L('Meu orçamento é R$ 20 por dia e ontem gastou R$ 30. Quero meu dinheiro de volta!', 'Mi presupuesto es R$ 20 por día y ayer gastó R$ 30. ¡Quiero mi dinero de vuelta!'),
+        opcoes: [
+          op(true, L('“Entendo o susto. O orçamento diário é uma média: num dia a Meta pode gastar até 75% a mais (no seu caso, até R$ 35) e menos em outros, e na semana não passa de R$ 140. Vamos olhar a semana inteira juntos.”', '“Entiendo el susto. El presupuesto diario es un promedio: un día Meta puede gastar hasta 75% más (en tu caso, hasta R$ 35) y menos en otros, y en la semana no pasa de R$ 140. Miremos la semana entera juntos.”'), L('Isso! Regra com os números dela.', '¡Eso! Regla con sus números.')),
+          op(false, L('“Foi um erro, vou devolver.”', '“Fue un error, te lo devuelvo.”'), L('Não foi erro, e o agente não promete reembolso.', 'No fue un error, y el agente no promete reembolso.')),
+          op(false, L('“Use orçamento total para não acontecer.”', '“Usa presupuesto total para que no pase.”'), L('O total também varia por dia; primeiro explique a regra.', 'El total también varía por día; primero explica la regla.')),
+          op(false, L('“É normal, não se preocupe.”', '“Es normal, no te preocupes.”'), L('Está certo, mas sem explicar a regra ela não fica tranquila.', 'Es cierto, pero sin explicar la regla no queda tranquila.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual o orçamento diário configurado?', '¿Cuál es el presupuesto diario configurado?'), L('Quanto gastou em cada dia da semana?', '¿Cuánto gastó en cada día de la semana?')],
+        conferir: [L('Gerenciador de Anúncios › coluna Valor gasto, por dia (Detalhamento › Por tempo).', 'Administrador de anuncios › columna Monto gastado, por día (Desglose › Por tiempo).')],
+        frase: L('O orçamento diário é uma média: num dia pode gastar até 75% a mais e em outro menos, e na semana nunca passa de 7 vezes o valor diário.', 'El presupuesto diario es un promedio: un día puede gastar hasta 75% más y otro menos, y en la semana nunca pasa de 7 veces el valor diario.'),
+        passos: [L('Calcular 175% do orçamento (teto do dia).', 'Calcular el 175% del presupuesto (tope del día).'), L('Somar a semana e comparar com 7×.', 'Sumar la semana y comparar con 7×.')],
+        encaminhar: L('Se passou do teto da regra, encaminhe para a área de pagamentos e cobrança.', 'Si pasó del tope de la regla, deriva al área de pagos y facturación.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/190490051321426', 'Sobre os orçamentos diários', 'Acerca de los presupuestos diarios')]
+    }),
+    caso({ id: '04', min: 5,
+      titulo: L('Anúncio cheio de comentários ofensivos', 'Anuncio lleno de comentarios ofensivos'),
+      reclamacao: [
+        ['marina', L('Meu anúncio da caneca está cheio de comentários grosseiros! Dá para desligar os comentários? 😢', '¡Mi anuncio de la taza está lleno de comentarios groseros! ¿Se pueden apagar los comentarios? 😢')],
+        ['rafa', L('Dá para cuidar disso de vários jeitos: um comentário de cada vez ou com filtro automático. Vamos ver.', 'Se puede cuidar de eso de varias formas: un comentario a la vez o con filtro automático. Veamos.')]
+      ],
+      objetivo: L('Ocultar, excluir ou denunciar comentários e ligar a prevenção (palavras bloqueadas, filtro de palavrões, Palavras ocultas).', 'Ocultar, eliminar o denunciar comentarios y activar la prevención (palabras bloqueadas, filtro de groserías, Palabras ocultas).'),
+      entender: {
+        dialogo: [
+          ['marina', L('Se eu ocultar, a pessoa percebe?', 'Si lo oculto, ¿la persona se da cuenta?')],
+          ['rafa', L('Comentário oculto continua visível para quem escreveu e para os amigos dele; os outros não veem. Excluir apaga de vez. Denunciar é para o que viola as regras.', 'El comentario oculto sigue visible para quien lo escribió y para sus amigos; los demás no lo ven. Eliminar lo borra del todo. Denunciar es para lo que viola las reglas.')],
+          ['pixel', L('Para prevenir: na moderação da Página, bloqueie palavras e ligue o filtro de palavrões. Vale para os anúncios também. No Instagram, use Palavras ocultas.', 'Para prevenir: en la moderación de la Página, bloquea palabras y activa el filtro de groserías. Vale para los anuncios también. En Instagram, usa Palabras ocultas.')]
+        ],
+        pontos: [
+          L('<b>Um a um:</b> ocultar (discreto), excluir ou denunciar.', '<b>Uno por uno:</b> ocultar (discreto), eliminar o denunciar.'),
+          L('<b>Prevenção:</b> palavras bloqueadas e filtro de palavrões na Página; Palavras ocultas no Instagram.', '<b>Prevención:</b> palabras bloqueadas y filtro de groserías en la Página; Palabras ocultas en Instagram.'),
+          L('<b>Prova:</b> um novo comentário com a palavra bloqueada não aparece para o público.', '<b>Prueba:</b> un nuevo comentario con la palabra bloqueada no aparece para el público.')
+        ]
+      },
+      atender: {
+        cena: L('Tem gente xingando no meu anúncio. Não quero apagar o anúncio, ele está vendendo bem. O que eu faço?', 'Hay gente insultando en mi anuncio. No quiero borrar el anuncio, está vendiendo bien. ¿Qué hago?'),
+        opcoes: [
+          op(true, L('“Não precisa apagar o anúncio. Você pode ocultar esses comentários (só quem escreveu e os amigos continuam vendo), excluir ou denunciar. E, para não voltar, dá para bloquear palavras e ligar o filtro de palavrões da Página; no Instagram, Palavras ocultas.”', '“No hace falta borrar el anuncio. Puedes ocultar esos comentarios (solo quien escribió y sus amigos siguen viéndolos), eliminarlos o denunciarlos. Y, para que no vuelva, se pueden bloquear palabras y activar el filtro de groserías de la Página; en Instagram, Palabras ocultas.”'), L('Isso! Resolve agora e previne.', '¡Eso! Resuelve ahora y previene.')),
+          op(false, L('“Apague o anúncio e crie outro.”', '“Borra el anuncio y crea otro.”'), L('Perde um anúncio que vende, e os comentários podem voltar.', 'Pierde un anuncio que vende, y los comentarios pueden volver.')),
+          op(false, L('“Responda cada um educadamente.”', '“Responde a cada uno con educación.”'), L('Pode ajudar às vezes, mas não para ofensas: aí é ocultar ou denunciar.', 'Puede ayudar a veces, pero no para ofensas: ahí es ocultar o denunciar.')),
+          op(false, L('“Não tem o que fazer.”', '“No hay nada que hacer.”'), L('Tem: ocultar, excluir, denunciar e filtrar.', 'Hay: ocultar, eliminar, denunciar y filtrar.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Os comentários estão no Facebook, no Instagram ou nos dois?', '¿Los comentarios están en Facebook, en Instagram o en los dos?'), L('São ofensas ou críticas ao produto?', '¿Son ofensas o críticas al producto?')],
+        conferir: [L('Caixa de Entrada do Business Suite › Comentários; moderação da Página; Instagram › Palavras ocultas.', 'Bandeja de entrada de Business Suite › Comentarios; moderación de la Página; Instagram › Palabras ocultas.')],
+        frase: L('Você pode ocultar, excluir ou denunciar esses comentários, e ligar o bloqueio de palavras para não voltarem.', 'Puedes ocultar, eliminar o denunciar esos comentarios, y activar el bloqueo de palabras para que no vuelvan.'),
+        passos: [L('Ocultar ou excluir os atuais.', 'Ocultar o eliminar los actuales.'), L('Bloquear palavras e ligar o filtro.', 'Bloquear palabras y activar el filtro.')],
+        encaminhar: L('Ameaça ou assédio grave: oriente a denunciar e a seguir a Central de Ajuda.', 'Amenaza o acoso grave: orienta a denunciar y a seguir el Centro de ayuda.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/1129470964230971', 'Gerenciar comentários nos anúncios', 'Administrar comentarios en los anuncios', '19/10/2026'), F('https://www.facebook.com/business/help/845417592621623', 'Moderação de comentários da Página', 'Moderación de comentarios de la Página', '19/10/2026')]
+    }),
+    caso({ id: '05', min: 5,
+      titulo: L('Aparece gente da cidade vizinha', 'Aparece gente de la ciudad vecina'),
+      reclamacao: [
+        ['marina', L('Escolhi só São Paulo e o relatório mostra gente de Guarulhos e de Osasco! Estou pagando para quem não é daqui! 😤', '¡Elegí solo São Paulo y el informe muestra gente de Guarulhos y de Osasco! ¡Estoy pagando por quien no es de aquí! 😤')],
+        ['rafa', L('A localização da Meta não é “só quem mora”. Vamos ler o que a tela diz e o detalhamento por região.', 'La ubicación de Meta no es “solo quien vive ahí”. Leamos lo que dice la pantalla y el desglose por región.')]
+      ],
+      objetivo: L('Explicar quem a localização inclui (mora, esteve, costuma ir; e interessados, se a caixa estiver ligada) e conferir no detalhamento por região.', 'Explicar a quién incluye la ubicación (vive, estuvo, suele ir; e interesados, si la casilla está activa) y revisar el desglose por región.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas por que alguém de Osasco?', '¿Pero por qué alguien de Osasco?')],
+          ['rafa', L('A tela do conjunto avisa: o anúncio vai para quem mora lá, esteve lá recentemente ou costuma ir. Quem trabalha em São Paulo e mora em Osasco entra.', 'La pantalla del conjunto avisa: el anuncio va a quien vive ahí, estuvo recientemente o suele ir. Quien trabaja en São Paulo y vive en Osasco entra.')],
+          ['pixel', L('E, se a caixa “Alcançar mais pessoas com probabilidade de responder aos seus anúncios” estiver ligada, entra também quem tem interesse na cidade. Confira essa caixa no conjunto de anúncios.', 'Y, si la casilla de alcanzar más personas con probabilidad de responder está activa, entra también quien tiene interés en la ciudad. Revisa esa casilla en el conjunto de anuncios.')]
+        ],
+        pontos: [
+          L('<b>Quem entra:</b> quem mora, esteve recentemente ou costuma ir à cidade.', '<b>Quién entra:</b> quien vive, estuvo recientemente o suele ir a la ciudad.'),
+          L('<b>A caixa extra:</b> “Alcançar mais pessoas…” inclui interessados na cidade.', '<b>La casilla extra:</b> la de alcanzar más personas incluye a interesados en la ciudad.'),
+          L('<b>Prova:</b> Detalhamento › Por entrega › Região mostra a proporção de cada lugar.', '<b>Prueba:</b> Desglose › Por entrega › Región muestra la proporción de cada lugar.')
+        ]
+      },
+      praticar: { texto: L('A prática do Relatórios 03: você monta um relatório com detalhamento. No caso real, o detalhamento escolhido é Região.', 'La práctica de Informes 03: armas un informe con desglose. En el caso real, el desglose elegido es Región.'), tour: 'montar-relatorio', pagina: 'meta-relatorios.html?zerar=1' },
+      atender: {
+        cena: L('Pedi só a minha cidade e o anúncio aparece para cidades vizinhas. Isso é erro?', 'Pedí solo mi ciudad y el anuncio aparece en ciudades vecinas. ¿Es un error?'),
+        opcoes: [
+          op(true, L('“Não é erro: a localização inclui quem mora, esteve recentemente ou costuma ir à cidade, como quem trabalha aí. E, se a caixa ‘Alcançar mais pessoas…’ estiver ligada, entra quem tem interesse na cidade. Vamos ver o detalhamento por região e essa caixa.”', '“No es un error: la ubicación incluye a quien vive, estuvo recientemente o suele ir a la ciudad, como quien trabaja ahí. Y, si la casilla de alcanzar más personas está activa, entra quien tiene interés en la ciudad. Veamos el desglose por región y esa casilla.”'), L('Isso! Regra real da tela e como conferir.', '¡Eso! Regla real de la pantalla y cómo revisar.')),
+          op(false, L('“Escolha ‘só moradores’ na localização.”', '“Elige ‘solo residentes’ en la ubicación.”'), L('Essa opção não apareceu na tela atual (20/10/2026). Explique quem a localização inclui.', 'Esa opción no apareció en la pantalla actual (20/10/2026). Explica a quién incluye la ubicación.')),
+          op(false, L('“A Meta erra a localização, ignore.”', '“Meta se equivoca con la ubicación, ignóralo.”'), L('Não é erro: é a regra de quem a localização inclui.', 'No es un error: es la regla de a quién incluye la ubicación.')),
+          op(false, L('“Exclua as cidades vizinhas uma por uma.”', '“Excluye las ciudades vecinas una por una.”'), L('Dá para excluir, mas primeiro explique o porquê; excluir demais encolhe o público.', 'Se puede excluir, pero primero explica el porqué; excluir de más achica el público.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual localização está no conjunto de anúncios?', '¿Qué ubicación está en el conjunto de anuncios?'), L('A caixa “Alcançar mais pessoas…” está ligada?', '¿La casilla de alcanzar más personas está activa?')],
+        conferir: [L('Conjunto de anúncios › Público › Localizações; relatório › Detalhamento › Região.', 'Conjunto de anuncios › Público › Ubicaciones; informe › Desglose › Región.')],
+        frase: L('A localização inclui quem mora, esteve ou costuma ir à cidade; por isso aparecem cidades vizinhas.', 'La ubicación incluye a quien vive, estuvo o suele ir a la ciudad; por eso aparecen ciudades vecinas.'),
+        passos: [L('Ler o aviso da Localização no conjunto.', 'Leer el aviso de Ubicación en el conjunto.'), L('Conferir a caixa “Alcançar mais pessoas…”.', 'Revisar la casilla de alcanzar más personas.'), L('Ver o detalhamento por região.', 'Ver el desglose por región.')],
+        encaminhar: L('Se o negócio só atende uma região, ajuste a localização com a cliente e acompanhe o tamanho do público.', 'Si el negocio solo atiende una región, ajusta la ubicación con la clienta y sigue el tamaño del público.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/365561350785642', 'Usar o direcionamento por localização', 'Usar la segmentación por ubicación', '19/10/2026')]
+    }),
+    caso({ id: '06', min: 6,
+      titulo: L('O link do anúncio dá erro (404) ou perde o fbclid', 'El enlace del anuncio da error (404) o pierde el fbclid'),
+      reclamacao: [
+        ['marina', L('Quem clica no anúncio cai numa página de erro! Mas se eu abro o link direto, funciona! 😱', '¡Quien hace clic en el anuncio cae en una página de error! ¡Pero si abro el enlace directo, funciona! 😱')],
+        ['rafa', L('Quando a Meta leva alguém ao site, ela acrescenta um pedaço no fim do link: o fbclid. Alguns sites e encurtadores se atrapalham com isso. Vamos ver.', 'Cuando Meta lleva a alguien al sitio, agrega un pedazo al final del enlace: el fbclid. Algunos sitios y acortadores se confunden con eso. Veamos.')]
+      ],
+      objetivo: L('Entender o fbclid, reconhecer o erro de encurtador ou de site que não aceita parâmetros e orientar a correção no site.', 'Entender el fbclid, reconocer el error de acortador o de sitio que no acepta parámetros y orientar la corrección en el sitio.'),
+      entender: {
+        dialogo: [
+          ['marina', L('E o que é esse fbclid?', '¿Y qué es ese fbclid?')],
+          ['rafa', L('É o identificador do clique. Ele vem depois de “?” ou de “&” no link. Com encurtador de link ou endereço personalizado, às vezes o “&” vira “?” (ou o contrário) e o endereço quebra.', 'Es el identificador del clic. Viene después de “?” o de “&” en el enlace. Con acortador de enlaces o dirección personalizada, a veces el “&” se vuelve “?” (o al revés) y la dirección se rompe.')],
+          ['pixel', L('E há sites que recusam qualquer parâmetro a mais. A Meta não tira o fbclid: quem ajusta é o site, para aceitar ou ignorar o parâmetro.', 'Y hay sitios que rechazan cualquier parámetro extra. Meta no quita el fbclid: quien ajusta es el sitio, para aceptar o ignorar el parámetro.')]
+        ],
+        pontos: [
+          L('<b>Sinal:</b> o link direto funciona; pelo anúncio dá 404 ou perde parâmetros.', '<b>Señal:</b> el enlace directo funciona; por el anuncio da 404 o pierde parámetros.'),
+          L('<b>Causa:</b> encurtador ou link personalizado trocando “&” e “?”, ou site que não aceita parâmetros.', '<b>Causa:</b> acortador o enlace personalizado cambiando “&” y “?”, o sitio que no acepta parámetros.'),
+          L('<b>Correção:</b> usar o endereço final da página (sem encurtador) e o site aceitar ou ignorar o fbclid.', '<b>Corrección:</b> usar la dirección final de la página (sin acortador) y que el sitio acepte o ignore el fbclid.')
+        ]
+      },
+      atender: {
+        cena: L('O site abre normal, mas quem vem pelo anúncio vê “página não encontrada”. Vocês quebraram meu link?', 'El sitio abre normal, pero quien viene por el anuncio ve “página no encontrada”. ¿Ustedes rompieron mi enlace?'),
+        opcoes: [
+          op(true, L('“A Meta acrescenta o fbclid no fim do link. Se você usa encurtador ou o site não aceita parâmetros, o endereço quebra. Vamos testar com o link completo da página, sem encurtador, e pedir ao desenvolvedor para o site aceitar ou ignorar o fbclid.”', '“Meta agrega el fbclid al final del enlace. Si usas acortador o el sitio no acepta parámetros, la dirección se rompe. Probemos con el enlace completo de la página, sin acortador, y pidamos al desarrollador que el sitio acepte o ignore el fbclid.”'), L('Isso! Causa e correção no lugar certo.', '¡Eso! Causa y corrección en el lugar correcto.')),
+          op(false, L('“Vou pedir para a Meta tirar o fbclid.”', '“Voy a pedirle a Meta que quite el fbclid.”'), L('A Meta não remove o fbclid; o ajuste é no site.', 'Meta no quita el fbclid; el ajuste es en el sitio.')),
+          op(false, L('“Troque o botão do anúncio.”', '“Cambia el botón del anuncio.”'), L('O botão não muda o link que quebra.', 'El botón no cambia el enlace que se rompe.')),
+          op(false, L('“É instabilidade, vai passar.”', '“Es inestabilidad, va a pasar.”'), L('Vai continuar enquanto o link ou o site não forem ajustados.', 'Va a seguir mientras el enlace o el sitio no se ajusten.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O link do anúncio é encurtado ou personalizado?', '¿El enlace del anuncio es acortado o personalizado?'), L('O link direto, sem o fbclid, funciona?', '¿El enlace directo, sin el fbclid, funciona?')],
+        conferir: [L('URL do site no anúncio; abrir o link com ?fbclid=teste no fim.', 'URL del sitio en el anuncio; abrir el enlace con ?fbclid=prueba al final.')],
+        frase: L('A Meta acrescenta o fbclid ao link; o site precisa aceitar ou ignorar esse parâmetro, e é melhor usar o endereço completo, sem encurtador.', 'Meta agrega el fbclid al enlace; el sitio tiene que aceptar o ignorar ese parámetro, y es mejor usar la dirección completa, sin acortador.'),
+        passos: [L('Testar o link com ?fbclid=teste.', 'Probar el enlace con ?fbclid=prueba.'), L('Trocar o encurtador pelo endereço final.', 'Cambiar el acortador por la dirección final.'), L('Pedir ao desenvolvedor para aceitar parâmetros.', 'Pedir al desarrollador que acepte parámetros.')],
+        encaminhar: L('Ajuste no servidor ou no redirecionamento do site é com o desenvolvedor ou a hospedagem do cliente.', 'El ajuste en el servidor o en la redirección del sitio es con el desarrollador o el hosting del cliente.')
+      },
+      fontes: [F('https://developers.facebook.com/documentation/meta-pixel/support', 'Suporte do Pixel da Meta (perguntas frequentes: 404 com o Click ID e parâmetros ausentes)', 'Soporte del píxel de Meta (preguntas frecuentes: 404 con el Click ID y parámetros ausentes)')]
+    }),
+    caso({ id: '07', min: 4,
+      titulo: L('O anúncio aparece errado só no celular do cliente', 'El anuncio aparece mal solo en el celular del cliente'),
+      reclamacao: [
+        ['marina', L('No meu celular o anúncio aparece cortado, sem o texto todo! Vocês estragaram meu anúncio! 😩', '¡En mi celular el anuncio aparece cortado, sin todo el texto! ¡Arruinaron mi anuncio! 😩')],
+        ['rafa', L('Antes de mexer no anúncio, vamos ver se é ele ou o aparelho: a prévia mostra cada posicionamento.', 'Antes de tocar el anuncio, veamos si es él o el dispositivo: la vista previa muestra cada ubicación.')]
+      ],
+      objetivo: L('Comparar a prévia de cada posicionamento e ver o anúncio em outro aparelho antes de mudar qualquer coisa.', 'Comparar la vista previa de cada ubicación y ver el anuncio en otro dispositivo antes de cambiar nada.'),
+      entender: {
+        dialogo: [
+          ['marina', L('E como eu vejo em outro aparelho?', '¿Y cómo lo veo en otro dispositivo?')],
+          ['rafa', L('Ao lado da prévia fica o botão de compartilhar (a seta ↪), que manda a prévia para ver em outro lugar. Se no outro aparelho está certo, o problema é o app ou o celular, não o anúncio.', 'Al lado de la vista previa está el botón de compartir (la flecha ↪), que manda la vista previa para verla en otro lugar. Si en el otro dispositivo se ve bien, el problema es la app o el celular, no el anuncio.')],
+          ['pixel', L('Texto longo é cortado com “… mais” em alguns lugares, e isso é normal. Corte de imagem estranho se ajusta no corte de cada grupo (Feed 03).', 'El texto largo se corta con “… más” en algunos lugares, y eso es normal. Un recorte de imagen raro se ajusta en el recorte de cada grupo (Feed 03).')]
+        ],
+        pontos: [
+          L('<b>Primeiro:</b> a prévia de cada posicionamento.', '<b>Primero:</b> la vista previa de cada ubicación.'),
+          L('<b>Depois:</b> ver em outro aparelho (botão de compartilhar a prévia).', '<b>Después:</b> ver en otro dispositivo (botón de compartir la vista previa).'),
+          L('<b>Só então:</b> ajustar corte ou texto, se o erro aparecer em todo lugar.', '<b>Solo entonces:</b> ajustar recorte o texto, si el error aparece en todos lados.')
+        ]
+      },
+      praticar: { texto: L('A prática do Feed 03: você olha a prévia de cada grupo e ajusta o corte.', 'La práctica de Feed 03: miras la vista previa de cada grupo y ajustas el recorte.'), tour: 'ver-previa', pagina: 'meta-feed.html?exemplo=1' },
+      atender: {
+        cena: L('No meu celular o anúncio aparece cortado. No do meu marido aparece normal. O que eu faço?', 'En mi celular el anuncio aparece cortado. En el de mi marido aparece normal. ¿Qué hago?'),
+        opcoes: [
+          op(true, L('“Se no outro celular aparece certo, o anúncio está bom: o problema é o app ou o aparelho. Vale atualizar o app. E, para tirar a dúvida, olhamos a prévia de cada posicionamento.”', '“Si en el otro celular aparece bien, el anuncio está bien: el problema es la app o el dispositivo. Conviene actualizar la app. Y, para salir de dudas, miramos la vista previa de cada ubicación.”'), L('Isso! Separou anúncio de aparelho.', '¡Eso! Separaste anuncio de dispositivo.')),
+          op(false, L('“Refaça o anúncio do zero.”', '“Rehaz el anuncio desde cero.”'), L('Se em outro aparelho está certo, não há o que refazer.', 'Si en otro dispositivo se ve bien, no hay nada que rehacer.')),
+          op(false, L('“Mude a imagem para ficar menor.”', '“Cambia la imagen para que quede más chica.”'), L('Mudar sem saber a causa pode estragar onde estava certo.', 'Cambiar sin saber la causa puede arruinar donde estaba bien.')),
+          op(false, L('“É erro da Meta.”', '“Es error de Meta.”'), L('Primeiro compare as prévias e os aparelhos.', 'Primero compara las vistas previas y los dispositivos.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Em que posicionamento aparece errado?', '¿En qué ubicación aparece mal?'), L('Em outro aparelho também aparece errado?', '¿En otro dispositivo también aparece mal?')],
+        conferir: [L('Editor do anúncio › Prévia do anúncio (cada grupo) e o botão de compartilhar a prévia.', 'Editor del anuncio › Vista previa del anuncio (cada grupo) y el botón de compartir la vista previa.')],
+        frase: L('Vamos comparar a prévia e ver em outro aparelho; se lá estiver certo, o problema é o app ou o celular.', 'Comparemos la vista previa y veámoslo en otro dispositivo; si ahí se ve bien, el problema es la app o el celular.'),
+        passos: [L('Ver a prévia por posicionamento.', 'Ver la vista previa por ubicación.'), L('Ver em outro aparelho.', 'Ver en otro dispositivo.')],
+        encaminhar: L('Problema do app no aparelho: oriente a atualizar o app e seguir a Central de Ajuda.', 'Problema de la app en el dispositivo: orienta a actualizar la app y seguir el Centro de ayuda.')
+      }
+    }),
+    caso({ id: '08', min: 6,
+      titulo: L('Erro ao publicar: achar o anúncio e o código do erro', 'Error al publicar: encontrar el anuncio y el código del error'),
+      reclamacao: [
+        ['marina', L('Apareceu um erro com um número enorme quando tentei publicar. Tenho três campanhas, nem sei qual é! 😵', '¡Apareció un error con un número enorme cuando intenté publicar. Tengo tres campañas, ni sé cuál es! 😵')],
+        ['rafa', L('Vamos com calma: primeiro achar QUAL anúncio deu erro (pelo ID), depois ler o código do erro.', 'Con calma: primero encontrar CUÁL anuncio dio error (por el ID), después leer el código del error.')]
+      ],
+      objetivo: L('Localizar o objeto com erro no nível certo (anúncio, conjunto ou campanha) pelo ID e procurar o código do erro.', 'Ubicar el objeto con error en el nivel correcto (anuncio, conjunto o campaña) por el ID y buscar el código del error.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Onde vejo o ID?', '¿Dónde veo el ID?')],
+          ['rafa', L('Na tabela do Gerenciador, em Colunas › Personalizar colunas, dá para ligar as colunas de ID. O erro costuma ser do anúncio, não da campanha: procure no nível certo.', 'En la tabla del Administrador, en Columnas › Personalizar columnas, se pueden activar las columnas de ID. El error suele ser del anuncio, no de la campaña: busca en el nivel correcto.')],
+          ['pixel', L('O número do erro ajuda a achar a explicação na Central de Ajuda. Anote o ID e o código antes de mudar qualquer coisa.', 'El número del error ayuda a encontrar la explicación en el Centro de ayuda. Anota el ID y el código antes de cambiar nada.')]
+        ],
+        pontos: [
+          L('<b>Achar:</b> o ID do objeto com erro, no nível certo (anúncio, conjunto ou campanha).', '<b>Encontrar:</b> el ID del objeto con error, en el nivel correcto (anuncio, conjunto o campaña).'),
+          L('<b>Ler:</b> a mensagem e o código do erro; procurar na Central de Ajuda.', '<b>Leer:</b> el mensaje y el código del error; buscar en el Centro de ayuda.'),
+          L('<b>Corrigir:</b> o que a mensagem pede (Página, mídia, URL, pagamento) e tentar de novo.', '<b>Corregir:</b> lo que pide el mensaje (Página, contenido, URL, pago) e intentar de nuevo.')
+        ]
+      },
+      praticar: { texto: L('A prática da Anúncios 05: você lê os avisos de cima para baixo e resolve um bloqueio de cada vez.', 'La práctica de Anuncios 05: lees los avisos de arriba abajo y resuelves un bloqueo a la vez.'), tour: 'resolver-publicacao', pagina: 'meta-turbinar.html?zerar=1&problemas=1' },
+      atender: {
+        cena: L('Deu um erro com código e eu não sei nem qual anúncio é. Você resolve?', 'Dio un error con código y no sé ni qué anuncio es. ¿Lo resuelves?'),
+        opcoes: [
+          op(true, L('“Vamos achar primeiro qual anúncio é: ligue a coluna de ID em Personalizar colunas e me passe o ID do anúncio com erro e o número do erro. Com isso, vejo o que a mensagem pede e corrigimos.”', '“Encontremos primero cuál anuncio es: activa la columna de ID en Personalizar columnas y pásame el ID del anuncio con error y el número del error. Con eso, veo qué pide el mensaje y corregimos.”'), L('Isso! Nível certo, ID e código.', '¡Eso! Nivel correcto, ID y código.')),
+          op(false, L('“Me passe o ID da conta e eu vejo.”', '“Pásame el ID de la cuenta y lo veo.”'), L('A conta tem tudo; o erro está num anúncio específico.', 'La cuenta tiene todo; el error está en un anuncio específico.')),
+          op(false, L('“Apague as três campanhas.”', '“Borra las tres campañas.”'), L('Exagero: primeiro ache qual anúncio deu erro.', 'Exagerado: primero encuentra qué anuncio dio error.')),
+          op(false, L('“Espere e tente amanhã.”', '“Espera e intenta mañana.”'), L('Sem ler a mensagem, o erro pode continuar.', 'Sin leer el mensaje, el error puede seguir.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual o ID do anúncio com erro?', '¿Cuál es el ID del anuncio con error?'), L('Qual a mensagem e o número do erro?', '¿Cuál es el mensaje y el número del error?')],
+        conferir: [L('Gerenciador de Anúncios › Colunas › Personalizar colunas (IDs); a mensagem do erro.', 'Administrador de anuncios › Columnas › Personalizar columnas (IDs); el mensaje del error.')],
+        frase: L('Vamos achar o anúncio com erro pelo ID e ler o número do erro; aí sabemos exatamente o que corrigir.', 'Encontremos el anuncio con error por el ID y leamos el número del error; así sabemos exactamente qué corregir.'),
+        passos: [L('Ligar a coluna de ID.', 'Activar la columna de ID.'), L('Anotar ID e código.', 'Anotar ID y código.'), L('Corrigir o que a mensagem pede.', 'Corregir lo que pide el mensaje.')],
+        encaminhar: L('Erro de política ou de conta restrita é outro assunto: registre o ID e o código e siga a Central de Ajuda.', 'Error de política o de cuenta restringida es otro tema: registra el ID y el código y sigue el Centro de ayuda.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/321037758594702', 'Editar campanhas, conjuntos ou anúncios na tabela de relatórios', 'Editar campañas, conjuntos o anuncios en la tabla de informes'), F('https://www.facebook.com/business/help/1210227555661027', 'Como resolver um anúncio reprovado', 'Cómo resolver un anuncio rechazado', '19/10/2026')]
+    })
+  ]);
+
+  /* ================= Contas e portfólio ================= */
+  poe('dg-contas', [
+    caso({ id: '03', min: 5,
+      titulo: L('O convite para o portfólio não chega', 'La invitación al portfolio no llega'),
+      reclamacao: [
+        ['marina', L('Convidei meu sobrinho para o portfólio há dois dias e o convite não chegou! Já mandei três vezes! 😩', '¡Invité a mi sobrino al portfolio hace dos días y la invitación no llegó! ¡Ya la mandé tres veces! 😩')],
+        ['rafa', L('Vamos conferir o e-mail usado e se o convite está esperando alguma aprovação.', 'Revisemos el correo usado y si la invitación está esperando alguna aprobación.')]
+      ],
+      objetivo: L('Conferir o e-mail do convite, o spam, o reenvio e as aprovações pendentes.', 'Revisar el correo de la invitación, el spam, el reenvío y las aprobaciones pendientes.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mandei para o e-mail do trabalho dele.', 'Lo mandé al correo del trabajo de él.')],
+          ['rafa', L('O convite tem que ir para o e-mail da conta do Facebook dele. Se ele entra no Facebook com outro e-mail, o convite não aparece.', 'La invitación tiene que ir al correo de la cuenta de Facebook de él. Si él entra a Facebook con otro correo, la invitación no aparece.')],
+          ['pixel', L('Outras causas: convite no spam, esperando aprovação de outra pessoa com controle total, ou quem convidou ainda não confirmou o próprio e-mail.', 'Otras causas: invitación en el spam, esperando aprobación de otra persona con control total, o quien invitó todavía no confirmó su propio correo.')]
+        ],
+        pontos: [
+          L('<b>E-mail certo:</b> o mesmo da conta do Facebook de quem vai entrar.', '<b>Correo correcto:</b> el mismo de la cuenta de Facebook de quien va a entrar.'),
+          L('<b>Conferir:</b> spam, reenviar em Pessoas, aprovações pendentes e o e-mail de quem convidou.', '<b>Revisar:</b> spam, reenviar en Personas, aprobaciones pendientes y el correo de quien invitó.'),
+          L('<b>Prova:</b> a pessoa aparece em Pessoas com o acesso certo.', '<b>Prueba:</b> la persona aparece en Personas con el acceso correcto.')
+        ]
+      },
+      praticar: { texto: L('A prática do Portfólio 03: você convida uma pessoa, escolhe o acesso e confere as etapas do convite.', 'La práctica de Portfolio 03: invitas a una persona, eliges el acceso y revisas los pasos de la invitación.'), tour: 'convidar-pessoa', pagina: 'meta-portfolio.html?exemplo=1' },
+      atender: {
+        cena: L('Já mandei o convite três vezes e não chega. O sistema de vocês está com problema?', 'Ya mandé la invitación tres veces y no llega. ¿Su sistema tiene un problema?'),
+        opcoes: [
+          op(true, L('“Vamos conferir uma coisa: o convite precisa ir para o mesmo e-mail que ele usa para entrar no Facebook. Se for outro, não aparece. Olhe também o spam e se o convite está esperando aprovação de outra pessoa com controle total.”', '“Revisemos algo: la invitación tiene que ir al mismo correo que él usa para entrar a Facebook. Si es otro, no aparece. Mira también el spam y si la invitación está esperando aprobación de otra persona con control total.”'), L('Isso! A causa mais comum primeiro.', '¡Eso! La causa más común primero.')),
+          op(false, L('“Mande mais uma vez.”', '“Mándala una vez más.”'), L('Se o e-mail está errado, reenviar não resolve.', 'Si el correo está mal, reenviar no resuelve.')),
+          op(false, L('“Dê sua senha para ele entrar.”', '“Dale tu contraseña para que entre.”'), L('Nunca: senha não se compartilha.', 'Nunca: la contraseña no se comparte.')),
+          op(false, L('“Crie outro portfólio.”', '“Crea otro portfolio.”'), L('Não resolve o convite e espalha os ativos.', 'No resuelve la invitación y dispersa los activos.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Para qual e-mail o convite foi?', '¿A qué correo fue la invitación?'), L('É o e-mail da conta do Facebook da pessoa?', '¿Es el correo de la cuenta de Facebook de la persona?')],
+        conferir: [L('Configurações do portfólio › Pessoas (convites pendentes) e Informações da empresa.', 'Configuración del portfolio › Personas (invitaciones pendientes) e Información del negocio.')],
+        frase: L('O convite precisa ir para o e-mail da conta do Facebook da pessoa; vamos conferir isso, o spam e as aprovações.', 'La invitación tiene que ir al correo de la cuenta de Facebook de la persona; revisemos eso, el spam y las aprobaciones.'),
+        passos: [L('Conferir o e-mail.', 'Revisar el correo.'), L('Olhar o spam.', 'Mirar el spam.'), L('Reenviar em Pessoas.', 'Reenviar en Personas.')],
+        encaminhar: L('Se nada disso resolve, oriente a seguir a Central de Ajuda (Aceitar um convite).', 'Si nada de eso resuelve, orienta a seguir el Centro de ayuda (Aceptar una invitación).')
+      },
+      fontes: [F('https://www.facebook.com/business/help/2169003770027706', 'Adicionar pessoas ao portfólio empresarial', 'Agregar personas al portfolio comercial', '19/10/2026'), F('https://www.facebook.com/business/help/351956468742349', 'Aceitar um convite para um portfólio empresarial', 'Aceptar una invitación a un portfolio comercial', '19/10/2026')]
+    }),
+    caso({ id: '04', min: 5,
+      titulo: L('Não consigo criar outra conta de anúncios', 'No puedo crear otra cuenta publicitaria'),
+      reclamacao: [
+        ['marina', L('Quero uma conta de anúncios só para a loja nova e o botão não deixa criar! 😕', '¡Quiero una cuenta publicitaria solo para la tienda nueva y el botón no me deja crear! 😕')],
+        ['rafa', L('Todo portfólio tem um limite de contas de anúncios. Vamos ver o seu em Informações da empresa.', 'Todo portfolio tiene un límite de cuentas publicitarias. Veamos el tuyo en Información del negocio.')]
+      ],
+      objetivo: L('Ler o “Limite de criação de contas de anúncios” e explicar como ele sobe.', 'Leer el “Límite de creación de cuentas publicitarias” y explicar cómo sube.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Por que só uma?', '¿Por qué solo una?')],
+          ['rafa', L('Portfólio novo começa com 1 conta até fazer um pagamento confirmado. Depois, o limite sobe com o histórico de gastos.', 'Un portfolio nuevo empieza con 1 cuenta hasta hacer un pago confirmado. Después, el límite sube con el historial de gastos.')],
+          ['pixel', L('Contas desativadas também contam no limite. E a conta não sai do portfólio: pense bem antes de criar.', 'Las cuentas desactivadas también cuentan en el límite. Y la cuenta no sale del portfolio: piénsalo bien antes de crear.')]
+        ],
+        pontos: [
+          L('<b>Onde ver:</b> Configurações do portfólio › Informações da empresa › Limite de criação de contas de anúncios.', '<b>Dónde ver:</b> Configuración del portfolio › Información del negocio › Límite de creación de cuentas publicitarias.'),
+          L('<b>Regra:</b> 1 conta até o primeiro pagamento confirmado; sobe com o histórico de gastos.', '<b>Regla:</b> 1 cuenta hasta el primer pago confirmado; sube con el historial de gastos.'),
+          L('<b>Cuidado:</b> contas desativadas contam.', '<b>Cuidado:</b> las cuentas desactivadas cuentan.')
+        ],
+        notas: L('Caso montado a partir de dúvidas comuns de atendimento, com a Marina, de faz-de-conta. O campo “Limite de criação de contas de anúncios” foi visto em Informações da empresa do portfólio de aula em 20/10/2026 (valor 1), em português e espanhol (“Límite de creación de cuentas publicitarias”). As regras vêm da Central de Ajuda da Meta (fonte abaixo).', 'Caso armado a partir de dudas comunes de atención, con Marina, de mentira. El campo “Límite de creación de cuentas publicitarias” se vio en la información del negocio del portfolio de clase el 20/10/2026 (valor 1), en portugués y español. Las reglas vienen del Centro de ayuda de Meta (fuente abajo).')
+      },
+      atender: {
+        cena: L('Não consigo criar uma segunda conta de anúncios. Vocês me bloquearam?', 'No puedo crear una segunda cuenta publicitaria. ¿Me bloquearon?'),
+        opcoes: [
+          op(true, L('“Não é bloqueio: todo portfólio tem um limite de contas. Portfólio novo começa com 1 até o primeiro pagamento confirmado, e o limite sobe com o histórico. Dá para ver em Informações da empresa. Enquanto isso, a loja nova pode usar a mesma conta, com campanhas separadas.”', '“No es bloqueo: todo portfolio tiene un límite de cuentas. Un portfolio nuevo empieza con 1 hasta el primer pago confirmado, y el límite sube con el historial. Se puede ver en Información del negocio. Mientras tanto, la tienda nueva puede usar la misma cuenta, con campañas separadas.”'), L('Isso! Regra, onde ver e uma saída.', '¡Eso! Regla, dónde ver y una salida.')),
+          op(false, L('“Crie outro portfólio para ter mais contas.”', '“Crea otro portfolio para tener más cuentas.”'), L('Espalha os ativos e cada pessoa só cria 2 portfólios.', 'Dispersa los activos y cada persona solo crea 2 portfolios.')),
+          op(false, L('“Apague a conta antiga.”', '“Borra la cuenta vieja.”'), L('Conta desativada continua contando no limite.', 'La cuenta desactivada sigue contando en el límite.')),
+          op(false, L('“É erro, tente de novo.”', '“Es error, intenta otra vez.”'), L('É o limite, não um erro.', 'Es el límite, no un error.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual o limite que aparece em Informações da empresa?', '¿Qué límite aparece en Información del negocio?'), L('Já houve algum pagamento confirmado?', '¿Ya hubo algún pago confirmado?')],
+        conferir: [L('Configurações do portfólio › Informações da empresa › Limite de criação de contas de anúncios.', 'Configuración del portfolio › Información del negocio › Límite de creación de cuentas publicitarias.')],
+        frase: L('O portfólio tem um limite de contas de anúncios, que começa em 1 e sobe com o histórico de pagamentos.', 'El portfolio tiene un límite de cuentas publicitarias, que empieza en 1 y sube con el historial de pagos.'),
+        passos: [L('Ver o limite.', 'Ver el límite.'), L('Contar as contas (inclusive desativadas).', 'Contar las cuentas (incluso desactivadas).')],
+        encaminhar: L('Se o limite parece errado para o histórico, oriente a seguir a Central de Ajuda.', 'Si el límite parece incorrecto para el historial, orienta a seguir el Centro de ayuda.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/443041549525801', 'Solucionar problemas na criação de contas de anúncios', 'Solucionar problemas al crear cuentas publicitarias', '19/10/2026')]
+    }),
+    caso({ id: '05', min: 5,
+      titulo: L('O portfólio novo já veio restrito', 'El portfolio nuevo ya vino restringido'),
+      reclamacao: [
+        ['marina', L('Acabei de criar o portfólio e já aparece que tem restrição! Nem fiz nada ainda! 😰', '¡Acabo de crear el portfolio y ya aparece que tiene restricción! ¡Ni hice nada todavía! 😰')],
+        ['rafa', L('Portfólio e conta novos começam com recursos limitados. Vamos ver o motivo e o caminho oficial para pedir análise.', 'Un portfolio y una cuenta nuevos empiezan con funciones limitadas. Veamos el motivo y el camino oficial para pedir revisión.')]
+      ],
+      objetivo: L('Ver o motivo na Página Inicial do Suporte para Empresas e, se fizer sentido, pedir análise, sem “atalhos” arriscados.', 'Ver el motivo en la página de inicio del Servicio de ayuda para empresas y, si tiene sentido, pedir revisión, sin “atajos” riesgosos.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Me disseram para apagar e criar outro. Resolve?', 'Me dijeron que borre y cree otro. ¿Resuelve?')],
+          ['rafa', L('Não é o caminho oficial, e excluir portfólio tem condições. O caminho é ver o motivo e pedir análise; costuma levar uns dois dias.', 'No es el camino oficial, y borrar un portfolio tiene condiciones. El camino es ver el motivo y pedir revisión; suele llevar unos dos días.')],
+          ['pixel', L('Nunca oriente a mexer em segurança (tirar autenticação, apagar contas) para “destravar”: isso pode piorar.', 'Nunca orientes tocar la seguridad (quitar autenticación, borrar cuentas) para “destrabar”: eso puede empeorar.')]
+        ],
+        pontos: [
+          L('<b>Normal:</b> portfólio e conta novos começam com recursos limitados.', '<b>Normal:</b> un portfolio y una cuenta nuevos empiezan con funciones limitadas.'),
+          L('<b>Caminho:</b> Página Inicial do Suporte para Empresas › motivo › Solicitar análise.', '<b>Camino:</b> Servicio de ayuda para empresas › motivo › Solicitar revisión.'),
+          L('<b>Sem atalhos:</b> não apagar e recriar, não mexer na segurança.', '<b>Sin atajos:</b> no borrar y recrear, no tocar la seguridad.')
+        ]
+      },
+      atender: {
+        cena: L('Meu portfólio novo veio restrito. Apago e faço outro?', 'Mi portfolio nuevo vino restringido. ¿Lo borro y hago otro?'),
+        opcoes: [
+          op(true, L('“Não precisa apagar: portfólio novo costuma começar com recursos limitados. Vamos ver o motivo na Página Inicial do Suporte para Empresas e, se for o caso, pedir análise; geralmente leva uns dois dias.”', '“No hace falta borrar: un portfolio nuevo suele empezar con funciones limitadas. Veamos el motivo en el Servicio de ayuda para empresas y, si corresponde, pidamos revisión; generalmente lleva unos dos días.”'), L('Isso! Caminho oficial, sem atalho.', '¡Eso! Camino oficial, sin atajo.')),
+          op(false, L('“Apague e crie outro.”', '“Bórralo y crea otro.”'), L('Não é oficial e pode não resolver.', 'No es oficial y puede no resolver.')),
+          op(false, L('“Desligue a autenticação de dois fatores.”', '“Apaga la autenticación en dos pasos.”'), L('Nunca: deixa o portfólio inseguro.', 'Nunca: deja el portfolio inseguro.')),
+          op(false, L('“Faça uma ação por dia até liberar.”', '“Haz una acción por día hasta que se libere.”'), L('Sem fonte oficial: não prometa isso.', 'Sin fuente oficial: no prometas eso.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O que a Página Inicial do Suporte diz sobre o motivo?', '¿Qué dice el Servicio de ayuda sobre el motivo?'), L('Já foi pedida análise?', '¿Ya se pidió revisión?')],
+        conferir: [L('Página Inicial do Suporte para Empresas (business.facebook.com/business-support-home).', 'Servicio de ayuda para empresas (business.facebook.com/business-support-home).')],
+        frase: L('Portfólio novo pode começar com recursos limitados; vamos ver o motivo e pedir análise pelo caminho oficial.', 'Un portfolio nuevo puede empezar con funciones limitadas; veamos el motivo y pidamos revisión por el camino oficial.'),
+        passos: [L('Ler o motivo.', 'Leer el motivo.'), L('Solicitar análise, se fizer sentido.', 'Solicitar revisión, si tiene sentido.'), L('Aguardar a resposta.', 'Esperar la respuesta.')],
+        encaminhar: L('Restrição de conta é tema da área de restrições: registre o motivo e siga a Central de Ajuda.', 'La restricción de cuenta es tema del área de restricciones: registra el motivo y sigue el Centro de ayuda.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/530209463124901', 'Solicitar análise de uma restrição', 'Solicitar revisión de una restricción', '19/10/2026')]
+    })
+  ]);
+
+  /* ================= Instagram ================= */
+  poe('dg-instagram', [
+    caso({ id: '02', min: 5,
+      titulo: L('Não consigo anunciar com este Instagram (assinatura sem anúncios)', 'No puedo anunciar con este Instagram (suscripción sin anuncios)'),
+      reclamacao: [
+        ['marina', L('Minha prima, que mora em Portugal, não consegue impulsionar nada no Instagram da loja dela! O botão nem aparece! 🤷', '¡Mi prima, que vive en Portugal, no logra promocionar nada en el Instagram de su tienda! ¡El botón ni aparece! 🤷')],
+        ['rafa', L('Na Europa existe a assinatura “sem anúncios”. Quem assina tem a capacidade de anunciar limitada. Vamos conferir.', 'En Europa existe la suscripción “sin anuncios”. Quien se suscribe tiene la capacidad de anunciar limitada. Revisemos.')]
+      ],
+      objetivo: L('Reconhecer quando a assinatura sem anúncios (Europa e Reino Unido) impede anunciar com aquele Instagram e o que a pessoa pode fazer.', 'Reconocer cuándo la suscripción sin anuncios (Europa y Reino Unido) impide anunciar con ese Instagram y qué puede hacer la persona.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Mas ela pagou para não ver anúncio, não para não anunciar!', '¡Pero ella pagó para no ver anuncios, no para no anunciar!')],
+          ['rafa', L('A Central de Ajuda do Instagram avisa que, com a assinatura, a capacidade de anunciar fica limitada. Na prática, a comunidade relata: sem impulsionar e sem anúncios para aquele Instagram, nem para a Página ligada a ele.', 'El Centro de ayuda de Instagram avisa que, con la suscripción, la capacidad de anunciar queda limitada. En la práctica, la comunidad relata: sin promocionar y sin anuncios para ese Instagram, ni para la Página vinculada a él.')],
+          ['pixel', L('A escolha vale para todas as contas da mesma Central de Contas. Para anunciar, ela volta a usar de graça, com anúncios.', 'La elección vale para todas las cuentas del mismo Centro de cuentas. Para anunciar, vuelve a usarlo gratis, con anuncios.')]
+        ],
+        pontos: [
+          L('<b>Onde vale:</b> Europa e Reino Unido (assinatura “sem anúncios”).', '<b>Dónde vale:</b> Europa y Reino Unido (suscripción “sin anuncios”).'),
+          L('<b>Efeito:</b> capacidade de anunciar limitada, inclusive para a Página ligada ao Instagram assinante.', '<b>Efecto:</b> capacidad de anunciar limitada, incluso para la Página vinculada al Instagram suscriptor.'),
+          L('<b>Saída:</b> voltar ao uso gratuito com anúncios, ou anunciar por uma Página que não esteja ligada àquele Instagram.', '<b>Salida:</b> volver al uso gratuito con anuncios, o anunciar desde una Página que no esté vinculada a ese Instagram.')
+        ],
+        notas: L('Caso montado a partir de dúvidas comuns de atendimento, com a Marina, de faz-de-conta. A Central de Ajuda do Instagram (“Assinatura da opção sem anúncios”) diz que a capacidade de anunciar e monetizar fica limitada para quem assina. Os detalhes (sem impulsionar, sem anúncio para a Página ligada) vêm de relatos de especialistas e da imprensa que citam o texto da Meta, não de uma página oficial lida por nós (a conferir).', 'Caso armado a partir de dudas comunes de atención, con Marina, de mentira. El Centro de ayuda de Instagram (“Suscripción sin anuncios”) dice que la capacidad de anunciar y monetizar queda limitada para quien se suscribe. Los detalles (sin promocionar, sin anuncio para la Página vinculada) vienen de relatos de especialistas y de la prensa que citan el texto de Meta, no de una página oficial leída por nosotros (por confirmar).')
+      },
+      atender: {
+        cena: L('Moro na Espanha e o botão de impulsionar sumiu do meu Instagram de loja. O que houve?', 'Vivo en España y el botón de promocionar desapareció de mi Instagram de tienda. ¿Qué pasó?'),
+        opcoes: [
+          op(true, L('“Uma causa comum na Europa: a assinatura sem anúncios. Com ela, a capacidade de anunciar fica limitada para aquele Instagram e para a Página ligada a ele. Você assinou? Se sim, para anunciar é preciso voltar ao uso gratuito com anúncios.”', '“Una causa común en Europa: la suscripción sin anuncios. Con ella, la capacidad de anunciar queda limitada para ese Instagram y para la Página vinculada a él. ¿Te suscribiste? Si es así, para anunciar hay que volver al uso gratuito con anuncios.”'), L('Isso! Perguntou antes de concluir.', '¡Eso! Preguntaste antes de concluir.')),
+          op(false, L('“Crie outro Instagram.”', '“Crea otro Instagram.”'), L('Perde os seguidores, e a escolha vale para a Central de Contas.', 'Pierde los seguidores, y la elección vale para el Centro de cuentas.')),
+          op(false, L('“É um bug, espere.”', '“Es un error, espera.”'), L('Primeiro confira a assinatura.', 'Primero revisa la suscripción.')),
+          op(false, L('“Anunciar não existe na Europa.”', '“Anunciar no existe en Europa.”'), L('Existe; o que limita é a assinatura.', 'Existe; lo que limita es la suscripción.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('A pessoa mora na Europa ou no Reino Unido?', '¿La persona vive en Europa o en el Reino Unido?'), L('Ela assinou o uso sem anúncios?', '¿Se suscribió al uso sin anuncios?')],
+        conferir: [L('Central de Contas › assinatura sem anúncios.', 'Centro de cuentas › suscripción sin anuncios.')],
+        frase: L('Com a assinatura sem anúncios, a capacidade de anunciar fica limitada; para anunciar, é preciso voltar ao uso gratuito com anúncios.', 'Con la suscripción sin anuncios, la capacidad de anunciar queda limitada; para anunciar, hay que volver al uso gratuito con anuncios.'),
+        passos: [L('Perguntar sobre a assinatura.', 'Preguntar por la suscripción.'), L('Explicar o efeito e a saída.', 'Explicar el efecto y la salida.')],
+        encaminhar: L('Cancelar ou mudar a assinatura é com a própria pessoa, na Central de Contas.', 'Cancelar o cambiar la suscripción es con la propia persona, en el Centro de cuentas.')
+      },
+      fontes: [F('https://help.instagram.com/923021729404927', 'Assinatura da opção sem anúncios (Central de Ajuda do Instagram)', 'Suscripción sin anuncios (Centro de ayuda de Instagram)')]
+    })
+  ]);
+
+  /* ================= Workaround plausível (só comunidade e fóruns; não é solução oficial) ================= */
+  var NOTA_W = L('Workaround plausível: a Meta não documenta esta saída. Ela aparece em comunidades e fóruns públicos de anunciantes e de suporte de plataformas, que relatam que costuma funcionar. Use só como tentativa, depois do caminho oficial, e nunca prometa resultado. Caso reescrito com a Marina, de faz-de-conta.', 'Workaround plausible: Meta no documenta esta salida. Aparece en comunidades y foros públicos de anunciantes y de soporte de plataformas, que relatan que suele funcionar. Úsala solo como intento, después del camino oficial, y nunca prometas resultado. Caso reescrito con Marina, de mentira.');
+  function wcaso(o) { o.entender.notas = NOTA_W; return caso(o) }
+  poe('dg-workaround', [
+    wcaso({ id: '01', min: 4,
+      titulo: L('Erro ao publicar que não some: recriar o anúncio do zero', 'Error al publicar que no desaparece: rehacer el anuncio desde cero'),
+      reclamacao: [
+        ['marina', L('Já corrigi tudo o que a tela pediu e o anúncio continua dando erro ao publicar. Eu tinha duplicado de outro anúncio… 😩', 'Ya corregí todo lo que pidió la pantalla y el anuncio sigue dando error al publicar. Lo había duplicado de otro anuncio… 😩')],
+        ['rafa', L('Primeiro o caminho oficial: ID, código do erro e o que a mensagem pede. Se nada resolver, a comunidade relata uma tentativa que costuma funcionar.', 'Primero el camino oficial: ID, código del error y lo que pide el mensaje. Si nada resuelve, la comunidad relata un intento que suele funcionar.')]
+      ],
+      objetivo: L('Saber quando tentar recriar o anúncio do zero (em vez de duplicar) e como explicar que é uma tentativa.', 'Saber cuándo intentar rehacer el anuncio desde cero (en vez de duplicar) y cómo explicar que es un intento.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Por que duplicar daria problema?', '¿Por qué duplicar daría problema?')],
+          ['rafa', L('A cópia carrega as configurações da original, inclusive o que estiver com defeito (um post apagado, uma mídia que não existe mais). Recriar do zero começa limpo.', 'La copia lleva las configuraciones de la original, incluso lo que esté con defecto (un post borrado, un contenido que ya no existe). Rehacer desde cero empieza limpio.')],
+          ['pixel', L('Não é regra da Meta: é relato de comunidade. Uma fonte até recomenda o contrário, duplicar para evitar erro. Por isso: primeiro o oficial, depois a tentativa.', 'No es regla de Meta: es relato de comunidad. Una fuente hasta recomienda lo contrario, duplicar para evitar errores. Por eso: primero lo oficial, después el intento.')]
+        ],
+        pontos: [
+          L('<b>Antes:</b> o caminho oficial (Diagnóstico › Anúncios 08).', '<b>Antes:</b> el camino oficial (Diagnóstico › Anuncios 08).'),
+          L('<b>Tentativa:</b> criar o anúncio novo do zero, sem duplicar, com a mesma mídia e o mesmo texto.', '<b>Intento:</b> crear el anuncio nuevo desde cero, sin duplicar, con el mismo contenido y el mismo texto.'),
+          L('<b>Como falar:</b> “vamos tentar”, nunca “isso resolve”.', '<b>Cómo decirlo:</b> “intentemos”, nunca “esto resuelve”.')
+        ]
+      },
+      atender: {
+        cena: L('Já fiz tudo o que a tela mandou e o erro continua. Não tem mais nada?', 'Ya hice todo lo que mandó la pantalla y el error sigue. ¿No hay nada más?'),
+        opcoes: [
+          op(true, L('“Tem uma tentativa que costuma ajudar quando o anúncio foi duplicado: criar um novo do zero, sem copiar, com a mesma imagem e o mesmo texto. Não é garantido, mas vale tentar. Se continuar, levamos o ID e o código do erro adiante.”', '“Hay un intento que suele ayudar cuando el anuncio fue duplicado: crear uno nuevo desde cero, sin copiar, con la misma imagen y el mismo texto. No está garantizado, pero vale intentarlo. Si sigue, llevamos el ID y el código del error adelante.”'), L('Isso! Tentativa, sem prometer, e próximo passo.', '¡Eso! Intento, sin prometer, y próximo paso.')),
+          op(false, L('“Recrie do zero que resolve, com certeza.”', '“Rehazlo desde cero que resuelve, seguro.”'), L('Não é garantido: é um workaround.', 'No está garantizado: es un workaround.')),
+          op(false, L('“Duplique de novo.”', '“Duplícalo otra vez.”'), L('Repete o que pode estar com defeito.', 'Repite lo que puede estar con defecto.')),
+          op(false, L('“Apague a conta de anúncios.”', '“Borra la cuenta publicitaria.”'), L('Exagero sem sentido.', 'Exageración sin sentido.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('O anúncio foi duplicado de outro?', '¿El anuncio fue duplicado de otro?'), L('O caminho oficial (ID, código, mensagem) já foi feito?', '¿El camino oficial (ID, código, mensaje) ya se hizo?')],
+        conferir: [L('Gerenciador de Anúncios: o anúncio com erro e a mensagem.', 'Administrador de anuncios: el anuncio con error y el mensaje.')],
+        frase: L('Uma tentativa que costuma ajudar é recriar o anúncio do zero, sem duplicar; não é garantido.', 'Un intento que suele ayudar es rehacer el anuncio desde cero, sin duplicar; no está garantizado.'),
+        passos: [L('Fazer o caminho oficial.', 'Hacer el camino oficial.'), L('Recriar do zero.', 'Rehacer desde cero.'), L('Se continuar, registrar ID e código.', 'Si sigue, registrar ID y código.')],
+        encaminhar: L('Se o erro persiste no anúncio novo, registre o ID e o código e siga a Central de Ajuda.', 'Si el error persiste en el anuncio nuevo, registra el ID y el código y sigue el Centro de ayuda.')
+      },
+      fontes: [F('https://community.constantcontact.com/t5/Questions-Discussions/Resolve-Facebook-Ad-Issue/m-p/364490', 'Comunidade Constant Contact: recriar o anúncio resolveu o erro ao publicar (relato)', 'Comunidad Constant Contact: rehacer el anuncio resolvió el error al publicar (relato)')]
+    }),
+    wcaso({ id: '02', min: 4,
+      titulo: L('A tela trava ou mostra uma restrição que não existe: limpar o navegador', 'La pantalla se traba o muestra una restricción que no existe: limpiar el navegador'),
+      reclamacao: [
+        ['marina', L('A tela diz que minha conta tem restrição, mas o suporte disse que não tem nenhuma! E os botões não respondem! 🤯', '¡La pantalla dice que mi cuenta tiene restricción, pero el soporte dijo que no tiene ninguna! ¡Y los botones no responden! 🤯')],
+        ['rafa', L('Às vezes é o navegador guardando uma versão velha da tela. Vamos tentar sem o que está guardado.', 'A veces es el navegador guardando una versión vieja de la pantalla. Intentemos sin lo guardado.')]
+      ],
+      objetivo: L('Testar numa janela anônima, limpar cache e cookies dos sites da Meta e desligar extensões antes de concluir que há um problema na conta.', 'Probar en una ventana de incógnito, limpiar caché y cookies de los sitios de Meta y apagar extensiones antes de concluir que hay un problema en la cuenta.'),
+      entender: {
+        dialogo: [
+          ['marina', L('O que é janela anônima?', '¿Qué es una ventana de incógnito?')],
+          ['rafa', L('É uma janela do navegador que não usa o que ficou guardado nem as extensões. Se lá funciona, o problema é o navegador, não a conta.', 'Es una ventana del navegador que no usa lo guardado ni las extensiones. Si ahí funciona, el problema es el navegador, no la cuenta.')],
+          ['pixel', L('Bloqueador de anúncios é um vilão comum: ele bloqueia partes do Gerenciador. Antes de tudo, confira também se não há instabilidade geral na Meta.', 'El bloqueador de anuncios es un villano común: bloquea partes del Administrador. Antes de todo, revisa también si no hay inestabilidad general en Meta.')]
+        ],
+        pontos: [
+          L('<b>Teste 1:</b> janela anônima. Funcionou? É o navegador.', '<b>Prueba 1:</b> ventana de incógnito. ¿Funcionó? Es el navegador.'),
+          L('<b>Teste 2:</b> limpar cache e cookies dos sites da Meta; desligar bloqueadores e extensões; outro navegador.', '<b>Prueba 2:</b> limpiar caché y cookies de los sitios de Meta; apagar bloqueadores y extensiones; otro navegador.'),
+          L('<b>Se continuar:</b> aí sim pode ser a conta, e segue o caminho oficial.', '<b>Si sigue:</b> ahí sí puede ser la cuenta, y sigue el camino oficial.')
+        ]
+      },
+      atender: {
+        cena: L('O Gerenciador diz que estou restrita, mas o e-mail da Meta diz que está tudo certo. Em quem eu acredito?', 'El Administrador dice que estoy restringida, pero el correo de Meta dice que está todo bien. ¿A quién le creo?'),
+        opcoes: [
+          op(true, L('“Vamos tirar a dúvida: abra o Gerenciador numa janela anônima. Se lá não aparece a restrição, é o navegador guardando uma tela velha: limpar cache e cookies e desligar o bloqueador costuma resolver. Se continuar aparecendo, vemos a restrição pelo caminho oficial.”', '“Salgamos de dudas: abre el Administrador en una ventana de incógnito. Si ahí no aparece la restricción, es el navegador guardando una pantalla vieja: limpiar caché y cookies y apagar el bloqueador suele resolver. Si sigue apareciendo, vemos la restricción por el camino oficial.”'), L('Isso! Teste simples antes de concluir.', '¡Eso! Prueba simple antes de concluir.')),
+          op(false, L('“Acredite na tela, você está restrita.”', '“Créele a la pantalla, estás restringida.”'), L('Sem testar, pode ser só o navegador.', 'Sin probar, puede ser solo el navegador.')),
+          op(false, L('“Formate o computador.”', '“Formatea la computadora.”'), L('Exagero: comece pela janela anônima.', 'Exagerado: empieza por la ventana de incógnito.')),
+          op(false, L('“Crie uma conta nova.”', '“Crea una cuenta nueva.”'), L('Não resolve e espalha os ativos.', 'No resuelve y dispersa los activos.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Em janela anônima a tela aparece igual?', '¿En ventana de incógnito la pantalla aparece igual?'), L('Tem bloqueador de anúncios ou outra extensão ligada?', '¿Hay bloqueador de anuncios u otra extensión activa?')],
+        conferir: [L('Janela anônima; configurações do navegador (cache, cookies, extensões).', 'Ventana de incógnito; configuración del navegador (caché, cookies, extensiones).')],
+        frase: L('Vamos testar numa janela anônima; se lá funcionar, limpar o navegador costuma resolver. Não é garantido.', 'Probemos en una ventana de incógnito; si ahí funciona, limpiar el navegador suele resolver. No está garantizado.'),
+        passos: [L('Janela anônima.', 'Ventana de incógnito.'), L('Limpar cache e cookies; desligar extensões.', 'Limpiar caché y cookies; apagar extensiones.'), L('Outro navegador.', 'Otro navegador.')],
+        encaminhar: L('Se a restrição aparece em qualquer navegador, siga o caminho oficial da área de restrições.', 'Si la restricción aparece en cualquier navegador, sigue el camino oficial del área de restricciones.')
+      },
+      fontes: [F('https://support.google.com/google-ads/answer/1704376', 'Mesma recomendação no Google Ads (“Corrigir um problema no navegador”), usada como comparação', 'Misma recomendación en Google Ads (“Solucionar un problema con el navegador”), usada como comparación')]
+    }),
+    wcaso({ id: '03', min: 4,
+      titulo: L('Tráfego estranho no Pixel: lista de permissão primeiro', 'Tráfico raro en el píxel: lista de permitidos primero'),
+      reclamacao: [
+        ['marina', L('Apareceram eventos no meu Pixel vindos de um site que não é meu! Bloqueio um por um? 🤨', '¡Aparecieron eventos en mi píxel que vienen de un sitio que no es mío! ¿Los bloqueo uno por uno? 🤨')],
+        ['rafa', L('A Meta tem as duas listas: permissão e bloqueio. A comunidade costuma recomendar a de permissão. Vamos ver por quê.', 'Meta tiene las dos listas: permitidos y bloqueados. La comunidad suele recomendar la de permitidos. Veamos por qué.')]
+      ],
+      objetivo: L('Explicar a diferença entre lista de permissão e de bloqueio e por que a de permissão dá menos trabalho.', 'Explicar la diferencia entre lista de permitidos y de bloqueados y por qué la de permitidos da menos trabajo.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Qual a diferença?', '¿Cuál es la diferencia?')],
+          ['rafa', L('Na de permissão, você diz quais sites valem e todo o resto é bloqueado. Na de bloqueio, você bloqueia um site de cada vez, e um novo pode aparecer amanhã.', 'En la de permitidos, dices qué sitios valen y todo lo demás se bloquea. En la de bloqueados, bloqueas un sitio a la vez, y uno nuevo puede aparecer mañana.')],
+          ['pixel', L('As duas não funcionam juntas. E, na de permissão, lembre de incluir todos os domínios da loja (inclusive o da plataforma de pagamento, se ela usar o Pixel).', 'Las dos no funcionan juntas. Y, en la de permitidos, recuerda incluir todos los dominios de la tienda (incluso el de la plataforma de pago, si usa el píxel).')]
+        ],
+        pontos: [
+          L('<b>Permissão:</b> só os sites listados contam; menos trabalho depois.', '<b>Permitidos:</b> solo cuentan los sitios listados; menos trabajo después.'),
+          L('<b>Bloqueio:</b> um site de cada vez; serve quando já há um intruso específico.', '<b>Bloqueados:</b> un sitio a la vez; sirve cuando ya hay un intruso específico.'),
+          L('<b>Cuidado:</b> esquecer um domínio da loja na lista de permissão faz os eventos dele sumirem.', '<b>Cuidado:</b> olvidar un dominio de la tienda en la lista de permitidos hace que sus eventos desaparezcan.')
+        ]
+      },
+      praticar: { texto: L('A prática do Pixel avançado 05: você abre os controles do Pixel e monta a lista de permissão.', 'La práctica de Pixel avanzado 05: abres los controles del píxel y armas la lista de permitidos.'), tour: 'controles-pixel', pagina: 'meta-eventos.html' },
+      atender: {
+        cena: L('Tem um site estranho mandando eventos para o meu Pixel. Uso a lista de bloqueio?', 'Hay un sitio raro mandando eventos a mi píxel. ¿Uso la lista de bloqueados?'),
+        opcoes: [
+          op(true, L('“A Meta oferece as duas. Muita gente prefere a lista de permissão: você lista só os seus domínios e todo o resto fica de fora, sem precisar bloquear um por um. Só não esqueça nenhum domínio da sua loja.”', '“Meta ofrece las dos. Mucha gente prefiere la lista de permitidos: listas solo tus dominios y todo lo demás queda fuera, sin bloquear uno por uno. Solo no olvides ningún dominio de tu tienda.”'), L('Isso! Explicou as duas e o cuidado.', '¡Eso! Explicaste las dos y el cuidado.')),
+          op(false, L('“A Meta manda usar a de bloqueio.”', '“Meta manda usar la de bloqueados.”'), L('A Meta não manda nenhuma: as duas existem.', 'Meta no manda ninguna: las dos existen.')),
+          op(false, L('“Use as duas juntas.”', '“Usa las dos juntas.”'), L('Elas não funcionam juntas.', 'No funcionan juntas.')),
+          op(false, L('“Crie outro Pixel.”', '“Crea otro píxel.”'), L('Perde o histórico; as listas resolvem.', 'Pierde el historial; las listas resuelven.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Quais domínios são da loja?', '¿Qué dominios son de la tienda?'), L('Já existe alguma lista configurada?', '¿Ya hay alguna lista configurada?')],
+        conferir: [L('Gerenciador de Eventos › Pixel › Configurações › Permissões de tráfego.', 'Administrador de eventos › Píxel › Configuración › Permisos de tráfico.')],
+        frase: L('A lista de permissão deixa entrar só os seus domínios; é a mais recomendada pela comunidade, mas a Meta oferece as duas.', 'La lista de permitidos deja entrar solo tus dominios; es la más recomendada por la comunidad, pero Meta ofrece las dos.'),
+        passos: [L('Listar os domínios da loja.', 'Listar los dominios de la tienda.'), L('Criar a lista de permissão.', 'Crear la lista de permitidos.')],
+        encaminhar: L('Se eventos da própria loja sumirem, confira se algum domínio ficou fora da lista.', 'Si desaparecen eventos de la propia tienda, revisa si algún dominio quedó fuera de la lista.')
+      },
+      fontes: [F('https://www.jonloomer.com/pixel-traffic-permissions-block-and-allow-lists/', 'Jon Loomer: listas de permissão e bloqueio do Pixel (especialista em anúncios da Meta)', 'Jon Loomer: listas de permitidos y bloqueados del píxel (especialista en anuncios de Meta)')]
+    })
+  ]);
 })();
 /* Site publicado: tira o conteúdo ainda não conferido (lista em modo-publico.js). */
 if (window.PUB_LIMPA) window.PUB_LIMPA();

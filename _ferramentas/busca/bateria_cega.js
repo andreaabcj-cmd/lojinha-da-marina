@@ -12,7 +12,7 @@ const B = [
  ['moeda da compra errada', ['pixel/04','dg-pixel/03']],
  ['valor com virgula no purchase', ['dg-pixel/03','pixel/04']],
  ['depois que mudou o layout do site parou de contar', ['dg-pixel/04']],
- ['o thank you page', ['dg-pixel/06','dg-pixel/02']],
+ ['o thank you page', ['dg-pixel/06','dg-pixel/02','dg-pixel/07']],
  ['codigo do pixel no header do tema', ['dg-pixel/06','dg-pixel/04','dg-pixel/02']],
  ['app do facebook na shopify', ['shopify/02','shopify/01']],
  ['canal de vendas facebook e instagram', ['shopify/02','dg-integracoes/02','dg-integracoes/03']],

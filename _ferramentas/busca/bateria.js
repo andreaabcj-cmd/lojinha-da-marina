@@ -66,7 +66,7 @@ const B = [
   ['deu parabéns na ferramenta mas só 5 produtos entraram', ['microdados/02']],
   ['falha na validação de dados', ['microdados/04']],
   ['o gerenciador de anúncios e o de eventos mostram números diferentes', ['relatorios/01']],
-  ['gastei menos do que o orçamento diário', ['relatorios/02']],
+  ['gastei menos do que o orçamento diário', ['relatorios/02', 'dg-anuncios/03']],
   ['relatório separado por plataforma', ['relatorios/03']],
   ['meu sócio vê 8 compras e eu 14', ['relatorios/04']],
   ['meu relatório está vazio', ['relatorios/05']],
@@ -168,7 +168,24 @@ const B = [
   ['o que é o catálogo', ['catalogo/01']],
   ['o que é api de conversões', ['pixel-avancado/03']],
   ['o que é fase de aprendizado', ['entrega/01']],
-  ['o que é o portfólio', ['portfolio/01']]
+  ['o que é o portfólio', ['portfolio/01']],
+  // casos novos de 20/10/2026 (dúvidas comuns de atendimento)
+  ['ocultei o produto e ele voltou no catálogo', ['dg-catalogo/03']],
+  ['a planilha do google não carrega no catálogo', ['dg-catalogo/04']],
+  ['na shopify tem estoque e na meta aparece esgotado', ['dg-catalogo/05', 'dg-catalogo/01']],
+  ['marcou 6 compras e eu vendi 4', ['dg-pixel/07', 'dg-pixel/03']],
+  ['coloquei 5 reais por dia e gastou 8', ['dg-anuncios/03', 'relatorios/02']],
+  ['meu anúncio está cheio de comentário ofensivo', ['dg-anuncios/04', 'instagram/08']],
+  ['segmentei são paulo e aparece gente de osasco', ['dg-anuncios/05', 'segmentacao/04']],
+  ['quem clica no anúncio cai numa página 404', ['dg-anuncios/06']],
+  ['no meu celular o anúncio aparece cortado', ['dg-anuncios/07', 'feed/03']],
+  ['deu erro com um código ao publicar e não sei qual anúncio', ['dg-anuncios/08', 'anuncios/05']],
+  ['o convite do portfólio não chega', ['dg-contas/03', 'portfolio/03']],
+  ['não consigo criar outra conta de anúncios', ['dg-contas/04', 'portfolio/04']],
+  ['criei o portfólio e já está restrito', ['dg-contas/05']],
+  ['sumiu o botão de impulsionar do instagram na europa', ['dg-instagram/02']],
+  ['substituir ou atualizar o feed do catálogo', ['catalogo/06']],
+  ['limpar cache resolve o gerenciador travado', ['dg-workaround/02']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {
