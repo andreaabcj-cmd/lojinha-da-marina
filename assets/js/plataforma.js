@@ -30,7 +30,8 @@
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
       (window.BUSCA ? '<button class="pp-botao" data-pergunte title="' + T({ pt: 'Pergunte ao Pixel (atalho: tecla /)', es: 'Pregúntale al Pixel (atajo: tecla /)' }) + '">🔎 <span>' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '</span></button>' : '') +
-      '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div></header>';
+      '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div>' +
+      (window.VIDA ? '<div class="pl-tema" role="group" aria-label="' + T({ pt: 'Visual', es: 'Estilo' }) + '" title="' + T({ pt: 'Visual da plataforma: Mola (o de sempre) ou Vidro (mais suave)', es: 'Estilo de la plataforma: Mola (el de siempre) o Vidrio (más suave)' }) + '"><i></i><button data-tema="mola" class="' + (VIDA.atual() === 'mola' ? 'on' : '') + '">' + T({ pt: 'Mola', es: 'Mola' }) + '</button><button data-tema="vidro" class="' + (VIDA.atual() === 'vidro' ? 'on' : '') + '">' + T({ pt: 'Vidro', es: 'Vidrio' }) + '</button></div>' : '') + '</header>';
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-lang]'); if (!b || !b.closest('.pl-topo')) return;
@@ -59,6 +60,18 @@
     return k < 0 ? '' : '<p class="trilha-chip">' + tr.icone + ' ' + T(tr.nome) + ' · ' + T({ pt: 'módulo', es: 'módulo' }) + ' ' + (k + 1) + ' ' + T({ pt: 'de', es: 'de' }) + ' ' + ids.length + '</p>';
   }
 
+  /* números reais para o painel do Início: aulas e casos prontos, tutoriais guiados e o que a pessoa já concluiu */
+  function numerosInicio() {
+    var aulas = 0, casos = 0, f = feitas(), feitasN = 0;
+    (window.MODULOS || []).forEach(function (m) {
+      var n = (window.AULAS[m.id] || []).filter(function (a) { return a.status === 'pronta' && !(window.PUB_OCULTA && window.PUB_OCULTA(m.id, a.id)) }).length;
+      if (m.area === 'diagnostico') casos += n; else aulas += n;
+    });
+    for (var k in f) if (f[k]) feitasN++;
+    var tut = 0; (window.COMO || []).forEach(function (g) { tut += g.itens.length });
+    return [[{ pt: 'aulas prontas', es: 'clases listas' }, aulas], [{ pt: 'casos no Diagnóstico', es: 'casos en Diagnóstico' }, casos], [{ pt: 'tutoriais guiados', es: 'tutoriales guiados' }, tut], [{ pt: 'concluídas por você', es: 'completadas por ti' }, feitasN]];
+  }
+
   /* ---------- telas ---------- */
   var TELAS = {
     inicio: function () {
@@ -68,6 +81,7 @@
         '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online e quer crescer com a Meta. O Rafa é do suporte e ajuda a Marina em cada fase. O Pixel, nosso mascote, te guia pelo caminho. Escolha por onde começar.', es: 'Marina tiene una tienda online y quiere crecer con Meta. Rafa es del soporte y ayuda a Marina en cada fase. El Pixel, nuestra mascota, te guía en el camino. Elige por dónde empezar.' }) + '</p>' +
         (window.BUSCA ? '<form class="pp-hero" role="search"><input type="search" placeholder="' + T({ pt: '🔎 Pergunte ao Pixel: escreva sua dúvida do seu jeito', es: '🔎 Pregúntale al Pixel: escribe tu duda a tu manera' }) + '" aria-label="' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '"/><button class="btn amarelo">' + T({ pt: 'Perguntar', es: 'Preguntar' }) + '</button></form>' : '') +
         (aula ? '<div class="continuar">▶ ' + T({ pt: 'Continue de onde parou:', es: 'Sigue donde lo dejaste:' }) + ' <b>' + T(aula.titulo) + '</b> <a class="btn" href="aula-plataforma.html?m=' + ult.m + '&a=' + ult.a + '">' + T({ pt: 'Continuar', es: 'Continuar' }) + '</a></div>' : '') +
+        (window.VIDA ? VIDA.vitrine(T, numerosInicio()) : '') +
         '<div class="portas">' + [
           ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
           ['diagnostico.html', '🩺', U.diagnostico, { pt: 'Resolver: casos de verdade, do jeito que o cliente reclama, com o tutorial guiado até o problema sumir.', es: 'Resolver: casos reales, tal como el cliente reclama, con el tutorial guiado hasta que el problema desaparece.' }],
@@ -561,6 +575,7 @@
     document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
     tg.forEach(function (x) { document.body.appendChild(x) });
     if (tela !== 'aula') mov().cascata($('.pl-main'));
+    if (window.VIDA) VIDA.depois(tela);
     if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);
   }
   function inicia() {
