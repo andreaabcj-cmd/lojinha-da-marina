@@ -38,6 +38,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function grava() { try { localStorage.setItem('sim.eventos', JSON.stringify(S)) } catch (e) { } }
   var S = ler('sim.eventos', null) || { datasets: [], testeDesde: 0 };
   function feed() { var f = ler('sim.feed', []); return Array.isArray(f) ? f : [] }   // se sobrou um estado antigo do simulador do Feed nessa chave, ignora (a fila do Pixel é uma lista)
+  function dsAberto() { var m = (location.hash || '').match(/ds\/(\d+)/); return m ? m[1] : (S.datasets[0] && S.datasets[0].id) }   // o Pixel aberto na tela (os eventos mostrados são só dele)
   function ds(id) { return S.datasets.filter(function (d) { return d.id === id })[0] }
   function novoId() { var s = '1'; for (var i = 0; i < 14; i++) s += Math.floor(Math.random() * 10); return s }   // 15 dígitos, como um ID real
   function quando(t) { var d = Math.round((Date.now() - t) / 1000); return d < 60 ? 'há ' + Math.max(1, d) + ' s' : d < 3600 ? 'há ' + Math.round(d / 60) + ' min' : new Date(t).toLocaleString('pt-BR') }
@@ -385,7 +386,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
         dica: { pt: 'Para saber o número do site, peça um print ao cliente ou use a extensão Consultor de Dados.', es: 'Para saber el número del sitio, pide una captura al cliente o usa la extensión Asesor de datos.' } },
       { alvo: '[data-t=aba-teste]', clique: true, tit: { pt: 'Testar eventos', es: 'Probar eventos' }, txt: { pt: 'Agora veja se os eventos chegam. Abra a aba Testar eventos.', es: 'Ahora mira si llegan los eventos. Abre la pestaña Probar eventos.' } },
       { alvo: '[data-t=abrir-site]', clique: true, tit: { pt: 'Abrir o site', es: 'Abrir el sitio' }, txt: { pt: 'O endereço do site já está preenchido. Clique em Abrir site: a loja abre numa aba nova. Depois volte para esta aba.', es: 'La dirección del sitio ya está completa. Haz clic en Abrir sitio: la tienda se abre en una pestaña nueva. Luego vuelve a esta pestaña.' } },
-      { alvo: '[data-t=feed]', cond: function () { return feed().some(function (e) { return e.t >= (S.testeDesde || 0) && e.nome === 'PageView' }) },
+      { alvo: '[data-t=feed]', cond: function () { return feed().some(function (e) { return e.t >= (S.testeDesde || 0) && e.nome === 'PageView' && e.pid === dsAberto() }) },
         tit: { pt: 'Esperando o PageView', es: 'Esperando el PageView' }, txt: { pt: 'Quando a loja abre, o PageView aparece aqui sozinho. Chegou? Então clique em Próximo.', es: 'Cuando la tienda se abre, el PageView aparece aquí solo. ¿Llegó? Entonces haz clic en Siguiente.' },
         dica: { pt: 'Não chegou? Pode ser o ID errado no site, o código faltando ou cookies recusados.', es: '¿No llegó? Puede ser el ID equivocado en el sitio, el código faltante o cookies rechazadas.' } },
       { alvo: '[data-t=feed]', fim: true, tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
@@ -416,15 +417,26 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
         txt: { pt: 'Este é o código, já com o número do Pixel dentro (no init). Ele vai no topo de todas as páginas do site, ou use a integração da plataforma da loja. Fim do tutorial! 🎉', es: 'Este es el código, ya con el número del Pixel adentro (en el init). Va arriba en todas las páginas del sitio, o usa la integración de la plataforma de la tienda. ¡Fin del tutorial! 🎉' } }
     ],
     'testar-eventos': [
-      { alvo: '[data-t=menu-conjuntos]', tit: 'Conjuntos de dados', txt: 'Clique em Conjuntos de dados para ver seus Pixels.', clique: true, pre: function () { if (!S.datasets.length) { alert('Primeiro crie um Pixel: siga o tutorial "Criar o Pixel".'); location.href = '?tour=criar-pixel'; return false } } },
-      { alvo: '[data-t=ds-abrir]', tit: 'Abrir o Pixel', txt: 'Clique no seu Pixel.', clique: true },
-      { alvo: '[data-t=aba-teste]', tit: 'Testar eventos', txt: 'Abra a aba Testar eventos.', clique: true },
-      { alvo: '[data-t=abrir-site]', tit: 'Abrir o site', txt: 'O endereço da Lojinha já está preenchido. Clique em Abrir site: a loja abre numa aba nova.', clique: true },
-      { alvo: '[data-t=feed]', tit: 'Navegue na loja', txt: 'Na aba da Lojinha, abra um produto e ponha no carrinho. Depois volte para esta aba: os eventos aparecem aqui sozinhos.', dica: 'Não chegou nada? Confira se o laboratório 📓 caderno errado ou 🙈 olhos tapados está ligado, ou se você recusou os cookies.', cond: function () { return feed().some(function (e) { return e.t >= (S.testeDesde || 0) }) } },
-      { alvo: '[data-t=ev-0]', tit: 'Abrir um evento', txt: 'Chegou! Clique no evento para ver os detalhes.', clique: true },
-      { alvo: '[data-t=feed]', tit: 'Os detalhes', txt: 'Aqui estão os parâmetros (content_ids, value, currency...), o endereço da página e o ID do evento (eventID). É assim que se confere se o Pixel está enviando certo. 🎉', fim: true }
+      { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { garantePixel() },
+        tit: { pt: 'Conjuntos de dados', es: 'Conjuntos de datos' }, txt: { pt: 'Clique em Conjuntos de dados para ver seus Pixels.', es: 'Haz clic en Conjuntos de datos para ver tus píxeles.' } },
+      { alvo: '[data-t=ds-abrir]', clique: true, tit: { pt: 'Abrir o Pixel', es: 'Abrir el Pixel' }, txt: { pt: 'Clique no seu Pixel.', es: 'Haz clic en tu Pixel.' } },
+      { alvo: '[data-t=aba-teste]', clique: true, tit: { pt: 'Testar eventos', es: 'Probar eventos' }, txt: { pt: 'Abra a aba Testar eventos.', es: 'Abre la pestaña Probar eventos.' } },
+      { alvo: '[data-t=abrir-site]', clique: true, tit: { pt: 'Abrir o site', es: 'Abrir el sitio' }, txt: { pt: 'O endereço da Lojinha já está preenchido. Clique em Abrir site: a loja abre numa aba nova.', es: 'La dirección de la Lojinha ya está completa. Haz clic en Abrir sitio: la tienda se abre en una pestaña nueva.' } },
+      { alvo: '[data-t=feed]', cond: function () { return feed().some(function (e) { return e.t >= (S.testeDesde || 0) && e.pid === dsAberto() }) },
+        tit: { pt: 'Navegue na loja', es: 'Navega en la tienda' }, txt: { pt: 'Na aba da Lojinha, abra um produto e ponha no carrinho. Depois volte para esta aba: os eventos aparecem aqui sozinhos.', es: 'En la pestaña de la Lojinha, abre un producto y ponlo en el carrito. Después vuelve a esta pestaña: los eventos aparecen aquí solos.' },
+        dica: { pt: 'Não chegou nada? Confira se o laboratório 📓 caderno errado ou 🙈 olhos tapados está ligado, ou se você recusou os cookies.', es: '¿No llegó nada? Revisa si el laboratorio 📓 cuaderno equivocado o 🙈 ojos tapados está activado, o si rechazaste las cookies.' } },
+      { alvo: '[data-t=ev-0]', clique: true, tit: { pt: 'Abrir um evento', es: 'Abrir un evento' }, txt: { pt: 'Chegou! Clique no evento para ver os detalhes.', es: '¡Llegó! Haz clic en el evento para ver los detalles.' } },
+      { alvo: '[data-t=feed]', fim: true, tit: { pt: 'Os detalhes', es: 'Los detalles' }, txt: { pt: 'Aqui estão os parâmetros (content_ids, value, currency...), o endereço da página e o ID do evento (eventID). É assim que se confere se o Pixel está enviando certo. 🎉', es: 'Aquí están los parámetros (content_ids, value, currency...), la dirección de la página y el ID del evento (eventID). Así se revisa si el Pixel está enviando bien. 🎉' } }
     ]
   };
+  /* 20/10/2026: estes três tutoriais passam a rodar no motor comum (tour.js), que tem o “Passo X de Y ▾” para escolher o passo,
+     o balão arrastável e o “onde você está”, como todos os outros. O motor antigo daqui fica só como reserva. */
+  (function () {
+    var G = window.TOURS = window.TOURS || {};
+    Object.keys(TOURS).forEach(function (k) {
+      G[k] = TOURS[k].map(function (p) { var q = {}; for (var c in p) q[c] = p[c]; if (q.pre) { q.antes = q.pre; delete q.pre } return q });
+    });
+  })();
   var tour = null, passo = 0, holo, balao, recorte, rotas = {};   // rotas[passo] = endereço (#...) em que o passo foi mostrado
   function janelaCom(qual, web) { if (janela !== qual) { abreJanela(qual) } if (web && escolha !== 'web') { escolha = 'web'; desenhaJanela() } }
   function tourInicia(nome) { if (!TOURS[nome]) return; tour = TOURS[nome]; passo = 0; recorte = document.createElement('div'); recorte.className = 'tour-recorte'; document.body.appendChild(recorte); holo = document.createElement('div'); holo.className = 'tour-holo'; balao = document.createElement('div'); balao.className = 'tour-balao'; document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour'); tourMostra() }
@@ -496,5 +508,5 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   // começar do zero (para a aula): ?zerar=1
   if (params.get('zerar')) { S = { datasets: [], testeDesde: 0 }; grava(); try { localStorage.removeItem('sim.feed') } catch (e) { } }
   render();
-  if (params.get('tour')) tourInicia(params.get('tour'));
+  if (params.get('tour') && !(window.TOURS && window.TOURS[params.get('tour')])) tourInicia(params.get('tour'));   // os tutoriais desta página rodam no tour.js
 })();
