@@ -3,8 +3,8 @@
    Textos copiados das telas reais (conta de aula, 16/10/2026), em português e em espanhol (?locale=es_LA).
    Os números da conta de aula (alcance 69, impressões 71, frequência 1,03, valor gasto R$ 2,77) são REAIS, do anúncio de teste. A divisão por idade, plataforma e posicionamento,
    a campanha de exemplo (?exemplo=1) e a troca de janela de atribuição dentro do relatório são INVENTADAS para o treino (a conferir).
-   URL: meta-relatorios.html?zerar=1 · ?exemplo=1 (soma uma campanha de exemplo com compras) · ?vazio=1 (período sem atividade)
-   Tutoriais (tour.js): ?tour=ler-relatorio | montar-relatorio | comparar-atribuicao | relatorio-vazio */
+   URL: meta-relatorios.html?zerar=1 · ?exemplo=1 (soma uma campanha de exemplo com compras) · ?vazio=1 (período sem atividade) · ?roas=1 (por campanha: gasto, compras, custo por compra)
+   Tutoriais (tour.js): ?tour=ler-relatorio | montar-relatorio | comparar-atribuicao | relatorio-vazio | calcular-roas (caixinha de conta só do treino) */
 (function () {
   var CONF = '16/10/2026';
   var $ = function (s, r) { return (r || document).querySelector(s) };
@@ -39,6 +39,7 @@
   if (params.get('zerar')) S = inicial();
   if (params.get('exemplo')) { S = inicial(); S.exemplo = true; S.mets = ['alcance', 'impr', 'freq', 'gasto', 'atrib', 'compras', 'cpa'] }
   if (params.get('vazio')) { S = inicial(); S.periodo = 'Hoje' }
+  if (params.get('roas')) { S = inicial(); S.exemplo = true; S.dims = ['camp']; S.mets = ['gasto', 'compras', 'cpa'] }   // Relatórios 06: uma linha por campanha
   function grava() { try { localStorage.setItem('sim.relatorios', JSON.stringify(S)) } catch (e) { } window.__simRl = { S: S } }
   grava();
   function rota() { return (location.hash || '#rel').slice(1) }
@@ -115,13 +116,22 @@
       '<div class="rl-barra"><label class="rg-sw" data-t="filtro-teve"><input type="checkbox" id="rTeve"' + (S.teve ? ' checked' : '') + '/> Teve veiculação</label><span class="busca">Pesquise para filtrar por: nome, identificação ou métrica</span><label>Período <select class="ga-in" id="rPer" data-t="sel-periodo">' + per + '</select></label>' + (S.mets.indexOf('compras') >= 0 || S.mets.indexOf('atrib') >= 0 ? '<label>Janela de atribuição (simulador) <select class="ga-in" id="rJan" data-t="sel-atrib">' + jan + '</select></label>' : '') + '</div>' +
       '<div class="rl-viz"><span class="ga-tag">Tabela dinâmica</span><button class="btn sec" disabled>Agrupar detalhamentos</button><button class="btn sec" disabled>Redefinir larguras das colunas</button><button class="btn sec" disabled>Formatar</button><button class="btn" data-acao="abre-painel" data-t="btn-personalizar">Personalizar</button></div>' +
       '<div class="rl-corpo"><div class="rl-tab">' + tabela() + '</div>' + painel() + '</div>' +
-      (S.salvo ? '<p class="ga-aviso" data-t="aviso-salvo">Relatório salvo (simulador). Na tela real o relatório passa a aparecer em Todos os relatórios (a conferir).</p>' : '') +
+      (S.salvo ? '<p class="ga-aviso" data-t="aviso-salvo">Relatório salvo (simulador). Na tela real o relatório passa a aparecer em Todos os relatórios (a conferir).</p>' : '') + calc() +
       '<p class="conferido' + '">✓ Colunas, total e lista de detalhamentos e métricas conferidos com os Relatórios de Anúncios reais em ' + CONF + '. ⚠ Divisões por idade/plataforma/posicionamento, a campanha de exemplo e a janela de atribuição aqui são inventadas para o treino (a conferir).</p></div>');
+  }
+  /* caixinha de conta do treino (Relatórios 06): não existe na tela real — lá a coluna “ROAS de compras” já faz a conta */
+  function roasCerto(txt) { var n = Number(String(txt || '').replace(',', '.')); return Math.abs(n - 700 / 312.5) < 0.011 }
+  function calc() {
+    if (!S.calc) return '';
+    var ok = roasCerto(S.roasTxt), tem = String(S.roasTxt || '').trim();
+    return '<div class="ga-aviso" data-t="calc-roas"><b>🧮 Conta do treino (só no simulador)</b><br><small>ROAS de compras = Valor de conversão da compra ÷ Valor gasto. Use os números da linha da campanha de Vendas.</small>' +
+      '<p><label>ROAS = <input class="ga-in" id="rRoas" inputmode="decimal" style="width:110px;display:inline-block" value="' + esc(S.roasTxt || '') + '" data-t="calc-in"/></label> ' +
+      (tem ? (ok ? '<b>✅ Isso! 700 ÷ 312,50 = 2,24</b>' : '<b>❌ Ainda não: divida o valor vendido pelo valor gasto.</b>') : '') + '</p></div>';
   }
   function render() {
     var foco = document.activeElement && document.activeElement.id;
     $('#app').innerHTML = pagina();
-    if (foco) { var el = document.getElementById(foco); if (el && el.focus) el.focus() }
+    if (foco) { var el = document.getElementById(foco); if (el && el.focus) { el.focus(); try { var l = el.value.length; el.setSelectionRange(l, l) } catch (e) { } } }
     window.__simRl = { S: S };
   }
   document.addEventListener('click', function (ev) {
@@ -143,6 +153,7 @@
     else return;
     grava(); render();
   });
+  document.addEventListener('input', function (ev) { if (ev.target.id !== 'rRoas') return; S.roasTxt = ev.target.value; grava(); render() });
   render();
   window.SIMRL = { estado: function () { return S }, zera: function () { S = inicial(); grava(); render() }, set: function (o) { for (var k in o) S[k] = o[k]; grava(); render() } };
 
@@ -173,6 +184,24 @@
     { alvo: '[data-t=sel-atrib]', garante: function () { SIMRL.set({ exemplo: true, mets: ['alcance', 'impr', 'gasto', 'atrib', 'compras', 'cpa'], janela: 'Clique de 7 dias ou visualização de 1 dia' }) }, cond: function () { return rl().janela === 'Clique de 1 dia' }, tit: T('Mudar a janela', 'Cambiar la ventana'), txt: T('No simulador, você pode trocar a janela de atribuição para ver o efeito. Escolha “Clique de 1 dia”: só compras feitas até 1 dia depois de um clique contam. (Os números dessa troca são inventados; a tela real compara janelas de outro jeito: a conferir.)', 'En el simulador, puedes cambiar la ventana de atribución para ver el efecto. Elige “Clic de 1 día”: solo cuentan las compras hechas hasta 1 día después de un clic. (Los números de este cambio son inventados; la pantalla real compara ventanas de otra forma: por confirmar.)'), dica: T('Escolha “Clique de 1 dia”.', 'Elige “Clic de 1 día”.') },
     { alvo: '[data-t=tabela]', garante: function () { SIMRL.set({ exemplo: true, mets: ['alcance', 'impr', 'gasto', 'atrib', 'compras', 'cpa'], janela: 'Clique de 1 dia' }) }, tit: T('Menos compras, mesmo anúncio', 'Menos compras, mismo anuncio'), txt: T('As compras caíram (de 14 para cerca de 8) e o custo por compra subiu, mas o anúncio é o mesmo: só mudou a regra de contagem. Por isso, antes de comparar números, confira a janela. Clique em Próximo.', 'Las compras bajaron (de 14 a cerca de 8) y el costo por compra subió, pero el anuncio es el mismo: solo cambió la regla de conteo. Por eso, antes de comparar números, revisa la ventana. Haz clic en Siguiente.') },
     { alvo: '[data-t=sel-atrib]', fim: true, semVolta: true, garante: function () { SIMRL.set({ exemplo: true, mets: ['alcance', 'impr', 'gasto', 'atrib', 'compras', 'cpa'], janela: 'Clique de 7 dias ou visualização de 1 dia' }) }, tit: T('Compare igual com igual! 🎉', '¡Compara igual con igual! 🎉'), txt: T('Regra de ouro: duas telas só são comparáveis se usarem a mesma janela de atribuição e o mesmo período. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Regla de oro: dos pantallas solo son comparables si usan la misma ventana de atribución y el mismo período. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
+  // Relatórios 06 — custo por compra e ROAS (fórmula da Central de Ajuda; colunas ROAS vistas no Gerenciador real em 23/10/2026)
+  var VENDAS = { exemplo: true, dims: ['camp'], panel: false, calc: false, roasTxt: '' };
+  function base(o) { SIMRL.zera(); var b = {}; for (var k in VENDAS) b[k] = VENDAS[k]; b.mets = ['gasto', 'compras', 'cpa']; for (var j in o || {}) b[j] = o[j]; SIMRL.set(b) }
+  var COMV = ['gasto', 'compras', 'cpa', 'valor'];
+  TOURS['calcular-roas'] = [
+    { alvo: '[data-t=tabela]', garante: function () { base() }, tit: T('“Valeu o dinheiro?”', '“¿Valió el dinero?”'),
+      txt: T('Aqui está o relatório por campanha. A campanha de Vendas (exemplo) gastou R$ 312,50 e teve 14 compras. O Custo por compra já vem calculado: 312,50 ÷ 14 ≈ R$ 22,32. Mas falta saber quanto essas compras somaram. Clique em Próximo.', 'Aquí está el informe por campaña. La campaña de Ventas (ejemplo) gastó R$ 312,50 y tuvo 14 compras. El Costo por compra ya viene calculado: 312,50 ÷ 14 ≈ R$ 22,32. Pero falta saber cuánto sumaron esas compras. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-personalizar]', clique: true, garante: function () { base() }, tit: T('Personalizar', 'Personalizar'), txt: T('Clique em Personalizar para escolher mais uma métrica.', 'Haz clic en Personalizar para elegir una métrica más.') },
+    { alvo: '[data-t=tab-met]', clique: true, garante: function () { base({ panel: true, tab: 'det' }) }, tit: T('Aba Métricas', 'Pestaña Métricas'), txt: T('Clique na aba Métricas.', 'Haz clic en la pestaña Métricas.') },
+    { alvo: '[data-t=chk-met-valor]', garante: function () { base({ panel: true, tab: 'met' }) }, cond: function () { return rl().mets.indexOf('valor') >= 0 },
+      tit: T('Valor de conversão da compra', 'Valor de conversión de compras'), txt: T('Marque “Valor de conversão da compra”: é a soma do valor das compras que o Pixel informou.', 'Marca “Valor de conversión de compras”: es la suma del valor de las compras que informó el píxel.'), dica: T('Marque “Valor de conversão da compra”.', 'Marca “Valor de conversión de compras”.') },
+    { alvo: '[data-t=btn-fechar-painel]', clique: true, garante: function () { base({ panel: true, tab: 'met', mets: COMV }) }, tit: T('Fechar', 'Cerrar'), txt: T('Clique em Fechar para ver a tabela.', 'Haz clic en Cerrar para ver la tabla.') },
+    { alvo: '[data-t=tabela]', garante: function () { base({ mets: COMV }) }, tit: T('R$ 700 em vendas', 'R$ 700 en ventas'), txt: T('Na linha de Vendas: Valor gasto R$ 312,50 e Valor de conversão da compra R$ 700,00. (O anúncio de teste, sem vendas, fica com zero.) Clique em Próximo para fazer a conta.', 'En la fila de Ventas: Monto gastado R$ 312,50 y Valor de conversión de compras R$ 700,00. (El anuncio de prueba, sin ventas, queda en cero.) Haz clic en Siguiente para hacer la cuenta.') },
+    { alvo: '[data-t=calc-roas]', garante: function () { base({ mets: COMV, calc: true }) }, cond: function () { return roasCerto(rl().roasTxt) },
+      tit: T('Calcule o ROAS', 'Calcula el ROAS'), txt: T('ROAS = Valor de conversão da compra ÷ Valor gasto. Faça a conta com os números da linha de Vendas e digite o resultado com duas casas (ex.: 1,50).', 'ROAS = Valor de conversión de compras ÷ Monto gastado. Haz la cuenta con los números de la fila de Ventas y escribe el resultado con dos decimales (ej.: 1,50).'), dica: T('700 ÷ 312,50.', '700 ÷ 312,50.') },
+    { alvo: '[data-t=calc-roas]', fim: true, semVolta: true, garante: function () { base({ mets: COMV, calc: true, roasTxt: '2,24' }) },
+      tit: T('ROAS 2,24 🎉', 'ROAS 2,24 🎉'), txt: T('Para cada R$ 1 em anúncio voltaram R$ 2,24 em vendas atribuídas. Lembre a Marina: é venda, não lucro. No Gerenciador de Anúncios, a coluna “ROAS de compras” (Personalizar colunas › Conversões) já mostra essa conta pronta. Clique em Concluir.', 'Por cada R$ 1 en anuncios volvieron R$ 2,24 en ventas atribuidas. Recuérdale a Marina: es venta, no ganancia. En el Administrador de anuncios, la columna “ROAS de compras” (Personalizar columnas › Conversiones) ya muestra esa cuenta lista. Haz clic en Terminar.') }
   ];
   TOURS['relatorio-vazio'] = [
     { alvo: '[data-t=sem-atividade]', garante: function () { SIMRL.zera(); SIMRL.set({ periodo: 'Hoje' }) }, tit: T('“Meu relatório está vazio!”', '“¡Mi informe está vacío!”'), txt: T('A Marina abriu o relatório e a tela diz: “Nenhuma atividade durante o intervalo de datas selecionado”. Antes de achar que perdeu os dados, olhe o período: está em Hoje, e o anúncio rodou ontem. Clique em Próximo.', 'Marina abrió el informe y la pantalla dice: “Ninguna actividad durante el intervalo de fechas seleccionado”. Antes de pensar que perdió los datos, mira el período: está en Hoy, y el anuncio corrió ayer. Haz clic en Siguiente.') },

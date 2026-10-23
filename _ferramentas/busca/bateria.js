@@ -185,7 +185,11 @@ const B = [
   ['criei o portfólio e já está restrito', ['dg-contas/05']],
   ['sumiu o botão de impulsionar do instagram na europa', ['dg-instagram/02']],
   ['substituir ou atualizar o feed do catálogo', ['catalogo/06']],
-  ['limpar cache resolve o gerenciador travado', ['dg-workaround/02']]
+  ['limpar cache resolve o gerenciador travado', ['dg-workaround/02']],
+  ['erro 3253001 ao publicar', ['dg-anuncios/10']],
+  ['quero anunciar só no instagram e não acho onde tirar o facebook', ['dg-anuncios/09']],
+  ['como calcular o roas da campanha', ['relatorios/06']],
+  ['quais as causas do aprendizado limitado', ['entrega/04']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {

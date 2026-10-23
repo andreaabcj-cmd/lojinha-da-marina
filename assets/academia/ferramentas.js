@@ -1072,7 +1072,36 @@
         [{ pt: 'A Meta guardou o resto como crédito', es: 'Meta guardó el resto como crédito' }, 0, { pt: 'Não há esse mecanismo na tela.', es: 'No hay ese mecanismo en la pantalla.' }],
         [{ pt: 'O relatório está errado', es: 'El informe está equivocado' }, 0, { pt: 'Não: valor gasto e orçamento são coisas diferentes.', es: 'No: monto gastado y presupuesto son cosas distintas.' }]] }
   ]);
-  quizCatalogo('detalhe-ou-metrica', { pt: 'Detalhamento ou métrica?', es: '¿Desglose o métrica?' }, { pt: 'Detalhamento divide os números; métrica é o número.', es: 'El desglose divide los números; la métrica es el número.' }, [
+  /* ---------- Relatórios 06: a conta do custo por compra e do ROAS ---------- */
+  F['conta-roas'] = {
+    titulo: { pt: 'Faça a conta: custo por compra e ROAS', es: 'Haz la cuenta: costo por compra y ROAS' },
+    resumo: { pt: 'Mude o gasto, as compras e o valor vendido e veja as duas contas na hora.', es: 'Cambia el gasto, las compras y el valor vendido y mira las dos cuentas al instante.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      var EX = [[100, 5, 500], [312.5, 14, 700], [80, 2, 60]];
+      var br = function (n) { return 'R$ ' + n.toFixed(2).replace('.', ',') };
+      el.innerHTML = '<div class="np"><div class="np-ex">' + EX.map(function (e, i) { return '<button data-roas="' + i + '">' + br(e[0]) + ' · ' + e[1] + ' · ' + br(e[2]) + '</button>' }).join('') + '</div>' +
+        '<label><b>' + T({ pt: 'Valor gasto (R$)', es: 'Monto gastado (R$)' }) + '</b><input id="rsG" inputmode="decimal" value="100"/></label>' +
+        '<label><b>' + T({ pt: 'Compras', es: 'Compras' }) + '</b><input id="rsC" inputmode="numeric" value="5"/></label>' +
+        '<label><b>' + T({ pt: 'Valor de conversão da compra (R$)', es: 'Valor de conversión de compras (R$)' }) + '</b><input id="rsV" inputmode="decimal" value="500"/></label>' +
+        '<div id="rsRes" class="np-res ok"></div>' +
+        '<p class="miudo">' + T({ pt: 'Fórmulas da Central de Ajuda da Meta. ROAS mede vendas atribuídas aos anúncios, não lucro: o custo do produto não entra na conta.', es: 'Fórmulas del Centro de ayuda de Meta. El ROAS mide ventas atribuidas a los anuncios, no ganancia: el costo del producto no entra en la cuenta.' }) + '</p></div>';
+      var g = el.querySelector('#rsG'), c = el.querySelector('#rsC'), v = el.querySelector('#rsV'), res = el.querySelector('#rsRes');
+      var n = function (x) { return Number(String(x.value).replace(/\./g, '').replace(',', '.')) || 0 };
+      function conta() {
+        var G = n(g), C = n(c), V = n(v);
+        if (!G) { res.className = 'np-res erro'; res.innerHTML = T({ pt: 'Sem gasto não há conta a fazer.', es: 'Sin gasto no hay cuenta que hacer.' }); return }
+        var roas = V / G;
+        res.className = 'np-res ok';
+        res.innerHTML = '🧾 ' + T({ pt: 'Custo por compra', es: 'Costo por compra' }) + ': <b>' + (C ? br(G / C) : '—') + '</b> (' + br(G) + ' ÷ ' + C + ')<br>📈 ROAS: <b>' + roas.toFixed(2).replace('.', ',') + '</b> (' + br(V) + ' ÷ ' + br(G) + ')<br>' +
+          (roas >= 1 ? T({ pt: 'Para cada R$ 1 em anúncio, voltaram ', es: 'Por cada R$ 1 en anuncios, volvieron ' }) + br(roas) + T({ pt: ' em vendas.', es: ' en ventas.' }) : T({ pt: 'As vendas atribuídas não pagaram nem o anúncio (ROAS abaixo de 1).', es: 'Las ventas atribuidas no pagaron ni el anuncio (ROAS por debajo de 1).' }));
+      }
+      [g, c, v].forEach(function (i) { i.addEventListener('input', conta) });
+      el.addEventListener('click', function (e) { var b = e.target.closest('[data-roas]'); if (!b) return; var x = EX[+b.getAttribute('data-roas')]; g.value = String(x[0]).replace('.', ','); c.value = x[1]; v.value = String(x[2]).replace('.', ','); conta() });
+      conta();
+    }
+  };
+  quizCatalogo('detalhe-ou-metrica',{ pt: 'Detalhamento ou métrica?', es: '¿Desglose o métrica?' }, { pt: 'Detalhamento divide os números; métrica é o número.', es: 'El desglose divide los números; la métrica es el número.' }, [
     { q: { pt: '“Idade” ou “Plataforma”: o que são?', es: '“Edad” o “Plataforma”: ¿qué son?' },
       o: [[{ pt: 'Detalhamentos: dividem os números em grupos', es: 'Desgloses: dividen los números en grupos' }, 1, { pt: 'Isso! Ficam na aba Detalhamentos do painel Personalizar.', es: '¡Eso! Están en la pestaña Desgloses del panel Personalizar.' }],
         [{ pt: 'Métricas: são os números', es: 'Métricas: son los números' }, 0, { pt: 'Métricas são Alcance, Impressões, Valor gasto…', es: 'Métricas son Alcance, Impresiones, Monto gastado…' }],
@@ -1300,7 +1329,15 @@
     { q: { pt: 'Por que combinar conjuntos de anúncios semelhantes ajuda?', es: '¿Por qué ayuda combinar conjuntos de anuncios parecidos?' },
       o: [[{ pt: 'Porque os aprendizados também se combinam', es: 'Porque los aprendizajes también se combinan' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
         [{ pt: 'Porque o anúncio fica mais barato por lei', es: 'Porque el anuncio queda más barato por ley' }, 0, { pt: 'Não é por lei.', es: 'No es por ley.' }],
-        [{ pt: 'Porque a Meta dá um brinde', es: 'Porque Meta da un regalo' }, 0, { pt: 'Não há brinde.', es: 'No hay regalo.' }]] }
+        [{ pt: 'Porque a Meta dá um brinde', es: 'Porque Meta da un regalo' }, 0, { pt: 'Não há brinde.', es: 'No hay regalo.' }]] },
+    { q: { pt: 'Qual destas NÃO é uma causa de aprendizado limitado, segundo a Central de Ajuda?', es: '¿Cuál de estas NO es una causa de aprendizaje limitado, según el Centro de ayuda?' },
+      o: [[{ pt: 'Orçamento alto', es: 'Presupuesto alto' }, 1, { pt: 'Isso! As causas são orçamento BAIXO, público pequeno, lance/custo baixo, sobreposição no leilão, evento raro e anúncios demais.', es: '¡Eso! Las causas son presupuesto BAJO, público pequeño, puja/costo bajo, superposición en la subasta, evento poco frecuente y demasiados anuncios.' }],
+        [{ pt: 'Evento de otimização pouco frequente', es: 'Evento de optimización poco frecuente' }, 0, { pt: 'Essa é causa: Compra acontece menos que Adição ao carrinho.', es: 'Esa es causa: Compra ocurre menos que Agregar al carrito.' }],
+        [{ pt: 'Muita sobreposição no leilão', es: 'Mucha superposición en la subasta' }, 0, { pt: 'Essa é causa: só um anúncio seu entra em cada leilão, os outros ficam de fora.', es: 'Esa es causa: solo un anuncio tuyo entra en cada subasta, los demás quedan fuera.' }]] },
+    { q: { pt: 'A Marina tem dois conjuntos iguais para o mesmo público. O que acontece no leilão?', es: 'Marina tiene dos conjuntos iguales para el mismo público. ¿Qué pasa en la subasta?' },
+      o: [[{ pt: 'A Meta escolhe o anúncio dela com maior valor total e deixa o outro fora daquele leilão', es: 'Meta elige su anuncio con mayor valor total y deja al otro fuera de esa subasta' }, 1, { pt: 'Isso! Os anúncios dela não disputam entre si, mas um conjunto pode ficar sem gastar e sem resultados.', es: '¡Eso! Sus anuncios no compiten entre sí, pero un conjunto puede quedar sin gastar y sin resultados.' }],
+        [{ pt: 'Os dois disputam entre si e o preço sobe', es: 'Los dos compiten entre sí y el precio sube' }, 0, { pt: 'A Central diz o contrário: os anúncios do mesmo anunciante não competem uns contra os outros.', es: 'El Centro de ayuda dice lo contrario: los anuncios del mismo anunciante no compiten entre sí.' }],
+        [{ pt: 'Nada: ter mais conjuntos sempre ajuda', es: 'Nada: tener más conjuntos siempre ayuda' }, 0, { pt: 'A sobreposição pode impedir gasto e aprendizado; combinar conjuntos costuma ajudar.', es: 'La superposición puede impedir gasto y aprendizaje; combinar conjuntos suele ayudar.' }]] }
   ]);
   quizCatalogo('nao-veicula-q', { pt: 'Por que não veicula?', es: '¿Por qué no entrega?' }, { pt: 'Ordem: conta, status, nível.', es: 'Orden: cuenta, estado, nivel.' }, [
     { q: { pt: 'Todos os anúncios pararam e o topo da conta avisa que quase atingiu o limite de gastos. O que fazer?', es: 'Todos los anuncios se detuvieron y arriba en la cuenta avisa que casi alcanzó el límite de gasto. ¿Qué hacer?' },

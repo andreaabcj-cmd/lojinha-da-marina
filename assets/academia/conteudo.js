@@ -2220,6 +2220,7 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'Relatório vazio, zerado ou diferente', es: 'Informe vacío, en cero o distinto' },
       antes: { pt: 'A Marina já lê, monta e compara relatórios. Um dia, a tela amanhece vazia.', es: 'Marina ya lee, arma y compara informes. Un día, la pantalla amanece vacía.' },
+      gancho: { pt: 'Com os números certos na tela, falta a pergunta da Marina: valeu o dinheiro?', es: 'Con los números correctos en la pantalla, falta la pregunta de Marina: ¿valió el dinero?' },
       objetivo: { pt: 'Diagnosticar relatório vazio ou zerado: período, filtro Teve veiculação, objetivo da campanha.', es: 'Diagnosticar informe vacío o en cero: período, filtro Con entrega, objetivo de la campaña.' },
       entender: {
         dialogo: [
@@ -2262,6 +2263,50 @@ window.AULAS = {
           { pt: 'Se a conta sumir, desmarque Teve veiculação.', es: 'Si la cuenta desaparece, desmarca Con entrega.' }],
         encaminhar: { pt: 'Se o anúncio rodou naquele período e mesmo assim não há dados, siga a Central de Ajuda da Meta sobre anúncios sem dados ou métricas.', es: 'Si el anuncio corrió en ese período y aun así no hay datos, sigue el Centro de ayuda de Meta sobre anuncios sin datos o métricas.' }
       }
+    },
+    {
+      id: '06', min: 6, status: 'pronta',
+      titulo: { pt: 'Quanto voltou? Custo por compra e ROAS', es: '¿Cuánto volvió? Costo por compra y ROAS' },
+      antes: { pt: 'A campanha de Vendas da Caneca azul vendeu. Agora a Marina quer saber se valeu o dinheiro.', es: 'La campaña de Ventas de la Caneca azul vendió. Ahora Marina quiere saber si valió el dinero.' },
+      objetivo: { pt: 'Ler Valor gasto, Compras e Valor de conversão da compra, e calcular o custo por compra e o ROAS.', es: 'Leer Monto gastado, Compras y Valor de conversión de compras, y calcular el costo por compra y el ROAS.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Gastei R$ 312,50 e vendi 14 canecas. Isso é bom ou ruim? 🤔', es: 'Gasté R$ 312,50 y vendí 14 tazas. ¿Eso es bueno o malo? 🤔' }],
+          ['rafa', { pt: 'Duas contas respondem. Custo por compra = Valor gasto ÷ Compras: 312,50 ÷ 14 ≈ R$ 22,32 por venda. E o ROAS (retorno sobre o investimento em publicidade) = Valor de conversão da compra ÷ Valor gasto.', es: 'Dos cuentas responden. Costo por compra = Monto gastado ÷ Compras: 312,50 ÷ 14 ≈ R$ 22,32 por venta. Y el ROAS (retorno de la inversión publicitaria) = Valor de conversión de compras ÷ Monto gastado.' }],
+          ['marina', { pt: 'As 14 canecas somaram R$ 700. Então…', es: 'Las 14 tazas sumaron R$ 700. Entonces…' }],
+          ['pixel', { pt: '700 ÷ 312,50 = 2,24. Para cada R$ 1 em anúncio voltaram R$ 2,24 em vendas. Atenção: venda não é lucro (a caneca tem custo). E o valor só aparece se o Pixel manda o valor da compra.', es: '700 ÷ 312,50 = 2,24. Por cada R$ 1 en anuncios volvieron R$ 2,24 en ventas. Atención: venta no es ganancia (la taza tiene costo). Y el valor solo aparece si el píxel envía el valor de la compra.' }]
+        ],
+        pontos: [
+          { pt: '<b>Custo por compra</b> = Valor gasto ÷ Compras.', es: '<b>Costo por compra</b> = Monto gastado ÷ Compras.' },
+          { pt: '<b>ROAS</b> = Valor de conversão da compra ÷ Valor gasto (ex.: R$ 100 gastos, 5 compras, R$ 500 vendidos → custo R$ 20, ROAS 5).', es: '<b>ROAS</b> = Valor de conversión de compras ÷ Monto gastado (ej.: R$ 100 gastados, 5 compras, R$ 500 vendidos → costo R$ 20, ROAS 5).' },
+          { pt: '<b>Pronto na tela:</b> no Gerenciador de Anúncios, Colunas › Personalizar colunas › Conversões tem a coluna “ROAS de compras”.', es: '<b>Listo en la pantalla:</b> en el Administrador de anuncios, Columnas › Personalizar columnas › Conversiones tiene la columna “ROAS de compras”.' }
+        ],
+        notas: { pt: 'Fórmula conferida na Central de Ajuda da Meta (“ROAS de compras”: valor de conversão da compra dividido pelo valor gasto; pode ser estimado em alguns casos). Colunas “ROAS de compras” e “ROAS de resultados” vistas em Personalizar colunas do Gerenciador de Anúncios real em 23/10/2026 (PT e ES). Os números da campanha de exemplo são do treino.', es: 'Fórmula revisada en el Centro de ayuda de Meta (“ROAS de compras”: valor de conversión de compras dividido por el monto gastado; puede ser estimado en algunos casos). Columnas “ROAS de compras” y “ROAS de resultados” vistas en Personalizar columnas del Administrador de anuncios real el 23/10/2026 (PT y ES). Los números de la campaña de ejemplo son del entrenamiento.' }
+      },
+      ferramenta: 'conta-roas',
+      praticar: {
+        texto: { pt: 'No simulador, você põe a coluna Valor de conversão da compra no relatório e faz a conta do ROAS da campanha de exemplo.', es: 'En el simulador, agregas la columna Valor de conversión de compras al informe y haces la cuenta del ROAS de la campaña de ejemplo.' },
+        tour: 'calcular-roas', pagina: 'meta-relatorios.html?roas=1'
+      },
+      atender: {
+        cena: { pt: 'O Gerenciador diz que meu ROAS é 2. Isso quer dizer que eu lucrei o dobro?', es: 'El Administrador dice que mi ROAS es 2. ¿Eso quiere decir que gané el doble?' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“ROAS 2 quer dizer que, para cada R$ 1 gasto em anúncio, voltaram R$ 2 em vendas atribuídas aos anúncios. Não é lucro: dessas vendas ainda saem o custo do produto e outras despesas. A conta é Valor de conversão da compra ÷ Valor gasto.”', es: '“ROAS 2 quiere decir que, por cada R$ 1 gastado en anuncios, volvieron R$ 2 en ventas atribuidas a los anuncios. No es ganancia: de esas ventas todavía salen el costo del producto y otros gastos. La cuenta es Valor de conversión de compras ÷ Monto gastado.”' }, fb: { pt: 'Isso! Explicou a conta e o limite dela.', es: '¡Eso! Explicaste la cuenta y su límite.' } },
+          { certa: false, txt: { pt: '“Sim, você lucrou o dobro.”', es: '“Sí, ganaste el doble.”' }, fb: { pt: 'ROAS fala de vendas, não de lucro.', es: 'El ROAS habla de ventas, no de ganancia.' } },
+          { certa: false, txt: { pt: '“ROAS é o número de compras dividido pelo alcance.”', es: '“El ROAS es el número de compras dividido por el alcance.”' }, fb: { pt: 'Não: é valor das compras ÷ valor gasto.', es: 'No: es valor de las compras ÷ monto gastado.' } },
+          { certa: false, txt: { pt: '“ROAS 2 é ruim, desligue a campanha.”', es: '“ROAS 2 es malo, apaga la campaña.”' }, fb: { pt: 'Se é bom ou ruim depende da margem do negócio; não é o agente que decide.', es: 'Si es bueno o malo depende del margen del negocio; no lo decide el agente.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual o Valor gasto, quantas Compras e qual o Valor de conversão da compra no mesmo período?', es: '¿Cuál es el Monto gastado, cuántas Compras y cuál es el Valor de conversión de compras en el mismo período?' },
+          { pt: 'O Pixel envia o valor da compra (value e currency)?', es: '¿El píxel envía el valor de la compra (value y currency)?' }],
+        conferir: [{ pt: 'Gerenciador de Anúncios › Colunas › Personalizar colunas › Conversões › ROAS de compras (ou Relatórios de Anúncios com Valor gasto e Valor de conversão da compra).', es: 'Administrador de anuncios › Columnas › Personalizar columnas › Conversiones › ROAS de compras (o Informes de anuncios con Monto gastado y Valor de conversión de compras).' }],
+        frase: { pt: 'O ROAS é o valor das vendas atribuídas dividido pelo valor gasto: mostra quanto voltou em vendas para cada real investido, não o lucro.', es: 'El ROAS es el valor de las ventas atribuidas dividido por el monto gastado: muestra cuánto volvió en ventas por cada real invertido, no la ganancia.' },
+        passos: [{ pt: 'Custo por compra = gasto ÷ compras.', es: 'Costo por compra = gasto ÷ compras.' }, { pt: 'ROAS = valor das compras ÷ gasto.', es: 'ROAS = valor de las compras ÷ gasto.' }],
+        encaminhar: { pt: 'Se o valor de conversão aparece zerado com compras registradas, o problema é o Pixel não mandar o valor: veja o Pixel (compras e valor).', es: 'Si el valor de conversión aparece en cero con compras registradas, el problema es que el píxel no envía el valor: mira el píxel (compras y valor).' }
+      },
+      fontes: [{ url: 'https://www.facebook.com/business/help/274294333328345', titulo: { pt: 'ROAS de compras (retorno sobre o investimento em publicidade)', es: 'ROAS de compras (retorno de la inversión publicitaria)' }, conferido: '23/10/2026' }]
     }
   ],
   segmentacao: [
@@ -3089,12 +3134,15 @@ window.AULAS = {
             ['rafa', L('Não é erro. Quer dizer que o conjunto não está tendo resultados suficientes para sair do aprendizado.', 'No es un error. Quiere decir que el conjunto no está teniendo resultados suficientes para salir del aprendizaje.')],
             ['marina', L('E o que eu faço?', '¿Y qué hago?')],
             ['rafa', L('A Central de Ajuda dá boas práticas: usar orçamentos realistas, evitar edições desnecessárias e combinar conjuntos de anúncios semelhantes, porque assim os aprendizados também se combinam.', 'El Centro de ayuda da buenas prácticas: usar presupuestos realistas, evitar ediciones innecesarias y combinar conjuntos de anuncios parecidos, porque así los aprendizajes también se combinan.')],
-            ['pixel', L('Com poucos resultados, o desempenho fica menos estável e o custo por resultado costuma ser mais alto. Por isso vale agir.', 'Con pocos resultados, el rendimiento queda menos estable y el costo por resultado suele ser más alto. Por eso vale la pena actuar.')]
+            ['pixel', L('Com poucos resultados, o desempenho fica menos estável e o custo por resultado costuma ser mais alto. Por isso vale agir.', 'Con pocos resultados, el rendimiento queda menos estable y el costo por resultado suele ser más alto. Por eso vale la pena actuar.')],
+            ['marina', L('Mas por que a camiseta não junta resultados?', '¿Pero por qué la camiseta no junta resultados?')],
+            ['rafa', L('A Central lista as causas mais comuns: público pequeno, orçamento baixo, controle de lance ou de custo baixo, muita sobreposição no leilão, evento de otimização raro (Compra acontece menos que Adição ao carrinho) ou anúncios demais ao mesmo tempo. Orçamento alto não está na lista.', 'El Centro de ayuda enumera las causas más comunes: público pequeño, presupuesto bajo, control de puja o de costo bajo, mucha superposición en la subasta, evento de optimización poco frecuente (Compra ocurre menos que Agregar al carrito) o demasiados anuncios al mismo tiempo. Presupuesto alto no está en la lista.')],
+            ['pixel', L('Sobreposição no leilão: quando dois conjuntos da Marina miram o mesmo público, os anúncios dela NÃO disputam entre si. A Meta escolhe o de maior valor total e deixa os outros de fora daquele leilão. Resultado: um conjunto pode não gastar o orçamento nem juntar resultados.', 'Superposición en la subasta: cuando dos conjuntos de Marina apuntan al mismo público, sus anuncios NO compiten entre sí. Meta elige el de mayor valor total y deja a los demás fuera de esa subasta. Resultado: un conjunto puede no gastar el presupuesto ni juntar resultados.')]
           ],
           pontos: [
-            L('<b>Limitado</b> = faltam resultados, não é defeito.', '<b>Limitado</b> = faltan resultados, no es un defecto.'),
-            L('<b>Orçamento realista</b> (nem baixo demais nem inflado).', '<b>Presupuesto realista</b> (ni demasiado bajo ni inflado).'),
-            L('<b>Combine</b> conjuntos semelhantes e evite editar à toa.', '<b>Combina</b> conjuntos parecidos y evita editar sin motivo.')
+            L('<b>Limitado</b> = faltam resultados, não é defeito nem penalidade.', '<b>Limitado</b> = faltan resultados, no es un defecto ni una penalización.'),
+            L('<b>Causas comuns:</b> público pequeno, orçamento baixo, lance/custo baixo, sobreposição no leilão, evento raro, anúncios demais.', '<b>Causas comunes:</b> público pequeño, presupuesto bajo, puja/costo bajo, superposición en la subasta, evento poco frecuente, demasiados anuncios.'),
+            L('<b>O que fazer:</b> combinar conjuntos e campanhas, ampliar o público, aumentar orçamento ou o controle de lance/custo, ou escolher um evento mais frequente. Evite editar à toa.', '<b>Qué hacer:</b> combinar conjuntos y campañas, ampliar el público, aumentar el presupuesto o el control de puja/costo, o elegir un evento más frecuente. Evita editar sin motivo.')
           ],
           notas: NOTA_CENTRAL
         },
@@ -3119,7 +3167,10 @@ window.AULAS = {
           frase: L('Aprendizado limitado é um aviso de que faltam resultados, não um defeito. Vamos ajustar para o conjunto aprender: orçamento realista, poucas edições e conjuntos semelhantes combinados.', 'Aprendizaje limitado es un aviso de que faltan resultados, no un defecto. Ajustemos para que el conjunto aprenda: presupuesto realista, pocas ediciones y conjuntos parecidos combinados.'),
           passos: [L('Veja orçamento e resultados do conjunto.', 'Mira presupuesto y resultados del conjunto.'), L('Proponha orçamento realista e combinar conjuntos.', 'Propón presupuesto realista y combinar conjuntos.')],
           encaminhar: L('Combinar conjuntos e mexer no orçamento é decisão do cliente: explique as opções e deixe-o escolher.', 'Combinar conjuntos y tocar el presupuesto es decisión del cliente: explica las opciones y déjalo elegir.')
-        }
+        },
+        fontes: [{ url: 'https://www.facebook.com/business/help/269269737396981', titulo: L('Sobre o aprendizado limitado', 'Acerca del aprendizaje limitado'), conferido: '23/10/2026' },
+          { url: 'https://www.facebook.com/business/help/537699989762051', titulo: L('Como entender a sobreposição no leilão', 'Comprender la superposición en la subasta'), conferido: '23/10/2026' },
+          { url: 'https://www.facebook.com/business/help/112167992830700', titulo: L('Sobre a fase de aprendizado', 'Acerca de la fase de aprendizaje'), conferido: '23/10/2026' }]
       },
       {
         id: '05', min: 9, status: 'pronta',
@@ -6264,6 +6315,7 @@ window.AULAS = {
         pontos: [
           L('<b>Regra:</b> até 75% a mais num dia; teto de 175% no dia e de 7× na semana.', '<b>Regla:</b> hasta 75% más en un día; tope de 175% en el día y de 7× en la semana.'),
           L('<b>Onde conferir:</b> Valor gasto por dia no relatório, olhando a semana toda.', '<b>Dónde revisar:</b> Monto gastado por día en el informe, mirando toda la semana.'),
+          L('<b>Por que varia:</b> a “regularidade” de lance e orçamento. A Meta sobe ou desce o lance, ou escolhe de quais leilões participar, conforme o orçamento e o tempo que ainda restam; e gasta mais quando surge uma boa oportunidade de resultado.', '<b>Por qué varía:</b> la “frecuencia” de puja y de presupuesto. Meta sube o baja la puja, o elige en qué subastas participar, según el presupuesto y el tiempo que quedan; y gasta más cuando surge una buena oportunidad de resultado.'),
           L('<b>Se passou da regra:</b> aí sim é caso de cobrança, para quem cuida de pagamentos.', '<b>Si pasó la regla:</b> entonces sí es un caso de facturación, para quien cuida los pagos.')
         ]
       },
@@ -6283,7 +6335,7 @@ window.AULAS = {
         passos: [L('Calcular 175% do orçamento (teto do dia).', 'Calcular el 175% del presupuesto (tope del día).'), L('Somar a semana e comparar com 7×.', 'Sumar la semana y comparar con 7×.')],
         encaminhar: L('Se passou do teto da regra, encaminhe para a área de pagamentos e cobrança.', 'Si pasó del tope de la regla, deriva al área de pagos y facturación.')
       },
-      fontes: [F('https://www.facebook.com/business/help/190490051321426', 'Sobre os orçamentos diários', 'Acerca de los presupuestos diarios')]
+      fontes: [F('https://www.facebook.com/business/help/190490051321426', 'Sobre os orçamentos diários', 'Acerca de los presupuestos diarios'), F('https://www.facebook.com/business/help/571961726580148', 'Sobre a regularidade de lance e orçamento', 'Información sobre la frecuencia de puja y de presupuesto', '23/10/2026')]
     }),
     caso({ id: '04', min: 5,
       titulo: L('Anúncio cheio de comentários ofensivos', 'Anuncio lleno de comentarios ofensivos'),

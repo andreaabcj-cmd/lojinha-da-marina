@@ -23,6 +23,10 @@
     'Vendas · Caneca azul (exemplo)': 'Ventas · Caneca azul (ejemplo)', 'Brasil · 18 a 54 anos (exemplo)': 'Brasil · 18 a 54 años (ejemplo)', 'Anúncio da Caneca azul (exemplo)': 'Anuncio de la Caneca azul (ejemplo)',
     'Facebook': 'Facebook', 'Instagram': 'Instagram', 'Feed do Facebook': 'Feed de Facebook', 'Reels do Facebook': 'Reels de Facebook', 'Stories do Instagram': 'Historias de Instagram', 'Feed do Instagram': 'Feed de Instagram', '15 de out de 2026': '15 de oct de 2026'
   };
+  A['🧮 Conta do treino (só no simulador)'] = '🧮 Cuenta de práctica (solo en el simulador)';
+  A['ROAS de compras = Valor de conversão da compra ÷ Valor gasto. Use os números da linha da campanha de Vendas.'] = 'ROAS de compras = Valor de conversión de compras ÷ Monto gastado. Usa los números de la fila de la campaña de Ventas.';
+  A['ROAS ='] = 'ROAS ='; A['✅ Isso! 700 ÷ 312,50 = 2,24'] = '✅ ¡Eso! 700 ÷ 312,50 = 2,24';
+  A['❌ Ainda não: divida o valor vendido pelo valor gasto.'] = '❌ Todavía no: divide el valor vendido por el monto gastado.';
   for (var k in A) D[k] = A[k];
   var tr = function (s) { return D[s] || s };
   P.push([/^(.+?)( · .+)+$/, function (m) { var partes = m[0].split(' · '); var ok = partes.every(function (p) { return D[p] || /^\d{2}-\d{2}$/.test(p) }); return ok ? partes.map(tr).join(' · ') : m[0] }]);

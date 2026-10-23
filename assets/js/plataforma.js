@@ -265,7 +265,8 @@
       ['ler-relatorio', 'meta-relatorios.html?zerar=1', 'relatorios', '02', { pt: 'Como ler a tabela do relatório (alcance, impressões, gasto)', es: 'Cómo leer la tabla del informe (alcance, impresiones, gasto)' }],
       ['montar-relatorio', 'meta-relatorios.html?zerar=1', 'relatorios', '03', { pt: 'Como montar o seu relatório (detalhamentos e métricas)', es: 'Cómo armar tu informe (desgloses y métricas)' }],
       ['comparar-atribuicao', 'meta-relatorios.html?exemplo=1', 'relatorios', '04', { pt: 'Como entender a janela de atribuição', es: 'Cómo entender la ventana de atribución' }],
-      ['relatorio-vazio', 'meta-relatorios.html?vazio=1', 'relatorios', '05', { pt: 'Como destravar um relatório vazio', es: 'Cómo destrabar un informe vacío' }] ] },
+      ['relatorio-vazio', 'meta-relatorios.html?vazio=1', 'relatorios', '05', { pt: 'Como destravar um relatório vazio', es: 'Cómo destrabar un informe vacío' }],
+      ['calcular-roas', 'meta-relatorios.html?roas=1', 'relatorios', '06', { pt: 'Como calcular o custo por compra e o ROAS', es: 'Cómo calcular el costo por compra y el ROAS' }] ] },
     { m: 'regras', itens: [
       ['criar-regra', 'meta-regras.html?zerar=1', 'regras', '02', { pt: 'Como criar uma regra automatizada', es: 'Cómo crear una regla automática' }],
       ['evitar-falso-positivo', 'meta-regras.html?zerar=1', 'regras', '03', { pt: 'Como montar uma regra segura (intervalo e condições)', es: 'Cómo armar una regla segura (intervalo y condiciones)' }],

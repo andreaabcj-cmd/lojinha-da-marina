@@ -40,8 +40,8 @@ window.BUSCA_FRASES = (function () {
       'publicar en facebook e instagram | la publicación salió solo en facebook | crear publicación en business suite | programar publicación'),
     'instagram/08': F('caixa de entrada | responder mensagens | não vejo os comentários | direct do instagram | mensagens do facebook e instagram | comentário não aparece na caixa de entrada',
       'bandeja de entrada | responder mensajes | no veo los comentarios | mensajes de instagram'),
-    'instagram/09': F('insights do instagram | estatísticas do perfil | aba público vazia | números do instagram | seguidores e alcance | insights zerados',
-      'estadísticas de instagram | insights | pestaña público vacía | seguidores y alcance'),
+    'instagram/09': F('insights do instagram | estatísticas do perfil | aba público vazia | números do instagram | seguidores e alcance | insights zerados | menos de 100 seguidores | poucos seguidores e o público não aparece',
+      'estadísticas de instagram | insights | pestaña público vacía | seguidores y alcance | menos de 100 seguidores'),
     'm:instagram': F('instagram para empresas', 'instagram para empresas'),
 
     /* ---------- Pixel ---------- */
@@ -130,6 +130,12 @@ window.BUSCA_FRASES = (function () {
       'el anuncio aparece cortado en mi celular | en el celular del cliente se ve mal | compartir vista previa | ver en otro celular'),
     'dg-anuncios/08': F('erro ao publicar com código | erro com número enorme | qual anúncio deu erro | id do anúncio | personalizar colunas id | código do erro',
       'error al publicar con código | qué anuncio dio error | id del anuncio | código del error'),
+    'dg-anuncios/09': F('tirar o facebook dos posicionamentos | anunciar só no instagram | não acho onde desmarcar o facebook | não tem mais posicionamento manual | excluir marketplace | excluir coluna da direita | excluir audience network | controles da conta | regras de valor | reduzir lance no facebook',
+      'quitar facebook de las ubicaciones | anunciar solo en instagram | no encuentro dónde desmarcar facebook | ya no hay ubicación manual | excluir marketplace | controles de la cuenta | reglas de valor'),
+    'dg-anuncios/10': F('limite de anúncios atingido | erro 3253001 | 3253001 | limite de 250 anúncios | limite de anúncios por página | bati o limite de anúncios da página | agência usa meu limite | aumentar limite de anúncios',
+      'límite de anuncios alcanzado | error 3253001 | límite de 250 anuncios | límite de anuncios por página | aumentar el límite de anuncios'),
+    'relatorios/06': F('roas | retorno sobre investimento em anúncio | quanto voltou do anúncio | custo por compra | valeu a pena o anúncio | calcular roas | roas de compras | roas 2 é lucro',
+      'roas | retorno de la inversión publicitaria | costo por compra | calcular roas | roas de compras'),
     'dg-contas/03': F('convite do portfólio não chega | convite não chegou | convidei e não aparece | reenviar convite | email do convite | aceitar convite do business manager',
       'la invitación al portfolio no llega | no llegó la invitación | reenviar invitación | aceptar invitación'),
     'dg-contas/04': F('não consigo criar outra conta de anúncios | limite de contas de anúncios | criar segunda conta de anúncios | botão de criar conta não aparece | só deixa uma conta',
