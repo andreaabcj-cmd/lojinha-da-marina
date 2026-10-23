@@ -80,6 +80,41 @@
   A['(simulador) Já liguei o Instagram à Página'] = '(simulador) Ya vinculé el Instagram a la Página';
   A['Perfil do Threads: usar conta do Instagram · Marca: Inativo'] = 'Perfil de Threads: usar cuenta de Instagram · Imagen de marca: Inactivo';
   A['Anúncio · Instagram'] = 'Anuncio · Instagram'; A['lojinhadamarina.aula'] = 'lojinhadamarina.aula';
+  // Posicionamentos: regras de valor e controles da conta (telas reais em es_LA, 23/10/2026)
+  var B = {
+    'Priorize os posicionamentos mais importantes para sua empresa ajustando os lances.': 'Ajusta las pujas para priorizar las ubicaciones más importantes para tu negocio.',
+    'Sobre as regras de valor': 'Información sobre las reglas de valor', '＋ Criar um conjunto de regras': '＋ Crear un conjunto de reglas', 'Controles da conta ⓘ': 'Controles de la cuenta ⓘ',
+    'Posicionamentos excluídos:': 'Ubicaciones excluidas:', 'Nenhum': 'Ninguna', 'Remover': 'Eliminar',
+    'Com os controles da conta, você pode limitar onde seus anúncios aparecem em todas as campanhas desta conta de anúncios.': 'Con los controles de la cuenta, puedes limitar dónde aparecen tus anuncios en todas las campañas de esta cuenta publicitaria.',
+    'Editar controles de posicionamento': 'Editar controles de ubicación',
+    'Nesta campanha de Vendas não aparece a escolha manual dos posicionamentos (tela real conferida em 23/10/2026): para mexer onde o anúncio aparece, existem as regras de valor e os controles da conta.': 'En esta campaña de Ventas no aparece la elección manual de las ubicaciones (pantalla real revisada el 23/10/2026): para cambiar dónde aparece el anuncio, existen las reglas de valor y los controles de la cuenta.',
+    'Alcance seus públicos preferidos usando regras de valor': 'Llega a tus públicos preferidos usando reglas de valor',
+    'Aumente seu lance em públicos que valem mais para sua empresa. Por exemplo, você pode dar lances maiores para usuários do Android.': 'Aumenta la puja para los públicos que sean más valiosos para tu negocio. Por ejemplo, puedes pujar más por los usuarios de Android.',
+    'Consiga mais resultados desejados': 'Consigue más de los resultados que buscas',
+    'Concentre seu orçamento em públicos usando idade, gênero, localização e sistema operacional do celular.': 'Centra tu presupuesto en públicos según la edad, el sexo, el lugar y el sistema operativo del celular.',
+    'Otimize para todos os tipos de metas': 'Optimiza la entrega para todos los tipos de objetivos',
+    'Ideal para metas estratégicas ou de longo prazo, incluindo: valor total ou conversões atrasadas.': 'Ideal para objetivos estratégicos o a largo plazo, como valor a largo plazo o conversiones atrasadas.',
+    'Tenha resultados melhores com um único conjunto de anúncios': 'Obtén mejores resultados con un solo conjunto de anuncios',
+    'Alcance mais dos seus públicos preferidos sem configurar vários conjuntos de anúncios.': 'Llega a más de tus públicos preferidos sin tener que configurar varios conjuntos de anuncios.',
+    'Entendo que meu custo total por resultado pode aumentar ao usar regras de valor.': 'Entiendo que mi costo por resultado total puede aumentar si uso reglas de valor.',
+    'Mostrar depois': 'Mostrar más tarde', 'Regras de valor': 'Reglas de valor',
+    'Crie regras para nos informar o valor extra que determinados públicos, posicionamentos e locais da conversão têm para sua empresa. Nosso sistema otimizará para resultados com base nessas regras.': 'Crea reglas para indicarnos la importancia de determinados públicos, ubicaciones de anuncios y ubicaciones de conversión para tu negocio. Nuestro sistema optimizará los resultados en función de estas reglas.',
+    'Escolha o valor do lance para resultados que atendam aos seus critérios. ⓘ': 'Elige cuánto quieres pujar por los resultados que cumplen con tus criterios. ⓘ',
+    'Selecionar posicionamento': 'Seleccionar ubicación', 'Feed do Facebook': 'Feed de Facebook', 'Facebook Stories': 'Historias de Facebook', 'Facebook Reels': 'Reels de Facebook',
+    'Feed do Instagram': 'Feed de Instagram', 'Instagram Stories': 'Historias de Instagram', 'Instagram Reels': 'Reels de Instagram', 'Audience Network': 'Audience Network',
+    'Aumentar lance em': 'Aumentar puja', 'Reduzir lance em': 'Disminuir puja', '%': '%',
+    'Adicionar critérios': 'Agregar criterios', '＋ Adicionar regra': '＋ Agregar regla', 'Nome do conjunto de regras': 'Nombre del conjunto de reglas', 'Cancelar': 'Cancelar', 'Criar': 'Crear',
+    'Controles de posicionamento para esta conta de anúncios': 'Controles de ubicación de esta cuenta publicitaria',
+    'Esses controles excluem os posicionamentos em todas as campanhas desta conta de anúncios. Para evitar uma perda de desempenho desnecessária, exclua posicionamentos apenas quando essencial para a empresa.': 'Estos controles excluyen ubicaciones en todas las campañas de esta cuenta publicitaria. Para evitar la pérdida innecesaria de rendimiento, solo excluye ubicaciones cuando tu negocio así lo requiera.',
+    'Saiba mais sobre os posicionamentos': 'Información sobre las ubicaciones',
+    'Minha empresa só pode anunciar em posicionamentos específicos': 'Mi negocio solo puede anunciarse en ubicaciones específicas',
+    'Desmarque os posicionamentos que você quer excluir ⓘ': 'Desmarca las ubicaciones que quieres excluir ⓘ', 'Apps e sites': 'Apps y sitios web', 'Feeds': 'Feeds',
+    'Nativo, banner e intersticial do Audience Network': 'Nativo, banner e intersticial de Audience Network', 'Vídeos com incentivo do Audience Network': 'Videos con premio de Audience Network',
+    'Facebook Marketplace': 'Facebook Marketplace', 'Coluna da direita do Facebook': 'Columna derecha de Facebook',
+    'Ver controles da conta nas configurações de publicidade': 'Ver controles de cuenta en la configuración de publicidad', 'Conferir alterações': 'Revisar cambios',
+    'No simulador, “Conferir alterações” já aplica a mudança (a etapa de conferência da tela real não foi vista: a conferir).': 'En el simulador, “Revisar cambios” ya aplica el cambio (la etapa de revisión de la pantalla real no se vio: por confirmar).'
+  };
+  for (var b in B) A[b] = B[b];
   for (var k in A) D[k] = A[k];
   P.push([/^Editando (\d+) posicionamentos$/, function (m) { return 'Editar ' + m[1] + ' ubicaciones' }]);
   P.push([/^(\d+) posicionamentos · corte: (Original|Quadrado|Horizontal|Vertical em tela cheia|Vertical)( [\d:,]+)?$/, function (m) { var n = { 'Original': 'Original', 'Quadrado': 'Cuadrado', 'Horizontal': 'Horizontal', 'Vertical em tela cheia': 'Vertical en pantalla completa', 'Vertical': 'Vertical' }; return m[1] + ' ubicaciones · recorte: ' + n[m[2]] + (m[3] || '') }]);

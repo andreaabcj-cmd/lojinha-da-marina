@@ -3,7 +3,8 @@
    Textos copiados das telas reais (conta de aula, rascunho de Vendas, 16/10/2026), em português e em espanhol (?locale=es_LA).
    O que não foi visto de verdade fica marcado "a conferir". Ver _roteiro/telas_gerenciador_anuncios.md.
    URL: meta-feed.html?zerar=1 (anúncio vazio) · ?exemplo=1 (já com mídia e texto) · ?problemas=1 (mídia em Original, sem URL)
-   Tutoriais (tour.js): ?tour=montar-criativo | ver-previa | destino-botao | resolver-criativo */
+   Tutoriais (tour.js): ?tour=montar-criativo | ver-previa | destino-botao | resolver-criativo | excluir-posicionamento
+   Posicionamentos (23/10/2026, telas reais PT/ES): regras de valor (lista de posicionamentos; "Reduzir" vai até 90%) e controles da conta (só Audience Network ×2, Marketplace e Coluna da direita). */
 (function () {
   var CONF = '16/10/2026';
   var $ = function (s, r) { return (r || document).querySelector(s) };
@@ -29,8 +30,14 @@
   function inicial() {
     return { pagina: '', formato: 'unica', multi: true, url: '', linkVis: false, midia: '', principal: '', titulo: '', desc: '', cta: 'Ver detalhes', tentou: false, publicado: false,
       ig: 'perfil', igLigado: true, aprim: { sobrep: false, retoques: false, texto: false, cta: false, etiq: false, musica: true, animacao: true },
-      corte: { feeds: 'orig', stories: 'orig', coluna: 'orig' } };
+      corte: { feeds: 'orig', stories: 'orig', coluna: 'orig' }, excl: semExcl(), regras: [] };
   }
+  // Controles da conta (23/10/2026): só estes quatro posicionamentos podem ser excluídos; true = excluído
+  var EXCL = [['an', 'Nativo, banner e intersticial do Audience Network', 'apps'], ['anrv', 'Vídeos com incentivo do Audience Network', 'apps'], ['mkt', 'Facebook Marketplace', 'feeds'], ['col', 'Coluna da direita do Facebook', 'feeds']];
+  function semExcl() { return { an: false, anrv: false, mkt: false, col: false } }
+  // Regras de valor de posicionamento (23/10/2026): a lista da tela real
+  var POS_REGRA = [['Facebook', [['fbfeed', 'Feed do Facebook'], ['fbst', 'Facebook Stories'], ['fbreels', 'Facebook Reels']]], ['Instagram', [['igfeed', 'Feed do Instagram'], ['igst', 'Instagram Stories'], ['igreels', 'Instagram Reels']]], ['Outros', [['an', 'Audience Network']]]];
+  function nomePos(id) { var n = ''; POS_REGRA.forEach(function (g) { g[1].forEach(function (p) { if (p[0] === id) n = p[1] }) }); return n }
   function comMidia(s) { s.pagina = PAGINA; s.midia = 'm1'; s.principal = 'Canecas feitas com carinho. Peça a sua!'; s.titulo = 'Caneca azul'; s.cta = 'Ver detalhes'; return s }
   // A chave antiga 'sim.feed' era do mesmo nome da fila de eventos do Pixel (Loja → Gerenciador de Eventos) e as duas se atropelavam:
   // quem abria este simulador deixava o Gerenciador de Eventos em branco. Agora o estado daqui tem chave própria; se sobrou um estado antigo, ele é migrado e a fila do Pixel é devolvida.
@@ -40,10 +47,14 @@
   if (params.get('exemplo')) { S = comMidia(inicial()) }
   if (params.get('problemas')) { S = comMidia(inicial()) }
   if (params.get('igsem')) { S = comMidia(inicial()); S.igLigado = false; S.ig = 'pagina' }
+  if (!S.excl) S.excl = semExcl();
+  if (!S.regras) S.regras = [];
   var W = { passo: -1, sel: '', menu: false };     // assistente de mídia
+  var R = semR();                                  // janelas de posicionamento: regras de valor e controles da conta
+  function semR() { return { ctl: false, dlg: '', ok: false, pos: '', sinal: 'mais', pct: '50', nome: '', on: false, marca: { an: true, anrv: true, mkt: true, col: true } } }
   var G = { g: '', sel: '' };                      // janela "Editar grupo"
   var P = 'todo';                                  // aba da prévia
-  function grava() { try { localStorage.setItem('sim.anuncio-feed', JSON.stringify(S)) } catch (e) { } window.__simFd = { S: S, W: W, G: G } }
+  function grava() { try { localStorage.setItem('sim.anuncio-feed', JSON.stringify(S)) } catch (e) { } window.__simFd = { S: S, W: W, G: G, R: R } }
   grava();
 
   function rota() { return (location.hash || '#anu').slice(1) }
@@ -103,7 +114,7 @@
       '<div class="ga-rod"><span class="esq">' + (nivel === 'anu' ? 'Ao clicar em Publicar, você aceita que seu uso das ferramentas para anúncios da Meta está sujeito aos nossos Termos e Condições.' : '') + '</span>' +
       '<button class="btn sec" data-acao="fechar" data-t="fechar">Fechar</button>' +
       (nivel === 'anu' ? '<button class="btn sec" data-ir="pos">Voltar</button><button class="btn" data-acao="publicar" data-t="publicar">Publicar</button>' : '<button class="btn" data-ir="anu" data-t="avancar">Avançar</button>') + '</div></div>' +
-      (nivel === 'anu' ? modalAssistente() + modalGrupo() : '') + (S.publicado ? modalAnalise() : ''));
+      (nivel === 'anu' ? modalAssistente() + modalGrupo() : modalPos()) + (S.publicado ? modalAnalise() : ''));
   }
 
   function formAnu() {
@@ -153,13 +164,55 @@
       conferido(S.midia ? true : true);
   }
 
+  function excluidos() {
+    var l = EXCL.filter(function (e) { return S.excl[e[0]] });
+    return l.length ? l.map(function (e) { return '<span>' + e[1] + '</span>' }).join(', ') : '<span>Nenhum</span>';
+  }
   function formPos() {
+    var regras = S.regras.length ? '<div class="fd-regras" data-t="lista-regras">' + S.regras.map(function (r, i) { return '<p class="fd-regra"><span><b>' + nomePos(r.pos) + '</b></span> <span>' + (r.sinal === 'menos' ? 'Reduzir lance em' : 'Aumentar lance em') + '</span> <b>' + r.pct + '%</b> <button class="btn sec" data-acao="regra-tira" data-i="' + i + '">Remover</button></p>' }).join('') + '</div>' : '';
     return '<div class="ga-sec" data-t="sec-pos"><h3>Posicionamentos <span class="ga-sel">Advantage+ ativado</span></h3><p>Mostraremos anúncios automaticamente nos locais onde as pessoas têm maior probabilidade de responder. <a>Sobre os posicionamentos</a></p>' +
       '<div class="ga-aviso"><b>Status do WhatsApp incluído</b><br><small>Para ajudar você a alcançar novos públicos, incluímos o posicionamento Status do WhatsApp. Os Status são fotos e vídeos verticais na aba Atualizações do WhatsApp que desaparecem após 24 horas.</small></div>' +
-      '<p><b>Regras de valor de posicionamento</b></p><p class="miudo">Priorize os posicionamentos mais importantes para sua empresa ajustando os lances. <button class="btn sec" disabled>Criar um conjunto de regras</button></p>' +
-      '<p data-t="pos-excluidos"><b>Controles da conta</b><br><small>Posicionamentos excluídos: Nenhum</small></p><p class="miudo">Mostrar mais configurações</p>' +
-      '<p class="miudo">Na campanha de Vendas Advantage+, a escolha manual dos posicionamentos não apareceu na tela que conferimos (a conferir).</p></div>' +
+      '<div class="fd-caixa" data-t="sec-regras"><p><b>Regras de valor de posicionamento</b></p><p class="miudo">Priorize os posicionamentos mais importantes para sua empresa ajustando os lances. <a>Sobre as regras de valor</a></p>' + regras +
+      '<p><button class="btn sec" data-acao="regras-abre" data-t="btn-regras">＋ Criar um conjunto de regras</button></p></div>' +
+      '<div class="fd-caixa' + (R.ctl ? ' on' : '') + '" data-t="sec-ctl"><button class="fd-cab-ctl" data-acao="ctl-cab" data-t="ctl-cab"><span><b>Controles da conta</b> ⓘ</span><span>' + (R.ctl ? '▴' : '✎') + '</span></button>' +
+      (R.ctl ? '<p data-t="pos-excluidos"><b>Posicionamentos excluídos:</b> ' + excluidos() + '</p><p class="miudo">Com os controles da conta, você pode limitar onde seus anúncios aparecem em todas as campanhas desta conta de anúncios.</p><p><button class="btn sec" data-acao="ctl-editar" data-t="btn-ctl">Editar controles de posicionamento</button></p>'
+        : '<p data-t="pos-excluidos"><small><span>Posicionamentos excluídos:</span> ' + excluidos() + '</small></p>') + '</div>' +
+      '<p class="miudo">Mostrar mais configurações</p>' +
+      '<p class="miudo">Nesta campanha de Vendas não aparece a escolha manual dos posicionamentos (tela real conferida em 23/10/2026): para mexer onde o anúncio aparece, existem as regras de valor e os controles da conta.</p></div>' +
       '<div class="ga-sec"><h3>Público <span class="ga-sel">Advantage+ ativado</span></h3><p class="miudo">Localizações: Inclusão Brasil · Idade mínima 18. (O público foi visto no módulo Anúncios.)</p></div>' + conferido();
+  }
+
+  /* ---------- janelas de posicionamento (telas reais de 23/10/2026; nada é enviado) ---------- */
+  function modalPos() {
+    if (R.dlg === 'intro') return '<div class="ga-fundo"><div class="ga-jan" data-t="jan-regras-intro"><h2>Alcance seus públicos preferidos usando regras de valor</h2><p class="miudo">Aumente seu lance em públicos que valem mais para sua empresa. Por exemplo, você pode dar lances maiores para usuários do Android.</p>' +
+      '<p><b>Consiga mais resultados desejados</b><br><small>Concentre seu orçamento em públicos usando idade, gênero, localização e sistema operacional do celular.</small></p>' +
+      '<p><b>Otimize para todos os tipos de metas</b><br><small>Ideal para metas estratégicas ou de longo prazo, incluindo: valor total ou conversões atrasadas.</small></p>' +
+      '<p><b>Tenha resultados melhores com um único conjunto de anúncios</b><br><small>Alcance mais dos seus públicos preferidos sem configurar vários conjuntos de anúncios.</small></p>' +
+      '<label class="ga-lin' + (R.ok ? ' on' : '') + '" data-t="regras-ok"><input type="checkbox" id="rOk"' + (R.ok ? ' checked' : '') + '/><span>Entendo que meu custo total por resultado pode aumentar ao usar regras de valor.</span></label>' +
+      '<div class="rodape-jan"><button class="btn sec" data-acao="pos-fecha" data-t="regras-depois">Mostrar depois</button><button class="btn" data-acao="regras-intro-criar" data-t="regras-intro-criar"' + (R.ok ? '' : ' disabled') + '>Criar um conjunto de regras</button></div></div></div>';
+    if (R.dlg === 'regra') {
+      var es = (function () { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' } catch (e) { return false } })();   // rótulo do grupo é atributo: o tradutor não alcança
+      var opc = '<option value="">Selecionar posicionamento</option>' + POS_REGRA.map(function (g) { return '<optgroup label="' + (es && g[0] === 'Outros' ? 'Otros' : g[0]) + '">' + g[1].map(function (p) { return '<option value="' + p[0] + '"' + (R.pos === p[0] ? ' selected' : '') + '>' + p[1] + '</option>' }).join('') + '</optgroup>' }).join('');
+      var pode = R.pos && Number(R.pct) > 0;
+      return '<div class="ga-fundo"><div class="ga-jan" data-t="jan-regra"><h2>Regras de valor</h2><p class="miudo">Crie regras para nos informar o valor extra que determinados públicos, posicionamentos e locais da conversão têm para sua empresa. Nosso sistema otimizará para resultados com base nessas regras. <a>Sobre as regras de valor</a></p>' +
+        '<p>Escolha o valor do lance para resultados que atendam aos seus critérios. ⓘ</p>' +
+        '<div class="fd-regra-lin" data-t="regra-linha"><select class="ga-in" id="rPos" data-t="regra-pos">' + opc + '</select>' +
+        '<select class="ga-in" id="rSinal" data-t="regra-sinal"><option value="mais"' + (R.sinal === 'mais' ? ' selected' : '') + '>Aumentar lance em</option><option value="menos"' + (R.sinal === 'menos' ? ' selected' : '') + '>Reduzir lance em</option></select>' +
+        '<span class="fd-pct"><input class="ga-in" id="rPct" inputmode="numeric" value="' + esc(R.pct) + '" data-t="regra-pct"/> %</span></div>' +
+        '<p class="miudo"><a>Adicionar critérios</a></p><p><button class="btn sec" disabled>＋ Adicionar regra</button></p>' +
+        '<p><b>Nome do conjunto de regras</b></p><input class="ga-in" id="rNome" value="' + esc(R.nome) + '"/>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="pos-fecha" data-t="regra-cancelar">Cancelar</button><button class="btn" data-acao="regra-criar" data-t="regra-criar"' + (pode ? '' : ' disabled') + '>Criar</button></div></div></div>';
+    }
+    if (R.dlg === 'ctl') {
+      var mudou = EXCL.some(function (e) { return (R.on && !R.marca[e[0]]) !== S.excl[e[0]] });
+      var grupo = function (g, t) { return '<div class="fd-ctl-g"><p><b>' + t + '</b></p>' + EXCL.filter(function (e) { return e[2] === g }).map(function (e) { return '<label class="ga-lin' + (R.marca[e[0]] ? ' on' : '') + '" data-t="ctl-' + e[0] + '"><input type="checkbox" data-pexc="' + e[0] + '"' + (R.marca[e[0]] ? ' checked' : '') + '/><span>' + e[1] + '</span></label>' }).join('') + '</div>' };
+      return '<div class="ga-fundo"><div class="ga-jan" data-t="jan-ctl"><h2>Controles de posicionamento para esta conta de anúncios</h2><p class="miudo">Esses controles excluem os posicionamentos em todas as campanhas desta conta de anúncios. Para evitar uma perda de desempenho desnecessária, exclua posicionamentos apenas quando essencial para a empresa. <a>Saiba mais sobre os posicionamentos</a></p>' +
+        '<label class="ga-lin' + (R.on ? ' on' : '') + '" data-t="ctl-on"><input type="checkbox" id="cOn"' + (R.on ? ' checked' : '') + '/><span><b>Minha empresa só pode anunciar em posicionamentos específicos</b></span></label>' +
+        (R.on ? '<div data-t="ctl-lista"><p class="miudo">Desmarque os posicionamentos que você quer excluir ⓘ</p>' + grupo('apps', 'Apps e sites') + grupo('feeds', 'Feeds') + '</div>' : '') +
+        '<div class="rodape-jan"><a class="esq-jan">Ver controles da conta nas configurações de publicidade</a><button class="btn sec" data-acao="pos-fecha" data-t="ctl-cancelar">Cancelar</button><button class="btn" data-acao="ctl-conferir" data-t="ctl-conferir"' + (mudou ? '' : ' disabled') + '>Conferir alterações</button></div>' +
+        '<p class="miudo">No simulador, “Conferir alterações” já aplica a mudança (a etapa de conferência da tela real não foi vista: a conferir).</p></div></div>';
+    }
+    return '';
   }
 
   /* ---------- assistente de mídia (janela com etapas) ---------- */
@@ -240,7 +293,17 @@
     else if (ac === 'publicar') { S.tentou = true; if (faltas().length) { grava(); if (rota() !== 'anu') vai('anu'); else render(); return } S.publicado = true; grava(); render() }
     else if (ac === 'liga-ig') { S.igLigado = true; S.ig = 'perfil'; grava(); render() }
     else if (ac === 'fecha-analise') { S.publicado = false; grava(); render() }
+    else if (ac === 'regras-abre') { R.dlg = 'intro'; R.ok = false; grava(); render() }
+    else if (ac === 'regras-intro-criar') { R.dlg = 'regra'; R.pos = ''; R.sinal = 'mais'; R.pct = '50'; R.nome = ''; grava(); render() }
+    else if (ac === 'regra-criar') { teto(); S.regras.push({ pos: R.pos, sinal: R.sinal, pct: Number(R.pct), nome: R.nome }); R.dlg = ''; grava(); render() }
+    else if (ac === 'regra-tira') { S.regras.splice(Number(a.getAttribute('data-i')), 1); grava(); render() }
+    else if (ac === 'ctl-cab') { R.ctl = !R.ctl; grava(); render() }
+    else if (ac === 'ctl-editar') { R.dlg = 'ctl'; R.on = EXCL.some(function (e) { return S.excl[e[0]] }); EXCL.forEach(function (e) { R.marca[e[0]] = !S.excl[e[0]] }); grava(); render() }
+    else if (ac === 'ctl-conferir') { EXCL.forEach(function (e) { S.excl[e[0]] = R.on && !R.marca[e[0]] }); R.dlg = ''; R.ctl = true; grava(); render() }
+    else if (ac === 'pos-fecha') { R.dlg = ''; grava(); render() }
   });
+  // Na tela real, "Reduzir lance em" não passa de 90%: digitar 100 e sair do campo deixa 90.
+  function teto() { var n = Math.round(Number(String(R.pct).replace(',', '.')) || 0); if (n < 0) n = 0; if (R.sinal === 'menos' && n > 90) n = 90; R.pct = String(n) }
   document.addEventListener('change', function (ev) {
     var t = ev.target;
     if (t.name === 'fdPg') { S.pagina = PAGINA }
@@ -250,11 +313,22 @@
     else if (t.id === 'fLink') { S.linkVis = t.checked }
     else if (t.id === 'fCta' || t.id === 'wCta') { S.cta = t.value }
     else if (t.hasAttribute && t.hasAttribute('data-apr')) { S.aprim[t.getAttribute('data-apr')] = t.checked }
+    else if (t.id === 'rOk') { R.ok = t.checked }
+    else if (t.id === 'rPos') { R.pos = t.value }
+    else if (t.id === 'rSinal') { R.sinal = t.value; teto() }
+    else if (t.id === 'rPct') { R.pct = t.value; teto() }
+    else if (t.id === 'cOn') { R.on = t.checked; if (!R.on) EXCL.forEach(function (e) { R.marca[e[0]] = true }) }
+    else if (t.hasAttribute && t.hasAttribute('data-pexc')) { R.marca[t.getAttribute('data-pexc')] = t.checked }
     else return;
     grava(); render();
   });
   document.addEventListener('input', function (ev) {
     var t = ev.target, mapa = { fUrl: 'url', fPrincipal: 'principal', wPrincipal: 'principal', fTitulo: 'titulo', wTitulo: 'titulo', fDesc: 'desc', wDesc: 'desc', fLinkTxt: 'linkTxt' };
+    if (t.id === 'rPct' || t.id === 'rNome') {
+      R[t.id === 'rPct' ? 'pct' : 'nome'] = t.value; grava();
+      var cb = $('[data-t=regra-criar]'); if (cb) cb.disabled = !(R.pos && Number(String(R.pct).replace(',', '.')) > 0);
+      return;
+    }
     if (!mapa[t.id]) return;
     S[mapa[t.id]] = t.value; grava();
     var c = $('.fd-corpo'); if (c && S.midia && t.id !== 'fUrl' && t.id !== 'fLinkTxt') { var tmp = document.createElement('div'); tmp.innerHTML = previa(); var n = $('.fd-corpo', tmp); c.innerHTML = n.innerHTML }
@@ -265,9 +339,10 @@
     var foco = document.activeElement && document.activeElement.id;
     $('#app').innerHTML = TELAS[r]();
     if (foco) { var el = document.getElementById(foco); if (el && el.focus) { el.focus(); try { var l = el.value.length; el.setSelectionRange(l, l) } catch (e) { } } }
-    window.__simFd = { S: S, W: W, G: G };
+    window.__simFd = { S: S, W: W, G: G, R: R };
   }
-  window.SIMFD = { ig: function (o) { for (var k in o) S[k] = o[k]; grava() }, vai: vai, estado: function () { return { S: S, W: W, G: G } }, exemplo: function () { var c = S.corte, u = S.url; if (!S.midia || !S.pagina) { S = comMidia(inicial()); S.corte = c || S.corte; S.url = u || ''; grava() } }, zera: function () { S = inicial(); W = { passo: -1, sel: '', menu: false }; G = { g: '', sel: '' }; P = 'todo'; grava() },
+  window.SIMFD = { ig: function (o) { for (var k in o) S[k] = o[k]; grava() }, vai: vai, estado: function () { return { S: S, W: W, G: G, R: R } },
+    pos: function (o, excl, regras) { var n = semR(); for (var k in o || {}) n[k] = o[k]; R = n; if (excl) S.excl = excl; if (regras) S.regras = regras; grava() }, exemplo: function () { var c = S.corte, u = S.url; if (!S.midia || !S.pagina) { S = comMidia(inicial()); S.corte = c || S.corte; S.url = u || ''; grava() } }, zera: function () { S = inicial(); R = semR(); W = { passo: -1, sel: '', menu: false }; G = { g: '', sel: '' }; P = 'todo'; grava() },
     wiz: function (o) { for (var k in o) W[k] = o[k]; grava() }, grupo: function (g, sel) { G.g = g; G.sel = sel || S.corte[g]; grava() }, aba: function (a) { P = a }, cortes: function (o) { for (var k in o) S.corte[k] = o[k]; grava() }, pronto: function () { render() } };
   render();
 
@@ -354,5 +429,32 @@
     { alvo: '[data-t=btn-ligar-ig]', clique: true, garante: function () { S = comMidia(inicial()); S.igLigado = false; S.ig = 'pagina'; grava(); location.hash = 'anu'; render() }, tit: T('Depois de ligar', 'Después de vincular'), txt: T('Imagine que a Marina foi às configurações e ligou o Instagram à Página (você viu como nas aulas 03 e 04). No simulador, clique neste botão para fazer de conta que já foi feito.', 'Imagina que Marina fue a la configuración y vinculó el Instagram a la Página (viste cómo en las clases 03 y 04). En el simulador, haz clic en este botón para hacer de cuenta que ya se hizo.') },
     { alvo: '[data-t=sel-ig]', garante: function () { sim().ig({ igLigado: true, ig: 'pagina' }); location.hash = 'anu'; render() }, cond: function () { return fd().S.ig === 'perfil' }, tit: T('Agora aparece', 'Ahora aparece'), txt: T('Abra a lista de novo: agora o perfil lojinhadamarina.aula está lá. Escolha-o.', 'Abre la lista de nuevo: ahora el perfil lojinhadamarina.aula está ahí. Elígelo.'), dica: T('Escolha “lojinhadamarina.aula”.', 'Elige “lojinhadamarina.aula”.') },
     { alvo: '[data-t=an-identidade]', fim: true, semVolta: true, garante: function () { sim().ig({ igLigado: true, ig: 'perfil' }); location.hash = 'anu'; render() }, tit: T('Resolvido! 🎉', '¡Resuelto! 🎉'), txt: T('O perfil apareceu porque agora está ligado à Página. Resumo: quando o Instagram não aparece na lista, o problema quase nunca está no anúncio: está na ligação entre Instagram, portfólio e Página. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'El perfil apareció porque ahora está vinculado a la Página. Resumen: cuando el Instagram no aparece en la lista, el problema casi nunca está en el anuncio: está en el vínculo entre Instagram, portfolio y Página. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
+  // Diagnóstico › Anúncios 09 — "Não consigo tirar o Facebook dos posicionamentos" (telas reais de 23/10/2026)
+  function posZero() { sim().exemplo(); sim().pos({}, semExcl(), []); location.hash = 'pos'; render() }
+  TOURS['excluir-posicionamento'] = [
+    { alvo: '[data-t=sec-pos]', garante: posZero, tit: T('“Quero só Instagram!”', '“¡Quiero solo Instagram!”'),
+      txt: T('A Marina quer anunciar só no Instagram e não acha as caixinhas para tirar o Facebook. Repare: nesta campanha de Vendas, os posicionamentos estão em “Advantage+ ativado” e não há escolha manual. O que existe são duas ferramentas: as regras de valor e os controles da conta. Clique em Próximo.', 'Marina quiere anunciar solo en Instagram y no encuentra las casillas para quitar Facebook. Fíjate: en esta campaña de Ventas, las ubicaciones están en “Advantage+ activado” y no hay elección manual. Lo que existe son dos herramientas: las reglas de valor y los controles de la cuenta. Haz clic en Siguiente.') },
+    { alvo: '[data-t=ctl-cab]', clique: true, garante: posZero, tit: T('Controles da conta', 'Controles de la cuenta'), txt: T('Primeiro, o que dá para excluir de vez. Clique em Controles da conta.', 'Primero, lo que se puede excluir del todo. Haz clic en Controles de la cuenta.') },
+    { alvo: '[data-t=btn-ctl]', clique: true, garante: function () { posZero(); sim().pos({ ctl: true }); render() }, tit: T('Editar os controles', 'Editar los controles'), txt: T('Atenção ao aviso: os controles valem para TODAS as campanhas desta conta de anúncios. Clique em Editar controles de posicionamento.', 'Atención al aviso: los controles valen para TODAS las campañas de esta cuenta publicitaria. Haz clic en Editar controles de ubicación.') },
+    { alvo: '[data-t=ctl-on]', garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'ctl' }); render() }, cond: function () { return fd().R.on },
+      tit: T('Ligar a escolha', 'Activar la elección'), txt: T('Ligue “Minha empresa só pode anunciar em posicionamentos específicos”.', 'Activa “Mi negocio solo puede anunciarse en ubicaciones específicas”.'), dica: T('Marque a caixa da opção.', 'Marca la casilla de la opción.') },
+    { alvo: '[data-t=ctl-lista]', garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'ctl', on: true }); render() }, cond: function () { var m = fd().R.marca; return !m.mkt && !m.col && m.an && m.anrv },
+      bloqueia: function (t) { return !!t.closest('[data-t=ctl-an],[data-t=ctl-anrv],[data-t=ctl-conferir]') },
+      erro: T('Neste caso, deixe o Audience Network marcado: a Marina quer tirar só o que é do Facebook.', 'En este caso, deja Audience Network marcado: Marina quiere quitar solo lo que es de Facebook.'),
+      tit: T('Só quatro opções', 'Solo cuatro opciones'), txt: T('Veja a lista: só dá para excluir Audience Network, Facebook Marketplace e a Coluna da direita do Facebook. Feed, Stories e Reels do Facebook NÃO estão aqui. Desmarque Facebook Marketplace e Coluna da direita do Facebook.', 'Mira la lista: solo se puede excluir Audience Network, Facebook Marketplace y la Columna derecha de Facebook. Feed, Historias y Reels de Facebook NO están aquí. Desmarca Facebook Marketplace y Columna derecha de Facebook.'),
+      dica: T('Desmarque as duas caixas do grupo Feeds.', 'Desmarca las dos casillas del grupo Feeds.') },
+    { alvo: '[data-t=ctl-conferir]', clique: true, garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'ctl', on: true, marca: { an: true, anrv: true, mkt: false, col: false } }); render() }, tit: T('Conferir alterações', 'Revisar cambios'), txt: T('Clique em Conferir alterações. (Na tela real vem uma etapa de conferência que ainda não vimos; no simulador, já aplica.)', 'Haz clic en Revisar cambios. (En la pantalla real viene una etapa de revisión que todavía no vimos; en el simulador, ya se aplica.)') },
+    { alvo: '[data-t=pos-excluidos]', garante: function () { posZero(); sim().pos({ ctl: true }, { an: false, anrv: false, mkt: true, col: true }); render() }, tit: T('Excluídos', 'Excluidas'), txt: T('Pronto: Marketplace e Coluna da direita não recebem mais anúncios desta conta. Mas o Feed e os Stories do Facebook continuam. Para eles, a ferramenta é a regra de valor: baixar o lance ali. Clique em Próximo.', 'Listo: Marketplace y la Columna derecha ya no reciben anuncios de esta cuenta. Pero el Feed y las Historias de Facebook siguen. Para ellos, la herramienta es la regla de valor: bajar la puja ahí. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-regras]', clique: true, garante: function () { posZero(); sim().pos({ ctl: true }, { an: false, anrv: false, mkt: true, col: true }); render() }, tit: T('Regras de valor', 'Reglas de valor'), txt: T('Clique em Criar um conjunto de regras.', 'Haz clic en Crear un conjunto de reglas.') },
+    { alvo: '[data-t=regras-ok]', garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'intro' }, { an: false, anrv: false, mkt: true, col: true }); render() }, cond: function () { return fd().R.ok },
+      tit: T('O aviso de custo', 'El aviso de costo'), txt: T('Antes, a tela pede para você concordar: “meu custo total por resultado pode aumentar”. É verdade: forçar a entrega para longe de onde ela rende mais pode encarecer. Marque a caixa.', 'Antes, la pantalla pide que aceptes: “mi costo por resultado total puede aumentar”. Es verdad: forzar la entrega lejos de donde rinde más puede encarecer. Marca la casilla.'), dica: T('Marque “Entendo que meu custo…”.', 'Marca “Entiendo que mi costo…”.') },
+    { alvo: '[data-t=regras-intro-criar]', clique: true, garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'intro', ok: true }, { an: false, anrv: false, mkt: true, col: true }); render() }, tit: T('Continuar', 'Continuar'), txt: T('Com a caixa marcada, o botão acende. Clique em Criar um conjunto de regras.', 'Con la casilla marcada, el botón se enciende. Haz clic en Crear un conjunto de reglas.') },
+    { alvo: '[data-t=regra-linha]', garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'regra' }, { an: false, anrv: false, mkt: true, col: true }); render() }, cond: function () { var r = fd().R; return r.pos === 'fbfeed' && r.sinal === 'menos' && String(r.pct) === '90' },
+      tit: T('Baixar o lance no Feed do Facebook', 'Bajar la puja en el Feed de Facebook'), txt: T('Monte a regra: posicionamento “Feed do Facebook”, “Reduzir lance em” e 100%. Saia do campo e veja: a tela não deixa passar de 90%. Ou seja, dá para diminuir muito, mas não zerar.', 'Arma la regla: ubicación “Feed de Facebook”, “Disminuir puja” y 100%. Sal del campo y mira: la pantalla no deja pasar del 90%. O sea, se puede bajar mucho, pero no llevar a cero.'),
+      dica: T('Escolha Feed do Facebook, Reduzir lance em, digite 100 e aperte Tab: vira 90.', 'Elige Feed de Facebook, Disminuir puja, escribe 100 y presiona Tab: queda en 90.') },
+    { alvo: '[data-t=regra-criar]', clique: true, garante: function () { posZero(); sim().pos({ ctl: true, dlg: 'regra', pos: 'fbfeed', sinal: 'menos', pct: '90' }, { an: false, anrv: false, mkt: true, col: true }); render() }, tit: T('Criar a regra', 'Crear la regla'), txt: T('Clique em Criar. (No simulador, nada vai para a Meta.)', 'Haz clic en Crear. (En el simulador, nada va a Meta.)') },
+    { alvo: '[data-t=sec-pos]', fim: true, semVolta: true, garante: function () { posZero(); sim().pos({ ctl: true }, { an: false, anrv: false, mkt: true, col: true }, [{ pos: 'fbfeed', sinal: 'menos', pct: 90, nome: '' }]); render() },
+      tit: T('O que dá e o que não dá 🎉', 'Lo que se puede y lo que no 🎉'), txt: T('Resumo para a Marina: nesta campanha de Vendas não existe “desmarcar o Facebook”. Dá para excluir Audience Network, Marketplace e Coluna da direita (vale para a conta toda) e baixar o lance de um posicionamento em até 90%. Se ela precisa mesmo de só Instagram, a Central de Ajuda ainda mostra escolha manual nos objetivos de Reconhecimento, Tráfego e Engajamento (não conferimos essa tela). Clique em Concluir.', 'Resumen para Marina: en esta campaña de Ventas no existe “desmarcar Facebook”. Se puede excluir Audience Network, Marketplace y la Columna derecha (vale para toda la cuenta) y bajar la puja de una ubicación hasta un 90%. Si de verdad necesita solo Instagram, el Centro de ayuda todavía muestra elección manual en los objetivos de Reconocimiento, Tráfico e Interacción (no revisamos esa pantalla). Haz clic en Terminar.') }
   ];
 })();

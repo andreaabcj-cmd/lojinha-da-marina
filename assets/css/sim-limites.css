@@ -1,0 +1,44 @@
+/* Simulador "Limites de anúncios por Página" · usa sim.css e sim-anuncios.css (botões, ga-in) */
+.lm{max-width:1280px;margin:0 auto;padding:0 12px 20px}
+.lm-topo{display:flex;align-items:center;gap:12px;background:#3A3B3C;color:#fff;padding:9px 14px;border-radius:0 0 12px 12px;flex-wrap:wrap}
+.lm-topo h1{margin:0;font-size:18px;font-weight:700;flex:1;min-width:180px}
+.lm-logo{font-weight:900;font-size:20px}
+.lm-busca{background:#fff;color:#6B7280;border-radius:8px;padding:5px 12px;font-size:13px;min-width:200px}
+.lm-port{display:flex;align-items:center;gap:6px;font-weight:700;font-size:13px}
+.lm-port .L{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:5px;background:#F6D27A;color:#5E4300;font-weight:900}
+.lm-corpo{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px;align-items:start}
+.lm-corpo.dois{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+@media(max-width:980px){.lm-corpo.dois{grid-template-columns:1fr}}
+.lm-card{background:#fff;border:2px solid var(--ink);border-radius:var(--r);box-shadow:3px 3px 0 var(--ink);padding:14px 16px;overflow-x:auto}
+.lm-card h2{margin:0 0 4px;font-size:18px}
+.lm-card h3{margin:16px 0 6px;font-size:16px}
+.lm-tab{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.lm-tab th{text-align:left;font-weight:700;padding:8px;border-bottom:2px solid var(--line);vertical-align:bottom}
+.lm-tab td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.lm-tab tr.on td{background:var(--blue-l)}
+.lm-radio{width:22px;height:22px;border-radius:50%;border:2px solid #9AA4B2;background:#fff;cursor:pointer;padding:0}
+.lm-radio.on{border-color:var(--blue);box-shadow:inset 0 0 0 4px #fff;background:var(--blue)}
+.lm-pg{display:flex;align-items:center;gap:8px}
+.lm-av{width:30px;height:30px;border-radius:50%;background:#EAF1FB center/cover;border:1px solid var(--line);flex:none}
+.lm-st{color:#0B7A55;white-space:nowrap}.lm-st span{color:var(--ink)}
+.lm-st.cheio{color:#C2261B}
+.lm-id{color:var(--blue)}
+.lm-i{border:0;background:none;cursor:pointer;font-size:14px;padding:0 2px;color:var(--ink2)}
+.lm-i.av{color:#B45309;font-size:16px}
+.lm-pop{display:block;position:relative;z-index:3;margin-top:6px;max-width:360px;background:#fff;border:2px solid var(--ink);border-radius:10px;box-shadow:3px 3px 0 var(--ink);padding:8px 10px;font-weight:400;font-size:13px;color:var(--ink)}
+.lm-pt{display:flex;justify-content:space-between;gap:10px}
+.lm-x{border:0;background:none;font-size:20px;cursor:pointer}
+.lm-res{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px}
+.lm-barra{height:8px;border-radius:99px;background:#E4E9F0;margin:8px 0 4px;overflow:hidden}
+.lm-barra span{display:block;height:100%;background:var(--blue)}
+.lm-lim .lm-sec td{background:#F7F9FC}
+.lm-lim .lm-sec small{display:block;color:var(--muted);font-size:12.5px}
+.lm-lim .lm-conta{padding-left:24px}
+.lm-lim .lm-tot td{font-weight:700;border-bottom:0}
+.lm-num{width:110px;margin:0;display:inline-block}
+.lm-rod{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:12px;flex-wrap:wrap}
+.lm-bts{display:flex;gap:8px;margin-left:auto}
+.lm-aviso{margin:0;max-width:560px;font-size:13.5px}
+.lm-aviso.verm{color:#9B1240;margin-top:8px}
+.lm-treino{margin-top:14px;padding:10px 12px;border:2px dashed #E8A317;border-radius:10px;background:#FFF8E6}
+.lm-treino p{margin:4px 0 8px}

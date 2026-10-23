@@ -30,7 +30,7 @@ window.MODULOS = [
      no formato de caso: a Marina reclama → tutorial guiado → o porquê → Atender e Cola. */
   { id: 'dg-pixel', area: 'diagnostico', status: 'construcao', icone: '📡', titulo: { pt: 'Pixel e eventos', es: 'Píxel y eventos' }, resumo: { pt: 'Compra que não chega, código colado à mão, compras em dobro, valor errado, queda de eventos, Purchase em todas as páginas e compras a mais que as vendas.', es: 'Compra que no llega, código pegado a mano, compras duplicadas, valor incorrecto, caída de eventos, Purchase en todas las páginas y más compras que ventas.' } },
   { id: 'dg-integracoes', area: 'diagnostico', status: 'construcao', icone: '🧩', titulo: { pt: 'Integrações e plataformas', es: 'Integraciones y plataformas' }, resumo: { pt: 'Loja conectada pela Shopify, WooCommerce ou parceiro que não envia o que devia.', es: 'Tienda conectada por Shopify, WooCommerce o socio que no envía lo que debería.' } },
-  { id: 'dg-anuncios', area: 'diagnostico', status: 'construcao', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar; orçamento que varia, comentários ofensivos, cidade vizinha, link com erro e anúncio cortado no celular.', es: 'Anuncio que no se publica, no entrega o dejó de entregar; presupuesto que varía, comentarios ofensivos, ciudad vecina, enlace con error y anuncio cortado en el celular.' } },
+  { id: 'dg-anuncios', area: 'diagnostico', status: 'construcao', icone: '📣', titulo: { pt: 'Anúncios: criação, publicação e entrega', es: 'Anuncios: creación, publicación y entrega' }, resumo: { pt: 'Anúncio que não publica, não veicula ou parou de entregar; orçamento que varia, comentários ofensivos, cidade vizinha, link com erro, anúncio cortado no celular, posicionamentos sem escolha manual e limite de anúncios da Página.', es: 'Anuncio que no se publica, no entrega o dejó de entregar; presupuesto que varía, comentarios ofensivos, ciudad vecina, enlace con error, anuncio cortado en el celular, ubicaciones sin elección manual y límite de anuncios de la página.' } },
   { id: 'dg-catalogo', area: 'diagnostico', status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo e produtos', es: 'Catálogo y productos' }, resumo: { pt: 'Produtos que não aparecem, não sincronizam ou não batem com o Pixel; produto oculto que volta, planilha do Google e esgotado só na Meta.', es: 'Productos que no aparecen, no se sincronizan o no coinciden con el píxel; producto oculto que vuelve, hoja de Google y agotado solo en Meta.' } },
   { id: 'dg-contas', area: 'diagnostico', status: 'construcao', icone: '🏢', titulo: { pt: 'Contas, acessos e portfólio', es: 'Cuentas, accesos y portafolio' }, resumo: { pt: 'Quem tem acesso a quê, ativos no portfólio errado, convite que não chega, limite de contas de anúncios e portfólio novo restrito.', es: 'Quién tiene acceso a qué, activos en el portafolio equivocado, invitación que no llega, límite de cuentas publicitarias y portafolio nuevo restringido.' } },
   { id: 'dg-instagram', area: 'diagnostico', status: 'construcao', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta, não aparece no anúncio ou não pode anunciar (assinatura sem anúncios).', es: 'Instagram que no se conecta, no aparece en el anuncio o no puede anunciar (suscripción sin anuncios).' } },
@@ -6748,6 +6748,95 @@ window.AULAS = {
         encaminhar: L('Se eventos da própria loja sumirem, confira se algum domínio ficou fora da lista.', 'Si desaparecen eventos de la propia tienda, revisa si algún dominio quedó fuera de la lista.')
       },
       fontes: [F('https://www.jonloomer.com/pixel-traffic-permissions-block-and-allow-lists/', 'Jon Loomer: listas de permissão e bloqueio do Pixel (especialista em anúncios da Meta)', 'Jon Loomer: listas de permitidos y bloqueados del píxel (especialista en anuncios de Meta)')]
+    })
+  ]);
+})();
+/* Diagnóstico · casos novos de 23/10/2026 (dúvidas comuns de atendimento, sem nomes). Telas reais vistas na conta de aula em 23/10/2026
+   (rascunho de Vendas e ferramenta Limites de anúncios por Página, PT e ES, nada salvo) e regras conferidas na Central de Ajuda da Meta. */
+(function () {
+  var A = window.AULAS; if (!A) return;
+  function L(pt, es) { return { pt: pt, es: es } }
+  var PERG = L('O que você responde?', '¿Qué respondes?');
+  var NOTA = L('Caso montado a partir de dúvidas comuns de atendimento, com a Marina, de faz-de-conta. As telas foram vistas na conta de aula em 23/10/2026 e a regra foi conferida na Central de Ajuda da Meta (veja as fontes).', 'Caso armado a partir de dudas comunes de atención, con Marina, de mentira. Las pantallas se vieron en la cuenta de práctica el 23/10/2026 y la regla se revisó en el Centro de ayuda de Meta (mira las fuentes).');
+  function op(certa, txt, fb) { return { certa: certa, txt: txt, fb: fb } }
+  function F(url, pt, es) { return { url: url, titulo: L(pt, es), conferido: '23/10/2026' } }
+  function caso(o) { o.status = 'pronta'; o.entender.notas = o.entender.notas || NOTA; o.atender.pergunta = PERG; return o }
+  A['dg-anuncios'] = (A['dg-anuncios'] || []).concat([
+    caso({ id: '09', min: 7,
+      titulo: L('Não consigo tirar o Facebook dos posicionamentos', 'No puedo quitar Facebook de las ubicaciones'),
+      reclamacao: [
+        ['marina', L('Quero anunciar só no Instagram! Antes eu desmarcava o Facebook, agora não acho as caixinhas! Tentei de tudo! 😤', '¡Quiero anunciar solo en Instagram! Antes desmarcaba Facebook, ¡ahora no encuentro las casillas! ¡Probé de todo! 😤')],
+        ['rafa', L('A tela mudou: na campanha de Vendas, a escolha manual não aparece mais no conjunto. Vamos ver o que ficou no lugar.', 'La pantalla cambió: en la campaña de Ventas, la elección manual ya no aparece en el conjunto. Veamos qué quedó en su lugar.')]
+      ],
+      objetivo: L('Explicar que, nas campanhas de Vendas, a escolha manual de posicionamentos não aparece mais, e mostrar o que dá para fazer: controles da conta (4 exclusões) e regras de valor (baixar o lance em até 90%).', 'Explicar que, en las campañas de Ventas, la elección manual de ubicaciones ya no aparece, y mostrar lo que se puede hacer: controles de la cuenta (4 exclusiones) y reglas de valor (bajar la puja hasta un 90%).'),
+      entender: {
+        dialogo: [
+          ['marina', L('Então não tem mais como tirar o Facebook?', '¿Entonces ya no hay forma de quitar Facebook?')],
+          ['rafa', L('Não de tudo. Nos controles da conta dá para excluir só Audience Network, Facebook Marketplace e a Coluna da direita, e isso vale para todas as campanhas da conta. Feed, Stories e Reels do Facebook não aparecem lá.', 'No del todo. En los controles de la cuenta se puede excluir solo Audience Network, Facebook Marketplace y la Columna derecha, y eso vale para todas las campañas de la cuenta. Feed, Historias y Reels de Facebook no aparecen ahí.')],
+          ['pixel', L('Para o Feed do Facebook, a ferramenta é a regra de valor: “Reduzir lance em” até 90%. A tela avisa que o custo por resultado pode subir. A Central de Ajuda ainda mostra escolha manual em Reconhecimento, Tráfego e Engajamento (essa tela não conferimos).', 'Para el Feed de Facebook, la herramienta es la regla de valor: “Disminuir puja” hasta un 90%. La pantalla avisa que el costo por resultado puede subir. El Centro de ayuda todavía muestra elección manual en Reconocimiento, Tráfico e Interacción (esa pantalla no la revisamos).')]
+        ],
+        pontos: [
+          L('<b>O que mudou:</b> no conjunto de Vendas, Posicionamentos vem “Advantage+ ativado”, sem caixinhas. A mudança chega aos poucos: outra conta pode ainda ver a tela antiga.', '<b>Qué cambió:</b> en el conjunto de Ventas, Ubicaciones viene “Advantage+ activado”, sin casillas. El cambio llega de a poco: otra cuenta todavía puede ver la pantalla anterior.'),
+          L('<b>Excluir de vez:</b> Controles da conta › Editar controles de posicionamento: só Audience Network (2), Marketplace e Coluna da direita. Vale para a conta inteira.', '<b>Excluir del todo:</b> Controles de la cuenta › Editar controles de ubicación: solo Audience Network (2), Marketplace y Columna derecha. Vale para toda la cuenta.'),
+          L('<b>Diminuir:</b> Regras de valor de posicionamento › escolher o posicionamento › “Reduzir lance em” até 90% (não zera).', '<b>Disminuir:</b> Reglas de valor de ubicación › elegir la ubicación › “Disminuir puja” hasta un 90% (no llega a cero).')
+        ]
+      },
+      praticar: { texto: L('Na prática, você abre os controles da conta, exclui Marketplace e Coluna da direita, e cria uma regra que baixa o lance no Feed do Facebook (e vê o limite de 90%).', 'En la práctica, abres los controles de la cuenta, excluyes Marketplace y Columna derecha, y creas una regla que baja la puja en el Feed de Facebook (y ves el límite de 90%).'), tour: 'excluir-posicionamento', pagina: 'meta-feed.html?exemplo=1' },
+      atender: {
+        cena: L('Só quero aparecer no Instagram. Por que vocês tiraram a opção de desmarcar o Facebook? Coloquem de volta!', 'Solo quiero aparecer en Instagram. ¿Por qué quitaron la opción de desmarcar Facebook? ¡Pónganla de vuelta!'),
+        opcoes: [
+          op(true, L('“Entendo. Na campanha de Vendas, a Meta deixou os posicionamentos no automático. O que dá para fazer: nos Controles da conta, excluir Marketplace, Coluna da direita e Audience Network (vale para a conta toda); e, com uma regra de valor, baixar o lance no Feed do Facebook em até 90%. Vamos configurar juntos?”', '“Entiendo. En la campaña de Ventas, Meta dejó las ubicaciones en automático. Lo que se puede hacer: en Controles de la cuenta, excluir Marketplace, Columna derecha y Audience Network (vale para toda la cuenta); y, con una regla de valor, bajar la puja en el Feed de Facebook hasta un 90%. ¿Lo configuramos juntos?”'), L('Isso! Diz o que mudou e o que ainda dá para fazer.', '¡Eso! Dice qué cambió y qué todavía se puede hacer.')),
+          op(false, L('“É um erro da sua conta, vou abrir um chamado.”', '“Es un error de tu cuenta, voy a abrir un caso.”'), L('Não é erro: é a tela atual da campanha de Vendas.', 'No es un error: es la pantalla actual de la campaña de Ventas.')),
+          op(false, L('“Exclua o Facebook nos Controles da conta.”', '“Excluye Facebook en Controles de la cuenta.”'), L('Lá só aparecem Audience Network, Marketplace e Coluna da direita: o Feed do Facebook não está na lista.', 'Ahí solo aparecen Audience Network, Marketplace y Columna derecha: el Feed de Facebook no está en la lista.')),
+          op(false, L('“Ponha uma regra de valor com 100% de redução no Facebook.”', '“Pon una regla de valor con 100% de reducción en Facebook.”'), L('A tela não deixa passar de 90%: diminui muito, mas não zera.', 'La pantalla no deja pasar del 90%: baja mucho, pero no llega a cero.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual o objetivo da campanha (Vendas, Tráfego…)?', '¿Cuál es el objetivo de la campaña (Ventas, Tráfico…)?'), L('O que exatamente quer evitar: Facebook inteiro ou só Marketplace/Coluna da direita?', '¿Qué quiere evitar exactamente: Facebook entero o solo Marketplace/Columna derecha?')],
+        conferir: [L('Conjunto de anúncios › Posicionamentos › Controles da conta e Regras de valor de posicionamento.', 'Conjunto de anuncios › Ubicaciones › Controles de la cuenta y Reglas de valor de ubicación.')],
+        frase: L('Nesta campanha, os posicionamentos ficam no automático; dá para excluir Marketplace, Coluna da direita e Audience Network nos controles da conta e baixar o lance no Facebook em até 90% com uma regra de valor.', 'En esta campaña, las ubicaciones quedan en automático; se puede excluir Marketplace, Columna derecha y Audience Network en los controles de la cuenta y bajar la puja en Facebook hasta un 90% con una regla de valor.'),
+        passos: [L('Controles da conta › excluir o que a lista permite.', 'Controles de la cuenta › excluir lo que la lista permite.'), L('Regra de valor › Reduzir lance no Facebook (até 90%).', 'Regla de valor › Disminuir puja en Facebook (hasta 90%).'), L('Avisar que o custo por resultado pode subir.', 'Avisar que el costo por resultado puede subir.')],
+        encaminhar: L('Não é caso para escalar: é o comportamento atual da tela. Se o cliente vê algo diferente, peça um print do conjunto de anúncios.', 'No es un caso para escalar: es el comportamiento actual de la pantalla. Si el cliente ve algo distinto, pide una captura del conjunto de anuncios.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/338215489130978', 'O que fazer em vez de excluir posicionamentos de anúncios', 'Qué hacer en lugar de excluir ubicaciones de anuncios'), F('https://www.facebook.com/business/help/535014515741813', 'Sobre regras de valor', 'Acerca de las reglas de valor'), F('https://www.facebook.com/business/help/175741192481247', 'Como escolher posicionamentos de anúncios', 'Cómo elegir ubicaciones de anuncios')]
+    }),
+    caso({ id: '10', min: 7,
+      titulo: L('Anúncio novo não publica: limite de anúncios da Página', 'El anuncio nuevo no se publica: límite de anuncios de la página'),
+      reclamacao: [
+        ['marina', L('Apareceu o erro 3253001 e o anúncio novo não sai! Eu só tenho uns 70 anúncios, como assim limite de 250? 😱', '¡Apareció el error 3253001 y el anuncio nuevo no sale! Yo solo tengo unos 70 anuncios, ¿cómo que límite de 250? 😱')],
+        ['rafa', L('O limite não é da sua conta: é da Página. Conta todo mundo que anuncia com ela. Vamos ver quem está usando.', 'El límite no es de tu cuenta: es de la página. Cuenta a todos los que anuncian con ella. Veamos quién la está usando.')]
+      ],
+      objetivo: L('Entender o limite de anúncios por Página (soma de todas as contas e parceiros), achar quem está usando e resolver: desativar/excluir anúncios antigos e, se preciso, dividir o limite entre parceiros.', 'Entender el límite de anuncios por página (suma de todas las cuentas y socios), encontrar quién lo usa y resolver: desactivar/eliminar anuncios viejos y, si hace falta, repartir el límite entre socios.'),
+      entender: {
+        dialogo: [
+          ['marina', L('Então a agência que faz meus anúncios também conta?', '¿Entonces la agencia que hace mis anuncios también cuenta?')],
+          ['rafa', L('Conta. Todo anúncio em veiculação ou em análise com a sua Página entra, de qualquer conta. Agendado só conta quando começa. Criativo dinâmico conta como um só.', 'Cuenta. Todo anuncio en circulación o en revisión con tu página entra, de cualquier cuenta. Uno programado solo cuenta cuando empieza. Un creativo dinámico cuenta como uno solo.')],
+          ['pixel', L('O limite vem do maior gasto mensal da Página: 250 (menos de US$ 100 mil), 1.000, 5.000 ou 20.000. Não dá para pedir aumento, e criar outra Página atrapalha (leilão e aprendizado). Quem tem controle total da Página pode dividir o limite entre parceiros.', 'El límite viene del mayor gasto mensual de la página: 250 (menos de US$ 100 mil), 1.000, 5.000 o 20.000. No se puede pedir un aumento, y crear otra página perjudica (subasta y aprendizaje). Quien tiene control total de la página puede repartir el límite entre socios.')]
+        ],
+        pontos: [
+          L('<b>Onde ver:</b> Gerenciador de Anúncios › Todas as ferramentas › Anúncios › Limites de anúncios por Página.', '<b>Dónde ver:</b> Administrador de anuncios › Todas las herramientas › Anuncios › Límites de anuncios por página.'),
+          L('<b>No limite:</b> não veicula anúncio novo nem publica edições (só dá para desativar) até baixar.', '<b>En el límite:</b> no pone en circulación anuncios nuevos ni publica cambios (solo se puede desactivar) hasta bajar.'),
+          L('<b>Resolver:</b> desativar ou excluir anúncios antigos e reativar o que deu erro; o dono da Página pode pôr limites para parceiros e pessoas.', '<b>Resolver:</b> desactivar o eliminar anuncios viejos y reactivar el que dio error; el dueño de la página puede poner límites para socios y personas.')
+        ]
+      },
+      praticar: { texto: L('Na prática, você abre a ferramenta, descobre que a agência parceira usa 180 dos 250, divide o limite e vê as vagas voltarem quando anúncios antigos são desativados.', 'En la práctica, abres la herramienta, descubres que la agencia socia usa 180 de los 250, repartes el límite y ves volver los lugares cuando se desactivan anuncios viejos.'), tour: 'limite-pagina', pagina: 'meta-limites.html?problema=1' },
+      atender: {
+        cena: L('Deu limite de anúncios atingido. Aumenta meu limite aí, por favor, eu pago mais!', 'Salió límite de anuncios alcanzado. Auméntame el límite, por favor, ¡pago más!'),
+        opcoes: [
+          op(true, L('“Esse limite não é aumentado à mão: ele sobe sozinho conforme o maior gasto mensal da Página. E ele soma todos que anunciam com a sua Página, inclusive parceiros. Vamos abrir Limites de anúncios por Página, ver quem está usando e desativar anúncios antigos; depois é só reativar o que deu erro.”', '“Ese límite no se aumenta a mano: sube solo según el mayor gasto mensual de la página. Y suma a todos los que anuncian con tu página, incluso socios. Abramos Límites de anuncios por página, veamos quién lo usa y desactivemos anuncios viejos; después solo hay que reactivar el que dio error.”'), L('Isso! Regra, onde ver e o caminho da solução.', '¡Eso! Regla, dónde ver y el camino de la solución.')),
+          op(false, L('“Vou pedir o aumento para a equipe.”', '“Voy a pedir el aumento al equipo.”'), L('Não existe pedido de aumento: o nível sobe com o gasto.', 'No existe pedido de aumento: el nivel sube con el gasto.')),
+          op(false, L('“Crie outra Página e anuncie por ela.”', '“Crea otra página y anuncia con ella.”'), L('A própria Meta desaconselha: as Páginas disputam o mesmo leilão e o aprendizado se divide.', 'La propia Meta lo desaconseja: las páginas compiten en la misma subasta y el aprendizaje se divide.')),
+          op(false, L('“Crie outra conta de anúncios.”', '“Crea otra cuenta publicitaria.”'), L('Não adianta: o limite é da Página, somando todas as contas.', 'No sirve: el límite es de la página, sumando todas las cuentas.'))
+        ]
+      },
+      cola: {
+        perguntas: [L('Qual Página está no anúncio (Identidade)?', '¿Qué página está en el anuncio (Identidad)?'), L('Mais alguém anuncia com essa Página (agência, outra conta)?', '¿Alguien más anuncia con esa página (agencia, otra cuenta)?')],
+        conferir: [L('Todas as ferramentas › Anúncios › Limites de anúncios por Página › a Página › tabela por parceiros, dono e indivíduos.', 'Todas las herramientas › Anuncios › Límites de anuncios por página › la página › tabla por socios, propietario y personas.')],
+        frase: L('O limite de anúncios é da Página e soma todo mundo que anuncia com ela; para liberar, é preciso desativar ou excluir anúncios antigos.', 'El límite de anuncios es de la página y suma a todos los que anuncian con ella; para liberar, hay que desactivar o eliminar anuncios viejos.'),
+        passos: [L('Ver quem usa o limite na ferramenta.', 'Ver quién usa el límite en la herramienta.'), L('Desativar ou excluir anúncios antigos.', 'Desactivar o eliminar anuncios viejos.'), L('Reativar o anúncio que deu erro.', 'Reactivar el anuncio que dio error.')],
+        encaminhar: L('Se os anúncios são de um parceiro, quem desativa é ele; quem tem controle total da Página pode limitar quanto cada parceiro usa.', 'Si los anuncios son de un socio, quien los desactiva es él; quien tiene control total de la página puede limitar cuánto usa cada socio.')
+      },
+      fontes: [F('https://www.facebook.com/business/help/661294713344948', 'Como solucionar problemas de limite de anúncios atingido: erro 3253001', 'Cómo solucionar problemas de límite de anuncios alcanzado: error 3253001')]
     })
   ]);
 })();

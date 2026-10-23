@@ -74,7 +74,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     'meta-suite.html': { pt: 'Meta Business Suite|posts, mensagens e as contas do Facebook e do Instagram', es: 'Meta Business Suite|publicaciones, mensajes y las cuentas de Facebook e Instagram' },
     'meta-anuncios.html': GA(), 'meta-feed.html': GA('anúncio no Feed', 'anuncio en el Feed'), 'meta-publicos.html': GA('Públicos', 'Públicos'),
     'meta-regras.html': GA('Regras automatizadas', 'Reglas automatizadas'), 'meta-relatorios.html': GA('Relatórios', 'Informes'), 'meta-entrega.html': GA('entrega dos anúncios', 'entrega de los anuncios'),
-    'meta-shopads.html': GA('Anúncios das Lojas', 'Anuncios de Tiendas'),
+    'meta-shopads.html': GA('Anúncios das Lojas', 'Anuncios de Tiendas'), 'meta-limites.html': GA('Limites de anúncios por Página', 'Límites de anuncios por página'),
     'meta-catalogo.html': { pt: 'Gerenciador de Comércio|o catálogo de produtos e as fontes de dados', es: 'Administrador de ventas|el catálogo de productos y las fuentes de datos' },
     'meta-commerce.html': { pt: 'Gerenciador de Comércio|a loja no Facebook e no Instagram', es: 'Administrador de ventas|la tienda en Facebook e Instagram' },
     'meta-eventos.html': { pt: 'Gerenciador de Eventos|o Pixel, a API de Conversões e os eventos do site', es: 'Administrador de eventos|el píxel, la API de conversiones y los eventos del sitio' },
