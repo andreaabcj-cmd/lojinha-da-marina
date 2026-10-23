@@ -34,15 +34,13 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function T(o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') }
   var UI = { passo: { pt: 'Passo', es: 'Paso' }, de: { pt: 'de', es: 'de' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, fim: { pt: 'Concluir 🎉', es: 'Terminar 🎉' },
     clique: { pt: '👆 clique no destaque', es: '👆 haz clic en lo destacado' }, sair: { pt: 'Sair do tutorial', es: 'Salir del tutorial' }, procura: { pt: 'Procurando o próximo lugar…', es: 'Buscando el siguiente lugar…' } };
-  var css = '.tg-recorte{position:fixed;z-index:2147482999;border-radius:16px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);pointer-events:none;opacity:0;transition:left .75s cubic-bezier(.16,1,.3,1),top .75s cubic-bezier(.16,1,.3,1),width .75s cubic-bezier(.16,1,.3,1),height .75s cubic-bezier(.16,1,.3,1),opacity .6s}' +
+  var css = '.tg-recorte{position:fixed;z-index:2147482999;border-radius:16px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);pointer-events:none;opacity:0;transition:all .35s cubic-bezier(.3,.1,.2,1)}' +
     '.tg-avisa{margin-top:8px;padding:6px 8px;border-radius:8px;background:#FDE8EF;color:#9B1240;font-size:13px;font-weight:600}.tg-treme{animation:tgTreme .45s}@keyframes tgTreme{20%{margin-left:-6px}40%{margin-left:6px}60%{margin-left:-4px}80%{margin-left:3px}}' +
     '.tg-holo.na-janela{box-shadow:none}body.em-tour .fundo{background:transparent}' +
-    '.tg-holo{position:fixed;z-index:2147483000;border-radius:10px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);outline:3px solid #F2B632;outline-offset:3px;pointer-events:none;transition:left .75s cubic-bezier(.16,1,.3,1),top .75s cubic-bezier(.16,1,.3,1),width .75s cubic-bezier(.16,1,.3,1),height .75s cubic-bezier(.16,1,.3,1),opacity .6s;animation:tgPulso 2.4s ease-in-out infinite}' +
+    '.tg-holo{position:fixed;z-index:2147483000;border-radius:10px;box-shadow:0 0 0 9999px rgba(14,24,44,.55);outline:3px solid #F2B632;outline-offset:3px;pointer-events:none;transition:all .35s cubic-bezier(.3,.1,.2,1);animation:tgPulso 1.6s infinite}' +
     '@keyframes tgPulso{50%{outline-offset:7px}}' +
-    '.tg-balao{position:fixed;z-index:2147483001;width:370px;max-width:calc(100vw - 24px);background:#fff;border:3px solid #16294A;border-radius:14px;box-shadow:5px 5px 0 #16294A;padding:24px 14px 12px 74px;font:15px/1.45 "Segoe UI",system-ui,Arial,sans-serif;color:#16294A;transition:top .85s cubic-bezier(.16,1,.3,1) .05s,left .85s cubic-bezier(.16,1,.3,1) .05s}' +
-    '.tg-balao .tg-masc{position:absolute;left:10px;top:12px;animation:tgBoing 3.2s ease-in-out infinite}@keyframes tgBoing{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(-3deg)}}' +
-    '.tg-balao>:not(.tg-masc):not(.tg-sair):not(.tg-bal-min){animation:tgEntra .65s cubic-bezier(.16,1,.3,1) both}@keyframes tgEntra{from{opacity:0;transform:translateY(6px);filter:blur(5px)}}' +
-    '.tg-balao.tg-vidro{border-color:transparent;border-radius:18px;background:rgba(255,255,255,.93);box-shadow:0 22px 44px rgba(10,20,40,.28);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}.tg-vidro .tg-btn{border-color:transparent;border-radius:10px;box-shadow:0 6px 16px -4px rgba(47,111,214,.55)}.tg-vidro .tg-btn.sec{box-shadow:0 4px 12px -4px rgba(22,41,74,.3)}.tg-vidro .tg-onde,.tg-vidro .tg-passos{border-color:transparent;box-shadow:0 4px 12px -6px rgba(22,41,74,.3)}' +
+    '.tg-balao{position:fixed;z-index:2147483001;width:370px;max-width:calc(100vw - 24px);background:#fff;border:3px solid #16294A;border-radius:14px;box-shadow:5px 5px 0 #16294A;padding:24px 14px 12px 74px;font:15px/1.45 "Segoe UI",system-ui,Arial,sans-serif;color:#16294A;transition:top .35s,left .35s}' +
+    '.tg-balao .tg-masc{position:absolute;left:10px;top:12px;animation:tgBoing 1.2s ease-in-out infinite}@keyframes tgBoing{50%{transform:translateY(-5px)}}' +
     '.tg-balao b{display:block;font-size:16px;margin-bottom:3px}.tg-balao p{margin:0 0 8px;color:#3A4D6B}' +
     '.tg-dica{background:#FFF4D6;border-radius:8px;padding:6px 8px;font-size:13px;color:#5E4300}' +
     '.tg-ctrl{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}.tg-ctrl small{color:#64748B;white-space:nowrap}' +
@@ -103,7 +101,6 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (holo) return;
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
     holo = document.createElement('div'); holo.className = 'tg-holo'; balao = document.createElement('div'); balao.className = 'tg-balao';
-    try { if (JSON.parse(localStorage.getItem('plat.tema') || '"mola"') === 'vidro') balao.classList.add('tg-vidro') } catch (e) { }   // tema Vidro da plataforma
     recorte = document.createElement('div'); recorte.className = 'tg-recorte'; document.body.appendChild(recorte);
     document.body.appendChild(holo); document.body.appendChild(balao); document.body.classList.add('em-tour');
     balao.addEventListener('click', function (e) {
