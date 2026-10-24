@@ -2,7 +2,8 @@
    Personagens e objetos em pixel art (os mesmos de personagens.js); luz, céu e interface lisos por cima.
    Uso: INTRO.abrir() abre por cima da página (Pular, Começar, Ver de novo, Esc fecha);
         INTRO.abrir({ alvo: elemento }) desenha dentro de um elemento (página de prévia).
-   Depende de personagens.js (PERSONAGEM e PERSONAGEM_MAPA). */
+   Depende de personagens.js (PERSONAGEM e PERSONAGEM_MAPA); o som vem de intro-som.js (opcional).
+   Som: INTRO.abrir({ som: true }) começa com som (aberta por clique); sem isso começa mudo, com "Ativar som". */
 (function () {
   var LANG = (function () { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } })();
   function T(pt, es) { return LANG === 'es' ? es : pt }
@@ -30,6 +31,8 @@
     '.it-placa{position:absolute;left:5.5%;top:24%;z-index:3;max-width:min(40%,380px);display:flex;gap:12px;padding:12px 16px 13px 12px;border-radius:14px;background:rgba(8,14,32,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);clip-path:inset(0 100% 0 0 round 14px);transition:clip-path .7s cubic-bezier(.2,.8,.2,1),opacity .35s;font-size:clamp(12px,1.55vw,17px);line-height:1.3;color:#D5DEF0}' +
     '.it-placa.dir{left:auto;right:5%;top:auto;bottom:calc(12% + 4.6em)}.it-placa.in{clip-path:inset(0 0 0 0 round 14px)}.it-placa.out{opacity:0}' +
     '.it-placa i{flex:0 0 5px;border-radius:3px;background:var(--cor)}.it-placa b{display:block;color:#fff;font-size:2em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1.05;margin-bottom:3px}' +
+    '.it-som{position:absolute;top:14px;right:104px;z-index:6;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:999px;padding:7px 13px;font:600 13px "Segoe UI",sans-serif;cursor:pointer;opacity:.8}' +
+    '.it-som.mudo{background:#FFD65A;color:#16294A;border-color:#FFD65A;opacity:1;box-shadow:0 4px 16px rgba(255,214,90,.35)}' +
     '.it-pular{position:absolute;top:14px;right:14px;z-index:6;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:999px;padding:7px 15px;font:600 13px "Segoe UI",sans-serif;cursor:pointer;opacity:.75;transition:opacity .2s}' +
     '.it-pular:hover,.it-fechar:hover{opacity:1}' +
     '.it-fechar{position:absolute;top:14px;left:14px;z-index:6;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:999px;padding:7px 15px;font:600 13px "Segoe UI",sans-serif;cursor:pointer;opacity:.75}' +
@@ -201,7 +204,7 @@
     if (!MB) prepara();
     if (!document.getElementById('it-css')) { var st = document.createElement('style'); st.id = 'it-css'; st.textContent = CSS; document.head.appendChild(st) }
     var fundo = null, cena = document.createElement('div'); cena.className = 'it-cena';
-    cena.innerHTML = '<canvas></canvas>' + (op.alvo ? '' : '<button class="it-fechar" data-it="fechar">✕ ' + T('Fechar', 'Cerrar') + '</button>') + '<button class="it-pular">' + T('Pular ⏭', 'Saltar ⏭') + '</button>' +
+    cena.innerHTML = '<canvas></canvas>' + (op.alvo ? '' : '<button class="it-fechar" data-it="fechar">✕ ' + T('Fechar', 'Cerrar') + '</button>') + '<button class="it-som" data-it="som"></button><button class="it-pular">' + T('Pular ⏭', 'Saltar ⏭') + '</button>' +
       '<div class="it-titulo"><div class="it-turma"><div>' + PERSONAGEM('marina', 8) + '</div><div>' + PERSONAGEM('rafa', 8) + '</div><div>' + PERSONAGEM('pixel', 8, 'feliz') + '</div></div>' +
       '<h1>Lojinha da Marina</h1><p>' + T('A jornada da Marina começa aqui.', 'El camino de Marina empieza aquí.') + '</p>' +
       '<div class="it-botoes"><button class="prim" data-it="comecar">' + T('Começar', 'Empezar') + '</button><button class="sec" data-it="denovo">' + T('↺ Ver de novo', '↺ Ver de nuevo') + '</button></div></div>' +
@@ -212,6 +215,9 @@
     var offA = document.createElement('canvas'), offB = document.createElement('canvas');
     var tit = cena.querySelector('.it-titulo'), barra = cena.querySelector('.it-barra i');
     var t = 0, ult = performance.now(), rodando = true, vivo = true;
+    var som = window.INTRO_SOM ? window.INTRO_SOM.criar(!!op.som) : null;
+    function rotuloSom() { var b = cena.querySelector('.it-som'); if (!som) { b.remove(); return } var on = som.ligado(); b.textContent = on ? '🔊' : '🔇 ' + T('Ativar som', 'Activar sonido'); b.classList.toggle('mudo', !on); b.title = on ? T('Tirar o som', 'Quitar el sonido') : '' }
+    rotuloSom();
 
     function px(x, y, w, h, cor) { ctx.fillStyle = cor; ctx.fillRect(x, y, w, h) }
     function sprite(img, x, y, esc) { ctx.drawImage(img, x, y, img.width * esc, img.height * esc) }
@@ -509,6 +515,7 @@
           else if (u.placa) { el.className = 'it-placa' + (u.cls ? ' ' + u.cls : ''); el.style.setProperty('--cor', u.placa.cor); el.innerHTML = '<i></i><span><b>' + u.placa.nome + '</b>' + u.placa.txt + '</span>' }
           else { el.className = 'it-chat'; el.innerHTML = '<span class="bal">' + u.chat.txt + '</span><span class="av">' + PERSONAGEM('rafa', 3, 'feliz') + '</span>' }
           cena.appendChild(el); vivos[i] = el;
+          if (som && rodando) som.ui(u);
           requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('in') }) });
         } else if (!dentro && el) {
           delete vivos[i]; el.classList.remove('in'); el.classList.add('out'); setTimeout(function () { el.remove() }, 500);
@@ -518,9 +525,10 @@
     function limpaUI() { for (var k in vivos) { vivos[k].remove(); delete vivos[k] } }
 
     /* ===== controles ===== */
-    function vai(novo) { t = Math.max(0, Math.min(DUR, novo)); limpaUI() }
+    function vai(novo) { t = Math.max(0, Math.min(DUR, novo)); limpaUI(); if (som) som.seek() }
     function fecha() {
       if (!vivo) return; vivo = false; aberta = null; removeEventListener('keydown', tecla); removeEventListener('resize', ajusta);
+      if (som) som.parar();
       if (fundo) { fundo.classList.remove('on'); setTimeout(function () { fundo.remove() }, 400) } else cena.remove();
       if (op.aoFechar) op.aoFechar();
     }
@@ -529,6 +537,7 @@
       var b = e.target.closest('[data-it]'); if (!b) return;
       if (b.getAttribute('data-it') === 'denovo') { vai(0); rodando = true }
       else if (b.getAttribute('data-it') === 'fechar') fecha()
+      else if (b.getAttribute('data-it') === 'som') { if (som) { som.ligar(!som.ligado()); rotuloSom() } }
       else { if (op.aoComecar) op.aoComecar(); else fecha() }
     });
     cena.querySelector('.it-barra').onclick = function (e) { var b = this.getBoundingClientRect(); vai((e.clientX - b.left) / b.width * DUR) };
@@ -545,11 +554,12 @@
       var dt = Math.min(.05, (agora - ult) / 1000); ult = agora;
       if (rodando && t < DUR) t = Math.min(DUR, t + dt);
       desenha(td(t)); ui(t);
+      if (som) som.tick(t, td(t), rodando && t < DUR);
       tit.classList.toggle('on', t >= FIM);
       barra.style.width = (t / DUR * 100) + '%';
       requestAnimationFrame(laco);
     })(ult);
-    aberta = { vai: vai, fecha: fecha, pausa: function () { rodando = false }, toca: function () { rodando = true }, t: function () { return t } };
+    aberta = { som: som, td: td, ui: UI, vai: vai, fecha: fecha, pausa: function () { rodando = false }, toca: function () { rodando = true }, t: function () { return t } };
     return aberta;
   }
   window.INTRO = { abrir: abrir, duracao: DUR };

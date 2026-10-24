@@ -117,3 +117,21 @@ Pixel e Rafa são apresentados com placa de nome; mais respiro depois da ideia (
 A feirinha (cena 2 do rascunho) ficou de fora.
 Para refinar os personagens à mão: os desenhos vêm de `assets/js/personagens.js`; as expressões da Marina na intro
 trocam as linhas 5–8 (olhos) e 10–11 (boca) do desenho dela.
+
+---
+
+## Som (25/10/2026) — `assets/js/intro-som.js`
+
+Tudo gerado no navegador (Web Audio): nada de arquivo de terceiros, nada de licença, nada pago.
+- **Efeitos:** pincel, "plim" da caneca pronta, lâmpada da ideia, pulos e pousos, notebook deslizando e ligando,
+  produtos caindo na vitrine, coração do Instagram, contador "atualizando", calendário virando, celular vibrando,
+  notificações, Pixel saindo da tela, "Publicar" + sucesso, celulares da cidade, caixa voando e caindo, confete, "Compra ✓".
+- **Vozinhas** (estilo Animal Crossing): a Marina (aguda) nas frases que ela pensa, o Rafa (grave) nos balões,
+  o Pixel com bipes quando a placa dele aparece. A legenda continua sendo a fala — funciona igual em PT e ES.
+- **Trilha composta no código** (chiptune, 96 bpm), mudando com a história: calma (noite) → arpejo (ideia) →
+  vazia com "relógio" (ninguém aparece) → saltitante (Pixel e Rafa) → constrói (anúncio) → cheia (cidade) →
+  só o fundo (dias depois) → festa (pedido) → acorde final no título.
+- **Ligado/mudo:** aberta pelo clique na Marina, começa com som; na 1ª visita (abre sozinha) começa muda com
+  "🔇 Ativar som" (o navegador não deixa tocar sem clique). A escolha fica guardada (plat.introSom).
+- A música do estúdio da Ali (MiniMax Music 3) **não** foi usada: a licença exige autorização acima de US$ 20 mi de
+  faturamento (do usuário + empresas ligadas), crédito "MiniMax-Music3" na tela e aviso de IA.

@@ -568,10 +568,10 @@
     if (tela !== 'aula') mov().cascata($('.pl-main'));
     if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);
     // a intro (assets/js/intro.js): sozinha na primeira visita ao início; depois, clicando na Marina
-    if (tela === 'inicio' && window.INTRO && !lsGet('plat.introVista', false)) { lsSet('plat.introVista', true); abreIntro() }
+    if (tela === 'inicio' && window.INTRO && !lsGet('plat.introVista', false)) { lsSet('plat.introVista', true); abreIntro(false) }   // abriu sozinha: começa muda (o navegador não deixa tocar sem clique)
   }
-  function abreIntro() { window.INTRO.abrir({ aoComecar: function () { location.href = 'modulos.html' } }) }
-  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-intro]') && window.INTRO) abreIntro() });
+  function abreIntro(comSom) { window.INTRO.abrir({ som: !!comSom, aoComecar: function () { location.href = 'modulos.html' } }) }
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-intro]') && window.INTRO) abreIntro(true) });
   function inicia() {
     // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial peel objetivode
     try { ['loja.labLoja', 'loja.daAberto', 'tour.ativo', 'tour.volta'].forEach(function (k) { sessionStorage.removeItem(k) }); localStorage.setItem('loja.aulaAberta', 'false') } catch (e) { }
