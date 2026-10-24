@@ -192,8 +192,11 @@ const B = [
   ['quais as causas do aprendizado limitado', ['entrega/04']],
   ['quero vender na argentina com preço em pesos', ['catalogo/08']],
   ['como traduzir meu catálogo para espanhol', ['catalogo/08']],
-  ['como criar uma conversão personalizada pela url', ['pixel-avancado/06']],
-  ['quero contar lead quando abrir a página de encomenda recebida sem mexer no código', ['pixel-avancado/06']]
+  ['como criar uma conversão personalizada pela url', ['pixel-avancado/07']],
+  ['quero contar lead quando abrir a página de encomenda recebida sem mexer no código', ['pixel-avancado/07']],
+  ['tem um site que eu não conheço mandando eventos no meu pixel', ['pixel-avancado/05']],
+  ['os parâmetros sumiram dos eventos da minha farmácia', ['pixel-avancado/06']],
+  ['preciso verificar o domínio para o pixel funcionar?', ['portfolio-avancado/05']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {

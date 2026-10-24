@@ -25,7 +25,7 @@
   /* ---------- topo ---------- */
   function topo(ativo) {
     var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['diagnostico.html', 'diagnostico'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['faq.html', 'faq']];
-    if (window.MODO_PUBLICO) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // site publicado: as abas Simuladores e Laboratório ficam escondidas
+    if (window.PUB_ESCONDIDA) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // abas Simuladores e Laboratório escondidas (site publicado e, desde 25/10, encostadas)
     if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('marina', 1.5) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
@@ -154,7 +154,7 @@
     ferramenta: function () {
       var id = Q.get('f'), f = window.FERRAMENTAS[id]; if (!f || !f.montar) return '<p>' + T({ pt: 'Ferramenta não encontrada.', es: 'Herramienta no encontrada.' }) + '</p>';
       setTimeout(function () { f.montar($('#ferr'), T, LANG) });
-      return '<p class="pl-trilha"><a href="laboratorio.html">' + T(U.laboratorio) + '</a> ›</p><h1 class="pl-h1">' + T(f.titulo) + '</h1><p class="pl-lead">' + T(f.resumo) + '</p><div class="palco"><div id="ferr"></div></div>';
+      return '<p class="pl-trilha">' + (window.PUB_ESCONDIDA && window.PUB_ESCONDIDA('laboratorio.html') ? '<a href="modulos.html">' + T(U.modulos) + '</a>' : '<a href="laboratorio.html">' + T(U.laboratorio) + '</a>') + ' ›</p><h1 class="pl-h1">' + T(f.titulo) + '</h1><p class="pl-lead">' + T(f.resumo) + '</p><div class="palco"><div id="ferr"></div></div>';
     }
   };
 
@@ -220,14 +220,16 @@
       ['desduplicar-eventos', 'loja.html', 'pixel-avancado', '03', { pt: 'Como desduplicar eventos do navegador e do servidor', es: 'Cómo deduplicar eventos del navegador y del servidor' }],
       ['info-proibida', 'loja.html', 'pixel-avancado', '04', { pt: 'Como achar e remover informação sensível dos eventos', es: 'Cómo encontrar y quitar información sensible de los eventos' }],
       ['consentimento-pixel', 'loja.html', 'pixel-avancado', '04', { pt: 'Como fazer o Pixel esperar o aceite de cookies', es: 'Cómo hacer que el píxel espere la aceptación de cookies' }],
-      ['conversao-personalizada', 'meta-eventos.html', 'pixel-avancado', '06', { pt: 'Como criar uma conversão personalizada com regra de URL', es: 'Cómo crear una conversión personalizada con regla de URL' }],
-      ['controles-pixel', 'meta-eventos.html', 'pixel-avancado', '05', { pt: 'Como ver a categoria da fonte, a configuração básica e criar a lista de permissão de tráfego', es: 'Cómo ver la categoría de la fuente, la configuración básica y crear la lista de permitidos de tráfico' }],
-      ['dominio-portfolio', 'meta-portfolio.html?exemplo=1', 'pixel-avancado', '05', { pt: 'Como achar a verificação de domínio e escrever o domínio raiz', es: 'Cómo encontrar la verificación de dominio y escribir el dominio raíz' }] ] },
+      ['conversao-personalizada', 'meta-eventos.html', 'pixel-avancado', '07', { pt: 'Como criar uma conversão personalizada com regra de URL', es: 'Cómo crear una conversión personalizada con regla de URL' }],
+      ['permissoes-trafego', 'meta-eventos.html', 'pixel-avancado', '05', { pt: 'Como ver quem usa o seu Pixel e abrir a lista de permissão de tráfego', es: 'Cómo ver quién usa tu píxel y abrir la lista de permitidos de tráfico' }],
+      ['categoria-pixel', 'meta-eventos.html', 'pixel-avancado', '06', { pt: 'Como ver a categoria da fonte de dados e a configuração básica', es: 'Cómo ver la categoría de la fuente de datos y la configuración básica' }]
+      ] },
     { m: 'portfolio-avancado', itens: [
       ['verificar-empresa', 'meta-portfolio.html', 'portfolio-avancado', '01', { pt: 'Como verificar a empresa na Central de Segurança', es: 'Cómo verificar la empresa en el Centro de seguridad' }],
       ['corrigir-documento', 'meta-portfolio.html', 'portfolio-avancado', '02', { pt: 'Como corrigir documentos recusados da verificação', es: 'Cómo corregir documentos rechazados de la verificación' }],
       ['corrigir-permissao', 'meta-portfolio.html', 'portfolio-avancado', '03', { pt: 'Como alterar o acesso de uma pessoa ao portfólio', es: 'Cómo cambiar el acceso de una persona al portafolio' }],
-      ['excluir-portfolio', 'meta-portfolio.html', 'portfolio-avancado', '04', { pt: 'Como entender e resolver o que impede excluir o portfólio', es: 'Cómo entender y resolver lo que impide eliminar el portafolio' }] ] },
+      ['excluir-portfolio', 'meta-portfolio.html', 'portfolio-avancado', '04', { pt: 'Como entender e resolver o que impede excluir o portfólio', es: 'Cómo entender y resolver lo que impide eliminar el portafolio' }],
+      ['dominio-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio-avancado', '05', { pt: 'Como achar a verificação de domínio e escrever o domínio raiz', es: 'Cómo encontrar la verificación de dominio y escribir el dominio raíz' }] ] },
     { m: 'dg-pixel', itens: [
       ['investigar-purchase', 'loja.html', 'dg-pixel', '01', { pt: 'Como investigar um Purchase que não chega (compra de teste, Eventos de teste, código-fonte)', es: 'Cómo investigar un Purchase que no llega (compra de prueba, Probar eventos, código fuente)' }],
       ['colar-codigo-base', 'meta-eventos.html', 'dg-pixel', '02', { pt: 'Como colar o código base do Pixel (copiar, colar no head, salvar, testar)', es: 'Cómo pegar el código base del píxel (copiar, pegar en el head, guardar, probar)' }],
@@ -460,7 +462,7 @@
       var p = partes[passoAtual], h = '';
       if (p === 'reclamacao') h = chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T(a.praticar ? { pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' } : { pt: 'Ver por que acontece', es: 'Ver por qué pasa' }) + '</button></p>';
       else if (p === 'entender') h = chat(a.entender.dialogo, a.antes) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
-      else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<div class="ferr-box" id="ferr"></div><p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>'; setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
+      else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<div class="ferr-box" id="ferr"></div>' + (!window.LAB_ABERTA || window.LAB_ABERTA(a.ferramenta) ? '<p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>' : ''); setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
       else if (p === 'praticar') {
         var volta = function (id) { return encodeURIComponent(aqui + '&passo=' + (passoAtual + (a.praticar.opcoes ? 1 : 2)) + '&feito=' + id) },   // várias práticas: volta para escolher outra; uma só: segue para o Atender
           fp = lsGet('plat.praticas', {});

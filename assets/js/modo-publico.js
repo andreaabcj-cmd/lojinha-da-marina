@@ -10,7 +10,23 @@
   var PUB = ESCONDER_ABAS && (!local || forca);
   var ABAS = /^(simuladores|laboratorio)\.html$/i;
   window.MODO_PUBLICO = PUB;
-  window.PUB_ESCONDIDA = function (url) { return PUB && ABAS.test(String(url || '').split(/[?#]/)[0].split('/').pop()) };
+  /* ENCOSTADOS (25/10/2026, pedido do André): Laboratório e Simuladores ficam escondidos também no computador dele, para o foco
+     ficar nos módulos. Só a ferramenta "Código base explicado" continua aberta. As telas de simulador abertas pelas práticas das
+     aulas continuam funcionando. Para trazer de volta: ENCOSTADOS = false. */
+  var ENCOSTADOS = true, LAB_ABERTA = ['codigo-base'];
+  window.PUB_ESCONDIDA = function (url) { return (PUB || ENCOSTADOS) && ABAS.test(String(url || '').split(/[?#]/)[0].split('/').pop()) };
+  window.LAB_ABERTA = function (f) { return !(PUB || ENCOSTADOS) || LAB_ABERTA.indexOf(f) >= 0 };
+  if (PUB || ENCOSTADOS) {
+    var aqui = location.pathname.split('/').pop();
+    var fora = ABAS.test(aqui) || (/^ferramenta\.html$/i.test(aqui) && LAB_ABERTA.indexOf(q.get('f')) < 0);
+    if (fora) location.replace('modulos.html');
+    // "← voltar à plataforma" dos simuladores e outros links para as abas escondidas levam aos Módulos
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+      var h = a.getAttribute('href') || '';
+      if (window.PUB_ESCONDIDA(h)) { e.preventDefault(); location.href = 'modulos.html' }
+    }, true);
+  }
   /* Conteúdo ainda não conferido em tela real: some do site publicado (módulos, listas, colas, busca, "Na próxima aula").
      No computador do André continua aparecendo. Para liberar, tirar daqui. (20/10/2026) */
   var OCULTOS = { modulos: [], aulas: ['apps-ios/02', 'apps-ios/03', 'apps-ios/04'] };   // iOS 14: só a aula 01 foi conferida em tela real (20/10)

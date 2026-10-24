@@ -707,7 +707,7 @@ window.AULAS = {
         tour: 'ativos-portfolio', pagina: 'meta-portfolio.html?exemplo=1'
       },
       atender: {
-        cena: { pt: 'Criei minha conta de anúncios ontem e os valores estão em dólar! Como troco para real? 💵', es: '¡Creé mi cuenta publicitaria ayer y los valores están en dólares! ¿Cómo lo cambio a reales? 💵' },
+        cena: { pt: 'Minha conta ficou em real! 😊 Mas e se eu tivesse criado em dólar, ou se ela já estivesse em dólar? Dava para trocar? 💵', es: '¡Mi cuenta quedó en reales! 😊 Pero ¿y si la hubiera creado en dólares, o si ya estuviera en dólares? ¿Se podría cambiar? 💵' },
         pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
         opcoes: [
           { certa: true, txt: { pt: '“A moeda não pode ser trocada depois que a conta é criada. O caminho é criar uma nova conta de anúncios, escolhendo real e o fuso de São Paulo, e usar essa nos seus anúncios.”', es: '“La moneda no se puede cambiar después de crear la cuenta. El camino es crear una nueva cuenta publicitaria, eligiendo real y la zona de São Paulo, y usar esa en tus anuncios.”' }, fb: { pt: 'Isso! Você foi honesto sobre o limite e já deu a solução oficial. E lembrou do fuso, que tem a mesma regra.', es: '¡Eso! Fuiste honesto sobre el límite y ya diste la solución oficial. Y recordaste la zona horaria, que tiene la misma regla.' } },
@@ -5127,34 +5127,30 @@ window.AULAS = {
         }
       },
       {
-        id: '05', min: 10, status: 'pronta',
-        titulo: L('Controles de dados: categoria, restrição, tráfego e domínio', 'Controles de datos: categoría, restricción, tráfico y dominio'),
+        id: '05', min: 8, status: 'pronta',
+        titulo: L('Outro site usando o meu Pixel: permissões de tráfego', 'Otro sitio usando mi píxel: permisos de tráfico'),
         antes: L('O Pixel da Marina está completo: correspondência avançada, API de Conversões e regras de privacidade.', 'El píxel de Marina está completo: coincidencia avanzada, API de Conversiones y reglas de privacidad.'),
-        gancho: L('E se a ação que importa não tiver evento próprio? Dá para contá-la sem mexer no código.', '¿Y si la acción que importa no tiene evento propio? Se puede contar sin tocar el código.'),
-        objetivo: L('Saber onde ficam e para que servem a categoria da fonte de dados, a configuração básica e as permissões de tráfego do Pixel, onde se verifica o domínio, e reconhecer quando cada um explica a queixa do cliente.', 'Saber dónde están y para qué sirven la categoría de la fuente de datos, la configuración básica y los permisos de tráfico del píxel, dónde se verifica el dominio, y reconocer cuándo cada uno explica la queja del cliente.'),
+        gancho: L('E quando os parâmetros “somem” dos eventos? Pode ser a categoria da fonte de dados.', '¿Y cuando los parámetros “desaparecen” de los eventos? Puede ser la categoría de la fuente de datos.'),
+        objetivo: L('Explicar por que outro site pode usar o Pixel (o ID é público) e usar as permissões de tráfego para que só os domínios da empresa mandem eventos.', 'Explicar por qué otro sitio puede usar el píxel (el ID es público) y usar los permisos de tráfico para que solo los dominios de la empresa envíen eventos.'),
         entender: {
           dialogo: [
             ['marina', L('Recebi um email dizendo que um site que eu não conheço está mandando eventos pelo meu Pixel! Fui hackeada? 😱', '¡Recibí un correo que dice que un sitio que no conozco está enviando eventos por mi píxel! ¿Me hackearon? 😱')],
             ['rafa', L('Calma: o ID do Pixel é público, aparece no código do seu site. Alguém pode colar o seu ID no site dele, ou um parceiro pode redirecionar. Em Configurações › Permissões de tráfego você cria uma lista de permissão só com os seus domínios.', 'Calma: el ID del píxel es público, aparece en el código de tu sitio. Alguien puede pegar tu ID en su sitio, o un socio puede redirigir. En Configuración › Permisos de tráfico creas una lista de permitidos solo con tus dominios.')],
-            ['marina', L('E aquela “configuração básica”? Uma amiga de farmácia disse que os parâmetros dela sumiram.', '¿Y esa “configuración básica”? Una amiga de farmacia dijo que sus parámetros desaparecieron.')],
-            ['rafa', L('A Meta pode dar uma categoria ao site, como saúde ou finanças. Algumas categorias ligam a configuração básica, que corta parâmetros personalizados e a parte do endereço depois do domínio. Dá para ver a categoria em Gerenciar categorias de fontes de dados.', 'Meta puede dar una categoría al sitio, como salud o finanzas. Algunas categorías activan la configuración básica, que corta los parámetros personalizados y la parte de la dirección después del dominio. La categoría se ve en Gestionar categorías de fuentes de datos.')],
-            ['pixel', L('E o domínio? A verificação de domínio fica nas Configurações do portfólio › Adequação e segurança para marcas › Domínios, não no Gerenciador de Eventos. E ela não é necessária para os eventos do Pixel.', '¿Y el dominio? La verificación de dominio está en la Configuración del portfolio › Adecuación y seguridad de la marca › Dominios, no en el Administrador de eventos. Y no es necesaria para los eventos del píxel.')]
+            ['marina', L('Então eu já crio a lista agora?', '¿Entonces creo la lista ya?')],
+            ['pixel', L('Com calma: a lista de permissão bloqueia na hora tudo o que não está nela, e eventos perdidos não voltam. Antes, liste todos os seus domínios: site, loja, testes e parceiros.', 'Con calma: la lista de permitidos bloquea al instante todo lo que no está en ella, y los eventos perdidos no vuelven. Antes, enumera todos tus dominios: sitio, tienda, pruebas y socios.')]
           ],
           pontos: [
-            L('<b>Categoria da fonte de dados:</b> dada pela Meta ou por você; algumas trazem restrições (configuração básica, certos eventos padrão bloqueados ou bloqueio total). A da Meta não se troca: pede-se nova análise.', '<b>Categoría de la fuente de datos:</b> la da Meta o tú; algunas traen restricciones (configuración básica, ciertos eventos estándar bloqueados o bloqueo total). La de Meta no se cambia: se pide una nueva revisión.'),
-            L('<b>Configuração básica:</b> corta parâmetros personalizados e o endereço depois do domínio; afeta públicos por URL, correspondência automática, catálogo pelo Pixel e eventos personalizados.', '<b>Configuración básica:</b> corta parámetros personalizados y la dirección después del dominio; afecta públicos por URL, coincidencia automática, catálogo por el píxel y eventos personalizados.'),
+            L('<b>O ID é público:</b> outro site usar o seu Pixel não é invasão da conta. Apagar o Pixel não resolve, porque o ID novo também seria público.', '<b>El ID es público:</b> que otro sitio use tu píxel no es una intrusión en la cuenta. Borrar el píxel no lo resuelve, porque el ID nuevo también sería público.'),
+            L('<b>Onde:</b> Gerenciador de Eventos › Pixel › Configurações › Permissões de tráfego. “Tráfego de domínio mais relevante” mostra quem manda eventos.', '<b>Dónde:</b> Administrador de eventos › píxel › Configuración › Permisos de tráfico. “Tráfico de dominio más relevante” muestra quién envía eventos.'),
             L('<b>Permissões de tráfego:</b> lista de permissão (recomendada) OU de bloqueio. A de permissão bloqueia na hora o que não está nela, e eventos perdidos não voltam.', '<b>Permisos de tráfico:</b> lista de permitidos (recomendada) O de bloqueados. La de permitidos bloquea al instante lo que no está en ella, y los eventos perdidos no vuelven.'),
-            L('<b>Domínio:</b> verificado no portfólio (domínio raiz, sem https://), pelo desenvolvedor; não é preciso para os eventos.', '<b>Dominio:</b> se verifica en el portfolio (dominio raíz, sin https://), por el desarrollador; no hace falta para los eventos.')
+            L('<b>Antes de salvar:</b> listar todos os domínios (site, loja, testes, parceiros que redirecionam). O domínio principal já inclui os subdomínios.', '<b>Antes de guardar:</b> enumerar todos los dominios (sitio, tienda, pruebas, socios que redirigen). El dominio principal ya incluye los subdominios.')
           ],
-          notas: L('Telas vistas de verdade em 20/10/2026 no portfólio de aula, só olhando (nada foi salvo nem ativado): Gerenciador de Eventos › Pixel › Configurações (Gerencie as categorias de fontes de dados e a janela “Gerenciar categorias de fontes de dados”; Controles de dados com a Configuração básica; Permissões de tráfego e as janelas de lista de permissão e de bloqueio) e Configurações do portfólio › Adequação e segurança para marcas › Domínios (“O que você quer fazer?” e “Adicionar um domínio”). Não vistas: o que aparece depois de adicionar um domínio à lista de tráfego e a tela dos métodos de verificação de domínio; o simulador para antes delas. Central de Ajuda lida no mesmo dia: categorias de fonte de dados e restrições, configuração Core, permissões de tráfego (sobre e boas práticas), como verificar o domínio e quando usar a verificação de domínio. O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 20/10/2026 en el portfolio de clase, solo mirando (no se guardó ni activó nada): Administrador de eventos › píxel › Configuración (Gestionar categorías de fuentes de datos y su ventana; Controles de datos con la Configuración básica; Permisos de tráfico y las ventanas de lista de permitidos y de bloqueados) y Configuración del portfolio › Adecuación y seguridad de la marca › Dominios (“¿Qué quieres hacer?” y “Agregar un dominio”). No vistas: lo que aparece después de agregar un dominio a la lista de tráfico y la pantalla de los métodos de verificación de dominio; el simulador se detiene antes. Centro de ayuda leído el mismo día: categorías de fuente de datos y restricciones, configuración Core, permisos de tráfico (información y buenas prácticas), cómo verificar el dominio y cuándo usar la verificación de dominio. El español de las pantallas es traducción nuestra (por confirmar).')
+          notas: L('Telas vistas de verdade em 20/10/2026 no portfólio de aula, só olhando (nada foi salvo nem ativado): Gerenciador de Eventos › Pixel › Configurações › Permissões de tráfego e as janelas de lista de permissão e de bloqueio. Não visto: o que aparece depois de adicionar um domínio à lista; o simulador para antes. Central de Ajuda lida no mesmo dia: permissões de tráfego (sobre e boas práticas). O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 20/10/2026 en el portfolio de clase, solo mirando (no se guardó ni activó nada): Administrador de eventos › píxel › Configuración › Permisos de tráfico y las ventanas de lista de permitidos y de bloqueados. No visto: lo que aparece después de agregar un dominio a la lista; el simulador se detiene antes. Centro de ayuda leído el mismo día: permisos de tráfico (información y buenas prácticas). El español de las pantallas es traducción nuestra (por confirmar).')
         },
         ferramenta: 'controles-dados',
         praticar: {
-          texto: L('Duas práticas guiadas, nas telas como elas são: os controles do Pixel no Gerenciador de Eventos e a verificação de domínio nas Configurações do portfólio. O simulador para antes das telas que ainda não vimos.', 'Dos prácticas guiadas, en las pantallas tal como son: los controles del píxel en el Administrador de eventos y la verificación de dominio en la Configuración del portfolio. El simulador se detiene antes de las pantallas que todavía no vimos.'),
-          opcoes: [
-            { id: 'controles', icone: '📡', pagina: 'meta-eventos.html', tour: 'controles-pixel', tit: L('Controles do Pixel', 'Controles del píxel'), txt: L('Categoria da fonte, configuração básica e permissões de tráfego, com o domínio desconhecido.', 'Categoría de la fuente, configuración básica y permisos de tráfico, con el dominio desconocido.') },
-            { id: 'dominio', icone: '🌐', pagina: 'meta-portfolio.html?exemplo=1', tour: 'dominio-portfolio', tit: L('Verificação de domínio', 'Verificación de dominio'), txt: L('Onde fica, como escrever o domínio raiz e o que vem depois.', 'Dónde está, cómo escribir el dominio raíz y qué viene después.') }
-          ]
+          texto: L('No Gerenciador de Eventos, o Pixel te guia até as Permissões de tráfego: você vê o domínio desconhecido e abre a lista de permissão, sem salvar nada. O simulador para antes da tela que ainda não vimos.', 'En el Administrador de eventos, el Pixel te guía hasta los Permisos de tráfico: ves el dominio desconocido y abres la lista de permitidos, sin guardar nada. El simulador se detiene antes de la pantalla que todavía no vimos.'),
+          tour: 'permissoes-trafego', pagina: 'meta-eventos.html'
         },
         atender: {
           cena: L('Recebi um email da Meta dizendo que um site que eu não conheço está usando meu Pixel! Fui hackeada? Bloqueia tudo agora! 😱', '¡Recibí un correo de Meta diciendo que un sitio que no conozco está usando mi píxel! ¿Me hackearon? ¡Bloquea todo ya! 😱'),
@@ -5162,29 +5158,72 @@ window.AULAS = {
           opcoes: [
             { certa: true, txt: L('“Não é invasão da sua conta: o ID do Pixel é público, e alguém colou o seu no site dele (ou é um parceiro redirecionando). Vamos ver em Configurações › Permissões de tráfego quais domínios mandam eventos. Antes de criar a lista de permissão, liste todos os seus domínios e os de parceiros, porque o que ficar de fora é bloqueado na hora.”', '“No es una intrusión en tu cuenta: el ID del píxel es público, y alguien pegó el tuyo en su sitio (o es un socio redirigiendo). Veamos en Configuración › Permisos de tráfico qué dominios envían eventos. Antes de crear la lista de permitidos, enumera todos tus dominios y los de tus socios, porque lo que quede fuera se bloquea al instante.”') },
             { certa: false, txt: L('“Apague o Pixel e crie outro.”', '“Borra el píxel y crea otro.”'), fb: L('Perde todo o histórico e o novo ID também ficaria público. O controle certo são as permissões de tráfego.', 'Pierde todo el historial y el nuevo ID también sería público. El control correcto son los permisos de tráfico.') },
-            { certa: false, txt: L('“Verifique o domínio no Gerenciador de Eventos que isso resolve.”', '“Verifica el dominio en el Administrador de eventos y eso lo resuelve.”'), fb: L('A verificação de domínio fica no portfólio e não bloqueia eventos de outros sites; quem faz isso são as permissões de tráfego.', 'La verificación de dominio está en el portfolio y no bloquea eventos de otros sitios; eso lo hacen los permisos de tráfico.') },
-            { certa: false, txt: L('“Ative a configuração básica, que bloqueia os outros sites.”', '“Activa la configuración básica, que bloquea los otros sitios.”'), fb: L('A configuração básica corta parâmetros e partes do endereço; não bloqueia domínios.', 'La configuración básica corta parámetros y partes de la dirección; no bloquea dominios.') }
+            { certa: false, txt: L('“Verifique o domínio que isso resolve.”', '“Verifica el dominio y eso lo resuelve.”'), fb: L('A verificação de domínio fica no portfólio e não bloqueia eventos de outros sites; quem faz isso são as permissões de tráfego.', 'La verificación de dominio está en el portfolio y no bloquea eventos de otros sitios; eso lo hacen los permisos de tráfico.') },
+            { certa: false, txt: L('“Pode ignorar: a Meta bloqueia sozinha os sites estranhos.”', '“Puedes ignorarlo: Meta bloquea sola los sitios extraños.”'), fb: L('Não bloqueia sozinha: quem decide quais domínios mandam eventos é o cliente, com a lista de permissão ou de bloqueio.', 'No bloquea sola: quien decide qué dominios envían eventos es el cliente, con la lista de permitidos o de bloqueados.') }
           ]
         },
         cola: {
-          perguntas: [L('Qual domínio desconhecido aparece? É de algum parceiro ou redirecionamento?', '¿Qué dominio desconocido aparece? ¿Es de algún socio o redirección?'), L('Quais domínios a empresa usa (site, loja, testes)?', '¿Qué dominios usa la empresa (sitio, tienda, pruebas)?'), L('A fonte de dados tem categoria? A configuração básica está ativada?', '¿La fuente de datos tiene categoría? ¿La configuración básica está activada?')],
-          conferir: [L('Gerenciador de Eventos › Pixel › Configurações › Permissões de tráfego (Tráfego de domínio mais relevante).', 'Administrador de eventos › píxel › Configuración › Permisos de tráfico (Tráfico de dominio más relevante).'), L('Configurações › Gerencie as categorias de fontes de dados e Controles de dados.', 'Configuración › Gestionar categorías de fuentes de datos y Controles de datos.'), L('Domínios: Configurações do portfólio › Adequação e segurança para marcas.', 'Dominios: Configuración del portfolio › Adecuación y seguridad de la marca.')],
+          perguntas: [L('Qual domínio desconhecido aparece? É de algum parceiro ou redirecionamento?', '¿Qué dominio desconocido aparece? ¿Es de algún socio o redirección?'), L('Quais domínios a empresa usa (site, loja, testes)?', '¿Qué dominios usa la empresa (sitio, tienda, pruebas)?')],
+          conferir: [L('Gerenciador de Eventos › Pixel › Configurações › Permissões de tráfego (Tráfego de domínio mais relevante).', 'Administrador de eventos › píxel › Configuración › Permisos de tráfico (Tráfico de dominio más relevante).'), L('A lista de domínios da empresa e dos parceiros, completa.', 'La lista de dominios de la empresa y de los socios, completa.')],
           frase: L('O ID do Pixel é público, então outro site pode usá-lo; com uma lista de permissão só os seus domínios enviam eventos. Antes de criar, vamos listar todos os domínios que você usa.', 'El ID del píxel es público, así que otro sitio puede usarlo; con una lista de permitidos solo tus dominios envían eventos. Antes de crearla, enumeremos todos los dominios que usas.'),
           passos: [L('Ver os domínios em Permissões de tráfego.', 'Ver los dominios en Permisos de tráfico.'), L('Listar os domínios da empresa e de parceiros.', 'Enumerar los dominios de la empresa y de los socios.'), L('O cliente cria a lista de permissão (ou de bloqueio).', 'El cliente crea la lista de permitidos (o de bloqueados).')],
-          encaminhar: L('Categoria atribuída pela Meta: o cliente pede nova análise no Gerenciador de Eventos. Verificação de domínio: o desenvolvedor ou quem administra o domínio.', 'Categoría asignada por Meta: el cliente pide una nueva revisión en el Administrador de eventos. Verificación de dominio: el desarrollador o quien administra el dominio.')
+          encaminhar: L('Se o cliente não sabe de quem é um domínio, ele confere com os parceiros e com quem cuida do site antes de criar a lista.', 'Si el cliente no sabe de quién es un dominio, lo revisa con sus socios y con quien cuida el sitio antes de crear la lista.')
         },
         fontes: [
-          { url: 'https://www.facebook.com/business/help/1402913027039332', titulo: L('Sobre as categorias de fonte de dados no Gerenciador de Eventos', 'Información sobre las categorías de fuentes de datos en el Administrador de eventos'), conferido: '20/10/2026' },
-          { url: 'https://www.facebook.com/business/help/511197658391698', titulo: L('Restrições de compartilhamento de dados com base nas categorias de fontes', 'Restricciones de uso compartido de datos según las categorías de fuentes'), conferido: '20/10/2026' },
-          { url: 'https://www.facebook.com/business/help/124742407297678', titulo: L('Sobre a configuração Core', 'Información sobre la configuración Core'), conferido: '20/10/2026' },
           { url: 'https://www.facebook.com/business/help/572690630080597', titulo: L('Sobre as permissões de tráfego do Pixel da Meta', 'Información sobre los permisos de tráfico del píxel de Meta'), conferido: '20/10/2026' },
-          { url: 'https://www.facebook.com/business/help/267505221173979', titulo: L('Boas práticas para as permissões de tráfego', 'Prácticas recomendadas para los permisos de tráfico'), conferido: '20/10/2026' },
-          { url: 'https://www.facebook.com/business/help/321167023127050', titulo: L('Como verificar seu domínio no portfólio empresarial', 'Cómo verificar tu dominio en el portfolio comercial'), conferido: '20/10/2026' },
-          { url: 'https://www.facebook.com/business/help/245311299870862', titulo: L('Quando usar a verificação de domínio', 'Cuándo usar la verificación de dominio'), conferido: '20/10/2026' }
+          { url: 'https://www.facebook.com/business/help/267505221173979', titulo: L('Boas práticas para as permissões de tráfego', 'Prácticas recomendadas para los permisos de tráfico'), conferido: '20/10/2026' }
         ]
       },
       {
         id: '06', min: 8, status: 'pronta',
+        titulo: L('Categoria da fonte e configuração básica', 'Categoría de la fuente y configuración básica'),
+        antes: L('Só os domínios da Marina mandam eventos pelo Pixel dela.', 'Solo los dominios de Marina envían eventos por su píxel.'),
+        gancho: L('E se a ação que importa não tiver evento próprio? Dá para contá-la sem mexer no código.', '¿Y si la acción que importa no tiene evento propio? Se puede contar sin tocar el código.'),
+        objetivo: L('Saber onde ver a categoria da fonte de dados, o que a configuração básica corta e o que fazer quando a categoria dada pela Meta está errada.', 'Saber dónde ver la categoría de la fuente de datos, qué corta la configuración básica y qué hacer cuando la categoría que dio Meta está equivocada.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Uma amiga tem uma farmácia online, e os parâmetros dos eventos dela sumiram. O Pixel dela quebrou? 🤔', 'Una amiga tiene una farmacia en línea, y los parámetros de sus eventos desaparecieron. ¿Se rompió su píxel? 🤔')],
+            ['rafa', L('A Meta pode dar uma categoria ao site, como saúde ou finanças. Algumas categorias ligam a configuração básica, que corta parâmetros personalizados e a parte do endereço depois do domínio. Dá para ver a categoria em Gerenciar categorias de fontes de dados.', 'Meta puede dar una categoría al sitio, como salud o finanzas. Algunas categorías activan la configuración básica, que corta los parámetros personalizados y la parte de la dirección después del dominio. La categoría se ve en Gestionar categorías de fuentes de datos.')],
+            ['marina', L('E se a categoria estiver errada?', '¿Y si la categoría está equivocada?')],
+            ['pixel', L('A categoria dada pela Meta não se troca na mão: o cliente pede uma nova análise. E repare: não é defeito do Pixel, é uma restrição de dados.', 'La categoría que dio Meta no se cambia a mano: el cliente pide una nueva revisión. Y fíjate: no es un defecto del píxel, es una restricción de datos.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> Gerenciador de Eventos › Pixel › Configurações › Gerencie as categorias de fontes de dados. A configuração básica aparece em Controles de dados.', '<b>Dónde:</b> Administrador de eventos › píxel › Configuración › Gestionar categorías de fuentes de datos. La configuración básica aparece en Controles de datos.'),
+            L('<b>Categoria da fonte de dados:</b> dada pela Meta ou por você; algumas trazem restrições (configuração básica, certos eventos padrão bloqueados ou bloqueio total). A da Meta não se troca: pede-se nova análise.', '<b>Categoría de la fuente de datos:</b> la da Meta o tú; algunas traen restricciones (configuración básica, ciertos eventos estándar bloqueados o bloqueo total). La de Meta no se cambia: se pide una nueva revisión.'),
+            L('<b>Configuração básica:</b> corta parâmetros personalizados e o endereço depois do domínio; afeta públicos por URL, correspondência automática, catálogo pelo Pixel e eventos personalizados.', '<b>Configuración básica:</b> corta parámetros personalizados y la dirección después del dominio; afecta públicos por URL, coincidencia automática, catálogo por el píxel y eventos personalizados.')
+          ],
+          notas: L('Telas vistas de verdade em 20/10/2026 no portfólio de aula, só olhando (nada foi salvo nem ativado): Gerenciador de Eventos › Pixel › Configurações (Gerencie as categorias de fontes de dados e a janela “Gerenciar categorias de fontes de dados”; Controles de dados com a Configuração básica). Central de Ajuda lida no mesmo dia: categorias de fonte de dados e restrições, configuração Core. O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 20/10/2026 en el portfolio de clase, solo mirando (no se guardó ni activó nada): Administrador de eventos › píxel › Configuración (Gestionar categorías de fuentes de datos y su ventana; Controles de datos con la Configuración básica). Centro de ayuda leído el mismo día: categorías de fuente de datos y restricciones, configuración Core. El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'categoria-dados',
+        praticar: {
+          texto: L('No Gerenciador de Eventos, o Pixel te guia até a categoria da fonte de dados e a configuração básica do Pixel da Marina, sem mudar nada.', 'En el Administrador de eventos, el Pixel te guía hasta la categoría de la fuente de datos y la configuración básica del píxel de Marina, sin cambiar nada.'),
+          tour: 'categoria-pixel', pagina: 'meta-eventos.html'
+        },
+        atender: {
+          cena: L('Tenho uma farmácia online. Os parâmetros que eu mando nos eventos sumiram, e o caminho das páginas também! O Pixel quebrou? 😟', 'Tengo una farmacia en línea. ¡Los parámetros que envío en los eventos desaparecieron, y la ruta de las páginas también! ¿Se rompió el píxel? 😟'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“O Pixel não quebrou: parece a configuração básica, que algumas categorias ligam (saúde é uma delas). Vamos ver a categoria em Configurações › Gerencie as categorias de fontes de dados. Se foi a Meta que deu a categoria e ela está errada, você pede uma nova análise.”', '“El píxel no se rompió: parece la configuración básica, que algunas categorías activan (salud es una de ellas). Veamos la categoría en Configuración › Gestionar categorías de fuentes de datos. Si fue Meta quien dio la categoría y está equivocada, pides una nueva revisión.”') },
+            { certa: false, txt: L('“Reinstale o Pixel no site.”', '“Reinstala el píxel en el sitio.”'), fb: L('O Pixel funciona; é uma restrição de dados ligada à categoria.', 'El píxel funciona; es una restricción de datos ligada a la categoría.') },
+            { certa: false, txt: L('“Crie um Pixel novo, sem categoria.”', '“Crea un píxel nuevo, sin categoría.”'), fb: L('Perde o histórico e não resolve: o caminho é conferir a categoria e, se estiver errada, pedir nova análise.', 'Pierde el historial y no lo resuelve: el camino es revisar la categoría y, si está equivocada, pedir una nueva revisión.') },
+            { certa: false, txt: L('“Crie uma lista de bloqueio nas Permissões de tráfego.”', '“Crea una lista de bloqueados en los Permisos de tráfico.”'), fb: L('Listas de tráfego bloqueiam domínios, não parâmetros.', 'Las listas de tráfico bloquean dominios, no parámetros.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Que tipo de negócio é (saúde, finanças…)?', '¿Qué tipo de negocio es (salud, finanzas…)?'), L('O que sumiu: parâmetros personalizados, o endereço depois do domínio ou eventos inteiros?', '¿Qué desapareció: parámetros personalizados, la dirección después del dominio o eventos enteros?')],
+          conferir: [L('Configurações › Gerencie as categorias de fontes de dados.', 'Configuración › Gestionar categorías de fuentes de datos.'), L('Controles de dados › Configuração básica (está ativada?).', 'Controles de datos › Configuración básica (¿está activada?).')],
+          frase: L('O Pixel funciona; algumas categorias ligam a configuração básica, que corta parâmetros personalizados e o endereço depois do domínio. Vamos conferir a categoria; se a Meta errou, você pede uma nova análise.', 'El píxel funciona; algunas categorías activan la configuración básica, que corta parámetros personalizados y la dirección después del dominio. Revisemos la categoría; si Meta se equivocó, pides una nueva revisión.'),
+          passos: [L('Ver a categoria da fonte de dados.', 'Ver la categoría de la fuente de datos.'), L('Ver se a configuração básica está ativada.', 'Ver si la configuración básica está activada.'), L('Categoria da Meta errada: o cliente pede nova análise.', 'Categoría de Meta equivocada: el cliente pide una nueva revisión.')],
+          encaminhar: L('Categoria atribuída pela Meta: o cliente pede nova análise no Gerenciador de Eventos.', 'Categoría asignada por Meta: el cliente pide una nueva revisión en el Administrador de eventos.')
+        },
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1402913027039332', titulo: L('Sobre as categorias de fonte de dados no Gerenciador de Eventos', 'Información sobre las categorías de fuentes de datos en el Administrador de eventos'), conferido: '20/10/2026' },
+          { url: 'https://www.facebook.com/business/help/511197658391698', titulo: L('Restrições de compartilhamento de dados com base nas categorias de fontes', 'Restricciones de uso compartido de datos según las categorías de fuentes'), conferido: '20/10/2026' },
+          { url: 'https://www.facebook.com/business/help/124742407297678', titulo: L('Sobre a configuração Core', 'Información sobre la configuración Core'), conferido: '20/10/2026' }
+        ]
+      },
+      {
+        id: '07', min: 8, status: 'pronta',
         titulo: L('Conversões personalizadas', 'Conversiones personalizadas'),
         antes: L('Os dados do Pixel estão protegidos. Agora a Marina quer contar uma ação que não tem evento próprio: o pedido de encomenda personalizada.', 'Los datos del píxel están protegidos. Ahora Marina quiere contar una acción que no tiene evento propio: el pedido personalizado.'),
         objetivo: L('Criar uma conversão personalizada com regra de URL, escolher o evento padrão para otimizar e conhecer os limites (100 por conta, regra que não se edita, arquivamento).', 'Crear una conversión personalizada con regla de URL, elegir el evento estándar para optimizar y conocer los límites (100 por cuenta, regla que no se edita, archivado).'),
@@ -5416,6 +5455,54 @@ window.AULAS = {
           passos: [L('Confirme a intenção do cliente.', 'Confirma la intención del cliente.'), L('Resolva cada bloqueio e deixe o cliente executar.', 'Resuelve cada bloqueo y deja que el cliente ejecute.')],
           encaminhar: L('Saldo devedor pode levar até duas semanas para processar: oriente o cliente a quitar e aguardar.', 'El saldo deudor puede tardar hasta dos semanas en procesarse: orienta al cliente a pagarlo y esperar.')
         }
+      },
+      {
+        id: '05', min: 7, status: 'pronta',
+        titulo: L('Verificar o domínio da loja', 'Verificar el dominio de la tienda'),
+        antes: L('Um cliente ouviu que precisa “verificar o domínio” e acha que é para o Pixel.', 'Un cliente oyó que necesita “verificar el dominio” y cree que es para el píxel.'),
+        objetivo: L('Explicar para que serve a verificação de domínio (e que o Pixel não depende dela), onde ela fica e quem faz a prova.', 'Explicar para qué sirve la verificación de dominio (y que el píxel no depende de ella), dónde está y quién hace la prueba.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Me disseram que eu preciso verificar o domínio da loja. É para o Pixel funcionar? 🤔', 'Me dijeron que necesito verificar el dominio de la tienda. ¿Es para que funcione el píxel? 🤔')],
+            ['rafa', L('Não: o Pixel manda eventos sem isso. A verificação prova que o site é da sua empresa. Ela serve para editar os links dos anúncios e posts, para o domínio aparecer no Commerce e para verificar a empresa quando não há telefone ou email comercial.', 'No: el píxel envía eventos sin eso. La verificación prueba que el sitio es de tu empresa. Sirve para editar los enlaces de anuncios y publicaciones, para que el dominio aparezca en Commerce y para verificar la empresa cuando no hay teléfono ni correo comercial.')],
+            ['marina', L('E onde faz?', '¿Y dónde se hace?')],
+            ['rafa', L('Configurações do portfólio › Adequação e segurança para marcas › Domínios › Adicionar. Escreva o domínio raiz, sem https://.', 'Configuración del portafolio › Adecuación y seguridad de la marca › Dominios › Agregar. Escribe el dominio raíz, sin https://.')],
+            ['pixel', L('A prova em si (um registro no DNS, um arquivo no site ou uma meta tag) costuma ser feita pelo desenvolvedor ou por quem cuida do domínio.', 'La prueba en sí (un registro en el DNS, un archivo en el sitio o una metaetiqueta) suele hacerla el desarrollador o quien cuida el dominio.')]
+          ],
+          pontos: [
+            L('<b>Não é para o Pixel:</b> os eventos chegam sem a verificação de domínio.', '<b>No es para el píxel:</b> los eventos llegan sin la verificación de dominio.'),
+            L('<b>Para que serve:</b> editar links dos anúncios e posts, o domínio no Commerce e verificar a empresa sem telefone ou email comercial (ou quando o email é de outro domínio).', '<b>Para qué sirve:</b> editar enlaces de anuncios y publicaciones, el dominio en Commerce y verificar la empresa sin teléfono ni correo comercial (o cuando el correo es de otro dominio).'),
+            L('<b>Onde:</b> Configurações do portfólio › Adequação e segurança para marcas › Domínios; domínio raiz, sem https://.', '<b>Dónde:</b> Configuración del portafolio › Adecuación y seguridad de la marca › Dominios; dominio raíz, sin https://.'),
+            L('<b>Quem faz a prova:</b> o desenvolvedor ou quem administra o domínio (DNS, arquivo ou meta tag).', '<b>Quién hace la prueba:</b> el desarrollador o quien administra el dominio (DNS, archivo o metaetiqueta).')
+          ],
+          notas: L('Telas vistas de verdade em 20/10/2026 no portfólio de aula, só olhando (nada foi salvo): Configurações do portfólio › Adequação e segurança para marcas › Domínios (“O que você quer fazer?” e “Adicionar um domínio”). Não vista: a tela dos métodos de verificação; o simulador para antes dela. Central de Ajuda lida no mesmo dia: como verificar o domínio e quando usar a verificação de domínio.', 'Pantallas vistas de verdad el 20/10/2026 en el portafolio de clase, solo mirando (no se guardó nada): Configuración del portafolio › Adecuación y seguridad de la marca › Dominios (“¿Qué quieres hacer?” y “Agregar un dominio”). No vista: la pantalla de los métodos de verificación; el simulador se detiene antes. Centro de ayuda leído el mismo día: cómo verificar el dominio y cuándo usar la verificación de dominio.')
+        },
+        ferramenta: 'dominio-quando',
+        praticar: {
+          texto: L('Nas Configurações do portfólio, o Pixel te guia até Domínios e mostra como escrever o domínio raiz. O simulador para antes da tela dos métodos de verificação, que ainda não vimos.', 'En la Configuración del portafolio, el Pixel te guía hasta Dominios y muestra cómo escribir el dominio raíz. El simulador se detiene antes de la pantalla de los métodos de verificación, que todavía no vimos.'),
+          tour: 'dominio-portfolio', pagina: 'meta-portfolio.html?exemplo=1'
+        },
+        atender: {
+          cena: L('A agência disse que meu Pixel não funciona porque o domínio não está verificado. Preciso verificar urgente? 😰', 'La agencia dijo que mi píxel no funciona porque el dominio no está verificado. ¿Tengo que verificarlo urgente? 😰'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“O Pixel não depende da verificação de domínio: ele manda eventos sem isso, e dá para conferir no Gerenciador de Eventos se estão chegando. A verificação serve para outras coisas, como editar os links dos anúncios e posts. Se quiser fazer, é em Configurações do portfólio › Adequação e segurança para marcas › Domínios, e quem cuida do site faz a prova.”', '“El píxel no depende de la verificación de dominio: envía eventos sin eso, y se puede revisar en el Administrador de eventos si están llegando. La verificación sirve para otras cosas, como editar los enlaces de anuncios y publicaciones. Si quieres hacerla, es en Configuración del portafolio › Adecuación y seguridad de la marca › Dominios, y quien cuida el sitio hace la prueba.”'), fb: L('Isso! Tirou o medo, separou as coisas e mostrou o caminho.', '¡Eso! Quitaste el miedo, separaste las cosas y mostraste el camino.') },
+            { certa: false, txt: L('“Sim, sem isso nenhum evento chega.”', '“Sí, sin eso no llega ningún evento.”'), fb: L('Não é verdade: os eventos do Pixel não dependem da verificação de domínio.', 'No es verdad: los eventos del píxel no dependen de la verificación de dominio.') },
+            { certa: false, txt: L('“Verifique em Gerenciador de Eventos › Configurações do Pixel.”', '“Verifícalo en Administrador de eventos › Configuración del píxel.”'), fb: L('A verificação de domínio fica nas Configurações do portfólio, não no Pixel.', 'La verificación de dominio está en la Configuración del portafolio, no en el píxel.') },
+            { certa: false, txt: L('“Me passa o acesso do seu provedor de domínio que eu faço.”', '“Pásame el acceso de tu proveedor de dominio y lo hago yo.”'), fb: L('Nunca peça acesso ou senha: quem cuida do site faz a prova, com você orientando.', 'Nunca pidas acceso ni contraseña: quien cuida el sitio hace la prueba, contigo orientando.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Para que o cliente quer verificar: links, Commerce ou verificação da empresa?', '¿Para qué quiere verificar el cliente: enlaces, Commerce o verificación de la empresa?'), L('Quem cuida do site e do domínio?', '¿Quién cuida el sitio y el dominio?')],
+          conferir: [L('Configurações do portfólio › Adequação e segurança para marcas › Domínios.', 'Configuración del portafolio › Adecuación y seguridad de la marca › Dominios.'), L('Domínio raiz, sem https://.', 'Dominio raíz, sin https://.')],
+          frase: L('O Pixel funciona sem a verificação de domínio. Ela serve para editar links, para o Commerce e para verificar a empresa. Quem cuida do site faz a prova, e eu te mostro onde.', 'El píxel funciona sin la verificación de dominio. Sirve para editar enlaces, para Commerce y para verificar la empresa. Quien cuida el sitio hace la prueba, y yo te muestro dónde.'),
+          passos: [L('Adicionar o domínio raiz em Domínios.', 'Agregar el dominio raíz en Dominios.'), L('Quem cuida do site faz a prova (DNS, arquivo ou meta tag).', 'Quien cuida el sitio hace la prueba (DNS, archivo o metaetiqueta).')],
+          encaminhar: L('A prova no site ou no DNS é do desenvolvedor ou de quem administra o domínio.', 'La prueba en el sitio o en el DNS es del desarrollador o de quien administra el dominio.')
+        },
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/321167023127050', titulo: L('Como verificar seu domínio no portfólio empresarial', 'Cómo verificar tu dominio en el portafolio comercial'), conferido: '20/10/2026' },
+          { url: 'https://www.facebook.com/business/help/245311299870862', titulo: L('Quando usar a verificação de domínio', 'Cuándo usar la verificación de dominio'), conferido: '20/10/2026' }
+        ]
       }
     ];
   })(),
@@ -6885,7 +6972,7 @@ window.AULAS = {
           L('<b>Cuidado:</b> esquecer um domínio da loja na lista de permissão faz os eventos dele sumirem.', '<b>Cuidado:</b> olvidar un dominio de la tienda en la lista de permitidos hace que sus eventos desaparezcan.')
         ]
       },
-      praticar: { texto: L('A prática do Pixel avançado 05: você abre os controles do Pixel e monta a lista de permissão.', 'La práctica de Pixel avanzado 05: abres los controles del píxel y armas la lista de permitidos.'), tour: 'controles-pixel', pagina: 'meta-eventos.html' },
+      praticar: { texto: L('A prática do Pixel avançado 05: você vê quem usa o Pixel e abre a lista de permissão de tráfego.', 'La práctica de Pixel avanzado 05: ves quién usa el píxel y abres la lista de permitidos de tráfico.'), tour: 'permissoes-trafego', pagina: 'meta-eventos.html' },
       atender: {
         cena: L('Tem um site estranho mandando eventos para o meu Pixel. Uso a lista de bloqueio?', 'Hay un sitio raro mandando eventos a mi píxel. ¿Uso la lista de bloqueados?'),
         opcoes: [
