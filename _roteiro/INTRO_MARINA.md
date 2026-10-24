@@ -97,20 +97,21 @@ Arquivo: `_teste_intro/index.html` (fora do Git).
 
 ---
 
-## Como ficou (25/10/2026) — `assets/js/intro.js`
-
-~40 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
+## Como ficou (25/10/2026, ajustada com o André) — 
+~55 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
 Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fecha.
 
 | Tempo | Cena |
 |---|---|
-| 0–13,6 s | Janela/lua → ateliê pintando a caneca → prateleira cheia → "E se mais gente visse?" → lâmpada + pulo |
-| 13,6–19,2 s | O notebook entra; a câmera entra na tela: a Lojinha se monta e o post do Instagram ganha coração |
-| 19,2–25,4 s | "Mas ninguém aparece": 0 visitas, o calendário vira 3 dias; a amiga manda mensagem (notificação) |
-| 25,4–31,6 s | "Pixel? O que é isso?": o Pixel salta da tela e pousa na tampa; o Rafa aparece no chat |
-| 31,6–35,4 s | Transição em quadradinhos: cidade ao amanhecer, celulares acendem com o anúncio, a caixa voa |
-| 35,4–40 s | Manhã no ateliê: o pedido chega (confete, notificação "Pedido recebido!", tela diz "1 pedido"), Marina e Pixel pulam |
+| 0–13,6 s | Janela/lua → ateliê pintando a caneca → prateleira cheia → "E se mais gente visse?" → lâmpada + pulo (ritmo aprovado) |
+| 13,6–22 s | O notebook entra; a câmera entra na tela: a Lojinha se monta, produto por produto, e o post do Instagram ganha coração |
+| 22–34,2 s | Close no "0 visitas" (pisca 3 vezes e continua 0) → volta para a Marina: o calendário vira 3 dias, ela murcha → o celular vibra e a mensagem da amiga fica na tela tempo para ler |
+| 34,2–44,6 s | "Pixel? O que é isso?" → o Pixel salta da tela para a tampa do notebook → placa **PIXEL** → ícone discreto de chamada no notebook → placa **RAFA** + balão com a fala dele |
+| 44,6–50 s | Transição em quadradinhos: cidade ao amanhecer (poucas luzes fixas, brilho suave), celulares acendem com o anúncio, a caixa voa |
+| 50–55 s | Manhã no ateliê: o pedido chega (confete, "Pedido recebido!", a tela diz "1 pedido"), Marina e Pixel pulam |
 
-A feirinha (cena 2 do rascunho) ficou de fora: a prateleira cheia + "quase ninguém fica sabendo" conta o mesmo em menos tempo.
-Para refinar os personagens à mão: os desenhos vêm de `assets/js/personagens.js`; as expressões da Marina na intro
+Decisões do André (25/10): o Rafa não aparece na tela do notebook (só um ícone de chamada; a fala é no balão);
+Pixel e Rafa são apresentados com placa de nome; mais respiro depois da ideia (~55 s); close no "0 visitas".
+A feirinha (cena 2 do rascunho) ficou de fora.
+Para refinar os personagens à mão: os desenhos vêm de ; as expressões da Marina na intro
 trocam as linhas 5–8 (olhos) e 10–11 (boca) do desenho dela.
