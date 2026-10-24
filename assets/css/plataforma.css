@@ -55,6 +55,7 @@ a.item:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
 .aula-l.off{border-style:dashed;box-shadow:none;opacity:.55}
 .aula-l .n{min-width:40px;height:34px;display:grid;place-items:center;border-radius:9px;background:var(--yellow);border:2px solid var(--ink);font:800 15px Consolas,monospace}
 .aula-l b{flex:1}.aula-l small{color:var(--muted)}
+.aula-l .aula-tx{flex:1;display:flex;flex-direction:column;gap:2px}.aula-l .aula-obj{font-size:14px;color:var(--muted);line-height:1.35}
 .aula-l.feita .n{background:var(--green);color:#fff}
 .secao-tit{margin:30px 0 12px;font-size:19px}
 
@@ -120,6 +121,7 @@ html.apresentar h1.pl-h1{font-size:36px}
 /* conversa no estilo do chat de atendimento */
 .chat{background:#1F2023;border-radius:16px;padding:16px 16px 10px;margin-bottom:18px;display:flex;flex-direction:column;gap:2px}
 .chat-sis{align-self:center;font-size:12px;color:#9AA3AE;margin:4px 0 10px}
+.chat-sis.onde{font-size:13.5px;color:#D5DCE5;max-width:85%;text-align:center;line-height:1.4}.chat-sis.onde b{color:#FFE07A}
 .msg{display:flex;align-items:flex-end;gap:8px;max-width:82%}
 .msg .bolha{padding:8px 14px;border-radius:18px;font-size:15px;line-height:1.4}
 .msg .hora{display:block;font-size:11px;color:#8E97A3;margin:3px 6px 8px}

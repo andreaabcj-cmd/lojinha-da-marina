@@ -377,7 +377,7 @@
     abrir: { pt: 'Abrir', es: 'Abrir' }, tutorial: { pt: '▶ Tutorial guiado', es: '▶ Tutorial guiado' },
     aula: { pt: 'Aula', es: 'Clase' }, caso: { pt: 'Caso do Diagnóstico', es: 'Caso del Diagnóstico' }, modulo: { pt: 'Módulo', es: 'Módulo' }, tut: { pt: 'Tutorial', es: 'Tutorial' },
     quis: { pt: 'Entendi', es: 'Entendí' }, como: { pt: 'como', es: 'como' },
-    parte: { entender: { pt: 'na explicação', es: 'en la explicación' }, atender: { pt: 'no atendimento e na cola', es: 'en la atención y la guía' }, praticar: { pt: 'na prática guiada', es: 'en la práctica guiada' } },
+    parte: { entender: { pt: 'na explicação', es: 'en la explicación' }, atender: { pt: 'no atendimento', es: 'en la atención' }, praticar: { pt: 'na prática guiada', es: 'en la práctica guiada' } },
     completa: { pt: 'Trilha Completa', es: 'Ruta Completa' },
     feedback: { pt: 'Não achou o que queria? Conte para a gente no Feedback.', es: '¿No encontraste lo que buscabas? Cuéntanos en Feedback.' },
     fechar: { pt: 'Fechar', es: 'Cerrar' }
@@ -404,6 +404,7 @@
     '.pp-botao{display:inline-flex;align-items:center;gap:6px;border:2px solid #fff;background:#FFE07A;color:#16294A;border-radius:10px;padding:6px 12px;font:800 14px "Segoe UI",sans-serif;cursor:pointer;margin-left:auto}.pp-botao:hover{background:#fff}' +
     '.pp-hero{display:flex;gap:8px;margin:14px 0}.pp-hero input{flex:1;min-width:0;padding:13px 14px;border:2px solid #16294A;border-radius:12px;font:16px "Segoe UI",system-ui,sans-serif}.pp-hero button{white-space:nowrap}' +
     '.pp-botao+.pl-lang{margin-left:8px}' +
+    '.pp-fundo[hidden]{display:none}' +   // o display:flex acima vencia o atributo hidden e o Fechar não fechava
     '@media(max-width:600px){.pp-fundo{padding:10px}.pp-caixa{max-height:94vh}.pp-botao span{display:none}}';
   var fundo = null, sel = -1;
   (function () { var st = document.createElement('style'); st.textContent = css; (document.head || document.documentElement).appendChild(st) })();   // o botão do topo já precisa do estilo
