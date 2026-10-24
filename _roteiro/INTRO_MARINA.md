@@ -97,7 +97,8 @@ Arquivo: `_teste_intro/index.html` (fora do Git).
 
 ---
 
-## Como ficou (25/10/2026, ajustada com o André) — 
+## Como ficou (25/10/2026, ajustada com o André) — `assets/js/intro.js`
+
 ~55 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
 Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fecha.
 
@@ -113,5 +114,5 @@ Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fe
 Decisões do André (25/10): o Rafa não aparece na tela do notebook (só um ícone de chamada; a fala é no balão);
 Pixel e Rafa são apresentados com placa de nome; mais respiro depois da ideia (~55 s); close no "0 visitas".
 A feirinha (cena 2 do rascunho) ficou de fora.
-Para refinar os personagens à mão: os desenhos vêm de ; as expressões da Marina na intro
+Para refinar os personagens à mão: os desenhos vêm de `assets/js/personagens.js`; as expressões da Marina na intro
 trocam as linhas 5–8 (olhos) e 10–11 (boca) do desenho dela.
