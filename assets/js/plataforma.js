@@ -27,7 +27,7 @@
     var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['diagnostico.html', 'diagnostico'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['faq.html', 'faq']];
     if (window.MODO_PUBLICO) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // site publicado: as abas Simuladores e Laboratório ficam escondidas
     if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
-    return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('pixel', 2) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
+    return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('marina', 1.5) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
       (window.BUSCA ? '<button class="pp-botao" data-pergunte title="' + T({ pt: 'Pergunte ao Pixel (atalho: tecla /)', es: 'Pregúntale al Pixel (atajo: tecla /)' }) + '">🔎 <span>' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '</span></button>' : '') +
       '<div class="pl-lang" role="group" aria-label="Idioma"><button data-lang="pt" class="' + (LANG === 'pt' ? 'on' : '') + '">PT</button><button data-lang="es" class="' + (LANG === 'es' ? 'on' : '') + '">ES</button></div></header>';
