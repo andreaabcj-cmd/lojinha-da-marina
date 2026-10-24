@@ -684,27 +684,27 @@ window.AULAS = {
       titulo: { pt: 'Os ativos: Página e conta de anúncios', es: 'Los activos: Página y cuenta publicitaria' },
       antes: { pt: 'A Marina já tem portfólio e o sobrinho com o acesso certo.', es: 'Marina ya tiene portfolio y al sobrino con el acceso correcto.' },
       gancho: { pt: '“Portfólio pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“¡Portfolio listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
-      objetivo: { pt: 'Saber trazer uma Página que está em outro portfólio (pelos caminhos oficiais) e criar a conta de anúncios certa (moeda e fuso não mudam depois).', es: 'Saber traer una Página que está en otro portfolio (por los caminos oficiales) y crear la cuenta publicitaria correcta (moneda y zona horaria no cambian después).' },
+      objetivo: { pt: 'Colocar a Página da loja no portfólio e criar a conta de anúncios certa (moeda e fuso não mudam depois).', es: 'Poner la Página de la tienda en el portfolio y crear la cuenta publicitaria correcta (la moneda y la zona horaria no cambian después).' },
       entender: {
         dialogo: [
-          ['marina', { pt: 'Fui adicionar minha Página e ela está no portfólio da minha esposa, que eu usava antes! E agora? 😰', es: '¡Fui a agregar mi Página y está en el portfolio de mi esposa, que usaba antes! ¿Y ahora? 😰' }],
-          ['rafa', { pt: 'Tem jeito! Não existe transferência direta, mas é simples: quem administra o portfólio da sua esposa remove a Página de lá, e aí você adiciona no seu, como “Página existente”.', es: '¡Tiene solución! No existe transferencia directa, pero es simple: quien administra el portfolio de tu esposa quita la Página de ahí, y entonces la agregas en el tuyo, como “Página existente”.' }],
-          ['pixel', { pt: 'Se a Página tem Instagram conectado, o Instagram vai junto para o portfólio novo.', es: 'Si la Página tiene Instagram conectado, el Instagram va junto al nuevo portfolio.' }],
-          ['marina', { pt: 'Ufa! E pra anunciar, preciso de uma conta de anúncios, né?', es: '¡Uf! ¿Y para anunciar necesito una cuenta publicitaria, no?' }],
-          ['rafa', { pt: 'Isso! E atenção na hora de criar: moeda e fuso horário não podem ser trocados depois. Escolha real e o horário de São Paulo.', es: '¡Eso! Y atención al crearla: la moneda y la zona horaria no se pueden cambiar después. Elige real y el horario de São Paulo.' }]
+          ['marina', { pt: 'Quero anunciar! O que eu preciso ter no portfólio? 🤔', es: '¡Quiero anunciar! ¿Qué necesito tener en el portfolio? 🤔' }],
+          ['rafa', { pt: 'Duas coisas: a Página da loja e uma conta de anúncios. A Página você traz em Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Dos cosas: la Página de la tienda y una cuenta publicitaria. La Página la traes en Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' }],
+          ['pixel', { pt: 'Se a Página tem Instagram conectado, o Instagram vai junto para o portfólio.', es: 'Si la Página tiene Instagram conectado, el Instagram va junto al portfolio.' }],
+          ['marina', { pt: 'E a conta de anúncios?', es: '¿Y la cuenta publicitaria?' }],
+          ['rafa', { pt: 'Em Contas › Contas de anúncios › Adicionar › Criar uma nova. Atenção: moeda e fuso horário não podem ser trocados depois. Escolha real e o horário de São Paulo.', es: 'En Cuentas › Cuentas publicitarias › Agregar › Crear una nueva. Atención: la moneda y la zona horaria no se pueden cambiar después. Elige real y el horario de São Paulo.' }]
         ],
         pontos: [
-          { pt: '<b>Página em outro portfólio:</b> quem administra aquele portfólio remove a Página; depois a dona adiciona no portfólio dela. Não existe transferência direta.', es: '<b>Página en otro portfolio:</b> quien administra ese portfolio quita la Página; después la dueña la agrega en su portfolio. No existe transferencia directa.' },
-          { pt: '<b>Agência?</b> Não precisa mudar o dono: ela pede “acesso compartilhado” à Página do cliente.', es: '<b>¿Agencia?</b> No hace falta cambiar el dueño: pide “acceso compartido” a la Página del cliente.' },
+          { pt: '<b>A Página:</b> Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente” (você precisa ser administradora dela). Se aparecer um aviso de que ela pertence a outro portfólio, é outro caso: está no Diagnóstico › Contas.', es: '<b>La Página:</b> Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente” (debes ser administradora de ella). Si aparece un aviso de que pertenece a otro portfolio, es otro caso: está en Diagnóstico › Cuentas.' },
+          { pt: '<b>No mesmo menu</b> aparece “Solicitar acesso compartilhado”: é para agência que cuida da Página de um cliente, sem virar dona dela.', es: '<b>En el mismo menú</b> aparece “Solicitar acceso compartido”: es para la agencia que cuida la Página de un cliente, sin volverse dueña de ella.' },
           { pt: '<b>Conta de anúncios:</b> moeda e fuso horário NÃO mudam depois, e a conta não pode ser removida do portfólio. Criar não cobra nada.', es: '<b>Cuenta publicitaria:</b> moneda y zona horaria NO cambian después, y la cuenta no se puede quitar del portfolio. Crearla no cobra nada.' },
           { pt: '<b>Quantas contas?</b> Em Informações da empresa aparece o “Limite de criação de contas de anúncios”. Portfólio novo começa com 1, até fazer um pagamento confirmado; o limite sobe com o histórico de gastos, e contas desativadas também contam.', es: '<b>¿Cuántas cuentas?</b> En la información del negocio aparece el “Límite de creación de cuentas publicitarias”. Un portfolio nuevo empieza con 1, hasta hacer un pago confirmado; el límite sube con el historial de gastos, y las cuentas desactivadas también cuentan.' }
         ],
-        notas: { pt: 'O caso da Página “presa” em outro portfólio aconteceu de verdade com a nossa Lojinha. O fuso e a moeda errados (o padrão é dólar e horário de Los Angeles) são erros muito comuns de cliente nova.', es: 'El caso de la Página “atrapada” en otro portfolio pasó de verdad con nuestra Lojinha. La zona y la moneda equivocadas (lo predeterminado es dólar y horario de Los Ángeles) son errores muy comunes de clienta nueva.' }
+        notas: { pt: 'O fuso e a moeda errados (o padrão é dólar e horário de Los Angeles) são erros muito comuns de cliente nova.', es: 'La zona horaria y la moneda equivocadas (lo predeterminado es dólar y horario de Los Ángeles) son errores muy comunes de clienta nueva.' }
       },
       ferramenta: 'de-quem-e',
       praticar: {
-        texto: { pt: 'No simulador, o Pixel te guia para criar a conta de anúncios da Marina, com a moeda e o fuso certos.', es: 'En el simulador, el Pixel te guía para crear la cuenta publicitaria de Marina, con la moneda y la zona horaria correctas.' },
-        tour: 'criar-conta-anuncios', pagina: 'meta-portfolio.html?exemplo=1'
+        texto: { pt: 'No simulador, o Pixel te guia: você traz a Página da loja para o portfólio e cria a conta de anúncios da Marina, com a moeda e o fuso certos.', es: 'En el simulador, el Pixel te guía: traes la Página de la tienda al portfolio y creas la cuenta publicitaria de Marina, con la moneda y la zona horaria correctas.' },
+        tour: 'ativos-portfolio', pagina: 'meta-portfolio.html?exemplo=1'
       },
       atender: {
         cena: { pt: 'Criei minha conta de anúncios ontem e os valores estão em dólar! Como troco para real? 💵', es: '¡Creé mi cuenta publicitaria ayer y los valores están en dólares! ¿Cómo lo cambio a reales? 💵' },
@@ -717,17 +717,16 @@ window.AULAS = {
         ]
       },
       cola: {
-        perguntas: [{ pt: 'Em qual portfólio a Página está hoje? Quem administra esse portfólio?', es: '¿En qué portfolio está la Página hoy? ¿Quién administra ese portfolio?' },
+        perguntas: [{ pt: 'A Página já aparece em Contas › Páginas do seu portfólio?', es: '¿La Página ya aparece en Cuentas › Páginas de tu portfolio?' },
           { pt: 'Você é a dona da Página ou uma agência trabalhando para um cliente?', es: '¿Eres la dueña de la Página o una agencia trabajando para un cliente?' },
           { pt: 'Qual moeda e fuso aparecem na conta de anúncios?', es: '¿Qué moneda y zona horaria aparecen en la cuenta publicitaria?' }],
-        conferir: [{ pt: 'Dono da Página: remove de um portfólio e adiciona no outro (não há transferência direta).', es: 'Dueño de la Página: la quita de un portfolio y la agrega en el otro (no hay transferencia directa).' },
+        conferir: [{ pt: 'Página em Contas › Páginas (se aparecer aviso de outro portfólio, siga o caso do Diagnóstico › Contas).', es: 'Página en Cuentas › Páginas (si aparece aviso de otro portfolio, sigue el caso de Diagnóstico › Cuentas).' },
           { pt: 'Agência: pede acesso compartilhado, sem mudar o dono.', es: 'Agencia: pide acceso compartido, sin cambiar el dueño.' },
           { pt: 'Conta de anúncios com a moeda e o fuso certos (não mudam depois).', es: 'Cuenta publicitaria con la moneda y la zona horaria correctas (no cambian después).' }],
         frase: { pt: 'A moeda e o fuso não podem ser trocados depois que a conta é criada. O caminho é criar uma nova conta de anúncios, escolhendo real e o fuso de São Paulo, e usar essa nos seus anúncios.', es: 'La moneda y la zona horaria no se pueden cambiar después de crear la cuenta. El camino es crear una nueva cuenta publicitaria, eligiendo real y la zona de São Paulo, y usar esa en tus anuncios.' },
-        passos: [{ pt: 'Página em outro portfólio: quem administra aquele portfólio vai em Configurações › Contas › Páginas, seleciona a Página e clica em Remover.', es: 'Página en otro portfolio: quien administra ese portfolio va a Configuración › Cuentas › Páginas, selecciona la Página y hace clic en Quitar.' },
-          { pt: 'Depois, no seu portfólio: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Después, en tu portfolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
+        passos: [{ pt: 'No seu portfólio: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'En tu portfolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
           { pt: 'Conta de anúncios: Contas › Contas de anúncios › Adicionar › Criar uma nova conta de anúncios (escolha a moeda e o fuso certos).', es: 'Cuenta publicitaria: Cuentas › Cuentas publicitarias › Agregar › Crear una nueva cuenta publicitaria (elige la moneda y la zona horaria correctas).' }],
-        encaminhar: { pt: 'Criar a conta de anúncios e mudar moeda ou fuso não são do seu escopo: confirme o que a cliente precisa e encaminhe à área de contas. Se quem administra o outro portfólio não responde ou não pode remover a Página, oriente a seguir a Central de Ajuda da Meta para Páginas.', es: 'Crear la cuenta publicitaria y cambiar moneda o zona horaria no son de tu alcance: confirma qué necesita la clienta y deriva al área de cuentas. Si quien administra el otro portfolio no responde o no puede quitar la Página, orienta a seguir el Centro de ayuda de Meta para Páginas.' }
+        encaminhar: { pt: 'Criar a conta de anúncios e mudar moeda ou fuso não são do seu escopo: confirme o que a cliente precisa e encaminhe à área de contas. Se a Página estiver em outro portfólio, siga o caso do Diagnóstico › Contas.', es: 'Crear la cuenta publicitaria y cambiar moneda o zona horaria no son de tu alcance: confirma qué necesita la clienta y deriva al área de cuentas. Si la Página está en otro portfolio, sigue el caso de Diagnóstico › Cuentas.' }
       },
       fontes: [
         { url: 'https://www.facebook.com/business/help/531142997352616', titulo: { pt: 'Remover uma Página do portfólio (e adicionar em outro)', es: 'Quitar una Página del portfolio (y agregarla en otro)' }, conferido: '14/10/2026' },

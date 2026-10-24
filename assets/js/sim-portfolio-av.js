@@ -258,4 +258,21 @@
     { alvo: '[data-t=btn-pag-add]', clique: true, tit: t('Adicionar Página', 'Agregar Página'), txt: t('Clique em Adicionar Página.', 'Haz clic en Agregar Página.') },
     fim(t('Página no portfólio novo 🎉', '¡Página en el portafolio nuevo! 🎉'), 'A Página agora pertence ao portfólio novo. Ao cliente: uma Página só pode estar em um portfólio. Se o outro portfólio for dele, ele remove de lá e adiciona aqui; se for de uma agência ou de outra pessoa, peça para eles removerem ou peça acesso compartilhado.', 'La Página ahora pertenece al portafolio nuevo. Al cliente: una Página solo puede estar en un portafolio. Si el otro portafolio es suyo, la quita de allí y la agrega aquí; si es de una agencia o de otra persona, pide que la quiten o pide acceso compartido.', '[data-t=pag-detalhe]')
   ];
+
+  /* Portfólio · aula 04 — o caminho normal: trazer a Página da loja e, depois, criar a conta de anúncios (passos de criar-conta-anuncios).
+     Se antes a pessoa fez o caso do Diagnóstico (Página presa no portfólio antigo), o portfólio antigo sai, para a Página entrar sem erro. */
+  function ativosInicio() {
+    SIMPF.garanteExemplo(); SIMPF.fecha();
+    var D = SIMPF.dados(); D.pfs = D.pfs.filter(function (x) { return !x.antigo }); if (!D.pfs.some(function (x) { return x.id === D.atual })) D.atual = D.pfs[0].id;
+    SIMPF.pf().paginas = []; SIMPF.grava(); ir0('inicio')(); SIMPF.render(); PFAV.aposRender();
+  }
+  function paginaDentro() { ondeEstou(NOVO, 'paginas')(); var p = SIMPF.pf(); if (p.paginas.indexOf('Lojinha da Marina') < 0) p.paginas.push('Lojinha da Marina'); var a = av(); if (a) a.jan = null; SIMPF.grava(); SIMPF.render(); PFAV.aposRender() }
+  TOURS['ativos-portfolio'] = [
+    { alvo: '[data-t=menu-paginas]', clique: true, garante: ativosInicio, tit: t('Os ativos da Marina', 'Los activos de Marina'), txt: t('Para anunciar, o portfólio precisa de duas coisas: a Página da loja e uma conta de anúncios. Comece pela Página: no menu da esquerda, clique em Páginas.', 'Para anunciar, el portafolio necesita dos cosas: la Página de la tienda y una cuenta publicitaria. Empieza por la Página: en el menú de la izquierda, haz clic en Páginas.') },
+    { alvo: '[data-t=add-pagina]', clique: true, garante: ondeEstou(NOVO, 'paginas'), tit: t('Adicionar', 'Agregar'), txt: t('Clique em Adicionar.', 'Haz clic en Agregar.') },
+    { alvo: '[data-t=op-pag-existente]', clique: true, garante: function () { ondeEstou(NOVO, 'paginas')(); var b = document.querySelector('[data-t=add-pagina]'); if (b && !document.querySelector('[data-t=op-pag-existente]')) b.click() }, tit: t('Página existente', 'Página existente'), txt: t('A Página da loja já existe no Facebook: escolha Adicionar uma Página do Facebook existente.', 'La Página de la tienda ya existe en Facebook: elige Agregar una Página de Facebook existente.') },
+    { alvo: '[data-t=pag-nome]', garante: function () { ondeEstou(NOVO, 'paginas')(); abrePagAdd() }, cond: function () { return /lojinha/i.test((av().jan || {}).nome || '') }, tit: t('A Página da loja', 'La Página de la tienda'), txt: t('Digite o nome da Página: Lojinha da Marina. (Para adicionar, você precisa ser administradora dela.)', 'Escribe el nombre de la Página: Lojinha da Marina. (Para agregarla, debes ser administradora de ella.)'), dica: t('Digite Lojinha da Marina.', 'Escribe Lojinha da Marina.') },
+    { alvo: '[data-t=btn-pag-add]', clique: true, tit: t('Adicionar Página', 'Agregar Página'), txt: t('Clique em Adicionar Página.', 'Haz clic en Agregar Página.') },
+    { alvo: '[data-t=pag-detalhe]', garante: paginaDentro, tit: t('A Página entrou ✓', 'La Página entró ✓'), txt: dep(t('A Página da loja agora está no portfólio. Se aparecesse um aviso dizendo que ela pertence a outro portfólio, seria outro caso (está no Diagnóstico › Contas). Agora, a conta de anúncios.', 'La Página de la tienda ahora está en el portafolio. Si apareciera un aviso diciendo que pertenece a otro portafolio, sería otro caso (está en Diagnóstico › Cuentas). Ahora, la cuenta publicitaria.')) }
+  ].concat(TOURS['criar-conta-anuncios'] || []);
 })();

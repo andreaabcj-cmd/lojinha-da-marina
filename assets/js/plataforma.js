@@ -194,7 +194,7 @@
       ['conhecer-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio', '01', { pt: 'Como conhecer as Configurações do portfólio', es: 'Cómo conocer la Configuración del portfolio' }],
       ['criar-portfolio', 'meta-portfolio.html?zerar=1', 'portfolio', '02', { pt: 'Como criar um portfólio empresarial', es: 'Cómo crear un portfolio comercial' }],
       ['convidar-pessoa', 'meta-portfolio.html?exemplo=1', 'portfolio', '03', { pt: 'Como convidar uma pessoa (com o acesso certo)', es: 'Cómo invitar a una persona (con el acceso correcto)' }],
-      ['criar-conta-anuncios', 'meta-portfolio.html?exemplo=1', 'portfolio', '04', { pt: 'Como criar uma conta de anúncios', es: 'Cómo crear una cuenta publicitaria' }] ] },
+      ['ativos-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio', '04', { pt: 'Como trazer a Página da loja e criar a conta de anúncios', es: 'Cómo traer la Página de la tienda y crear la cuenta publicitaria' }] ] },
     { m: 'instagram', itens: [
       ['virar-profissional', 'meta-instagram.html?zerar=1', 'instagram', '01', { pt: 'Como virar conta profissional no Instagram', es: 'Cómo volverse cuenta profesional en Instagram' }],
       ['editar-perfil', 'meta-instagram.html', 'instagram', '02', { pt: 'Como deixar o perfil com cara de loja', es: 'Cómo darle al perfil cara de tienda' }],
