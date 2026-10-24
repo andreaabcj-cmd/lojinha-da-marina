@@ -421,13 +421,6 @@
           caixaRedonda(-8, -2.2, 16, 4.4, 2.2, pub ? '#2BB37A' : '#1877F2'); texto(pub ? T('✓ Publicado', '✓ Publicado') : T('Publicar', 'Publicar'), 0, .1, 1.9, '#FFFFFF', 800, 'center'); ctx.restore() }
         ctx.globalAlpha = liga;
       }
-      // o Rafa chega de leve: só um ícone de chamada no canto da tela (quem fala é o balão)
-      if (t > 42.6 && t < 50.2) {
-        var ic = kf(t, [[42.6, 0], [42.9, 1, 'volta']]) * (t > 46.4 ? .75 : 1), cxr = t > 46.4 ? sx + 35 : sx + 33.5, cyr = t > 46.4 ? sy + 2.5 : sy + 19.5;   // no anúncio, sobe para a barra de cima
-        if (t < 43.6) { var an = (t - 42.6) % .6 / .6; ctx.strokeStyle = 'rgba(43,179,122,' + (1 - an) + ')'; ctx.lineWidth = .5; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 + an * 3, 0, 7); ctx.stroke() }
-        ctx.fillStyle = '#2BB37A'; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 * ic, 0, 7); ctx.fill();
-        if (ic > .5) texto('🎧', cxr, cyr + .2, 2.6 * ic, '#FFFFFF', 700, 'center');
-      }
       ctx.restore(); ctx.globalAlpha = 1;
     }
 
@@ -498,6 +491,7 @@
       { a: 39.3, b: 43.0, placa: { nome: 'Pixel', cor: '#2F6FD6', txt: T('Ele conta para a Meta o que acontece no site.', 'Le cuenta a Meta lo que pasa en el sitio.') } },
       { a: 43.0, b: 46.9, cls: 'dir', placa: { nome: 'Rafa', cor: '#7357FF', txt: T('Do suporte da Meta: ajuda a Marina em cada fase.', 'Del soporte de Meta: ayuda a Marina en cada fase.') } },
       { a: 43.4, b: 47.1, chat: { txt: T('Calma, a gente te ajuda em cada passo.', 'Tranquila, te ayudamos en cada paso.') } },
+      { a: 49.9, b: 52.0, chat: { txt: T('Viu como é fácil?', '¿Viste qué fácil?') } },   // depois do ✓ Publicado
       { a: 48.2, b: 51.4, leg: T('Com a ajuda do Rafa, ela cria o primeiro anúncio.', 'Con la ayuda de Rafa, crea su primer anuncio.') },
       { a: 52.6, b: 56.0, leg: T('O anúncio leva a Lojinha a quem procura.', 'El anuncio lleva la Lojinha a quien busca.') },
       { a: 57.1, b: 58.7, leg: T('Alguns dias depois…', 'Unos días después…'), cls: 'pensa' },
