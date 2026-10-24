@@ -6,7 +6,7 @@
 (function () {
   var LANG = (function () { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } })();
   function T(pt, es) { return LANG === 'es' ? es : pt }
-  var DUR = 64, FIM = 63;
+  var DUR = 65.4, FIM = 64.4;
 
   var CSS =
     '.it-fundo{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,10,25,.88);backdrop-filter:blur(6px);opacity:0;transition:opacity .4s}' +
@@ -28,7 +28,7 @@
     '.it-chat .av{flex:0 0 auto;background:#E8EEFA;border-radius:50%;width:2.8em;height:2.8em;display:flex;justify-content:center;align-items:flex-start;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.3)}.it-chat .av svg{height:5.2em;width:auto;margin-top:.15em;flex:0 0 auto}' +
     '.it-chat .bal{background:#2F6FD6;color:#fff;padding:10px 14px;border-radius:16px 16px 4px 16px;box-shadow:0 10px 30px rgba(0,0,0,.3)}.it-chat small{display:block;opacity:.75;font-size:.8em}' +
     '.it-placa{position:absolute;left:5.5%;top:24%;z-index:3;max-width:min(40%,380px);display:flex;gap:12px;padding:12px 16px 13px 12px;border-radius:14px;background:rgba(8,14,32,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);clip-path:inset(0 100% 0 0 round 14px);transition:clip-path .7s cubic-bezier(.2,.8,.2,1),opacity .35s;font-size:clamp(12px,1.55vw,17px);line-height:1.3;color:#D5DEF0}' +
-    '.it-placa.in{clip-path:inset(0 0 0 0 round 14px)}.it-placa.out{opacity:0}' +
+    '.it-placa.dir{left:auto;right:5%;top:auto;bottom:calc(12% + 4.6em)}.it-placa.in{clip-path:inset(0 0 0 0 round 14px)}.it-placa.out{opacity:0}' +
     '.it-placa i{flex:0 0 5px;border-radius:3px;background:var(--cor)}.it-placa b{display:block;color:#fff;font-size:2em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;line-height:1.05;margin-bottom:3px}' +
     '.it-pular{position:absolute;top:14px;right:14px;z-index:6;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:999px;padding:7px 15px;font:600 13px "Segoe UI",sans-serif;cursor:pointer;opacity:.75;transition:opacity .2s}' +
     '.it-pular:hover,.it-fechar:hover{opacity:1}' +
@@ -158,7 +158,7 @@
     else if (t < 35.2) { s.olhos = 'baixo'; s.boca = t < 30.8 ? 'triste' : 'o' }      // lê as mensagens no celular
     else if (t < 37.9) { s.olhos = 'pensa'; s.boca = 'neutra' }
     else if (t < 38.9) { s.olhos = 'surpresa'; s.boca = 'o' }
-    else if (t < 42.4) { }
+    else if (t < 42.9) { }
     else if (t < 45.6) { s.olhos = 'feliz'; s.boca = 'aberta' }
     else if (t < 57.4) { }
     else if (t < 57.85) { s.olhos = 'surpresa'; s.boca = 'o' }
@@ -187,6 +187,10 @@
     else if (Math.sin(t * 2.6 + 1) > .7) s.y = -1;
     return s;
   }
+
+  // relógio do desenho: igual ao real até 44,2 s; de 44,2 a 47 s anda na metade da velocidade (a Marina e o Pixel só
+  // comemoram, dá tempo de ler as placas); depois, tudo o que estava desenhado vem 1,4 s mais tarde
+  function td(t) { return t < 44.2 ? t : t < 47.0 ? 44.2 + (t - 44.2) * .5 : t - 1.4 }
 
   /* ---------- montagem e laço ---------- */
   var aberta = null;
@@ -225,7 +229,7 @@
       var cx = kf(t, [[0, 90], [1.2, 90], [3.4, 186], [5.9, 186], [7.2, 246], [8.4, 246], [10.6, 192], [12.4, 192], [13.4, 192, 'sai'], [13.6, 192], [14.8, 210], [16.2, 226], [22.0, 226], [23.2, 230], [25.0, 230], [26.2, 205], [35.2, 205], [36.2, 212], [45.6, 212], [46.6, 226], [50.2, 226], [55.2, 205], [61.6, 205]]);
       var cy = kf(t, [[0, 66], [1.2, 66], [3.4, 196], [5.9, 196], [7.2, 186], [8.4, 186], [10.6, 199], [12.4, 199], [13.4, 192, 'sai'], [13.6, 192], [14.8, 205], [16.2, 210], [22.0, 210], [23.2, 203], [25.0, 203], [26.2, 200], [35.2, 200], [36.2, 198], [45.6, 198], [46.6, 210], [50.2, 210], [55.2, 200], [61.6, 200]]);
       var z = kf(t, [[0, 1.3], [1.2, 1.3], [3.4, 1.22], [5.9, 1.22], [7.2, 1.0], [8.4, 1.0], [10.6, 2.1], [12.4, 2.1], [13.4, 1.15, 'sai'], [13.6, 1.15], [14.8, 1.6], [16.2, 7.2], [22.0, 7.2], [23.2, 10.5], [25.0, 10.5], [26.2, 1.7], [35.2, 1.7], [36.2, 1.9], [45.6, 1.9], [46.6, 7.2], [50.2, 7.2], [55.2, 1.75], [58.4, 1.95], [61.6, 1.8]]);
-      cy += Math.min(0, estadoMarina(t).dy) * .6;   // a câmera acompanha um pouco os pulos
+      var dyM = estadoMarina(t).dy; cy += dyM < -1 ? (dyM + 1) * .6 : 0;   // a câmera acompanha um pouco os pulos (a respiração é -1: fica parada)
       var tremor = 0; [12.42, 58.6, 59.8].forEach(function (q) { if (t > q && t < q + .6) tremor += Math.sin(t * 90) * 1.4 * Math.exp(-(t - q) * 9) });
       return { x: cx + tremor, y: cy, z: z };
     }
@@ -286,7 +290,7 @@
         var clarao = kf(t, [[11.22, 0], [11.45, .75, 'sai'], [12.6, .35], [14.0, .15], [22.0, 0]]), rc = kf(t, [[11.22, 10], [12.4, 170, 'sai']]);
         var gcl = ctx.createRadialGradient(lx, ly, 4, lx, ly, rc); gcl.addColorStop(0, 'rgba(255,214,120,' + clarao + ')'); gcl.addColorStop(.45, 'rgba(255,170,90,' + (clarao * .35) + ')'); gcl.addColorStop(1, 'rgba(255,170,90,0)');
         ctx.fillStyle = gcl; ctx.fillRect(lx - 260, ly - 260, 520, 520);
-        if (e > 0) { var halo = ctx.createRadialGradient(lx, ly, 2, lx, ly, 24 * e); halo.addColorStop(0, 'rgba(255,236,150,.7)'); halo.addColorStop(1, 'rgba(255,236,150,0)'); ctx.fillStyle = halo; ctx.fillRect(lx - 40, ly - 40, 80, 80) }
+        if (24 * e > 3) { var halo = ctx.createRadialGradient(lx, ly, 2, lx, ly, 24 * e); halo.addColorStop(0, 'rgba(255,236,150,.7)'); halo.addColorStop(1, 'rgba(255,236,150,0)'); ctx.fillStyle = halo; ctx.fillRect(lx - 40, ly - 40, 80, 80) }
         var raio = kf(t, [[11.3, 0], [11.6, 1, 'sai'], [12.9, 1], [13.4, 0]]);
         if (raio > 0) for (var k = 0; k < 8; k++) { var a = k * Math.PI / 4 + t * .6, r1 = 12 + 2 * Math.sin(t * 6 + k), r2 = r1 + 5 * raio;
           for (var s = r1; s < r2; s += 1) px(Math.round(lx + Math.cos(a) * s), Math.round(ly + Math.sin(a) * s), 1, 1, 'rgba(255,233,160,' + (.85 * raio) + ')') }
@@ -418,9 +422,9 @@
         ctx.globalAlpha = liga;
       }
       // o Rafa chega de leve: só um ícone de chamada no canto da tela (quem fala é o balão)
-      if (t > 41.4 && t < 50.2) {
-        var ic = kf(t, [[41.4, 0], [41.7, 1, 'volta']]) * (t > 46.4 ? .75 : 1), cxr = t > 46.4 ? sx + 35 : sx + 33.5, cyr = t > 46.4 ? sy + 2.5 : sy + 19.5;   // no anúncio, sobe para a barra de cima
-        if (t < 42.2) { var an = (t - 41.4) % .6 / .6; ctx.strokeStyle = 'rgba(43,179,122,' + (1 - an) + ')'; ctx.lineWidth = .5; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 + an * 3, 0, 7); ctx.stroke() }
+      if (t > 42.6 && t < 50.2) {
+        var ic = kf(t, [[42.6, 0], [42.9, 1, 'volta']]) * (t > 46.4 ? .75 : 1), cxr = t > 46.4 ? sx + 35 : sx + 33.5, cyr = t > 46.4 ? sy + 2.5 : sy + 19.5;   // no anúncio, sobe para a barra de cima
+        if (t < 43.6) { var an = (t - 42.6) % .6 / .6; ctx.strokeStyle = 'rgba(43,179,122,' + (1 - an) + ')'; ctx.lineWidth = .5; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 + an * 3, 0, 7); ctx.stroke() }
         ctx.fillStyle = '#2BB37A'; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 * ic, 0, 7); ctx.fill();
         if (ic > .5) texto('🎧', cxr, cyr + .2, 2.6 * ic, '#FFFFFF', 700, 'center');
       }
@@ -491,14 +495,14 @@
       { a: 30.3, b: 34.8, notif: { ic: '💬', fundo: '#2BB37A', app: T('Mensagens · agora', 'Mensajes · ahora'), tit: T('Amiga', 'Amiga'), txt: T('Vi teu site, ficou lindo! 😍', '¡Vi tu sitio, quedó precioso! 😍') } },
       { a: 31.5, b: 35.0, cls: 'seg', notif: { ic: '💬', fundo: '#2BB37A', app: T('Mensagens · agora', 'Mensajes · ahora'), tit: T('Amiga', 'Amiga'), txt: T('Já pensou em anunciar na Meta? Eu anuncio e uso o Pixel pra saber o que funciona 👀', '¿Ya pensaste en anunciar en Meta? Yo anuncio y uso el Pixel para saber qué funciona 👀') } },
       { a: 35.4, b: 37.6, leg: T('Pixel? O que é isso?', '¿Pixel? ¿Qué es eso?'), cls: 'pensa' },
-      { a: 39.3, b: 42.4, placa: { nome: 'Pixel', cor: '#2F6FD6', txt: T('Ele conta para a Meta o que acontece no site.', 'Le cuenta a Meta lo que pasa en el sitio.') } },
-      { a: 41.8, b: 45.2, placa: { nome: 'Rafa', cor: '#7357FF', txt: T('Do suporte da Meta: ajuda a Marina em cada fase.', 'Del soporte de Meta: ayuda a Marina en cada fase.') } },
-      { a: 42.0, b: 45.4, chat: { txt: T('Calma, a gente te ajuda em cada passo.', 'Tranquila, te ayudamos en cada paso.') } },
-      { a: 46.8, b: 50.0, leg: T('Com a ajuda do Rafa, ela cria o primeiro anúncio.', 'Con la ayuda de Rafa, crea su primer anuncio.') },
-      { a: 51.2, b: 54.6, leg: T('O anúncio leva a Lojinha a quem procura.', 'El anuncio lleva la Lojinha a quien busca.') },
-      { a: 55.7, b: 57.3, leg: T('Alguns dias depois…', 'Unos días después…'), cls: 'pensa' },
-      { a: 57.65, b: 60.6, notif: { ic: '🛍️', fundo: '#FFD65A', app: T('Lojinha da Marina · agora', 'Lojinha da Marina · ahora'), tit: T('Pedido recebido!', '¡Pedido recibido!'), txt: T('1 caneca azul pintada à mão', '1 taza azul pintada a mano') } },
-      { a: 59.6, b: 62.4, leg: T('Sem mágica: anúncio, medição e ajuste, passo a passo.', 'Sin magia: anuncio, medición y ajuste, paso a paso.') }
+      { a: 39.3, b: 43.0, placa: { nome: 'Pixel', cor: '#2F6FD6', txt: T('Ele conta para a Meta o que acontece no site.', 'Le cuenta a Meta lo que pasa en el sitio.') } },
+      { a: 43.0, b: 46.9, cls: 'dir', placa: { nome: 'Rafa', cor: '#7357FF', txt: T('Do suporte da Meta: ajuda a Marina em cada fase.', 'Del soporte de Meta: ayuda a Marina en cada fase.') } },
+      { a: 43.4, b: 47.1, chat: { txt: T('Calma, a gente te ajuda em cada passo.', 'Tranquila, te ayudamos en cada paso.') } },
+      { a: 48.2, b: 51.4, leg: T('Com a ajuda do Rafa, ela cria o primeiro anúncio.', 'Con la ayuda de Rafa, crea su primer anuncio.') },
+      { a: 52.6, b: 56.0, leg: T('O anúncio leva a Lojinha a quem procura.', 'El anuncio lleva la Lojinha a quien busca.') },
+      { a: 57.1, b: 58.7, leg: T('Alguns dias depois…', 'Unos días después…'), cls: 'pensa' },
+      { a: 59.05, b: 62.0, notif: { ic: '🛍️', fundo: '#FFD65A', app: T('Lojinha da Marina · agora', 'Lojinha da Marina · ahora'), tit: T('Pedido recebido!', '¡Pedido recibido!'), txt: T('1 caneca azul pintada à mão', '1 taza azul pintada a mano') } },
+      { a: 61.0, b: 63.8, leg: T('Sem mágica: anúncio, medição e ajuste, passo a passo.', 'Sin magia: anuncio, medición y ajuste, paso a paso.') }
     ];
     var vivos = {};
     function ui(t) {
@@ -508,7 +512,7 @@
           el = document.createElement('div');
           if (u.leg) { el.className = 'it-leg' + (u.cls ? ' ' + u.cls : ''); el.innerHTML = u.leg.split(' ').map(function (w, k) { return '<span style="transition-delay:' + (k * 60) + 'ms">' + w + ' </span>' }).join('') }
           else if (u.notif) { el.className = 'it-notif' + (u.cls ? ' ' + u.cls : ''); el.innerHTML = '<span class="ic" style="background:' + u.notif.fundo + '">' + u.notif.ic + '</span><span><small>' + u.notif.app + '</small><b>' + u.notif.tit + '</b>' + u.notif.txt + '</span>' }
-          else if (u.placa) { el.className = 'it-placa'; el.style.setProperty('--cor', u.placa.cor); el.innerHTML = '<i></i><span><b>' + u.placa.nome + '</b>' + u.placa.txt + '</span>' }
+          else if (u.placa) { el.className = 'it-placa' + (u.cls ? ' ' + u.cls : ''); el.style.setProperty('--cor', u.placa.cor); el.innerHTML = '<i></i><span><b>' + u.placa.nome + '</b>' + u.placa.txt + '</span>' }
           else { el.className = 'it-chat'; el.innerHTML = '<span class="bal">' + u.chat.txt + '</span><span class="av">' + PERSONAGEM('rafa', 3, 'feliz') + '</span>' }
           cena.appendChild(el); vivos[i] = el;
           requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('in') }) });
@@ -546,7 +550,7 @@
       if (!vivo) return;
       var dt = Math.min(.05, (agora - ult) / 1000); ult = agora;
       if (rodando && t < DUR) t = Math.min(DUR, t + dt);
-      desenha(t); ui(t);
+      desenha(td(t)); ui(t);
       tit.classList.toggle('on', t >= FIM);
       barra.style.width = (t / DUR * 100) + '%';
       requestAnimationFrame(laco);
