@@ -208,10 +208,12 @@
         '<div class="rodape-jan"><button class="btn sec" data-acao="conv-volta">Voltar</button><button class="btn" data-acao="conv-enviar" data-t="conv-enviar">Convidar com ' + nAtivos() + ' ativos</button></div>';
       h = '<div class="pf-jan2">' + passos(['Inserir email', 'Conceder acesso', 'Atribuir ativos', 'Analisar']) + '<div>' + corpo + '</div></div>';
     } else if (jan === 'add-conta') {
-      h = '<h3>Adicionar uma conta de anúncios<button class="x" data-acao="fechar">✕</button></h3>' +
-        '<button class="pf-op" data-acao="conta-nova" data-t="conta-nova"><span>' + IC.mais + '</span><span><b>Criar uma nova conta de anúncios</b></span></button>' +
-        '<p class="miudo">As outras opções (adicionar uma conta existente, pedir acesso) ficam fora do simulador por enquanto.</p>';
-      conf = false;
+      // tela real vista em 25/10/2026 no portfólio de aula (só aberta e fechada). Lá, “Criar” e “Adicionar existente” estavam apagadas, com o aviso:
+      // “Você atingiu o número máximo de contas de anúncios permitido para um novo portfólio empresarial…” (o portfólio de aula já tem 1 conta)
+      h = '<h3>Adicionar uma conta de anúncios<button class="x" data-acao="fechar">✕</button></h3><p class="miudo">Não é possível remover contas de anúncios de um portfólio empresarial depois que elas são adicionadas.</p>' +
+        '<button class="pf-op" data-acao="conta-nova" data-t="conta-nova"><span>' + IC.mais + '</span><span><b>Criar uma nova conta de anúncios</b><small>Gerencie anúncios para sua empresa, marca ou organização.</small><small>Ideal para: quando você não tem acesso às contas de anúncios existentes e precisa de uma forma de veicular anúncios.</small></span></button>' +
+        '<button class="pf-op" data-acao="conta-outra"><span>🏷️</span><span><b>Adicionar uma conta de anúncio existente</b><small>Transfira uma conta de anúncios para este portfólio empresarial. Você precisa ter acesso à conta de anúncios para adicioná-la.</small><small>Ideal para: quando você quer gerenciar a conta de anúncios em um portfólio com Páginas, perfis do Instagram e outros ativos de negócios em que trabalha.</small></span></button>' +
+        '<button class="pf-op" data-acao="conta-outra"><span>🔑</span><span><b>Pedir acesso a uma conta de anúncios em outro portfólio empresarial</b><small>Tenha acesso a uma conta de anúncios em outro portfólio. A conta de anúncios não será transferida.</small><small>Ideal para: agências que precisam de acesso à conta de anúncios do cliente.</small></span></button>';
     } else if (jan === 'conta') {
       larga = true; var p2 = pf(), corpo2;
       if (passoJ === 0) corpo2 = '<h3>Crie uma nova conta de anúncios para este portfólio<button class="x" data-acao="fechar">✕</button></h3><p class="miudo">Gerencie os anúncios para sua empresa, marca ou organização.</p>' +
@@ -350,7 +352,7 @@
     else if (ac === 'add-ig') abre('add-ig');
     else if (ac === 'add-dominio') abre('dominio');
     else if (ac === 'dom-criar') { passoJ = 1; desenha() }
-    else if (ac === 'dom-solicitar') abre('aviso');
+    else if (ac === 'dom-solicitar' || ac === 'conta-outra') abre('aviso');
     else if (ac === 'dom-add') { F.domErro = domErro(F.dom); if (F.domErro) { desenha(); return } F.dom = F.dom.trim().toLowerCase(); pf().dominioInformado = F.dom; grava(); passoJ = 2; desenha(); render() }
     else if (ac === 'ig-login') { passoJ = 1; desenha() }
     else if (ac === 'ig-entrar') { var p0 = pf(); p0.igs = p0.igs || []; if (!p0.igs.length) p0.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 2; desenha(); render() }
@@ -454,7 +456,8 @@
   TOURS['criar-conta-anuncios'] = [
     { alvo: '[data-t=menu-contas]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha() }, tit: T('Contas de anúncios', 'Cuentas publicitarias'), txt: T('Para anunciar, a Marina precisa de uma conta de anúncios dentro do portfólio. Clique em Contas de anúncios.', 'Para anunciar, Marina necesita una cuenta publicitaria dentro del portfolio. Haz clic en Cuentas publicitarias.') },
     { alvo: '[data-t=add-conta]', clique: true, garante: function () { SIMPF.fecha() }, tit: T('Adicionar', 'Agregar'), txt: T('Clique em Adicionar.', 'Haz clic en Agregar.') },
-    { alvo: '[data-t=conta-nova]', clique: true, garante: function () { SIMPF.abre('add-conta') }, tit: T('Criar uma nova', 'Crear una nueva'), txt: T('Escolha Criar uma nova conta de anúncios.', 'Elige Crear una nueva cuenta publicitaria.') },
+    { alvo: '[data-t=conta-nova]', clique: true, garante: function () { SIMPF.abre('add-conta') }, tit: T('Criar uma nova', 'Crear una nueva'), txt: T('Escolha Criar uma nova conta de anúncios.', 'Elige Crear una nueva cuenta publicitaria.'),
+      dica: T('Na tela real, se esta opção aparecer apagada, passe o mouse: a Meta avisa que o portfólio novo atingiu o limite de contas de anúncios e que dá para criar mais depois de algumas semanas seguindo as políticas.', 'En la pantalla real, si esta opción aparece apagada, pasa el mouse: Meta avisa que el portfolio nuevo alcanzó el límite de cuentas publicitarias y que se pueden crear más después de algunas semanas siguiendo las políticas.') },
     { alvo: '[data-t=conta-nome]', garante: function () { SIMPF.abre('conta', 0) }, cond: function () { var f = window.__simPf; return !!(f && f.contaNome.trim()) },
       tit: T('O nome da conta', 'El nombre de la cuenta'), txt: T('Digite um nome, por exemplo: Lojinha da Marina. Depois clique em Próximo.', 'Escribe un nombre, por ejemplo: Lojinha da Marina. Después haz clic en Siguiente.') },
     { alvo: '[data-t=conta-fuso-moeda]', garante: function () { SIMPF.abre('conta', 0) }, cond: function () { var f = window.__simPf; return !!(f && /Sao Paulo/.test(f.fuso) && /^BRL/.test(f.moeda)) },
