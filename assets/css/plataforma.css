@@ -350,3 +350,7 @@ html,body{overflow-x:clip}
 .trilha-chip{display:inline-block;margin:0 0 8px;padding:4px 10px;border-radius:999px;background:var(--blue-l,#E7F0FF);border:2px solid var(--ink);font-weight:800;font-size:13px}
 .faq-indice{display:flex;flex-wrap:wrap;gap:6px 10px;margin:0 0 8px}.faq-indice a{white-space:nowrap}
 .faq-it{border:2px solid var(--line);border-radius:var(--r);padding:10px 14px;margin:8px 0;background:#fff}.faq-it summary{cursor:pointer;font-weight:700}.faq-it[open] summary{margin-bottom:6px}.faq-it p{margin:0;line-height:1.5}
+/* a Marina do início abre a intro */
+.ola-marina{position:relative;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.ola-marina:hover{transform:translateY(-4px)}
+.ola-marina span{font:700 12px "Segoe UI",sans-serif;color:#16294A;background:#FFE07A;border:2px solid #16294A;border-radius:999px;padding:2px 9px;box-shadow:2px 2px 0 #16294A;white-space:nowrap}

@@ -94,3 +94,23 @@ sombra suave) por cima. É o que deixa pixel art com cara de hoje: o desenho é 
 trecho de ~15 s no acabamento final: ateliê à noite → a prateleira cheia → "E se mais gente visse?" → a ideia → tela de
 título com a turma. Aprovado o acabamento, o resto segue o mesmo padrão.
 Arquivo: `_teste_intro/index.html` (fora do Git).
+
+---
+
+## Como ficou (25/10/2026) — `assets/js/intro.js`
+
+~40 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
+Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fecha.
+
+| Tempo | Cena |
+|---|---|
+| 0–13,6 s | Janela/lua → ateliê pintando a caneca → prateleira cheia → "E se mais gente visse?" → lâmpada + pulo |
+| 13,6–19,2 s | O notebook entra; a câmera entra na tela: a Lojinha se monta e o post do Instagram ganha coração |
+| 19,2–25,4 s | "Mas ninguém aparece": 0 visitas, o calendário vira 3 dias; a amiga manda mensagem (notificação) |
+| 25,4–31,6 s | "Pixel? O que é isso?": o Pixel salta da tela e pousa na tampa; o Rafa aparece no chat |
+| 31,6–35,4 s | Transição em quadradinhos: cidade ao amanhecer, celulares acendem com o anúncio, a caixa voa |
+| 35,4–40 s | Manhã no ateliê: o pedido chega (confete, notificação "Pedido recebido!", tela diz "1 pedido"), Marina e Pixel pulam |
+
+A feirinha (cena 2 do rascunho) ficou de fora: a prateleira cheia + "quase ninguém fica sabendo" conta o mesmo em menos tempo.
+Para refinar os personagens à mão: os desenhos vêm de `assets/js/personagens.js`; as expressões da Marina na intro
+trocam as linhas 5–8 (olhos) e 10–11 (boca) do desenho dela.

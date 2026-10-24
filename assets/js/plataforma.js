@@ -63,7 +63,7 @@
   var TELAS = {
     inicio: function () {
       var ult = lsGet('plat.ultima', null), aula = ult && (window.AULAS[ult.m] || []).filter(function (a) { return a.id === ult.a && a.status === 'pronta' })[0];
-      return '<div class="pl-ola">' + PERSONAGEM('marina', 4) + PERSONAGEM('rafa', 4) + PERSONAGEM('pixel', 4) + '</div>' +
+      return '<div class="pl-ola">' + (window.INTRO ? '<button class="ola-marina" data-intro title="' + T({ pt: 'Ver a história da Marina', es: 'Ver la historia de Marina' }) + '">' + PERSONAGEM('marina', 4) + '<span>▶ ' + T({ pt: 'A história', es: 'La historia' }) + '</span></button>' : PERSONAGEM('marina', 4)) + PERSONAGEM('rafa', 4) + PERSONAGEM('pixel', 4) + '</div>' +
         '<h1 class="pl-h1">' + T({ pt: 'Bem-vindo à Lojinha da Marina', es: 'Bienvenido a la Lojinha da Marina' }) + '</h1>' +
         '<p class="pl-lead">' + T({ pt: 'A Marina tem uma loja online e quer crescer com a Meta. O Rafa é do suporte e ajuda a Marina em cada fase. O Pixel, nosso mascote, te guia pelo caminho. Escolha por onde começar.', es: 'Marina tiene una tienda online y quiere crecer con Meta. Rafa es del soporte y ayuda a Marina en cada fase. El Pixel, nuestra mascota, te guía en el camino. Elige por dónde empezar.' }) + '</p>' +
         (window.BUSCA ? '<form class="pp-hero" role="search"><input type="search" placeholder="' + T({ pt: '🔎 Pergunte ao Pixel: escreva sua dúvida do seu jeito', es: '🔎 Pregúntale al Pixel: escribe tu duda a tu manera' }) + '" aria-label="' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '"/><button class="btn amarelo">' + T({ pt: 'Perguntar', es: 'Preguntar' }) + '</button></form>' : '') +
@@ -567,7 +567,11 @@
     tg.forEach(function (x) { document.body.appendChild(x) });
     if (tela !== 'aula') mov().cascata($('.pl-main'));
     if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);
+    // a intro (assets/js/intro.js): sozinha na primeira visita ao início; depois, clicando na Marina
+    if (tela === 'inicio' && window.INTRO && !lsGet('plat.introVista', false)) { lsSet('plat.introVista', true); abreIntro() }
   }
+  function abreIntro() { window.INTRO.abrir({ aoComecar: function () { location.href = 'modulos.html' } }) }
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-intro]') && window.INTRO) abreIntro() });
   function inicia() {
     // cada prática começa do zero: sem F12, sem Consultor de Dados aberto, sem tutorial peel objetivode
     try { ['loja.labLoja', 'loja.daAberto', 'tour.ativo', 'tour.volta'].forEach(function (k) { sessionStorage.removeItem(k) }); localStorage.setItem('loja.aulaAberta', 'false') } catch (e) { }
