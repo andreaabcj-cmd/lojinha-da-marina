@@ -99,19 +99,20 @@ Arquivo: `_teste_intro/index.html` (fora do Git).
 
 ## Como ficou (25/10/2026, ajustada com o André) — `assets/js/intro.js`
 
-~55 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
+~63 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
 Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fecha.
 
 | Tempo | Cena |
 |---|---|
 | 0–13,6 s | Janela/lua → ateliê pintando a caneca → prateleira cheia → "E se mais gente visse?" → lâmpada + pulo (ritmo aprovado) |
 | 13,6–22 s | O notebook entra; a câmera entra na tela: a Lojinha se monta, produto por produto, e o post do Instagram ganha coração |
-| 22–34,2 s | Close no "0 visitas" (pisca 3 vezes e continua 0) → volta para a Marina: o calendário vira 3 dias, ela murcha → o celular vibra e a mensagem da amiga fica na tela tempo para ler |
-| 34,2–44,6 s | "Pixel? O que é isso?" → o Pixel salta da tela para a tampa do notebook → placa **PIXEL** → ícone discreto de chamada no notebook → placa **RAFA** + balão com a fala dele |
-| 44,6–50 s | Transição em quadradinhos: cidade ao amanhecer (poucas luzes fixas, brilho suave), celulares acendem com o anúncio, a caixa voa |
-| 50–55 s | Manhã no ateliê: o pedido chega (confete, "Pedido recebido!", a tela diz "1 pedido"), Marina e Pixel pulam |
+| 22–35,2 s | Close no "0 visitas" (pisca 3 vezes e continua 0) → a Marina: o calendário vira 3 dias, ela murcha → duas mensagens da amiga: "Vi teu site, ficou lindo! 😍" e "Já pensou em anunciar na Meta? Eu anuncio e uso o Pixel pra saber o que funciona 👀" |
+| 35,2–45,6 s | "Pixel? O que é isso?" → o Pixel salta da tela para a tampa do notebook → placa **PIXEL** ("ele conta para a Meta o que acontece no site") → ícone discreto de chamada → placa **RAFA** + balão |
+| 45,6–50,2 s | **O anúncio é a causa:** a câmera entra na tela e, com o Rafa na chamada, a Marina monta e publica o primeiro anúncio |
+| 50,2–55,6 s | Cidade ao amanhecer: o anúncio leva a Lojinha a quem procura; a caixa voa |
+| 55,6–62,4 s | "Alguns dias depois…" (calendário no 19) → o pedido chega; **o Pixel acende e mostra "Compra ✓"** (ele registra a venda, não a causa) → "Sem mágica: anúncio, medição e ajuste, passo a passo." |
 
-Decisões do André (25/10): o Rafa não aparece na tela do notebook (só um ícone de chamada; a fala é no balão);
+Decisões do André (25/10): sem dar a entender que o Pixel vende sozinho (o anúncio é a causa, o Pixel mede); o Rafa não aparece na tela do notebook (só um ícone de chamada; a fala é no balão);
 Pixel e Rafa são apresentados com placa de nome; mais respiro depois da ideia (~55 s); close no "0 visitas".
 A feirinha (cena 2 do rascunho) ficou de fora.
 Para refinar os personagens à mão: os desenhos vêm de `assets/js/personagens.js`; as expressões da Marina na intro

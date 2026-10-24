@@ -1,4 +1,4 @@
-/* Intro da Lojinha: "A ideia da Marina" (~55 s). Roteiro e direção de arte em _roteiro/INTRO_MARINA.md.
+/* Intro da Lojinha: "A ideia da Marina" (~63 s). Roteiro e direção de arte em _roteiro/INTRO_MARINA.md.
    Personagens e objetos em pixel art (os mesmos de personagens.js); luz, céu e interface lisos por cima.
    Uso: INTRO.abrir() abre por cima da página (Pular, Começar, Ver de novo, Esc fecha);
         INTRO.abrir({ alvo: elemento }) desenha dentro de um elemento (página de prévia).
@@ -6,7 +6,7 @@
 (function () {
   var LANG = (function () { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } })();
   function T(pt, es) { return LANG === 'es' ? es : pt }
-  var DUR = 56, FIM = 55;
+  var DUR = 64, FIM = 63;
 
   var CSS =
     '.it-fundo{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,10,25,.88);backdrop-filter:blur(6px);opacity:0;transition:opacity .4s}' +
@@ -20,7 +20,7 @@
     '.it-leg.in span{opacity:1;transform:none;filter:none}' +
     '.it-leg.out span{opacity:0;transform:translateY(-8px);filter:blur(4px);transition-duration:.35s;transition-delay:0s!important}' +
     '.it-notif{position:absolute;left:50%;top:5%;z-index:3;width:min(62%,430px);display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;background:rgba(250,252,255,.94);color:#16294A;box-shadow:0 14px 40px rgba(0,0,0,.35);transform:translate(-50%,-160%) scale(.96);transition:transform .7s cubic-bezier(.34,1.4,.64,1),opacity .4s;opacity:0;font-size:clamp(12px,1.6vw,17px);line-height:1.3}' +
-    '.it-notif.in{transform:translate(-50%,0) scale(1);opacity:1}.it-notif.out{transform:translate(-50%,-160%);opacity:0;transition-duration:.45s}' +
+    '.it-notif.seg{top:calc(5% + 5.2em)}.it-notif.in{transform:translate(-50%,0) scale(1);opacity:1}.it-notif.out{transform:translate(-50%,-160%);opacity:0;transition-duration:.45s}' +
     '.it-notif .ic{flex:0 0 auto;width:2.4em;height:2.4em;border-radius:.65em;display:grid;place-items:center;font-size:1.1em}' +
     '.it-notif small{display:block;color:#64748B;font-size:.82em}.it-notif b{display:block}' +
     '.it-chat{position:absolute;right:5%;bottom:12%;z-index:3;max-width:min(52%,420px);display:flex;gap:10px;align-items:flex-end;opacity:0;transform:translateY(20px) scale(.92);transform-origin:bottom right;transition:transform .6s cubic-bezier(.34,1.5,.64,1),opacity .35s;font-size:clamp(12px,1.6vw,18px);line-height:1.3}' +
@@ -131,8 +131,9 @@
 
   /* ---------- roteiro (segundos) ---------- */
   // 0–13.6 ateliê e a ideia · 13.6–22 a loja online · 22–34.2 ninguém aparece (close no 0, dias, mensagem)
-  // 34.2–44.6 chegam o Pixel e o Rafa (placas com nome) · 44.6–50 o anúncio na cidade · 50–54.4 o primeiro pedido · 55 título
-  var PISCADAS = [3.75, 4.55, 6.55, 8.75, 10.15, 13.1, 15.6, 18.0, 26.8, 28.1, 32.5, 39.6, 43.2, 52.9];
+  // 35.2–45.6 chegam o Pixel e o Rafa (placas com nome) · 45.6–50.2 o primeiro anúncio, com o Rafa · 50.2–55.6 o anúncio na cidade
+  // 55.6–62.4 dias depois: o pedido chega e o Pixel registra a compra · 63 título
+  var PISCADAS = [3.75, 4.55, 6.55, 8.75, 10.15, 13.1, 15.6, 18.0, 26.8, 28.1, 32.9, 40.6, 44.2, 56.3, 61.0];
   function estadoMarina(t) {
     var s = { olhos: 'base', boca: 'base', modo: '', dy: Math.sin(t * 2.4) > .6 ? -1 : 0 };
     if (t < 5) s.olhos = 'baixo';
@@ -154,14 +155,14 @@
       s.boca = t < 27.4 ? 'base' : t < 28.4 ? 'neutra' : 'triste';
       if (t > 29.0) s.dy += kf(t, [[29.0, 0], [29.4, 2, 'sai'], [30.3, 1]]);
     }
-    else if (t < 34.2) { s.olhos = 'baixo'; s.boca = t < 30.8 ? 'triste' : 'o' }      // lê a mensagem no celular
-    else if (t < 36.9) { s.olhos = 'pensa'; s.boca = 'neutra' }
-    else if (t < 37.9) { s.olhos = 'surpresa'; s.boca = 'o' }
-    else if (t < 41.4) { }
-    else if (t < 44.6) { s.olhos = 'feliz'; s.boca = 'aberta' }
-    else if (t < 50.0) { }
-    else if (t < 50.45) { s.olhos = 'surpresa'; s.boca = 'o' }
-    else { s.olhos = 'feliz'; s.boca = 'aberta'; var pulo = pula(t, 50.5); s.modo = pulo.modo; s.dy = pulo.dy; if (t > 51.7) { var p2 = pula(t, 51.7); s.modo = p2.modo; s.dy = p2.dy } }
+    else if (t < 35.2) { s.olhos = 'baixo'; s.boca = t < 30.8 ? 'triste' : 'o' }      // lê as mensagens no celular
+    else if (t < 37.9) { s.olhos = 'pensa'; s.boca = 'neutra' }
+    else if (t < 38.9) { s.olhos = 'surpresa'; s.boca = 'o' }
+    else if (t < 42.4) { }
+    else if (t < 45.6) { s.olhos = 'feliz'; s.boca = 'aberta' }
+    else if (t < 57.4) { }
+    else if (t < 57.85) { s.olhos = 'surpresa'; s.boca = 'o' }
+    else { s.olhos = 'feliz'; s.boca = 'aberta'; var pulo = pula(t, 57.9); s.modo = pulo.modo; s.dy = pulo.dy; if (t > 59.1) { var p2 = pula(t, 59.1); s.modo = p2.modo; s.dy = p2.dy } }
     if (s.olhos !== 'feliz' && s.olhos !== 'surpresa' && PISCADAS.some(function (p) { return t > p && t < p + .12 })) s.olhos = 'pisca';
     return s;
   }
@@ -175,13 +176,13 @@
     return { modo: '', dy: 0 };
   }
   function estadoPixel(t) {   // nasce da tela do notebook, pousa em cima da tampa, se sacode e acena
-    if (t < 36.9 || (t > 44.6 && t < 50.0)) return null;
+    if (t < 37.9 || (t > 50.2 && t < 55.0)) return null;
     var s = { feliz: false, modo: '', x: 226, y: 0, esc: 1, gira: 0 };
-    if (t < 37.7) { var p = (t - 36.9) / .8; s.esc = .25 + .75 * E.sai(p); s.y = (1 - p) * 14 - Math.sin(p * Math.PI) * 30; s.modo = p < .55 ? 'estica' : ''; s.gira = (1 - E.sai(p)) * Math.PI * 2; return s }
-    if (t < 37.85) { s.modo = 'amassa'; return s }
-    if (t < 38.25) { s.x += Math.sin(t * 70) * 1.2; return s }
+    if (t < 38.7) { var p = (t - 37.9) / .8; s.esc = .25 + .75 * E.sai(p); s.y = (1 - p) * 14 - Math.sin(p * Math.PI) * 30; s.modo = p < .55 ? 'estica' : ''; s.gira = (1 - E.sai(p)) * Math.PI * 2; return s }
+    if (t < 38.85) { s.modo = 'amassa'; return s }
+    if (t < 39.25) { s.x += Math.sin(t * 70) * 1.2; return s }
     s.feliz = true;
-    var p1 = pula(t, 38.3), p2 = pula(t, 39.2), p3 = pula(t, 50.58), p4 = pula(t, 51.78), pp = [p1, p2, p3, p4].filter(function (q) { return q.modo || q.dy })[0];
+    var p1 = pula(t, 39.3), p2 = pula(t, 40.2), p3 = pula(t, 57.98), p4 = pula(t, 59.18), pp = [p1, p2, p3, p4].filter(function (q) { return q.modo || q.dy })[0];
     if (pp) { s.modo = pp.modo; s.y = pp.dy * 1.2 }
     else if (Math.sin(t * 2.6 + 1) > .7) s.y = -1;
     return s;
@@ -221,11 +222,11 @@
 
     /* ===== cena do ateliê (cenas 1, 3, 4, 5, 6 e o fim) ===== */
     function camAtelie(t) {
-      var cx = kf(t, [[0, 90], [1.2, 90], [3.4, 186], [5.9, 186], [7.2, 246], [8.4, 246], [10.6, 192], [12.4, 192], [13.4, 192, 'sai'], [13.6, 192], [14.8, 210], [16.2, 226], [22.0, 226], [23.2, 230], [25.0, 230], [26.2, 205], [34.2, 205], [35.2, 212], [44.6, 212], [49.6, 205], [54.4, 205]]);
-      var cy = kf(t, [[0, 66], [1.2, 66], [3.4, 196], [5.9, 196], [7.2, 186], [8.4, 186], [10.6, 199], [12.4, 199], [13.4, 192, 'sai'], [13.6, 192], [14.8, 205], [16.2, 210], [22.0, 210], [23.2, 203], [25.0, 203], [26.2, 200], [34.2, 200], [35.2, 198], [44.6, 198], [49.6, 200], [54.4, 200]]);
-      var z = kf(t, [[0, 1.3], [1.2, 1.3], [3.4, 1.22], [5.9, 1.22], [7.2, 1.0], [8.4, 1.0], [10.6, 2.1], [12.4, 2.1], [13.4, 1.15, 'sai'], [13.6, 1.15], [14.8, 1.6], [16.2, 7.2], [22.0, 7.2], [23.2, 10.5], [25.0, 10.5], [26.2, 1.7], [34.2, 1.7], [35.2, 1.9], [44.6, 1.9], [49.6, 1.75], [51.2, 1.95], [54.4, 1.8]]);
+      var cx = kf(t, [[0, 90], [1.2, 90], [3.4, 186], [5.9, 186], [7.2, 246], [8.4, 246], [10.6, 192], [12.4, 192], [13.4, 192, 'sai'], [13.6, 192], [14.8, 210], [16.2, 226], [22.0, 226], [23.2, 230], [25.0, 230], [26.2, 205], [35.2, 205], [36.2, 212], [45.6, 212], [46.6, 226], [50.2, 226], [55.2, 205], [61.6, 205]]);
+      var cy = kf(t, [[0, 66], [1.2, 66], [3.4, 196], [5.9, 196], [7.2, 186], [8.4, 186], [10.6, 199], [12.4, 199], [13.4, 192, 'sai'], [13.6, 192], [14.8, 205], [16.2, 210], [22.0, 210], [23.2, 203], [25.0, 203], [26.2, 200], [35.2, 200], [36.2, 198], [45.6, 198], [46.6, 210], [50.2, 210], [55.2, 200], [61.6, 200]]);
+      var z = kf(t, [[0, 1.3], [1.2, 1.3], [3.4, 1.22], [5.9, 1.22], [7.2, 1.0], [8.4, 1.0], [10.6, 2.1], [12.4, 2.1], [13.4, 1.15, 'sai'], [13.6, 1.15], [14.8, 1.6], [16.2, 7.2], [22.0, 7.2], [23.2, 10.5], [25.0, 10.5], [26.2, 1.7], [35.2, 1.7], [36.2, 1.9], [45.6, 1.9], [46.6, 7.2], [50.2, 7.2], [55.2, 1.75], [58.4, 1.95], [61.6, 1.8]]);
       cy += Math.min(0, estadoMarina(t).dy) * .6;   // a câmera acompanha um pouco os pulos
-      var tremor = 0; [12.42, 51.2, 52.4].forEach(function (q) { if (t > q && t < q + .6) tremor += Math.sin(t * 90) * 1.4 * Math.exp(-(t - q) * 9) });
+      var tremor = 0; [12.42, 58.6, 59.8].forEach(function (q) { if (t > q && t < q + .6) tremor += Math.sin(t * 90) * 1.4 * Math.exp(-(t - q) * 9) });
       return { x: cx + tremor, y: cy, z: z };
     }
 
@@ -236,8 +237,8 @@
 
       var ideia = kf(t, [[11.2, 0], [12.3, 1, 'sai'], [21.4, 1], [22.6, 0]]);
       var dia = t > 26.4 && t < 29.0 ? .5 - .5 * Math.cos((t - 26.4) / 2.6 * 3 * Math.PI * 2) : 0;   // 3 dias passando
-      var manha = kf(t, [[49.4, 0], [50.0, 1]]);
-      var lum = kf(t, [[8.6, 1], [10.6, .55], [11.2, .55], [11.8, 1.1], [49.4, 1.1], [50.0, .25]]) * (1 - dia * .85) * (1 + .035 * Math.sin(t * 23) * Math.sin(t * 7.3));
+      var manha = kf(t, [[55.0, 0], [55.6, 1]]);
+      var lum = kf(t, [[8.6, 1], [10.6, .55], [11.2, .55], [11.8, 1.1], [55.0, 1.1], [55.6, .25]]) * (1 - dia * .85) * (1 + .035 * Math.sin(t * 23) * Math.sin(t * 7.3));
 
       // parede (lisa): noite → quente na ideia → dia/noite passando → manhã
       var topo = mistura(mistura(mistura('#16213F', '#2A1F4E', ideia), '#5F86C4', dia), '#86AEE0', manha);
@@ -261,7 +262,7 @@
       px(86, 22, 3, 78, '#3B2A22'); px(44, 59, 88, 3, '#3B2A22'); px(36, 104, 104, 4, '#5A4033');
 
       // calendário na parede (os dias passando)
-      var dias = t < 27.0 ? 12 : t < 27.86 ? 13 : t < 28.73 ? 14 : 15, vira = [27.0, 27.86, 28.73].map(function (q) { return t > q - .16 && t < q + .16 ? Math.abs(t - q) / .16 : 1 }).reduce(function (a, b) { return Math.min(a, b) });
+      var dias = t < 27.0 ? 12 : t < 27.86 ? 13 : t < 28.73 ? 14 : t < 55.9 ? 15 : 19, vira = [27.0, 27.86, 28.73, 55.9].map(function (q) { return t > q - .16 && t < q + .16 ? Math.abs(t - q) / .16 : 1 }).reduce(function (a, b) { return Math.min(a, b) });
       var luzCal = Math.max(dia, manha, ideia * .5); px(150, 154, 18, 20, mistura('#7D89A6', '#EEF2F8', luzCal)); px(150, 154, 18, 5, mistura('#8A3E58', '#E2577A', luzCal)); px(150, 154, 18, 1, '#B83C5E');
       ctx.save(); ctx.translate(159, 159); ctx.scale(1, vira); texto(String(dias), 0, 7.5, 9, mistura('#2A3550', '#16294A', luzCal), 800, 'center'); ctx.restore();
       px(149, 154, 1, 20, 'rgba(0,0,0,.15)');
@@ -314,20 +315,20 @@
       }
 
       // celular na mesa (vibra com a mensagem da amiga)
-      if (t > 22.0 && t < 44.6) {
-        var vib = t > 30.0 && t < 30.7 ? Math.sin(t * 95) * .9 : 0;
+      if (t > 22.0 && t < 45.6) {
+        var vib = (t > 30.0 && t < 30.7) || (t > 31.5 && t < 32.0) ? Math.sin(t * 95) * .9 : 0;
         sprite(tela('celular', CELULAR), 170 + vib, CHAO - 3, 2);
-        if (t > 30.0 && t < 34.2) { px(171 + vib, CHAO - 2, 10, 1, 'rgba(160,220,255,.9)'); if (t < 30.7) { ctx.globalAlpha = .7; px(184, CHAO - 7, 1, 3, '#C9D6F2'); px(186, CHAO - 8, 1, 5, '#C9D6F2'); ctx.globalAlpha = 1 } }
+        if (t > 30.0 && t < 35.2) { px(171 + vib, CHAO - 2, 10, 1, 'rgba(160,220,255,.9)'); if (vib) { ctx.globalAlpha = .7; px(184, CHAO - 7, 1, 3, '#C9D6F2'); px(186, CHAO - 8, 1, 5, '#C9D6F2'); ctx.globalAlpha = 1 } }
       }
 
       // notebook: entra deslizando e vira a tela da loja
       if (t > 13.6) notebook(t, kf(t, [[13.6, 150], [14.6, 0, 'volta']]));
 
       // caixa do pedido (cai na mesa de manhã) + confete
-      if (t > 49.9) {
-        var cy0 = kf(t, [[49.9, -60], [50.25, 0, 'entra'], [50.35, -4, 'sai'], [50.45, 0, 'entra']]);
+      if (t > 57.3) {
+        var cy0 = kf(t, [[57.3, -60], [57.65, 0, 'entra'], [57.75, -4, 'sai'], [57.85, 0, 'entra']]);
         sprite(tela('caixa', CAIXA), 120, CHAO - 16 + cy0, 2);
-        if (t > 50.25 && t < 52.2) { var d = t - 50.25; CONFETE.forEach(function (q) { var x = 132 + Math.cos(q.a) * q.v * d, y = CHAO - 16 + Math.sin(q.a) * q.v * d + 120 * d * d;
+        if (t > 57.65 && t < 59.6) { var d = t - 57.65; CONFETE.forEach(function (q) { var x = 132 + Math.cos(q.a) * q.v * d, y = CHAO - 16 + Math.sin(q.a) * q.v * d + 120 * d * d;
           ctx.globalAlpha = Math.max(0, 1 - d / 1.95); px(Math.round(x), Math.round(y), 2, q.g > .5 ? 2 : 1, q.c) }); ctx.globalAlpha = 1 }
       }
       sprite(tela('luminaria', LUMINARIA), 98, CHAO - 38, 2);
@@ -345,8 +346,13 @@
       // o Pixel (sai da tela, pousa em cima da tampa do notebook, acena)
       var p = estadoPixel(t);
       if (p) {
-        var pimg = pixel(p.feliz, p.modo), w2 = pimg.width * 2, h2 = pimg.height * 2;
+        var pimg = pixel(p.feliz, p.modo), w2 = pimg.width * 2, h2 = pimg.height * 2, registra = t > 57.8 && t < 60.6;
+        if (registra) { var gl = kf(t, [[57.8, 0], [58.0, 1, 'sai'], [60.0, .7], [60.6, 0]]), gy = 197 + p.y - h2 / 2; ctx.globalCompositeOperation = 'screen';
+          var gg = ctx.createRadialGradient(p.x, gy, 2, p.x, gy, 30); gg.addColorStop(0, 'rgba(120,190,255,' + (.8 * gl) + ')'); gg.addColorStop(1, 'rgba(120,190,255,0)'); ctx.fillStyle = gg; ctx.fillRect(p.x - 40, gy - 40, 80, 80); ctx.globalCompositeOperation = 'source-over' }
         ctx.save(); ctx.translate(p.x, 197 + p.y - h2 / 2 * p.esc); ctx.rotate(p.gira); ctx.scale(p.esc, p.esc); sprite(pimg, -w2 / 2, -h2 / 2, 2); ctx.restore();
+        if (registra) { var ba = kf(t, [[57.8, 0], [58.05, 1, 'volta'], [60.2, 1], [60.6, 0]]), bt = 197 + p.y - h2 / 2;   // ao lado do Pixel, na altura do rosto (acima sairia do quadro)
+          ctx.save(); ctx.translate(p.x + 30, bt); ctx.scale(ba, ba); caixaRedonda(-12, -3.5, 24, 7, 3.5, '#2BB37A'); texto(T('Compra ✓', 'Compra ✓'), 0, .25, 3, '#FFFFFF', 800, 'center');
+          ctx.fillStyle = '#2BB37A'; ctx.beginPath(); ctx.moveTo(-12, -1.5); ctx.lineTo(-15, 0); ctx.lineTo(-12, 1.5); ctx.fill(); ctx.restore() }
       }
 
       // a lâmpada da ideia, na frente de tudo
@@ -354,7 +360,7 @@
 
       // tela: vinheta e entrada no escuro
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      var vin = kf(t, [[0, .55], [8.4, .5], [10.6, .78], [11.2, .78], [12, .35], [14.8, .45], [16.2, .2], [25.0, .2], [26.2, .45], [49.4, .45], [50.0, .25]]);
+      var vin = kf(t, [[0, .55], [8.4, .5], [10.6, .78], [11.2, .78], [12, .35], [14.8, .45], [16.2, .2], [25.0, .2], [26.2, .45], [45.6, .45], [46.6, .2], [50.2, .2], [55.0, .45], [55.6, .25]]);
       var gv = ctx.createRadialGradient(W / 2, H * .46, H * .25, W / 2, H / 2, W * .72); gv.addColorStop(0, 'rgba(4,8,20,0)'); gv.addColorStop(1, 'rgba(4,8,20,' + vin + ')');
       ctx.fillStyle = gv; ctx.fillRect(0, 0, W, H);
       var escuro = kf(t, [[0, 1], [1.1, 0, 'sai']]); if (escuro > 0) { ctx.fillStyle = 'rgba(4,8,20,' + escuro + ')'; ctx.fillRect(0, 0, W, H) }
@@ -375,7 +381,7 @@
       px(sx, sy + cab, sw, 5, '#16294A'); texto('Lojinha da Marina', sx + 2, sy + 2.6 + cab, 2.3, '#FFFFFF', 800);
       // contador de visitas (silêncio)
       // (no close, ele "atualiza" — pisca três vezes — e continua 0)
-      if (t > 22.0) { var vis = kf(t, [[22.0, 0], [22.5, 1]]), pis = [23.6, 24.2, 24.8].some(function (q) { return t > q && t < q + .14 }) ? .25 : 1; ctx.globalAlpha = liga * vis * pis; var ped = t > 50.25; caixaRedonda(sx + 25, sy + 1, 12, 3, 1.5, ped ? '#2BB37A' : '#E2577A'); texto(ped ? T('1 pedido', '1 pedido') : T('0 visitas', '0 visitas'), sx + 31, sy + 2.6, 1.6, '#FFFFFF', 700, 'center'); ctx.globalAlpha = liga }
+      if (t > 22.0) { var vis = kf(t, [[22.0, 0], [22.5, 1]]), pis = [23.6, 24.2, 24.8].some(function (q) { return t > q && t < q + .14 }) ? .25 : 1; ctx.globalAlpha = liga * vis * pis; var ped = t > 57.65; caixaRedonda(sx + 25, sy + 1, 12, 3, 1.5, ped ? '#2BB37A' : '#E2577A'); texto(ped ? T('1 pedido', '1 pedido') : T('0 visitas', '0 visitas'), sx + 31, sy + 2.6, 1.6, '#FFFFFF', 700, 'center'); ctx.globalAlpha = liga }
       // vitrine: 4 produtos caem e quicam
       var itens = [['u', CANECA_PRONTA], ['cam', null], ['sac', null], ['caneca1', null]];
       for (var i = 0; i < 4; i++) {
@@ -398,12 +404,23 @@
         px(gx + 5, gy + 11.6, 5, .7, '#C5CFE0'); px(gx + 5, gy + 13, 3.5, .7, '#E2E8F0');
       }
       // o Pixel sai da tela: brilho
-      var brilho = kf(t, [[36.4, 0], [36.9, 1, 'sai'], [37.5, 0]]);
+      var brilho = kf(t, [[37.4, 0], [37.9, 1, 'sai'], [38.5, 0]]);
       if (brilho > 0) { ctx.globalAlpha = brilho; px(sx, sy, sw, sh, '#FFFFFF'); ctx.globalAlpha = liga }
+      // o primeiro anúncio: com o Rafa na chamada, ela monta e publica (o anúncio é que leva a loja a mais gente)
+      if (t > 46.4 && t < 55.0) {
+        var na = kf(t, [[46.4, 0], [46.8, 1, 'sai']]), f1 = kf(t, [[46.9, 0], [47.2, 1]]), f2 = kf(t, [[47.3, 0], [47.6, 1]]), f3 = kf(t, [[47.7, 0], [48.0, 1]]);
+        ctx.globalAlpha = liga * na; px(sx, sy, sw, sh, '#F4F7FC'); px(sx, sy, sw, 5, '#1877F2'); texto(T('Novo anúncio', 'Nuevo anuncio'), sx + 2, sy + 2.6, 2.2, '#FFFFFF', 800);
+        ctx.globalAlpha = liga * na * f1; caixaRedonda(sx + 2, sy + 7, 14, 13, 1.2, '#FFF4E8'); sprite(tela('caneca-pronta', CANECA_PRONTA), sx + 9 - CANECA_PRONTA[0].length * .45, sy + 13.5 - CANECA_PRONTA.length * .45, .9);
+        ctx.globalAlpha = liga * na * f2; texto(T('Caneca pintada à mão', 'Taza pintada a mano'), sx + 18, sy + 8.5, 1.7, '#16294A', 700); px(sx + 18, sy + 10.4, 15, .7, '#C5CFE0');
+        ctx.globalAlpha = liga * na * f3; caixaRedonda(sx + 18, sy + 12, 11, 3, 1.5, '#E8EEFA'); texto(T('R$ 10 por dia', 'R$ 10 por día'), sx + 23.5, sy + 13.6, 1.5, '#1F4FA8', 700, 'center');
+        if (t > 47.9) { var pub = t > 48.6, ap = kf(t, [[48.2, 1], [48.35, .9], [48.5, 1.06], [48.6, 1]]); ctx.globalAlpha = liga * na; ctx.save(); ctx.translate(sx + 26, sy + 18.5); ctx.scale(ap, ap);
+          caixaRedonda(-8, -2.2, 16, 4.4, 2.2, pub ? '#2BB37A' : '#1877F2'); texto(pub ? T('✓ Publicado', '✓ Publicado') : T('Publicar', 'Publicar'), 0, .1, 1.9, '#FFFFFF', 800, 'center'); ctx.restore() }
+        ctx.globalAlpha = liga;
+      }
       // o Rafa chega de leve: só um ícone de chamada no canto da tela (quem fala é o balão)
-      if (t > 40.4 && t < 44.6) {
-        var ic = kf(t, [[40.4, 0], [40.7, 1, 'volta']]), cxr = sx + 33.5, cyr = sy + 19.5;
-        if (t < 41.2) { var an = (t - 40.4) % .6 / .6; ctx.strokeStyle = 'rgba(43,179,122,' + (1 - an) + ')'; ctx.lineWidth = .5; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 + an * 3, 0, 7); ctx.stroke() }
+      if (t > 41.4 && t < 50.2) {
+        var ic = kf(t, [[41.4, 0], [41.7, 1, 'volta']]) * (t > 46.4 ? .75 : 1), cxr = t > 46.4 ? sx + 35 : sx + 33.5, cyr = t > 46.4 ? sy + 2.5 : sy + 19.5;   // no anúncio, sobe para a barra de cima
+        if (t < 42.2) { var an = (t - 41.4) % .6 / .6; ctx.strokeStyle = 'rgba(43,179,122,' + (1 - an) + ')'; ctx.lineWidth = .5; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 + an * 3, 0, 7); ctx.stroke() }
         ctx.fillStyle = '#2BB37A'; ctx.beginPath(); ctx.arc(cxr, cyr, 2.6 * ic, 0, 7); ctx.fill();
         if (ic > .5) texto('🎧', cxr, cyr + .2, 2.6 * ic, '#FFFFFF', 700, 'center');
       }
@@ -415,7 +432,7 @@
       var x = -40, lista = []; while (x < 420) { var w = 18 + Math.floor(r() * 22), h = cfg[2] + Math.floor(r() * (cfg[3] - cfg[2])); lista.push({ x: x, w: w, h: h, jan: Math.floor(r() * 1000) }); x += w + 2 } cam.push({ par: cfg[0], cor: cfg[1], lista: lista, li: li }) }); return cam })();
     var FONES = [[58, 74], [108, 58], [160, 50], [212, 58], [262, 74]];
     function cenaCidade(t, W, H) {
-      var S = W / 320, px0 = kf(t, [[44.6, 0], [50.0, 30, 'lin']]);
+      var S = W / 320, px0 = kf(t, [[50.2, 0], [55.6, 30, 'lin']]);
       ctx.setTransform(S, 0, 0, S, 0, 0); ctx.imageSmoothingEnabled = false;
       var ceu = ctx.createLinearGradient(0, 0, 0, 180); ceu.addColorStop(0, '#8EC5F2'); ceu.addColorStop(.7, '#FFD9B0'); ceu.addColorStop(1, '#FFC79A');
       px(0, 0, 320, 180, ceu);
@@ -426,7 +443,7 @@
           ctx.globalAlpha = .62 + .18 * Math.sin(t * .9 + (b.jan + xx + yy) * .7); px(xx, yy, 2, 2, '#FFE5A0'); ctx.globalAlpha = 1 } }) });
       // celulares flutuando: acendem um a um com o anúncio da caneca
       FONES.forEach(function (f, i) {
-        var li = 45.6 + i * .55, liga = kf(t, [[li, 0], [li + .25, 1, 'sai']]), bob = Math.sin(t * 2.2 + i) * 1.6, fx = f[0] - px0 * .15, fy = f[1] + bob;
+        var li = 51.2 + i * .55, liga = kf(t, [[li, 0], [li + .25, 1, 'sai']]), bob = Math.sin(t * 2.2 + i) * 1.6, fx = f[0] - px0 * .15, fy = f[1] + bob;
         if (liga > 0) { var anel = (t - li) % 1.4; ctx.strokeStyle = 'rgba(255,255,255,' + Math.max(0, .7 - anel * .5) + ')'; ctx.lineWidth = .8; ctx.beginPath(); ctx.arc(fx, fy, 14 + anel * 22, 0, 7); ctx.stroke() }
         caixaRedonda(fx - 10, fy - 17, 20, 34, 3, '#1E2740');
         px(fx - 8.5, fy - 14.5, 17, 29, mistura('#2A3550', '#FFFFFF', liga));
@@ -438,7 +455,7 @@
         }
       });
       // a caixa do pedido sai do celular do meio e voa para a Marina
-      if (t > 48.4) { var p = kf(t, [[48.4, 0], [49.4, 1, 'entra']]), bx = 160 + p * 190, by = 50 - Math.sin(p * Math.PI) * 30 + p * 60;
+      if (t > 53.9) { var p = kf(t, [[53.9, 0], [55.0, 1, 'entra']]), bx = 160 + p * 190, by = 50 - Math.sin(p * Math.PI) * 30 + p * 60;
         ctx.save(); ctx.translate(bx, by); ctx.rotate(p * 5); sprite(tela('caixa', CAIXA), -12, -8, 2); ctx.restore() }
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       var gv = ctx.createRadialGradient(W / 2, H * .46, H * .25, W / 2, H / 2, W * .72); gv.addColorStop(0, 'rgba(4,8,20,0)'); gv.addColorStop(1, 'rgba(4,8,20,.25)'); ctx.fillStyle = gv; ctx.fillRect(0, 0, W, H);
@@ -456,11 +473,11 @@
     }
     function desenha(t) {
       var W = cv.width, H = cv.height;
-      if (t < 44.6 || t >= 50.0) cenaAtelie(t, W, H);
-      else if (t < 45.2) quadros(t, cenaAtelie, cenaCidade, 44.6, 45.2);
-      else if (t < 49.4) cenaCidade(t, W, H);
-      else quadros(t, cenaCidade, cenaAtelie, 49.4, 50.0);
-      var branco = kf(t, [[54.35, 0], [54.95, 1, 'entra']]);
+      if (t < 50.2 || t >= 55.6) cenaAtelie(t, W, H);
+      else if (t < 50.8) quadros(t, cenaAtelie, cenaCidade, 50.2, 50.8);
+      else if (t < 55.0) cenaCidade(t, W, H);
+      else quadros(t, cenaCidade, cenaAtelie, 55.0, 55.6);
+      var branco = kf(t, [[62.35, 0], [62.95, 1, 'entra']]);
       if (branco > 0 && t < FIM + .1) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.fillStyle = 'rgba(255,248,230,' + branco + ')'; ctx.fillRect(0, 0, W, H) }
     }
 
@@ -471,14 +488,17 @@
       { a: 9.9, b: 12.2, leg: T('E se mais gente visse?', '¿Y si más gente lo viera?'), cls: 'pensa' },
       { a: 16.8, b: 21.6, leg: T('Ela cria a Lojinha online e o Instagram.', 'Crea la Lojinha online y el Instagram.') },
       { a: 23.0, b: 26.2, leg: T('Mas ninguém aparece.', 'Pero nadie aparece.') },
-      { a: 30.3, b: 34.0, notif: { ic: '💬', fundo: '#2BB37A', app: T('Mensagens · agora', 'Mensajes · ahora'), tit: T('Amiga', 'Amiga'), txt: T('Coloca o Pixel e anuncia na Meta! 💡', '¡Pon el Pixel y anuncia en Meta! 💡') } },
-      { a: 34.4, b: 36.6, leg: T('Pixel? O que é isso?', '¿Pixel? ¿Qué es eso?'), cls: 'pensa' },
-      { a: 38.3, b: 41.4, placa: { nome: 'Pixel', cor: '#2F6FD6', txt: T('Ele conta para a Meta o que acontece no site.', 'Le cuenta a Meta lo que pasa en el sitio.') } },
-      { a: 40.8, b: 44.2, placa: { nome: 'Rafa', cor: '#7357FF', txt: T('Do suporte da Meta: ajuda a Marina em cada fase.', 'Del soporte de Meta: ayuda a Marina en cada fase.') } },
-      { a: 41.0, b: 44.4, chat: { txt: T('Calma, a gente te ajuda em cada passo.', 'Tranquila, te ayudamos en cada paso.') } },
-      { a: 45.8, b: 49.2, leg: T('O anúncio chega a quem procura.', 'El anuncio llega a quien busca.') },
-      { a: 50.25, b: 53.4, notif: { ic: '🛍️', fundo: '#FFD65A', app: T('Lojinha da Marina · agora', 'Lojinha da Marina · ahora'), tit: T('Pedido recebido!', '¡Pedido recibido!'), txt: T('1 caneca azul pintada à mão', '1 taza azul pintada a mano') } },
-      { a: 51.6, b: 54.4, leg: T('Essa é a jornada que você vai acompanhar.', 'Este es el camino que vas a acompañar.') }
+      { a: 30.3, b: 34.8, notif: { ic: '💬', fundo: '#2BB37A', app: T('Mensagens · agora', 'Mensajes · ahora'), tit: T('Amiga', 'Amiga'), txt: T('Vi teu site, ficou lindo! 😍', '¡Vi tu sitio, quedó precioso! 😍') } },
+      { a: 31.5, b: 35.0, cls: 'seg', notif: { ic: '💬', fundo: '#2BB37A', app: T('Mensagens · agora', 'Mensajes · ahora'), tit: T('Amiga', 'Amiga'), txt: T('Já pensou em anunciar na Meta? Eu anuncio e uso o Pixel pra saber o que funciona 👀', '¿Ya pensaste en anunciar en Meta? Yo anuncio y uso el Pixel para saber qué funciona 👀') } },
+      { a: 35.4, b: 37.6, leg: T('Pixel? O que é isso?', '¿Pixel? ¿Qué es eso?'), cls: 'pensa' },
+      { a: 39.3, b: 42.4, placa: { nome: 'Pixel', cor: '#2F6FD6', txt: T('Ele conta para a Meta o que acontece no site.', 'Le cuenta a Meta lo que pasa en el sitio.') } },
+      { a: 41.8, b: 45.2, placa: { nome: 'Rafa', cor: '#7357FF', txt: T('Do suporte da Meta: ajuda a Marina em cada fase.', 'Del soporte de Meta: ayuda a Marina en cada fase.') } },
+      { a: 42.0, b: 45.4, chat: { txt: T('Calma, a gente te ajuda em cada passo.', 'Tranquila, te ayudamos en cada paso.') } },
+      { a: 46.8, b: 50.0, leg: T('Com a ajuda do Rafa, ela cria o primeiro anúncio.', 'Con la ayuda de Rafa, crea su primer anuncio.') },
+      { a: 51.2, b: 54.6, leg: T('O anúncio leva a Lojinha a quem procura.', 'El anuncio lleva la Lojinha a quien busca.') },
+      { a: 55.7, b: 57.3, leg: T('Alguns dias depois…', 'Unos días después…'), cls: 'pensa' },
+      { a: 57.65, b: 60.6, notif: { ic: '🛍️', fundo: '#FFD65A', app: T('Lojinha da Marina · agora', 'Lojinha da Marina · ahora'), tit: T('Pedido recebido!', '¡Pedido recibido!'), txt: T('1 caneca azul pintada à mão', '1 taza azul pintada a mano') } },
+      { a: 59.6, b: 62.4, leg: T('Sem mágica: anúncio, medição e ajuste, passo a passo.', 'Sin magia: anuncio, medición y ajuste, paso a paso.') }
     ];
     var vivos = {};
     function ui(t) {
@@ -487,7 +507,7 @@
         if (dentro && !el) {
           el = document.createElement('div');
           if (u.leg) { el.className = 'it-leg' + (u.cls ? ' ' + u.cls : ''); el.innerHTML = u.leg.split(' ').map(function (w, k) { return '<span style="transition-delay:' + (k * 60) + 'ms">' + w + ' </span>' }).join('') }
-          else if (u.notif) { el.className = 'it-notif'; el.innerHTML = '<span class="ic" style="background:' + u.notif.fundo + '">' + u.notif.ic + '</span><span><small>' + u.notif.app + '</small><b>' + u.notif.tit + '</b>' + u.notif.txt + '</span>' }
+          else if (u.notif) { el.className = 'it-notif' + (u.cls ? ' ' + u.cls : ''); el.innerHTML = '<span class="ic" style="background:' + u.notif.fundo + '">' + u.notif.ic + '</span><span><small>' + u.notif.app + '</small><b>' + u.notif.tit + '</b>' + u.notif.txt + '</span>' }
           else if (u.placa) { el.className = 'it-placa'; el.style.setProperty('--cor', u.placa.cor); el.innerHTML = '<i></i><span><b>' + u.placa.nome + '</b>' + u.placa.txt + '</span>' }
           else { el.className = 'it-chat'; el.innerHTML = '<span class="bal">' + u.chat.txt + '</span><span class="av">' + PERSONAGEM('rafa', 3, 'feliz') + '</span>' }
           cena.appendChild(el); vivos[i] = el;
