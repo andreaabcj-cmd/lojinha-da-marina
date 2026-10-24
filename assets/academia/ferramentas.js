@@ -205,7 +205,7 @@
     montar: function (el, T) {
       el.innerHTML = '<div class="pp"><div class="pp-coisas">' + COISAS.map(function (c, i) { return '<button class="pp-c" data-pp="' + i + '"><span>' + c.ic + '</span>' + T(c.n) + '</button>' }).join('') + '</div>' +
         '<div class="pp-pasta"><b>🗃️ ' + T({ pt: 'Portfólio “Lojinha da Marina”', es: 'Portfolio “Lojinha da Marina”' }) + '</b>' + ['Usuários', 'Contas', 'Fontes de dados'].map(function (g) { return '<div class="pp-g" data-g="' + g + '"><small>' + T({ 'Usuários': { pt: 'Usuários', es: 'Usuarios' }, 'Contas': { pt: 'Contas', es: 'Cuentas' }, 'Fontes de dados': { pt: 'Fontes de dados', es: 'Fuentes de datos' } }[g]) + '</small><div class="pp-in"></div></div>' }).join('') + '</div></div>' +
-        '<div class="pp-fb" id="ppFb">' + T({ pt: 'Clique numa coisa da Marina ☝️', es: 'Haz clic en una cosa de Marina ☝️' }) + '</div>' +
+        '<div class="pp-fb" id="ppFb">' + T({ pt: 'Clique nos itens para ver onde pertencem', es: 'Haz clic en los elementos para ver dónde van' }) + '</div>' +
         '<p class="pp-regra">📌 ' + T({ pt: '<b>Regra da Meta:</b> cada ativo pertence a UM portfólio só. A mesma Página não pode estar em dois portfólios ao mesmo tempo.', es: '<b>Regla de Meta:</b> cada activo pertenece a UN solo portfolio. La misma Página no puede estar en dos portfolios al mismo tiempo.' }) + '</p>';
       el.addEventListener('click', function (e) {
         var b = e.target.closest('[data-pp]'); if (!b) return; var c = COISAS[+b.getAttribute('data-pp')], fb = el.querySelector('#ppFb');
