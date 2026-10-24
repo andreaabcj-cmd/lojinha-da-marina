@@ -243,7 +243,7 @@ window.AULAS = {
           { pt: '<b>Onde:</b> no portfólio, Páginas › a Página › Conectar ativos › Conta do Instagram. (No app do Instagram: Editar perfil › Página › Conectar ou criar.)', es: '<b>Dónde:</b> en el portfolio, Páginas › la Página › Conectar activos › Cuenta de Instagram. (En la app de Instagram: Editar perfil › Página › Conectar o crear.)' },
           { pt: '<b>O que muda:</b> quem tem acesso à Página ou ao Instagram pode gerenciar os dois; as mensagens do Instagram podem ir para a Caixa de Entrada (dá para mudar depois).', es: '<b>Qué cambia:</b> quien tiene acceso a la Página o al Instagram puede gestionar los dos; los mensajes de Instagram pueden ir a la Bandeja de entrada (se puede cambiar después).' }
         ],
-        notas: { pt: '📌 Cenário alternativo (visto de verdade em 14/10/2026): a Página estava no portfólio de outra pessoa. O caminho: quem administra aquele portfólio remove a Página (quem já administrava a Página não perde o acesso) e a dona adiciona no portfólio dela como “Página existente”. Telas de Conectar ativos conferidas em 14/10/2026.', es: '📌 Escenario alternativo (visto de verdad el 14/10/2026): la Página estaba en el portfolio de otra persona. El camino: quien administra ese portfolio quita la Página (quien ya administraba la Página no pierde el acceso) y la dueña la agrega en su portfolio como “Página existente”. Pantallas de Conectar activos revisadas el 14/10/2026.' }
+        notas: { pt: '📌 Cenário alternativo: a Página pode estar no portfólio de outra pessoa. O caminho: quem administra aquele portfólio remove a Página (quem já administrava a Página não perde o acesso) e a dona adiciona no portfólio dela como “Página existente”. Telas de Conectar ativos conferidas em 14/10/2026.', es: '📌 Escenario alternativo: la Página puede estar en el portfolio de otra persona. El camino: quien administra ese portfolio quita la Página (quien ya administraba la Página no pierde el acceso) y la dueña la agrega en su portfolio como “Página existente”. Pantallas de Conectar activos revisadas el 14/10/2026.' }
       },
       ferramenta: 'ligar-ig',
       praticar: {
@@ -628,7 +628,7 @@ window.AULAS = {
       id: '03', min: 7, status: 'pronta',
       titulo: { pt: 'Pessoas e acessos', es: 'Personas y accesos' },
       antes: { pt: 'O portfólio da Marina está criado, e ela tem controle total.', es: 'El portfolio de Marina está creado, y ella tiene control total.' },
-      gancho: { pt: '“E minha Página? Ela está no portfólio de outra pessoa!” Vamos ver os ativos.', es: '“¿Y mi Página? ¡Está en el portfolio de otra persona!” Vamos a ver los activos.' },
+      gancho: { pt: '“Quero anunciar! O que eu preciso ter no portfólio?” Vamos ver os ativos.', es: '“¡Quiero anunciar! ¿Qué necesito tener en el portfolio?” Vamos a ver los activos.' },
       objetivo: { pt: 'Saber dar o acesso certo a cada pessoa: controle total, acesso básico com ativos atribuídos, ou parceiro.', es: 'Saber dar el acceso correcto a cada persona: control total, acceso básico con activos asignados, o socio.' },
       entender: {
         dialogo: [
@@ -701,7 +701,7 @@ window.AULAS = {
         ],
         notas: { pt: 'O fuso e a moeda errados (o padrão é dólar e horário de Los Angeles) são erros muito comuns de cliente nova.', es: 'La zona horaria y la moneda equivocadas (lo predeterminado es dólar y horario de Los Ángeles) son errores muy comunes de clienta nueva.' }
       },
-      ferramenta: 'de-quem-e',
+      ferramenta: 'conta-certa',
       praticar: {
         texto: { pt: 'No simulador, o Pixel te guia: você traz a Página da loja para o portfólio e cria a conta de anúncios da Marina, com a moeda e o fuso certos.', es: 'En el simulador, el Pixel te guía: traes la Página de la tienda al portfolio y creas la cuenta publicitaria de Marina, con la moneda y la zona horaria correctas.' },
         tour: 'ativos-portfolio', pagina: 'meta-portfolio.html?exemplo=1'

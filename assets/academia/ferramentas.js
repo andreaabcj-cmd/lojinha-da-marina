@@ -295,6 +295,35 @@
   };
 
 
+  /* ---------- 8b. A conta de anúncios da Marina (Portfólio 04) ---------- */
+  var MOEDAS = [['USD', { pt: 'USD — Dólar americano', es: 'USD — Dólar estadounidense' }], ['BRL', { pt: 'BRL — Real brasileiro', es: 'BRL — Real brasileño' }], ['EUR', { pt: 'EUR — Euro', es: 'EUR — Euro' }]];
+  var FUSOS = [['LA', { pt: '(GMT-07:00) America/Los Angeles', es: '(GMT-07:00) America/Los Angeles' }], ['SP', { pt: '(GMT-03:00) America/Sao Paulo', es: '(GMT-03:00) America/Sao Paulo' }], ['BOG', { pt: '(GMT-05:00) America/Bogota', es: '(GMT-05:00) America/Bogota' }]];
+  F['conta-certa'] = {
+    titulo: { pt: 'A conta de anúncios da Marina', es: 'La cuenta publicitaria de Marina' },
+    resumo: { pt: 'A Marina vende no Brasil. Escolha a moeda e o fuso da conta, que não mudam depois.', es: 'Marina vende en Brasil. Elige la moneda y la zona horaria de la cuenta, que no cambian después.' },
+    paginas: '—', status: 'pronta',
+    montar: function (el, T) {
+      var esc = { moeda: 'USD', fuso: 'LA' };
+      function linha(nome, rot, lista) { return '<p class="dq-perg"><b>' + T(rot) + '</b></p><div class="dq-ops">' + lista.map(function (m) { return '<button class="opcao" data-cc="' + nome + ':' + m[0] + '">' + T(m[1]) + '</button>' }).join('') + '</div>' }
+      el.innerHTML = '<div class="dq"><p class="pp-regra">🛍️ ' + T({ pt: '<b>Para anunciar, o portfólio precisa de:</b> ✅ a Página da loja (Contas › Páginas › Adicionar › “Página existente”) e ⬜ uma conta de anúncios. Falta a conta: vamos criar.', es: '<b>Para anunciar, el portfolio necesita:</b> ✅ la Página de la tienda (Cuentas › Páginas › Agregar › “Página existente”) y ⬜ una cuenta publicitaria. Falta la cuenta: vamos a crearla.' }) + '</p>' +
+        linha('moeda', { pt: 'Moeda', es: 'Moneda' }, MOEDAS) + linha('fuso', { pt: 'Fuso horário', es: 'Zona horaria' }, FUSOS) +
+        '<button class="btn" data-cc="criar" style="margin-top:12px">' + T({ pt: 'Criar conta de anúncios', es: 'Crear cuenta publicitaria' }) + '</button><div class="np-res" id="ccRes"></div>' +
+        '<p class="miudo">' + T({ pt: 'A tela já vem com dólar e Los Angeles marcados: deixar assim é o erro mais comum de cliente nova.', es: 'La pantalla ya viene con dólar y Los Ángeles marcados: dejarlo así es el error más común de clienta nueva.' }) + '</p></div>';
+      var res = el.querySelector('#ccRes');
+      function marca() { el.querySelectorAll('[data-cc*=":"]').forEach(function (b) { var v = b.getAttribute('data-cc').split(':'), on = esc[v[0]] === v[1]; b.style.borderColor = on ? 'var(--blue)' : ''; b.style.background = on ? 'var(--blue-l)' : ''; b.style.fontWeight = on ? '700' : '' }) }
+      marca();
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-cc]'); if (!b) return; var v = b.getAttribute('data-cc');
+        if (v !== 'criar') { v = v.split(':'); esc[v[0]] = v[1]; marca(); res.className = 'np-res'; res.innerHTML = ''; return }
+        var ok = esc.moeda === 'BRL' && esc.fuso === 'SP';
+        res.className = 'np-res ' + (ok ? 'ok' : 'erro');
+        res.innerHTML = ok ? '✅ ' + T({ pt: 'Conta certa! Real e São Paulo: os valores e os relatórios batem com o dinheiro e o dia da Marina. Criar não cobra nada.', es: '¡Cuenta correcta! Real y São Paulo: los valores y los informes coinciden con el dinero y el día de Marina. Crearla no cobra nada.' })
+          : '⛔ ' + T({ pt: 'Ainda não! Moeda e fuso NÃO mudam depois, e a conta não sai do portfólio. A Marina vende em reais, no horário de São Paulo. Ajuste antes de criar.', es: '¡Todavía no! La moneda y la zona horaria NO cambian después, y la cuenta no sale del portfolio. Marina vende en reales, en el horario de São Paulo. Ajusta antes de crear.' });
+        if (ok && window.MOV) MOV.confete(b);
+      });
+    }
+  };
+
   /* ---------- 9. Pessoal, Criador ou Comercial? (Instagram 01) ---------- */
   var QUEM = [
     { ic: '🏪', n: { pt: 'A Marina, que vende canecas e camisetas', es: 'Marina, que vende tazas y camisetas' }, certo: 'comercial' },
