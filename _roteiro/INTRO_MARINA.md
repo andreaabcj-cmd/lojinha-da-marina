@@ -73,3 +73,24 @@ prévia (`_teste_mascote/`). A escolha muda o desenho dele no site inteiro e nas
 1. Qual Pixel (página de prévia).
 2. Se o roteiro acima está bom (cena por cena).
 3. A Marina da intro é a mesma do site (cabelo castanho, óculos, roupa amarela)? *(sugestão: sim)*
+
+---
+
+## Direção de arte (25/10/2026) — "fluida e moderna, sem salada"
+
+**Estilo:** personagens e objetos em pixel art (os mesmos do site); luz, céu e atmosfera **lisos** (degradês, brilho,
+sombra suave) por cima. É o que deixa pixel art com cara de hoje: o desenho é retrô, a luz é moderna.
+
+**Regras para não virar salada:**
+1. **Um foco por plano.** A câmera mostra uma coisa de cada vez; o resto fica mais escuro (vinheta).
+2. **Paleta curta por cena:** noite azul + luz quente da luminária. A cor nova só entra quando a história muda
+   (a lâmpada da ideia "esquenta" a cena inteira).
+3. **Câmera sempre em movimento suave** (nunca corte seco): desce da janela, desliza até a prateleira, aproxima no rosto.
+4. **Texto curto e animado:** uma frase por vez, palavra por palavra, embaixo à esquerda. Nada de caixas ou balões.
+5. **Um "momento uau" só:** a lâmpada acendendo com o clarão. O resto é calmo, para ele brilhar.
+6. **Interface mínima:** botão "Pular" discreto e uma linha fina de progresso.
+
+**Prévia com cara de produto (vertical slice):** em vez de fazer as 7 cenas pela metade, a primeira prévia faz um
+trecho de ~15 s no acabamento final: ateliê à noite → a prateleira cheia → "E se mais gente visse?" → a ideia → tela de
+título com a turma. Aprovado o acabamento, o resto segue o mesmo padrão.
+Arquivo: `_teste_intro/index.html` (fora do Git).

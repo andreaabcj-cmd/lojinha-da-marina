@@ -44,6 +44,8 @@
     svg.innerHTML = desenho(linhasDe(svg.getAttribute('data-p'), quadro), +svg.getAttribute('data-sc') || 3);
   };
   window.PERSONAGEM_NOME = { pixel: 'Pixel', marina: 'Marina', rafa: 'Rafa' };
+  /* o desenho cru (linhas e cores), para quem anima em canvas (a intro) */
+  window.PERSONAGEM_MAPA = function (nome, quadro) { return { linhas: linhasDe(nome, quadro), cores: PAL } };
 
   /* piscar: de tempos em tempos um personagem visível pisca (às vezes duas vezes seguidas) */
   if (typeof document === 'undefined' || !window.requestAnimationFrame) return;
