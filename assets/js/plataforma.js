@@ -246,6 +246,7 @@
     { m: 'dg-anuncios', itens: [
       ['nao-veicula', 'meta-entrega.html?problema=1', 'dg-anuncios', '01', { pt: 'Como investigar anúncios que não rodam (Veiculação nos três níveis)', es: 'Cómo investigar anuncios que no corren (Entrega en los tres niveles)' }],
       ['resolver-publicacao', 'meta-turbinar.html?zerar=1&problemas=1', 'dg-anuncios', '02', { pt: 'Como resolver o botão Publicar apagado (telefone, limite, saldo)', es: 'Cómo resolver el botón Publicar apagado (teléfono, límite, saldo)' }],
+      ['detalhar-regiao', 'meta-relatorios.html?zerar=1', 'dg-anuncios', '05', { pt: 'Como ver de onde vem o público (detalhamento Região) e achar a causa da cidade vizinha', es: 'Cómo ver de dónde viene el público (desglose Región) y encontrar la causa de la ciudad vecina' }],
       ['excluir-posicionamento', 'meta-feed.html?exemplo=1', 'dg-anuncios', '09', { pt: 'Como mexer nos posicionamentos sem a escolha manual (controles da conta e regras de valor)', es: 'Cómo cambiar las ubicaciones sin la elección manual (controles de la cuenta y reglas de valor)' }],
       ['limite-pagina', 'meta-limites.html?problema=1', 'dg-anuncios', '10', { pt: 'Como resolver o limite de anúncios da Página atingido', es: 'Cómo resolver el límite de anuncios de la página alcanzado' }] ] },
     { m: 'dg-catalogo', itens: [

@@ -31,4 +31,7 @@
   var tr = function (s) { return D[s] || s };
   P.push([/^(.+?)( · .+)+$/, function (m) { var partes = m[0].split(' · '); var ok = partes.every(function (p) { return D[p] || /^\d{2}-\d{2}$/.test(p) }); return ok ? partes.map(tr).join(' · ') : m[0] }]);
   P.push([/^(\d+)\/(\d+) linhas? exibidas?$/, function (m) { return m[1] + '/' + m[2] + ' fila' + (m[2] === '1' ? '' : 's') + ' mostrada' + (m[2] === '1' ? '' : 's') }]);
+  // Detalhamentos País e Região (Informes de anuncios reais em es_LA, 23/10/2026)
+  D['País'] = 'País'; D['Região'] = 'Región'; D['Brasil'] = 'Brasil'; D['São Paulo'] = 'São Paulo'; D['Rio de Janeiro'] = 'Río de Janeiro'; D['Minas Gerais'] = 'Minas Gerais';
+  D['Visualize seus dados pela região (como estado ou província) onde as pessoas moram ou estavam localizadas quando viram seus anúncios, dependendo de como você definiu seu direcionamento de localização. Esses valores são estimados.'] = 'Consulta los datos por región (como estado o provincia) en que las personas viven o se encontraban cuando vieron tus anuncios, según cómo hayas definido tu segmentación por lugar. Estos valores son estimados.';
 })();
