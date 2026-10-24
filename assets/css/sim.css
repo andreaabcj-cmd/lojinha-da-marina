@@ -274,3 +274,11 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .split{position:relative;display:inline-flex;gap:0}.split .btn:first-child{border-top-right-radius:0;border-bottom-right-radius:0}.split .btn+.btn{border-top-left-radius:0;border-bottom-left-radius:0;border-left:0;padding-left:10px;padding-right:10px}
 .menu-drop{position:absolute;top:100%;left:0;z-index:5;display:flex;flex-direction:column;min-width:220px;background:#fff;border:1px solid #CBD5E1;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.12);padding:4px;margin-top:4px}.menu-drop button{border:0;background:none;text-align:left;padding:8px 10px;border-radius:6px;cursor:pointer;font:inherit}.menu-drop button:hover{background:#EEF2F7}
 .pill{display:inline-block;border:1px solid #CBD5E1;border-radius:6px;padding:2px 8px;margin-left:4px;background:#fff}
+/* Gerenciador de Eventos › Conversões personalizadas (23/10/2026) */
+.cc-tres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;text-align:left;margin-top:14px}
+@media(max-width:800px){.cc-tres{grid-template-columns:1fr}}
+.cc-dois{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.cc-dois{grid-template-columns:1fr}}
+.cc-regra{display:flex;gap:8px;margin:6px 0}
+.janela select{width:100%;padding:8px 10px;border:2px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+.cc-regra select{width:auto}

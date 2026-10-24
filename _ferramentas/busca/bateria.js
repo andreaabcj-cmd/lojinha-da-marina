@@ -189,7 +189,11 @@ const B = [
   ['erro 3253001 ao publicar', ['dg-anuncios/10']],
   ['quero anunciar só no instagram e não acho onde tirar o facebook', ['dg-anuncios/09']],
   ['como calcular o roas da campanha', ['relatorios/06']],
-  ['quais as causas do aprendizado limitado', ['entrega/04']]
+  ['quais as causas do aprendizado limitado', ['entrega/04']],
+  ['quero vender na argentina com preço em pesos', ['catalogo/08']],
+  ['como traduzir meu catálogo para espanhol', ['catalogo/08']],
+  ['como criar uma conversão personalizada pela url', ['pixel-avancado/06']],
+  ['quero contar lead quando abrir a página de encomenda recebida sem mexer no código', ['pixel-avancado/06']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {

@@ -54,7 +54,7 @@
     var lado = '<aside class="cm-lado"><p class="cm-marca">∞ Meta</p><h2>Gerenciador de Comércio</h2><div class="cm-port"><i>L</i>Lojinha da Marina Aula</div>';
     if (c) {
       lado += '<p class="cm-sec" style="margin-top:0">' + esc(c.nome) + '</p>' + item('Visão geral', 'cat/' + c.id + '/visao', a === 'visao') + '<p class="cm-sec">Catálogo</p>' +
-        item('Produtos', 'cat/' + c.id + '/produtos', a === 'produtos', 'menu-produtos') + item('Conjuntos', 'cat/' + c.id + '/conjuntos', a === 'conjuntos', 'menu-conjuntos') + item('Fontes de dados', 'cat/' + c.id + '/fontes', a === 'fontes' || a === 'fonte' || a === 'fonte-cfg' || a === 'feed', 'menu-fontes') +
+        item('Produtos', 'cat/' + c.id + '/produtos', a === 'produtos', 'menu-produtos') + item('Conjuntos', 'cat/' + c.id + '/conjuntos', a === 'conjuntos', 'menu-conjuntos') + item('Fontes de dados', 'cat/' + c.id + '/fontes', a === 'fontes' || a === 'fonte' || a === 'fonte-cfg' || a === 'feed' || a === 'localizar', 'menu-fontes') +
         item('Eventos', 'cat/' + c.id + '/eventos', a === 'eventos', 'menu-eventos') + item('Problemas', 'cat/' + c.id + '/problemas', a === 'problemas', 'menu-problemas') + item('Modelos de imagem', '', false) + item('Ofertas', '', false) + item('Lojas', '', false) + item('Lista de tarefas', '', false) + item('Configurações', 'cat/' + c.id + '/config', a === 'config', 'menu-config');
     } else lado += item('Ativos', 'inicio', true, 'menu-ativos') + item('Todas as ferramentas', '', false);
     lado += '<p class="cm-sec">Usadas com frequência</p>' + item('Gerenciador de Anúncios', '', false) + item('Gerenciador de Eventos', '', false) + item('Regras automatizadas', '', false) + '</aside>';
@@ -137,7 +137,7 @@
       '<button class="cm-mi" data-acao="mn-abrir" data-t="op-manual"><b>Entrada manual</b><small>Adicione um produto de cada vez preenchendo um formulário</small></button>' +
       '<button class="cm-mi" disabled><b>Plataforma de parceiro</b><small>Sincronize produtos de uma plataforma conectada, por exemplo, Shopify</small></button>' +
       '<button class="cm-mi" data-acao="' + (naProd ? 'mn-pixel' : 'fonte-pixel') + '" data-t="op-pixel"><b>Pixel</b><small>Adicione produtos do seu site usando a identificação do Pixel</small></button>' +
-      '<b>Carregar informações adicionais</b><button class="cm-mi" disabled><b>Dados de país ou idioma</b><small>Adicione dados de produtos localizados, como preço, moeda ou disponibilidade na região.</small></button><button class="cm-mi" disabled><b>Dados de conteúdo do parceiro</b><small>Adicione conteúdo de parceiro para vincular a produtos no seu catálogo.</small></button><button class="cm-mi" disabled><b>Dados complementares</b><small>Adicione mais dados dos produtos que possam estar ausentes ou incompletos no seu catálogo.</small></button>' +
+      '<b>Carregar informações adicionais</b><button class="cm-mi" data-acao="loc-abrir" data-t="op-pais-idioma"><b>Dados de país ou idioma</b><small>Adicione dados de produtos localizados, como preço, moeda ou disponibilidade na região.</small></button><button class="cm-mi" disabled><b>Dados de conteúdo do parceiro</b><small>Adicione conteúdo de parceiro para vincular a produtos no seu catálogo.</small></button><button class="cm-mi" disabled><b>Dados complementares</b><small>Adicione mais dados dos produtos que possam estar ausentes ou incompletos no seu catálogo.</small></button>' +
       '<p class="cm-sub">✓ Menu conferido com a tela real (19 e 20/10/2026)</p></div>';
   }
   function telaProdutos(c, r) {
@@ -452,6 +452,86 @@
   });
   window.SIMCM_MN = { estado: function () { return MN }, zera: function () { MN = mnIni(); mnGrava() }, set: function (i, o) { var l = MN.linhas[i] || (MN.linhas[i] = mnLinha()); for (var k in o) l[k] = o[k]; mnGrava() }, menu: function (on) { PX.menuProd = !!on; PX.menu = false; render() }, linha: mnLinha };
 
+  /* ---------- Dados de país ou idioma (Fontes de dados › Adicionar › Carregar informações adicionais) ----------
+     Real (23/10/2026, catálogo de aula, PT e ES; nada foi baixado nem carregado): tela “Adicione informações localizadas para públicos internacionais”,
+     Importar feeds, 1. Construa um modelo (Criar modelo), 2. Carregue seu arquivo de dados; assistente Escolher país › Escolher colunas › Baixar
+     (colunas do modelo de país: Availability, Image Link, Link, Price, Sale Price, Sale Price Effective Date, Size; sugeridas: Price e Sale Price).
+     Central de Ajuda: “Como criar um feed de país ou idioma…” (id igual ao do feed principal; coluna override com o código; preço “9.99 EUR”).
+     Não visto: as colunas do modelo de idioma, a lista inteira de países e o arquivo baixado (a pré-visualização é do treino). */
+  var LZ_COLS_PAIS = [['availability', 'Availability', 'Em estoque ou indisponível'], ['image_link', 'Image Link', 'URL da imagem do produto'], ['link', 'Link', 'Link do produto'], ['price', 'Price', 'Preço do produto'], ['sale_price', 'Sale Price', 'Preço promocional do produto'], ['sale_price_effective_date', 'Sale Price Effective Date', 'Intervalo de datas para o preço de liquidação'], ['size', 'Size', 'Tamanho do produto']];
+  var LZ_COLS_IDIOMA = [['title', 'Title', 'Título do produto'], ['description', 'Description', 'Descrição do produto'], ['color', 'Color', 'Cor do produto'], ['link', 'Link', 'Link do produto']];
+  var LZ_PAISES = [['AR', 'Argentina'], ['CL', 'Chile'], ['CO', 'Colômbia'], ['MX', 'México'], ['PE', 'Peru'], ['UY', 'Uruguai'], ['US', 'Estados Unidos']];
+  var LZ_IDIOMAS = [['es_XX', 'Espanhol'], ['en_XX', 'Inglês'], ['fr_XX', 'Francês']];
+  function lzIni() { return { jan: false, passo: 0, tipo: '', locais: [], cols: [], baixou: false } }
+  var LZ = lzIni();
+  function lzOpcoes() { return LZ.tipo === 'idioma' ? LZ_IDIOMAS : LZ_PAISES }
+  function lzColunas() { return LZ.tipo === 'idioma' ? LZ_COLS_IDIOMA : LZ_COLS_PAIS }
+  function telaLocalizar(c, r) {
+    return casca('<p class="cm-sub"><a data-ir="cat/' + c.id + '/fontes">Fontes de dados</a> › <b>Dados de país ou idioma</b></p><div class="cm-duas"><div>' +
+      '<div class="cm-card" data-t="lz-intro"><h2>Adicione informações localizadas para públicos internacionais</h2><p class="cm-sub">A localização do seu inventário pode ser feita em apenas algumas etapas e torna a sua loja ou anúncio acessível para mais pessoas em todo o mundo.</p>' +
+      '<p><b>Economize tempo e dinheiro</b><br><small>Mantenha um único catálogo para todas as suas informações localizadas e elimine a necessidade de gerenciar várias campanhas.</small></p><p><b>Alcance as pessoas certas</b><br><small>Mostre às pessoas informações no idioma e na moeda certas com base no país e no idioma delas.</small></p></div>' +
+      '<div class="cm-card"><h3>Importar feeds de país e idioma de outros catálogos</h3><p class="cm-sub">Se você está usando vários catálogos de diferentes países e idiomas, poderá importar facilmente todas as informações para o catálogo ' + esc(c.nome) + '. Saiba mais</p><button class="btn sec" disabled>Importar feeds</button></div>' +
+      '<div class="cm-card" data-t="lz-novo"><h3>Configurar um novo arquivo de país ou idioma</h3><p><b>1. Construa um modelo</b><br><small>Se você estiver começando, use nosso configurador de modelo para criar um arquivo de dados (arquivo de planilha) para as informações do produto localizado do país e/ou as traduções do idioma.</small></p><button class="btn" data-acao="loc-modelo" data-t="lz-criar-modelo">Criar modelo</button>' +
+      '<p><b>2. Carregue seu arquivo de dados</b><br><small>Se você já tiver baixado um modelo e criado um arquivo de país ou idioma, poderá carregá-lo aqui para configurar um arquivo programado.</small></p><button class="btn sec" disabled title="Não visto na tela real (a conferir)">Carregar arquivo</button></div>' +
+      (LZ.baixou ? lzPrevia(c) : '') + '</div>' +
+      '<div class="cm-card"><h3>Guia de informações localizadas</h3><p class="cm-sub">Saiba como adaptar seu inventário para pessoas que compram em diferentes países e idiomas lendo estes artigos da Central de Ajuda:</p><p class="cm-sub">Mostrar informações do produto na sua loja para diferentes países e idiomas<br>Criando um arquivo de país ou idioma<br>Carregando um arquivo de país ou idioma<br>Gerenciando um arquivo de país e idioma<br>Crie um anúncio dinâmico para vários países e idiomas<br>Importar informações de país e idioma de outros catálogos</p></div></div>' +
+      '<p class="conferido">✓ Tela conferida com o Gerenciador de Comércio real em 23/10/2026 (nada foi baixado nem carregado)</p>' + (LZ.jan ? lzJanela() : ''), r);
+  }
+  function lzJanela() {
+    var et = ['Escolher ' + (LZ.tipo === 'idioma' ? 'idioma' : 'país'), 'Escolher colunas', 'Baixar'], corpo, pode = true, ultimo = LZ.passo === 3;
+    if (LZ.passo === 0) {
+      corpo = '<h3>Selecione um modelo</h3><p class="cm-sub">Construa e baixe um modelo de planilha personalizado com base no país ou do idioma em que as informações serão mostradas.</p>' +
+        '<label class="ga-lin' + (LZ.tipo === 'pais' ? ' on' : '') + '" data-t="lz-tipo-pais"><input type="radio" name="lzTipo" value="pais"' + (LZ.tipo === 'pais' ? ' checked' : '') + '/><span><b>Modelo de feed de país</b><small>Mostre às pessoas em outros países as informações certas localizando itens como o preço, a moeda, a disponibilidade, o tamanho e muito mais.</small></span></label>' +
+        '<label class="ga-lin' + (LZ.tipo === 'idioma' ? ' on' : '') + '" data-t="lz-tipo-idioma"><input type="radio" name="lzTipo" value="idioma"' + (LZ.tipo === 'idioma' ? ' checked' : '') + '/><span><b>Modelo de feed de idioma</b><small>Personalize o seu catálogo para as pessoas que falam diferentes idiomas fornecendo títulos, descrições, cores e outras informações do produto traduzidos.</small></span></label>';
+      pode = !!LZ.tipo;
+    } else if (LZ.passo === 1) {
+      corpo = '<h3>Construir modelo de feed de ' + (LZ.tipo === 'idioma' ? 'idioma' : 'país') + '</h3><p class="cm-sub">Comece escolhendo os ' + (LZ.tipo === 'idioma' ? 'idiomas' : 'países') + ' para os quais você deseja adicionar informações.</p><div data-t="lz-locais">' +
+        LZ.locais.map(function (v, i) { return '<div class="lz-lin"><select class="ga-in" data-lz-local="' + i + '" data-t="lz-local-' + i + '"><option value="">Selecionar ' + (LZ.tipo === 'idioma' ? 'idioma' : 'país') + '</option>' + lzOpcoes().map(function (o) { return '<option value="' + o[0] + '"' + (v === o[0] ? ' selected' : '') + '>' + o[1] + ' (' + o[0] + ')</option>' }).join('') + '</select><button class="btn sec" data-acao="loc-tira-local" data-i="' + i + '" title="Excluir">🗑</button></div>' }).join('') +
+        '<button class="btn sec" data-acao="loc-add-local" data-t="lz-add-local">⊕ ' + (LZ.locais.length ? 'Adicionar outro ' : 'Adicionar ') + (LZ.tipo === 'idioma' ? 'idioma' : 'país') + '</button></div>';
+      pode = LZ.locais.some(function (v) { return v });
+    } else if (LZ.passo === 2) {
+      corpo = '<h3>Construir modelo de feed de ' + (LZ.tipo === 'idioma' ? 'idioma' : 'país') + '</h3><p class="cm-sub">Escolha as colunas que você quer que apareçam no seu modelo.</p><div data-t="lz-cols">' +
+        lzColunas().map(function (o) { var on = LZ.cols.indexOf(o[0]) >= 0; return '<label class="ga-lin' + (on ? ' on' : '') + '" data-t="lz-col-' + o[0] + '"><input type="checkbox" data-lz-col="' + o[0] + '"' + (on ? ' checked' : '') + '/><span><b>' + o[1] + '</b><small>' + o[2] + '</small></span></label>' }).join('') +
+        '</div><p class="cm-sub">As opções de coluna fornecidas são sugestões para um modelo bem-sucedido. Saiba mais</p>' + (LZ.tipo === 'idioma' ? pendente('As colunas do modelo de idioma não foram vistas; vêm da Central de Ajuda') : '<p class="cm-sub">Na tela real cada coluna é uma lista com lixeira; aqui, caixinhas. Price e Sale Price já vêm sugeridas.</p>');
+      pode = LZ.cols.length > 0;
+    } else {
+      corpo = '<h3>Baixar modelo de feed de ' + (LZ.tipo === 'idioma' ? 'idioma' : 'país') + '</h3><p><b>Preenchimento do seu modelo</b></p><p class="cm-sub">Depois de baixar o modelo, feche esta janela, preencha os campos com dados como nomes de produtos e identificação do conteúdo. Saiba mais</p><p class="cm-sub">Depois que o modelo estiver completamente preenchido, volte ao Gerenciador de Comércio para carregá-lo e programar um feed.</p>' +
+        '<button class="btn" data-acao="loc-baixar" data-t="lz-baixar">Baixar modelo</button><p class="cm-sub">🧪 No simulador, “Baixar modelo” mostra o modelo na própria tela, em vez de baixar um arquivo.</p>';
+    }
+    return '<div class="fundo" data-t="lz-jan"><div class="janela lz-jan"><div class="lz-et">' + (LZ.passo === 0 ? '' : et.map(function (e, i) { return '<span class="' + (i + 1 === LZ.passo ? 'on' : i + 1 < LZ.passo ? 'ok' : '') + '">' + (i + 1 < LZ.passo ? '✓ ' : '') + e + '</span>' }).join('')) + '</div><div>' + corpo +
+      '<div class="rodape-jan">' + (LZ.passo === 0 ? '<button class="btn sec" data-acao="loc-fecha">Cancelar</button>' : '<button class="btn sec" data-acao="loc-voltar">Voltar</button>') +
+      (ultimo ? '<button class="btn sec" data-acao="loc-fecha" data-t="lz-fechar">Fechar</button>' : '<button class="btn" data-acao="loc-avancar" data-t="lz-avancar"' + (pode ? '' : ' disabled') + '>Avançar</button>') + '</div></div></div></div>';
+  }
+  function lzPrevia(c) {
+    var cols = LZ.cols.slice(), ids = c.itens.slice(0, 3).map(function (x) { return x.id }), loc = LZ.locais.filter(function (v) { return v })[0] || 'AR';
+    var exemplo = { price: '4500.00 ARS', sale_price: '3990.00 ARS', availability: 'in stock', link: 'https://lojinha.exemplo.com/ar/' + (ids[0] || 'produto').toLowerCase(), image_link: 'https://lojinha.exemplo.com/img.jpg', size: 'M', sale_price_effective_date: '2026-11-01T00:00-03:00/2026-11-30T23:59-03:00', title: 'Taza azul', description: 'Taza de cerámica pintada a mano.', color: 'Azul' };
+    return '<div class="cm-card" data-t="lz-previa"><h3>📗 O modelo baixado (pré-visualização do treino)</h3><div class="cm-grade"><table class="cm-tab"><thead><tr><th>id</th><th>override</th>' + cols.map(function (k) { return '<th>' + k + '</th>' }).join('') + '</tr></thead><tbody>' +
+      ids.map(function (id, i) { return '<tr' + (i === 0 ? ' data-t="lz-linha-ex"' : '') + '><td><b>' + esc(id) + '</b></td><td>' + loc + '</td>' + cols.map(function (k) { return '<td>' + (i === 0 ? esc(exemplo[k] || '') : '') + '</td>' }).join('') + '</tr>' }).join('') + '</tbody></table></div>' +
+      '<p class="cm-sub"><b>id</b>: igual, letra por letra, à Identificação do conteúdo do feed principal (o modelo já traz alguns; apague os que não vai localizar e acrescente os outros). <b>override</b>: o código do ' + (LZ.tipo === 'idioma' ? 'idioma (ex.: es_XX)' : 'país (ex.: AR)') + '; um país ou idioma por linha. Os nomes dos campos e alguns valores ficam em inglês (in stock). Preço com ponto e código da moeda: <b>4500.00 ARS</b>, nunca “$ 4.500,00”. Depois: salvar em CSV e carregar em “2. Carregue seu arquivo de dados”.</p></div>';
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest('[data-acao^="loc-"]'); if (!a || a.disabled) return;
+    var ac = a.getAttribute('data-acao'), c = cat(rota().id);
+    if (ac === 'loc-abrir') { PX.menu = false; PX.menuProd = false; LZ = lzIni(); vai('cat/' + c.id + '/localizar'); return }
+    else if (ac === 'loc-modelo') { var b = LZ.baixou; LZ = lzIni(); LZ.baixou = false; LZ.jan = true }
+    else if (ac === 'loc-fecha') LZ.jan = false;
+    else if (ac === 'loc-voltar') LZ.passo = Math.max(0, LZ.passo - 1);
+    else if (ac === 'loc-avancar') { LZ.passo++; if (LZ.passo === 1 && !LZ.locais.length) LZ.locais = []; if (LZ.passo === 2 && !LZ.cols.length) LZ.cols = LZ.tipo === 'idioma' ? ['title', 'description'] : ['price', 'sale_price'] }
+    else if (ac === 'loc-add-local') LZ.locais.push('');
+    else if (ac === 'loc-tira-local') LZ.locais.splice(+a.getAttribute('data-i'), 1);
+    else if (ac === 'loc-baixar') { LZ.baixou = true; LZ.jan = false }
+    window.__simLz = LZ; render();
+  });
+  document.addEventListener('change', function (ev) {
+    var t = ev.target; if (!t.getAttribute) return;
+    if (t.name === 'lzTipo') { LZ.tipo = t.value; LZ.locais = []; LZ.cols = [] }
+    else if (t.hasAttribute('data-lz-local')) LZ.locais[+t.getAttribute('data-lz-local')] = t.value;
+    else if (t.hasAttribute('data-lz-col')) { var k = t.getAttribute('data-lz-col'), i = LZ.cols.indexOf(k); if (i >= 0) LZ.cols.splice(i, 1); else LZ.cols.push(k) }
+    else return;
+    window.__simLz = LZ; render();
+  });
+  window.SIMCM_LZ = { estado: function () { return LZ }, set: function (o) { LZ = lzIni(); for (var k in o || {}) LZ[k] = o[k]; window.__simLz = LZ } };
+
   var ED = false;
   var TELAS = {
     inicio: function () { return inicio() },
@@ -463,6 +543,7 @@
       if (r.aba === 'manual') return telaManual(c);
       if (r.aba === 'carregar') return telaCarregar(c, r);
       if (r.aba === 'feed') return telaFeed(c, r);
+      if (r.aba === 'localizar') return telaLocalizar(c, r);
       if (r.aba === 'fonte' || r.aba === 'fonte-cfg') return telaFonte(c, r, r.aba === 'fonte-cfg');
       var t = r.aba === 'produtos' ? telaProdutos(c, r) : r.aba === 'conjuntos' ? telaConjuntos(c, r) : r.aba === 'fontes' ? telaFontes(c, r) : r.aba === 'eventos' ? telaEventos(c, r) : r.aba === 'problemas' ? telaProblemas(c, r) : r.aba === 'config' ? telaConfig(c, r) : visao(c, r);
       return t + (ED ? modalIdioma() : '');
@@ -698,5 +779,32 @@
       tit: T('Sua vez', 'Tu turno'), txt: T('A Marina parou de vender o Boné e tirou ele do arquivo. Qual programação faz o Boné sair do catálogo sozinho? Clique no botão dela (o ⋯ ou o +). Depois clique em Próximo.', 'Marina dejó de vender la Gorra y la sacó del archivo. ¿Qué programación hace que la Gorra salga sola del catálogo? Haz clic en su botón (el ⋯ o el +). Después haz clic en Siguiente.') },
     { alvo: '[data-t=expl-prog]', fim: true, semVolta: true, garante: function () { FD.prog = 'subst'; rotaCat('fonte-cfg')(); render() },
       tit: T('Isso! 🎉', '¡Eso! 🎉'), txt: T('Com a de substituições, o que sai do arquivo sai do catálogo na próxima leitura. Se o cliente só usa a de atualizações, o produto fica lá: aí ele muda a coluna status do arquivo para archived (arquivado) ou passa a usar a de substituições. E nunca apague o feed para “limpar”: a tela avisa que isso remove as informações do catálogo. Clique em Concluir.', 'Con la de reemplazo, lo que sale del archivo sale del catálogo en la próxima lectura. Si el cliente solo usa la de actualización, el producto se queda: entonces cambia la columna status del archivo a archived (archivado) o pasa a usar la de reemplazo. Y nunca elimines el feed para “limpiar”: la pantalla avisa que eso quita la información del catálogo. Haz clic en Terminar.') }
+  ];
+  /* Catálogo 08 · Catálogo por país e idioma (tela real de 23/10/2026; nada baixado) */
+  function lzTela(o) { return function () { PX.menu = false; SIMCM_LZ.set(o || {}); rotaCat('localizar')(); render() } }
+  function lzEst() { return window.__simLz || SIMCM_LZ.estado() }
+  TOURS['catalogo-pais-idioma'] = [
+    { alvo: '[data-t=btn-add-fonte]', clique: true, garante: function () { PX.menu = false; SIMCM_LZ.set({}); rotaCat('fontes')(); render() },
+      tit: T('A Lojinha vai vender na Argentina', 'La Lojinha va a vender en Argentina'), txt: T('A Marina quer mostrar os anúncios na Argentina, com preço em pesos. Não precisa de outro catálogo: dá para acrescentar dados por país ao mesmo catálogo. Clique em Adicionar.', 'Marina quiere mostrar los anuncios en Argentina, con precio en pesos. No hace falta otro catálogo: se pueden agregar datos por país al mismo catálogo. Haz clic en Agregar.') },
+    { alvo: '[data-t=op-pais-idioma]', clique: true, garante: function () { SIMCM_LZ.set({}); rotaCat('fontes')(); PX.menu = true; render() },
+      tit: T('Carregar informações adicionais', 'Cargar información adicional'), txt: T('Na parte de baixo do menu: “Dados de país ou idioma”. Clique nela.', 'En la parte de abajo del menú: “Datos de país o idioma”. Haz clic en ella.') },
+    { alvo: '[data-t=lz-intro]', garante: lzTela(),
+      tit: T('Um catálogo, vários países', 'Un catálogo, varios países'), txt: T('Com dados de país e de idioma, cada pessoa vê o preço, a moeda e o texto do seu país e idioma, no mesmo catálogo. Antes, o catálogo precisa ter o idioma e o país padrão definidos em Configurações. Clique em Próximo.', 'Con datos de país e idioma, cada persona ve el precio, la moneda y el texto de su país e idioma, en el mismo catálogo. Antes, el catálogo debe tener el idioma y el país predeterminados definidos en Configuración. Haz clic en Siguiente.') },
+    { alvo: '[data-t=lz-criar-modelo]', clique: true, garante: lzTela(),
+      tit: T('Criar o modelo', 'Crear la plantilla'), txt: T('Comece pelo modelo da planilha: clique em Criar modelo.', 'Empieza por la plantilla de la hoja: haz clic en Crear plantilla.') },
+    { alvo: '[data-t=lz-tipo-pais]', garante: lzTela({ jan: true }), cond: function () { return lzEst().tipo === 'pais' },
+      bloqueia: function (t) { return !!t.closest('[data-t=lz-tipo-idioma]') }, erro: T('Para preço em pesos, o modelo é o de país. O de idioma é para traduzir título e descrição.', 'Para precio en pesos, la plantilla es la de país. La de idioma es para traducir título y descripción.'),
+      tit: T('País ou idioma?', '¿País o idioma?'), txt: T('País = preço, moeda, disponibilidade, link, tamanho. Idioma = título, descrição, cor traduzidos. Preço em pesos é coisa de país: escolha Modelo de feed de país.', 'País = precio, moneda, disponibilidad, enlace, talla. Idioma = título, descripción, color traducidos. Precio en pesos es cosa de país: elige Plantilla de lista de países.'), dica: T('Marque “Modelo de feed de país”.', 'Marca “Plantilla de lista de países”.') },
+    { alvo: '[data-t=lz-avancar]', clique: true, garante: lzTela({ jan: true, tipo: 'pais' }), tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
+    { alvo: '[data-t=lz-add-local]', clique: true, garante: lzTela({ jan: true, tipo: 'pais', passo: 1 }), tit: T('Escolher o país', 'Elegir el país'), txt: T('Clique em Adicionar país.', 'Haz clic en Agregar país.') },
+    { alvo: '[data-t=lz-local-0]', garante: lzTela({ jan: true, tipo: 'pais', passo: 1, locais: [''] }), cond: function () { return lzEst().locais.indexOf('AR') >= 0 },
+      tit: T('Argentina', 'Argentina'), txt: T('Escolha Argentina. O código (AR) é o que vai na coluna override da planilha.', 'Elige Argentina. El código (AR) es lo que va en la columna override de la hoja.'), dica: T('Escolha “Argentina (AR)”.', 'Elige “Argentina (AR)”.') },
+    { alvo: '[data-t=lz-avancar]', clique: true, garante: lzTela({ jan: true, tipo: 'pais', passo: 1, locais: ['AR'] }), tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
+    { alvo: '[data-t=lz-cols]', garante: lzTela({ jan: true, tipo: 'pais', passo: 2, locais: ['AR'], cols: ['price', 'sale_price'] }), cond: function () { return lzEst().cols.indexOf('availability') >= 0 && lzEst().cols.indexOf('price') >= 0 },
+      tit: T('As colunas', 'Las columnas'), txt: T('Price e Sale Price já vêm sugeridas. A Marina também quer avisar quando algo não está à venda na Argentina: marque Availability.', 'Price y Sale Price ya vienen sugeridas. Marina también quiere avisar cuando algo no está a la venta en Argentina: marca Availability.'), dica: T('Marque “Availability” e deixe “Price” marcado.', 'Marca “Availability” y deja “Price” marcado.') },
+    { alvo: '[data-t=lz-avancar]', clique: true, garante: lzTela({ jan: true, tipo: 'pais', passo: 2, locais: ['AR'], cols: ['price', 'sale_price', 'availability'] }), tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
+    { alvo: '[data-t=lz-baixar]', clique: true, garante: lzTela({ jan: true, tipo: 'pais', passo: 3, locais: ['AR'], cols: ['price', 'sale_price', 'availability'] }), tit: T('Baixar o modelo', 'Descargar la plantilla'), txt: T('Clique em Baixar modelo. (No simulador, ele aparece na tela.)', 'Haz clic en Descargar plantilla. (En el simulador, aparece en la pantalla.)') },
+    { alvo: '[data-t=lz-previa]', fim: true, semVolta: true, garante: lzTela({ tipo: 'pais', passo: 3, locais: ['AR'], cols: ['price', 'sale_price', 'availability'], baixou: true }),
+      tit: T('O modelo da Argentina 🎉', '¡La plantilla de Argentina! 🎉'), txt: T('As três regras de ouro: o id igual, letra por letra, ao do feed principal; override com o código do país (AR); preço com ponto e código da moeda (4500.00 ARS). Depois é salvar em CSV e carregar em “2. Carregue seu arquivo de dados”. Clique em Concluir.', 'Las tres reglas de oro: el id igual, letra por letra, al de la lista principal; override con el código del país (AR); precio con punto y código de moneda (4500.00 ARS). Después hay que guardar en CSV y subir en “2. Sube el archivo de datos”. Haz clic en Terminar.') }
   ];
 })();

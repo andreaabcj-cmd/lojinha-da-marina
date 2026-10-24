@@ -220,6 +220,7 @@
       ['desduplicar-eventos', 'loja.html', 'pixel-avancado', '03', { pt: 'Como desduplicar eventos do navegador e do servidor', es: 'Cómo deduplicar eventos del navegador y del servidor' }],
       ['info-proibida', 'loja.html', 'pixel-avancado', '04', { pt: 'Como achar e remover informação sensível dos eventos', es: 'Cómo encontrar y quitar información sensible de los eventos' }],
       ['consentimento-pixel', 'loja.html', 'pixel-avancado', '04', { pt: 'Como fazer o Pixel esperar o aceite de cookies', es: 'Cómo hacer que el píxel espere la aceptación de cookies' }],
+      ['conversao-personalizada', 'meta-eventos.html', 'pixel-avancado', '06', { pt: 'Como criar uma conversão personalizada com regra de URL', es: 'Cómo crear una conversión personalizada con regla de URL' }],
       ['controles-pixel', 'meta-eventos.html', 'pixel-avancado', '05', { pt: 'Como ver a categoria da fonte, a configuração básica e criar a lista de permissão de tráfego', es: 'Cómo ver la categoría de la fuente, la configuración básica y crear la lista de permitidos de tráfico' }],
       ['dominio-portfolio', 'meta-portfolio.html?exemplo=1', 'pixel-avancado', '05', { pt: 'Como achar a verificação de domínio e escrever o domínio raiz', es: 'Cómo encontrar la verificación de dominio y escribir el dominio raíz' }] ] },
     { m: 'portfolio-avancado', itens: [
@@ -327,6 +328,7 @@
       ['conferir-ids', 'meta-catalogo.html?exemplo=1', 'catalogo', '04', { pt: 'Como conferir os IDs dos produtos', es: 'Cómo revisar los IDs de los productos' }],
       ['achar-produto', 'meta-catalogo.html?exemplo=1', 'catalogo', '05', { pt: 'Como achar e corrigir um produto que não aparece', es: 'Cómo encontrar y corregir un producto que no aparece' }],
       ['entrada-manual', 'meta-catalogo.html?exemplo=1', 'catalogo', '07', { pt: 'Como cadastrar um produto à mão no catálogo (Entrada manual)', es: 'Cómo cargar un producto a mano en el catálogo (Entrada manual)' }],
+      ['catalogo-pais-idioma', 'meta-catalogo.html?exemplo=1', 'catalogo', '08', { pt: 'Como montar o modelo de feed de país (preço em outra moeda)', es: 'Cómo armar la plantilla de lista de países (precio en otra moneda)' }],
       ['conferir-planilha', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como conferir a planilha do catálogo (modelo, formatos, Resumo do upload e relatório de problemas)', es: 'Cómo revisar la planilla del catálogo (plantilla, formatos, Resumen de la carga e informe de problemas)' }],
       ['programar-feed', 'meta-catalogo.html?exemplo=1', 'catalogo', '06', { pt: 'Como ver a programação do feed: substituições ou atualizações', es: 'Cómo ver la programación del feed: reemplazo o actualización' }] ] },
     { m: 'anuncios', itens: [

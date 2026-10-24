@@ -87,7 +87,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       '<button class="verde" data-acao="conectar" data-t="conectar">' + IC.mais + ' Conectar dados</button>' +
       '<button class="' + (menuAtivo === 'visao' ? 'on' : '') + '" data-ir="visao">' + IC.grade + ' Visão geral</button>' +
       '<button class="' + (menuAtivo === 'conjuntos' ? 'on' : '') + '" data-ir="conjuntos" data-t="menu-conjuntos">' + IC.ds + ' Conjuntos de dados</button>' +
-      '<button disabled title="Fora do simulador por enquanto">' + IC.estrela + ' Conversões personalizadas</button>' +
+      '<button class="' + (menuAtivo === 'cc' ? 'on' : '') + '" data-ir="cc" data-t="menu-cc">' + IC.estrela + ' Conversões personalizadas</button>' +
       '<button disabled title="Fora do simulador por enquanto">' + IC.integ + ' Integrações</button></aside>' +
       '<main class="sim-main">' + conteudo +
       '<p class="conferido' + (conf ? '' : ' pendente') + '">' + (conf ? '✓ Layout conferido com o Gerenciador de Eventos real em ' + conf : '⚠ Tela montada pela documentação da Meta · a conferir com a tela real') + '</p></main></div></div>';
@@ -116,6 +116,27 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       S.datasets.map(function (x) { var m = feed().filter(function (e) { return e.pid === x.id }).length; return '<tr class="clica" data-ir="ds/' + x.id + '" data-t="ds-abrir"><td><b>' + esc(x.nome) + '</b></td><td><span class="id" data-t="id-novo">' + x.id + '</span></td><td>' + status(m) + '</td></tr>' }).join('') + '</table></div>';
     return esqueleto('Conjuntos de dados', 'conjuntos', h, S.datasets.length ? null : CONF.lista);
   }
+
+  /* ---------- Conversões personalizadas (tela real vista em 23/10/2026, PT e ES; nada foi criado) ---------- */
+  var CC_EVENTOS = ['Lead', 'Pesquisar', 'Adicionar informações de pagamento', 'Compra', 'Iniciar finalização da compra', 'Adicionar ao carrinho', 'Ver conteúdo'];
+  var CC_CATS = ['Categoria selecionada pela Meta (recomendado)', 'Adicionar informações de pagamento', 'Adicionar ao carrinho', 'Adicionar à lista de desejos', 'Assinar', 'Compra', 'Concluir inscrição', 'Contato', 'Doar', 'Encontrar localização', 'Enviar candidatura', 'Iniciar finalização da compra', 'Iniciar período de avaliação', 'Lead', 'Personalizar produto', 'Pesquisar', 'Programação', 'Ver conteúdo', 'Atribuição personalizada'];
+  var CC_TIPOS = ['URL', 'Referring Domain', 'Event Parameters', 'Page and Product Info'];   // na tela real aparecem em inglês mesmo em português
+  function ccNovo() { return { nome: '', desc: '', evento: 'Todo o tráfego do URL', cat: CC_CATS[0], tipo: 'URL', filtro: 'contém', url: '', temValor: false, valor: '' } }
+  var CC = ccNovo();
+  function telaCC() {
+    var lista = S.convs || [], h;
+    if (!lista.length) h = '<div class="cartao vazio" data-t="cc-vazio"><div class="ilus">🔑</div><h2>Comece com conversões personalizadas</h2><p>Use as conversões personalizadas para mensurar os resultados importantes para a sua empresa e otimizar os anúncios para eventos personalizados e tráfego da URL. <a class="lnk">Saiba mais</a></p>' +
+      '<p><button class="btn" data-acao="cc-criar" data-t="cc-criar">Criar conversão personalizada</button></p>' +
+      '<div class="cc-tres"><p><b>Mensurar</b><br><small>Use as conversões personalizadas para mensurar as interações importantes para a sua empresa. Elas podem ser usadas para criar públicos personalizados ao direcionar seus anúncios.</small></p>' +
+      '<p><b>Otimizar</b><br><small>Use as conversões personalizadas para mostrar anúncios para as pessoas com maior probabilidade de realizar ações específicas. Você pode mapear seus eventos personalizados para os eventos padrão e usá-los para otimizar sua veiculação de anúncios.</small></p>' +
+      '<p><b>Compartilhar</b><br><small>Colabore em uma campanha compartilhando conversões personalizadas com outras contas comerciais ou de anúncios no Facebook ou com agências de terceiros.</small></p></div></div>';
+    else h = '<div class="cartao"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2>Conversões personalizadas</h2><button class="btn" data-acao="cc-criar" data-t="cc-criar">Criar conversão personalizada</button></div>' +
+      '<table class="tabela" data-t="cc-lista"><tr><th>Nome</th><th>Evento</th><th>Regra</th><th>Valor</th><th>Status</th></tr>' +
+      lista.map(function (c) { return '<tr><td><b>' + esc(c.nome) + '</b></td><td>' + esc(c.evento) + '</td><td>' + esc(c.tipo) + ' ' + esc(c.filtro) + ' <b>' + esc(c.url) + '</b></td><td>' + (c.temValor && c.valor ? 'R$ ' + esc(c.valor) : '—') + '</td><td><span class="st cinza"><i></i>Nenhuma atividade ainda</span></td></tr>' }).join('') + '</table>' +
+      '<p class="miudo">Até 100 conversões personalizadas por conta de anúncios. As regras não podem ser editadas depois (só nome, descrição e valor); para mudar uma regra, crie outra. Sem uso por 2 anos, ela é arquivada. (Central de Ajuda da Meta.) A lista e o status do simulador não foram vistos na tela real (a conferir).</p></div>';
+    return esqueleto('Conversões personalizadas', 'cc', h, '23/10/2026');
+  }
+  function ccPronta() { return CC.nome.trim() && CC.url.trim() }
 
   function telaDataset(r) {
     var d = ds(r.id); if (!d) { vai('conjuntos'); return '' }
@@ -296,6 +317,22 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
         '<pre class="codigo" data-t="cod-purchase">' + esc("fbq('track', 'Purchase', {value: 0.00, currency: 'USD'});") + '</pre>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Fechar</button><button class="btn" data-acao="copiar-purchase" data-t="btn-copiar-purchase">Copiar código do Purchase</button></div><p class="conferido pendente">⚠ Tela montada pela documentação da Meta · a conferir com a tela real</p>';
     }
+    if (janela === 'cc') {
+      var trafego = CC.evento === 'Todo o tráfego do URL';
+      h = '<div data-t="jan-cc"><h3>Criar uma conversão personalizada<button class="x" data-acao="fechar" data-t="cc-x">✕</button></h3>' +
+        '<div class="cc-dois"><label class="campo" data-t="cc-nome"><b>Nome</b><input id="ccNome" maxlength="50" placeholder="Como você a identificará" value="' + esc(CC.nome) + '"/><small class="miudo">' + CC.nome.length + '/50</small></label>' +
+        '<label class="campo"><b>Descrição <span class="miudo">· Opcional</span></b><input id="ccDesc" maxlength="100" placeholder="Forneça detalhes para informar o contexto" value="' + esc(CC.desc) + '"/></label></div>' +
+        '<label class="campo"><b>Fonte de dados</b><select id="ccFonte">' + S.datasets.map(function (d) { return '<option>● ' + esc(d.nome) + '</option>' }).join('') + '</select></label>' +
+        '<label class="campo" data-t="cc-evento"><b>Evento</b><select id="ccEvento"><optgroup label="Eventos padrão">' + CC_EVENTOS.map(function (e) { return '<option' + (CC.evento === e ? ' selected' : '') + '>' + e + '</option>' }).join('') + '</optgroup><optgroup label="Todo o tráfego do URL"><option' + (trafego ? ' selected' : '') + '>Todo o tráfego do URL</option></optgroup></select></label>' +
+        (trafego ? '<label class="campo" data-t="cc-cat"><b>Escolha um evento padrão para a otimização</b><select id="ccCat">' + CC_CATS.map(function (c) { return '<option' + (CC.cat === c ? ' selected' : '') + '>' + c + '</option>' }).join('') + '</select><small class="miudo">' + (CC.cat === CC_CATS[0] ? 'A Meta escolherá e gerenciará ativamente a melhor categoria de otimização para sua conversão personalizada.' : '') + '</small></label>' : '') +
+        '<div class="campo" data-t="cc-regras"><b>Regras <span class="miudo">· Obrigatório</span></b><p class="miudo">Essa conversão personalizada deve cumprir todas estas regras:</p><div class="cc-regra"><select id="ccTipo">' + CC_TIPOS.map(function (x) { return '<option' + (CC.tipo === x ? ' selected' : '') + '>' + x + '</option>' }).join('') + '</select>' +
+        '<select id="ccFiltro" data-t="cc-filtro">' + ['contém', 'não contém', 'é igual a'].map(function (x) { return '<option' + (CC.filtro === x ? ' selected' : '') + '>' + x + '</option>' }).join('') + '</select></div>' +
+        '<div class="linha-url"><input id="ccUrl" placeholder="Adicionar palavras-chave da URL" value="' + esc(CC.url) + '" data-t="cc-url"/></div>' + (CC.tipo !== 'URL' ? '<p class="miudo">No simulador, só a regra URL está montada (os outros tipos foram vistos só na lista).</p>' : '') + '</div>' +
+        '<label class="marcar" data-t="cc-valor"><input type="checkbox" id="ccTemValor"' + (CC.temValor ? ' checked' : '') + '/><span>Inserir um valor de conversão ⓘ<small class="miudo">Insira um valor monetário para essa conversão para que você possa rastrear seu retorno sobre o gasto com o anúncio. Se você deixar esse campo em branco, o valor será zero por padrão para cada conversão.</small></span></label>' +
+        (CC.temValor ? '<div class="linha-url"><input id="ccValor" inputmode="decimal" placeholder="Insira um valor numérico" value="' + esc(CC.valor) + '"/></div>' : '') +
+        '<p class="miudo">Para cumprir nossas políticas e ajudar a proteger a privacidade dos seus usuários, não compartilhe dados que incluam ou se baseiem em, diretamente ou não, informações de saúde, informações financeiras, informações de relatórios do consumidor ou outras categorias de informações sensíveis ao criar conversões personalizadas. Acesse a Central de Ajuda para saber mais sobre informações proibidas.</p><p class="miudo">Ao continuar, você concorda com os Termos das Ferramentas Comerciais da Meta.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="cc-salvar" data-t="cc-salvar"' + (ccPronta() ? '' : ' disabled') + '>Criar</button></div><p class="conferido">✓ Conferido com a tela real em 23/10/2026 (nada foi criado)</p></div>';
+    }
     if (janela === 'categorias') {
       h = '<div data-t="jan-categorias"><h3>Gerenciar categorias de fontes de dados<button class="x" data-acao="fechar" data-t="cat-fechar">✕</button></h3><p>Analise as categorias das suas fontes de dados. Podemos usar essas categorias para ajudar a determinar e restringir certos tipos de informações que você pode compartilhar por meio das Ferramentas Comerciais da Meta. Essa categorização ajuda a evitar o compartilhamento com dados da Meta que sejam inconsistentes com nossos <a class="lnk">Termos das Ferramentas Comerciais da Meta</a>. Para saber mais, incluindo informações sobre quais restrições são aplicadas à sua fonte de dados, selecione Ver detalhes. <a class="lnk">Sobre as restrições</a></p>' +
         '<div class="linha-url"><input placeholder="Pesquisar fontes de dados" aria-label="Pesquisar fontes de dados"/></div><p class="miudo">Filtrar por <span class="pill">Canal ▾</span> <span class="pill">Categoria ▾</span> <span class="pill">Status da análise ▾</span></p>' +
@@ -313,6 +350,11 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     document.body.appendChild(f);
     var inp = $('#nomeDs'); if (inp) { inp.oninput = function () { window.__nomeDs = inp.value; window.__erroCriar = false; var b = $('[data-acao=criar]'); if (b) b.disabled = !inp.value.trim() }; if (document.activeElement === document.body) inp.focus() }
     var cap = $('#capiDs'); if (cap) cap.onchange = function () { window.__capi = cap.checked };
+    if (janela === 'cc') {   // campos de texto: atualizam sem redesenhar (não perde o cursor); listas e caixas: redesenham
+      [['ccNome', 'nome'], ['ccDesc', 'desc'], ['ccUrl', 'url'], ['ccValor', 'valor']].forEach(function (p) { var el = $('#' + p[0]); if (el) el.oninput = function () { CC[p[1]] = el.value; var b = $('[data-acao=cc-salvar]'); if (b) b.disabled = !ccPronta(); var n = $('[data-t=cc-nome] small'); if (n) n.textContent = CC.nome.length + '/50'; tourChecaCondicao() } });
+      [['ccEvento', 'evento'], ['ccCat', 'cat'], ['ccTipo', 'tipo'], ['ccFiltro', 'filtro']].forEach(function (p) { var el = $('#' + p[0]); if (el) el.onchange = function () { CC[p[1]] = el.value; desenhaJanela(); tourChecaCondicao() } });
+      var tv = $('#ccTemValor'); if (tv) tv.onchange = function () { CC.temValor = tv.checked; desenhaJanela(); tourChecaCondicao() };
+    }
     tourAtualiza();
   }
 
@@ -341,6 +383,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       S.datasets.unshift(d2); S.recemCriado = d2.id; S.testeDesde = Date.now(); grava(); fechaJanela(); vai('ds/' + d2.id + '/visao');
     }
     else if (ac === 'codigo') { S.recemCriado = null; grava(); render(); abreJanela('codigo') }
+    else if (ac === 'cc-criar') { CC = ccNovo(); abreJanela('cc') }
+    else if (ac === 'cc-salvar') { if (!ccPronta()) return; S.convs = (S.convs || []).concat([JSON.parse(JSON.stringify(CC))]); grava(); fechaJanela(); render() }
     else if (ac === 'copiar-base' || ac === 'copiar-purchase') {
       var d3 = ds(rota().id), txt = ac === 'copiar-base' ? SITE.base(d3 ? d3.id : '') : "<script>\nfbq('track', 'Purchase', {value: 0.00, currency: 'USD'});\n</script>";
       function plano() { var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy') } catch (e) { } ta.remove() }
@@ -354,7 +398,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   });
 
   function render() {
-    var r = rota(), h = r.tela === 'conjuntos' ? telaConjuntos() : r.tela === 'ds' ? telaDataset(r) : telaVisao();
+    var r = rota(), h = r.tela === 'conjuntos' ? telaConjuntos() : r.tela === 'ds' ? telaDataset(r) : r.tela === 'cc' ? telaCC() : telaVisao();
     if (!h) return;
     $('#app').innerHTML = h; document.title = 'Simulador · Gerenciador de Eventos';
     desenhaJanela(); tourAtualiza();
@@ -364,7 +408,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     abre: function (q, o) { o = o || {}; if (o.modo) tmodo = o.modo; tnota = o.nota || ''; tmenu = false; if (janela !== q) abreJanela(q); else desenhaJanela() },
     fecha: function () { tnota = ''; tmenu = false; if (janela) fechaJanela(); render() },
     modo: function (m) { tmodo = m; tmenu = false; render() },
-    estado: function () { return { janela: janela, tmodo: tmodo, tmenu: tmenu, tnota: tnota } }
+    estado: function () { return { janela: janela, tmodo: tmodo, tmenu: tmenu, tnota: tnota, cc: CC, convs: S.convs || [] } },
+    cc: function (o, convs) { CC = ccNovo(); for (var k in o || {}) CC[k] = o[k]; if (convs) { S.convs = convs; grava() } if (S.datasets.length === 0) garantePixel(); if (o) { if (janela !== 'cc') abreJanela('cc'); else desenhaJanela() } else { if (janela) fechaJanela(); render() } }
   };
   window.addEventListener('hashchange', render);
   // eventos chegando da Lojinha (outra aba) — atualiza a tela na hora

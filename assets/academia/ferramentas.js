@@ -1339,6 +1339,34 @@
         [{ pt: 'Os dois disputam entre si e o preço sobe', es: 'Los dos compiten entre sí y el precio sube' }, 0, { pt: 'A Central diz o contrário: os anúncios do mesmo anunciante não competem uns contra os outros.', es: 'El Centro de ayuda dice lo contrario: los anuncios del mismo anunciante no compiten entre sí.' }],
         [{ pt: 'Nada: ter mais conjuntos sempre ajuda', es: 'Nada: tener más conjuntos siempre ayuda' }, 0, { pt: 'A sobreposição pode impedir gasto e aprendizado; combinar conjuntos costuma ajudar.', es: 'La superposición puede impedir gasto y aprendizaje; combinar conjuntos suele ayudar.' }]] }
   ]);
+  quizCatalogo('pais-idioma-q', { pt: 'Feed de país ou de idioma?', es: '¿Lista de país o de idioma?' }, { pt: 'O que vai em cada um e as regras da planilha.', es: 'Qué va en cada una y las reglas de la hoja.' }, [
+    { q: { pt: 'A Marina quer preço em pesos para a Argentina. Qual modelo ela usa?', es: 'Marina quiere precio en pesos para Argentina. ¿Qué plantilla usa?' },
+      o: [[{ pt: 'Modelo de feed de país', es: 'Plantilla de lista de países' }, 1, { pt: 'Isso! País = preço, moeda, disponibilidade, link, tamanho.', es: '¡Eso! País = precio, moneda, disponibilidad, enlace, talla.' }],
+        [{ pt: 'Modelo de feed de idioma', es: 'Plantilla de lista de idiomas' }, 0, { pt: 'Idioma é para título, descrição e cor traduzidos.', es: 'Idioma es para título, descripción y color traducidos.' }],
+        [{ pt: 'Um catálogo novo', es: 'Un catálogo nuevo' }, 0, { pt: 'Não precisa: o feed de país vai no mesmo catálogo.', es: 'No hace falta: la lista de país va en el mismo catálogo.' }]] },
+    { q: { pt: 'Qual destes preços está certo na planilha do país?', es: '¿Cuál de estos precios está bien en la hoja del país?' },
+      o: [[{ pt: '4500.00 ARS', es: '4500.00 ARS' }, 1, { pt: 'Isso! Ponto no decimal e código ISO da moeda.', es: '¡Eso! Punto decimal y código ISO de la moneda.' }],
+        [{ pt: '$ 4.500,00', es: '$ 4.500,00' }, 0, { pt: 'Símbolo e vírgula não valem: use 4500.00 ARS.', es: 'Símbolo y coma no valen: usa 4500.00 ARS.' }],
+        [{ pt: '4500 pesos', es: '4500 pesos' }, 0, { pt: 'Falta o código da moeda (ARS) e as casas decimais.', es: 'Falta el código de moneda (ARS) y los decimales.' }]] },
+    { q: { pt: 'Para que serve a coluna override?', es: '¿Para qué sirve la columna override?' },
+      o: [[{ pt: 'Diz para qual país (AR) ou idioma (es_XX) é aquela linha', es: 'Dice para qué país (AR) o idioma (es_XX) es esa fila' }, 1, { pt: 'Isso! Um país ou idioma por linha.', es: '¡Eso! Un país o idioma por fila.' }],
+        [{ pt: 'Apaga o produto do feed principal', es: 'Borra el producto de la lista principal' }, 0, { pt: 'Não apaga nada: só acrescenta a versão local.', es: 'No borra nada: solo agrega la versión local.' }],
+        [{ pt: 'É o id do produto', es: 'Es el id del producto' }, 0, { pt: 'O id é outra coluna, igual ao do feed principal.', es: 'El id es otra columna, igual al de la lista principal.' }]] }
+  ]);
+  quizCatalogo('conversao-personalizada-q', { pt: 'Conversão personalizada: certo ou errado?', es: 'Conversión personalizada: ¿correcto o no?' }, { pt: 'Regras, limites e o que dá para fazer sem código.', es: 'Reglas, límites y lo que se puede hacer sin código.' }, [
+    { q: { pt: 'A Marina quer contar quem chega à página “encomenda-recebida”, sem código novo. Qual regra a Meta recomenda?', es: 'Marina quiere contar a quien llega a la página “encomenda-recebida”, sin código nuevo. ¿Qué regla recomienda Meta?' },
+      o: [[{ pt: 'URL contém “encomenda-recebida” (o menor pedaço que diferencia a página)', es: 'URL contiene “encomenda-recebida” (el pedazo más pequeño que distingue la página)' }, 1, { pt: 'Isso! “É igual a” exige o endereço exato, com https://www.', es: '¡Eso! “Es igual a” exige la dirección exacta, con https://www.' }],
+        [{ pt: 'URL não contém “encomenda-recebida”', es: 'URL no contiene “encomenda-recebida”' }, 0, { pt: 'Contaria todas as outras páginas.', es: 'Contaría todas las otras páginas.' }],
+        [{ pt: 'Não dá sem código', es: 'No se puede sin código' }, 0, { pt: 'Com o código base do Pixel no site, a regra de URL basta.', es: 'Con el código base del píxel en el sitio, la regla de URL basta.' }]] },
+    { q: { pt: 'Depois de criada, o que dá para editar numa conversão personalizada?', es: 'Una vez creada, ¿qué se puede editar en una conversión personalizada?' },
+      o: [[{ pt: 'Nome, descrição e valor; as regras, não', es: 'Nombre, descripción y valor; las reglas, no' }, 1, { pt: 'Isso! Regra errada = criar outra.', es: '¡Eso! Regla equivocada = crear otra.' }],
+        [{ pt: 'Tudo, inclusive as regras', es: 'Todo, incluso las reglas' }, 0, { pt: 'As regras não podem ser editadas.', es: 'Las reglas no se pueden editar.' }],
+        [{ pt: 'Nada', es: 'Nada' }, 0, { pt: 'Nome, descrição e valor podem.', es: 'Nombre, descripción y valor sí.' }]] },
+    { q: { pt: 'Quantas conversões personalizadas uma conta de anúncios pode ter?', es: '¿Cuántas conversiones personalizadas puede tener una cuenta publicitaria?' },
+      o: [[{ pt: 'Até 100; dá para excluir as que não usa', es: 'Hasta 100; se pueden eliminar las que no se usan' }, 1, { pt: 'Isso! E sem uso por 2 anos, elas são arquivadas.', es: '¡Eso! Y sin uso por 2 años, se archivan.' }],
+        [{ pt: 'Sem limite', es: 'Sin límite' }, 0, { pt: 'O limite é 100 por conta.', es: 'El límite es 100 por cuenta.' }],
+        [{ pt: 'Só 8', es: 'Solo 8' }, 0, { pt: 'Isso lembra os 8 eventos do iOS 14, que nem existem mais.', es: 'Eso recuerda los 8 eventos de iOS 14, que ya ni existen.' }]] }
+  ]);
   quizCatalogo('nao-veicula-q', { pt: 'Por que não veicula?', es: '¿Por qué no entrega?' }, { pt: 'Ordem: conta, status, nível.', es: 'Orden: cuenta, estado, nivel.' }, [
     { q: { pt: 'Todos os anúncios pararam e o topo da conta avisa que quase atingiu o limite de gastos. O que fazer?', es: 'Todos los anuncios se detuvieron y arriba en la cuenta avisa que casi alcanzó el límite de gasto. ¿Qué hacer?' },
       o: [[{ pt: 'Recriar todas as campanhas', es: 'Recrear todas las campañas' }, 0, { pt: 'O problema está na conta, não nas campanhas.', es: 'El problema está en la cuenta, no en las campañas.' }],

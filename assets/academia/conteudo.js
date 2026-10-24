@@ -1519,6 +1519,7 @@ window.AULAS = {
       id: '07', min: 8, status: 'pronta',
       titulo: { pt: 'Cadastrar um produto à mão', es: 'Cargar un producto a mano' },
       antes: { pt: 'O catálogo da Marina já recebe os produtos pela planilha. Agora chegou um produto que não está nela.', es: 'El catálogo de Marina ya recibe los productos por la planilla. Ahora llegó un producto que no está en ella.' },
+      gancho: { pt: 'E quando a loja passa a vender em outro país? O mesmo catálogo serve.', es: '¿Y cuando la tienda empieza a vender en otro país? El mismo catálogo sirve.' },
       objetivo: { pt: 'Saber quando usar a Entrada manual, preencher a tabela “Adicionar produtos” (imagem, título, descrição, link, preço, marca e identificação do conteúdo) e saber onde editar depois.', es: 'Saber cuándo usar la Entrada manual, completar la tabla “Agrega productos” (imagen, título, descripción, enlace, precio, marca e ID de contenido) y saber dónde editar después.' },
       entender: {
         dialogo: [
@@ -1559,6 +1560,53 @@ window.AULAS = {
       },
       fontes: [
         { url: 'https://www.facebook.com/business/help/1670875312991238', titulo: { pt: 'Como adicionar produtos ao seu catálogo manualmente no Gerenciador de Comércio', es: 'Cómo agregar productos a tu catálogo manualmente en el Administrador de ventas' }, conferido: '20/10/2026' }
+      ]
+    },
+    {
+      id: '08', min: 8, status: 'pronta',
+      titulo: { pt: 'Um catálogo para vários países e idiomas', es: 'Un catálogo para varios países e idiomas' },
+      antes: { pt: 'A Lojinha começou a receber pedidos da Argentina. A Marina quer anunciar lá, com preço em pesos.', es: 'La Lojinha empezó a recibir pedidos de Argentina. Marina quiere anunciar allá, con precio en pesos.' },
+      objetivo: { pt: 'Acrescentar dados de país (preço, moeda, disponibilidade, link) ou de idioma (título, descrição) ao mesmo catálogo, com o modelo da Meta, e saber as regras da planilha.', es: 'Agregar datos de país (precio, moneda, disponibilidad, enlace) o de idioma (título, descripción) al mismo catálogo, con la plantilla de Meta, y conocer las reglas de la hoja.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Vou ter que criar outro catálogo só para a Argentina? 😩', es: '¿Voy a tener que crear otro catálogo solo para Argentina? 😩' }],
+          ['rafa', { pt: 'Não. Em Fontes de dados › Adicionar › Dados de país ou idioma, você acrescenta ao mesmo catálogo a versão de cada país (preço, moeda, disponibilidade, link) ou de cada idioma (título, descrição, cor). Quem está na Argentina vê a versão da Argentina.', es: 'No. En Orígenes de datos › Agregar › Datos de país o idioma, agregas al mismo catálogo la versión de cada país (precio, moneda, disponibilidad, enlace) o de cada idioma (título, descripción, color). Quien está en Argentina ve la versión de Argentina.' }],
+          ['marina', { pt: 'E como eu digo qual produto é qual?', es: '¿Y cómo digo qué producto es cuál?' }],
+          ['rafa', { pt: 'Pelo id: na planilha do país, o id de cada produto tem que ser idêntico ao do feed principal. A coluna override diz o país (AR) ou o idioma (es_XX).', es: 'Por el id: en la hoja del país, el id de cada producto tiene que ser idéntico al de la lista principal. La columna override dice el país (AR) o el idioma (es_XX).' }],
+          ['pixel', { pt: 'Preço do jeito da Meta: ponto no decimal e código da moeda, “4500.00 ARS”. Nada de “$ 4.500,00”. E cada campo vai num feed só: ou no de país, ou no de idioma.', es: 'Precio a la manera de Meta: punto decimal y código de moneda, “4500.00 ARS”. Nada de “$ 4.500,00”. Y cada campo va en una sola lista: o en la de país, o en la de idioma.' }]
+        ],
+        pontos: [
+          { pt: '<b>Antes:</b> o catálogo com o feed principal e o idioma e o país padrão definidos em Configurações.', es: '<b>Antes:</b> el catálogo con la lista principal y el idioma y país predeterminados definidos en Configuración.' },
+          { pt: '<b>Caminho:</b> Fontes de dados › Adicionar › Dados de país ou idioma › Criar modelo › escolher país ou idioma › colunas › Baixar modelo; preencher e carregar.', es: '<b>Camino:</b> Orígenes de datos › Agregar › Datos de país o idioma › Crear plantilla › elegir país o idioma › columnas › Descargar plantilla; completar y subir.' },
+          { pt: '<b>Planilha:</b> id igual ao do feed principal; override com o código; preço “4500.00 ARS”; nomes de campos em inglês; cada campo em um só feed.', es: '<b>Hoja:</b> id igual al de la lista principal; override con el código; precio “4500.00 ARS”; nombres de campos en inglés; cada campo en una sola lista.' }
+        ],
+        notas: { pt: 'Tela real vista em 23/10/2026 no catálogo de aula, em português e espanhol: o menu Adicionar (Carregar informações adicionais › Dados de país ou idioma), a página “Adicione informações localizadas para públicos internacionais” e o assistente do modelo (Escolher país › Escolher colunas › Baixar). Nada foi baixado nem carregado. Não vistos: as colunas do modelo de idioma, o arquivo baixado e a tela de carregar (a conferir). Regras: Central de Ajuda, “Como criar um feed de país ou idioma” (lida no mesmo dia).', es: 'Pantalla real vista el 23/10/2026 en el catálogo de práctica, en portugués y español: el menú Agregar (Cargar información adicional › Datos de país o idioma), la página “Agrega información localizada para públicos internacionales” y el asistente de la plantilla (Elegir país › Elegir columnas › Descargar). No se descargó ni se subió nada. No vistos: las columnas de la plantilla de idioma, el archivo descargado y la pantalla de subir (por confirmar). Reglas: Centro de ayuda, “Cómo crear una lista de país o idioma” (leído el mismo día).' }
+      },
+      ferramenta: 'pais-idioma-q',
+      praticar: {
+        texto: { pt: 'No simulador, você monta o modelo de país da Argentina, escolhe as colunas e vê a planilha com o id, o override e o preço no formato certo.', es: 'En el simulador, armas la plantilla de país de Argentina, eliges las columnas y ves la hoja con el id, el override y el precio en el formato correcto.' },
+        tour: 'catalogo-pais-idioma', pagina: 'meta-catalogo.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Carreguei a planilha da Argentina e os preços não mudaram nada nos anúncios de lá. O que eu fiz de errado?', es: 'Subí la hoja de Argentina y los precios no cambiaron nada en los anuncios de allá. ¿Qué hice mal?' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“Vamos conferir as três regras: o id de cada linha é idêntico ao do seu feed principal? A coluna override tem AR? O preço está como 4500.00 ARS, com ponto e código da moeda? Se uma delas falhar, a Meta não liga a linha ao produto.”', es: '“Revisemos las tres reglas: ¿el id de cada fila es idéntico al de tu lista principal? ¿La columna override tiene AR? ¿El precio está como 4500.00 ARS, con punto y código de moneda? Si una falla, Meta no une la fila al producto.”' }, fb: { pt: 'Isso! As três causas mais prováveis, na ordem.', es: '¡Eso! Las tres causas más probables, en orden.' } },
+          { certa: false, txt: { pt: '“Crie um catálogo separado para a Argentina.”', es: '“Crea un catálogo separado para Argentina.”' }, fb: { pt: 'Não precisa: o feed de país existe justamente para usar um catálogo só.', es: 'No hace falta: la lista de país existe justamente para usar un solo catálogo.' } },
+          { certa: false, txt: { pt: '“Escreva o preço como $ 4.500,00.”', es: '“Escribe el precio como $ 4.500,00.”' }, fb: { pt: 'Errado: ponto no decimal e código ISO da moeda (4500.00 ARS).', es: 'Incorrecto: punto decimal y código ISO de la moneda (4500.00 ARS).' } },
+          { certa: false, txt: { pt: '“É um erro da Meta, espere uma semana.”', es: '“Es un error de Meta, espera una semana.”' }, fb: { pt: 'Primeiro confira id, override e formato do preço.', es: 'Primero revisa id, override y formato del precio.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Para quais países ou idiomas? O que muda (preço, texto, link)?', es: '¿Para qué países o idiomas? ¿Qué cambia (precio, texto, enlace)?' }, { pt: 'Os ids da planilha batem com os do feed principal?', es: '¿Los ids de la hoja coinciden con los de la lista principal?' }],
+        conferir: [{ pt: 'Gerenciador de Comércio › catálogo › Fontes de dados › Adicionar › Dados de país ou idioma.', es: 'Administrador de ventas › catálogo › Orígenes de datos › Agregar › Datos de país o idioma.' }, { pt: 'Configurações › idioma e país padrão.', es: 'Configuración › idioma y país predeterminados.' }],
+        frase: { pt: 'Dá para usar o mesmo catálogo em outros países: um feed de país com o id igual ao do feed principal, a coluna override com o país e o preço no formato 4500.00 ARS.', es: 'Se puede usar el mismo catálogo en otros países: una lista de país con el id igual al de la lista principal, la columna override con el país y el precio en el formato 4500.00 ARS.' },
+        passos: [{ pt: 'Criar modelo (país ou idioma).', es: 'Crear plantilla (país o idioma).' }, { pt: 'Preencher: id, override e as colunas.', es: 'Completar: id, override y las columnas.' }, { pt: 'Carregar o arquivo e conferir.', es: 'Subir el archivo y revisar.' }],
+        encaminhar: { pt: 'Se a loja usa plataforma parceira, os dados por país podem vir dela: confira no painel da plataforma.', es: 'Si la tienda usa una plataforma socia, los datos por país pueden venir de ella: revisa en el panel de la plataforma.' }
+      },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/2144286692311411', titulo: { pt: 'Como criar um feed de país ou idioma para localizar seu catálogo', es: 'Cómo crear una lista de país o idioma para localizar tu catálogo' }, conferido: '23/10/2026' },
+        { url: 'https://www.facebook.com/business/help/127019799344394', titulo: { pt: 'Mostrar informações do produto para diferentes países e idiomas', es: 'Mostrar información de productos para diferentes países e idiomas' }, conferido: '23/10/2026' }
       ]
     }
   ],
@@ -4770,7 +4818,8 @@ window.AULAS = {
           pontos: [
             L('<b>Shopify:</b> pedidos, descontos, perfis de envio, produtos, coleções.', '<b>Shopify:</b> pedidos, descuentos, perfiles de envío, productos, colecciones.'),
             L('<b>App Facebook e Instagram:</b> tempos de processamento, prazos de transporte, e-mails.', '<b>App Facebook e Instagram:</b> tiempos de procesamiento, plazos de transporte, correos.'),
-            L('<b>Gerenciador de Comércio:</b> ver sincronizações, problemas, personalizar a loja.', '<b>Administrador de ventas:</b> ver sincronizaciones, problemas, personalizar la tienda.')
+            L('<b>Gerenciador de Comércio:</b> ver sincronizações, problemas, personalizar a loja.', '<b>Administrador de ventas:</b> ver sincronizaciones, problemas, personalizar la tienda.'),
+            L('<b>Certo na Shopify, errado na Meta?</b> Então o problema é a sincronização do lado da Meta: não adianta editar o produto no Gerenciador de Comércio, porque a próxima sincronização substitui a edição manual. Confira o status da sincronização e os problemas do item.', '<b>¿Bien en Shopify y mal en Meta?</b> Entonces el problema es la sincronización del lado de Meta: no sirve editar el producto en el Administrador de ventas, porque la próxima sincronización reemplaza la edición manual. Revisa el estado de la sincronización y los problemas del artículo.')
           ],
           notas: NOTA
         },
@@ -5082,6 +5131,7 @@ window.AULAS = {
         id: '05', min: 10, status: 'pronta',
         titulo: L('Controles de dados: categoria, restrição, tráfego e domínio', 'Controles de datos: categoría, restricción, tráfico y dominio'),
         antes: L('O Pixel da Marina está completo: correspondência avançada, API de Conversões e regras de privacidade.', 'El píxel de Marina está completo: coincidencia avanzada, API de Conversiones y reglas de privacidad.'),
+        gancho: L('E se a ação que importa não tiver evento próprio? Dá para contá-la sem mexer no código.', '¿Y si la acción que importa no tiene evento propio? Se puede contar sin tocar el código.'),
         objetivo: L('Saber onde ficam e para que servem a categoria da fonte de dados, a configuração básica e as permissões de tráfego do Pixel, onde se verifica o domínio, e reconhecer quando cada um explica a queixa do cliente.', 'Saber dónde están y para qué sirven la categoría de la fuente de datos, la configuración básica y los permisos de tráfico del píxel, dónde se verifica el dominio, y reconocer cuándo cada uno explica la queja del cliente.'),
         entender: {
           dialogo: [
@@ -5132,6 +5182,56 @@ window.AULAS = {
           { url: 'https://www.facebook.com/business/help/267505221173979', titulo: L('Boas práticas para as permissões de tráfego', 'Prácticas recomendadas para los permisos de tráfico'), conferido: '20/10/2026' },
           { url: 'https://www.facebook.com/business/help/321167023127050', titulo: L('Como verificar seu domínio no portfólio empresarial', 'Cómo verificar tu dominio en el portfolio comercial'), conferido: '20/10/2026' },
           { url: 'https://www.facebook.com/business/help/245311299870862', titulo: L('Quando usar a verificação de domínio', 'Cuándo usar la verificación de dominio'), conferido: '20/10/2026' }
+        ]
+      },
+      {
+        id: '06', min: 8, status: 'pronta',
+        titulo: L('Conversões personalizadas', 'Conversiones personalizadas'),
+        antes: L('Os dados do Pixel estão protegidos. Agora a Marina quer contar uma ação que não tem evento próprio: o pedido de encomenda personalizada.', 'Los datos del píxel están protegidos. Ahora Marina quiere contar una acción que no tiene evento propio: el pedido personalizado.'),
+        objetivo: L('Criar uma conversão personalizada com regra de URL, escolher o evento padrão para otimizar e conhecer os limites (100 por conta, regra que não se edita, arquivamento).', 'Crear una conversión personalizada con regla de URL, elegir el evento estándar para optimizar y conocer los límites (100 por cuenta, regla que no se edita, archivado).'),
+        entender: {
+          dialogo: [
+            ['marina', L('Quero contar quem envia o formulário de encomenda, mas não quero mexer no código do site. Dá? 🤔', 'Quiero contar a quien envía el formulario de pedido, pero no quiero tocar el código del sitio. ¿Se puede? 🤔')],
+            ['rafa', L('Dá. Com o código base do Pixel no site, uma conversão personalizada pode contar visitas a uma página pela URL. A página “encomenda-recebida” só aparece para quem enviou o formulário.', 'Se puede. Con el código base del píxel en el sitio, una conversión personalizada puede contar visitas a una página por la URL. La página “encomenda-recebida” solo aparece para quien envió el formulario.')],
+            ['marina', L('E se eu quiser contar só as compras acima de R$ 100?', '¿Y si quiero contar solo las compras de más de R$ 100?')],
+            ['rafa', L('Também: escolhe o evento Compra e põe uma regra pelo parâmetro de valor. A conversão filtra o evento e conta só o que passa nas regras.', 'También: eliges el evento Comprar y pones una regla por el parámetro de valor. La conversión filtra el evento y cuenta solo lo que cumple las reglas.')],
+            ['pixel', L('Cuidado: depois de criada, a regra não muda (só o nome, a descrição e o valor). E são até 100 por conta de anúncios. Use “URL contém” com o menor pedaço que diferencia a página.', 'Cuidado: una vez creada, la regla no cambia (solo el nombre, la descripción y el valor). Y son hasta 100 por cuenta publicitaria. Usa “URL contiene” con el pedazo más pequeño que distingue la página.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> Gerenciador de Eventos › Conversões personalizadas › Criar conversão personalizada.', '<b>Dónde:</b> Administrador de eventos › Conversiones personalizadas › Crear conversión personalizada.'),
+            L('<b>Como:</b> um evento que o Pixel já recebe (ou Todo o tráfego do URL) + regras (URL contém / não contém / é igual a). Com tráfego do URL, escolhe-se o evento padrão para otimizar.', '<b>Cómo:</b> un evento que el píxel ya recibe (o Todo el tráfico de la URL) + reglas (URL contiene / no contiene / es igual a). Con tráfico de la URL, se elige el evento estándar para optimizar.'),
+            L('<b>Para quê:</b> medir, usar como meta de desempenho no conjunto de anúncios e compartilhar com parceiros sem dar o Pixel inteiro.', '<b>Para qué:</b> medir, usar como objetivo de rendimiento en el conjunto de anuncios y compartir con socios sin dar el píxel entero.'),
+            L('<b>Limites:</b> 100 por conta de anúncios; regra não se edita; sem uso por 2 anos, é arquivada; nada de dados sensíveis nas regras.', '<b>Límites:</b> 100 por cuenta publicitaria; la regla no se edita; sin uso por 2 años, se archiva; nada de datos sensibles en las reglas.')
+          ],
+          notas: L('Tela real vista em 23/10/2026 no Gerenciador de Eventos da conta de aula, em português e espanhol (nada foi criado): tela inicial (Mensurar, Otimizar, Compartilhar), janela “Criar uma conversão personalizada” (Nome, Descrição, Fonte de dados, Evento, Escolha um evento padrão para a otimização, Regras, Inserir um valor de conversão). Os tipos de regra apareceram em inglês na tela em português. A lista depois de criar não foi vista (a conferir). Central de Ajuda lida no mesmo dia.', 'Pantalla real vista el 23/10/2026 en el Administrador de eventos de la cuenta de práctica, en portugués y español (no se creó nada): pantalla inicial (Medir, Optimizar, Compartir), ventana “Crear una conversión personalizada” (Nombre, Descripción, Origen de datos, Evento, Elegir un evento estándar para la optimización, Reglas, Ingresar un valor de conversión). Los tipos de regla aparecieron en inglés en la pantalla en portugués. La lista después de crear no se vio (por confirmar). Centro de ayuda leído el mismo día.')
+        },
+        ferramenta: 'conversao-personalizada-q',
+        praticar: {
+          texto: L('No simulador do Gerenciador de Eventos, você cria a conversão “Encomenda personalizada recebida” com a regra de URL e escolhe o evento padrão para otimizar.', 'En el simulador del Administrador de eventos, creas la conversión “Pedido personalizado recibido” con la regla de URL y eliges el evento estándar para optimizar.'),
+          tour: 'conversao-personalizada', pagina: 'meta-eventos.html'
+        },
+        atender: {
+          cena: L('Criei uma conversão personalizada com a URL errada. Como eu edito a regra?', 'Creé una conversión personalizada con la URL equivocada. ¿Cómo edito la regla?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“A regra de uma conversão personalizada não pode ser editada: dá para mudar só o nome, a descrição e o valor. O caminho é criar uma nova com a URL certa e, antes de excluir a antiga, trocar a otimização dos conjuntos que usam ela.”', '“La regla de una conversión personalizada no se puede editar: solo se puede cambiar el nombre, la descripción y el valor. El camino es crear una nueva con la URL correcta y, antes de eliminar la anterior, cambiar la optimización de los conjuntos que la usan.”'), fb: L('Isso! Regra oficial e o cuidado antes de excluir.', '¡Eso! Regla oficial y el cuidado antes de eliminar.') },
+            { certa: false, txt: L('“Edite a regra na própria conversão.”', '“Edita la regla en la misma conversión.”'), fb: L('A Central diz que as regras não podem ser editadas.', 'El Centro de ayuda dice que las reglas no se pueden editar.') },
+            { certa: false, txt: L('“Exclua a antiga primeiro, sem olhar os anúncios.”', '“Elimina la anterior primero, sin mirar los anuncios.”'), fb: L('Conjuntos otimizados para uma conversão excluída continuam rodando, mas podem piorar. Troque a otimização antes.', 'Los conjuntos optimizados para una conversión eliminada siguen corriendo, pero pueden empeorar. Cambia la optimización antes.') },
+            { certa: false, txt: L('“Crie um Pixel novo.”', '“Crea un píxel nuevo.”'), fb: L('Não precisa: basta uma nova conversão personalizada.', 'No hace falta: basta una nueva conversión personalizada.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Que ação o cliente quer contar? Ela tem página própria ou evento próprio?', '¿Qué acción quiere contar el cliente? ¿Tiene página propia o evento propio?'), L('O código base do Pixel está em todas as páginas?', '¿El código base del píxel está en todas las páginas?')],
+          conferir: [L('Gerenciador de Eventos › Conversões personalizadas.', 'Administrador de eventos › Conversiones personalizadas.')],
+          frase: L('Dá para contar essa ação sem mexer no código: uma conversão personalizada com a regra “URL contém” e o pedaço do endereço que só essa página tem.', 'Se puede contar esa acción sin tocar el código: una conversión personalizada con la regla “URL contiene” y el pedazo de la dirección que solo esa página tiene.'),
+          passos: [L('Criar conversão personalizada.', 'Crear conversión personalizada.'), L('Evento (ou tráfego do URL) + regra.', 'Evento (o tráfico de la URL) + regla.'), L('Escolher o evento padrão e criar.', 'Elegir el evento estándar y crear.')],
+          encaminhar: L('Regras por parâmetros do evento dependem do Pixel mandar esses parâmetros: se não manda, é com o desenvolvedor.', 'Las reglas por parámetros del evento dependen de que el píxel envíe esos parámetros: si no los envía, es con el desarrollador.')
+        },
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/780705975381000', titulo: L('Sobre conversões personalizadas para a web', 'Acerca de las conversiones personalizadas para la web'), conferido: '23/10/2026' },
+          { url: 'https://www.facebook.com/business/help/2375212726097833', titulo: L('Boas práticas para configuração de conversão personalizada', 'Prácticas recomendadas para configurar conversiones personalizadas'), conferido: '23/10/2026' },
+          { url: 'https://www.facebook.com/business/help/297192884523482', titulo: L('Como editar conversões personalizadas', 'Cómo editar conversiones personalizadas'), conferido: '23/10/2026' },
+          { url: 'https://www.facebook.com/business/help/440204589874372', titulo: L('Como excluir conversões personalizadas', 'Cómo eliminar conversiones personalizadas'), conferido: '23/10/2026' }
         ]
       }
     ];
@@ -6390,6 +6490,7 @@ window.AULAS = {
         pontos: [
           L('<b>Quem entra:</b> quem mora, esteve recentemente ou costuma ir à cidade.', '<b>Quién entra:</b> quien vive, estuvo recientemente o suele ir a la ciudad.'),
           L('<b>A caixa extra:</b> “Alcançar mais pessoas…” inclui interessados na cidade.', '<b>La casilla extra:</b> la de alcanzar más personas incluye a interesados en la ciudad.'),
+          L('<b>Público Advantage+ não muda a cidade:</b> a tela avisa que ele pode alcançar pessoas fora da idade, do gênero e do direcionamento detalhado escolhidos. Mas a localização fica em <b>Controles</b>: “Não vamos alcançar pessoas fora destas configurações” (tela de 23/10/2026).', '<b>El público Advantage+ no cambia la ciudad:</b> la pantalla avisa que puede alcanzar personas fuera de la edad, el género y el direccionamiento detallado elegidos. Pero la ubicación queda en <b>Controles</b>: no alcanza personas fuera de esa configuración (pantalla del 23/10/2026).'),
           L('<b>Prova:</b> Detalhamento › Por entrega › Região mostra a proporção de cada lugar.', '<b>Prueba:</b> Desglose › Por entrega › Región muestra la proporción de cada lugar.')
         ]
       },
@@ -6544,6 +6645,7 @@ window.AULAS = {
         pontos: [
           L('<b>E-mail certo:</b> o mesmo da conta do Facebook de quem vai entrar.', '<b>Correo correcto:</b> el mismo de la cuenta de Facebook de quien va a entrar.'),
           L('<b>Conferir:</b> spam, reenviar em Pessoas, aprovações pendentes e o e-mail de quem convidou.', '<b>Revisar:</b> spam, reenviar en Personas, aprobaciones pendientes y el correo de quien invitó.'),
+          L('<b>Conta bloqueada trava o convite:</b> nem quem convida nem quem é convidado pode estar com a conta desativada ou restrita. A pessoa convidada confere a própria conta em <b>Qualidade da Conta</b>.', '<b>Una cuenta bloqueada traba la invitación:</b> ni quien invita ni quien es invitado puede tener la cuenta desactivada o restringida. La persona invitada revisa su propia cuenta en <b>Calidad de la cuenta</b>.'),
           L('<b>Prova:</b> a pessoa aparece em Pessoas com o acesso certo.', '<b>Prueba:</b> la persona aparece en Personas con el acceso correcto.')
         ]
       },
@@ -6561,7 +6663,7 @@ window.AULAS = {
         perguntas: [L('Para qual e-mail o convite foi?', '¿A qué correo fue la invitación?'), L('É o e-mail da conta do Facebook da pessoa?', '¿Es el correo de la cuenta de Facebook de la persona?')],
         conferir: [L('Configurações do portfólio › Pessoas (convites pendentes) e Informações da empresa.', 'Configuración del portfolio › Personas (invitaciones pendientes) e Información del negocio.')],
         frase: L('O convite precisa ir para o e-mail da conta do Facebook da pessoa; vamos conferir isso, o spam e as aprovações.', 'La invitación tiene que ir al correo de la cuenta de Facebook de la persona; revisemos eso, el spam y las aprobaciones.'),
-        passos: [L('Conferir o e-mail.', 'Revisar el correo.'), L('Olhar o spam.', 'Mirar el spam.'), L('Reenviar em Pessoas.', 'Reenviar en Personas.')],
+        passos: [L('Conferir o e-mail.', 'Revisar el correo.'), L('Olhar o spam.', 'Mirar el spam.'), L('Ver se nenhuma das duas contas está desativada ou restrita (Qualidade da Conta).', 'Ver que ninguna de las dos cuentas esté desactivada o restringida (Calidad de la cuenta).'), L('Reenviar em Pessoas.', 'Reenviar en Personas.')],
         encaminhar: L('Se nada disso resolve, oriente a seguir a Central de Ajuda (Aceitar um convite).', 'Si nada de eso resuelve, orienta a seguir el Centro de ayuda (Aceptar una invitación).')
       },
       fontes: [F('https://www.facebook.com/business/help/2169003770027706', 'Adicionar pessoas ao portfólio empresarial', 'Agregar personas al portfolio comercial', '19/10/2026'), F('https://www.facebook.com/business/help/351956468742349', 'Aceitar um convite para um portfólio empresarial', 'Aceptar una invitación a un portfolio comercial', '19/10/2026')]
