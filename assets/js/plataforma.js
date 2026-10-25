@@ -521,7 +521,11 @@
       '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(dg && p === 'praticar' ? U.resolver : dg && p === 'entender' ? U.porque : U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
       '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +
-      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(mid === 'dg-workaround' ? { pt: 'Fontes da comunidade (não oficiais)', es: 'Fuentes de la comunidad (no oficiales)' } : U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '');
+      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(mid === 'dg-workaround' ? { pt: 'Fontes da comunidade (não oficiais)', es: 'Fuentes de la comunidad (no oficiales)' } : U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '') +
+      // quando a Central de Ajuda e a tela real não batem: as duas versões e o que a aula ensina
+      (a.divergencias ? '<details class="fontes divergencias"><summary>⚖️ ' + T({ pt: 'Divergências: Central de Ajuda × tela real', es: 'Diferencias: Centro de ayuda × pantalla real' }) + '</summary><ul>' + a.divergencias.map(function (d) {
+        return '<li><b>' + T(d.tema) + '</b><br>📚 ' + T({ pt: 'Central de Ajuda', es: 'Centro de ayuda' }) + ': ' + T(d.oficial) + '<br>🖥️ ' + T({ pt: 'Tela real', es: 'Pantalla real' }) + ': ' + T(d.tela) + '<br>✅ ' + T({ pt: 'Na aula', es: 'En la clase' }) + ': ' + T(d.aula) + '</li>'
+      }).join('') + '</ul></details>' : '');
   }
 
   /* prática guiada feita na própria plataforma (ex.: pedir e ler o print do cliente) */

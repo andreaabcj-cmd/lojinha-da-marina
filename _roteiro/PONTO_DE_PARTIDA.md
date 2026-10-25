@@ -25,6 +25,7 @@ Leia nesta ordem:
 - Tudo local até o André mandar subir. Conferir à mão que nada interno/pessoal vai para o repositório.
 - Só telas reais (o que não foi visto fica "a conferir"); fontes oficiais da Meta.
 - Tutorial guiado sem erro possível; testar como aluno teimoso (clicar fora, escolher errado, voltar/avançar, clicar antes da hora em botão dentro do destaque, recarregar).
+- **Informação oficial × tela real (sempre, em todo pente fino e aula nova):** ler a Central de Ajuda e conferir a mesma coisa na tela real da conta de aula (só olhando: abrir janelas, ver etapas e cancelar; nunca concluir convite, criação, pagamento ou remoção). Onde as duas não batem (nome de botão, etapas, limites, texto em inglês, caminho antigo), a aula ganha a seção **Divergências** abaixo das Fontes (`divergencias: [{ tema, oficial, tela, aula }]` em `conteudo.js`): o que a Central diz, o que a tela mostra e o que a aula ensina. O que não deu para testar sem mexer em coisa real fica dito como "não testado".
 - O Pixel real nunca pode mudar o que a aula/simulação mostra.
 - Respostas do "Atender" e das práticas são **embaralhadas** (mesma ordem para a mesma aula; a certa nunca fica em primeiro). No conteúdo, pode escrever a certa onde quiser: `ordemOpcoes` em `plataforma.js` cuida da ordem.
 - Sem analogias na parte técnica (F12/Laboratório).

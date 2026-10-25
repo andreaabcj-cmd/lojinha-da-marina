@@ -522,7 +522,7 @@ window.AULAS = {
     {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'O que é um portfólio?', es: '¿Qué es un portfolio?' },
-      antes: { pt: 'Este é o começo da história: a Marina tem a Lojinha (o site) e um Instagram, mas ainda não usa as ferramentas da Meta.', es: 'Este es el comienzo de la historia: Marina tiene la Lojinha (el sitio) y un Instagram, pero todavía no usa las herramientas de Meta.' },
+      antes: { pt: 'Este é o começo da história: a Marina tem a Lojinha (o site), uma Página no Facebook e um Instagram, mas ainda não usa as ferramentas da Meta para empresas.', es: 'Este es el comienzo de la historia: Marina tiene la Lojinha (el sitio), una Página de Facebook y un Instagram, pero todavía no usa las herramientas de Meta para empresas.' },
       gancho: { pt: '“Entendi o que é. E como eu crio o meu?” Vamos criar o portfólio da Marina.', es: '“Entendí qué es. ¿Y cómo creo el mío?” Vamos a crear el portfolio de Marina.' },
       objetivo: { pt: 'Entender o portfólio empresarial: a “pasta” que reúne os ativos da empresa (Página, Instagram, conta de anúncios, Pixel…) e as pessoas que trabalham neles.', es: 'Entender el portfolio comercial: la “carpeta” que reúne los activos de la empresa (Página, Instagram, cuenta publicitaria, Pixel…) y las personas que trabajan en ellos.' },
       entender: {
@@ -536,7 +536,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>O portfólio é a “pasta” da empresa</b> na Meta (antes se chamava Gerenciador de Negócios).', es: '<b>El portfolio es la “carpeta” de la empresa</b> en Meta (antes se llamaba Business Manager).' },
           { pt: '<b>Dentro dele:</b> os ativos (Página, Instagram, conta de anúncios, Pixel, catálogo) e as pessoas, cada uma com o acesso que precisa.', es: '<b>Adentro:</b> los activos (Página, Instagram, cuenta publicitaria, Pixel, catálogo) y las personas, cada una con el acceso que necesita.' },
-          { pt: '<b>Um ativo, um portfólio:</b> a mesma Página não pode estar em dois portfólios.', es: '<b>Un activo, un portfolio:</b> la misma Página no puede estar en dos portfolios.' }
+          { pt: '<b>Um ativo, um portfólio:</b> a mesma Página não pode estar em dois portfólios.', es: '<b>Un activo, un portfolio:</b> la misma Página no puede estar en dos portfolios.' },
+          { pt: '<b>Ninguém perde acesso:</b> quem já cuidava da Página continua com acesso depois que ela entra no portfólio.', es: '<b>Nadie pierde acceso:</b> quien ya cuidaba la Página sigue con acceso después de que entra al portfolio.' }
         ],
         notas: { pt: 'A cliente nova tem medo de “perder” o que já tem. Primeiro tranquilize; depois explique a pasta. No atendimento, o primeiro passo de quase todo caso é conferir EM QUAL portfólio a pessoa está.', es: 'La clienta nueva tiene miedo de “perder” lo que ya tiene. Primero tranquiliza; después explica la carpeta. En la atención, el primer paso de casi todo caso es revisar EN CUÁL portfolio está la persona.' }
       },
@@ -556,7 +557,7 @@ window.AULAS = {
         encaminhar: { pt: 'Se o cliente perdeu o acesso ao portfólio ou à conta pessoal, siga os caminhos oficiais de recuperação de acesso da Meta (Central de Ajuda).', es: 'Si el cliente perdió el acceso al portfolio o a la cuenta personal, sigue los caminos oficiales de recuperación de acceso de Meta (Centro de ayuda).' }
       },
       fontes: [
-        { url: 'https://www.facebook.com/business/help/1710077379203657', titulo: { pt: 'Criar um portfólio empresarial (o que é e o que reúne)', es: 'Crear un portfolio comercial (qué es y qué reúne)' }, conferido: '14/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1710077379203657', titulo: { pt: 'Criar um portfólio empresarial (o que é e o que reúne)', es: 'Crear un portfolio comercial (qué es y qué reúne)' }, conferido: '25/10/2026' },
         { url: 'https://www.facebook.com/business/help/720478807965744', titulo: { pt: 'Adicionar uma Página ao portfólio (cada ativo em um portfólio só)', es: 'Agregar una Página al portfolio (cada activo en un solo portfolio)' }, conferido: '14/10/2026' }
       ]
     },
@@ -575,7 +576,7 @@ window.AULAS = {
         ],
         pontos: [
           { pt: '<b>Nome:</b> o nome público da empresa. Os parênteses dão erro de caracteres especiais (visto de verdade).', es: '<b>Nombre:</b> el nombre público de la empresa. Los paréntesis dan error de caracteres especiales (visto de verdad).' },
-          { pt: '<b>Contato:</b> nome, sobrenome e email comercial de quem cria (vira administrador).', es: '<b>Contacto:</b> nombre, apellido y correo comercial de quien crea (se vuelve administrador).' },
+          { pt: '<b>Contato:</b> nome, sobrenome e email comercial de quem cria (vira administrador). A Meta manda um e-mail para confirmar esse endereço.', es: '<b>Contacto:</b> nombre, apellido y correo comercial de quien crea (se vuelve administrador). Meta envía un correo para confirmar esa dirección.' },
           { pt: '<b>Depois:</b> escolher os ativos, chamar pessoas (pode pular) e confirmar. Dá para editar tudo mais tarde.', es: '<b>Después:</b> elegir los activos, invitar personas (se puede saltar) y confirmar. Se puede editar todo más tarde.' },
           { pt: '<b>Limite:</b> cada pessoa pode criar até 2 portfólios (e participar de quantos quiser). Se não deixa criar outro, veja se ela já criou dois.', es: '<b>Límite:</b> cada persona puede crear hasta 2 portfolios (y participar en todos los que quiera). Si no deja crear otro, revisa si ya creó dos.' }
         ],
@@ -611,7 +612,7 @@ window.AULAS = {
         encaminhar: { pt: 'Se a criação falhar mesmo com o nome certo, oriente a seguir a Central de Ajuda da Meta para criar o portfólio.', es: 'Si la creación falla incluso con el nombre correcto, orienta a seguir el Centro de ayuda de Meta para crear el portfolio.' }
       },
       fontes: [
-        { url: 'https://www.facebook.com/business/help/1710077379203657', titulo: { pt: 'Criar um portfólio empresarial no Meta Business Suite', es: 'Crear un portfolio comercial en Meta Business Suite' }, conferido: '14/10/2026' }
+        { url: 'https://www.facebook.com/business/help/1710077379203657', titulo: { pt: 'Criar um portfólio empresarial no Meta Business Suite', es: 'Crear un portfolio comercial en Meta Business Suite' }, conferido: '25/10/2026' }
       ]
     },
     {
@@ -630,7 +631,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Acesso total (“Tudo”):</b> para quem administra a empresa. Mexe em tudo, dá acesso total a outros e pode até excluir o portfólio.', es: '<b>Acceso total (“Todo”):</b> para quien administra la empresa. Toca todo, da acceso total a otros y puede hasta eliminar el portfolio.' },
           { pt: '<b>Acesso básico (padrão) + ativos atribuídos:</b> a pessoa trabalha só no que você der, com acesso parcial ou total àquele ativo.', es: '<b>Acceso básico (predeterminado) + activos asignados:</b> la persona trabaja solo en lo que le des, con acceso parcial o total a ese activo.' },
-          { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro. E ative a autenticação de dois fatores.', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio. Y activa la autenticación en dos pasos.' },
+          { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro, pelo portfólio dela, e não como pessoa.', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio, por su propio portfolio, y no como persona.' },
+          { pt: '<b>No convite também aparecem:</b> Acesso temporário (na etapa do e-mail) e, em Ver opções avançadas, Finanças (ver ou gerenciar pagamentos e faturas). E ative a autenticação de dois fatores.', es: '<b>En la invitación también aparecen:</b> Acceso temporal (en el paso del correo) y, en Ver opciones avanzadas, Finanzas (ver o administrar pagos y facturas). Y activa la autenticación en dos pasos.' },
           { pt: '<b>Convite que não chega:</b> o e-mail convidado tem que ser o mesmo da conta do Facebook da pessoa. Olhe o spam e reenvie em Pessoas. Às vezes o convite espera a aprovação de outra pessoa com controle total, ou quem convidou ainda precisa confirmar o próprio e-mail.', es: '<b>Invitación que no llega:</b> el correo invitado tiene que ser el mismo de la cuenta de Facebook de la persona. Mira el spam y vuelve a enviarla en Personas. A veces la invitación espera la aprobación de otra persona con control total, o quien invitó todavía tiene que confirmar su propio correo.' }
         ],
         notas: { pt: 'Erro clássico: dar controle total para todo mundo “porque é mais fácil”. Mostre o risco com calma. As 4 etapas do convite no simulador foram conferidas na tela real (14/10/2026). Na tela real, o acesso total aparece como “Tudo · Gerenciar” e avisa que a pessoa pode até excluir o portfólio.', es: 'Error clásico: dar control total a todos “porque es más fácil”. Muestra el riesgo con calma. Las 4 etapas de la invitación en el simulador se revisaron en la pantalla real (14/10/2026). En la pantalla real, el acceso total aparece como “Todo · Gestionar” y avisa que la persona puede hasta eliminar el portfolio.' }
@@ -641,10 +643,10 @@ window.AULAS = {
         tour: 'convidar-pessoa', pagina: 'meta-portfolio.html?exemplo=1'
       },
       atender: {
-        cena: { pt: 'Dei controle total pro estagiário postar no Instagram. Tem algum problema? 🤔', es: 'Le di control total al pasante para publicar en Instagram. ¿Hay algún problema? 🤔' },
+        cena: { pt: 'Convidei meu sobrinho com acesso básico! 😊 Mas e se eu tivesse dado acesso total, para facilitar? Tinha problema? 🤔', es: '¡Invité a mi sobrino con acceso básico! 😊 ¿Pero y si le hubiera dado acceso total, para facilitar? ¿Habría problema? 🤔' },
         pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
         opcoes: [
-          { certa: true, txt: { pt: '“Funciona, mas é arriscado: com controle total ele pode mexer em tudo, até tirar pessoas. O ideal é acesso básico e atribuir só o Instagram para ele. Quer que eu te mostre onde trocar?”', es: '“Funciona, pero es arriesgado: con control total puede tocar todo, hasta quitar personas. Lo ideal es acceso básico y asignarle solo el Instagram. ¿Quieres que te muestre dónde cambiarlo?”' }, fb: { pt: 'Isso! Você explicou o risco sem assustar e mostrou o caminho recomendado pela Meta: só o acesso necessário.', es: '¡Eso! Explicaste el riesgo sin asustar y mostraste el camino recomendado por Meta: solo el acceso necesario.' } },
+          { certa: true, txt: { pt: '“Funcionaria, mas seria arriscado: com acesso total ele poderia mexer em tudo, até tirar pessoas ou excluir o portfólio. O que você fez é o recomendado: acesso básico e, quando a Página estiver no portfólio, atribuir só ela para ele.”', es: '“Funcionaría, pero sería arriesgado: con acceso total podría tocar todo, hasta quitar personas o eliminar el portfolio. Lo que hiciste es lo recomendado: acceso básico y, cuando la Página esté en el portfolio, asignarle solo ella.”' }, fb: { pt: 'Isso! Você explicou o risco sem assustar e mostrou o caminho recomendado pela Meta: só o acesso necessário.', es: '¡Eso! Explicaste el riesgo sin asustar y mostraste el camino recomendado por Meta: solo el acceso necesario.' } },
           { certa: false, txt: { pt: '“Nenhum problema, quanto mais acesso melhor.”', es: '“Ningún problema, cuanto más acceso, mejor.”' }, fb: { pt: 'Não. A Meta recomenda o contrário: dar só o acesso que a pessoa precisa.', es: 'No. Meta recomienda lo contrario: dar solo el acceso que la persona necesita.' } },
           { certa: false, txt: { pt: '“Passa sua senha pra ele, é mais rápido.”', es: '“Pásale tu contraseña, es más rápido.”' }, fb: { pt: 'Nunca! Senha não se compartilha. Cada pessoa entra com a própria conta e o acesso que você der.', es: '¡Nunca! La contraseña no se comparte. Cada persona entra con su propia cuenta y el acceso que le des.' } },
           { certa: false, txt: { pt: '“Exclui o portfólio e cria outro só pra ele.”', es: '“Borra el portfolio y crea otro solo para él.”' }, fb: { pt: 'Não precisa! É só ajustar o acesso dele em Pessoas.', es: '¡No hace falta! Solo hay que ajustar su acceso en Personas.' } }
@@ -667,6 +669,9 @@ window.AULAS = {
       fontes: [
         { url: 'https://www.facebook.com/business/help/2169003770027706', titulo: { pt: 'Adicionar pessoas ao portfólio e atribuir ativos', es: 'Agregar personas al portfolio y asignar activos' }, conferido: '14/10/2026' },
         { url: 'https://www.facebook.com/business/help/1717412048538897', titulo: { pt: 'Dar acesso a um parceiro (controle total ou acesso parcial)', es: 'Dar acceso a un socio (control total o acceso parcial)' }, conferido: '14/10/2026' }
+      ],
+      divergencias: [
+        { tema: { pt: 'Nome do nível de acesso', es: 'Nombre del nivel de acceso' }, oficial: { pt: 'fala em “controle total”.', es: 'habla de “control total”.' }, tela: { pt: 'a lista de Pessoas e o convite mostram “Acesso total · Tudo” (chave Gerenciar) e “Acesso parcial · Básico” (conta de aula, 25/10/2026).', es: 'la lista de Personas y la invitación muestran “Acesso total · Tudo” (interruptor Gerenciar) y “Acesso parcial · Básico” (en portugués, cuenta de clase, 25/10/2026).' }, aula: { pt: 'controle total e acesso total são a mesma coisa; na tela, procure “Tudo”.', es: 'control total y acceso total son lo mismo; en la pantalla, busca “Tudo” (“Todo”).' } }
       ]
     },
     {
@@ -679,15 +684,15 @@ window.AULAS = {
         dialogo: [
           ['marina', { pt: 'Quero anunciar! O que eu preciso ter no portfólio? 🤔', es: '¡Quiero anunciar! ¿Qué necesito tener en el portfolio? 🤔' }],
           ['rafa', { pt: 'Duas coisas: a Página da loja e uma conta de anúncios. A Página você traz em Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'Dos cosas: la Página de la tienda y una cuenta publicitaria. La Página la traes en Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' }],
-          ['pixel', { pt: 'Se a Página tem Instagram conectado, o Instagram vai junto para o portfólio.', es: 'Si la Página tiene Instagram conectado, el Instagram va junto al portfolio.' }],
+          ['pixel', { pt: 'Se a Página tem Instagram conectado, adicione o Instagram ao portfólio também, em Contas › Perfis do Instagram.', es: 'Si la Página tiene Instagram conectado, agrega también el Instagram al portfolio, en Cuentas › Perfiles de Instagram.' }],
           ['marina', { pt: 'E a conta de anúncios?', es: '¿Y la cuenta publicitaria?' }],
           ['rafa', { pt: 'Em Contas › Contas de anúncios › Adicionar › Criar uma nova. Atenção: moeda e fuso horário não podem ser trocados depois. Escolha real e o horário de São Paulo.', es: 'En Cuentas › Cuentas publicitarias › Agregar › Crear una nueva. Atención: la moneda y la zona horaria no se pueden cambiar después. Elige real y el horario de São Paulo.' }]
         ],
         pontos: [
-          { pt: '<b>A Página:</b> Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente” (você precisa ser administradora dela). Se aparecer um aviso de que ela pertence a outro portfólio, é outro caso: está no Diagnóstico › Contas.', es: '<b>La Página:</b> Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente” (debes ser administradora de ella). Si aparece un aviso de que pertenece a otro portfolio, es otro caso: está en Diagnóstico › Cuentas.' },
+          { pt: '<b>A Página:</b> Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente” (se você não tem controle total da Página, quem tem precisa aprovar o pedido). Se aparecer um aviso de que ela pertence a outro portfólio, é outro caso: está no Diagnóstico › Contas.', es: '<b>La Página:</b> Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente” (si no tienes control total de la Página, quien lo tiene debe aprobar la solicitud). Si aparece un aviso de que pertenece a otro portfolio, es otro caso: está en Diagnóstico › Cuentas.' },
           { pt: '<b>No mesmo menu</b> aparece “Solicitar acesso compartilhado”: é para agência que cuida da Página de um cliente, sem virar dona dela.', es: '<b>En el mismo menú</b> aparece “Solicitar acceso compartido”: es para la agencia que cuida la Página de un cliente, sin volverse dueña de ella.' },
           { pt: '<b>Conta de anúncios:</b> moeda e fuso horário NÃO mudam depois, e a conta não pode ser removida do portfólio. Criar não cobra nada.', es: '<b>Cuenta publicitaria:</b> moneda y zona horaria NO cambian después, y la cuenta no se puede quitar del portfolio. Crearla no cobra nada.' },
-          { pt: '<b>Quantas contas?</b> Em Informações da empresa aparece o “Limite de criação de contas de anúncios”. Portfólio novo começa com 1, até fazer um pagamento confirmado; o limite sobe com o histórico de gastos, e contas desativadas também contam.', es: '<b>¿Cuántas cuentas?</b> En la información del negocio aparece el “Límite de creación de cuentas publicitarias”. Un portfolio nuevo empieza con 1, hasta hacer un pago confirmado; el límite sube con el historial de gastos, y las cuentas desactivadas también cuentan.' }
+          { pt: '<b>Quantas contas?</b> Em Informações da empresa aparece o “Limite de criação de contas de anúncios”. Portfólio novo começa com 1; o limite sobe depois, com pagamento e uso da conta (a Meta explica de jeitos diferentes: veja as Divergências). Conta encerrada continua contando.', es: '<b>¿Cuántas cuentas?</b> En la información del negocio aparece el “Límite de creación de cuentas publicitarias”. Un portfolio nuevo empieza con 1; el límite sube después, con pago y uso de la cuenta (Meta lo explica de formas distintas: mira las Diferencias). Una cuenta cerrada sigue contando.' }
         ],
         notas: { pt: 'O fuso e a moeda errados (o padrão é dólar e horário de Los Angeles) são erros muito comuns de cliente nova.', es: 'La zona horaria y la moneda equivocadas (lo predeterminado es dólar y horario de Los Ángeles) son errores muy comunes de clienta nueva.' }
       },
@@ -716,11 +721,19 @@ window.AULAS = {
         frase: { pt: 'A moeda e o fuso não podem ser trocados depois que a conta é criada. O caminho é criar uma nova conta de anúncios, escolhendo real e o fuso de São Paulo, e usar essa nos seus anúncios.', es: 'La moneda y la zona horaria no se pueden cambiar después de crear la cuenta. El camino es crear una nueva cuenta publicitaria, eligiendo real y la zona de São Paulo, y usar esa en tus anuncios.' },
         passos: [{ pt: 'No seu portfólio: Contas › Páginas › Adicionar › “Adicionar uma Página do Facebook existente”.', es: 'En tu portfolio: Cuentas › Páginas › Agregar › “Agregar una Página de Facebook existente”.' },
           { pt: 'Conta de anúncios: Contas › Contas de anúncios › Adicionar › Criar uma nova conta de anúncios (escolha a moeda e o fuso certos).', es: 'Cuenta publicitaria: Cuentas › Cuentas publicitarias › Agregar › Crear una nueva cuenta publicitaria (elige la moneda y la zona horaria correctas).' }],
-        encaminhar: { pt: 'Criar a conta de anúncios e mudar moeda ou fuso não são do seu escopo: confirme o que a cliente precisa e encaminhe à área de contas. Se a Página estiver em outro portfólio, siga o caso do Diagnóstico › Contas.', es: 'Crear la cuenta publicitaria y cambiar moneda o zona horaria no son de tu alcance: confirma qué necesita la clienta y deriva al área de cuentas. Si la Página está en otro portfolio, sigue el caso de Diagnóstico › Cuentas.' }
+        encaminhar: { pt: 'Moeda e fuso não se trocam: o caminho é uma conta nova. Se o limite não deixa criar outra, não há como liberar na hora (o aumento é automático); use a conta que já existe. Página em outro portfólio: siga o caso do Diagnóstico › Contas.', es: 'La moneda y la zona horaria no se cambian: el camino es una cuenta nueva. Si el límite no deja crear otra, no hay cómo liberarlo al momento (el aumento es automático); usa la cuenta que ya existe. Página en otro portfolio: sigue el caso de Diagnóstico › Cuentas.' }
       },
       fontes: [
-        { url: 'https://www.facebook.com/business/help/531142997352616', titulo: { pt: 'Remover uma Página do portfólio (e adicionar em outro)', es: 'Quitar una Página del portfolio (y agregarla en otro)' }, conferido: '14/10/2026' },
-        { url: 'https://www.facebook.com/business/help/720478807965744', titulo: { pt: 'Adicionar uma Página ao portfólio', es: 'Agregar una Página al portfolio' }, conferido: '14/10/2026' }
+        { url: 'https://www.facebook.com/business/help/531142997352616', titulo: { pt: 'Remover uma Página do portfólio (e adicionar em outro)', es: 'Quitar una Página del portfolio (y agregarla en otro)' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/720478807965744', titulo: { pt: 'Adicionar uma Página ao portfólio', es: 'Agregar una Página al portfolio' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/915885887059947', titulo: { pt: 'Adicionar uma conta de anúncios ao portfólio', es: 'Agregar una cuenta publicitaria al portfolio' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/443041549525801', titulo: { pt: 'Problemas ao criar uma nova conta de anúncios no portfólio', es: 'Problemas al crear una nueva cuenta publicitaria en el portfolio' }, conferido: '25/10/2026' }
+      ],
+      divergencias: [
+        { tema: { pt: 'Limite de contas de anúncios', es: 'Límite de cuentas publicitarias' }, oficial: { pt: 'um artigo diz que portfólio novo só cria 1 conta e passa a 3 quando uma campanha é veiculada e um pagamento é feito; outro diz 1 conta até um pagamento confirmado, com ajuste pelo histórico de gastos e uso.', es: 'un artículo dice que un portfolio nuevo solo crea 1 cuenta y pasa a 3 cuando se publica una campaña y se hace un pago; otro dice 1 cuenta hasta un pago confirmado, con ajuste según el historial de gastos y uso.' }, tela: { pt: 'com o limite em 1, a opção Criar avisa que dá para criar ou reivindicar mais contas “depois de seguir nossas políticas por várias semanas” (conta de aula, 25/10/2026).', es: 'con el límite en 1, la opción Crear avisa que se pueden crear o reclamar más cuentas “después de seguir nuestras políticas por varias semanas” (en portugués, cuenta de clase, 25/10/2026).' }, aula: { pt: 'começa com 1 e sobe com o tempo, com pagamento e uso; não há como liberar na hora.', es: 'empieza con 1 y sube con el tiempo, con pago y uso; no hay cómo liberarlo al momento.' } },
+        { tema: { pt: 'A Página leva o Instagram junto?', es: '¿La Página lleva el Instagram junto?' }, oficial: { pt: 'se a Página estiver vinculada a um Instagram, adicione também o Instagram ao portfólio; para remover, desconecte antes o Instagram e o WhatsApp.', es: 'si la Página está vinculada a un Instagram, agrega también el Instagram al portfolio; para quitarla, desconecta antes Instagram y WhatsApp.' }, tela: { pt: 'na conta de aula o Instagram aparece em Ativos conectados da Página e também como ativo próprio em Perfis do Instagram. Não testamos mover a Página (mexeria em ativos reais).', es: 'en la cuenta de clase el Instagram aparece en Activos conectados de la Página y también como activo propio en Perfiles de Instagram. No probamos mover la Página (tocaría activos reales).' }, aula: { pt: 'adicione os dois, Página e Instagram.', es: 'agrega los dos, Página e Instagram.' } },
+        { tema: { pt: 'Etapas de adicionar uma Página existente', es: 'Pasos para agregar una Página existente' }, oficial: { pt: 'nome ou URL › Avançar › aceitar os termos › Adicionar Página › Concluir.', es: 'nombre o URL › Siguiente › aceptar los términos › Agregar Página › Finalizar.' }, tela: { pt: 'janela em 3 etapas com nomes em inglês (Find Page, Add people, Review) e o aviso de que, sem controle total da Página, alguém com controle total precisa aprovar.', es: 'ventana en 3 pasos con nombres en inglés (Find Page, Add people, Review) y el aviso de que, sin control total de la Página, alguien con control total debe aprobar.' }, aula: { pt: 'o simulador resume em uma tela (nome › Adicionar Página); as etapas do meio ficam a conferir.', es: 'el simulador lo resume en una pantalla (nombre › Agregar Página); los pasos del medio quedan por confirmar.' } },
+        { tema: { pt: 'Nome do acesso compartilhado', es: 'Nombre del acceso compartido' }, oficial: { pt: '“Pedir acesso compartilhado a uma Página do Facebook”.', es: '“Pedir acceso compartido a una Página de Facebook”.' }, tela: { pt: '“Solicitar acesso compartilhado a uma Página do Facebook”, com a descrição ainda em inglês.', es: '“Solicitar acesso compartilhado a uma Página do Facebook”, con la descripción todavía en inglés.' }, aula: { pt: 'usa o nome da tela.', es: 'usa el nombre de la pantalla.' } }
       ]
     }
   ],
@@ -5595,6 +5608,9 @@ window.AULAS = {
         fontes: [
           { url: 'https://faq.whatsapp.com/634068973820786', titulo: L('Como editar o perfil comercial', 'Cómo editar el perfil comercial'), conferido: '25/10/2026' },
           { url: 'https://faq.whatsapp.com/502291734918768', titulo: L('Como criar links curtos', 'Cómo crear enlaces cortos'), conferido: '25/10/2026' }
+        ],
+        divergencias: [
+          { tema: L('Onde fica o perfil comercial', 'Dónde está el perfil comercial'), oficial: L('Mais opções › Ferramentas comerciais › Perfil comercial.', 'Más opciones › Herramientas para empresas › Perfil comercial.'), tela: L('não há mais Ferramentas comerciais nas Configurações: é a aba Ferramentas › Perfil, com o título “Edit profile” em inglês (Android, 25/10/2026).', 'ya no hay Herramientas para empresas en Ajustes: es la pestaña Herramientas › Perfil, con el título “Edit profile” en inglés (Android, 25/10/2026).'), aula: L('ensina o caminho da tela.', 'enseña el camino de la pantalla.') }
         ]
       },
       {
@@ -5881,6 +5897,9 @@ window.AULAS = {
         fontes: [
           { url: 'https://faq.whatsapp.com/512723604104492', titulo: L('Como criar anúncios no WhatsApp Business', 'Cómo crear anuncios en WhatsApp Business'), conferido: '25/10/2026' },
           { url: 'https://faq.whatsapp.com/613752137263188', titulo: L('Como gerenciar seus anúncios e sua conta de anúncios do WhatsApp Business', 'Cómo administrar tus anuncios y tu cuenta publicitaria de WhatsApp Business'), conferido: '25/10/2026' }
+        ],
+        divergencias: [
+          { tema: L('Por onde se cria o anúncio', 'Por dónde se crea el anuncio'), oficial: L('pelo menu ⋮ (três pontos), e “Anunciar no Facebook” no caminho com a conta do Facebook.', 'por el menú ⋮ (tres puntos), y “Anunciar en Facebook” en el camino con la cuenta de Facebook.'), tela: L('Ferramentas › Anúncios, Edit profile › Turbinar perfil e ⋮ › Anúncios levam ao mesmo fluxo; a conta do Facebook é pedida depois do objetivo, com ENTRAR COMO ou PULAR (Android, 25/10/2026).', 'Herramientas › Anuncios, Edit profile › Promocionar perfil y ⋮ › Anuncios llevan al mismo flujo; la cuenta de Facebook se pide después del objetivo, con ENTRAR COMO u OMITIR (Android, 25/10/2026).'), aula: L('ensina o caminho da tela.', 'enseña el camino de la pantalla.') }
         ]
       },
       {
