@@ -283,7 +283,7 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'O Instagram no anúncio', es: 'El Instagram en el anuncio' },
       antes: { pt: 'A Marina ligou o Instagram à Página e já sabe montar o criativo do anúncio.', es: 'Marina vinculó el Instagram a la Página y ya sabe armar el contenido del anuncio.' },
-      gancho: { pt: '“No Instagram, o anúncio aparece com o nome da Página! Eu queria o @ da minha loja.” Vamos ao campo certo.', es: '“¡En Instagram, el anuncio aparece con el nombre de la Página! Yo quería el @ de mi tienda.” Vamos al campo correcto.' },
+      gancho: { pt: '“Abri a lista de Perfil do Instagram e o meu @ não está lá!” Quase sempre a causa está na ligação, não no anúncio.', es: '“¡Abrí la lista de Perfil de Instagram y mi @ no está ahí!” Casi siempre la causa está en el vínculo, no en el anuncio.' },
       objetivo: { pt: 'Escolher o perfil do Instagram na Identidade do anúncio e ver o efeito na prévia.', es: 'Elegir el perfil de Instagram en la Identidad del anuncio y ver el efecto en la vista previa.' },
       entender: {
         dialogo: [
@@ -330,7 +330,7 @@ window.AULAS = {
       id: '06', min: 7, status: 'pronta',
       titulo: { pt: 'Meu Instagram não aparece no anúncio', es: 'Mi Instagram no aparece en el anuncio' },
       antes: { pt: 'A Marina quer escolher o @ da loja no anúncio.', es: 'Marina quiere elegir el @ de la tienda en el anuncio.' },
-      gancho: { pt: '“Abri a lista de Perfil do Instagram e o meu @ não está lá!” Quase sempre a causa está na ligação, não no anúncio.', es: '“¡Abrí la lista de Perfil de Instagram y mi @ no está ahí!” Casi siempre la causa está en el vínculo, no en el anuncio.' },
+      gancho: { pt: '“Tenho que postar a mesma foto duas vezes, uma em cada rede?” Não: o Business Suite posta nas duas de uma vez.', es: '“¿Tengo que publicar la misma foto dos veces, una en cada red?” No: Business Suite publica en las dos a la vez.' },
       objetivo: { pt: 'Diagnosticar por que o Instagram não aparece na lista, na ordem certa: conta profissional, portfólio e ligação com a Página.', es: 'Diagnosticar por qué el Instagram no aparece en la lista, en el orden correcto: cuenta profesional, portfolio y vínculo con la Página.' },
       entender: {
         dialogo: [
@@ -378,7 +378,7 @@ window.AULAS = {
       id: '07', min: 8, status: 'pronta',
       titulo: { pt: 'Postar no Facebook e no Instagram juntos', es: 'Publicar en Facebook y en Instagram a la vez' },
       antes: { pt: 'A Marina ligou o Instagram à Página e sabe usar a identidade nos anúncios.', es: 'Marina vinculó el Instagram a la Página y sabe usar la identidad en los anuncios.' },
-      gancho: { pt: '“Tenho que postar a mesma foto duas vezes, uma em cada rede?” Não: o Business Suite posta nas duas de uma vez.', es: '“¿Tengo que publicar la misma foto dos veces, una en cada red?” No: Business Suite publica en las dos a la vez.' },
+      gancho: { pt: '“Alguém perguntou o preço, mas não sei onde! Mensagem? Comentário?” Tudo cai na Caixa de Entrada.', es: '“¡Alguien preguntó el precio, pero no sé dónde! ¿Mensaje? ¿Comentario?” Todo llega a Mensajes.' },
       objetivo: { pt: 'Criar um post no Business Suite e escolher onde ele vai: Facebook, Instagram ou os dois.', es: 'Crear una publicación en Business Suite y elegir adónde va: Facebook, Instagram o los dos.' },
       entender: {
         dialogo: [
@@ -425,7 +425,7 @@ window.AULAS = {
       id: '08', min: 8, status: 'pronta',
       titulo: { pt: 'A Caixa de Entrada: mensagens e comentários', es: 'Mensajes: mensajes y comentarios' },
       antes: { pt: 'Os posts da Marina estão no ar nas duas redes. As primeiras perguntas chegaram.', es: 'Las publicaciones de Marina están en las dos redes. Llegaron las primeras preguntas.' },
-      gancho: { pt: '“Alguém perguntou o preço, mas não sei onde! Mensagem? Comentário?” Tudo cai na Caixa de Entrada.', es: '“¡Alguien preguntó el precio, pero no sé dónde! ¿Mensaje? ¿Comentario?” Todo llega a Mensajes.' },
+      gancho: { pt: '“Os números do Instagram estão todos zerados! Está quebrado?” Antes de se preocupar, vamos aprender a ler os Insights.', es: '“¡Los números de Instagram están todos en cero! ¿Está roto?” Antes de preocuparte, aprendamos a leer las Estadísticas.' },
       objetivo: { pt: 'Achar e responder mensagens e comentários do Instagram e do Facebook na Caixa de Entrada.', es: 'Encontrar y responder mensajes y comentarios de Instagram y de Facebook en Mensajes.' },
       entender: {
         dialogo: [
@@ -473,7 +473,7 @@ window.AULAS = {
       id: '09', min: 7, status: 'pronta',
       titulo: { pt: 'Insights do Instagram: ler os números', es: 'Estadísticas de Instagram: leer los números' },
       antes: { pt: 'A Marina já posta, responde e anuncia. Agora quer saber se está funcionando.', es: 'Marina ya publica, responde y anuncia. Ahora quiere saber si está funcionando.' },
-      gancho: { pt: '“Os números do Instagram estão tudo zero! Está quebrado?” Antes de se preocupar, vamos aprender a ler os Insights. Depois, as Regras automatizadas.', es: '“¡Los números de Instagram están todos en cero! ¿Está roto?” Antes de preocuparte, vamos a aprender a leer las Estadísticas. Después, las Reglas automáticas.' },
+      gancho: { pt: '“Passo o dia olhando os anúncios para pausar o que gasta demais. Dá para automatizar?” Próximo módulo: Gerenciador de Anúncios · regras automatizadas.', es: '“Paso el día mirando los anuncios para pausar lo que gasta de más. ¿Se puede automatizar?” Próximo módulo: Administrador de anuncios · reglas automáticas.' },
       objetivo: { pt: 'Ler os Insights do Instagram e do Facebook, trocar de entidade e entender zeros e a aba Público.', es: 'Leer las Estadísticas de Instagram y de Facebook, cambiar de entidad y entender los ceros y la pestaña Público.' },
       entender: {
         dialogo: [
@@ -668,7 +668,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Os ativos: Página e conta de anúncios', es: 'Los activos: Página y cuenta publicitaria' },
       antes: { pt: 'A Marina já tem portfólio e o sobrinho com o acesso certo.', es: 'Marina ya tiene portfolio y al sobrino con el acceso correcto.' },
-      gancho: { pt: '“Portfólio pronto! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel.', es: '“¡Portfolio listo! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel.' },
+      gancho: { pt: '“Portfólio pronto! Mas um recurso que eu quero pede ‘empresa verificada’. O que é isso?” Próximo módulo: Portfólio empresarial · avançado.', es: '“¡Portfolio listo! Pero una función que quiero pide ‘empresa verificada’. ¿Qué es eso?” Próximo módulo: Portfolio comercial · avanzado.' },
       objetivo: { pt: 'Colocar a Página da loja no portfólio e criar a conta de anúncios certa (moeda e fuso não mudam depois).', es: 'Poner la Página de la tienda en el portfolio y crear la cuenta publicitaria correcta (la moneda y la zona horaria no cambian después).' },
       entender: {
         dialogo: [
@@ -901,7 +901,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Ele sabe quando alguém compra?', es: '¿Sabe cuándo alguien compra?' },
       antes: { pt: 'O Pixel da Marina está funcionando: as visitas (PageView) chegam.', es: 'El Pixel de Marina está funcionando: las visitas (PageView) llegan.' },
-      gancho: { pt: '“O valor aparece zerado e agora tem um AVISO no Gerenciador de Eventos… quebrei alguma coisa?” Na próxima aula você vira detetive: descobre o que está falhando, explica para a cliente e decide se resolvem juntos ou se encaminha.', es: '“El valor aparece en cero y ahora hay un AVISO en el Administrador de eventos… ¿rompí algo?” En la próxima clase te vuelves detective: descubres qué está fallando, se lo explicas a la clienta y decides si lo resuelven juntos o si lo derivas.' },
+      gancho: { pt: '“As compras chegam ao Pixel! Mas dá para a Meta reconhecer melhor quem comprou?” Próximo módulo: Pixel · avançado.', es: '“¡Las compras llegan al Pixel! ¿Pero Meta puede reconocer mejor quién compró?” Próximo módulo: Pixel · avanzado.' },
       objetivo: { pt: 'Entender eventos (o que aconteceu) e parâmetros (os detalhes), e conferir se a compra chega com valor e moeda.', es: 'Entender eventos (lo que pasó) y parámetros (los detalles), y revisar si la compra llega con valor y moneda.' },
       entender: {
         dialogo: [
@@ -1557,6 +1557,7 @@ window.AULAS = {
       id: '08', min: 8, status: 'pronta',
       titulo: { pt: 'Um catálogo para vários países e idiomas', es: 'Un catálogo para varios países e idiomas' },
       antes: { pt: 'A Lojinha começou a receber pedidos da Argentina. A Marina quer anunciar lá, com preço em pesos.', es: 'La Lojinha empezó a recibir pedidos de Argentina. Marina quiere anunciar allá, con precio en pesos.' },
+      gancho: { pt: '“E o meu site? Ele também conversa com o catálogo?” Próximo módulo: Microdata Debugger.', es: '“¿Y mi sitio? ¿También habla con el catálogo?” Próximo módulo: Microdata Debugger.' },
       objetivo: { pt: 'Acrescentar dados de país (preço, moeda, disponibilidade, link) ou de idioma (título, descrição) ao mesmo catálogo, com o modelo da Meta, e saber as regras da planilha.', es: 'Agregar datos de país (precio, moneda, disponibilidad, enlace) o de idioma (título, descripción) al mismo catálogo, con la plantilla de Meta, y conocer las reglas de la hoja.' },
       entender: {
         dialogo: [
@@ -1606,7 +1607,7 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'O anúncio no Feed: o que a pessoa vê', es: 'El anuncio en el Feed: lo que ve la persona' },
       antes: { pt: 'A Marina já sabe criar a campanha, o conjunto de anúncios e o catálogo. Falta cuidar do que a pessoa realmente vê.', es: 'Marina ya sabe crear la campaña, el conjunto de anuncios y el catálogo. Falta cuidar lo que realmente ve la persona.' },
-      gancho: { pt: '“Meu anúncio vai aparecer no Feed? E como ele vai ficar?” Vamos separar as peças do anúncio e saber onde cada uma mora.', es: '“¿Mi anuncio va a aparecer en el Feed? ¿Y cómo va a quedar?” Vamos a separar las piezas del anuncio y saber dónde vive cada una.' },
+      gancho: { pt: '“A tela pede ‘Especifique a mídia’… e depois aparece uma janela cheia de etapas!” Vamos montar o criativo sem se perder.', es: '“La pantalla pide ‘Especifica el contenido multimedia’… ¡y después aparece una ventana llena de etapas!” Vamos a armar el contenido sin perdernos.' },
       objetivo: { pt: 'Reconhecer as partes do anúncio (Página, texto principal, mídia, título, descrição, botão e destino) e achar onde cada uma é configurada.', es: 'Reconocer las partes del anuncio (Página, texto principal, contenido multimedia, título, descripción, botón y destino) y encontrar dónde se configura cada una.' },
       entender: {
         dialogo: [
@@ -1649,7 +1650,7 @@ window.AULAS = {
       id: '02', min: 9, status: 'pronta',
       titulo: { pt: 'Montar o criativo da Marina', es: 'Armar el contenido de Marina' },
       antes: { pt: 'A Marina conhece as partes do anúncio e tem a foto da Caneca azul pronta.', es: 'Marina conoce las partes del anuncio y tiene lista la foto de la Caneca azul.' },
-      gancho: { pt: '“A tela pede ‘Especifique a mídia’… e depois aparece uma janela cheia de etapas!” Vamos montar o criativo sem se perder.', es: '“La pantalla pide ‘Especifica el contenido multimedia’… ¡y después aparece una ventana llena de etapas!” Vamos a armar el contenido sin perdernos.' },
+      gancho: { pt: '“No Feed ficou lindo, mas no Story tem uma faixa escura!” Vamos entender onde o anúncio aparece e como ajustar o corte.', es: '“En el Feed quedó lindo, ¡pero en el Story hay una franja oscura!” Vamos a entender dónde aparece el anuncio y cómo ajustar el recorte.' },
       objetivo: { pt: 'Escolher o formato, adicionar a mídia pelo assistente (mídia, texto, aprimoramentos) e ver o resultado na prévia.', es: 'Elegir el formato, agregar el contenido multimedia con el asistente (contenido, texto, mejoras) y ver el resultado en la vista previa.' },
       entender: {
         dialogo: [
@@ -1696,7 +1697,7 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Posicionamentos e cortes', es: 'Ubicaciones y recortes' },
       antes: { pt: 'A mídia da Marina entrou no anúncio e a prévia mostrou três cartões diferentes.', es: 'El contenido de Marina entró en el anuncio y la vista previa mostró tres tarjetas distintas.' },
-      gancho: { pt: '“No Feed ficou lindo, mas no Story tem uma faixa escura!” Vamos entender onde o anúncio aparece e como ajustar o corte.', es: '“En el Feed quedó lindo, ¡pero en el Story hay una franja oscura!” Vamos a entender dónde aparece el anuncio y cómo ajustar el recorte.' },
+      gancho: { pt: '“Preenchi tudo e a tela ainda não deixa publicar! O que está faltando?” Quase sempre é o destino.', es: '“¡Completé todo y la pantalla todavía no deja publicar! ¿Qué falta?” Casi siempre es el destino.' },
       objetivo: { pt: 'Entender os posicionamentos Advantage+, ler a prévia por grupo e ajustar o corte da mídia em Editar grupo.', es: 'Entender las ubicaciones Advantage+, leer la vista previa por grupo y ajustar el recorte del contenido en Editar grupo.' },
       entender: {
         dialogo: [
@@ -1744,7 +1745,7 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Destino e botão', es: 'Destino y botón' },
       antes: { pt: 'O criativo da Marina está bonito em todos os lugares. Falta o clique levar a algum lugar.', es: 'El contenido de Marina se ve lindo en todos los lugares. Falta que el clic lleve a algún lado.' },
-      gancho: { pt: '“Preenchi tudo e a tela ainda não deixa publicar! O que está faltando?” Quase sempre é o destino.', es: '“¡Completé todo y la pantalla todavía no deja publicar! ¿Qué falta?” Casi siempre es el destino.' },
+      gancho: { pt: '“Não publica, e o Story ficou estranho!” Vamos investigar como um detetive: o que falta, e o que está diferente do esperado.', es: '“¡No se publica, y el Story quedó raro!” Vamos a investigar como un detective: qué falta, y qué es diferente de lo esperado.' },
       objetivo: { pt: 'Preencher o URL do site, entender o link de exibição e escolher um botão que combine com o clique.', es: 'Completar la URL del sitio web, entender el enlace visible y elegir un botón que combine con el clic.' },
       entender: {
         dialogo: [
@@ -1792,7 +1793,7 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meu anúncio não publica ou ficou estranho!', es: '¡Mi anuncio no se publica o quedó raro!' },
       antes: { pt: 'A Marina já montou, ajustou os cortes e preencheu o destino. Mas algo ainda não está certo.', es: 'Marina ya armó, ajustó los recortes y completó el destino. Pero algo todavía no está bien.' },
-      gancho: { pt: '“Não publica, e o Story ficou estranho!” Vamos investigar como um detetive: o que falta, e o que está diferente do esperado.', es: '“¡No se publica, y el Story quedó raro!” Vamos a investigar como un detective: qué falta, y qué es diferente de lo esperado.' },
+      gancho: { pt: '“E o meu Instagram? Ele já está no portfólio?” Próximo módulo: Instagram para empresas.', es: '“¿Y mi Instagram? ¿Ya está en el portfolio?” Próximo módulo: Instagram para empresas.' },
       objetivo: { pt: 'Resolver os dois casos mais comuns do criativo: o que falta para publicar (destino, mídia, Página) e o que ficou diferente do esperado (corte, aprimoramentos).', es: 'Resolver los dos casos más comunes del contenido: qué falta para publicar (destino, contenido, Página) y qué quedó diferente de lo esperado (recorte, mejoras).' },
       entender: {
         dialogo: [
@@ -2026,6 +2027,7 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meus anúncios pararam sozinhos!', es: '¡Mis anuncios se detuvieron solos!' },
       antes: { pt: 'A Marina tem regras e sabe lê-las. Um dia, a campanha amanhece diferente.', es: 'Marina tiene reglas y sabe leerlas. Un día, la campaña amanece distinta.' },
+      gancho: { pt: '“As regras cuidam dos anúncios. Mas eles estão dando resultado?” Próximo módulo: Relatórios e métricas.', es: '“Las reglas cuidan los anuncios. ¿Pero están dando resultado?” Próximo módulo: Informes y métricas.' },
       objetivo: { pt: 'Descobrir se uma regra desativou algo, achar qual e por quê, corrigi-la e reativar o que for preciso.', es: 'Descubrir si una regla desactivó algo, encontrar cuál y por qué, corregirla y reactivar lo que haga falta.' },
       entender: {
         dialogo: [
@@ -2307,6 +2309,7 @@ window.AULAS = {
       id: '06', min: 6, status: 'pronta',
       titulo: { pt: 'Quanto voltou? Custo por compra e ROAS', es: '¿Cuánto volvió? Costo por compra y ROAS' },
       antes: { pt: 'A campanha de Vendas da Caneca azul vendeu. Agora a Marina quer saber se valeu o dinheiro.', es: 'La campaña de Ventas de la Caneca azul vendió. Ahora Marina quiere saber si valió el dinero.' },
+      gancho: { pt: '“Já sei quanto voltou. E se eu mostrasse os anúncios para quem tem mais chance de comprar?” Próximo módulo: Públicos e segmentação.', es: '“Ya sé cuánto volvió. ¿Y si mostrara los anuncios a quien tiene más chance de comprar?” Próximo módulo: Públicos y segmentación.' },
       objetivo: { pt: 'Ler Valor gasto, Compras e Valor de conversão da compra, e calcular o custo por compra e o ROAS.', es: 'Leer Monto gastado, Compras y Valor de conversión de compras, y calcular el costo por compra y el ROAS.' },
       entender: {
         dialogo: [
@@ -2538,6 +2541,7 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'Meu público não funciona!', es: '¡Mi público no funciona!' },
       antes: { pt: 'A Marina criou públicos e anúncios, mas os números do público parecem baixos.', es: 'Marina creó públicos y anuncios, pero los números del público parecen bajos.' },
+      gancho: { pt: '“Públicos prontos e campanhas publicadas. E agora apareceu ‘Aprendizado’ em tudo!” Próximo módulo: Entrega de anúncios.', es: '“Públicos listos y campañas publicadas. ¡Y ahora aparece ‘Aprendizaje’ en todo!” Próximo módulo: Entrega de anuncios.' },
       objetivo: { pt: 'Diagnosticar um público pequeno ou um semelhante recusado, e dizer ao cliente o que fazer enquanto os dados crescem.', es: 'Diagnosticar un público pequeño o un similar rechazado, y decirle al cliente qué hacer mientras los datos crecen.' },
       entender: {
         dialogo: [
@@ -2772,6 +2776,7 @@ window.AULAS = {
       id: '05', min: 10, status: 'pronta',
       titulo: { pt: 'Configurar as tags na página do produto', es: 'Configurar las etiquetas en la página del producto' },
       antes: { pt: 'A Marina já sabe conferir uma página no Microdata Debugger e achar o que falta.', es: 'Marina ya sabe revisar una página en el Microdata Debugger y encontrar lo que falta.' },
+      gancho: { pt: '“Pixel, catálogo e site prontos. Agora quero anunciar!” Próximo módulo: Gerenciador de Anúncios · criação e edição.', es: '“Pixel, catálogo y sitio listos. ¡Ahora quiero anunciar!” Próximo módulo: Administrador de anuncios · creación y edición.' },
       objetivo: { pt: 'Saber como as tags de microdados são escritas nos três formatos (OpenGraph, JSON-LD e schema.org), quais valores o catálogo exige e o que pedir ao desenvolvedor, conferindo depois no Microdata Debugger.', es: 'Saber cómo se escriben las etiquetas de microdatos en los tres formatos (OpenGraph, JSON-LD y schema.org), qué valores exige el catálogo y qué pedirle al desarrollador, revisando después en el Microdata Debugger.' },
       entender: {
         dialogo: [
@@ -2986,6 +2991,7 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('Anúncios de app para iPhone: AEM ou SKAdNetwork', 'Anuncios de app para iPhone: AEM o SKAdNetwork'),
         antes: L('O app da Lojinha já envia eventos pelo SDK.', 'La app de la Lojinha ya envía eventos por el SDK.'),
+        gancho: L('“Quero que o anúncio mostre as minhas canecas, com foto e preço.” Próximo módulo: Catálogo.', '“Quiero que el anuncio muestre mis tazas, con foto y precio.” Próximo módulo: Catálogo.'),
         objetivo: L('Saber que campanhas de app para iOS 14+ usam a Mensuração de Eventos Agregados ou a SKAdNetwork da Apple, as diferenças de relatório e onde verificar a qualificação do app no Gerenciador de Eventos.', 'Saber que las campañas de app para iOS 14+ usan la Medición de eventos agregados o SKAdNetwork de Apple, las diferencias de informes y dónde comprobar la elegibilidad de la app en el Administrador de eventos.'),
         entender: {
           dialogo: [
@@ -3215,6 +3221,7 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('“Meu anúncio não roda”', '“Mi anuncio no corre”'),
         antes: L('A Marina diz que três conjuntos não estão veiculando.', 'Marina dice que tres conjuntos no están entregando.'),
+        gancho: L('“Vi um selo azul no perfil de outras lojas. A Lojinha devia ter um?” Próximo módulo: Meta Verified para empresas.', '“Vi una insignia azul en el perfil de otras tiendas. ¿La Lojinha debería tener una?” Próximo módulo: Meta Verified para empresas.'),
         objetivo: L('Seguir uma ordem para achar por que um anúncio não veicula: conta, status do conjunto e nível certo.', 'Seguir un orden para encontrar por qué un anuncio no entrega: cuenta, estado del conjunto y nivel correcto.'),
         entender: {
           dialogo: [
@@ -3482,6 +3489,7 @@ window.AULAS = {
         id: '06', min: 9, status: 'pronta',
         titulo: L('Cancelar, revogada e suporte', 'Cancelar, revocada y asistencia'),
         antes: L('A Marina pensa em cancelar. E uma amiga teve a assinatura revogada.', 'Marina piensa en cancelar. Y una amiga tuvo la suscripción revocada.'),
+        gancho: L('“E se as pessoas pudessem ver as canecas numa vitrine dentro do Instagram e do Facebook?” Próximo módulo: Introdução ao Commerce.', '“¿Y si la gente pudiera ver las tazas en una vitrina dentro de Instagram y Facebook?” Próximo módulo: Introducción a Commerce.'),
         objetivo: L('Explicar as regras de cancelamento, listar causas de revogação e indicar o suporte de cada plano.', 'Explicar las reglas de cancelación, listar causas de revocación e indicar la asistencia de cada plan.'),
         entender: {
           dialogo: [
@@ -3706,6 +3714,7 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Finalização da compra no site: o que mudou', 'Finalización de compra en el sitio: qué cambió'),
         antes: L('Uma cliente antiga da Marina pergunta onde foram parar os pedidos e as devoluções da loja dela.', 'Una clienta antigua de Marina pregunta adónde fueron los pedidos y las devoluciones de su tienda.'),
+        gancho: L('“A loja está no ar. Como eu levo gente até ela?” Próximo módulo: Anúncios de loja (Shop Ads).', '“La tienda está en línea. ¿Cómo llevo gente hasta ella?” Próximo módulo: Anuncios de tienda (Shop Ads).'),
         objetivo: L('Explicar o que foi descontinuado e o que continua nas Lojas, e como ficam os anúncios e os relatórios.', 'Explicar qué fue discontinuado y qué continúa en las Tiendas, y cómo quedan los anuncios y los informes.'),
         entender: {
           dialogo: [
@@ -3929,6 +3938,7 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Ler os resultados das Lojas', 'Leer los resultados de Tiendas'),
         antes: L('Os primeiros anúncios das Lojas rodaram. A Marina abre o relatório e vê números estranhos.', 'Los primeros anuncios de Tiendas corrieron. Marina abre el informe y ve números extraños.'),
+        gancho: L('“A pessoa clica no anúncio da loja… e termina a compra onde?” Próximo módulo: Shop Ads · finalização da compra fora da Meta.', '“La persona hace clic en el anuncio de la tienda… ¿y dónde termina la compra?” Próximo módulo: Shop Ads · pago fuera de Meta.'),
         objetivo: L('Escolher as métricas certas para os anúncios das Lojas e explicar “compras na Meta = 0” e diferenças com ferramentas de terceiros.', 'Elegir las métricas correctas para los anuncios de Tiendas y explicar “compras en Meta = 0” y diferencias con herramientas de terceros.'),
         entender: {
           dialogo: [
@@ -4156,6 +4166,7 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Atualizar uma loja que usava a finalização da compra na Meta', 'Actualizar una tienda que usaba la finalización de compra en Meta'),
         antes: L('Uma cliente antiga da Marina tinha loja com finalização da compra dentro do Instagram. Agora a loja mudou.', 'Una clienta antigua de Marina tenía tienda con finalización de compra dentro de Instagram. Ahora la tienda cambió.'),
+        gancho: L('“Mexer no código do site para cada coisa da Meta dá trabalho. Não tem um jeito mais fácil?” Próximo módulo: Meta Business Extension (MBE).', '“Tocar el código del sitio para cada cosa de Meta da trabajo. ¿No hay una forma más fácil?” Próximo módulo: Meta Business Extension (MBE).'),
         objetivo: L('Listar o que fazer para atualizar uma loja antiga para a finalização da compra no site e o que acontece com campanhas e rascunhos.', 'Listar qué hacer para actualizar una tienda antigua a la finalización de compra en el sitio y qué pasa con campañas y borradores.'),
         entender: {
           dialogo: [
@@ -4433,6 +4444,7 @@ window.AULAS = {
         id: '06', min: 8, status: 'pronta',
         titulo: L('Dar acesso a um parceiro', 'Dar acceso a un socio'),
         antes: L('A agência da Marina precisa ver o Pixel e a Página do cliente.', 'La agencia de Marina necesita ver el píxel y la página del cliente.'),
+        gancho: L('“E as outras plataformas, como o WooCommerce? Também se conectam?” Próximo módulo: Integração com plataformas de terceiros.', '“¿Y las otras plataformas, como WooCommerce? ¿También se conectan?” Próximo módulo: Integración con plataformas de terceros.'),
         objetivo: L('Conceder a um parceiro acesso aos ativos do portfólio: pré-requisitos, passos e a diferença entre controle total e acesso parcial.', 'Conceder a un socio acceso a los activos del portfolio: requisitos previos, pasos y la diferencia entre control total y acceso parcial.'),
         entender: {
           dialogo: [
@@ -4662,6 +4674,7 @@ window.AULAS = {
         id: '05', min: 7, status: 'pronta',
         titulo: L('Manter e desconectar a integração', 'Mantener y desconectar la integración'),
         antes: L('A cliente da Marina vai trocar de plataforma e quer desconectar o WooCommerce.', 'La clienta de Marina va a cambiar de plataforma y quiere desconectar WooCommerce.'),
+        gancho: L('“E a Shopify? Ouvi dizer que ela conversa direto com a Meta.” Próximo módulo: Shopify e Meta.', '“¿Y Shopify? Oí que habla directo con Meta.” Próximo módulo: Shopify y Meta.'),
         objetivo: L('Atualizar o plugin, ativar atualizações automáticas e desconectar sabendo o efeito nos produtos.', 'Actualizar el plugin, activar actualizaciones automáticas y desconectar sabiendo el efecto en los productos.'),
         entender: {
           dialogo: [
@@ -4886,6 +4899,7 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Problemas comuns Shopify e Meta', 'Problemas comunes Shopify y Meta'),
         antes: L('Seis clientes da Marina, seis queixas diferentes.', 'Seis clientes de Marina, seis quejas distintas.'),
+        gancho: L('“Minhas clientes vivem perguntando pelo WhatsApp. Dá para vender por lá também?” Próximo módulo: WhatsApp Business.', '“Mis clientas siempre preguntan por WhatsApp. ¿Se puede vender por ahí también?” Próximo módulo: WhatsApp Business.'),
         objetivo: L('Triar as queixas mais comuns e indicar onde olhar primeiro.', 'Clasificar las quejas más comunes e indicar dónde mirar primero.'),
         entender: {
           dialogo: [
@@ -5219,6 +5233,7 @@ window.AULAS = {
         id: '07', min: 8, status: 'pronta',
         titulo: L('Conversões personalizadas', 'Conversiones personalizadas'),
         antes: L('Os dados do Pixel estão protegidos. Agora a Marina quer contar uma ação que não tem evento próprio: o pedido de encomenda personalizada.', 'Los datos del píxel están protegidos. Ahora Marina quiere contar una acción que no tiene evento propio: el pedido personalizado.'),
+        gancho: L('“Muita gente compra na Lojinha pelo iPhone, e ouvi dizer que o iPhone mudou a medição.” Próximo módulo: iOS 14 e a medição.', '“Mucha gente compra en la Lojinha desde el iPhone, y oí que el iPhone cambió la medición.” Próximo módulo: iOS 14 y la medición.'),
         objetivo: L('Criar uma conversão personalizada com regra de URL, escolher o evento padrão para otimizar e conhecer os limites (100 por conta, regra que não se edita, arquivamento).', 'Crear una conversión personalizada con regla de URL, elegir el evento estándar para optimizar y conocer los límites (100 por cuenta, regla que no se edita, archivado).'),
         entender: {
           dialogo: [
@@ -5410,6 +5425,7 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Excluir o portfólio: o que impede e o que muda', 'Eliminar el portafolio: qué lo impide y qué cambia'),
         antes: L('Um cliente quer apagar o portfólio, mas aparece um erro.', 'Un cliente quiere borrar el portafolio, pero aparece un error.'),
+        gancho: L('“Me falaram para ‘verificar o domínio’. É coisa do Pixel?” Vamos ver o que é e onde se faz.', '“Me dijeron que ‘verifique el dominio’. ¿Es cosa del Pixel?” Veamos qué es y dónde se hace.'),
         objetivo: L('Explicar o que a exclusão apaga, o que impede e como resolver cada bloqueio.', 'Explicar qué borra la eliminación, qué la impide y cómo resolver cada bloqueo.'),
         entender: {
           dialogo: [
@@ -5502,6 +5518,7 @@ window.AULAS = {
         id: '06', min: 8, status: 'pronta',
         titulo: L('Não perder o acesso: a Central de Segurança', 'No perder el acceso: el Centro de seguridad'),
         antes: L('A Marina viu um alerta de segurança na página inicial do portfólio.', 'Marina vio una alerta de seguridad en la página de inicio del portafolio.'),
+        gancho: L('“Portfólio seguro! Agora uma amiga disse que eu preciso colocar o Pixel no site.” Próximo módulo: Pixel · básico.', '“¡Portfolio seguro! Ahora una amiga me dijo que tengo que poner el Pixel en el sitio.” Próximo módulo: Pixel · básico.'),
         objetivo: L('Ler os alertas da Central de Segurança, exigir a autenticação de dois fatores e garantir um segundo administrador com controle total.', 'Leer las alertas del Centro de seguridad, exigir la autenticación de dos factores y asegurar un segundo administrador con control total.'),
         entender: {
           dialogo: [

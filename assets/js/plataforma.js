@@ -482,6 +482,11 @@
     passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
     var prox = aulasDaTrilha(mid).filter(function (x) { return lista.indexOf(x) > lista.indexOf(a) })[0], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
+    function fioDepois() {
+      var pmF = !(prox && prox.status === 'pronta') ? proximoModulo(mid) : null, g = T(a.gancho);
+      if (pmF) g = g.replace(/\s*Próximo módulo:[^”]*$/, '');
+      return '<p class="fio depois">➡️ <b>' + (pmF ? T({ pt: 'No próximo módulo', es: 'En el próximo módulo' }) + ' (' + T(pmF.titulo) + '):' : T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' })) + '</b> ' + g + '</p>';
+    }
     function desenha() {
       var p = partes[passoAtual], h = '';
       if (p === 'reclamacao') h = chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T(a.praticar ? { pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' } : { pt: 'Ver por que acontece', es: 'Ver por qué pasa' }) + '</button></p>';
@@ -499,9 +504,9 @@
           }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T(a.atender ? { pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' } : { pt: 'Ao terminar, você volta para esta aula.', es: 'Al terminar, vuelves a esta clase.' }) + '</p>');
       }
       else if (p === 'atender') h = chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + ordemOpcoes(a.atender.opcoes, mid + '/' + aid).map(function (i) { var o = a.atender.opcoes[i]; return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
-        (a.gancho && !dg ? '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>' : '');
+        (a.gancho && !dg ? fioDepois() : '');
       // aula sem Atender (ex.: Portfólio 01): o “Na próxima aula” vai no fim da última etapa
-      if (p !== 'atender' && passoAtual === partes.length - 1 && a.gancho && !dg) h += '<p class="fio depois">➡️ <b>' + T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' }) + '</b> ' + T(a.gancho) + '</p>';
+      if (p !== 'atender' && passoAtual === partes.length - 1 && a.gancho && !dg) h += fioDepois();
       $('#palco').innerHTML = h; $('#palco').classList.remove('mv-troca'); void $('#palco').offsetWidth; $('#palco').classList.add('mv-troca'); mov().cascata($('#palco'));
       if (p === 'reclamacao') { var bR = $('#bResolver'); if (bR) bR.onclick = function () { $('#bProx').click() }; if (!chatVisto) { chatVisto = true; mov().chat($('#palco'), function () { }) } }
       if (p === 'entender' && !chatVisto) { chatVisto = true; var pts = $('#palco .pontos'); if (pts) pts.classList.add('mv-oculta'); mov().chat($('#palco'), function () { if (pts) { pts.classList.remove('mv-oculta'); pts.classList.add('mv-chega') } }) }
