@@ -198,7 +198,9 @@ const B = [
   ['os parâmetros sumiram dos eventos da minha farmácia', ['pixel-avancado/06']],
   ['preciso verificar o domínio para o pixel funcionar?', ['portfolio-avancado/05']],
   ['como exigir autenticação de dois fatores no portfólio', ['portfolio-avancado/06']],
-  ['e se eu perder o acesso ao portfólio, como coloco outro administrador?', ['portfolio-avancado/06']]
+  ['e se eu perder o acesso ao portfólio, como coloco outro administrador?', ['portfolio-avancado/06']],
+  ['como coloco o horário de atendimento no whatsapp business', ['whatsapp/01']],
+  ['onde edito o perfil comercial do whatsapp', ['whatsapp/01']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {

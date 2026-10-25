@@ -224,6 +224,8 @@
       ['permissoes-trafego', 'meta-eventos.html', 'pixel-avancado', '05', { pt: 'Como ver quem usa o seu Pixel e abrir a lista de permissão de tráfego', es: 'Cómo ver quién usa tu píxel y abrir la lista de permitidos de tráfico' }],
       ['categoria-pixel', 'meta-eventos.html', 'pixel-avancado', '06', { pt: 'Como ver a categoria da fonte de dados e a configuração básica', es: 'Cómo ver la categoría de la fuente de datos y la configuración básica' }]
       ] },
+    { m: 'whatsapp', itens: [
+      ['perfil-whatsapp', 'meta-whatsapp.html?zerar=1', 'whatsapp', '01', { pt: 'Como preencher categoria e horário do perfil comercial e conferir na Prévia', es: 'Cómo completar categoría y horario del perfil comercial y revisar en la Vista previa' }] ] },
     { m: 'portfolio-avancado', itens: [
       ['verificar-empresa', 'meta-portfolio.html', 'portfolio-avancado', '01', { pt: 'Como verificar a empresa na Central de Segurança', es: 'Cómo verificar la empresa en el Centro de seguridad' }],
       ['corrigir-documento', 'meta-portfolio.html', 'portfolio-avancado', '02', { pt: 'Como corrigir documentos recusados da verificação', es: 'Cómo corregir documentos rechazados de la verificación' }],

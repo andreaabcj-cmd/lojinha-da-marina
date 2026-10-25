@@ -49,7 +49,7 @@ window.MODULOS = [
   { id: 'restricoes', extra: true, status: 'planejado', icone: '🚧', titulo: { pt: 'Contas e restrições', es: 'Cuentas y restricciones' }, resumo: { pt: 'Contas desativadas ou restritas, limites de recursos e verificações.', es: 'Cuentas desactivadas o restringidas, límites de funciones y verificaciones.' } },
   { id: 'politicas', extra: true, status: 'planejado', icone: '📜', titulo: { pt: 'Políticas e anúncios rejeitados', es: 'Políticas y anuncios rechazados' }, resumo: { pt: 'Por que um anúncio é rejeitado e o que o cliente pode fazer.', es: 'Por qué se rechaza un anuncio y qué puede hacer el cliente.' } },
   { id: 'ig-organico', extra: true, status: 'planejado', icone: '📷', titulo: { pt: 'Instagram e Facebook orgânicos', es: 'Instagram y Facebook orgánicos' }, resumo: { pt: 'Perfil, conteúdo e recursos do dia a dia fora dos anúncios.', es: 'Perfil, contenido y funciones del día a día fuera de los anuncios.' } },
-  { id: 'whatsapp', fase: 5, status: 'depois', icone: '💬', titulo: { pt: 'WhatsApp', es: 'WhatsApp' }, resumo: { pt: 'Fica para depois.', es: 'Para más adelante.' } }
+  { id: 'whatsapp', fase: 5, status: 'construcao', icone: '💬', titulo: { pt: 'WhatsApp Business', es: 'WhatsApp Business' }, resumo: { pt: 'Perfil, catálogo, pedidos, atendimento automático, anúncios e IA no app WhatsApp Business.', es: 'Perfil, catálogo, pedidos, atención automática, anuncios e IA en la app WhatsApp Business.' } }
 ];
 
 /* As TRILHAS são só listas e ordens de módulos: o conteúdo (módulos e aulas) é um só, compartilhado.
@@ -5540,6 +5540,60 @@ window.AULAS = {
         fontes: [
           { url: 'https://www.facebook.com/business/help/216940652189296', titulo: L('Sobre a Central de Segurança', 'Sobre el Centro de seguridad'), conferido: '25/10/2026' },
           { url: 'https://www.facebook.com/business/help/280940009201586', titulo: L('Como exigir a autenticação de dois fatores para as pessoas no seu portfólio empresarial', 'Cómo exigir la autenticación de dos factores para las personas de tu portafolio comercial'), conferido: '25/10/2026' }
+        ]
+      }
+    ];
+  })(),
+  whatsapp: (function () {
+    function L(pt, es) { return { pt: pt, es: es } }
+    var PERG = L('O que você responde?', '¿Qué respondes?');
+    return [
+      {
+        id: '01', min: 8, status: 'pronta',
+        titulo: L('Perfil comercial que vende', 'Perfil comercial que vende'),
+        antes: L('A Marina instalou o WhatsApp Business no celular da loja. As clientes já mandam mensagem.', 'Marina instaló WhatsApp Business en el celular de la tienda. Las clientas ya escriben.'),
+        gancho: L('“E se a cliente pudesse ver as canecas sem sair da conversa?” Próxima aula: o catálogo.', '“¿Y si la clienta pudiera ver las tazas sin salir del chat?” Próxima clase: el catálogo.'),
+        objetivo: L('Achar o perfil comercial no app, preencher categoria e horário de atendimento e conferir na Prévia o que a cliente vê.', 'Encontrar el perfil comercial en la app, completar categoría y horario de atención y revisar en la Vista previa lo que ve la clienta.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Uma cliente me perguntou “vocês abrem que horas?”. Mas a loja é online, atende o tempo todo! 😅', 'Una clienta me preguntó “¿a qué hora abren?”. ¡Pero la tienda es online, atiende todo el tiempo! 😅')],
+            ['rafa', L('Ela não tinha como saber: o seu perfil comercial está sem horário. No app, vá na aba Ferramentas › Perfil. Ali ficam nome, categoria, horário, descrição, endereço, site e e-mail, e a cliente vê tudo isso quando abre o seu perfil.', 'No tenía cómo saberlo: tu perfil comercial no tiene horario. En la app, ve a la pestaña Herramientas › Perfil. Ahí están nombre, categoría, horario, descripción, dirección, sitio y correo, y la clienta ve todo eso cuando abre tu perfil.')],
+            ['marina', L('E como eu sei o que ela está vendo?', '¿Y cómo sé lo que ella está viendo?')],
+            ['pixel', L('No alto do Perfil tem a Prévia: mostra o perfil igualzinho ao da cliente, com “(Você)” no nome. Com horário, aparece “Aberta agora”.', 'Arriba del Perfil está la Vista previa: muestra el perfil igual que la clienta, con “(Tú)” en el nombre. Con horario, aparece “Abierta ahora”.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> aba Ferramentas › Perfil (o título da tela aparece em inglês: “Edit profile”). A Central de Ajuda ainda cita o caminho antigo, Mais opções › Ferramentas comerciais › Perfil comercial.', '<b>Dónde:</b> pestaña Herramientas › Perfil (el título de la pantalla aparece en inglés: “Edit profile”). El Servicio de ayuda todavía cita el camino antiguo, Más opciones › Herramientas para empresas › Perfil comercial.'),
+            L('<b>Categoria:</b> até 3, escolhidas da lista do app (não dá para inventar uma).', '<b>Categoría:</b> hasta 3, elegidas de la lista de la app (no se puede inventar una).'),
+            L('<b>Horário de atendimento:</b> horários específicos (dia a dia), Sempre aberta ou Somente com hora marcada. A cliente vê “Aberta agora” no perfil.', '<b>Horario de atención:</b> horarios específicos (día a día), Siempre abierta o Solo con cita previa. La clienta ve “Abierta ahora” en el perfil.'),
+            L('<b>Prévia e link curto:</b> a Prévia mostra o perfil como a cliente vê; o link curto da empresa é criado sozinho e serve para divulgar no site e nas redes.', '<b>Vista previa y enlace corto:</b> la Vista previa muestra el perfil como lo ve la clienta; el enlace corto de la empresa se crea solo y sirve para difundir en el sitio y las redes.')
+          ],
+          notas: L('Telas vistas de verdade em 25/10/2026 no app WhatsApp Business (Android, conta de aula, tema escuro): aba Ferramentas, Edit profile, Prévia, Escolha as categorias, Horário de atendimento (primeira tela), Selecionar faixa e Compartilhar (“Compartilhar link curto via...”). Não vistas: as telas de editar nome, descrição, site e e-mail, os horários de cada dia e o tema claro; o simulador marca essas partes como a conferir. No app real, a opção aparece escrita “Aberta no horários específicos”. Central de Ajuda do WhatsApp lida no mesmo dia: “Como editar o perfil comercial” e “Como criar links curtos”.', 'Pantallas vistas de verdad el 25/10/2026 en la app WhatsApp Business (Android, cuenta de clase, tema oscuro): pestaña Herramientas, Edit profile, Vista previa, Elige las categorías, Horario de atención (primera pantalla), Seleccionar rango y Compartir. No vistas: las pantallas para editar nombre, descripción, sitio y correo, los horarios de cada día y el tema claro; el simulador marca esas partes como por confirmar. El español de las pantallas es traducción nuestra (por confirmar). Servicio de ayuda de WhatsApp leído el mismo día: “Cómo editar el perfil comercial” y “Cómo crear enlaces cortos”.')
+        },
+        ferramenta: 'perfil-wa',
+        praticar: {
+          texto: L('No simulador, dois celulares: o da Marina (WhatsApp Business) e o da Bia, uma cliente. O Pixel te guia para trocar a categoria e pôr o horário, e você vê a mudança chegar no celular da Bia.', 'En el simulador, dos celulares: el de Marina (WhatsApp Business) y el de Bia, una clienta. El Pixel te guía para cambiar la categoría y poner el horario, y ves el cambio llegar al celular de Bia.'),
+          tour: 'perfil-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Agora meu perfil diz “Aberta agora”! 😊 Mas e se um dia eu atender só de segunda a sexta? Dá para mostrar isso?', '¡Ahora mi perfil dice “Abierta ahora”! 😊 ¿Pero y si un día atiendo solo de lunes a viernes? ¿Se puede mostrar?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Dá sim: em Ferramentas › Perfil › Horário de atendimento, escolha horários específicos e marque os dias e as horas. A cliente vê no seu perfil se a loja está aberta ou fechada.”', '“Sí se puede: en Herramientas › Perfil › Horario de atención, elige horarios específicos y marca los días y las horas. La clienta ve en tu perfil si la tienda está abierta o cerrada.”'), fb: L('Isso! Mostrou o lugar certo e o que muda para a cliente.', '¡Eso! Mostraste el lugar correcto y lo que cambia para la clienta.') },
+            { certa: false, txt: L('“Escreva os dias na descrição do perfil.”', '“Escribe los días en la descripción del perfil.”'), fb: L('Existe um campo próprio, o Horário de atendimento. É ele que mostra “Aberta agora” para a cliente.', 'Existe un campo propio, el Horario de atención. Es el que muestra “Abierta ahora” a la clienta.') },
+            { certa: false, txt: L('“Não dá: o WhatsApp Business só tem Sempre aberta.”', '“No se puede: WhatsApp Business solo tiene Siempre abierta.”'), fb: L('Tem três jeitos: horários específicos, Sempre aberta e Somente com hora marcada.', 'Hay tres formas: horarios específicos, Siempre abierta y Solo con cita previa.') },
+            { certa: false, txt: L('“Use a mensagem de ausência, que aparece no perfil.”', '“Usa el mensaje de ausencia, que aparece en el perfil.”'), fb: L('A ausência responde mensagens quando você não está (é outra aula). Quem mostra os dias no perfil é o Horário de atendimento.', 'La ausencia responde mensajes cuando no estás (es otra clase). Lo que muestra los días en el perfil es el Horario de atención.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O perfil comercial já tem categoria e horário?', '¿El perfil comercial ya tiene categoría y horario?'), L('A loja atende o tempo todo, em dias certos ou só com hora marcada?', '¿La tienda atiende todo el tiempo, en días fijos o solo con cita?')],
+          conferir: [L('Ferramentas › Perfil (Edit profile).', 'Herramientas › Perfil (Edit profile).'), L('Prévia: o perfil como a cliente vê.', 'Vista previa: el perfil como lo ve la clienta.')],
+          frase: L('A cliente vê o seu perfil comercial quando abre a conversa: com categoria e horário preenchidos, ela já sabe o que você vende e se está aberta. Vamos em Ferramentas › Perfil.', 'La clienta ve tu perfil comercial cuando abre el chat: con categoría y horario completos, ya sabe qué vendes y si estás abierta. Vamos a Herramientas › Perfil.'),
+          passos: [L('Ferramentas › Perfil.', 'Herramientas › Perfil.'), L('Categoria: até 3 da lista › Salvar.', 'Categoría: hasta 3 de la lista › Guardar.'), L('Horário de atendimento: escolher o jeito › Avançar.', 'Horario de atención: elegir la forma › Siguiente.'), L('Conferir na Prévia.', 'Revisar en la Vista previa.')],
+          encaminhar: L('Se uma alteração do perfil não salva, peça para atualizar o app, reiniciar o celular e tentar de novo; persistindo, a Central de Ajuda do WhatsApp tem o Fale conosco dentro do app.', 'Si un cambio del perfil no se guarda, pide actualizar la app, reiniciar el celular e intentar de nuevo; si persiste, el Servicio de ayuda de WhatsApp tiene Contáctanos dentro de la app.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/634068973820786', titulo: L('Como editar o perfil comercial', 'Cómo editar el perfil comercial'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/502291734918768', titulo: L('Como criar links curtos', 'Cómo crear enlaces cortos'), conferido: '25/10/2026' }
         ]
       }
     ];

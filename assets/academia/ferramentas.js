@@ -2067,6 +2067,20 @@
         [{ pt: 'Você sempre tem controle total', es: 'Siempre tienes control total' }, 0, { pt: 'Não necessariamente.', es: 'No necesariamente.' }],
         [{ pt: 'Nenhuma permissão', es: 'Ningún permiso' }, 0, { pt: 'Tem as atribuídas.', es: 'Tienes las asignadas.' }]] }
   ]);
+  quizCatalogo('perfil-wa', { pt: 'O perfil que a cliente vê', es: 'El perfil que ve la clienta' }, { pt: 'Perfil comercial do WhatsApp Business (telas vistas em 25/10/2026).', es: 'Perfil comercial de WhatsApp Business (pantallas vistas el 25/10/2026).' }, [
+    { q: { pt: 'Onde a Marina edita o perfil comercial no app de hoje?', es: '¿Dónde edita Marina el perfil comercial en la app actual?' },
+      o: [[{ pt: 'Aba Ferramentas › Perfil', es: 'Pestaña Herramientas › Perfil' }, 1, { pt: 'Isso! A tela se chama “Edit profile”.', es: '¡Eso! La pantalla se llama “Edit profile”.' }],
+        [{ pt: 'Configurações › Conta', es: 'Ajustes › Cuenta' }, 0, { pt: 'Conta cuida de segurança e número; os dados da empresa ficam em Ferramentas › Perfil.', es: 'Cuenta se ocupa de seguridad y número; los datos de la empresa están en Herramientas › Perfil.' }],
+        [{ pt: 'No Gerenciador de Anúncios', es: 'En el Administrador de anuncios' }, 0, { pt: 'O perfil comercial se edita no próprio app WhatsApp Business.', es: 'El perfil comercial se edita en la propia app WhatsApp Business.' }]] },
+    { q: { pt: 'Quantas categorias a loja pode ter?', es: '¿Cuántas categorías puede tener la tienda?' },
+      o: [[{ pt: 'Até 3, da lista do app', es: 'Hasta 3, de la lista de la app' }, 1, { pt: 'Isso! E não dá para criar uma categoria nova.', es: '¡Eso! Y no se puede crear una categoría nueva.' }],
+        [{ pt: 'Quantas quiser', es: 'Las que quiera' }, 0, { pt: 'O limite é 3.', es: 'El límite es 3.' }],
+        [{ pt: 'Só 1, escrita à mão', es: 'Solo 1, escrita a mano' }, 0, { pt: 'São até 3, escolhidas da lista.', es: 'Son hasta 3, elegidas de la lista.' }]] },
+    { q: { pt: 'A Marina quer ver o perfil como a cliente vê, sem pegar outro celular. O que ela usa?', es: 'Marina quiere ver el perfil como lo ve la clienta, sin agarrar otro celular. ¿Qué usa?' },
+      o: [[{ pt: 'A Prévia, no alto do Perfil', es: 'La Vista previa, arriba del Perfil' }, 1, { pt: 'Isso! Aparece “(Você)” ao lado do nome.', es: '¡Eso! Aparece “(Tú)” junto al nombre.' }],
+        [{ pt: 'O Turbinar perfil', es: 'Promocionar perfil' }, 0, { pt: 'Turbinar cria um anúncio (é pago). A Prévia só mostra.', es: 'Promocionar crea un anuncio (es pago). La Vista previa solo muestra.' }],
+        [{ pt: 'Não tem como', es: 'No hay forma' }, 0, { pt: 'Tem: a Prévia.', es: 'Sí hay: la Vista previa.' }]] }
+  ]);
   quizCatalogo('seguranca-pv', { pt: 'Não perder o portfólio', es: 'No perder el portafolio' }, { pt: 'Central de Segurança: dois fatores e o segundo administrador (tela vista em 25/10/2026).', es: 'Centro de seguridad: dos factores y el segundo administrador (pantalla vista el 25/10/2026).' }, [
     { q: { pt: 'Uma cliente é a única pessoa com controle total do portfólio. O que a Central de Segurança recomenda?', es: 'Una clienta es la única persona con control total del portafolio. ¿Qué recomienda el Centro de seguridad?' },
       o: [[{ pt: 'Ter outra pessoa de confiança com controle total, como a sócia', es: 'Tener otra persona de confianza con control total, como la socia' }, 1, { pt: 'Isso! Se uma pessoa perde o acesso, a outra mantém a empresa funcionando.', es: '¡Eso! Si una persona pierde el acceso, la otra mantiene la empresa funcionando.' }],
