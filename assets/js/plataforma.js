@@ -229,7 +229,8 @@
       ['corrigir-documento', 'meta-portfolio.html', 'portfolio-avancado', '02', { pt: 'Como corrigir documentos recusados da verificação', es: 'Cómo corregir documentos rechazados de la verificación' }],
       ['corrigir-permissao', 'meta-portfolio.html', 'portfolio-avancado', '03', { pt: 'Como alterar o acesso de uma pessoa ao portfólio', es: 'Cómo cambiar el acceso de una persona al portafolio' }],
       ['excluir-portfolio', 'meta-portfolio.html', 'portfolio-avancado', '04', { pt: 'Como entender e resolver o que impede excluir o portfólio', es: 'Cómo entender y resolver lo que impide eliminar el portafolio' }],
-      ['dominio-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio-avancado', '05', { pt: 'Como achar a verificação de domínio e escrever o domínio raiz', es: 'Cómo encontrar la verificación de dominio y escribir el dominio raíz' }] ] },
+      ['dominio-portfolio', 'meta-portfolio.html?exemplo=1', 'portfolio-avancado', '05', { pt: 'Como achar a verificação de domínio e escrever o domínio raiz', es: 'Cómo encontrar la verificación de dominio y escribir el dominio raíz' }],
+      ['central-seguranca', 'meta-portfolio.html', 'portfolio-avancado', '06', { pt: 'Como exigir os dois fatores e conferir o administrador de reserva na Central de Segurança', es: 'Cómo exigir los dos factores y revisar el administrador de reserva en el Centro de seguridad' }] ] },
     { m: 'dg-pixel', itens: [
       ['investigar-purchase', 'loja.html', 'dg-pixel', '01', { pt: 'Como investigar um Purchase que não chega (compra de teste, Eventos de teste, código-fonte)', es: 'Cómo investigar un Purchase que no llega (compra de prueba, Probar eventos, código fuente)' }],
       ['colar-codigo-base', 'meta-eventos.html', 'dg-pixel', '02', { pt: 'Como colar o código base do Pixel (copiar, colar no head, salvar, testar)', es: 'Cómo pegar el código base del píxel (copiar, pegar en el head, guardar, probar)' }],

@@ -196,7 +196,9 @@ const B = [
   ['quero contar lead quando abrir a página de encomenda recebida sem mexer no código', ['pixel-avancado/07']],
   ['tem um site que eu não conheço mandando eventos no meu pixel', ['pixel-avancado/05']],
   ['os parâmetros sumiram dos eventos da minha farmácia', ['pixel-avancado/06']],
-  ['preciso verificar o domínio para o pixel funcionar?', ['portfolio-avancado/05']]
+  ['preciso verificar o domínio para o pixel funcionar?', ['portfolio-avancado/05']],
+  ['como exigir autenticação de dois fatores no portfólio', ['portfolio-avancado/06']],
+  ['e se eu perder o acesso ao portfólio, como coloco outro administrador?', ['portfolio-avancado/06']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {

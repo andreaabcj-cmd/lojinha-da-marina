@@ -5449,6 +5449,7 @@ window.AULAS = {
       {
         id: '05', min: 7, status: 'pronta',
         titulo: L('Verificar o domínio da loja', 'Verificar el dominio de la tienda'),
+        gancho: L('“Apareceu um alerta de segurança no meu portfólio!” Vamos à Central de Segurança.', '“¡Apareció una alerta de seguridad en mi portafolio!” Vamos al Centro de seguridad.'),
         antes: L('Um cliente ouviu que precisa “verificar o domínio” e acha que é para o Pixel.', 'Un cliente oyó que necesita “verificar el dominio” y cree que es para el píxel.'),
         objetivo: L('Explicar para que serve a verificação de domínio (e que o Pixel não depende dela), onde ela fica e quem faz a prova.', 'Explicar para qué sirve la verificación de dominio (y que el píxel no depende de ella), dónde está y quién hace la prueba.'),
         entender: {
@@ -5492,6 +5493,53 @@ window.AULAS = {
         fontes: [
           { url: 'https://www.facebook.com/business/help/321167023127050', titulo: L('Como verificar seu domínio no portfólio empresarial', 'Cómo verificar tu dominio en el portafolio comercial'), conferido: '20/10/2026' },
           { url: 'https://www.facebook.com/business/help/245311299870862', titulo: L('Quando usar a verificação de domínio', 'Cuándo usar la verificación de dominio'), conferido: '20/10/2026' }
+        ]
+      },
+      {
+        id: '06', min: 8, status: 'pronta',
+        titulo: L('Não perder o acesso: a Central de Segurança', 'No perder el acceso: el Centro de seguridad'),
+        antes: L('A Marina viu um alerta de segurança na página inicial do portfólio.', 'Marina vio una alerta de seguridad en la página de inicio del portafolio.'),
+        objetivo: L('Ler os alertas da Central de Segurança, exigir a autenticação de dois fatores e garantir um segundo administrador com controle total.', 'Leer las alertas del Centro de seguridad, exigir la autenticación de dos factores y asegurar un segundo administrador con control total.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Apareceu um alerta de segurança no meu portfólio! E se alguém invadir? Ou se eu perder o celular e não conseguir entrar? 😰', '¡Apareció una alerta de seguridad en mi portafolio! ¿Y si alguien entra? ¿O si pierdo el celular y no puedo entrar? 😰')],
+            ['rafa', L('Vamos à Central de Segurança, nas Configurações do portfólio. No topo, “Action needed” lista cada risco com a recomendação da Meta. Embaixo ficam as proteções.', 'Vamos al Centro de seguridad, en la Configuración del portafolio. Arriba, “Action needed” enumera cada riesgo con la recomendación de Meta. Abajo están las protecciones.')],
+            ['rafa', L('A primeira é a autenticação de dois fatores: além da senha, um código ao entrar em um aparelho novo. Em “Quem precisa ativar” dá para escolher Ninguém, Somente administradores ou Todos. A Meta recomenda Todos.', 'La primera es la autenticación de dos factores: además de la contraseña, un código al entrar desde un dispositivo nuevo. En “Quién necesita activarla” puedes elegir Nadie, Solo administradores o Todos. Meta recomienda Todos.')],
+            ['pixel', L('A segunda: ter mais de uma pessoa com controle total. Se a Marina perder o acesso, a Ana, sócia, mantém a empresa funcionando. O sobrinho, que só posta, continua com acesso básico.', 'La segunda: tener más de una persona con control total. Si Marina pierde el acceso, Ana, la socia, mantiene la empresa funcionando. El sobrino, que solo publica, sigue con acceso básico.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> Configurações do portfólio › Central de Segurança. Os alertas também aparecem no topo da página inicial do portfólio e somem quando são resolvidos.', '<b>Dónde:</b> Configuración del portafolio › Centro de seguridad. Las alertas también aparecen arriba en la página de inicio del portafolio y desaparecen cuando se resuelven.'),
+            L('<b>Dois fatores:</b> só quem tem controle total muda o requisito. Portfólio com menos de 90 dias escolhe; em alguns mais antigos a Meta exige e não dá para desligar. Vale na hora: quem ainda não ativou faz isso na próxima vez que entrar.', '<b>Dos factores:</b> solo quien tiene control total cambia el requisito. Un portafolio con menos de 90 días elige; en algunos más antiguos Meta lo exige y no se puede apagar. Vale al instante: quien todavía no la activó lo hace la próxima vez que entre.'),
+            L('<b>Administrador secundário:</b> pelo menos outra pessoa de confiança com controle total, para ninguém ficar trancado do lado de fora.', '<b>Administrador secundario:</b> al menos otra persona de confianza con control total, para que nadie quede afuera.'),
+            L('<b>Aparelho lembrado:</b> com navegação anônima ou histórico apagado ao fechar, a Meta não reconhece o aparelho e pode pedir o código toda vez.', '<b>Dispositivo recordado:</b> con navegación privada o historial borrado al cerrar, Meta no reconoce el dispositivo y puede pedir el código cada vez.')
+          ],
+          notas: L('Tela real vista em 25/10/2026 no portfólio de aula, só olhando (nada foi mudado; a lista “Quem precisa ativar” foi aberta e fechada sem escolher): Action needed, Ação concluída, Autenticação de dois fatores, Administrador secundário adicionado, Verificação da empresa e Peer Approval (com textos em inglês na tela em português). Não vistos: a confirmação depois de trocar a opção e o cartão de administrador secundário quando só há um administrador (o simulador marca os dois como a conferir). A Central de Ajuda também diz que a opção fica em Informações do portfólio › Opções da empresa. Central de Ajuda lida no mesmo dia: “Sobre a Central de Segurança” e “Como exigir a autenticação de dois fatores…”.', 'Pantalla real vista el 25/10/2026 en el portafolio de clase, solo mirando (no se cambió nada; la lista “Quién necesita activarla” se abrió y cerró sin elegir): Action needed, Acción completada, Autenticación de dos factores, Administrador secundario agregado, Verificación de la empresa y Peer Approval (con textos en inglés en la pantalla en portugués). No vistos: la confirmación después de cambiar la opción y la tarjeta de administrador secundario cuando hay un solo administrador (el simulador marca los dos como por confirmar). El Centro de ayuda también dice que la opción está en Información del portafolio › Opciones de la empresa. Centro de ayuda leído el mismo día: “Sobre el Centro de seguridad” y “Cómo exigir la autenticación de dos factores…”. El español de la pantalla es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'seguranca-pv',
+        praticar: {
+          texto: L('Na Central de Segurança do portfólio da Marina, o Pixel te guia: você lê os alertas, exige os dois fatores para Todos e confere o administrador de reserva. Nada vai para a Meta.', 'En el Centro de seguridad del portafolio de Marina, el Pixel te guía: lees las alertas, exiges los dos factores para Todos y revisas el administrador de reserva. Nada va a Meta.'),
+          tour: 'central-seguranca', pagina: 'meta-portfolio.html'
+        },
+        atender: {
+          cena: L('Exigi os dois fatores para Todos, como você ensinou, e agora meu sobrinho diz que não consegue entrar no portfólio! Desfaço? 😟', 'Exigí los dos factores para Todos, como me enseñaste, ¡y ahora mi sobrino dice que no puede entrar al portafolio! ¿Lo deshago? 😟'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não precisa desfazer: com o requisito ligado, quem ainda não tem a autenticação de dois fatores precisa ativar na conta pessoal do Facebook dele antes de entrar. Eu te mando o passo a passo para ele fazer.”', '“No hace falta deshacerlo: con el requisito activado, quien todavía no tiene la autenticación de dos factores debe activarla en su cuenta personal de Facebook antes de entrar. Te envío el paso a paso para que él lo haga.”'), fb: L('Isso! O portfólio fica protegido e o sobrinho só precisa ativar na conta dele.', '¡Eso! El portafolio queda protegido y el sobrino solo necesita activarla en su cuenta.') },
+            { certa: false, txt: L('“Volte para Ninguém.”', '“Vuelve a Nadie.”'), fb: L('Deixa o portfólio menos protegido. O caminho é o sobrinho ativar os dois fatores na conta dele.', 'Deja el portafolio menos protegido. El camino es que el sobrino active los dos factores en su cuenta.') },
+            { certa: false, txt: L('“Passe para ele a sua senha e o código.”', '“Pásale tu contraseña y el código.”'), fb: L('Nunca! Cada pessoa entra com a própria conta. Senha e código não se compartilham.', '¡Nunca! Cada persona entra con su propia cuenta. La contraseña y el código no se comparten.') },
+            { certa: false, txt: L('“Dê controle total para ele, aí ele entra.”', '“Dale control total, así entra.”'), fb: L('Não resolve: com “Todos”, até quem tem controle total precisa dos dois fatores. E ele só posta: basta o acesso básico.', 'No lo resuelve: con “Todos”, hasta quien tiene control total necesita los dos factores. Y él solo publica: basta el acceso básico.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O que aparece em Action needed na Central de Segurança?', '¿Qué aparece en Action needed en el Centro de seguridad?'), L('Quem tem controle total hoje? Há pelo menos duas pessoas de confiança?', '¿Quién tiene control total hoy? ¿Hay al menos dos personas de confianza?'), L('A autenticação de dois fatores é exigida para quem?', '¿Para quién se exige la autenticación de dos factores?')],
+          conferir: [L('Configurações do portfólio › Central de Segurança.', 'Configuración del portafolio › Centro de seguridad.'), L('“Quem precisa ativar a autenticação de dois fatores?”: Todos.', '“¿Quién necesita activar la autenticación de dos factores?”: Todos.'), L('Administrador secundário adicionado.', 'Administrador secundario agregado.')],
+          frase: L('Para não perder o portfólio, são duas proteções: exigir a autenticação de dois fatores para todos e ter mais uma pessoa de confiança com controle total. Quem ainda não ativou os dois fatores faz isso na próxima vez que entrar.', 'Para no perder el portafolio, son dos protecciones: exigir la autenticación de dos factores para todos y tener otra persona de confianza con control total. Quien todavía no activó los dos factores lo hace la próxima vez que entre.'),
+          passos: [L('Abrir a Central de Segurança e ler Action needed.', 'Abrir el Centro de seguridad y leer Action needed.'), L('Em Quem precisa ativar, escolher Todos e confirmar.', 'En Quién necesita activarla, elegir Todos y confirmar.'), L('Garantir um segundo administrador (Pessoas › Convidar, com controle total).', 'Asegurar un segundo administrador (Personas › Invitar, con control total).')],
+          encaminhar: L('Se o cliente já perdeu o acesso ou a conta foi invadida, siga os caminhos oficiais de recuperação de acesso da Central de Ajuda da Meta.', 'Si el cliente ya perdió el acceso o la cuenta fue invadida, sigue los caminos oficiales de recuperación de acceso del Centro de ayuda de Meta.')
+        },
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/216940652189296', titulo: L('Sobre a Central de Segurança', 'Sobre el Centro de seguridad'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/280940009201586', titulo: L('Como exigir a autenticação de dois fatores para as pessoas no seu portfólio empresarial', 'Cómo exigir la autenticación de dos factores para las personas de tu portafolio comercial'), conferido: '25/10/2026' }
         ]
       }
     ];

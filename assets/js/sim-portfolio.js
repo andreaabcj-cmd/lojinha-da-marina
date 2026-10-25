@@ -5,7 +5,7 @@
    - Tutoriais guiados (assets/js/tour.js): meta-portfolio.html?tour=conhecer-portfolio | criar-portfolio | convidar-pessoa | criar-conta-anuncios
    - ?zerar=1 começa sem portfólio · ?exemplo=1 garante o portfólio de exemplo da Marina. */
 (function () {
-  var CONF = { menu: '14/10/2026', pessoas: '14/10/2026', convidar1: '14/10/2026', paginas: '14/10/2026', contas: '14/10/2026', seguranca: '14/10/2026', dominios: '20/10/2026', info: '14/10/2026', criar: '13/10/2026' };
+  var CONF = { menu: '14/10/2026', pessoas: '14/10/2026', convidar1: '14/10/2026', paginas: '14/10/2026', contas: '14/10/2026', seguranca: '25/10/2026', dominios: '20/10/2026', info: '14/10/2026', criar: '13/10/2026' };
   var $ = function (s, r) { return (r || document).querySelector(s) };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)) };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
@@ -132,13 +132,28 @@
         '<div class="cartao">' + vazio('Nenhum domínio adicionado', 'Adicione domínios a este portfólio empresarial para gerenciar todos os seus ativos de negócios em um só local.', '<button class="btn" data-acao="add-dominio" data-t="add-dominio-2">' + IC.mais + ' Adicionar</button>') + '</div>';
       return esqueleto(h, CONF.dominios);
     },
-    seguranca: function () {
+    seguranca: function () {   // tela real vista em 14/10 e de novo em 25/10/2026 (só olhando; os textos em inglês são assim na tela real)
+      var p = pf(), q = p.dois2fa || 'Ninguém', adm = p.pessoas.filter(function (x) { return x.acesso === 'Acesso total' }),
+        pub = p.pessoas.filter(function (x) { return /@(email-gratis|gmail|hotmail|outlook|yahoo)\./i.test(x.email || '') }),
+        alvo = q === 'Todos' ? p.pessoas : q === 'Somente administradores' ? adm : [], falta = alvo.filter(function (x) { return x.sem2fa }),
+        n = function (k, um, varios) { return k + ' ' + (k === 1 ? um : varios) }, linhas = [];
+      if (p.contas.length) linhas.push([n(p.contas.length, 'conta de anúncios', 'contas de anúncios') + ' sem segurança da conta de anúncios por aprovação de semelhantes', 'Cibercriminosos veiculam anúncios não autorizados com frequência. Esses anúncios podem ser publicados sem precisar de análise por outra pessoa.', 'Verifique os níveis de proteção e adicione usuários confiáveis para todas as contas de anúncios.']);
+      if (pub.length) linhas.push([n(pub.length, 'usuário', 'usuários') + ' com um domínio de email público', 'Com frequência, os criminosos digitais usam domínios de email públicos de provedores de serviços de email grátis.', 'Remova do seu portfólio empresarial os usuários com domínios de email públicos.']);
+      if (!linhas.length) linhas.push(['1 usuário without passkey enabled', 'Passkeys are the most secure way to protect users.', 'Remove users without passkeys from your business portfolio.']);   // linha vista em 14/10
       return esqueleto('<div class="pf-tit"><h1>Central de Segurança</h1></div>' +
-        '<div class="cartao"><h2>Action needed</h2><p class="miudo">Realize as ações recomendadas e aumente a segurança do seu portfólio empresarial.</p><table class="tabela"><tr><th>Description of risk</th><th>Recommendation to lower risk</th><th></th></tr>' +
-        '<tr><td><b>1 usuário without passkey enabled</b><br><span class="miudo">Passkeys are the most secure way to protect users.</span></td><td>Remove users without passkeys from your business portfolio.</td><td><button class="btn sec">Agir</button></td></tr>' +
-        '<tr><td><b>1 usuário com um domínio de email público</b><br><span class="miudo">Com frequência, os criminosos digitais usam domínios de email públicos de provedores de serviços de email grátis.</span></td><td>Remova do seu portfólio empresarial os usuários com domínios de email públicos.</td><td><button class="btn sec">Agir</button></td></tr></table></div>' +
-        '' + (window.PFAV ? PFAV.cartoes('seguranca') : '') + '<div class="cartao" data-t="dois-fatores"><h2>Autenticação de dois fatores</h2><p class="miudo">A autenticação de dois fatores dificulta para outras pessoas obterem acesso ao seu portfólio empresarial e assumirem o controle dos seus ativos.</p><p><b>Quem precisa ativar a autenticação de dois fatores?</b> Todos</p></div>' +
-        '<div class="cartao"><h2>Administrador secundário</h2><p class="miudo">Ter pelo menos um outro administrador neste portfólio ajuda se você perder acesso à sua conta.</p></div>', CONF.seguranca);
+        '<div class="cartao" data-t="seg-acoes"><h2>Action needed</h2><p class="miudo">Realize as ações recomendadas e aumente a segurança do seu portfólio empresarial.</p><table class="tabela"><tr><th>Description of risk</th><th>Recommendation to lower risk</th><th></th></tr>' +
+        linhas.map(function (l) { return '<tr><td><b>⚠ ' + l[0] + '</b><br><span class="miudo">' + l[1] + '</span></td><td>' + l[2] + '</td><td><button class="btn sec" data-acao="seg-agir">Agir</button></td></tr>' }).join('') + '</table>' +
+        '<div data-t="seg-concluidas"><h3>Ação concluída</h3><table class="tabela"><tr><th>Description</th></tr>' + (adm.length <= 10 ? '<tr><td>✅ Acesso com controle total limitado a 10 usuários ou menos</td></tr>' : '') + '</table></div></div>' +
+        '<div class="pf-duas iguais"><div class="cartao" data-t="dois-fatores"><h2>🔒 Autenticação de dois fatores</h2><p class="miudo">A autenticação de dois fatores dificulta para outras pessoas obterem acesso ao seu portfólio empresarial e assumirem o controle dos seus ativos. <a>Gerenciar minhas configurações pessoais</a></p>' +
+        '<label class="campo"><b>Quem precisa ativar a autenticação de dois fatores?</b><select id="fSeg2fa" data-t="seg-2fa-sel">' + ['Ninguém', 'Somente administradores', 'Todos'].map(function (o) { return '<option' + (o === q ? ' selected' : '') + '>' + o + '</option>' }).join('') + '</select></label>' +
+        (q !== 'Ninguém' ? '<p class="miudo" data-t="seg-2fa-conta">' + falta.length + ' de ' + n(alvo.length, 'pessoa precisa', 'pessoas precisam') + ' ativar a autenticação de dois fatores para acessar este portfólio.</p>' : '') +
+        '<button class="btn sec" data-ir="pessoas">Analisar o acesso das pessoas</button></div>' +
+        '<div class="cartao" data-t="seg-admin2">' + (adm.length >= 2 ? '<h2>✓ Administrador secundário adicionado</h2><p class="miudo">Você tem pelo menos um outro administrador neste portfólio que pode ajudar se você perder acesso à sua conta.</p>' :
+          '<h2>Administrador secundário</h2><p class="miudo">Ter pelo menos um outro administrador neste portfólio ajuda se você perder acesso à sua conta.</p><p class="conferido pendente">⚠ Este estado do cartão (sem outro administrador) não foi visto na tela real</p>') +
+        '<button class="btn sec" data-acao="convidar">Adicionar</button></div></div>' +
+        '<div class="cartao" data-t="seg-peer"><h2>Peer Approval</h2><p class="miudo">As pessoas podem tentar acessar sua empresa e controlar seus ativos por meio de ações específicas, como adicionar um administrador, compartilhar uma linha de crédito ou publicar um anúncio.</p>' +
+        '<p><b>Segurança do domínio</b><br><span class="miudo">Require ads to use trusted website domains for all landing pages.</span> <button class="btn sec" data-acao="seg-agir">Manage</button></p><p><b>Segurança da conta de anúncios</b><br><span class="miudo">Exija que anúncios específicos sejam aprovados, como anúncios criados por um novo funcionário ou acima de determinado orçamento.</span> <button class="btn sec" data-acao="seg-agir">Manage</button></p></div>' +
+        (window.PFAV ? PFAV.cartoes('seguranca') : ''), CONF.seguranca);
     }
   };
   var menuPag = false, abaPag = 'pessoas';
@@ -282,6 +297,11 @@
         '<p><b>Pela Central de Ajuda da Meta, são 3 jeitos</b> (e depois o botão Verificar domínio):</p><ul><li>colar uma metatag no &lt;head&gt; da página inicial do site;</li><li>carregar um arquivo HTML na pasta raiz do site;</li><li>adicionar um registro TXT no DNS, no site onde o domínio foi registrado.</li></ul>' +
         '<p class="miudo">Quem faz é o desenvolvedor do site ou quem administra o domínio. Precisa de controle total do portfólio e acesso de administrador ou desenvolvedor ao domínio. Depois de verificado, a metatag, o arquivo ou o registro podem ser removidos.</p></div>' +
         '<div class="rodape-jan"><button class="btn" data-acao="fechar" data-t="dom-fechar">Fechar</button></div>' }
+    } else if (jan === 'seg2fa') {   // a confirmação vem da Central de Ajuda (“Confirme sua seleção”); a janela real não foi vista
+      conf = false;
+      h = '<h3>Autenticação de dois fatores<button class="x" data-acao="fechar">✕</button></h3><p>Quem precisa ativar: <b>' + esc(F.seg2fa) + '</b></p>' +
+        '<p class="miudo">O requisito entra em vigor imediatamente. As pessoas que ainda não configuraram a autenticação de dois fatores deverão fazer isso na próxima vez que tentarem acessar o portfólio empresarial.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="seg2fa-ok" data-t="seg-2fa-ok">Confirmar</button></div>';
     } else if (jan === 'aviso') {
       conf = false;
       h = '<h3>Fora do simulador por enquanto<button class="x" data-acao="fechar">✕</button></h3><p>Esta etapa ainda não está montada no simulador, porque ainda não conferimos a tela real dela. Na vida real, siga a Central de Ajuda da Meta.</p><div class="rodape-jan"><button class="btn" data-acao="fechar">Entendi</button></div>';
@@ -352,7 +372,8 @@
     else if (ac === 'add-ig') abre('add-ig');
     else if (ac === 'add-dominio') abre('dominio');
     else if (ac === 'dom-criar') { passoJ = 1; desenha() }
-    else if (ac === 'dom-solicitar' || ac === 'conta-outra') abre('aviso');
+    else if (ac === 'dom-solicitar' || ac === 'conta-outra' || ac === 'seg-agir') abre('aviso');
+    else if (ac === 'seg2fa-ok') { pf().dois2fa = F.seg2fa; grava(); fecha(); render() }
     else if (ac === 'dom-add') { F.domErro = domErro(F.dom); if (F.domErro) { desenha(); return } F.dom = F.dom.trim().toLowerCase(); pf().dominioInformado = F.dom; grava(); passoJ = 2; desenha(); render() }
     else if (ac === 'ig-login') { passoJ = 1; desenha() }
     else if (ac === 'ig-entrar') { var p0 = pf(); p0.igs = p0.igs || []; if (!p0.igs.length) p0.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); grava(); passoJ = 2; desenha(); render() }
@@ -360,6 +381,10 @@
     else if (ac === 'conta-prox') { passoJ++; desenha() }
     else if (ac === 'conta-volta') { passoJ = Math.max(0, passoJ - 1); desenha() }
     else if (ac === 'conta-criar') { pf().contas.push({ id: '3' + novoId().slice(1), nome: F.contaNome.trim(), fuso: F.fuso.replace(/^\([^)]*\)\s*/, ''), moeda: F.moeda.slice(0, 3) }); grava(); fecha(); render() }
+  });
+  document.addEventListener('change', function (ev) {   // Central de Segurança: trocar quem precisa dos dois fatores pede confirmação
+    if (ev.target.id !== 'fSeg2fa') return; var v = ev.target.value; ev.target.value = pf().dois2fa || 'Ninguém';
+    if (v === (pf().dois2fa || 'Ninguém')) return; abre('seg2fa'); F.seg2fa = v; desenha();
   });
   window.addEventListener('hashchange', function () { menuPag = false; render() });
 

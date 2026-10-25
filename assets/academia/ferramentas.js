@@ -2067,6 +2067,20 @@
         [{ pt: 'Você sempre tem controle total', es: 'Siempre tienes control total' }, 0, { pt: 'Não necessariamente.', es: 'No necesariamente.' }],
         [{ pt: 'Nenhuma permissão', es: 'Ningún permiso' }, 0, { pt: 'Tem as atribuídas.', es: 'Tienes las asignadas.' }]] }
   ]);
+  quizCatalogo('seguranca-pv', { pt: 'Não perder o portfólio', es: 'No perder el portafolio' }, { pt: 'Central de Segurança: dois fatores e o segundo administrador (tela vista em 25/10/2026).', es: 'Centro de seguridad: dos factores y el segundo administrador (pantalla vista el 25/10/2026).' }, [
+    { q: { pt: 'Uma cliente é a única pessoa com controle total do portfólio. O que a Central de Segurança recomenda?', es: 'Una clienta es la única persona con control total del portafolio. ¿Qué recomienda el Centro de seguridad?' },
+      o: [[{ pt: 'Ter outra pessoa de confiança com controle total, como a sócia', es: 'Tener otra persona de confianza con control total, como la socia' }, 1, { pt: 'Isso! Se uma pessoa perde o acesso, a outra mantém a empresa funcionando.', es: '¡Eso! Si una persona pierde el acceso, la otra mantiene la empresa funcionando.' }],
+        [{ pt: 'Dar controle total para todo mundo', es: 'Dar control total a todo el mundo' }, 0, { pt: 'Não! Controle total só para quem administra; os outros com acesso básico.', es: '¡No! Control total solo para quien administra; los demás con acceso básico.' }],
+        [{ pt: 'Anotar a senha num papel', es: 'Anotar la contraseña en un papel' }, 0, { pt: 'Isso não protege o portfólio. O caminho é um segundo administrador.', es: 'Eso no protege el portafolio. El camino es un segundo administrador.' }]] },
+    { q: { pt: 'Em “Quem precisa ativar a autenticação de dois fatores?”, qual opção a Meta recomenda?', es: 'En “¿Quién necesita activar la autenticación de dos factores?”, ¿qué opción recomienda Meta?' },
+      o: [[{ pt: 'Todos', es: 'Todos' }, 1, { pt: 'Isso! A Meta recomenda exigir de todas as pessoas com acesso ao portfólio.', es: '¡Eso! Meta recomienda exigirla a todas las personas con acceso al portafolio.' }],
+        [{ pt: 'Somente administradores', es: 'Solo administradores' }, 0, { pt: 'Protege só quem tem controle total. A recomendação é Todos.', es: 'Protege solo a quien tiene control total. La recomendación es Todos.' }],
+        [{ pt: 'Ninguém', es: 'Nadie' }, 0, { pt: 'Desliga o requisito. Em alguns portfólios com mais de 90 dias essa opção nem aparece.', es: 'Apaga el requisito. En algunos portafolios con más de 90 días esa opción ni aparece.' }]] },
+    { q: { pt: 'A cliente exige os dois fatores para Todos. O que acontece com quem ainda não ativou?', es: 'La clienta exige los dos factores para Todos. ¿Qué pasa con quien todavía no la activó?' },
+      o: [[{ pt: 'Precisa ativar na própria conta do Facebook na próxima vez que entrar no portfólio', es: 'Debe activarla en su propia cuenta de Facebook la próxima vez que entre al portafolio' }, 1, { pt: 'Isso! O requisito vale na hora.', es: '¡Eso! El requisito vale al instante.' }],
+        [{ pt: 'É removido do portfólio', es: 'Lo quitan del portafolio' }, 0, { pt: 'Não é removido: só precisa ativar para entrar.', es: 'No lo quitan: solo debe activarla para entrar.' }],
+        [{ pt: 'Nada muda por 90 dias', es: 'Nada cambia por 90 días' }, 0, { pt: 'O requisito entra em vigor imediatamente.', es: 'El requisito entra en vigor de inmediato.' }]] }
+  ]);
   quizCatalogo('excl-pv', { pt: 'Excluir o portfólio', es: 'Eliminar el portafolio' }, { pt: 'Irreversível: o que impede e a alternativa.', es: 'Irreversible: qué impide y la alternativa.' }, [
     { q: { pt: 'Depois de excluir, dá para reabrir o portfólio?', es: 'Después de eliminar, ¿se puede reabrir el portafolio?' },
       o: [[{ pt: 'Não: fica pendente por 24 horas e depois não reabre', es: 'No: queda pendiente por 24 horas y luego no se reabre' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
