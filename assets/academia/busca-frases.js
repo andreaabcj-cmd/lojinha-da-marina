@@ -309,8 +309,8 @@ window.BUSCA_FRASES = (function () {
       'no puedo suscribirme a meta verified | la opción no aparece | requisitos'),
     'verified/05': F('mudar nome do perfil verificado | trocar nome com selo | nome da marca no verified',
       'cambiar el nombre del perfil verificado'),
-    'verified/06': F('cancelar meta verified | assinatura revogada | reembolso do verified | suporte do meta verified',
-      'cancelar meta verified | suscripción revocada | soporte'),
+    'verified/06': F('cancelar meta verified | assinatura revogada | reembolso do verified | suporte do meta verified | verified cancelado ao ligar whatsapp | troquei o número e perdi o selo',
+      'cancelar meta verified | suscripción revocada | soporte | verified cancelado al vincular whatsapp'),
     'm:verified': F('meta verified | selo', 'meta verified | insignia'),
 
     /* ---------- Commerce ---------- */

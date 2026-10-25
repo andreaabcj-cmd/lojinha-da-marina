@@ -582,6 +582,8 @@
     tg.forEach(function (x) { document.body.appendChild(x) });
     if (tela !== 'aula') mov().cascata($('.pl-main'));
     if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);
+    // FAQ montado depois do carregamento: o #âncora do link (ex.: faq.html#faq-verified) só existe agora
+    if (tela === 'faq' && location.hash) { var alvoF = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (alvoF) { if (alvoF.tagName === 'DETAILS') alvoF.open = true; setTimeout(function () { alvoF.scrollIntoView({ block: 'start' }) }, 60) } }
     // a intro (assets/js/intro.js): sozinha na primeira visita ao início; depois, clicando na Marina
     if (tela === 'inicio' && window.INTRO && !lsGet('plat.introVista', false)) { lsSet('plat.introVista', true); abreIntro(false) }   // abriu sozinha: começa muda (o navegador não deixa tocar sem clique)
   }
