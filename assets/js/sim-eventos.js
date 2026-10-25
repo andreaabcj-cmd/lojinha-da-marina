@@ -6,18 +6,23 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function le() { try { var v = sessionStorage.getItem(K); return v && SEG.test(v) ? v : null } catch (e) { return null } }
   function mostra() {
     var v = le(), b = document.getElementById('tgVolta'); if (!v) { if (b) b.remove(); return }
-    if (b || !document.body) return;
+    if (!document.body) return;
+    var host = document.querySelector('.sim-faixa, #maFaixa');   // a faixa é redesenhada pelos simuladores: o relógio abaixo recoloca o botão
+    if (b && b.parentNode === (host || document.body)) return;
     var lab = /^laboratorio/.test(v), es = lang() === 'es';
     if (!document.getElementById('tgVoltaCss')) { var st = document.createElement('style'); st.id = 'tgVoltaCss';
-      st.textContent = '.tg-volta{position:fixed;left:16px;bottom:16px;z-index:2147483600;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:12px;border:2px solid #16294A;background:#fff;color:#16294A;font:800 14px "Segoe UI",system-ui,Arial,sans-serif;text-decoration:none;box-shadow:3px 3px 0 #16294A;cursor:pointer}.tg-volta:hover{background:#FFE07A}body.em-tour .tg-volta{display:none}';
+      st.textContent = '.tg-volta{position:fixed;left:16px;bottom:16px;z-index:2147483600;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:12px;border:2px solid #16294A;background:#fff;color:#16294A;font:800 14px "Segoe UI",system-ui,Arial,sans-serif;text-decoration:none;box-shadow:3px 3px 0 #16294A;cursor:pointer}.tg-volta:hover{background:#FFE07A}body.em-tour .tg-volta{display:none}.ma-faixa:has(.tg-volta)>span:not(.ma-pix){max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tg-volta.na-faixa{position:static;padding:2px 10px;border-radius:8px;font-size:12px;box-shadow:2px 2px 0 #16294A;flex:none;white-space:nowrap}';
       document.head.appendChild(st) }
-    b = document.createElement('a'); b.id = 'tgVolta'; b.className = 'tg-volta'; b.href = v;
-    b.textContent = '↩ ' + (lab ? (es ? 'Volver al Laboratorio' : 'Voltar ao Laboratório') : (es ? 'Volver a la clase' : 'Voltar à aula'));
-    b.onclick = function () { try { sessionStorage.removeItem(K) } catch (e) { } };
-    document.body.appendChild(b);
+    if (!b) { b = document.createElement('a'); b.id = 'tgVolta'; b.href = v;
+      b.textContent = '↩ ' + (lab ? (es ? 'Volver al Laboratorio' : 'Voltar ao Laboratório') : (es ? 'Volver a la clase' : 'Voltar à aula'));
+      b.onclick = function () { try { sessionStorage.removeItem(K) } catch (e) { } } }
+    b.className = 'tg-volta' + (host ? ' na-faixa' : '');
+    var ref = host && host.id === 'maFaixa' ? host.querySelector('.ma-plat') : null;   // na loja: logo depois de "Plataforma"
+    if (ref) ref.insertAdjacentElement('afterend', b); else (host || document.body).appendChild(b);
   }
   function guarda(v) { if (!v || !SEG.test(v)) return; try { sessionStorage.setItem(K, v) } catch (e) { } mostra() }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mostra); else setTimeout(mostra, 0);
+  setInterval(mostra, 1000);
   return { guarda: guarda, mostra: mostra };
 })();
 /* Simulador do Gerenciador de Eventos da Meta (layout fiel, visual estilizado).

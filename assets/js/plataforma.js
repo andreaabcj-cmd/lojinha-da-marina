@@ -14,7 +14,7 @@
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
     planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
     entender: { pt: 'Entender', es: 'Entender' }, ferramenta: { pt: 'Ver de perto', es: 'Ver de cerca' }, praticar: { pt: 'Praticar', es: 'Practicar' }, atender: { pt: 'Atender', es: 'Atender' }, colas: { pt: 'Colas', es: 'Guías' }, faq: { pt: 'FAQ', es: 'FAQ' },
-    ant: { pt: '◀ Anterior', es: '◀ Anterior' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, proxAula: { pt: 'Próxima aula ▶', es: 'Siguiente clase ▶' }, fimMod: { pt: 'Voltar ao módulo', es: 'Volver al módulo' },
+    ant: { pt: '◀ Anterior', es: '◀ Anterior' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, proxAula: { pt: 'Próxima aula ▶', es: 'Siguiente clase ▶' }, proxMod: { pt: 'Próximo módulo ▶', es: 'Siguiente módulo ▶' }, fimMod: { pt: 'Voltar ao módulo', es: 'Volver al módulo' },
     apresentar: { pt: '🎤 Apresentar', es: '🎤 Presentar' }, sairApr: { pt: '✕ Sair da apresentação', es: '✕ Salir de la presentación' }, notas: { pt: '📝 Notas', es: '📝 Notas' },
     fontes: { pt: 'Fontes oficiais', es: 'Fuentes oficiales' }, conferido: { pt: 'conferido em', es: 'revisado el' }, min: { pt: 'min', es: 'min' }
   };
@@ -53,6 +53,15 @@
   function aulasDaTrilha(mid) {
     var tr = trilhaAtual(), L = window.AULAS[mid] || [];
     return tr.id === 'foco' ? L.filter(function (a) { return !a.soCompleta }) : L;
+  }
+  /* próximo módulo da trilha atual que já tem aula pronta (o botão aparece quando o módulo termina) */
+  function proximoModulo(mid) {
+    var tr = trilhaAtual(), ids = (tr.modulos || []).concat(tr.extras || []), k = ids.indexOf(mid);
+    for (var i = k < 0 ? ids.length : k + 1; i < ids.length; i++) {
+      var m = window.MODULOS.filter(function (x) { return x.id === ids[i] })[0];
+      if (m && aulasDaTrilha(m.id).some(function (a) { return a.status === 'pronta' })) return m;
+    }
+    return null;
   }
   function trilhaChip(m) {
     var tr = trilhaAtual(), ids = (tr.modulos || []).concat(tr.extras || []), k = ids.indexOf(m.id);
@@ -101,7 +110,11 @@
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
           return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><span class="aula-tx"><b>' + T(a.titulo) + '</b>' + (ok && a.objetivo ? '<span class="aula-obj">' + T(a.objetivo) + '</span>' : '') + '</span><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
-        }).join('') + '</div>';
+        }).join('') + '</div>' + (function () {
+          var prontas = aulas.filter(function (a) { return a.status === 'pronta' }), pm = dg ? null : proximoModulo(m.id);
+          var tudo = prontas.length && prontas.every(function (a) { return f[m.id + '/' + a.id] });
+          return tudo && pm ? '<p class="prox-mod">🎉 ' + T({ pt: 'Módulo concluído!', es: '¡Módulo completado!' }) + ' <a class="btn" href="modulo.html?m=' + pm.id + '">' + T({ pt: 'Próximo módulo:', es: 'Siguiente módulo:' }) + ' ' + pm.icone + ' ' + T(pm.titulo) + ' ▶</a></p>' : '';
+        })();
     },
     aula: function () { return aulaTela() },
     diagnostico: function () {
@@ -495,7 +508,8 @@
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
       $('#bAnt').disabled = passoAtual === 0;
       var ultimo = passoAtual === partes.length - 1;
-      $('#bProx').textContent = ultimo ? (prox && prox.status === 'pronta' ? T(U.proxAula) : T(U.fimMod)) : T(U.prox);
+      var pm = ultimo && !(prox && prox.status === 'pronta') && !dg ? proximoModulo(mid) : null;   // última aula do módulo: segue para o próximo módulo da trilha
+      $('#bProx').textContent = ultimo ? (prox && prox.status === 'pronta' ? T(U.proxAula) : pm ? T(U.proxMod) : T(U.fimMod)) : T(U.prox);
       if (ultimo) { var f2 = feitas(); f2[mid + '/' + aid] = true; lsSet('plat.feitas', f2) }
     }
     setTimeout(function () {
@@ -503,7 +517,7 @@
       $('#bAnt').onclick = function () { if (passoAtual > 0) { passoAtual--; desenha() } };
       $('#bProx').onclick = function () {
         if (passoAtual < partes.length - 1) { passoAtual++; desenha(); window.scrollTo({ top: 0, behavior: 'smooth' }) }
-        else location.href = prox && prox.status === 'pronta' ? 'aula-plataforma.html?m=' + mid + '&a=' + prox.id : 'modulo.html?m=' + mid;
+        else { var pm2 = !dg && !(prox && prox.status === 'pronta') ? proximoModulo(mid) : null; location.href = prox && prox.status === 'pronta' ? 'aula-plataforma.html?m=' + mid + '&a=' + prox.id : 'modulo.html?m=' + (pm2 ? pm2.id : mid) }
       };
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.onclick = function () { passoAtual = i; desenha() } });
       $('#palco').addEventListener('click', function (e) {
