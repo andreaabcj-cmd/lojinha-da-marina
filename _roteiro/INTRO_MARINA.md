@@ -68,7 +68,7 @@ prévia (`_teste_mascote/`). A escolha muda o desenho dele no site inteiro e nas
 - Fica guardado que a pessoa já viu (para não repetir sozinha); o clique na Marina sempre mostra de novo.
 - Leve: abre rápido e não atrapalha o resto do site.
 
-## A decidir com o André
+## A decidir
 
 1. Qual Pixel (página de prévia).
 2. Se o roteiro acima está bom (cena por cena).
@@ -97,7 +97,7 @@ Arquivo: `_teste_intro/index.html` (fora do Git).
 
 ---
 
-## Como ficou (25/10/2026, ajustada com o André) — `assets/js/intro.js`
+## Como ficou (25/10/2026, ajustada na revisão) — `assets/js/intro.js`
 
 ~63 s + tela de título. Abre sozinha na primeira visita ao Início e sempre que clicar na Marina ("▶ A história").
 Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fecha.
@@ -112,7 +112,7 @@ Botões: ✕ Fechar, Pular, Começar (vai para os Módulos), Ver de novo; Esc fe
 | 50,2–55,6 s | Cidade ao amanhecer: o anúncio leva a Lojinha a quem procura; a caixa voa |
 | 55,6–62,4 s | "Alguns dias depois…" (calendário no 19) → o pedido chega; **o Pixel acende e mostra "Compra ✓"** (ele registra a venda, não a causa) → "Sem mágica: anúncio, medição e ajuste, passo a passo." |
 
-Decisões do André (25/10): sem dar a entender que o Pixel vende sozinho (o anúncio é a causa, o Pixel mede); o Rafa não aparece na tela do notebook (só um ícone de chamada; a fala é no balão);
+Decisões da revisão (25/10): sem dar a entender que o Pixel vende sozinho (o anúncio é a causa, o Pixel mede); o Rafa não aparece na tela do notebook (só um ícone de chamada; a fala é no balão);
 Pixel e Rafa são apresentados com placa de nome; mais respiro depois da ideia (~55 s); close no "0 visitas".
 A feirinha (cena 2 do rascunho) ficou de fora.
 Para refinar os personagens à mão: os desenhos vêm de `assets/js/personagens.js`; as expressões da Marina na intro
