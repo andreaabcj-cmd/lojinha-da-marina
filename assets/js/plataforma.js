@@ -558,6 +558,10 @@
   TELAS.faq = function () {
     var S = window.FAQ || [], q = (Q.get('q') || '').toLowerCase();
     var h = '<h1 class="pl-h1">❓ ' + T({ pt: 'Perguntas frequentes', es: 'Preguntas frecuentes' }) + '</h1><p class="pl-lead">' + T({ pt: 'O que circula por aí e não é bem assim, e as dúvidas que mais aparecem no atendimento. Cada resposta foi conferida na Central de Ajuda da Meta ou na tela real; o link leva à aula ou ao caso.', es: 'Lo que circula por ahí y no es así, y las dudas que más aparecen en la atención. Cada respuesta se revisó en el Centro de ayuda de Meta o en la pantalla real; el enlace lleva a la clase o al caso.' }) + '</p>' +
+      (window.FAQ_AVISO ? '<div class="faq-aviso"><b class="faq-aviso-tit">⚠️ ' + T(FAQ_AVISO.titulo) + '</b><ol>' + FAQ_AVISO.itens.map(function (x) {
+        return '<li>' + T(x.t) + ' ' + (x.o || []).map(function (u) { return '<a class="miudo" href="' + u + '" target="_blank" rel="noopener">📚 ' + T({ pt: 'fonte', es: 'fuente' }) + '</a>' }).join(' ') +
+          (x.c ? ' <a class="miudo" href="' + x.c.url + '" target="_blank" rel="noopener">💬 ' + T(x.c.t) + ' (' + T({ pt: 'não oficial', es: 'no oficial' }) + ')</a>' : '') + '</li>'
+      }).join('') + '</ol><p class="miudo">' + T(FAQ_AVISO.rodape) + '</p></div>' : '') +
       '<p class="faq-indice">' + S.map(function (s) { return '<a href="#faq-' + s.id + '">' + s.icone + ' ' + T(s.titulo) + '</a>' }).join(' · ') + '</p>';
     S.forEach(function (s) {
       h += '<h2 class="secao-tit" id="faq-' + s.id + '">' + s.icone + ' ' + T(s.titulo) + '</h2>' + (s.sub ? '<p class="miudo">' + T(s.sub) + '</p>' : '') +
