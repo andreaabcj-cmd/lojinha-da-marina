@@ -81,6 +81,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     'meta-mbe.html': { pt: 'Integração de parceiro da Meta (Meta Business Extension)|a janela que a plataforma da loja abre para ligar à Meta', es: 'Integración de socio de Meta (Meta Business Extension)|la ventana que abre la plataforma de la tienda para conectarse con Meta' },
     'meta-microdados.html': { pt: 'Ferramenta de depuração de microdados (Meta)|confere as etiquetas de produto de uma página', es: 'Herramienta de depuración de microdatos (Meta)|revisa las etiquetas de producto de una página' },
     'meta-instagram.html': { pt: 'Instagram|o perfil da loja como as pessoas veem', es: 'Instagram|el perfil de la tienda como lo ve la gente' },
+    'meta-whatsapp.html': { pt: 'WhatsApp Business e WhatsApp|o celular da Marina e o de uma cliente', es: 'WhatsApp Business y WhatsApp|el celular de Marina y el de una clienta' },
     'meta-turbinar.html': { pt: 'Turbinar post (Página do Facebook / Instagram)|o atalho para anunciar um post pronto', es: 'Promocionar publicación (página de Facebook / Instagram)|el atajo para anunciar una publicación lista' },
     'meta-verified.html': { pt: 'Meta Verified para empresas|a assinatura de selo e suporte', es: 'Meta Verified para empresas|la suscripción de insignia y soporte' },
     'meta-checkoutsite.html': { pt: 'Compra no site (vinda de um anúncio)|o que o cliente vê depois de clicar no anúncio', es: 'Compra en el sitio (desde un anuncio)|lo que ve el cliente después de hacer clic en el anuncio' },

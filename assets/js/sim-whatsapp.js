@@ -156,6 +156,17 @@
       '<div class="wa-toast" id="waToast" hidden></div>';
     if (foco && document.getElementById(foco)) document.getElementById(foco).focus();
   }
+  // tutorial: se o alvo do passo está escondido dentro da tela rolável do celular, rola só a tela de dentro até ele
+  // (o desenho novo de cada tela volta a rolagem para o topo, e o destaque ficaria preso na borda do celular)
+  function mostraAlvo() {
+    try {
+      var st = JSON.parse(sessionStorage.getItem('tour.ativo') || 'null'); if (!st || !window.TOURS || !TOURS[st.nome]) return;
+      var p = TOURS[st.nome][st.passo], el = p && typeof p.alvo === 'string' && document.querySelector(p.alvo), rol = el && el.closest('.wa-rolar');
+      if (!rol || rol === el) return; var a = el.getBoundingClientRect(), b = rol.getBoundingClientRect();
+      if (a.top < b.top || a.bottom > b.bottom) rol.scrollTop += a.top - b.top - 12;
+    } catch (e) { }
+  }
+  setInterval(mostraAlvo, 400);
   function toast(t) { var e = $('#waToast'); if (!e) return; e.textContent = t; e.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { e.hidden = true }, 2600) }
   function vai(lado, tela) { if (lado === 'm') { S.m = tela; if (['categoria', 'horario', 'dias', 'faixa'].indexOf(tela) < 0) S.F = {} } else S.c = tela; grava(); render() }
 
@@ -197,9 +208,9 @@
   function dep(x) { return T(x.pt + ' Clique em Próximo.', x.es + ' Haz clic en Siguiente.') }
   function W() { return window.SIMWA }
   TOURS['perfil-whatsapp'] = [
-    { antes: function () { W().perfilZerado(); W().tela('c', 'perfil'); W().tela('m', 'conversas') }, alvo: '[data-t=wa-cli-perfil]',
+    { antes: function () { W().perfilZerado(); W().tela('c', 'perfil'); W().tela('m', 'conversas') }, alvo: '[data-t=wa-cli-hor]',
       garante: function () { W().perfilZerado(); W().tela('m', 'conversas'); W().tela('c', 'perfil') },
-      tit: T('O que a cliente vê', 'Lo que ve la clienta'), txt: dep(T('À direita, a Bia abriu o perfil da Lojinha no celular dela: sem horário e com a categoria “Outras empresas”. Ela não sabe se a loja está aberta.', 'A la derecha, Bia abrió el perfil de la Lojinha en su celular: sin horario y con la categoría “Otras empresas”. No sabe si la tienda está abierta.')) },
+      tit: T('O que a cliente vê', 'Lo que ve la clienta'), txt: dep(T('No celular da cliente, a Bia abriu o perfil da Lojinha: sem horário e com a categoria “Outras empresas”. Ela não sabe se a loja está aberta.', 'En el celular de la clienta, Bia abrió el perfil de la Lojinha: sin horario y con la categoría “Otras empresas”. No sabe si la tienda está abierta.')) },
     { alvo: '[data-t=wa-aba-ferramentas]', clique: true, garante: function () { W().tela('m', 'conversas') }, tit: T('Ferramentas', 'Herramientas'), txt: T('No celular da Marina, toque na aba Ferramentas.', 'En el celular de Marina, toca la pestaña Herramientas.') },
     { alvo: '[data-t=wa-ferr-perfil]', clique: true, garante: function () { W().tela('m', 'ferramentas') }, tit: T('Perfil', 'Perfil'), txt: T('Em Gerencie sua conta, toque em Perfil.', 'En Administra tu cuenta, toca Perfil.') },
     { alvo: '[data-t=wa-perfil-dados]', garante: function () { W().tela('m', 'perfil') }, tit: T('Os dados da empresa', 'Los datos de la empresa'), txt: dep(T('Aqui ficam nome, nome de usuário, categoria, horário, descrição e endereço. Campo vazio aparece em cinza.', 'Aquí están nombre, nombre de usuario, categoría, horario, descripción y dirección. Un campo vacío aparece en gris.')) },
@@ -217,7 +228,7 @@
     { alvo: '[data-t=wa-cli-hor]', garante: function () { W().perfil({ cats: ['Roupas e vestuário'], horario: 'sempre', dias: [true, true, true, true, true, true, true] }); W().tela('m', 'perfil'); W().tela('c', 'perfil') },
       tit: T('Do lado da cliente', 'Del lado de la clienta'), txt: dep(T('No celular da Bia já aparece “Aberta agora · Aberta 24 horas” e a nova categoria. Ela já sabe que pode chamar.', 'En el celular de Bia ya aparece “Abierta ahora · Abierta 24 horas” y la nueva categoría. Ya sabe que puede escribir.')) },
     { alvo: '[data-t=wa-previa]', clique: true, garante: function () { W().tela('m', 'perfil') }, tit: T('Prévia', 'Vista previa'), txt: T('Para conferir sem outro celular, a Marina usa a Prévia. Toque no ícone de pessoa no alto.', 'Para revisar sin otro celular, Marina usa la Vista previa. Toca el ícono de persona arriba.') },
-    { alvo: '[data-t=wa-previa-tela]', fim: true, semVolta: true, garante: function () { W().tela('m', 'previa') }, tit: T('Perfil pronto 🎉', '¡Perfil listo! 🎉'),
+    { alvo: '[data-t=wa-cel-marina]', fim: true, semVolta: true, garante: function () { W().tela('m', 'previa') }, tit: T('Perfil pronto 🎉', '¡Perfil listo! 🎉'),
       txt: T('A Prévia mostra o perfil como o cliente vê, com “(Você)” no nome. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'La Vista previa muestra el perfil como lo ve el cliente, con “(Tú)” en el nombre. Haz clic en Terminar. Después, explora a gusto: el botón ↩ de la esquina te lleva de vuelta.') }
   ];
 })();
