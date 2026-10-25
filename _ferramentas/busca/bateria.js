@@ -200,7 +200,15 @@ const B = [
   ['como exigir autenticação de dois fatores no portfólio', ['portfolio-avancado/06']],
   ['e se eu perder o acesso ao portfólio, como coloco outro administrador?', ['portfolio-avancado/06']],
   ['como coloco o horário de atendimento no whatsapp business', ['whatsapp/01']],
-  ['onde edito o perfil comercial do whatsapp', ['whatsapp/01']]
+  ['onde edito o perfil comercial do whatsapp', ['whatsapp/01']],
+  ['como crio uma coleção no catálogo do whatsapp', ['whatsapp/02']],
+  ['o cliente mandou um carrinho pelo whatsapp, e agora?', ['whatsapp/03']],
+  ['mandei pix de 39,90 e chegou 3990', ['whatsapp/04']],
+  ['a mensagem de saudação não chega para a cliente', ['whatsapp/05']],
+  ['cadê as etiquetas do whatsapp business', ['whatsapp/06']],
+  ['dá para anunciar pelo whatsapp sem facebook', ['whatsapp/07']],
+  ['o que é o botão roxo no whatsapp business', ['whatsapp/08']],
+  ['categoria do instagram não é compatível com o whatsapp', ['whatsapp/09']]
 ];
 let t1 = 0, t3 = 0; const falhas = [];
 for (const [q, ok] of B) {

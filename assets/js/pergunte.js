@@ -251,6 +251,8 @@
       var x = w[i], r = raiz(x), alt = [[r, 1]];
       (PALAVRA[x] || []).forEach(function (k) { alt.push(['#' + k, 0.9]) });
       var existe = IDX.inv[r] || (PALAVRA[x] && PALAVRA[x].some(function (k) { return IDX.inv['#' + k] }));
+      // raiz curta demais ("pixeu" → "pix"): a palavra digitada não está no conteúdo, então vale como erro de digitação ("pixel")
+      if (existe && !IDX.cru[x] && r.length <= 3 && x.length - r.length >= 2) { existe = false; alt[0][1] = 0.3 }
       // palavras grudadas/separadas: "event id" → eventid; "pageview" → page + view
       if (i < ultimo && !STOP[w[i + 1]] && IDX.cru[x + w[i + 1]]) { alt.push([raiz(x + w[i + 1]), 1]); (PALAVRA[x + w[i + 1]] || []).forEach(function (k) { alt.push(['#' + k, 0.9]) }) }
       if (!existe) {

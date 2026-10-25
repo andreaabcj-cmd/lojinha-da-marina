@@ -2067,6 +2067,94 @@
         [{ pt: 'Você sempre tem controle total', es: 'Siempre tienes control total' }, 0, { pt: 'Não necessariamente.', es: 'No necesariamente.' }],
         [{ pt: 'Nenhuma permissão', es: 'Ningún permiso' }, 0, { pt: 'Tem as atribuídas.', es: 'Tienes las asignadas.' }]] }
   ]);
+  quizCatalogo('catalogo-wa', {pt: "Catálogo do WhatsApp",es: "Catálogo de WhatsApp"}, {pt: "Itens, revisão, coleções e ocultar (telas vistas em 25/10/2026).",es: "Artículos, revisión, colecciones y ocultar (pantallas vistas el 25/10/2026)."}, [
+    { q: {pt: "A Marina cadastrou um item e ele ainda não aparece para as clientes. Por quê?",es: "Marina cargó un artículo y todavía no les aparece a las clientas. ¿Por qué?"},
+      o: [[{pt: "Todo item passa por revisão da Política Comercial antes de aparecer",es: "Todo artículo pasa por revisión de la Política Comercial antes de aparecer"}, 1, {pt: "Isso! Se for recusado, aparece um aviso vermelho no item.",es: "¡Eso! Si lo rechazan, aparece un aviso rojo en el artículo."}],
+        [{pt: "O catálogo só atualiza uma vez por semana",es: "El catálogo solo se actualiza una vez por semana"}, 0, {pt: "Não: o que segura é a revisão do item.",es: "No: lo que lo retiene es la revisión del artículo."}],
+        [{pt: "Precisa pagar para publicar",es: "Hay que pagar para publicar"}, 0, {pt: "O catálogo é grátis no app.",es: "El catálogo es gratis en la app."}]] },
+    { q: {pt: "Uma caneca acabou, mas vai voltar. O melhor é…",es: "Una taza se agotó, pero va a volver. Lo mejor es…"},
+      o: [[{pt: "Ocultar o item",es: "Ocultar el artículo"}, 1, {pt: "Isso! A cliente deixa de ver e o item fica guardado.",es: "¡Eso! La clienta deja de verlo y el artículo queda guardado."}],
+        [{pt: "Apagar e cadastrar de novo depois",es: "Borrarlo y cargarlo de nuevo después"}, 0, {pt: "O item novo passaria pela revisão de novo.",es: "El artículo nuevo pasaría otra vez por la revisión."}],
+        [{pt: "Tirar da coleção",es: "Sacarlo de la colección"}, 0, {pt: "Ele continuaria em Todos os itens.",es: "Seguiría en Todos los artículos."}]] },
+    { q: {pt: "Onde se criam as coleções?",es: "¿Dónde se crean las colecciones?"},
+      o: [[{pt: "Catálogo › ⋮ › Coleções",es: "Catálogo › ⋮ › Colecciones"}, 1, {pt: "Isso! Nome › marcar itens › OK.",es: "¡Eso! Nombre › marcar artículos › OK."}],
+        [{pt: "Ferramentas › Listas",es: "Herramientas › Listas"}, 0, {pt: "Listas organizam conversas, não produtos.",es: "Las listas organizan chats, no productos."}],
+        [{pt: "No perfil, em Categoria",es: "En el perfil, en Categoría"}, 0, {pt: "Categoria é da empresa, não dos produtos.",es: "La categoría es de la empresa, no de los productos."}]] }
+  ]);
+  quizCatalogo('pedido-wa', {pt: "O pedido pelo carrinho",es: "El pedido por el carrito"}, {pt: "Do carrinho da cliente ao status (feito de verdade em 25/10/2026).",es: "Del carrito de la clienta al estado (hecho de verdad el 25/10/2026)."}, [
+    { q: {pt: "Chegou “Pedido feito via catálogo”. Já é venda?",es: "Llegó “Pedido hecho desde el catálogo”. ¿Ya es venta?"},
+      o: [[{pt: "Ainda não: o pedido vale quando a loja toca em Aceitar pedido",es: "Todavía no: el pedido vale cuando la tienda toca Aceptar pedido"}, 1, {pt: "Isso! O carrinho é uma mensagem até a loja confirmar.",es: "¡Eso! El carrito es un mensaje hasta que la tienda confirma."}],
+        [{pt: "Sim, já foi pago",es: "Sí, ya se pagó"}, 0, {pt: "O carrinho não tem pagamento.",es: "El carrito no tiene pago."}],
+        [{pt: "Só vale se a cliente ligar",es: "Solo vale si la clienta llama"}, 0, {pt: "Não precisa ligar: a loja aceita no app.",es: "No hace falta llamar: la tienda acepta en la app."}]] },
+    { q: {pt: "O que acontece ao aceitar o pedido?",es: "¿Qué pasa al aceptar el pedido?"},
+      o: [[{pt: "Nasce uma cobrança com número, e a loja pode atualizar o status",es: "Nace un cobro con número, y la tienda puede actualizar el estado"}, 1, {pt: "Isso! Atualizar status avisa a cliente.",es: "¡Eso! Actualizar estado avisa a la clienta."}],
+        [{pt: "O dinheiro cai na conta",es: "El dinero entra en la cuenta"}, 0, {pt: "Aceitar não cobra; o pagamento é à parte.",es: "Aceptar no cobra; el pago es aparte."}],
+        [{pt: "O item some do catálogo",es: "El artículo desaparece del catálogo"}, 0, {pt: "O WhatsApp não controla estoque.",es: "WhatsApp no controla stock."}]] }
+  ]);
+  quizCatalogo('pix-wa', {pt: "Pix na conversa",es: "Pix en el chat"}, {pt: "Solicitar pagamento pelo WhatsApp Business (feito de verdade em 25/10/2026).",es: "Solicitar pago por WhatsApp Business (hecho de verdad el 25/10/2026)."}, [
+    { q: {pt: "Como digitar R$ 39,90 no Solicitar pagamento?",es: "¿Cómo escribir R$ 39,90 en Solicitar pago?"},
+      o: [[{pt: "39.90 (com ponto)",es: "39.90 (con punto)"}, 1, {pt: "Isso! Com vírgula o app junta: vira 3990.",es: "¡Eso! Con coma la app junta: se vuelve 3990."}],
+        [{pt: "39,90 (com vírgula)",es: "39,90 (con coma)"}, 0, {pt: "Vira R$ 3.990,00!",es: "¡Se vuelve R$ 3.990,00!"}],
+        [{pt: "3990",es: "3990"}, 0, {pt: "Isso é três mil novecentos e noventa.",es: "Eso es tres mil novecientos noventa."}]] },
+    { q: {pt: "Onde a cliente paga de fato?",es: "¿Dónde paga de verdad la clienta?"},
+      o: [[{pt: "No app do banco (ou colando o código Pix)",es: "En la app del banco (o pegando el código Pix)"}, 1, {pt: "Isso! O WhatsApp só leva até o banco.",es: "¡Eso! WhatsApp solo lleva hasta el banco."}],
+        [{pt: "Dentro da conversa, sem banco",es: "Dentro del chat, sin banco"}, 0, {pt: "O pagamento é no banco.",es: "El pago es en el banco."}],
+        [{pt: "No site da loja",es: "En el sitio de la tienda"}, 0, {pt: "Pelo Pix do WhatsApp, vai para o app do banco.",es: "Por el Pix de WhatsApp, va a la app del banco."}]] }
+  ]);
+  quizCatalogo('auto-wa', {pt: "Atendimento automático",es: "Atención automática"}, {pt: "Saudação, ausência e respostas rápidas (telas vistas em 25/10/2026).",es: "Bienvenida, ausencia y respuestas rápidas (pantallas vistas el 25/10/2026)."}, [
+    { q: {pt: "Quando a mensagem de saudação sai?",es: "¿Cuándo sale el mensaje de bienvenida?"},
+      o: [[{pt: "Na primeira mensagem do cliente ou depois de 14 dias sem conversa",es: "En el primer mensaje del cliente o después de 14 días sin conversación"}, 1, {pt: "Isso!",es: "¡Eso!"}],
+        [{pt: "Em toda mensagem",es: "En cada mensaje"}, 0, {pt: "Só na primeira ou depois de 14 dias.",es: "Solo en el primero o después de 14 días."}],
+        [{pt: "Só fora do horário",es: "Solo fuera del horario"}, 0, {pt: "Fora do horário é a ausência.",es: "Fuera del horario es la ausencia."}]] },
+    { q: {pt: "Como usar uma resposta rápida na conversa?",es: "¿Cómo usar una respuesta rápida en el chat?"},
+      o: [[{pt: "Digitar “/” e escolher",es: "Escribir “/” y elegir"}, 1, {pt: "Isso! Ou 📎 › Resposta rápida.",es: "¡Eso! O 📎 › Respuesta rápida."}],
+        [{pt: "Copiar de Ferramentas e colar",es: "Copiar de Herramientas y pegar"}, 0, {pt: "Dá, mas o “/” é o atalho.",es: "Se puede, pero el “/” es el atajo."}],
+        [{pt: "Só pelo computador",es: "Solo desde la computadora"}, 0, {pt: "Funciona no celular.",es: "Funciona en el celular."}]] },
+    { q: {pt: "Ligou o agente de IA. O que acontece com saudação e ausência?",es: "Activó el agente de IA. ¿Qué pasa con bienvenida y ausencia?"},
+      o: [[{pt: "Ficam desligadas",es: "Quedan desactivadas"}, 1, {pt: "Isso! Quem responde é o agente.",es: "¡Eso! Quien responde es el agente."}],
+        [{pt: "Saem em dobro",es: "Salen el doble"}, 0, {pt: "Não: elas desligam.",es: "No: se desactivan."}],
+        [{pt: "Nada muda",es: "Nada cambia"}, 0, {pt: "Elas desligam.",es: "Se desactivan."}]] }
+  ]);
+  quizCatalogo('listas-wa', {pt: "Listas e transmissão",es: "Listas y difusión"}, {pt: "As antigas etiquetas e a transmissão comercial (telas vistas em 25/10/2026).",es: "Las antiguas etiquetas y la difusión comercial (pantallas vistas el 25/10/2026)."}, [
+    { q: {pt: "A cliente procura “etiquetas” e não acha. Onde estão?",es: "La clienta busca “etiquetas” y no las encuentra. ¿Dónde están?"},
+      o: [[{pt: "Viraram Listas, em Ferramentas",es: "Se volvieron Listas, en Herramientas"}, 1, {pt: "Isso! “As etiquetas agora são as Listas”.",es: "¡Eso! “Las etiquetas ahora son las Listas”."}],
+        [{pt: "Foram removidas do app",es: "Se quitaron de la app"}, 0, {pt: "Viraram Listas.",es: "Se volvieron Listas."}],
+        [{pt: "Só no Meta One",es: "Solo en Meta One"}, 0, {pt: "Listas são grátis; o Meta One só personaliza.",es: "Las listas son gratis; Meta One solo personaliza."}]] },
+    { q: {pt: "A transmissão comercial é…",es: "La difusión comercial es…"},
+      o: [[{pt: "Paga por mensagem entregue",es: "Paga por mensaje entregado"}, 1, {pt: "Isso! A tela avisa antes de continuar.",es: "¡Eso! La pantalla avisa antes de continuar."}],
+        [{pt: "Grátis e ilimitada",es: "Gratis e ilimitada"}, 0, {pt: "É cobrada por mensagem.",es: "Se cobra por mensaje."}],
+        [{pt: "Só para grupos",es: "Solo para grupos"}, 0, {pt: "Vai para conversas individuais.",es: "Va a chats individuales."}]] }
+  ]);
+  quizCatalogo('anuncio-wa', {pt: "Anúncio pelo app",es: "Anuncio desde la app"}, {pt: "Turbinar perfil / Anúncios no WhatsApp Business (telas vistas em 25/10/2026).",es: "Promocionar perfil / Anuncios en WhatsApp Business (pantallas vistas el 25/10/2026)."}, [
+    { q: {pt: "A cliente não tem Facebook. Dá para anunciar pelo app?",es: "La clienta no tiene Facebook. ¿Se puede anunciar desde la app?"},
+      o: [[{pt: "Dá: toca em PULAR e segue com o e-mail",es: "Sí: toca OMITIR y sigue con el correo"}, 1, {pt: "Isso! São dois jeitos: com Facebook ou com e-mail.",es: "¡Eso! Son dos formas: con Facebook o con correo."}],
+        [{pt: "Não: precisa do Facebook",es: "No: necesita Facebook"}, 0, {pt: "Dá sem Facebook, com e-mail.",es: "Se puede sin Facebook, con correo."}],
+        [{pt: "Só pelo Instagram",es: "Solo por Instagram"}, 0, {pt: "O app do WhatsApp cria o anúncio.",es: "La app de WhatsApp crea el anuncio."}]] },
+    { q: {pt: "Para personalizar a mensagem de boas-vindas do anúncio…",es: "Para personalizar el mensaje de bienvenida del anuncio…"},
+      o: [[{pt: "Só pelo Gerenciador de Anúncios",es: "Solo desde el Administrador de anuncios"}, 1, {pt: "Isso!",es: "¡Eso!"}],
+        [{pt: "Na mensagem de saudação",es: "En el mensaje de bienvenida"}, 0, {pt: "Saudação é outra coisa.",es: "La bienvenida es otra cosa."}],
+        [{pt: "No perfil",es: "En el perfil"}, 0, {pt: "É no Gerenciador de Anúncios.",es: "Es en el Administrador de anuncios."}]] }
+  ]);
+  quizCatalogo('ia-wa', {pt: "Assistente × agente",es: "Asistente × agente"}, {pt: "As duas IAs do WhatsApp Business.",es: "Las dos IA de WhatsApp Business."}, [
+    { q: {pt: "O botão roxo nas Conversas é…",es: "El botón morado en Chats es…"},
+      o: [[{pt: "O assistente da Meta AI, que ajuda a loja",es: "El asistente de Meta AI, que ayuda a la tienda"}, 1, {pt: "Isso! Ideias, textos e imagens para a loja.",es: "¡Eso! Ideas, textos e imágenes para la tienda."}],
+        [{pt: "Um robô que responde clientes",es: "Un robot que responde a clientes"}, 0, {pt: "Responder clientes é o agente de IA.",es: "Responder a clientes es el agente de IA."}],
+        [{pt: "Um anúncio",es: "Un anuncio"}, 0, {pt: "É o assistente.",es: "Es el asistente."}]] },
+    { q: {pt: "Onde vem o agente de IA que responde clientes?",es: "¿Dónde viene el agente de IA que responde a clientes?"},
+      o: [[{pt: "Nos planos Meta One",es: "En los planes Meta One"}, 1, {pt: "Isso! De 500 a 30.000 conversas por mês, conforme o plano.",es: "¡Eso! De 500 a 30.000 chats por mes, según el plan."}],
+        [{pt: "Grátis para todos",es: "Gratis para todos"}, 0, {pt: "É do Meta One, com liberação gradual.",es: "Es de Meta One, con liberación gradual."}],
+        [{pt: "No Instagram",es: "En Instagram"}, 0, {pt: "No WhatsApp Business, com Meta One.",es: "En WhatsApp Business, con Meta One."}]] }
+  ]);
+  quizCatalogo('conectar-wa', {pt: "Instagram e Facebook",es: "Instagram y Facebook"}, {pt: "Conectar ao WhatsApp Business e os erros comuns.",es: "Conectar a WhatsApp Business y los errores comunes."}, [
+    { q: {pt: "O que o Instagram precisa para conectar?",es: "¿Qué necesita el Instagram para conectar?"},
+      o: [[{pt: "Ser conta profissional de categoria compatível",es: "Ser cuenta profesional de categoría compatible"}, 1, {pt: "Isso!",es: "¡Eso!"}],
+        [{pt: "Ter Meta Verified",es: "Tener Meta Verified"}, 0, {pt: "Não é requisito.",es: "No es requisito."}],
+        [{pt: "Ter 1.000 seguidores",es: "Tener 1.000 seguidores"}, 0, {pt: "Não há mínimo de seguidores.",es: "No hay mínimo de seguidores."}]] },
+    { q: {pt: "Erro “número vinculado a outra empresa”. Primeiro passo?",es: "Error “número vinculado a otra empresa”. ¿Primer paso?"},
+      o: [[{pt: "Ver se já há outra Página ligada e desligar a antiga",es: "Ver si ya hay otra Página vinculada y desvincular la anterior"}, 1, {pt: "Isso! É uma Página por WhatsApp.",es: "¡Eso! Es una Página por WhatsApp."}],
+        [{pt: "Criar outro número",es: "Crear otro número"}, 0, {pt: "Não precisa: desligue o vínculo antigo.",es: "No hace falta: desvincula el anterior."}],
+        [{pt: "Apagar a Página",es: "Borrar la Página"}, 0, {pt: "Nunca: só desligue o vínculo.",es: "Nunca: solo desvincula."}]] }
+  ]);
   quizCatalogo('perfil-wa', { pt: 'O perfil que a cliente vê', es: 'El perfil que ve la clienta' }, { pt: 'Perfil comercial do WhatsApp Business (telas vistas em 25/10/2026).', es: 'Perfil comercial de WhatsApp Business (pantallas vistas el 25/10/2026).' }, [
     { q: { pt: 'Onde a Marina edita o perfil comercial no app de hoje?', es: '¿Dónde edita Marina el perfil comercial en la app actual?' },
       o: [[{ pt: 'Aba Ferramentas › Perfil', es: 'Pestaña Herramientas › Perfil' }, 1, { pt: 'Isso! A tela se chama “Edit profile”.', es: '¡Eso! La pantalla se llama “Edit profile”.' }],

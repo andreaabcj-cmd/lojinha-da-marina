@@ -5595,6 +5595,385 @@ window.AULAS = {
           { url: 'https://faq.whatsapp.com/634068973820786', titulo: L('Como editar o perfil comercial', 'Cómo editar el perfil comercial'), conferido: '25/10/2026' },
           { url: 'https://faq.whatsapp.com/502291734918768', titulo: L('Como criar links curtos', 'Cómo crear enlaces cortos'), conferido: '25/10/2026' }
         ]
+      },
+      {
+        id: '02', min: 9, status: 'pronta',
+        titulo: L('Catálogo e coleções', 'Catálogo y colecciones'),
+        antes: L('O perfil da Lojinha já tem categoria e horário.', 'El perfil de la Lojinha ya tiene categoría y horario.'),
+        gancho: L('“A cliente gostou da caneca. Como ela compra sem sair da conversa?” Próxima aula: o carrinho.', '“A la clienta le gustó la taza. ¿Cómo compra sin salir del chat?” Próxima clase: el carrito.'),
+        objetivo: L('Organizar o catálogo do WhatsApp Business em coleções, ocultar o que acabou e entender por que um item novo demora a aparecer.', 'Organizar el catálogo de WhatsApp Business en colecciones, ocultar lo que se agotó y entender por qué un artículo nuevo tarda en aparecer.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Cadastrei uma caneca nova no catálogo e ela não aparece para as clientes! 😩', '¡Cargué una taza nueva en el catálogo y no les aparece a las clientas! 😩')],
+            ['rafa', L('Todo item passa por uma revisão da Política Comercial do WhatsApp antes de aparecer. Se for recusado, aparece um aviso vermelho no item.', 'Todo artículo pasa por una revisión de la Política Comercial de WhatsApp antes de aparecer. Si lo rechazan, aparece un aviso rojo en el artículo.')],
+            ['marina', L('E dá para separar as canecas das camisetas?', '¿Y se pueden separar las tazas de las camisetas?')],
+            ['pixel', L('Dá: são as coleções. No Gerenciador de Catálogos, ⋮ › Coleções. A cliente vê cada coleção no alto do catálogo.', 'Sí: son las colecciones. En el Administrador de catálogos, ⋮ › Colecciones. La clienta ve cada colección arriba del catálogo.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> Ferramentas › Catálogo (a tela se chama Gerenciador de Catálogos). Lá ficam Adicionar item, Adicionar coleção e a lista de itens.', '<b>Dónde:</b> Herramientas › Catálogo (la pantalla se llama Administrador de catálogos). Ahí están Agregar artículo, Agregar colección y la lista de artículos.'),
+            L('<b>Item:</b> nome, preço, preço promocional, descrição, país do item (obrigatório, pela Política Comercial), link e código. Cada item passa por revisão antes de aparecer.', '<b>Artículo:</b> nombre, precio, precio promocional, descripción, país del artículo (obligatorio, por la Política Comercial), enlace y código. Cada artículo pasa por revisión antes de aparecer.'),
+            L('<b>Coleções:</b> nome › marcar os itens › OK. Dá para reorganizar, renomear ou apagar a coleção.', '<b>Colecciones:</b> nombre › marcar los artículos › OK. Se puede reorganizar, renombrar o borrar la colección.'),
+            L('<b>Ocultar × apagar:</b> ocultar tira o item da vista da cliente e guarda para depois; apagar tira de vez.', '<b>Ocultar × borrar:</b> ocultar saca el artículo de la vista de la clienta y lo guarda para después; borrar lo saca para siempre.')
+          ],
+          notas: L('Telas vistas de verdade em 25/10/2026 no app WhatsApp Business (Android, conta de aula): Gerenciador de Catálogos, item (⋮ Ocultar · Apagar), Editar item (com Mais campos), Coleções (criei a coleção Canecas), Configurações do catálogo e o catálogo do lado da cliente. Não vista: a tela de Adicionar item (o simulador não abre). Curso de 23/10: casos comuns são item em revisão ou recusado, link do catálogo que não abre e preço que não atualiza. O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026 en la app WhatsApp Business (Android, cuenta de clase): Administrador de catálogos, artículo (⋮ Ocultar · Borrar), Editar artículo, Colecciones (creé la colección Canecas), Configuración del catálogo y el catálogo del lado de la clienta. No vista: la pantalla de Agregar artículo. El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'catalogo-wa',
+        praticar: {
+          texto: L('No simulador, a Marina cria a coleção Canecas e oculta a caneca que acabou; você vê tudo mudar no catálogo da Bia.', 'En el simulador, Marina crea la colección Canecas y oculta la taza que se agotó; ves todo cambiar en el catálogo de Bia.'),
+          tour: 'catalogo-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Fiz a coleção Canecas! 🎉 Mas a caneca amarela acabou. Apago do catálogo?', '¡Hice la colección Canecas! 🎉 Pero la taza amarilla se agotó. ¿La borro del catálogo?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não precisa apagar: abra o item no catálogo, toque em ⋮ e em Ocultar. A cliente deixa de ver, e quando chegar estoque você mostra de novo.”', '“No hace falta borrarla: abre el artículo en el catálogo, toca ⋮ y Ocultar. La clienta deja de verlo, y cuando llegue stock lo muestras de nuevo.”'), fb: L('Isso! Ocultar guarda o item com foto e preço.', '¡Eso! Ocultar guarda el artículo con foto y precio.') },
+            { certa: false, txt: L('“Apague e cadastre de novo quando chegar.”', '“Bórrala y cárgala de nuevo cuando llegue.”'), fb: L('Funciona, mas o item novo passa pela revisão de novo. Ocultar é mais simples.', 'Funciona, pero el artículo nuevo pasa otra vez por la revisión. Ocultar es más simple.') },
+            { certa: false, txt: L('“Tire a caneca da coleção, que ela some do catálogo.”', '“Saca la taza de la colección, que desaparece del catálogo.”'), fb: L('Ela continua em Todos os itens. Quem tira da vista é o Ocultar.', 'Sigue en Todos los artículos. Lo que la saca de la vista es Ocultar.') },
+            { certa: false, txt: L('“Escreva ESGOTADO no nome.”', '“Escribe AGOTADO en el nombre.”'), fb: L('A cliente ainda pode pôr no carrinho. O caminho é ocultar.', 'La clienta todavía puede ponerla en el carrito. El camino es ocultar.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O item aparece com aviso vermelho (recusado) ou ainda está em revisão?', '¿El artículo aparece con aviso rojo (rechazado) o todavía está en revisión?'), L('A loja quer tirar de vez ou só por um tempo?', '¿La tienda quiere sacarlo para siempre o solo por un tiempo?')],
+          conferir: [L('Ferramentas › Catálogo (Gerenciador de Catálogos).', 'Herramientas › Catálogo (Administrador de catálogos).'), L('⋮ › Coleções.', '⋮ › Colecciones.')],
+          frase: L('Item novo passa por revisão antes de aparecer. Para organizar, use coleções; para tirar da vista sem perder, use Ocultar.', 'Un artículo nuevo pasa por revisión antes de aparecer. Para organizar, usa colecciones; para sacarlo de la vista sin perderlo, usa Ocultar.'),
+          passos: [L('Catálogo › ⋮ › Coleções › ＋ › nome › marcar itens › OK.', 'Catálogo › ⋮ › Colecciones › ＋ › nombre › marcar artículos › OK.'), L('Ocultar: abrir o item › ⋮ › Ocultar.', 'Ocultar: abrir el artículo › ⋮ › Ocultar.')],
+          encaminhar: L('Item recusado: o cliente lê o motivo no aviso e corrige pela Política Comercial do WhatsApp; se discordar, segue a Central de Ajuda.', 'Artículo rechazado: el cliente lee el motivo en el aviso y corrige según la Política Comercial de WhatsApp; si no está de acuerdo, sigue el Servicio de ayuda.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/833697274483076', titulo: L('Como criar e gerenciar um catálogo', 'Cómo crear y administrar un catálogo'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/501451005213099', titulo: L('Como compartilhar produtos ou serviços com seus clientes', 'Cómo compartir productos o servicios con tus clientes'), conferido: '26/10/2026' }
+        ]
+      },
+      {
+        id: '03', min: 9, status: 'pronta',
+        titulo: L('O pedido pelo carrinho, dos dois lados', 'El pedido por el carrito, de los dos lados'),
+        antes: L('O catálogo tem a coleção Canecas.', 'El catálogo tiene la colección Canecas.'),
+        gancho: L('“E como a cliente me paga pelo WhatsApp?” Próxima aula: o Pix na conversa.', '“¿Y cómo me paga la clienta por WhatsApp?” Próxima clase: el Pix en el chat.'),
+        objetivo: L('Acompanhar um pedido do carrinho da cliente até a loja aceitar e atualizar o status.', 'Acompañar un pedido desde el carrito de la clienta hasta que la tienda lo acepta y actualiza el estado.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Uma cliente me mandou um “pedido feito via catálogo”. E agora? Já está vendido? 🤔', 'Una clienta me mandó un “pedido hecho desde el catálogo”. ¿Y ahora? ¿Ya está vendido? 🤔')],
+            ['rafa', L('Ainda não: o carrinho é uma mensagem. O pedido só vale quando você abre em Mostrar pedido e toca em ACEITAR PEDIDO.', 'Todavía no: el carrito es un mensaje. El pedido solo vale cuando lo abres en Ver pedido y tocas ACEPTAR PEDIDO.')],
+            ['marina', L('E depois de aceitar?', '¿Y después de aceptar?')],
+            ['pixel', L('Nasce uma cobrança com número. Em Atualizar status você avisa a cliente: preparando para o envio, enviado, entregue…', 'Nace un cobro con número. En Actualizar estado avisas a la clienta: preparando para el envío, enviado, entregado…')]
+          ],
+          pontos: [
+            L('<b>Do lado da cliente:</b> catálogo › ＋ em cada item › carrinho 🛒 › “Seu pedido” › ENVIAR PEDIDO. O aviso diz que carrinho, nome e telefone vão para a loja.', '<b>Del lado de la clienta:</b> catálogo › ＋ en cada artículo › carrito 🛒 › “Tu pedido” › ENVIAR PEDIDO. El aviso dice que carrito, nombre y teléfono van a la tienda.'),
+            L('<b>Do lado da loja:</b> “Pedido feito via catálogo” › Mostrar pedido › ACEITAR PEDIDO (ou ⋮ › Recusar pedido). Dá para somar desconto, frete ou imposto.', '<b>Del lado de la tienda:</b> “Pedido hecho desde el catálogo” › Ver pedido › ACEPTAR PEDIDO (o ⋮ › Rechazar pedido). Se puede sumar descuento, envío o impuesto.'),
+            L('<b>Status:</b> Pagamento pedido, Preparando para o envio, Enviado, Entregue, Concluído ou Cancelado, com recado opcional. Tudo fica em Ferramentas › Cobranças.', '<b>Estado:</b> Pago solicitado, Preparando para el envío, Enviado, Entregado, Completado o Cancelado, con mensaje opcional. Todo queda en Herramientas › Cobros.'),
+            L('<b>Botão do carrinho:</b> pode ser desligado em Catálogo › ⋮ › Configurações do catálogo (“Mostrar o botão Adicionar ao carrinho”).', '<b>Botón del carrito:</b> se puede desactivar en Catálogo › ⋮ › Configuración del catálogo (“Mostrar el botón Agregar al carrito”).')
+          ],
+          notas: L('Fluxo feito de verdade em 25/10/2026 entre o WhatsApp Business da conta de aula e um número pessoal de teste: carrinho, Enviar pedido, Mostrar pedido, Aceitar pedido (gerou “Nº da cobrança”), Atualizar status e o que a cliente recebe. Na tela do pedido, o rótulo “From” e “Estimated total” aparecem em inglês. Central de Ajuda: o pedido só existe depois que a empresa confirma. O espanhol das telas é tradução nossa (a conferir).', 'Flujo hecho de verdad el 25/10/2026 entre el WhatsApp Business de la cuenta de clase y un número personal de prueba: carrito, Enviar pedido, Ver pedido, Aceptar pedido (generó “N.º de cobro”), Actualizar estado y lo que recibe la clienta. El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'pedido-wa',
+        praticar: {
+          texto: L('No simulador, você faz a compra no celular da Bia e depois aceita o pedido e manda o status no celular da Marina.', 'En el simulador, haces la compra en el celular de Bia y después aceptas el pedido y mandas el estado en el celular de Marina.'),
+          tour: 'pedido-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Aceitei o pedido da Bia! 😊 Mas e se ela tivesse pedido uma caneca que acabou?', '¡Acepté el pedido de Bia! 😊 ¿Pero y si hubiera pedido una taza que se agotó?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Antes de aceitar, abra o pedido: no ⋮ tem Recusar pedido. Explique para a cliente na conversa e, se tiver estoque de outra, ofereça. E oculte o item que acabou no catálogo.”', '“Antes de aceptar, abre el pedido: en el ⋮ está Rechazar pedido. Explícale a la clienta en el chat y, si hay stock de otra, ofrécela. Y oculta en el catálogo el artículo que se agotó.”'), fb: L('Isso! Recusar, conversar e ocultar para não acontecer de novo.', '¡Eso! Rechazar, conversar y ocultar para que no vuelva a pasar.') },
+            { certa: false, txt: L('“Aceite e depois cancela.”', '“Acéptalo y después cancelas.”'), fb: L('Gera cobrança à toa e confunde a cliente. Dá para recusar antes.', 'Genera un cobro de más y confunde a la clienta. Se puede rechazar antes.') },
+            { certa: false, txt: L('“Ignore o pedido, ela esquece.”', '“Ignora el pedido, ella se olvida.”'), fb: L('A cliente fica sem resposta. Recuse e explique.', 'La clienta se queda sin respuesta. Rechaza y explica.') },
+            { certa: false, txt: L('“O WhatsApp cancela sozinho se não tiver estoque.”', '“WhatsApp cancela solo si no hay stock.”'), fb: L('O WhatsApp não controla estoque: quem decide é a loja.', 'WhatsApp no controla stock: decide la tienda.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O pedido já foi aceito ou ainda está como “pedido feito via catálogo”?', '¿El pedido ya fue aceptado o todavía está como “pedido hecho desde el catálogo”?'), L('A cliente recebeu algum status?', '¿La clienta recibió algún estado?')],
+          conferir: [L('Conversa › Mostrar pedido › ACEITAR PEDIDO.', 'Chat › Ver pedido › ACEPTAR PEDIDO.'), L('Cartão da cobrança › Atualizar status.', 'Tarjeta del cobro › Actualizar estado.'), L('Ferramentas › Cobranças (histórico).', 'Herramientas › Cobros (historial).')],
+          frase: L('O carrinho chega como mensagem; o pedido só vale quando você aceita. Depois, use Atualizar status para avisar a cliente em cada etapa.', 'El carrito llega como mensaje; el pedido solo vale cuando lo aceptas. Después, usa Actualizar estado para avisar a la clienta en cada etapa.'),
+          passos: [L('Mostrar pedido › conferir itens › ACEITAR PEDIDO.', 'Ver pedido › revisar artículos › ACEPTAR PEDIDO.'), L('Atualizar status › escolher › recado › ENVIAR ATUALIZAÇÃO.', 'Actualizar estado › elegir › mensaje › ENVIAR ACTUALIZACIÓN.')],
+          encaminhar: L('Se o pedido ou a cobrança não aparecem, peça para atualizar o app e reiniciar o celular; persistindo, Central de Ajuda do WhatsApp › Fale conosco.', 'Si el pedido o el cobro no aparecen, pide actualizar la app y reiniciar el celular; si persiste, Servicio de ayuda de WhatsApp › Contáctanos.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/1184376605821468', titulo: L('Sobre o recurso carrinho', 'Información sobre el carrito'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/5495780857144067', titulo: L('Como fazer um pedido usando o carrinho', 'Cómo hacer un pedido con el carrito'), conferido: '26/10/2026' }
+        ]
+      },
+      {
+        id: '04', min: 7, status: 'pronta',
+        titulo: L('Cobrar com Pix na conversa', 'Cobrar con Pix en el chat'),
+        antes: L('A Bia fez o pedido e a Marina aceitou.', 'Bia hizo el pedido y Marina lo aceptó.'),
+        gancho: L('“Toda hora me perguntam a mesma coisa…” Próxima aula: atendimento automático.', '“Todo el tiempo me preguntan lo mismo…” Próxima clase: atención automática.'),
+        objetivo: L('Pedir um pagamento Pix na conversa, sem errar o valor, e saber o que a cliente vê.', 'Pedir un pago Pix en el chat, sin equivocarse en el valor, y saber lo que ve la clienta.'),
+        entender: {
+          dialogo: [
+            ['marina', L('A Bia quer pagar a caneca. Posso mandar o Pix pelo WhatsApp? 💸', 'Bia quiere pagar la taza. ¿Puedo mandar el Pix por WhatsApp? 💸')],
+            ['rafa', L('Pode: na conversa, clipe 📎 › Pix › Solicitar pagamento. A cliente consegue copiar sua chave ou o código Pix ali mesmo.', 'Sí: en el chat, clip 📎 › Pix › Solicitar pago. La clienta puede copiar tu clave o el código Pix ahí mismo.')],
+            ['pixel', L('Cuidado com o valor: o campo aceita PONTO. Com vírgula, 39,90 vira 3990!', 'Cuidado con el valor: el campo acepta PUNTO. ¡Con coma, 39,90 se vuelve 3990!')],
+            ['marina', L('E o dinheiro cai pelo WhatsApp?', '¿Y el dinero entra por WhatsApp?')],
+            ['rafa', L('Não: a cliente toca em Pagar com Pix, escolhe o app do banco ou copia o código, e paga no banco.', 'No: la clienta toca Pagar con Pix, elige la app del banco o copia el código, y paga en el banco.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> conversa › 📎 Anexar › Pix › Solicitar pagamento (ou o cartão Pagar com Pix da cobrança). A chave fica em Ferramentas › Pagamentos.', '<b>Dónde:</b> chat › 📎 Adjuntar › Pix › Solicitar pago (o la tarjeta Pagar con Pix del cobro). La clave queda en Herramientas › Pagos.'),
+            L('<b>O valor:</b> opcional, e com PONTO (39.90). Com vírgula o app junta os números.', '<b>El valor:</b> opcional, y con PUNTO (39.90). Con coma la app junta los números.'),
+            L('<b>A cliente:</b> vê “solicitou um pagamento” › Pagar com Pix › escolhe o banco ou Copiar código Pix. O pagamento acontece no app do banco.', '<b>La clienta:</b> ve “solicitó un pago” › Pagar con Pix › elige el banco o Copiar código Pix. El pago ocurre en la app del banco.'),
+            L('<b>Só no Brasil:</b> o curso cita que o pagamento dentro do WhatsApp existe em poucos países (Brasil e Índia).', '<b>Solo en Brasil:</b> el curso cita que el pago dentro de WhatsApp existe en pocos países (Brasil e India).')
+          ],
+          notas: L('Feito de verdade em 25/10/2026 com a conta de aula e um número pessoal de teste: Solicitar pagamento (o campo transformou 39,90 em 3990; com 39.90 deu certo), o cartão do lado da cliente e a tela Pagar com Pix (lista de bancos e Copiar código Pix), sem pagar. A Central de Ajuda do WhatsApp não tem página sobre o Pix: esta aula usa só a tela real e o curso de 23/10. O espanhol das telas é tradução nossa (a conferir).', 'Hecho de verdad el 25/10/2026 con la cuenta de clase y un número personal de prueba: Solicitar pago (el campo convirtió 39,90 en 3990; con 39.90 funcionó), la tarjeta del lado de la clienta y la pantalla Pagar con Pix, sin pagar. El Servicio de ayuda de WhatsApp no tiene página sobre Pix: esta clase usa solo la pantalla real y el curso del 23/10. El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'pix-wa',
+        praticar: {
+          texto: L('No simulador, a Marina pede R$ 39.90 por Pix e você vê a Bia chegar até a lista de bancos.', 'En el simulador, Marina pide R$ 39.90 por Pix y ves a Bia llegar hasta la lista de bancos.'),
+          tour: 'pix-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Mandei o Pix de 39,90 para uma cliente e chegou R$ 3.990,00! 😱 Ela achou que era golpe!', '¡Mandé el Pix de 39,90 a una clienta y llegó R$ 3.990,00! 😱 ¡Pensó que era una estafa!'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Calma, ninguém pagou nada: o campo de valor não aceita vírgula e juntou os números. Peça desculpas à cliente e mande uma nova solicitação com ponto: 39.90.”', '“Tranquila, nadie pagó nada: el campo de valor no acepta coma y juntó los números. Pide disculpas a la clienta y manda una nueva solicitud con punto: 39.90.”'), fb: L('Isso! Explicou a causa e o jeito certo.', '¡Eso! Explicaste la causa y la forma correcta.') },
+            { certa: false, txt: L('“Pede para ela pagar e você devolve a diferença.”', '“Pídele que pague y le devuelves la diferencia.”'), fb: L('Nunca! Primeiro corrija o valor; ninguém deve pagar a mais.', '¡Nunca! Primero corrige el valor; nadie debe pagar de más.') },
+            { certa: false, txt: L('“É um erro do WhatsApp, abra um chamado.”', '“Es un error de WhatsApp, abre un caso.”'), fb: L('É o formato: use ponto no valor.', 'Es el formato: usa punto en el valor.') },
+            { certa: false, txt: L('“Mande o Pix sem valor nenhum, sempre.”', '“Manda siempre el Pix sin valor.”'), fb: L('Dá, porque o valor é opcional, mas com valor a cliente erra menos. Basta usar ponto.', 'Se puede, porque el valor es opcional, pero con valor la clienta se equivoca menos. Basta usar punto.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual valor apareceu no cartão do Pix?', '¿Qué valor apareció en la tarjeta del Pix?'), L('A cliente já tentou pagar no banco?', '¿La clienta ya intentó pagar en el banco?')],
+          conferir: [L('Conversa › 📎 › Pix › Solicitar pagamento.', 'Chat › 📎 › Pix › Solicitar pago.'), L('Valor com ponto (39.90).', 'Valor con punto (39.90).')],
+          frase: L('O Pix sai pela conversa, mas o pagamento é no banco. No valor, use ponto: 39.90.', 'El Pix sale por el chat, pero el pago es en el banco. En el valor, usa punto: 39.90.'),
+          passos: [L('📎 Anexar › Pix.', '📎 Adjuntar › Pix.'), L('Valor com ponto › ENVIAR SOLICITAÇÃO.', 'Valor con punto › ENVIAR SOLICITUD.')],
+          encaminhar: L('Problema no pagamento em si (não caiu, cobrou errado no banco) é com o banco da cliente ou da loja, não com o WhatsApp.', 'Un problema con el pago en sí (no entró, cobró mal en el banco) es con el banco de la clienta o de la tienda, no con WhatsApp.')
+        }
+      },
+      {
+        id: '05', min: 9, status: 'pronta',
+        titulo: L('Atendimento automático: saudação, ausência e respostas rápidas', 'Atención automática: bienvenida, ausencia y respuestas rápidas'),
+        antes: L('A Lojinha já vende e cobra pela conversa.', 'La Lojinha ya vende y cobra por el chat.'),
+        gancho: L('“Tenho muitas clientes e me perco nas conversas.” Próxima aula: as listas.', '“Tengo muchas clientas y me pierdo en los chats.” Próxima clase: las listas.'),
+        objetivo: L('Ligar a mensagem de saudação, entender quando ela sai, conhecer a mensagem de ausência e criar respostas rápidas.', 'Activar el mensaje de bienvenida, entender cuándo sale, conocer el mensaje de ausencia y crear respuestas rápidas.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Liguei a saudação, mas minha cliente de sempre mandou mensagem e não recebeu nada! Quebrou? 🤔', '¡Activé la bienvenida, pero mi clienta de siempre escribió y no recibió nada! ¿Se rompió? 🤔')],
+            ['rafa', L('Não quebrou: a saudação responde a primeira mensagem de um cliente, ou a que chega depois de 14 dias sem conversa. Cliente que conversa sempre não recebe.', 'No se rompió: la bienvenida responde el primer mensaje de un cliente, o el que llega después de 14 días sin conversación. La clienta que conversa siempre no la recibe.')],
+            ['marina', L('E para quando eu estiver fechada?', '¿Y para cuando esté cerrada?')],
+            ['pixel', L('É a mensagem de ausência: sempre, num horário programado ou fora do horário de atendimento. E para perguntas repetidas, as respostas rápidas: digite “/” na conversa.', 'Es el mensaje de ausencia: siempre, en un horario programado o fuera del horario de atención. Y para preguntas repetidas, las respuestas rápidas: escribe “/” en el chat.')]
+          ],
+          pontos: [
+            L('<b>Saudação:</b> Ferramentas › Mensagem de saudação. Sai na primeira mensagem ou depois de 14 dias sem conversa; destinatários: Todos, Todos exceto meus contatos, Todos exceto…, Somente…', '<b>Bienvenida:</b> Herramientas › Mensaje de bienvenida. Sale en el primer mensaje o después de 14 días sin conversación; destinatarios: Todos, Todos excepto mis contactos, Todos excepto…, Solo…'),
+            L('<b>Ausência:</b> Enviar sempre, Horário programado ou Fora do horário de atendimento (precisa do horário no perfil).', '<b>Ausencia:</b> Enviar siempre, Horario programado o Fuera del horario de atención (necesita el horario en el perfil).'),
+            L('<b>Respostas rápidas:</b> atalho + mensagem (até 50). Na conversa, digite “/” ou use 📎 › Resposta rápida.', '<b>Respuestas rápidas:</b> atajo + mensaje (hasta 50). En el chat, escribe “/” o usa 📎 › Respuesta rápida.'),
+            L('<b>Cuidados:</b> só funcionam com o celular conectado à internet; com o agente de IA ligado, saudação e ausência ficam desligadas.', '<b>Cuidados:</b> solo funcionan con el celular conectado a internet; con el agente de IA activo, bienvenida y ausencia quedan desactivadas.')
+          ],
+          notas: L('Telas vistas de verdade em 25/10/2026: Mensagem de saudação (liguei e testei: a cliente que já tinha conversa não recebeu), Mensagem de ausência (vista, deixada desligada), Respostas rápidas (criei “frete” e usei com “/”). Central de Ajuda lida: saudação, ausência e respostas rápidas. O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026: Mensaje de bienvenida (lo activé y probé: la clienta que ya tenía conversación no lo recibió), Mensaje de ausencia, Respuestas rápidas (creé “frete” y la usé con “/”). El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'auto-wa',
+        praticar: {
+          texto: L('No simulador, a Marina liga a saudação, a Bia escreve pela primeira vez e recebe na hora; depois a Marina cria a resposta rápida “frete”.', 'En el simulador, Marina activa la bienvenida, Bia escribe por primera vez y la recibe al instante; después Marina crea la respuesta rápida “frete”.'),
+          tour: 'saudacao-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('A saudação funcionou com a Bia! 🎉 Mas ela mandou outra mensagem e não veio saudação de novo. Está com defeito?', '¡La bienvenida funcionó con Bia! 🎉 Pero mandó otro mensaje y no vino la bienvenida de nuevo. ¿Está fallando?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Está certinho: a saudação só sai na primeira mensagem, ou de novo se ela ficar 14 dias sem conversar. Assim a cliente não recebe a mesma saudação toda hora.”', '“Está perfecto: la bienvenida solo sale en el primer mensaje, o de nuevo si pasa 14 días sin conversar. Así la clienta no recibe la misma bienvenida todo el tiempo.”'), fb: L('Isso! A regra dos 14 dias.', '¡Eso! La regla de los 14 días.') },
+            { certa: false, txt: L('“Desligue e ligue de novo.”', '“Desactívala y actívala de nuevo.”'), fb: L('Não é defeito: é a regra da primeira mensagem e dos 14 dias.', 'No es falla: es la regla del primer mensaje y de los 14 días.') },
+            { certa: false, txt: L('“Use a mensagem de ausência para responder sempre.”', '“Usa el mensaje de ausencia para responder siempre.”'), fb: L('A ausência é para quando a loja não está disponível; com “Enviar sempre” ela responde toda mensagem, o que irrita a cliente.', 'La ausencia es para cuando la tienda no está disponible; con “Enviar siempre” responde todo mensaje, lo que molesta a la clienta.') },
+            { certa: false, txt: L('“Ligue o agente de IA, que a saudação melhora.”', '“Activa el agente de IA, que la bienvenida mejora.”'), fb: L('Com o agente ligado, a saudação e a ausência ficam desligadas.', 'Con el agente activo, la bienvenida y la ausencia quedan desactivadas.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('A cliente já tinha conversa com a loja nos últimos 14 dias?', '¿La clienta ya tenía conversación con la tienda en los últimos 14 días?'), L('O celular da loja estava com internet?', '¿El celular de la tienda tenía internet?'), L('O agente de IA está ligado?', '¿El agente de IA está activo?')],
+          conferir: [L('Ferramentas › Mensagem de saudação / ausência (chave ligada e destinatários).', 'Herramientas › Mensaje de bienvenida / ausencia (interruptor y destinatarios).'), L('Ferramentas › Respostas rápidas.', 'Herramientas › Respuestas rápidas.')],
+          frase: L('A saudação responde a primeira mensagem ou a que vem depois de 14 dias; a ausência, quando você não está; e as respostas rápidas você chama com “/”.', 'La bienvenida responde el primer mensaje o el que viene después de 14 días; la ausencia, cuando no estás; y las respuestas rápidas las llamas con “/”.'),
+          passos: [L('Saudação: ligar › texto › destinatários › Salvar.', 'Bienvenida: activar › texto › destinatarios › Guardar.'), L('Resposta rápida: ＋ › atalho › mensagem › SALVAR.', 'Respuesta rápida: ＋ › atajo › mensaje › GUARDAR.')],
+          encaminhar: L('Se nada sai mesmo com celular conectado e chave ligada, peça para atualizar o app e reiniciar; persistindo, Central de Ajuda do WhatsApp › Fale conosco.', 'Si nada sale aun con celular conectado e interruptor activo, pide actualizar la app y reiniciar; si persiste, Servicio de ayuda de WhatsApp › Contáctanos.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/501866148528310', titulo: L('Como usar as mensagens de saudação', 'Cómo usar los mensajes de bienvenida'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/2565868990219715', titulo: L('Como utilizar mensagens de ausência', 'Cómo usar los mensajes de ausencia'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/1791149784551042', titulo: L('Como usar as respostas rápidas', 'Cómo usar las respuestas rápidas'), conferido: '26/10/2026' }
+        ]
+      },
+      {
+        id: '06', min: 8, status: 'pronta',
+        titulo: L('Listas (as antigas etiquetas) e transmissão comercial', 'Listas (las antiguas etiquetas) y difusión comercial'),
+        antes: L('A Lojinha já tem saudação e respostas rápidas.', 'La Lojinha ya tiene bienvenida y respuestas rápidas.'),
+        gancho: L('“Quero mais clientes chamando no WhatsApp.” Próxima aula: anúncio pelo app.', '“Quiero más clientas escribiendo por WhatsApp.” Próxima clase: anuncio desde la app.'),
+        objetivo: L('Organizar as conversas em listas (que substituíram as etiquetas) e saber que a transmissão comercial é paga por mensagem.', 'Organizar los chats en listas (que reemplazaron a las etiquetas) y saber que la difusión comercial se cobra por mensaje.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Uma amiga disse para eu usar etiquetas, mas não acho em lugar nenhum! 🏷️', '¡Una amiga me dijo que use etiquetas, pero no las encuentro en ningún lado! 🏷️')],
+            ['rafa', L('As etiquetas agora são as Listas: Ferramentas › Listas. Cada lista vira um filtro no alto das Conversas.', 'Las etiquetas ahora son las Listas: Herramientas › Listas. Cada lista se vuelve un filtro arriba de los Chats.')],
+            ['marina', L('E dá para mandar uma mensagem para toda a lista?', '¿Y se puede mandar un mensaje a toda la lista?')],
+            ['pixel', L('Dá, pela transmissão comercial, mas é paga: cobra por mensagem entregue. A própria tela avisa antes.', 'Sí, por la difusión comercial, pero es paga: cobra por mensaje entregado. La propia pantalla avisa antes.')]
+          ],
+          pontos: [
+            L('<b>Listas:</b> Ferramentas › Listas › Criar lista personalizada. Sugestões: Novo cliente, Novo pedido, Pagamento pendente, Pago. Só a loja vê quem está em cada lista.', '<b>Listas:</b> Herramientas › Listas › Crear lista personalizada. Sugerencias: Cliente nuevo, Pedido nuevo, Pago pendiente, Pagado. Solo la tienda ve quién está en cada lista.'),
+            L('<b>Viram filtro:</b> no alto da aba Conversas (Todas, Não lidas, Favoritos, Grupos e as suas), e a conversa ganha a etiqueta da lista.', '<b>Se vuelven filtro:</b> arriba de la pestaña Chats (Todos, No leídos, Favoritos, Grupos y las tuyas), y el chat recibe la etiqueta de la lista.'),
+            L('<b>Transmissão comercial:</b> lista › ⋮ › Enviar transmissão comercial. Paga por mensagem entregue (o preço depende do país); só para conversas individuais.', '<b>Difusión comercial:</b> lista › ⋮ › Enviar difusión comercial. Se paga por mensaje entregado (el precio depende del país); solo para chats individuales.')
+          ],
+          notas: L('Telas vistas de verdade em 25/10/2026: Listas, aviso “As etiquetas agora são as Listas”, Nova lista (criei “Novo pedido”), filtros nas Conversas e Enviar transmissão comercial até o aviso “Pague o mesmo preço por cada mensagem entregue” (não continuei: é pago e pede aceite de termos). O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026: Listas, aviso “Las etiquetas ahora son las Listas”, Nueva lista (creé “Novo pedido”), filtros en Chats y Enviar difusión comercial hasta el aviso de precio (no continué: es pago y pide aceptar términos). El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'listas-wa',
+        praticar: {
+          texto: L('No simulador, a Marina cria a lista Novo pedido com a Bia, vê o filtro nas Conversas e vai até o aviso de preço da transmissão.', 'En el simulador, Marina crea la lista Novo pedido con Bia, ve el filtro en Chats y llega hasta el aviso de precio de la difusión.'),
+          tour: 'listas-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Criei a lista Novo pedido! 😄 Agora quero mandar uma promoção para todas as clientes de uma vez. É de graça?', '¡Creé la lista Novo pedido! 😄 Ahora quiero mandar una promoción a todas las clientas de una vez. ¿Es gratis?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“A transmissão comercial é paga: cobra por mensagem entregue, e a tela mostra isso antes de você continuar. Se quiser seguir, veja o preço e os termos com calma.”', '“La difusión comercial es paga: cobra por mensaje entregado, y la pantalla lo muestra antes de que continúes. Si quieres seguir, revisa el precio y los términos con calma.”'), fb: L('Isso! Avisou do custo antes.', '¡Eso! Avisaste del costo antes.') },
+            { certa: false, txt: L('“É grátis, pode mandar à vontade.”', '“Es gratis, manda lo que quieras.”'), fb: L('Não é: cobra por mensagem entregue.', 'No lo es: cobra por mensaje entregado.') },
+            { certa: false, txt: L('“Mande pelo grupo da família que é igual.”', '“Mándalo por el grupo de la familia que es igual.”'), fb: L('A transmissão vai só para conversas individuais; grupo expõe o número das clientes.', 'La difusión va solo a chats individuales; un grupo expone el número de las clientas.') },
+            { certa: false, txt: L('“Use as etiquetas, que são grátis.”', '“Usa las etiquetas, que son gratis.”'), fb: L('As etiquetas viraram listas, e listas organizam; mandar para muitos é a transmissão (paga).', 'Las etiquetas se volvieron listas, y las listas organizan; mandar a muchos es la difusión (paga).') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O cliente procura “etiquetas”?', '¿El cliente busca “etiquetas”?'), L('Ele quer só organizar ou mandar mensagem para muitos?', '¿Quiere solo organizar o mandar mensaje a muchos?')],
+          conferir: [L('Ferramentas › Listas.', 'Herramientas › Listas.'), L('Filtros no alto das Conversas.', 'Filtros arriba de los Chats.'), L('Lista › ⋮ › Enviar transmissão comercial (aviso de preço).', 'Lista › ⋮ › Enviar difusión comercial (aviso de precio).')],
+          frase: L('As etiquetas agora são as Listas, em Ferramentas. Para mandar a mesma mensagem para uma lista, existe a transmissão comercial, que é cobrada por mensagem entregue.', 'Las etiquetas ahora son las Listas, en Herramientas. Para mandar el mismo mensaje a una lista existe la difusión comercial, que se cobra por mensaje entregado.'),
+          passos: [L('Listas › Criar lista personalizada › nome › ADICIONAR PESSOAS OU GRUPOS › ✓.', 'Listas › Crear lista personalizada › nombre › AGREGAR PERSONAS O GRUPOS › ✓.')],
+          encaminhar: L('Dúvidas sobre cobrança da transmissão (valores, fatura) seguem a Central de Ajuda do WhatsApp sobre preços das transmissões.', 'Dudas sobre el cobro de la difusión (valores, factura) siguen el Servicio de ayuda de WhatsApp sobre precios de las difusiones.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/3398508707096369', titulo: L('Como usar as etiquetas (agora listas)', 'Cómo usar las etiquetas (ahora listas)'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/1356785542323967', titulo: L('Sobre os preços das transmissões comerciais', 'Sobre los precios de las difusiones comerciales'), conferido: '26/10/2026' }
+        ]
+      },
+      {
+        id: '07', min: 8, status: 'pronta',
+        titulo: L('Anúncio para o WhatsApp pelo app', 'Anuncio para WhatsApp desde la app'),
+        antes: L('A Lojinha organiza as clientes em listas.', 'La Lojinha organiza a las clientas en listas.'),
+        gancho: L('“Ouvi falar de uma IA que responde clientes…” Próxima aula: IA no WhatsApp.', '“Escuché de una IA que responde a clientes…” Próxima clase: IA en WhatsApp.'),
+        objetivo: L('Conhecer o caminho do anúncio criado pelo próprio app (objetivo, conta, público, orçamento) e saber até onde a cliente vai sozinha.', 'Conocer el camino del anuncio creado desde la propia app (objetivo, cuenta, público, presupuesto) y saber hasta dónde llega la clienta sola.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Dá para fazer anúncio pelo próprio WhatsApp? Não tenho Facebook! 😬', '¿Se puede hacer un anuncio desde el propio WhatsApp? ¡No tengo Facebook! 😬')],
+            ['rafa', L('Dá: Ferramentas › Anúncios (ou Turbinar perfil). Você escolhe se as pessoas vão para o site ou mandam mensagem. Sem Facebook, toque em PULAR e siga com o e-mail.', 'Sí: Herramientas › Anuncios (o Promocionar perfil). Eliges si las personas van al sitio o te mandan mensaje. Sin Facebook, toca OMITIR y sigue con el correo.')],
+            ['marina', L('E escolho quem vê?', '¿Y elijo quién lo ve?')],
+            ['pixel', L('O app sugere o público Advantage+: com ele ativo, idade e gênero são só sugestão. Categorias especiais, como crédito ou emprego, pedem cuidado: no app aparece a pergunta “Requisitos especiais”.', 'La app sugiere el público Advantage+: con él activo, edad y género son solo sugerencia. Las categorías especiales, como crédito o empleo, piden cuidado: en la app aparece la pregunta “Requisitos especiales”.')]
+          ],
+          pontos: [
+            L('<b>Caminho:</b> Ferramentas › Anúncios (ou Edit profile › Turbinar perfil) › objetivo (Visitem seu site / Enviem uma mensagem) › conta do Facebook ou PULAR › anúncio › Público › Orçamento › Pagar e criar anúncio.', '<b>Camino:</b> Herramientas › Anuncios (o Edit profile › Promocionar perfil) › objetivo (Visiten tu sitio / Te envíen un mensaje) › cuenta de Facebook u OMITIR › anuncio › Público › Presupuesto › Pagar y crear anuncio.'),
+            L('<b>Orçamento:</b> valor por dia e duração (“até eu pausá-lo” é o recomendado). Sem forma de pagamento o anúncio não sai.', '<b>Presupuesto:</b> valor por día y duración (“hasta que lo pause” es lo recomendado). Sin método de pago el anuncio no sale.'),
+            L('<b>Depois:</b> a maioria dos anúncios é revisada em até 24 horas. Pelo app, o anúncio ativo pode ser pausado; para apagar, primeiro pause.', '<b>Después:</b> la mayoría de los anuncios se revisa en hasta 24 horas. Desde la app, el anuncio activo se puede pausar; para borrarlo, primero pausa.'),
+            L('<b>Mensagem de boas-vindas do anúncio:</b> para personalizar, só pelo Gerenciador de Anúncios.', '<b>Mensaje de bienvenida del anuncio:</b> para personalizarlo, solo desde el Administrador de anuncios.')
+          ],
+          notas: L('Telas vistas de verdade em 25/10/2026 pelo Turbinar perfil e por Anúncios: objetivo, “Confirme sua conta do Facebook” (usei PULAR), Criar anúncio, Público (Advantage+, Requisitos especiais), Definir orçamento e “Seu anúncio está pronto” até “Pagar e criar anúncio” (não paguei; ficou um rascunho). Curso de 23/10: dois jeitos de criar (com Facebook ou com e-mail), revisão em até 24 h, apagar só pausado, boas-vindas só no Gerenciador, diferenças entre Android e iPhone ao editar (a conferir). O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026: objetivo, “Confirma tu cuenta de Facebook” (usé OMITIR), Crear anuncio, Público, Definir presupuesto y “Tu anuncio está listo” hasta “Pagar y crear anuncio” (no pagué). El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'anuncio-wa',
+        praticar: {
+          texto: L('No simulador, você segue o caminho do anúncio pelo celular da Marina até a tela de pagamento, e para ali.', 'En el simulador, sigues el camino del anuncio en el celular de Marina hasta la pantalla de pago, y paras ahí.'),
+          tour: 'anuncio-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Montei meu anúncio no app! 🤩 Mas e se eu quisesse mudar a mensagem que a pessoa recebe quando clica no anúncio?', '¡Armé mi anuncio en la app! 🤩 ¿Pero y si quisiera cambiar el mensaje que la persona recibe cuando hace clic en el anuncio?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“A mensagem de boas-vindas do anúncio só se personaliza pelo Gerenciador de Anúncios, no computador. Pelo app dá para pausar e acompanhar.”', '“El mensaje de bienvenida del anuncio solo se personaliza desde el Administrador de anuncios, en la computadora. Desde la app se puede pausar y seguir.”'), fb: L('Isso! O lugar certo é o Gerenciador.', '¡Eso! El lugar correcto es el Administrador.') },
+            { certa: false, txt: L('“Mude a mensagem de saudação.”', '“Cambia el mensaje de bienvenida.”'), fb: L('A saudação é outra coisa (primeira mensagem de qualquer cliente). A do anúncio é no Gerenciador.', 'La bienvenida es otra cosa (primer mensaje de cualquier cliente). La del anuncio es en el Administrador.') },
+            { certa: false, txt: L('“Apague o anúncio ativo e faça outro.”', '“Borra el anuncio activo y haz otro.”'), fb: L('Anúncio ativo não se apaga direto: primeiro pausa. E a mensagem se muda no Gerenciador.', 'El anuncio activo no se borra directo: primero se pausa. Y el mensaje se cambia en el Administrador.') },
+            { certa: false, txt: L('“Não tem como mudar.”', '“No hay forma de cambiarlo.”'), fb: L('Tem, pelo Gerenciador de Anúncios.', 'Sí hay, desde el Administrador de anuncios.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O anúncio foi criado pelo app ou pelo Gerenciador?', '¿El anuncio se creó desde la app o desde el Administrador?'), L('A conta do Facebook foi ligada ou foi com e-mail?', '¿Se vinculó la cuenta de Facebook o fue con correo?'), L('Tem forma de pagamento?', '¿Tiene método de pago?')],
+          conferir: [L('Ferramentas › Anúncios.', 'Herramientas › Anuncios.'), L('Público Advantage+ ligado?', '¿Público Advantage+ activado?')],
+          frase: L('Pelo app você cria um anúncio que leva para o WhatsApp: objetivo, público, orçamento e pagamento. Ajustes finos, como a mensagem de boas-vindas, ficam no Gerenciador de Anúncios.', 'Desde la app creas un anuncio que lleva a WhatsApp: objetivo, público, presupuesto y pago. Los ajustes finos, como el mensaje de bienvenida, quedan en el Administrador de anuncios.'),
+          passos: [L('Anúncios › objetivo › Avançar › (Facebook ou PULAR) › Público › Orçamento › pagamento.', 'Anuncios › objetivo › Siguiente › (Facebook u OMITIR) › Público › Presupuesto › pago.')],
+          encaminhar: L('Reembolso e cobrança de anúncio vão para o suporte de pagamentos (Configurações da conta de anúncios › Pagamentos).', 'Reembolsos y cobros de anuncios van al soporte de pagos (Configuración de la cuenta publicitaria › Pagos).')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/512723604104492', titulo: L('Como criar anúncios no WhatsApp Business', 'Cómo crear anuncios en WhatsApp Business'), conferido: '26/10/2026' }
+        ]
+      },
+      {
+        id: '08', min: 7, status: 'pronta',
+        titulo: L('IA no WhatsApp: assistente × agente', 'IA en WhatsApp: asistente × agente'),
+        antes: L('A Lojinha já anuncia e atende pelo WhatsApp.', 'La Lojinha ya anuncia y atiende por WhatsApp.'),
+        gancho: L('“E se a cliente me achar pelo Instagram?” Próxima aula: Instagram e Facebook conectados.', '“¿Y si la clienta me encuentra por Instagram?” Próxima clase: Instagram y Facebook conectados.'),
+        objetivo: L('Diferenciar o assistente da Meta AI (ajuda a loja) do agente de IA (responde clientes, no Meta One) e saber o que muda quando o agente é ligado.', 'Diferenciar el asistente de Meta AI (ayuda a la tienda) del agente de IA (responde a clientes, en Meta One) y saber qué cambia cuando se activa el agente.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Tem um botão roxo nas minhas conversas. É uma IA que responde minhas clientes? 🤖', 'Hay un botón morado en mis chats. ¿Es una IA que responde a mis clientas? 🤖')],
+            ['rafa', L('Esse é o assistente da Meta AI para empresas: ele ajuda VOCÊ, com ideias, textos e imagens. É opcional e tem termos para aceitar.', 'Ese es el asistente de Meta AI para empresas: te ayuda a TI, con ideas, textos e imágenes. Es opcional y tiene términos para aceptar.')],
+            ['marina', L('E uma IA que responde as clientes?', '¿Y una IA que responda a las clientas?')],
+            ['pixel', L('É o agente de IA, que vem nos planos Meta One (pagos), de 500 a 30.000 conversas por mês. Com ele ligado, a saudação e a ausência ficam desligadas.', 'Es el agente de IA, que viene en los planes Meta One (pagos), de 500 a 30.000 chats por mes. Con él activo, la bienvenida y la ausencia quedan desactivadas.')]
+          ],
+          pontos: [
+            L('<b>Assistente da Meta AI para empresas:</b> botão roxo nas Conversas. Ajuda a loja (recomendações, organização, imagens para catálogo e anúncios). Opcional, com termos.', '<b>Asistente de Meta AI para empresas:</b> botón morado en Chats. Ayuda a la tienda (recomendaciones, organización, imágenes para catálogo y anuncios). Opcional, con términos.'),
+            L('<b>Agente de IA:</b> responde clientes sozinho; vem no Meta One (Essencial, Avançado, Expert, Max). Liberação aos poucos: nem toda conta vê.', '<b>Agente de IA:</b> responde a clientes solo; viene en Meta One (Esencial, Avanzado, Expert, Max). Se libera de a poco: no todas las cuentas lo ven.'),
+            L('<b>Com o agente ligado:</b> saudação e ausência desligam; conversa em andamento só recebe resposta da IA depois de 7 dias parada (ou reiniciando as respostas da IA).', '<b>Con el agente activo:</b> bienvenida y ausencia se desactivan; un chat en curso solo recibe respuesta de la IA después de 7 días quieto (o reiniciando las respuestas de la IA).')
+          ],
+          notas: L('Telas vistas de verdade em 25/10/2026: o botão roxo abre “Assistente para empresas da Meta AI”; ao mandar a primeira mensagem aparecem os termos (não aceitei). Meta One: abas Essencial, Avançado, Expert e Max com o que cada uma traz (os preços não carregaram; não assinei). O agente de IA não estava disponível na conta de aula; a parte dele vem da Central de Ajuda. O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026: el botón morado abre “Asistente para empresas de Meta AI”; al mandar el primer mensaje aparecen los términos (no acepté). Meta One: pestañas Esencial, Avanzado, Expert y Max (los precios no cargaron; no me suscribí). El agente de IA no estaba disponible en la cuenta de clase; esa parte viene del Servicio de ayuda. El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'ia-wa',
+        praticar: {
+          texto: L('No simulador, você abre o assistente até a tela dos termos e depois compara os planos do Meta One.', 'En el simulador, abres el asistente hasta la pantalla de términos y después comparas los planes de Meta One.'),
+          tour: 'ia-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Liguei o agente de IA e minhas mensagens de saudação e de ausência pararam de sair! 😰 Quebrou?', '¡Activé el agente de IA y mis mensajes de bienvenida y de ausencia dejaron de salir! 😰 ¿Se rompió?'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Não quebrou: com o agente de IA ligado, a saudação e a ausência ficam desligadas, porque é o agente que responde. Se preferir as mensagens automáticas, ajuste quais conversas o agente atende ou desligue o agente.”', '“No se rompió: con el agente de IA activo, la bienvenida y la ausencia quedan desactivadas, porque es el agente el que responde. Si prefieres los mensajes automáticos, ajusta qué chats atiende el agente o desactívalo.”'), fb: L('Isso! É o funcionamento descrito pela Meta.', '¡Eso! Es el funcionamiento descrito por Meta.') },
+            { certa: false, txt: L('“Reinstale o WhatsApp Business.”', '“Reinstala WhatsApp Business.”'), fb: L('Não é defeito: o agente desliga as duas.', 'No es falla: el agente desactiva las dos.') },
+            { certa: false, txt: L('“Use o assistente roxo para responder as clientes.”', '“Usa el asistente morado para responder a las clientas.”'), fb: L('O assistente ajuda a loja; quem responde clientes é o agente.', 'El asistente ayuda a la tienda; quien responde a clientes es el agente.') },
+            { certa: false, txt: L('“É só esperar 14 dias que volta.”', '“Basta esperar 14 días y vuelve.”'), fb: L('Os 14 dias são da saudação; com o agente ligado, ela fica desligada.', 'Los 14 días son de la bienvenida; con el agente activo, queda desactivada.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('O cliente fala do botão roxo (assistente) ou de respostas automáticas para clientes (agente)?', '¿El cliente habla del botón morado (asistente) o de respuestas automáticas a clientes (agente)?'), L('Tem Meta One?', '¿Tiene Meta One?')],
+          conferir: [L('Botão roxo nas Conversas (assistente).', 'Botón morado en Chats (asistente).'), L('Ferramentas › Meta One (planos e agente).', 'Herramientas › Meta One (planes y agente).')],
+          frase: L('O assistente da Meta AI ajuda você a cuidar da loja; o agente de IA responde clientes e vem no Meta One. Com o agente ligado, saudação e ausência param.', 'El asistente de Meta AI te ayuda a cuidar la tienda; el agente de IA responde a clientes y viene en Meta One. Con el agente activo, bienvenida y ausencia se detienen.'),
+          passos: [L('Assistente: botão roxo › mensagem › aceitar os termos (decisão da cliente).', 'Asistente: botón morado › mensaje › aceptar los términos (decisión de la clienta).'), L('Agente: Ferramentas › agente de IA (quando disponível) › escolher quais conversas.', 'Agente: Herramientas › agente de IA (cuando esté disponible) › elegir qué chats.')],
+          encaminhar: L('Agente indisponível na conta: a liberação é gradual (lista de espera); não há como ativar por suporte.', 'Agente no disponible en la cuenta: la liberación es gradual (lista de espera); no se puede activar por soporte.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/1337427890552510', titulo: L('Sobre o assistente da Meta AI para empresas', 'Sobre el asistente de Meta AI para empresas'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/1153795669452207', titulo: L('Como configurar o Meta Business Agent', 'Cómo configurar Meta Business Agent'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/975910528178219', titulo: L('Sobre os planos Meta One', 'Sobre los planes Meta One'), conferido: '26/10/2026' }
+        ]
+      },
+      {
+        id: '09', min: 8, status: 'pronta',
+        titulo: L('Instagram e Facebook conectados', 'Instagram y Facebook conectados'),
+        antes: L('A Lojinha conhece as duas IAs do WhatsApp.', 'La Lojinha conoce las dos IA de WhatsApp.'),
+        objetivo: L('Conectar a Página do Facebook e o Instagram ao WhatsApp Business e reconhecer os erros mais comuns ao conectar.', 'Conectar la Página de Facebook e Instagram a WhatsApp Business y reconocer los errores más comunes al conectar.'),
+        entender: {
+          dialogo: [
+            ['marina', L('Quero que quem me acha no Instagram consiga me chamar no WhatsApp. Como ligo? 📸', 'Quiero que quien me encuentre en Instagram pueda escribirme por WhatsApp. ¿Cómo lo vinculo? 📸')],
+            ['rafa', L('Ferramentas › Instagram e Facebook (ou Configurações › Facebook e Instagram). O Instagram precisa ser conta profissional, de uma categoria compatível com o WhatsApp Business.', 'Herramientas › Instagram y Facebook (o Ajustes › Facebook e Instagram). El Instagram debe ser cuenta profesional, de una categoría compatible con WhatsApp Business.')],
+            ['marina', L('E se der erro dizendo que meu número está ligado a outra empresa?', '¿Y si da error diciendo que mi número está vinculado a otra empresa?')],
+            ['pixel', L('É um vínculo para cada um: se já existe outra Página ligada, primeiro desligue a antiga. E a Página precisa estar ativa e publicada.', 'Es un vínculo para cada uno: si ya hay otra Página vinculada, primero desvincula la anterior. Y la Página debe estar activa y publicada.')]
+          ],
+          pontos: [
+            L('<b>Onde:</b> Ferramentas › Instagram e Facebook › Conectar (“Permita que os clientes iniciem conversas no WhatsApp a partir do Facebook e do Instagram”).', '<b>Dónde:</b> Herramientas › Instagram y Facebook › Conectar (“Permite que los clientes inicien chats en WhatsApp desde Facebook e Instagram”).'),
+            L('<b>Instagram:</b> conta profissional e categoria compatível. Se a categoria não serve, a cliente troca no Instagram; a Meta não pode sugerir qual escolher.', '<b>Instagram:</b> cuenta profesional y categoría compatible. Si la categoría no sirve, la clienta la cambia en Instagram; Meta no puede sugerir cuál elegir.'),
+            L('<b>Facebook:</b> Página de empresa ativa e publicada, apps atualizados. Uma Página por WhatsApp: para trocar, desligue a antiga.', '<b>Facebook:</b> Página de empresa activa y publicada, apps actualizadas. Una Página por WhatsApp: para cambiar, desvincula la anterior.'),
+            L('<b>Erros comuns:</b> “número vinculado a outra empresa”, “excedeu o número de tentativas”, “código incorreto”, “algo deu errado”, senha do Instagram incorreta (trocar a senha no Instagram e tentar de novo).', '<b>Errores comunes:</b> “número vinculado a otra empresa”, “superó el número de intentos”, “código incorrecto”, “algo salió mal”, contraseña de Instagram incorrecta (cambiarla en Instagram e intentar de nuevo).')
+          ],
+          notas: L('Tela vista de verdade em 25/10/2026: Ferramentas › Instagram e Facebook (“Conectar”, com o Instagram da conta de aula e o botão CONECTAR do Facebook). Não toquei em CONECTAR (abre o login do Facebook). A lista de erros e os passos vêm do curso de 23/10 e da Central de Ajuda. Ponto do curso NÃO usado por falta de fonte oficial: que ligar o WhatsApp a um Facebook/Instagram com Meta Verified cancelaria a assinatura. O espanhol das telas é tradução nossa (a conferir).', 'Pantalla vista de verdad el 25/10/2026: Herramientas › Instagram y Facebook (“Conectar”). No toqué CONECTAR (abre el inicio de sesión de Facebook). La lista de errores y los pasos vienen del curso del 23/10 y del Servicio de ayuda. El español de las pantallas es traducción nuestra (por confirmar).')
+        },
+        ferramenta: 'conectar-wa',
+        praticar: {
+          texto: L('No simulador, você chega à tela Conectar e vê o que fica com a cliente (o login do Facebook).', 'En el simulador, llegas a la pantalla Conectar y ves lo que queda con la clienta (el inicio de sesión de Facebook).'),
+          tour: 'conectar-whatsapp', pagina: 'meta-whatsapp.html?zerar=1'
+        },
+        atender: {
+          cena: L('Tentei ligar meu Instagram ao WhatsApp e apareceu que a categoria do Instagram não é compatível. Qual categoria eu ponho? 🤔', 'Intenté vincular mi Instagram a WhatsApp y apareció que la categoría de Instagram no es compatible. ¿Qué categoría pongo? 🤔'),
+          pergunta: PERG,
+          opcoes: [
+            { certa: true, txt: L('“Nem toda categoria do Instagram é aceita pelo WhatsApp Business. A troca é no próprio Instagram, e quem escolhe é você, pela que descreve a loja; eu não posso indicar qual. Depois de trocar, tente conectar de novo.”', '“No todas las categorías de Instagram son aceptadas por WhatsApp Business. El cambio es en el propio Instagram, y quien elige eres tú, la que describe la tienda; yo no puedo indicar cuál. Después de cambiarla, intenta conectar de nuevo.”'), fb: L('Isso! Explicou e não sugeriu categoria.', '¡Eso! Explicaste y no sugeriste categoría.') },
+            { certa: false, txt: L('“Põe Compras e varejo que sempre funciona.”', '“Pon Compras y venta minorista que siempre funciona.”'), fb: L('A Meta não pode sugerir categoria: a escolha é da cliente.', 'Meta no puede sugerir categoría: la elección es de la clienta.') },
+            { certa: false, txt: L('“Troca a categoria do WhatsApp.”', '“Cambia la categoría de WhatsApp.”'), fb: L('O erro é da categoria do Instagram.', 'El error es de la categoría de Instagram.') },
+            { certa: false, txt: L('“Cria um Instagram novo.”', '“Crea un Instagram nuevo.”'), fb: L('Não precisa: basta ajustar a categoria do Instagram que já existe.', 'No hace falta: basta ajustar la categoría del Instagram que ya existe.') }
+          ]
+        },
+        cola: {
+          perguntas: [L('Qual mensagem de erro aparece?', '¿Qué mensaje de error aparece?'), L('O Instagram é profissional? A Página está ativa e publicada?', '¿El Instagram es profesional? ¿La Página está activa y publicada?'), L('Já existe outra Página ligada a esse WhatsApp?', '¿Ya hay otra Página vinculada a este WhatsApp?')],
+          conferir: [L('Ferramentas › Instagram e Facebook.', 'Herramientas › Instagram y Facebook.'), L('App WhatsApp Business e Instagram atualizados.', 'App WhatsApp Business e Instagram actualizadas.')],
+          frase: L('Para ligar, o Instagram precisa ser profissional e de categoria compatível, e a Página precisa estar ativa. Se já existe outra Página ligada, primeiro desligamos a antiga.', 'Para vincular, el Instagram debe ser profesional y de categoría compatible, y la Página debe estar activa. Si ya hay otra Página vinculada, primero desvinculamos la anterior.'),
+          passos: [L('Ferramentas › Instagram e Facebook › CONECTAR › entrar com a conta.', 'Herramientas › Instagram y Facebook › CONECTAR › entrar con la cuenta.'), L('Desligar a antiga: Configurações › Facebook e Instagram › a Página › remover.', 'Desvincular la anterior: Ajustes › Facebook e Instagram › la Página › quitar.')],
+          encaminhar: L('Página com restrição ou desativada: resolver primeiro a Página (Qualidade da conta). Portfólio restrito: área de integridade.', 'Página con restricción o desactivada: resolver primero la Página (Calidad de la cuenta). Portfolio restringido: área de integridad.')
+        },
+        fontes: [
+          { url: 'https://faq.whatsapp.com/2919026648317213', titulo: L('Como conectar uma conta do WhatsApp Business a uma conta do Instagram', 'Cómo conectar una cuenta de WhatsApp Business a una cuenta de Instagram'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/518326725476814', titulo: L('Como sincronizar o WhatsApp Business com Páginas do Facebook', 'Cómo sincronizar WhatsApp Business con páginas de Facebook'), conferido: '26/10/2026' }
+        ]
       }
     ];
   })(),
