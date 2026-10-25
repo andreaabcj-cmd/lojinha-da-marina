@@ -586,7 +586,9 @@
     var ativo = { inicio: 'inicio', modulos: 'modulos', diagnostico: 'diagnostico', modulo: naArea ? 'diagnostico' : 'modulos', aula: naArea ? 'diagnostico' : 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', faq: 'faq', feedback: 'feedback' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
     var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
-    document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + TELAS[tela]() + '</main>';
+    // aviso discreto de obra nas páginas de entrada (não mexe no conteúdo de cada tela)
+    var obra = ['inicio', 'modulos', 'diagnostico', 'faq'].indexOf(tela) >= 0 ? '<p class="pl-obra">🚧 ' + T({ pt: 'Plataforma em construção: algumas aulas e telas ainda estão sendo revisadas e podem mudar.', es: 'Plataforma en construcción: algunas clases y pantallas todavía se están revisando y pueden cambiar.' }) + ' <a href="feedback.html">' + T({ pt: 'Viu algo estranho? Conte no Feedback', es: '¿Viste algo raro? Cuéntalo en Feedback' }) + '</a></p>' : '';
+    document.body.innerHTML = topo(ativo) + '<main class="pl-main">' + obra + TELAS[tela]() + '</main>';
     tg.forEach(function (x) { document.body.appendChild(x) });
     if (tela !== 'aula') mov().cascata($('.pl-main'));
     if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);

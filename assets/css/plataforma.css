@@ -21,6 +21,7 @@ code{font-family:Consolas,monospace;font-size:.9em;background:#EEF2F7;padding:1p
 .pl-lang button{border:0;background:transparent;color:#fff;padding:5px 11px;font:800 13px Consolas,monospace;cursor:pointer}
 .pl-lang button.on{background:var(--yellow);color:var(--ink)}
 .pl-main{max-width:1160px;margin:0 auto;padding:26px 16px 70px}
+.pl-obra{font-size:12.5px;color:var(--muted);margin:-14px 0 14px;line-height:1.4}.pl-obra a{color:inherit;text-decoration:underline}
 .pl-trilha{font-size:14px;color:var(--muted);margin:0 0 6px}.pl-trilha a{color:var(--muted)}
 h1.pl-h1{font-size:32px;margin:0 0 6px}.pl-lead{font-size:18px;color:var(--ink2);margin:0 0 22px;max-width:760px}
 
