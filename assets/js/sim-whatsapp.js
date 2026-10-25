@@ -1,22 +1,24 @@
 /* Simulador do WhatsApp: à esquerda o celular da Marina (WhatsApp Business), à direita o celular de uma cliente (WhatsApp comum).
    O que a Marina muda no perfil aparece na hora no celular da cliente.
    - Estado no navegador (localStorage "sim.whatsapp"); nada é enviado ao WhatsApp. ?zerar=1 volta ao começo.
-   - Telas do app real vistas em 25/10/2026 (app Android, conta de aula, tema escuro): Ferramentas, Edit profile, Prévia,
-     Escolha as categorias, Horário de atendimento (1ª tela), Selecionar faixa. As cores do tema claro e as telas
-     marcadas "a conferir" ainda não foram vistas. O espanhol das telas é tradução nossa (a conferir).
-   - O que a cliente vê no perfil: o que a Prévia real mostrou (nome, @, botões, produtos, telefone, horário) e, pela
-     Central de Ajuda, categoria e descrição (a ordem desses dois é a conferir).
+   - Telas do app real vistas em 25/10/2026 (tema escuro) e 26/10/2026 (tema claro, cores medidas na foto): Conversas,
+     Ferramentas, Edit profile, Prévia, Escolha as categorias, Horário de atendimento, Selecionar horários (uma chave por
+     dia), Selecionar faixa. Os campos que avisam "a conferir" (nome, descrição, site, e-mail, endereço) não foram abertos.
+     O espanhol das telas é tradução nossa (a conferir).
+   - O que a cliente vê no perfil = a Prévia real: botões, listas/notas, produtos, telefone, horário de hoje, categoria,
+     descrição, site e "Empresa cadastrada há…", nessa ordem.
    - Tutoriais (tour.js): meta-whatsapp.html?tour=perfil-whatsapp */
 (function () {
-  var CONF = '25/10/2026';
+  var CONF = '25 e 26/10/2026';
   var $ = function (s, r) { return (r || document).querySelector(s) };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
   var params = new URLSearchParams(location.search);
   function ler(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d } catch (e) { return d } }
-  function perfilInicial() { return { nome: 'Lojinha da Marina', user: 'lojinhadamarina', cats: ['Outras empresas'], horario: '', faixa: '', desc: 'Canecas, camisetas e ecobags feitas à mão.', site: 'lojinhadamarina.com.br' } }
+  function perfilInicial() { return { nome: 'Lojinha da Marina', user: 'lojinhadamarina', cats: ['Outras empresas'], horario: '', dias: [true, true, true, true, true, true, true], faixa: '', desc: 'Canecas, camisetas e ecobags feitas à mão.', site: 'lojinhadamarina.com.br' } }
   function inicial() { return { p: perfilInicial(), m: 'conversas', c: 'conversa', F: {} } }
   var S = ler('sim.whatsapp', null) || inicial();
   if (params.get('zerar')) S = inicial();
+  if (!S.p.dias) S.p.dias = perfilInicial().dias;
   function grava() { try { localStorage.setItem('sim.whatsapp', JSON.stringify(S)) } catch (e) { } }
   grava();
 
@@ -35,7 +37,7 @@
   function item(ic, tit, sub, wa, t) { return '<button class="wa-item" data-wa="' + wa + '"' + (t ? ' data-t="' + t + '"' : '') + '><i>' + ic + '</i><span><b>' + tit + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</span></button>' }
   function horarioDias() {
     var h = S.p.horario;
-    if (h === 'sempre') return DIAS.map(function (d, i) { return '<span class="wa-dia"><span>' + d + '</span><span>Aberta 24 horas</span></span>' }).join('');
+    if (h === 'sempre') return DIAS.map(function (d, i) { return '<span class="wa-dia"><span>' + d + '</span><span>' + (S.p.dias[i] ? 'Aberta 24 horas' : 'Fechada') + '</span></span>' }).join('');
     if (h === 'marcada') return '<span class="wa-dia"><span>Somente com hora marcada</span></span>';
     return '';
   }
@@ -48,8 +50,9 @@
     conversas: function () {
       return topo('WhatsApp', '📷 ⋮') + '<div class="wa-busca">🔍 Pesquisar...</div>' +
         '<div class="wa-faixa-verde">Toque para conectar sua conta comercial a até 4 outros dispositivos. <b>Abrir</b></div>' +
+        '<div class="wa-chips"><span class="on">Todas</span><span>Não lidas 1</span><span>Favoritos</span><span>Grupos</span></div>' +
         '<div class="wa-conv"><span class="wa-av">B</span><span><b>Bia (cliente)</b><small>Vocês abrem que horas?</small></span><em>09:12</em></div>' +
-        abas('conversas');
+        '<span class="wa-fab" title="Nova conversa">＋</span>' + abas('conversas');
     },
     ligacoes: function () { return topo('Ligações') + '<p class="wa-vazio">Neste treino as ligações ficam de fora.</p>' + abas('ligacoes') },
     atualizacoes: function () { return topo('Atualizações') + '<p class="wa-vazio">Status e Canais ficam para outra aula.</p>' + abas('atualizacoes') },
@@ -95,8 +98,14 @@
     horario: function () {
       var v = S.F.hor || S.p.horario;
       return topo('Horário de atendimento', '', 'm:perfil') + '<div class="wa-rolar"><p class="wa-txtc">Informe aos clientes quando você está disponível.</p><div data-t="wa-hor-lista">' +
-        HOR.map(function (o) { return '<label class="wa-op"><input type="radio" name="wahor" value="' + o[0] + '"' + (v === o[0] ? ' checked' : '') + '/> ' + o[1] + '</label>' }).join('') + '</div></div>' +
+        HOR.map(function (o) { return '<label class="wa-op"><input type="radio" name="wahor" value="' + o[0] + '"' + (v === o[0] ? ' checked' : '') + '/> <span>' + o[1] + (v === o[0] ? '<span class="sel">Selecionado</span>' : '') + '</span></label>' }).join('') + '</div></div>' +
         '<button class="wa-bt" data-wa="hor:avancar" data-t="wa-hor-avancar">Avançar</button>';
+    },
+    dias: function () {   // "Selecionar horários" (vista em 26/10/2026): uma chave por dia; desligada = Fechada
+      var d = S.F.dias || S.p.dias;
+      return topo('Selecionar horários', '', 'm:horario') + '<div class="wa-rolar" data-t="wa-dias-lista">' + DIAS.map(function (n, i) {
+        return '<div class="wa-dia2"><span>' + n + '<small>' + (d[i] ? 'Aberta 24 horas' : 'Fechada') + '</small></span><button class="wa-tog' + (d[i] ? ' on' : '') + '" data-wa="dia:' + i + '" data-t="wa-dia-' + i + '" aria-label="' + n + '"></button></div>' }).join('') + '</div>' +
+        '<button class="wa-bt" data-wa="dias:salvar" data-t="wa-dias-salvar">Salvar</button>';
     },
     faixa: function () {
       var v = S.F.faixa != null ? S.F.faixa : S.p.faixa;
@@ -108,17 +117,23 @@
   };
 
   /* ---------- o perfil como a cliente vê (igual à Prévia) ---------- */
-  function perfilVisto(voce) {
-    var p = S.p, h = p.horario;
+  function horaHoje() {   // como a Prévia real: dia de hoje aberto = "Aberta agora · Aberta 24 horas"; fechado = "<dia> · Fechada"
+    var p = S.p, h = p.horario, hoje = new Date().getDay();
+    if (h === 'sempre') return p.dias[hoje] ? '<span class="wa-verde">Aberta agora</span><span class="wa-dir">Aberta 24 horas ⌄</span>' : '<span>' + DIAS[hoje] + '</span><span class="wa-dir">Fechada ⌄</span>';
+    if (h === 'marcada') return '<span>Somente com hora marcada</span>';
+    return '<span class="wa-cinza">Sem horário de atendimento</span>';
+  }
+  function perfilVisto(voce) {   // ordem conferida na Prévia real (26/10/2026)
+    var p = S.p;
     return '<div data-t="' + (voce ? 'wa-previa-tela' : 'wa-cli-perfil') + '"><div class="wa-capa"><span class="wa-foto">🏪</span></div>' +
       '<p class="wa-nome">' + esc(p.nome) + (voce ? ' (Você)' : '') + '</p><p class="wa-user">@' + esc(p.user) + '</p>' +
       '<div class="wa-botoes"><span>💬<small>Conversar</small></span><span>🏪<small>Catálogo</small></span><span>↪<small>Compartilhar</small></span></div>' +
-      '<p class="wa-linha">📋 Adicionar às listas</p><p class="wa-linha">📝 Adicionar notas</p>' +
-      '<p class="wa-sec">Produtos <span class="wa-dir">MOSTRAR TUDO ›</span></p><div class="wa-prods">' + PRODUTOS.map(function (n) { return '<img src="assets/img/' + n + '.png" alt=""/>' }).join('') + '</div>' +
-      '<p class="wa-linha">📞 +55 11 90000-0000</p>' +
-      '<p class="wa-linha" data-t="' + (voce ? 'wa-prev-hor' : 'wa-cli-hor') + '">🕘 ' + (h === 'sempre' ? '<span class="wa-verde">Aberta agora</span> · Aberta 24 horas' : h === 'marcada' ? 'Somente com hora marcada' : '<span class="wa-cinza">Sem horário de atendimento</span>') + '</p>' +
-      '<div class="wa-pend"><p class="wa-linha" data-t="' + (voce ? 'wa-prev-cat' : 'wa-cli-cat') + '">🔷 ' + esc(p.cats.join(', ')) + '</p><p class="wa-linha">📄 ' + esc(p.desc) + '</p><p class="wa-linha">🌐 ' + esc(p.site) + '</p>' +
-      '<p class="wa-nota">Categoria, descrição e site: a Central de Ajuda diz que o cliente vê; a posição exata na tela é a conferir.</p></div></div>';
+      '<div class="wa-banda"></div><p class="wa-linha">📋 Adicionar às listas</p><p class="wa-linha">📝 Adicionar notas</p><div class="wa-banda"></div>' +
+      '<p class="wa-sec">Produtos <span class="wa-dir">MOSTRAR TUDO ›</span></p><div class="wa-prods">' + PRODUTOS.map(function (n) { return '<img src="assets/img/' + n + '.png" alt=""/>' }).join('') + '</div><div class="wa-banda"></div>' +
+      '<p class="wa-linha">📞 <span>+55 11 90000-0000</span></p>' +
+      '<p class="wa-linha" data-t="' + (voce ? 'wa-prev-hor' : 'wa-cli-hor') + '">🕘 ' + horaHoje() + '</p>' +
+      '<p class="wa-linha" data-t="' + (voce ? 'wa-prev-cat' : 'wa-cli-cat') + '">🔷 <span>' + esc(p.cats.join(', ')) + '</span></p><p class="wa-linha">🏪 <span>' + esc(p.desc) + '</span></p><p class="wa-linha link">🌐 <span>https://' + esc(p.site) + '</span></p>' +
+      '<div class="wa-banda"></div><p class="wa-linha">Empresa cadastrada há um mês</p></div>';
   }
 
   /* ---------- celular da cliente (WhatsApp comum) ---------- */
@@ -137,12 +152,12 @@
     $('#app').innerHTML = '<div class="sim-faixa">🧪 Simulador de treinamento do WhatsApp · nada aqui vai para o WhatsApp · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="wa-palco"><section class="wa-lado"><h2>📱 Celular da Marina <small>WhatsApp Business</small></h2><div class="wa-cel" data-t="wa-cel-marina">' + (M[S.m] || M.conversas)() + '</div></section>' +
       '<section class="wa-lado"><h2>📱 Celular da cliente <small>WhatsApp</small></h2><div class="wa-cel cli" data-t="wa-cel-cliente">' + (C[S.c] || C.conversa)() + '</div></section></div>' +
-      '<p class="conferido pendente wa-conf">✓ Telas do app conferidas em ' + CONF + ' (tema escuro) · ⚠ cores do tema claro e itens marcados: a conferir</p>' +
+      '<p class="conferido wa-conf">✓ Telas do app conferidas em ' + CONF + ' (temas escuro e claro) · campos que avisam “a conferir” ainda não foram vistos</p>' +
       '<div class="wa-toast" id="waToast" hidden></div>';
     if (foco && document.getElementById(foco)) document.getElementById(foco).focus();
   }
   function toast(t) { var e = $('#waToast'); if (!e) return; e.textContent = t; e.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { e.hidden = true }, 2600) }
-  function vai(lado, tela) { if (lado === 'm') { S.m = tela; if (tela !== 'categoria' && tela !== 'horario' && tela !== 'faixa') S.F = {} } else S.c = tela; grava(); render() }
+  function vai(lado, tela) { if (lado === 'm') { S.m = tela; if (['categoria', 'horario', 'dias', 'faixa'].indexOf(tela) < 0) S.F = {} } else S.c = tela; grava(); render() }
 
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-wa]'); if (!b) return; var a = b.getAttribute('data-wa');
@@ -151,7 +166,9 @@
     if (a === 'x:depois') return toast('Fica para as próximas aulas do módulo.');
     if (a === 'x:conferir') return toast('Esta tela ainda não foi conferida no app real: fica de fora por enquanto.');
     if (a === 'cat:salvar') { var c = S.F.cats || S.p.cats; if (!c.length) return toast('Escolha pelo menos 1 categoria.'); S.p.cats = c.slice(0, 3); S.F = {}; S.m = 'perfil'; grava(); return render() }
-    if (a === 'hor:avancar') { var h = S.F.hor || S.p.horario; if (!h) return toast('Escolha uma opção.'); if (h === 'especificos') return toast('A tela dos horários de cada dia ainda não foi conferida: escolha Sempre aberta neste treino.'); S.p.horario = h; S.F = {}; S.m = 'perfil'; grava(); return render() }
+    if (a === 'hor:avancar') { var h = S.F.hor || S.p.horario; if (!h) return toast('Escolha uma opção.'); if (h !== 'sempre') return toast('Neste treino só a opção Sempre aberta foi conferida até o fim: escolha Sempre aberta.'); S.F.hor = h; S.F.dias = (S.F.dias || S.p.dias).slice(); S.m = 'dias'; grava(); return render() }
+    if (a.indexOf('dia:') === 0) { var i = +a.slice(4), d = (S.F.dias || S.p.dias).slice(); d[i] = !d[i]; S.F.dias = d; grava(); return render() }
+    if (a === 'dias:salvar') { S.p.horario = S.F.hor || 'sempre'; S.p.dias = (S.F.dias || S.p.dias).slice(); S.F = {}; S.m = 'perfil'; grava(); return render() }
     if (a === 'faixa:salvar') { if (S.F.faixa != null) S.p.faixa = S.F.faixa; S.F = {}; S.m = 'perfil'; grava(); return render() }
   });
   document.addEventListener('change', function (e) {
@@ -194,7 +211,10 @@
     { alvo: '[data-t=wa-hor-lista]', garante: function () { W().tela('m', 'horario') }, cond: function () { return W().estado().F.hor === 'sempre' },
       tit: T('Quando a loja atende', 'Cuándo atiende la tienda'), txt: T('São três jeitos: horários específicos, Sempre aberta ou Somente com hora marcada. A loja online da Marina atende o tempo todo: escolha Sempre aberta e clique em Próximo.', 'Son tres formas: horarios específicos, Siempre abierta o Solo con cita. La tienda online de Marina atiende todo el tiempo: elige Siempre abierta y haz clic en Siguiente.') },
     { alvo: '[data-t=wa-hor-avancar]', clique: true, garante: function () { W().tela('m', 'horario'); W().escolhas({ hor: 'sempre' }) }, tit: T('Avançar', 'Siguiente'), txt: T('Toque em Avançar.', 'Toca Siguiente.') },
-    { alvo: '[data-t=wa-cli-hor]', garante: function () { W().perfil({ cats: ['Roupas e vestuário'], horario: 'sempre' }); W().tela('m', 'perfil'); W().tela('c', 'perfil') },
+    { alvo: '[data-t=wa-dias-lista]', garante: function () { W().escolhas({ hor: 'sempre', dias: [true, true, true, true, true, true, true] }); W().tela('m', 'dias') },
+      tit: T('Dia a dia', 'Día a día'), txt: dep(T('Em Selecionar horários tem uma chave por dia: desligada, o dia aparece como Fechada. A Marina atende todos os dias, então tudo fica ligado.', 'En Seleccionar horarios hay un interruptor por día: apagado, el día aparece como Cerrada. Marina atiende todos los días, así que todo queda encendido.')) },
+    { alvo: '[data-t=wa-dias-salvar]', clique: true, garante: function () { W().escolhas({ hor: 'sempre', dias: [true, true, true, true, true, true, true] }); W().tela('m', 'dias') }, tit: T('Salvar', 'Guardar'), txt: T('Toque em Salvar.', 'Toca Guardar.') },
+    { alvo: '[data-t=wa-cli-hor]', garante: function () { W().perfil({ cats: ['Roupas e vestuário'], horario: 'sempre', dias: [true, true, true, true, true, true, true] }); W().tela('m', 'perfil'); W().tela('c', 'perfil') },
       tit: T('Do lado da cliente', 'Del lado de la clienta'), txt: dep(T('No celular da Bia já aparece “Aberta agora · Aberta 24 horas” e a nova categoria. Ela já sabe que pode chamar.', 'En el celular de Bia ya aparece “Abierta ahora · Abierta 24 horas” y la nueva categoría. Ya sabe que puede escribir.')) },
     { alvo: '[data-t=wa-previa]', clique: true, garante: function () { W().tela('m', 'perfil') }, tit: T('Prévia', 'Vista previa'), txt: T('Para conferir sem outro celular, a Marina usa a Prévia. Toque no ícone de pessoa no alto.', 'Para revisar sin otro celular, Marina usa la Vista previa. Toca el ícono de persona arriba.') },
     { alvo: '[data-t=wa-previa-tela]', fim: true, semVolta: true, garante: function () { W().tela('m', 'previa') }, tit: T('Perfil pronto 🎉', '¡Perfil listo! 🎉'),

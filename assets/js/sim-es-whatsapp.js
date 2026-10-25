@@ -36,9 +36,12 @@
     'Fica para as próximas aulas do módulo.': 'Queda para las próximas clases del módulo.', 'Esta tela ainda não foi conferida no app real: fica de fora por enquanto.': 'Esta pantalla todavía no se revisó en la app real: queda fuera por ahora.',
     'Escolha pelo menos 1 categoria.': 'Elige al menos 1 categoría.', 'No máximo 3 categorias.': 'Como máximo 3 categorías.', 'Escolha uma opção.': 'Elige una opción.',
     'A tela dos horários de cada dia ainda não foi conferida: escolha Sempre aberta neste treino.': 'La pantalla de los horarios de cada día todavía no se revisó: elige Siempre abierta en esta práctica.',
+    'Selecionar horários': 'Seleccionar horarios', 'Fechada': 'Cerrada', 'Selecionado': 'Seleccionado', 'Aberta 24 horas ⌄': 'Abierta 24 horas ⌄', 'Fechada ⌄': 'Cerrada ⌄',
+    'Todas': 'Todos', 'Não lidas 1': 'No leídos 1', 'Favoritos': 'Favoritos', 'Grupos': 'Grupos', 'Empresa cadastrada há um mês': 'Empresa registrada hace un mes',
+    'Neste treino só a opção Sempre aberta foi conferida até o fim: escolha Sempre aberta.': 'En esta práctica solo la opción Siempre abierta se revisó hasta el final: elige Siempre abierta.',
     'Este estado do cartão (sem outro administrador) não foi visto na tela real': 'Este estado de la tarjeta no se vio en la pantalla real'
   };
   for (var k in A) D[k] = A[k];
   P.push([/^(.+) \(Você\)$/, function (m) { return m[1] + ' (Tú)' }]);
-  P.push([/^✓ Telas do app conferidas em (.+) \(tema escuro\) · ⚠ cores do tema claro e itens marcados: a conferir$/, function (m) { return '✓ Pantallas de la app revisadas el ' + m[1] + ' (tema oscuro) · ⚠ colores del tema claro e ítems marcados: por confirmar' }]);
+  P.push([/^✓ Telas do app conferidas em (.+) \(temas escuro e claro\) · campos que avisam “a conferir” ainda não foram vistos$/, function (m) { return '✓ Pantallas de la app revisadas el ' + m[1].replace(' e ', ' y ') + ' (temas oscuro y claro) · los campos que avisan “por confirmar” todavía no se vieron' }]);
 })();
