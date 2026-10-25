@@ -2077,7 +2077,7 @@
         [{pt: "Apagar e cadastrar de novo depois",es: "Borrarlo y cargarlo de nuevo después"}, 0, {pt: "O item novo passaria pela revisão de novo.",es: "El artículo nuevo pasaría otra vez por la revisión."}],
         [{pt: "Tirar da coleção",es: "Sacarlo de la colección"}, 0, {pt: "Ele continuaria em Todos os itens.",es: "Seguiría en Todos los artículos."}]] },
     { q: {pt: "Onde se criam as coleções?",es: "¿Dónde se crean las colecciones?"},
-      o: [[{pt: "Catálogo › ⋮ › Coleções",es: "Catálogo › ⋮ › Colecciones"}, 1, {pt: "Isso! Nome › marcar itens › OK.",es: "¡Eso! Nombre › marcar artículos › OK."}],
+      o: [[{pt: "Catálogo › ⋮ › Coleções",es: "Catálogo › ⋮ › Colecciones"}, 1, {pt: "Isso! Nome › Avançar › marcar itens › OK.",es: "¡Eso! Nombre › Siguiente › marcar artículos › OK."}],
         [{pt: "Ferramentas › Listas",es: "Herramientas › Listas"}, 0, {pt: "Listas organizam conversas, não produtos.",es: "Las listas organizan chats, no productos."}],
         [{pt: "No perfil, em Categoria",es: "En el perfil, en Categoría"}, 0, {pt: "Categoria é da empresa, não dos produtos.",es: "La categoría es de la empresa, no de los productos."}]] }
   ]);
@@ -2133,7 +2133,11 @@
     { q: {pt: "Para personalizar a mensagem de boas-vindas do anúncio…",es: "Para personalizar el mensaje de bienvenida del anuncio…"},
       o: [[{pt: "Só pelo Gerenciador de Anúncios",es: "Solo desde el Administrador de anuncios"}, 1, {pt: "Isso!",es: "¡Eso!"}],
         [{pt: "Na mensagem de saudação",es: "En el mensaje de bienvenida"}, 0, {pt: "Saudação é outra coisa.",es: "La bienvenida es otra cosa."}],
-        [{pt: "No perfil",es: "En el perfil"}, 0, {pt: "É no Gerenciador de Anúncios.",es: "Es en el Administrador de anuncios."}]] }
+        [{pt: "No perfil",es: "En el perfil"}, 0, {pt: "É no Gerenciador de Anúncios.",es: "Es en el Administrador de anuncios."}]] },
+    { q: {pt: "O anúncio está rodando e a cliente quer parar. Pelo app (Android)…",es: "El anuncio está circulando y la clienta quiere detenerlo. Desde la app (Android)…"},
+      o: [[{pt: "Pausar em Gerenciar anúncios",es: "Pausarlo en Administrar anuncios"}, 1, {pt: "Isso! Apagar, só anúncio em análise, não veiculado ou rejeitado.",es: "¡Eso! Borrar, solo un anuncio en revisión, no publicado o rechazado."}],
+        [{pt: "Apagar o anúncio",es: "Borrar el anuncio"}, 0, {pt: "Anúncio em veiculação não se apaga: pause.",es: "Un anuncio en circulación no se borra: pausa."}],
+        [{pt: "Não dá pelo app",es: "No se puede desde la app"}, 0, {pt: "Dá: Gerenciar anúncios › o anúncio › Pausar anúncio.",es: "Sí se puede: Administrar anuncios › el anuncio › Pausar anuncio."}]] }
   ]);
   quizCatalogo('ia-wa', {pt: "Assistente × agente",es: "Asistente × agente"}, {pt: "As duas IAs do WhatsApp Business.",es: "Las dos IA de WhatsApp Business."}, [
     { q: {pt: "O botão roxo nas Conversas é…",es: "El botón morado en Chats es…"},
@@ -2149,7 +2153,7 @@
     { q: {pt: "O que o Instagram precisa para conectar?",es: "¿Qué necesita el Instagram para conectar?"},
       o: [[{pt: "Ser conta profissional de categoria compatível",es: "Ser cuenta profesional de categoría compatible"}, 1, {pt: "Isso!",es: "¡Eso!"}],
         [{pt: "Ter Meta Verified",es: "Tener Meta Verified"}, 0, {pt: "Não é requisito.",es: "No es requisito."}],
-        [{pt: "Ter 1.000 seguidores",es: "Tener 1.000 seguidores"}, 0, {pt: "Não há mínimo de seguidores.",es: "No hay mínimo de seguidores."}]] },
+        [{pt: "Ser conta pessoal",es: "Ser cuenta personal"}, 0, {pt: "Precisa ser conta profissional.",es: "Debe ser cuenta profesional."}]] },
     { q: {pt: "Erro “número vinculado a outra empresa”. Primeiro passo?",es: "Error “número vinculado a otra empresa”. ¿Primer paso?"},
       o: [[{pt: "Ver se já há outra Página ligada e desligar a antiga",es: "Ver si ya hay otra Página vinculada y desvincular la anterior"}, 1, {pt: "Isso! É uma Página por WhatsApp.",es: "¡Eso! Es una Página por WhatsApp."}],
         [{pt: "Criar outro número",es: "Crear otro número"}, 0, {pt: "Não precisa: desligue o vínculo antigo.",es: "No hace falta: desvincula el anterior."}],

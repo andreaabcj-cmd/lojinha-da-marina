@@ -5568,7 +5568,7 @@ window.AULAS = {
             L('<b>Horário de atendimento:</b> horários específicos, Sempre aberta ou Somente com hora marcada; depois, em Selecionar horários, uma chave por dia (desligada = Fechada). A cliente vê o dia de hoje no perfil: “Aberta agora” ou “Fechada”.', '<b>Horario de atención:</b> horarios específicos, Siempre abierta o Solo con cita previa; después, en Seleccionar horarios, un interruptor por día (apagado = Cerrada). La clienta ve el día de hoy en el perfil: “Abierta ahora” o “Cerrada”.'),
             L('<b>Prévia e link curto:</b> a Prévia mostra o perfil como a cliente vê; o link curto da empresa é criado sozinho e serve para divulgar no site e nas redes.', '<b>Vista previa y enlace corto:</b> la Vista previa muestra el perfil como lo ve la clienta; el enlace corto de la empresa se crea solo y sirve para difundir en el sitio y las redes.')
           ],
-          notas: L('Telas vistas de verdade no app WhatsApp Business (Android, conta de aula): em 25/10/2026, no tema escuro, aba Ferramentas, Edit profile, Prévia, Escolha as categorias, Horário de atendimento, Selecionar faixa e Compartilhar (“Compartilhar link curto via...”); em 26/10/2026, no tema claro (o do simulador), Conversas, Ferramentas, Edit profile, Prévia inteira, Horário de atendimento e Selecionar horários (nada foi salvo). Não vistas: as telas de editar nome, descrição, site e e-mail; o simulador marca essas partes como a conferir. No app real, a opção aparece escrita “Aberta no horários específicos”. Central de Ajuda do WhatsApp lida no mesmo dia: “Como editar o perfil comercial” e “Como criar links curtos”.', 'Pantallas vistas de verdad en la app WhatsApp Business (Android, cuenta de clase): el 25/10/2026, en tema oscuro, pestaña Herramientas, Edit profile, Vista previa, Elige las categorías, Horario de atención, Seleccionar rango y Compartir; el 26/10/2026, en tema claro (el del simulador), Chats, Herramientas, Edit profile, Vista previa completa, Horario de atención y Seleccionar horarios (no se guardó nada). No vistas: las pantallas para editar nombre, descripción, sitio y correo; el simulador marca esas partes como por confirmar. El español de las pantallas es traducción nuestra (por confirmar). Servicio de ayuda de WhatsApp leído el mismo día: “Cómo editar el perfil comercial” y “Cómo crear enlaces cortos”.')
+          notas: L('Telas vistas de verdade no app WhatsApp Business (Android, conta de aula): em 25/10/2026, no tema escuro, aba Ferramentas, Edit profile, Prévia, Escolha as categorias, Horário de atendimento, Selecionar faixa e Compartilhar (“Compartilhar link curto via...”); depois, no tema claro (o do simulador), Conversas, Ferramentas, Edit profile, Prévia inteira, Horário de atendimento e Selecionar horários (nada foi salvo). Não vistas: as telas de editar nome, descrição, site e e-mail; o simulador marca essas partes como a conferir. No app real, a opção aparece escrita “Aberta no horários específicos”. Central de Ajuda do WhatsApp lida no mesmo dia: “Como editar o perfil comercial” e “Como criar links curtos”.', 'Pantallas vistas de verdad en la app WhatsApp Business (Android, cuenta de clase): el 25/10/2026, en tema oscuro, pestaña Herramientas, Edit profile, Vista previa, Elige las categorías, Horario de atención, Seleccionar rango y Compartir; después, en tema claro (el del simulador), Chats, Herramientas, Edit profile, Vista previa completa, Horario de atención y Seleccionar horarios (no se guardó nada). No vistas: las pantallas para editar nombre, descripción, sitio y correo; el simulador marca esas partes como por confirmar. El español de las pantallas es traducción nuestra (por confirmar). Servicio de ayuda de WhatsApp leído el mismo día: “Cómo editar el perfil comercial” y “Cómo crear enlaces cortos”.')
         },
         ferramenta: 'perfil-wa',
         praticar: {
@@ -5613,7 +5613,7 @@ window.AULAS = {
           pontos: [
             L('<b>Onde:</b> Ferramentas › Catálogo (a tela se chama Gerenciador de Catálogos). Lá ficam Adicionar item, Adicionar coleção e a lista de itens.', '<b>Dónde:</b> Herramientas › Catálogo (la pantalla se llama Administrador de catálogos). Ahí están Agregar artículo, Agregar colección y la lista de artículos.'),
             L('<b>Item:</b> nome, preço, preço promocional, descrição, país do item (obrigatório, pela Política Comercial), link e código. Cada item passa por revisão antes de aparecer.', '<b>Artículo:</b> nombre, precio, precio promocional, descripción, país del artículo (obligatorio, por la Política Comercial), enlace y código. Cada artículo pasa por revisión antes de aparecer.'),
-            L('<b>Coleções:</b> nome › marcar os itens › OK. Dá para reorganizar, renomear ou apagar a coleção.', '<b>Colecciones:</b> nombre › marcar los artículos › OK. Se puede reorganizar, renombrar o borrar la colección.'),
+            L('<b>Coleções:</b> nome › Avançar › marcar os itens › OK. Dá para reorganizar, renomear ou apagar a coleção.', '<b>Colecciones:</b> nombre › Siguiente › marcar los artículos › OK. Se puede reorganizar, renombrar o borrar la colección.'),
             L('<b>Ocultar × apagar:</b> ocultar tira o item da vista da cliente e guarda para depois; apagar tira de vez.', '<b>Ocultar × borrar:</b> ocultar saca el artículo de la vista de la clienta y lo guarda para después; borrar lo saca para siempre.')
           ],
           notas: L('Telas vistas de verdade em 25/10/2026 no app WhatsApp Business (Android, conta de aula): Gerenciador de Catálogos, item (⋮ Ocultar · Apagar), Editar item (com Mais campos), Coleções (criei a coleção Canecas), Configurações do catálogo e o catálogo do lado da cliente. Não vista: a tela de Adicionar item (o simulador não abre). Casos comuns no atendimento: item em revisão ou recusado, link do catálogo que não abre e preço que não atualiza. O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026 en la app WhatsApp Business (Android, cuenta de clase): Administrador de catálogos, artículo (⋮ Ocultar · Borrar), Editar artículo, Colecciones (creé la colección Canecas), Configuración del catálogo y el catálogo del lado de la clienta. No vista: la pantalla de Agregar artículo. El español de las pantallas es traducción nuestra (por confirmar).')
@@ -5637,12 +5637,12 @@ window.AULAS = {
           perguntas: [L('O item aparece com aviso vermelho (recusado) ou ainda está em revisão?', '¿El artículo aparece con aviso rojo (rechazado) o todavía está en revisión?'), L('A loja quer tirar de vez ou só por um tempo?', '¿La tienda quiere sacarlo para siempre o solo por un tiempo?')],
           conferir: [L('Ferramentas › Catálogo (Gerenciador de Catálogos).', 'Herramientas › Catálogo (Administrador de catálogos).'), L('⋮ › Coleções.', '⋮ › Colecciones.')],
           frase: L('Item novo passa por revisão antes de aparecer. Para organizar, use coleções; para tirar da vista sem perder, use Ocultar.', 'Un artículo nuevo pasa por revisión antes de aparecer. Para organizar, usa colecciones; para sacarlo de la vista sin perderlo, usa Ocultar.'),
-          passos: [L('Catálogo › ⋮ › Coleções › ＋ › nome › marcar itens › OK.', 'Catálogo › ⋮ › Colecciones › ＋ › nombre › marcar artículos › OK.'), L('Ocultar: abrir o item › ⋮ › Ocultar.', 'Ocultar: abrir el artículo › ⋮ › Ocultar.')],
+          passos: [L('Catálogo › ⋮ › Coleções › ＋ › nome › Avançar › marcar itens › OK.', 'Catálogo › ⋮ › Colecciones › ＋ › nombre › Siguiente › marcar artículos › OK.'), L('Ocultar: abrir o item › ⋮ › Ocultar.', 'Ocultar: abrir el artículo › ⋮ › Ocultar.')],
           encaminhar: L('Item recusado: o cliente lê o motivo no aviso e corrige pela Política Comercial do WhatsApp; se discordar, segue a Central de Ajuda.', 'Artículo rechazado: el cliente lee el motivo en el aviso y corrige según la Política Comercial de WhatsApp; si no está de acuerdo, sigue el Servicio de ayuda.')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/833697274483076', titulo: L('Como criar e gerenciar um catálogo', 'Cómo crear y administrar un catálogo'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/501451005213099', titulo: L('Como compartilhar produtos ou serviços com seus clientes', 'Cómo compartir productos o servicios con tus clientes'), conferido: '26/10/2026' }
+          { url: 'https://faq.whatsapp.com/833697274483076', titulo: L('Como criar e gerenciar um catálogo', 'Cómo crear y administrar un catálogo'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/501451005213099', titulo: L('Como compartilhar produtos ou serviços com seus clientes', 'Cómo compartir productos o servicios con tus clientes'), conferido: '25/10/2026' }
         ]
       },
       {
@@ -5689,8 +5689,8 @@ window.AULAS = {
           encaminhar: L('Se o pedido ou a cobrança não aparecem, peça para atualizar o app e reiniciar o celular; persistindo, Central de Ajuda do WhatsApp › Fale conosco.', 'Si el pedido o el cobro no aparecen, pide actualizar la app y reiniciar el celular; si persiste, Servicio de ayuda de WhatsApp › Contáctanos.')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/1184376605821468', titulo: L('Sobre o recurso carrinho', 'Información sobre el carrito'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/5495780857144067', titulo: L('Como fazer um pedido usando o carrinho', 'Cómo hacer un pedido con el carrito'), conferido: '26/10/2026' }
+          { url: 'https://faq.whatsapp.com/1184376605821468', titulo: L('Sobre o recurso carrinho', 'Información sobre el carrito'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/5495780857144067', titulo: L('Como fazer um pedido usando o carrinho', 'Cómo hacer un pedido con el carrito'), conferido: '25/10/2026' }
         ]
       },
       {
@@ -5711,7 +5711,7 @@ window.AULAS = {
             L('<b>Onde:</b> conversa › 📎 Anexar › Pix › Solicitar pagamento (ou o cartão Pagar com Pix da cobrança). A chave fica em Ferramentas › Pagamentos.', '<b>Dónde:</b> chat › 📎 Adjuntar › Pix › Solicitar pago (o la tarjeta Pagar con Pix del cobro). La clave queda en Herramientas › Pagos.'),
             L('<b>O valor:</b> opcional, e com PONTO (39.90). Com vírgula o app junta os números.', '<b>El valor:</b> opcional, y con PUNTO (39.90). Con coma la app junta los números.'),
             L('<b>A cliente:</b> vê “solicitou um pagamento” › Pagar com Pix › escolhe o banco ou Copiar código Pix. O pagamento acontece no app do banco.', '<b>La clienta:</b> ve “solicitó un pago” › Pagar con Pix › elige el banco o Copiar código Pix. El pago ocurre en la app del banco.'),
-            L('<b>Só no Brasil:</b> o pagamento dentro do WhatsApp existe em poucos países; no Brasil, é com Pix.', '<b>Solo en Brasil:</b> el pago dentro de WhatsApp existe en pocos países; en Brasil, es con Pix.')
+            L('<b>No Brasil:</b> o pedido de pagamento pela conversa é com Pix (é o que aparece na conta brasileira).', '<b>En Brasil:</b> la solicitud de pago por el chat es con Pix (es lo que aparece en la cuenta brasileña).')
           ],
           notas: L('Feito de verdade em 25/10/2026 com a conta de aula e um número pessoal de teste: Solicitar pagamento (o campo transformou 39,90 em 3990; com 39.90 deu certo), o cartão do lado da cliente e a tela Pagar com Pix (lista de bancos e Copiar código Pix), sem pagar. A Central de Ajuda do WhatsApp não tem página sobre o Pix: esta aula usa só a tela real. O espanhol das telas é tradução nossa (a conferir).', 'Hecho de verdad el 25/10/2026 con la cuenta de clase y un número personal de prueba: Solicitar pago (el campo convirtió 39,90 en 3990; con 39.90 funcionó), la tarjeta del lado de la clienta y la pantalla Pagar con Pix, sin pagar. El Servicio de ayuda de WhatsApp no tiene página sobre Pix: esta clase usa solo la pantalla real. El español de las pantallas es traducción nuestra (por confirmar).')
         },
@@ -5782,9 +5782,9 @@ window.AULAS = {
           encaminhar: L('Se nada sai mesmo com celular conectado e chave ligada, peça para atualizar o app e reiniciar; persistindo, Central de Ajuda do WhatsApp › Fale conosco.', 'Si nada sale aun con celular conectado e interruptor activo, pide actualizar la app y reiniciar; si persiste, Servicio de ayuda de WhatsApp › Contáctanos.')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/501866148528310', titulo: L('Como usar as mensagens de saudação', 'Cómo usar los mensajes de bienvenida'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/2565868990219715', titulo: L('Como utilizar mensagens de ausência', 'Cómo usar los mensajes de ausencia'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/1791149784551042', titulo: L('Como usar as respostas rápidas', 'Cómo usar las respuestas rápidas'), conferido: '26/10/2026' }
+          { url: 'https://faq.whatsapp.com/501866148528310', titulo: L('Como usar as mensagens de saudação', 'Cómo usar los mensajes de bienvenida'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/2565868990219715', titulo: L('Como utilizar mensagens de ausência', 'Cómo usar los mensajes de ausencia'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/1791149784551042', titulo: L('Como usar as respostas rápidas', 'Cómo usar las respuestas rápidas'), conferido: '25/10/2026' }
         ]
       },
       {
@@ -5830,8 +5830,8 @@ window.AULAS = {
           encaminhar: L('Dúvidas sobre cobrança da transmissão (valores, fatura) seguem a Central de Ajuda do WhatsApp sobre preços das transmissões.', 'Dudas sobre el cobro de la difusión (valores, factura) siguen el Servicio de ayuda de WhatsApp sobre precios de las difusiones.')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/3398508707096369', titulo: L('Como usar as etiquetas (agora listas)', 'Cómo usar las etiquetas (ahora listas)'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/1356785542323967', titulo: L('Sobre os preços das transmissões comerciais', 'Sobre los precios de las difusiones comerciales'), conferido: '26/10/2026' }
+          { url: 'https://faq.whatsapp.com/3398508707096369', titulo: L('Como usar as etiquetas (agora listas)', 'Cómo usar las etiquetas (ahora listas)'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/1356785542323967', titulo: L('Sobre os preços das transmissões comerciais', 'Sobre los precios de las difusiones comerciales'), conferido: '25/10/2026' }
         ]
       },
       {
@@ -5842,18 +5842,19 @@ window.AULAS = {
         objetivo: L('Conhecer o caminho do anúncio criado pelo próprio app (objetivo, conta, público, orçamento) e saber até onde a cliente vai sozinha.', 'Conocer el camino del anuncio creado desde la propia app (objetivo, cuenta, público, presupuesto) y saber hasta dónde llega la clienta sola.'),
         entender: {
           dialogo: [
-            ['marina', L('Dá para fazer anúncio pelo próprio WhatsApp? Não tenho Facebook! 😬', '¿Se puede hacer un anuncio desde el propio WhatsApp? ¡No tengo Facebook! 😬')],
-            ['rafa', L('Dá: Ferramentas › Anúncios (ou Turbinar perfil). Você escolhe se as pessoas vão para o site ou mandam mensagem. Sem Facebook, toque em PULAR e siga com o e-mail.', 'Sí: Herramientas › Anuncios (o Promocionar perfil). Eliges si las personas van al sitio o te mandan mensaje. Sin Facebook, toca OMITIR y sigue con el correo.')],
+            ['marina', L('Dá para fazer anúncio pelo próprio WhatsApp, sem abrir o Gerenciador de Anúncios? 😬', '¿Se puede hacer un anuncio desde el propio WhatsApp, sin abrir el Administrador de anuncios? 😬')],
+            ['rafa', L('Dá: Ferramentas › Anúncios (ou Turbinar perfil). Você escolhe se as pessoas vão para o site ou mandam mensagem. Dá para entrar com a conta do Facebook ou tocar em PULAR e seguir com o e-mail.', 'Sí: Herramientas › Anuncios (o Promocionar perfil). Eliges si las personas van al sitio o te mandan mensaje. Puedes entrar con la cuenta de Facebook o tocar OMITIR y seguir con el correo.')],
             ['marina', L('E escolho quem vê?', '¿Y elijo quién lo ve?')],
             ['pixel', L('O app sugere o público Advantage+: com ele ativo, idade e gênero são só sugestão. Categorias especiais, como crédito ou emprego, pedem cuidado: no app aparece a pergunta “Requisitos especiais”.', 'La app sugiere el público Advantage+: con él activo, edad y género son solo sugerencia. Las categorías especiales, como crédito o empleo, piden cuidado: en la app aparece la pregunta “Requisitos especiales”.')]
           ],
           pontos: [
             L('<b>Caminho:</b> Ferramentas › Anúncios (ou Edit profile › Turbinar perfil) › objetivo (Visitem seu site / Enviem uma mensagem) › conta do Facebook ou PULAR › anúncio › Público › Orçamento › Pagar e criar anúncio.', '<b>Camino:</b> Herramientas › Anuncios (o Edit profile › Promocionar perfil) › objetivo (Visiten tu sitio / Te envíen un mensaje) › cuenta de Facebook u OMITIR › anuncio › Público › Presupuesto › Pagar y crear anuncio.'),
+            L('<b>Público:</b> o sugerido é Advantage+ (Brasil, 18+), com Editar e Criar público para ajustar. Com Advantage+ ativo, idade e gênero são sugestão, não filtro; por isso o anúncio pode aparecer para outro público. Embaixo, a estimativa de impressões diárias.', '<b>Público:</b> el sugerido es Advantage+ (Brasil, 18+), con Editar y Crear público para ajustarlo. Con Advantage+ activo, edad y género son sugerencia, no filtro; por eso el anuncio puede aparecer a otro público. Abajo, la estimación de impresiones diarias.'),
             L('<b>Orçamento:</b> valor por dia e duração (“até eu pausá-lo” é o recomendado). Sem forma de pagamento o anúncio não sai.', '<b>Presupuesto:</b> valor por día y duración (“hasta que lo pause” es lo recomendado). Sin método de pago el anuncio no sale.'),
-            L('<b>Depois:</b> a maioria dos anúncios é revisada em até 24 horas. Pelo app, o anúncio ativo pode ser pausado; para apagar, primeiro pause.', '<b>Después:</b> la mayoría de los anuncios se revisa en hasta 24 horas. Desde la app, el anuncio activo se puede pausar; para borrarlo, primero pausa.'),
+            L('<b>Depois:</b> a análise costuma levar até 24 horas, e os resultados tendem a melhorar depois de uns dois dias. Em Gerenciar anúncios (Android) dá para pausar e reativar, mudar orçamento, duração e público e ver alcance, gasto e conversas iniciadas. Apagar, só o anúncio em análise, não veiculado ou rejeitado. <a href="faq.html#faq-whatsapp">Mais no FAQ ›</a>', '<b>Después:</b> la revisión suele tardar hasta 24 horas, y los resultados tienden a mejorar después de unos dos días. En Administrar anuncios (Android) se puede pausar y reactivar, cambiar presupuesto, duración y público y ver alcance, gasto y chats iniciados. Borrar, solo el anuncio en revisión, no publicado o rechazado. <a href="faq.html#faq-whatsapp">Más en las FAQ ›</a>'),
             L('<b>Mensagem de boas-vindas do anúncio:</b> para personalizar, só pelo Gerenciador de Anúncios.', '<b>Mensaje de bienvenida del anuncio:</b> para personalizarlo, solo desde el Administrador de anuncios.')
           ],
-          notas: L('Telas vistas de verdade em 25/10/2026 pelo Turbinar perfil e por Anúncios: objetivo, “Confirme sua conta do Facebook” (usei PULAR), Criar anúncio, Público (Advantage+, Requisitos especiais), Definir orçamento e “Seu anúncio está pronto” até “Pagar e criar anúncio” (não paguei; ficou um rascunho). Dúvidas comuns de atendimento: dois jeitos de criar (com Facebook ou com e-mail), revisão em até 24 h, apagar só pausado, boas-vindas só no Gerenciador, diferenças entre Android e iPhone ao editar (a conferir). O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026: objetivo, “Confirma tu cuenta de Facebook” (usé OMITIR), Crear anuncio, Público, Definir presupuesto y “Tu anuncio está listo” hasta “Pagar y crear anuncio” (no pagué). El español de las pantallas es traducción nuestra (por confirmar).')
+          notas: L('Telas vistas de verdade em 25/10/2026 pelo Turbinar perfil e por Anúncios: objetivo, “Confirme sua conta do Facebook” (usei PULAR), Criar anúncio, Público (Advantage+, Requisitos especiais), Definir orçamento e “Seu anúncio está pronto” até “Pagar e criar anúncio” (não paguei; ficou um rascunho). Dúvidas comuns de atendimento: dois jeitos de criar (com Facebook ou com e-mail), análise em até 24 h, boas-vindas só no Gerenciador. Gestão (pausar, editar, apagar, desempenho, anúncio que não roda) vem da Central de Ajuda do WhatsApp, lida em 25/10/2026; a tela Gerenciar anúncios não foi vista (só aparece com anúncio publicado). O espanhol das telas é tradução nossa (a conferir).', 'Pantallas vistas de verdad el 25/10/2026: objetivo, “Confirma tu cuenta de Facebook” (usé OMITIR), Crear anuncio, Público, Definir presupuesto y “Tu anuncio está listo” hasta “Pagar y crear anuncio” (no pagué). El español de las pantallas es traducción nuestra (por confirmar).')
         },
         ferramenta: 'anuncio-wa',
         praticar: {
@@ -5866,19 +5867,20 @@ window.AULAS = {
           opcoes: [
             { certa: true, txt: L('“A mensagem de boas-vindas do anúncio só se personaliza pelo Gerenciador de Anúncios, no computador. Pelo app dá para pausar e acompanhar.”', '“El mensaje de bienvenida del anuncio solo se personaliza desde el Administrador de anuncios, en la computadora. Desde la app se puede pausar y seguir.”'), fb: L('Isso! O lugar certo é o Gerenciador.', '¡Eso! El lugar correcto es el Administrador.') },
             { certa: false, txt: L('“Mude a mensagem de saudação.”', '“Cambia el mensaje de bienvenida.”'), fb: L('A saudação é outra coisa (primeira mensagem de qualquer cliente). A do anúncio é no Gerenciador.', 'La bienvenida es otra cosa (primer mensaje de cualquier cliente). La del anuncio es en el Administrador.') },
-            { certa: false, txt: L('“Apague o anúncio ativo e faça outro.”', '“Borra el anuncio activo y haz otro.”'), fb: L('Anúncio ativo não se apaga direto: primeiro pausa. E a mensagem se muda no Gerenciador.', 'El anuncio activo no se borra directo: primero se pausa. Y el mensaje se cambia en el Administrador.') },
+            { certa: false, txt: L('“Apague o anúncio ativo e faça outro.”', '“Borra el anuncio activo y haz otro.”'), fb: L('Anúncio em veiculação não se apaga pelo app, só se pausa. E a mensagem se muda no Gerenciador.', 'Un anuncio en circulación no se borra desde la app, solo se pausa. Y el mensaje se cambia en el Administrador.') },
             { certa: false, txt: L('“Não tem como mudar.”', '“No hay forma de cambiarlo.”'), fb: L('Tem, pelo Gerenciador de Anúncios.', 'Sí hay, desde el Administrador de anuncios.') }
           ]
         },
         cola: {
           perguntas: [L('O anúncio foi criado pelo app ou pelo Gerenciador?', '¿El anuncio se creó desde la app o desde el Administrador?'), L('A conta do Facebook foi ligada ou foi com e-mail?', '¿Se vinculó la cuenta de Facebook o fue con correo?'), L('Tem forma de pagamento?', '¿Tiene método de pago?')],
-          conferir: [L('Ferramentas › Anúncios.', 'Herramientas › Anuncios.'), L('Público Advantage+ ligado?', '¿Público Advantage+ activado?')],
+          conferir: [L('Ferramentas › Anúncios.', 'Herramientas › Anuncios.'), L('Público Advantage+ ligado?', '¿Público Advantage+ activado?'), L('Gerenciar anúncios › o anúncio › Mostrar detalhes (alcance, gasto, conversas iniciadas).', 'Administrar anuncios › el anuncio › Ver detalles (alcance, gasto, chats iniciados).')],
           frase: L('Pelo app você cria um anúncio que leva para o WhatsApp: objetivo, público, orçamento e pagamento. Ajustes finos, como a mensagem de boas-vindas, ficam no Gerenciador de Anúncios.', 'Desde la app creas un anuncio que lleva a WhatsApp: objetivo, público, presupuesto y pago. Los ajustes finos, como el mensaje de bienvenida, quedan en el Administrador de anuncios.'),
           passos: [L('Anúncios › objetivo › Avançar › (Facebook ou PULAR) › Público › Orçamento › pagamento.', 'Anuncios › objetivo › Siguiente › (Facebook u OMITIR) › Público › Presupuesto › pago.')],
           encaminhar: L('Reembolso e cobrança de anúncio vão para o suporte de pagamentos (Configurações da conta de anúncios › Pagamentos).', 'Reembolsos y cobros de anuncios van al soporte de pagos (Configuración de la cuenta publicitaria › Pagos).')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/512723604104492', titulo: L('Como criar anúncios no WhatsApp Business', 'Cómo crear anuncios en WhatsApp Business'), conferido: '26/10/2026' }
+          { url: 'https://faq.whatsapp.com/512723604104492', titulo: L('Como criar anúncios no WhatsApp Business', 'Cómo crear anuncios en WhatsApp Business'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/613752137263188', titulo: L('Como gerenciar seus anúncios e sua conta de anúncios do WhatsApp Business', 'Cómo administrar tus anuncios y tu cuenta publicitaria de WhatsApp Business'), conferido: '25/10/2026' }
         ]
       },
       {
@@ -5924,9 +5926,9 @@ window.AULAS = {
           encaminhar: L('Agente indisponível na conta: a liberação é gradual (lista de espera); não há como ativar por suporte.', 'Agente no disponible en la cuenta: la liberación es gradual (lista de espera); no se puede activar por soporte.')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/1337427890552510', titulo: L('Sobre o assistente da Meta AI para empresas', 'Sobre el asistente de Meta AI para empresas'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/1153795669452207', titulo: L('Como configurar o Meta Business Agent', 'Cómo configurar Meta Business Agent'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/975910528178219', titulo: L('Sobre os planos Meta One', 'Sobre los planes Meta One'), conferido: '26/10/2026' }
+          { url: 'https://faq.whatsapp.com/1337427890552510', titulo: L('Sobre o assistente da Meta AI para empresas', 'Sobre el asistente de Meta AI para empresas'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/1153795669452207', titulo: L('Como configurar o Meta Business Agent', 'Cómo configurar Meta Business Agent'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/975910528178219', titulo: L('Sobre os planos Meta One', 'Sobre los planes Meta One'), conferido: '25/10/2026' }
         ]
       },
       {
@@ -5973,8 +5975,8 @@ window.AULAS = {
           encaminhar: L('Página com restrição ou desativada: resolver primeiro a Página (Qualidade da conta). Portfólio restrito: área de integridade.', 'Página con restricción o desactivada: resolver primero la Página (Calidad de la cuenta). Portfolio restringido: área de integridad.')
         },
         fontes: [
-          { url: 'https://faq.whatsapp.com/2919026648317213', titulo: L('Como conectar uma conta do WhatsApp Business a uma conta do Instagram', 'Cómo conectar una cuenta de WhatsApp Business a una cuenta de Instagram'), conferido: '26/10/2026' },
-          { url: 'https://faq.whatsapp.com/518326725476814', titulo: L('Como sincronizar o WhatsApp Business com Páginas do Facebook', 'Cómo sincronizar WhatsApp Business con páginas de Facebook'), conferido: '26/10/2026' },
+          { url: 'https://faq.whatsapp.com/2919026648317213', titulo: L('Como conectar uma conta do WhatsApp Business a uma conta do Instagram', 'Cómo conectar una cuenta de WhatsApp Business a una cuenta de Instagram'), conferido: '25/10/2026' },
+          { url: 'https://faq.whatsapp.com/518326725476814', titulo: L('Como sincronizar o WhatsApp Business com Páginas do Facebook', 'Cómo sincronizar WhatsApp Business con páginas de Facebook'), conferido: '25/10/2026' },
           { url: 'https://faq.whatsapp.com/2115625802107717', titulo: L('Como fazer uma assinatura do Meta Verified para empresas no WhatsApp', 'Cómo suscribirse a Meta Verified para empresas en WhatsApp'), conferido: '25/10/2026' }
         ]
       }

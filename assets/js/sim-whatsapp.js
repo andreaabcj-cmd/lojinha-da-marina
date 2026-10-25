@@ -1,7 +1,7 @@
 /* Simulador do WhatsApp: celular da Marina (WhatsApp Business) e celular de uma cliente, a Bia (WhatsApp comum).
    O que um celular faz aparece na hora no outro (perfil, catálogo, conversa, pedido, Pix, status).
    - Estado no navegador (localStorage "sim.whatsapp"); nada é enviado ao WhatsApp. ?zerar=1 volta ao começo.
-   - Telas do app real vistas em 25/10/2026 (tema escuro) e 26/10/2026 (tema claro, cores medidas na foto), conta de aula:
+   - Telas do app real vistas em 25/10/2026 (tema escuro e, depois, tema claro, cores medidas na foto), conta de aula:
      Conversas, Ferramentas, Edit profile, Prévia, categorias, horário (Selecionar horários), faixa de preço, Gerenciador de
      Catálogos, item, Coleções, Configurações do catálogo, conversa (Anexar, ⋮), enviar item, Formulários, Pix (Solicitar
      pagamento), Cobrar cliente, pedido (Aceitar pedido, Atualizar status), saudação, ausência, respostas rápidas, Listas,
@@ -10,7 +10,7 @@
    - O que não foi visto avisa "a conferir" e não segue. O espanhol das telas é tradução nossa (a conferir).
    - Tutoriais: sim-whatsapp-tours.js (meta-whatsapp.html?tour=…). */
 (function () {
-  var CONF = '25 e 26/10/2026';
+  var CONF = '25/10/2026';
   var $ = function (s, r) { return (r || document).querySelector(s) };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
   var params = new URLSearchParams(location.search);
