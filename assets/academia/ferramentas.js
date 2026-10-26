@@ -1047,7 +1047,7 @@
       o: [[{ pt: 'A programação: de quanto em quanto tempo a regra é verificada', es: 'La programación: cada cuánto tiempo se revisa la regla' }, 1, { pt: 'Isso! As outras são Diariamente e Personalizado.', es: '¡Eso! Las otras son Diariamente y Personalizado.' }],
         [{ pt: 'A ação', es: 'La acción' }, 0, { pt: 'Não: ação é o que acontece.', es: 'No: acción es lo que pasa.' }],
         [{ pt: 'O intervalo de tempo', es: 'El intervalo de tiempo' }, 0, { pt: 'O intervalo fala dos dados, não da frequência.', es: 'El intervalo habla de los datos, no de la frecuencia.' }]] },
-    { q: { pt: '“Enviar apenas uma notificação”', es: '“Enviar solo una notificación”' },
+    { q: { pt: '“Somente enviar notificação”', es: '“Solo enviar notificaciones”' },
       o: [[{ pt: 'Uma ação segura: só avisa, não muda nada nos anúncios', es: 'Una acción segura: solo avisa, no cambia nada en los anuncios' }, 1, { pt: 'Isso! Ótima para a primeira regra.', es: '¡Eso! Excelente para la primera regla.' }],
         [{ pt: 'Uma condição', es: 'Una condición' }, 0, { pt: 'É uma ação.', es: 'Es una acción.' }],
         [{ pt: 'Uma ação que desativa o conjunto', es: 'Una acción que desactiva el conjunto' }, 0, { pt: 'O nome diz: “apenas uma notificação”.', es: 'El nombre lo dice: “solo una notificación”.' }]] }
@@ -1062,7 +1062,7 @@
         [{ pt: 'Aumentar o valor para 2000', es: 'Subir el valor a 2000' }, 0, { pt: 'Isso só esconde o problema; o intervalo longo continua.', es: 'Eso solo esconde el problema; el intervalo largo sigue.' }],
         [{ pt: 'Trocar a programação para Personalizado', es: 'Cambiar la programación a Personalizado' }, 0, { pt: 'A programação não muda quem é atingido.', es: 'La programación no cambia a quién se alcanza.' }]] },
     { q: { pt: 'A Marina nunca usou regras. Qual a melhor ação para a primeira?', es: 'Marina nunca usó reglas. ¿Cuál es la mejor acción para la primera?' },
-      o: [[{ pt: '“Enviar apenas uma notificação”: ela vê o que a regra pegaria, antes de deixar desativar algo', es: '“Enviar solo una notificación”: ve lo que alcanzaría la regla, antes de dejar que desactive algo' }, 1, { pt: 'Isso! Primeiro avise, depois automatize.', es: '¡Eso! Primero avisa, después automatiza.' }],
+      o: [[{ pt: '“Somente enviar notificação”: ela vê o que a regra pegaria, antes de deixar desativar algo', es: '“Solo enviar notificaciones”: ve lo que alcanzaría la regla, antes de dejar que desactive algo' }, 1, { pt: 'Isso! Primeiro avise, depois automatize.', es: '¡Eso! Primero avisa, después automatiza.' }],
         [{ pt: 'Desativar tudo que gastar mais de R$ 1', es: 'Desactivar todo lo que gaste más de R$ 1' }, 0, { pt: 'Perigoso: desativaria quase tudo.', es: 'Peligroso: desactivaría casi todo.' }],
         [{ pt: 'Aumentar o orçamento em 100%', es: 'Aumentar el presupuesto en un 100%' }, 0, { pt: 'Gasta dinheiro sem teste.', es: 'Gasta dinero sin prueba.' }]] }
   ]);

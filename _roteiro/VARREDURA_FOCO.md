@@ -65,6 +65,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 
 ### Regras, Relatórios, Públicos, Entrega
 - Regras 01 janela em espanhol 👀 · 02 listas de ações e métricas 👀 · 04 interruptor de status 👀 · 05 comportamento ao corrigir 💳.
+  - ✅ 25/10 Regras: janela vista em PT e ES (cancelada, nada criado). Ações reais (12) e métricas em grupos copiadas; o simulador usa 4 ações e 3 métricas com os nomes reais (Desativar conjuntos de anúncios, Somente enviar notificação, Aumentar/Reduzir orçamento diário em). 5 rodadas de robô OK (uma teimosa). Interruptor de status: sem regras na conta (não visto).
 - Relatórios 03 depois de Salvar ✋ · 05 artigo de “sem dados” (ler).
 - Públicos 02 formulário em espanhol 👀 · 03 texto da recusa e mínimo 👀 · 04 público salvo e interesses 👀.
 - Entrega 01–05 números do simulador são de treino 💳 (precisa de campanha rodando).
