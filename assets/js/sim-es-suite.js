@@ -85,4 +85,11 @@
   D["Visualizações de 3 segundos"] = "Reproducciones de 3 segundos";
   D["Vídeos e reels"] = "Videos y reels";
   D["No Instagram da conta de aula os números estavam zerados."] = "En el Instagram de la cuenta de clase los números estaban en cero.";
+  D["Postar no Facebook e no Instagram"] = "Publicar en Facebook e Instagram";
+  D["Escolha onde postar ▾"] = "Elige dónde publicar ▾";
+  D["Facebook"] = "Facebook";
+  D["Instagram"] = "Instagram";
+  D["Texto do Facebook"] = "Texto de Facebook";
+  D["Texto do Instagram"] = "Texto de Instagram";
+  P.push([/^(.+) e (.+) ▾$/, function (m) { return m[1] + ' y ' + m[2] + ' ▾' }]);
 })();
