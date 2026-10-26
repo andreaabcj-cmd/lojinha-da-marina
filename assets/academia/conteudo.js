@@ -283,6 +283,10 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'O Instagram no anúncio', es: 'El Instagram en el anuncio' },
       antes: { pt: 'A Marina ligou o Instagram à Página e já sabe montar o criativo do anúncio.', es: 'Marina vinculó el Instagram a la Página y ya sabe armar el contenido del anuncio.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/272348126756182', titulo: { pt: 'Como veicular anúncios no Instagram com sua Página do Facebook', es: 'Cómo publicar anuncios en Instagram con tu Página de Facebook' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1513393428972189', titulo: { pt: 'Como criar anúncios comerciais do Instagram no Gerenciador de Anúncios da Meta', es: 'Cómo crear anuncios comerciales de Instagram en el Administrador de anuncios de Meta' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Abri a lista de Perfil do Instagram e o meu @ não está lá!” Quase sempre a causa está na ligação, não no anúncio.', es: '“¡Abrí la lista de Perfil de Instagram y mi @ no está ahí!” Casi siempre la causa está en el vínculo, no en el anuncio.' },
       objetivo: { pt: 'Escolher o perfil do Instagram na Identidade do anúncio e ver o efeito na prévia.', es: 'Elegir el perfil de Instagram en la Identidad del anuncio y ver el efecto en la vista previa.' },
       entender: {
@@ -330,6 +334,10 @@ window.AULAS = {
       id: '06', min: 7, status: 'pronta',
       titulo: { pt: 'Meu Instagram não aparece no anúncio', es: 'Mi Instagram no aparece en el anuncio' },
       antes: { pt: 'A Marina quer escolher o @ da loja no anúncio.', es: 'Marina quiere elegir el @ de la tienda en el anuncio.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/620548115562686', titulo: { pt: 'Como adicionar uma conta do Instagram a um portfólio empresarial', es: 'Cómo agregar una cuenta de Instagram a un portfolio comercial' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/898752960195806', titulo: { pt: 'Como conectar ou desconectar sua conta profissional do Instagram e uma Página do Facebook', es: 'Cómo conectar o desconectar tu cuenta profesional de Instagram y una Página de Facebook' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Tenho que postar a mesma foto duas vezes, uma em cada rede?” Não: o Business Suite posta nas duas de uma vez.', es: '“¿Tengo que publicar la misma foto dos veces, una en cada red?” No: Business Suite publica en las dos a la vez.' },
       objetivo: { pt: 'Diagnosticar por que o Instagram não aparece na lista, na ordem certa: conta profissional, portfólio e ligação com a Página.', es: 'Diagnosticar por qué el Instagram no aparece en la lista, en el orden correcto: cuenta profesional, portfolio y vínculo con la Página.' },
       entender: {
@@ -378,6 +386,10 @@ window.AULAS = {
       id: '07', min: 8, status: 'pronta',
       titulo: { pt: 'Postar no Facebook e no Instagram juntos', es: 'Publicar en Facebook y en Instagram a la vez' },
       antes: { pt: 'A Marina ligou o Instagram à Página e sabe usar a identidade nos anúncios.', es: 'Marina vinculó el Instagram a la Página y sabe usar la identidad en los anuncios.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/942827662903020', titulo: { pt: 'Criar e gerenciar posts no Meta Business Suite', es: 'Crear y administrar publicaciones en Meta Business Suite' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/914097058035853', titulo: { pt: 'Sobre o post cruzado no Facebook, no Instagram e no Threads no Meta Business Suite', es: 'Sobre la publicación cruzada en Facebook, Instagram y Threads en Meta Business Suite' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Alguém perguntou o preço, mas não sei onde! Mensagem? Comentário?” Tudo cai na Caixa de Entrada.', es: '“¡Alguien preguntó el precio, pero no sé dónde! ¿Mensaje? ¿Comentario?” Todo llega a Mensajes.' },
       objetivo: { pt: 'Criar um post no Business Suite e escolher onde ele vai: Facebook, Instagram ou os dois.', es: 'Crear una publicación en Business Suite y elegir adónde va: Facebook, Instagram o los dos.' },
       entender: {
@@ -425,6 +437,10 @@ window.AULAS = {
       id: '08', min: 8, status: 'pronta',
       titulo: { pt: 'A Caixa de Entrada: mensagens e comentários', es: 'Mensajes: mensajes y comentarios' },
       antes: { pt: 'Os posts da Marina estão no ar nas duas redes. As primeiras perguntas chegaram.', es: 'Las publicaciones de Marina están en las dos redes. Llegaron las primeras preguntas.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/294426838452244', titulo: { pt: 'Sobre a Caixa de Entrada no Meta Business Suite', es: 'Sobre la bandeja de entrada de Meta Business Suite' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1582179663085916', titulo: { pt: 'Gerenciar comentários na Caixa de Entrada do Meta Business Suite', es: 'Administrar comentarios en la bandeja de entrada de Meta Business Suite' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Os números do Instagram estão todos zerados! Está quebrado?” Antes de se preocupar, vamos aprender a ler os Insights.', es: '“¡Los números de Instagram están todos en cero! ¿Está roto?” Antes de preocuparte, aprendamos a leer las Estadísticas.' },
       objetivo: { pt: 'Achar e responder mensagens e comentários do Instagram e do Facebook na Caixa de Entrada.', es: 'Encontrar y responder mensajes y comentarios de Instagram y de Facebook en Mensajes.' },
       entender: {
@@ -473,6 +489,10 @@ window.AULAS = {
       id: '09', min: 7, status: 'pronta',
       titulo: { pt: 'Insights do Instagram: ler os números', es: 'Estadísticas de Instagram: leer los números' },
       antes: { pt: 'A Marina já posta, responde e anuncia. Agora quer saber se está funcionando.', es: 'Marina ya publica, responde y anuncia. Ahora quiere saber si está funcionando.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/700570830721044', titulo: { pt: 'Sobre os Insights no Meta Business Suite', es: 'Sobre las estadísticas en Meta Business Suite' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/4185855074991336', titulo: { pt: 'Ver a visão geral dos seus insights no Meta Business Suite', es: 'Ver el resumen de tus estadísticas en Meta Business Suite' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Passo o dia olhando os anúncios para pausar o que gasta demais. Dá para automatizar?” Próximo módulo: Gerenciador de Anúncios · regras automatizadas.', es: '“Paso el día mirando los anuncios para pausar lo que gasta de más. ¿Se puede automatizar?” Próximo módulo: Administrador de anuncios · reglas automáticas.' },
       objetivo: { pt: 'Ler os Insights do Instagram e do Facebook, trocar de entidade e entender zeros e a aba Público.', es: 'Leer las Estadísticas de Instagram y de Facebook, cambiar de entidad y entender los ceros y la pestaña Público.' },
       entender: {
@@ -1225,6 +1245,9 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'O catálogo: um só para tudo', es: 'El catálogo: uno solo para todo' },
       antes: { pt: 'O Pixel da Marina já mede o que acontece no site: visitas, carrinho, compra.', es: 'El Pixel de Marina ya mide lo que pasa en el sitio: visitas, carrito, compra.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/890714097648074', titulo: { pt: 'Sobre os catálogos', es: 'Sobre los catálogos' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Vou criar agora! Mas tem uma pergunta que diz que não dá para mudar depois…” Vamos passo a passo.', es: '“¡Lo voy a crear ahora! Pero hay una pregunta que dice que no se puede cambiar después…” Vamos paso a paso.' },
       objetivo: { pt: 'Entender o que é o catálogo, onde ele mora (Gerenciador de Comércio) e por que se usa um só para todo o estoque.', es: 'Entender qué es el catálogo, dónde vive (Administrador de ventas) y por qué se usa uno solo para todo el inventario.' },
       entender: {
@@ -1269,6 +1292,9 @@ window.AULAS = {
       id: '02', min: 8, status: 'pronta',
       titulo: { pt: 'Criar o catálogo da Marina', es: 'Crear el catálogo de Marina' },
       antes: { pt: 'A Marina entendeu: um catálogo só, com os produtos dentro.', es: 'Marina entendió: un solo catálogo, con los productos dentro.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1275400645914358', titulo: { pt: 'Como criar um catálogo no Gerenciador de Comércio', es: 'Cómo crear un catálogo en el Administrador de ventas' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Tenho uma planilha com meus produtos. Qual dos jeitos eu uso?” Vamos ver as opções e carregar o arquivo.', es: '“Tengo una hoja de cálculo con mis productos. ¿Cuál de las formas uso?” Vamos a ver las opciones y subir el archivo.' },
       objetivo: { pt: 'Criar um catálogo: escolher o tipo certo, o portfólio e o nome, e saber o que ainda falta depois.', es: 'Crear un catálogo: elegir el tipo correcto, el portfolio y el nombre, y saber qué falta después.' },
       entender: {
@@ -1316,6 +1342,10 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Colocar os produtos no catálogo', es: 'Poner los productos en el catálogo' },
       antes: { pt: 'O catálogo da Marina está criado, mas ainda vazio.', es: 'El catálogo de Marina está creado, pero todavía vacío.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/384041892421495', titulo: { pt: 'Métodos para adicionar produtos a um catálogo', es: 'Métodos para agregar productos a un catálogo' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/125074381480892', titulo: { pt: 'Como carregar produtos com um feed de dados', es: 'Cómo subir productos con un feed de datos' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“O anúncio não mostra a caneca que a pessoa viu!” Pode ser que os IDs não combinem. Vamos conferir.', es: '“¡El anuncio no muestra la taza que vio la persona!” Puede ser que los IDs no coincidan. Vamos a revisar.' },
       objetivo: { pt: 'Escolher o jeito de adicionar produtos, carregar um arquivo (feed) com a moeda certa e conferir o resultado.', es: 'Elegir la forma de agregar productos, subir un archivo (feed) con la moneda correcta y revisar el resultado.' },
       entender: {
@@ -1364,6 +1394,9 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Catálogo e Pixel falando a mesma língua', es: 'Catálogo y Pixel hablando el mismo idioma' },
       antes: { pt: 'Os 8 produtos da Marina já estão no catálogo, e o Pixel mede o site.', es: 'Los 8 productos de Marina ya están en el catálogo, y el Pixel mide el sitio.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/644889989181423', titulo: { pt: 'Como solucionar problemas de taxa de correspondência do catálogo', es: 'Cómo solucionar problemas de tasa de coincidencia del catálogo' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“O Moletom está como indisponível, mas eu tenho no estoque!” Vamos achar a causa.', es: '“¡El Moletom aparece como agotado, pero lo tengo en stock!” Vamos a encontrar la causa.' },
       objetivo: { pt: 'Entender que o ID do produto no catálogo e o content_id do evento do Pixel precisam ser iguais, e onde conferir cada um.', es: 'Entender que el ID del producto en el catálogo y el content_id del evento del Pixel deben ser iguales, y dónde revisar cada uno.' },
       entender: {
@@ -1412,6 +1445,10 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meu produto não aparece!', es: '¡Mi producto no aparece!' },
       antes: { pt: 'Catálogo criado, produtos carregados, IDs combinando.', es: 'Catálogo creado, productos cargados, IDs coincidiendo.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1168881033546362', titulo: { pt: 'Como solucionar problemas de produtos que não estão sendo exibidos nos anúncios ou na loja', es: 'Cómo solucionar problemas de productos que no se muestran en los anuncios o en la tienda' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/2741254916111768', titulo: { pt: 'Como solucionar problemas de produtos em violação de políticas', es: 'Cómo solucionar problemas de productos que infringen las políticas' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Preenchi o modelo da Meta e só metade dos produtos entrou!” Vamos conferir a planilha antes e depois de carregar.', es: '“¡Llené la plantilla de Meta y solo entró la mitad de los productos!” Vamos a revisar la planilla antes y después de subirla.' },
       objetivo: { pt: 'Achar por que um produto não aparece como esperado: ler o status, a disponibilidade e a fonte de dados, e corrigir onde o dado nasce.', es: 'Encontrar por qué un producto no aparece como se espera: leer el estado, la disponibilidad y el origen de datos, y corregir donde nace el dato.' },
       entender: {
@@ -1460,6 +1497,11 @@ window.AULAS = {
       id: '06', min: 14, status: 'pronta',
       titulo: { pt: 'Conferir a planilha do catálogo', es: 'Revisar la planilla del catálogo' },
       antes: { pt: 'O catálogo já recebe produtos por arquivo de dados. Agora: como saber se a planilha está certa?', es: 'El catálogo ya recibe productos por archivo de datos. Ahora: ¿cómo saber si la planilla está bien?' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1898524300466211', titulo: { pt: 'Como criar um feed de dados usando um modelo', es: 'Cómo crear un feed de datos con una plantilla' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/2041876302542944', titulo: { pt: 'Como solucionar erros do feed de dados', es: 'Cómo solucionar errores del feed de datos' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/2284463181837648', titulo: { pt: 'Sobre os carregamentos de feed de dados programados', es: 'Sobre las subidas programadas del feed de datos' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Vou vender um Kit Presente só neste mês. Preciso mexer na planilha inteira por um produto?” Vamos cadastrar à mão.', es: '“Voy a vender un Kit Regalo solo este mes. ¿Tengo que tocar toda la planilla por un producto?” Vamos a cargarlo a mano.' },
       objetivo: { pt: 'Conferir uma planilha de catálogo como a Meta pede: o modelo, o cabeçalho, as linhas de exemplo, os valores aceitos; depois carregar, ler o Resumo do upload e o relatório de problemas, corrigir na planilha e recarregar.', es: 'Revisar una planilla de catálogo como pide Meta: la plantilla, el encabezado, las filas de ejemplo, los valores aceptados; después subirla, leer el Resumen de la carga y el informe de problemas, corregir en la planilla y volver a subir.' },
       entender: {
@@ -1607,6 +1649,10 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'O anúncio no Feed: o que a pessoa vê', es: 'El anuncio en el Feed: lo que ve la persona' },
       antes: { pt: 'A Marina já sabe criar a campanha, o conjunto de anúncios e o catálogo. Falta cuidar do que a pessoa realmente vê.', es: 'Marina ya sabe crear la campaña, el conjunto de anuncios y el catálogo. Falta cuidar lo que realmente ve la persona.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Criar uma campanha de anúncios', es: 'Crear una campaña publicitaria' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1625047404403494', titulo: { pt: 'Ver a prévia de um anúncio durante a criação de anúncios', es: 'Ver la vista previa de un anuncio durante su creación' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“A tela pede ‘Especifique a mídia’… e depois aparece uma janela cheia de etapas!” Vamos montar o criativo sem se perder.', es: '“La pantalla pide ‘Especifica el contenido multimedia’… ¡y después aparece una ventana llena de etapas!” Vamos a armar el contenido sin perdernos.' },
       objetivo: { pt: 'Reconhecer as partes do anúncio (Página, texto principal, mídia, título, descrição, botão e destino) e achar onde cada uma é configurada.', es: 'Reconocer las partes del anuncio (Página, texto principal, contenido multimedia, título, descripción, botón y destino) y encontrar dónde se configura cada una.' },
       entender: {
@@ -1650,6 +1696,10 @@ window.AULAS = {
       id: '02', min: 9, status: 'pronta',
       titulo: { pt: 'Montar o criativo da Marina', es: 'Armar el contenido de Marina' },
       antes: { pt: 'A Marina conhece as partes do anúncio e tem a foto da Caneca azul pronta.', es: 'Marina conoce las partes del anuncio y tiene lista la foto de la Caneca azul.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Criar uma campanha de anúncios', es: 'Crear una campaña publicitaria' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/297506218282224', titulo: { pt: 'Sobre o criativo Advantage+', es: 'Sobre el contenido Advantage+' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“No Feed ficou lindo, mas no Story tem uma faixa escura!” Vamos entender onde o anúncio aparece e como ajustar o corte.', es: '“En el Feed quedó lindo, ¡pero en el Story hay una franja oscura!” Vamos a entender dónde aparece el anuncio y cómo ajustar el recorte.' },
       objetivo: { pt: 'Escolher o formato, adicionar a mídia pelo assistente (mídia, texto, aprimoramentos) e ver o resultado na prévia.', es: 'Elegir el formato, agregar el contenido multimedia con el asistente (contenido, texto, mejoras) y ver el resultado en la vista previa.' },
       entender: {
@@ -1697,6 +1747,11 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Posicionamentos e cortes', es: 'Ubicaciones y recortes' },
       antes: { pt: 'A mídia da Marina entrou no anúncio e a prévia mostrou três cartões diferentes.', es: 'El contenido de Marina entró en el anuncio y la vista previa mostró tres tarjetas distintas.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/965529646866485', titulo: { pt: 'Sobre o sistema de veiculação: posicionamentos', es: 'Sobre el sistema de entrega: ubicaciones' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/682655495435254', titulo: { pt: 'Taxas de proporção compatíveis com posicionamentos', es: 'Relaciones de aspecto compatibles con las ubicaciones' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/279271845888065', titulo: { pt: 'Posicionamentos e formatos compatíveis por objetivo do anúncio', es: 'Ubicaciones y formatos compatibles por objetivo del anuncio' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Preenchi tudo e a tela ainda não deixa publicar! O que está faltando?” Quase sempre é o destino.', es: '“¡Completé todo y la pantalla todavía no deja publicar! ¿Qué falta?” Casi siempre es el destino.' },
       objetivo: { pt: 'Entender os posicionamentos Advantage+, ler a prévia por grupo e ajustar o corte da mídia em Editar grupo.', es: 'Entender las ubicaciones Advantage+, leer la vista previa por grupo y ajustar el recorte del contenido en Editar grupo.' },
       entender: {
@@ -1745,6 +1800,9 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Destino e botão', es: 'Destino y botón' },
       antes: { pt: 'O criativo da Marina está bonito em todos os lugares. Falta o clique levar a algum lugar.', es: 'El contenido de Marina se ve lindo en todos los lugares. Falta que el clic lleve a algún lado.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Criar uma campanha de anúncios', es: 'Crear una campaña publicitaria' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Não publica, e o Story ficou estranho!” Vamos investigar como um detetive: o que falta, e o que está diferente do esperado.', es: '“¡No se publica, y el Story quedó raro!” Vamos a investigar como un detective: qué falta, y qué es diferente de lo esperado.' },
       objetivo: { pt: 'Preencher o URL do site, entender o link de exibição e escolher um botão que combine com o clique.', es: 'Completar la URL del sitio web, entender el enlace visible y elegir un botón que combine con el clic.' },
       entender: {
@@ -1793,6 +1851,10 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meu anúncio não publica ou ficou estranho!', es: '¡Mi anuncio no se publica o quedó raro!' },
       antes: { pt: 'A Marina já montou, ajustou os cortes e preencheu o destino. Mas algo ainda não está certo.', es: 'Marina ya armó, ajustó los recortes y completó el destino. Pero algo todavía no está bien.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/125897810822573', titulo: { pt: 'Solucionar problemas ao criar ou publicar um anúncio', es: 'Solucionar problemas al crear o publicar un anuncio' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1094977715388483', titulo: { pt: 'Solucionar problemas de prévia do anúncio', es: 'Solucionar problemas de vista previa del anuncio' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“E o meu Instagram? Ele já está no portfólio?” Próximo módulo: Instagram para empresas.', es: '“¿Y mi Instagram? ¿Ya está en el portfolio?” Próximo módulo: Instagram para empresas.' },
       objetivo: { pt: 'Resolver os dois casos mais comuns do criativo: o que falta para publicar (destino, mídia, Página) e o que ficou diferente do esperado (corte, aprimoramentos).', es: 'Resolver los dos casos más comunes del contenido: qué falta para publicar (destino, contenido, Página) y qué quedó diferente de lo esperado (recorte, mejoras).' },
       entender: {
@@ -1843,6 +1905,10 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Regras automatizadas: para que servem', es: 'Reglas automáticas: para qué sirven' },
       antes: { pt: 'A Marina já posta, anuncia e responde clientes. Agora ela passa o dia olhando os anúncios.', es: 'Marina ya publica, anuncia y responde clientes. Ahora se pasa el día mirando los anuncios.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1694779440789213', titulo: { pt: 'Sobre regras automatizadas no Gerenciador de Anúncios da Meta', es: 'Sobre las reglas automáticas en el Administrador de anuncios de Meta' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/644860419002064', titulo: { pt: 'Criar uma regra automatizada no Gerenciador de Anúncios da Meta', es: 'Crear una regla automática en el Administrador de anuncios de Meta' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Cliquei em Criar regra e apareceu um formulário enorme!” Vamos preencher peça por peça.', es: '“¡Hice clic en Crear regla y apareció un formulario enorme!” Vamos a completarlo pieza por pieza.' },
       objetivo: { pt: 'Saber o que é uma regra automatizada, onde ela mora e onde criá-la conforme o alcance (algumas campanhas ou todas).', es: 'Saber qué es una regla automática, dónde vive y dónde crearla según el alcance (algunas campañas o todas).' },
       entender: {
@@ -1886,6 +1952,10 @@ window.AULAS = {
       id: '02', min: 9, status: 'pronta',
       titulo: { pt: 'Criar a primeira regra', es: 'Crear la primera regla' },
       antes: { pt: 'A Marina entendeu: regra = “se isto, então aquilo”.', es: 'Marina entendió: regla = “si esto, entonces aquello”.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/644860419002064', titulo: { pt: 'Criar uma regra automatizada no Gerenciador de Anúncios da Meta', es: 'Crear una regla automática en el Administrador de anuncios de Meta' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/192277077825914', titulo: { pt: 'Sobre as ações para regras automatizadas', es: 'Sobre las acciones de las reglas automáticas' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Se eu desativar tudo que gasta mais de R$ 20, resolvo!” Cuidado: é assim que se desativa o anúncio que vende.', es: '“¡Si desactivo todo lo que gasta más de R$ 20, resuelvo!” Cuidado: así se desactiva el anuncio que vende.' },
       objetivo: { pt: 'Preencher a janela “Crie uma regra personalizada”: nome, onde aplica, ação, condição, intervalo e programação.', es: 'Completar la ventana “Crea una regla personalizada”: nombre, dónde se aplica, acción, condición, intervalo y programación.' },
       entender: {
@@ -1933,6 +2003,9 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Regra segura: intervalo e condições', es: 'Regla segura: intervalo y condiciones' },
       antes: { pt: 'A Marina criou uma regra de aviso. Agora quer uma que desative.', es: 'Marina creó una regla de aviso. Ahora quiere una que desactive.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/975877422460996', titulo: { pt: 'Sobre condições para regras automatizadas', es: 'Sobre las condiciones de las reglas automáticas' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Criei, e agora? Como sei se a regra fez alguma coisa, e se eu quiser mudar?” Vamos acompanhar.', es: '“Creé, ¿y ahora? ¿Cómo sé si la regla hizo algo, y si quiero cambiarla?” Vamos a hacer el seguimiento.' },
       objetivo: { pt: 'Entender o intervalo de tempo e o falso positivo, e montar uma regra que só atinge quem gastou e não teve resultado.', es: 'Entender el intervalo de tiempo y el falso positivo, y armar una regla que solo alcance a quien gastó y no tuvo resultado.' },
       entender: {
@@ -1980,6 +2053,11 @@ window.AULAS = {
       id: '04', min: 7, status: 'pronta',
       titulo: { pt: 'Acompanhar, editar e excluir', es: 'Seguir, editar y eliminar' },
       antes: { pt: 'A regra da Marina está criada e ativa.', es: 'La regla de Marina está creada y activa.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/219166281785482', titulo: { pt: 'Gerenciar regras automatizadas', es: 'Administrar reglas automáticas' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1776994142531909', titulo: { pt: 'Editar regra automatizada', es: 'Editar una regla automática' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/2121293564788752', titulo: { pt: 'Excluir regra automatizada', es: 'Eliminar una regla automática' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Dois anúncios pararam e ninguém mexeu!” Quando algo para sem ninguém mexer, olhe as regras.', es: '“¡Dos anuncios se detuvieron y nadie los tocó!” Cuando algo se detiene sin que nadie lo toque, mira las reglas.' },
       objetivo: { pt: 'Ler a tabela de regras, ver o que a regra fez, e saber o que dá e o que não dá para editar.', es: 'Leer la tabla de reglas, ver qué hizo la regla, y saber qué se puede y qué no se puede editar.' },
       entender: {
@@ -2027,6 +2105,10 @@ window.AULAS = {
       id: '05', min: 8, status: 'pronta',
       titulo: { pt: 'Meus anúncios pararam sozinhos!', es: '¡Mis anuncios se detuvieron solos!' },
       antes: { pt: 'A Marina tem regras e sabe lê-las. Um dia, a campanha amanhece diferente.', es: 'Marina tiene reglas y sabe leerlas. Un día, la campaña amanece distinta.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/219166281785482', titulo: { pt: 'Gerenciar regras automatizadas', es: 'Administrar reglas automáticas' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/192277077825914', titulo: { pt: 'Sobre as ações para regras automatizadas', es: 'Sobre las acciones de las reglas automáticas' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“As regras cuidam dos anúncios. Mas eles estão dando resultado?” Próximo módulo: Relatórios e métricas.', es: '“Las reglas cuidan los anuncios. ¿Pero están dando resultado?” Próximo módulo: Informes y métricas.' },
       objetivo: { pt: 'Descobrir se uma regra desativou algo, achar qual e por quê, corrigi-la e reativar o que for preciso.', es: 'Descubrir si una regla desactivó algo, encontrar cuál y por qué, corregirla y reactivar lo que haga falta.' },
       entender: {
@@ -2077,6 +2159,10 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Onde ficam os números', es: 'Dónde están los números' },
       antes: { pt: 'A Marina tem anúncios, regras e posts. Agora quer saber se tudo isso está funcionando.', es: 'Marina tiene anuncios, reglas y publicaciones. Ahora quiere saber si todo eso está funcionando.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/487269218011981', titulo: { pt: 'Sobre os Relatórios de Anúncios da Meta', es: 'Sobre los Informes de anuncios de Meta' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/337196340694086', titulo: { pt: 'Diferenças entre contagens de eventos no Gerenciador de Anúncios, no Relatório de Anúncios e no Gerenciador de Eventos', es: 'Diferencias entre los recuentos de eventos en el Administrador de anuncios, los Informes de anuncios y el Administrador de eventos' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Tem 69, 71, 1,03… o que significa cada número?” Vamos ler a tabela com os números reais do anúncio de teste.', es: '“Hay 69, 71, 1,03… ¿qué significa cada número?” Vamos a leer la tabla con los números reales del anuncio de prueba.' },
       objetivo: { pt: 'Saber os lugares onde se veem números (Gerenciador, Relatórios de Anúncios, Insights, Gerenciador de Eventos) e qual usar em cada caso.', es: 'Saber los lugares donde se ven números (Administrador, Informes de anuncios, Estadísticas, Administrador de eventos) y cuál usar en cada caso.' },
       entender: {
@@ -2120,6 +2206,9 @@ window.AULAS = {
       id: '02', min: 7, status: 'pronta',
       titulo: { pt: 'Ler o relatório: alcance, impressões, gasto', es: 'Leer el informe: alcance, impresiones, gasto' },
       antes: { pt: 'A Marina abriu os Relatórios de Anúncios pela primeira vez.', es: 'Marina abrió los Informes de anuncios por primera vez.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/487269218011981', titulo: { pt: 'Sobre os Relatórios de Anúncios da Meta', es: 'Sobre los Informes de anuncios de Meta' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Quero ver por campanha e por plataforma, com cliques e compras!” Isso se monta em Personalizar.', es: '“¡Quiero ver por campaña y por plataforma, con clics y compras!” Eso se arma en Personalizar.' },
       objetivo: { pt: 'Ler as colunas padrão (Alcance, Impressões, Frequência, Valor gasto, Configuração de atribuição) e o efeito do período.', es: 'Leer las columnas predeterminadas (Alcance, Impresiones, Frecuencia, Monto gastado, Configuración de atribución) y el efecto del período.' },
       entender: {
@@ -2167,6 +2256,9 @@ window.AULAS = {
       id: '03', min: 9, status: 'pronta',
       titulo: { pt: 'Montar o seu relatório', es: 'Armar tu informe' },
       antes: { pt: 'A Marina sabe ler a tabela padrão, mas quer mais detalhe.', es: 'Marina sabe leer la tabla predeterminada, pero quiere más detalle.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/258751574748790', titulo: { pt: 'Como visualizar e gerenciar relatórios nos Relatórios de Anúncios da Meta', es: 'Cómo ver y administrar informes en los Informes de anuncios de Meta' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“De onde saíram essas 14 compras? Um amigo viu 8 na tela dele!” A resposta está na janela de atribuição.', es: '“¿De dónde salieron esas 14 compras? ¡Un amigo vio 8 en su pantalla!” La respuesta está en la ventana de atribución.' },
       objetivo: { pt: 'Usar Personalizar para escolher detalhamentos (como dividir) e métricas (os números), e salvar o relatório.', es: 'Usar Personalizar para elegir desgloses (cómo dividir) y métricas (los números), y guardar el informe.' },
       entender: {
@@ -2214,6 +2306,10 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Atribuição: de onde vêm as compras', es: 'Atribución: de dónde vienen las compras' },
       antes: { pt: 'A Marina montou o relatório e viu 14 compras numa campanha de exemplo.', es: 'Marina armó el informe y vio 14 compras en una campaña de ejemplo.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/460276478298895', titulo: { pt: 'Sobre a configuração de atribuição', es: 'Sobre la configuración de atribución' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1210102949141763', titulo: { pt: 'Como entender os resultados de atribuição no Gerenciador de Anúncios da Meta', es: 'Cómo entender los resultados de atribución en el Administrador de anuncios de Meta' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Meu relatório sumiu! Está tudo vazio!” Quase nunca é defeito: costuma ser período ou filtro.', es: '“¡Mi informe desapareció! ¡Está todo vacío!” Casi nunca es un defecto: suele ser período o filtro.' },
       objetivo: { pt: 'Entender a Configuração de atribuição (como uma compra é contada para o anúncio) e por que só se compara igual com igual.', es: 'Entender la Configuración de atribución (cómo se cuenta una compra para el anuncio) y por qué solo se compara igual con igual.' },
       entender: {
@@ -2261,6 +2357,9 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'Relatório vazio, zerado ou diferente', es: 'Informe vacío, en cero o distinto' },
       antes: { pt: 'A Marina já lê, monta e compara relatórios. Um dia, a tela amanhece vazia.', es: 'Marina ya lee, arma y compara informes. Un día, la pantalla amanece vacía.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/212731928758069', titulo: { pt: 'Entenda por que um anúncio pode não ter dados ou métricas', es: 'Entiende por qué un anuncio puede no tener datos o métricas' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: 'Com os números certos na tela, falta a pergunta da Marina: valeu o dinheiro?', es: 'Con los números correctos en la pantalla, falta la pregunta de Marina: ¿valió el dinero?' },
       objetivo: { pt: 'Diagnosticar relatório vazio ou zerado: período, filtro Teve veiculação, objetivo da campanha.', es: 'Diagnosticar informe vacío o en cero: período, filtro Con entrega, objetivo de la campaña.' },
       entender: {
@@ -2356,6 +2455,10 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Quem vê o anúncio: tipos de público', es: 'Quién ve el anuncio: tipos de público' },
       antes: { pt: 'A Marina já mede e lê relatórios. Agora quer escolher melhor quem vê os anúncios.', es: 'Marina ya mide y lee informes. Ahora quiere elegir mejor quién ve los anuncios.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/744354708981227', titulo: { pt: 'Sobre públicos personalizados', es: 'Sobre los públicos personalizados' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/273363992030035', titulo: { pt: 'Sobre o público Advantage+', es: 'Sobre el público Advantage+' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“O Pixel já sabe quem visitou a loja. Como transformo isso em público?” Vamos criar.', es: '“El Pixel ya sabe quién visitó la tienda. ¿Cómo lo convierto en público?” Vamos a crearlo.' },
       objetivo: { pt: 'Distinguir os três tipos de público (personalizado, semelhante e salvo) e o público automático Advantage+ com controles.', es: 'Distinguir los tres tipos de público (personalizado, similar y guardado) y el público automático Advantage+ con controles.' },
       entender: {
@@ -2399,6 +2502,10 @@ window.AULAS = {
       id: '02', min: 9, status: 'pronta',
       titulo: { pt: 'Público de quem visitou o site', es: 'Público de quien visitó el sitio' },
       antes: { pt: 'A Marina entendeu os tipos de público. Quer o primeiro: quem visitou a loja.', es: 'Marina entendió los tipos de público. Quiere el primero: quien visitó la tienda.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1474662202748341', titulo: { pt: 'Criar um público personalizado do site', es: 'Crear un público personalizado del sitio web' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/610516375684216', titulo: { pt: 'Sobre públicos personalizados do site', es: 'Sobre los públicos personalizados del sitio web' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Quero mais clientes como os que já compraram.” O público semelhante faz isso, se a fonte for boa.', es: '“Quiero más clientes como los que ya compraron.” El público similar hace eso, si el origen es bueno.' },
       objetivo: { pt: 'Criar um público personalizado do site: fonte, evento, retenção e nome, e ler o tamanho e os status.', es: 'Crear un público personalizado del sitio web: origen, evento, retención y nombre, y leer el tamaño y los estados.' },
       entender: {
@@ -2446,6 +2553,10 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Público semelhante', es: 'Público similar' },
       antes: { pt: 'A Marina tem públicos personalizados. Agora quer achar gente nova parecida.', es: 'Marina tiene públicos personalizados. Ahora quiere encontrar gente nueva parecida.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/164749007013531', titulo: { pt: 'Sobre os públicos semelhantes', es: 'Sobre los públicos similares' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/465262276878947', titulo: { pt: 'Como criar um público semelhante', es: 'Cómo crear un público similar' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Sempre ponho Brasil e 18+ de novo!” O público salvo e os controles resolvem. Mas há assuntos que pedem cuidado.', es: '“¡Siempre pongo Brasil y 18+ de nuevo!” El público guardado y los controles lo resuelven. Pero hay temas que piden cuidado.' },
       objetivo: { pt: 'Criar um público semelhante (fonte, localização, tamanho) e entender por que uma fonte pequena é recusada.', es: 'Crear un público similar (origen, ubicación, tamaño) y entender por qué un origen pequeño es rechazado.' },
       entender: {
@@ -2493,6 +2604,10 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Público salvo, controles e categorias especiais', es: 'Público guardado, controles y categorías especiales' },
       antes: { pt: 'A Marina cria públicos e quer reutilizar suas escolhas.', es: 'Marina crea públicos y quiere reutilizar sus elecciones.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/273363992030035', titulo: { pt: 'Sobre o público Advantage+', es: 'Sobre el público Advantage+' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/298000447747885', titulo: { pt: 'Como escolher uma categoria de anúncio especial', es: 'Cómo elegir una categoría especial de anuncio' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Meu público está quebrado!” Quase nunca: costuma ser tráfego pequeno, uma fonte pequena ou falta de tempo.', es: '“¡Mi público está roto!” Casi nunca: suele ser poco tráfico, un origen pequeño o falta de tiempo.' },
       objetivo: { pt: 'Criar um público salvo, entender os Controles do público Advantage+ e saber quando declarar uma categoria especial de anúncio.', es: 'Crear un público guardado, entender los Controles del público Advantage+ y saber cuándo declarar una categoría especial de anuncio.' },
       entender: {
@@ -2541,6 +2656,10 @@ window.AULAS = {
       id: '05', min: 7, status: 'pronta',
       titulo: { pt: 'Meu público não funciona!', es: '¡Mi público no funciona!' },
       antes: { pt: 'A Marina criou públicos e anúncios, mas os números do público parecem baixos.', es: 'Marina creó públicos y anuncios, pero los números del público parecen bajos.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1523083297982009', titulo: { pt: 'Solucionar problemas do tamanho do público personalizado do site', es: 'Solucionar problemas del tamaño del público personalizado del sitio web' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1055828013359808', titulo: { pt: 'Como entender as restrições de determinados públicos personalizados', es: 'Cómo entender las restricciones de ciertos públicos personalizados' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Públicos prontos e campanhas publicadas. E agora apareceu ‘Aprendizado’ em tudo!” Próximo módulo: Entrega de anúncios.', es: '“Públicos listos y campañas publicadas. ¡Y ahora aparece ‘Aprendizaje’ en todo!” Próximo módulo: Entrega de anuncios.' },
       objetivo: { pt: 'Diagnosticar um público pequeno ou um semelhante recusado, e dizer ao cliente o que fazer enquanto os dados crescem.', es: 'Diagnosticar un público pequeño o un similar rechazado, y decirle al cliente qué hacer mientras los datos crecen.' },
       entender: {
@@ -2590,6 +2709,9 @@ window.AULAS = {
       id: '01', min: 6, status: 'pronta',
       titulo: { pt: 'Microdados: como o site fala com o catálogo', es: 'Microdatos: cómo habla el sitio con el catálogo' },
       antes: { pt: 'A Marina tem o catálogo pronto, com 8 produtos que entraram por um arquivo.', es: 'Marina tiene el catálogo listo, con 8 productos que entraron por un archivo.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/887775018036966', titulo: { pt: 'Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', es: 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Como eu sei se o meu site está certo?” Cola a URL, clica, e a Meta mostra o que enxergou.', es: '“¿Cómo sé si mi sitio está bien?” Pegas la URL, haces clic, y Meta muestra lo que vio.' },
       objetivo: { pt: 'Entender o que são microdados, por que o catálogo precisa deles e qual é a ferramenta para conferir.', es: 'Entender qué son los microdatos, por qué el catálogo los necesita y cuál es la herramienta para revisarlos.' },
       entender: {
@@ -2635,6 +2757,9 @@ window.AULAS = {
       id: '02', min: 7, status: 'pronta',
       titulo: { pt: 'Usar o Microdata Debugger', es: 'Usar el Microdata Debugger' },
       antes: { pt: 'A Marina sabe que o site precisa de microdados. Quer conferir os da Caneca azul.', es: 'Marina sabe que el sitio necesita microdatos. Quiere revisar los de la Caneca azul.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/887775018036966', titulo: { pt: 'Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', es: 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“id, title, price, availability… o que cada um faz?” Vamos ler a tabela como quem lê uma ficha.', es: '“id, title, price, availability… ¿qué hace cada uno?” Vamos a leer la tabla como quien lee una ficha.' },
       objetivo: { pt: 'Abrir a ferramenta, verificar uma página de produto e ler a Prévia e a mensagem final.', es: 'Abrir la herramienta, verificar una página de producto y leer la vista previa y el mensaje final.' },
       entender: {
@@ -2682,6 +2807,10 @@ window.AULAS = {
       id: '03', min: 8, status: 'pronta',
       titulo: { pt: 'Os campos que o catálogo precisa', es: 'Los campos que necesita el catálogo' },
       antes: { pt: 'A Marina viu as tabelas da Prévia, cheias de siglas.', es: 'Marina vio las tablas de la vista previa, llenas de siglas.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/887775018036966', titulo: { pt: 'Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', es: 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)' }, conferido: '25/10/2026' },
+        { url: 'https://www.facebook.com/business/help/120325381656392', titulo: { pt: 'Especificações e campos do feed de dados para catálogos', es: 'Especificaciones y campos del feed de datos para catálogos' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Deu erro e não diz o quê!” Vamos achar a causa comparando com uma página que funciona.', es: '“¡Dio error y no dice qué!” Vamos a encontrar la causa comparando con una página que funciona.' },
       objetivo: { pt: 'Ler os parâmetros principais (id, title, description, price, link, image_link, availability, condition, brand) e ligar o id ao catálogo e ao Pixel.', es: 'Leer los parámetros principales (id, title, description, price, link, image_link, availability, condition, brand) y vincular el id con el catálogo y el Pixel.' },
       entender: {
@@ -2729,6 +2858,9 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: '“Falha na validação de dados”', es: '“Error al validar los datos”' },
       antes: { pt: 'A Marina testou a página do Boné e a ferramenta mostrou Erros.', es: 'Marina probó la página de la Gorra y la herramienta mostró Errores.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/887775018036966', titulo: { pt: 'Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', es: 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)' }, conferido: '25/10/2026' }
+      ],
       gancho: { pt: '“Meu desenvolvedor perguntou que código colocar.” Vamos ver como são as tags e corrigir as da Ecobag, do jeito que ele faria.', es: '“Mi desarrollador preguntó qué código poner.” Vamos a ver cómo son las etiquetas y corregir las de la Ecobag, como él lo haría.' },
       objetivo: { pt: 'Ler a tela de erro, achar a causa comparando com uma página boa e orientar o cliente sem mexer no site.', es: 'Leer la pantalla de error, encontrar la causa comparando con una página buena y orientar al cliente sin tocar el sitio.' },
       entender: {
@@ -3042,6 +3174,9 @@ window.AULAS = {
         id: '01', min: 6, status: 'pronta',
         titulo: L('A fase de aprendizado', 'La fase de aprendizaje'),
         antes: L('A Marina publicou as campanhas da Lojinha. No dia seguinte, os conjuntos mostram “Aprendizado” e ela acha que algo quebrou.', 'Marina publicó las campañas de la Lojinha. Al día siguiente, los conjuntos muestran “Aprendizaje” y ella cree que algo se rompió.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/112167992830700', titulo: L('Sobre a fase de aprendizado', 'Sobre la fase de aprendizaje'), conferido: '25/10/2026' }
+        ],
         gancho: L('Uma coluna conta a história: Ativo, Aprendizado, Em análise, Desativado…', 'Una columna cuenta la historia: Activo, Aprendizaje, En revisión, Desactivado…'),
         objetivo: L('Entender o que é a fase de aprendizado, quando ela aparece e por que não se deve mexer à toa.', 'Entender qué es la fase de aprendizaje, cuándo aparece y por qué no hay que tocar sin motivo.'),
         entender: {
@@ -3083,6 +3218,10 @@ window.AULAS = {
         id: '02', min: 7, status: 'pronta',
         titulo: L('Ler a coluna Veiculação', 'Leer la columna Entrega'),
         antes: L('A Marina quer saber como cada conjunto está, de uma olhada só.', 'Marina quiere saber cómo está cada conjunto, de un vistazo.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/650774041651557', titulo: L('Como ver o status da campanha, do conjunto de anúncios ou da veiculação de anúncio no Gerenciador de Anúncios da Meta', 'Cómo ver el estado de la campaña, del conjunto de anuncios o de la entrega en el Administrador de anuncios de Meta'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/112167992830700', titulo: L('Sobre a fase de aprendizado', 'Sobre la fase de aprendizaje'), conferido: '25/10/2026' }
+        ],
         gancho: L('Nem toda edição é igual: algumas mexem pouco, outras zeram o aprendizado.', 'No toda edición es igual: algunas tocan poco, otras ponen a cero el aprendizaje.'),
         objetivo: L('Ler a coluna Veiculação, o card “% gastos na fase de aprendizado” e saber o que falta para sair do aprendizado.', 'Leer la columna Entrega, la tarjeta “% de gasto en la fase de aprendizaje” y saber qué falta para salir del aprendizaje.'),
         entender: {
@@ -3127,6 +3266,9 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Edições significativas', 'Ediciones significativas'),
         antes: L('A Marina quer trocar o público e a foto da Caneca azul para “testar”.', 'Marina quiere cambiar el público y la foto de la Caneca azul para “probar”.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/316478108955072', titulo: L('Edições significativas e fase de aprendizado', 'Ediciones importantes y fase de aprendizaje'), conferido: '25/10/2026' }
+        ],
         gancho: L('Não é defeito: é um aviso de que faltam resultados.', 'No es un defecto: es un aviso de que faltan resultados.'),
         objetivo: L('Saber quais edições reiniciam o aprendizado e decidir se vale editar.', 'Saber qué ediciones reinician el aprendizaje y decidir si vale editar.'),
         entender: {
@@ -3221,6 +3363,10 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('“Meu anúncio não roda”', '“Mi anuncio no corre”'),
         antes: L('A Marina diz que três conjuntos não estão veiculando.', 'Marina dice que tres conjuntos no están entregando.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/236201204528536', titulo: L('Solução de problemas de veiculação de anúncios', 'Solución de problemas de entrega de anuncios'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/650774041651557', titulo: L('Como ver o status da campanha, do conjunto de anúncios ou da veiculação de anúncio no Gerenciador de Anúncios da Meta', 'Cómo ver el estado de la campaña, del conjunto de anuncios o de la entrega en el Administrador de anuncios de Meta'), conferido: '25/10/2026' }
+        ],
         gancho: L('“Vi um selo azul no perfil de outras lojas. A Lojinha devia ter um?” Próximo módulo: Meta Verified para empresas.', '“Vi una insignia azul en el perfil de otras tiendas. ¿La Lojinha debería tener una?” Próximo módulo: Meta Verified para empresas.'),
         objetivo: L('Seguir uma ordem para achar por que um anúncio não veicula: conta, status do conjunto e nível certo.', 'Seguir un orden para encontrar por qué un anuncio no entrega: cuenta, estado del conjunto y nivel correcto.'),
         entender: {
@@ -3273,6 +3419,10 @@ window.AULAS = {
         id: '01', min: 6, status: 'pronta',
         titulo: L('O que é o Meta Verified para empresas', 'Qué es Meta Verified para empresas'),
         antes: L('A Marina viu o selo azul em outras lojas e quer saber se a Lojinha deveria ter um.', 'Marina vio la insignia azul en otras tiendas y quiere saber si la Lojinha debería tener una.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/308979828303560', titulo: L('Sobre o Meta Verified para empresas', 'Sobre Meta Verified para empresas'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/248456111431653', titulo: L('Benefícios do Meta Verified para empresas', 'Beneficios de Meta Verified para empresas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quatro planos, preços diferentes e suporte diferente: o certo depende do que o cliente precisa.', 'Cuatro planes, precios distintos y asistencia distinta: el correcto depende de lo que necesita el cliente.'),
         objetivo: L('Entender o que é o Meta Verified para empresas, o que a assinatura inclui e onde o selo aparece.', 'Entender qué es Meta Verified para empresas, qué incluye la suscripción y dónde aparece la insignia.'),
         entender: {
@@ -3313,6 +3463,10 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Planos e benefícios', 'Planes y beneficios'),
         antes: L('A Marina quer entender qual dos quatro planos serve para a Lojinha.', 'Marina quiere entender cuál de los cuatro planes sirve para la Lojinha.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/308979828303560', titulo: L('Sobre o Meta Verified para empresas', 'Sobre Meta Verified para empresas'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/248456111431653', titulo: L('Benefícios do Meta Verified para empresas', 'Beneficios de Meta Verified para empresas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Plano, ativos, pagamento, verificação e confirmação: cada etapa tem uma regra.', 'Plan, activos, pago, verificación y confirmación: cada etapa tiene una regla.'),
         objetivo: L('Comparar os planos, ler o suporte de cada um e saber por que nem todos aparecem para todo mundo.', 'Comparar los planes, leer la asistencia de cada uno y saber por qué no todos aparecen para todos.'),
         entender: {
@@ -3357,6 +3511,10 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Cadastrar a empresa', 'Registrar la empresa'),
         antes: L('A Marina decidiu: quer o Plus para o Instagram da Lojinha.', 'Marina decidió: quiere Plus para el Instagram de la Lojinha.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1381094345778877', titulo: L('Cadastre sua empresa no Meta Verified', 'Registra tu empresa en Meta Verified'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1980422732333373', titulo: L('Requisitos de qualificação para assinaturas do Meta Verified para empresas', 'Requisitos de elegibilidad para las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quando a opção some, quase sempre falta um requisito. Vamos conferir um por um.', 'Cuando la opción desaparece, casi siempre falta un requisito. Revisemos uno por uno.'),
         objetivo: L('Seguir as etapas do cadastro, entender os métodos de verificação e saber o prazo de análise.', 'Seguir las etapas del registro, entender los métodos de verificación y saber el plazo de revisión.'),
         entender: {
@@ -3401,6 +3559,10 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('“Não consigo cadastrar”', '“No puedo registrar”'),
         antes: L('A Marina abriu o Meta Business Suite e a opção de cadastro nem aparece.', 'Marina abrió Meta Business Suite y la opción de registro ni aparece.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/626333159331357', titulo: L('Como solucionar problemas de cadastro em assinaturas do Meta Verified para empresas', 'Cómo solucionar problemas de registro en las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1980422732333373', titulo: L('Requisitos de qualificação para assinaturas do Meta Verified para empresas', 'Requisitos de elegibilidad para las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' }
+        ],
         gancho: L('O nome do perfil verificado segue regras: precisa lembrar o nome civil.', 'El nombre del perfil verificado sigue reglas: debe recordar el nombre legal.'),
         objetivo: L('Conferir os requisitos (perfil completo, controle total, ativo qualificado, Proteção Avançada de todos) e entender a identificação.', 'Revisar los requisitos (perfil completo, control total, activo que cumple, Protección avanzada de todos) y entender la identificación.'),
         entender: {
@@ -3445,6 +3607,10 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Nome do perfil verificado', 'Nombre del perfil verificado'),
         antes: L('A Marina quer trocar o nome do perfil para o nome de marca.', 'Marina quiere cambiar el nombre del perfil por el nombre de marca.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/635089366197498', titulo: L('Requisitos relacionados a nomes de perfil para assinaturas do Meta Verified para empresas', 'Requisitos de nombres de perfil para las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1163092631724169', titulo: L('Como atualizar as informações do perfil da sua empresa no Meta Verified', 'Cómo actualizar la información del perfil de tu empresa en Meta Verified'), conferido: '25/10/2026' }
+        ],
         gancho: L('Cancelar e revogar parecem iguais, mas não são. E quem tem assinatura ativa tem um suporte especial.', 'Cancelar y revocar parecen iguales, pero no lo son. Y quien tiene una suscripción activa tiene una asistencia especial.'),
         objetivo: L('Saber o que a Meta aceita e recusa ao trocar o nome do perfil e os limites de edição.', 'Saber qué acepta y rechaza Meta al cambiar el nombre del perfil y los límites de edición.'),
         entender: {
@@ -3489,6 +3655,11 @@ window.AULAS = {
         id: '06', min: 9, status: 'pronta',
         titulo: L('Cancelar, revogada e suporte', 'Cancelar, revocada y asistencia'),
         antes: L('A Marina pensa em cancelar. E uma amiga teve a assinatura revogada.', 'Marina piensa en cancelar. Y una amiga tuvo la suscripción revocada.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/268488269303385', titulo: L('Como cancelar a assinatura do Meta Verified para sua empresa', 'Cómo cancelar la suscripción de Meta Verified para tu empresa'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1008321637512283', titulo: L('Assinaturas do Meta Verified para empresas revogadas', 'Suscripciones de Meta Verified para empresas revocadas'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/832027668252804', titulo: L('Como entrar em contato com o suporte do Meta Verified para sua empresa verificada', 'Cómo contactar a la asistencia de Meta Verified para tu empresa verificada'), conferido: '25/10/2026' }
+        ],
         gancho: L('“E se as pessoas pudessem ver as canecas numa vitrine dentro do Instagram e do Facebook?” Próximo módulo: Introdução ao Commerce.', '“¿Y si la gente pudiera ver las tazas en una vitrina dentro de Instagram y Facebook?” Próximo módulo: Introducción a Commerce.'),
         objetivo: L('Explicar as regras de cancelamento, listar causas de revogação e indicar o suporte de cada plano.', 'Explicar las reglas de cancelación, listar causas de revocación e indicar la asistencia de cada plan.'),
         entender: {
@@ -3542,6 +3713,9 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que é o Commerce da Meta', 'Qué es Commerce de Meta'),
         antes: L('A Marina tem catálogo e anúncios. Agora quer uma vitrine dentro do Instagram e do Facebook.', 'Marina tiene catálogo y anuncios. Ahora quiere una vitrina dentro de Instagram y Facebook.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/2343035149322466', titulo: L('Sobre as Lojas no Facebook e no Instagram', 'Sobre las Tiendas en Facebook e Instagram'), conferido: '25/10/2026' }
+        ],
         gancho: L('Cinco telas, um catálogo e uma escolha importante: onde a compra termina.', 'Cinco pantallas, un catálogo y una elección importante: dónde termina la compra.'),
         objetivo: L('Entender o que é o Gerenciador de Comércio, o que é uma loja da Meta e o que ela faz (e não faz).', 'Entender qué es el Administrador de ventas, qué es una tienda de Meta y qué hace (y qué no).'),
         entender: {
@@ -3582,6 +3756,9 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Criar a loja', 'Crear la tienda'),
         antes: L('A Marina decidiu: quer a loja da Lojinha no Instagram e no Facebook.', 'Marina decidió: quiere la tienda de la Lojinha en Instagram y Facebook.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/268860861184453', titulo: L('Como configurar uma loja no Facebook e no Instagram', 'Cómo configurar una tienda en Facebook e Instagram'), conferido: '25/10/2026' }
+        ],
         gancho: L('Seis tarefas e um botão: Publicar loja só liga quando as obrigatórias terminam.', 'Seis tareas y un botón: Publicar tienda solo se enciende cuando terminan las obligatorias.'),
         objetivo: L('Percorrer o assistente de criação da loja: país, plataforma de parceiro, canais, catálogo e prévia.', 'Recorrer el asistente de creación de la tienda: país, plataforma de un socio, canales, catálogo y vista previa.'),
         entender: {
@@ -3626,6 +3803,10 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Configurar e publicar a loja', 'Configurar y publicar la tienda'),
         antes: L('A loja da Marina foi criada e enviada para análise. Agora falta deixá-la pronta.', 'La tienda de Marina fue creada y enviada a revisión. Ahora falta dejarla lista.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/268860861184453', titulo: L('Como configurar uma loja no Facebook e no Instagram', 'Cómo configurar una tienda en Facebook e Instagram'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/610592986219839', titulo: L('Como personalizar o layout e o estilo da sua loja no Gerenciador de Comércio', 'Cómo personalizar el diseño y el estilo de tu tienda en el Administrador de ventas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quase sempre é um requisito, uma etapa do checklist ou o status. Vamos por ordem.', 'Casi siempre es un requisito, una etapa de la lista o el estado. Vamos en orden.'),
         objetivo: L('Saber as tarefas de “Configurar sua loja”, o prazo da análise e como o perfil de envio e o URL de finalização da compra funcionam.', 'Saber las tareas de “Configurar tu tienda”, el plazo de la revisión y cómo funcionan el perfil de envío y la URL de finalización de compra.'),
         entender: {
@@ -3670,6 +3851,10 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('“Minha loja não aparece”', '“Mi tienda no aparece”'),
         antes: L('A Marina diz que a loja ainda não aparece para os clientes.', 'Marina dice que la tienda todavía no aparece para los clientes.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1096284574063516', titulo: L('Solucionar problemas de aprovações de produtos', 'Solucionar problemas de aprobación de productos'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1168881033546362', titulo: L('Como solucionar problemas de produtos que não estão sendo exibidos nos anúncios ou na loja', 'Cómo solucionar problemas de productos que no se muestran en los anuncios o en la tienda'), conferido: '25/10/2026' }
+        ],
         gancho: L('Desde setembro de 2025, tudo que vem depois do clique em “comprar” acontece no site.', 'Desde septiembre de 2025, todo lo que viene después del clic en “comprar” ocurre en el sitio.'),
         objetivo: L('Conferir os 5 requisitos de qualificação, o domínio e a política de devolução e seguir a ordem de conferência.', 'Revisar los 5 requisitos de calificación, el dominio y la política de devolución y seguir el orden de revisión.'),
         entender: {
@@ -3714,6 +3899,9 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Finalização da compra no site: o que mudou', 'Finalización de compra en el sitio: qué cambió'),
         antes: L('Uma amiga da Marina, que vendia com a finalização da compra dentro do Instagram, pergunta onde foram parar os pedidos e as devoluções da loja dela.', 'Una amiga de Marina, que vendía con la finalización de compra dentro de Instagram, pregunta adónde fueron los pedidos y las devoluciones de su tienda.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1314349509894768', titulo: L('Sobre as mudanças nas Lojas e na finalização da compra no Facebook e no Instagram', 'Sobre los cambios en las Tiendas y en el pago en Facebook e Instagram'), conferido: '25/10/2026' }
+        ],
         gancho: L('“A loja está no ar. Como eu levo gente até ela?” Próximo módulo: Anúncios de loja (Shop Ads).', '“La tienda está en línea. ¿Cómo llevo gente hasta ella?” Próximo módulo: Anuncios de tienda (Shop Ads).'),
         objetivo: L('Explicar o que foi descontinuado e o que continua nas Lojas, e como ficam os anúncios e os relatórios.', 'Explicar qué fue discontinuado y qué continúa en las Tiendas, y cómo quedan los anuncios y los informes.'),
         entender: {
@@ -3766,6 +3954,9 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que são os anúncios das Lojas', 'Qué son los anuncios de Tiendas'),
         antes: L('A Marina já tem a loja. Agora quer anúncios que levem as pessoas até ela.', 'Marina ya tiene la tienda. Ahora quiere anuncios que lleven a las personas hasta ella.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/786101482615028', titulo: L('Sobre os anúncios das Lojas', 'Sobre los anuncios de tiendas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Cinco ativos e as permissões certas: sem isso, nem o botão da loja aparece.', 'Cinco activos y los permisos correctos: sin eso, ni aparece el botón de la tienda.'),
         objetivo: L('Entender o que são os anúncios das Lojas, para quem servem e onde estão disponíveis (inclusive o Brasil).', 'Entender qué son los anuncios de Tiendas, para quién sirven y dónde están disponibles (incluido Brasil).'),
         entender: {
@@ -3806,6 +3997,10 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Antes de criar o anúncio', 'Antes de crear el anuncio'),
         antes: L('A Marina quer criar o primeiro anúncio das Lojas, mas não sabe se está tudo pronto.', 'Marina quiere crear el primer anuncio de Tiendas, pero no sabe si está todo listo.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/5318930238194863', titulo: L('Verificar qual identidade está conectada à sua loja', 'Verificar qué identidad está conectada a tu tienda'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/451411486590536', titulo: L('Como verificar qual catálogo está conectado à sua loja', 'Cómo verificar qué catálogo está conectado a tu tienda'), conferido: '25/10/2026' }
+        ],
         gancho: L('Vendas, Site e o botão Loja: três escolhas que transformam um anúncio comum em um anúncio das Lojas.', 'Ventas, Sitio y el botón Tienda: tres elecciones que convierten un anuncio común en un anuncio de Tiendas.'),
         objetivo: L('Conferir os 5 ativos exigidos e as permissões, e saber onde conferir identidade e catálogo da loja.', 'Revisar los 5 activos exigidos y los permisos, y saber dónde revisar identidad y catálogo de la tienda.'),
         entender: {
@@ -3850,6 +4045,10 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Criar o anúncio das Lojas', 'Crear el anuncio de Tiendas'),
         antes: L('Os ativos da Marina estão em dia. Hora de criar a campanha.', 'Los activos de Marina están al día. Hora de crear la campaña.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/3171236526530970', titulo: L('Como criar uma campanha usando anúncios das Lojas', 'Cómo crear una campaña con anuncios de tiendas'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/6158069234251430', titulo: L('Boas práticas para anúncios das Lojas', 'Prácticas recomendadas para anuncios de tiendas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Existe uma lista oficial de requisitos. Basta um item errado para o tráfego ir só ao site.', 'Existe una lista oficial de requisitos. Basta un ítem mal para que el tráfico vaya solo al sitio.'),
         objetivo: L('Criar um anúncio das Lojas: objetivo Vendas, local Site, evento de conversão compatível, botão Loja e destino da loja.', 'Crear un anuncio de Tiendas: objetivo Ventas, lugar Sitio web, evento de conversión compatible, botón Tienda y destino de la tienda.'),
         entender: {
@@ -3894,6 +4093,9 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('“Meu anúncio só leva ao site”', '“Mi anuncio solo lleva al sitio”'),
         antes: L('A Marina notou que o anúncio das Lojas só manda as pessoas para o site.', 'Marina notó que el anuncio de Tiendas solo manda a las personas al sitio.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1245449522969913', titulo: L('Por que os anúncios das Lojas foram alterados para somente site', 'Por qué los anuncios de tiendas cambiaron a solo sitio web'), conferido: '25/10/2026' }
+        ],
         gancho: L('“Compras na Meta = 0”? Calma. É preciso saber quais métricas olhar.', '“¿Compras en Meta = 0?” Calma. Hay que saber qué métricas mirar.'),
         objetivo: L('Usar os requisitos oficiais para achar por que o anúncio só envia pessoas ao site e corrigir.', 'Usar los requisitos oficiales para encontrar por qué el anuncio solo envía personas al sitio y corregirlo.'),
         entender: {
@@ -3938,6 +4140,9 @@ window.AULAS = {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Ler os resultados das Lojas', 'Leer los resultados de Tiendas'),
         antes: L('Os primeiros anúncios das Lojas rodaram. A Marina abre o relatório e vê números estranhos.', 'Los primeros anuncios de Tiendas corrieron. Marina abre el informe y ve números extraños.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/775732186866048', titulo: L('Como entender seus relatórios de anúncios ao usar anúncios das Lojas', 'Cómo entender tus informes de anuncios al usar anuncios de tiendas'), conferido: '25/10/2026' }
+        ],
         gancho: L('“A pessoa clica no anúncio da loja… e termina a compra onde?” Próximo módulo: Shop Ads · finalização da compra fora da Meta.', '“La persona hace clic en el anuncio de la tienda… ¿y dónde termina la compra?” Próximo módulo: Shop Ads · pago fuera de Meta.'),
         objetivo: L('Escolher as métricas certas para os anúncios das Lojas e explicar “compras na Meta = 0” e diferenças com ferramentas de terceiros.', 'Elegir las métricas correctas para los anuncios de Tiendas y explicar “compras en Meta = 0” y diferencias con herramientas de terceros.'),
         entender: {
@@ -3990,6 +4195,10 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('Do anúncio à compra no site', 'Del anuncio a la compra en el sitio'),
         antes: L('A Marina quer entender o caminho completo: o cliente clica no anúncio das Lojas e… onde compra?', 'Marina quiere entender el camino completo: la clienta hace clic en el anuncio de Tiendas y… ¿dónde compra?'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1314349509894768', titulo: L('Sobre as mudanças nas Lojas e na finalização da compra no Facebook e no Instagram', 'Sobre los cambios en las Tiendas y en el pago en Facebook e Instagram'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/593273318981233', titulo: L('Dicas para usar o Pixel da Meta nos anúncios da sua loja', 'Consejos para usar el píxel de Meta en los anuncios de tu tienda'), conferido: '25/10/2026' }
+        ],
         gancho: L('Se Pixel e catálogo não combinam, a Meta não liga o produto ao evento.', 'Si píxel y catálogo no coinciden, Meta no vincula el producto con el evento.'),
         objetivo: L('Descrever a jornada do anúncio das Lojas à compra no site e saber qual evento o Pixel registra em cada etapa.', 'Describir el recorrido del anuncio de Tiendas a la compra en el sitio y saber qué evento registra el píxel en cada etapa.'),
         entender: {
@@ -4034,6 +4243,10 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Pixel e catálogo falando a mesma língua', 'Píxel y catálogo hablando el mismo idioma'),
         antes: L('Os anúncios da Marina rodam, mas as compras não aparecem direito.', 'Los anuncios de Marina corren, pero las compras no aparecen bien.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/593273318981233', titulo: L('Dicas para usar o Pixel da Meta nos anúncios da sua loja', 'Consejos para usar el píxel de Meta en los anuncios de tu tienda'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/644889989181423', titulo: L('Como solucionar problemas de taxa de correspondência do catálogo', 'Cómo solucionar problemas de tasa de coincidencia del catálogo'), conferido: '25/10/2026' }
+        ],
         gancho: L('Mesmo evento, dois caminhos: Shopify e Gerenciador de tags do Google brigando.', 'Mismo evento, dos caminos: Shopify y el Administrador de etiquetas de Google peleando.'),
         objetivo: L('Aplicar as 4 dicas oficiais: Pixel ligado ao catálogo, Content ID igual, sem duplicação e teste com Eventos de teste.', 'Aplicar los 4 consejos oficiales: píxel vinculado al catálogo, Content ID igual, sin duplicación y prueba con Probar eventos.'),
         entender: {
@@ -4078,6 +4291,10 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Compras contadas em dobro', 'Compras contadas dos veces'),
         antes: L('A Marina viu 2 compras para um pedido só.', 'Marina vio 2 compras para un solo pedido.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1190564818451304', titulo: L('Como corrigir a duplicação do pixel ao usar a Shopify na sua loja do Facebook ou do Instagram', 'Cómo corregir la duplicación del píxel al usar Shopify en tu tienda de Facebook o Instagram'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/352737723568337', titulo: L('Como encontrar a origem da duplicação do pixel manualmente', 'Cómo encontrar el origen de la duplicación del píxel manualmente'), conferido: '25/10/2026' }
+        ],
         gancho: L('Duas ferramentas, duas formas de contar. Dá para reduzir a diferença, mas não zerar.', 'Dos herramientas, dos formas de contar. Se puede reducir la diferencia, pero no eliminarla.'),
         objetivo: L('Achar eventos de compra duplicados no Gerenciador de Eventos, descobrir a origem e remover só o evento repetido.', 'Encontrar eventos de compra duplicados en el Administrador de eventos, descubrir el origen y quitar solo el evento repetido.'),
         entender: {
@@ -4122,6 +4339,10 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Meta × Google Analytics: números diferentes', 'Meta × Google Analytics: números distintos'),
         antes: L('A Marina compara o Gerenciador de Anúncios com o Google Analytics e os números não batem.', 'Marina compara el Administrador de anuncios con Google Analytics y los números no coinciden.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1497481554083753', titulo: L('Como mensurar o desempenho dos anúncios das Lojas em ferramentas de terceiros', 'Cómo medir el rendimiento de los anuncios de tiendas en herramientas de terceros'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/775732186866048', titulo: L('Como entender seus relatórios de anúncios ao usar anúncios das Lojas', 'Cómo entender tus informes de anuncios al usar anuncios de tiendas'), conferido: '25/10/2026' }
+        ],
         gancho: L('Atualizar a loja existente é melhor do que criar outra. E há uma lista do que fazer.', 'Actualizar la tienda existente es mejor que crear otra. Y hay una lista de qué hacer.'),
         objetivo: L('Usar UTM e tags de marketing de terceiros e explicar por que terceiros não veem tudo.', 'Usar UTM y etiquetas de marketing de terceros y explicar por qué los terceros no ven todo.'),
         entender: {
@@ -4166,6 +4387,10 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Atualizar uma loja que usava a finalização da compra na Meta', 'Actualizar una tienda que usaba la finalización de compra en Meta'),
         antes: L('Aquela amiga da Marina tinha loja com finalização da compra dentro do Instagram. Agora a loja dela mudou.', 'Aquella amiga de Marina tenía tienda con finalización de compra dentro de Instagram. Ahora su tienda cambió.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1314349509894768', titulo: L('Sobre as mudanças nas Lojas e na finalização da compra no Facebook e no Instagram', 'Sobre los cambios en las Tiendas y en el pago en Facebook e Instagram'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1245449522969913', titulo: L('Por que os anúncios das Lojas foram alterados para somente site', 'Por qué los anuncios de tiendas cambiaron a solo sitio web'), conferido: '25/10/2026' }
+        ],
         gancho: L('“Mexer no código do site para cada coisa da Meta dá trabalho. Não tem um jeito mais fácil?” Próximo módulo: Meta Business Extension (MBE).', '“Tocar el código del sitio para cada cosa de Meta da trabajo. ¿No hay una forma más fácil?” Próximo módulo: Meta Business Extension (MBE).'),
         objetivo: L('Listar o que fazer para atualizar uma loja antiga para a finalização da compra no site e o que acontece com campanhas e rascunhos.', 'Listar qué hacer para actualizar una tienda antigua a la finalización de compra en el sitio y qué pasa con campañas y borradores.'),
         entender: {
@@ -4218,6 +4443,10 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que são as integrações de parceiros e o MBE', 'Qué son las integraciones de socios y el MBE'),
         antes: L('A Marina pensa em trocar o site feito à mão por uma plataforma de loja virtual, para não mexer mais em código.', 'Marina piensa en cambiar el sitio hecho a mano por una plataforma de tienda virtual, para no tocar más el código.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1179210765468894', titulo: L('Sobre as Integrações de Parceiros no Gerenciador de Eventos', 'Sobre las integraciones de socios en el Administrador de eventos'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/260370078559247', titulo: L('Sobre as Integrações de Parceiros para eventos do site', 'Sobre las integraciones de socios para eventos del sitio web'), conferido: '25/10/2026' }
+        ],
         gancho: L('A galeria lista dezenas de parceiros por categoria. Saber filtrar poupa tempo.', 'La galería lista decenas de socios por categoría. Saber filtrar ahorra tiempo.'),
         objetivo: L('Entender o que é uma integração de parceiro, o que é o Meta Business Extension e o que ele conecta (e o que não conecta).', 'Entender qué es una integración de socio, qué es Meta Business Extension y qué conecta (y qué no).'),
         entender: {
@@ -4258,6 +4487,9 @@ window.AULAS = {
         id: '02', min: 7, status: 'pronta',
         titulo: L('Achar o parceiro na galeria', 'Encontrar el socio en la galería'),
         antes: L('Antes de escolher, a Marina quer saber quais plataformas têm integração com a Meta.', 'Antes de elegir, Marina quiere saber qué plataformas tienen integración con Meta.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/260370078559247', titulo: L('Sobre as Integrações de Parceiros para eventos do site', 'Sobre las integraciones de socios para eventos del sitio web'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quatro escolhas e um resumo: portfólio, Página, Pixel e conta de anúncios.', 'Cuatro elecciones y un resumen: portfolio, página, píxel y cuenta publicitaria.'),
         objetivo: L('Usar a página Integrações: recomendações, Galeria de parceiros, categorias e o tipo de evento de cada parceiro.', 'Usar la página Integraciones: recomendaciones, Galería de socios, categorías y el tipo de evento de cada socio.'),
         entender: {
@@ -4302,6 +4534,9 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Conectar pela plataforma (a janela do MBE)', 'Conectar desde la plataforma (la ventana del MBE)'),
         antes: L('A Marina abriu uma loja de teste numa plataforma e vai conectá-la à Meta, mas quer saber o que vai aparecer.', 'Marina va a conectar la tienda por la plataforma, pero quiere saber qué va a aparecer.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/260370078559247', titulo: L('Sobre as Integrações de Parceiros para eventos do site', 'Sobre las integraciones de socios para eventos del sitio web'), conferido: '25/10/2026' }
+        ],
         gancho: L('Um clique, um desenvolvedor ou um parceiro? A resposta depende do cliente.', '¿Un clic, un desarrollador o un socio? La respuesta depende del cliente.'),
         objetivo: L('Descrever o que o lojista escolhe na janela do MBE, o que ela não inclui e o risco de Pixel duplicado.', 'Describir qué elige el comerciante en la ventana del MBE, qué no incluye y el riesgo de píxel duplicado.'),
         entender: {
@@ -4346,6 +4581,9 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Escolher a configuração da API de Conversões', 'Elegir la configuración de la API de Conversiones'),
         antes: L('O Rafa mostra à Marina três lojas que ele atende, cada uma numa situação diferente.', 'Rafa le muestra a Marina tres tiendas que él atiende, cada una en una situación distinta.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/433493041367251', titulo: L('Comparar os métodos de configuração da API de Conversões', 'Comparar los métodos de configuración de la API de Conversiones'), conferido: '25/10/2026' }
+        ],
         gancho: L('Cinco sintomas comuns e o primeiro lugar para olhar em cada um.', 'Cinco síntomas comunes y el primer lugar para mirar en cada uno.'),
         objetivo: L('Comparar as três opções por custo, tempo e recursos e indicar a certa para cada cliente.', 'Comparar las tres opciones por costo, tiempo y recursos e indicar la correcta para cada cliente.'),
         entender: {
@@ -4395,6 +4633,10 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Quando a integração dá problema', 'Cuando la integración da problemas'),
         antes: L('Na loja de teste da Marina, a plataforma foi conectada, mas os resultados não aparecem como esperado.', 'En la tienda de prueba de Marina, la plataforma se conectó, pero los resultados no aparecen como se esperaba.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/490934944618455', titulo: L('Como solucionar mensagens de erro e aviso do Pixel da Meta no Gerenciador de Eventos da Meta', 'Cómo solucionar mensajes de error y advertencia del píxel de Meta en el Administrador de eventos'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/260370078559247', titulo: L('Sobre as Integrações de Parceiros para eventos do site', 'Sobre las integraciones de socios para eventos del sitio web'), conferido: '25/10/2026' }
+        ],
         gancho: L('Controle total só para quem precisa. Para os outros, acesso parcial.', 'Control total solo para quien lo necesita. Para los demás, acceso parcial.'),
         objetivo: L('Triar os problemas mais comuns de integração e indicar o primeiro passo de conferência.', 'Clasificar los problemas más comunes de integración e indicar el primer paso de revisión.'),
         entender: {
@@ -4444,6 +4686,9 @@ window.AULAS = {
         id: '06', min: 8, status: 'pronta',
         titulo: L('Dar acesso a um parceiro', 'Dar acceso a un socio'),
         antes: L('A agência que a Marina contratou precisa ver o Pixel e a Página da Lojinha.', 'La agencia que Marina contrató necesita ver el píxel y la Página de la Lojinha.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1717412048538897', titulo: L('Dar acesso a um parceiro (controle total ou acesso parcial)', 'Dar acceso a un socio (control total o acceso parcial)'), conferido: '25/10/2026' }
+        ],
         gancho: L('“E as outras plataformas, como o WooCommerce? Também se conectam?” Próximo módulo: Integração com plataformas de terceiros.', '“¿Y las otras plataformas, como WooCommerce? ¿También se conectan?” Próximo módulo: Integración con plataformas de terceros.'),
         objetivo: L('Conceder a um parceiro acesso aos ativos do portfólio: pré-requisitos, passos e a diferença entre controle total e acesso parcial.', 'Conceder a un socio acceso a los activos del portfolio: requisitos previos, pasos y la diferencia entre control total y acceso parcial.'),
         entender: {
@@ -4496,6 +4741,10 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('Como a integração com plataformas de terceiros funciona', 'Cómo funciona la integración con plataformas de terceros'),
         antes: L('As amigas lojistas da Marina usam plataformas diferentes: WooCommerce, Wix, Google Tag Manager…', 'Las amigas comerciantes de Marina usan plataformas distintas: WooCommerce, Wix, Google Tag Manager…'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/260370078559247', titulo: L('Sobre as Integrações de Parceiros para eventos do site', 'Sobre las integraciones de socios para eventos del sitio web'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/1179210765468894', titulo: L('Sobre as Integrações de Parceiros no Gerenciador de Eventos', 'Sobre las integraciones de socios en el Administrador de eventos'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quatro pré-requisitos, seis passos e uns 10 a 30 minutos de espera.', 'Cuatro requisitos previos, seis pasos y unos 10 a 30 minutos de espera.'),
         objetivo: L('Saber os tipos de parceiro, o que cada integração entrega e o que fazer se a plataforma não estiver na lista.', 'Saber los tipos de socio, qué entrega cada integración y qué hacer si la plataforma no está en la lista.'),
         entender: {
@@ -4536,6 +4785,9 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Conectar o WooCommerce à Meta', 'Conectar WooCommerce a Meta'),
         antes: L('A Júlia, amiga da Marina, tem loja em WordPress com WooCommerce e pediu ajuda para ligar a loja à Meta.', 'Júlia, amiga de Marina, tiene tienda en WordPress con WooCommerce y pidió ayuda para conectar la tienda a Meta.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/900699293402826', titulo: L('Guia de integração do WooCommerce', 'Guía de integración de WooCommerce'), conferido: '25/10/2026' }
+        ],
         gancho: L('Doze mensagens, cada uma com causa e correção. Saber ler poupa horas.', 'Doce mensajes, cada uno con causa y corrección. Saber leer ahorra horas.'),
         objetivo: L('Conferir os pré-requisitos e seguir o passo a passo do plugin Meta para WooCommerce.', 'Revisar los requisitos previos y seguir el paso a paso del plugin Meta para WooCommerce.'),
         entender: {
@@ -4580,6 +4832,9 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Ler os erros do Diagnóstico do Pixel', 'Leer los errores del Diagnóstico del píxel'),
         antes: L('A Júlia conectou a plataforma, mas o Gerenciador de Eventos mostra mensagens em vermelho e amarelo.', 'Júlia conectó la plataforma, pero el Administrador de eventos muestra mensajes en rojo y amarillo.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/490934944618455', titulo: L('Como solucionar mensagens de erro e aviso do Pixel da Meta no Gerenciador de Eventos da Meta', 'Cómo solucionar mensajes de error y advertencia del píxel de Meta en el Administrador de eventos'), conferido: '25/10/2026' }
+        ],
         gancho: L('Cinco condições: se uma falha, o Pixel não alimenta o catálogo.', 'Cinco condiciones: si una falla, el píxel no alimenta el catálogo.'),
         objetivo: L('Interpretar as mensagens do Diagnóstico e indicar a correção das mais comuns.', 'Interpretar los mensajes del Diagnóstico e indicar la corrección de las más comunes.'),
         entender: {
@@ -4629,6 +4884,9 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Pixel como fonte do catálogo', 'Píxel como fuente del catálogo'),
         antes: L('A Marina quer que o catálogo se atualize sozinho conforme as pessoas veem os produtos.', 'Marina quiere que el catálogo se actualice solo según las personas ven los productos.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/887775018036966', titulo: L('Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)'), conferido: '25/10/2026' }
+        ],
         gancho: L('Manter atualizado evita erros. Desconectar sem pensar deixa produtos para trás.', 'Mantener actualizado evita errores. Desconectar sin pensar deja productos atrás.'),
         objetivo: L('Conferir as condições para usar o Pixel como fonte de dados do catálogo e saber os prazos.', 'Revisar las condiciones para usar el píxel como fuente de datos del catálogo y saber los plazos.'),
         entender: {
@@ -4674,6 +4932,9 @@ window.AULAS = {
         id: '05', min: 7, status: 'pronta',
         titulo: L('Manter e desconectar a integração', 'Mantener y desconectar la integración'),
         antes: L('A Júlia vai trocar de plataforma e quer desconectar o WooCommerce.', 'Júlia va a cambiar de plataforma y quiere desconectar WooCommerce.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/900699293402826', titulo: L('Guia de integração do WooCommerce', 'Guía de integración de WooCommerce'), conferido: '25/10/2026' }
+        ],
         gancho: L('“E a Shopify? Ouvi dizer que ela conversa direto com a Meta.” Próximo módulo: Shopify e Meta.', '“¿Y Shopify? Oí que habla directo con Meta.” Próximo módulo: Shopify y Meta.'),
         objetivo: L('Atualizar o plugin, ativar atualizações automáticas e desconectar sabendo o efeito nos produtos.', 'Actualizar el plugin, activar actualizaciones automáticas y desconectar sabiendo el efecto en los productos.'),
         entender: {
@@ -4726,6 +4987,9 @@ window.AULAS = {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que a Shopify e a Meta fazem juntas', 'Qué hacen Shopify y Meta juntas'),
         antes: L('A Lojinha cresceu, e a Marina decidiu trocar o site feito à mão por uma loja na Shopify. Antes, quer saber o que a Shopify e a Meta fazem juntas.', 'La Lojinha creció, y Marina decidió cambiar el sitio hecho a mano por una tienda en Shopify. Antes, quiere saber qué hacen juntas Shopify y Meta.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/646757258759189', titulo: L('Como conectar a Shopify ao Facebook e ao Instagram', 'Cómo conectar Shopify a Facebook e Instagram'), conferido: '25/10/2026' }
+        ],
         gancho: L('Cinco pré-requisitos, sete passos e dois ajustes de dados no final.', 'Cinco requisitos previos, siete pasos y dos ajustes de datos al final.'),
         objetivo: L('Entender o que a conexão Shopify e Meta entrega e quem cuida de cada parte.', 'Entender qué entrega la conexión Shopify y Meta y quién se ocupa de cada parte.'),
         entender: {
@@ -4766,6 +5030,9 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Conectar a Shopify à Meta', 'Conectar Shopify a Meta'),
         antes: L('A Lojinha já está na Shopify. Agora a Marina quer ligar a loja nova à Meta.', 'La Lojinha ya está en Shopify. Ahora Marina quiere conectar la tienda nueva a Meta.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/646757258759189', titulo: L('Como conectar a Shopify ao Facebook e ao Instagram', 'Cómo conectar Shopify a Facebook e Instagram'), conferido: '25/10/2026' }
+        ],
         gancho: L('Três lugares, e cada coisa tem o seu. Saber qual é evita muita ida e volta.', 'Tres lugares, y cada cosa tiene el suyo. Saber cuál es evita mucho ir y venir.'),
         objetivo: L('Conferir os pré-requisitos, seguir os passos do app e ajustar compartilhamento e acesso a dados.', 'Revisar los requisitos previos, seguir los pasos de la app y ajustar uso compartido y acceso a datos.'),
         entender: {
@@ -4810,6 +5077,9 @@ window.AULAS = {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Quem gerencia o quê', 'Quién gestiona qué'),
         antes: L('A Marina fica em dúvida: onde se muda o prazo de entrega? E o desconto?', 'Marina duda: ¿dónde se cambia el plazo de entrega? ¿Y el descuento?'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/342672464318056', titulo: L('Configurações e recursos da loja que os vendedores da Shopify precisam gerenciar', 'Configuración y funciones de la tienda que los vendedores de Shopify deben administrar'), conferido: '25/10/2026' }
+        ],
         gancho: L('A Shopify manda: o que se edita fora dela é substituído.', 'Shopify manda: lo que se edita fuera de ella se reemplaza.'),
         objetivo: L('Indicar se um recurso é gerenciado no administrador da Shopify, no app Facebook e Instagram ou no Gerenciador de Comércio.', 'Indicar si una función se gestiona en el administrador de Shopify, en la app Facebook e Instagram o en el Administrador de ventas.'),
         entender: {
@@ -4855,6 +5125,9 @@ window.AULAS = {
         id: '04', min: 9, status: 'pronta',
         titulo: L('Sincronizar produtos e o redirecionamento', 'Sincronizar productos y la redirección'),
         antes: L('A Marina mudou o preço da caneca no Gerenciador de Comércio e, no dia seguinte, ele tinha voltado ao antigo.', 'Marina cambió el precio de la taza en el Administrador de ventas y, al día siguiente, había vuelto al anterior.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1046957249463415', titulo: L('Sobre o gerenciamento do seu catálogo com a Shopify', 'Sobre la administración de tu catálogo con Shopify'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quase sempre a resposta está em “quem gerencia o quê”.', 'Casi siempre la respuesta está en “quién gestiona qué”.'),
         objetivo: L('Explicar quais produtos sincronizam, por que editar no Gerenciador de Comércio é inútil e o que é “Redirecionar para a Shopify”.', 'Explicar qué productos se sincronizan, por qué editar en el Administrador de ventas es inútil y qué es “Redirigir a Shopify”.'),
         entender: {
@@ -4899,6 +5172,11 @@ window.AULAS = {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Problemas comuns Shopify e Meta', 'Problemas comunes Shopify y Meta'),
         antes: L('Na primeira semana na Shopify, a Marina anotou tudo o que estranhou.', 'En la primera semana en Shopify, Marina anotó todo lo que le pareció raro.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1190564818451304', titulo: L('Como corrigir a duplicação do pixel ao usar a Shopify na sua loja do Facebook ou do Instagram', 'Cómo corregir la duplicación del píxel al usar Shopify en tu tienda de Facebook o Instagram'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/342672464318056', titulo: L('Configurações e recursos da loja que os vendedores da Shopify precisam gerenciar', 'Configuración y funciones de la tienda que los vendedores de Shopify deben administrar'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/139029445945711', titulo: L('Como criar uma loja e anúncios das Lojas no Gerenciador de Anúncios da Meta para vendedores da Shopify', 'Cómo crear una tienda y anuncios de tiendas en el Administrador de anuncios para vendedores de Shopify'), conferido: '25/10/2026' }
+        ],
         gancho: L('“Minhas clientes vivem perguntando pelo WhatsApp. Dá para vender por lá também?” Próximo módulo: WhatsApp Business.', '“Mis clientas siempre preguntan por WhatsApp. ¿Se puede vender por ahí también?” Próximo módulo: WhatsApp Business.'),
         objetivo: L('Triar as queixas mais comuns e indicar onde olhar primeiro.', 'Clasificar las quejas más comunes e indicar dónde mirar primero.'),
         entender: {
@@ -4956,6 +5234,10 @@ window.AULAS = {
         id: '01', min: 8, status: 'pronta',
         titulo: L('Correspondência avançada', 'Coincidencia avanzada'),
         antes: L('A Marina quer atribuir mais conversões sem gastar mais com anúncio.', 'Marina quiere atribuir más conversiones sin gastar más en anuncios.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/611774685654668', titulo: L('Sobre a correspondência avançada na web', 'Sobre la coincidencia avanzada en la web'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/930861050579797', titulo: L('Boas práticas para a correspondência avançada na web', 'Prácticas recomendadas para la coincidencia avanzada en la web'), conferido: '25/10/2026' }
+        ],
         gancho: L('De 0 a 10: quanto o evento do servidor ajuda a Meta a ligar a compra a uma pessoa.', 'De 0 a 10: cuánto ayuda el evento del servidor a Meta a vincular la compra con una persona.'),
         objetivo: L('Entender a correspondência avançada, as versões automática e manual e quando cada uma se aplica.', 'Entender la coincidencia avanzada, las versiones automática y manual y cuándo se aplica cada una.'),
         entender: {
@@ -5000,6 +5282,9 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Qualidade do sinal: correspondência de eventos', 'Calidad de la señal: coincidencia de eventos'),
         antes: L('A Marina vê uma pontuação baixa nos eventos de compra do servidor.', 'Marina ve una puntuación baja en los eventos de compra del servidor.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/765081237991954', titulo: L('Sobre a qualidade da correspondência de eventos', 'Sobre la calidad de la coincidencia de eventos'), conferido: '25/10/2026' }
+        ],
         gancho: L('Navegador e servidor contando a mesma compra: sem deduplicação, vira duas.', 'Navegador y servidor contando la misma compra: sin deduplicación, se vuelven dos.'),
         objetivo: L('Ler a pontuação de qualidade da correspondência de eventos e saber quais parâmetros mais ajudam.', 'Leer la puntuación de calidad de la coincidencia de eventos y saber qué parámetros ayudan más.'),
         entender: {
@@ -5044,6 +5329,10 @@ window.AULAS = {
         id: '03', min: 9, status: 'pronta',
         titulo: L('API de Conversões e deduplicação', 'API de Conversiones y deduplicación'),
         antes: L('A Marina ativou a API de Conversões e agora as compras aparecem em dobro.', 'Marina activó la API de Conversiones y ahora las compras aparecen duplicadas.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/823677331451951', titulo: L('Sobre a desduplicação de eventos do Pixel da Meta e da API de Conversões', 'Sobre la deduplicación de eventos del píxel de Meta y de la API de Conversiones'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/433493041367251', titulo: L('Comparar os métodos de configuração da API de Conversões', 'Comparar los métodos de configuración de la API de Conversiones'), conferido: '25/10/2026' }
+        ],
         gancho: L('Você é o responsável pelos dados que manda. E há coisas que nunca podem ir.', 'Tú eres el responsable de los datos que mandas. Y hay cosas que nunca pueden ir.'),
         objetivo: L('Entender por que e quando desduplicar e como a Meta reconhece o mesmo evento.', 'Entender por qué y cuándo deduplicar y cómo reconoce Meta el mismo evento.'),
         entender: {
@@ -5089,6 +5378,10 @@ window.AULAS = {
         titulo: L('Privacidade e regras', 'Privacidad y reglas'),
         gancho: L('Um site desconhecido usando o seu Pixel? Parâmetros que somem? Vamos aos controles de dados do Pixel e à verificação de domínio.', '¿Un sitio desconocido usando tu píxel? ¿Parámetros que desaparecen? Vamos a los controles de datos del píxel y a la verificación de dominio.'),
         antes: L('Uma amiga da Marina, dona de uma clínica, quer rastrear tudo, inclusive a doença de cada paciente.', 'Una amiga de Marina, dueña de una clínica, quiere rastrear todo, incluida la enfermedad de cada paciente.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/363303621411154', titulo: L('Boas práticas de privacidade e uso de dados para as Ferramentas Comerciais da Meta', 'Prácticas recomendadas de privacidad y uso de datos para las Herramientas para empresas de Meta'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/361948878201809', titulo: L('Sobre informações proibidas', 'Sobre la información prohibida'), conferido: '25/10/2026' }
+        ],
         objetivo: L('Explicar consentimento, informações proibidas, responsabilidade do anunciante e as consequências.', 'Explicar consentimiento, información prohibida, responsabilidad del anunciante y las consecuencias.'),
         entender: {
           dialogo: [
@@ -5292,6 +5585,10 @@ window.AULAS = {
         id: '01', min: 8, status: 'pronta',
         titulo: L('Verificação da empresa', 'Verificación de la empresa'),
         antes: L('A Marina quer liberar um recurso que pede “empresa verificada”.', 'Marina quiere liberar una función que pide “empresa verificada”.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1095661473946872', titulo: L('Sobre a verificação da empresa', 'Sobre la verificación de la empresa'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/2058515294227817', titulo: L('Como verificar sua empresa no Meta Business Suite', 'Cómo verificar tu empresa en Meta Business Suite'), conferido: '25/10/2026' }
+        ],
         gancho: L('Quase sempre a causa é o documento ou o nome que não bate.', 'Casi siempre la causa es el documento o el nombre que no coincide.'),
         objetivo: L('Entender o que é a verificação da empresa, quem pode iniciá-la e os passos até a decisão.', 'Entender qué es la verificación de la empresa, quién puede iniciarla y los pasos hasta la decisión.'),
         entender: {
@@ -5336,6 +5633,10 @@ window.AULAS = {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Verificação travada ou documentos recusados', 'Verificación trabada o documentos rechazados'),
         antes: L('A Marina recebeu o aviso de que o documento enviado não foi suficiente.', 'Marina recibió el aviso de que el documento enviado no fue suficiente.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/2342133782492969', titulo: L('Como solucionar problemas com a verificação da sua empresa', 'Cómo solucionar problemas con la verificación de tu empresa'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/159334372093366', titulo: L('Como carregar documentos oficiais para verificar sua empresa', 'Cómo subir documentos oficiales para verificar tu empresa'), conferido: '25/10/2026' }
+        ],
         gancho: L('Controle total é a chave do portfólio. Dê só o necessário.', 'El control total es la llave del portafolio. Da solo lo necesario.'),
         objetivo: L('Descobrir por que a verificação não inicia ou foi recusada e orientar o reenvio.', 'Descubrir por qué la verificación no inicia o fue rechazada y orientar el reenvío.'),
         entender: {
@@ -5380,6 +5681,10 @@ window.AULAS = {
         id: '03', min: 7, status: 'pronta',
         titulo: L('Permissões: quem pode o quê', 'Permisos: quién puede qué'),
         antes: L('A Marina contratou uma agência para os anúncios e quer rever quem pode o quê no portfólio.', 'Marina contrató una agencia para los anuncios y quiere revisar quién puede qué en el portfolio.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/299504287548592', titulo: L('Como alterar o acesso e as permissões de alguém a um portfólio empresarial ou ativo de negócios', 'Cómo cambiar el acceso y los permisos de alguien en un portfolio comercial o activo comercial'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/442345745885606', titulo: L('Sobre as permissões do portfólio empresarial e do ativo de negócios', 'Sobre los permisos del portfolio comercial y de los activos comerciales'), conferido: '25/10/2026' }
+        ],
         gancho: L('Excluir não tem volta. Antes de tudo, confirme se é isso mesmo que ele quer.', 'Eliminar no tiene vuelta. Antes de todo, confirma si es eso lo que realmente quiere.'),
         objetivo: L('Alterar ou remover o acesso de uma pessoa e entender por que alguns menus não aparecem.', 'Cambiar o quitar el acceso de una persona y entender por qué algunos menús no aparecen.'),
         entender: {
@@ -5425,6 +5730,10 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Excluir o portfólio: o que impede e o que muda', 'Eliminar el portafolio: qué lo impide y qué cambia'),
         antes: L('Uma amiga da Marina vai fechar a loja e quer apagar o portfólio, mas aparece um erro.', 'Una amiga de Marina va a cerrar la tienda y quiere borrar el portafolio, pero aparece un error.'),
+        fontes: [
+          { url: 'https://www.facebook.com/business/help/1592865014304024', titulo: L('Como excluir o portfólio empresarial', 'Cómo eliminar el portfolio comercial'), conferido: '25/10/2026' },
+          { url: 'https://www.facebook.com/business/help/2186488678264121', titulo: L('Entenda por que você não consegue excluir seu portfólio empresarial e resolva o problema', 'Entiende por qué no puedes eliminar tu portfolio comercial y resuelve el problema'), conferido: '25/10/2026' }
+        ],
         gancho: L('“Me falaram para ‘verificar o domínio’. É coisa do Pixel?” Vamos ver o que é e onde se faz.', '“Me dijeron que ‘verifique el dominio’. ¿Es cosa del Pixel?” Veamos qué es y dónde se hace.'),
         objetivo: L('Explicar o que a exclusão apaga, o que impede e como resolver cada bloqueio.', 'Explicar qué borra la eliminación, qué la impide y cómo resolver cada bloqueo.'),
         entender: {
