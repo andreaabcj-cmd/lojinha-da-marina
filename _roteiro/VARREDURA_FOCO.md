@@ -6,6 +6,8 @@ Regras: só tela real (só olhando na conta de aula; nada concluído, pago ou re
 
 ## 1. Continuidade da história (Foco)
 
+> **Feito em 25/10/2026:** 1a, 1b e 1c. A Marina é sempre a dona da Lojinha; casos de outras lojas são de amigas dela (a Júlia, no WooCommerce) ou de lojas que o Rafa atende; no MBE ela avalia trocar de plataforma e, no módulo Shopify, a Lojinha muda para a Shopify. Fica para depois: o estilo do “Na próxima aula” (1d) e o caso do Diagnóstico que ainda fala em “dois clientes da Marina” (fora da Foco).
+
 ### 1a. “Na próxima aula” fala da própria aula (deslocado em um)
 - **Anúncios no Feed 01–05** e **Instagram 05–09**: o texto do fim de cada aula descreve a aula que acabou, não a seguinte.
   Ex.: Feed 02 termina com “A tela pede ‘Especifique a mídia’… vamos montar o criativo” (é o assunto da própria 02; a 03 é posicionamentos e cortes).

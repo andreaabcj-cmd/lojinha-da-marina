@@ -3713,7 +3713,7 @@ window.AULAS = {
       {
         id: '05', min: 9, status: 'pronta',
         titulo: L('Finalização da compra no site: o que mudou', 'Finalización de compra en el sitio: qué cambió'),
-        antes: L('Uma cliente antiga da Marina pergunta onde foram parar os pedidos e as devoluções da loja dela.', 'Una clienta antigua de Marina pregunta adónde fueron los pedidos y las devoluciones de su tienda.'),
+        antes: L('Uma amiga da Marina, que vendia com a finalização da compra dentro do Instagram, pergunta onde foram parar os pedidos e as devoluções da loja dela.', 'Una amiga de Marina, que vendía con la finalización de compra dentro de Instagram, pregunta adónde fueron los pedidos y las devoluciones de su tienda.'),
         gancho: L('“A loja está no ar. Como eu levo gente até ela?” Próximo módulo: Anúncios de loja (Shop Ads).', '“La tienda está en línea. ¿Cómo llevo gente hasta ella?” Próximo módulo: Anuncios de tienda (Shop Ads).'),
         objetivo: L('Explicar o que foi descontinuado e o que continua nas Lojas, e como ficam os anúncios e os relatórios.', 'Explicar qué fue discontinuado y qué continúa en las Tiendas, y cómo quedan los anuncios y los informes.'),
         entender: {
@@ -4165,7 +4165,7 @@ window.AULAS = {
       {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Atualizar uma loja que usava a finalização da compra na Meta', 'Actualizar una tienda que usaba la finalización de compra en Meta'),
-        antes: L('Uma cliente antiga da Marina tinha loja com finalização da compra dentro do Instagram. Agora a loja mudou.', 'Una clienta antigua de Marina tenía tienda con finalización de compra dentro de Instagram. Ahora la tienda cambió.'),
+        antes: L('Aquela amiga da Marina tinha loja com finalização da compra dentro do Instagram. Agora a loja dela mudou.', 'Aquella amiga de Marina tenía tienda con finalización de compra dentro de Instagram. Ahora su tienda cambió.'),
         gancho: L('“Mexer no código do site para cada coisa da Meta dá trabalho. Não tem um jeito mais fácil?” Próximo módulo: Meta Business Extension (MBE).', '“Tocar el código del sitio para cada cosa de Meta da trabajo. ¿No hay una forma más fácil?” Próximo módulo: Meta Business Extension (MBE).'),
         objetivo: L('Listar o que fazer para atualizar uma loja antiga para a finalização da compra no site e o que acontece com campanhas e rascunhos.', 'Listar qué hacer para actualizar una tienda antigua a la finalización de compra en el sitio y qué pasa con campañas y borradores.'),
         entender: {
@@ -4189,7 +4189,7 @@ window.AULAS = {
           tour: 'atualizar-loja-antiga', pagina: 'meta-checkoutsite.html?zerar=1'
         },
         atender: {
-          cena: L('Minha loja sumiu e meus anúncios mudaram! Vou criar uma loja nova do zero! 😡', '¡Mi tienda desapareció y mis anuncios cambiaron! ¡Voy a crear una tienda nueva desde cero! 😡'),
+          cena: L('A loja da minha amiga sumiu e os anúncios dela mudaram! Ela quer criar uma loja nova do zero! 😡', '¡La tienda de mi amiga desapareció y sus anuncios cambiaron! ¡Quiere crear una tienda nueva desde cero! 😡'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Antes de criar outra, atualize a loja que você já tem: a Meta recomenda isso. A loja precisa ficar visível e você precisa adicionar o URL de finalização da compra, os perfis de envio, preparar o catálogo e conferir as variantes. Suas campanhas ativas continuam, com a compra no site.”', '“Antes de crear otra, actualiza la tienda que ya tienes: Meta lo recomienda. La tienda debe quedar visible y debes agregar la URL de finalización de compra, los perfiles de envío, preparar el catálogo y revisar las variantes. Tus campañas activas continúan, con la compra en el sitio.”'), fb: L('Isso! Evitou recomeçar e deu a lista.', '¡Eso! Evitaste empezar de nuevo y diste la lista.') },
@@ -4217,7 +4217,7 @@ window.AULAS = {
       {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que são as integrações de parceiros e o MBE', 'Qué son las integraciones de socios y el MBE'),
-        antes: L('A Marina usa uma plataforma de loja virtual e não quer mexer no código do site.', 'Marina usa una plataforma de tienda virtual y no quiere tocar el código del sitio.'),
+        antes: L('A Marina pensa em trocar o site feito à mão por uma plataforma de loja virtual, para não mexer mais em código.', 'Marina piensa en cambiar el sitio hecho a mano por una plataforma de tienda virtual, para no tocar más el código.'),
         gancho: L('A galeria lista dezenas de parceiros por categoria. Saber filtrar poupa tempo.', 'La galería lista decenas de socios por categoría. Saber filtrar ahorra tiempo.'),
         objetivo: L('Entender o que é uma integração de parceiro, o que é o Meta Business Extension e o que ele conecta (e o que não conecta).', 'Entender qué es una integración de socio, qué es Meta Business Extension y qué conecta (y qué no).'),
         entender: {
@@ -4237,7 +4237,7 @@ window.AULAS = {
         },
         ferramenta: 'o-que-e-mbe',
         atender: {
-          cena: L('Meu site é na Shopify. Preciso contratar um programador para ligar o Pixel e a API de Conversões? 💸', 'Mi sitio es en Shopify. ¿Necesito contratar a un programador para activar el píxel y la API de Conversiones? 💸'),
+          cena: L('Se eu passar a loja para a Shopify, vou precisar contratar um programador para ligar o Pixel e a API de Conversões? 💸', 'Si paso la tienda a Shopify, ¿voy a necesitar contratar a un programador para activar el píxel y la API de Conversiones? 💸'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Não precisa programar: a Shopify é uma plataforma parceira, e a integração captura os eventos automaticamente, com o Pixel no navegador e a API de Conversões no servidor, sem editar o código. Vamos ver no Gerenciador de Eventos, em Integrações, e seguir as instruções do parceiro.”', '“No necesitas programar: Shopify es una plataforma socia, y la integración captura los eventos automáticamente, con el píxel en el navegador y la API de Conversiones en el servidor, sin editar el código. Veamos en el Administrador de eventos, en Integraciones, y sigamos las instrucciones del socio.”'), fb: L('Isso! Honesto e prático.', '¡Eso! Honesto y práctico.') },
@@ -4257,7 +4257,7 @@ window.AULAS = {
       {
         id: '02', min: 7, status: 'pronta',
         titulo: L('Achar o parceiro na galeria', 'Encontrar el socio en la galería'),
-        antes: L('A Marina quer saber se a plataforma do cliente dela tem integração.', 'Marina quiere saber si la plataforma de su cliente tiene integración.'),
+        antes: L('Antes de escolher, a Marina quer saber quais plataformas têm integração com a Meta.', 'Antes de elegir, Marina quiere saber qué plataformas tienen integración con Meta.'),
         gancho: L('Quatro escolhas e um resumo: portfólio, Página, Pixel e conta de anúncios.', 'Cuatro elecciones y un resumen: portfolio, página, píxel y cuenta publicitaria.'),
         objetivo: L('Usar a página Integrações: recomendações, Galeria de parceiros, categorias e o tipo de evento de cada parceiro.', 'Usar la página Integraciones: recomendaciones, Galería de socios, categorías y el tipo de evento de cada socio.'),
         entender: {
@@ -4281,7 +4281,7 @@ window.AULAS = {
           tour: 'galeria-parceiros', pagina: 'meta-mbe.html?zerar=1'
         },
         atender: {
-          cena: L('Minha plataforma não aparece nas recomendações. Isso quer dizer que não tem integração? 😕', 'Mi plataforma no aparece en las recomendaciones. ¿Eso quiere decir que no tiene integración? 😕'),
+          cena: L('A plataforma que eu estou olhando não aparece nas recomendações. Isso quer dizer que não tem integração? 😕', 'La plataforma que estoy mirando no aparece en las recomendaciones. ¿Eso quiere decir que no tiene integración? 😕'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Não necessariamente: as recomendações são baseadas no site, e a Galeria de parceiros tem muitos outros, organizados por categoria. Vamos filtrar pela categoria que combina com a sua plataforma. Se ela realmente não estiver, a API de Conversões pode ser configurada manualmente.”', '“No necesariamente: las recomendaciones se basan en el sitio, y la Galería de socios tiene muchos otros, organizados por categoría. Filtremos por la categoría que combina con tu plataforma. Si realmente no está, la API de Conversiones se puede configurar manualmente.”'), fb: L('Isso! Mostrou onde procurar e a alternativa.', '¡Eso! Mostraste dónde buscar y la alternativa.') },
@@ -4301,7 +4301,7 @@ window.AULAS = {
       {
         id: '03', min: 8, status: 'pronta',
         titulo: L('Conectar pela plataforma (a janela do MBE)', 'Conectar desde la plataforma (la ventana del MBE)'),
-        antes: L('A Marina vai conectar a loja pela plataforma, mas quer saber o que vai aparecer.', 'Marina va a conectar la tienda por la plataforma, pero quiere saber qué va a aparecer.'),
+        antes: L('A Marina abriu uma loja de teste numa plataforma e vai conectá-la à Meta, mas quer saber o que vai aparecer.', 'Marina va a conectar la tienda por la plataforma, pero quiere saber qué va a aparecer.'),
         gancho: L('Um clique, um desenvolvedor ou um parceiro? A resposta depende do cliente.', '¿Un clic, un desarrollador o un socio? La respuesta depende del cliente.'),
         objetivo: L('Descrever o que o lojista escolhe na janela do MBE, o que ela não inclui e o risco de Pixel duplicado.', 'Describir qué elige el comerciante en la ventana del MBE, qué no incluye y el riesgo de píxel duplicado.'),
         entender: {
@@ -4345,7 +4345,7 @@ window.AULAS = {
       {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Escolher a configuração da API de Conversões', 'Elegir la configuración de la API de Conversiones'),
-        antes: L('Três clientes da Marina, três situações diferentes.', 'Tres clientes de Marina, tres situaciones distintas.'),
+        antes: L('O Rafa mostra à Marina três lojas que ele atende, cada uma numa situação diferente.', 'Rafa le muestra a Marina tres tiendas que él atiende, cada una en una situación distinta.'),
         gancho: L('Cinco sintomas comuns e o primeiro lugar para olhar em cada um.', 'Cinco síntomas comunes y el primer lugar para mirar en cada uno.'),
         objetivo: L('Comparar as três opções por custo, tempo e recursos e indicar a certa para cada cliente.', 'Comparar las tres opciones por costo, tiempo y recursos e indicar la correcta para cada cliente.'),
         entender: {
@@ -4370,11 +4370,11 @@ window.AULAS = {
         },
         ferramenta: 'capi-mbe',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela tabela de opções e por dois cenários de cliente.', 'En el simulador, el Pixel te guía por la tabla de opciones y por dos escenarios de cliente.'),
+          texto: L('No simulador, o Pixel te guia pela tabela de opções e por dois cenários de loja.', 'En el simulador, el Pixel te guía por la tabla de opciones y por dos escenarios de tienda.'),
           tour: 'escolher-capi', pagina: 'meta-mbe.html?zerar=1'
         },
         atender: {
-          cena: L('Quero mandar também as vendas da minha loja física para a Meta. Qual opção uso? 🏬', '¡Quiero mandar también las ventas de mi tienda física a Meta! ¿Qué opción uso? 🏬'),
+          cena: L('E se um dia a Lojinha tiver loja física? Como eu mando essas vendas para a Meta? Qual opção uso? 🏬', '¿Y si un día la Lojinha tiene tienda física? ¿Cómo mando esas ventas a Meta? ¿Qué opción uso? 🏬'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Para eventos de loja física (offline) e de app, a integração direta é a única opção disponível hoje; ela exige um desenvolvedor e costuma levar de 2 a 4 semanas. Os eventos do site você pode seguir enviando pelo parceiro ou pelo Pixel.”', '“Para eventos de tienda física (offline) y de app, la integración directa es la única opción disponible hoy; exige un desarrollador y suele tardar de 2 a 4 semanas. Los eventos del sitio puedes seguir enviándolos por el socio o por el píxel.”'), fb: L('Isso! Opção e prazo reais.', '¡Eso! Opción y plazo reales.') },
@@ -4394,7 +4394,7 @@ window.AULAS = {
       {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Quando a integração dá problema', 'Cuando la integración da problemas'),
-        antes: L('Um cliente conectou a plataforma, mas os resultados não aparecem como esperado.', 'Un cliente conectó la plataforma, pero los resultados no aparecen como se esperaba.'),
+        antes: L('Na loja de teste da Marina, a plataforma foi conectada, mas os resultados não aparecem como esperado.', 'En la tienda de prueba de Marina, la plataforma se conectó, pero los resultados no aparecen como se esperaba.'),
         gancho: L('Controle total só para quem precisa. Para os outros, acesso parcial.', 'Control total solo para quien lo necesita. Para los demás, acceso parcial.'),
         objetivo: L('Triar os problemas mais comuns de integração e indicar o primeiro passo de conferência.', 'Clasificar los problemas más comunes de integración e indicar el primer paso de revisión.'),
         entender: {
@@ -4443,7 +4443,7 @@ window.AULAS = {
       {
         id: '06', min: 8, status: 'pronta',
         titulo: L('Dar acesso a um parceiro', 'Dar acceso a un socio'),
-        antes: L('A agência da Marina precisa ver o Pixel e a Página do cliente.', 'La agencia de Marina necesita ver el píxel y la página del cliente.'),
+        antes: L('A agência que a Marina contratou precisa ver o Pixel e a Página da Lojinha.', 'La agencia que Marina contrató necesita ver el píxel y la Página de la Lojinha.'),
         gancho: L('“E as outras plataformas, como o WooCommerce? Também se conectam?” Próximo módulo: Integração com plataformas de terceiros.', '“¿Y las otras plataformas, como WooCommerce? ¿También se conectan?” Próximo módulo: Integración con plataformas de terceros.'),
         objetivo: L('Conceder a um parceiro acesso aos ativos do portfólio: pré-requisitos, passos e a diferença entre controle total e acesso parcial.', 'Conceder a un socio acceso a los activos del portfolio: requisitos previos, pasos y la diferencia entre control total y acceso parcial.'),
         entender: {
@@ -4495,12 +4495,12 @@ window.AULAS = {
       {
         id: '01', min: 7, status: 'pronta',
         titulo: L('Como a integração com plataformas de terceiros funciona', 'Cómo funciona la integración con plataformas de terceros'),
-        antes: L('Os clientes da Marina usam plataformas diferentes: WooCommerce, Wix, Google Tag Manager…', 'Los clientes de Marina usan plataformas distintas: WooCommerce, Wix, Google Tag Manager…'),
+        antes: L('As amigas lojistas da Marina usam plataformas diferentes: WooCommerce, Wix, Google Tag Manager…', 'Las amigas comerciantes de Marina usan plataformas distintas: WooCommerce, Wix, Google Tag Manager…'),
         gancho: L('Quatro pré-requisitos, seis passos e uns 10 a 30 minutos de espera.', 'Cuatro requisitos previos, seis pasos y unos 10 a 30 minutos de espera.'),
         objetivo: L('Saber os tipos de parceiro, o que cada integração entrega e o que fazer se a plataforma não estiver na lista.', 'Saber los tipos de socio, qué entrega cada integración y qué hacer si la plataforma no está en la lista.'),
         entender: {
           dialogo: [
-            ['marina', L('Cada cliente tem uma plataforma. Como a Meta se conecta a todas? 🤔', 'Cada cliente tiene una plataforma. ¿Cómo se conecta Meta a todas? 🤔')],
+            ['marina', L('Cada amiga minha usa uma plataforma. Como a Meta se conecta a todas? 🤔', 'Cada amiga mía usa una plataforma. ¿Cómo se conecta Meta a todas? 🤔')],
             ['rafa', L('Pelas Integrações de Parceiros: plataformas de sites (WordPress, Shopify, Joomla), de comércio (WooCommerce, BigCommerce, Ecwid, OpenCart, PrestaShop, Magento/Adobe Commerce, SHOPLINE), gerenciadores de tags, plataformas de dados de clientes e mais. Elas capturam os eventos do site sem editar código.', 'Por las Integraciones de Socios: plataformas de sitios web (WordPress, Shopify, Joomla), de comercio (WooCommerce, BigCommerce, Ecwid, OpenCart, PrestaShop, Magento/Adobe Commerce, SHOPLINE), administradores de etiquetas, plataformas de datos de clientes y más. Capturan los eventos del sitio sin editar código.')],
             ['marina', L('E o que elas entregam?', '¿Y qué entregan?')],
             ['rafa', L('Pixel no navegador e API de Conversões no servidor, para dados mais precisos. Algumas, como o plugin do WooCommerce, também sincronizam os produtos com o Gerenciador de Comércio.', 'Píxel en el navegador y API de Conversiones en el servidor, para datos más precisos. Algunas, como el plugin de WooCommerce, también sincronizan los productos con el Administrador de ventas.')],
@@ -4515,7 +4515,7 @@ window.AULAS = {
         },
         ferramenta: 'visao-integ',
         atender: {
-          cena: L('Uso uma plataforma que ninguém conhece. A Meta funciona comigo ou não? 😕', 'Uso una plataforma que nadie conoce. ¿Meta funciona conmigo o no? 😕'),
+          cena: L('Uma amiga usa uma plataforma que ninguém conhece. A Meta funciona com ela ou não? 😕', 'Una amiga usa una plataforma que nadie conoce. ¿Meta funciona con ella o no? 😕'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Funciona. Primeiro vemos se a sua plataforma está na Galeria de parceiros, em Integrações no Gerenciador de Eventos. Se não estiver, dá para configurar a API de Conversões manualmente ou falar com o seu provedor de serviços.”', '“Funciona. Primero vemos si tu plataforma está en la Galería de socios, en Integraciones en el Administrador de eventos. Si no está, se puede configurar la API de Conversiones manualmente o hablar con tu proveedor de servicios.”'), fb: L('Isso! Caminho e alternativa.', '¡Eso! Camino y alternativa.') },
@@ -4535,12 +4535,12 @@ window.AULAS = {
       {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Conectar o WooCommerce à Meta', 'Conectar WooCommerce a Meta'),
-        antes: L('Uma cliente da Marina tem loja em WordPress com WooCommerce.', 'Una clienta de Marina tiene tienda en WordPress con WooCommerce.'),
+        antes: L('A Júlia, amiga da Marina, tem loja em WordPress com WooCommerce e pediu ajuda para ligar a loja à Meta.', 'Júlia, amiga de Marina, tiene tienda en WordPress con WooCommerce y pidió ayuda para conectar la tienda a Meta.'),
         gancho: L('Doze mensagens, cada uma com causa e correção. Saber ler poupa horas.', 'Doce mensajes, cada uno con causa y corrección. Saber leer ahorra horas.'),
         objetivo: L('Conferir os pré-requisitos e seguir o passo a passo do plugin Meta para WooCommerce.', 'Revisar los requisitos previos y seguir el paso a paso del plugin Meta para WooCommerce.'),
         entender: {
           dialogo: [
-            ['marina', L('O que a cliente precisa antes de começar? 😅', '¿Qué necesita la clienta antes de empezar? 😅')],
+            ['marina', L('O que a Júlia precisa antes de começar? 😅', '¿Qué necesita Júlia antes de empezar? 😅')],
             ['rafa', L('Um site WordPress com função de administrador, o plugin do WooCommerce, controle total do portfólio empresarial (ou permissão para gerenciar os ativos) e autenticação de dois fatores no portfólio.', 'Un sitio WordPress con rol de administrador, el plugin de WooCommerce, control total del portfolio comercial (o permiso para administrar los activos) y autenticación de dos factores en el portfolio.')],
             ['marina', L('E depois?', '¿Y después?')],
             ['rafa', L('Instala o plugin “Meta para WooCommerce”, ativa, vai em Marketing, Facebook, Começar, entra no Facebook, cria ou escolhe os ativos (portfólio, Página, Instagram, catálogo, conta de anúncios e Pixel), informa e-mail de contato, política de devolução e de privacidade e autoriza a conexão.', 'Instala el plugin “Meta para WooCommerce”, lo activa, va a Marketing, Facebook, Empezar, inicia sesión en Facebook, crea o elige los activos (portfolio, página, Instagram, catálogo, cuenta publicitaria y píxel), informa correo de contacto, política de devolución y de privacidad y autoriza la conexión.')],
@@ -4559,7 +4559,7 @@ window.AULAS = {
           tour: 'conectar-woocommerce', pagina: 'admin-woo.html'
         },
         atender: {
-          cena: L('Instalei o plugin, mas na hora de conectar não deixa! Que sistema horrível! 😠', '¡Instalé el plugin, pero a la hora de conectar no deja! ¡Qué sistema horrible! 😠'),
+          cena: L('A Júlia instalou o plugin, mas na hora de conectar não deixa! Ela diz que o sistema é horrível! 😠', '¡Júlia instaló el plugin, pero a la hora de conectar no deja! ¡Dice que el sistema es horrible! 😠'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Vamos conferir os pré-requisitos: se você tem a função de administrador no WordPress, se o WooCommerce está instalado, se tem controle total do portfólio empresarial (ou a permissão dos ativos) e se a autenticação de dois fatores está ativada no portfólio. Muitas vezes falta um desses.”', '“Revisemos los requisitos previos: si tienes el rol de administrador en WordPress, si WooCommerce está instalado, si tienes control total del portfolio comercial (o el permiso de los activos) y si la autenticación de dos factores está activada en el portfolio. Muchas veces falta uno de esos.”'), fb: L('Isso! Os quatro pré-requisitos reais.', '¡Eso! Los cuatro requisitos reales.') },
@@ -4579,7 +4579,7 @@ window.AULAS = {
       {
         id: '03', min: 9, status: 'pronta',
         titulo: L('Ler os erros do Diagnóstico do Pixel', 'Leer los errores del Diagnóstico del píxel'),
-        antes: L('A cliente conectou a plataforma, mas o Gerenciador de Eventos mostra mensagens em vermelho e amarelo.', 'La clienta conectó la plataforma, pero el Administrador de eventos muestra mensajes en rojo y amarillo.'),
+        antes: L('A Júlia conectou a plataforma, mas o Gerenciador de Eventos mostra mensagens em vermelho e amarelo.', 'Júlia conectó la plataforma, pero el Administrador de eventos muestra mensajes en rojo y amarillo.'),
         gancho: L('Cinco condições: se uma falha, o Pixel não alimenta o catálogo.', 'Cinco condiciones: si una falla, el píxel no alimenta el catálogo.'),
         objetivo: L('Interpretar as mensagens do Diagnóstico e indicar a correção das mais comuns.', 'Interpretar los mensajes del Diagnóstico e indicar la corrección de las más comunes.'),
         entender: {
@@ -4608,7 +4608,7 @@ window.AULAS = {
           ]
         },
         atender: {
-          cena: L('O Diagnóstico está cheio de erro, a Meta está sabotando meu Pixel! 😡', '¡El Diagnóstico está lleno de errores, Meta está saboteando mi píxel! 😡'),
+          cena: L('O Diagnóstico da Júlia está cheio de erro! Ela acha que a Meta está sabotando o Pixel dela! 😡', '¡El Diagnóstico de Júlia está lleno de errores! ¡Cree que Meta está saboteando su píxel! 😡'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Ninguém sabota: cada mensagem tem causa e correção. Vamos abrir uma por uma e usar o botão Ver URLs afetados para achar as páginas. Por exemplo, compras redundantes costumam vir de código de compra no cabeçalho do site, e nome de evento errado costuma ser maiúscula versus minúscula.”', '“Nadie sabotea: cada mensaje tiene causa y corrección. Abramos uno por uno y usemos el botón Ver URLs afectadas para encontrar las páginas. Por ejemplo, las compras redundantes suelen venir de código de compra en el encabezado del sitio, y el nombre de evento incorrecto suele ser mayúscula versus minúscula.”'), fb: L('Isso! Acolheu e deu método.', '¡Eso! Acogiste y diste método.') },
@@ -4673,7 +4673,7 @@ window.AULAS = {
       {
         id: '05', min: 7, status: 'pronta',
         titulo: L('Manter e desconectar a integração', 'Mantener y desconectar la integración'),
-        antes: L('A cliente da Marina vai trocar de plataforma e quer desconectar o WooCommerce.', 'La clienta de Marina va a cambiar de plataforma y quiere desconectar WooCommerce.'),
+        antes: L('A Júlia vai trocar de plataforma e quer desconectar o WooCommerce.', 'Júlia va a cambiar de plataforma y quiere desconectar WooCommerce.'),
         gancho: L('“E a Shopify? Ouvi dizer que ela conversa direto com a Meta.” Próximo módulo: Shopify e Meta.', '“¿Y Shopify? Oí que habla directo con Meta.” Próximo módulo: Shopify y Meta.'),
         objetivo: L('Atualizar o plugin, ativar atualizações automáticas e desconectar sabendo o efeito nos produtos.', 'Actualizar el plugin, activar actualizaciones automáticas y desconectar sabiendo el efecto en los productos.'),
         entender: {
@@ -4697,7 +4697,7 @@ window.AULAS = {
           tour: 'manter-desconectar', pagina: 'admin-woo.html'
         },
         atender: {
-          cena: L('Desconectei o plugin e meus produtos continuam no catálogo da Meta! Eles roubaram meus dados? 😱', '¡Desconecté el plugin y mis productos siguen en el catálogo de Meta! ¿Robaron mis datos? 😱'),
+          cena: L('A Júlia desconectou o plugin e os produtos dela continuam no catálogo da Meta! Ela acha que roubaram os dados dela! 😱', '¡Júlia desconectó el plugin y sus productos siguen en el catálogo de Meta! ¡Cree que le robaron los datos! 😱'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Calma, ninguém roubou nada: ao desconectar o plugin, os produtos que já tinham sido sincronizados permanecem no Gerenciador de Comércio, a menos que se cancele a sincronização antes ou se excluam manualmente depois. Podemos excluir os que você não quer lá.”', '“Calma, nadie robó nada: al desconectar el plugin, los productos que ya se habían sincronizado permanecen en el Administrador de ventas, a menos que se cancele la sincronización antes o se eliminen manualmente después. Podemos eliminar los que no quieres allí.”'), fb: L('Isso! Explicou o comportamento real.', '¡Eso! Explicaste el comportamiento real.') },
@@ -4725,7 +4725,7 @@ window.AULAS = {
       {
         id: '01', min: 7, status: 'pronta',
         titulo: L('O que a Shopify e a Meta fazem juntas', 'Qué hacen Shopify y Meta juntas'),
-        antes: L('A Marina agora atende lojistas que vendem pela Shopify.', 'Marina ahora atiende a comerciantes que venden por Shopify.'),
+        antes: L('A Lojinha cresceu, e a Marina decidiu trocar o site feito à mão por uma loja na Shopify. Antes, quer saber o que a Shopify e a Meta fazem juntas.', 'La Lojinha creció, y Marina decidió cambiar el sitio hecho a mano por una tienda en Shopify. Antes, quiere saber qué hacen juntas Shopify y Meta.'),
         gancho: L('Cinco pré-requisitos, sete passos e dois ajustes de dados no final.', 'Cinco requisitos previos, siete pasos y dos ajustes de datos al final.'),
         objetivo: L('Entender o que a conexão Shopify e Meta entrega e quem cuida de cada parte.', 'Entender qué entrega la conexión Shopify y Meta y quién se ocupa de cada parte.'),
         entender: {
@@ -4765,7 +4765,7 @@ window.AULAS = {
       {
         id: '02', min: 8, status: 'pronta',
         titulo: L('Conectar a Shopify à Meta', 'Conectar Shopify a Meta'),
-        antes: L('Um cliente da Marina quer conectar a loja Shopify dele.', 'Un cliente de Marina quiere conectar su tienda Shopify.'),
+        antes: L('A Lojinha já está na Shopify. Agora a Marina quer ligar a loja nova à Meta.', 'La Lojinha ya está en Shopify. Ahora Marina quiere conectar la tienda nueva a Meta.'),
         gancho: L('Três lugares, e cada coisa tem o seu. Saber qual é evita muita ida e volta.', 'Tres lugares, y cada cosa tiene el suyo. Saber cuál es evita mucho ir y venir.'),
         objetivo: L('Conferir os pré-requisitos, seguir os passos do app e ajustar compartilhamento e acesso a dados.', 'Revisar los requisitos previos, seguir los pasos de la app y ajustar uso compartido y acceso a datos.'),
         entender: {
@@ -4854,7 +4854,7 @@ window.AULAS = {
       {
         id: '04', min: 9, status: 'pronta',
         titulo: L('Sincronizar produtos e o redirecionamento', 'Sincronizar productos y la redirección'),
-        antes: L('Uma cliente edita produtos no Gerenciador de Comércio e as mudanças desaparecem.', 'Una clienta edita productos en el Administrador de ventas y los cambios desaparecen.'),
+        antes: L('A Marina mudou o preço da caneca no Gerenciador de Comércio e, no dia seguinte, ele tinha voltado ao antigo.', 'Marina cambió el precio de la taza en el Administrador de ventas y, al día siguiente, había vuelto al anterior.'),
         gancho: L('Quase sempre a resposta está em “quem gerencia o quê”.', 'Casi siempre la respuesta está en “quién gestiona qué”.'),
         objetivo: L('Explicar quais produtos sincronizam, por que editar no Gerenciador de Comércio é inútil e o que é “Redirecionar para a Shopify”.', 'Explicar qué productos se sincronizan, por qué editar en el Administrador de ventas es inútil y qué es “Redirigir a Shopify”.'),
         entender: {
@@ -4898,7 +4898,7 @@ window.AULAS = {
       {
         id: '05', min: 8, status: 'pronta',
         titulo: L('Problemas comuns Shopify e Meta', 'Problemas comunes Shopify y Meta'),
-        antes: L('Seis clientes da Marina, seis queixas diferentes.', 'Seis clientes de Marina, seis quejas distintas.'),
+        antes: L('Na primeira semana na Shopify, a Marina anotou tudo o que estranhou.', 'En la primera semana en Shopify, Marina anotó todo lo que le pareció raro.'),
         gancho: L('“Minhas clientes vivem perguntando pelo WhatsApp. Dá para vender por lá também?” Próximo módulo: WhatsApp Business.', '“Mis clientas siempre preguntan por WhatsApp. ¿Se puede vender por ahí también?” Próximo módulo: WhatsApp Business.'),
         objetivo: L('Triar as queixas mais comuns e indicar onde olhar primeiro.', 'Clasificar las quejas más comunes e indicar dónde mirar primero.'),
         entender: {
@@ -5088,7 +5088,7 @@ window.AULAS = {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Privacidade e regras', 'Privacidad y reglas'),
         gancho: L('Um site desconhecido usando o seu Pixel? Parâmetros que somem? Vamos aos controles de dados do Pixel e à verificação de domínio.', '¿Un sitio desconocido usando tu píxel? ¿Parámetros que desaparecen? Vamos a los controles de datos del píxel y a la verificación de dominio.'),
-        antes: L('Uma cliente da Marina de clínica quer rastrear tudo, inclusive a doença de cada paciente.', 'Una clienta de Marina de una clínica quiere rastrear todo, incluida la enfermedad de cada paciente.'),
+        antes: L('Uma amiga da Marina, dona de uma clínica, quer rastrear tudo, inclusive a doença de cada paciente.', 'Una amiga de Marina, dueña de una clínica, quiere rastrear todo, incluida la enfermedad de cada paciente.'),
         objetivo: L('Explicar consentimento, informações proibidas, responsabilidade do anunciante e as consequências.', 'Explicar consentimiento, información prohibida, responsabilidad del anunciante y las consecuencias.'),
         entender: {
           dialogo: [
@@ -5379,13 +5379,13 @@ window.AULAS = {
       {
         id: '03', min: 7, status: 'pronta',
         titulo: L('Permissões: quem pode o quê', 'Permisos: quién puede qué'),
-        antes: L('A Marina deu controle total a um estagiário sem pensar.', 'Marina dio control total a un pasante sin pensarlo.'),
+        antes: L('A Marina contratou uma agência para os anúncios e quer rever quem pode o quê no portfólio.', 'Marina contrató una agencia para los anuncios y quiere revisar quién puede qué en el portfolio.'),
         gancho: L('Excluir não tem volta. Antes de tudo, confirme se é isso mesmo que ele quer.', 'Eliminar no tiene vuelta. Antes de todo, confirma si es eso lo que realmente quiere.'),
         objetivo: L('Alterar ou remover o acesso de uma pessoa e entender por que alguns menus não aparecem.', 'Cambiar o quitar el acceso de una persona y entender por qué algunos menús no aparecen.'),
         entender: {
           dialogo: [
-            ['marina', L('Não vejo o menu Pessoas. Sumiu? 🤔', 'No veo el menú Personas. ¿Desapareció? 🤔')],
-            ['rafa', L('Provavelmente você não tem controle total do portfólio: só quem tem vê Pessoas e consegue mudar permissões, verificar a empresa ou excluir o portfólio.', 'Probablemente no tienes control total del portafolio: solo quien lo tiene ve Personas y puede cambiar permisos, verificar la empresa o eliminar el portafolio.')],
+            ['marina', L('A moça da agência diz que não vê o menu Pessoas no nosso portfólio. Sumiu? 🤔', 'La chica de la agencia dice que no ve el menú Personas en nuestro portfolio. ¿Desapareció? 🤔')],
+            ['rafa', L('Provavelmente ela não tem controle total do portfólio: só quem tem vê Pessoas e consegue mudar permissões, verificar a empresa ou excluir o portfólio.', 'Probablemente ella no tiene control total del portafolio: solo quien lo tiene ve Personas y puede cambiar permisos, verificar la empresa o eliminar el portafolio.')],
             ['marina', L('E como mudo o acesso de alguém?', '¿Y cómo cambio el acceso de alguien?')],
             ['rafa', L('Configurações › Pessoas › clique no nome › Gerenciar na linha do portfólio ou de um ativo › altere e Salvar, ou Remover acesso e confirme. A pessoa precisa já estar no portfólio.', 'Configuración › Personas › clic en el nombre › Administrar en la línea del portafolio o de un activo › cambia y Guardar, o Quitar acceso y confirma. La persona ya debe estar en el portafolio.')],
             ['pixel', L('Se uma agência parceira compartilhou um ativo com você, você só tem as permissões que ela atribuiu e talvez não possa dar controle total daquele ativo.', 'Si una agencia socia compartió un activo contigo, solo tienes los permisos que ella asignó y quizá no puedas dar control total de ese activo.')]
@@ -5424,12 +5424,12 @@ window.AULAS = {
       {
         id: '04', min: 8, status: 'pronta',
         titulo: L('Excluir o portfólio: o que impede e o que muda', 'Eliminar el portafolio: qué lo impide y qué cambia'),
-        antes: L('Um cliente quer apagar o portfólio, mas aparece um erro.', 'Un cliente quiere borrar el portafolio, pero aparece un error.'),
+        antes: L('Uma amiga da Marina vai fechar a loja e quer apagar o portfólio, mas aparece um erro.', 'Una amiga de Marina va a cerrar la tienda y quiere borrar el portafolio, pero aparece un error.'),
         gancho: L('“Me falaram para ‘verificar o domínio’. É coisa do Pixel?” Vamos ver o que é e onde se faz.', '“Me dijeron que ‘verifique el dominio’. ¿Es cosa del Pixel?” Veamos qué es y dónde se hace.'),
         objetivo: L('Explicar o que a exclusão apaga, o que impede e como resolver cada bloqueio.', 'Explicar qué borra la eliminación, qué la impide y cómo resolver cada bloqueo.'),
         entender: {
           dialogo: [
-            ['marina', L('Quero excluir o portfólio, mas dá erro. 😕', 'Quiero eliminar el portafolio, pero da error. 😕')],
+            ['marina', L('Minha amiga quer excluir o portfólio dela, mas dá erro. 😕', 'Mi amiga quiere eliminar su portafolio, pero da error. 😕')],
             ['rafa', L('Antes: excluir é definitivo e apaga, entre outras coisas, grupos de origens de eventos, a biblioteca de ativos e projetos, e remove seu acesso a ativos de outras empresas. Fica pendente por 24 horas; depois não dá para reabrir. Se só quer parar de anunciar, desative as contas de anúncios.', 'Antes: eliminar es definitivo y borra, entre otras cosas, grupos de orígenes de eventos, la biblioteca de activos y proyectos, y quita tu acceso a activos de otras empresas. Queda pendiente por 24 horas; después no se puede reabrir. Si solo quieres dejar de anunciar, desactiva las cuentas publicitarias.')],
             ['marina', L('E o erro?', '¿Y el error?')],
             ['rafa', L('Vem de bloqueios: contas de anúncios com saldo devedor, formas de pagamento, apps conectados, usuários do sistema, conta profissional do Instagram, conta do WhatsApp Business com número, acesso personalizado a leads e rótulos de anúncios políticos nos EUA. Resolva um por um.', 'Viene de bloqueos: cuentas publicitarias con saldo deudor, formas de pago, apps conectadas, usuarios del sistema, cuenta profesional de Instagram, cuenta de WhatsApp Business con número, acceso personalizado a leads y etiquetas de anuncios políticos en EE. UU. Resuélvelos uno por uno.')],
@@ -5448,7 +5448,7 @@ window.AULAS = {
           tour: 'excluir-portfolio', pagina: 'meta-portfolio.html'
         },
         atender: {
-          cena: L('Quero excluir meu portfólio agora! Mas o botão dá erro, e eu só quero parar de pagar anúncio! 😤', '¡Quiero eliminar mi portafolio ahora! ¡Pero el botón da error, y yo solo quiero dejar de pagar anuncios! 😤'),
+          cena: L('Minha amiga quer excluir o portfólio agora! O botão dá erro, e ela só quer parar de pagar anúncio! 😤', '¡Mi amiga quiere eliminar su portafolio ahora! ¡El botón da error, y ella solo quiere dejar de pagar anuncios! 😤'),
           pergunta: PERG,
           opcoes: [
             { certa: true, txt: L('“Se o que você quer é parar de anunciar, não precisa excluir: pode desativar as contas de anúncios. Excluir o portfólio é definitivo e apaga itens como a biblioteca de ativos. Se mesmo assim quiser, o erro costuma vir de pendências como saldo, forma de pagamento ou apps conectados; vamos resolver cada uma.”', '“Si lo que quieres es dejar de anunciar, no necesitas eliminar: puedes desactivar las cuentas publicitarias. Eliminar el portafolio es definitivo y borra elementos como la biblioteca de activos. Si aun así quieres, el error suele venir de pendientes como saldo, forma de pago o apps conectadas; resolvamos cada una.”'), fb: L('Isso! Ofereceu a alternativa segura e o caminho.', '¡Eso! Ofreciste la alternativa segura y el camino.') },
@@ -5469,7 +5469,7 @@ window.AULAS = {
         id: '05', min: 7, status: 'pronta',
         titulo: L('Verificar o domínio da loja', 'Verificar el dominio de la tienda'),
         gancho: L('“Apareceu um alerta de segurança no meu portfólio!” Vamos à Central de Segurança.', '“¡Apareció una alerta de seguridad en mi portafolio!” Vamos al Centro de seguridad.'),
-        antes: L('Um cliente ouviu que precisa “verificar o domínio” e acha que é para o Pixel.', 'Un cliente oyó que necesita “verificar el dominio” y cree que es para el píxel.'),
+        antes: L('A Marina ouviu que precisa “verificar o domínio” da loja e acha que é para o Pixel.', 'Marina oyó que necesita “verificar el dominio” de la tienda y cree que es para el píxel.'),
         objetivo: L('Explicar para que serve a verificação de domínio (e que o Pixel não depende dela), onde ela fica e quem faz a prova.', 'Explicar para qué sirve la verificación de dominio (y que el píxel no depende de ella), dónde está y quién hace la prueba.'),
         entender: {
           dialogo: [
