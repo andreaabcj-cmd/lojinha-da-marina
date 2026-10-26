@@ -85,3 +85,10 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 - **96 de 99 terminam** do começo ao fim.
 - Os 3 que pararam são limitação do robô, não da aula: Relatórios 06 (o passo pede para digitar a conta do ROAS), WhatsApp 01 (escolher a categoria) e WhatsApp 04 (digitar 39.90). Os dois do WhatsApp passaram no teste anterior com o robô adaptado.
 - Erros de conteúdo checados por programa: nenhuma ferramenta, página ou tutorial inexistente; nenhum texto sem espanhol.
+
+## 5. Tutoriais começando do zero (26/10/2026, pedido do André)
+- Os 116 tutoriais da Foco rodados com o navegador limpo antes de cada um (sem nada salvo de módulos anteriores, só o login).
+- **Corrigido:** Pixel avançado 05 e 06 e iOS 01 (e os casos do Diagnóstico que abrem o Pixel) travavam em “O Pixel do cliente” se o aluno não tivesse criado o Pixel na aula 02: agora o Pixel do treino é criado sozinho. O texto do passo não depende mais do nome que o aluno deu.
+- **Corrigido (bug desde 14/10):** na prática “print do Pixel”, responder a pergunta mostrava “Primeiro leia e clique em Próximo” com o Próximo apagado — o aluno ficava preso. Vale para todo passo que espera uma resposta dentro do destaque.
+- Paradas que são limitação do robô (conferidas à mão ou já conhecidas): Regras 03 e 05 (adicionar condição; à mão funciona), Relatórios 06 (digitar o ROAS), WhatsApp 01, 02, 04, 05, 06 (digitar Canecas/frete/39.90, escolher categoria, tocar a sugestão).
+- Teste do “Eventos de Teste” abre a loja em outra aba: no navegador de teste ela substituía a página; para o aluno abre aba nova (normal).

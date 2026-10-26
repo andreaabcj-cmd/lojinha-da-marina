@@ -10,10 +10,11 @@
   var H = window.TOURS_H; if (!H) return;
   var TOURS = window.TOURS = window.TOURS || {}, t = H.t, P = H.P, preset = H.preset, irDs = H.irDs, dep = H.dep, aqui = H.aqui;
   function final(tit, txt, alvo, pagina) { return H.final(tit, txt, alvo, pagina) }
+  function temPixel() { if (window.SIMEV && SIMEV.garante) SIMEV.garante() }   // quem pulou a aula de criar o Pixel também consegue fazer este tutorial
   function menuDs() {   // Gerenciador de Eventos › Conjuntos de dados › o Pixel (cai na Visão geral)
     return [
-      { alvo: '[data-t=menu-conjuntos]', clique: true, pagina: P.eventos, garante: H.hash('visao'), tit: t('Gerenciador de Eventos', 'Administrador de eventos'), txt: t('Abra o Gerenciador de Eventos: clique em Conjuntos de dados.', 'Abre el Administrador de eventos: haz clic en Conjuntos de datos.') },
-      { alvo: '[data-t=ds-abrir]', clique: true, pagina: P.eventos, garante: H.hash('conjuntos'), tit: t('O Pixel do cliente', 'El píxel del cliente'), txt: t('Abra o Pixel da Mari.', 'Abre el píxel de la Mari.') }
+      { antes: temPixel, alvo: '[data-t=menu-conjuntos]', clique: true, pagina: P.eventos, garante: function () { temPixel(); H.hash('visao')() }, tit: t('Gerenciador de Eventos', 'Administrador de eventos'), txt: t('Abra o Gerenciador de Eventos: clique em Conjuntos de dados.', 'Abre el Administrador de eventos: haz clic en Conjuntos de datos.') },
+      { alvo: '[data-t=ds-abrir]', clique: true, pagina: P.eventos, garante: function () { temPixel(); H.hash('conjuntos')() }, tit: t('O Pixel do cliente', 'El píxel del cliente'), txt: t('Abra o Pixel da loja (o primeiro da lista).', 'Abre el píxel de la tienda (el primero de la lista).') }
     ];
   }
   function irTeste() { return [{ alvo: '[data-t=aba-teste]', clique: true, pagina: P.eventos, garante: irDs('visao'), tit: t('Eventos de teste', 'Probar eventos'), txt: t('Abra a aba Eventos de teste.', 'Abre la pestaña Probar eventos.') }] }

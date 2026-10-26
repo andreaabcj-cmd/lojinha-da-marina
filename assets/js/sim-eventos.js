@@ -422,6 +422,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   }
   // para os tutoriais arrumarem a tela (Controles de dados: categorias e permissões de tráfego)
   window.SIMEV = {
+    garante: function () { garantePixel() },   // tutoriais de módulos mais à frente: cria o Pixel do treino se o aluno ainda não criou
     abre: function (q, o) { o = o || {}; if (o.modo) tmodo = o.modo; tnota = o.nota || ''; tmenu = false; if (janela !== q) abreJanela(q); else desenhaJanela() },
     fecha: function () { tnota = ''; tmenu = false; if (janela) fechaJanela(); render() },
     modo: function (m) { tmodo = m; tmenu = false; render() },
