@@ -101,6 +101,24 @@
     'Contas impedidas de adicionar produtos: 0 contas do Instagram • 0 contas do Facebook': 'Cuentas que no pueden agregar productos: 0 cuentas de Instagram • 0 cuentas de Facebook', 'Termos e Condições': 'Términos y condiciones', 'Você aceitou o Acordo do Vendedor da Meta.': 'Aceptaste el Acuerdo del vendedor de Meta.', 'ID': 'ID', '∞ Meta': '∞ Meta',
     /* aba Problemas (Diagnóstico · Catálogo 02, 19/10/2026; termos do padrão da Meta em espanhol, a conferir) */
     'Problemas': 'Problemas',
+    'Adicionar imagens e vídeos': 'Agregar imágenes y videos',
+    'As imagens devem ter até 8 MB e os vídeos devem ter menos de 100 MB.': 'Las imágenes deben tener hasta 8 MB y los videos menos de 100 MB.',
+    'Sobre os requisitos de imagem e vídeo': 'Acerca de los requisitos de imagen y video',
+    'Arraste e solte arquivos': 'Arrastra y suelta archivos',
+    'Ou': 'O',
+    'escolha arquivos no seu dispositivo': 'elige archivos en tu dispositivo',
+    '🧪 No treino, escolha uma das fotos da Lojinha:': '🧪 En la práctica, elige una de las fotos de la Lojinha:',
+    '✓ Janela conferida com a tela real em 25/10/2026: lá você arrasta ou escolhe o arquivo do computador.': '✓ Ventana revisada con la pantalla real el 25/10/2026: allí arrastras o eliges el archivo de la computadora.',
+    'Adicionar produtos com pixel': 'Agregar productos con píxel',
+    'Usar pixels do Facebook instalados no seu site.': 'Usar píxeles de Facebook instalados en tu sitio web.',
+    '⚠ Título conferido com a tela real em 25/10/2026; as cinco condições vêm da Central de Ajuda (o portfólio de aula não tem Pixel, então a tela real só pede para criar um) · a conferir.': '⚠ Título revisado con la pantalla real el 25/10/2026; las cinco condiciones vienen del Centro de ayuda (el portafolio de clase no tiene píxel, así que la pantalla real solo pide crear uno) · por confirmar.',
+    'Na aba Ações, os problemas dos produtos são exibidos em ordem de impacto. Assim, você pode corrigir primeiro aqueles que afetam o desempenho.': 'En la pestaña Acciones, los problemas de los productos se muestran por orden de impacto. Así puedes corregir primero los que afectan el rendimiento.',
+    'Crie conjuntos para destacar um grupo de produtos juntos': 'Crea conjuntos para destacar un grupo de productos juntos', 'Recomendação': 'Recomendación',
+    'Os conjuntos de produtos controlam quais produtos aparecem em anúncios ou lojas. Sem conjuntos, todo o seu catálogo é tratado como um grupo.': 'Los conjuntos de productos controlan qué productos aparecen en anuncios o tiendas. Sin conjuntos, todo tu catálogo se trata como un grupo.',
+    'Configure um conjunto de dados para otimizar o desempenho dos anúncios': 'Configura un conjunto de datos para optimizar el rendimiento de los anuncios',
+    'Conecte um Pixel da Meta ou SDK do app para rastrear a atividade dos clientes no seu site ou app. Um conjunto de dados conectado ajuda a mostrar anúncios às pessoas com maior probabilidade de comprar.': 'Conecta un píxel de Meta o el SDK de la app para rastrear la actividad de los clientes en tu sitio o app. Un conjunto de datos conectado ayuda a mostrar anuncios a las personas con más probabilidad de comprar.',
+    'Conectar conjunto de dados': 'Conectar conjunto de datos',
+    '⚠ Aba Ações e as 2 recomendações conferidas com a tela real em 25/10/2026; os erros e avisos dos produtos vêm da Central de Ajuda (o catálogo de aula não tem erros) · a conferir com a tela real': '⚠ Pestaña Acciones y las 2 recomendaciones revisadas con la pantalla real el 25/10/2026; los errores y avisos de los productos vienen del Centro de ayuda (el catálogo de clase no tiene errores) · por confirmar con la pantalla real',
     'Veja o que impede os itens de aparecer nos anúncios e na loja e como corrigir.': 'Mira qué impide que los artículos aparezcan en los anuncios y en la tienda, y cómo corregirlo.',
     '● Erro': '● Error',
     '▲ Aviso': '▲ Advertencia',
@@ -246,7 +264,7 @@
     ['Kit Presente (caixa)', 'Kit Regalo (caja)'], ['No treino ainda não (a conferir)', 'En el entrenamiento todavía no (por confirmar)'],
     ['Dica do simulador:', 'Pista del simulador:'], ['ainda falta preencher campos obrigatórios (os que não dizem “Opcional”).', 'todavía faltan campos obligatorios (los que no dicen “Opcional”).'],
     ['(O que a tela real mostra nesse caso não foi visto: a conferir.)', '(No se vio qué muestra la pantalla real en este caso: por confirmar.)'],
-    ['✓ Tabela, colunas, dicas (ⓘ), menus e a janela de sair conferidos com a tela real em 20/10/2026 (PT e ES). ⚠ O seletor de imagem, o aviso de campo faltando e o status logo após carregar não foram vistos (a conferir).', '✓ Tabla, columnas, pistas (ⓘ), menús y la ventana de salir revisados con la pantalla real el 20/10/2026 (PT y ES). ⚠ El selector de imagen, el aviso de campo faltante y el estado justo después de subir no se vieron (por confirmar).']
+    ['✓ Tabela, colunas, dicas (ⓘ), menus e a janela de sair conferidos com a tela real em 20/10/2026 (PT e ES). ⚠ O aviso de campo faltando e o status logo após carregar não foram vistos (a conferir).', '✓ Tabla, columnas, pistas (ⓘ), menús y la ventana de salir revisados con la pantalla real el 20/10/2026 (PT y ES). ⚠ El aviso de campo faltante y el estado justo después de subir no se vieron (por confirmar).']
   ].forEach(function (x) { A[x[0]] = x[1] });
   P.push([/^Linha (\d+): falta (.+)$/, function (m) { return 'Fila ' + m[1] + ': falta ' + m[2].replace('a imagem', 'la imagen').replace('o título', 'el título').replace('a descrição', 'la descripción').replace('o link do site (completo, com https://)', 'el enlace del sitio (completo, con https://)').replace('o preço (maior que 0)', 'el precio (mayor que 0)') }]);
   for (var k in A) D[k] = A[k];

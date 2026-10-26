@@ -51,6 +51,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 
 ### Catálogo
 - 03 Janela de editar produto 👀 · 04 aba Eventos com Pixel ligado 👀 (Pixel real) · 05 motivos de recusa (fora do escopo) · 06 relatório baixado ✋ · 07 seletor de imagem e avisos 👀 · 08 modelo de idioma e tela de carregar 👀.
+  - ✅ 25/10 (catálogo de aula, só olhando, nada salvo): menu real NÃO tem “Problemas” — os problemas ficam em Produtos › aba Ações (“em ordem de impacto”); simulador, tutorial do caso e aula ajustados + Divergências. Editar produto abre o editor em tabela com o aviso “As edições serão substituídas” (aulas 03/05). Janela de imagem real (“Adicionar imagens e vídeos”, 8 MB/100 MB). “Adicionar produtos com pixel”: sem Pixel no portfólio, só pede para criar um. Aba Eventos sem Pixel igual ao simulador. Modelo de idioma: precisa baixar arquivo (não feito). 8 tutoriais do catálogo passam no robô.
 
 ### Microdados
 - 02 sucesso em espanhol 👀 · 03 lista completa de parâmetros (ler a Central) · 04 erros reais por campo 👀 (testar uma página com erro).
