@@ -23,6 +23,8 @@
     'carrinho.html': { sem: true },
     'index.html': { sem: true }
   };
+  /* Linhas reais da ferramenta (25/10/2026, PT, página inicial e carrinho do site público): só o id é “Erro”; o resto vem em “Avisos” */
+  var REAL = { id: 'Adicione o atributo do produto necessário: id', image_link: 'Adicione o atributo do produto necessário: image_link', link: 'Adicione o atributo do produto necessário: link', availability: 'Valor necessário ausente: availability', description: 'Faltam as descrições: description', title: 'Os títulos estão ausentes: title', price: 'Um campo obrigatório está ausente: price' };
   var AJUDA = { id: 'o id é a Identificação do conteúdo do catálogo; sem ele a Meta não liga o produto ao catálogo nem ao Pixel', price: 'sem preço, o produto não entra no catálogo', 'price-formato': 'o preço precisa ser um número com a moeda (por exemplo 54.90 e BRL); “R$ 54,90” escrito como texto não é entendido' };
   function inicial() { return { url: '', res: null, ver: false } }
   var S = ler('sim.microdados', null) || inicial();
@@ -36,9 +38,9 @@
     var m = u.match(/^https?:\/\/lojinha\.exemplo\.com\.br\/([^?#]*)/);
     if (!m) return { erro: true, motivo: 'Este endereço não é do site de mentirinha do simulador (a ferramenta real lê qualquer página pública da internet)' };
     var pg = PAG[m[1]]; if (!pg) return { erro: true, motivo: 'Página não encontrada no site de mentirinha' };
-    if (pg.sem) return { erro: true, motivo: 'A página não traz microdados de produto' };
+    if (pg.sem) return { erro: true, sem: m[1], motivo: 'A página não traz microdados de produto: carrinho e página inicial não são páginas de produto', faltam: ['id', 'availability', 'price'] };
     if (pg.dyn) return analisaDyn();
-    if (pg.falta && pg.falta.length) return { erro: true, motivo: 'Falta ou está errado: ' + pg.falta.map(function (f) { return f === 'price-formato' ? 'o formato do preço' : f === 'id' ? 'o id' : 'o preço' }).join(', '), falta: pg.falta, pg: pg };
+    if (pg.falta && pg.falta.length) return { erro: true, motivo: 'Falta ou está errado: ' + pg.falta.map(function (f) { return f === 'price-formato' ? 'o formato do preço' : f === 'id' ? 'o id' : 'o preço' }).join(', '), falta: pg.falta, faltam: pg.falta.filter(function (f) { return REAL[f] }), pg: pg };
     return { ok: true, pg: pg };
   }
   /* a página configurada pelo aluno: lê as tags que estão salvas no Editor de arquivos do site */
@@ -65,7 +67,9 @@
     if (v.problemas.length) {
       var ex = [], nomes = [], vx = {};
       v.problemas.forEach(function (q) { var e = EXPL[q.campo + '-' + q.tipo]; if (e && !vx[e]) { vx[e] = 1; ex.push(e); nomes.push(NOME[q.campo]) } });
-      return { erro: true, dyn: true, motivo: 'Falta ou está errado:', nomes: nomes, expl: ex, avisos: avisos, pg: pg };
+      var faltam = []; v.problemas.forEach(function (q) { if (q.tipo === 'falta' && REAL[q.campo] && faltam.indexOf(q.campo) < 0) faltam.push(q.campo) });
+      var outros = v.problemas.some(function (q) { return !(q.tipo === 'falta' && REAL[q.campo]) });   // formato, valor, sintaxe: como a ferramenta mostra não foi visto
+      return { erro: true, dyn: true, motivo: 'Falta ou está errado:', nomes: nomes, expl: ex, avisos: avisos, pg: pg, faltam: faltam, generico: outros && !faltam.length };
     }
     return { ok: true, pg: pg, avisos: avisos };
   }
@@ -74,27 +78,43 @@
   function tabelaDyn(pg, tipo) {
     var c = tipo === 'og' ? pg.vOg : tipo === 'sc' ? pg.vSc : pg.vLd, L = [['id', c.id], ['title', c.title], ['description', c.description], ['price', c.amount + ' ' + c.currency], ['link', c.link], ['image_link', c.image_link], ['availability', c.availability], ['condition', c.condition], ['brand', c.brand]];
     if (c.item_group_id) L.push(['item_group_id', c.item_group_id]);
-    L = soSc(L, tipo);
+    L = soSc(L, tipo).filter(function (x) { return x[1] != null && !/^\s*(undefined)?\s*(undefined)?\s*$/.test(String(x[1])) });
     return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td data-sem-traduzir="1">' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
   }
   function avisosDyn(r) { return r.avisos && r.avisos.length ? '<div class="ga-aviso" data-t="md-avisos"><b>Dica do simulador:</b> ' + r.avisos.map(function (a) { return '<span>' + esc(a) + '</span>' }).join(' · ') + '</div>' : '' }
   function tabela(pg, tipo) {
     if (pg.dyn) return tabelaDyn(pg, tipo);
-    var L = [['id', pg.id], ['title', pg.t], ['description', pg.d], ['price', pg.p + ' BRL'], ['link', BASE + (Object.keys(PAG).filter(function (k) { return PAG[k] === pg })[0] || '')], ['image_link', BASE + pg.img], ['availability', pg.av]];
-    L.push(['condition', 'new']); L.push(['brand', 'Lojinha da Marina']);
+    var L = [['id', pg.id], ['title', pg.t], ['description', pg.d], ['price', pg.p ? pg.p + ' BRL' : ''], ['link', BASE + (Object.keys(PAG).filter(function (k) { return PAG[k] === pg })[0] || '')], ['image_link', BASE + pg.img], ['availability', pg.av]];
+    L.push(['condition', 'new']); L.push(['brand', 'Lojinha da Marina']); L = L.filter(function (x) { return String(x[1] || '').trim() });
     if (tipo === 'og') L.push(['additional_image_link', BASE + pg.img]);
     L = soSc(L, tipo);
     return '<table class="cm-tab md-tab" data-t="tab-' + tipo + '"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr data-t="campo-' + tipo + '-' + x[0] + '"><td>' + x[0] + '</td><td>' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
   }
+  function blocosReais(faltam) {
+    var er = faltam.filter(function (f) { return f === 'id' }), av = faltam.filter(function (f) { return f !== 'id' && REAL[f] });
+    return (er.length ? '<h4>Erros</h4><p>Os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas.</p><div class="md-linha" data-t="md-erros"><b>Erros</b><span>' + er.map(function (f) { return '<span>' + REAL[f] + '</span>' }).join('<br>') + '</span></div>' : '') +
+      (av.length ? '<h4>Avisos</h4><p>Os produtos são adicionados ao seu catálogo sem as informações principais que impactam o desempenho da sua campanha de anúncios.</p><div class="md-linha" data-t="md-avisos-reais"><b>Avisos</b><span>' + av.map(function (f) { return '<span>' + REAL[f] + '</span>' }).join('<br>') + '</span></div>' : '');
+  }
+  var PREVIA = '<h3>Prévia</h3><p>É assim que os microdados são configurados no seu site. Corrija os erros abaixo para que todos os produtos no seu site possam ser adicionados automaticamente ao seu catálogo.</p>';
+  function tabelaSem(nome) {   // carrinho e página inicial: só as tags OpenGraph gerais da página
+    var L = [['title', (nome === 'carrinho.html' ? 'Carrinho · ' : '') + 'Lojinha da Marina'], ['description', 'Loja fictícia de treinamento sobre o Meta Pixel: canecas, camisetas e ecobags.'], ['link', BASE + nome], ['image_link', BASE + 'marca/capa.png']];
+    return '<h4>OpenGraph</h4><table class="cm-tab md-tab" data-t="tab-og"><thead><tr><th>Parâmetro</th><th>Valor</th></tr></thead><tbody>' + L.map(function (x) { return '<tr><td>' + x[0] + '</td><td data-sem-traduzir="1">' + esc(x[1]) + '</td></tr>' }).join('') + '</tbody></table>';
+  }
   function resultado() {
     var r = S.res; if (!r) return '';
+    if (r.faltam && r.faltam.length && !(r.falta && r.falta.indexOf('price-formato') >= 0)) {   // a ferramenta aponta o campo
+      var pgR = r.pg;
+      return '<div class="md-res erro" data-t="resultado-erro">' + PREVIA + (r.sem ? tabelaSem(r.sem) : (pgR.og ? '<h4>OpenGraph</h4>' + tabela(pgR, 'og') : '') + (pgR.ld ? '<h4>JSON-LD</h4>' + tabela(pgR, 'ld') : '') + (pgR.sc ? '<h4>Schema.org</h4>' + tabela(pgR, 'sc') : '')) +
+        blocosReais(r.faltam) + '<p class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span>' + (r.expl && r.expl.length ? '<ul>' + r.expl.map(function (e) { return '<li><span>' + esc(e) + '</span></li>' }).join('') + '</ul>' : r.falta ? ' — <span>' + r.falta.map(function (f) { return AJUDA[f] }).filter(Boolean).join('</span>; <span>') + '</span>.' : '') + '</p>' + avisosDyn(r) +
+        '<p class="conferido">✓ Erros e Avisos campo a campo conferidos com a ferramenta real em 25/10/2026 (em português). Às vezes ela mostra só “Falha na validação de dados” (visto em 16/10 e, em espanhol, em 25/10).</p></div>';
+    }
     if (r.erro && r.dyn) {
       return '<div class="md-res erro" data-t="resultado-erro"><h3>Erros</h3><p>Os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas.</p><div class="md-linha"><b>Erros</b><span>Falha na validação de dados.</span></div>' +
-        '<div class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span><ul>' + r.expl.map(function (e) { return '<li><span>' + esc(e) + '</span></li>' }).join('') + '</ul><small>(A tela real mostra só “Falha na validação de dados”; esta dica é do simulador, para você aprender a achar a causa: a conferir.)</small></div>' + avisosDyn(r) + '</div>';
+        '<div class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span><ul>' + r.expl.map(function (e) { return '<li><span>' + esc(e) + '</span></li>' }).join('') + '</ul><small>(Para este tipo de problema, como a tela real aparece não foi visto: aqui fica a mensagem geral “Falha na validação de dados”, vista em 16/10/2026; a dica é do simulador.)</small></div>' + avisosDyn(r) + '</div>';
     }
     if (r.erro || r.falta) {
       return '<div class="md-res erro" data-t="resultado-erro"><h3>Erros</h3><p>Os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas.</p><div class="md-linha"><b>Erros</b><span>Falha na validação de dados.</span></div>' +
-        '<p class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span>' + (r.falta ? '. <span>' + r.falta.map(function (f) { return AJUDA[f] }).filter(Boolean).join('</span>; <span>') + '</span>.' : '') + ' <small>(A tela real mostra só “Falha na validação de dados”; esta dica é do simulador, para você aprender a achar a causa: a conferir.)</small></p></div>';
+        '<p class="ga-aviso" data-t="dica-simulador"><b>Dica do simulador:</b> <span>' + esc(r.motivo) + '</span>' + (r.falta ? '. <span>' + r.falta.map(function (f) { return AJUDA[f] }).filter(Boolean).join('</span>; <span>') + '</span>.' : '') + ' <small>(Para este tipo de problema, como a tela real aparece não foi visto: aqui fica a mensagem geral “Falha na validação de dados”, vista em 16/10/2026; a dica é do simulador.)</small></p></div>';
     }
     var pg = r.pg;
     return '<div class="md-res" data-t="resultado-ok"><h3>Prévia</h3><p>É assim que os microdados são configurados no seu site. Corrija os erros abaixo para que todos os produtos no seu site possam ser adicionados automaticamente ao seu catálogo.</p>' +
@@ -111,7 +131,7 @@
       '<p><button class="btn" data-acao="verifica" data-t="btn-verificar">Verificar microdados</button></p>' +
       '<div class="ga-aviso" data-t="atalho"><b>Site de mentirinha do simulador:</b> escolha uma página para testar sem digitar. <select class="ga-in" id="mdEx" data-t="sel-exemplo"><option value="">Escolher uma página…</option>' + exemplos + '</select><br><small>Aqui as páginas são de ' + BASE + ' (não existe de verdade). A ferramenta real lê qualquer página pública.</small></div>' +
       resultado() +
-      '<p class="conferido">✓ Tela, textos, tabelas e mensagens conferidos com a ferramenta real em ' + CONF + ' (PT e ES). ⚠ Erros por campo específico e a lista completa de parâmetros não foram vistos (a conferir).</p></main>' +
+      '<p class="conferido">✓ Tela, textos, tabelas e mensagens conferidos com a ferramenta real em ' + CONF + ' (PT e ES). Erros e Avisos campo a campo conferidos em 25/10/2026. ⚠ A lista completa de parâmetros e a tela para preço em formato errado não foram vistas (a conferir).</p></main>' +
       '<aside class="md-lado"><b>PRODUCT CATALOG DEBUG TOOLS</b><p><a>Ferramenta de depuração de pixel</a></p></aside></div>';
   }
   function render() {
@@ -152,7 +172,7 @@
   TOURS['erro-microdados'] = [
     { alvo: '[data-t=sel-exemplo]', garante: function () { SIMMD.zera() }, cond: function () { return /produto-sem-preco/.test(md().url) }, tit: T('Uma página com problema', 'Una página con problema'), txt: T('O cliente reclama que o Boné Azul não entra no catálogo. No “site de mentirinha”, escolha a página produto-sem-preco.html.', 'El cliente reclama que la Gorra azul no entra en el catálogo. En el “sitio de mentira”, elige la página produto-sem-preco.html.'), dica: T('Escolha “produto-sem-preco.html”.', 'Elige “produto-sem-preco.html”.') },
     { alvo: '[data-t=btn-verificar]', clique: true, garante: function () { SIMMD.zera(); SIMMD.set({ url: BASE + 'produto-sem-preco.html' }) }, tit: T('Verificar', 'Comprobar'), txt: T('Clique em Verificar microdados.', 'Haz clic en Comprobar microdatos.') },
-    { alvo: '[data-t=resultado-erro]', garante: function () { SIMMD.set({ url: BASE + 'produto-sem-preco.html' }); SIMMD.verifica() }, tit: T('Erros', 'Errores'), txt: T('A tela real diz: “Os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas” e, embaixo, “Falha na validação de dados”. É um aviso genérico: não aponta o campo. Clique em Próximo.', 'La pantalla real dice: “Estos problemas impiden que los productos de tu sitio web se agreguen al catálogo automáticamente” y, abajo, “Error al validar los datos”. Es un aviso genérico: no señala el campo. Haz clic en Siguiente.') },
+    { alvo: '[data-t=resultado-erro]', garante: function () { SIMMD.set({ url: BASE + 'produto-sem-preco.html' }); SIMMD.verifica() }, tit: T('Erros', 'Errores'), txt: T('A ferramenta separa Erros (o produto não entra: por exemplo, falta o id) e Avisos (entra sem uma informação importante). Aqui veio o aviso “Um campo obrigatório está ausente: price”: o campo vem no fim da linha. Às vezes ela mostra só “Falha na validação de dados”, sem apontar o campo; aí o jeito é comparar com uma página boa. Clique em Próximo.', 'La herramienta separa Errores (el producto no entra: por ejemplo, falta el id) y Advertencias (entra sin una información importante). Aquí vino el aviso de que falta un campo obligatorio: price; el campo viene al final de la línea. A veces muestra solo “Error al validar los datos”, sin señalar el campo; entonces lo que sirve es comparar con una página buena. Haz clic en Siguiente.') },
     { alvo: '[data-t=dica-simulador]', garante: function () { SIMMD.set({ url: BASE + 'produto-sem-preco.html' }); SIMMD.verifica() }, tit: T('Achar a causa', 'Encontrar la causa'), txt: T('Para achar o campo, compare com uma página boa: falta o preço (price). Esta dica é do simulador; na vida real, você pede ao cliente (ou ao desenvolvedor do site) para conferir a página. Clique em Próximo.', 'Para encontrar el campo, compara con una página buena: falta el precio (price). Esta pista es del simulador; en la vida real, le pides al cliente (o al desarrollador del sitio) que revise la página. Haz clic en Siguiente.') },
     { alvo: '[data-t=sel-exemplo]', garante: function () { SIMMD.set({ url: BASE + 'produto-sem-preco.html' }); SIMMD.verifica() }, cond: function () { return /produto-caneca_01/.test(md().url) }, tit: T('Comparar com uma página boa', 'Comparar con una página buena'), txt: T('Agora escolha a página da Caneca azul (produto-caneca_01.html) para comparar.', 'Ahora elige la página de la Caneca azul (produto-caneca_01.html) para comparar.'), dica: T('Escolha “produto-caneca_01.html”.', 'Elige “produto-caneca_01.html”.') },
     { alvo: '[data-t=btn-verificar]', clique: true, garante: function () { SIMMD.set({ url: OK1, res: null }) }, tit: T('Verificar a página boa', 'Comprobar la página buena'), txt: T('Clique em Verificar microdados.', 'Haz clic en Comprobar microdatos.') },

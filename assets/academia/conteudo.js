@@ -2856,27 +2856,28 @@ window.AULAS = {
     },
     {
       id: '04', min: 8, status: 'pronta',
-      titulo: { pt: '“Falha na validação de dados”', es: '“Error al validar los datos”' },
-      antes: { pt: 'A Marina testou a página do Boné e a ferramenta mostrou Erros.', es: 'Marina probó la página de la Gorra y la herramienta mostró Errores.' },
+      titulo: { pt: 'Erros e avisos do Microdata Debugger', es: 'Errores y advertencias del Microdata Debugger' },
+      antes: { pt: 'A Marina testou a página do Boné e a ferramenta mostrou um aviso.', es: 'Marina probó la página de la Gorra y la herramienta mostró una advertencia.' },
       fontes: [
         { url: 'https://www.facebook.com/business/help/887775018036966', titulo: { pt: 'Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', es: 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)' }, conferido: '25/10/2026' }
       ],
       gancho: { pt: '“Meu desenvolvedor perguntou que código colocar.” Vamos ver como são as tags e corrigir as da Ecobag, do jeito que ele faria.', es: '“Mi desarrollador preguntó qué código poner.” Vamos a ver cómo son las etiquetas y corregir las de la Ecobag, como él lo haría.' },
-      objetivo: { pt: 'Ler a tela de erro, achar a causa comparando com uma página boa e orientar o cliente sem mexer no site.', es: 'Leer la pantalla de error, encontrar la causa comparando con una página buena y orientar al cliente sin tocar el sitio.' },
+      objetivo: { pt: 'Ler Erros e Avisos campo a campo, saber o que fazer quando vem só a mensagem geral e orientar o cliente sem mexer no site.', es: 'Leer Errores y Advertencias campo por campo, saber qué hacer cuando viene solo el mensaje general y orientar al cliente sin tocar el sitio.' },
       entender: {
         dialogo: [
-          ['marina', { pt: 'Apareceu “Erros: os produtos no seu site não podem ser adicionados automaticamente ao seu catálogo devido a esses problemas”. E embaixo só “Falha na validação de dados”. 😩', es: 'Apareció “Errores: estos problemas impiden que los productos de tu sitio web se agreguen al catálogo automáticamente”. Y abajo solo “Error al validar los datos”. 😩' }],
-          ['rafa', { pt: 'É um aviso geral, que não aponta o campo. O truque é comparar: teste uma página do mesmo site que funcione e veja o que a página com erro não tem ou tem diferente.', es: 'Es un aviso general, que no señala el campo. El truco es comparar: prueba una página del mismo sitio que funcione y mira qué no tiene o qué tiene distinto la página con error.' }],
-          ['marina', { pt: 'E se eu testar o carrinho?', es: '¿Y si pruebo el carrito?' }],
-          ['rafa', { pt: 'Também dá erro, porque carrinho e página inicial não trazem dados de um produto. Teste sempre uma página de produto.', es: 'También da error, porque el carrito y la página de inicio no traen datos de un producto. Prueba siempre una página de producto.' }],
-          ['pixel', { pt: 'Causas comuns: faltar o id ou o preço, ou o preço vir como texto (“R$ 54,90”). Quem corrige é o site do cliente ou a plataforma da loja: você mostra a diferença e orienta.', es: 'Causas comunes: faltar el id o el precio, o que el precio venga como texto (“R$ 54,90”). Quien corrige es el sitio del cliente o la plataforma de la tienda: tú muestras la diferencia y orientas.' }]
+          ['marina', { pt: 'Testei a página do Boné e apareceu “Avisos: Um campo obrigatório está ausente: price”. No carrinho apareceu “Erros: Adicione o atributo do produto necessário: id”. 😩', es: 'Probé la página de la Gorra y apareció una advertencia: falta un campo obligatorio, price. En el carrito apareció un error: falta el atributo id. 😩' }],
+          ['rafa', { pt: 'A ferramenta separa em dois blocos. Erros: o produto não entra no catálogo (por exemplo, sem o id). Avisos: entra, mas sem uma informação importante (preço, estoque, imagem…). O nome do campo vem no fim da linha.', es: 'La herramienta separa en dos bloques. Errores: el producto no entra al catálogo (por ejemplo, sin el id). Advertencias: entra, pero sin una información importante (precio, stock, imagen…). El nombre del campo viene al final de la línea.' }],
+          ['marina', { pt: 'E por que o carrinho deu erro?', es: '¿Y por qué el carrito dio error?' }],
+          ['rafa', { pt: 'Carrinho e página inicial não são páginas de produto: não têm id, preço nem estoque. Teste sempre uma página de produto.', es: 'El carrito y la página de inicio no son páginas de producto: no tienen id, precio ni stock. Prueba siempre una página de producto.' }],
+          ['pixel', { pt: 'Às vezes a ferramenta mostra só “Falha na validação de dados”, sem apontar o campo. Aí o truque é comparar com uma página de produto que funciona. Em qualquer caso, quem corrige é o site do cliente ou a plataforma da loja: você mostra a diferença e orienta.', es: 'A veces la herramienta muestra solo “Error al validar los datos”, sin señalar el campo. Entonces el truco es comparar con una página de producto que funciona. En cualquier caso, quien corrige es el sitio del cliente o la plataforma de la tienda: tú muestras la diferencia y orientas.' }]
         ],
         pontos: [
-          { pt: '<b>Erro geral:</b> “Falha na validação de dados” não diz o campo.', es: '<b>Error general:</b> “Error al validar los datos” no dice el campo.' },
-          { pt: '<b>Compare</b> com uma página de produto que funciona.', es: '<b>Compara</b> con una página de producto que funciona.' },
+          { pt: '<b>Erros × Avisos:</b> erro impede o produto de entrar (ex.: falta o id); aviso deixa entrar sem uma informação importante (ex.: price, availability).', es: '<b>Errores × Advertencias:</b> el error impide que el producto entre (ej.: falta el id); la advertencia deja entrar sin una información importante (ej.: price, availability).' },
+          { pt: '<b>Leia o campo</b> no fim de cada linha e confira na tabela da Prévia.', es: '<b>Lee el campo</b> al final de cada línea y revisa la tabla de la Vista previa.' },
+          { pt: '<b>Só “Falha na validação de dados”?</b> Compare com uma página de produto que funciona.', es: '<b>¿Solo “Error al validar los datos”?</b> Compara con una página de producto que funciona.' },
           { pt: '<b>Teste páginas de produto</b>, não carrinho nem página inicial.', es: '<b>Prueba páginas de producto</b>, no carrito ni página de inicio.' }
         ],
-        notas: { pt: 'Tela de erro vista de verdade em 16/10/2026 em português e espanhol (com a página do carrinho, e, em espanhol, também numa nova tentativa da página de produto). As causas comuns e os casos “sem preço”, “sem id” e “preço em texto” do simulador são nossos, a partir do que a ferramenta lê (a tela real não aponta o campo: a conferir). Uma falha pode também ser momentânea; a causa da falha em espanhol não foi apurada.', es: 'Pantalla de error vista de verdad el 16/10/2026 en portugués y español (con la página del carrito y, en español, también en un nuevo intento de la página de producto). Las causas comunes y los casos “sin precio”, “sin id” y “precio en texto” del simulador son nuestros, a partir de lo que lee la herramienta (la pantalla real no señala el campo: por confirmar). Un fallo también puede ser momentáneo; la causa del fallo en español no se determinó.' }
+        notas: { pt: 'Ferramenta real usada em 25/10/2026 com páginas do site público (página inicial e carrinho): em português ela mostra a Prévia com as tabelas e lista, campo a campo, “Erros” (só o id: “Adicione o atributo do produto necessário: id”) e “Avisos” (“Um campo obrigatório está ausente: price”, “Valor necessário ausente: availability” e outros). Em 16/10/2026 a mesma ferramenta mostrou só “Falha na validação de dados” (carrinho, em português e espanhol) e, em 25/10/2026, em espanhol, também só “Error al validar los datos”: por isso a aula ensina os dois casos. Os casos “sem id” e “preço em texto” do simulador são nossos; como a tela real mostra o preço em formato errado não foi visto (a conferir).', es: 'Herramienta real usada el 25/10/2026 con páginas del sitio público (inicio y carrito): en portugués muestra la Vista previa con las tablas y lista, campo por campo, “Errores” (solo el id) y “Advertencias” (price, availability y otros). El 16/10/2026 la misma herramienta mostró solo “Error al validar los datos” (carrito, en portugués y español) y, el 25/10/2026, en español, también solo el mensaje general: por eso la clase enseña los dos casos. Los casos “sin id” y “precio en texto” del simulador son nuestros; cómo muestra la pantalla real el precio con formato incorrecto no se vio (por confirmar).' },
       },
       ferramenta: 'por-que-erro-microdados',
       praticar: {
@@ -2896,13 +2897,17 @@ window.AULAS = {
       cola: {
         perguntas: [{ pt: 'Qual URL deu erro? É uma página de produto?', es: '¿Qué URL dio error? ¿Es una página de producto?' },
           { pt: 'Existe uma página de produto do mesmo site que funcione?', es: '¿Existe una página de producto del mismo sitio que funcione?' }],
-        conferir: [{ pt: 'Compare as tabelas das duas páginas: id, price, availability.', es: 'Compara las tablas de las dos páginas: id, price, availability.' },
+        conferir: [{ pt: 'Leia as linhas de Erros e Avisos: o campo vem no fim.', es: 'Lee las líneas de Errores y Advertencias: el campo viene al final.' },
+          { pt: 'Compare as tabelas das duas páginas: id, price, availability.', es: 'Compara las tablas de las dos páginas: id, price, availability.' },
           { pt: 'Preço como número com moeda (49.90 BRL).', es: 'Precio como número con moneda (49.90 BRL).' }],
-        frase: { pt: 'O aviso da ferramenta é geral, então comparamos com uma página que funciona para ver o que está faltando ou diferente. A correção é feita no site do cliente.', es: 'El aviso de la herramienta es general, así que comparamos con una página que funciona para ver qué falta o qué es distinto. La corrección se hace en el sitio del cliente.' },
+        frase: { pt: 'A ferramenta mostra o que falta: erro impede o produto de entrar, aviso deixa entrar sem a informação. Se vier só a mensagem geral, comparamos com uma página que funciona. A correção é feita no site do cliente.', es: 'La herramienta muestra qué falta: el error impide que el producto entre, la advertencia deja entrar sin la información. Si viene solo el mensaje general, comparamos con una página que funciona. La corrección se hace en el sitio del cliente.' },
         passos: [{ pt: 'Teste uma página de produto boa e a com erro.', es: 'Prueba una página de producto buena y la que da error.' },
           { pt: 'Mostre ao cliente a diferença entre as tabelas.', es: 'Muestra al cliente la diferencia entre las tablas.' }],
         encaminhar: { pt: 'Corrigir microdados é mudança no site: a plataforma da loja ou o desenvolvedor do cliente faz. Se ainda houver dúvida, siga a Central de Ajuda da Meta (artigo da ferramenta).', es: 'Corregir microdatos es un cambio en el sitio: lo hace la plataforma de la tienda o el desarrollador del cliente. Si aún hay duda, sigue el Centro de ayuda de Meta (artículo de la herramienta).' }
-      }
+      },
+      divergencias: [
+        { tema: { pt: 'Preço ausente: erro ou aviso?', es: 'Precio ausente: ¿error o advertencia?' }, oficial: { pt: 'a Central de Ajuda lista o preço entre os campos obrigatórios dos microdados.', es: 'el Centro de ayuda pone el precio entre los campos obligatorios de los microdatos.' }, tela: { pt: 'a ferramenta põe “Um campo obrigatório está ausente: price” em Avisos, que diz que os produtos são adicionados sem as informações principais (25/10/2026).', es: 'la herramienta pone la falta de price en Advertencias, que dice que los productos se agregan sin la información principal (25/10/2026).' }, aula: { pt: 'trate o preço como obrigatório: sem ele o produto não fica pronto para anúncios. O aviso não é “pode deixar assim”.', es: 'trata el precio como obligatorio: sin él el producto no queda listo para anuncios. La advertencia no es “se puede dejar así”.' } }
+      ]
     },
     {
       id: '05', min: 10, status: 'pronta',

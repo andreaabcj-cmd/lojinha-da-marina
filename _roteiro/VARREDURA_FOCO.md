@@ -55,6 +55,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 
 ### Microdados
 - 02 sucesso em espanhol 👀 · 03 lista completa de parâmetros (ler a Central) · 04 erros reais por campo 👀 (testar uma página com erro).
+  - ✅ 25/10: a ferramenta real (PT) agora aponta o campo: Prévia + “Erros” (só id) + “Avisos” (price, availability, image_link, link, title, description) — testado com a página inicial e o carrinho do site público. Em espanhol, no mesmo dia, só “Error al validar los datos”. Simulador, aula 04 (agora “Erros e avisos do Microdata Debugger”), quiz e Divergência (preço: obrigatório na Central × aviso na tela) ajustados. 6 tutoriais passam no robô. Falta ver: preço em formato errado.
 
 ### Gerenciador de Anúncios / Feed
 - Anúncios 03 “Conferir e publicar” 👀 (até antes de publicar) · 04 tela após publicar edição e coluna Aprendizado 💳 (anúncio rodando) · Feed 02 etapa Corte e Personalizar 👀 · 03 Coluna da direita e posicionamento manual 👀 · 04 erro sem URL 👀.

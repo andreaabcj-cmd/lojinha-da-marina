@@ -8,7 +8,7 @@
    - schema.org (microdados no corpo da página): <div itemscope itemtype="http://schema.org/Product"> com itemprop brand, name, description,
      productID, url, image, offers (itemscope Offer: availability, itemCondition, price, priceCurrency) e additionalProperty (PropertyValue).
    As regras de valor (preço com ponto, moeda de 3 letras, disponibilidade e condição em inglês) seguem as especificações do catálogo da Meta.
-   O que o simulador aponta campo a campo é nosso (a ferramenta real só diz “Falha na validação de dados”). */
+   O simulador aponta campo a campo como a ferramenta real fez em 25/10/2026 para campos faltando; para formato e sintaxe errados, a explicação é nossa (em 16/10 ela só disse “Falha na validação de dados”). */
 (function () {
   var K = 'site.ecobagHead', ID = 'ECOBAG_03', URL = 'produto-ecobag_03.html', SITE_URL = 'https://lojinha.exemplo.com.br/';
   // o desenvolvedor da Marina colou o exemplo da Meta e esqueceu de trocar alguns valores
