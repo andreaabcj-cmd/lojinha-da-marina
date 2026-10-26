@@ -384,9 +384,9 @@
     else if (ac === 'conta-volta') { passoJ = Math.max(0, passoJ - 1); desenha() }
     else if (ac === 'conta-criar') { pf().contas.push({ id: '3' + novoId().slice(1), nome: F.contaNome.trim(), fuso: F.fuso.replace(/^\([^)]*\)\s*/, ''), moeda: F.moeda.slice(0, 3) }); grava(); fecha(); render() }
   });
-  document.addEventListener('change', function (ev) {   // Central de Segurança: trocar quem precisa dos dois fatores pede confirmação
-    if (ev.target.id !== 'fSeg2fa') return; var v = ev.target.value; ev.target.value = pf().dois2fa || 'Ninguém';
-    if (v === (pf().dois2fa || 'Ninguém')) return; abre('seg2fa'); F.seg2fa = v; desenha();
+  document.addEventListener('change', function (ev) {   // Central de Segurança: na tela real (26/10/2026) a escolha vale na hora, sem confirmação (a Central fala em “Confirme sua seleção”)
+    if (ev.target.id !== 'fSeg2fa') return; var v = ev.target.value;
+    if (v === (pf().dois2fa || 'Ninguém')) return; pf().dois2fa = v; grava(); render();
   });
   window.addEventListener('hashchange', function () { menuPag = false; render() });
 
