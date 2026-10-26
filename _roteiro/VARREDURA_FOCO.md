@@ -59,6 +59,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 
 ### Gerenciador de Anúncios / Feed
 - Anúncios 03 “Conferir e publicar” 👀 (até antes de publicar) · 04 tela após publicar edição e coluna Aprendizado 💳 (anúncio rodando) · Feed 02 etapa Corte e Personalizar 👀 · 03 Coluna da direita e posicionamento manual 👀 · 04 erro sem URL 👀.
+  - ✅ 25/10: “Conferir itens de rascunho” real visto com os 3 rascunhos da conta de aula (cancelado, nada publicado): abas Campanha/Conjunto/anúncio, Alteração “Novo”, “Corrigir erro” e o aviso dos Termos — simulador refeito. Erro real do Feed 04: “Um campo obrigatório precisa ser preenchido: O campo de link é obrigatório. Preencha o campo para continuar.” (simulador e tutorial usam). Instagram 09: abas Visão geral, Plano e Mensagens do Insights vistas e postas no simulador. 10 tutoriais de Anúncios/Feed passam; “excluir-posicionamento” para no robô (ele desmarca todas as caixas), mas conferido à mão que funciona. Falta (✋, mexe no rascunho): Feed 02 Corte/Personalizar, Instagram 05 prévia por lugar, Instagram 07 “Postar em”.
 
 ### Instagram
 - 05 prévia por lugar e lista de perfis 👀 · 06 lista com Instagram fora 🚫 · 07 seletor “Postar em” 👀 · 08 conversa aberta 💳 (sem conversas reais) · 09 abas do Insights 👀.

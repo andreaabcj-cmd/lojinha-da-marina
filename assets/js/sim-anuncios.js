@@ -147,10 +147,15 @@
       (S.an.tentou && faltas().length ? '<div class="ga-aviso verm" data-t="erros"><b>Ainda não dá para publicar:</b><ul class="ga-erros">' + faltas().map(function (x) { return '<li>' + esc(x) + '</li>' }).join('') + '</ul><small>(texto de erro do simulador, resumindo o que a tela real cobra)</small></div>' : '');
   }
   function revisar() {
-    var f = faltas();
-    return casca('<div class="ga"><div class="ga-topo"><h1>Conferir e publicar</h1></div><div class="ga-corpo"><div class="ga-sec" data-t="revisar"><h3>Rascunhos desta conta de anúncios</h3><p>1 campanha · 1 conjunto de anúncios · 1 anúncio</p>' +
-      (f.length ? '<div class="ga-aviso verm"><b>Ainda tem coisa faltando:</b><ul class="ga-erros">' + f.map(function (x) { return '<li>' + esc(x) + '</li>' }).join('') + '</ul></div>' : '<div class="ga-aviso">Tudo preenchido. No simulador, o botão Publicar é só de treino.</div>') +
-      '<div class="rodape-jan"><button class="btn sec" data-ir="lista">Voltar</button><button class="btn" data-acao="publicar" ' + (f.length ? 'disabled' : '') + '>Publicar</button></div></div>' + conferido(false) + '</div></div>');
+    var f = faltas(), fc = f.filter(function (x) { return /^Conjunto/.test(x) }), fa = f.filter(function (x) { return !/^Conjunto/.test(x) });
+    function linha(nome, erros, t) { return '<tr data-t="' + t + '"><td>' + nome + '</td><td>Novo</td><td>' + (erros.length ? '<span class="ga-tag verm">⚠ Corrigir erro</span><div class="ga-aviso verm"><b>' + (erros.length === 1 ? '1 erro' : erros.length + ' erros') + '</b><ol class="ga-erros">' + erros.map(function (x) { return '<li>' + esc(x.replace(/^(Conjunto de anúncios|Anúncio): /, '').replace(/^./, function (c) { return c.toUpperCase() })) + '</li>' }).join('') + '</ol></div>' : '—') + '</td></tr>' }
+    return casca('<div class="ga"><div class="ga-topo"><h1>Campanhas</h1></div><div class="ga-corpo"><div class="ga-sec" data-t="revisar"><h3>Conferir itens de rascunho</h3>' +
+      '<p class="miudo">📁 Campanha 1 · ▦ Conjunto de anúncios 1 · ▤ anúncio 1</p>' +
+      '<table class="cm-tab"><thead><tr><th>Nome</th><th>Alteração</th><th>Erros</th></tr></thead><tbody>' + linha('Nova campanha de Vendas', [], 'rv-camp') + linha('Novo conjunto de anúncios de Vendas', fc, 'rv-conj') + linha('Novo anúncio de Vendas', fa, 'rv-anuncio') + '</tbody></table>' +
+      (f.length ? '' : '<div class="ga-aviso">Tudo preenchido. No simulador, o botão Publicar é só de treino.</div>') +
+      '<p class="miudo">Ao clicar em <b>Publicar</b>, você aceita que seu uso das ferramentas para anúncios da Meta está sujeito aos nossos <a>Termos e Condições</a>.</p>' +
+      '<div class="rodape-jan"><button class="btn sec" data-ir="lista">Cancelar</button><button class="btn" data-acao="publicar" ' + (f.length ? 'disabled' : '') + '>Publicar</button></div></div>' +
+      '<p class="conferido">✓ Janela “Conferir itens de rascunho” conferida com a tela real em 25/10/2026 (abas por nível, Alteração “Novo”, “Corrigir erro” e o aviso dos Termos). No real, o erro aparece ao passar o mouse em “Corrigir erro”; aqui ele já fica aberto.</p></div></div>');
   }
   function modalAnalise() {
     return '<div class="ga-fundo"><div class="ga-jan" data-t="jan-analise"><h2>Anúncio em análise</h2><p><b>Seu anúncio está sendo criado.</b> Avisaremos se ele atende aos Padrões de Publicidade da Meta em até 24 horas. Você também pode receber atualizações na Central de Anúncios.</p><p>Status <span class="ga-tag vd">Em análise</span></p><p class="miudo">No simulador, nada foi enviado à Meta.</p><div class="rodape-jan"><button class="btn" data-ir="lista">Concluir</button></div></div></div>';
