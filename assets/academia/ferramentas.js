@@ -1228,14 +1228,14 @@
   quizCatalogo('semelhante-ok', { pt: 'O semelhante vai funcionar?', es: '¿El similar va a funcionar?' }, { pt: 'Fonte e tamanho de 1% a 10% (a localização vem do conjunto de anúncios).', es: 'Origen y tamaño de 1% a 10% (la ubicación viene del conjunto de anuncios).' }, [
     { q: { pt: 'Qual fonte dá o melhor público semelhante?', es: '¿Qué origen da el mejor público similar?' },
       o: [[{ pt: 'Uma fonte maior e de qualidade, como os compradores do site', es: 'Un origen mayor y de calidad, como los compradores del sitio' }, 1, { pt: 'Isso! Melhor e maior a fonte, melhor o semelhante.', es: '¡Eso! Cuanto mejor y mayor el origen, mejor el similar.' }],
-        [{ pt: 'Uma fonte com poucas dezenas de pessoas', es: 'Un origen con pocas decenas de personas' }, 0, { pt: 'Fonte pequena demais pode ser recusada.', es: 'Un origen demasiado pequeño puede ser rechazado.' }],
+        [{ pt: 'Uma fonte com poucas dezenas de pessoas', es: 'Un origen con pocas decenas de personas' }, 0, { pt: 'Com menos de 100 pessoas, o semelhante fica “Público não criado”.', es: 'Con menos de 100 personas, el similar queda “Público no creado”.' }],
         [{ pt: 'Qualquer uma, não faz diferença', es: 'Cualquiera, no hace diferencia' }, 0, { pt: 'Faz muita diferença.', es: 'Hace mucha diferencia.' }]] },
     { q: { pt: 'A tela explica o 1%. O que acontece ao aumentar a porcentagem?', es: 'La pantalla explica el 1%. ¿Qué pasa al aumentar el porcentaje?' },
       o: [[{ pt: 'O público fica maior e mais amplo, e menos parecido com a fonte', es: 'El público queda mayor y más amplio, y menos parecido al origen' }, 1, { pt: 'Isso! O 1% são os mais parecidos.', es: '¡Eso! El 1% son los más parecidos.' }],
         [{ pt: 'O público fica menor e mais parecido', es: 'El público queda menor y más parecido' }, 0, { pt: 'É o contrário.', es: 'Es lo contrario.' }],
         [{ pt: 'Nada muda', es: 'Nada cambia' }, 0, { pt: 'Muda o tamanho.', es: 'Cambia el tamaño.' }]] },
-    { q: { pt: 'A tela recusa criar o semelhante de uma fonte “Abaixo de 1.000”. O que fazer?', es: 'La pantalla rechaza crear el similar de un origen “Menos de 1.000”. ¿Qué hacer?' },
-      o: [[{ pt: 'Escolher uma fonte maior, ou esperar o site ganhar visitas', es: 'Elegir un origen mayor, o esperar a que el sitio gane visitas' }, 1, { pt: 'Isso! Não é defeito: faltam dados.', es: '¡Eso! No es un defecto: faltan datos.' }],
+    { q: { pt: 'O semelhante feito de uma fonte pequena aparece na lista como “Público não criado”. O que fazer?', es: 'El similar hecho con un origen pequeño aparece en la lista como “Público no creado”. ¿Qué hacer?' },
+      o: [[{ pt: 'Escolher uma fonte maior, ou esperar o site ganhar visitas', es: 'Elegir un origen mayor, o esperar a que el sitio gane visitas' }, 1, { pt: 'Isso! Não é defeito: a fonte precisa de pelo menos 100 pessoas (o ideal é de 1.000 a 5.000).', es: '¡Eso! No es un defecto: el origen necesita al menos 100 personas (lo ideal, de 1.000 a 5.000).' }],
         [{ pt: 'Abrir um chamado dizendo que a Meta quebrou', es: 'Abrir un caso diciendo que Meta se rompió' }, 0, { pt: 'É esperado com fonte pequena.', es: 'Se espera con un origen pequeño.' }],
         [{ pt: 'Criar o mesmo público de novo, 10 vezes', es: 'Crear el mismo público de nuevo, 10 veces' }, 0, { pt: 'Com a mesma fonte, o resultado é o mesmo.', es: 'Con el mismo origen, el resultado es el mismo.' }]] }
   ]);

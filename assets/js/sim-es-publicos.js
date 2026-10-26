@@ -1,5 +1,5 @@
 /* Dicionário PT → ES do simulador dos Públicos. Cartões e lista de fontes copiados da tela real em espanhol (16/10/2026);
-   o formulário do público do site, o semelhante e o salvo seguem o padrão da Meta (a conferir). */
+   formulário do site em espanhol (25/10/2026); o semelhante e o salvo seguem o padrão da Meta em espanhol (traduzidos por nós). */
 (function () {
   var D = window.SIM_ES = window.SIM_ES || {}, P = window.SIM_ES_PADROES = window.SIM_ES_PADROES || [];
   var A = {
@@ -78,4 +78,8 @@
   D["✓ Formulário conferido com a tela real em 25/10/2026 (só olhando). Os interesses do Direcionamento detalhado não foram pesquisados."] = "✓ Formulario revisado con la pantalla real el 25/10/2026 (solo mirando). Los intereses de la Segmentación detallada no se buscaron.";
   D["Criar público salvo"] = "Crear público guardado";
   P.push([/^\((\d+)\/400\)$/, function (m) { return m[0] }]);
+  D["Público não criado"] = "Público no creado";
+  D["Isso pode significar que o público que você usou para criar o público semelhante era muito pequeno. Tente novamente."] = "Esto puede significar que el público que usaste para crear el público similar era demasiado pequeño. Inténtalo de nuevo.";
+  D["Em preenchimento"] = "En preparación";
+  P.push([/^Semelhante \((\d+)%\) - (.+)$/, function (m) { return 'Similar (' + m[1] + '%) - ' + m[2] }]);
 })();

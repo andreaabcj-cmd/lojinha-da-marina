@@ -148,7 +148,7 @@
   }
   function revisar() {
     var f = faltas(), fc = f.filter(function (x) { return /^Conjunto/.test(x) }), fa = f.filter(function (x) { return !/^Conjunto/.test(x) });
-    function linha(nome, erros, t) { return '<tr data-t="' + t + '"><td>' + nome + '</td><td>Novo</td><td>' + (erros.length ? '<span class="ga-tag verm">⚠ Corrigir erro</span><div class="ga-aviso verm"><b>' + (erros.length === 1 ? '1 erro' : erros.length + ' erros') + '</b><ol class="ga-erros">' + erros.map(function (x) { return '<li>' + esc(x.replace(/^(Conjunto de anúncios|Anúncio): /, '').replace(/^./, function (c) { return c.toUpperCase() })) + '</li>' }).join('') + '</ol></div>' : '—') + '</td></tr>' }
+    function linha(nome, erros, t) { return '<tr data-t="' + t + '"><td>' + nome + '</td><td>Novo</td><td>' + (erros.length ? '<span class="ga-tag vm">⚠ Corrigir erro</span><div class="ga-aviso verm"><b>' + (erros.length === 1 ? '1 erro' : erros.length + ' erros') + '</b><ol class="ga-erros">' + erros.map(function (x) { return '<li>' + esc(x.replace(/^(Conjunto de anúncios|Anúncio): /, '').replace(/^./, function (c) { return c.toUpperCase() })) + '</li>' }).join('') + '</ol></div>' : '—') + '</td></tr>' }
     return casca('<div class="ga"><div class="ga-topo"><h1>Campanhas</h1></div><div class="ga-corpo"><div class="ga-sec" data-t="revisar"><h3>Conferir itens de rascunho</h3>' +
       '<p class="miudo">📁 Campanha 1 · ▦ Conjunto de anúncios 1 · ▤ anúncio 1</p>' +
       '<table class="cm-tab"><thead><tr><th>Nome</th><th>Alteração</th><th>Erros</th></tr></thead><tbody>' + linha('Nova campanha de Vendas', [], 'rv-camp') + linha('Novo conjunto de anúncios de Vendas', fc, 'rv-conj') + linha('Novo anúncio de Vendas', fa, 'rv-anuncio') + '</tbody></table>' +
