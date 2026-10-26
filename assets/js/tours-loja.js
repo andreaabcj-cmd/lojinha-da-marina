@@ -121,3 +121,34 @@ window.TOURS['compra-completa'] = [
     tit: { pt: 'Os parâmetros 💰', es: 'Los parámetros 💰' },
     txt: { pt: 'Em “Parâmetros personalizados” estão os DETALHES: value (o valor) e currency (a moeda, BRL). Com eles a Meta sabe quanto a Marina vendeu. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'En “Parámetros personalizados” están los DETALLES: value (el valor) y currency (la moneda, BRL). Con ellos Meta sabe cuánto vendió Marina. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
+
+/* Pixel 06 (opcional) · câmera do Pixel e aba Rede, pelo botão F12 (simulação) */
+function tgAbaF12(aba) { return function () { window.LOJA && LOJA.painel(true, aba) } }
+window.TOURS['camera-pixel'] = [
+  { alvo: '#maFab', clique: true, pula: tgPainelAberto, garante: function () { window.LOJA && LOJA.painel(false) },
+    tit: { pt: 'O botão F12', es: 'El botón F12' },
+    txt: { pt: 'Num computador, a tecla F12 abre as ferramentas de desenvolvedor. Aqui, o botão F12 (simulação), no canto de baixo, faz esse papel. Clique nele.', es: 'En una computadora, la tecla F12 abre las herramientas de desarrollador. Aquí, el botón F12 (simulación), en la esquina de abajo, hace ese papel. Haz clic en él.' } },
+  { alvo: '.ma-tabs [data-aba=camera]', clique: true, garante: tgAbaF12('rede'),
+    tit: { pt: 'A câmera', es: 'La cámara' },
+    txt: { pt: 'Abra a aba 📹 Câmera.', es: 'Abre la pestaña 📹 Cámara.' } },
+  { alvo: '#maBody', garante: tgAbaF12('camera'),
+    tit: { pt: 'Cada evento, na hora', es: 'Cada evento, al instante' },
+    txt: { pt: 'Cada linha é um evento que esta página disparou: o nome (PageView = abriu a página), se foi enviado à Meta, os parâmetros e o código fbq que o site rodou. É o mesmo que você vê no Eventos de teste. Clique em Próximo.', es: 'Cada fila es un evento que esta página disparó: el nombre (PageView = abrió la página), si se envió a Meta, los parámetros y el código fbq que ejecutó el sitio. Es lo mismo que ves en Probar eventos. Haz clic en Siguiente.' } },
+  { alvo: '#maPanel', fim: true, garante: tgAbaF12('camera'),
+    tit: { pt: 'Mais um jeito, o mesmo Pixel 🎉', es: '¡Otra forma, el mismo Pixel! 🎉' },
+    txt: { pt: 'Navegue pela loja com a câmera aberta: ver um produto traz o ViewContent; pôr no carrinho, o AddToCart. No atendimento, confira pelo Eventos de teste e pelo Consultor de Dados. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Navega por la tienda con la cámara abierta: ver un producto trae el ViewContent; poner en el carrito, el AddToCart. En la atención, revisa con Probar eventos y el Asesor de datos. Haz clic en Finalizar. Después, explora libremente: el botón ↩ de la esquina te lleva de vuelta.' } }
+];
+window.TOURS['rede-pixel'] = [
+  { alvo: '#maFab', clique: true, pula: tgPainelAberto, garante: function () { window.LOJA && LOJA.painel(false) },
+    tit: { pt: 'O botão F12', es: 'El botón F12' },
+    txt: { pt: 'Clique no botão F12 (simulação), no canto de baixo.', es: 'Haz clic en el botón F12 (simulación), en la esquina de abajo.' } },
+  { alvo: '.ma-tabs [data-aba=rede]', clique: true, garante: tgAbaF12('camera'),
+    tit: { pt: 'A aba Rede', es: 'La pestaña Red' },
+    txt: { pt: 'Abra a aba 🌐 Rede.', es: 'Abre la pestaña 🌐 Red.' } },
+  { alvo: '#maBody', garante: tgAbaF12('rede'),
+    tit: { pt: 'Um pedido por evento', es: 'Un pedido por evento' },
+    txt: { pt: 'Quando o Pixel envia um evento, o navegador manda um pedido para facebook.com/tr. No computador, você veria isso no F12 › Rede, filtrando por “tr”. Clique em Próximo.', es: 'Cuando el Pixel envía un evento, el navegador manda un pedido a facebook.com/tr. En la computadora, lo verías en F12 › Red, filtrando por “tr”. Haz clic en Siguiente.' } },
+  { alvo: '.ma-legend', fim: true, garante: tgAbaF12('rede'),
+    tit: { pt: 'Como ler 🎉', es: 'Cómo leer 🎉' },
+    txt: { pt: 'id = qual Pixel · ev = qual evento · cd[…] = parâmetros · eid = ID do evento. Isso ajuda a conversar com quem cuida do site. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'id = qué Pixel · ev = qué evento · cd[…] = parámetros · eid = ID del evento. Esto ayuda a hablar con quien cuida el sitio. Haz clic en Finalizar. Después, explora libremente: el botón ↩ de la esquina te lleva de vuelta.' } }
+];

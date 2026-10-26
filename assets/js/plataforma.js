@@ -86,7 +86,7 @@
         ].filter(function (p) { return !window.PUB_ESCONDIDA(p[0]) }).map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
     },
     modulos: function () {
-      var tr = trilhaAtual(), n = 0;
+      var tr = trilhaAtual(), n = 0; setTimeout(ligaRecomecar);
       function card(m) {
         n++; var ok = window.AULAS[m.id];
         return (ok ? '<a class="item" href="modulo.html?m=' + m.id + '">' : '<div class="item off">') + '<span class="num">' + n + '</span><span class="ic">' + m.icone + '</span><b>' + T(m.titulo) + '</b><p>' + T(m.resumo) + '</p>' + selo(m.status) + (ok ? '</a>' : '</div>');
@@ -96,7 +96,7 @@
       }).join('') + '</div>';
       var h = '<h1 class="pl-h1">🎓 ' + T(U.modulos) + '</h1>' + abas + '<p class="pl-lead">' + T(tr.resumo) + '</p>' +
         '<p class="pl-lead"><small>' + T({ pt: 'Cada módulo tem aulas de 5 a 10 minutos, sempre no mesmo formato: entender, ver de perto, praticar e atender. A história da Marina acompanha todas as aulas.', es: 'Cada módulo tiene clases de 5 a 10 minutos, siempre con el mismo formato: entender, ver de cerca, practicar y atender. La historia de Marina acompaña todas las clases.' }) + '</small></p>' +
-        '<div class="grade">' + modulosDaTrilha(tr).map(card).join('') + '</div>';
+        recomecarMini() + '<div class="grade">' + modulosDaTrilha(tr).map(card).join('') + '</div>';
       if (tr.extras && tr.extras.length) {
         h += '<div class="fase-cab fora"><div><h2>' + T({ pt: 'Módulos extras', es: 'Módulos extras' }) + '</h2><p>' + T({ pt: 'Só na Trilha Completa: assuntos de outras áreas, ainda em construção.', es: 'Solo en la Ruta Completa: temas de otras áreas, todavía en construcción.' }) + '</p></div></div><div class="grade">' +
           tr.extras.map(function (id) { return card(window.MODULOS.filter(function (m) { return m.id === id })[0]) }).join('') + '</div>';
@@ -109,9 +109,9 @@
       return '<p class="pl-trilha"><a href="' + (dg ? 'diagnostico.html' : 'modulos.html') + '">' + T(dg ? U.diagnostico : U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + (dg ? '' : trilhaChip(m)) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
-          return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><span class="aula-tx"><b>' + T(a.titulo) + '</b>' + (ok && a.objetivo ? '<span class="aula-obj">' + T(a.objetivo) + '</span>' : '') + '</span><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
+          return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><span class="aula-tx"><b>' + T(a.titulo) + (a.opcional ? ' <span class="selo-opc">' + T({ pt: 'opcional', es: 'opcional' }) + '</span>' : '') + '</b>' + (ok && a.objetivo ? '<span class="aula-obj">' + T(a.objetivo) + '</span>' : '') + '</span><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
         }).join('') + '</div>' + (function () {
-          var prontas = aulas.filter(function (a) { return a.status === 'pronta' }), pm = dg ? null : proximoModulo(m.id);
+          var prontas = aulas.filter(function (a) { return a.status === 'pronta' && !a.opcional }), pm = dg ? null : proximoModulo(m.id);
           var tudo = prontas.length && prontas.every(function (a) { return f[m.id + '/' + a.id] });
           return tudo && pm ? '<p class="prox-mod">🎉 ' + T({ pt: 'Módulo concluído!', es: '¡Módulo completado!' }) + ' <a class="btn" href="modulo.html?m=' + pm.id + '">' + T({ pt: 'Próximo módulo:', es: 'Siguiente módulo:' }) + ' ' + pm.icone + ' ' + T(pm.titulo) + ' ▶</a></p>' : '';
         })();
@@ -177,6 +177,10 @@
       '<p>' + T({ pt: 'Apaga o que você fez nos simuladores (Pixels criados, eventos, portfólios, convites, contas de anúncios, perfil do Instagram) e na loja (carrinho, pedidos, dados do checkout, cookies, falhas do Laboratório). Só neste navegador: não mexe no de mais ninguém.', es: 'Borra lo que hiciste en los simuladores (Pixels creados, eventos, portfolios, invitaciones, cuentas publicitarias, perfil de Instagram) y en la tienda (carrito, pedidos, datos del checkout, cookies, fallas del Laboratorio). Solo en este navegador: no toca el de nadie más.' }) + '</p>' +
       '<label class="rc-ck"><input type="checkbox" id="rcProg"/> ' + T({ pt: 'Apagar também meu progresso nas aulas (os ✓)', es: 'Borrar también mi progreso en las clases (los ✓)' }) + '</label>' +
       '<div class="rc-bts" id="rcBts"><button class="btn sec" id="rcIr">🧹 ' + T({ pt: 'Recomeçar do zero', es: 'Empezar de cero' }) + '</button></div></div>';
+  }
+  function recomecarMini() {   // versão curta, no topo da página Módulos: já vem marcado apagar também os ✓ das aulas
+    return '<div class="recomecar rc-mini" id="recomecar"><span class="rc-tx">🧹 <b>' + T({ pt: 'Recomeçar as aulas do zero', es: 'Empezar las clases de cero' }) + '</b> <small>' + T({ pt: 'apaga o que você fez nos simuladores e na loja, só neste navegador', es: 'borra lo que hiciste en los simuladores y en la tienda, solo en este navegador' }) + '</small></span>' +
+      '<label class="rc-ck"><input type="checkbox" id="rcProg" checked/> ' + T({ pt: 'também os ✓ das aulas', es: 'también los ✓ de las clases' }) + '</label><span class="rc-bts" id="rcBts"></span></div>';
   }
   function ligaRecomecar() {
     var box = document.getElementById('rcBts'); if (!box) return;
@@ -483,7 +487,7 @@
     var prox = aulasDaTrilha(mid).filter(function (x) { return lista.indexOf(x) > lista.indexOf(a) })[0], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
     function fioDepois() {
-      var pmF = !(prox && prox.status === 'pronta') ? proximoModulo(mid) : null, g = T(a.gancho);
+      var pmF = !(prox && prox.status === 'pronta' && !prox.opcional) ? proximoModulo(mid) : null, g = T(a.gancho);
       if (pmF) g = g.replace(/\s*Próximo módulo:[^”]*$/, '');
       return '<p class="fio depois">➡️ <b>' + (pmF ? T({ pt: 'No próximo módulo', es: 'En el próximo módulo' }) + ' (' + T(pmF.titulo) + '):' : T({ pt: 'Na próxima aula:', es: 'En la próxima clase:' })) + '</b> ' + g + '</p>';
     }
@@ -513,8 +517,8 @@
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });
       $('#bAnt').disabled = passoAtual === 0;
       var ultimo = passoAtual === partes.length - 1;
-      var pm = ultimo && !(prox && prox.status === 'pronta') && !dg ? proximoModulo(mid) : null;   // última aula do módulo: segue para o próximo módulo da trilha
-      $('#bProx').textContent = ultimo ? (prox && prox.status === 'pronta' ? T(U.proxAula) : pm ? T(U.proxMod) : T(U.fimMod)) : T(U.prox);
+      var pm = ultimo && !(prox && prox.status === 'pronta' && !prox.opcional) && !dg ? proximoModulo(mid) : null;   // última aula do módulo: segue para o próximo módulo da trilha
+      $('#bProx').textContent = ultimo ? (prox && prox.status === 'pronta' && !prox.opcional ? T(U.proxAula) : pm ? T(U.proxMod) : T(U.fimMod)) : T(U.prox);
       if (ultimo) { var f2 = feitas(); f2[mid + '/' + aid] = true; lsSet('plat.feitas', f2) }
     }
     setTimeout(function () {
@@ -522,7 +526,7 @@
       $('#bAnt').onclick = function () { if (passoAtual > 0) { passoAtual--; desenha() } };
       $('#bProx').onclick = function () {
         if (passoAtual < partes.length - 1) { passoAtual++; desenha(); window.scrollTo({ top: 0, behavior: 'smooth' }) }
-        else { var pm2 = !dg && !(prox && prox.status === 'pronta') ? proximoModulo(mid) : null; location.href = prox && prox.status === 'pronta' ? 'aula-plataforma.html?m=' + mid + '&a=' + prox.id : 'modulo.html?m=' + (pm2 ? pm2.id : mid) }
+        else { var pm2 = !dg && !(prox && prox.status === 'pronta' && !prox.opcional) ? proximoModulo(mid) : null; location.href = prox && prox.status === 'pronta' && !prox.opcional ? 'aula-plataforma.html?m=' + mid + '&a=' + prox.id : 'modulo.html?m=' + (pm2 ? pm2.id : mid) }
       };
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.onclick = function () { passoAtual = i; desenha() } });
       $('#palco').addEventListener('click', function (e) {

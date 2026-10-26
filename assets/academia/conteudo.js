@@ -967,7 +967,36 @@ window.AULAS = {
         { url: 'https://developers.facebook.com/docs/meta-pixel/reference', titulo: { pt: 'Meta Pixel · Referência (eventos padrão; no Purchase, value e currency são obrigatórios)', es: 'Meta Pixel · Referencia (eventos estándar; en Purchase, value y currency son obligatorios)' }, conferido: '14/10/2026' }
       ]
     },
-    { id: '05', titulo: { pt: 'Apareceu um aviso: quebrei alguma coisa?', es: 'Apareció un aviso: ¿rompí algo?' }, status: 'planejada' }
+    { id: '05', titulo: { pt: 'Apareceu um aviso: quebrei alguma coisa?', es: 'Apareció un aviso: ¿rompí algo?' }, status: 'planejada' },
+    {
+      id: '06', min: 6, status: 'pronta', opcional: true,
+      titulo: { pt: 'Só mais um jeito de ver o Pixel', es: 'Solo otra forma de ver el Pixel' },
+      antes: { pt: 'A Marina já viu o Pixel no Gerenciador de Eventos e no Consultor de Dados. Agora, por curiosidade, quer ver o que acontece por dentro do site.', es: 'Marina ya vio el Pixel en el Administrador de eventos y en el Asesor de datos. Ahora, por curiosidad, quiere ver qué pasa por dentro del sitio.' },
+      objetivo: { pt: 'Ver os mesmos eventos por dentro do navegador (F12 e Ctrl+U), só para entender o que acontece por trás e conversar com quem cuida do site. Aula opcional: no atendimento não é preciso.', es: 'Ver los mismos eventos por dentro del navegador (F12 y Ctrl+U), solo para entender qué pasa por detrás y hablar con quien cuida el sitio. Clase opcional: en la atención no hace falta.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'O Rafa falou de “F12”. É outro jeito de ver o Pixel? 🤔', es: 'Rafa habló de “F12”. ¿Es otra forma de ver el Pixel? 🤔' }],
+          ['rafa', { pt: 'É o mesmo Pixel e são os mesmos eventos, só que olhando por dentro do navegador. O F12 abre as ferramentas de desenvolvedor; o Ctrl+U mostra o código da página.', es: 'Es el mismo Pixel y son los mismos eventos, solo que mirando por dentro del navegador. F12 abre las herramientas de desarrollador; Ctrl+U muestra el código de la página.' }],
+          ['marina', { pt: 'E eu preciso disso para atender?', es: '¿Y necesito eso para atender?' }],
+          ['rafa', { pt: 'Não. No atendimento, o Gerenciador de Eventos (Eventos de teste) e o Consultor de Dados bastam. O F12 serve para entender o que acontece por trás e para conversar com quem cuida do site.', es: 'No. En la atención, el Administrador de eventos (Probar eventos) y el Asesor de datos alcanzan. El F12 sirve para entender qué pasa por detrás y para hablar con quien cuida el sitio.' }],
+          ['pixel', { pt: 'Na Lojinha, o botão F12 (simulação), no canto de baixo, faz esse papel em qualquer aparelho: câmera dos eventos, rede e código.', es: 'En la Lojinha, el botón F12 (simulación), en la esquina de abajo, hace ese papel en cualquier dispositivo: cámara de eventos, red y código.' }]
+        ],
+        pontos: [
+          { pt: '<b>F12</b> abre as ferramentas de desenvolvedor do navegador. Na aba <b>Rede</b>, cada evento do Pixel vira um pedido para <code>facebook.com/tr</code>.', es: '<b>F12</b> abre las herramientas de desarrollador del navegador. En la pestaña <b>Red</b>, cada evento del Pixel se vuelve un pedido a <code>facebook.com/tr</code>.' },
+          { pt: '<b>Ctrl+U</b> mostra o código da página: é onde se procura o <code>fbq</code> e o ID do Pixel.', es: '<b>Ctrl+U</b> muestra el código de la página: ahí se busca el <code>fbq</code> y el ID del Pixel.' },
+          { pt: '<b>Opcional:</b> no atendimento, confira pelo Eventos de teste e pelo Consultor de Dados.', es: '<b>Opcional:</b> en la atención, revisa con Probar eventos y el Asesor de datos.' }
+        ],
+        notas: { pt: 'O F12 e o Ctrl+U são ferramentas do navegador, não da Meta. O caminho oficial para conferir o Pixel é o Gerenciador de Eventos (Eventos de teste) e a extensão Consultor de Dados, vistos nas aulas 02 e 03. Na Lojinha, o botão F12 é uma simulação que funciona também no celular.', es: 'F12 y Ctrl+U son herramientas del navegador, no de Meta. El camino oficial para revisar el Pixel es el Administrador de eventos (Probar eventos) y la extensión Asesor de datos, vistos en las clases 02 y 03. En la Lojinha, el botón F12 es una simulación que también funciona en el celular.' }
+      },
+      praticar: {
+        texto: { pt: 'Escolha um jeito. O Pixel te guia dentro da Lojinha, pelo botão F12 (simulação).', es: 'Elige una forma. El Pixel te guía dentro de la Lojinha, con el botón F12 (simulación).' },
+        opcoes: [
+          { id: 'camera', icone: '📹', pagina: 'loja.html?lab=1', tour: 'camera-pixel', selo: { pt: 'comece aqui', es: 'empieza aquí' }, tit: { pt: 'Câmera do Pixel (F12)', es: 'Cámara del Pixel (F12)' }, txt: { pt: 'Cada evento que a loja dispara, na hora, com parâmetros e o código.', es: 'Cada evento que dispara la tienda, al instante, con parámetros y el código.' } },
+          { id: 'rede', icone: '🌐', pagina: 'loja.html?lab=1', tour: 'rede-pixel', tit: { pt: 'A aba Rede (F12)', es: 'La pestaña Red (F12)' }, txt: { pt: 'Os pedidos que saem para facebook.com/tr: qual Pixel, qual evento, quais parâmetros.', es: 'Los pedidos que salen a facebook.com/tr: qué Pixel, qué evento, qué parámetros.' } },
+          { id: 'codigo', icone: '📄', pagina: 'loja.html?lab=1', tour: 'achar-codigo', tit: { pt: 'Código-fonte (Ctrl+U)', es: 'Código fuente (Ctrl+U)' }, txt: { pt: 'O comentário do Pixel, o ID e o PageView no código da página.', es: 'El comentario del Pixel, el ID y el PageView en el código de la página.' } }
+        ]
+      }
+    }
   ],
   anuncios: [
     {

@@ -356,3 +356,5 @@ html,body{overflow-x:clip}
 /* a Marina do início abre a intro (escondido: sem rótulo nem dica, só o clique) */
 .ola-marina{border:0;background:none;padding:0;cursor:pointer;display:block}
 .prox-mod{margin:18px 0 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-weight:700}
+.selo-opc{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:#EDE7FF;color:#4B2AA8;border:1.5px solid #4B2AA8;font:700 11px/1.5 inherit;vertical-align:middle}
+.recomecar.rc-mini{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:10px 0 16px;padding:10px 14px}.rc-mini .rc-tx{flex:1 1 280px}.rc-mini .rc-tx small{display:block;color:var(--muted)}.rc-mini .rc-ck{margin:0}.rc-mini .rc-bts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
