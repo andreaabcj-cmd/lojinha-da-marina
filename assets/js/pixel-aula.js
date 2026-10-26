@@ -28,7 +28,7 @@ var cliente = lsGet('cliente',null);
 var SIM_PID = (function(){try{var e=JSON.parse(localStorage.getItem('sim.eventos')||'null');var d=e&&e.datasets&&e.datasets[0];return d?d.id:null}catch(x){return null}})();
 /* Dois Pixels, cada um no seu papel (regra: o Pixel de verdade nunca muda o que a aula mostra):
    - PID = o da AULA: o que o aluno criou no Gerenciador de Eventos simulado. É o que a extensão de treino, o F12 e o
-     Testar eventos simulado mostram, para os números baterem dentro da aula.
+     Eventos de teste simulado mostram, para os números baterem dentro da aula.
    - PID_REAL = o de verdade (config.js): recebe os eventos por trás, para a extensão real e o Gerenciador real. */
 var PID_REAL = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : C.pixelId;
 var PID = LAB.cadernoErrado ? (C.pixelIdErrado||'000000000000000') : (SIM_PID || C.pixelId);
@@ -162,7 +162,7 @@ var ui = (function(){
   function render(){if(!panel)return;
     $$('.ma-tabs button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-aba')===aba)});
     var c=document.getElementById('maBody');var h='';
-    if(aba==='camera'){h='<p class="ma-intro">📹 <b>Câmera do Pixel:</b> cada evento que esta loja disparou, na hora. É o que você confere, do lado da Meta, no <b>Testar eventos</b>.</p>'+
+    if(aba==='camera'){h='<p class="ma-intro">📹 <b>Câmera do Pixel:</b> cada evento que esta loja disparou, na hora. É o que você confere, do lado da Meta, no <b>Eventos de teste</b>.</p>'+
         (log.length?log.slice(0,25).map(evHTML).join(''):'<p class="ma-mut">Nenhum evento ainda.</p>')+'<button class="ma-btn ghost" id="maLimpaLog">Limpar a câmera</button>'}
     else if(aba==='rede'){var reais=redeReal();h='<p class="ma-intro">🌐 <b>A aba Rede do F12.</b> Quando o Pixel envia um evento, o navegador manda um pedido para <code>facebook.com/tr</code>. No computador de casa você veria isso no F12 › Rede, filtrando por <code>facebook.com/tr</code>.</p>'+
         '<h4>Pedidos reais saindo desta página</h4>'+(reais.length?reais.map(function(r){return '<div class="ma-req ok"><b>'+esc(r.ev)+'</b><span>'+esc(r.tipo)+'</span><code>'+esc(r.url.slice(0,180))+'…</code></div>'}).join(''):'<p class="ma-mut">'+(LIVE?'Nenhum pedido detectado ainda (ou o navegador não deixou ver).':'Modo simulação: nada é enviado de verdade enquanto o ID do Pixel não for configurado.')+'</p>')+
@@ -173,7 +173,7 @@ var ui = (function(){
     else if(aba==='lab'){h=labHTML()}
     else if(aba==='dica'){var pg=document.body.getAttribute('data-pagina'),d=DICAS[pg]||{t:'Página',d:'',ev:[]};
       h='<div class="ma-dica"><span class="ma-tag big">Nesta página</span><h3>'+esc(d.t)+'</h3><p>'+d.d+'</p><h4>Eventos esperados aqui</h4><div class="ma-evs">'+d.ev.map(function(e){return '<span>'+esc(e)+'</span>'}).join('')+'</div>'+
-        '<h4>Para conferir do lado da Meta</h4><ol class="ma-ol"><li>Portfólio da loja</li><li>Gerenciador de Eventos</li><li>Pixel da loja (confira o <b>ID</b>)</li><li>Aba <b>Testar eventos</b></li></ol><p class="ma-mut">Se os menus mudarem de lugar, procure por “testar eventos” / “test events”.</p></div>'}
+        '<h4>Para conferir do lado da Meta</h4><ol class="ma-ol"><li>Portfólio da loja</li><li>Gerenciador de Eventos</li><li>Pixel da loja (confira o <b>ID</b>)</li><li>Aba <b>Eventos de teste</b></li></ol><p class="ma-mut">Se os menus mudarem de lugar, procure por “testar eventos” / “test events”.</p></div>'}
     c.innerHTML=h;var lb=document.getElementById('maLimpaLog');if(lb)lb.onclick=function(){log=[];ssSet('log',[]);render()};wireLab()}
   function lupa(){var st=!LIVE?['sim','Simulação','Configure o ID do Pixel em assets/js/config.js.']:BLOQ?['bad','Inativo','Pixel bloqueado no navegador (laboratório): nenhum evento sai.']:LAB.duplicado?['warn','Aviso','Código do Pixel duplicado: eventos em dobro.']:LAB.cadernoErrado?['warn','Aviso','O Pixel desta página não é o Pixel esperado da loja.']:['ok','Ativo','Pixel detectado e enviando eventos.'];
     var linhas=pageEvents.map(function(ev){var prob=[];if(ev.status==='perdido')prob.push('não disparou');if(ev.nome==='Purchase'&&ev.status!=='perdido'&&(ev.params.value==null||!ev.params.currency))prob.push('sem value/currency');

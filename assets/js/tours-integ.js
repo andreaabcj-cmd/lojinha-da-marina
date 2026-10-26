@@ -1,6 +1,6 @@
 /* TUTORIAIS DE INTEGRAÇÕES (Shopify, WooCommerce, MBE) — em telas reais (ou recriadas fielmente) das PLATAFORMAS PARCEIRAS e da Meta:
    Admin da Shopify (admin-shopify.html: App Store, canal Facebook e Instagram, Produtos, Configurações) · Admin do WordPress/WooCommerce (admin-woo.html: Plugins,
-   Marketing › Facebook) · Janela do MBE (mbe-janela.js) · Gerenciador de Eventos (Testar eventos) · Loja (o site do cliente). O estado mora em site-estado.js (SITE).
+   Marketing › Facebook) · Janela do MBE (mbe-janela.js) · Gerenciador de Eventos (Eventos de teste) · Loja (o site do cliente). O estado mora em site-estado.js (SITE).
    Real (Central de Ajuda da Shopify e da Meta, documentação do WooCommerce e da Meta para desenvolvedores, lidas em 16/10/2026): ver o cabeçalho de admin-shopify.js,
    admin-woo.js e mbe-janela.js. As telas internas das plataformas e a ordem dentro da janela do MBE são do treino (a conferir). */
 (function () {
@@ -61,7 +61,7 @@
       S('[data-t=btn-connect-account]', { clique: true, garante: goS('fb-setup'), tit: t('Conectar conta', 'Conectar cuenta'), txt: t('“Configure sua loja” tem 5 partes. A primeira é o Perfil do Facebook: a Shopify usa a conta pessoal do Facebook de quem administra a empresa. Clique em Conectar conta: abre a janela da Meta.', '“Configura tu tienda” tiene 5 partes. La primera es el Perfil de Facebook: Shopify usa la cuenta personal de Facebook de quien administra la empresa. Haz clic en Conectar cuenta: se abre la ventana de Meta.') })
     ];
   }
-  function verificarCompra(txtFinalFeed) {   // compra de teste na Loja e conferência em Testar eventos
+  function verificarCompra(txtFinalFeed) {   // compra de teste na Loja e conferência em Eventos de teste
     return [].concat(H.limparEventosPrimeiro(), H.compra(), H.obrigadoLer(dep(t('Pedido feito. Veja o que a Meta recebeu.', 'Pedido hecho. Mira lo que recibió Meta.'))),
       H.eventosTeste(dep(txtFinalFeed), true));
   }

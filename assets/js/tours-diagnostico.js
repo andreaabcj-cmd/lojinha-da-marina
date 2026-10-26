@@ -1,5 +1,5 @@
 /* TUTORIAIS DO DIAGNÓSTICO DE CASOS — práticas que seguem o caminho de verdade, entre telas de verdade (ou recriadas fielmente):
-   Loja (o "site do cliente") › Consultor de Dados › Gerenciador de Eventos (Testar eventos, Diagnóstico, Instalar código) › Código-fonte da página ›
+   Loja (o "site do cliente") › Consultor de Dados › Gerenciador de Eventos (Eventos de teste, Diagnóstico, Instalar código) › Código-fonte da página ›
    Editor de arquivos do site / Admin da Shopify (tema e app Facebook e Instagram).
    O estado do caso mora em site-estado.js (SITE): é ele que decide quais eventos a Loja envia. Cada tutorial começa escolhendo um caso (SITE.preset).
    Carregado em todas as páginas por onde os tutoriais passam: Loja, Gerenciador de Eventos, Código-fonte, Editor de arquivos, Admin da Shopify.
@@ -37,11 +37,11 @@
       { alvo: '#daCorpo', pagina: P.obrigado, garante: function () { window.DA && DA.abrir('inicio') }, tit: t('A extensão não vê nada', 'La extensión no ve nada'), txt: txt }
     ];
   }
-  function eventosTeste(txtFeed, limpar) {   // Gerenciador de Eventos › Conjuntos de dados › o Pixel › Testar eventos
+  function eventosTeste(txtFeed, limpar) {   // Gerenciador de Eventos › Conjuntos de dados › o Pixel › Eventos de teste
     var r = [
       { alvo: '[data-t=menu-conjuntos]', clique: true, pagina: P.eventos, garante: hash('visao'), tit: t('Gerenciador de Eventos', 'Administrador de eventos'), txt: t('Agora veja o que chegou à Meta. No Gerenciador de Eventos, clique em Conjuntos de dados.', 'Ahora mira lo que llegó a Meta. En el Administrador de eventos, haz clic en Conjuntos de datos.') },
       { alvo: '[data-t=ds-abrir]', clique: true, pagina: P.eventos, garante: hash('conjuntos'), tit: t('O Pixel do cliente', 'El píxel del cliente'), txt: t('Abra o Pixel da Mari.', 'Abre el píxel de la Mari.') },
-      { alvo: '[data-t=aba-teste]', clique: true, pagina: P.eventos, garante: irDs('visao'), tit: t('Testar eventos', 'Probar eventos'), txt: t('Abra a aba Testar eventos.', 'Abre la pestaña Probar eventos.') }
+      { alvo: '[data-t=aba-teste]', clique: true, pagina: P.eventos, garante: irDs('visao'), tit: t('Eventos de teste', 'Probar eventos'), txt: t('Abra a aba Eventos de teste.', 'Abre la pestaña Probar eventos.') }
     ];
     if (limpar) r.push({ alvo: '[data-acao=limpar]', clique: true, pagina: P.eventos, garante: irDs('teste'), tit: t('Comece limpo', 'Empieza limpio'), txt: t('Limpe a atividade para ver só o que vem a seguir.', 'Limpia la actividad para ver solo lo que viene a continuación.') });
     r.push({ alvo: '[data-t=feed]', pagina: P.eventos, garante: irDs('teste'), tit: t('O que chegou', 'Lo que llegó'), txt: txtFeed });
@@ -135,7 +135,7 @@
     return [
       { alvo: '[data-t=menu-conjuntos]', clique: true, pagina: P.eventos, garante: hash('visao'), tit: t('Comece limpo', 'Empieza limpio'), txt: t('Volte ao Gerenciador de Eventos e limpe a atividade antes de testar. Clique em Conjuntos de dados.', 'Vuelve al Administrador de eventos y limpia la actividad antes de probar. Haz clic en Conjuntos de datos.') },
       { alvo: '[data-t=ds-abrir]', clique: true, pagina: P.eventos, garante: hash('conjuntos'), tit: t('O Pixel', 'El píxel'), txt: t('Abra o Pixel da Mari.', 'Abre el píxel de la Mari.') },
-      { alvo: '[data-t=aba-teste]', clique: true, pagina: P.eventos, garante: irDs('visao'), tit: t('Testar eventos', 'Probar eventos'), txt: t('Abra Testar eventos.', 'Abre Probar eventos.') },
+      { alvo: '[data-t=aba-teste]', clique: true, pagina: P.eventos, garante: irDs('visao'), tit: t('Eventos de teste', 'Probar eventos'), txt: t('Abra Eventos de teste.', 'Abre Probar eventos.') },
       { alvo: '[data-acao=limpar]', clique: true, pagina: P.eventos, garante: irDs('teste'), tit: t('Limpar atividade', 'Limpiar actividad'), txt: t('Clique em Limpar atividade.', 'Haz clic en Limpiar actividad.') }
     ];
   }

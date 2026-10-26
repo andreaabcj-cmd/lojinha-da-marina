@@ -129,7 +129,7 @@
     },
     simuladores: function () {
       setTimeout(ligaRecomecar);
-      var sims = [['meta-eventos.html', '📡', { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, { pt: 'Criar o Pixel, Testar eventos (com os eventos da Lojinha), Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos (con los eventos de la Lojinha), Diagnóstico y Configuración.' }, 'pronta'],
+      var sims = [['meta-eventos.html', '📡', { pt: 'Gerenciador de Eventos', es: 'Administrador de eventos' }, { pt: 'Criar o Pixel, usar os Eventos de teste (com os eventos da Lojinha), Diagnóstico e Configurações.', es: 'Crear el Pixel, Probar eventos (con los eventos de la Lojinha), Diagnóstico y Configuración.' }, 'pronta'],
         ['meta-instagram.html', '📸', { pt: 'Instagram (perfil e conta profissional)', es: 'Instagram (perfil y cuenta profesional)' }, { pt: 'Virar conta profissional e editar o perfil, com as telas reais.', es: 'Volverse cuenta profesional y editar el perfil, con las pantallas reales.' }, 'pronta'],
         ['meta-portfolio.html', '🏢', { pt: 'Configurações do portfólio (Business Suite)', es: 'Configuración del portfolio (Business Suite)' }, { pt: 'Criar o portfólio, convidar pessoas, Páginas, contas de anúncios e Central de Segurança.', es: 'Crear el portfolio, invitar personas, Páginas, cuentas publicitarias y Centro de seguridad.' }, 'pronta'],
         ['meta-catalogo.html', '🗂️', { pt: 'Gerenciador de Comércio (Catálogo)', es: 'Administrador de ventas (Catálogo)' }, { pt: 'Criar o catálogo, carregar produtos por arquivo, conferir IDs e achar produtos que não aparecem, com as telas reais.', es: 'Crear el catálogo, subir productos por archivo, revisar IDs y encontrar productos que no aparecen, con las pantallas reales.' }, 'pronta'],
@@ -225,7 +225,7 @@
       ['print-pixel', 'pratica.html?p=print-pixel', 'pixel', '03', { pt: 'Como pedir e ler o print do cliente', es: 'Cómo pedir y leer la captura del cliente' }],
       ['extensao-pixel', 'loja.html', 'pixel', '03', { pt: 'Como ver o Pixel com a extensão (Consultor de Dados)', es: 'Cómo ver el Pixel con la extensión (Asesor de datos)' }],
       ['achar-codigo', 'loja.html?lab=1', 'pixel', '03', { pt: 'Como achar o código do Pixel no site (técnico)', es: 'Cómo encontrar el código del Pixel en el sitio (técnico)' }],
-      ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar o Testar eventos', es: 'Cómo usar Probar eventos' }],
+      ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar os Eventos de teste', es: 'Cómo usar Probar eventos' }],
       ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] },
     { m: 'pixel-avancado', itens: [
       ['correspondencia-avancada', 'loja.html', 'pixel-avancado', '01', { pt: 'Como ativar a correspondência avançada (automática e manual)', es: 'Cómo activar la coincidencia avanzada (automática y manual)' }],
@@ -396,7 +396,7 @@
   /* ---------- AULA: uma parte por vez (ver · ferramenta · praticar · caso) ---------- */
   /* conversa no estilo do chat de atendimento: Marina (cliente) à esquerda, Rafa (agente) à direita, Pixel como dica no meio */
   var FOTOS = {
-    'gerenciador': '<div class="foto-ger"><div class="fg-topo"><b>Gerenciador de Eventos</b><span>Lojinha da Marina</span></div><div class="fg-corpo"><div class="fg-menu"><i></i><i class="on"></i><i></i><i></i></div><div><b class="fg-nome">Pixel da Lojinha</b><span class="fg-id">Identificação: 1234567890123456</span><div class="fg-abas"><u>Visão geral</u> Testar eventos · Diagnóstico</div><div class="fg-barras"><i style="height:30%"></i><i style="height:55%"></i><i style="height:20%"></i><i style="height:70%"></i><i style="height:45%"></i></div><span class="fg-ev">PageView · Ativo</span></div></div></div>',
+    'gerenciador': '<div class="foto-ger"><div class="fg-topo"><b>Gerenciador de Eventos</b><span>Lojinha da Marina</span></div><div class="fg-corpo"><div class="fg-menu"><i></i><i class="on"></i><i></i><i></i></div><div><b class="fg-nome">Pixel da Lojinha</b><span class="fg-id">Identificação: 1234567890123456</span><div class="fg-abas"><u>Visão geral</u> Eventos de teste · Diagnóstico</div><div class="fg-barras"><i style="height:30%"></i><i style="height:55%"></i><i style="height:20%"></i><i style="height:70%"></i><i style="height:45%"></i></div><span class="fg-ev">PageView · Ativo</span></div></div></div>',
     'codigo-base': '<div class="foto-cod"><span class="c">&lt;!-- Meta Pixel Code --&gt;</span>\n<span class="t">&lt;script&gt;</span>\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=…\n…(window, document,\'script\',\n\'https://connect.facebook.net/en_US/fbevents.js\');\n<span class="f">fbq</span>(\'init\', \'<span class="f-init">1234567890123456</span>\');\n<span class="f">fbq</span>(\'track\', \'PageView\');\n<span class="t">&lt;/script&gt;</span>\n<span class="c">&lt;!-- End Meta Pixel Code --&gt;</span></div>'
   };
   function chat(dialogo, antes) {

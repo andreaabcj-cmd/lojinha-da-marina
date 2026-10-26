@@ -37,11 +37,13 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 
 ### Portfólio avançado
 - 01–04 Verificação, documentos, permissões, excluir: telas montadas pela Central. 👀 até onde dá sem enviar (a verificação já começa em “Iniciar verificação”, visto em 25/10); envio, recusa e exclusão 🚫.
+  - ✅ 25/10: verificação vista até “Adicionar dados da empresa” (3 ações › país › tipo › CNPJ e nome), saindo sem salvar. Simulador e aula 01 ajustados, Divergências na aula 01. Contato/site, conexão, documentos e envio seguem a Central (marcados “a conferir”).
 - 05 Verificar domínio: tela dos métodos. ✋ adicionar um domínio (dá para remover depois).
 - 06 Central de Segurança: confirmação ao trocar a opção de dois fatores 👀✋ (trocar e voltar); estado “sem outro administrador” ✋ (tirar acesso total de alguém).
 
 ### Pixel avançado
 - 01–04 Correspondência avançada, qualidade do sinal, Eventos de teste: o portfólio de aula não tem conjunto de dados. 👀 no Pixel real (“Pixel da Mari”, conta de anúncios pessoal), só olhando.
+  - ✅ 25/10: Pixel real visto (só olhando, PT e ES): abas Visão geral/Eventos de teste/Diagnóstico/Histórico/Configurações. Simulador ajustado: aba “Eventos de teste” (antes “Testar eventos”), tela de teste com as 2 seções reais, tabela da Visão geral com as colunas e nomes reais (Purchase aparece como “Compra”), Diagnóstico com Ativos/Detectados/Ignorados, Configurações na ordem real (cookies, correspondência avançada com a lista de parâmetros, API de Conversões). Não visto: eventos chegando num teste, eventos de servidor e nota de qualidade (marcados “a conferir”). Aula 05 ganhou o aviso real “Confirme o domínio que pertence a você”. 16 tutoriais do Gerenciador de Eventos passam no robô.
 - 05 Depois de adicionar domínio à lista de permissões ✋. 07 Lista depois de criar conversão personalizada ✋.
 
 ### iOS 14
