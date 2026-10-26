@@ -132,8 +132,9 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       var proximoOk = el2 && okc && (el2 === e.target || el2.contains(e.target));
       if (!dentro && p.livre && e.target.closest && e.target.closest(p.livre)) return;   // partes que o passo deixa usar (ex.: escolher o tamanho)
       if (!dentro && !proximoOk) { e.preventDefault(); e.stopImmediatePropagation(); avisa(); return }
-      // passo de "leia e clique em Próximo": os botões dentro do destaque não valem (senão a tela anda e o tutorial fica para trás)
-      if (dentro && !p.clique && !proximoOk && !p.bloqueia && e.target.closest && e.target.closest('button, a, [data-acao], [data-ir]') && !(p.livre && e.target.closest(p.livre))) { e.preventDefault(); e.stopImmediatePropagation(); avisa({ pt: '📖 Primeiro leia e clique em Próximo no balão.', es: '📖 Primero lee y haz clic en Siguiente en el globo.' }); return }
+      // passo de "leia e clique em Próximo": os botões dentro do destaque não valem (senão a tela anda e o tutorial fica para trás).
+      // Passo com cond espera uma ação dentro do destaque (ex.: responder a pergunta): aí os botões valem.
+      if (dentro && !p.clique && !p.cond && !proximoOk && !p.bloqueia && e.target.closest && e.target.closest('button, a, [data-acao], [data-ir]') && !(p.livre && e.target.closest(p.livre))) { e.preventDefault(); e.stopImmediatePropagation(); avisa({ pt: '📖 Primeiro leia e clique em Próximo no balão.', es: '📖 Primero lee y haz clic en Siguiente en el globo.' }); return }
       if (dentro && p.bloqueia) { var bl = false; try { bl = p.bloqueia(e.target) } catch (x) { } if (bl) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
       if (dentro && p.clique && p.valida) { var v = false; try { v = p.valida(e.target) } catch (x) { } if (!v) { e.preventDefault(); e.stopImmediatePropagation(); avisa(p.erro); return } }
     }, true);
