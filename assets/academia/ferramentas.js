@@ -1225,7 +1225,7 @@
         [{ pt: 'Não: o máximo é sempre 30 dias', es: 'No: el máximo es siempre 30 días' }, 0, { pt: '30 é o padrão, não o máximo.', es: '30 es el valor predeterminado, no el máximo.' }],
         [{ pt: 'Não dá para mudar a retenção', es: 'No se puede cambiar la retención' }, 0, { pt: 'Dá: é um campo da tela.', es: 'Se puede: es un campo de la pantalla.' }]] }
   ]);
-  quizCatalogo('semelhante-ok', { pt: 'O semelhante vai funcionar?', es: '¿El similar va a funcionar?' }, { pt: 'Fonte, localização e tamanho de 1% a 10%.', es: 'Origen, ubicación y tamaño de 1% a 10%.' }, [
+  quizCatalogo('semelhante-ok', { pt: 'O semelhante vai funcionar?', es: '¿El similar va a funcionar?' }, { pt: 'Fonte e tamanho de 1% a 10% (a localização vem do conjunto de anúncios).', es: 'Origen y tamaño de 1% a 10% (la ubicación viene del conjunto de anuncios).' }, [
     { q: { pt: 'Qual fonte dá o melhor público semelhante?', es: '¿Qué origen da el mejor público similar?' },
       o: [[{ pt: 'Uma fonte maior e de qualidade, como os compradores do site', es: 'Un origen mayor y de calidad, como los compradores del sitio' }, 1, { pt: 'Isso! Melhor e maior a fonte, melhor o semelhante.', es: '¡Eso! Cuanto mejor y mayor el origen, mejor el similar.' }],
         [{ pt: 'Uma fonte com poucas dezenas de pessoas', es: 'Un origen con pocas decenas de personas' }, 0, { pt: 'Fonte pequena demais pode ser recusada.', es: 'Un origen demasiado pequeño puede ser rechazado.' }],

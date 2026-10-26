@@ -2558,21 +2558,21 @@ window.AULAS = {
         { url: 'https://www.facebook.com/business/help/465262276878947', titulo: { pt: 'Como criar um público semelhante', es: 'Cómo crear un público similar' }, conferido: '25/10/2026' }
       ],
       gancho: { pt: '“Sempre ponho Brasil e 18+ de novo!” O público salvo e os controles resolvem. Mas há assuntos que pedem cuidado.', es: '“¡Siempre pongo Brasil y 18+ de nuevo!” El público guardado y los controles lo resuelven. Pero hay temas que piden cuidado.' },
-      objetivo: { pt: 'Criar um público semelhante (fonte, localização, tamanho) e entender por que uma fonte pequena é recusada.', es: 'Crear un público similar (origen, ubicación, tamaño) y entender por qué un origen pequeño es rechazado.' },
+      objetivo: { pt: 'Criar um público semelhante (fonte e tamanho; a localização vem do conjunto de anúncios) e entender por que uma fonte pequena é recusada.', es: 'Crear un público similar (origen y tamaño; la ubicación viene del conjunto de anuncios) y entender por qué un origen pequeño es rechazado.' },
       entender: {
         dialogo: [
           ['marina', { pt: 'Como funciona o semelhante? 🤔', es: '¿Cómo funciona el similar? 🤔' }],
-          ['rafa', { pt: 'Você escolhe uma fonte (um público seu, o Pixel ou a Página), um país e um tamanho. A Meta acha pessoas parecidas com a fonte, naquele país.', es: 'Eliges un origen (un público tuyo, el Pixel o la Página), un país y un tamaño. Meta encuentra personas parecidas al origen, en ese país.' }],
+          ['rafa', { pt: 'Você escolhe uma fonte (um público seu, o Pixel ou a Página) e um tamanho. A localização não se escolhe mais aqui: vem do conjunto de anúncios onde o semelhante for usado, e o tamanho estimado só aparece lá. Público salvo não serve de fonte.', es: 'Eliges un origen (un público tuyo, el Pixel o la Página) y un tamaño. La ubicación ya no se elige aquí: viene del conjunto de anuncios donde se use el similar, y el tamaño estimado solo aparece ahí. Un público guardado no sirve de origen.' }],
           ['marina', { pt: 'E o tamanho?', es: '¿Y el tamaño?' }],
           ['rafa', { pt: 'Vai de 1% a 10%. A tela explica: o 1% semelhante são as pessoas mais parecidas com a fonte; aumentar a porcentagem cria um público maior e mais amplo.', es: 'Va de 1% a 10%. La pantalla explica: el 1% similar son las personas más parecidas al origen; aumentar el porcentaje crea un público mayor y más amplio.' }],
           ['pixel', { pt: 'Se a fonte for pequena demais, a criação é recusada. Aconteceu de verdade na conta de aula, com o público pequeno de visitantes.', es: 'Si el origen es demasiado pequeño, la creación es rechazada. Pasó de verdad en la cuenta de práctica, con el público pequeño de visitantes.' }]
         ],
         pontos: [
-          { pt: '<b>Fonte + país + tamanho</b> (1% a 10%).', es: '<b>Origen + país + tamaño</b> (1% a 10%).' },
+          { pt: '<b>Fonte + tamanho</b> (1% a 10%); a localização vem do conjunto de anúncios.', es: '<b>Origen + tamaño</b> (1% a 10%); la ubicación viene del conjunto de anuncios.' },
           { pt: '<b>1%</b> = os mais parecidos; mais % = maior e mais amplo.', es: '<b>1%</b> = los más parecidos; más % = mayor y más amplio.' },
           { pt: '<b>Fonte pequena</b> = recusa. Melhor e maior a fonte, melhor o semelhante.', es: '<b>Origen pequeño</b> = rechazo. Cuanto mejor y mayor el origen, mejor el similar.' }
         ],
-        notas: { pt: 'Passos do público semelhante e o texto do 1% vistos de verdade em 15/10/2026; a criação foi recusada com a fonte pequena da conta de aula. O texto exato da recusa e o mínimo de pessoas da fonte não foram anotados (a conferir). Os tamanhos de público no simulador são inventados.', es: 'Pasos del público similar y el texto del 1% vistos de verdad el 15/10/2026; la creación fue rechazada con el origen pequeño de la cuenta de práctica. El texto exacto del rechazo y el mínimo de personas del origen no se anotaron (por confirmar). Los tamaños de público en el simulador son inventados.' }
+        notas: { pt: 'Passos do público semelhante e o texto do 1% vistos de verdade em 15/10/2026; em 25/10/2026 a tela e a Central (“Como criar um público semelhante”) já não pedem a localização: ela vem do conjunto de anúncios e o tamanho estimado só aparece lá; a criação foi recusada com a fonte pequena da conta de aula. O texto exato da recusa e o mínimo de pessoas da fonte não foram anotados (a conferir). Os tamanhos de público no simulador são inventados.', es: 'Pasos del público similar y el texto del 1% vistos de verdad el 15/10/2026; la creación fue rechazada con el origen pequeño de la cuenta de práctica. El texto exacto del rechazo y el mínimo de personas del origen no se anotaron (por confirmar). Los tamaños de público en el simulador son inventados.' }
       },
       ferramenta: 'semelhante-ok',
       praticar: {
@@ -2593,7 +2593,7 @@ window.AULAS = {
         perguntas: [{ pt: 'Qual fonte foi escolhida e quantas pessoas ela tem?', es: '¿Qué origen se eligió y cuántas personas tiene?' },
           { pt: 'O que a tela diz ao recusar?', es: '¿Qué dice la pantalla al rechazar?' }],
         conferir: [{ pt: 'Públicos › tamanho da fonte.', es: 'Públicos › tamaño del origen.' },
-          { pt: 'Criar semelhante: fonte, país e tamanho.', es: 'Crear similar: origen, país y tamaño.' }],
+          { pt: 'Criar semelhante: fonte e tamanho (a localização vem do conjunto de anúncios).', es: 'Crear similar: origen y tamaño (la ubicación viene del conjunto de anuncios).' }],
         frase: { pt: 'O público semelhante precisa de uma fonte com pessoas suficientes. Se a fonte é pequena, a tela recusa; escolha uma fonte maior ou espere o site ganhar visitas.', es: 'El público similar necesita un origen con suficientes personas. Si el origen es pequeño, la pantalla rechaza; elige un origen mayor o espera a que el sitio gane visitas.' },
         passos: [{ pt: 'Veja o tamanho da fonte em Públicos.', es: 'Mira el tamaño del origen en Públicos.' },
           { pt: 'Escolha uma fonte maior e crie de novo.', es: 'Elige un origen mayor y crea de nuevo.' }],

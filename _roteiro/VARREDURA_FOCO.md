@@ -68,6 +68,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
   - ✅ 25/10 Regras: janela vista em PT e ES (cancelada, nada criado). Ações reais (12) e métricas em grupos copiadas; o simulador usa 4 ações e 3 métricas com os nomes reais (Desativar conjuntos de anúncios, Somente enviar notificação, Aumentar/Reduzir orçamento diário em). 5 rodadas de robô OK (uma teimosa). Interruptor de status: sem regras na conta (não visto).
 - Relatórios 03 depois de Salvar ✋ · 05 artigo de “sem dados” (ler).
 - Públicos 02 formulário em espanhol 👀 · 03 texto da recusa e mínimo 👀 · 04 público salvo e interesses 👀.
+  - ✅ 25/10 Públicos (só olhando, nada criado): o semelhante NÃO pede mais localização (tela e Central concordam; a localização vem do conjunto e o tamanho só aparece lá) — simulador, tutorial, aula 03 e quiz ajustados. Público salvo real: Controles de público (Localizações, Idade mínima, Excluir públicos, Idiomas) + Público Advantage+ (sugestão: idade, gênero, Direcionamento detalhado) — simulador refeito. Formulário do site em espanhol conferido (conta com o Pixel). 5 rodadas do robô OK. Texto da recusa do semelhante: precisaria tentar criar (✋, não feito).
 - Entrega 01–05 números do simulador são de treino 💳 (precisa de campanha rodando).
 
 ### Verified, Commerce, Shop Ads, MBE, Integrações, Shopify
