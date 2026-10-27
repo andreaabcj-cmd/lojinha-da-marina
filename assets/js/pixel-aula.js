@@ -2,7 +2,7 @@
    PIXEL + MODO AULA — Lojinha da Marina
    - Inicia o Meta Pixel (com consentimento e correspondência avançada)
    - LOJA.track(): todo evento da loja passa por aqui
-   - F12: câmera do Pixel, "aba Rede", lupa (tipo Data
+   - F12: "aba Rede", lupa (tipo Data
      Advisor), código de cada evento, laboratório de falhas e dicas.
    ===================================================================== */
 (function(){
@@ -148,8 +148,8 @@ var DICAS = {
 
 /* ---------- 4) INTERFACE DO MODO AULA ---------- */
 var ui = (function(){
-  var aberto=lsGet('aulaAberta',false),aba=lsGet('aulaAba','camera'),pend=[];
-(function(){try{var q=new URLSearchParams(location.search).get('aula');if(q&&/^(camera|rede|lupa|codigo|lab|dica)$/.test(q)){aba=q;aberto=true;lsSet('aulaAba',q);lsSet('aulaAberta',true)}}catch(e){}})();
+  var aberto=lsGet('aulaAberta',false),aba=lsGet('aulaAba','rede'),pend=[];if(aba==='camera')aba='rede';
+(function(){try{var q=new URLSearchParams(location.search).get('aula');if(q&&/^(rede|lupa|codigo|lab|dica)$/.test(q)){aba=q;aberto=true;lsSet('aulaAba',q);lsSet('aulaAberta',true)}}catch(e){}})();
   var root,badge,panel,toastBox,ready=false;
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function stChip(s){var m={enviado:['ok','enviado à Meta'],simulado:['sim','simulado'],segurado:['warn','segurado: sem consentimento'],antesAceite:['bad','enviado ANTES do aceite'],bloqueado:['bad','bloqueado'],perdido:['bad','NÃO disparou'],erro:['bad','erro']}[s]||['sim',s];return '<span class="ma-st '+m[0]+'">'+m[1]+'</span>'}
@@ -162,9 +162,7 @@ var ui = (function(){
   function render(){if(!panel)return;
     $$('.ma-tabs button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-aba')===aba)});
     var c=document.getElementById('maBody');var h='';
-    if(aba==='camera'){h='<p class="ma-intro">📹 <b>Câmera do Pixel:</b> cada evento que esta loja disparou, na hora. É o que você confere, do lado da Meta, no <b>Eventos de teste</b>.</p>'+
-        (log.length?log.slice(0,25).map(evHTML).join(''):'<p class="ma-mut">Nenhum evento ainda.</p>')+'<button class="ma-btn ghost" id="maLimpaLog">Limpar a câmera</button>'}
-    else if(aba==='rede'){var reais=redeReal();h='<p class="ma-intro">🌐 <b>A aba Rede do F12.</b> Quando o Pixel envia um evento, o navegador manda um pedido para <code>facebook.com/tr</code>. No computador de casa você veria isso no F12 › Rede, filtrando por <code>facebook.com/tr</code>.</p>'+
+    if(aba==='rede'){var reais=redeReal();h='<p class="ma-intro">🌐 <b>A aba Rede do F12.</b> Quando o Pixel envia um evento, o navegador manda um pedido para <code>facebook.com/tr</code>. No computador de casa você veria isso no F12 › Rede, filtrando por <code>facebook.com/tr</code>.</p>'+
         '<h4>Pedidos reais saindo desta página</h4>'+(reais.length?reais.map(function(r){return '<div class="ma-req ok"><b>'+esc(r.ev)+'</b><span>'+esc(r.tipo)+'</span><code>'+esc(r.url.slice(0,180))+'…</code></div>'}).join(''):'<p class="ma-mut">'+(LIVE?'Nenhum pedido detectado ainda (ou o navegador não deixou ver).':'Modo simulação: nada é enviado de verdade enquanto o ID do Pixel não for configurado.')+'</p>')+
         '<h4>Como cada evento desta página apareceria</h4>'+pageEvents.map(function(ev){return '<div class="ma-req '+(ev.status==='perdido'?'bad':'')+'"><b>'+esc(ev.nome)+'</b>'+stChip(ev.status)+'<code>'+(ev.status==='perdido'?'— nenhum pedido saiu —':esc(ev.url))+'</code></div>'}).join('')+
         '<div class="ma-legend"><b>Como ler:</b> <code>id</code> = qual Pixel · <code>ev</code> = qual evento · <code>cd[…]</code> = parâmetros · <code>eid</code> = ID do evento.</div>'}
@@ -192,7 +190,7 @@ var ui = (function(){
     ['cadernoErrado','🆔','ID de Pixel errado','O código usa outro ID de Pixel: os eventos vão para um Pixel diferente do da loja.'],
     ['olhosTapados','🚫','Pixel bloqueado no navegador','Um bloqueador impede o carregamento do Pixel: nenhum evento sai do navegador.'],
     ['recarregaDuplica','🔁','Purchase repetido ao recarregar','A página de confirmação envia o Purchase de novo a cada recarga.']];
-  function labHTML(){return '<p class="ma-intro">🧪 <b>Laboratório de falhas.</b> Ligue uma desculpa do Pixel, mostre o problema na tela (Câmera, Rede, Lupa) e no Gerenciador de Eventos, e depois desligue. <b>Algumas valem a partir da próxima página aberta.</b></p>'+
+  function labHTML(){return '<p class="ma-intro">🧪 <b>Laboratório de falhas.</b> Ligue uma desculpa do Pixel, mostre o problema na tela (Rede, Lupa) e no Gerenciador de Eventos, e depois desligue. <b>Algumas valem a partir da próxima página aberta.</b></p>'+
     LABS.map(function(l){return '<label class="ma-lab '+(LAB[l[0]]?'on':'')+'"><input type="checkbox" data-lab="'+l[0]+'"'+(LAB[l[0]]?' checked':'')+'><span class="ma-sw"></span><span><b>'+l[1]+' '+esc(l[2])+'</b><small>'+esc(l[3])+'</small></span></label>'}).join('')+
     '<h4>Configurações da aula</h4><label class="ma-lab '+(AM?'on':'')+'"><input type="checkbox" data-am'+(AM?' checked':'')+'><span class="ma-sw"></span><span><b>💳 Correspondência avançada</b><small>Envia os dados de teste do checkout (com hash) no init do Pixel.</small></span></label>'+
     '<div class="ma-row"><button class="ma-btn ghost" id="maCookies">Mostrar o banner de cookies de novo</button><button class="ma-btn ghost" id="maReset">Desligar todo o laboratório</button><button class="ma-btn ghost" id="maZerar">Zerar carrinho e pedidos</button></div>'}
@@ -218,7 +216,7 @@ var ui = (function(){
     if(!LABON){root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><div class="ma-toasts" id="maToasts"></div>';document.body.insertBefore(root,document.body.firstChild);toastBox=document.getElementById('maToasts');faixa();banner();ready=true;pend=[];return}
     root.innerHTML='<div class="ma-faixa" id="maFaixa"></div><button class="ma-fab" id="maFab" title="F12 (simulação das ferramentas do desenvolvedor)"><span class="ma-mascote"></span><span>F12 <i class="ma-sim">simulação</i></span><b class="ma-badge" id="maBadge">0</b></button>'+
       '<aside class="ma-panel" id="maPanel" aria-label="F12 (simulação)"><header><div><b>🛠️ F12 <i class="ma-sim">simulação</i></b><small>ferramentas do desenvolvedor: o que o Pixel está fazendo</small></div><button id="maFecha" title="Fechar">✕</button></header>'+
-      '<nav class="ma-tabs"><button data-aba="camera">📹 Câmera</button><button data-aba="rede">🌐 Rede</button><button data-aba="lupa">🔍 Lupa</button><button data-aba="codigo">📄 Código</button><button data-aba="lab">🧪 Lab</button><button data-aba="dica">💡 Dica</button></nav><div class="ma-body" id="maBody"></div></aside><div class="ma-toasts" id="maToasts"></div>';
+      '<nav class="ma-tabs"><button data-aba="rede">🌐 Rede</button><button data-aba="lupa">🔍 Lupa</button><button data-aba="codigo">📄 Código</button><button data-aba="lab">🧪 Lab</button><button data-aba="dica">💡 Dica</button></nav><div class="ma-body" id="maBody"></div></aside><div class="ma-toasts" id="maToasts"></div>';
     document.body.insertBefore(root,document.body.firstChild);panel=document.getElementById('maPanel');badge=document.getElementById('maBadge');toastBox=document.getElementById('maToasts');
     document.querySelector('.ma-mascote').innerHTML=mascote();
     document.getElementById('maFab').onclick=function(){aberto=!aberto;lsSet('aulaAberta',aberto);panel.classList.toggle('open',aberto);if(aberto)try{document.dispatchEvent(new CustomEvent('loja:ferramenta',{detail:'aula'}))}catch(e){}render()};

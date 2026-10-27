@@ -28,7 +28,7 @@ function tgPassoUrl(pagina) {
     txt: { pt: 'No Chrome, o código-fonte abre numa aba nova, com o endereço começando por “view-source:”. Cada linha numerada é o código que o navegador recebeu do site. Clique em Próximo.', es: 'En Chrome, el código fuente se abre en una pestaña nueva, con la dirección empezando por “view-source:”. Cada línea numerada es el código que el navegador recibió del sitio. Haz clic en Siguiente.' } };
 }
 
-/* Pixel 03 (e Pixel 06) · achar o Pixel no código-fonte da página (Ctrl+U) */
+/* Pixel 03 · achar o Pixel no código-fonte da página (Ctrl+U) */
 window.TOURS['achar-codigo'] = [
   tgPassoCtrlU('loja.html'),
   tgPassoUrl('loja.html'),
@@ -160,13 +160,13 @@ window.TOURS['compra-completa'] = [
     txt: { pt: 'Em “Parâmetros personalizados” estão os DETALHES: value (o valor) e currency (a moeda, BRL). Com eles a Meta sabe quanto a Marina vendeu. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'En “Parámetros personalizados” están los DETALLES: value (el valor) y currency (la moneda, BRL). Con ellos Meta sabe cuánto vendió Marina. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
 
-/* Pixel 06 (opcional) · aba Rede, pelo botão F12 (simulação). A “câmera” saiu (27/10): para ver os eventos chegando, o certo é o Eventos de teste */
+/* Pixel 03 · opção 5 (opcional) · aba Rede, pelo botão F12 (simulação). A “câmera” saiu (27/10): para ver os eventos chegando, o certo é o Eventos de teste */
 function tgAbaF12(aba) { return function () { window.LOJA && LOJA.painel(true, aba) } }
 window.TOURS['rede-pixel'] = [
   { alvo: '#maFab', clique: true, pula: tgPainelAberto, garante: function () { window.LOJA && LOJA.painel(false) },
     tit: { pt: 'O botão F12', es: 'El botón F12' },
     txt: { pt: 'Clique no botão F12 (simulação), no canto de baixo.', es: 'Haz clic en el botón F12 (simulación), en la esquina de abajo.' } },
-  { alvo: '.ma-tabs [data-aba=rede]', clique: true, garante: tgAbaF12('camera'),
+  { alvo: '.ma-tabs [data-aba=rede]', clique: true, garante: tgAbaF12('lupa'),
     tit: { pt: 'A aba Rede', es: 'La pestaña Red' },
     txt: { pt: 'Abra a aba 🌐 Rede.', es: 'Abre la pestaña 🌐 Red.' } },
   { alvo: '#maBody', garante: tgAbaF12('rede'),

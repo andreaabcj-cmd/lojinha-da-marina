@@ -160,9 +160,7 @@
         '<div class="grade">' + Object.keys(F).map(function (id) {
           var f = F[id], ok = f.status === 'pronta', href = f.link || 'ferramenta.html?f=' + id;
           return (ok ? '<a class="item" href="' + href + '">' : '<div class="item off">') + '<b>' + T(f.titulo) + '</b><p>' + T(f.resumo) + '</p>' + selo(f.status) + (ok ? '</a>' : '</div>')
-        }).join('') + '</div>' +
-        '<h2 class="pl-h2" id="loja-por-dentro">🔬 ' + T({ pt: 'A loja por dentro (F12)', es: 'La tienda por dentro (F12)' }) + '</h2>' +
-        '<a class="item dentro" href="aula-plataforma.html?m=pixel&a=06"><b>' + T({ pt: 'Só mais um jeito de ver o Pixel', es: 'Solo otra forma de ver el Pixel' }) + '</b><p>' + T({ pt: 'É o mesmo Pixel e são os mesmos eventos que você vê no Consultor de Dados e no Gerenciador de Eventos, só que olhando por dentro do site, como no F12 (ferramentas de desenvolvedor). No atendimento não é preciso: serve para entender o que acontece por trás e para conversar com quem cuida do site.', es: 'Es el mismo Pixel y son los mismos eventos que ves en el Asesor de datos y en el Administrador de eventos, solo que mirando por dentro del sitio, como en el F12 (herramientas de desarrollador). En la atención no hace falta: sirve para entender lo que pasa por detrás y para hablar con quien cuida el sitio.' }) + '</p><p class="abas">' + T({ pt: 'Dentro dele: 📹 Câmera · 🌐 Rede · 🔍 Lupa · 📄 Código · 🧪 Falhas · 💡 Dica. Para voltar à loja normal, use “sair” na faixa amarela.', es: 'Adentro: 📹 Cámara · 🌐 Red · 🔍 Lupa · 📄 Código · 🧪 Fallas · 💡 Consejo. Para volver a la tienda normal, usa “salir” en la franja amarilla.' }) + '</p><em>' + T({ pt: 'Abrir a loja por dentro →', es: 'Abrir la tienda por dentro →' }) + '</em></a>' + recomecarHTML();
+        }).join('') + '</div>' + recomecarHTML();
     },
     ferramenta: function () {
       var id = Q.get('f'), f = window.FERRAMENTAS[id]; if (!f || !f.montar) return '<p>' + T({ pt: 'Ferramenta não encontrada.', es: 'Herramienta no encontrada.' }) + '</p>';
