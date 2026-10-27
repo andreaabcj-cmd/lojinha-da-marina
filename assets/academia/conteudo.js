@@ -885,8 +885,8 @@ window.AULAS = {
             tit: { pt: 'Print do cliente', es: 'Captura del cliente' }, txt: { pt: 'Como pedir o print certo (com o caminho exato) e o que ler nele.', es: 'Cómo pedir la captura correcta (con el camino exacto) y qué leer en ella.' } },
           { id: 'extensao', icone: '🔎', pagina: 'loja.html', tour: 'extensao-pixel',
             tit: { pt: 'Extensão Consultor de Dados', es: 'Extensión Asesor de datos' }, txt: { pt: 'Abrir o site do cliente e ver o Pixel, o ID e os eventos.', es: 'Abrir el sitio del cliente y ver el Pixel, el ID y los eventos.' } },
-          { id: 'codigo', icone: '🧑‍💻', pagina: 'loja.html?lab=1', tour: 'achar-codigo', selo: { pt: 'técnico', es: 'técnico' },
-            tit: { pt: 'Código-fonte da página', es: 'Código fuente de la página' }, txt: { pt: 'Achar o comentário, o init e o PageView direto no código (como Ctrl+U ou F12).', es: 'Encontrar el comentario, el init y el PageView directo en el código (como Ctrl+U o F12).' } }
+          { id: 'codigo', icone: '🧑‍💻', pagina: 'loja.html', tour: 'achar-codigo', selo: { pt: 'técnico', es: 'técnico' },
+            tit: { pt: 'Código-fonte da página', es: 'Código fuente de la página' }, txt: { pt: 'Abrir o código da página com Ctrl+U e achar o comentário, o init e o PageView.', es: 'Abrir el código de la página con Ctrl+U y encontrar el comentario, el init y el PageView.' } }
         ]
       },
       atender: {
@@ -979,7 +979,7 @@ window.AULAS = {
           ['rafa', { pt: 'É o mesmo Pixel e são os mesmos eventos, só que olhando por dentro do navegador. O F12 abre as ferramentas de desenvolvedor; o Ctrl+U mostra o código da página.', es: 'Es el mismo Pixel y son los mismos eventos, solo que mirando por dentro del navegador. F12 abre las herramientas de desarrollador; Ctrl+U muestra el código de la página.' }],
           ['marina', { pt: 'E eu preciso disso para atender?', es: '¿Y necesito eso para atender?' }],
           ['rafa', { pt: 'Não. No atendimento, o Gerenciador de Eventos (Eventos de teste) e o Consultor de Dados bastam. O F12 serve para entender o que acontece por trás e para conversar com quem cuida do site.', es: 'No. En la atención, el Administrador de eventos (Probar eventos) y el Asesor de datos alcanzan. El F12 sirve para entender qué pasa por detrás y para hablar con quien cuida el sitio.' }],
-          ['pixel', { pt: 'Na Lojinha, o botão F12 (simulação), no canto de baixo, faz esse papel em qualquer aparelho: câmera dos eventos, rede e código.', es: 'En la Lojinha, el botón F12 (simulación), en la esquina de abajo, hace ese papel en cualquier dispositivo: cámara de eventos, red y código.' }]
+          ['pixel', { pt: 'Na Lojinha, o botão F12 (simulação), no canto de baixo, mostra a aba Rede em qualquer aparelho. E o Ctrl+U abre o código-fonte da página, como no navegador.', es: 'En la Lojinha, el botón F12 (simulación), en la esquina de abajo, muestra la pestaña Red en cualquier dispositivo. Y Ctrl+U abre el código fuente de la página, como en el navegador.' }]
         ],
         pontos: [
           { pt: '<b>F12</b> abre as ferramentas de desenvolvedor do navegador. Na aba <b>Rede</b>, cada evento do Pixel vira um pedido para <code>facebook.com/tr</code>.', es: '<b>F12</b> abre las herramientas de desarrollador del navegador. En la pestaña <b>Red</b>, cada evento del Pixel se vuelve un pedido a <code>facebook.com/tr</code>.' },
@@ -989,11 +989,10 @@ window.AULAS = {
         notas: { pt: 'O F12 e o Ctrl+U são ferramentas do navegador, não da Meta. O caminho oficial para conferir o Pixel é o Gerenciador de Eventos (Eventos de teste) e a extensão Consultor de Dados, vistos nas aulas 02 e 03. Na Lojinha, o botão F12 é uma simulação que funciona também no celular.', es: 'F12 y Ctrl+U son herramientas del navegador, no de Meta. El camino oficial para revisar el Pixel es el Administrador de eventos (Probar eventos) y la extensión Asesor de datos, vistos en las clases 02 y 03. En la Lojinha, el botón F12 es una simulación que también funciona en el celular.' }
       },
       praticar: {
-        texto: { pt: 'Escolha um jeito. O Pixel te guia dentro da Lojinha, pelo botão F12 (simulação).', es: 'Elige una forma. El Pixel te guía dentro de la Lojinha, con el botón F12 (simulación).' },
+        texto: { pt: 'Escolha um jeito. O Pixel te guia dentro da Lojinha: a aba Rede pelo botão F12 (simulação) e o código-fonte pelo Ctrl+U. Para ver os eventos chegando, o certo é o Eventos de teste (aula 03).', es: 'Elige una forma. El Pixel te guía dentro de la Lojinha: la pestaña Red con el botón F12 (simulación) y el código fuente con Ctrl+U. Para ver los eventos llegando, lo correcto es Probar eventos (clase 03).' },
         opcoes: [
-          { id: 'camera', icone: '📹', pagina: 'loja.html?lab=1', tour: 'camera-pixel', selo: { pt: 'comece aqui', es: 'empieza aquí' }, tit: { pt: 'Câmera do Pixel (F12)', es: 'Cámara del Pixel (F12)' }, txt: { pt: 'Cada evento que a loja dispara, na hora, com parâmetros e o código.', es: 'Cada evento que dispara la tienda, al instante, con parámetros y el código.' } },
-          { id: 'rede', icone: '🌐', pagina: 'loja.html?lab=1', tour: 'rede-pixel', tit: { pt: 'A aba Rede (F12)', es: 'La pestaña Red (F12)' }, txt: { pt: 'Os pedidos que saem para facebook.com/tr: qual Pixel, qual evento, quais parâmetros.', es: 'Los pedidos que salen a facebook.com/tr: qué Pixel, qué evento, qué parámetros.' } },
-          { id: 'codigo', icone: '📄', pagina: 'loja.html?lab=1', tour: 'achar-codigo', tit: { pt: 'Código-fonte (Ctrl+U)', es: 'Código fuente (Ctrl+U)' }, txt: { pt: 'O comentário do Pixel, o ID e o PageView no código da página.', es: 'El comentario del Pixel, el ID y el PageView en el código de la página.' } }
+          { id: 'rede', icone: '🌐', pagina: 'loja.html?lab=1', tour: 'rede-pixel', selo: { pt: 'comece aqui', es: 'empieza aquí' }, tit: { pt: 'A aba Rede (F12)', es: 'La pestaña Red (F12)' }, txt: { pt: 'Os pedidos que saem para facebook.com/tr: qual Pixel, qual evento, quais parâmetros.', es: 'Los pedidos que salen a facebook.com/tr: qué Pixel, qué evento, qué parámetros.' } },
+          { id: 'codigo', icone: '📄', pagina: 'loja.html', tour: 'achar-codigo', tit: { pt: 'Código-fonte (Ctrl+U)', es: 'Código fuente (Ctrl+U)' }, txt: { pt: 'O comentário do Pixel, o ID e o PageView no código da página.', es: 'El comentario del Pixel, el ID y el PageView en el código de la página.' } }
         ]
       }
     }
@@ -2859,8 +2858,11 @@ window.AULAS = {
       },
       ferramenta: 'campo-microdados',
       praticar: {
-        texto: { pt: 'No simulador, o Pixel te leva pelos campos da Prévia: id, price, availability e a diferença entre OpenGraph e JSON-LD.', es: 'En el simulador, el Pixel te lleva por los campos de la vista previa: id, price, availability y la diferencia entre OpenGraph y JSON-LD.' },
-        tour: 'ler-campos', pagina: 'meta-microdados.html?zerar=1'
+        texto: { pt: 'Escolha um jeito. O Pixel te guia pelos mesmos campos: na ferramenta de depuração (o que se usa no atendimento) ou direto no código-fonte da página, com Ctrl+U.', es: 'Elige una forma. El Pixel te guía por los mismos campos: en la herramienta de depuración (lo que se usa en la atención) o directo en el código fuente de la página, con Ctrl+U.' },
+        opcoes: [
+          { id: 'debugger', icone: '🔎', pagina: 'meta-microdados.html?zerar=1', tour: 'ler-campos', selo: { pt: 'comece aqui', es: 'empieza aquí' }, tit: { pt: 'No Microdata Debugger', es: 'En el Microdata Debugger' }, txt: { pt: 'Os campos da Prévia: id, price, availability e a diferença entre OpenGraph e JSON-LD.', es: 'Los campos de la vista previa: id, price, availability y la diferencia entre OpenGraph y JSON-LD.' } },
+          { id: 'codigo', icone: '📄', pagina: 'produto-caneca_01.html', tour: 'tags-no-codigo', selo: { pt: 'técnico', es: 'técnico' }, tit: { pt: 'No código-fonte (Ctrl+U)', es: 'En el código fuente (Ctrl+U)' }, txt: { pt: 'Abrir o código da página do produto e achar as mesmas tags: nome, preço, moeda, id e o JSON-LD.', es: 'Abrir el código de la página del producto y encontrar las mismas etiquetas: nombre, precio, moneda, id y el JSON-LD.' } }
+        ]
       },
       atender: {
         cena: { pt: 'Na ferramenta, o id da minha página é “caneca-azul”, mas no catálogo é CANECA_01. Isso importa? 🤔', es: 'En la herramienta, el id de mi página es “caneca-azul”, pero en el catálogo es CANECA_01. ¿Eso importa? 🤔' },

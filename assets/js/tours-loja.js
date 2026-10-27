@@ -2,32 +2,70 @@
 window.TOURS = window.TOURS || {};
 function tgPainelAberto() { var p = document.getElementById('maPanel'); return !!(p && p.classList.contains('open')) }
 
-/* Aula 02 · achar o Pixel no código da página */
+/* Ctrl+U: abre o código-fonte da página (ver-fonte.html, o arquivo de verdade, como o view-source do Chrome).
+   No computador a pessoa aperta Ctrl+U; no celular toca no botão. O botão e o atalho só existem enquanto o passo do tutorial pede. */
+function tgCtrlU() {
+  var b = document.getElementById('vfCtrlU'); if (b) return b;
+  if (!document.getElementById('vfCtrlUcss')) { var st = document.createElement('style'); st.id = 'vfCtrlUcss'; st.textContent = '.vf-ctrlu{position:fixed;right:16px;bottom:16px;z-index:2147483600;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:3px solid #16294A;border-radius:12px;background:#fff;color:#16294A;font:700 14px "Segoe UI",system-ui,sans-serif;box-shadow:4px 4px 0 #16294A;cursor:pointer}.vf-ctrlu kbd{display:inline-block;padding:2px 7px;border:1.5px solid #16294A;border-bottom-width:3px;border-radius:6px;background:#F4F6FA;font:700 13px Consolas,monospace}'; document.head.appendChild(st) }
+  var es = /"es"/.test(localStorage.getItem('plat.lang') || '');
+  b = document.createElement('button'); b.id = 'vfCtrlU'; b.className = 'vf-ctrlu'; b.type = 'button';
+  b.innerHTML = '<kbd>Ctrl</kbd>+<kbd>U</kbd> ' + (es ? 'código fuente' : 'código-fonte');
+  b.onclick = function () { location.href = 'ver-fonte.html?u=' + encodeURIComponent(location.pathname.split('/').pop() || 'loja.html') };
+  document.body.appendChild(b); return b;
+}
+document.addEventListener('keydown', function (e) {   // Ctrl+U de verdade (⌘+U no Mac), só durante o passo que pede
+  var b = document.getElementById('vfCtrlU');
+  if (b && (e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); b.click() }
+}, true);
+function tgPassoCtrlU(pagina) {
+  return { alvo: tgCtrlU, clique: true,
+    tit: { pt: 'Ctrl+U: o código-fonte', es: 'Ctrl+U: el código fuente' },
+    txt: { pt: 'No computador, aperte Ctrl+U no teclado (no Mac, ⌘+U): o navegador abre o código-fonte desta página. É o mesmo que clicar com o botão direito › Exibir código-fonte da página. No celular não há Ctrl+U: toque no botão destacado.', es: 'En la computadora, presiona Ctrl+U en el teclado (en Mac, ⌘+U): el navegador abre el código fuente de esta página. Es lo mismo que hacer clic derecho › Ver código fuente de la página. En el celular no hay Ctrl+U: toca el botón destacado.' } };
+}
+function tgPassoUrl(pagina) {
+  return { alvo: '[data-t=vf-url]', pagina: 'ver-fonte.html?u=' + pagina,
+    tit: { pt: 'Você está no código-fonte', es: 'Estás en el código fuente' },
+    txt: { pt: 'No Chrome, o código-fonte abre numa aba nova, com o endereço começando por “view-source:”. Cada linha numerada é o código que o navegador recebeu do site. Clique em Próximo.', es: 'En Chrome, el código fuente se abre en una pestaña nueva, con la dirección empezando por “view-source:”. Cada línea numerada es el código que el navegador recibió del sitio. Haz clic en Siguiente.' } };
+}
+
+/* Pixel 03 (e Pixel 06) · achar o Pixel no código-fonte da página (Ctrl+U) */
 window.TOURS['achar-codigo'] = [
-  { alvo: '#maFab', clique: true, pula: tgPainelAberto,
-    garante: function () { window.LOJA && LOJA.painel(false) },
-    tit: { pt: 'O botão F12', es: 'El botón F12' },
-    txt: { pt: 'Num computador, o código da página se abre com Ctrl+U ou com a tecla F12. Aqui, o botão F12 (simulação), no canto INFERIOR direito, faz esse papel. Clique nele.', es: 'En una computadora, el código de la página se abre con Ctrl+U o con la tecla F12. Aquí, el botón F12 (simulación), en la esquina INFERIOR derecha, cumple esa función. Haz clic en él.' } },
-  { alvo: '.ma-tabs [data-aba=codigo]', clique: true,
-    garante: function () { window.LOJA && LOJA.painel(true, 'camera') },
-    tit: { pt: 'A aba Código', es: 'La pestaña Código' },
-    txt: { pt: 'Abra a aba 📄 Código. Ela mostra o código do Pixel desta página, sem precisar de ferramenta nenhuma do navegador.', es: 'Abre la pestaña 📄 Código. Muestra el código del Pixel de esta página, sin ninguna herramienta del navegador.' } },
-  { alvo: '#maFonte .ma-m-com',
-    garante: function () { window.LOJA && LOJA.painel(true, 'codigo') },
+  tgPassoCtrlU('loja.html'),
+  tgPassoUrl('loja.html'),
+  { alvo: '[data-t=vf-com]',
     tit: { pt: '1. O comentário', es: '1. El comentario' },
     txt: { pt: 'O Pixel começa aqui: Meta Pixel Code. Num site de cliente, é isso que se procura para saber se o Pixel está instalado.', es: 'El Pixel empieza aquí: Meta Pixel Code. En el sitio de un cliente, es lo que se busca para saber si el Pixel está instalado.' },
     dica: { pt: 'Em sites antigos o comentário pode estar como Facebook Pixel Code. É o mesmo.', es: 'En sitios antiguos el comentario puede decir Facebook Pixel Code. Es lo mismo.' } },
-  { alvo: '#maFonte .ma-m-init',
-    garante: function () { window.LOJA && LOJA.painel(true, 'codigo') },
+  { alvo: '[data-t=vf-init]',
     tit: { pt: '2. O ID do Pixel', es: '2. El ID del Pixel' },
-    txt: { pt: 'Este número diz para qual Pixel os eventos vão. É ele que você compara com o ID que o cliente vê no Gerenciador de Eventos.', es: 'Este número dice a qué Pixel van los eventos. Es el que comparas con el ID que el cliente ve en el Administrador de eventos.' } },
-  { alvo: '#maFonte .ma-m-pv',
-    garante: function () { window.LOJA && LOJA.painel(true, 'codigo') },
+    txt: { pt: 'Dentro do init está o número do Pixel: ele diz para qual Pixel os eventos vão. É ele que você compara com o ID que o cliente vê no Gerenciador de Eventos.', es: 'Dentro del init está el número del Pixel: dice a qué Pixel van los eventos. Es el que comparas con el ID que el cliente ve en el Administrador de eventos.' } },
+  { alvo: '[data-t=vf-pv]',
     tit: { pt: '3. O PageView', es: '3. El PageView' },
     txt: { pt: 'Conta cada visita. Se ele está aqui, toda página aberta envia um PageView.', es: 'Cuenta cada visita. Si está aquí, cada página abierta envía un PageView.' } },
-  { alvo: '#maPanel', fim: true,
+  { alvo: '[data-t=vf-cod]', fim: true,
     tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
-    txt: { pt: 'Você achou as 3 coisas que importam: o comentário, o ID e o PageView. O resto do código é técnico: o cliente não mexe. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Encontraste las 3 cosas que importan: el comentario, el ID y el PageView. El resto del código es técnico: el cliente no lo toca. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
+    txt: { pt: 'Você achou as 3 coisas que importam: o comentário, o ID e o PageView. Num site grande, aperte Ctrl+F e procure “fbq” para ir direto ao Pixel. O resto do código é técnico: o cliente não mexe. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Encontraste las 3 cosas que importan: el comentario, el ID y el PageView. En un sitio grande, presiona Ctrl+F y busca “fbq” para ir directo al Pixel. El resto del código es técnico: el cliente no lo toca. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
+];
+
+/* Microdados 03 · as tags de produto no código-fonte da página (Ctrl+U) */
+window.TOURS['tags-no-codigo'] = [
+  tgPassoCtrlU('produto-caneca_01.html'),
+  tgPassoUrl('produto-caneca_01.html'),
+  { alvo: '[data-t=vf-og]',
+    tit: { pt: 'As tags OpenGraph', es: 'Las etiquetas OpenGraph' },
+    txt: { pt: 'Lá no topo, no &lt;head&gt;, cada linha &lt;meta&gt; é uma tag: property é o nome do campo e content é o valor. Aqui, og:title = o nome do produto.', es: 'Arriba, en el &lt;head&gt;, cada línea &lt;meta&gt; es una etiqueta: property es el nombre del campo y content es el valor. Aquí, og:title = el nombre del producto.' } },
+  { alvo: '[data-t=vf-preco]',
+    tit: { pt: 'Preço e moeda', es: 'Precio y moneda' },
+    txt: { pt: 'product:price:amount = 49.90 (só o número, com ponto) e, na linha de baixo, product:price:currency = BRL (o código de 3 letras).', es: 'product:price:amount = 49.90 (solo el número, con punto) y, en la línea de abajo, product:price:currency = BRL (el código de 3 letras).' } },
+  { alvo: '[data-t=vf-id]',
+    tit: { pt: 'O id do produto', es: 'El id del producto' },
+    txt: { pt: 'product:retailer_item_id = CANECA_01. Tem que ser o mesmo id do produto no catálogo: é assim que a Meta liga a página ao item certo.', es: 'product:retailer_item_id = CANECA_01. Tiene que ser el mismo id del producto en el catálogo: así Meta une la página con el artículo correcto.' } },
+  { alvo: '[data-t=vf-ld]',
+    tit: { pt: 'O mesmo, em JSON-LD', es: 'Lo mismo, en JSON-LD' },
+    txt: { pt: 'Esta página também tem a ficha do produto em JSON-LD, num bloco &lt;script&gt;: sku, price, priceCurrency e availability. Os valores precisam ser iguais aos das tags OpenGraph.', es: 'Esta página también tiene la ficha del producto en JSON-LD, en un bloque &lt;script&gt;: sku, price, priceCurrency y availability. Los valores deben ser iguales a los de las etiquetas OpenGraph.' } },
+  { alvo: '[data-t=vf-cod]', fim: true,
+    tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
+    txt: { pt: 'É isso que a ferramenta de depuração de microdados lê. No atendimento, confira pela ferramenta; o código-fonte ajuda a mostrar a quem cuida do site onde ficam as tags. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Eso es lo que lee la herramienta de depuración de microdatos. En la atención, revisa con la herramienta; el código fuente ayuda a mostrarle a quien cuida el sitio dónde están las etiquetas. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
 
 /* Aula 02 · prática do atendimento: conferir o Pixel do site com o Consultor de Dados (a extensão que o agente usa) */
@@ -122,22 +160,8 @@ window.TOURS['compra-completa'] = [
     txt: { pt: 'Em “Parâmetros personalizados” estão os DETALHES: value (o valor) e currency (a moeda, BRL). Com eles a Meta sabe quanto a Marina vendeu. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'En “Parámetros personalizados” están los DETALLES: value (el valor) y currency (la moneda, BRL). Con ellos Meta sabe cuánto vendió Marina. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
 ];
 
-/* Pixel 06 (opcional) · câmera do Pixel e aba Rede, pelo botão F12 (simulação) */
+/* Pixel 06 (opcional) · aba Rede, pelo botão F12 (simulação). A “câmera” saiu (27/10): para ver os eventos chegando, o certo é o Eventos de teste */
 function tgAbaF12(aba) { return function () { window.LOJA && LOJA.painel(true, aba) } }
-window.TOURS['camera-pixel'] = [
-  { alvo: '#maFab', clique: true, pula: tgPainelAberto, garante: function () { window.LOJA && LOJA.painel(false) },
-    tit: { pt: 'O botão F12', es: 'El botón F12' },
-    txt: { pt: 'Num computador, a tecla F12 abre as ferramentas de desenvolvedor. Aqui, o botão F12 (simulação), no canto de baixo, faz esse papel. Clique nele.', es: 'En una computadora, la tecla F12 abre las herramientas de desarrollador. Aquí, el botón F12 (simulación), en la esquina de abajo, hace ese papel. Haz clic en él.' } },
-  { alvo: '.ma-tabs [data-aba=camera]', clique: true, garante: tgAbaF12('rede'),
-    tit: { pt: 'A câmera', es: 'La cámara' },
-    txt: { pt: 'Abra a aba 📹 Câmera.', es: 'Abre la pestaña 📹 Cámara.' } },
-  { alvo: '#maBody', garante: tgAbaF12('camera'),
-    tit: { pt: 'Cada evento, na hora', es: 'Cada evento, al instante' },
-    txt: { pt: 'Cada linha é um evento que esta página disparou: o nome (PageView = abriu a página), se foi enviado à Meta, os parâmetros e o código fbq que o site rodou. É o mesmo que você vê no Eventos de teste. Clique em Próximo.', es: 'Cada fila es un evento que esta página disparó: el nombre (PageView = abrió la página), si se envió a Meta, los parámetros y el código fbq que ejecutó el sitio. Es lo mismo que ves en Probar eventos. Haz clic en Siguiente.' } },
-  { alvo: '#maPanel', fim: true, garante: tgAbaF12('camera'),
-    tit: { pt: 'Mais um jeito, o mesmo Pixel 🎉', es: '¡Otra forma, el mismo Pixel! 🎉' },
-    txt: { pt: 'Navegue pela loja com a câmera aberta: ver um produto traz o ViewContent; pôr no carrinho, o AddToCart. No atendimento, confira pelo Eventos de teste e pelo Consultor de Dados. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Navega por la tienda con la cámara abierta: ver un producto trae el ViewContent; poner en el carrito, el AddToCart. En la atención, revisa con Probar eventos y el Asesor de datos. Haz clic en Finalizar. Después, explora libremente: el botón ↩ de la esquina te lleva de vuelta.' } }
-];
 window.TOURS['rede-pixel'] = [
   { alvo: '#maFab', clique: true, pula: tgPainelAberto, garante: function () { window.LOJA && LOJA.painel(false) },
     tit: { pt: 'O botão F12', es: 'El botón F12' },

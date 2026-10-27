@@ -93,6 +93,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     'admin-shopify.html': { pt: 'Admin da Shopify|o painel onde a dona da loja Shopify cuida dela', es: 'Admin de Shopify|el panel donde la dueña de la tienda Shopify la administra' },
     'admin-woo.html': { pt: 'Painel do WordPress (WooCommerce)|onde a dona da loja WooCommerce cuida dela', es: 'Panel de WordPress (WooCommerce)|donde la dueña de la tienda WooCommerce la administra' },
     'arquivos-site.html': { pt: 'Editor de arquivos do site|os arquivos da hospedagem, onde fica o código', es: 'Editor de archivos del sitio|los archivos del alojamiento, donde está el código' },
+    'ver-fonte.html': { pt: 'Código-fonte da página (Ctrl+U)|o arquivo da página, como o navegador recebeu', es: 'Código fuente de la página (Ctrl+U)|el archivo de la página, como lo recibió el navegador' },
     'codigo-fonte.html': { pt: 'Código-fonte da página (Ctrl+U no navegador)|o código que o navegador recebeu', es: 'Código fuente de la página (Ctrl+U en el navegador)|el código que recibió el navegador' },
     'loja.html': LOJA, 'produtos.html': LOJA, 'catalogo.html': LOJA, 'produto.html': LOJA, 'carrinho.html': LOJA, 'checkout.html': LOJA, 'obrigado.html': LOJA
   };
