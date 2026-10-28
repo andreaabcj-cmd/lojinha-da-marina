@@ -1,4 +1,4 @@
-/* Confere a regra das perguntas (A, B, C, D) em todas as aulas e casos prontos, PT e ES (André, 28/10/2026):
+/* Confere a regra das perguntas (A, B, C, D) em todas as aulas e casos prontos, PT e ES (28/10/2026):
    - 4 alternativas, uma certa, cada uma com explicação (fb) nos dois idiomas;
    - a certa nunca é a mais longa;
    - as quatro têm tamanho parecido (a menor tem pelo menos 60% da maior, ou no máximo 15 letras a menos).

@@ -1,4 +1,4 @@
-/* Módulo extra “Problemas do WhatsApp Business” — SÓ na Trilha Completa (André, 28/10/2026).
+/* Módulo extra “Problemas do WhatsApp Business” — SÓ na Trilha Completa (decisão de 28/10/2026).
    As aulas foram escritas no módulo separado de 27/10 (assets/wa/aulas/aNN.js, formato próprio) e aqui viram aulas da Lojinha,
    com as mesmas partes de sempre: Entender (a conversa) · Ver de perto · Praticar (tutorial guiado em meta-wacel.html) · Atender (as perguntas) · Fontes.
    Precisa de: conteudo.js, ferramentas.js, assets/wa/nucleo.js, assets/wa/aulas/trilha.js e aNN.js carregados antes. */

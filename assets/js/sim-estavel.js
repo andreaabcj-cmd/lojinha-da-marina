@@ -1,5 +1,5 @@
 /* Tela estável nos simuladores: cada simulador redesenha a tela inteira a cada clique (innerHTML), e as áreas com rolagem
-   (menu, conteúdo, janelas) voltavam para o topo — a tela "pulava" e parecia piscar (André, 28/10/2026).
+   (menu, conteúdo, janelas) voltavam para o topo — a tela "pulava" e parecia piscar (28/10/2026).
    Aqui: guarda a rolagem de cada área enquanto a pessoa rola e devolve logo depois do redesenho, antes de a tela ser pintada
    (o MutationObserver roda antes da pintura). Clique em menu, aba ou link de navegação = tela nova, começa do topo. */
 (function () {

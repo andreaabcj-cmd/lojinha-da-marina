@@ -1,4 +1,4 @@
-/* A trilha: 14 aulas na ordem da história da Marina (roteiro aprovado pelo André em 27/10/2026). */
+/* A trilha: 14 aulas na ordem da história da Marina (roteiro aprovado em 27/10/2026). */
 (function () {
   var T = N.T;
   N.TRILHA = [
