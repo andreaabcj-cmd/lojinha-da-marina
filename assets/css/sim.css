@@ -414,3 +414,10 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 /* Shop Ads › janela “Criar um parâmetro de URL” (tela real 28/10/2026) */
 .sa-pcampo{display:block;margin:0 0 12px}.sa-pcampo b{display:block;margin-bottom:4px}.sa-pcampo small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
 .sa-previa{background:#F4F7FB;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:13px Consolas,monospace;min-height:20px;word-break:break-all}
+/* Meta Verified (Configurações reais) e planos da Meta One (28/10/2026) */
+.vf-mv h2{margin:0 0 4px}.vf-ben{margin-top:14px;display:flex;flex-direction:column;gap:8px;max-width:420px}
+.vf-ben p{display:grid;grid-template-columns:28px 1fr;column-gap:8px;margin:0;padding:8px 10px;border:1px solid var(--line);border-radius:10px}.vf-ben p span{grid-row:span 2;font-size:18px}.vf-ben p small{color:var(--muted)}.vf-ben .vf-ben-1{background:#EEF4FF;border-color:#C9DAFB}.vf-ben p.miudo{display:block;border:0;padding:4px 0 0}
+.vf-planos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:12px 0}
+.vf-plano{border:2px solid var(--line);border-radius:14px;padding:12px;background:#fff;display:flex;flex-direction:column}.vf-plano.on{border-color:var(--blue);box-shadow:3px 3px 0 var(--ink)}.vf-plano h3{margin:0 0 4px}.vf-plano h3 small{font-weight:500;color:var(--muted)}
+.vf-plano ul{margin:2px 0 8px;padding-left:18px;font-size:13px}.vf-plano .btn{margin-top:auto}.vf-preco{margin:6px 0}.vf-brl{margin:0 0 6px;font-size:13px;background:#FFF4D6;border-radius:8px;padding:4px 8px}
+@media (max-width:1000px){.vf-planos{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.vf-planos{grid-template-columns:1fr}}

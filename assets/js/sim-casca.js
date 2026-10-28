@@ -17,7 +17,7 @@
     'meta-shopify': 'loja', 'meta-commerce': 'loja', 'meta-shopads': 'megafone', 'meta-entrega': 'megafone', 'meta-microdados': 'eventos', 'meta-verified': 'menu', 'meta-portfolioav': 'menu' };
   // telas que NÃO existem na Meta (resumos da Central de Ajuda montados para estudar): ficam marcadas como painel de treino da Lojinha,
   // para ninguém achar que é uma tela real (pente fino 28/10/2026; refazer com a tela real quando ela for vista)
-  var TREINO = { 'meta-verified': ['planos', 'cadastro', 'assinatura'] };
+  var TREINO = {};   // 28/10/2026: nenhum painel de treino sobrou (todos viraram telas reais ou foram para o Ver de perto)
   function marcaTreino() {
     var L = TREINO[pag]; if (!L) return;
     var es = (function () { try { return JSON.parse(localStorage.getItem('plat.lang')) === 'es' } catch (e) { return false } })();

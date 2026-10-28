@@ -36,7 +36,7 @@ window.MODULOS = [
   { id: 'dg-instagram', area: 'diagnostico', status: 'construcao', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta, não aparece no anúncio ou não pode anunciar (assinatura sem anúncios).', es: 'Instagram que no se conecta, no aparece en el anuncio o no puede anunciar (suscripción sin anuncios).' } },
   { id: 'dg-workaround', area: 'diagnostico', status: 'construcao', icone: '🧪', titulo: { pt: 'Workaround plausível', es: 'Workaround plausible' }, resumo: { pt: 'Saídas que a comunidade relata e que costumam funcionar, mas que a Meta não documenta. Só como tentativa, depois do caminho oficial, sem prometer resultado.', es: 'Salidas que la comunidad relata y que suelen funcionar, pero que Meta no documenta. Solo como intento, después del camino oficial, sin prometer resultado.' } },
   { id: 'dg-commerce', area: 'diagnostico', status: 'planejado', icone: '🛍️', titulo: { pt: 'Commerce e lojas', es: 'Commerce y tiendas' }, resumo: { pt: 'Loja que não fica visível e anúncios das Lojas que só levam ao site.', es: 'Tienda que no queda visible y anuncios de Tiendas que solo llevan al sitio.' } },
-  { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified para empresas', es: 'Meta Verified para empresas' }, resumo: { pt: 'Planos, cadastro, requisitos, nome do perfil, cancelamento e suporte da assinatura.', es: 'Planes, registro, requisitos, nombre del perfil, cancelación y asistencia de la suscripción.' } },
+  { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified e Meta One', es: 'Meta Verified y Meta One' }, resumo: { pt: 'A diferença entre os dois, os planos da Meta One, assinar e verificar, nome do perfil, cancelar e revogada.', es: 'La diferencia entre los dos, los planes de Meta One, suscribirse y verificar, nombre del perfil, cancelar y revocada.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
   { id: 'shop-ads-offsite', fase: 4, status: 'construcao', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'A jornada até a compra no site, Pixel e catálogo, eventos duplicados, UTM e terceiros, e atualizar loja antiga.', es: 'El recorrido hasta la compra en el sitio, píxel y catálogo, eventos duplicados, UTM y terceros, y actualizar tienda antigua.' } },
@@ -3420,295 +3420,281 @@ window.AULAS = {
     ];
   })(),
   verified: (function () {
+    /* Refeito em 28/10/2026: a página pública dos planos do Meta Verified para empresas saiu do ar e a Meta passou a mostrar a Meta One
+       (Essential, Advanced, Expert, Max). No Business Suite da conta de aula a tela ainda se chama Meta Verified. */
     function L(pt, es) { return { pt: pt, es: es } }
     var PERG = L('O que você responde?', '¿Qué respondes?');
-    var NOTA = L('Planos, preços e números vistos de verdade na página pública da Meta em 16/10/2026 (PT e ES). Regras de cadastro, identificação, nome do perfil, suporte, cancelamento e revogação lidas na Central de Ajuda da Meta para Empresas em português (artigos do Meta Verified para empresas). As telas internas do fluxo de assinatura não foram vistas (não se vê sem assinar; nada foi comprado): as do simulador são montadas a partir do texto da Central de Ajuda (a conferir). Preços em US$ e disponibilidade variam por região, app e conta.', 'Planes, precios y números vistos de verdad en la página pública de Meta el 16/10/2026 (PT y ES). Reglas de registro, identificación, nombre del perfil, asistencia, cancelación y revocación leídas en el Centro de ayuda de Meta para Empresas en portugués (artículos de Meta Verified para empresas). Las pantallas internas del flujo de suscripción no se vieron (no se ven sin suscribirse; no se compró nada): las del simulador están armadas a partir del texto del Centro de ayuda (por confirmar). Los precios en USD y la disponibilidad varían según la región, la app y la cuenta.');
-    var FERR = L('Meta Business Suite › Meta Verified (e a Central de Ajuda da Meta para Empresas).', 'Meta Business Suite › Meta Verified (y el Centro de ayuda de Meta para Empresas).');
+    var NOTA = L('Vistos em 28/10/2026: a tela Configurações › Meta Verified do Business Suite (portfólio de aula, PT), a página pública da Meta One (planos para empresas, em inglês) e a Central de Ajuda da Meta One. Nomes em português e preços em R$: Newsroom da Meta Brasil (15/09/2026). A Meta diz que a Meta One está em teste e não está em todas as regiões. As telas internas da assinatura não foram vistas (só aparecem assinando; nada foi comprado).', 'Vistos el 28/10/2026: la pantalla Configuración › Meta Verified de Business Suite (portfolio de práctica, PT), la página pública de Meta One (planes para empresas, en inglés) y el Centro de ayuda de Meta One. Nombres y precios: Newsroom de Meta (15/09/2026). Meta dice que Meta One está en prueba y no está en todas las regiones. Las pantallas internas de la suscripción no se vieron (solo aparecen al suscribirse; no se compró nada).');
+    var FERR = L('Meta Business Suite › Configurações › Meta Verified e a página de planos da Meta One.', 'Meta Business Suite › Configuración › Meta Verified y la página de planes de Meta One.');
+    var F_PLANOS = { url: 'https://www.meta.com/meta-one-plans/', titulo: L('Planos de assinatura da Meta One (empresas)', 'Planes de suscripción de Meta One (empresas)'), conferido: '28/10/2026' };
+    var F_NEWS = { url: 'https://about.fb.com/br/news/2026/09/apresentando-o-meta-one-um-servico-de-assinatura-com-mais-recursos-e-ia-para-criar-se-conectar-e-se-destacar/', titulo: L('Apresentando o Meta One (Newsroom da Meta, 15/09/2026)', 'Presentamos Meta One (Newsroom de Meta, 15/09/2026)'), conferido: '28/10/2026' };
+    var F_SELO = { url: 'https://www.meta.com/help/subscriptions/1278609104422515/', titulo: L('Sobre o selo de verificado para assinantes da Meta One', 'Sobre la insignia de verificación para suscriptores de Meta One'), conferido: '28/10/2026' };
+    var F_METODOS = { url: 'https://www.meta.com/help/subscriptions/1589052262926083/', titulo: L('Métodos de verificação para empresas assinantes da Meta One', 'Métodos de verificación para empresas suscritas a Meta One'), conferido: '28/10/2026' };
+    var F_NOME = { url: 'https://www.meta.com/help/subscriptions/1504793311189792/', titulo: L('Restrições de edição do perfil para quem tem o selo da Meta One', 'Restricciones de edición del perfil para quien tiene la insignia de Meta One'), conferido: '28/10/2026' };
+    var F_TIRAR = { url: 'https://www.meta.com/help/subscriptions/2151352945731583/', titulo: L('Remover o selo de verificado da Meta One', 'Quitar la insignia de verificación de Meta One'), conferido: '28/10/2026' };
+    var F_REVOG = { url: 'https://www.meta.com/help/subscriptions/1754278722450348/', titulo: L('Sobre assinaturas da Meta revogadas', 'Sobre suscripciones de Meta revocadas'), conferido: '28/10/2026' };
+    var F_COBRA = { url: 'https://www.meta.com/help/subscriptions/2534285893740819/', titulo: L('Cobrança e pagamentos das assinaturas da Meta', 'Facturación y pagos de las suscripciones de Meta'), conferido: '28/10/2026' };
+    var F_MV = { url: 'https://www.facebook.com/business/help/308979828303560', titulo: L('Sobre o Meta Verified para empresas (para quem já assina)', 'Sobre Meta Verified para empresas (para quien ya está suscrito)'), conferido: '25/10/2026' };
+    function op(certa, pt, es, fpt, fes) { return { certa: certa, txt: { pt: '“' + pt + '”', es: '“' + es + '”' }, fb: { pt: fpt, es: fes } } }
     return [
       {
-        id: '01', min: 6, status: 'pronta',
-        titulo: L('O que é o Meta Verified para empresas', 'Qué es Meta Verified para empresas'),
-        antes: L('A Marina viu o selo azul em outras lojas e quer saber se a Lojinha deveria ter um.', 'Marina vio la insignia azul en otras tiendas y quiere saber si la Lojinha debería tener una.'),
-        fontes: [
-          { url: 'https://www.facebook.com/business/help/308979828303560', titulo: L('Sobre o Meta Verified para empresas', 'Sobre Meta Verified para empresas'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/248456111431653', titulo: L('Benefícios do Meta Verified para empresas', 'Beneficios de Meta Verified para empresas'), conferido: '25/10/2026' }
-        ],
-        gancho: L('Quatro planos, preços diferentes e suporte diferente: o certo depende do que o cliente precisa.', 'Cuatro planes, precios distintos y asistencia distinta: el correcto depende de lo que necesita el cliente.'),
-        objetivo: L('Entender o que é o Meta Verified para empresas, o que a assinatura inclui e onde o selo aparece.', 'Entender qué es Meta Verified para empresas, qué incluye la suscripción y dónde aparece la insignia.'),
+        id: '01', min: 7, status: 'pronta',
+        titulo: L('Meta Verified e Meta One: qual a diferença', 'Meta Verified y Meta One: cuál es la diferencia'),
+        antes: L('A Marina viu o selo azul em outras lojas e ouviu falar de “Meta One”. Ficou confusa.', 'Marina vio la insignia azul en otras tiendas y oyó hablar de “Meta One”. Quedó confundida.'),
+        fontes: [F_PLANOS, F_NEWS, F_SELO, F_MV],
+        gancho: L('Quatro planos com nomes novos: qual serve para a Lojinha?', 'Cuatro planes con nombres nuevos: ¿cuál sirve para la Lojinha?'),
+        objetivo: L('Explicar a diferença entre o Meta Verified e a Meta One sem prometer o que a assinatura não faz.', 'Explicar la diferencia entre Meta Verified y Meta One sin prometer lo que la suscripción no hace.'),
         entender: {
           dialogo: [
-            ['marina', L('O que é esse tal de Meta Verified? É um selo grátis? 🤔', '¿Qué es ese Meta Verified? ¿Es una insignia gratis? 🤔')],
-            ['rafa', L('Não é grátis: é um serviço de assinatura pago, mensal ou anual, no Instagram, no Facebook e no WhatsApp. Ajuda a empresa a construir credibilidade e proteger a identidade da marca.', 'No es gratis: es un servicio de suscripción paga, mensual o anual, en Instagram, Facebook y WhatsApp. Ayuda a la empresa a construir credibilidad y proteger la identidad de la marca.')],
-            ['marina', L('E o que vem na assinatura?', '¿Y qué viene con la suscripción?')],
-            ['rafa', L('Selo de verificado, suporte ao cliente, proteção contra falsificação de identidade e outras ferramentas. Os recursos variam conforme o plano.', 'Insignia de verificación, atención al cliente, protección contra la suplantación de identidad y otras herramientas. Las funciones varían según el plan.')],
-            ['pixel', L('Dois detalhes: o selo aparece nos ativos que você assinar (Página do Facebook, Instagram, WhatsApp), e os benefícios só valem para esses ativos, não para o portfólio inteiro. E não é um produto de anúncios: é outra coisa.', 'Dos detalles: la insignia aparece en los activos que suscribas (página de Facebook, Instagram, WhatsApp), y los beneficios solo valen para esos activos, no para todo el portfolio. Y no es un producto de anuncios: es otra cosa.')]
+            ['marina', L('Meta Verified, Meta One… são a mesma coisa? 🤔', 'Meta Verified, Meta One… ¿son lo mismo? 🤔')],
+            ['rafa', L('Parecidas, mas não iguais. O Meta Verified é a assinatura focada em identidade: selo, proteção contra falsificação e suporte.', 'Parecidas, pero no iguales. Meta Verified es la suscripción centrada en la identidad: insignia, protección contra suplantación y soporte.')],
+            ['rafa', L('A Meta One, lançada em setembro de 2026, amplia isso: além de poder pedir o selo, traz mais recursos e IA no Facebook, no Instagram e no WhatsApp, como o Meta Business Agent.', 'Meta One, lanzada en septiembre de 2026, amplía eso: además de poder pedir la insignia, trae más funciones e IA en Facebook, Instagram y WhatsApp, como Meta Business Agent.')],
+            ['marina', L('E quem já assina o Meta Verified perde tudo?', '¿Y quien ya tiene Meta Verified lo pierde todo?')],
+            ['pixel', L('Não. A Meta diz que “nada muda por enquanto” para quem já assina e que vai avisar quando der para trocar. E, no Business Suite, a tela ainda se chama Meta Verified.', 'No. Meta dice que “nada cambia por ahora” para quien ya está suscrito y que avisará cuando se pueda cambiar. Y, en Business Suite, la pantalla todavía se llama Meta Verified.')]
           ],
           pontos: [
-            L('<b>Assinatura paga</b>, mensal ou anual; dá para cancelar quando quiser.', '<b>Suscripción paga</b>, mensual o anual; se puede cancelar en cualquier momento.'),
-            L('<b>Inclui:</b> selo, suporte, proteção contra falsificação de identidade.', '<b>Incluye:</b> insignia, asistencia, protección contra la suplantación de identidad.'),
-            L('<b>Vale só</b> para os ativos assinados (Página, Instagram, WhatsApp).', '<b>Vale solo</b> para los activos suscritos (página, Instagram, WhatsApp).')
+            L('<b>Meta Verified:</b> foco em identidade (selo, proteção, suporte). Quem assina continua igual, por enquanto.', '<b>Meta Verified:</b> foco en identidad (insignia, protección, soporte). Quien está suscrito sigue igual, por ahora.'),
+            L('<b>Meta One:</b> amplia o Meta Verified com mais recursos e IA; todos os planos dão direito a pedir o selo.', '<b>Meta One:</b> amplía Meta Verified con más funciones e IA; todos los planes permiten pedir la insignia.'),
+            L('<b>Os dois são pagos</b> e nenhum é ferramenta de anúncios.', '<b>Los dos son pagos</b> y ninguno es una herramienta de anuncios.')
           ],
           notas: NOTA
         },
         ferramenta: 'o-que-e-verified',
         atender: {
-          cena: L('Eu já tenho um selo azul. Preciso pagar de novo? E o Meta Verified faz meus anúncios venderem mais? 🙏', 'Ya tengo una insignia azul. ¿Tengo que pagar de nuevo? ¿Y Meta Verified hace que mis anuncios vendan más? 🙏'),
+          cena: L('Assino o Meta Verified. Agora apareceu Meta One. Vou perder meu selo se não trocar? 😟', 'Tengo Meta Verified. Ahora apareció Meta One. ¿Pierdo mi insignia si no cambio? 😟'),
           pergunta: PERG,
           opcoes: [
-            { certa: false, txt: { pt: "“Precisa sim: o selo antigo some no fim do mês se você não assinar, e o Meta Verified ainda dobra o alcance.”", es: "“Sí: la insignia antigua desaparece a fin de mes si no te suscribes, y Meta Verified además duplica el alcance.”" }, fb: { pt: "Não: nenhuma ação é necessária para manter o selo, e não há promessa de alcance.", es: "No: no hace falta ninguna acción para mantener la insignia, y no hay promesa de alcance." } },
-            { certa: true, txt: { pt: "“Quem já tem o selo não faz nada. A assinatura dá selo, suporte e proteção, mas não mexe nos anúncios.”", es: "“Quien ya tiene la insignia no hace nada. La suscripción da insignia, soporte y protección; no toca anuncios.”" }, fb: { pt: "Isso! Explicou sem prometer o que não existe.", es: "¡Eso! Explicaste sin prometer lo que no existe." } },
-            { certa: false, txt: { pt: "“Não precisa pagar de novo, mas assinando, seus anúncios ganham prioridade no leilão e passam a vender mais.”", es: "“No hace falta pagar de nuevo, pero al suscribirte, tus anuncios ganan prioridad en la subasta y venden más.”" }, fb: { pt: "Nunca prometa resultado: não é uma ferramenta de anúncios.", es: "Nunca prometas resultados: no es una herramienta de anuncios." } },
-            { certa: false, txt: { pt: "“Passe a senha da conta que eu assino o plano para você e transfiro o selo antigo para a assinatura nova.”", es: "“Pásame la contraseña de la cuenta que te suscribo al plan y paso la insignia antigua a la suscripción nueva.”" }, fb: { pt: "Nunca peça senha: oriente.", es: "Nunca pidas contraseñas: orienta." } }
-          ]
+            op(false, 'Vai sim: o Meta Verified acabou e o selo some no fim do mês se você não migrar hoje.', 'Sí: Meta Verified terminó y la insignia desaparece a fin de mes si no migras hoy.', 'A Meta diz que nada muda por enquanto para quem já assina.', 'Meta dice que nada cambia por ahora para quien ya está suscrito.'),
+            op(false, 'Não perde, mas a Meta One é obrigatória para os anúncios continuarem rodando bem.', 'No la pierdes, pero Meta One es obligatoria para que los anuncios sigan funcionando bien.', 'Nenhuma das duas assinaturas mexe nos anúncios.', 'Ninguna de las dos suscripciones toca los anuncios.'),
+            op(true, 'Não perde. Para quem já assina, nada muda por enquanto; a Meta avisa quando der para trocar.', 'No la pierdes: para quien ya está suscrito nada cambia por ahora; Meta avisará.', 'Isso! Resposta com base no que a própria Meta publicou.', '¡Eso! Respuesta basada en lo que publicó la propia Meta.'),
+            op(false, 'Cancele o Meta Verified hoje e assine a Meta One: assim o selo passa sozinho para o plano novo.', 'Cancela Meta Verified hoy y suscríbete a Meta One: así la insignia pasa sola al plan nuevo.', 'Cancelar tira o selo, e a Meta One exige nova verificação.', 'Cancelar quita la insignia, y Meta One exige nueva verificación.')
+          ],
+          mais: []
         },
         cola: {
-          perguntas: [L('Qual é o objetivo: selo, suporte ou proteção da marca?', '¿Cuál es el objetivo: insignia, asistencia o protección de la marca?'), L('A empresa já tem selo de verificado em algum ativo?', '¿La empresa ya tiene insignia de verificación en algún activo?')],
-          conferir: [FERR, L('Página pública do Meta Verified para empresas.', 'Página pública de Meta Verified para empresas.')],
-          frase: L('O Meta Verified é uma assinatura paga com selo, suporte e proteção contra falsificação de identidade, válida para os ativos assinados. Não é uma ferramenta de anúncios.', 'Meta Verified es una suscripción paga con insignia, asistencia y protección contra la suplantación de identidad, válida para los activos suscritos. No es una herramienta de anuncios.'),
-          passos: [L('Pergunte o objetivo do cliente.', 'Pregunta el objetivo del cliente.'), L('Explique o que a assinatura inclui e o que não inclui.', 'Explica qué incluye la suscripción y qué no.')],
-          encaminhar: L('Decidir assinar é do cliente. Explique as opções e deixe a escolha com ele.', 'Decidir suscribirse es del cliente. Explica las opciones y deja la elección en sus manos.')
+          perguntas: [L('A empresa já assina o Meta Verified?', '¿La empresa ya tiene Meta Verified?'), L('O que ela quer: selo, suporte ou recursos de IA?', '¿Qué quiere: insignia, soporte o funciones de IA?')],
+          conferir: [FERR],
+          frase: L('O Meta Verified foca em identidade; a Meta One amplia com mais recursos e IA, e todos os planos dão direito a pedir o selo. Quem já assina o Meta Verified não precisa fazer nada por enquanto.', 'Meta Verified se centra en la identidad; Meta One la amplía con más funciones e IA, y todos los planes permiten pedir la insignia. Quien ya tiene Meta Verified no necesita hacer nada por ahora.'),
+          passos: [L('Pergunte se a empresa já assina.', 'Pregunta si la empresa ya está suscrita.'), L('Explique a diferença e o que cada um inclui.', 'Explica la diferencia y qué incluye cada uno.')],
+          encaminhar: L('Assinar ou trocar é decisão do cliente. Não prometa datas de migração: elas vêm da Meta.', 'Suscribirse o cambiar es decisión del cliente. No prometas fechas de migración: vienen de Meta.')
         }
       },
       {
         id: '02', min: 8, status: 'pronta',
-        titulo: L('Planos e benefícios', 'Planes y beneficios'),
-        antes: L('A Marina quer entender qual dos quatro planos serve para a Lojinha.', 'Marina quiere entender cuál de los cuatro planes sirve para la Lojinha.'),
-        fontes: [
-          { url: 'https://www.facebook.com/business/help/308979828303560', titulo: L('Sobre o Meta Verified para empresas', 'Sobre Meta Verified para empresas'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/248456111431653', titulo: L('Benefícios do Meta Verified para empresas', 'Beneficios de Meta Verified para empresas'), conferido: '25/10/2026' }
-        ],
-        gancho: L('Plano, ativos, pagamento, verificação e confirmação: cada etapa tem uma regra.', 'Plan, activos, pago, verificación y confirmación: cada etapa tiene una regla.'),
-        objetivo: L('Comparar os planos, ler o suporte de cada um e saber por que nem todos aparecem para todo mundo.', 'Comparar los planes, leer la asistencia de cada uno y saber por qué no todos aparecen para todos.'),
+        titulo: L('Os planos da Meta One', 'Los planes de Meta One'),
+        antes: L('A Marina quer pôr links nos reels e quer saber qual plano tem isso.', 'Marina quiere poner enlaces en los reels y quiere saber qué plan lo tiene.'),
+        fontes: [F_PLANOS, F_NEWS],
+        gancho: L('Plano escolhido. Agora: onde se assina e o que acontece depois?', 'Plan elegido. Ahora: ¿dónde se suscribe y qué pasa después?'),
+        objetivo: L('Comparar os quatro planos da Meta One para empresas e escolher pelo que a empresa precisa.', 'Comparar los cuatro planes de Meta One para empresas y elegir según lo que la empresa necesita.'),
         entender: {
           dialogo: [
-            ['marina', L('Tem Business Básico, Plus, Premium e Max. Qual é a diferença? 😵', 'Hay Business Standard, Plus, Premium y Max. ¿Cuál es la diferencia? 😵')],
-            ['rafa', L('Todos têm o selo e a proteção contra falsificação de identidade, e suporte por chat e e-mail 24 h. Subindo de plano, vêm mais recursos: o suporte priorizado começa no Plus, a ligação de um agente no Premium e o monitoramento dedicado de casos só no Max.', 'Todos tienen la insignia y la protección contra la suplantación de identidad, y asistencia por chat y correo 24 h. Al subir de plan, vienen más funciones: la asistencia prioritaria empieza en Plus, la llamada de un agente en Premium y el monitoreo dedicado de casos solo en Max.')],
+            ['marina', L('Essencial, Avançado, Expert, Máximo… qual é a diferença? 😵', 'Essential, Advanced, Expert, Max… ¿cuál es la diferencia? 😵')],
+            ['rafa', L('Todos dão direito a pedir o selo. O Essencial é o de entrada: página de links no Instagram e, no WhatsApp, 1 canal verificado e respostas de IA.', 'Todos permiten pedir la insignia. Essential es el de entrada: página de enlaces en Instagram y, en WhatsApp, 1 canal verificado y respuestas de IA.')],
+            ['rafa', L('Links em reels e em posts começam no Avançado, que também traz insights e acesso para a equipe. Expert e Máximo aumentam limites e casos de suporte.', 'Los enlaces en reels y publicaciones empiezan en Advanced, que también trae estadísticas y acceso para el equipo. Expert y Max aumentan límites y casos de soporte.')],
             ['marina', L('E o preço?', '¿Y el precio?')],
-            ['rafa', L('Na página da Meta aparecem em dólar: US$ 14,99, 49,99, 149,99 e 499,99 por mês. Mas planos, preços e disponibilidade podem variar por região, app e conta.', 'En la página de Meta aparecen en dólares: 14,99, 49,99, 149,99 y 499,99 USD por mes. Pero los planes, los precios y la disponibilidad pueden variar según la región, la app y la cuenta.')],
-            ['pixel', L('E nem todos os planos aparecem para todos: a Meta define a disponibilidade com base na atividade da empresa nos apps (visitas ao perfil, engajamento…). Por isso, confirme o que aparece na conta do cliente.', 'Y no todos los planes aparecen para todos: Meta define la disponibilidad según la actividad de la empresa en las apps (visitas al perfil, interacción…). Por eso, confirma qué aparece en la cuenta del cliente.')]
+            ['pixel', L('No Brasil, a partir de R$ 59, 199, 599 e 1.999 por mês. O preço é por Página, perfil do Instagram ou número do WhatsApp. E a Meta decide quais planos aparecem para cada conta.', 'En Brasil, desde R$ 59, 199, 599 y 1.999 al mes. El precio es por página, perfil de Instagram o número de WhatsApp. Y Meta decide qué planes aparecen para cada cuenta.')]
           ],
           pontos: [
-            L('<b>Todos:</b> selo, proteção contra falsificação, chat e e-mail 24 h.', '<b>Todos:</b> insignia, protección contra la suplantación, chat y correo 24 h.'),
-            L('<b>Suporte sobe com o plano:</b> priorizado (Plus), ligação (Premium), monitoramento (Max).', '<b>La asistencia sube con el plan:</b> prioritaria (Plus), llamada (Premium), monitoreo (Max).'),
-            L('<b>Disponibilidade</b> depende da atividade da empresa; preços variam por região.', '<b>La disponibilidad</b> depende de la actividad de la empresa; los precios varían según la región.')
+            L('<b>Todos:</b> direito a pedir o selo (exige verificação).', '<b>Todos:</b> derecho a pedir la insignia (exige verificación).'),
+            L('<b>Links em reels e posts:</b> a partir do Avançado.', '<b>Enlaces en reels y publicaciones:</b> desde Advanced.'),
+            L('<b>Preço por ativo</b> (Página, Instagram ou WhatsApp); varia por região e conta.', '<b>Precio por activo</b> (página, Instagram o WhatsApp); varía según la región y la cuenta.')
           ],
           notas: NOTA
         },
         ferramenta: 'planos-verified',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela tabela de planos e pelo suporte de cada um, e você escolhe o plano certo para uma necessidade.', 'En el simulador, el Pixel te guía por la tabla de planes y por la asistencia de cada uno, y eliges el plan correcto para una necesidad.'),
-          tour: 'escolher-plano', pagina: 'meta-verified.html?zerar=1'
+          texto: L('No simulador, o Pixel te guia pelos planos da Meta One e você escolhe o certo para a Marina.', 'En el simulador, el Pixel te guía por los planes de Meta One y eliges el correcto para Marina.'),
+          tour: 'escolher-plano', pagina: 'meta-verified.html?planos=1'
         },
         atender: {
-          cena: L('Quero o plano mais caro, deve ser o melhor. Ou o mais barato, para economizar. Qual você recomenda? 🤷', 'Quiero el plan más caro, debe ser el mejor. O el más barato, para ahorrar. ¿Cuál recomiendas? 🤷'),
+          cena: L('Quero o plano mais caro, deve ser o melhor. Só preciso de links nos reels. Qual eu pego? 🤷', 'Quiero el plan más caro, debe ser el mejor. Solo necesito enlaces en los reels. ¿Cuál tomo? 🤷'),
           pergunta: PERG,
           opcoes: [
-            { certa: false, txt: { pt: "“Vá no mais caro: só ele tem selo e proteção contra falsificação; os outros planos são só suporte por e-mail.”", es: "“Ve por el más caro: solo él tiene insignia y protección contra suplantación; los otros planes son solo soporte por correo.”" }, fb: { pt: "Todos os planos têm selo e proteção. Mais caro nem sempre é o certo.", es: "Todos los planes tienen insignia y protección. Más caro no siempre es lo correcto." } },
-            { certa: false, txt: { pt: "“O mais barato já faz tudo que os outros fazem; a diferença dos planos maiores é só o tamanho do selo azul.”", es: "“El más barato ya hace todo lo que hacen los otros; la diferencia de los planes mayores es solo el tamaño de la insignia.”" }, fb: { pt: "Os recursos aumentam com o plano (suporte priorizado, ligação de agente).", es: "Los recursos aumentan con el plan (soporte prioritario, llamada de un agente)." } },
-            { certa: true, txt: { pt: "“Depende do que precisa. Todos têm selo, proteção e suporte; ligação de agente, só do Premium para cima.”", es: "“Depende de lo que necesites. Todos tienen insignia, protección y soporte; llamada de agente, solo desde Premium.”" }, fb: { pt: "Isso! Perguntou a necessidade e deu o caminho.", es: "¡Eso! Preguntaste la necesidad y diste el camino." } },
-            { certa: false, txt: { pt: "“Pode deixar que eu escolho o Max por você: é o que os clientes mais pedem e o que tem a melhor aprovação.”", es: "“Deja que elija el Max por ti: es el que más piden los clientes y el que tiene mejor aprobación.”" }, fb: { pt: "A escolha é da cliente, e plano não muda a aprovação.", es: "La elección es de la clienta, y el plan no cambia la aprobación." } }
-          ]
+            op(true, 'Links em reels começam no Avançado. Se é só isso, ele basta; o mais caro sobra.', 'Los enlaces en reels empiezan en Advanced. Si es solo eso, alcanza; el más caro sobra.', 'Isso! Escolheu pela necessidade, não pelo preço.', '¡Eso! Elegiste por la necesidad, no por el precio.'),
+            op(false, 'Pegue o Máximo: só ele tem selo e links, os outros planos dão só suporte por email.', 'Toma Max: solo él tiene insignia y enlaces, los otros planes dan solo soporte por correo.', 'Todos os planos dão direito ao selo; links começam no Avançado.', 'Todos los planes dan derecho a la insignia; los enlaces empiezan en Advanced.'),
+            op(false, 'O Essencial já faz tudo; os planos maiores só deixam o selo azul maior no perfil.', 'Essential ya hace todo; los planes mayores solo agrandan la insignia azul en el perfil.', 'Links em reels não estão no Essencial.', 'Los enlaces en reels no están en Essential.'),
+            op(false, 'Deixa comigo: assino o Máximo para você, que é o que tem a aprovação mais rápida.', 'Déjamelo a mí: te suscribo a Max, que es el que tiene la aprobación más rápida.', 'A escolha é da cliente, e plano não acelera aprovação.', 'La elección es de la clienta, y el plan no acelera la aprobación.')
+          ],
+          mais: []
         },
         cola: {
-          perguntas: [L('O que o cliente mais precisa: suporte, proteção ou selo?', '¿Qué necesita más el cliente: asistencia, protección o insignia?'), L('Quais planos aparecem na conta dele?', '¿Qué planes aparecen en su cuenta?')],
-          conferir: [FERR, L('Página de planos e preços da Meta (valores em US$).', 'Página de planes y precios de Meta (valores en USD).')],
-          frase: L('Todos os planos têm selo, proteção e suporte por chat e e-mail; o suporte priorizado, a ligação e o monitoramento aparecem conforme o plano. Vamos ver o que está disponível na sua conta.', 'Todos los planes tienen insignia, protección y asistencia por chat y correo; la asistencia prioritaria, la llamada y el monitoreo aparecen según el plan. Veamos qué está disponible en tu cuenta.'),
-          passos: [L('Pergunte a necessidade principal.', 'Pregunta la necesidad principal.'), L('Mostre a tabela de planos e o suporte de cada um.', 'Muestra la tabla de planes y la asistencia de cada uno.')],
-          encaminhar: L('Preços e planos mudam por região: confirme sempre na tela da conta do cliente, sem prometer valores.', 'Los precios y planes cambian según la región: confirma siempre en la pantalla de la cuenta del cliente, sin prometer valores.')
+          perguntas: [L('O que a empresa mais precisa?', '¿Qué necesita más la empresa?'), L('Quais planos aparecem na conta dela?', '¿Qué planes le aparecen en su cuenta?')],
+          conferir: [FERR],
+          frase: L('Todos os planos da Meta One dão direito a pedir o selo; links em reels e posts começam no Avançado. Vamos ver quais planos aparecem na sua conta.', 'Todos los planes de Meta One permiten pedir la insignia; los enlaces en reels y publicaciones empiezan en Advanced. Veamos qué planes aparecen en tu cuenta.'),
+          passos: [L('Pergunte a necessidade.', 'Pregunta la necesidad.'), L('Mostre o plano mais simples que atende.', 'Muestra el plan más simple que cumple.')],
+          encaminhar: L('Preços variam por região e conta: confirme na tela do cliente, sem prometer valores.', 'Los precios varían según la región y la cuenta: confirma en la pantalla del cliente, sin prometer valores.')
         }
       },
       {
         id: '03', min: 8, status: 'pronta',
-        titulo: L('Cadastrar a empresa', 'Registrar la empresa'),
-        antes: L('A Marina decidiu: quer o Plus para o Instagram da Lojinha.', 'Marina decidió: quiere Plus para el Instagram de la Lojinha.'),
-        fontes: [
-          { url: 'https://www.facebook.com/business/help/1381094345778877', titulo: L('Cadastre sua empresa no Meta Verified', 'Registra tu empresa en Meta Verified'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/1980422732333373', titulo: L('Requisitos de qualificação para assinaturas do Meta Verified para empresas', 'Requisitos de elegibilidad para las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' }
-        ],
-        gancho: L('Quando a opção some, quase sempre falta um requisito. Vamos conferir um por um.', 'Cuando la opción desaparece, casi siempre falta un requisito. Revisemos uno por uno.'),
-        objetivo: L('Seguir as etapas do cadastro, entender os métodos de verificação e saber o prazo de análise.', 'Seguir las etapas del registro, entender los métodos de verificación y saber el plazo de revisión.'),
+        titulo: L('Assinar e verificar a empresa', 'Suscribirse y verificar la empresa'),
+        antes: L('A Marina escolheu o plano e quer saber o que acontece depois de assinar.', 'Marina eligió el plan y quiere saber qué pasa después de suscribirse.'),
+        fontes: [F_SELO, F_METODOS],
+        gancho: L('E se o botão Começar aparece desligado?', '¿Y si el botón Empezar aparece desactivado?'),
+        objetivo: L('Saber onde se começa, como a Meta verifica a empresa e o que pode ser pedido.', 'Saber dónde se empieza, cómo verifica Meta la empresa y qué se puede pedir.'),
         entender: {
           dialogo: [
-            ['marina', L('Por onde começo o cadastro? 😬', '¿Por dónde empiezo el registro? 😬')],
-            ['rafa', L('Você escolhe o plano, depois os ativos que quer verificar, configura o pagamento e verifica os detalhes da empresa. Dá para verificar até dois ativos do mesmo portfólio (por exemplo, o Instagram e a Página); se usar o Meta Business Suite no computador, até três.', 'Eliges el plan, luego los activos que quieres verificar, configuras el pago y verificas los detalles de la empresa. Se pueden verificar hasta dos activos del mismo portfolio (por ejemplo, Instagram y la página); si usas Meta Business Suite en la computadora, hasta tres.')],
-            ['marina', L('Como a Meta confirma que a empresa é minha?', '¿Cómo confirma Meta que la empresa es mía?')],
-            ['rafa', L('Há métodos: detalhes da empresa (que precisam bater com um registro público), documentação, identificação oficial, conta bancária empresarial ou presença estabelecida nos produtos da Meta. Depois, você confirma a conexão por e-mail, SMS, ligação, identidade ou domínio.', 'Hay métodos: detalles de la empresa (que deben coincidir con un registro público), documentación, identificación oficial, cuenta bancaria empresarial o presencia establecida en los productos de Meta. Después, confirmas la conexión por correo, SMS, llamada, identidad o dominio.')],
-            ['pixel', L('A Meta analisa e dá o resultado em até 3 dias úteis. Se a verificação não for concluída em três dias, a assinatura é cancelada e pode haver reembolso. O selo só aparece depois da aprovação.', 'Meta revisa y da el resultado en un plazo de 3 días hábiles. Si la verificación no se completa en tres días, la suscripción se cancela y puede haber reembolso. La insignia aparece solo después de la aprobación.')]
+            ['marina', L('Assinei. Já ganho o selo? ✨', 'Me suscribí. ¿Ya tengo la insignia? ✨')],
+            ['rafa', L('Ainda não. Assinar não verifica ninguém: depois, a Meta tenta verificar a empresa sozinha, pela presença dela nos apps. Esse passo é automático e não dá para pular.', 'Todavía no. Suscribirse no verifica a nadie: después, Meta intenta verificar la empresa sola, por su presencia en las apps. Ese paso es automático y no se puede omitir.')],
+            ['rafa', L('Se não der, a Meta pode pedir dados da empresa que batam com um registro público, um documento oficial ou uma identificação com foto, frente e verso.', 'Si no puede, Meta puede pedir datos de la empresa que coincidan con un registro público, un documento oficial o una identificación con foto, frente y dorso.')],
+            ['pixel', L('Para confirmar, ela pode mandar código por email ou mensagem, ou pedir a verificação do domínio do site. E nem todo método aparece em todo país.', 'Para confirmar, puede enviar un código por correo o mensaje, o pedir la verificación del dominio del sitio. Y no todo método aparece en todo país.')]
           ],
           pontos: [
-            L('<b>Etapas:</b> plano → ativos → pagamento → verificação → confirmação.', '<b>Etapas:</b> plan → activos → pago → verificación → confirmación.'),
-            L('<b>Até 2 ativos</b> (3 pelo Meta Business Suite no computador); com mais de um, preço com desconto.', '<b>Hasta 2 activos</b> (3 desde Meta Business Suite en la computadora); con más de uno, precio con descuento.'),
-            L('<b>Análise</b> em até 3 dias úteis; selo só depois de aprovado.', '<b>Revisión</b> en un plazo de 3 días hábiles; insignia solo después de aprobado.')
+            L('<b>Onde:</b> Business Suite › Configurações › Meta Verified › Começar.', '<b>Dónde:</b> Business Suite › Configuración › Meta Verified › Empezar.'),
+            L('<b>Verificação automática</b> primeiro; depois dados, documento ou identificação.', '<b>Verificación automática</b> primero; después datos, documento o identificación.'),
+            L('<b>O selo só vem</b> depois de verificar; assinar não basta.', '<b>La insignia solo llega</b> después de verificar; suscribirse no basta.')
           ],
           notas: NOTA
         },
         ferramenta: 'cadastro-verified',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por todo o cadastro: Plus, Instagram, pagamento (simulado), detalhes da empresa, e-mail e envio.', 'En el simulador, el Pixel te guía por todo el registro: Plus, Instagram, pago (simulado), detalles de la empresa, correo y envío.'),
+          texto: L('No simulador, o Pixel te leva das Configurações aos planos e para antes do pagamento.', 'En el simulador, el Pixel te lleva de Configuración a los planes y se detiene antes del pago.'),
           tour: 'cadastrar-meta-verified', pagina: 'meta-verified.html?zerar=1'
         },
         atender: {
-          cena: L('Enviei tudo e o selo não apareceu! Foi golpe? Já se passaram 2 dias! 😡', '¡Envié todo y la insignia no apareció! ¿Fue una estafa? ¡Ya pasaron 2 días! 😡'),
+          cena: L('Paguei a assinatura ontem e o selo azul não apareceu. Fui enganada? 😠', 'Pagué la suscripción ayer y la insignia azul no apareció. ¿Me engañaron? 😠'),
           pergunta: PERG,
           opcoes: [
-            { certa: true, txt: { pt: "“Calma: a Meta analisa e dá retorno em até 3 dias úteis; o selo só aparece depois. Vamos olhar o status.”", es: "“Tranquila: Meta revisa y responde en hasta 3 días hábiles; la insignia aparece después. Veamos el estado.”" }, fb: { pt: "Isso! Deu o prazo e o que olhar.", es: "¡Eso! Diste el plazo y qué mirar." } },
-            { certa: false, txt: { pt: "“Dois dias sem selo é sinal de golpe. Cancele a assinatura agora e peça o dinheiro de volta pelo seu banco.”", es: "“Dos días sin insignia es señal de estafa. Cancela la suscripción ahora y pide el dinero de vuelta a tu banco.”" }, fb: { pt: "Não há sinal disso; primeiro olhe o status.", es: "No hay señal de eso; primero mira el estado." } },
-            { certa: false, txt: { pt: "“Cadastre de novo, com os mesmos documentos: às vezes o primeiro envio se perde e o segundo é aprovado na hora.”", es: "“Regístrate de nuevo, con los mismos documentos: a veces el primer envío se pierde y el segundo se aprueba al instante.”" }, fb: { pt: "Pode duplicar a cobrança; primeiro veja o status.", es: "Puede duplicar el cobro; primero mira el estado." } },
-            { certa: false, txt: { pt: "“Troque para um plano maior: os planos de cima têm análise prioritária e o selo aparece no mesmo dia.”", es: "“Cambia a un plan mayor: los planes de arriba tienen revisión prioritaria y la insignia aparece el mismo día.”" }, fb: { pt: "Plano maior não acelera a análise.", es: "Un plan mayor no acelera la revisión." } }
-          ]
+            op(false, 'Foi erro da cobrança. Peça o reembolso hoje e assine outra vez para o selo sair.', 'Fue un error de cobro. Pide el reembolso hoy y suscríbete otra vez para que salga la insignia.', 'Assinar de novo não resolve: falta a verificação.', 'Suscribirse de nuevo no resuelve: falta la verificación.'),
+            op(false, 'O selo sai em até 24 horas para todos; se não saiu, sua conta foi bloqueada.', 'La insignia sale en hasta 24 horas para todos; si no salió, tu cuenta fue bloqueada.', 'Não há esse prazo para todos, e não indica bloqueio.', 'No hay ese plazo para todos, y no indica bloqueo.'),
+            op(false, 'Me mande sua senha que eu entro e libero o selo direto na sua conta.', 'Mándame tu contraseña que entro y libero la insignia directo en tu cuenta.', 'Nunca peça senha.', 'Nunca pidas contraseñas.'),
+            op(true, 'Assinar não verifica: agora a Meta confere a empresa e pode pedir um documento.', 'Suscribirse no verifica. Ahora Meta revisa la empresa; puede pedir datos o un documento.', 'Isso! O selo depende da verificação.', '¡Eso! La insignia depende de la verificación.')
+          ],
+          mais: []
         },
         cola: {
-          perguntas: [L('Qual é o status da assinatura e há quantos dias úteis foi enviada?', '¿Cuál es el estado de la suscripción y hace cuántos días hábiles se envió?'), L('Qual método de verificação foi escolhido?', '¿Qué método de verificación se eligió?')],
-          conferir: [FERR, L('Status da inscrição na assinatura.', 'Estado de la solicitud en la suscripción.')],
-          frase: L('A análise do Meta Verified leva até 3 dias úteis; o selo aparece depois da aprovação. Vamos conferir o status da sua inscrição.', 'La revisión de Meta Verified tarda hasta 3 días hábiles; la insignia aparece después de la aprobación. Revisemos el estado de tu solicitud.'),
-          passos: [L('Abra a assinatura e veja o status.', 'Abre la suscripción y mira el estado.'), L('Se passou de 3 dias úteis, veja a aula 04.', 'Si pasaron más de 3 días hábiles, mira la clase 04.')],
-          encaminhar: L('Se a análise passar do prazo ou algo não bater, siga as mensagens da conta e o suporte do Meta Verified.', 'Si la revisión pasa del plazo o algo no cuadra, sigue los mensajes de la cuenta y la asistencia de Meta Verified.')
+          perguntas: [L('A assinatura já foi paga?', '¿La suscripción ya se pagó?'), L('A Meta pediu algum dado ou documento?', '¿Meta pidió algún dato o documento?')],
+          conferir: [FERR],
+          frase: L('O selo vem depois da verificação. A Meta tenta sozinha primeiro e, se precisar, pede dados da empresa, documento ou identificação.', 'La insignia llega después de la verificación. Meta lo intenta sola primero y, si hace falta, pide datos de la empresa, un documento o una identificación.'),
+          passos: [L('Confirme se pagou.', 'Confirma si pagó.'), L('Veja se a Meta pediu algo e oriente a enviar.', 'Mira si Meta pidió algo y orienta a enviarlo.')],
+          encaminhar: L('Documentos são enviados pela própria cliente, na tela da Meta. Nunca peça para receber documento ou senha.', 'Los documentos los envía la propia clienta, en la pantalla de Meta. Nunca pidas recibir documentos ni contraseñas.')
         }
       },
       {
-        id: '04', min: 9, status: 'pronta',
-        titulo: L('“Não consigo cadastrar”', '“No puedo registrar”'),
-        antes: L('A Marina abriu o Meta Business Suite e a opção de cadastro nem aparece.', 'Marina abrió Meta Business Suite y la opción de registro ni aparece.'),
-        fontes: [
-          { url: 'https://www.facebook.com/business/help/626333159331357', titulo: L('Como solucionar problemas de cadastro em assinaturas do Meta Verified para empresas', 'Cómo solucionar problemas de registro en las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/1980422732333373', titulo: L('Requisitos de qualificação para assinaturas do Meta Verified para empresas', 'Requisitos de elegibilidad para las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' }
-        ],
-        gancho: L('O nome do perfil verificado segue regras: precisa lembrar o nome civil.', 'El nombre del perfil verificado sigue reglas: debe recordar el nombre legal.'),
-        objetivo: L('Conferir os requisitos (perfil completo, controle total, ativo qualificado, Proteção Avançada de todos) e entender a identificação.', 'Revisar los requisitos (perfil completo, control total, activo que cumple, Protección avanzada de todos) y entender la identificación.'),
+        id: '04', min: 7, status: 'pronta',
+        titulo: L('“O botão Começar não funciona”', '“El botón Empezar no funciona”'),
+        antes: L('A Marina abriu o Meta Verified e o botão Começar está apagado.', 'Marina abrió Meta Verified y el botón Empezar está apagado.'),
+        fontes: [F_SELO, F_MV],
+        gancho: L('Verificada! Agora: dá para mudar o nome do perfil?', '¡Verificada! Ahora: ¿se puede cambiar el nombre del perfil?'),
+        objetivo: L('Ler a mensagem da própria tela e orientar quem tem permissão para assinar.', 'Leer el mensaje de la propia pantalla y orientar a quien tiene permiso para suscribirse.'),
         entender: {
           dialogo: [
-            ['marina', L('Não aparece nada para me cadastrar. 😩', 'No aparece nada para registrarme. 😩')],
-            ['rafa', L('Se qualquer requisito não for atendido, a opção não fica disponível. Confira: perfil completo (foto, nome, categoria e contato), controle total de um portfólio no Meta Business Suite, pelo menos um ativo qualificado e Proteção Avançada de todas as pessoas com acesso.', 'Si algún requisito no se cumple, la opción no queda disponible. Revisa: perfil completo (foto, nombre, categoría y contacto), control total de un portfolio en Meta Business Suite, al menos un activo que cumpla los requisitos y Protección avanzada de todas las personas con acceso.')],
-            ['marina', L('Proteção Avançada?', '¿Protección avanzada?')],
-            ['rafa', L('É uma configuração de segurança que exige, por exemplo, autenticação de dois fatores em cada login. Cada pessoa ativa na própria conta. Se uma só não ativar, a opção não aparece. Depois de corrigir, aguarde até 24 horas.', 'Es una configuración de seguridad que exige, por ejemplo, autenticación de dos factores en cada inicio de sesión. Cada persona la activa en su propia cuenta. Si una sola no la activa, la opción no aparece. Después de corregir, espera hasta 24 horas.')],
-            ['pixel', L('Se o problema for na verificação já iniciada, a identificação oficial precisa ser válida, com foto, quatro cantos visíveis, sem flash, e com nome semelhante ao do ativo (“Flores da Ana Silva” pede “Ana” ou “Silva”).', 'Si el problema es en la verificación ya iniciada, la identificación oficial debe ser válida, con foto, cuatro esquinas visibles, sin flash, y con un nombre parecido al del activo (“Flores da Ana Silva” pide “Ana” o “Silva”).')]
+            ['marina', L('O botão Começar está cinza. Está quebrado? 😕', 'El botón Empezar está gris. ¿Está roto? 😕')],
+            ['rafa', L('Não. A própria tela explica: “Você não se qualifica para fazer o cadastro ou o gerenciamento do Meta Verified. Entre em contato com outro administrador”.', 'No. La propia pantalla lo explica: “No cumples los requisitos para registrarte o administrar Meta Verified. Comunícate con otro administrador”.')],
+            ['rafa', L('Para assinar, a pessoa precisa de controle total do portfólio. Quem tem só acesso parcial vê o botão apagado.', 'Para suscribirse, la persona necesita control total del portfolio. Quien tiene solo acceso parcial ve el botón apagado.')],
+            ['pixel', L('Outros motivos possíveis: a conta não é qualificada ou o plano não está disponível na região. Primeiro, leia a mensagem da tela.', 'Otros motivos posibles: la cuenta no califica o el plan no está disponible en la región. Primero, lee el mensaje de la pantalla.')]
           ],
           pontos: [
-            L('<b>Requisitos:</b> perfil completo, controle total, ativo qualificado, Proteção Avançada de todos.', '<b>Requisitos:</b> perfil completo, control total, activo que cumple, Protección avanzada de todos.'),
-            L('<b>Depois de corrigir</b>, aguarde até 24 horas.', '<b>Después de corregir</b>, espera hasta 24 horas.'),
-            L('<b>Documento:</b> válido, legível, nome semelhante ao do ativo.', '<b>Documento:</b> válido, legible, nombre parecido al del activo.')
+            L('<b>Começar apagado:</b> leia a mensagem embaixo do botão.', '<b>Empezar apagado:</b> lee el mensaje debajo del botón.'),
+            L('<b>Controle total</b> do portfólio é preciso para assinar.', '<b>Control total</b> del portfolio es necesario para suscribirse.'),
+            L('<b>Caminho:</b> pedir a quem tem controle total, ou pedir esse acesso.', '<b>Camino:</b> pedir a quien tiene control total, o pedir ese acceso.')
           ],
           notas: NOTA
         },
         ferramenta: 'nao-consigo-verified',
         praticar: {
-          texto: L('No simulador, a opção de cadastro não aparece. O Pixel te guia para achar a foto que falta e a Proteção Avançada de uma pessoa.', 'En el simulador, la opción de registro no aparece. El Pixel te guía para encontrar la foto que falta y la Protección avanzada de una persona.'),
+          texto: L('No simulador, a tela é igual à da conta de aula: botão apagado e a mensagem da Meta. O Pixel te mostra o que dizer.', 'En el simulador, la pantalla es igual a la de la cuenta de práctica: botón apagado y el mensaje de Meta. El Pixel te muestra qué decir.'),
           tour: 'nao-consigo-cadastrar', pagina: 'meta-verified.html?problema=1'
         },
         atender: {
-          cena: L('Já tentei tudo e continua não aparecendo! Você precisa liberar para mim! 😡', '¡Ya intenté todo y sigue sin aparecer! ¡Tienes que habilitarlo para mí! 😡'),
+          cena: L('O botão Começar do Meta Verified está apagado. Vocês travaram minha conta? 😤', 'El botón Empezar de Meta Verified está apagado. ¿Bloquearon mi cuenta? 😤'),
           pergunta: PERG,
           opcoes: [
-            { certa: false, txt: { pt: "“Vou liberar a opção pelo nosso painel agora. Em alguns minutos ela aparece para você e já dá para cadastrar.”", es: "“Voy a habilitar la opción desde nuestro panel ahora. En unos minutos te aparece y ya te puedes registrar.”" }, fb: { pt: "Não existe liberação por fora.", es: "No existe habilitación por fuera." } },
-            { certa: true, txt: { pt: "“Não consigo liberar por fora, mas vamos ver: perfil completo, controle total e pessoas com dois fatores.”", es: "“No puedo habilitarlo por fuera, pero revisemos: perfil completo, control total y personas con dos pasos.”" }, fb: { pt: "Isso! Acolheu e deu a lista dos requisitos.", es: "¡Eso! Acogiste y diste la lista de requisitos." } },
-            { certa: false, txt: { pt: "“Me passe a senha de todos que têm acesso ao portfólio que eu ativo a autenticação de dois fatores de cada um.”", es: "“Pásame las contraseñas de todos los que tienen acceso al portfolio que activo la autenticación en dos pasos de cada uno.”" }, fb: { pt: "Nunca peça senha; cada pessoa ativa na própria conta.", es: "Nunca pidas contraseñas; cada persona la activa en su propia cuenta." } },
-            { certa: false, txt: { pt: "“É instabilidade conhecida da Meta com o cadastro. Espere um mês e tente de novo, sem mudar nada no portfólio.”", es: "“Es una inestabilidad conocida de Meta con el registro. Espera un mes e intenta de nuevo, sin cambiar nada.”" }, fb: { pt: "Normalmente falta um requisito, que dá para resolver agora.", es: "Normalmente falta un requisito, que se puede resolver ahora." } }
-          ]
+            op(false, 'É falha da Meta. Limpe o cache e tente de novo amanhã, que o botão acende sozinho.', 'Es una falla de Meta. Borra la caché e intenta mañana, que el botón se enciende solo.', 'Não é falha: a tela diz o motivo.', 'No es una falla: la pantalla dice el motivo.'),
+            op(true, 'Não travou. Para assinar é preciso controle total; peça a quem tem para assinar.', 'No se bloqueó: hace falta control total; pide a quien lo tiene que se suscriba.', 'Isso! Leu a mensagem e deu o caminho.', '¡Eso! Leíste el mensaje y diste el camino.'),
+            op(false, 'Crie um portfólio novo só para você: lá o botão acende e você assina sem pedir nada.', 'Crea un portfolio nuevo solo para ti: ahí el botón se enciende y te suscribes sin pedir nada.', 'O portfólio novo não tem os ativos da loja.', 'El portfolio nuevo no tiene los activos de la tienda.'),
+            op(false, 'Isso é bloqueio da conta. Abra uma contestação na Central de Segurança hoje.', 'Eso es un bloqueo de la cuenta. Abre una apelación en el Centro de seguridad hoy.', 'Não há bloqueio: falta permissão.', 'No hay bloqueo: falta permiso.')
+          ],
+          mais: []
         },
         cola: {
-          perguntas: [L('O perfil tem foto, nome, categoria e contato? Quem tem controle total do portfólio?', '¿El perfil tiene foto, nombre, categoría y contacto? ¿Quién tiene control total del portfolio?'), L('Todas as pessoas com acesso ativaram a Proteção Avançada?', '¿Todas las personas con acceso activaron la Protección avanzada?')],
-          conferir: [L('Meta Business Suite › Configurações do portfólio › Pessoas.', 'Meta Business Suite › Configuración del portfolio › Personas.'), L('Cada ativo: foto, categoria, contato.', 'Cada activo: foto, categoría, contacto.')],
-          frase: L('A opção de cadastro só aparece quando todos os requisitos estão atendidos. Vamos conferir um por um, começando pela Proteção Avançada de cada pessoa.', 'La opción de registro solo aparece cuando todos los requisitos se cumplen. Revisemos uno por uno, empezando por la Protección avanzada de cada persona.'),
-          passos: [L('Veja a lista de pessoas do portfólio.', 'Mira la lista de personas del portfolio.'), L('Peça a quem falta que ative a Proteção Avançada e espere até 24 horas.', 'Pide a quien falta que active la Protección avanzada y espera hasta 24 horas.')],
-          encaminhar: L('Se tudo estiver certo e ainda não aparecer, oriente o cliente a falar com o suporte da Meta pelos canais da própria conta.', 'Si todo está correcto y aún no aparece, orienta al cliente a hablar con la asistencia de Meta por los canales de la propia cuenta.')
+          perguntas: [L('Que mensagem aparece embaixo do botão?', '¿Qué mensaje aparece debajo del botón?'), L('Você tem controle total do portfólio?', '¿Tienes control total del portfolio?')],
+          conferir: [FERR, L('Configurações › Pessoas (quem tem controle total).', 'Configuración › Personas (quién tiene control total).')],
+          frase: L('O botão fica apagado quando a pessoa não tem permissão para assinar. Peça a quem tem controle total do portfólio para assinar, ou para dar esse acesso.', 'El botón queda apagado cuando la persona no tiene permiso para suscribirse. Pide a quien tiene control total del portfolio que se suscriba, o que te dé ese acceso.'),
+          passos: [L('Peça a mensagem exata.', 'Pide el mensaje exacto.'), L('Confira o acesso em Configurações › Pessoas.', 'Revisa el acceso en Configuración › Personas.')],
+          encaminhar: L('Dar acesso é decisão de quem administra o portfólio.', 'Dar acceso es decisión de quien administra el portfolio.')
         }
       },
       {
-        id: '05', min: 8, status: 'pronta',
-        titulo: L('Nome do perfil verificado', 'Nombre del perfil verificado'),
-        antes: L('A Marina quer trocar o nome do perfil para o nome de marca.', 'Marina quiere cambiar el nombre del perfil por el nombre de marca.'),
-        fontes: [
-          { url: 'https://www.facebook.com/business/help/635089366197498', titulo: L('Requisitos relacionados a nomes de perfil para assinaturas do Meta Verified para empresas', 'Requisitos de nombres de perfil para las suscripciones de Meta Verified para empresas'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/1163092631724169', titulo: L('Como atualizar as informações do perfil da sua empresa no Meta Verified', 'Cómo actualizar la información del perfil de tu empresa en Meta Verified'), conferido: '25/10/2026' }
-        ],
-        gancho: L('Cancelar e revogar parecem iguais, mas não são. E quem tem assinatura ativa tem um suporte especial.', 'Cancelar y revocar parecen iguales, pero no lo son. Y quien tiene una suscripción activa tiene una asistencia especial.'),
-        objetivo: L('Saber o que a Meta aceita e recusa ao trocar o nome do perfil e os limites de edição.', 'Saber qué acepta y rechaza Meta al cambiar el nombre del perfil y los límites de edición.'),
+        id: '05', min: 7, status: 'pronta',
+        titulo: L('Nome do perfil com selo', 'Nombre del perfil con insignia'),
+        antes: L('A Lojinha tem selo e a Marina quer mudar o nome do perfil para uma promoção.', 'La Lojinha tiene insignia y Marina quiere cambiar el nombre del perfil para una promoción.'),
+        fontes: [F_NOME, F_TIRAR],
+        gancho: L('E se a cliente quiser cancelar?', '¿Y si la clienta quiere cancelar?'),
+        objetivo: L('Explicar as regras de nome para quem tem o selo e o caminho quando a mudança é bloqueada.', 'Explicar las reglas de nombre para quien tiene la insignia y el camino cuando el cambio se bloquea.'),
         entender: {
           dialogo: [
-            ['marina', L('Quero mudar o nome para “Brigadeiros Gourmet 2000”. Por que foi recusado? 😤', 'Quiero cambiar el nombre a “Brigadeiros Gourmet 2000”. ¿Por qué fue rechazado? 😤')],
-            ['rafa', L('O nome do perfil verificado deve ser semelhante ao nome civil no portfólio e ao nome usado no cadastro. Nome fantasia ou de marca muito diferente pode ser rejeitado. E símbolos, números e repetição de letras não são aceitos.', 'El nombre del perfil verificado debe ser parecido al nombre legal en el portfolio y al nombre usado en el registro. Un nombre de fantasía o de marca muy distinto puede ser rechazado. Y no se aceptan símbolos, números ni repetición de letras.')],
-            ['marina', L('Então o que aceitam?', '¿Entonces qué aceptan?')],
-            ['rafa', L('Abreviações (Sid para Siddharth), variações de grafia, iniciais e nomes compostos. Se o novo nome for muito diferente, dá para atualizar o nome civil no portfólio para ajudar.', 'Abreviaturas (Sid por Siddharth), variantes de ortografía, iniciales y nombres compuestos. Si el nombre nuevo es muy distinto, se puede actualizar el nombre legal en el portfolio para ayudar.')],
-            ['pixel', L('Limites: no Instagram, 2 mudanças a cada 14 dias; no Facebook, 1 a cada 60 dias. A análise leva até 3 dias, e enquanto ela está pendente talvez não dê para editar de novo.', 'Límites: en Instagram, 2 cambios cada 14 días; en Facebook, 1 cada 60 días. La revisión tarda hasta 3 días, y mientras está pendiente quizás no se pueda editar de nuevo.')]
+            ['marina', L('Quero o nome “Lojinha da Marina 🔥 Promo” por uma semana. Pode? 🙏', 'Quiero el nombre “Lojinha da Marina 🔥 Promo” por una semana. ¿Se puede? 🙏')],
+            ['rafa', L('Com o selo, o nome precisa continuar batendo com o que foi verificado, e a Meta analisa cada mudança antes de aparecer, em até três dias.', 'Con la insignia, el nombre tiene que seguir coincidiendo con lo verificado, y Meta revisa cada cambio antes de que aparezca, en hasta tres días.')],
+            ['rafa', L('Também há limite: no Instagram, duas mudanças de nome a cada 14 dias; no Facebook, uma a cada 60 dias.', 'También hay límite: en Instagram, dos cambios de nombre cada 14 días; en Facebook, uno cada 60 días.')],
+            ['pixel', L('Se precisar mudar mesmo assim, dá para remover o selo sem cancelar a assinatura: Central de Contas › Assinaturas › a assinatura › selo › Remover. Depois, pode verificar de novo.', 'Si hace falta cambiar igual, se puede quitar la insignia sin cancelar la suscripción: Centro de cuentas › Suscripciones › la suscripción › insignia › Quitar. Después, se puede verificar de nuevo.')]
           ],
           pontos: [
-            L('<b>Nome parecido</b> com o nome civil e com o do cadastro.', '<b>Nombre parecido</b> al nombre legal y al del registro.'),
-            L('<b>Não aceitos:</b> símbolos, números, repetição, ofensas, alguns títulos.', '<b>No se aceptan:</b> símbolos, números, repetición, ofensas, algunos títulos.'),
-            L('<b>Limites:</b> Instagram 2 vezes a cada 14 dias; Facebook 1 vez a cada 60 dias.', '<b>Límites:</b> Instagram 2 veces cada 14 días; Facebook 1 vez cada 60 días.')
+            L('<b>Cada mudança</b> passa por análise (até 3 dias) e precisa bater com a verificação.', '<b>Cada cambio</b> pasa por revisión (hasta 3 días) y debe coincidir con la verificación.'),
+            L('<b>Limites:</b> Instagram 2 a cada 14 dias; Facebook 1 a cada 60 dias.', '<b>Límites:</b> Instagram 2 cada 14 días; Facebook 1 cada 60 días.'),
+            L('<b>Remover o selo</b> não cancela a assinatura e libera a edição.', '<b>Quitar la insignia</b> no cancela la suscripción y libera la edición.')
           ],
           notas: NOTA
         },
         ferramenta: 'nome-perfil-verified',
-        praticar: {
-          texto: L('No simulador, o Pixel te guia por um nome recusado (“Brigadeiros Gourmet 2000”) e por um aprovado (“Marina Silva”).', 'En el simulador, el Pixel te guía por un nombre rechazado (“Brigadeiros Gourmet 2000”) y por uno aprobado (“Marina Silva”).'),
-          tour: 'nome-perfil', pagina: 'meta-verified.html?ativa=1'
-        },
         atender: {
-          cena: L('Eu pago o Meta Verified e não posso nem escolher o nome da minha marca? Isso é um absurdo! 😠', '¿Pago Meta Verified y ni siquiera puedo elegir el nombre de mi marca? ¡Es un absurdo! 😠'),
+          cena: L('Tentei mudar o nome do perfil com selo e não deixa. Vou ter que cancelar tudo? 😩', 'Intenté cambiar el nombre del perfil con insignia y no me deja. ¿Tengo que cancelar todo? 😩'),
           pergunta: PERG,
           opcoes: [
-            { certa: false, txt: { pt: "“Pague o plano maior, que nele o nome da marca é liberado mesmo sendo diferente do nome civil do portfólio.”", es: "“Paga el plan mayor, que en él se habilita el nombre de la marca aunque sea distinto del nombre legal del portfolio.”" }, fb: { pt: "Plano maior não muda a regra.", es: "Un plan mayor no cambia la regla." } },
-            { certa: false, txt: { pt: "“Coloque o nome da marca com símbolos ou espaços no meio: assim a análise não compara e o nome passa.”", es: "“Pon el nombre de la marca con símbolos o espacios en medio: así la revisión no compara y el nombre pasa.”" }, fb: { pt: "Símbolos não são aceitos, e burlar a análise pode gerar ação na conta.", es: "Los símbolos no se aceptan, y burlar la revisión puede generar acciones en la cuenta." } },
-            { certa: true, txt: { pt: "“Entendo. Para manter a verificação, o nome precisa ser parecido com o nome civil. Vamos tentar uma variação.”", es: "“Entiendo. Para mantener la verificación, el nombre tiene que parecerse al nombre legal. Probemos una variación.”" }, fb: { pt: "Isso! Acolheu e ofereceu as saídas reais (variação ou atualizar o nome civil).", es: "¡Eso! Acogiste y ofreciste las salidas reales (variación o actualizar el nombre legal)." } },
-            { certa: false, txt: { pt: "“Com o Meta Verified não dá para usar nome de marca. Cancele a assinatura e volte quando quiser trocar o nome.”", es: "“Con Meta Verified no se puede usar nombre de marca. Cancela la suscripción y vuelve cuando quieras cambiar el nombre.”" }, fb: { pt: "Há saídas: variação semelhante ou atualizar o nome civil.", es: "Hay salidas: una variación parecida o actualizar el nombre legal." } }
-          ]
+            op(false, 'Vai sim: com selo o nome fica travado e só cancelando a assinatura você consegue mudar.', 'Sí: con insignia el nombre queda bloqueado y solo cancelando la suscripción lo puedes cambiar.', 'Dá para remover o selo sem cancelar.', 'Se puede quitar la insignia sin cancelar.'),
+            op(false, 'Crie um perfil novo com o nome da promoção e passe os seguidores para ele depois.', 'Crea un perfil nuevo con el nombre de la promoción y pasa los seguidores a él después.', 'Seguidores não passam de um perfil para outro.', 'Los seguidores no pasan de un perfil a otro.'),
+            op(true, 'Não precisa cancelar: veja o limite, a análise pendente, ou remova o selo.', 'No hace falta cancelar: mira el límite, la revisión pendiente, o quita la insignia.', 'Isso! Conferiu as causas e deu a saída oficial.', '¡Eso! Revisaste las causas y diste la salida oficial.'),
+            op(false, 'Mande o nome novo para o suporte que eles trocam na hora, sem análise e sem limite.', 'Manda el nombre nuevo al soporte que lo cambian al instante, sin revisión y sin límite.', 'Toda mudança passa por análise.', 'Todo cambio pasa por revisión.')
+          ],
+          mais: []
         },
         cola: {
-          perguntas: [L('Qual é o nome civil no portfólio e qual foi o nome do cadastro?', '¿Cuál es el nombre legal en el portfolio y cuál fue el nombre del registro?'), L('Já foram usadas as edições permitidas neste período?', '¿Ya se usaron las ediciones permitidas en este período?')],
-          conferir: [L('Assinatura › Atualizar informações do perfil.', 'Suscripción › Actualizar información del perfil.'), L('Nome civil no portfólio (Meta Business Suite).', 'Nombre legal en el portfolio (Meta Business Suite).')],
-          frase: L('O nome do perfil verificado precisa ser semelhante ao nome civil no portfólio e ao nome do cadastro. Vamos escolher uma variação que respeite isso.', 'El nombre del perfil verificado debe ser parecido al nombre legal en el portfolio y al nombre del registro. Elijamos una variación que lo respete.'),
-          passos: [L('Compare o nome desejado com o nome civil.', 'Compara el nombre deseado con el nombre legal.'), L('Evite símbolos e números e respeite os limites de edição.', 'Evita símbolos y números y respeta los límites de edición.')],
-          encaminhar: L('Se o nome for rejeitado várias vezes, oriente o cliente a revisar o nome civil no portfólio e a seguir as mensagens da conta.', 'Si el nombre es rechazado varias veces, orienta al cliente a revisar el nombre legal en el portfolio y a seguir los mensajes de la cuenta.')
+          perguntas: [L('Quando foi a última mudança de nome?', '¿Cuándo fue el último cambio de nombre?'), L('Há uma mudança em análise?', '¿Hay un cambio en revisión?')],
+          conferir: [L('Central de Contas › Assinaturas (no app do Facebook ou do Instagram).', 'Centro de cuentas › Suscripciones (en la app de Facebook o Instagram).')],
+          frase: L('Com o selo, o nome passa por análise e tem limite de mudanças. Se precisar mudar fora disso, dá para remover o selo sem cancelar a assinatura e verificar de novo depois.', 'Con la insignia, el nombre pasa por revisión y tiene límite de cambios. Si hace falta cambiar fuera de eso, se puede quitar la insignia sin cancelar la suscripción y verificar de nuevo después.'),
+          passos: [L('Confira limite e análise pendente.', 'Revisa límite y revisión pendiente.'), L('Explique a opção de remover o selo.', 'Explica la opción de quitar la insignia.')],
+          encaminhar: L('Remover o selo tira também a proteção contra falsificação: deixe a decisão com a cliente.', 'Quitar la insignia también quita la protección contra suplantación: deja la decisión a la clienta.')
         }
       },
       {
-        id: '06', min: 9, status: 'pronta',
-        titulo: L('Cancelar, revogada e suporte', 'Cancelar, revocada y asistencia'),
-        antes: L('A Marina pensa em cancelar. E uma amiga teve a assinatura revogada.', 'Marina piensa en cancelar. Y una amiga tuvo la suscripción revocada.'),
-        fontes: [
-          { url: 'https://www.facebook.com/business/help/268488269303385', titulo: L('Como cancelar a assinatura do Meta Verified para sua empresa', 'Cómo cancelar la suscripción de Meta Verified para tu empresa'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/1008321637512283', titulo: L('Assinaturas do Meta Verified para empresas revogadas', 'Suscripciones de Meta Verified para empresas revocadas'), conferido: '25/10/2026' },
-          { url: 'https://www.facebook.com/business/help/832027668252804', titulo: L('Como entrar em contato com o suporte do Meta Verified para sua empresa verificada', 'Cómo contactar a la asistencia de Meta Verified para tu empresa verificada'), conferido: '25/10/2026' }
-        ],
-        gancho: L('“E se as pessoas pudessem ver as canecas numa vitrine dentro do Instagram e do Facebook?” Próximo módulo: Introdução ao Commerce.', '“¿Y si la gente pudiera ver las tazas en una vitrina dentro de Instagram y Facebook?” Próximo módulo: Introducción a Commerce.'),
-        objetivo: L('Explicar as regras de cancelamento, listar causas de revogação e indicar o suporte de cada plano.', 'Explicar las reglas de cancelación, listar causas de revocación e indicar la asistencia de cada plan.'),
+        id: '06', min: 8, status: 'pronta',
+        titulo: L('Cancelar ou revogada', 'Cancelar o revocada'),
+        antes: L('Uma cliente da Marina diz que o selo sumiu de uma hora para outra.', 'Una clienta de Marina dice que la insignia desapareció de un momento a otro.'),
+        fontes: [F_REVOG, F_COBRA, F_TIRAR],
+        gancho: null,
+        objetivo: L('Diferenciar cancelamento de revogação e saber o que fazer em cada caso.', 'Diferenciar cancelación de revocación y saber qué hacer en cada caso.'),
         entender: {
           dialogo: [
-            ['marina', L('Se eu cancelar, perco o selo na hora? 😟', 'Si cancelo, ¿pierdo la insignia al instante? 😟')],
-            ['rafa', L('Não: continua ativa até o fim do ciclo. Para não pagar o ciclo seguinte, cancele pelo menos 24 horas antes da próxima cobrança. Não há reembolso nem crédito parcial. No fim do ciclo, todos os ativos perdem a verificação e o suporte acaba, inclusive casos abertos.', 'No: sigue activa hasta el final del ciclo. Para no pagar el ciclo siguiente, cancela al menos 24 horas antes del próximo cobro. No hay reembolso ni crédito parcial. Al final del ciclo, todos los activos pierden la verificación y la asistencia termina, incluidos los casos abiertos.')],
-            ['marina', L('E onde eu cancelo?', '¿Y dónde cancelo?')],
-            ['rafa', L('Onde você comprou: Meta Business Suite no computador, App Store da Apple ou Google Play, com o acesso certo (controle total do portfólio, ou a conta Apple/Google da compra).', 'Donde compraste: Meta Business Suite en la computadora, App Store de Apple o Google Play, con el acceso correcto (control total del portfolio, o la cuenta de Apple/Google de la compra).')],
-            ['pixel', L('Já a revogação tira os benefícios na hora. Causas comuns: pagamento que falhou sem forma reserva, verificação não aprovada, violação de políticas, exclusão da conta ou mudança de plano direto na loja de apps. O suporte avançado (chat e e-mail) vale só para assinatura ativa.', 'En cambio, la revocación quita los beneficios al instante. Causas comunes: pago que falló sin forma de respaldo, verificación no aprobada, infracción de políticas, eliminación de la cuenta o cambio de plan directo en la tienda de apps. La asistencia mejorada (chat y correo) vale solo para suscripción activa.')]
+            ['marina', L('Uma cliente cancelou e o selo continua lá. Outra não cancelou e o selo sumiu. Como assim? 🤯', 'Una clienta canceló y la insignia sigue ahí. Otra no canceló y la insignia desapareció. ¿Cómo es eso? 🤯')],
+            ['rafa', L('Quem cancela continua com a assinatura até o fim do ciclo de cobrança. Para não pagar o próximo mês, cancele antes de o período atual terminar.', 'Quien cancela sigue con la suscripción hasta el fin del ciclo de cobro. Para no pagar el mes siguiente, cancela antes de que termine el período actual.')],
+            ['rafa', L('Revogada é diferente: a Meta tira na hora. Motivos: pagamento falhou sem forma reserva, violação de políticas, conta excluída ou desativada por mais de 30 dias, troca para um tipo de conta que não se qualifica.', 'Revocada es diferente: Meta la quita al instante. Motivos: el pago falló sin método de respaldo, violación de políticas, cuenta eliminada o desactivada por más de 30 días, cambio a un tipo de cuenta que no califica.')],
+            ['pixel', L('Assinou pela App Store ou Google Play? Cancela pela loja. E mexer na assinatura pela loja em vez do app da Meta também pode levar à revogação.', '¿Se suscribió por App Store o Google Play? Se cancela por la tienda. Y cambiar la suscripción por la tienda en vez de la app de Meta también puede llevar a la revocación.')]
           ],
           pontos: [
-            L('<b>Cancelar:</b> ativa até o fim do ciclo, cancelar 24 h antes, sem reembolso.', '<b>Cancelar:</b> activa hasta el final del ciclo, cancelar 24 h antes, sin reembolso.'),
-            L('<b>Revogada:</b> perde tudo na hora; causas comuns na lista da Central de Ajuda.', '<b>Revocada:</b> pierde todo al instante; causas comunes en la lista del Centro de ayuda.'),
-            L('<b>Com WhatsApp, Facebook e Instagram juntos:</b> pedido de associação recusado, troca de número do WhatsApp ou Instagram virando conta pessoal também cancelam. <a href="faq.html#faq-verified">Detalhes no FAQ ›</a>', '<b>Con WhatsApp, Facebook e Instagram juntos:</b> solicitud de asociación rechazada, cambio de número de WhatsApp o Instagram que pasa a cuenta personal también cancelan. <a href="faq.html#faq-verified">Detalles en las FAQ ›</a>'),
-            L('<b>Suporte:</b> chat e e-mail em todos os planos; mais em Plus, Premium e Max.', '<b>Asistencia:</b> chat y correo en todos los planes; más en Plus, Premium y Max.')
+            L('<b>Cancelar:</b> vale até o fim do ciclo; cancele antes de ele terminar.', '<b>Cancelar:</b> vale hasta el fin del ciclo; cancela antes de que termine.'),
+            L('<b>Revogada:</b> a Meta tira na hora (pagamento, políticas, conta).', '<b>Revocada:</b> Meta la quita al instante (pago, políticas, cuenta).'),
+            L('<b>Prevenção:</b> forma de pagamento reserva.', '<b>Prevención:</b> método de pago de respaldo.')
           ],
           notas: NOTA
         },
         ferramenta: 'cancelar-verified',
-        praticar: {
-          texto: L('No simulador, o Pixel te guia para cancelar uma assinatura ativa, lendo cada aviso antes de confirmar.', 'En el simulador, el Pixel te guía para cancelar una suscripción activa, leyendo cada aviso antes de confirmar.'),
-          tour: 'cancelar-assinatura', pagina: 'meta-verified.html?ativa=1'
-        },
         atender: {
-          cena: L('Minha assinatura foi revogada do nada! Quero o dinheiro de volta e o selo agora! 😡', '¡Mi suscripción fue revocada de la nada! ¡Quiero mi dinero de vuelta y la insignia ahora! 😡'),
+          cena: L('Meu selo sumiu hoje e eu não cancelei nada! O que aconteceu? 😱', '¡Mi insignia desapareció hoy y no cancelé nada! ¿Qué pasó? 😱'),
           pergunta: PERG,
           opcoes: [
-            { certa: false, txt: { pt: "“Foi erro do sistema de cobrança. Vou reativar a assinatura agora mesmo e o selo volta ainda hoje no perfil.”", es: "“Fue un error del sistema de cobro. Voy a reactivar la suscripción ahora mismo y la insignia vuelve hoy al perfil.”" }, fb: { pt: "Não dá para reativar por fora; primeiro descubra a causa.", es: "No se puede reactivar por fuera; primero hay que descubrir la causa." } },
-            { certa: true, txt: { pt: "“Sinto muito. Revogação tem causa: pagamento que falhou, verificação ou perfil reprovado, ou política.”", es: "“Lo siento. La revocación tiene causa: pago fallido, verificación o perfil rechazado, o políticas. Veamos cuál.”" }, fb: { pt: "Isso! Acolheu, deu as causas reais e o que olhar.", es: "¡Eso! Acogiste, diste las causas reales y qué mirar." } },
-            { certa: false, txt: { pt: "“Revogação só acontece quando a empresa viola as regras, então a culpa foi sua. Não há o que fazer agora.”", es: "“La revocación solo pasa cuando la empresa viola las reglas, así que fue tu culpa. No hay nada que hacer ahora.”" }, fb: { pt: "Pode ser outra causa; não acuse sem olhar.", es: "Puede ser otra causa; no acuses sin revisar." } },
-            { certa: false, txt: { pt: "“Fique tranquila: eu já registrei aqui e o reembolso total cai no seu cartão até o fim do dia de hoje.”", es: "“Tranquila: ya lo registré y el reembolso total llega a tu tarjeta antes del final del día de hoy.”" }, fb: { pt: "Não prometa o que não depende de você.", es: "No prometas lo que no depende de ti." } }
-          ]
+            op(true, 'Pode ter sido revogada: veja os avisos da Meta; o comum é falha no pagamento.', 'Puede ser una revocación: mira los avisos de Meta; lo común es falla de pago.', 'Isso! Diferenciou revogação de cancelamento e foi à causa mais comum.', '¡Eso! Diferenciaste revocación de cancelación y fuiste a la causa más común.'),
+            op(false, 'Selo some sozinho todo mês; é só esperar a renovação que ele volta amanhã.', 'La insignia desaparece sola cada mes; solo espera la renovación que vuelve mañana.', 'O selo não some todo mês.', 'La insignia no desaparece cada mes.'),
+            op(false, 'Você deve ter cancelado sem perceber; assine de novo agora que volta igual.', 'Debes haber cancelado sin darte cuenta; suscríbete de nuevo ahora que vuelve igual.', 'Cancelar mantém o selo até o fim do ciclo; sumir na hora indica revogação.', 'Cancelar mantiene la insignia hasta el fin del ciclo; desaparecer al instante indica revocación.'),
+            op(false, 'Isso é falsificação de identidade: denuncie seu próprio perfil para a Meta analisar.', 'Eso es suplantación de identidad: denuncia tu propio perfil para que Meta lo revise.', 'Não é falsificação: veja os avisos da assinatura.', 'No es suplantación: mira los avisos de la suscripción.')
+          ],
+          mais: []
         },
         cola: {
-          perguntas: [L('Foi cancelamento ou revogação? Onde a assinatura foi comprada?', '¿Fue cancelación o revocación? ¿Dónde se compró la suscripción?'), L('Houve falha de pagamento, mudança de conta ou aviso de política?', '¿Hubo falla de pago, cambio de cuenta o aviso de política?')],
-          conferir: [L('Assinatura › status e histórico de pagamentos.', 'Suscripción › estado e historial de pagos.'), L('Central de Ajuda: Assinaturas do Meta Verified para empresas revogadas.', 'Centro de ayuda: Suscripciones de Meta Verified para empresas revocadas.')],
-          frase: L('Cancelar mantém os benefícios até o fim do ciclo; revogar tira tudo na hora e costuma ter uma causa. Vamos ver qual foi no seu caso.', 'Cancelar mantiene los beneficios hasta el final del ciclo; revocar quita todo al instante y suele tener una causa. Veamos cuál fue en tu caso.'),
-          passos: [L('Veja o status e o histórico de pagamentos.', 'Mira el estado y el historial de pagos.'), L('Compare com a lista de causas de revogação.', 'Compara con la lista de causas de revocación.')],
-          encaminhar: L('Reembolsos e casos de revogação são analisados pela Meta. Oriente o cliente a usar o suporte do Meta Verified pelos canais da conta e não prometa valores.', 'Los reembolsos y los casos de revocación los analiza Meta. Orienta al cliente a usar la asistencia de Meta Verified por los canales de la cuenta y no prometas valores.')
+          perguntas: [L('Chegou email ou aviso da Meta?', '¿Llegó un correo o aviso de Meta?'), L('O pagamento passou neste mês?', '¿El pago pasó este mes?')],
+          conferir: [L('Central de Contas › Assinaturas e a forma de pagamento.', 'Centro de cuentas › Suscripciones y el método de pago.')],
+          frase: L('Cancelar mantém a assinatura até o fim do ciclo; revogação tira na hora. Vamos ver os avisos da Meta e o pagamento.', 'Cancelar mantiene la suscripción hasta el fin del ciclo; la revocación la quita al instante. Veamos los avisos de Meta y el pago.'),
+          passos: [L('Peça o aviso que a Meta mandou.', 'Pide el aviso que mandó Meta.'), L('Confira o pagamento e a forma reserva.', 'Revisa el pago y el método de respaldo.')],
+          encaminhar: L('Reembolso e revisão de revogação são com a Meta (ou com a loja de apps, se a compra foi por lá).', 'Reembolso y revisión de revocación son con Meta (o con la tienda de apps, si la compra fue por ahí).')
         }
       }
     ];

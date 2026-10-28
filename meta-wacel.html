@@ -1,51 +1,54 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<script src="assets/js/modo-publico.js?v=20261028152000"></script>
+<script src="assets/js/modo-publico.js?v=20261028161000"></script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Simulador · WhatsApp Business (problemas comuns)</title>
 <meta name="description" content="Simulador de treinamento do WhatsApp Business no celular da Marina e das Configurações do portfólio, para as aulas de problemas comuns. Nada é enviado ao WhatsApp."/>
 <meta name="robots" content="noindex"/>
 <link rel="icon" href="assets/img/caneca_01.png"/>
-<link rel="stylesheet" href="assets/css/sim.css?v=20261028152000"/>
-<link rel="stylesheet" href="assets/wa/cel.css?v=20261028152000"/>
-<link rel="stylesheet" href="assets/wa/meta.css?v=20261028152000"/>
+<link rel="stylesheet" href="assets/css/sim.css?v=20261028161000"/>
+<link rel="stylesheet" href="assets/wa/cel.css?v=20261028161000"/>
+<link rel="stylesheet" href="assets/wa/meta.css?v=20261028161000"/>
 <style>
   .wc{padding:46px 16px 24px;max-width:1280px;margin:0 auto}
   .wc-palco{display:grid;gap:22px;justify-content:center;grid-template-columns:minmax(0,380px)}
-  .wc-palco.dois{grid-template-columns:minmax(0,380px) minmax(0,1fr)}
+  /* uma tela por vez (28/10/2026, pedido do responsável): primeiro o celular, depois o computador, conforme o passo */
+  .wc-palco.dois{grid-template-columns:minmax(0,1100px)}
+  .wc-palco.dois .wc-lugar:not(.ativo){display:none}
+  .wc-palco.dois .wc-lugar[data-l=cel]{width:min(380px,100%);margin:0 auto}
+  .wc-troca{display:flex;justify-content:center;gap:8px;margin:0 0 14px}.wc-troca button{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:6px 14px;font:700 13px inherit;cursor:pointer}.wc-troca button.on{background:var(--ink);color:#fff}
   .wc-palco.so-meta{grid-template-columns:minmax(0,1100px)}
   .wc-lugar h3{margin:0 0 8px;font-size:14px;color:var(--ink2)}
   .wc .conferido{max-width:900px;margin:14px auto 0}
-  @media (max-width:980px){.wc-palco.dois{grid-template-columns:minmax(0,1fr)}.wc-palco.dois .wc-lugar:not(.ativo){display:none}}
 </style>
-<script src="assets/js/personagens.js?v=20261028152000"></script>
-<script src="assets/js/porta.js?v=20261028152000"></script>
-<script src="assets/js/tour.js?v=20261028152000"></script>
-<script src="assets/js/sim-estavel.js?v=20261028152000"></script>
+<script src="assets/js/personagens.js?v=20261028161000"></script>
+<script src="assets/js/porta.js?v=20261028161000"></script>
+<script src="assets/js/tour.js?v=20261028161000"></script>
+<script src="assets/js/sim-estavel.js?v=20261028161000"></script>
 </head>
 <body>
 <div id="app"></div>
-<script src="assets/wa/nucleo.js?v=20261028152000"></script>
-<script src="assets/wa/cel.js?v=20261028152000"></script>
-<script src="assets/wa/cel-telas.js?v=20261028152000"></script>
-<script src="assets/wa/meta.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/trilha.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a01.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a02.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a03.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a04.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a05.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a06.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a07.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a08.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a09.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a10.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a11.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a12.js?v=20261028152000"></script>
-<script src="assets/wa/aulas/a13.js?v=20261028152000"></script><script src="assets/wa/aulas/a14.js?v=20261028152000"></script>
-<script src="assets/wa/pratica-wa.js?v=20261028152000"></script>
-<script src="assets/js/trilho.js?v=20261028152000"></script>
+<script src="assets/wa/nucleo.js?v=20261028161000"></script>
+<script src="assets/wa/cel.js?v=20261028161000"></script>
+<script src="assets/wa/cel-telas.js?v=20261028161000"></script>
+<script src="assets/wa/meta.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/trilha.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a01.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a02.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a03.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a04.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a05.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a06.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a07.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a08.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a09.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a10.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a11.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a12.js?v=20261028161000"></script>
+<script src="assets/wa/aulas/a13.js?v=20261028161000"></script><script src="assets/wa/aulas/a14.js?v=20261028161000"></script>
+<script src="assets/wa/pratica-wa.js?v=20261028161000"></script>
+<script src="assets/js/trilho.js?v=20261028161000"></script>
 </body>
 </html>
