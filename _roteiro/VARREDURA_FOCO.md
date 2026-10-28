@@ -86,7 +86,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 - Os 3 que pararam são limitação do robô, não da aula: Relatórios 06 (o passo pede para digitar a conta do ROAS), WhatsApp 01 (escolher a categoria) e WhatsApp 04 (digitar 39.90). Os dois do WhatsApp passaram no teste anterior com o robô adaptado.
 - Erros de conteúdo checados por programa: nenhuma ferramenta, página ou tutorial inexistente; nenhum texto sem espanhol.
 
-## 5. Tutoriais começando do zero (26/10/2026, pedido do André)
+## 5. Tutoriais começando do zero (26/10/2026, pedido do responsável)
 - Os 116 tutoriais da Foco rodados com o navegador limpo antes de cada um (sem nada salvo de módulos anteriores, só o login).
 - **Corrigido:** Pixel avançado 05 e 06 e iOS 01 (e os casos do Diagnóstico que abrem o Pixel) travavam em “O Pixel do cliente” se o aluno não tivesse criado o Pixel na aula 02: agora o Pixel do treino é criado sozinho. O texto do passo não depende mais do nome que o aluno deu.
 - **Corrigido (bug desde 14/10):** na prática “print do Pixel”, responder a pergunta mostrava “Primeiro leia e clique em Próximo” com o Próximo apagado — o aluno ficava preso. Vale para todo passo que espera uma resposta dentro do destaque.
@@ -94,7 +94,7 @@ Legenda: 👀 dá para ver só olhando · ✋ precisa criar/mudar algo (pedir an
 - Teste do “Eventos de Teste” abre a loja em outra aba: no navegador de teste ela substituía a página; para o aluno abre aba nova (normal).
 
 ## 6. Com a autorização de mexer sem gastar (26/10/2026)
-- **Dois fatores:** na tela real a escolha vale na hora, sem janela de confirmação (testado e voltado para “Todos”). Simulador, tutorial e Divergência ajustados. Bug achado pelo André (escolher outra opção travava o tutorial) corrigido.
+- **Dois fatores:** na tela real a escolha vale na hora, sem janela de confirmação (testado e voltado para “Todos”). Simulador, tutorial e Divergência ajustados. Bug achado pelo responsável (escolher outra opção travava o tutorial) corrigido.
 - **Feed 02:** etapa “Corte” real (Quadrado/Vertical/Horizontal, Original ou 1:1/9:16/1,91:1, aviso de corte, Cortar/Substituir, “Cortar e expandir” com Meta AI) e “Personalizar” dos aprimoramentos (página própria com chave e opções) — simulador ajustado. No rascunho da conta de aula, a Fonte do criativo ficou em “Upload manual” (antes “Mídia do produto”).
 - **Instagram 05:** lista do Perfil do Instagram (busca + ID) e os 4 grupos da prévia (9 posicionamentos em Feeds) — simulador e aula.
 - **Públicos 03/05:** criei um semelhante de verdade com a fonte “Abaixo de 1.000” (numa conta de anúncios de teste, de graça): foi **criado** (“Em preenchimento”). A Central: mínimo de 100 pessoas na fonte (ideal 1.000–5.000); se ficar pequena demais, status “Público não criado”. Nessa conta o formulário ainda pede localização; na conta de aula não. Simulador, tutoriais, aulas e quiz refeitos.

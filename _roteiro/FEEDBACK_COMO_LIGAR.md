@@ -1,6 +1,6 @@
 # Aba Feedback (ligada em 25/10/2026)
 
-A aba **Feedback** manda as sugestões para um **Google Forms** do André ("Feedback · Lojinha da Marina").
+A aba **Feedback** manda as sugestões para um **Google Forms** do responsável ("Feedback · Lojinha da Marina").
 Ninguém precisa entrar com conta: o formulário não coleta e-mail e não limita a uma resposta; o nome é opcional.
 
 - O site envia direto para o formulário (`assets/js/feedback-config.js`: o código do formulário e o `entry.` de cada pergunta).

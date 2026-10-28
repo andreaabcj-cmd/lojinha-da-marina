@@ -1,4 +1,4 @@
-# Esqueletos de roteiro — fases 2 e 3 (rascunho para revisar com o André)
+# Esqueletos de roteiro — fases 2 e 3 (rascunho para revisar com o responsável)
 
 Feito na madrugada de 15/10/2026 a partir das telas reais (`telas_gerenciador_anuncios.md` e `amostras_meta.md`).
 **Nada disto está construído.** Cada aula segue o formato de sempre: onde paramos · Entender (chat) · Ver de perto ·
@@ -35,7 +35,7 @@ nas contas de aula.
 4. **Catálogo e Pixel falando a mesma língua** — Identificação do conteúdo (CANECA_01) = content_ids do Pixel; Identificação do grupo para variantes (CAMISETA_02 · 3 variantes); aba Eventos do catálogo.
 5. **"Meu produto não aparece"** — ★ MOLETOM_01 "Indisponível" (estoque 0 no feed); Fontes de dados "Tudo certo"/erros; aba Ações.
 
-### Módulo: Anúncios no Feed (planejado — a definir com o André; nenhuma tela específica coletada ainda)
+### Módulo: Anúncios no Feed (planejado — a definir com o responsável; nenhuma tela específica coletada ainda)
 
 ---
 
@@ -64,7 +64,7 @@ nas contas de aula.
 
 ---
 
-## Pendências que dependem do André
+## Pendências que dependem do responsável
 - Verificar o **telefone** da conta de anúncios de aula → libera anúncio de verdade (com os R$ 5) e as telas de anúncio rodando/edição/relatório com dados.
 - Trazer o Pixel para o portfólio da Lojinha (PC do trabalho) → ligar Pixel ao catálogo e às campanhas da conta de aula.
 - Aula 05 do Pixel: esperar o Diagnóstico reagir às 3 compras sem valor/moeda (15/10 madrugada).

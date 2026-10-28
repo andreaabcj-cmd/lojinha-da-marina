@@ -278,6 +278,7 @@
     'Bancos mais usados': 'Bancos más usados',
     'SELECIONE O APP DO BANCO': 'SELECCIONA LA APP DEL BANCO',
     'Copiar código Pix': 'Copiar código Pix',
+    'Apps recentes: fica de fora deste treino.': 'Apps recientes: queda fuera de esta práctica.', 'Voltar': 'Atrás', 'Tela inicial': 'Pantalla de inicio', 'Apps recentes': 'Apps recientes',
     'Fica de fora deste módulo.': 'Queda fuera de este módulo.',
     'Guia de negócios: “Adicione seu perfil ao guia para que os clientes descubram sua empresa”. Não seguimos: deixaria a empresa pública.': 'Directorio de empresas: “Agrega tu perfil al directorio para que los clientes descubran tu empresa”. No seguimos: dejaría la empresa pública.',
     'Compartilhar link curto via… (folha do celular). O link curto é criado sozinho.': 'Compartir enlace corto con… (hoja del celular). El enlace corto se crea solo.',

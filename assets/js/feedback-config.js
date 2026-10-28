@@ -1,4 +1,4 @@
-/* Recebimento de sugestões: Google Forms do André ("Feedback · Lojinha da Marina", criado em 25/10/2026).
+/* Recebimento de sugestões: Google Forms do responsável ("Feedback · Lojinha da Marina", criado em 25/10/2026).
    Qualquer pessoa com o link responde, sem login e sem coletar e-mail; as respostas ficam em Google Forms › Respostas.
    id = o código depois de /forms/d/e/ ; campos = os "entry." de cada pergunta. Sem id: modo teste (fica só no navegador). */
 window.FEEDBACK_FORM = {

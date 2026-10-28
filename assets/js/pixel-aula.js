@@ -182,7 +182,7 @@ var ui = (function(){
     return '<p class="ma-intro">🔍 <b>Lupa:</b> o que a extensão <b>Meta Ads Data Advisor</b> (antigo Pixel Helper) mostraria nesta página.</p>'+
       '<div class="ma-pixel"><div><b>Pixel '+esc(String(PID).replace(/^(\d{4})\d+(\d{4})$/,'$1…$2'))+'</b><span class="ma-st '+st[0]+'">'+st[1]+'</span></div><p class="ma-mut">'+st[2]+'</p></div>'+
       '<h4>Eventos desta página</h4>'+(linhas||'<p class="ma-mut">nenhum</p>')+(cat?'<h4>Catálogo</h4>'+cat:'')+amH}
-  // falhas do laboratório: nomes técnicos, sem analogias (pedido do André, 15/10)
+  // falhas do laboratório: nomes técnicos, sem analogias (pedido do responsável, 15/10)
   var LABS=[['mocaBonita','⛔','Purchase não dispara','O pedido é criado, mas o acionador da compra falha e o evento Purchase não é enviado.'],
     ['duplicado','👯','Pixel instalado duas vezes','O código-base está duas vezes na página: cada PageView é enviado em dobro.'],
     ['semPreco','💸','Purchase sem value e currency','A compra é enviada sem os parâmetros de valor e moeda.'],

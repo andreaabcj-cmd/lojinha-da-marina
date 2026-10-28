@@ -1,5 +1,5 @@
 /* Aba "Feedback": quem usa sugere aulas, ferramentas, melhorias ou avisa de erro. Sem login: o nome é opcional.
-   O envio vai para o Google Forms do André (window.FEEDBACK_FORM, em feedback-config.js); as respostas ele lê no próprio Forms.
+   O envio vai para o Google Forms do responsável (window.FEEDBACK_FORM, em feedback-config.js); as respostas ele lê no próprio Forms.
    O Google não devolve confirmação para outro site (modo no-cors): se a rede bloquear, a página oferece abrir o formulário direto.
    Sem formulário configurado: modo teste (tudo fica só no navegador, e a página avisa). */
 (function () {

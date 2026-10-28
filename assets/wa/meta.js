@@ -8,21 +8,27 @@
   var T = N.T, t = N.t;
   var META = window.META = { el: null, pag: 'carregando', sel: false, aba: 'numeros', pop: false };
 
+  // ícones iguais aos do simulador de portfólio da Lojinha (sim-portfolio.js)
+  function ic(d) { return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' + d + '</svg>' }
+  var IC = { info: ic('<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'), user: ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 5-6 8-6s7 1 8 6"/>'),
+    conta: ic('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/>'), dados: ic('<circle cx="12" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/>'),
+    escudo: ic('<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/>') };
+
   var MENU = [
-    ['solo', 'info', T('Informações da empresa', 'Información del negocio')],
-    ['g', T('Usuários', 'Usuarios')], ['i', 'pessoas', T('Pessoas', 'Personas')], ['i', 'parceiros', T('Parceiros', 'Socios')], ['i', 'sistema', T('Usuários do sistema', 'Usuarios del sistema')],
-    ['g', T('Contas', 'Cuentas')], ['i', 'paginas', T('Páginas', 'Páginas')], ['i', 'anuncios', T('Contas de anúncios', 'Cuentas publicitarias')],
+    ['solo', 'info', T('Informações da empresa', 'Información del negocio'), IC.info],
+    ['g', T('Usuários', 'Usuarios'), '', IC.user], ['i', 'pessoas', T('Pessoas', 'Personas')], ['i', 'parceiros', T('Parceiros', 'Socios')], ['i', 'sistema', T('Usuários do sistema', 'Usuarios del sistema')],
+    ['g', T('Contas', 'Cuentas'), '', IC.conta], ['i', 'paginas', T('Páginas', 'Páginas')], ['i', 'anuncios', T('Contas de anúncios', 'Cuentas publicitarias')],
     ['i', 'grupos', T('Grupos de ativos de negócios', 'Grupos de activos comerciales')], ['i', 'apps', T('Apps', 'Apps')], ['i', 'comerciais', T('Contas comerciais', 'Cuentas de comercio')],
     ['i', 'instagram', T('Perfis do Instagram', 'Perfiles de Instagram')], ['i', 'wa', T('Contas do WhatsApp', 'Cuentas de WhatsApp')], ['i', 'msg', T('Contas de mensagens', 'Cuentas de mensajes')],
     ['i', 'threads', T('Perfis do Threads', 'Perfiles de Threads')],
-    ['g', T('Fontes de dados', 'Orígenes de datos'), '⌄'], ['solo', 'pedidos', T('Pedidos', 'Solicitudes')], ['g', T('Integrações', 'Integraciones'), '⌄'],
-    ['solo', 'verified', T('Meta Verified', 'Meta Verified')]
+    ['g', T('Fontes de dados', 'Orígenes de datos'), '⌄', IC.dados], ['solo', 'pedidos', T('Pedidos', 'Solicitudes'), IC.info], ['g', T('Integrações', 'Integraciones'), '⌄', IC.dados],
+    ['solo', 'verified', T('Meta Verified', 'Meta Verified'), IC.escudo]
   ];
 
   function menu() {
     return '<nav class="mt-menu" data-t="mt-menu">' + MENU.map(function (m) {
-      if (m[0] === 'g') return '<div class="g">' + t(m[1]) + '<span>' + (m[2] || '⌃') + '</span></div>';
-      return '<button class="' + (m[0] === 'solo' ? 'solo ' : '') + (META.pag === m[1] ? 'on' : '') + '" data-mt="pag:' + m[1] + '" data-t="mt-menu-' + m[1] + '">' + t(m[2]) + '</button>';
+      if (m[0] === 'g') return '<div class="g">' + (m[3] || '') + '<span>' + t(m[1]) + '</span><span>' + (m[2] || '⌃') + '</span></div>';
+      return '<button class="' + (m[0] === 'solo' ? 'solo ' : '') + (META.pag === m[1] ? 'on' : '') + '" data-mt="pag:' + m[1] + '" data-t="mt-menu-' + m[1] + '">' + (m[3] || '') + t(m[2]) + '</button>';
     }).join('') + '</nav>';
   }
 
@@ -62,9 +68,9 @@
   META.render = function () {
     if (!META.el) return;
     var f = PAGS[META.pag] || PAGS.carregando;
-    META.el.innerHTML = '<div class="mt" data-t="mt"><div class="mt-cab"><span class="mt-logo">∞</span><h3>' + t(T('Configurações', 'Configuración')) + '</h3>' +
+    META.el.innerHTML = '<div class="mt" data-t="mt"><div class="mt-cab"><h3>' + t(T('Configurações', 'Configuración')) + '</h3>' +
       '<span class="mt-port"><span class="mt-l">L</span><span><b>Lojinha da Marina</b><small>' + t(T('Portfólio empresarial', 'Portfolio comercial')) + '</small></span></span>' +
-      '<span class="mt-tarefas">' + t(T('Tarefas', 'Tareas pendientes')) + '</span></div><div class="mt-corpo">' + menu() + '<div class="mt-cont">' + f() + '</div></div></div>';
+      '<span class="mt-tarefas">' + t(T('Tarefas', 'Tareas pendientes')) + '</span><span class="mt-av">M</span></div><div class="mt-corpo">' + menu() + '<div class="mt-cont">' + f() + '</div></div></div>';
   };
   META.por = function (o) { META.pag = 'carregando'; META.sel = false; META.aba = 'numeros'; META.pop = false; for (var k in (o || {})) META[k] = o[k]; META.render() };
   META.montar = function (el) { META.el = el; META.por() };

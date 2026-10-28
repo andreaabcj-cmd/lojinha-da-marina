@@ -1,6 +1,6 @@
 /* MODO PÚBLICO: no site publicado (GitHub Pages) as ABAS Simuladores e Laboratório ficam escondidas (menu do topo e cartões da página inicial).
    Nada mais muda: Módulos (com aulas, práticas guiadas e atendimento), Loja, Colas e as telas dos simuladores abertas pelas aulas continuam como estão.
-   - No computador do André (localhost) tudo aparece. Para ver o modo público no computador: ?publico=1 (e ?publico=0 volta ao normal).
+   - No computador do responsável (localhost) tudo aparece. Para ver o modo público no computador: ?publico=1 (e ?publico=0 volta ao normal).
    - Para mostrar as abas de novo no site publicado: ESCONDER_ABAS = false (ou apagar este arquivo e as linhas "modo-publico.js" dos HTML). */
 (function () {
   var ESCONDER_ABAS = true;
@@ -10,7 +10,7 @@
   var PUB = ESCONDER_ABAS && (!local || forca);
   var ABAS = /^(simuladores|laboratorio)\.html$/i;
   window.MODO_PUBLICO = PUB;
-  /* ENCOSTADOS (25/10/2026, pedido do André): Laboratório e Simuladores ficam escondidos também no computador dele, para o foco
+  /* ENCOSTADOS (25/10/2026, pedido do responsável): Laboratório e Simuladores ficam escondidos também no computador dele, para o foco
      ficar nos módulos. Só a ferramenta "Código base explicado" continua aberta. As telas de simulador abertas pelas práticas das
      aulas continuam funcionando. Para trazer de volta: ENCOSTADOS = false. */
   var ENCOSTADOS = true, LAB_ABERTA = ['codigo-base'];
@@ -28,7 +28,7 @@
     }, true);
   }
   /* Conteúdo ainda não conferido em tela real: some do site publicado (módulos, listas, colas, busca, "Na próxima aula").
-     No computador do André continua aparecendo. Para liberar, tirar daqui. (20/10/2026) */
+     No computador do responsável continua aparecendo. Para liberar, tirar daqui. (20/10/2026) */
   var OCULTOS = { modulos: [], aulas: ['apps-ios/02', 'apps-ios/03', 'apps-ios/04'] };   // iOS 14: só a aula 01 foi conferida em tela real (20/10)
   window.PUB_OCULTA = function (mod, aula) { return PUB && (OCULTOS.modulos.indexOf(mod) >= 0 || OCULTOS.aulas.indexOf(mod + '/' + aula) >= 0) };
   // chamado no fim de conteudo.js: tira o conteúdo oculto antes de qualquer tela usá-lo

@@ -1,5 +1,5 @@
 /* Personagens da Lojinha em pixel art: o Pixel (mascote), a Marina (dona da loja) e o Rafa (agente de suporte).
-   Desenho de 24/10/2026 (aprovado pelo André): contorno escuro em volta da silhueta, brilho, olhos grandes e bochechas.
+   Desenho de 24/10/2026 (aprovado pelo responsável): contorno escuro em volta da silhueta, brilho, olhos grandes e bochechas.
    O original fica em _teste_mascote/ (gerar_turma.js). Uso: PERSONAGEM('marina', 4) devolve um <svg>;
    PERSONAGEM('marina', 4, 'feliz') desenha o quadro feliz. Os personagens na tela piscam sozinhos de vez em quando. */
 (function () {

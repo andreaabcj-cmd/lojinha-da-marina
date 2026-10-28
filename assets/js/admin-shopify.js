@@ -1,5 +1,5 @@
 /* ADMIN DA SHOPIFY (faz-de-conta) — as telas onde se resolve o Pixel e a integração de uma loja Shopify com a Meta.
-   CONFERIDO NA LOJA REAL (admin em português, 19/10/2026, loja de teste do André; nada pago):
+   CONFERIDO NA LOJA REAL (admin em português, 19/10/2026, loja de teste do responsável; nada pago):
    - Menu: Início · Pedidos · Produtos · Clientes · Crescimento · Descontos · Conteúdo · Mercados · Análises · Canais de vendas › (Loja virtual, Facebook & Instagram) · Apps › · Configurações.
    - Produto: coluna direita “Publicação” (ícone de ajustes) → janela “Gerenciar publicação” com CHAVES por canal · Cancelar/Concluído; barra “Produto não salvo · Descartar · Salvar”.
    - Lista de produtos: coluna “Canais de vendas”; filtro “Canal de vendas é / não é”; selecionar → Editar em massa · Definir como rascunho · ⋯ → “Incluir nos canais de vendas”

@@ -75,7 +75,7 @@ Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do 
 - Atender: "Apareceu Aviso, quebrei tudo?" ✅ "Calma, aviso não quer dizer que quebrou. Vou ver o que o Gerenciador está apontando e te digo o que é e quem resolve."
 - Gancho: fim do Pixel básico → fase 🚀 Em ascensão ("agora a Marina quer anunciar!").
 - Fontes oficiais: Diagnóstico (facebook.com/business/help/667164051342757); Meta Ads Data Advisor (developers.facebook.com/documentation/meta-pixel/support/meta-ads-data-advisor). Ferramenta de configuração de eventos: a conferir (não ensinar ainda).
-- Regra do André: NADA de fonte de terceiros; só oficial da Meta. Não implementar tela que não vimos de verdade.
+- Regra do responsável: NADA de fonte de terceiros; só oficial da Meta. Não implementar tela que não vimos de verdade.
 
 ## Anotações para os tutoriais (telas reais conferidas)
 - **Conta de anúncios (14/10):** Configurações › Contas de anúncios › Adicionar › Criar uma nova conta de anúncios. Etapas: Detalhes (nome, fuso horário, moeda) → Uso (Minha empresa / Outra empresa ou cliente) → Confirmar (aceite dos Termos Comerciais e Políticas de Publicidade). ⚠️ **Moeda e fuso horário NÃO podem ser trocados depois.** ⚠️ Depois de adicionada, a conta não pode ser removida do portfólio. Criar a conta não pede forma de pagamento.
@@ -104,9 +104,9 @@ Só construir quando o Pixel real existir e der para ver: (a) o Diagnóstico do 
 - Destaque dentro de janela/painel: a janela fica inteira visível; só o fundo escurece.
 
 ## Pendências de revisão
-- **Espanhol em TUDO (André, 15/10 — “muito trabalho, fazemos depois”):** hoje só plataforma, aulas, ferramentas e balões dos tutoriais têm ES. Faltam: loja (textos e páginas), F12 simulado, avisos/faixa/cookies, extensão simulada e as telas da Meta nos simuladores. As telas da Meta precisam dos textos REAIS em espanhol (trocar o idioma do Facebook por um tempo e anotar) — não inventar.
-- **Simulador do Gerenciador de Eventos, “Conectar uma nova fonte de dados” (André, 15/10: “no futuro ter tudo”):** hoje só Web (Pixel) funciona; App, Offline, CRM e Mensagens ficam para quando forem conferidos na tela real.
-- **Tutorial guiado do F12 simulado (pedido do André, 14/10, para mais tarde):** separado, detalhe por detalhe, porque é mais técnico — cada aba (📹 Câmera, 🌐 Rede, 🔍 Lupa, 📄 Código, 🧪 Lab, 💡 Dica), o que cada coisa mostra e quando usar. Entra no Laboratório › Como fazer… (seção técnica).
+- **Espanhol em TUDO (responsável, 15/10 — “muito trabalho, fazemos depois”):** hoje só plataforma, aulas, ferramentas e balões dos tutoriais têm ES. Faltam: loja (textos e páginas), F12 simulado, avisos/faixa/cookies, extensão simulada e as telas da Meta nos simuladores. As telas da Meta precisam dos textos REAIS em espanhol (trocar o idioma do Facebook por um tempo e anotar) — não inventar.
+- **Simulador do Gerenciador de Eventos, “Conectar uma nova fonte de dados” (responsável, 15/10: “no futuro ter tudo”):** hoje só Web (Pixel) funciona; App, Offline, CRM e Mensagens ficam para quando forem conferidos na tela real.
+- **Tutorial guiado do F12 simulado (pedido do responsável, 14/10, para mais tarde):** separado, detalhe por detalhe, porque é mais técnico — cada aba (📹 Câmera, 🌐 Rede, 🔍 Lupa, 📄 Código, 🧪 Lab, 💡 Dica), o que cada coisa mostra e quando usar. Entra no Laboratório › Como fazer… (seção técnica).
 - [ ] **(depois)** Laboratório: todos os tutoriais guiados acessíveis como "Como fazer X" (criar o Pixel, convidar pessoa, criar conta de anúncios…), e a parte da loja/simulação da plataforma que estamos reconstruindo. O Laboratório também guiado.
 - [x] Aprovado: a ordem das fases, "Portfólio antes do Pixel" e a divisão Pixel básico/avançado (13/10).
 - [x] No site: módulos agrupados por fase; a antiga aula 02 virou a 03 "O Pixel está funcionando?" com "onde paramos" e gancho.

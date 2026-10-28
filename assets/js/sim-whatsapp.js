@@ -422,12 +422,23 @@
   };
 
   /* ---------- desenhar ---------- */
+  // moldura do Android, igual à do módulo de WhatsApp (28/10/2026): barra de status em cima e botões do sistema embaixo
+  function celular(tela, inicio) {
+    return '<div class="wa-barra"><span>9:41</span><span>📶 🔋</span></div><div class="wa-tela">' + tela + '</div>' +
+      '<div class="wa-sisnav"><button data-wanav="volta" aria-label="Voltar">◀</button><button data-wa="' + inicio + '" aria-label="Tela inicial">●</button><button data-wanav="recentes" aria-label="Apps recentes">■</button></div>';
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-wanav]'); if (!b) return;
+    if (b.getAttribute('data-wanav') === 'recentes') return toast('Apps recentes: fica de fora deste treino.');
+    var cel = b.closest('.wa-cel'), alvo = cel && (cel.querySelector('.wa-veu[data-wa], [data-wa="folha:fechar"]') || cel.querySelector('.wa-topo [data-wa]'));
+    if (alvo) alvo.click();
+  });
   function render() {
     var foco = document.activeElement && document.activeElement.id, pos = foco && document.activeElement.selectionStart;
     var rol = {}; [].forEach.call(document.querySelectorAll('.wa-cel'), function (c) { var r = c.querySelector('.wa-rolar, .wa-chat'); if (r) rol[c.getAttribute('data-t')] = [c.getAttribute('data-tela'), r.scrollTop] });
     $('#app').innerHTML = '<div class="sim-faixa">🧪 Simulador de treinamento do WhatsApp · nada aqui vai para o WhatsApp · <a href="simuladores.html">← voltar à plataforma</a></div>' +
-      '<div class="wa-palco"><section class="wa-lado"><h2>📱 Celular da Marina <small>WhatsApp Business</small></h2><div class="wa-cel" data-t="wa-cel-marina" data-tela="' + S.m + '">' + (M[S.m] || M.conversas)() + '</div></section>' +
-      '<section class="wa-lado"><h2>📱 Celular da cliente <small>WhatsApp</small></h2><div class="wa-cel cli" data-t="wa-cel-cliente" data-tela="' + S.c + '">' + (C[S.c] || C.conversa)() + '</div></section></div>' +
+      '<div class="wa-palco"><section class="wa-lado"><h2>📱 Celular da Marina <small>WhatsApp Business</small></h2><div class="wa-cel" data-t="wa-cel-marina" data-tela="' + S.m + '">' + celular((M[S.m] || M.conversas)(), 'm:conversas') + '</div></section>' +
+      '<section class="wa-lado"><h2>📱 Celular da cliente <small>WhatsApp</small></h2><div class="wa-cel cli" data-t="wa-cel-cliente" data-tela="' + S.c + '">' + celular((C[S.c] || C.conversa)(), 'c:conversa') + '</div></section></div>' +
       '<p class="conferido wa-conf">✓ Telas do app conferidas em ' + CONF + ' (temas escuro e claro) · o que avisa “a conferir” ainda não foi visto · nada é pago nem enviado de verdade</p>' +
       '<div class="wa-toast" id="waToast" hidden></div>';
     [].forEach.call(document.querySelectorAll('.wa-cel'), function (c) { var k = rol[c.getAttribute('data-t')], r = c.querySelector('.wa-rolar, .wa-chat'); if (!r) return; if (k && k[0] === c.getAttribute('data-tela')) r.scrollTop = k[1]; else if (r.classList.contains('wa-chat')) r.scrollTop = r.scrollHeight });

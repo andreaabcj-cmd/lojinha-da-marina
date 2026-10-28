@@ -1,6 +1,6 @@
 # Pente fino: tela real simulada + passos extras simulados (17–18/10/2026)
 
-Regra de ouro do André: cada prática acontece numa tela que existe na vida real (ou recriada fielmente) e, quando o caminho passa por outro lugar (site do cliente, plataforma parceira, código, outra ferramenta da Meta), esse lugar também é simulado, para a pessoa aprender a fazer e a guiar o cliente.
+Regra de ouro do responsável: cada prática acontece numa tela que existe na vida real (ou recriada fielmente) e, quando o caminho passa por outro lugar (site do cliente, plataforma parceira, código, outra ferramenta da Meta), esse lugar também é simulado, para a pessoa aprender a fazer e a guiar o cliente.
 
 ## Como verificamos
 - Inventário automático: módulo → tutorial → página → o que o cabeçalho do código diz ser “inventado” ou “não visto”.
@@ -29,7 +29,7 @@ Regra de ouro do André: cada prática acontece numa tela que existe na vida rea
 | MBE | Galeria de parceiros, tabela de opções, Pessoas (reais) + janela do MBE | janela dentro da Shopify/Woo | real + janela “a conferir” (agora com as telas de “Loja” descritas por parceira) |
 | Integrações | WooCommerce (admin do WordPress), Catálogo, Diagnóstico | plugin | real/recriado |
 | Shopify e Meta | admin da Shopify CONFERIDO numa loja real em 19/10 (Publicação, Canais de vendas, Eventos de clientes, App Store e permissões, Configure sua loja, preferências de dados Conservador/Aprimorado/Máximo, Horizon e editor de código) | canal já configurado; nomes em ES | real (exceto o resumo do canal configurado) |
-| WhatsApp | — | — | fica para depois (decisão do André) |
+| WhatsApp | — | — | fica para depois (decisão do responsável) |
 | Diagnóstico de casos | Loja + Eventos + código-fonte + editor + admin Shopify; desde 19/10 também Entrega, Turbinar, Catálogo (aba Problemas), Feed, Portfólio (Páginas) e janela do MBE | casos | real/recriado; área própria com 17 casos em 6 blocos (Commerce planejado) |
 
 ## Pesquisa online para Commerce, Verified e Shop Ads (18/10/2026)
@@ -48,4 +48,4 @@ Regra de ouro do André: cada prática acontece numa tela que existe na vida rea
 ## Resultado do teste (18/10/2026)
 - 110+ execuções automáticas de ponta a ponta (todos os tutoriais de todos os módulos, normal e “aluno teimoso”). No fim, 100% passam.
 - Corrigido nesta rodada, além do que já estava: janela do MBE do WooCommerce com as telas de Loja (Abra sua loja, Detalhes da loja, Termos); voltar no Turbinar (bloqueios voltam) e em Editar campanha publicada (a caixinha não desmarca sozinha); Checkout fora da Meta agora usa Loja + Eventos, Catálogo e a correção de duplicação reais; trilhos recontados (Woo 34, jornada 13).
-- O robô de teste aprendeu a preencher campos, escolher opções e marcar caixinhas; o que ele não faz é julgar se o texto da aula está bom: isso continua sendo o teste do André.
+- O robô de teste aprendeu a preencher campos, escolher opções e marcar caixinhas; o que ele não faz é julgar se o texto da aula está bom: isso continua sendo o teste do responsável.

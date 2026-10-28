@@ -1,6 +1,6 @@
 # Roteiro · Pixel avançado 05 — “Controles de dados do Pixel: categoria, restrição, tráfego e domínio”
 
-Montado em 20/10/2026. Regra seguida: só entra na aula o que foi visto em tela real (portfólio de aula, pelo Chrome do André, só olhando) ou lido na Central de Ajuda da Meta. O que não foi visto fica fora da tela do simulador e aparece só como explicação, marcado.
+Montado em 20/10/2026. Regra seguida: só entra na aula o que foi visto em tela real (portfólio de aula, pelo Chrome do responsável, só olhando) ou lido na Central de Ajuda da Meta. O que não foi visto fica fora da tela do simulador e aparece só como explicação, marcado.
 
 ## 1. Insumos — telas reais vistas (20/10/2026)
 

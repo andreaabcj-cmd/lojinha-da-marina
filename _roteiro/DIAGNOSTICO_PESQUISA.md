@@ -2,7 +2,7 @@
 
 **Como foi feita:** fóruns e comunidades (comunidade da Shopify, guias de agências e de ferramentas de anúncios que compilam as dúvidas mais comuns, relatos de anunciantes) serviram **só para medir o que mais aparece**. A **solução** de cada caso vem da Central de Ajuda da Meta para Empresas ou da Central de Ajuda oficial da plataforma (Shopify, WooCommerce). Os artigos citados devem ser relidos na hora de construir o caso (data no rodapé da aula).
 
-**Formato de todo caso** (pedido do André): 1) a Marina reclama, do jeito que o cliente fala → 2) **tutorial guiado** em telas reais até resolver → 3) por que aconteceu → 4) ver de perto → 5) atender + cola. **Validação obrigatória:** o sintoma aparece antes e some depois, na mesma tela, e o teste automático confere o estado final.
+**Formato de todo caso** (pedido do responsável): 1) a Marina reclama, do jeito que o cliente fala → 2) **tutorial guiado** em telas reais até resolver → 3) por que aconteceu → 4) ver de perto → 5) atender + cola. **Validação obrigatória:** o sintoma aparece antes e some depois, na mesma tela, e o teste automático confere o estado final.
 
 **Legenda:** Simular? ✅ dá hoje com telas que já existem · 🛠️ dá, criando ou estendendo uma tela (com base em tela real ou doc oficial) · ❌ não dá (tela que não conseguimos ver/simular com fidelidade). Prioridade: ⭐⭐⭐ muito frequente e o agente resolve · ⭐⭐ frequente · ⭐ ocasional. **JÁ EXISTE** = caso pronto.
 
@@ -71,7 +71,7 @@
 ## Fora do escopo (só uma linha de encaminhamento na cola)
 Pagamentos e cobrança · conta de anúncios desativada ou restrita · anúncios rejeitados por política · login, conta hackeada, perda de acesso · verificação de identidade de pessoa.
 
-## Sugestão de ordem (para o André escolher)
+## Sugestão de ordem (para o responsável escolher)
 1. **Pixel e eventos**: P6 (API + dobro) e P7 (Purchase em toda página) — completam o bloco que já tem 4 casos.
 2. **Anúncios**: A1 (não gasta) e A2 (não turbina) — os mais frequentes do atendimento, telas já reais.
 3. **Catálogo**: C1 (produtos não aparecem) e C2 (produto recusado, aba Problemas).
@@ -80,7 +80,7 @@ Pagamentos e cobrança · conta de anúncios desativada ou restrita · anúncios
 6. **Contas**: X1 e X3.
 Commerce fica por último (telas a conferir).
 
-**Construídos em 19/10/2026 (ordem acima, aprovada pelo André):** P6 (dg-pixel 05), P7 (dg-pixel 06), A1 e A2 (dg-anuncios 01–02), C1 e C2 (dg-catalogo 01–02), I1 (dg-instagram 01), G1 e G2 (dg-integracoes 02–03), X1 e X3 (dg-contas 01–02). Cada tutorial termina conferindo que o problema sumiu (ex.: só 1 Purchase e só na página de pedido; Purchase chegando do navegador e do servidor; zero erros no catálogo; Página no portfólio novo e fora do antigo).
+**Construídos em 19/10/2026 (ordem acima, aprovada pelo responsável):** P6 (dg-pixel 05), P7 (dg-pixel 06), A1 e A2 (dg-anuncios 01–02), C1 e C2 (dg-catalogo 01–02), I1 (dg-instagram 01), G1 e G2 (dg-integracoes 02–03), X1 e X3 (dg-contas 01–02). Cada tutorial termina conferindo que o problema sumiu (ex.: só 1 Purchase e só na página de pedido; Purchase chegando do navegador e do servidor; zero erros no catálogo; Página no portfólio novo e fora do antigo).
 
 ## Fontes da pesquisa de frequência (não usadas para a solução)
 Comunidade da Shopify (sincronização e lojas que não aparecem), guias de solução de veiculação (Jon Loomer, Revealbot e outros), guias de rastreamento (Trackingplan, Cometly), guias de conexão do Instagram de ferramentas de anúncios. Lidos em 19/10/2026.

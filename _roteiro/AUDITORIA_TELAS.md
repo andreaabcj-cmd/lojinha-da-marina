@@ -1,6 +1,6 @@
 # Auditoria das práticas: telas reais × telas inventadas (16/10/2026)
 
-Pedido do André: toda prática guiada tem que acontecer em telas que existem na vida real (ou recriadas fielmente), para a pessoa aprender a FAZER e a guiar o cliente. Fontes: o computador do André (Meta, parceiros, código do site) e a Central de Ajuda.
+Pedido do responsável: toda prática guiada tem que acontecer em telas que existem na vida real (ou recriadas fielmente), para a pessoa aprender a FAZER e a guiar o cliente. Fontes: o computador do responsável (Meta, parceiros, código do site) e a Central de Ajuda.
 
 ## Já refeito
 - **Diagnóstico de casos**: Loja (site do cliente) › Consultor de Dados › Gerenciador de Eventos (Testar eventos, Diagnóstico, Instalar código) › Código-fonte › editor de arquivos / admin da Shopify. Estado do site em `site-estado.js`.
@@ -27,4 +27,4 @@ Gerenciador de Anúncios (anuncios, feed, publicos, relatorios, regras*), Busine
 
 ## Situação em 17/10/2026 (fim da rodada)
 - REFEITOS em telas reais: Diagnóstico de casos, Pixel avançado, Integrações (WooCommerce, MBE), Shopify e Meta, Portfólio avançado (dentro das Configurações do portfólio), Entrega (status real da coluna Veiculação) e Pixel como fonte do catálogo (dentro do Catálogo).
-- MANTIDOS COM AVISO “a conferir” (dependem de telas que não dá para abrir: loja publicada, assinatura paga, botão Loja): Commerce (checklist “Minha loja”), Meta Verified (fluxo de assinatura) e Shop Ads (aba Loja). Decisão do André (17/10): manter marcado; só refazer se ele trouxer prints reais.
+- MANTIDOS COM AVISO “a conferir” (dependem de telas que não dá para abrir: loja publicada, assinatura paga, botão Loja): Commerce (checklist “Minha loja”), Meta Verified (fluxo de assinatura) e Shop Ads (aba Loja). Decisão do responsável (17/10): manter marcado; só refazer se ele trouxer prints reais.
