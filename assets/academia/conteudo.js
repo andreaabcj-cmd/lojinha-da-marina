@@ -3788,7 +3788,7 @@ window.AULAS = {
         },
         ferramenta: 'criar-loja-q',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelas 5 telas reais do assistente até a loja ser criada.', 'En el simulador, el Pixel te guía por las 5 pantallas reales del asistente hasta que se crea la tienda.'),
+          texto: L('No simulador, o Pixel te guia pelas telas reais do assistente até a loja ser criada e mostra o que aparece depois.', 'En el simulador, el Pixel te guía por las pantallas reales del asistente hasta crear la tienda y muestra lo que aparece después.'),
           tour: 'criar-loja', pagina: 'meta-commerce.html?zerar=1'
         },
         atender: {
@@ -3836,7 +3836,7 @@ window.AULAS = {
         },
         ferramenta: 'configurar-loja-q',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelo checklist: perfil de envio, URL de finalização da compra, a espera da análise e a publicação.', 'En el simulador, el Pixel te guía por la lista: perfil de envío, URL de finalización de compra, la espera de la revisión y la publicación.'),
+          texto: L('No simulador, o Pixel te guia pelas telas reais: perfil de envio em Envio e devoluções e o URL de finalização da compra em Detalhes da loja.', 'En el simulador, el Pixel te guía por las pantallas reales: perfil de envío en Envíos y devoluciones y la URL de finalización de compra en Detalles de la tienda.'),
           tour: 'configurar-loja', pagina: 'meta-commerce.html?loja=1'
         },
         atender: {
@@ -3884,7 +3884,7 @@ window.AULAS = {
         },
         ferramenta: 'loja-nao-aparece-q',
         praticar: {
-          texto: L('No simulador, a análise pede ação: domínio e política de devolução faltando. O Pixel te guia na ordem certa.', 'En el simulador, la revisión pide acción: faltan el dominio y la política de devolución. El Pixel te guía en el orden correcto.'),
+          texto: L('No simulador, a loja está com os canais Inativo. O Pixel te leva ao motivo nas Configurações: produtos não aprovados.', 'En el simulador, la tienda tiene los canales en Inactivo. El Pixel te lleva al motivo en Configuración: productos no aprobados.'),
           tour: 'loja-nao-aparece', pagina: 'meta-commerce.html?problema=1'
         },
         atender: {
@@ -3931,8 +3931,8 @@ window.AULAS = {
         },
         ferramenta: 'mudancas-checkout-q',
         praticar: {
-          texto: L('No simulador, o Pixel te guia por uma lista “descontinuado × continua”, pelo local da conversão nos anúncios e pelas métricas em 0.', 'En el simulador, el Pixel te guía por una lista “discontinuado × continúa”, por el lugar de conversión en los anuncios y por las métricas en 0.'),
-          tour: 'mudancas-checkout', pagina: 'meta-commerce.html?zerar=1'
+          texto: L('No Gerenciador de Anúncios, o Pixel te mostra onde a mudança aparece na prática: o local da conversão agora é Site, e a loja entra como destino personalizado.', 'En el Administrador de anuncios, el Pixel te muestra dónde se ve el cambio en la práctica: el lugar de conversión ahora es Sitio, y la tienda entra como destino personalizado.'),
+          tour: 'mudancas-checkout', pagina: 'meta-shopads.html?zerar=1'
         },
         atender: {
           cena: L('Minhas compras na Meta viraram zero no relatório! Meus anúncios pararam de vender? 😱', '¡Mis compras en Meta pasaron a cero en el informe! ¿Mis anuncios dejaron de vender? 😱'),
@@ -4030,8 +4030,8 @@ window.AULAS = {
         },
         ferramenta: 'antes-shopads',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelos 5 ativos, acha o que falta e confere a loja.', 'En el simulador, el Pixel te guía por los 5 activos, encuentra lo que falta y revisa la tienda.'),
-          tour: 'antes-de-criar', pagina: 'meta-shopads.html?zerar=1'
+          texto: L('Na conta comercial da loja, o Pixel te mostra onde conferir a identidade (Página e Instagram) e o Pixel ligado ao catálogo.', 'En la cuenta comercial de la tienda, el Pixel te muestra dónde revisar la identidad (página e Instagram) y el píxel vinculado al catálogo.'),
+          tour: 'antes-de-criar', pagina: 'meta-commerce.html?loja=1'
         },
         atender: {
           cena: L('Quero criar o anúncio das Lojas, mas a opção da loja nem aparece! 😠', '¡Quiero crear el anuncio de Tiendas, pero la opción de la tienda ni aparece! 😠'),
