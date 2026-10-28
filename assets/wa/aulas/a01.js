@@ -27,7 +27,7 @@
         [c('Onde se usa', 'Dónde se usa'), c('No celular, com até 4 aparelhos conectados', 'En el celular, con hasta 4 dispositivos vinculados'), c('No sistema de um parceiro ou de um desenvolvedor', 'En el sistema de un socio o de un desarrollador')],
         [c('Atendentes', 'Agentes'), c('Um número de telefone', 'Un número de teléfono'), c('Milhares de atendentes e bots, vários números', 'Miles de agentes y bots, varios números')],
         [c('Onde se configura', 'Dónde se configura'), c('No próprio app, na aba Ferramentas', 'En la propia app, en la pestaña Herramientas'), c('Gerenciador do WhatsApp (WhatsApp Manager), na Meta', 'Administrador de WhatsApp (WhatsApp Manager), en Meta')],
-        [c('Custo', 'Costo'), c('App grátis (alguns extras são pagos)', 'App gratuita (algunos extras se pagan)'), c('Cobrança por mensagem (detalhes na aula 14)', 'Cobro por mensaje (detalles en la clase 14)')]
+        [c('Custo', 'Costo'), c('App grátis (alguns extras são pagos)', 'App gratuita (algunos extras se pagan)'), c('Cobrança por mensagem', 'Cobro por mensaje')]
       ];
       return '<h2>' + t(c('Dois produtos com quase o mesmo nome', 'Dos productos con casi el mismo nombre')) + '</h2>' +
         '<div class="tab-rolar"><table class="comp"><tr><th></th><th>📱 ' + t(c('App WhatsApp Business', 'App WhatsApp Business')) + '</th><th>⚙️ ' + t(c('Plataforma (API)', 'Plataforma (API)')) + '</th></tr>' +
@@ -42,8 +42,8 @@
         '<p class="nota">' + t(c('Pela documentação da Meta: a <b>conta do WhatsApp</b> guarda o número de telefone; a <b>conta de mensagens</b> guarda os modelos e a forma de pagamento. Como aparece uma conta da Plataforma nessa lista ainda está a conferir.',
           'Según la documentación de Meta: la <b>cuenta de WhatsApp</b> guarda el número de teléfono; la <b>cuenta de mensajes</b> guarda las plantillas y el método de pago. Cómo aparece una cuenta de la Plataforma en esa lista todavía está por comprobar.')) + '</p>' +
         '<div class="caixa"><b>' + t(c('Um terceiro caso: os dois ao mesmo tempo', 'Un tercer caso: los dos a la vez')) + '</b><p>' +
-        t(c('Existe a <b>coexistência</b>: o mesmo número fica no app e na Plataforma, ligado por um parceiro. Pede o app na versão 2.24.17 ou mais nova; as conversas individuais dos últimos 6 meses podem ser copiadas, e algumas coisas param de funcionar nessas conversas (por exemplo, mensagens temporárias e de visualização única). Mais na aula 14.',
-          'Existe la <b>coexistencia</b>: el mismo número queda en la app y en la Plataforma, vinculado por un socio. Pide la app en la versión 2.24.17 o más nueva; los chats individuales de los últimos 6 meses se pueden copiar, y algunas cosas dejan de funcionar en esos chats (por ejemplo, mensajes temporales y de visualización única). Más en la clase 14.')) + '</p></div>';
+        t(c('Existe a <b>coexistência</b>: o mesmo número fica no app e na Plataforma, ligado por um parceiro. Pede o app na versão 2.24.17 ou mais nova; as conversas individuais dos últimos 6 meses podem ser copiadas, e algumas coisas param de funcionar nessas conversas (por exemplo, mensagens temporárias e de visualização única).',
+          'Existe la <b>coexistencia</b>: el mismo número queda en la app y en la Plataforma, vinculado por un socio. Pide la app en la versión 2.24.17 o más nueva; los chats individuales de los últimos 6 meses se pueden copiar, y algunas cosas dejan de funcionar en esos chats (por ejemplo, mensajes temporales y de visualización única).')) + '</p></div>';
     },
 
     praticar: {

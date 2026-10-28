@@ -363,3 +363,6 @@ html,body{overflow-x:clip}
 .mais-q{margin-top:22px;padding-top:16px;border-top:2px dashed var(--line)}.mais-n{display:inline-block;font-size:12px;background:var(--ink);color:#fff;border-radius:999px;padding:1px 8px;margin-right:4px;vertical-align:2px}
 .wa-ver h3{margin:14px 0 6px}.wa-ver .wa-lista{padding-left:22px;line-height:1.5}.wa-ver .wa-lista li{margin:6px 0}
 .wa-caixa{border:2px solid var(--ink);border-radius:12px;background:#FFF8E1;padding:10px 14px;margin:12px 0;box-shadow:3px 3px 0 var(--ink)}.wa-caixa p{margin:4px 0 0}
+.wa-ver .tab-rolar{overflow-x:auto}.wa-ver table.comp{border-collapse:collapse;width:100%;background:#fff;border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:3px 3px 0 var(--ink);margin:8px 0 14px}
+.wa-ver table.comp th,.wa-ver table.comp td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14px}.wa-ver table.comp th{background:#F2F5FA}
+.wa-ver .caixa{border:2px solid var(--ink);border-radius:12px;background:#FFF8E1;padding:10px 14px;margin:12px 0;box-shadow:3px 3px 0 var(--ink)}.wa-ver .nota{font-size:13px;color:var(--muted)}.wa-ver ol.perguntas,.wa-ver ul.perguntas{padding-left:22px;line-height:1.5}
