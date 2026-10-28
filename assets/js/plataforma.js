@@ -319,8 +319,8 @@
     { m: 'mbe', itens: [
       ['galeria-parceiros', 'meta-mbe.html?zerar=1', 'mbe', '02', { pt: 'Como achar um parceiro na Galeria de parceiros', es: 'Cómo encontrar un socio en la Galería de socios' }],
       ['conectar-extensao', 'admin-shopify.html', 'mbe', '03', { pt: 'Como é a janela do MBE ao conectar pela plataforma', es: 'Cómo es la ventana del MBE al conectar desde la plataforma' }],
-      ['escolher-capi', 'meta-mbe.html?zerar=1', 'mbe', '04', { pt: 'Como escolher a configuração da API de Conversões', es: 'Cómo elegir la configuración de la API de Conversiones' }],
-      ['dar-acesso-parceiro', 'meta-mbe.html?zerar=1', 'mbe', '06', { pt: 'Como dar acesso a um parceiro (agência)', es: 'Cómo dar acceso a un socio (agencia)' }] ] },
+      ['escolher-capi', 'meta-eventos.html', 'mbe', '04', { pt: 'Como escolher a configuração da API de Conversões', es: 'Cómo elegir la configuración de la API de Conversiones' }],
+      ['dar-acesso-parceiro', 'meta-portfolio.html?exemplo=1', 'mbe', '06', { pt: 'Como dar acesso a um parceiro (agência)', es: 'Cómo dar acceso a un socio (agencia)' }] ] },
     { m: 'shop-ads-offsite', itens: [
       ['jornada-compra-site', 'loja.html', 'shop-ads-offsite', '01', { pt: 'Como é a jornada do anúncio das Lojas até a compra no site', es: 'Cómo es el recorrido del anuncio de Tiendas hasta la compra en el sitio' }],
       ['comparar-terceiros', 'meta-checkoutsite.html?zerar=1', 'shop-ads-offsite', '04', { pt: 'Como explicar a diferença entre a Meta e o Google Analytics', es: 'Cómo explicar la diferencia entre Meta y Google Analytics' }],

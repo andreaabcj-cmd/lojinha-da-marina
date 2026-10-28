@@ -10,3 +10,8 @@ body.com-casca .vf-caixa,body.com-casca .ss-card{background:#fff;border:2px soli
 body.com-casca .cm-tab{border:2px solid var(--ink);border-radius:var(--r,12px);overflow:hidden;box-shadow:3px 3px 0 var(--ink);background:#fff}
 /* janelas baixas (ex.: painel do app): sem o cabeçalho, para sobrar espaço ao conteúdo e ao balão do tutorial */
 @media(max-height:640px){.ssc-cab{display:none}body.com-casca .ss{top:32px}.ssc-trilho{top:32px}}
+
+/* painel de treino (tela que não existe na Meta) */
+body.com-casca .ss-it.treino{border:1.5px dashed #C9A227;color:#7A5B00}body.com-casca .ss-it.treino::after{content:attr(data-treino);margin-left:auto;font-size:10px;font-weight:800;text-transform:uppercase;background:#FFE58A;color:#5C4500;border-radius:6px;padding:1px 5px}
+body.com-casca .ss-it.treino.on{background:#FFF6D6;color:#5C4500}
+.treino-aviso{background:#FFF6D6;border:2px dashed #C9A227;border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:14px;color:#3d3000}

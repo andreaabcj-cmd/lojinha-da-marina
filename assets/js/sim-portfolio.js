@@ -5,7 +5,7 @@
    - Tutoriais guiados (assets/js/tour.js): meta-portfolio.html?tour=conhecer-portfolio | criar-portfolio | convidar-pessoa | criar-conta-anuncios
    - ?zerar=1 começa sem portfólio · ?exemplo=1 garante o portfólio de exemplo da Marina. */
 (function () {
-  var CONF = { menu: '14/10/2026', pessoas: '14/10/2026', convidar1: '14/10/2026', paginas: '14/10/2026', contas: '14/10/2026', seguranca: '25/10/2026', dominios: '20/10/2026', info: '14/10/2026', criar: '13/10/2026' };
+  var CONF = { menu: '14/10/2026', pessoas: '14/10/2026', convidar1: '14/10/2026', paginas: '14/10/2026', contas: '14/10/2026', seguranca: '25/10/2026', dominios: '20/10/2026', info: '14/10/2026', criar: '13/10/2026', parceiros: '28/10/2026' };
   var $ = function (s, r) { return (r || document).querySelector(s) };
   var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)) };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) };
@@ -37,8 +37,8 @@
   /* ---------- menu (rótulos da tela real, 14/10/2026) ---------- */
   var MENU = [
     ['Informações da empresa', 'info', IC.info],
-    ['Usuários', null, IC.user, [['Pessoas', 'pessoas'], ['Parceiros'], ['Usuários do sistema']]],
-    ['Contas', null, IC.conta, [['Páginas', 'paginas'], ['Contas de anúncios', 'contas'], ['Grupos de ativos de negócios'], ['Apps'], ['Perfis do Instagram', 'instagram'], ['Contas do WhatsApp'], ['Perfis do Threads']]],
+    ['Usuários', null, IC.user, [['Pessoas', 'pessoas'], ['Parceiros', 'parceiros'], ['Usuários do sistema']]],
+    ['Contas', null, IC.conta, [['Páginas', 'paginas'], ['Contas de anúncios', 'contas'], ['Grupos de ativos de negócios'], ['Apps'], ['Contas comerciais'], ['Perfis do Instagram', 'instagram'], ['Contas do WhatsApp'], ['Contas de mensagens'], ['Perfis do Threads']]],
     ['Fontes de dados', null, IC.dados, [['Catálogos'], ['Conjuntos de dados e pixels', 'pixel'], ['Conjuntos de eventos offline'], ['Conversões personalizadas'], ['Públicos compartilhados'], ['Pastas de criativos da empresa']]],
     ['Adequação e segurança para marcas', null, IC.escudo, [['Domínios', 'dominios'], ['Listas de bloqueio de publishers']]],   // tela real 20/10/2026
     ['Central de Segurança', 'seguranca', IC.escudo]
@@ -92,6 +92,16 @@
         '<div class="cartao" data-t="lista-pessoas"><table class="tabela"><tr><th>Nome</th><th>Acesso ao portfólio empresarial</th><th>Última sessão ativa</th><th></th></tr>' +
         p.pessoas.map(function (x) { return '<tr><td><b>' + esc(x.nome) + '</b><br><span class="miudo">' + esc(x.email) + '</span></td><td>' + esc(x.acesso) + '<br><span class="miudo">' + (x.acesso === 'Acesso total' ? 'Tudo' : 'Básico') + '</span></td><td><span class="st' + (x.status === 'Ativo' ? '' : ' cinza') + '"><i></i>' + esc(x.status) + '</span></td><td>' + (window.PFAV ? PFAV.btnDet(x) : '<button class="lnk">Detalhes</button>') + '</td></tr>' }).join('') + '</table></div>';
       return esqueleto(h, CONF.pessoas);
+    },
+    parceiros: function () {   // tela real 28/10/2026 (conta de aula, só olhando): lista à esquerda, detalhe à direita, Adicionar com 2 opções
+      var p = pf(); p.parceiros = p.parceiros || [];
+      var h = '<div class="pf-tit"><h1>Parceiros <span class="i">ⓘ</span></h1><div class="pf-acoes"><input class="pf-busca" placeholder="Pesquisar por nome ou ID" aria-label="Pesquisar"/><span class="pf-drop"><button class="btn" data-acao="menu-parc" data-t="add-parceiro">' + IC.mais + ' Adicionar ▾</button>' + (menuParc ? menuParceiros() : '') + '</span></div></div>';
+      var sel = p.parceiros[0];
+      h += '<div class="pf-duas"><div class="cartao" data-t="lista-parceiros"><p class="miudo"><b>Name</b></p>' + p.parceiros.map(function (x) { return '<div class="pf-linha on"><span class="L">' + esc(x.nome.charAt(0).toUpperCase()) + '</span><span><b>' + esc(x.nome) + '</b></span></div>' }).join('') + '</div>' +
+        (sel ? '<div class="cartao" data-t="parc-detalhe"><h2>' + esc(sel.nome) + '</h2><p class="miudo">Identificação: <span class="id">' + esc(sel.id) + '</span></p><p><button class="btn sec">Atribuir ativos</button></p>' +
+          '<div class="pf-abas"><button class="on">Ativos que você atribuiu</button><button disabled>Ativos atribuídos a você</button></div><h3>Assigned assets</h3><p class="miudo">' + esc(sel.nome) + ' can access ' + sel.ativos.length + ' business asset' + (sel.ativos.length === 1 ? '' : 's') + '</p>' +
+          sel.ativos.map(function (a) { return '<b>' + esc(a.tipo) + '</b><div class="pf-linha"><span class="L">f</span><span><b>' + esc(a.nome) + '</b><small>' + esc(a.acesso) + '</small></span><button class="btn sec">Gerenciar</button></div>' }).join('') + '</div>' : '') + '</div>';
+      return esqueleto(h, CONF.parceiros);
     },
     paginas: function () {
       var p = pf(); p.conex = p.conex || {};
@@ -158,7 +168,15 @@
         '<div class="cartao" data-t="seg-rotulos"><h2>🏷️ Rótulos de campanha (tags)</h2><p class="miudo">Rótulos personalizados de campanha (tags) ajudam você a identificar rapidamente suas campanhas de anúncios e a entender melhor as cobranças nas suas faturas.</p><p class="miudo">Você pode mostrar rótulos de campanha ao criar campanhas de anúncios, mas eles ficam ocultos por padrão. Sempre aparecem como tags na visualização da lista de campanhas.</p><label class="campo"><b>Mostrar rótulos de campanha ao criar campanhas de anúncios?</b><select><option>Padrão</option></select></label></div>', CONF.seguranca);
     }
   };
-  var menuPag = false, abaPag = 'pessoas';
+  var menuPag = false, abaPag = 'pessoas', menuParc = false;
+  function menuParceiros() {   // textos da tela real (28/10/2026; a 2ª opção e as descrições aparecem em inglês na tela real)
+    return '<div class="pf-menu-drop" data-t="opcoes-parceiro"><button data-acao="parc-conceder" data-t="op-conceder"><b>Conceder a um parceiro acesso aos seus recursos</b><small>Best for: Allowing partners, like agencies, to manage your business assets</small></button>' +
+      '<button data-acao="parc-solicitar"><b>Request access to assets as a partner or agency</b><small>Best for: Accessing and managing assets for other businesses or clients</small></button></div>';
+  }
+  // permissões da Página na janela real “Atribuir ativos e permissões” (28/10/2026)
+  var PERM_PAG = [['conteudo', 'Conteúdo', 'Crie, gerencie ou exclua posts, stories e muito mais como a Página. Proteja seu conteúdo com direitos autorais.'], ['comunidade', 'Atividade da comunidade', 'Analise e responda a comentários, remova conteúdo indesejado e denuncie atividade.'],
+    ['mensagens', 'Mensagens e ligações', 'Envie e responda a mensagens e ligações como a Página.'], ['anuncios', 'Anúncios', 'Crie, gerencie e exclua anúncios da Página. Gerencie as parcerias de anúncio.'], ['insights', 'Insights', 'Veja o desempenho da Página, do conteúdo e dos anúncios.'],
+    ['receita', 'Receita', 'Veja e exporte os dados de ganhos e monetização da Página somente no Estúdio de Criação.'], ['criador', 'Conteúdo de criador', 'Descubra e gerencie conteúdo e permissões de criadores para anúncios.'], ['gcriadores', 'Gerenciamento de criadores de conteúdo', 'Encontre criadores de conteúdo, crie campanhas e gerencie permissões para anúncios.']];
   function menuPaginas() {
     return '<div class="pf-menu-drop" data-t="opcoes-pagina">' + [
       ['Adicionar uma Página do Facebook existente', 'Ideal para: quando você precisa gerenciar uma Página no mesmo portfólio empresarial que outras Páginas do Facebook, perfis do Instagram ou outros ativos de negócios.'],
@@ -304,6 +322,26 @@
       h = '<h3>Autenticação de dois fatores<button class="x" data-acao="fechar">✕</button></h3><p>Quem precisa ativar: <b>' + esc(F.seg2fa) + '</b></p>' +
         '<p class="miudo">O requisito entra em vigor imediatamente. As pessoas que ainda não configuraram a autenticação de dois fatores deverão fazer isso na próxima vez que tentarem acessar o portfólio empresarial.</p>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="seg2fa-ok" data-t="seg-2fa-ok">Confirmar</button></div>';
+    } else if (jan === 'parceiro') {   // “Give a partner access” (tela real 28/10/2026: etapa 1 e a escolha de ativos/permissões; a etapa “Review access” não foi vista)
+      larga = true; var pg = pf().paginas[0] || 'Lojinha da Marina', perm = F.perm || {}, nPerm = Object.keys(perm).filter(function (k) { return perm[k] }).length;
+      var lado = '<aside class="pf-passos"><b>Give a partner access</b>' + ['Enter ID', 'Assign assets', 'Review access'].map(function (t, i) { return '<span class="' + (i < passoJ ? 'ok' : i === passoJ ? 'on' : '') + '"><i>' + (i < passoJ ? '✓' : '') + '</i>' + t + '</span>' }).join('') + '</aside>';
+      var corpo;
+      if (passoJ === 0) corpo = '<h3>Adicionar um novo parceiro<button class="x" data-acao="fechar">✕</button></h3><p>Dê acesso aos parceiros para trabalharem em Páginas, contas do Instagram e outros ativos de negócios no seu portfólio empresarial. Os ativos permanecerão no portfólio, e os parceiros só poderão trabalhar nas tarefas que você atribuir a eles.</p><p>Talvez o parceiro possa usar uma API para gerenciar as tarefas atribuídas.</p>' +
+        '<label class="campo" data-t="parc-id"><b>Insira a identificação da empresa do parceiro</b><input id="fParcId" placeholder="E.g. 12345678901234" value="' + esc(F.parcId || '') + '" inputmode="numeric"/><small>Não tem a identificação da empresa do seu parceiro? Peça a ele que a forneça ou envie instruções sobre <a>como encontrar a identificação da empresa</a>.</small></label>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="fechar">Cancelar</button><button class="btn" data-acao="parc-prox" data-t="parc-avancar"' + (/^\d{14,16}$/.test(F.parcId || '') ? '' : ' disabled') + '>Avançar</button></div>';
+      else if (passoJ === 1) corpo = '<h3>Atribuir ativos e permissões<button class="x" data-acao="fechar">✕</button></h3><div class="pf-parc"><div class="pf-parc-tipos"><b>Selecione o tipo de ativo</b>' +
+        [['pag', 'Páginas do Facebook'], ['', 'Contas de anúncios'], ['', 'Catálogos'], ['', 'Pixels'], ['', 'Contas do Instagram'], ['', 'Contas de mensagens']].map(function (t) { return '<span class="' + (t[0] === 'pag' ? 'on' : 'cinza') + '">' + t[1] + (t[0] === 'pag' && F.parcPag ? ' <b>1</b>' : '') + '</span>' }).join('') + '</div>' +
+        '<div class="pf-parc-ativos"><b>Selecione os ativos</b><button class="pf-parc-sel" data-acao="parc-sel" data-t="parc-sel">' + (F.parcPag ? 'Selected Facebook Pages: ' + esc(pg) : 'Selecionar Páginas do Facebook') + ' ▾</button>' +
+        (F.parcSelAberto ? '<div class="pf-parc-drop" data-t="parc-drop"><label class="pf-ck"><input type="checkbox" id="fParcPag"' + (F.parcPag ? ' checked' : '') + '/> ' + esc(pg) + '</label><button class="btn" data-acao="parc-sel-ok" data-t="parc-sel-ok"' + (F.parcPag ? '' : ' disabled') + '>Concluir</button></div>' : '') +
+        (F.parcPag && !F.parcSelAberto ? '<div class="pf-parc-perm" data-t="parc-perm"><b>Atribuir acesso às Páginas do Facebook selecionadas</b><h4>Acesso parcial (apenas ferramentas comerciais)</h4>' +
+          PERM_PAG.map(function (x) { return '<label class="pf-tg" data-t="perm-' + x[0] + '"><input type="checkbox" data-perm="' + x[0] + '"' + (perm[x[0]] ? ' checked' : '') + '/><span><b>' + x[1] + '</b><small>' + x[2] + '</small></span></label>' }).join('') +
+          '<h4>Acesso parcial (Facebook e ferramentas comerciais)</h4><label class="pf-tg"><input type="checkbox" data-perm="fbtudo"' + (perm.fbtudo ? ' checked' : '') + '/><span><b>Conteúdo, mensagens, atividade da comunidade, anúncios, insights, leads, conteúdo do criador, gerenciamento de criadores</b></span></label>' +
+          '<h4>Acesso total</h4><label class="pf-tg" data-t="perm-total"><input type="checkbox" data-perm="total"' + (perm.total ? ' checked' : '') + '/><span><b>Tudo (exceto ações sensíveis)</b><small>Troque para a Página para gerenciar o que quiser no Facebook e nas ferramentas comerciais.</small></span></label></div>' : '') + '</div></div>' +
+        '<div class="rodape-jan"><span class="miudo">' + (F.parcPag ? '✓ 1 asset selected' : '0 assets selected') + '</span><button class="btn sec" data-acao="parc-volta">Voltar</button><button class="btn" data-acao="parc-prox" data-t="parc-avancar2"' + (F.parcPag && nPerm ? '' : ' disabled') + '>Avançar</button></div>';
+      else { conf = false; var nomes = PERM_PAG.concat([['fbtudo', 'Facebook e ferramentas comerciais'], ['total', 'Tudo (exceto ações sensíveis)']]).filter(function (x) { return perm[x[0]] }).map(function (x) { return x[1] });
+        corpo = '<h3>Review access<button class="x" data-acao="fechar">✕</button></h3><div data-t="parc-revisao"><p>Parceiro: <b>' + esc(F.parcId) + '</b></p><p>Página do Facebook: <b>' + esc(pg) + '</b><br><span class="miudo">' + esc(nomes.join(' · ')) + '</span></p><p class="miudo">O parceiro só trabalha nas tarefas que você atribuiu. Os ativos continuam no seu portfólio.</p></div>' +
+          '<div class="rodape-jan"><button class="btn sec" data-acao="parc-volta">Voltar</button><button class="btn" data-acao="parc-ok" data-t="parc-concluir">Concluir</button></div>' }
+      h = '<div class="pf-parc-jan">' + lado + '<div>' + corpo + '</div></div>';
     } else if (jan === 'aviso') {
       conf = false;
       h = '<h3>Fora do simulador por enquanto<button class="x" data-acao="fechar">✕</button></h3><p>Esta etapa ainda não está montada no simulador, porque ainda não conferimos a tela real dela. Na vida real, siga a Central de Ajuda da Meta.</p><div class="rodape-jan"><button class="btn" data-acao="fechar">Entendi</button></div>';
@@ -336,6 +374,10 @@
     campo('fGerenciar', 'gerenciar');
     campo('fMsgIg', 'msgIg');
     campo('fDom', 'dom', function () { botao('[data-acao=dom-add]', !!(F.dom || '').trim()) });
+    campo('fParcId', 'parcId', function () { botao('[data-t=parc-avancar]', /^\d{14,16}$/.test(F.parcId || '')) });
+    // sem redesenhar a janela (não pisca nem perde a rolagem da lista de permissões): só guarda e liga/desliga o botão
+    var pk = $('#fParcPag'); if (pk) pk.onchange = function () { F.parcPag = pk.checked; window.__simPf = F; botao('[data-t=parc-sel-ok]', F.parcPag) };
+    $$('[data-perm]').forEach(function (c) { c.onchange = function () { F.perm = F.perm || {}; F.perm[c.getAttribute('data-perm')] = c.checked; window.__simPf = F; botao('[data-t=parc-avancar2]', F.parcPag && Object.keys(F.perm).some(function (k) { return F.perm[k] })) } });
     $$('[data-ativo]').forEach(function (c) { c.onchange = function () { F.ativos = F.ativos || {}; F.ativos[c.getAttribute('data-ativo')] = c.checked; desenha() } });
     $$('[data-todos]').forEach(function (c) { c.onchange = function () { F.ativos = {}; $$('[data-ativo]').forEach(function (x) { F.ativos[x.getAttribute('data-ativo')] = c.checked }); desenha() } });
     $$('[name=uso]').forEach(function (r) { r.onchange = function () { F.uso = r.value; window.__simPf = F; desenha() } });
@@ -344,9 +386,9 @@
 
   /* ---------- cliques ---------- */
   document.addEventListener('click', function (ev) {
-    var a = ev.target.closest('[data-ir],[data-acao],[data-pf]'); if (!a) { if (menuPag && !ev.target.closest('.pf-drop')) { menuPag = false; render() } return }
+    var a = ev.target.closest('[data-ir],[data-acao],[data-pf]'); if (!a) { if ((menuPag || menuParc) && !ev.target.closest('.pf-drop')) { menuPag = menuParc = false; render() } return }
     if (a.hasAttribute('data-pf')) { S.atual = a.getAttribute('data-pf'); grava(); vai('info'); return }
-    if (a.hasAttribute('data-ir')) { menuPag = false; vai(a.getAttribute('data-ir')); return }
+    if (a.hasAttribute('data-ir')) { menuPag = menuParc = false; vai(a.getAttribute('data-ir')); return }
     var ac = a.getAttribute('data-acao');
     if (ac === 'fechar') fecha();
     else if (ac === 'criar') abre('criar');
@@ -364,6 +406,14 @@
     else if (ac === 'conv-volta') { passoJ = Math.max(0, passoJ - 1); desenha() }
     else if (ac === 'conv-enviar') { pf().pessoas.push({ nome: F.convEmail.split('@')[0], email: F.convEmail, acesso: F.gerenciar ? 'Acesso total' : 'Acesso parcial', status: 'Convite enviado' }); grava(); fecha(); render() }
     else if (ac === 'menu-pag') { menuPag = !menuPag; render() }
+    else if (ac === 'menu-parc') { menuParc = !menuParc; render() }
+    else if (ac === 'parc-conceder') { menuParc = false; render(); abre('parceiro') }
+    else if (ac === 'parc-solicitar') { menuParc = false; render(); abre('aviso') }
+    else if (ac === 'parc-prox') { passoJ++; desenha() }
+    else if (ac === 'parc-volta') { passoJ = Math.max(0, passoJ - 1); desenha() }
+    else if (ac === 'parc-sel') { F.parcSelAberto = !F.parcSelAberto; desenha() }
+    else if (ac === 'parc-sel-ok') { F.parcSelAberto = false; desenha() }
+    else if (ac === 'parc-ok') { var pp = pf(), perm2 = F.perm || {}; pp.parceiros = pp.parceiros || []; pp.parceiros.unshift({ nome: 'Agência parceira', id: F.parcId, ativos: [{ tipo: 'Página do Facebook', nome: pp.paginas[0] || 'Lojinha da Marina', acesso: perm2.total ? 'Acesso total' : 'Acesso parcial' }] }); grava(); fecha(); render() }
     else if (ac === 'op-pagina') { menuPag = false; render(); abre('aviso') }
     else if (ac === 'add-conta') abre('add-conta');
     else if (ac === 'aba-pag') { abaPag = a.getAttribute('data-aba'); render() }
@@ -398,6 +448,7 @@
     // aula 04 do Instagram: Página e Instagram já no portfólio, ainda sem ligação
     garanteAula4: function () { this.garanteExemplo(); var p = pf(); p.igs = p.igs || []; p.conex = p.conex || {}; if (!p.paginas.length) p.paginas.push('Lojinha da Marina'); if (!p.igs.length) p.igs.push({ user: 'lojinhadamarina', id: '1784' + novoId().slice(4) }); if (p.conex[p.paginas[0]] && !SIMPF._ligando) delete p.conex[p.paginas[0]]; grava(); render() },
     aba: function (x) { abaPag = x; render() },
+    parc: function (o) { for (var k in o) F[k] = o[k]; window.__simPf = F; desenha() }, fechaParc: function () { menuParc = false },
     estado: function () { return { jan: jan, passo: passoJ, F: F, pf: pf() } },
     render: function () { render() }, pf: function () { return pf() }, grava: function () { grava() }, vai: function (h) { vai(h) },
     domErro: function (v) { return domErro(v) }, redesenha: function () { desenha() }
@@ -502,6 +553,25 @@
      “O que você quer fazer?”, “Adicionar um domínio”). A etapa dos métodos (metatag, HTML, DNS) não foi vista: o simulador para e explica pelo artigo oficial. */
   function domTela(passo, dom) { return function () { SIMPF.garanteExemplo(); SIMPF.vai('dominios'); if (passo == null) { SIMPF.fecha(); return } var e = SIMPF.estado(); SIMPF.abre('dominio', passo); if (dom != null) { SIMPF.estado().F.dom = dom; SIMPF.redesenha() } } }
   var DOM_OK = 'lojinhadamarina.com.br';
+  /* MBE 06 · dar acesso a um parceiro (agência) — Configurações › Parceiros › Adicionar › Conceder… (tela real 28/10/2026; “Review access” a conferir) */
+  function prepParc(passo, o) { return function () { SIMPF.garanteExemplo(); var p = SIMPF.pf(); if (!p.paginas.length) { p.paginas.push('Lojinha da Marina'); SIMPF.grava() } SIMPF.fechaParc(); if (location.hash !== '#parceiros') SIMPF.vai('parceiros'); else SIMPF.render(); if (passo == null) { SIMPF.fecha(); return } SIMPF.abre('parceiro', passo); SIMPF.parc(o || {}) } }
+  var ID_PARC = '123456789012345', PARC1 = { parcId: ID_PARC }, PARC2 = { parcId: ID_PARC, parcPag: true };
+  TOURS['dar-acesso-parceiro'] = [
+    { antes: prepParc(null), alvo: '[data-t=menu-parceiros]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha(); SIMPF.vai('info') }, tit: T('Configurações do portfólio', 'Configuración del portfolio'), txt: T('A agência quer ajudar a Marina com os anúncios. Quem dá o acesso é a Marina, no portfólio dela, e só quem tem controle total do portfólio consegue. Em Usuários, clique em Parceiros.', 'La agencia quiere ayudar a Marina con los anuncios. Quien da el acceso es Marina, en su portfolio, y solo quien tiene control total del portfolio puede. En Usuarios, haz clic en Socios.') },
+    { alvo: '[data-t=add-parceiro]', clique: true, garante: prepParc(null), tit: T('Adicionar', 'Agregar'), txt: T('Clique em Adicionar.', 'Haz clic en Agregar.') },
+    { alvo: '[data-t=op-conceder]', clique: true, garante: function () { prepParc(null)(); setTimeout(function () { var b = document.querySelector('[data-t=add-parceiro]'); if (b && !document.querySelector('[data-t=op-conceder]')) b.click() }, 60) }, tit: T('As duas opções', 'Las dos opciones'), txt: T('A primeira é para dar acesso a um parceiro (o caso da Marina). A segunda é o contrário: a agência pedindo acesso aos ativos de um cliente. Clique em Conceder a um parceiro acesso aos seus recursos.', 'La primera es para dar acceso a un socio (el caso de Marina). La segunda es al revés: la agencia pidiendo acceso a los activos de un cliente. Haz clic en Conceder a un socio acceso a tus recursos.') },
+    { alvo: '[data-t=parc-id]', garante: prepParc(0), cond: function () { return ((window.__simPf || {}).parcId || '') === ID_PARC }, tit: T('A identificação da agência', 'La identificación de la agencia'), txt: T('Aqui vai a identificação do PORTFÓLIO da agência (não o e-mail de alguém). A agência passa esse número. Digite 123456789012345.', 'Aquí va la identificación del PORTFOLIO de la agencia (no el correo de alguien). La agencia pasa ese número. Escribe 123456789012345.'), dica: T('Digite “123456789012345”.', 'Escribe “123456789012345”.') },
+    { alvo: '[data-t=parc-avancar]', clique: true, garante: prepParc(0, PARC1), tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
+    { alvo: '[data-t=parc-sel]', clique: true, garante: prepParc(1, PARC1), tit: T('Qual ativo', 'Qué activo'), txt: T('À esquerda ficam os tipos de ativo; Páginas do Facebook já está escolhido. Abra a lista de Páginas.', 'A la izquierda están los tipos de activo; Páginas de Facebook ya está elegido. Abre la lista de páginas.') },
+    { alvo: '[data-t=parc-drop]', garante: prepParc(1, { parcId: ID_PARC, parcSelAberto: true }), cond: function () { return !!(window.__simPf || {}).parcPag }, tit: T('Marque a Página', 'Marca la página'), txt: T('Marque a Página da Lojinha.', 'Marca la página de la Lojinha.'), dica: T('Marque a caixinha da Página.', 'Marca la casilla de la página.') },
+    { alvo: '[data-t=parc-sel-ok]', clique: true, garante: prepParc(1, { parcId: ID_PARC, parcSelAberto: true, parcPag: true }), tit: T('Concluir a escolha', 'Terminar la elección'), txt: T('Clique em Concluir.', 'Haz clic en Terminar.') },
+    { alvo: '[data-t=parc-perm]', garante: prepParc(1, PARC2), bloqueia: function (el) { return !!(el.closest && el.closest('[data-t=perm-total]')) }, erro: T('Controle total é demais para quem só cuida dos anúncios: escolha só o que a agência precisa.', 'Control total es demasiado para quien solo se ocupa de los anuncios: elige solo lo que la agencia necesita.'),
+      cond: function () { var p = (window.__simPf || {}).perm || {}; return p.anuncios && p.insights && !p.total }, tit: T('Só o que a agência precisa', 'Solo lo que la agencia necesita'), txt: T('A agência vai cuidar dos anúncios. Ligue só Anúncios e Insights, em Acesso parcial. Acesso total dá tudo, e não é o caso.', 'La agencia va a ocuparse de los anuncios. Activa solo Anuncios e Insights, en Acceso parcial. Acceso total da todo, y no es el caso.'), dica: T('Ligue Anúncios e Insights.', 'Activa Anuncios e Insights.') },
+    { alvo: '[data-t=parc-avancar2]', clique: true, garante: prepParc(1, { parcId: ID_PARC, parcPag: true, perm: { anuncios: true, insights: true } }), tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
+    { alvo: '[data-t=parc-revisao]', garante: prepParc(2, { parcId: ID_PARC, parcPag: true, perm: { anuncios: true, insights: true } }), tit: T('Revisar o acesso', 'Revisar el acceso'), txt: T('Confira: a agência, a Página e as duas permissões. Os ativos continuam no portfólio da Marina. (Esta última tela não foi vista na tela real: está montada pela Central de Ajuda.) Clique em Próximo.', 'Revisa: la agencia, la página y los dos permisos. Los activos siguen en el portfolio de Marina. (Esta última pantalla no se vio en la real: está armada con el Centro de ayuda.) Haz clic en Siguiente.') },
+    { alvo: '[data-t=parc-concluir]', clique: true, garante: prepParc(2, { parcId: ID_PARC, parcPag: true, perm: { anuncios: true, insights: true } }), tit: T('Concluir', 'Terminar'), txt: T('Clique em Concluir.', 'Haz clic en Terminar.') },
+    { alvo: '[data-t=parc-detalhe]', fim: true, semVolta: true, tit: T('Acesso dado 🎉', '¡Acceso dado! 🎉'), txt: T('A agência aparece em Parceiros, com a Página e o acesso parcial. Se a agência disser que não vê nada, confira esta lista primeiro. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'La agencia aparece en Socios, con la página y el acceso parcial. Si la agencia dice que no ve nada, revisa esta lista primero. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+  ];
   TOURS['dominio-portfolio'] = [
     { alvo: '[data-t=menu-dominios]', clique: true, garante: function () { SIMPF.garanteExemplo(); SIMPF.fecha(); SIMPF.vai('info') }, tit: T('Onde se verifica o domínio', 'Dónde se verifica el dominio'), txt: T('Não é no Gerenciador de Eventos: a verificação de domínio fica nas Configurações do portfólio. No menu, em “Adequação e segurança para marcas”, clique em Domínios.', 'No es en el Administrador de eventos: la verificación de dominio está en la Configuración del portfolio. En el menú, en “Adecuación y seguridad de la marca”, haz clic en Dominios.') },
     { alvo: '[data-t=add-dominio]', clique: true, garante: domTela(null), tit: T('Nenhum domínio ainda', 'Ningún dominio todavía'), txt: T('“Nenhum domínio adicionado”. Clique em + Adicionar.', '“No se agregó ningún dominio”. Haz clic en + Agregar.') },

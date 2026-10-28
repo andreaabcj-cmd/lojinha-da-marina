@@ -15,11 +15,16 @@
   // qual ícone fica aceso em cada simulador (o que mais se parece com a ferramenta real)
   var ON = { 'meta-publicos': 'pessoas', 'meta-regras': 'megafone', 'meta-relatorios': 'tabela', 'meta-suite': 'menu', 'meta-pixelavancado': 'eventos', 'meta-terceiros': 'eventos', 'meta-mbe': 'eventos',
     'meta-shopify': 'loja', 'meta-commerce': 'loja', 'meta-checkoutsite': 'loja', 'meta-shopads': 'megafone', 'meta-entrega': 'megafone', 'meta-microdados': 'eventos', 'meta-verified': 'menu', 'meta-portfolioav': 'menu' };
-  function mascote(px) {
-    var rows = ['....uuuuuuu.....', '...uuuuuuuuuU...', '..UUUUUUUUUUUUU.', '...dddddddddd...', '...dssssssssd...', '...ssessssesss..', '...ssssssssss...', '...sssmmmmsss...', '....ssssssss....', '...wwwwwwwwww...', '..wwaawwwwaaww..', '..swaaaaaaaapwwp', '..swaaaaaaaapwkp', '...waaaaaaaapppp', '...aaaaaaaaaa...'];
-    var P = { u: '#2F6FD6', U: '#1F4FA8', d: '#2A1E1A', s: '#F4CBA2', e: '#22304A', m: '#D0605A', w: '#fff', a: '#1F3A6E', p: '#A0703A', k: '#22304A' }, o = '';
-    rows.forEach(function (r, y) { for (var x = 0; x < r.length; x++) if (r[x] !== '.') o += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + P[r[x]] + '"/>' });
-    return '<svg viewBox="0 0 16 15" width="' + px + '" height="' + Math.round(px * 15 / 16) + '" shape-rendering="crispEdges">' + o + '</svg>';
+  // telas que NÃO existem na Meta (resumos da Central de Ajuda montados para estudar): ficam marcadas como painel de treino da Lojinha,
+  // para ninguém achar que é uma tela real (pente fino 28/10/2026; refazer com a tela real quando ela for vista)
+  var TREINO = { 'meta-commerce': ['mudancas'], 'meta-checkoutsite': ['jornada', 'pixel', 'eventos', 'terceiros', 'antiga'], 'meta-shopads': ['antes'], 'meta-verified': ['planos', 'cadastro', 'assinatura'] };
+  function marcaTreino() {
+    var L = TREINO[pag]; if (!L) return;
+    var es = (function () { try { return JSON.parse(localStorage.getItem('plat.lang')) === 'es' } catch (e) { return false } })();
+    L.forEach(function (id) { var b = app.querySelector('[data-t="tab-' + id + '"]'); if (b && !b.classList.contains('treino')) { b.classList.add('treino'); b.setAttribute('data-treino', es ? 'práctica' : 'treino'); b.title = es ? 'Panel de práctica de la Lojinha: esta pantalla no existe en Meta' : 'Painel de treino da Lojinha: esta tela não existe na Meta' } });
+    var on = app.querySelector('.ss-it.on.treino'), main = app.querySelector('.ss-main'), av = main && main.querySelector('.treino-aviso');
+    if (on && main && !av) main.insertAdjacentHTML('afterbegin', '<p class="treino-aviso" data-sem-traduzir="1">🧪 ' + (es ? '<b>Panel de práctica de la Lojinha.</b> Esta pantalla no existe en Meta: resume el Centro de ayuda para estudiar. En la herramienta real, sigue el camino que muestra la clase.' : '<b>Painel de treino da Lojinha.</b> Esta tela não existe na Meta: ela resume a Central de Ajuda para você estudar. Na ferramenta real, siga o caminho que a aula mostra.') + '</p>');
+    if (!on && av) av.remove();
   }
   function titulo() {
     var on = app.querySelector('.ss-it.on'); var t = on ? on.textContent : ''; t = t.replace(/^[^\p{L}\p{N}]+/u, '').replace(/\s*\d+\s*$/, '').trim();
@@ -31,13 +36,15 @@
     if (!tr) {
       var on = ON[pag] || 'menu', b = function (k, t) { return '<button title="' + t + '" tabindex="-1"' + (k === on ? ' class="on"' : '') + '>' + IC[k] + '</button>' };
       tr = document.createElement('nav'); tr.className = 'sim-trilho ssc-trilho'; tr.setAttribute('data-sem-traduzir', '1'); tr.setAttribute('aria-label', 'Ferramentas');
-      tr.innerHTML = '<span class="logo">' + mascote(24) + '</span>' + b('sino', 'Notificações') + b('painel', 'Visão geral da conta') + b('tabela', 'Campanhas') + b('pessoas', 'Públicos') + b('megafone', 'Gerenciador de Anúncios') + b('eventos', 'Gerenciador de Eventos') + b('menu', 'Todas as ferramentas');
+      tr.innerHTML = '<span class="logo meta-inf" aria-label="Meta">∞</span>' + b('sino', 'Notificações') + b('painel', 'Visão geral da conta') + b('tabela', 'Campanhas') + b('pessoas', 'Públicos') + b('megafone', 'Gerenciador de Anúncios') + b('eventos', 'Gerenciador de Eventos') + b('menu', 'Todas as ferramentas');
       app.appendChild(tr);
     }
     if (!cab) { cab = document.createElement('header'); cab.className = 'sim-cab ssc-cab'; cab.setAttribute('data-sem-traduzir', '1'); cab.innerHTML = '<h1></h1><div class="sim-portfolio" title="Portfólio empresarial"><span class="L">L</span>Lojinha da Marina Aula<span class="seta">▾</span></div><span class="sim-avatar">M</span>'; app.appendChild(cab) }
     var h1 = cab.querySelector('h1'), t = titulo(); if (t && h1.textContent !== t) h1.textContent = t;
+    marcaTreino();
   }
-  var tm = null; function agenda() { clearTimeout(tm); tm = setTimeout(poe, 90) }
-  new MutationObserver(agenda).observe(app, { childList: true }); agenda();
+  // recoloca na hora: o MutationObserver roda antes da tela ser pintada, então a casca não some nem pisca entre um desenho e outro
+  var tm = null; function agenda() { clearTimeout(tm); tm = setTimeout(poe, 0) }
+  new MutationObserver(poe).observe(app, { childList: true }); poe();
   document.addEventListener('click', agenda); window.addEventListener('hashchange', agenda);
 })();

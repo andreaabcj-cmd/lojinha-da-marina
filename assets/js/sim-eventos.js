@@ -83,7 +83,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var r = rota();
     return '<div class="sim-faixa">🧪 Simulador de treinamento do Gerenciador de Eventos · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="sim"><nav class="sim-trilho" aria-label="Ferramentas">' +
-      '<span class="logo">' + mascote(24) + '</span>' +
+      '<span class="logo meta-inf" aria-label="Meta">∞</span>' +
       '<button title="Notificações">' + IC.sino + '</button><button title="Visão geral da conta">' + IC.painel + '</button><button title="Campanhas">' + IC.tabela + '</button>' +
       '<button title="Públicos">' + IC.pessoas + '</button><button title="Gerenciador de Anúncios">' + IC.megafone + '</button>' +
       '<button class="on" title="Gerenciador de Eventos">' + IC.eventos + '</button><button title="Todas as ferramentas">' + IC.menu + '</button></nav>' +
@@ -93,7 +93,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       '<button class="' + (menuAtivo === 'visao' ? 'on' : '') + '" data-ir="visao">' + IC.grade + ' Visão geral</button>' +
       '<button class="' + (menuAtivo === 'conjuntos' ? 'on' : '') + '" data-ir="conjuntos" data-t="menu-conjuntos">' + IC.ds + ' Conjuntos de dados</button>' +
       '<button class="' + (menuAtivo === 'cc' ? 'on' : '') + '" data-ir="cc" data-t="menu-cc">' + IC.estrela + ' Conversões personalizadas</button>' +
-      '<button disabled title="Fora do simulador por enquanto">' + IC.integ + ' Integrações</button></aside>' +
+      '<a class="menu-link" href="meta-mbe.html" data-t="menu-integ">' + IC.integ + ' Integrações</a></aside>' +
       '<main class="sim-main">' + conteudo +
       '<p class="conferido' + (conf ? '' : ' pendente') + '">' + (conf ? '✓ Layout conferido com o Gerenciador de Eventos real em ' + conf : '⚠ Tela montada pela documentação da Meta · a conferir com a tela real') + '</p></main></div></div>';
   }
@@ -286,9 +286,9 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       '<div class="config-linha"><div><b>Correspondência avançada automática</b></div><span class="est">' + (d.am ? 'Ativado' : 'Desativado') + '</span> <span class="chave' + (d.am ? ' on' : '') + '" role="switch" aria-checked="' + !!d.am + '" aria-label="Ativar/desativar configuração" data-chave="am" data-t="chave-am"></span></div>' +
       '<details><summary class="miudo">Mostrar parâmetros de informações do cliente</summary><table class="tabela">' + ['Email', 'Gênero', 'Cidade, estado, código postal e país', 'Nome e sobrenome', 'Número de telefone', 'Data de nascimento', 'Identificação externa'].map(function (p) { return '<tr><td>' + p + '</td><td>' + (d.am ? 'Ativado' : 'Desativado') + '</td></tr>' }).join('') + '</table></details></div>' +
       '<div class="cartao" data-t="cfg-capi"><h2>API de Conversões</h2><p class="miudo">Envie eventos da web diretamente do seu servidor usando um dos métodos de integração a seguir. <a class="lnk">Saiba mais</a></p>' +
-      '<div class="config-linha"><div><b>Configurar manualmente</b><p>Você pode configurar a API de Conversões seguindo nosso guia passo a passo.</p></div><button class="btn sec" disabled>Começar</button></div>' +
-      '<div class="config-linha"><div><b>Configurar integração direta</b><p>A integração direta é uma opção mais personalizável para configurar a API de Conversões e o Pixel da Meta. Você precisará da ajuda de um desenvolvedor para realizar esse processo.</p></div><button class="btn sec" disabled>Configurar integração direta</button></div>' +
-      '<div class="config-linha"><div><b>Configurar por meio de uma integração de parceiros</b><p>Conecte facilmente sua atividade da web por meio de uma integração de parceiros, sem a necessidade de código. Escolha entre o Wordpress, o Tealium, o Segment e muitos outros.</p></div><button class="btn sec" disabled>Escolher um parceiro</button></div>' +
+      '<div class="config-linha" data-t="capi-manual"><div><b>Configurar manualmente</b><p>Você pode configurar a API de Conversões seguindo nosso guia passo a passo.</p></div><button class="btn sec" disabled>Começar</button></div>' +
+      '<div class="config-linha" data-t="capi-direta"><div><b>Configurar integração direta</b><p>A integração direta é uma opção mais personalizável para configurar a API de Conversões e o Pixel da Meta. Você precisará da ajuda de um desenvolvedor para realizar esse processo.</p></div><button class="btn sec" disabled>Configurar integração direta</button></div>' +
+      '<div class="config-linha" data-t="capi-parceiro"><div><b>Configurar por meio de uma integração de parceiros</b><p>Conecte facilmente sua atividade da web por meio de uma integração de parceiros, sem a necessidade de código. Escolha entre o Wordpress, o Tealium, o Segment e muitos outros.</p></div><button class="btn sec" disabled>Escolher um parceiro</button></div>' +
       chave('capi', '🧪 Só no treino: simular a API de Conversões', 'Liga eventos de servidor de mentira na Lojinha, para estudar desduplicação e qualidade da correspondência. Na tela real esta chave não existe: a API se configura por um dos caminhos acima.') + '</div>' +
       '<div class="cartao" data-t="cfg-trafego"><h2>Permissões de tráfego</h2><p>Use uma lista de bloqueio ou de permissão para controlar se os domínios podem enviar eventos do Facebook pelo seu pixel. Sugerimos o uso de uma lista de permissão porque ajuda a garantir que o pixel não seja usado para enviar eventos por domínios não autorizados. <a class="lnk">Saiba mais</a></p>' +
       '<p>Lista de permissão: só os domínios adicionados à lista de permissão podem enviar eventos por esse pixel para o Facebook. Os domínios que não estiverem na lista de permissão não poderão enviar eventos.<br>Lista de bloqueio: só os domínios adicionados à lista de bloqueio não poderão enviar eventos por esse pixel para o Facebook. Os domínios que não estiverem na lista de bloqueio poderão enviar eventos.</p>' +

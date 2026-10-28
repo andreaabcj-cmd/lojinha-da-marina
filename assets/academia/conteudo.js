@@ -4618,8 +4618,8 @@ window.AULAS = {
         },
         ferramenta: 'capi-mbe',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela tabela de opções e por dois cenários de loja.', 'En el simulador, el Pixel te guía por la tabla de opciones y por dos escenarios de tienda.'),
-          tour: 'escolher-capi', pagina: 'meta-mbe.html?zerar=1'
+          texto: L('No Gerenciador de Eventos, o Pixel te leva até onde as opções ficam de verdade: Configurações do Pixel › API de Conversões.', 'En el Administrador de eventos, el Pixel te lleva a donde están las opciones de verdad: Configuración del píxel › API de Conversiones.'),
+          tour: 'escolher-capi', pagina: 'meta-eventos.html'
         },
         atender: {
           cena: L('E se um dia a Lojinha tiver loja física? Como eu mando essas vendas para a Meta? Qual opção uso? 🏬', '¿Y si un día la Lojinha tiene tienda física? ¿Cómo mando esas ventas a Meta? ¿Qué opción uso? 🏬'),
@@ -4718,8 +4718,8 @@ window.AULAS = {
         },
         ferramenta: 'acesso-mbe',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelos passos para dar à agência acesso parcial ao Pixel e à Página.', 'En el simulador, el Pixel te guía por los pasos para dar a la agencia acceso parcial al píxel y a la página.'),
-          tour: 'dar-acesso-parceiro', pagina: 'meta-mbe.html?zerar=1'
+          texto: L('Nas Configurações do portfólio, o Pixel te guia para dar à agência acesso parcial à Página: Parceiros › Adicionar › Conceder acesso.', 'En la Configuración del portfolio, el Pixel te guía para dar a la agencia acceso parcial a la página: Socios › Agregar › Conceder acceso.'),
+          tour: 'dar-acesso-parceiro', pagina: 'meta-portfolio.html?exemplo=1'
         },
         atender: {
           cena: L('Entrei nas Configurações e não vejo a opção Parceiros. A Meta escondeu? 😠', 'Entré en Configuración y no veo la opción Socios. ¿Meta la escondió? 😠'),

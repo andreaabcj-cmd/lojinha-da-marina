@@ -8,3 +8,7 @@
 .ga-aviso.verm{border-color:var(--red);background:#fff7f9}
 .sa-nr td{color:var(--muted)}
 .mb-grade{display:flex;flex-wrap:wrap;gap:8px}.mb-par{text-align:left;min-width:150px}
+
+/* Integrações (tela real 28/10/2026) */
+.mb-rec{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:6px 0;cursor:pointer}.mb-rec small{display:block;color:var(--muted);font-size:12px}
+.mb-rodape{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.mb-topo .abas{margin-top:8px}
