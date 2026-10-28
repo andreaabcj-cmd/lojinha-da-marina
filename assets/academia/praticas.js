@@ -16,10 +16,12 @@ window.PRATICAS['print-pixel'] = {
     ['marina', { foto: 'codigo-base', legenda: { pt: 'Marina enviou uma foto.', es: 'Marina envió una foto.' } }]
   ],
   pergunta: {
-    txt: { pt: 'O número do site (init) é igual ao ID do Pixel no Gerenciador de Eventos?', es: '¿El número del sitio (init) es igual al ID del Pixel en el Administrador de eventos?' },
+    txt: { pt: 'Comparando os dois prints, o que você conclui?', es: 'Comparando las dos capturas, ¿qué concluyes?' },
     opcoes: [
-      { certa: true, txt: { pt: 'Sim, são iguais', es: 'Sí, son iguales' }, fb: { pt: 'Isso! 1234567890123456 nos dois: o site envia para o Pixel certo.', es: '¡Eso! 1234567890123456 en los dos: el sitio envía al Pixel correcto.' } },
-      { certa: false, txt: { pt: 'Não, são diferentes', es: 'No, son distintos' }, fb: { pt: 'Confira de novo, número por número: aqui eles são iguais. Quando são diferentes, os eventos vão para outro Pixel.', es: 'Revisa otra vez, número por número: aquí son iguales. Cuando son distintos, los eventos van a otro Pixel.' } }
+      { certa: true, txt: { pt: 'O init do site e o ID do Pixel são iguais: o site manda para o Pixel certo.', es: 'El init del sitio y el ID del Pixel son iguales: el sitio envía al Pixel correcto.' }, fb: { pt: 'Isso! 1234567890123456 nos dois. Pixel certo; se ainda faltar algo, o próximo passo são os eventos.', es: '¡Eso! 1234567890123456 en los dos. Pixel correcto; si todavía falta algo, el siguiente paso son los eventos.' } },
+      { certa: false, txt: { pt: 'Os números mudam nos últimos dígitos: o site está mandando para outro Pixel.', es: 'Los números cambian en los últimos dígitos: el sitio está enviando a otro Pixel.' }, fb: { pt: 'Confira número por número: aqui os dois são 1234567890123456. Quando são diferentes, aí sim os eventos vão para outro Pixel.', es: 'Revisa número por número: aquí los dos son 1234567890123456. Cuando son distintos, ahí sí los eventos van a otro Pixel.' } },
+      { certa: false, txt: { pt: 'Não dá para saber pelos prints: o ID certo do Pixel só aparece abrindo o F12.', es: 'No se puede saber por las capturas: el ID correcto del Pixel solo aparece abriendo F12.' }, fb: { pt: 'Dá, sim: o ID está no Gerenciador de Eventos (1º print) e o init no código da página (2º print).', es: 'Sí se puede: el ID está en el Administrador de eventos (1.ª captura) y el init en el código de la página (2.ª captura).' } },
+      { certa: false, txt: { pt: 'Os números batem, mas o código não tem PageView, então as visitas não contam.', es: 'Los números coinciden, pero el código no tiene PageView, así que las visitas no cuentan.' }, fb: { pt: 'O PageView está no código do print, logo abaixo do init. A conclusão certa é que o Pixel é o mesmo.', es: 'El PageView está en el código de la captura, justo debajo del init. La conclusión correcta es que el Pixel es el mismo.' } }
     ]
   }
 };
@@ -42,7 +44,7 @@ window.TOURS['print-pixel'] = [
     txt: { pt: 'Este é o número dentro do init: é para ele que o site envia os eventos.', es: 'Este es el número dentro del init: es a donde el sitio envía los eventos.' } },
   { alvo: '.pp-pergunta', cond: tpRespondeu,
     tit: { pt: 'Compare', es: 'Compara' },
-    txt: { pt: 'Agora responda: os dois números são iguais?', es: 'Ahora responde: ¿los dos números son iguales?' } },
+    txt: { pt: 'Agora responda: comparando os dois prints, o que você conclui?', es: 'Ahora responde: comparando las dos capturas, ¿qué concluyes?' } },
   { alvo: '.pp-pergunta', fim: true,
     tit: { pt: 'Pronto! 🎉', es: '¡Listo! 🎉' },
     txt: { pt: 'Você pediu os prints certos e comparou os números, sem precisar de acesso ao site. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', es: 'Pediste las capturas correctas y comparaste los números, sin necesitar acceso al sitio. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.' } }
