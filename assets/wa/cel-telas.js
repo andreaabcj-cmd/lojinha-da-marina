@@ -55,7 +55,7 @@
       sec(T('Sua conta', 'Tu cuenta')) + linha('@', T('Nome de usuário', 'Nombre de usuario')) +
       linha('🔌', T('Plataforma comercial', 'Plataforma comercial'), '', 'ir:plataforma', 'cel-conta-plataforma') +
       linha('📲', T('Mudar número de telefone', 'Cambiar número de teléfono'), '', 'ir:mudarnum', 'cel-conta-mudar') +
-      linha('📄', T('Pedir dados da conta', 'Solicitar información de la cuenta')) + linha('🗑️', T('Apagar conta', 'Eliminar cuenta'), '', 'apagar') + '</div>';
+      linha('📄', T('Pedir dados da conta', 'Solicitar información de la cuenta')) + linha('🗑️', T('Apagar conta', 'Eliminar cuenta'), '', 'ir:apagar', 'cel-conta-apagar') + '</div>';
   };
   Tl.duasetapas = function () {
     return topo(T('Verificação em duas etapas', 'Verificación en dos pasos'), 'conta') + '<div class="wa-rolar wa-centro"><div class="wa-ilu">🔢</div>' +
@@ -74,6 +74,19 @@
       '<li>' + t(T('Você poderá compartilhar até seis meses do histórico de conversas. Não é possível compartilhar históricos de grupos.', 'Podrás compartir hasta seis meses del historial de chats. No se pueden compartir historiales de grupos.')) + '</li>' +
       '<li>' + t(T('Para oferecer esse serviço, a partir de agora todas as conversas individuais serão gerenciadas usando um serviço seguro da Meta. Um aviso será exibido nas conversas.', 'Para ofrecer este servicio, desde ahora todos los chats individuales se administrarán con un servicio seguro de Meta. Se mostrará un aviso en los chats.')) + '</li></ul></div>' +
       bt(T('CONECTAR À PLATAFORMA COMERCIAL', 'CONECTARSE A LA PLATAFORMA COMERCIAL'), 'naotreino', 'cel-plataforma-bt');
+  };
+  /* Apagar conta (tela real, Android, 28/10/2026, só olhada: nada preenchido) */
+  Tl.apagar = function () {
+    return topo(T('Apagar conta', 'Eliminar cuenta'), 'conta') + '<div class="wa-rolar"><p class="wa-sec forte">' + t(T('Ao apagar esta conta:', 'Al eliminar esta cuenta:')) + '</p><ul class="wa-lista" data-t="cel-apagar-efeitos">' +
+      '<li>' + t(T('A conta será apagada do WhatsApp e removida de todos os seus dispositivos.', 'La cuenta se eliminará de WhatsApp y de todos tus dispositivos.')) + '</li>' +
+      '<li data-t="cel-apagar-historico"><b>' + t(T('Seu histórico de conversas será apagado', 'Tu historial de chats se eliminará')) + '</b></li>' +
+      '<li>' + t(T('Você sairá de todos os seus grupos do WhatsApp.', 'Saldrás de todos tus grupos de WhatsApp.')) + '</li>' +
+      '<li>' + t(T('Apagar seu histórico de pagamentos e cancelar pagamentos pendentes', 'Se eliminará tu historial de pagos y se cancelarán los pagos pendientes')) + '</li>' +
+      '<li>' + t(T('Os canais criados por você serão apagados.', 'Los canales que creaste se eliminarán.')) + '</li></ul>' +
+      '<p class="wa-sec">' + t(T('Prefere mudar o número?', '¿Prefieres cambiar el número?')) + '</p><button class="wa-txt" data-cel="ir:mudarnum">' + t(T('MUDAR NÚMERO DE TELEFONE', 'CAMBIAR NÚMERO DE TELÉFONO')) + '</button>' +
+      txt(T('Para apagar sua conta, confirme o código do país e insira seu número de telefone.', 'Para eliminar tu cuenta, confirma el código de país e ingresa tu número de teléfono.')) +
+      '<div class="wa-campo">' + t(T('País: Brasil', 'País: Brasil')) + '</div><div class="wa-campo">+55 · ' + t(T('Número de telefone', 'Número de teléfono')) + '</div></div>' +
+      bt(T('APAGAR CONTA', 'ELIMINAR CUENTA'), 'naotreino', 'cel-apagar-bt');
   };
   Tl.mudarnum = function () {
     return topo(T('Mudar número', 'Cambiar número'), 'conta') + '<div class="wa-rolar"><div class="wa-ilu">📲</div><ul class="wa-lista" data-t="cel-mudar-avisos">' +

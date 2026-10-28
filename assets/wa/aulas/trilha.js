@@ -1,4 +1,4 @@
-/* A trilha: 14 aulas na ordem da história da Marina (roteiro aprovado em 27/10/2026). */
+/* A trilha: 18 aulas (15 a 18 pedidas pelo pessoal em 28/10/2026) na ordem da história da Marina (roteiro aprovado em 27/10/2026). */
 (function () {
   var T = N.T;
   N.TRILHA = [
@@ -15,7 +15,11 @@
     ['11', '🤖', T('Mensagem automática não sai', 'El mensaje automático no sale')],
     ['12', '🔗', T('Ligar Página e Instagram', 'Vincular Página e Instagram')],
     ['13', '📣', T('Anúncio para o WhatsApp e transmissão comercial', 'Anuncio a WhatsApp y difusión comercial')],
-    ['14', '⚙️', T('API sem mistério', 'API sin misterio')]
+    ['14', '⚙️', T('API sem mistério', 'API sin misterio')],
+    ['15', '➕', T('Pôr um número na conta da API', 'Agregar un número a la cuenta de la API')],
+    ['16', '🧩', T('A API passo a passo e os parceiros', 'La API paso a paso y los socios')],
+    ['17', '🗑️', T('Excluir × desregistrar o número', 'Eliminar × dar de baja el número')],
+    ['18', '🤝', T('O mesmo número no app e na API', 'El mismo número en la app y en la API')]
   ].map(function (a) { return { id: a[0], icone: a[1], titulo: a[2] } });
 })();
 
