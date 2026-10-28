@@ -462,15 +462,24 @@
     return h + '</div>';
   }
   function faseChip(m) { var f = (window.FASES || [])[m && m.fase]; return f ? '<p class="fase-chip">' + PERSONAGEM('marina', 1.4) + T({ pt: 'Marina nesta fase:', es: 'Marina en esta fase:' }) + ' <b>' + f.icone + ' ' + T(f.nome) + '</b></p>' : '' }
-  /* Ordem das respostas: embaralhada, mas sempre a MESMA para a mesma aula (semente = id), e a certa nunca fica em primeiro.
+  /* Ordem das respostas: embaralhada, mas sempre a MESMA para a mesma aula (semente = id). A certa cai em qualquer posição
+     (A, B, C e D aparecem certas em quantidades parecidas: regra das perguntas, 28/10/2026).
      Devolve os índices originais, para o resto do código continuar achando a opção pelo número. */
   function ordemOpcoes(opcoes, semente) {
     var h = 2166136261, i; for (i = 0; i < semente.length; i++) { h ^= semente.charCodeAt(i); h = Math.imul(h, 16777619) }
+    var pos = (h >>> 0) % opcoes.length;
     function rnd() { h += 0x6D2B79F5; var t = Math.imul(h ^ (h >>> 15), 1 | h); t ^= t + Math.imul(t ^ (t >>> 7), 61 | t); return ((t ^ (t >>> 14)) >>> 0) / 4294967296 }
-    var idx = opcoes.map(function (o, k) { return k }), j, tmp;
+    var idx = opcoes.map(function (o, k) { return k }).filter(function (k) { return !opcoes[k].certa }), j, tmp;
     for (i = idx.length - 1; i > 0; i--) { j = Math.floor(rnd() * (i + 1)); tmp = idx[i]; idx[i] = idx[j]; idx[j] = tmp }
-    if (idx.length > 1 && opcoes[idx[0]].certa) { j = 1 + Math.floor(rnd() * (idx.length - 1)); tmp = idx[0]; idx[0] = idx[j]; idx[j] = tmp }
+    opcoes.forEach(function (o, k) { if (o.certa) idx.splice(Math.min(pos, idx.length), 0, k) });
     return idx;
+  }
+  /* depois que a pessoa acerta, cada alternativa mostra por que está certa ou errada */
+  function revelaPorques(raiz, opcoes, attr) {
+    raiz.querySelectorAll('[' + attr + ']').forEach(function (b) {
+      if (b.querySelector('.fb')) return; var op = opcoes[+b.getAttribute(attr)];
+      b.classList.add(op.certa ? 'certa' : 'errada', 'revelada'); b.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
+    });
   }
 
   /* ---------- AULA: uma parte por vez (entender · ver de perto · praticar · atender) ---------- */
@@ -493,7 +502,7 @@
     function desenha() {
       var p = partes[passoAtual], h = '';
       if (p === 'reclamacao') h = chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T(a.praticar ? { pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' } : { pt: 'Ver por que acontece', es: 'Ver por qué pasa' }) + '</button></p>';
-      else if (p === 'entender') h = chat(a.entender.dialogo, a.antes) + '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>';
+      else if (p === 'entender') h = chat(a.entender.dialogo, a.antes) + (a.entender.pontos && a.entender.pontos.length ? '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>' : '');
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<div class="ferr-box" id="ferr"></div>' + (!window.LAB_ABERTA || window.LAB_ABERTA(a.ferramenta) ? '<p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>' : ''); setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
       else if (p === 'praticar') {
         var volta = function (id) { return encodeURIComponent(aqui + '&passo=' + (passoAtual + (a.praticar.opcoes ? 1 : 2)) + '&feito=' + id) },   // várias práticas: volta para escolher outra; uma só: segue para o Atender
@@ -507,6 +516,8 @@
           }).join('') + '</div><p class="miudo">💡 ' + T({ pt: 'Se um jeito não estiver disponível, tente o próximo. Ao terminar um tutorial, você volta para cá.', es: 'Si una forma no está disponible, prueba la siguiente. Al terminar un tutorial, vuelves aquí.' }) + '</p>' : '<p class="miudo">' + T(a.atender ? { pt: 'Ao terminar, você volta para esta aula, no passo Atender.', es: 'Al terminar, vuelves a esta clase, en el paso Atender.' } : { pt: 'Ao terminar, você volta para esta aula.', es: 'Al terminar, vuelves a esta clase.' }) + '</p>');
       }
       else if (p === 'atender') h = chat([['marina', a.atender.cena]]) + '<b>' + T(a.atender.pergunta) + '</b><div class="opcoes">' + ordemOpcoes(a.atender.opcoes, mid + '/' + aid).map(function (i) { var o = a.atender.opcoes[i]; return '<button class="opcao" data-op="' + i + '">' + T(o.txt) + '</button>' }).join('') + '</div>' +
+        // mais perguntas da mesma aula (módulo de problemas do WhatsApp): mesmo visual, uma embaixo da outra
+        (a.atender.mais || []).map(function (q, k) { return '<div class="mais-q" data-q="' + k + '"><b><span class="mais-n">' + (k + 2) + '/' + (a.atender.mais.length + 1) + '</span> ' + T(q.pergunta) + '</b><div class="opcoes">' + ordemOpcoes(q.opcoes, mid + '/' + aid + '/' + k).map(function (i) { return '<button class="opcao" data-op2="' + i + '">' + T(q.opcoes[i].txt) + '</button>' }).join('') + '</div></div>' }).join('') +
         (a.gancho && !dg ? fioDepois() : '');
       // aula sem Atender (ex.: Portfólio 01): o “Na próxima aula” vai no fim da última etapa
       if (p !== 'atender' && passoAtual === partes.length - 1 && a.gancho && !dg) h += fioDepois();
@@ -529,10 +540,13 @@
       };
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.onclick = function () { passoAtual = i; desenha() } });
       $('#palco').addEventListener('click', function (e) {
+        var o2 = e.target.closest('[data-op2]');
+        if (o2) { var bloco = o2.closest('.mais-q'), q2 = a.atender.mais[+bloco.getAttribute('data-q')], op2 = q2.opcoes[+o2.getAttribute('data-op2')]; if (o2.querySelector('.fb') || bloco.querySelector('.opcao.certa')) return;
+          o2.classList.add(op2.certa ? 'certa' : 'errada'); o2.insertAdjacentHTML('beforeend', '<span class="fb">' + (op2.certa ? '✅ ' : '❌ ') + T(op2.fb) + '</span>'); if (op2.certa) { mov().confete(o2); revelaPorques(bloco, q2.opcoes, 'data-op2') } return }
         var o = e.target.closest('[data-op]'); if (!o) return; var op = a.atender.opcoes[+o.getAttribute('data-op')];
-        if (o.querySelector('.fb')) return;
+        if (o.querySelector('.fb') || $('#palco > .opcoes .opcao.certa')) return;
         o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
-        if (op.certa) mov().confete(o);
+        if (op.certa) { mov().confete(o); revelaPorques($('#palco'), a.atender.opcoes, 'data-op') }
       });
       if ($('#bApr')) $('#bApr').onclick = function () { document.documentElement.classList.toggle('apresentar'); this.textContent = document.documentElement.classList.contains('apresentar') ? T(U.sairApr) : T(U.apresentar) };
       document.addEventListener('keydown', function (e) { if (e.target.closest('input,textarea')) return; if (e.key === 'ArrowRight') $('#bProx').click(); if (e.key === 'ArrowLeft') $('#bAnt').click() });
@@ -543,7 +557,7 @@
       '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(dg && p === 'praticar' ? U.resolver : dg && p === 'entender' ? U.porque : U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
       '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +
-      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(mid === 'dg-workaround' ? { pt: 'Fontes da comunidade (não oficiais)', es: 'Fuentes de la comunidad (no oficiales)' } : U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul></details>' : '') +
+      (a.fontes ? '<details class="fontes"><summary>📚 ' + T(mid === 'dg-workaround' ? { pt: 'Fontes da comunidade (não oficiais)', es: 'Fuentes de la comunidad (no oficiales)' } : U.fontes) + '</summary><ul>' + a.fontes.map(function (f) { return '<li><a href="' + f.url + '" target="_blank" rel="noopener">' + T(f.titulo) + '</a> · ' + T(U.conferido) + ' ' + f.conferido + '</li>' }).join('') + '</ul>' + (a.telas ? '<p class="miudo">🖥️ ' + T(a.telas) + '</p>' : '') + '</details>' : '') +
       // quando a Central de Ajuda e a tela real não batem: as duas versões e o que a aula ensina
       (a.divergencias ? '<details class="fontes divergencias"><summary>⚖️ ' + T({ pt: 'Divergências: Central de Ajuda × tela real', es: 'Diferencias: Centro de ayuda × pantalla real' }) + '</summary><ul>' + a.divergencias.map(function (d) {
         return '<li><b>' + T(d.tema) + '</b><br>📚 ' + T({ pt: 'Central de Ajuda', es: 'Centro de ayuda' }) + ': ' + T(d.oficial) + '<br>🖥️ ' + T({ pt: 'Tela real', es: 'Pantalla real' }) + ': ' + T(d.tela) + '<br>✅ ' + T({ pt: 'Na aula', es: 'En la clase' }) + ': ' + T(d.aula) + '</li>'
@@ -558,7 +572,7 @@
         var o = e.target.closest('[data-pp]'); if (!o || $('.pp-op.certa')) return; var op = p.pergunta.opcoes[+o.getAttribute('data-pp')];
         document.querySelectorAll('.pp-op .fb').forEach(function (x) { x.remove() }); document.querySelectorAll('.pp-op').forEach(function (x) { x.classList.remove('errada') });
         o.classList.add(op.certa ? 'certa' : 'errada'); o.insertAdjacentHTML('beforeend', '<span class="fb">' + (op.certa ? '✅ ' : '❌ ') + T(op.fb) + '</span>');
-        if (op.certa) mov().confete(o);
+        if (op.certa) { mov().confete(o); revelaPorques($('#palcoPratica'), p.pergunta.opcoes, 'data-pp') }
       });
     });
     return '<h1 class="pl-h1">🕹️ ' + T(p.titulo) + '</h1><p class="pl-lead">' + T(p.resumo) + '</p><div class="palco" id="palcoPratica">' + chat(p.dialogo) +
