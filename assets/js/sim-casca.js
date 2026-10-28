@@ -30,15 +30,19 @@
     var on = app.querySelector('.ss-it.on'); var t = on ? on.textContent : ''; t = t.replace(/^[^\p{L}\p{N}]+/u, '').replace(/\s*\d+\s*$/, '').trim();
     if (t) return t; var h = app.querySelector('.ss-main h1, .ss-topo h1'); return h ? h.textContent.trim() : '';
   }
+  // Gerenciador de Anúncios (campanhas, Feed, relatórios): na Meta real a faixa de ícones da esquerda aparece aqui também; só ela entra (o cabeçalho é do próprio simulador)
+  var SO_TRILHO = { 'meta-anuncios': 'megafone', 'meta-feed': 'megafone', 'meta-relatorios': 'tabela' };
   function poe() {
-    var ss = app.querySelector('.ss'); document.body.classList.toggle('com-casca', !!ss); if (!ss) return;
+    var ss = app.querySelector('.ss'), so = !ss && SO_TRILHO[pag] && app.querySelector('.ga, .rl');
+    document.body.classList.toggle('com-casca', !!ss); document.body.classList.toggle('com-trilho', !!so); if (!ss && !so) return;
     var cab = app.querySelector('.ssc-cab'), tr = app.querySelector('.ssc-trilho');
     if (!tr) {
-      var on = ON[pag] || 'menu', b = function (k, t) { return '<button title="' + t + '" tabindex="-1"' + (k === on ? ' class="on"' : '') + '>' + IC[k] + '</button>' };
+      var on = ON[pag] || SO_TRILHO[pag] || 'menu', b = function (k, t) { return '<button title="' + t + '" tabindex="-1"' + (k === on ? ' class="on"' : '') + '>' + IC[k] + '</button>' };
       tr = document.createElement('nav'); tr.className = 'sim-trilho ssc-trilho'; tr.setAttribute('data-sem-traduzir', '1'); tr.setAttribute('aria-label', 'Ferramentas');
       tr.innerHTML = '<span class="logo meta-inf" aria-label="Meta">∞</span>' + b('sino', 'Notificações') + b('painel', 'Visão geral da conta') + b('tabela', 'Campanhas') + b('pessoas', 'Públicos') + b('megafone', 'Gerenciador de Anúncios') + b('eventos', 'Gerenciador de Eventos') + b('menu', 'Todas as ferramentas');
       app.appendChild(tr);
     }
+    if (so) return;
     if (!cab) { cab = document.createElement('header'); cab.className = 'sim-cab ssc-cab'; cab.setAttribute('data-sem-traduzir', '1'); cab.innerHTML = '<h1></h1><div class="sim-portfolio" title="Portfólio empresarial"><span class="L">L</span>Lojinha da Marina Aula<span class="seta">▾</span></div><span class="sim-avatar">M</span>'; app.appendChild(cab) }
     var h1 = cab.querySelector('h1'), t = titulo(); if (t && h1.textContent !== t) h1.textContent = t;
     marcaTreino();
