@@ -8,9 +8,9 @@
   if (!A || !A.praticar) { app.innerHTML = '<p style="padding:60px 20px">' + t(T('Aula não encontrada.', 'Clase no encontrada.')) + ' <a href="modulo.html?m=wa-problemas">' + t(T('Voltar ao módulo', 'Volver al módulo')) + '</a></p>'; return }
   var P = A.praticar, dois = P.lugares.length > 1;
   app.innerHTML = '<div class="sim-faixa">🧪 ' + t(T('Simulador de treinamento do WhatsApp Business · nada aqui vai para o WhatsApp nem para a Meta', 'Simulador de capacitación de WhatsApp Business · nada de aquí va a WhatsApp ni a Meta')) + ' · <a href="modulo.html?m=wa-problemas">← ' + t(T('voltar à plataforma', 'volver a la plataforma')) + '</a></div>' +
-    '<div class="wc"><div class="wc-palco' + (dois ? ' dois' : '') + '">' +
+    '<div class="wc"><div class="wc-palco' + (dois ? ' dois' : P.lugares[0] === 'meta' ? ' so-meta' : '') + '">' +
     (P.lugares.indexOf('cel') >= 0 ? '<div class="wc-lugar ativo" data-l="cel"><h3>📱 ' + t(T('Celular da Marina · WhatsApp Business', 'Celular de Marina · WhatsApp Business')) + '</h3><div id="celEl"></div></div>' : '') +
-    (P.lugares.indexOf('meta') >= 0 ? '<div class="wc-lugar' + (dois ? '' : ' ativo') + '" data-l="meta"><h3>🖥️ ' + t(T('Meta Business Suite › Configurações', 'Meta Business Suite › Configuración')) + '</h3><div id="metaEl"></div></div>' : '') +
+    (P.lugares.indexOf('meta') >= 0 ? '<div class="wc-lugar' + (dois ? '' : ' ativo') + '" data-l="meta"><h3>🖥️ ' + t(P.tituloMeta || T('Meta Business Suite › Configurações', 'Meta Business Suite › Configuración')) + '</h3><div id="metaEl"></div></div>' : '') +
     '</div><p class="conferido">' + t(A.telas) + ' ' + t(T('Os textos do app em espanhol são tradução nossa (a conferir).', 'Los textos de la app en español son traducción nuestra (por confirmar).')) + '</p></div>';
   var c = document.getElementById('celEl'), m = document.getElementById('metaEl');
   if (c) CEL.montar(c); if (m) META.montar(m);
