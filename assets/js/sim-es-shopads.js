@@ -56,4 +56,21 @@
   P.push([/^Com catálogo ativado, só dá para criar anúncio em carrossel ou de coleção; o formato escolhido não é compatível\.$/, function () { return 'Con catálogo activado, solo se puede crear un anuncio en secuencia o de colección; el formato elegido no es compatible.' }]);
   P.push([/^O destino escolhido \((.+)\) não é a loja: o anúncio não leva as pessoas para a loja\.$/, function (m) { return 'El destino elegido (' + (D[m[1]] || m[1]) + ') no es la tienda: el anuncio no lleva a las personas a la tienda.' }]);
   P.push([/^O botão Loja, em Destinos personalizados, está desligado\.$/, function () { return 'El botón Tienda, en Destinos personalizados, está apagado.' }]);
+  /* Rastreamento e “Criar um parâmetro de URL” (tela real em PT, 28/10/2026; espanhol traduzido por nós, a conferir) */
+  var R = {
+    'Rastreamento': 'Seguimiento', 'Selecione os eventos de conversão a serem rastreados. O conjunto de dados de conversão selecionado desta conta de anúncios será rastreado por padrão.': 'Selecciona los eventos de conversión que quieres seguir. El conjunto de datos de conversión seleccionado de esta cuenta publicitaria se seguirá de forma predeterminada.',
+    'Eventos do site ⓘ': 'Eventos del sitio web ⓘ', 'Configurar': 'Configurar', '· Eventos do app ⓘ · Eventos offline ⓘ': '· Eventos de la app ⓘ · Eventos offline ⓘ', 'Parâmetros de URL ⓘ': 'Parámetros de URL ⓘ', 'key1=value1&key2=value2': 'key1=value1&key2=value2',
+    'Criar um parâmetro de URL': 'Crear un parámetro de URL', 'Relatórios de terceiros': 'Informes de terceros',
+    'As compras na Meta talvez não sejam incluídas nos seus relatórios do Google. Você pode conectar sua conta para mensurar ações em anúncios que direcionam as pessoas ao seu site ou à sua loja.': 'Es posible que las compras en Meta no se incluyan en tus informes de Google. Puedes conectar tu cuenta para medir acciones en anuncios que llevan a las personas a tu sitio web o a tu tienda.',
+    'Conectar': 'Conectar', 'Na tela real, Conectar abre a ligação com a conta do Google. Não foi feita no treino (a conferir).': 'En la pantalla real, Conectar abre la conexión con la cuenta de Google. No se hizo en la práctica (por confirmar).',
+    'Preencha os campos no formulário abaixo para adicionar parâmetros à URL do seu site. Para obter informações automaticamente da sua campanha, conjunto de anúncios ou anúncio, clique em cada campo e selecione um parâmetro dinâmico, como id={{ad.id}}.': 'Completa los campos del formulario para agregar parámetros a la URL de tu sitio. Para obtener información automáticamente de tu campaña, conjunto de anuncios o anuncio, haz clic en cada campo y selecciona un parámetro dinámico, como id={{ad.id}}.',
+    'Origem da campanha': 'Origen de la campaña', 'Selecione um parâmetro dinâmico ou insira um valor': 'Selecciona un parámetro dinámico o ingresa un valor',
+    'Para identificar a origem do tráfego. Por exemplo: Facebook, Instagram, um mecanismo de pesquisa ou outra origem.': 'Para identificar el origen del tráfico. Por ejemplo: Facebook, Instagram, un motor de búsqueda u otro origen.',
+    'Nome da campanha': 'Nombre de la campaña', 'Para identificar uma promoção específica ou campanha estratégica. Por exemplo: summer_sale.': 'Para identificar una promoción específica o campaña estratégica. Por ejemplo: summer_sale.',
+    'Conteúdo da campanha': 'Contenido de la campaña', 'Para diferenciar anúncios ou links que apontam para a mesma URL. Por exemplo: white_logo, black_logo.': 'Para diferenciar anuncios o enlaces que apuntan a la misma URL. Por ejemplo: white_logo, black_logo.',
+    '(Meio da campanha e “Adicionar parâmetro” ficaram de fora do simulador.)': '(Medio de la campaña y “Agregar parámetro” quedaron fuera del simulador.)', 'Prévia do parâmetro': 'Vista previa del parámetro', 'Aplicar': 'Aplicar',
+    'Faltam ativos para criar anúncios das Lojas. Confira a loja nas Configurações do Gerenciador de Comércio.': 'Faltan activos para crear anuncios de Tiendas. Revisa la tienda en la Configuración del Administrador de ventas.'
+  };
+  for (var kr in R) D[kr] = R[kr];
+  P.push([/^(\{\{[a-z_.]+\}\}|utm_[a-z]+=.+)$/, function (m) { return m[1] }]);
 })();

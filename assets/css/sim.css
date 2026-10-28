@@ -411,3 +411,6 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .cm-erro{color:var(--red);font-size:13px;margin:6px 0 0}
 .cm-chave{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:8px 0}.cm-chave input{width:22px;height:22px}
 @media (max-width:760px){.cm-duas,.cm-2{grid-template-columns:1fr}.cm-resumo{grid-template-columns:1fr 1fr}}
+/* Shop Ads › janela “Criar um parâmetro de URL” (tela real 28/10/2026) */
+.sa-pcampo{display:block;margin:0 0 12px}.sa-pcampo b{display:block;margin-bottom:4px}.sa-pcampo small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.sa-previa{background:#F4F7FB;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:13px Consolas,monospace;min-height:20px;word-break:break-all}

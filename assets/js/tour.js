@@ -89,7 +89,6 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     'meta-whatsapp.html': { pt: 'WhatsApp Business e WhatsApp|o celular da Marina e o de uma cliente', es: 'WhatsApp Business y WhatsApp|el celular de Marina y el de una clienta' },
     'meta-turbinar.html': { pt: 'Turbinar post (Página do Facebook / Instagram)|o atalho para anunciar um post pronto', es: 'Promocionar publicación (página de Facebook / Instagram)|el atajo para anunciar una publicación lista' },
     'meta-verified.html': { pt: 'Meta Verified para empresas|a assinatura de selo e suporte', es: 'Meta Verified para empresas|la suscripción de insignia y soporte' },
-    'meta-checkoutsite.html': { pt: 'Compra no site (vinda de um anúncio)|o que o cliente vê depois de clicar no anúncio', es: 'Compra en el sitio (desde un anuncio)|lo que ve el cliente después de hacer clic en el anuncio' },
     'admin-shopify.html': { pt: 'Admin da Shopify|o painel onde a dona da loja Shopify cuida dela', es: 'Admin de Shopify|el panel donde la dueña de la tienda Shopify la administra' },
     'admin-woo.html': { pt: 'Painel do WordPress (WooCommerce)|onde a dona da loja WooCommerce cuida dela', es: 'Panel de WordPress (WooCommerce)|donde la dueña de la tienda WooCommerce la administra' },
     'arquivos-site.html': { pt: 'Editor de arquivos do site|os arquivos da hospedagem, onde fica o código', es: 'Editor de archivos del sitio|los archivos del alojamiento, donde está el código' },

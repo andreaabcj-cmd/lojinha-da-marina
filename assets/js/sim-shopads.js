@@ -38,7 +38,7 @@
     { id: 'rosite', t: 'ROAS das compras no site', v: '2,6', rec: false, grupo: 'Não recomendadas', d: 'Não dá o panorama completo. Use ROAS de compras e valor de conversão de compras.' },
     { id: 'comprasmeta', t: 'Compras na Meta', v: '0', rec: false, grupo: 'Não se aplicam mais', d: 'Não se aplica mais: as Lojas não têm mais finalização da compra no Facebook e no Instagram, e esta métrica aparece como 0. Dados antigos ficam por até 39 meses.' }
   ];
-  function inicial() { return { tab: 'criar', ativos: { loja: true, pag: true, cat: true, pixel: true, conta: true }, nivel: 1, adv: true, catOn: true, meta: 'Maximizar o número de conversões', evento: 'Compra', pos: POS[0], formato: 'Carrossel', destino: 'Site', url: '', lojaOn: false, lojaDest: LOJA_DEST[0], permiteMeta: false, pub: false, mensagem: '', metSel: '', soRec: false, verif: '' } }
+  function inicial() { return { tab: 'criar', ativos: { loja: true, pag: true, cat: true, pixel: true, conta: true }, nivel: 1, adv: true, catOn: true, meta: 'Maximizar o número de conversões', evento: 'Compra', pos: POS[0], formato: 'Carrossel', destino: 'Site', url: '', lojaOn: false, lojaDest: LOJA_DEST[0], permiteMeta: false, pub: false, mensagem: '', metSel: '', soRec: false, verif: '', param: '', jan: false, pf: { origem: '', nome: '', conteudo: '' }, google: false } }
   function problema() { var s = inicial(); s.tab = 'criar'; s.nivel = 3; s.evento = 'Cadastro concluído'; s.pos = POS[4]; s.formato = 'Imagem única'; s.destino = 'App'; s.url = 'https://www.lojinha.exemplo.com.br/'; s.lojaOn = false; s.ativos.pixel = false; return s }
   var S = ler('sim.shopads', null) || inicial();
   if (params.get('zerar')) S = inicial();
@@ -64,11 +64,34 @@
     return '<nav class="ss-nav">' + t.map(function (x) { return '<button class="ss-it' + (S.tab === x[0] ? ' on' : '') + '" data-tab="' + x[0] + '" data-t="tab-' + x[0] + '">' + x[1] + '</button>' }).join('') + '</nav>';
   }
   function selOpt(id, lista, v, t) { return '<select class="ga-in" id="' + id + '" data-t="' + t + '">' + lista.map(function (o) { return '<option value="' + o + '"' + (o === v ? ' selected' : '') + '>' + o + '</option>' }).join('') + '</select>' }
+  /* Rastreamento do anúncio e a janela “Criar um parâmetro de URL” (tela real do Gerenciador de Anúncios, 28/10/2026; só olhada) */
+  var DIN = ['{{campaign.id}}', '{{adset.id}}', '{{ad.id}}', '{{campaign.name}}', '{{adset.name}}', '{{ad.name}}', '{{placement}}', '{{site_source_name}}'];
+  var PCAMPOS = [['origem', 'utm_source', 'Origem da campanha', 'Para identificar a origem do tráfego. Por exemplo: Facebook, Instagram, um mecanismo de pesquisa ou outra origem.'],
+    ['nome', 'utm_campaign', 'Nome da campanha', 'Para identificar uma promoção específica ou campanha estratégica. Por exemplo: summer_sale.'],
+    ['conteudo', 'utm_content', 'Conteúdo da campanha', 'Para diferenciar anúncios ou links que apontam para a mesma URL. Por exemplo: white_logo, black_logo.']];
+  function previa() { return PCAMPOS.filter(function (c) { return S.pf[c[0]] }).map(function (c) { return c[1] + '=' + S.pf[c[0]] }).join('&') }
+  function rastreamento() {
+    return '<h3>Rastreamento</h3><div class="vf-caixa" data-t="rastreamento"><p class="miudo">Selecione os eventos de conversão a serem rastreados. O conjunto de dados de conversão selecionado desta conta de anúncios será rastreado por padrão.</p>' +
+      '<p>Eventos do site ⓘ <button class="btn sec" disabled>Configurar</button> · Eventos do app ⓘ · Eventos offline ⓘ</p>' +
+      '<p><b>Parâmetros de URL ⓘ</b></p><input class="ga-in" id="saParam" placeholder="key1=value1&amp;key2=value2" value="' + esc(S.param) + '" data-t="in-param"/>' +
+      '<p><button class="cm-link" data-acao="param-abre" data-t="criar-param">Criar um parâmetro de URL</button></p>' +
+      '<div data-t="terceiros-google"><p><b>Relatórios de terceiros</b><br><span class="miudo">As compras na Meta talvez não sejam incluídas nos seus relatórios do Google. Você pode conectar sua conta para mensurar ações em anúncios que direcionam as pessoas ao seu site ou à sua loja.</span></p>' +
+      '<button class="btn sec" data-acao="google" data-t="btn-conectar-google">Conectar</button>' + (S.google ? '<p class="miudo" data-t="msg-google">Na tela real, Conectar abre a ligação com a conta do Google. Não foi feita no treino (a conferir).</p>' : '') + '</div></div>';
+  }
+  function janelaParam() {
+    if (!S.jan) return '';
+    var campo = function (c) { return '<label class="sa-pcampo"><b>' + c[2] + '</b><select id="saP_' + c[0] + '" data-t="param-' + c[0] + '"><option value="">Selecione um parâmetro dinâmico ou insira um valor</option>' + DIN.map(function (d) { return '<option' + (S.pf[c[0]] === d ? ' selected' : '') + '>' + d + '</option>' }).join('') + '</select><small>' + c[3] + '</small></label>' };
+    return '<div class="fundo"><div class="janela larga" data-t="jan-param"><h3>Criar um parâmetro de URL <button class="x" data-acao="param-fecha" aria-label="Fechar">✕</button></h3>' +
+      '<p>Preencha os campos no formulário abaixo para adicionar parâmetros à URL do seu site. Para obter informações automaticamente da sua campanha, conjunto de anúncios ou anúncio, clique em cada campo e selecione um parâmetro dinâmico, como id={{ad.id}}.</p>' +
+      PCAMPOS.map(campo).join('') + '<p class="miudo">(Meio da campanha e “Adicionar parâmetro” ficaram de fora do simulador.)</p>' +
+      '<p><b>Prévia do parâmetro</b></p><div class="sa-previa" data-t="param-previa">' + esc(previa()) + '</div>' +
+      '<div class="rodape-jan"><button class="btn sec" data-acao="param-fecha">Cancelar</button><button class="btn" data-acao="param-aplica" data-t="btn-aplicar-param"' + (previa() ? '' : ' disabled') + '>Aplicar</button></div></div></div>';
+  }
   function telaCriar() {
     var n = S.nivel, passos = ['Campanha', 'Conjunto de anúncios', 'Anúncio'];
     var cab = '<ol class="vf-pas">' + passos.map(function (x, i) { return '<li class="' + (i + 1 === n ? 'on' : i + 1 < n ? 'ok' : '') + '" data-t="nivel-' + (i + 1) + '">' + x + '</li>' }).join('') + '</ol>';
     var corpo = '', pode = true;
-    if (!ativosOk()) corpo += '<div class="ga-aviso verm" data-t="aviso-ativos">Faltam ativos para criar anúncios das Lojas. Veja a aba Antes de criar.</div>';
+    if (!ativosOk()) corpo += '<div class="ga-aviso verm" data-t="aviso-ativos">Faltam ativos para criar anúncios das Lojas. Confira a loja nas Configurações do Gerenciador de Comércio.</div>';
     if (n === 1) { corpo += '<h3>Objetivo</h3><p data-t="obj"><b>Vendas</b> <span class="miudo">(campanha de vendas Advantage+)</span></p><label class="ga-lin"><input type="checkbox" id="saAdv"' + (S.adv ? ' checked' : '') + ' data-t="adv"/><span>Manter as configurações recomendadas do Advantage+ <small>(mudar pode desativar o Advantage+ ou reduzir a pontuação da campanha)</small></span></label>' }
     else if (n === 2) {
       corpo += '<h3>Conversão</h3><p>Local da conversão: <b data-t="local">Site</b> <span class="miudo">(o local “Site e loja” não está mais disponível)</span></p>' +
@@ -81,6 +104,7 @@
         '<p><b>URL do site</b></p><input class="ga-in" id="saUrl" placeholder="https://www.sualoja.com.br/" value="' + esc(S.url) + '" data-t="in-url"/>' +
         '<h3>Destinos personalizados</h3><div class="vf-caixa" data-t="dest-pers"><label class="ga-lin"><input type="checkbox" id="saLoja"' + (S.lojaOn ? ' checked' : '') + (lojaPossivel() ? '' : ' disabled') + ' data-t="btn-loja"/><span><b>Loja</b> <small>' + (lojaPossivel() ? 'Ative para transformar em um anúncio das Lojas.' : 'Botão ausente ou desabilitado: confira o evento de conversão e o destino principal.') + '</small></span></label>' +
         (S.lojaOn ? '<p>Destino da loja</p>' + selOpt('saLojaDest', LOJA_DEST, S.lojaDest, 'sel-lojadest') + '<label class="ga-lin"><input type="checkbox" id="saPerm"' + (S.permiteMeta ? ' checked' : '') + ' data-t="chk-permite"/><span>Permitir que a Meta direcione as pessoas para o destino da loja com maior probabilidade de melhorar o desempenho do anúncio <small>(recomendado)</small></span></label>' : '') + '</div>';
+      corpo += rastreamento();
       pode = !!S.url && ativosOk();
     }
     var ms = motivos(), resumo = '';
@@ -103,7 +127,7 @@
   }
   function pagina() {
     var corpo = S.tab === 'resultados' ? telaResultados() : telaCriar();
-    return casca('<div class="ss">' + nav() + '<main class="ss-main">' + corpo + '</main></div>');
+    return casca('<div class="ss">' + nav() + '<main class="ss-main">' + corpo + '</main></div>' + (S.tab === 'resultados' ? '' : janelaParam()));
   }
   document.addEventListener('click', function (ev) {
     var t = ev.target, c;
@@ -115,6 +139,10 @@
     else if (ac === 'avanca') S.nivel = Math.min(3, S.nivel + 1);
     else if (ac === 'volta') S.nivel = Math.max(1, S.nivel - 1);
     else if (ac === 'publica') { S.pub = true; S.mensagem = 'Seu anúncio será publicado após a análise.' }
+    else if (ac === 'param-abre') { S.jan = true; S.pf = { origem: '', nome: '', conteudo: '' } }
+    else if (ac === 'param-fecha') S.jan = false;
+    else if (ac === 'param-aplica') { S.param = previa(); S.jan = false }
+    else if (ac === 'google') S.google = true;
     else return;
     grava(); render();
   });
@@ -126,6 +154,7 @@
     else if (t.id === 'saDest') { S.destino = t.value; if (t.value !== 'Site') S.lojaOn = false }
     else if (t.id === 'saLojaDest') S.lojaDest = t.value;
     else if (t.id === 'saLoja') S.lojaOn = t.checked;
+    else if (/^saP_/.test(t.id)) S.pf[t.id.slice(4)] = t.value;
     else if (t.id === 'saPerm') S.permiteMeta = t.checked;
     else if (t.id === 'saCat') S.catOn = t.checked;
     else if (t.id === 'saAdv') S.adv = t.checked;
@@ -133,7 +162,7 @@
     else return;
     grava(); render();
   });
-  document.addEventListener('input', function (ev) { if (ev.target.id === 'saUrl') { S.url = ev.target.value; grava() } });
+  document.addEventListener('input', function (ev) { if (ev.target.id === 'saUrl') { S.url = ev.target.value; grava() } else if (ev.target.id === 'saParam') { S.param = ev.target.value; grava() } });
   function render() {
     var foco = document.activeElement && document.activeElement.id;
     $('#app').innerHTML = pagina();
@@ -153,6 +182,17 @@
     { alvo: '[data-t=btn-avanca]', clique: true, garante: function () { SIMSA.zera(); SIMSA.set({ tab: 'criar', nivel: 2 }) }, tit: T('Ir ao anúncio', 'Ir al anuncio'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
     { alvo: '[data-t=btn-loja]', clique: true, garante: function () { SIMSA.zera(); SIMSA.set({ tab: 'criar', nivel: 3, url: 'https://www.lojinha.exemplo.com.br/' }) }, tit: T('A loja como destino', 'La tienda como destino'), txt: T('A loja continua: ela entra em Destinos personalizados. Ative o botão Loja.', 'La tienda continúa: entra en Destinos personalizados. Activa el botón Tienda.') },
     { alvo: '[data-t=resumo]', fim: true, semVolta: true, garante: function () { SIMSA.zera(); SIMSA.set({ tab: 'criar', nivel: 3, url: 'https://www.lojinha.exemplo.com.br/', lojaOn: true }) }, tit: T('O que mudou, na prática 🎉', 'Lo que cambió, en la práctica 🎉'), txt: T('Local da conversão = Site, loja ligada nos destinos personalizados, e os eventos de conversão são os mesmos. No relatório, “compras na Meta” passam a 0: acompanhe as compras no site.', 'Lugar de conversión = Sitio, tienda activada en los destinos personalizados, y los eventos de conversión son los mismos. En el informe, “compras en Meta” pasan a 0: sigue las compras en el sitio.') }
+  ];
+  var N3 = { tab: 'criar', nivel: 3, url: 'https://www.lojinha.exemplo.com.br/', lojaOn: true };
+  function N3x(o) { SIMSA.zera(); SIMSA.set(N3); if (o) SIMSA.set(o) }
+  TOURS['comparar-terceiros'] = [
+    { antes: function () { N3x() }, alvo: '[data-t=rastreamento]', garante: function () { N3x() }, tit: T('“O Google mostra menos compras”', '“Google muestra menos compras”'), txt: T('A Marina vê 71 compras no Gerenciador de Anúncios e 46 no Google Analytics. Parte da diferença se resolve aqui, no Rastreamento do anúncio. Clique em Próximo.', 'Marina ve 71 compras en el Administrador de anuncios y 46 en Google Analytics. Parte de la diferencia se resuelve aquí, en el Seguimiento del anuncio. Haz clic en Siguiente.') },
+    { alvo: '[data-t=criar-param]', clique: true, garante: function () { N3x() }, tit: T('Parâmetros de URL (UTM)', 'Parámetros de URL (UTM)'), txt: T('Os UTM dizem ao Google de onde veio a visita. Clique em “Criar um parâmetro de URL”.', 'Los UTM le dicen a Google de dónde vino la visita. Haz clic en “Crear un parámetro de URL”.') },
+    { alvo: '[data-t=param-origem]', garante: function () { N3x({ jan: true }) }, cond: function () { return sa().pf && sa().pf.origem === '{{site_source_name}}' }, tit: T('Origem', 'Origen'), txt: T('Em Origem da campanha, escolha {{site_source_name}}: a Meta preenche sozinha se veio do Facebook ou do Instagram.', 'En Origen de la campaña, elige {{site_source_name}}: Meta completa sola si vino de Facebook o de Instagram.') },
+    { alvo: '[data-t=param-nome]', garante: function () { N3x({ jan: true, pf: { origem: '{{site_source_name}}', nome: '', conteudo: '' } }) }, cond: function () { return sa().pf && sa().pf.nome === '{{campaign.name}}' }, tit: T('Nome', 'Nombre'), txt: T('Em Nome da campanha, escolha {{campaign.name}}.', 'En Nombre de la campaña, elige {{campaign.name}}.') },
+    { alvo: '[data-t=param-previa]', garante: function () { N3x({ jan: true, pf: { origem: '{{site_source_name}}', nome: '{{campaign.name}}', conteudo: '' } }) }, tit: T('A prévia', 'La vista previa'), txt: T('A prévia mostra o que vai no fim do link do site. Clique em Próximo.', 'La vista previa muestra lo que va al final del enlace del sitio. Haz clic en Siguiente.') },
+    { alvo: '[data-t=btn-aplicar-param]', clique: true, garante: function () { N3x({ jan: true, pf: { origem: '{{site_source_name}}', nome: '{{campaign.name}}', conteudo: '' } }) }, tit: T('Aplicar', 'Aplicar'), txt: T('Clique em Aplicar.', 'Haz clic en Aplicar.') },
+    { alvo: '[data-t=terceiros-google]', fim: true, semVolta: true, garante: function () { N3x({ param: 'utm_source={{site_source_name}}&utm_campaign={{campaign.name}}' }) }, tit: T('E as compras na Meta 🎉', 'Y las compras en Meta 🎉'), txt: T('Parâmetros de URL preenchidos. A própria tela avisa: as compras na Meta talvez não entrem nos relatórios do Google, e dá para conectar a conta do Google aqui. Os números nunca batem 100%: explique isso à Marina.', 'Parámetros de URL completos. La propia pantalla avisa: las compras en Meta quizás no entren en los informes de Google, y aquí se puede conectar la cuenta de Google. Los números nunca coinciden al 100%: explícaselo a Marina.') }
   ];
   TOURS['criar-anuncio-lojas'] = [
     { antes: function () { SIMSA.zera(); SIMSA.set(CRIA) }, alvo: '[data-t=obj]', garante: function () { SIMSA.zera(); SIMSA.set(CRIA) }, tit: T('Objetivo Vendas', 'Objetivo Ventas'), txt: T('Um anúncio das Lojas começa como uma campanha de Vendas Advantage+. Mudar as configurações recomendadas pode desativar o Advantage+. Clique em Próximo.', 'Un anuncio de Tiendas empieza como una campaña de Ventas Advantage+. Cambiar la configuración recomendada puede desactivar Advantage+. Haz clic en Siguiente.') },

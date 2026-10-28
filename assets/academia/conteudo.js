@@ -4372,8 +4372,8 @@ window.AULAS = {
         },
         ferramenta: 'terceiros-offsite',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela diferença 71 × 46, pelos UTM padrão e pelas tags de marketing de terceiros.', 'En el simulador, el Pixel te guía por la diferencia 71 × 46, por los UTM predeterminados y por las etiquetas de marketing de terceros.'),
-          tour: 'comparar-terceiros', pagina: 'meta-checkoutsite.html?zerar=1'
+          texto: L('No Gerenciador de Anúncios, o Pixel te mostra o Rastreamento do anúncio: os parâmetros de URL (UTM) e o aviso sobre as compras na Meta nos relatórios do Google.', 'En el Administrador de anuncios, el Pixel te muestra el Seguimiento del anuncio: los parámetros de URL (UTM) y el aviso sobre las compras en Meta en los informes de Google.'),
+          tour: 'comparar-terceiros', pagina: 'meta-shopads.html?zerar=1'
         },
         atender: {
           cena: L('Meu Google Analytics mostra bem menos vendas que a Meta. Alguém está mentindo! 😠', '¡Mi Google Analytics muestra bastantes menos ventas que Meta! ¡Alguien está mintiendo! 😠'),
@@ -4420,8 +4420,8 @@ window.AULAS = {
         },
         ferramenta: 'antiga-offsite',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pela lista de atualização de uma loja antiga, item por item.', 'En el simulador, el Pixel te guía por la lista de actualización de una tienda antigua, ítem por ítem.'),
-          tour: 'atualizar-loja-antiga', pagina: 'meta-checkoutsite.html?zerar=1'
+          texto: L('Na conta comercial da loja, o Pixel te leva ao que falta numa loja antiga: o URL de finalização da compra, nas telas reais.', 'En la cuenta comercial de la tienda, el Pixel te lleva a lo que falta en una tienda antigua: la URL de finalización de compra, en las pantallas reales.'),
+          tour: 'atualizar-loja-antiga', pagina: 'meta-commerce.html?loja=1'
         },
         atender: {
           cena: L('A loja da minha amiga sumiu e os anúncios dela mudaram! Ela quer criar uma loja nova do zero! 😡', '¡La tienda de mi amiga desapareció y sus anuncios cambiaron! ¡Quiere crear una tienda nueva desde cero! 😡'),
