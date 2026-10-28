@@ -48,6 +48,17 @@
 .wam-mais{display:block;margin:4px auto 0;border:0;background:none;font:700 12.5px inherit;color:var(--ink);cursor:pointer}
 .wam-duas{display:grid;grid-template-columns:3fr 2fr;gap:10px}
 .wam-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0}.wam-num{border:1px solid var(--line);border-radius:8px;padding:6px 8px}.wam-num small{display:block;color:var(--muted);font-size:11px}.wam-num b{font-size:16px}
+/* Meta for Developers (aulas 15 e 16) */
+.dev-logo{font-weight:900;color:#0866FF}.dev-card{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:12px 14px}.dev-card h4{margin:0 0 4px;font-size:15px;font-weight:800}.dev-card p{margin:4px 0}
+.dev-passos{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0 0 12px;padding:0}.dev-passos li{font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}.dev-passos li.on{border-color:var(--ink);color:var(--ink);font-weight:700}.dev-passos li.ok{color:var(--green)}
+.dev-passos.v{flex-direction:column;min-width:150px}
+.dev-campo{display:flex;flex-direction:column;gap:3px;margin:0 0 10px}.dev-campo small{color:var(--muted);font-size:12px}.dev-in{border:2px solid var(--line);border-radius:8px;padding:6px 10px;background:#F7F9FC}
+.dev-uc{display:block;width:100%;text-align:left;border:2px solid var(--line);border-radius:10px;background:#fff;padding:10px;font:inherit;cursor:pointer}.dev-uc small{display:block;color:var(--muted)}.dev-uc.on{border-color:var(--blue);background:#EEF4FF}
+.dev-radio{display:flex;align-items:center;gap:8px;padding:8px;border:2px solid var(--line);border-radius:10px}.dev-radio.off{opacity:.5}
+.dev-rod{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}.dev-item{border-top:1px solid var(--line);padding:8px 0}.dev-item p{margin:2px 0 6px}
+.dev-cod{background:#F4F7FB;border:1px solid var(--line);border-radius:8px;padding:8px;font:11.5px/1.4 Consolas,monospace;white-space:pre-wrap;overflow:auto}
+.dev-jan{display:flex;gap:14px;margin-top:10px;border:2px solid var(--ink);border-radius:12px;padding:12px;background:#fff;box-shadow:3px 3px 0 var(--ink)}.dev-jan h4{margin:0 0 6px}
+.wam-dica{background:#FFF4D6;border-radius:8px;padding:6px 10px;font-size:12.5px}
 @media (max-width:700px){.wam-duas{grid-template-columns:1fr}}
 @media (max-width:700px){
   .mt-menu{width:150px}.mt-esq{flex-direction:column}.mt-lista{width:auto;border-right:0;border-bottom:1px solid var(--line);max-height:110px}
