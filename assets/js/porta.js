@@ -1,4 +1,4 @@
-/* Entrada da plataforma: pede a senha uma vez por navegador.
+/* Entrada da plataforma: pede a senha a cada visita (fica guardada só na sessão: fechou a aba ou o navegador, pede de novo; 28/10).
    É um "porteiro" para afastar visitas por acaso, não uma segurança de verdade (o site é público).
    Uso: PLAT_PORTA(function(){ ...monta a página... }). Em páginas da loja/simulador basta incluir este arquivo. */
 (function () {
@@ -6,7 +6,7 @@
   // senha de quem apresenta: libera o botão Apresentar. Só o hash fica no código (o site é público)
   var ADMIN = 'a680d6b331f5bd414f01194e7d4d86b0ec47ee73cb852d83d54759771fbb4340';
   function hash(t) { try { return crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)).then(function (b) { return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2) }).join('') }) } catch (e) { return Promise.resolve('') } }
-  function ok() { try { return localStorage.getItem(CHAVE) === 'true' } catch (e) { return true } }
+  function ok() { try { return sessionStorage.getItem(CHAVE) === 'true' } catch (e) { return true } }
   function lang() { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } }
   var TX = { pt: ['Plataforma de treinamento. Digite a senha para entrar.', 'Senha', 'Entrar', 'Senha incorreta. Peça ao seu líder.'],
     es: ['Plataforma de entrenamiento. Escribe la contraseña para entrar.', 'Contraseña', 'Entrar', 'Contraseña incorrecta. Pídela a tu líder.'] };
@@ -30,7 +30,7 @@
     p.querySelector('form').onsubmit = function (e) {
       e.preventDefault();
       var v = inp.value.trim().toLowerCase();
-      function entra(admin) { try { localStorage.setItem(CHAVE, 'true'); localStorage.setItem('plat.admin', admin ? 'true' : 'false') } catch (x) { } p.remove(); depois() }
+      function entra(admin) { try { sessionStorage.setItem(CHAVE, 'true'); localStorage.setItem('plat.admin', admin ? 'true' : 'false') } catch (x) { } p.remove(); depois() }
       if (v === SENHA) return entra(false);
       hash(v).then(function (h) { if (h === ADMIN) entra(true); else { p.querySelector('.pt-erro').textContent = t[3]; inp.select() } });
     };
