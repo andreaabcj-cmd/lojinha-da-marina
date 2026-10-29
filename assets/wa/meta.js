@@ -121,7 +121,9 @@
         '<div class="mt-abas"><button class="on">' + t(T('Perfil', 'Perfil')) + '</button></div>' +
         '<div class="mt-campo"><b>' + t(T('Nome de exibição', 'Nombre visible')) + '</b><span>Lojinha da Marina</span></div>' +
         '<div class="mt-campo"><b>' + t(T('Nome de usuário', 'Nombre de usuario')) + '</b><span>@lojinhadamarina · ' + t(T('Reservado', 'Reservado')) + '</span></div>' +
-        '<div class="mt-campo"><b>' + t(T('Conta comercial oficial', 'Cuenta comercial oficial')) + '</b><span>' + t(T('Uma conta comercial oficial tem uma marca de seleção azul ao lado do nome.', 'Una cuenta comercial oficial tiene una insignia azul junto al nombre.')) + '</span></div>' +
+        '<div class="mt-campo" data-t="wam-oba"><b>' + t(T('Conta comercial oficial', 'Cuenta comercial oficial')) + '</b><span>' + t(T('Uma conta comercial oficial tem uma marca de seleção azul', 'Una cuenta comercial oficial tiene una insignia azul')) + ' <span style="color:#1877F2">✔</span> ' + t(T('ao lado do nome. Isso mostra que o WhatsApp confirmou que uma marca autêntica e reconhecida possui essa conta.', 'junto al nombre. Esto muestra que WhatsApp confirmó que una marca auténtica y reconocida es dueña de esta cuenta.')) + '</span>' +
+          '<button class="mt-bt" data-mt="woba" data-t="wam-oba-bt" style="display:block;margin-top:6px;opacity:.6">' + t(T('Enviar solicitação', 'Enviar solicitud')) + '</button>' +
+          (META.dica ? '<p class="wam-dica" data-t="wam-oba-dica">' + t(T('Aumente os limites da sua empresa para se qualificar para uma conta comercial oficial.', 'Aumenta los límites de tu empresa para calificar para una cuenta comercial oficial.')) + ' <u>' + t(T('Aumentar limites', 'Aumentar límites')) + '</u></p>' : '') + '</div>' +
         '<div class="mt-campo"><b>' + t(T('Categoria · Descrição · Endereço · Email · Site', 'Categoría · Descripción · Dirección · Email · Sitio web')) + '</b><span>' + t(T('Os mesmos dados do perfil comercial do app.', 'Los mismos datos del perfil comercial de la app.')) + '</span></div>' +
         '<div class="mt-campo"><b>' + t(T('Contas de rede social', 'Cuentas de redes sociales')) + '</b><span>Facebook: ' + t(T('Conectar uma Página', 'Conectar una página')) + ' · Instagram: ' + t(T('1 conta conectada', '1 cuenta conectada')) + '</span></div></div>';
     },
@@ -236,7 +238,7 @@
     if (a === 'mais') { META.mais = !META.mais; return META.render() }
     if (a === 'wconta') { META.contaPop = !META.contaPop; return META.render() }
     if (a.indexOf('wconta:') === 0) { META.conta = a.slice(7); META.contaPop = false; META.dica = false; if (META.pag === 'perfil') META.pag = 'numeros'; return META.render() }
-    if (a === 'wlixo') { META.dica = true; return META.render() }
+    if (a === 'wlixo' || a === 'woba') { META.dica = true; return META.render() }
     if (a.indexOf('dpag:') === 0) { META.pag = a.slice(5); META.jan = false; if (META.pag === 'criar') META.passo = META.passo || 1; return META.render() }
     if (a === 'dcaso') { META.caso = !META.caso; return META.render() }
     if (a === 'dport') { if (!META.sem2fa) META.port = true; return META.render() }
