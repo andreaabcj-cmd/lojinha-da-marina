@@ -1,0 +1,7 @@
+.adm-senha{display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:640px;background:#fff;border:2px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);padding:14px 16px}
+.adm-senha input{flex:1 1 220px;font:16px "Segoe UI",sans-serif;padding:9px 10px;border:2px solid var(--ink);border-radius:10px}
+.adm-msg{font-weight:700;color:var(--ink2)}
+.adm-lista{list-style:none;padding:0;margin:0;display:grid;gap:12px;max-width:760px}
+.adm-lista li{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;background:#fff;border:2px solid var(--ink);border-radius:12px;padding:12px 14px}
+.adm-lista p{margin:4px 0 0}
+.adm-acao{display:grid;gap:6px;justify-items:end;min-width:160px}

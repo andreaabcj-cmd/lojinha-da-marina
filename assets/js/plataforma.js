@@ -9,7 +9,7 @@
   var T = window.T = function (o) { return o == null ? '' : typeof o === 'string' ? o : (o[LANG] || o.pt || '') };
   var U = {
     inicio: { pt: 'Início', es: 'Inicio' }, modulos: { pt: 'Módulos', es: 'Módulos' }, diagnostico: { pt: 'Diagnóstico', es: 'Diagnóstico' }, reclamacao: { pt: 'A Marina reclama', es: 'Marina reclama' }, resolver: { pt: 'Resolver', es: 'Resolver' }, porque: { pt: 'Por que aconteceu', es: 'Por qué pasó' }, loja: { pt: 'Loja', es: 'Tienda' },
-    feedback: { pt: 'Feedback', es: 'Feedback' }, simuladores: { pt: 'Simuladores', es: 'Simuladores' }, laboratorio: { pt: 'Laboratório', es: 'Laboratorio' },
+    feedback: { pt: 'Feedback', es: 'Feedback' }, adm: { pt: 'ADM', es: 'ADM' }, simuladores: { pt: 'Simuladores', es: 'Simuladores' }, laboratorio: { pt: 'Laboratório', es: 'Laboratorio' },
     sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
     planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
@@ -27,6 +27,7 @@
     var links = [['index.html', 'inicio'], ['modulos.html', 'modulos'], ['diagnostico.html', 'diagnostico'], ['loja.html', 'loja'], ['simuladores.html', 'simuladores'], ['laboratorio.html', 'laboratorio'], ['faq.html', 'faq']];
     if (window.PUB_ESCONDIDA) links = links.filter(function (l) { return !window.PUB_ESCONDIDA(l[0]) });   // abas Simuladores e Laboratório escondidas (site publicado e, desde 25/10, encostadas)
     if (window.MODO_PUBLICO) links.push(['feedback.html', 'feedback']);   // só no site publicado, ao lado de Colas
+    if (lsGet('plat.admin', false) === true) links.push(['adm.html', 'adm']);   // só para quem entrou com a senha de admin (adm.js)
     return '<header class="pl-topo"><a class="pl-marca" href="index.html">' + (window.PERSONAGEM ? PERSONAGEM('marina', 1.5) : '') + '<span>Lojinha da Marina<small>' + T(U.sub) + '</small></span></a>' +
       '<nav class="pl-nav">' + links.map(function (l) { return '<a href="' + l[0] + '" class="' + (ativo === l[1] ? 'on' : '') + '">' + T(U[l[1]]) + '</a>' }).join('') + '</nav>' +
       (window.BUSCA ? '<button class="pp-botao" data-pergunte title="' + T({ pt: 'Pergunte ao Pixel (atalho: tecla /)', es: 'Pregúntale al Pixel (atajo: tecla /)' }) + '">🔎 <span>' + T({ pt: 'Pergunte ao Pixel', es: 'Pregúntale al Pixel' }) + '</span></button>' : '') +
@@ -610,13 +611,14 @@
   };
 
   TELAS.feedback = function () { return window.FEEDBACK ? window.FEEDBACK.html(T) : '' };
+  TELAS.adm = function () { return window.ADM ? window.ADM.html(T) : '' };
 
   /* ---------- montagem ---------- */
   function monta() {
     var tela = document.body.getAttribute('data-tela');
     if (!tela) return;   // páginas da loja/simulador só usam a porta
     var mAtual = (window.MODULOS || []).filter(function (x) { return x.id === Q.get('m') })[0], naArea = !!(mAtual && mAtual.area === 'diagnostico');
-    var ativo = { inicio: 'inicio', modulos: 'modulos', diagnostico: 'diagnostico', modulo: naArea ? 'diagnostico' : 'modulos', aula: naArea ? 'diagnostico' : 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', faq: 'faq', feedback: 'feedback' }[tela];
+    var ativo = { inicio: 'inicio', modulos: 'modulos', diagnostico: 'diagnostico', modulo: naArea ? 'diagnostico' : 'modulos', aula: naArea ? 'diagnostico' : 'modulos', pratica: 'modulos', simuladores: 'simuladores', laboratorio: 'laboratorio', ferramenta: 'laboratorio', colas: 'colas', faq: 'faq', feedback: 'feedback', adm: 'adm' }[tela];
     document.documentElement.lang = LANG === 'es' ? 'es' : 'pt-BR';
     var tg = [].slice.call(document.querySelectorAll('.tg-holo,.tg-balao'));   // tutorial guiado já aberto: não apagar
     // aviso discreto de obra nas páginas de entrada (não mexe no conteúdo de cada tela)
@@ -625,6 +627,7 @@
     tg.forEach(function (x) { document.body.appendChild(x) });
     if (tela !== 'aula') mov().cascata($('.pl-main'));
     if (tela === 'feedback' && window.FEEDBACK) window.FEEDBACK.liga(T);
+    if (tela === 'adm' && window.ADM) window.ADM.liga(T);
     // FAQ montado depois do carregamento: o #âncora do link (ex.: faq.html#faq-verified) só existe agora
     if (tela === 'faq' && location.hash) { var alvoF = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (alvoF) { if (alvoF.tagName === 'DETAILS') alvoF.open = true; setTimeout(function () { alvoF.scrollIntoView({ block: 'start' }) }, 60) } }
     // a intro (assets/js/intro.js): sozinha na primeira visita ao início; depois, clicando na Marina
