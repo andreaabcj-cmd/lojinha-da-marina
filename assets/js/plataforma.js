@@ -55,6 +55,8 @@
     var tr = trilhaAtual(), L = window.AULAS[mid] || [];
     return tr.id === 'foco' ? L.filter(function (a) { return !a.soCompleta }) : L;
   }
+  /* etiqueta de escopo (assets/academia/escopo.js): na Foco mostra o destino, na Completa só sinaliza */
+  function escTag(mid, aid) { return window.ESCOPO ? ESCOPO.etiqueta(mid, aid, trilhaAtual().id === 'foco', LANG) : '' }
   /* próximo módulo da trilha atual que já tem aula pronta (o botão aparece quando o módulo termina) */
   function proximoModulo(mid) {
     var tr = trilhaAtual(), ids = (tr.modulos || []).concat(tr.extras || []), k = ids.indexOf(mid);
@@ -110,7 +112,7 @@
       return '<p class="pl-trilha"><a href="' + (dg ? 'diagnostico.html' : 'modulos.html') + '">' + T(dg ? U.diagnostico : U.modulos) + '</a> ›</p><h1 class="pl-h1">' + m.icone + ' ' + T(m.titulo) + '</h1>' + (dg ? '' : trilhaChip(m)) + '<p class="pl-lead">' + T(m.resumo) + '</p>' +
         '<div class="aulas">' + aulas.map(function (a) {
           var ok = a.status === 'pronta', fe = f[m.id + '/' + a.id];
-          return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><span class="aula-tx"><b>' + T(a.titulo) + (a.opcional ? ' <span class="selo-opc">' + T({ pt: 'opcional', es: 'opcional' }) + '</span>' : '') + '</b>' + (ok && a.objetivo ? '<span class="aula-obj">' + T(a.objetivo) + '</span>' : '') + '</span><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
+          return (ok ? '<a class="aula-l' + (fe ? ' feita' : '') + '" href="aula-plataforma.html?m=' + m.id + '&a=' + a.id + '">' : '<div class="aula-l off">') + '<span class="n">' + (fe ? '✓' : a.id) + '</span><span class="aula-tx"><b>' + T(a.titulo) + escTag(m.id, a.id) + (a.opcional ? ' <span class="selo-opc">' + T({ pt: 'opcional', es: 'opcional' }) + '</span>' : '') + '</b>' + (ok && a.objetivo ? '<span class="aula-obj">' + T(a.objetivo) + '</span>' : '') + '</span><small>' + (a.min ? a.min + ' ' + T(U.min) : T(U.planejada)) + '</small>' + (ok ? '</a>' : '</div>')
         }).join('') + '</div>' + (function () {
           var prontas = aulas.filter(function (a) { return a.status === 'pronta' && !a.opcional }), pm = dg ? null : proximoModulo(m.id);
           var tudo = prontas.length && prontas.every(function (a) { return f[m.id + '/' + a.id] });
@@ -424,7 +426,7 @@
       '<div><h4>✅ ' + T({ pt: 'Confira', es: 'Revisa' }) + '</h4><ul class="ck">' + c.conferir.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul></div></div>' +
       '<h4>💬 ' + T({ pt: 'Frase pronta', es: 'Frase lista' }) + '</h4><p class="cola-frase">' + T(c.frase) + '</p>' +
       (c.passos ? '<h4>🧭 ' + T({ pt: 'Passo a passo para o cliente', es: 'Paso a paso para el cliente' }) + '</h4><ol class="cola-passos">' + c.passos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ol>' : '') +
-      '<h4>🧑‍💻 ' + T({ pt: 'Quando encaminhar', es: 'Cuándo derivar' }) + '</h4><p>' + T(c.encaminhar) + '</p></details>';
+      '<h4>🧑‍💻 ' + T({ pt: 'Quando encaminhar', es: 'Cuándo derivar' }) + (function () { var k = id.split('__'); return k.length === 3 ? escTag(k[1], k[2]) : '' })() + '</h4><p>' + T(c.encaminhar) + '</p></details>';
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-copiar]'); if (!b) return;
@@ -551,7 +553,7 @@
     });
     return (lsGet('plat.admin', false) === true ? '<div class="barra-apr"><button class="btn sec" id="bApr">' + T(U.apresentar) + '</button></div>' : '') +
       '<p class="pl-trilha"><a href="' + (dg ? 'diagnostico.html' : 'modulos.html') + '">' + T(dg ? U.diagnostico : U.modulos) + '</a> › <a href="modulo.html?m=' + mid + '">' + T(m.titulo) + '</a> › ' + T(dg ? { pt: 'Caso', es: 'Caso' } : { pt: 'Aula', es: 'Clase' }) + ' ' + a.id + '</p>' +
-      '<h1 class="pl-h1">' + T(a.titulo) + '</h1>' + (mid === 'dg-workaround' ? '<p class="ga-aviso">🧪 <b>' + T({ pt: 'Workaround plausível:', es: 'Workaround plausible:' }) + '</b> ' + T({ pt: 'a Meta não documenta esta saída; a comunidade relata que costuma funcionar. Use só como tentativa, depois do caminho oficial, e nunca prometa resultado.', es: 'Meta no documenta esta salida; la comunidad relata que suele funcionar. Úsala solo como intento, después del camino oficial, y nunca prometas resultado.' }) + '</p>' : '') +
+      '<h1 class="pl-h1">' + T(a.titulo) + escTag(mid, aid) + '</h1>' + (mid === 'dg-workaround' ? '<p class="ga-aviso">🧪 <b>' + T({ pt: 'Workaround plausível:', es: 'Workaround plausible:' }) + '</b> ' + T({ pt: 'a Meta não documenta esta saída; a comunidade relata que costuma funcionar. Use só como tentativa, depois do caminho oficial, e nunca prometa resultado.', es: 'Meta no documenta esta salida; la comunidad relata que suele funcionar. Úsala solo como intento, después del camino oficial, y nunca prometas resultado.' }) + '</p>' : '') +
       '<div class="passos">' + partes.map(function (p, i) { return '<button><span class="num">' + (i + 1) + '</span>' + T(dg && p === 'praticar' ? U.resolver : dg && p === 'entender' ? U.porque : U[p]) + '</button>' }).join('') + '</div>' +
       '<div class="palco" id="palco"></div>' +
       '<div class="nav-aula"><button class="btn sec" id="bAnt">' + T(U.ant) + '</button><button class="btn" id="bProx">' + T(U.prox) + '</button></div>' +

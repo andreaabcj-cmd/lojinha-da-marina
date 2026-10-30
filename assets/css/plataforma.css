@@ -366,3 +366,8 @@ html,body{overflow-x:clip}
 .wa-ver .tab-rolar{overflow-x:auto}.wa-ver table.comp{border-collapse:collapse;width:100%;background:#fff;border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:3px 3px 0 var(--ink);margin:8px 0 14px}
 .wa-ver table.comp th,.wa-ver table.comp td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14px}.wa-ver table.comp th{background:#F2F5FA}
 .wa-ver .caixa{border:2px solid var(--ink);border-radius:12px;background:#FFF8E1;padding:10px 14px;margin:12px 0;box-shadow:3px 3px 0 var(--ink)}.wa-ver .nota{font-size:13px;color:var(--muted)}.wa-ver ol.perguntas,.wa-ver ul.perguntas{padding-left:22px;line-height:1.5}
+
+/* etiqueta de escopo (escopo.js): mínima, sem nome de área; a dica fica no título (passar o mouse) */
+.esc-tag{display:inline-block;margin-left:8px;padding:0 7px;border-radius:999px;background:#FFF1E6;color:#9A4A12;border:1.5px solid #E8A87C;font:700 12px/1.6 inherit;vertical-align:middle;cursor:help;white-space:nowrap}
+.esc-tag.esc-sinal{background:#F2F2F2;color:#666;border-color:#CFCFCF}
+.pl-h1 .esc-tag{font-size:14px;vertical-align:4px}
