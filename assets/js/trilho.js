@@ -25,6 +25,7 @@
     'verificar-empresa': { modulo: 'portfolio-avancado', aula: '01', cauda: 10 },
     'criar-publico-site': { modulo: 'segmentacao', aula: '02', cauda: 11 },
     'ler-relatorio': { modulo: 'relatorios', aula: '02', cauda: 5 },
+    'local-conversao': { modulo: 'lead-ads', aula: '01', cauda: 8 },
     'criar-regra': { modulo: 'regras', aula: '02', cauda: 10 },
     'montar-criativo': { modulo: 'feed', aula: '02', cauda: 15 },
     'conectar-shopify': { modulo: 'shopify', aula: '02', cauda: 34 },

@@ -18,6 +18,7 @@ window.MODULOS = [
   { id: 'pixel', fase: 1, status: 'construcao', icone: '📡', titulo: { pt: 'Pixel · básico', es: 'Pixel · básico' }, resumo: { pt: 'O que é, como criar, como saber se está funcionando, os eventos e os primeiros avisos.', es: 'Qué es, cómo crearlo, cómo saber si funciona, los eventos y los primeros avisos.' } },
   { id: 'anuncios', fase: 2, status: 'construcao', icone: '📣', titulo: { pt: 'Gerenciador de Anúncios · criação e edição', es: 'Administrador de anuncios · creación y edición' }, resumo: { pt: 'Criar e editar anúncios, e os erros mais comuns.', es: 'Crear y editar anuncios, y los errores más comunes.' } },
   { id: 'feed', fase: 2, status: 'construcao', icone: '📰', titulo: { pt: 'Anúncios no Feed', es: 'Anuncios en el Feed' }, resumo: { pt: 'Criativo, texto, destino, posicionamentos e erros comuns.', es: 'Contenido, texto, destino, ubicaciones y errores comunes.' } },
+  { id: 'lead-ads', fase: 3, status: 'construcao', icone: '📋', titulo: { pt: 'Anúncios de lead (formulário instantâneo)', es: 'Anuncios para clientes potenciales (formulario instantáneo)' }, resumo: { pt: 'O formulário dentro do Facebook e do Instagram: criar, corrigir, ligar à campanha, achar os leads e conectar o CRM.', es: 'El formulario dentro de Facebook e Instagram: crear, corregir, conectar a la campaña, encontrar los clientes potenciales y conectar el CRM.' } },
   { id: 'catalogo', fase: 2, status: 'construcao', icone: '🗂️', titulo: { pt: 'Catálogo', es: 'Catálogo' }, resumo: { pt: 'Introdução, como criar e como manter.', es: 'Introducción, cómo crearlo y cómo mantenerlo.' } },
   { id: 'apps-ios', fase: 3, status: 'construcao', icone: '📱', titulo: { pt: 'iOS 14 e a medição', es: 'iOS 14 y la medición' }, resumo: { pt: 'O que mudou de verdade na medição com o iPhone (iOS 14), os mitos que ainda circulam e as novidades da Meta para medir com privacidade.', es: 'Qué cambió de verdad en la medición con el iPhone (iOS 14), los mitos que todavía circulan y las novedades de Meta para medir con privacidad.' } },
   { id: 'microdados', fase: 2, status: 'construcao', icone: '🔎', titulo: { pt: 'Microdata Debugger', es: 'Microdata Debugger' }, resumo: { pt: 'Conferir se as páginas de produto do site falam a língua do catálogo.', es: 'Revisar si las páginas de producto del sitio hablan el idioma del catálogo.' } },
@@ -57,7 +58,7 @@ window.MODULOS = [
 window.TRILHAS = [
   { id: 'foco', icone: '🎯', nome: { pt: 'Trilha Foco', es: 'Ruta Foco' }, sub: { pt: 'Anúncios, medição e comércio', es: 'Anuncios, medición y comercio' },
     resumo: { pt: 'A ordem de estudo de quem atende anúncios, medição e comércio. Foca no que você resolve e, quando um caso é de outra área, mostra só uma linha de encaminhamento.', es: 'El orden de estudio de quien atiende anuncios, medición y comercio. Se centra en lo que tú resuelves y, cuando un caso es de otra área, muestra solo una línea de derivación.' },
-    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'apps-ios', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
+    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'apps-ios', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'lead-ads', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
   { id: 'completa', icone: '🧭', nome: { pt: 'Trilha Completa', es: 'Ruta Completa' }, sub: { pt: 'Tudo do Foco e mais', es: 'Todo el Foco y más' },
     resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
     modulos: null, extras: ['pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
@@ -1900,6 +1901,311 @@ window.AULAS = {
           { pt: 'Confira a prévia de cada grupo e ajuste o corte onde precisar.', es: 'Revisa la vista previa de cada grupo y ajusta el recorte donde haga falta.' }],
         encaminhar: { pt: 'Se o anúncio foi recusado por política ou a conta está restrita, confirme o sintoma e siga a Central de Ajuda da Meta; esse tema é tratado por outra área. Nunca prometa aprovação.', es: 'Si el anuncio fue rechazado por política o la cuenta está restringida, confirma el síntoma y sigue el Centro de ayuda de Meta; ese tema lo trata otra área. Nunca prometas aprobación.' }
       }
+    }
+  ],
+  /* Lead Ads (anúncios de lead com formulário instantâneo). Telas reais vistas em 29/10/2026 na conta de aula (formulários, editor, CRM,
+     Central de Leads na entrada, campanha de Leads em rascunho excluído depois, ferramenta de testes); notas fora do repo. */
+  'lead-ads': [
+    {
+      id: '01', min: 6, status: 'pronta',
+      titulo: { pt: 'Anúncio de lead: o formulário dentro do Facebook', es: 'Anuncio para clientes potenciales: el formulario dentro de Facebook' },
+      antes: { pt: 'A Marina quer vender canecas personalizadas, mas cada pedido precisa de orçamento antes.', es: 'Marina quiere vender tazas personalizadas, pero cada pedido necesita presupuesto antes.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/375478503258484', titulo: { pt: 'Como criar um anúncio de lead usando o Gerenciador de Anúncios', es: 'Cómo crear un anuncio para clientes potenciales en el Administrador de anuncios' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/397336587121938', titulo: { pt: 'Como criar um anúncio de lead com formulário instantâneo na sua Página', es: 'Cómo crear un anuncio con formulario instantáneo desde tu Página' }, conferido: '29/10/2026' }
+      ],
+      gancho: { pt: '“Escolhi Formulários instantâneos. E agora, como monto o formulário?”', es: '“Elegí Formularios instantáneos. ¿Y ahora cómo armo el formulario?”' },
+      objetivo: { pt: 'Saber o que é um anúncio de lead, quando usar o formulário instantâneo e por que o local da conversão muda o que a tela pede.', es: 'Saber qué es un anuncio para clientes potenciales, cuándo usar el formulario instantáneo y por qué el lugar de conversión cambia lo que pide la pantalla.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Não quero vender direto: quero que a pessoa peça orçamento e eu respondo depois. Dá? 🤔', es: 'No quiero vender directo: quiero que la persona pida presupuesto y yo respondo después. ¿Se puede? 🤔' }],
+          ['rafa', { pt: 'Dá: é o objetivo Leads. A pessoa toca no anúncio e abre um formulário ali mesmo, no Facebook ou no Instagram, já com nome e e-mail preenchidos pelo perfil.', es: 'Sí: es el objetivo Clientes potenciales. La persona toca el anuncio y se abre un formulario ahí mismo, en Facebook o Instagram, con nombre y correo ya completados.' }],
+          ['marina', { pt: 'E se eu quiser mandar para o meu site?', es: '¿Y si quiero mandar a mi sitio?' }],
+          ['rafa', { pt: 'Também dá, mas aí é outro local da conversão. No conjunto de anúncios, o padrão é “Formulários no site e instantâneos”, que mistura o site e pede o Pixel. Só com formulário, escolha “Formulários instantâneos”.', es: 'También, pero es otro lugar de conversión. En el conjunto de anuncios, el valor predeterminado mezcla el sitio y pide el píxel. Solo con formulario, elige “Formularios instantáneos”.' }],
+          ['pixel', { pt: 'Com formulários instantâneos a tela mostra a Página e avisa se os Termos para Anúncios de Cadastros já foram aceitos para ela. E anúncio de lead nunca vai para menores de 18 anos.', es: 'Con formularios instantáneos la pantalla muestra la Página y avisa si ya se aceptaron los Términos de anuncios para clientes potenciales. Y nunca se dirige a menores de 18 años.' }]
+        ],
+        pontos: [
+          { pt: '<b>Lead</b> = contato de quem tem interesse. Na tela em português aparece também como <b>cadastro</b>.', es: '<b>Cliente potencial</b> = contacto de quien tiene interés.' },
+          { pt: '<b>Onde se escolhe:</b> objetivo Leads › conjunto de anúncios › Local da conversão.', es: '<b>Dónde se elige:</b> objetivo Clientes potenciales › conjunto de anuncios › Lugar de conversión.' },
+          { pt: '<b>Padrão com site:</b> pede conjunto de dados (Pixel). <b>Só formulário:</b> pede a Página e os termos aceitos.', es: '<b>Predeterminado con sitio:</b> pide conjunto de datos (píxel). <b>Solo formulario:</b> pide la Página y los términos aceptados.' }
+        ],
+        notas: { pt: 'Telas reais de 29/10/2026 (conta de aula, em português): objetivo Leads com o “Bom para”, os locais da conversão em “Vários” e “Único”, o aviso do conjunto de dados e o aviso dos Termos para Anúncios de Cadastros. A lista em espanhol não foi vista: os nomes em espanhol são tradução nossa (a conferir).', es: 'Pantallas reales del 29/10/2026 (cuenta de práctica, en portugués). La lista en español no se vio: los nombres en español son traducción nuestra (por confirmar).' }
+      },
+      ferramenta: 'lead-local',
+      praticar: {
+        texto: { pt: 'No simulador, o Pixel te guia do objetivo Leads até o local da conversão “Formulários instantâneos”.', es: 'En el simulador, el Pixel te guía del objetivo hasta el lugar de conversión “Formularios instantáneos”.' },
+        tour: 'local-conversao', pagina: 'meta-leads.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Criei a campanha de Leads, mas aparece que preciso de um conjunto de dados para publicar. Eu nem tenho site com Pixel! 😩', es: '¡Creé la campaña, pero aparece que necesito un conjunto de datos para publicar. Ni tengo sitio con píxel! 😩' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: true, txt: { pt: '“No conjunto, troque o local da conversão para Formulários instantâneos: o padrão inclui o site e por isso pede o Pixel.”', es: '“En el conjunto, cambia el lugar a Formularios instantáneos: el predeterminado incluye el sitio y pide el píxel.”' }, fb: { pt: 'Isso! O aviso vem do local padrão, que mistura site e formulário.', es: '¡Eso! El aviso viene del lugar predeterminado, que mezcla sitio y formulario.' } },
+          { certa: false, txt: { pt: '“Todo anúncio de lead precisa de Pixel. Crie um conjunto de dados no Gerenciador de Eventos e volte para publicar a campanha.”', es: '“Todo anuncio de este tipo necesita píxel. Crea un conjunto de datos en el Administrador de eventos y vuelve a publicar.”' }, fb: { pt: 'Só formulário instantâneo não pede Pixel.', es: 'Solo formulario instantáneo no pide píxel.' } },
+          { certa: false, txt: { pt: '“Mude o objetivo da campanha para Tráfego: lá o formulário funciona sem conjunto de dados e o custo por lead fica menor.”', es: '“Cambia el objetivo a Tráfico: ahí el formulario funciona sin conjunto de datos y el costo por cliente es menor.”' }, fb: { pt: 'Tráfego leva para um destino, não abre formulário de lead.', es: 'Tráfico lleva a un destino, no abre formulario.' } },
+          { certa: false, txt: { pt: '“Esse aviso some sozinho depois de umas horas. Publique mesmo assim e confira de novo amanhã cedo na conta.”', es: '“Ese aviso desaparece solo en unas horas. Publica igual y revisa de nuevo mañana temprano en la cuenta.”' }, fb: { pt: 'Não some: sem conjunto de dados, esse local não publica.', es: 'No desaparece: sin conjunto de datos, ese lugar no publica.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O cliente quer o formulário dentro do Facebook/Instagram ou levar para o site?', es: '¿El cliente quiere el formulario dentro de Facebook/Instagram o llevar al sitio?' }],
+        conferir: [{ pt: 'Conjunto de anúncios › Conversão › Local da conversão.', es: 'Conjunto de anuncios › Conversión › Lugar de conversión.' }, { pt: 'Aviso dos Termos para Anúncios de Cadastros aceitos para a Página.', es: 'Aviso de los términos aceptados para la Página.' }],
+        frase: { pt: 'Para o formulário abrir dentro do Facebook e do Instagram, o local da conversão é “Formulários instantâneos”. O padrão inclui o site e pede o Pixel.', es: 'Para que el formulario se abra dentro de Facebook e Instagram, el lugar de conversión es “Formularios instantáneos”. El predeterminado incluye el sitio y pide el píxel.' },
+        passos: [{ pt: 'Gerenciador de Anúncios › ＋ Criar › Leads.', es: 'Administrador de anuncios › ＋ Crear › Clientes potenciales.' }, { pt: 'No conjunto: Local da conversão › Formulários instantâneos.', es: 'En el conjunto: Lugar de conversión › Formularios instantáneos.' }],
+        encaminhar: { pt: 'Se a Página não mostra os termos aceitos e não deixa aceitar, confirme quem administra a Página e siga a Central de Ajuda (Termos para Anúncios de Lead).', es: 'Si la Página no muestra los términos aceptados y no deja aceptarlos, confirma quién administra la Página y sigue el Centro de ayuda.' }
+      },
+      divergencias: [
+        { tema: { pt: 'Locais da conversão', es: 'Lugares de conversión' }, oficial: { pt: 'a lista da Central de Ajuda não traz “Vídeo ao vivo do Instagram”.', es: 'la lista del Centro de ayuda no trae “Video en vivo de Instagram”.' }, tela: { pt: 'na tela de 29/10/2026 ele aparece no grupo “Único”, junto com Site, Formulários instantâneos, Messenger, Instagram, WhatsApp, Ligações e App.', es: 'en la pantalla del 29/10/2026 aparece en el grupo “Único”.' }, aula: { pt: 'ensina a lista da tela.', es: 'enseña la lista de la pantalla.' } }
+      ]
+    },
+    {
+      id: '02', min: 9, status: 'pronta',
+      titulo: { pt: 'Criar o formulário instantâneo', es: 'Crear el formulario instantáneo' },
+      antes: { pt: 'A Marina já sabe que o formulário abre dentro do Facebook. Falta montar as perguntas.', es: 'Marina ya sabe que el formulario se abre dentro de Facebook. Falta armar las preguntas.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/252352181957512', titulo: { pt: 'Sobre os tipos de formulários instantâneos', es: 'Sobre los tipos de formularios instantáneos' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1247534515288168', titulo: { pt: 'Sobre políticas de privacidade para anúncios de lead', es: 'Sobre las políticas de privacidad para anuncios de clientes potenciales' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/219356599612120', titulo: { pt: 'Perguntas proibidas no formulário instantâneo', es: 'Preguntas prohibidas en el formulario instantáneo' }, conferido: '29/10/2026' }
+      ],
+      gancho: { pt: '“Cliquei em Criar formulário e ele não cria. Tem um monte de ponto de exclamação vermelho!”', es: '“¡Hice clic en Crear formulario y no se crea. Hay un montón de signos de exclamación rojos!”' },
+      objetivo: { pt: 'Montar o formulário nas 5 etapas (tipo, apresentação, perguntas, privacidade e encerramento) e acertar o idioma.', es: 'Armar el formulario en los 5 pasos (tipo, presentación, preguntas, privacidad y cierre) y acertar el idioma.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Onde eu crio o formulário? 🤔', es: '¿Dónde creo el formulario? 🤔' }],
+          ['rafa', { pt: 'No Meta Business Suite, em Formulários instantâneos › Criar formulário (ou no próprio anúncio, em Destino). São 5 etapas: Tipo de formulário, Apresentação, Perguntas, Política de privacidade e Encerramento.', es: 'En Meta Business Suite, en Formularios instantáneos › Crear formulario (o en el propio anuncio, en Destino). Son 5 pasos.' }],
+          ['rafa', { pt: 'Tipo: “Mais volume” é o rápido; “Maior intenção” põe uma tela para a pessoa conferir antes de enviar (e pode exigir código no telefone); “Criativo avançado” tem mais imagens e texto.', es: 'Tipo: “Más volumen” es el rápido; “Mayor intención” agrega una pantalla para revisar antes de enviar; “Creativo avanzado” tiene más imágenes y texto.' }],
+          ['marina', { pt: 'E a prévia está toda em inglês! 😱', es: '¡Y la vista previa está toda en inglés! 😱' }],
+          ['pixel', { pt: 'Pegadinha: o idioma vem English (US). Troque em ⚙ Configurações › Idioma. Ali também fica o Compartilhamento: Restrito (padrão) ou Aberto.', es: 'Trampa: el idioma viene en English (US). Cámbialo en ⚙ Configuración › Idioma. Ahí también está el uso compartido: Restringido o Abierto.' }]
+        ],
+        pontos: [
+          { pt: '<b>Obrigatórios na tela:</b> saudação ligada com título e descrição, descrição de como os dados serão usados, link da política de privacidade e link do site no encerramento.', es: '<b>Obligatorios en la pantalla:</b> saludo con título y descripción, cómo se usarán los datos, enlace de la política y enlace del sitio en el cierre.' },
+          { pt: '<b>Perguntas extras:</b> múltipla escolha, resposta curta, condicional e solicitação de hora marcada.', es: '<b>Preguntas extra:</b> opción múltiple, respuesta corta, condicional y solicitud de cita.' },
+          { pt: '<b>Formulário publicado não se edita:</b> para mudar, duplique e ajuste a cópia.', es: '<b>Un formulario publicado no se edita:</b> para cambiarlo, duplícalo.' }
+        ],
+        notas: { pt: 'Editor visto de verdade em 29/10/2026 (PT), sem salvar: etapas, opções, os quatro erros de campo, Configurações (Idioma English (US) por padrão, Compartilhamento Restrito) e a janela “Fechar formulário de lead?”. “Formulário publicado não se edita” vem da Central de Ajuda (Como editar um anúncio de lead). Textos em espanhol: tradução nossa (a conferir).', es: 'Editor visto de verdad el 29/10/2026 (PT), sin guardar. Textos en español: traducción nuestra (por confirmar).' }
+      },
+      ferramenta: 'lead-erros-form',
+      praticar: {
+        texto: { pt: 'No simulador, você monta o formulário de orçamento de caneca nas 5 etapas e troca o idioma.', es: 'En el simulador, armas el formulario de presupuesto de taza en los 5 pasos y cambias el idioma.' },
+        tour: 'criar-formulario', pagina: 'meta-leads.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Meu formulário está pronto, mas as clientes estão vendo “Contact information” e “Submit” em inglês! Como mudo? 😳', es: '¡Mi formulario está listo, pero las clientas ven “Contact information” y “Submit” en inglés! ¿Cómo cambio? 😳' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“É o idioma do celular de cada cliente: o formulário segue o aparelho, então não tem nada para mudar do seu lado.”', es: '“Es el idioma del celular de cada clienta: el formulario sigue el aparato, así que no hay nada que cambiar de tu lado.”' }, fb: { pt: 'O idioma é escolhido no formulário, em Configurações.', es: 'El idioma se elige en el formulario, en Configuración.' } },
+          { certa: false, txt: { pt: '“Troque o idioma da sua conta do Facebook para português e publique o anúncio de novo que ele atualiza.”', es: '“Cambia el idioma de tu cuenta de Facebook al portugués y publica el anuncio de nuevo para que se actualice.”' }, fb: { pt: 'O idioma da conta não muda o formulário.', es: 'El idioma de la cuenta no cambia el formulario.' } },
+          { certa: true, txt: { pt: '“O idioma veio English (US). Como formulário publicado não se edita, duplique e mude em Configurações › Idioma.”', es: '“El idioma vino en English (US). Como no se edita publicado, duplícalo y cámbialo en Configuración › Idioma.”' }, fb: { pt: 'Isso! Causa e caminho certos.', es: '¡Eso! Causa y camino correctos.' } },
+          { certa: false, txt: { pt: '“Escreva as perguntas em português na Saudação que o resto do formulário passa a aparecer em português.”', es: '“Escribe las preguntas en español en el Saludo y el resto del formulario pasa a aparecer en español.”' }, fb: { pt: 'Os textos fixos (botões, campos) seguem o Idioma das Configurações.', es: 'Los textos fijos siguen el idioma de la Configuración.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'O formulário já foi publicado ou ainda é rascunho?', es: '¿El formulario ya se publicó o todavía es borrador?' }, { pt: 'Qual etapa tem o ❗ vermelho?', es: '¿Qué paso tiene el ❗ rojo?' }],
+        conferir: [{ pt: 'Formulários instantâneos › Criar formulário › etapas à esquerda.', es: 'Formularios instantáneos › Crear formulario › pasos a la izquierda.' }, { pt: '⚙ Configurações › Idioma e Compartilhamento.', es: '⚙ Configuración › Idioma y uso compartido.' }],
+        frase: { pt: 'O formulário tem 5 etapas; as marcadas em vermelho têm campo obrigatório vazio. O idioma vem em inglês: troque em Configurações antes de publicar.', es: 'El formulario tiene 5 pasos; los marcados en rojo tienen un campo obligatorio vacío. El idioma viene en inglés: cámbialo en Configuración antes de publicar.' },
+        passos: [{ pt: 'Meta Business Suite › Formulários instantâneos › Criar formulário.', es: 'Meta Business Suite › Formularios instantáneos › Crear formulario.' }, { pt: 'Preencha as 5 etapas e ⚙ Configurações › Idioma.', es: 'Completa los 5 pasos y ⚙ Configuración › Idioma.' }, { pt: 'Criar formulário (no último passo).', es: 'Crear formulario (en el último paso).' }],
+        encaminhar: { pt: 'Perguntas sobre o que pode ou não ser perguntado (dados sensíveis) seguem a página “Perguntas proibidas no formulário instantâneo” e a análise do anúncio.', es: 'Las dudas sobre qué se puede preguntar (datos sensibles) siguen la página de preguntas prohibidas y la revisión del anuncio.' }
+      },
+      divergencias: [
+        { tema: { pt: 'Link da política de privacidade', es: 'Enlace de la política de privacidad' }, oficial: { pt: 'a Central de Ajuda diz “(Opcional) Você pode adicionar um URL da Política de Privacidade”.', es: 'el Centro de ayuda lo trata como opcional.' }, tela: { pt: 'o editor diz que “é necessário incluir um link” e mostra o erro “Forneça um URL válido da Política de Privacidade da empresa” se ficar vazio.', es: 'el editor dice que es necesario y muestra un error si queda vacío.' }, aula: { pt: 'ensina como obrigatório, como na tela.', es: 'enseña que es obligatorio, como en la pantalla.' } }
+      ]
+    },
+    {
+      id: '03', min: 7, status: 'pronta',
+      titulo: { pt: '“O formulário não deixa criar”', es: '“El formulario no me deja crear”' },
+      antes: { pt: 'A Marina foi direto ao último passo e clicou em Criar formulário.', es: 'Marina fue directo al último paso e hizo clic en Crear formulario.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1019886738092553', titulo: { pt: 'Recomendações e requisitos para anúncios de lead com formulário instantâneo', es: 'Recomendaciones y requisitos para anuncios con formulario instantáneo' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1247534515288168', titulo: { pt: 'Sobre políticas de privacidade para anúncios de lead', es: 'Sobre las políticas de privacidad para anuncios de clientes potenciales' }, conferido: '29/10/2026' }
+      ],
+      gancho: { pt: '“Formulário criado! Agora, como ligo ele ao anúncio?”', es: '“¡Formulario creado! ¿Y ahora cómo lo conecto al anuncio?”' },
+      objetivo: { pt: 'Ler os ❗ das etapas e corrigir os quatro campos que travam o formulário.', es: 'Leer los ❗ de los pasos y corregir los cuatro campos que traban el formulario.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Cliquei em Criar formulário e nada. Só apareceram uns ❗ do lado. 😠', es: 'Hice clic en Crear formulario y nada. Solo aparecieron unos ❗ al costado. 😠' }],
+          ['rafa', { pt: 'Cada ❗ é uma etapa com campo obrigatório vazio. Abra cada uma: o campo fica vermelho e a frase embaixo diz o que falta.', es: 'Cada ❗ es un paso con campo obligatorio vacío. Abre cada uno: el campo queda rojo y la frase de abajo dice qué falta.' }],
+          ['rafa', { pt: 'São quatro: <b>Apresentação</b> (saudação ligada sem título), <b>Perguntas</b> (“Você deve informar como usará os dados das pessoas”), <b>Política de privacidade</b> (link) e <b>Encerramento</b> (link do site).', es: 'Son cuatro: Presentación (saludo sin título), Preguntas (cómo usarás los datos), Política de privacidad (enlace) y Cierre (enlace del sitio).' }],
+          ['pixel', { pt: 'A saudação vem ligada. Se a Marina não quer texto de abertura, é só “Remover saudação”. E link de política tem que ser página: PDF ou imagem não vale.', es: 'El saludo viene activado. Si no quieres texto de apertura, usa “Quitar saludo”. Y el enlace de la política tiene que ser una página: PDF o imagen no vale.' }]
+        ],
+        pontos: [
+          { pt: '<b>❗ na etapa</b> = campo obrigatório vazio ou inválido.', es: '<b>❗ en el paso</b> = campo obligatorio vacío o inválido.' },
+          { pt: '<b>Saudação:</b> preencha título e descrição, ou remova.', es: '<b>Saludo:</b> completa título y descripción, o quítalo.' },
+          { pt: '<b>Links:</b> endereço completo (https://…), de página, não de arquivo.', es: '<b>Enlaces:</b> dirección completa (https://…), de página, no de archivo.' }
+        ],
+        notas: { pt: 'As quatro mensagens de erro foram copiadas do editor real em 29/10/2026 (PT), com o formulário vazio e sem salvar. A regra de não usar PDF ou imagem como política vem da Central de Ajuda.', es: 'Los cuatro mensajes de error se copiaron del editor real el 29/10/2026 (PT). Textos en español: traducción nuestra (por confirmar).' }
+      },
+      ferramenta: 'lead-erros-form',
+      praticar: {
+        texto: { pt: 'No simulador, você acha e corrige os quatro ❗ até o formulário ser criado.', es: 'En el simulador, encuentras y corriges los cuatro ❗ hasta crear el formulario.' },
+        tour: 'formulario-erros', pagina: 'meta-leads.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Na etapa Perguntas aparece “Você deve informar como usará os dados das pessoas”. Eu só quero nome e e-mail! 😤', es: 'En el paso Preguntas aparece que debo indicar cómo usaré los datos. ¡Solo quiero nombre y correo! 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“Apague o campo de e-mail: com só o nome a Meta não pede essa descrição e o formulário é criado na hora.”', es: '“Borra el campo de correo: con solo el nombre Meta no pide esa descripción y el formulario se crea al instante.”' }, fb: { pt: 'A descrição fica em Informações de contato e é pedida de qualquer jeito.', es: 'La descripción está en Información de contacto y se pide igual.' } },
+          { certa: true, txt: { pt: '“Escreva na Descrição de Informações de contato para que vai usar os dados. Ex.: só para o orçamento.”', es: '“Escribe en la Descripción de Información de contacto para qué usarás los datos. Ej.: el presupuesto.”' }, fb: { pt: 'Isso! É o campo que a tela pede.', es: '¡Eso! Es el campo que pide la pantalla.' } },
+          { certa: false, txt: { pt: '“Esse aviso é da política de privacidade: cole o link da política na etapa seguinte e ele some daqui também.”', es: '“Ese aviso es de la política de privacidad: pega el enlace en el paso siguiente y desaparece de aquí también.”' }, fb: { pt: 'São dois campos diferentes; cada um tem seu erro.', es: 'Son dos campos distintos; cada uno tiene su error.' } },
+          { certa: false, txt: { pt: '“Troque o tipo para Maior intenção: nele a descrição dos dados é opcional e o formulário passa sem ela.”', es: '“Cambia el tipo a Mayor intención: ahí la descripción de los datos es opcional y el formulario pasa sin ella.”' }, fb: { pt: 'O tipo não tira essa exigência.', es: 'El tipo no quita esa exigencia.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Em quais etapas aparece o ❗?', es: '¿En qué pasos aparece el ❗?' }, { pt: 'O que está escrito embaixo do campo vermelho?', es: '¿Qué dice debajo del campo rojo?' }],
+        conferir: [{ pt: 'Apresentação: saudação ligada com título e descrição.', es: 'Presentación: saludo con título y descripción.' }, { pt: 'Perguntas: Descrição de Informações de contato.', es: 'Preguntas: Descripción de Información de contacto.' }, { pt: 'Política de privacidade e Encerramento: links completos.', es: 'Política de privacidad y Cierre: enlaces completos.' }],
+        frase: { pt: 'Cada ❗ é um campo obrigatório: a frase embaixo do campo vermelho diz o que falta. Corrija os quatro e clique em Criar formulário de novo.', es: 'Cada ❗ es un campo obligatorio: la frase debajo del campo rojo dice qué falta. Corrige los cuatro y vuelve a hacer clic en Crear formulario.' },
+        passos: [{ pt: 'Clique em cada etapa com ❗.', es: 'Haz clic en cada paso con ❗.' }, { pt: 'Preencha o campo vermelho (ou remova a saudação).', es: 'Completa el campo rojo (o quita el saludo).' }, { pt: 'Criar formulário.', es: 'Crear formulario.' }],
+        encaminhar: { pt: 'Se todos os campos estão certos e o formulário ainda não é criado, anote a mensagem exata e siga a Central de Ajuda (Recomendações e requisitos para anúncios de lead).', es: 'Si todo está correcto y aún no se crea, anota el mensaje exacto y sigue el Centro de ayuda.' }
+      }
+    },
+    {
+      id: '04', min: 8, status: 'pronta',
+      titulo: { pt: 'A campanha de leads no Gerenciador', es: 'La campaña de clientes potenciales en el Administrador' },
+      antes: { pt: 'O formulário “Orçamento de caneca personalizada” está Ativo.', es: 'El formulario de presupuesto de taza está activo.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/375478503258484', titulo: { pt: 'Como criar um anúncio de lead usando o Gerenciador de Anúncios', es: 'Cómo crear un anuncio para clientes potenciales en el Administrador de anuncios' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/279369167153556', titulo: { pt: 'Como configurar o CRM para leads qualificados', es: 'Cómo configurar el CRM para clientes potenciales calificados' }, conferido: '29/10/2026' }
+      ],
+      gancho: { pt: '“O anúncio rodou e já tem leads. Onde eu vejo quem preencheu?”', es: '“El anuncio circuló y ya hay clientes potenciales. ¿Dónde veo quién completó?”' },
+      objetivo: { pt: 'Montar campanha, conjunto e anúncio de leads: meta de desempenho, escolha do formulário e filtro de qualidade.', es: 'Armar campaña, conjunto y anuncio: objetivo de rendimiento, elección del formulario y filtro de calidad.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Criei o formulário. Como ele entra no anúncio? 🤔', es: 'Creé el formulario. ¿Cómo entra en el anuncio? 🤔' }],
+          ['rafa', { pt: 'Na campanha de Leads (que já nasce “Advantage+”), o conjunto define o local e a Meta de desempenho; o anúncio define o formulário, em Destino › Formulário instantâneo.', es: 'En la campaña (que ya nace Advantage+), el conjunto define el lugar y el objetivo de rendimiento; el anuncio define el formulario, en Destino › Formulario instantáneo.' }],
+          ['rafa', { pt: 'Meta de desempenho: “Maximizar o número de leads” busca quem mais envia. “Leads qualificados” busca quem mais vira cliente, e precisa do CRM conectado devolvendo o que aconteceu.', es: 'Objetivo de rendimiento: “Maximizar clientes potenciales” busca a quien más envía. “Calificados” busca a quien más se convierte, y necesita el CRM conectado.' }],
+          ['pixel', { pt: 'No anúncio ainda tem “Filtros de qualidade: Exigir email profissional”. Para loja que vende para pessoas, isso derruba quase tudo: deixe desmarcado.', es: 'En el anuncio también está “Exigir correo profesional”. Para una tienda que vende a personas, déjalo sin marcar.' }]
+        ],
+        pontos: [
+          { pt: '<b>Conjunto:</b> local da conversão, Página e meta de desempenho.', es: '<b>Conjunto:</b> lugar de conversión, Página y objetivo de rendimiento.' },
+          { pt: '<b>Anúncio:</b> Destino › Formulário instantâneo (escolher entre os Ativos ou Criar um formulário).', es: '<b>Anuncio:</b> Destino › Formulario instantáneo (elegir entre los activos o crear uno).' },
+          { pt: '<b>Público:</b> anúncio de lead não pode ser direcionado para menores de 18 anos.', es: '<b>Público:</b> no puede dirigirse a menores de 18 años.' }
+        ],
+        notas: { pt: 'Campanha de Leads aberta em rascunho em 29/10/2026 e excluída em seguida (nada publicado): campanha Advantage+, local, Página com o aviso dos termos, as duas metas de desempenho e o Destino com “Gerar um formulário”, “Criar um formulário”, lista Ativos/Arquivados, “Exigir email profissional” e “Cultivo de leads”. A Central de Ajuda avisa que, desde abril de 2026, a meta de leads qualificados pede a API de Conversões para CRM em campanhas novas.', es: 'Campaña abierta como borrador el 29/10/2026 y eliminada después (nada publicado). Textos en español: traducción nuestra (por confirmar).' }
+      },
+      ferramenta: 'lead-local',
+      praticar: {
+        texto: { pt: 'No simulador, você escolhe a meta de desempenho, liga o formulário ao anúncio e confere o filtro de qualidade.', es: 'En el simulador, eliges el objetivo de rendimiento, conectas el formulario al anuncio y revisas el filtro de calidad.' },
+        tour: 'campanha-leads', pagina: 'meta-leads.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Estou criando o anúncio de leads e o meu formulário não aparece na lista para escolher! Eu criei ontem. 😕', es: '¡Estoy creando el anuncio y mi formulario no aparece en la lista para elegir! Lo creé ayer. 😕' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“Formulário novo leva 48 horas para ser liberado para anúncios. Espere dois dias e ele aparece na lista sozinho.”', es: '“Un formulario nuevo tarda 48 horas en liberarse para anuncios. Espera dos días y aparece solo en la lista.”' }, fb: { pt: 'Não existe esse prazo; o formulário Ativo aparece na hora.', es: 'No existe ese plazo; el formulario activo aparece al instante.' } },
+          { certa: false, txt: { pt: '“O formulário só aparece se o objetivo for Tráfego. Troque o objetivo da campanha e procure de novo na lista.”', es: '“El formulario solo aparece si el objetivo es Tráfico. Cambia el objetivo y busca de nuevo en la lista.”' }, fb: { pt: 'Formulário é do objetivo Leads.', es: 'El formulario es del objetivo Clientes potenciales.' } },
+          { certa: false, txt: { pt: '“Formulário criado no Business Suite não vai para o Gerenciador. Crie um novo direto no anúncio e apague o outro.”', es: '“Un formulario creado en Business Suite no va al Administrador. Crea uno nuevo en el anuncio y borra el otro.”' }, fb: { pt: 'Os dois caminhos usam a mesma lista de formulários da Página.', es: 'Los dos caminos usan la misma lista de formularios de la Página.' } },
+          { certa: true, txt: { pt: '“Veja se ele ficou como rascunho ou foi para Arquivados, e se é da mesma Página escolhida no conjunto.”', es: '“Mira si quedó como borrador o fue a Archivados, y si es de la misma Página elegida en el conjunto.”' }, fb: { pt: 'Isso! Rascunho não aparece; arquivado fica na outra aba; e a lista é da Página.', es: '¡Eso! El borrador no aparece; el archivado está en la otra pestaña; y la lista es de la Página.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual Página está escolhida no conjunto de anúncios?', es: '¿Qué Página está elegida en el conjunto de anuncios?' }, { pt: 'O formulário está Ativo, em Rascunhos ou Arquivado?', es: '¿El formulario está activo, en borradores o archivado?' }],
+        conferir: [{ pt: 'Conjunto: Local da conversão = Formulários instantâneos; Página.', es: 'Conjunto: lugar = Formularios instantáneos; Página.' }, { pt: 'Anúncio: Destino › Formulário instantâneo › Ativos | Arquivados.', es: 'Anuncio: Destino › Formulario instantáneo › Activos | Archivados.' }],
+        frase: { pt: 'O formulário entra no anúncio, em Destino › Formulário instantâneo. A lista mostra os formulários Ativos da Página escolhida no conjunto.', es: 'El formulario entra en el anuncio, en Destino › Formulario instantáneo. La lista muestra los formularios activos de la Página elegida.' },
+        passos: [{ pt: 'No conjunto, confira o local e a Página.', es: 'En el conjunto, revisa el lugar y la Página.' }, { pt: 'No anúncio, em Destino, escolha o formulário (ou Criar um formulário).', es: 'En el anuncio, en Destino, elige el formulario.' }],
+        encaminhar: { pt: 'Se o cliente quer “leads qualificados” e não tem CRM, explique que essa meta depende do CRM conectado ao Gerenciador de Eventos; a integração é com o desenvolvedor ou o parceiro do CRM.', es: 'Si el cliente quiere calificados y no tiene CRM, explica que esa meta depende del CRM conectado; la integración es con el desarrollador o el socio del CRM.' }
+      }
+    },
+    {
+      id: '05', min: 7, status: 'pronta',
+      titulo: { pt: 'Onde ficam os leads (e por que somem)', es: 'Dónde están los clientes potenciales (y por qué desaparecen)' },
+      antes: { pt: 'O anúncio da Marina rodou e trouxe pedidos de orçamento.', es: 'El anuncio de Marina circuló y trajo pedidos de presupuesto.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/734933888443065', titulo: { pt: 'Como baixar ou recuperar dados de leads da Meta', es: 'Cómo descargar o recuperar los datos de clientes potenciales' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1526849577619206', titulo: { pt: 'Sobre os cadastros expirados', es: 'Sobre los clientes potenciales vencidos' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1131888990173231', titulo: { pt: 'Sobre os leads orgânicos', es: 'Sobre los clientes potenciales orgánicos' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1440176552713521', titulo: { pt: 'Sobre o acesso a leads no Meta Business Suite', es: 'Sobre el acceso a clientes potenciales en Meta Business Suite' }, conferido: '29/10/2026' }
+      ],
+      gancho: { pt: '“Baixar arquivo toda semana é chato. Dá para os leads irem sozinhos para a minha planilha?”', es: '“Descargar un archivo cada semana es aburrido. ¿Se puede hacer que vayan solos a mi planilla?”' },
+      objetivo: { pt: 'Saber onde baixar os leads, as duas regras que explicam “sumiram” (90 dias e permissão) e por que o arquivo e o relatório não batem.', es: 'Saber dónde descargar, las dos reglas que explican “desaparecieron” (90 días y permiso) y por qué el archivo y el informe no coinciden.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'Onde eu vejo quem preencheu? 🤔', es: '¿Dónde veo quién completó? 🤔' }],
+          ['rafa', { pt: 'Em três lugares, sempre como arquivo CSV: no Gerenciador de Anúncios, em Formulários instantâneos do Business Suite e na Central de Leads, que organiza os leads em etapas.', es: 'En tres lugares, siempre como archivo CSV: en el Administrador de anuncios, en Formularios instantáneos y en el Centro de clientes potenciales, que los organiza en etapas.' }],
+          ['marina', { pt: 'Baixei e veio menos gente do que a coluna Resultados! E o funcionário não consegue baixar. 😠', es: '¡Descargué y vino menos gente que la columna Resultados! Y el empleado no puede descargar. 😠' }],
+          ['rafa', { pt: 'Duas regras. Os leads só ficam para baixar por <b>90 dias</b> depois de enviados. E, por padrão, só baixa quem administra a Página (ou pode enviar mensagens); se o portfólio personalizou o <b>Acesso a leads</b>, só quem foi incluído.', es: 'Dos reglas. Solo se pueden descargar por <b>90 días</b>. Y, por defecto, solo descarga quien administra la Página; si el portfolio personalizó el <b>Acceso a clientes potenciales</b>, solo quien fue incluido.' }],
+          ['pixel', { pt: 'E o contrário também acontece: o arquivo ter mais leads que o relatório. Leads orgânicos (formulário compartilhado, com Compartilhamento Aberto) e leads de teste entram no arquivo, mas não contam em Resultados.', es: 'Y al revés también: el archivo con más que el informe. Los orgánicos (formulario compartido) y los de prueba entran en el archivo, pero no cuentan en Resultados.' }]
+        ],
+        pontos: [
+          { pt: '<b>Onde:</b> Gerenciador de Anúncios, Formulários instantâneos (Business Suite) e Central de Leads.', es: '<b>Dónde:</b> Administrador de anuncios, Formularios instantáneos y Centro de clientes potenciales.' },
+          { pt: '<b>Menos no arquivo:</b> leads com mais de 90 dias expiram.', es: '<b>Menos en el archivo:</b> los de más de 90 días vencen.' },
+          { pt: '<b>Mais no arquivo:</b> orgânicos e de teste não contam em Resultados.', es: '<b>Más en el archivo:</b> orgánicos y de prueba no cuentan en Resultados.' }
+        ],
+        notas: { pt: 'A lista de formulários e a tela de entrada da Central de Leads foram vistas em 29/10/2026. A lista por dentro da Central de Leads não foi vista (entrar pede aceitar os termos dela) e o botão de baixar ficou sem leads para mostrar: os caminhos e as regras vêm da Central de Ajuda.', es: 'La lista de formularios y la pantalla de entrada del Centro se vieron el 29/10/2026. El interior del Centro no se vio. Textos en español: traducción nuestra (por confirmar).' }
+      },
+      ferramenta: 'lead-onde-ficam',
+      praticar: {
+        texto: { pt: 'No simulador, você acha o número de leads, tenta baixar e conhece a Central de Leads.', es: 'En el simulador, encuentras el número, intentas descargar y conoces el Centro de clientes potenciales.' },
+        tour: 'onde-ficam-leads', pagina: 'meta-leads.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Minha campanha de março mostra 120 leads em Resultados, mas o arquivo que baixei hoje só tem 15! Cadê o resto? 😱', es: '¡Mi campaña de marzo muestra 120 en Resultados, pero el archivo de hoy solo tiene 15! ¿Y el resto? 😱' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“O arquivo só traz leads de quem confirmou o e-mail. Os outros 105 ainda estão em análise e entram depois.”', es: '“El archivo solo trae a quien confirmó el correo. Los otros 105 todavía están en revisión y entran después.”' }, fb: { pt: 'Não existe essa análise; a diferença é a janela de 90 dias.', es: 'No existe esa revisión; la diferencia es la ventana de 90 días.' } },
+          { certa: true, txt: { pt: '“Leads ficam para baixar só 90 dias. Os de março expiraram; por isso vale baixar sempre ou ligar um CRM.”', es: '“Solo se descargan por 90 días. Los de marzo vencieron; conviene descargar seguido o conectar un CRM.”' }, fb: { pt: 'Isso! Resultados conta tudo; o arquivo, só os últimos 90 dias.', es: '¡Eso! Resultados cuenta todo; el archivo, solo los últimos 90 días.' } },
+          { certa: false, txt: { pt: '“Abra um pedido de recuperação no suporte: em até 7 dias eles reenviam os 105 leads que faltam por e-mail.”', es: '“Abre un pedido de recuperación al soporte: en hasta 7 días reenvían por correo los 105 que faltan.”' }, fb: { pt: 'Lead expirado não volta: por segurança, não fica mais disponível.', es: 'Un vencido no vuelve: por seguridad, ya no está disponible.' } },
+          { certa: false, txt: { pt: '“Baixe pelo celular, no app do Gerenciador: ele traz o histórico completo, que o computador corta.”', es: '“Descarga desde el celular, en la app del Administrador: trae el historial completo que la computadora corta.”' }, fb: { pt: 'A janela de 90 dias vale em qualquer lugar.', es: 'La ventana de 90 días vale en cualquier lugar.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'De quando são os leads que faltam?', es: '¿De cuándo son los que faltan?' }, { pt: 'Quem tenta baixar é administrador da Página? O portfólio personalizou o Acesso a leads?', es: '¿Quien intenta descargar administra la Página? ¿El portfolio personalizó el acceso?' }],
+        conferir: [{ pt: 'Data de envio dos leads (90 dias).', es: 'Fecha de envío (90 días).' }, { pt: 'Configurações do portfólio › Acesso a leads (pessoas, CRM, parceiros).', es: 'Configuración del portfolio › Acceso a clientes potenciales.' }, { pt: 'Compartilhamento do formulário: Restrito ou Aberto.', es: 'Uso compartido del formulario: Restringido o Abierto.' }],
+        frase: { pt: 'Os leads ficam para baixar por 90 dias depois de enviados; os mais antigos expiram e não voltam. Para não perder, baixe com frequência ou conecte um CRM.', es: 'Se pueden descargar por 90 días; los más antiguos vencen y no vuelven. Para no perderlos, descarga seguido o conecta un CRM.' },
+        passos: [{ pt: 'Formulários instantâneos › formulário › Baixar (ou Gerenciador / Central de Leads).', es: 'Formularios instantáneos › formulario › Descargar.' }, { pt: 'Conecte um CRM para os novos irem sozinhos.', es: 'Conecta un CRM para que los nuevos vayan solos.' }],
+        encaminhar: { pt: 'Se a pessoa precisa de acesso e quem controla o portfólio não está disponível, só quem tem controle total muda o Acesso a leads; oriente a falar com essa pessoa.', es: 'Si la persona necesita acceso y quien controla el portfolio no está, solo quien tiene control total cambia el acceso; orienta a hablar con esa persona.' }
+      }
+    },
+    {
+      id: '06', min: 9, status: 'pronta',
+      titulo: { pt: 'Ligar o CRM (e testar)', es: 'Conectar el CRM (y probar)' },
+      antes: { pt: 'A Marina cansou de baixar arquivo toda semana.', es: 'Marina se cansó de descargar un archivo cada semana.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/301355140655035', titulo: { pt: 'Sobre integrações de sistemas de CRM para anúncios de lead', es: 'Sobre las integraciones de CRM para anuncios de clientes potenciales' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/1588743581429919', titulo: { pt: 'Como conectar o sistema de CRM ao Meta Business Suite', es: 'Cómo conectar el CRM a Meta Business Suite' }, conferido: '29/10/2026' },
+        { url: 'https://www.facebook.com/business/help/776203092784009', titulo: { pt: 'Como remover a integração de sistema de CRM da Meta', es: 'Cómo quitar la integración del CRM' }, conferido: '29/10/2026' },
+        { url: 'https://developers.facebook.com/tools/lead-ads-testing', titulo: { pt: 'Ferramenta de testes de anúncios de lead (Meta for Developers)', es: 'Herramienta de prueba de anuncios para clientes potenciales' }, conferido: '29/10/2026' }
+      ],
+      objetivo: { pt: 'Entender o que é um CRM, os três jeitos de ligar (direto, por terceiros como o Zapier, ou personalizado), onde se conecta, onde se tira e como testar.', es: 'Entender qué es un CRM, las tres formas de conectar, dónde se conecta, dónde se quita y cómo probar.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'O que é esse tal de CRM? 🤔', es: '¿Qué es ese CRM? 🤔' }],
+          ['rafa', { pt: 'É o sistema onde a loja acompanha os clientes: quem pediu orçamento, quem já respondeu, quem comprou. Pode ser HubSpot, Pipedrive… ou até uma planilha do Google ou do Excel.', es: 'Es el sistema donde la tienda sigue a los clientes: quién pidió presupuesto, quién respondió, quién compró. Puede ser HubSpot, Pipedrive… o hasta una planilla.' }],
+          ['rafa', { pt: 'Ligado à Meta, cada lead novo vai sozinho para lá, sem baixar arquivo. Três jeitos: <b>direto</b>, <b>por terceiros</b> (como o Zapier, sem programar) ou <b>personalizado</b> (o desenvolvedor usa Webhooks e a API).', es: 'Conectado a Meta, cada nuevo cliente potencial va solo. Tres formas: <b>directa</b>, <b>por terceros</b> (como Zapier, sin programar) o <b>personalizada</b> (Webhooks y API).' }],
+          ['marina', { pt: 'E onde eu ligo?', es: '¿Y dónde lo conecto?' }],
+          ['rafa', { pt: 'Em Formulários instantâneos, na aba Configuração do CRM (que vira “Integração de leads”) › Conectar CRM. Precisa ter um formulário ativo. Para tirar: Configurações do perfil › Integrações comerciais.', es: 'En Formularios instantáneos, en la pestaña del CRM › Conectar CRM. Necesita un formulario activo. Para quitarlo: Configuración del perfil › Integraciones comerciales.' }],
+          ['pixel', { pt: 'Ligou? Teste na Ferramenta de testes de anúncios de lead: ela mostra o Diagnóstico da Página e cria um lead de teste (um por formulário). Se não chega, o Acesso a leads pode não ter incluído o CRM.', es: '¿Conectaste? Prueba en la herramienta de prueba: muestra el diagnóstico de la Página y crea un cliente de prueba (uno por formulario). Si no llega, el acceso puede no incluir el CRM.' }]
+        ],
+        pontos: [
+          { pt: '<b>CRM</b> = onde a loja acompanha os clientes. Planilha também serve.', es: '<b>CRM</b> = donde la tienda sigue a los clientes. Una planilla también sirve.' },
+          { pt: '<b>Conectar:</b> Formulários instantâneos › Integração de leads › Conectar CRM (precisa de formulário ativo).', es: '<b>Conectar:</b> Formularios instantáneos › pestaña del CRM › Conectar CRM (necesita formulario activo).' },
+          { pt: '<b>Remover:</b> Configurações do perfil › Integrações comerciais. Se foi ligado pelo site do CRM, tira-se por lá.', es: '<b>Quitar:</b> Configuración del perfil › Integraciones comerciales. Si se conectó por el sitio del CRM, se quita allá.' },
+          { pt: '<b>Testar:</b> Ferramenta de testes de anúncios de lead (Meta for Developers).', es: '<b>Probar:</b> herramienta de prueba (Meta for Developers).' }
+        ],
+        notas: { pt: 'Vistos em 29/10/2026: a aba Integração de leads com o aviso “Você precisa de um formulário ativo para conectar um CRM”, a janela de CRMs (Excel, Google Sheets, Zapier, HubSpot, Gmail e a lista com vários “by Zapier”) e a Ferramenta de testes com o Diagnóstico da Página. O que vem depois de cada “Conectar” e depois de “Criar lead” não foi visto (a conferir).', es: 'Vistos el 29/10/2026: la pestaña de integración, la ventana de CRM y la herramienta de prueba. Lo que viene después de cada “Conectar” no se vio. Textos en español: traducción nuestra (por confirmar).' }
+      },
+      ferramenta: 'lead-crm',
+      praticar: {
+        texto: { pt: 'No simulador, você vê por que a conexão pede formulário ativo, escolhe um CRM e cria um lead de teste.', es: 'En el simulador, ves por qué la conexión pide formulario activo, eliges un CRM y creas un cliente de prueba.' },
+        tour: 'conectar-crm', pagina: 'meta-leads.html?zerar=1'
+      },
+      atender: {
+        cena: { pt: 'Liguei o Zapier na minha planilha faz uma semana e nenhum lead novo chegou nela. No arquivo baixado eles estão! 😩', es: 'Conecté Zapier a mi planilla hace una semana y no llegó ningún cliente nuevo. ¡En el archivo descargado sí están! 😩' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“Planilha não conta como CRM para a Meta. Troque para um CRM pago e os leads novos vão começar a chegar.”', es: '“Una planilla no cuenta como CRM para Meta. Cambia a un CRM pago y los nuevos empiezan a llegar.”' }, fb: { pt: 'Google Sheets e Excel estão na lista oficial de conexão.', es: 'Google Sheets y Excel están en la lista oficial.' } },
+          { certa: false, txt: { pt: '“O CRM só recebe leads de formulários criados depois da conexão. Duplique o formulário e troque no anúncio.”', es: '“El CRM solo recibe de formularios creados después de la conexión. Duplica el formulario y cámbialo en el anuncio.”' }, fb: { pt: 'Não existe essa regra; primeiro veja permissão e o teste.', es: 'No existe esa regla; primero revisa el permiso y la prueba.' } },
+          { certa: true, txt: { pt: '“Se o portfólio personalizou o Acesso a leads, inclua o Zapier lá. Depois teste na Ferramenta de testes.”', es: '“Si el portfolio personalizó el acceso, incluye a Zapier allí. Después prueba en la herramienta de prueba.”' }, fb: { pt: 'Isso! Com acesso personalizado, o CRM precisa ser adicionado à mão.', es: '¡Eso! Con acceso personalizado, el CRM se agrega a mano.' } },
+          { certa: false, txt: { pt: '“A integração demora até 30 dias para sincronizar pela primeira vez. Espere e confira a planilha no fim do mês.”', es: '“La integración tarda hasta 30 días en sincronizar la primera vez. Espera y revisa la planilla a fin de mes.”' }, fb: { pt: 'Não há esse prazo; teste para ver na hora.', es: 'No hay ese plazo; prueba para verlo al momento.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Qual CRM e como foi ligado: pelo Business Suite ou pelo site do CRM?', es: '¿Qué CRM y cómo se conectó: por Business Suite o por el sitio del CRM?' }, { pt: 'O portfólio personalizou o Acesso a leads?', es: '¿El portfolio personalizó el acceso a clientes potenciales?' }],
+        conferir: [{ pt: 'Formulários instantâneos › Integração de leads: há formulário ativo?', es: 'Formularios instantáneos › integración: ¿hay formulario activo?' }, { pt: 'Acesso a leads: o CRM está incluído?', es: 'Acceso a clientes potenciales: ¿el CRM está incluido?' }, { pt: 'Ferramenta de testes: Diagnóstico da Página e lead de teste.', es: 'Herramienta de prueba: diagnóstico y prueba.' }],
+        frase: { pt: 'Com o CRM ligado, cada lead novo vai sozinho para ele. Se o portfólio personalizou o Acesso a leads, o CRM precisa ser incluído lá. Teste com a Ferramenta de testes de anúncios de lead.', es: 'Con el CRM conectado, cada nuevo va solo. Si el portfolio personalizó el acceso, hay que incluir el CRM. Prueba con la herramienta de prueba.' },
+        passos: [{ pt: 'Formulários instantâneos › Integração de leads › Conectar CRM.', es: 'Formularios instantáneos › integración › Conectar CRM.' }, { pt: 'Siga as instruções no site do CRM.', es: 'Sigue las instrucciones en el sitio del CRM.' }, { pt: 'Teste com a Ferramenta de testes de anúncios de lead.', es: 'Prueba con la herramienta de prueba.' }],
+        encaminhar: { pt: 'Configuração dentro do CRM ou do Zapier é com o suporte deles. Integração personalizada (Webhooks e API) é com o desenvolvedor do cliente.', es: 'La configuración dentro del CRM o de Zapier es con su soporte. La integración personalizada es con el desarrollador del cliente.' }
+      },
+      divergencias: [
+        { tema: { pt: 'Nome da aba do CRM', es: 'Nombre de la pestaña del CRM' }, oficial: { pt: 'a Central de Ajuda manda abrir a aba “Configuração de CRM”.', es: 'el Centro de ayuda habla de la pestaña de configuración del CRM.' }, tela: { pt: 'em 29/10/2026 a aba aparece como “Configuração do CRM” e, ao ser aberta, passa a se chamar “Integração de leads”.', es: 'el 29/10/2026 la pestaña cambia de nombre a “Integración de clientes potenciales” al abrirla.' }, aula: { pt: 'ensina os dois nomes.', es: 'enseña los dos nombres.' } }
+      ]
     }
   ],
   regras: [

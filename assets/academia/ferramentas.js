@@ -1052,6 +1052,62 @@
         [{ pt: 'Uma condição', es: 'Una condición' }, 0, { pt: 'É uma ação.', es: 'Es una acción.' }],
         [{ pt: 'Uma ação que desativa o conjunto', es: 'Una acción que desactiva el conjunto' }, 0, { pt: 'O nome diz: “apenas uma notificação”.', es: 'El nombre lo dice: “solo una notificación”.' }]] }
   ]);
+  quizCatalogo('lead-local', { pt: 'O que a tela vai pedir?', es: '¿Qué va a pedir la pantalla?' }, { pt: 'O local da conversão e a meta de desempenho mudam o que a campanha de leads exige.', es: 'El lugar de conversión y el objetivo de rendimiento cambian lo que exige la campaña.' }, [
+    { q: { pt: 'Local da conversão: “Formulários no site e instantâneos” (o padrão)', es: 'Lugar de conversión: el predeterminado, con sitio y formularios' },
+      o: [[{ pt: 'Um conjunto de dados (o antigo Pixel)', es: 'Un conjunto de datos (el antiguo píxel)' }, 1, { pt: 'Isso! Porque inclui o site.', es: '¡Eso! Porque incluye el sitio.' }],
+        [{ pt: 'Só a Página e os termos aceitos para ela', es: 'Solo la Página y los términos aceptados' }, 0, { pt: 'Isso é do local só com formulários instantâneos.', es: 'Eso es del lugar solo con formularios.' }],
+        [{ pt: 'Um número de WhatsApp conectado', es: 'Un número de WhatsApp conectado' }, 0, { pt: 'WhatsApp é outro local, no grupo Único.', es: 'WhatsApp es otro lugar, en el grupo Único.' }]] },
+    { q: { pt: 'Local da conversão: “Formulários instantâneos”', es: 'Lugar de conversión: “Formularios instantáneos”' },
+      o: [[{ pt: 'O Pixel instalado no site da loja', es: 'El píxel instalado en el sitio de la tienda' }, 0, { pt: 'Só formulário não pede Pixel.', es: 'Solo formulario no pide píxel.' }],
+        [{ pt: 'A Página e os termos de cadastros aceitos', es: 'La Página y los términos aceptados' }, 1, { pt: 'Isso! A tela avisa se os termos já foram aceitos.', es: '¡Eso! La pantalla avisa si ya se aceptaron.' }],
+        [{ pt: 'Um catálogo de produtos aprovado', es: 'Un catálogo de productos aprobado' }, 0, { pt: 'Catálogo é opcional aqui.', es: 'El catálogo es opcional aquí.' }]] },
+    { q: { pt: 'Meta de desempenho: “Maximizar o número de leads qualificados”', es: 'Objetivo: “Maximizar clientes potenciales calificados”' },
+      o: [[{ pt: 'O formulário do tipo Maior intenção', es: 'El formulario de tipo Mayor intención' }, 0, { pt: 'O tipo do formulário não é exigido por essa meta.', es: 'El tipo de formulario no lo exige esa meta.' }],
+        [{ pt: 'Mais de 1.000 leads por mês', es: 'Más de 1.000 por mes' }, 0, { pt: 'Não há esse mínimo na tela.', es: 'No hay ese mínimo en la pantalla.' }],
+        [{ pt: 'O CRM conectado à Meta', es: 'El CRM conectado a Meta' }, 1, { pt: 'Isso! A Meta precisa saber quem virou cliente.', es: '¡Eso! Meta necesita saber quién se convirtió.' }]] }
+  ]);
+  quizCatalogo('lead-erros-form', { pt: 'Qual etapa trava o formulário?', es: '¿Qué paso traba el formulario?' }, { pt: 'Cada mensagem vermelha mora numa etapa do editor.', es: 'Cada mensaje rojo está en un paso del editor.' }, [
+    { q: { pt: '“O conteúdo do título será necessário se o cartão de contexto estiver selecionado”', es: '“El título será necesario si la tarjeta de contexto está seleccionada”' },
+      o: [[{ pt: 'Apresentação: a saudação ligada', es: 'Presentación: el saludo activado' }, 1, { pt: 'Isso! Preencha ou remova a saudação.', es: '¡Eso! Complétalo o quita el saludo.' }],
+        [{ pt: 'Encerramento: a mensagem final', es: 'Cierre: el mensaje final' }, 0, { pt: 'O encerramento já vem com título.', es: 'El cierre ya viene con título.' }],
+        [{ pt: 'Tipo de formulário: o nome', es: 'Tipo de formulario: el nombre' }, 0, { pt: 'O nome já vem preenchido.', es: 'El nombre ya viene completo.' }]] },
+    { q: { pt: '“Você deve informar como usará os dados das pessoas.”', es: '“Debes indicar cómo usarás los datos de las personas.”' },
+      o: [[{ pt: 'Política de privacidade: o link', es: 'Política de privacidad: el enlace' }, 0, { pt: 'O link tem outra mensagem.', es: 'El enlace tiene otro mensaje.' }],
+        [{ pt: 'Perguntas: a Descrição do contato', es: 'Preguntas: la Descripción del contacto' }, 1, { pt: 'Isso! Em Informações de contato.', es: '¡Eso! En Información de contacto.' }],
+        [{ pt: 'Configurações: o idioma', es: 'Configuración: el idioma' }, 0, { pt: 'O idioma não gera erro.', es: 'El idioma no genera error.' }]] },
+    { q: { pt: 'A prévia mostra “Contact information” e “Submit”', es: 'La vista previa muestra “Contact information” y “Submit”' },
+      o: [[{ pt: 'Um erro de tradução da Meta', es: 'Un error de traducción de Meta' }, 0, { pt: 'É o padrão: o idioma vem em inglês.', es: 'Es el predeterminado: el idioma viene en inglés.' }],
+        [{ pt: 'O celular de quem está criando', es: 'El celular de quien está creando' }, 0, { pt: 'O aparelho não muda o formulário.', es: 'El aparato no cambia el formulario.' }],
+        [{ pt: 'Configurações › Idioma em inglês', es: 'Configuración › Idioma en inglés' }, 1, { pt: 'Isso! Troque antes de publicar.', es: '¡Eso! Cámbialo antes de publicar.' }]] }
+  ]);
+  quizCatalogo('lead-onde-ficam', { pt: 'Arquivo ou relatório?', es: '¿Archivo o informe?' }, { pt: 'Por que o número de leads do arquivo e o de Resultados não batem.', es: 'Por qué el número del archivo y el de Resultados no coinciden.' }, [
+    { q: { pt: 'Leads enviados há 4 meses', es: 'Enviados hace 4 meses' },
+      o: [[{ pt: 'Contam em Resultados, mas não saem no arquivo', es: 'Cuentan en Resultados, pero no salen en el archivo' }, 1, { pt: 'Isso! Expiraram (90 dias).', es: '¡Eso! Vencieron (90 días).' }],
+        [{ pt: 'Saem no arquivo e em Resultados', es: 'Salen en el archivo y en Resultados' }, 0, { pt: 'Depois de 90 dias não saem no arquivo.', es: 'Después de 90 días no salen en el archivo.' }],
+        [{ pt: 'Somem dos dois lugares', es: 'Desaparecen de los dos lugares' }, 0, { pt: 'Resultados continua contando.', es: 'Resultados sigue contando.' }]] },
+    { q: { pt: 'Lead de um amigo que recebeu o anúncio compartilhado (Compartilhamento Aberto)', es: 'De un amigo que recibió el anuncio compartido (uso compartido Abierto)' },
+      o: [[{ pt: 'Conta em Resultados e custa', es: 'Cuenta en Resultados y cuesta' }, 0, { pt: 'Orgânico não conta nem custa.', es: 'Orgánico no cuenta ni cuesta.' }],
+        [{ pt: 'Sai no arquivo, mas não conta em Resultados', es: 'Sale en el archivo, pero no cuenta en Resultados' }, 1, { pt: 'Isso! É um lead orgânico.', es: '¡Eso! Es orgánico.' }],
+        [{ pt: 'Não chega em lugar nenhum', es: 'No llega a ningún lado' }, 0, { pt: 'Chega no arquivo do Business Suite.', es: 'Llega al archivo de Business Suite.' }]] },
+    { q: { pt: 'O funcionário com acesso parcial tenta baixar', es: 'El empleado con acceso parcial intenta descargar' },
+      o: [[{ pt: 'Baixa normalmente, como todo mundo', es: 'Descarga normalmente, como todos' }, 0, { pt: 'Baixar depende de permissão.', es: 'Descargar depende del permiso.' }],
+        [{ pt: 'Recebe o arquivo por e-mail', es: 'Recibe el archivo por correo' }, 0, { pt: 'Não existe esse envio.', es: 'No existe ese envío.' }],
+        [{ pt: 'Só baixa se tiver acesso a leads', es: 'Solo descarga si tiene acceso' }, 1, { pt: 'Isso! Por padrão, administradores da Página; ou quem foi incluído no Acesso a leads.', es: '¡Eso! Por defecto, administradores; o quien fue incluido.' }]] }
+  ]);
+  quizCatalogo('lead-crm', { pt: 'Onde se resolve?', es: '¿Dónde se resuelve?' }, { pt: 'Conectar, tirar e testar o CRM: cada coisa num lugar.', es: 'Conectar, quitar y probar el CRM: cada cosa en un lugar.' }, [
+    { q: { pt: 'Conectar a planilha do Google aos leads', es: 'Conectar la planilla de Google' },
+      o: [[{ pt: 'Integração de leads › Conectar CRM', es: 'Integración › Conectar CRM' }, 1, { pt: 'Isso! Com um formulário ativo.', es: '¡Eso! Con un formulario activo.' }],
+        [{ pt: 'Gerenciador de Eventos › Pixel', es: 'Administrador de eventos › Píxel' }, 0, { pt: 'O Pixel é do site, não dos leads.', es: 'El píxel es del sitio, no de los leads.' }],
+        [{ pt: 'Configurações da conta de anúncios', es: 'Configuración de la cuenta publicitaria' }, 0, { pt: 'Não é ali.', es: 'No es ahí.' }]] },
+    { q: { pt: 'Tirar um CRM que foi ligado pelo Business Suite', es: 'Quitar un CRM conectado por Business Suite' },
+      o: [[{ pt: 'Apagar o formulário ativo', es: 'Borrar el formulario activo' }, 0, { pt: 'Apagar formulário não desliga o CRM.', es: 'Borrar el formulario no desconecta el CRM.' }],
+        [{ pt: 'Integrações comerciais do perfil', es: 'Integraciones comerciales del perfil' }, 1, { pt: 'Isso! Aba Ativas › Remover.', es: '¡Eso! Pestaña Activas › Quitar.' }],
+        [{ pt: 'Pedir ao suporte da Meta', es: 'Pedir al soporte de Meta' }, 0, { pt: 'A própria pessoa remove.', es: 'La propia persona lo quita.' }]] },
+    { q: { pt: 'Saber se o lead chega no CRM sem rodar anúncio', es: 'Saber si llega al CRM sin anunciar' },
+      o: [[{ pt: 'Publicar com R$ 1 por um dia', es: 'Publicar con R$ 1 por un día' }, 0, { pt: 'Não precisa gastar para testar.', es: 'No hace falta gastar para probar.' }],
+        [{ pt: 'Preencher o formulário com a conta da loja', es: 'Completar el formulario con la cuenta de la tienda' }, 0, { pt: 'O caminho é a ferramenta de testes.', es: 'El camino es la herramienta de prueba.' }],
+        [{ pt: 'Ferramenta de testes › Criar lead', es: 'Herramienta de prueba › Crear' }, 1, { pt: 'Isso! Um lead de teste por formulário.', es: '¡Eso! Uno de prueba por formulario.' }]] }
+  ]);
   quizCatalogo('falso-positivo', { pt: 'Essa regra é segura?', es: '¿Esta regla es segura?' }, { pt: 'Intervalo e condições mudam quem é atingido.', es: 'El intervalo y las condiciones cambian a quién se alcanza.' }, [
     { q: { pt: 'Regra: desativar se “Gasto é maior que 20”, intervalo “37 meses (máximo)”. O que pode dar errado?', es: 'Regla: desactivar si “Gasto es mayor que 20”, intervalo “37 meses (máximo)”. ¿Qué puede salir mal?' },
       o: [[{ pt: 'Ela soma o gasto de toda a vida do conjunto e pode desativar até os que vendem bem (falso positivo)', es: 'Suma el gasto de toda la vida del conjunto y puede desactivar incluso los que venden bien (falso positivo)' }, 1, { pt: 'Isso! Um intervalo curto e mais uma condição resolvem.', es: '¡Eso! Un intervalo corto y una condición más lo resuelven.' }],
