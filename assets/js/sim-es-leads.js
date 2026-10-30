@@ -119,6 +119,27 @@
     'Lead de teste criado (no treino).': 'Cliente potencial de prueba creado (en la práctica).',
     'Na vida real, ele deve chegar ao seu CRM em poucos minutos e aparece no arquivo para baixar, mas não conta na coluna Resultados do Gerenciador. A tela depois de “Criar lead” não foi vista (a conferir).': 'En la vida real, debería llegar a tu CRM en pocos minutos y aparece en el archivo para descargar, pero no cuenta en la columna Resultados del Administrador. La pantalla después de “Crear” no se vio (por confirmar).'
   };
+  var C = {   // Central de Leads por dentro (vista em português em 30/10/2026)
+    'Baixe leads em um arquivo CSV com base nos filtros atuais': 'Descarga clientes potenciales en un archivo CSV según los filtros actuales', 'Criar lead': 'Crear cliente potencial', 'Carregar leads': 'Subir clientes potenciales',
+    'Receber leads no Messenger': 'Recibir clientes potenciales en Messenger', 'Gere leads iniciando conversas no Messenger': 'Genera clientes potenciales iniciando conversaciones en Messenger',
+    'Receber leads com um formulário instantâneo': 'Recibir clientes potenciales con un formulario instantáneo', 'Gere leads pedindo para as pessoas preencherem um formulário': 'Genera clientes potenciales pidiendo a las personas que completen un formulario',
+    'Na vida real, o ⤓ baixa um CSV com base nos filtros atuais (pela Central de Ajuda: data, nome, e-mail, telefone, etapa, origem e responsável; até 10.000 leads por arquivo).': 'En la vida real, el ⤓ descarga un CSV según los filtros actuales (según el Centro de ayuda: fecha, nombre, correo, teléfono, etapa, origen y responsable; hasta 10.000 por archivo).',
+    'Visualização de pipeline': 'Vista de embudo', 'Visualização de tabela': 'Vista de tabla', 'Adicionar estágio personalizado': 'Agregar etapa personalizada', 'Edição em massa': 'Edición masiva', '＋ Adicionar filtros': '＋ Agregar filtros',
+    'Campanha · Formulários · Selecione as datas · Status · Fonte · Atribuído a · Rótulos': 'Campaña · Formularios · Selecciona las fechas · Estado · Fuente · Asignado a · Etiquetas',
+    'Em análise ⓘ': 'En revisión ⓘ', 'Qualificado ⓘ': 'Calificado ⓘ', 'Convertidos ⓘ': 'Convertidos ⓘ', 'Sample Lead': 'Sample Lead', 'Direto': 'Directo',
+    'Transfira os leads para esse estágio caso tenham feito um acordo ou transação com sua empresa.': 'Pasa los clientes potenciales a esta etapa si cerraron un acuerdo o una transacción con tu empresa.',
+    'Adicione um estágio personalizado': 'Agrega una etapa personalizada', 'Você pode criar um estágio personalizado para acompanhar os principais resultados antes da conversão.': 'Puedes crear una etapa personalizada para seguir los resultados principales antes de la conversión.',
+    'Editar informações de contato': 'Editar información de contacto', 'Adicionar uma etiqueta': 'Agregar una etiqueta', 'Pesquisar ou criar uma etiqueta': 'Buscar o crear una etiqueta', 'Gerenciamento de cadastros': 'Gestión de clientes potenciales',
+    'Atribuído a': 'Asignado a', 'Não atribuído': 'Sin asignar', 'Estágio': 'Etapa', 'Em análise': 'En revisión', 'Qualificado': 'Calificado', 'Convertidos': 'Convertidos', 'Lembrete': 'Recordatorio', 'Nenhum lembrete': 'Ningún recordatorio',
+    'Notas': 'Notas', 'Escreva uma nota...': 'Escribe una nota...', '🗑 Excluir lead': '🗑 Eliminar cliente potencial', 'Denunciar lead': 'Reportar cliente potencial',
+    'O “Sample Lead” é o lead de exemplo que a própria Central mostra na primeira vez. Os outros leads chegam dos anúncios e da Caixa de Entrada.': 'El “Sample Lead” es el ejemplo que el propio Centro muestra la primera vez. Los demás llegan de los anuncios y de la bandeja de entrada.',
+    '⚠ Por dentro conferida em 30/10/2026 (conta de aula, sem leads de anúncio): o conteúdo do arquivo baixado vem da Central de Ajuda.': '⚠ Interior revisado el 30/10/2026 (cuenta de práctica, sin clientes potenciales de anuncios): el contenido del archivo descargado viene del Centro de ayuda.',
+    'Tudo': 'Todo', 'Não lidos': 'No leídos', 'Data de inclusão': 'Fecha de inclusión', 'Fonte': 'Fuente', 'Canal': 'Canal', 'Hoje': 'Hoy', 'Você ainda não tem nenhum lead': 'Todavía no tienes clientes potenciales'
+  };
+  for (var c in C) A[c] = C[c];
   for (var k in A) D[k] = A[k];
+  var EST = { 'Em análise': 'En revisión', 'Qualificado': 'Calificado', 'Convertidos': 'Convertidos' };
+  P.push([/^(Em análise|Qualificado|Convertidos) (\d+)$/, function (m) { return EST[m[1]] + ' ' + m[2] }]);
+  P.push([/^Leads em análise: (\S+) · Leads convertidos: (\S+) · Taxa de conversão: (\S+)$/, function (m) { return 'En revisión: ' + m[1] + ' · Convertidos: ' + m[2] + ' · Tasa de conversión: ' + m[3] }]);
   P.push([/^(.+) \(cópia\)$/, function (m) { return m[1] + ' (copia)' }]);
 })();

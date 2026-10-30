@@ -150,12 +150,30 @@
   }
 
   /* ---------- Central de Leads ---------- */
+  // por dentro (vista em 30/10/2026 depois de aceitar os termos): pipeline, tabela, painel do lead e o menu Adicionar leads
+  var ESTAGIOS = ['Em análise', 'Qualificado', 'Convertidos'];
+  function centralDentro() {
+    var L = S.lead, cols = ESTAGIOS.map(function (e) { var tem = L && L.est === e; return '<div class="ld-col" data-t="col-' + e.toLowerCase().replace(/\s/g, '-') + '"><b>' + e + ' ⓘ</b> <small>' + (tem ? 1 : 0) + '</small>' + (tem ? '<button class="ld-lead" data-acao="lead-abre" data-t="card-lead"><b>Sample Lead</b><small>Direto</small></button>' : '<p class="miudo">' + (e === 'Convertidos' ? 'Transfira os leads para esse estágio caso tenham feito um acordo ou transação com sua empresa.' : '') + '</p>') + '</div>' }).join('') +
+      '<div class="ld-col ld-col-add"><b>Adicione um estágio personalizado</b><p class="miudo">Você pode criar um estágio personalizado para acompanhar os principais resultados antes da conversão.</p><button class="btn mini" data-acao="nada">Adicionar estágio personalizado</button></div>';
+    var tabela = '<div class="ld-abas"><button class="on">Tudo</button><button data-acao="nada">Não lidos</button>' + ESTAGIOS.map(function (e) { return '<button data-acao="nada">' + e + ' ' + (L && L.est === e ? 1 : 0) + '</button>' }).join('') + '</div><table class="cm-tab" data-t="tabela-central"><thead><tr><th>Data de inclusão</th><th>Nome</th><th>Estágio</th><th>Fonte</th><th>Atribuído a</th><th>Canal</th><th>Status</th><th>Lembrete</th></tr></thead><tbody>' +
+      (L ? '<tr><td>Hoje</td><td>Sample Lead</td><td>' + L.est + '</td><td>Direto</td><td>Não atribuído</td><td>—</td><td>—</td><td>—</td></tr>' : '') + '</tbody></table>' + (L ? '' : '<p class="miudo">Você ainda não tem nenhum lead</p>');
+    var painel = S.leadAberto && L ? '<aside class="ld-painel" data-t="painel-lead"><button class="ld-x" data-acao="lead-fecha" aria-label="Fechar">✕</button><h3>Sample Lead</h3><p class="miudo">Editar informações de contato</p><p><b>Adicionar uma etiqueta</b></p><input class="ga-in" placeholder="Pesquisar ou criar uma etiqueta" readonly/>' +
+      '<h3>Gerenciamento de cadastros</h3><p><b>Atribuído a</b></p><input class="ga-in" value="Não atribuído" readonly/><p><b>Estágio</b></p><select class="ga-in" id="lEst" data-t="sel-estagio">' + ESTAGIOS.map(function (e) { return '<option' + (e === L.est ? ' selected' : '') + '>' + e + '</option>' }).join('') + '</select>' +
+      '<p><b>Lembrete</b></p><label class="ld-chk"><input type="radio" checked disabled/> Nenhum lembrete</label><p><b>Notas</b></p><textarea class="ga-in" placeholder="Escreva uma nota..." readonly></textarea><p><button class="btn sec" data-acao="nada">🗑 Excluir lead</button> <button class="btn sec" data-acao="nada">Denunciar lead</button></p></aside>' : '';
+    return '<div class="ld-abas"><button class="' + (S.cv !== 'tab' ? 'on' : '') + '" data-acao="cv-pipe" data-t="aba-pipeline">Visualização de pipeline</button><button class="' + (S.cv === 'tab' ? 'on' : '') + '" data-acao="cv-tab" data-t="aba-tabela">Visualização de tabela</button></div>' +
+      '<div class="ld-barra"><button class="btn sec" data-acao="nada">Adicionar estágio personalizado</button><button class="btn sec" data-acao="nada">Edição em massa</button><button class="btn sec" data-acao="nada">＋ Adicionar filtros</button><span class="miudo">Campanha · Formulários · Selecione as datas · Status · Fonte · Atribuído a · Rótulos</span></div>' +
+      '<div class="ga-aviso" data-t="central-resumo">Leads em análise: ' + (L && L.est === 'Em análise' ? 1 : 0) + ' · Leads convertidos: ' + (L && L.est === 'Convertidos' ? 1 : '––') + ' · Taxa de conversão: ––</div>' +
+      '<div class="ld-central">' + (S.cv === 'tab' ? '<div>' + tabela + '</div>' : '<div class="ld-pipe" data-t="pipeline">' + cols + '</div>') + painel + '</div>' +
+      '<p class="miudo">O “Sample Lead” é o lead de exemplo que a própria Central mostra na primeira vez. Os outros leads chegam dos anúncios e da Caixa de Entrada.</p>';
+  }
   function central() {
-    return pagina('central', 'Central de Leads', '', '<div class="ld-barra"><button class="btn sec" data-acao="nada">Públicos ▾</button> <button class="btn sec" data-acao="nada" title="Baixar leads">⤓</button> <button class="btn sec" data-acao="nada" title="Lembretes">🔔</button> <button class="btn sec" disabled>＋ Adicionar leads ▾</button></div>' +
-      (S.central ? '<div class="ga-aviso am" data-t="central-dentro"><b>No treino paramos aqui.</b> A lista da Central de Leads por dentro não foi vista na tela real (entrar pede aceitar os termos). Pela Central de Ajuda: o ícone de baixar gera um CSV com o filtro atual (data, nome, e-mail, telefone, etapa, origem e responsável), até 10.000 leads por arquivo.</div>'
+    var add = S.addPop ? '<div class="fd-op ld-op" data-t="menu-adicionar"><button data-acao="nada"><b>Criar lead</b></button><button data-acao="nada"><b>Carregar leads</b></button><button data-acao="nada"><b>Receber leads no Messenger</b><small>Gere leads iniciando conversas no Messenger</small></button><button data-ir="formularios" data-t="add-formulario"><b>Receber leads com um formulário instantâneo</b><small>Gere leads pedindo para as pessoas preencherem um formulário</small></button></div>' : '';
+    return pagina('central', 'Central de Leads', '', '<div class="ld-barra"><button class="btn sec" data-acao="nada">Públicos ▾</button> <button class="btn sec" data-acao="baixar-central" title="Baixe leads em um arquivo CSV com base nos filtros atuais" data-t="btn-baixar-central">⤓</button> <button class="btn sec" data-acao="nada" title="Lembretes">🔔</button> <span class="ld-menu-pai" style="display:inline-block;margin:0"><button class="btn" data-acao="add-pop"' + (S.central ? '' : ' disabled') + ' data-t="btn-adicionar-leads">＋ Adicionar leads ▾</button>' + add + '</span></div>' +
+      (S.baixouCentral ? '<div class="ga-aviso" data-t="aviso-baixar-central"><b>No treino não baixamos arquivo.</b> Na vida real, o ⤓ baixa um CSV com base nos filtros atuais (pela Central de Ajuda: data, nome, e-mail, telefone, etapa, origem e responsável; até 10.000 leads por arquivo).</div>' : '') +
+      (S.central ? centralDentro()
         : '<div class="ld-intro" data-t="central-intro"><h2>Apresentamos a Central de Leads</h2><p>Para ajudar você a começar, vamos importar leads recentes dos seus anúncios e da sua Caixa de Entrada no Meta Business Suite.</p><ul><li>⏱ Poupe tempo gerenciando seus leads no mesmo lugar</li><li>☰ Faça a triagem e organize seus leads em estágios com o gerenciamento de pipeline</li><li>⚡ Melhore a eficiência com ferramentas como a atribuição de administrador e os lembretes</li></ul>' +
           '<p class="miudo">A Central de Leads e outras ferramentas que processam dados de contato ou de mensagens estão sujeitos aos Termos de Serviço da Central de Leads.</p><p class="miudo">Ao selecionar Continuar, você concorda com esses termos.</p><button class="btn" data-acao="central-ok" data-t="btn-central-continuar">Continuar</button></div>') +
-      conferido(S.central ? 'Tela de entrada conferida em 29/10/2026; a lista por dentro, a conferir.' : ''));
+      conferido(S.central ? 'Por dentro conferida em 30/10/2026 (conta de aula, sem leads de anúncio): o conteúdo do arquivo baixado vem da Central de Ajuda.' : ''));
   }
 
   /* ---------- Gerenciador de Anúncios: campanha de leads ---------- */
@@ -241,7 +259,13 @@
     else if (ac === 'baixar') S.baixou = true;
     else if (ac === 'crm-abre') S.crmPop = true;
     else if (ac === 'crm-fecha') S.crmPop = false;
-    else if (ac === 'central-ok') S.central = true;
+    else if (ac === 'central-ok') { S.central = true; S.lead = { est: 'Em análise' }; S.cv = 'pipe' }
+    else if (ac === 'cv-pipe') S.cv = 'pipe';
+    else if (ac === 'cv-tab') S.cv = 'tab';
+    else if (ac === 'lead-abre') S.leadAberto = true;
+    else if (ac === 'lead-fecha') S.leadAberto = false;
+    else if (ac === 'add-pop') S.addPop = !S.addPop;
+    else if (ac === 'baixar-central') S.baixouCentral = true;
     else if (ac === 'c-criar') { S.C.dlg = true; S.C.obj = '' }
     else if (ac === 'c-cancela') S.C.dlg = false;
     else if (ac === 'c-continua') { S.C.dlg = false; S.C.criado = true; S.C.nivel = 'camp' }
@@ -268,6 +292,7 @@
     else if (t.name === 'cObj') S.C.obj = t.value;
     else if (t.name === 'cForm') S.C.form = t.value;
     else if (t.id === 'cEmail') S.C.email = t.checked;
+    else if (t.id === 'lEst' && S.lead) S.lead.est = t.value;
     else if (t.id === 'crmLista' && t.value) { S.crmSel = t.value; S.crmPop = false; grava(); vai('crm'); return }
     else return;
     grava(); render();
@@ -366,7 +391,11 @@
     { alvo: '[data-t=baixar-f1]', clique: true, garante: em('formularios', function () { SIMLD.exemplo(); SIMLD.set({ forms: [{ id: 'f1', nome: 'Orçamento de caneca personalizada', status: 'Ativo', criado: '29/10/2026', leads: 37, comp: 'Restrito' }] }) }), tit: T('Baixar', 'Descargar'), txt: T('Clique em Baixar.', 'Haz clic en Descargar.') },
     { alvo: '[data-t=aviso-baixar]', garante: em('formularios', function () { SIMLD.exemplo(); SIMLD.set({ forms: [{ id: 'f1', nome: 'Orçamento de caneca personalizada', status: 'Ativo', criado: '29/10/2026', leads: 37, comp: 'Restrito' }], baixou: true }) }), tit: T('90 dias e permissão', '90 días y permiso'), txt: T('Duas regras que explicam quase todo “sumiram meus leads”: só os últimos 90 dias saem no arquivo, e só quem tem permissão baixa. Clique em Próximo.', 'Dos reglas explican casi todo “desaparecieron mis clientes potenciales”: solo los últimos 90 días y solo quien tiene permiso. Haz clic en Siguiente.') },
     { alvo: '[data-t=nav-central]', clique: true, garante: em('formularios', function () { SIMLD.exemplo() }), tit: T('A Central de Leads', 'El Centro de clientes potenciales'), txt: T('Outro lugar dos leads: a Central de Leads. Clique nela.', 'Otro lugar: el Centro de clientes potenciales. Haz clic en él.') },
-    { alvo: '[data-t=central-intro]', fim: true, semVolta: true, garante: em('central', function () { SIMLD.exemplo() }), tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Na primeira vez, a Central de Leads pede aceitar os termos dela. Lá dentro os leads ficam em etapas (pipeline), com responsável e lembretes, e dá para baixar um CSV do que está filtrado.', 'La primera vez pide aceptar sus términos. Adentro, los clientes potenciales quedan en etapas, con responsable y recordatorios.') }
+    { alvo: '[data-t=btn-central-continuar]', clique: true, garante: em('central', function () { SIMLD.exemplo() }), tit: T('Os termos da Central', 'Los términos del Centro'), txt: T('Na primeira vez, a Central de Leads pede aceitar os Termos de Serviço dela. Clique em Continuar.', 'La primera vez pide aceptar sus Condiciones del servicio. Haz clic en Continuar.') },
+    { alvo: '[data-t=card-lead]', clique: true, garante: em('central', function () { SIMLD.exemplo(); SIMLD.set({ central: true, lead: { est: 'Em análise' }, cv: 'pipe' }) }), tit: T('O pipeline', 'El embudo'), txt: T('Os leads ficam em estágios: Em análise, Qualificado e Convertidos (dá para criar outros). Este é o “Sample Lead”, o exemplo que a Central mostra na primeira vez. Clique nele.', 'Los clientes potenciales quedan en etapas: En revisión, Calificado y Convertidos. Este es el de ejemplo. Haz clic en él.') },
+    { alvo: '[data-t=sel-estagio]', cond: function () { return ld().S.lead && ld().S.lead.est === 'Qualificado' }, garante: em('central', function () { SIMLD.exemplo(); SIMLD.set({ central: true, lead: { est: 'Em análise' }, cv: 'pipe', leadAberto: true }) }), tit: T('Mudar de estágio', 'Cambiar de etapa'), txt: T('No painel do lead dá para atribuir um responsável, pôr lembrete e notas. Mude o Estágio para “Qualificado”: foi assim que a Marina marcou quem respondeu ao orçamento.', 'En el panel se asigna responsable, recordatorio y notas. Cambia la Etapa a “Calificado”.') },
+    { alvo: '[data-t=aba-tabela]', clique: true, garante: em('central', function () { SIMLD.exemplo(); SIMLD.set({ central: true, lead: { est: 'Qualificado' }, cv: 'pipe', leadAberto: true }) }), tit: T('A tabela', 'La tabla'), txt: T('O lead mudou de coluna. Agora veja a mesma coisa em tabela: clique em Visualização de tabela.', 'El cliente potencial cambió de columna. Ahora mira lo mismo en tabla: haz clic en Vista de tabla.') },
+    { alvo: '[data-t=tabela-central]', fim: true, semVolta: true, garante: em('central', function () { SIMLD.exemplo(); SIMLD.set({ central: true, lead: { est: 'Qualificado' }, cv: 'tab' }) }), tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Na tabela: data, nome, estágio, fonte, responsável, canal, status e lembrete. O ⤓ do alto baixa um CSV com base nos filtros atuais.', 'En la tabla: fecha, nombre, etapa, fuente, responsable, canal, estado y recordatorio. El ⤓ de arriba descarga un CSV según los filtros actuales.') }
   ];
   // no caminho natural a Marina ainda não tem formulário: a partir daqui ele passa a existir (garante só roda ao recarregar ou voltar)
   function comForm() { if (!ld().S.forms.length) { SIMLD.set({ forms: [exemploForm()], seq: 1 }); render() } }

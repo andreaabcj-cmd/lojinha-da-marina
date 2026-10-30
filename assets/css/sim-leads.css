@@ -46,3 +46,11 @@
 .ld-op-card{border:2px solid var(--line);border-radius:10px;background:#fff;padding:10px;text-align:left;cursor:pointer}.ld-op-card small{display:block;color:var(--muted)}
 .ga-aviso.am{background:#FFF4D6}
 @media (max-width:800px){.ld-ed{grid-template-columns:1fr}.ld-prev{display:none}.ld-cmp{grid-template-columns:1fr}.ld-cfg{grid-template-columns:1fr}}
+/* Central de Leads por dentro (pipeline, tabela e painel do lead) */
+.ld-central{display:flex;gap:12px;align-items:flex-start}.ld-central>div{flex:1;min-width:0}
+.ld-pipe{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:8px}
+.ld-col{border:2px solid var(--line);border-radius:10px;padding:8px;min-height:180px;background:#fff}.ld-col small{color:var(--muted)}
+.ld-col-add{background:var(--blue-l)}
+.ld-lead{display:block;width:100%;text-align:left;margin-top:8px;border:2px solid var(--blue);border-radius:8px;background:#fff;padding:6px 8px;cursor:pointer}.ld-lead small{display:block;color:var(--muted)}
+.ld-painel{width:260px;flex:none;border:2px solid var(--ink);border-radius:10px;padding:10px;background:#fff}.ld-painel h3{font-size:14px;margin:8px 0 4px}
+@media (max-width:800px){.ld-pipe{grid-template-columns:1fr 1fr}.ld-central{flex-direction:column}.ld-painel{width:auto}}

@@ -2118,7 +2118,7 @@ window.AULAS = {
       entender: {
         dialogo: [
           ['marina', { pt: 'Onde eu vejo quem preencheu? 🤔', es: '¿Dónde veo quién completó? 🤔' }],
-          ['rafa', { pt: 'Em três lugares, sempre como arquivo CSV: no Gerenciador de Anúncios, em Formulários instantâneos do Business Suite e na Central de Leads, que organiza os leads em etapas.', es: 'En tres lugares, siempre como archivo CSV: en el Administrador de anuncios, en Formularios instantáneos y en el Centro de clientes potenciales, que los organiza en etapas.' }],
+          ['rafa', { pt: 'Em três lugares, sempre como arquivo CSV: no Gerenciador de Anúncios, em Formulários instantâneos do Business Suite e na Central de Leads, onde cada lead fica num estágio (Em análise, Qualificado, Convertidos), com responsável, lembrete e notas, em pipeline ou em tabela.', es: 'En tres lugares, siempre como archivo CSV: en el Administrador de anuncios, en Formularios instantáneos y en el Centro de clientes potenciales, que los organiza en etapas.' }],
           ['marina', { pt: 'Baixei e veio menos gente do que a coluna Resultados! E o funcionário não consegue baixar. 😠', es: '¡Descargué y vino menos gente que la columna Resultados! Y el empleado no puede descargar. 😠' }],
           ['rafa', { pt: 'Duas regras. Os leads só ficam para baixar por <b>90 dias</b> depois de enviados. E, por padrão, só baixa quem administra a Página (ou pode enviar mensagens); se o portfólio personalizou o <b>Acesso a leads</b>, só quem foi incluído.', es: 'Dos reglas. Solo se pueden descargar por <b>90 días</b>. Y, por defecto, solo descarga quien administra la Página; si el portfolio personalizó el <b>Acceso a clientes potenciales</b>, solo quien fue incluido.' }],
           ['pixel', { pt: 'E o contrário também acontece: o arquivo ter mais leads que o relatório. Leads orgânicos (formulário compartilhado, com Compartilhamento Aberto) e leads de teste entram no arquivo, mas não contam em Resultados.', es: 'Y al revés también: el archivo con más que el informe. Los orgánicos (formulario compartido) y los de prueba entran en el archivo, pero no cuentan en Resultados.' }]
@@ -2128,11 +2128,11 @@ window.AULAS = {
           { pt: '<b>Menos no arquivo:</b> leads com mais de 90 dias expiram.', es: '<b>Menos en el archivo:</b> los de más de 90 días vencen.' },
           { pt: '<b>Mais no arquivo:</b> orgânicos e de teste não contam em Resultados.', es: '<b>Más en el archivo:</b> orgánicos y de prueba no cuentan en Resultados.' }
         ],
-        notas: { pt: 'A lista de formulários e a tela de entrada da Central de Leads foram vistas em 29/10/2026. A lista por dentro da Central de Leads não foi vista (entrar pede aceitar os termos dela) e o botão de baixar ficou sem leads para mostrar: os caminhos e as regras vêm da Central de Ajuda.', es: 'La lista de formularios y la pantalla de entrada del Centro se vieron el 29/10/2026. El interior del Centro no se vio. Textos en español: traducción nuestra (por confirmar).' }
+        notas: { pt: 'A lista de formulários e a entrada da Central de Leads (com os termos) foram vistas em 29/10/2026; a Central por dentro, em 30/10/2026, depois que o André aceitou os termos na conta de aula: pipeline com Em análise, Qualificado e Convertidos, visualização de tabela, painel do lead, o menu Adicionar leads e a dica do botão de baixar (“Baixe leads em um arquivo CSV com base nos filtros atuais”). A conta não tem leads de anúncio: os 90 dias, a permissão e o conteúdo do arquivo vêm da Central de Ajuda.', es: 'La lista de formularios y la entrada del Centro se vieron el 29/10/2026; el interior, el 30/10/2026 (embudo, tabla, panel y menú Agregar). Textos en español: traducción nuestra (por confirmar).' }
       },
       ferramenta: 'lead-onde-ficam',
       praticar: {
-        texto: { pt: 'No simulador, você acha o número de leads, tenta baixar e conhece a Central de Leads.', es: 'En el simulador, encuentras el número, intentas descargar y conoces el Centro de clientes potenciales.' },
+        texto: { pt: 'No simulador, você acha o número de leads, tenta baixar e entra na Central de Leads: muda um lead de estágio e vê a tabela.', es: 'En el simulador, encuentras el número, intentas descargar y entras al Centro: cambias un cliente potencial de etapa y ves la tabla.' },
         tour: 'onde-ficam-leads', pagina: 'meta-leads.html?exemplo=1'
       },
       atender: {
