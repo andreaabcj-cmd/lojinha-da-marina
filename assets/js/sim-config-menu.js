@@ -41,15 +41,15 @@
     var es = lang(), t = function (s) { return es && ES[s] ? ES[s] : s }, port = aqui === 'portfolio';
     function item(rot, rota, cls, ico) {
       var on = rota && rota === ativo ? ' on' : '', ic2 = ico ? IC[ico] + ' ' : '';
-      if (rota && /\.html/.test(rota)) return '<a class="' + cls + on + '" href="' + rota + '" data-t="menu-' + rota.replace('.html', '') + '">' + ic2 + t(rot) + '</a>';
-      if (rota) return port ? '<button class="' + cls + on + '" data-ir="' + rota + '" data-t="menu-' + rota + '">' + ic2 + t(rot) + '</button>'
-        : '<a class="' + cls + on + '" href="meta-portfolio.html#' + rota + '" data-t="menu-' + rota + '">' + ic2 + t(rot) + '</a>';
-      return '<button class="' + cls + '" disabled title="' + (es ? 'Existe en Meta, pero no forma parte de esta práctica' : 'Existe na Meta, mas não faz parte deste treino') + '">' + ic2 + t(rot) + '</button>';
+      if (rota && /\.html/.test(rota)) return '<a data-sem-traduzir="1" class="' + cls + on + '" href="' + rota + '" data-t="menu-' + rota.replace('.html', '') + '">' + ic2 + t(rot) + '</a>';
+      if (rota) return port ? '<button data-sem-traduzir="1" class="' + cls + on + '" data-ir="' + rota + '" data-t="menu-' + rota + '">' + ic2 + t(rot) + '</button>'
+        : '<a data-sem-traduzir="1" class="' + cls + on + '" href="meta-portfolio.html#' + rota + '" data-t="menu-' + rota + '">' + ic2 + t(rot) + '</a>';
+      return '<button data-sem-traduzir="1" class="' + cls + '" disabled title="' + (es ? 'Existe en Meta, pero no forma parte de esta práctica' : 'Existe na Meta, mas não faz parte deste treino') + '">' + ic2 + t(rot) + '</button>';
     }
     return MENU.map(function (m) {
       if (!m[3]) return item(m[0], m[1], 'pf-item', m[2]);
       var aberto = m[4] || m[3].some(function (s) { return s[1] && s[1] === ativo });
-      return '<div class="pf-grupo' + (aberto ? '' : ' fechado') + '"><button class="pf-grupo-t" data-grupo-cfg>' + IC[m[2]] + ' ' + t(m[0]) + ' <span class="pf-seta">' + IC.seta + '</span></button>' +
+      return '<div data-sem-traduzir="1" class="pf-grupo' + (aberto ? '' : ' fechado') + '"><button class="pf-grupo-t" data-grupo-cfg>' + IC[m[2]] + ' ' + t(m[0]) + ' <span class="pf-seta">' + IC.seta + '</span></button>' +
         m[3].map(function (s) { return item(s[0], s[1], 'pf-sub') }).join('') + '</div>';
     }).join('');
   };
