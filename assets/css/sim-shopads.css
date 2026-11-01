@@ -7,3 +7,10 @@
 .ss-main ul.miudo{padding-left:18px}
 .ga-aviso.verm{border-color:var(--red);background:#fff7f9}
 .sa-nr td{color:var(--muted)}
+/* Resultados como a tabela do Gerenciador (01/11/2026) */
+.sa-rolar{overflow-x:auto;border:2px solid var(--ink);border-radius:12px;background:#fff}
+.sa-rolar .ga-tab{min-width:900px}
+.sa-col{border:0;background:none;font:700 12.5px inherit;color:var(--ink);cursor:pointer;text-align:left;padding:0}
+.sa-col:hover{text-decoration:underline}th.on .sa-col{color:var(--blue)}th.sa-nr .sa-col{color:#9AA7B8}
+.sa-dica{margin:10px 0;padding:10px 12px;background:#fff;border:2px solid var(--ink);border-radius:10px;box-shadow:3px 3px 0 var(--ink);max-width:560px}.sa-dica p{margin:4px 0 0}
+.sa-nota{margin:12px 0;padding:10px 12px;border:1.5px dashed #C9A227;border-radius:10px;background:#FFF6D6;font-size:13.5px}

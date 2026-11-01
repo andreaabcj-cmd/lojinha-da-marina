@@ -110,19 +110,22 @@
     return '<h1>Criar um anúncio das Lojas</h1><p class="ss-sub">Gerenciador de Anúncios › Criar › Vendas.</p>' + cab + '<div class="vf-caixa" data-t="corpo-criar">' + corpo + '</div>' + resumo + fim + bot +
       '<p class="conferido">✓ O caminho (Criar › Vendas › conjunto › anúncio), o local da conversão Site, os eventos compatíveis, os destinos da loja, os formatos e a lista de requisitos vêm dos artigos “Como criar um anúncio das Lojas…” e “Por que os anúncios das Lojas só podem direcionar pessoas para seu site” (Central de Ajuda, ' + CONF + '). ⚠ As telas são do simulador: a aba Loja e o botão Loja não puderam ser vistos na conta de aula (a conferir).</p>';
   }
+  /* Resultados = a tabela do Gerenciador (aba Anúncios), com as métricas como colunas; clicar no título da coluna mostra a definição,
+     como a dica das colunas no Gerenciador real. Valores de exemplo do simulador. O filtro "só recomendadas" e o aviso do site vêm do artigo
+     da Central de Ajuda: ficam fora da janela (controle do treino) e numa nota tracejada, não como se fossem da tela. */
   function telaResultados() {
     var lista = MET.filter(function (m) { return !S.soRec || m.rec });
-    var rows = lista.map(function (m) { return '<tr data-t="met-' + m.id + '" class="' + (m.rec ? '' : 'sa-nr') + '"><td><button class="btn sec" data-met="' + m.id + '">' + m.t + '</button></td><td>' + m.v + '</td><td>' + m.grupo + '</td></tr>' }).join('');
     var sel = MET.filter(function (m) { return m.id === S.metSel })[0];
-    return '<h1>Resultados dos anúncios das Lojas</h1><p class="ss-sub">Os anúncios das Lojas otimizam para conversão: avalie pelos resultados no site e na loja (números de exemplo do simulador).</p>' +
-      '<label class="ga-lin"><input type="checkbox" id="saRec"' + (S.soRec ? ' checked' : '') + ' data-t="chk-rec"/><span>Mostrar só as métricas recomendadas</span></label>' +
-      '<table class="cm-tab" data-t="tabela-met"><thead><tr><th>Métrica</th><th>Valor (exemplo)</th><th>Grupo</th></tr></thead><tbody>' + rows + '</tbody></table>' +
-      (sel ? '<div class="vf-caixa" data-t="det-met"><b>' + sel.t + '</b><p>' + sel.d + '</p></div>' : '<p class="miudo">Clique em uma métrica para ver como usá-la.</p>') +
-      '<div class="ga-aviso" data-t="aviso-site">Se o seu site recebe uma parte excessiva do tráfego dos anúncios das Lojas, ele pode estar convertendo mais compradores do que a loja. Também pode haver diferenças de contagem entre o Gerenciador de Anúncios e ferramentas de terceiros (como o Google Analytics).</div>' +
-      '<p class="conferido">✓ As listas de métricas recomendadas e não recomendadas e os avisos vêm do artigo “Como entender seus relatórios de anúncios ao usar anúncios das Lojas” (Central de Ajuda, ' + CONF + '). ⚠ Os valores são inventados para o treino.</p>';
+    return '<div class="ga-barra"><button class="btn" disabled>＋ Criar</button><button class="btn sec" disabled>Duplicar</button><button class="btn sec" disabled>Editar</button><span class="busca">Pesquise para filtrar por: nome, identificação ou métrica</span><button class="btn sec" disabled style="margin-left:auto">Colunas: Personalizado ▾</button></div>' +
+      '<div class="sa-rolar"><table class="ga-tab" data-t="tabela-met"><thead><tr><th>Anúncio</th><th>Veiculação</th>' + lista.map(function (m) { return '<th data-t="met-' + m.id + '" class="' + (m.rec ? '' : 'sa-nr') + (S.metSel === m.id ? ' on' : '') + '"><button class="sa-col" data-met="' + m.id + '">' + m.t + ' ⓘ</button></th>' }).join('') + '</tr></thead>' +
+      '<tbody><tr><td><b>Anúncio das Lojas · Caneca azul</b><br><small>Vendas · Site e loja</small></td><td><span class="ga-tag vd">● Ativo</span></td>' + lista.map(function (m) { return '<td>' + m.v + '</td>' }).join('') + '</tr></tbody></table></div>' +
+      (sel ? '<div class="sa-dica" data-t="det-met"><b>' + sel.t + '</b><p>' + sel.d + '</p></div>' : '') +
+      '<div class="sa-nota" data-t="aviso-site">🧪 <b>Da Central de Ajuda</b> (“Como entender seus relatórios de anúncios ao usar anúncios das Lojas”, ' + CONF + '): se o seu site recebe uma parte excessiva do tráfego dos anúncios das Lojas, ele pode estar convertendo mais compradores do que a loja. Também pode haver diferenças de contagem entre o Gerenciador de Anúncios e ferramentas de terceiros (como o Google Analytics).</div>' +
+      '<p class="conferido">✓ Tabela e colunas no formato do Gerenciador de Anúncios real. As métricas recomendadas e não recomendadas vêm do artigo da Central de Ajuda (' + CONF + '). ⚠ Os valores são de exemplo do simulador.</p>';
   }
   window.MOLDURA_AGORA = function () {
-    return S.tab === 'resultados' ? { app: 'ads', on: 'campanhas', proprio: true, onde: 'Gerenciador de Anúncios › Anúncios', destinos: [{ id: 'criar', rotulo: '🖥️ Criar anúncio das Lojas' }] }
+    return S.tab === 'resultados' ? { app: 'ads', on: 'campanhas', proprio: true, onde: 'Gerenciador de Anúncios › Anúncios', destinos: [{ id: 'criar', rotulo: '🖥️ Criar anúncio das Lojas' }],
+        controles: '<label class="ga-lin"><input type="checkbox" id="saRec"' + (S.soRec ? ' checked' : '') + ' data-t="chk-rec"/> Mostrar só as métricas recomendadas (artigo da Central de Ajuda)</label>' }
       : { app: 'ads', on: 'campanhas', onde: 'Gerenciador de Anúncios › Criar anúncio das Lojas', destinos: [{ id: 'resultados', rotulo: '🖥️ Gerenciador de Anúncios › Anúncios (resultados)' }] };
   };
   window.MOLDURA_VAI = function (id) { S.tab = id; grava(); render() };
