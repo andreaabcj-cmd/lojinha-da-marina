@@ -48,7 +48,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     '.tg-balao .tg-masc{position:absolute;left:10px;top:12px;animation:tgBoing 1.2s ease-in-out infinite}@keyframes tgBoing{50%{transform:translateY(-5px)}}' +
     '.tg-balao b{display:block;font-size:16px;margin-bottom:3px}.tg-balao p{margin:0 0 8px;color:#3A4D6B}' +
     '.tg-dica{background:#FFF4D6;border-radius:8px;padding:6px 8px;font-size:13px;color:#5E4300}' +
-    '.tg-ctrl{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}.tg-ctrl small{color:#64748B;white-space:nowrap}' +
+    '.tg-ctrl{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 10px;margin-top:10px}.tg-ctrl small{color:#64748B;white-space:nowrap}' +
+    '.tg-ctrl>span{margin-left:auto;max-width:100%}.tg-balao.fino .tg-btn{padding:6px 9px;font-size:13px}.tg-balao.fino .tg-ctrl>span{gap:4px}'   /* balão estreito: os botões descem para a linha de baixo em vez de vazar (01/11/2026) */ +
     '.tg-ctrl span{display:flex;gap:6px;align-items:center;white-space:nowrap}' +
     '.tg-btn{padding:7px 12px;border-radius:9px;border:2px solid #16294A;background:#2F6FD6;color:#fff;font-weight:800;cursor:pointer;box-shadow:2px 2px 0 #16294A}.tg-btn.sec{background:#fff;color:#16294A}.tg-btn[disabled]{opacity:.45;cursor:default}' +
     '.tg-sair{position:absolute;top:4px;right:8px;border:0;background:none;color:#64748B;cursor:pointer;font-size:12px}' +

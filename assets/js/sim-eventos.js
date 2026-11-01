@@ -110,7 +110,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       '<p class="verde-txt">Redução de 25% no custo por conversão fora do site ⓘ</p><div class="parceiros">' +
       [['GTM', '#4C8BF5', 'Google Tag Manager'], ['S', '#5E8E3E', 'Shopify'], ['Woo', '#7F54B3', 'WooCommerce']].map(function (p) { return '<div class="parceiro"><i style="background:' + p[1] + '">' + p[0].slice(0, 3) + '</i><span><b>' + p[2] + '</b><small>Eventos da web</small></span><span class="radio"></span></div>' }).join('') +
       '</div><div style="display:flex;justify-content:space-between;align-items:center"><button class="lnk" data-acao="conectar">Ver outras maneiras de configurar</button><button class="btn" disabled>Configure para mim</button></div></div>';
-    return esqueleto('Visão geral', 'visao', h, CONF.visao);
+    return esqueleto('Visão geral do Gerenciador de Eventos', 'visao', h, CONF.visao);
   }
   function status(n) { return n ? '<span class="st"><i></i>Ativo</span>' : '<span class="st cinza"><i></i>Nenhuma atividade ainda</span>' }
 
