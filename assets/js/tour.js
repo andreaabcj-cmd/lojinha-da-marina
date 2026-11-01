@@ -233,6 +233,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var cur = function () { return alvoEl(p) }, e = cur(); if (!e) return;
     var cit = [], rx = /[“"]([^”"]{1,60})[”"]/g, m, fonte = T(p.dica) + ' ' + T(p.txt);
     while ((m = rx.exec(fonte))) cit.push(m[1]);
+    var rx2 = /(?:Digite|digite|Escreva|escreva|Procure por|procure por|Escriba|Escribe|escribe|Busca|busca)\s+([^\s,;:()]+?)(?=[\s,;:()]|\.(?:\s|$)|$)/g;   // "Digite fbq.", "Digite 39.90"
+    while ((m = rx2.exec(fonte))) cit.push(m[1]);
     var cands = cit.concat(['Lojinha da Marina', 'lojinhadamarina', '0', '1', '5', '10', '20', '30']);
     var sels = function () { var x = cur(); return !x ? [] : x.tagName === 'SELECT' ? [x] : [].slice.call(x.querySelectorAll('select')) };
     var vals = function (sl) { return sl ? [].map.call(sl.options, function (o) { return o.value }).filter(Boolean) : [] };
@@ -250,6 +252,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (ok(p.cond)) return;
     var y = cur(); if (y && y.matches('input[type=checkbox]')) y.click();
     y = cur(); if (y && !ok(p.cond)) [].slice.call(y.querySelectorAll('input[type=checkbox]:not(:checked)')).forEach(function (k) { if (!ok(p.cond)) k.click() });
+    y = cur(); if (y && !ok(p.cond)) [].slice.call(y.querySelectorAll('input[type=checkbox]:checked')).forEach(function (k) { if (!ok(p.cond)) k.click() });
     y = cur(); if (y && !ok(p.cond)) { var nr = y.querySelectorAll('input[type=radio]').length; for (var r = 0; r < nr && !ok(p.cond); r++) { var rr = cur() && cur().querySelectorAll('input[type=radio]')[r]; if (rr) rr.click() } }
     y = cur(); if (y && !ok(p.cond)) { var kids = [].slice.call(y.querySelectorAll('button:not([disabled]),[data-sel],li,label.op')).filter(function (k) { return !/[✕×]/.test(k.textContent) && !k.matches('[data-rmcond],[data-rm]') }); for (var k1 = 0; k1 < kids.length && !ok(p.cond); k1++) try { kids[k1].click() } catch (e) { } }
   }
@@ -287,7 +290,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       var tam = document.querySelector('[data-var]:not(.on)'); if (tam && document.querySelector('#addCart') && !document.querySelector('[data-var].on')) tam.click();
     }
     if (p.clique) { var alvoC = (el.id === 'destaques' || el.id === 'lista') ? el.querySelector('a.foto, a') || el : el; adT = setTimeout(function () { if (adiantando() != null && tour && tour[passo] === p) { if (++adCond > 6) return paraDeAdiantar(true); adianta() } }, 2500); alvoC.click(); return }
-    if (p.cond && !ok(p.cond)) { if (p.auto) try { p.auto() } catch (e) { } else { editores(p); if (!ok(p.cond)) preenche(p) } if (!ok(p.cond)) { if (++adCond > 3) return paraDeAdiantar(true); adT = setTimeout(adianta, 400); return } }
+    if (p.cond && !ok(p.cond)) { if (p.auto) try { p.auto() } catch (e) { } else { editores(p); if (!ok(p.cond)) preenche(p) } if (!ok(p.cond)) { if (++adCond > 10) return paraDeAdiantar(true); adT = setTimeout(adianta, 700); return } }   // alguns passos esperam algo chegar (ex.: o PageView da loja aberta)
     adCond = 0; vai(passo + 1);
   }
   // Onde pôr o balão: o lugar que cubra MENOS texto da tela (cada linha de texto e cada controle visível conta), nunca o destaque.
