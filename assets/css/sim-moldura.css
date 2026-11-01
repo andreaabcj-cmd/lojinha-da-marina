@@ -1,0 +1,75 @@
+/* Moldura única dos simuladores (sim-moldura.js): faixa · abinhas + "onde você está" · janela do computador ou só o celular */
+body.com-moldura{overflow:hidden;background:var(--paper)}
+.mold-topo{position:fixed;top:32px;left:0;right:0;z-index:58;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px;padding:7px 14px 5px;background:var(--paper)}
+.mold-onde{margin:0;font-size:14px;font-weight:700;color:var(--ink2);display:flex;align-items:center;gap:6px;min-width:0}
+.mold-onde .mold-url{font-family:ui-monospace,Consolas,monospace;font-weight:600;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:2px 12px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw}
+.mold-onde small{font-weight:600;color:var(--muted)}
+.mold-troca{display:flex;gap:8px}
+.mold-troca button{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:5px 14px;font:700 13px "Segoe UI",system-ui,sans-serif;cursor:pointer;color:var(--ink)}
+.mold-troca button.on{background:var(--ink);color:#fff}
+body.mold-abas .mold-topo{flex-direction:column;gap:6px}
+
+/* a janela: tudo que o simulador desenha com position:fixed passa a valer dentro dela (transform) */
+.mold-jan{position:fixed;top:72px;left:14px;right:14px;bottom:14px;border:3px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);background:var(--paper);overflow:hidden}
+.mold-dentro{position:absolute;left:0;right:0;bottom:0;top:-32px;transform:translateZ(0);overflow:auto}
+.mold-dentro > #app > .sim-faixa{display:none}
+.mold-jan.mold-cel{border:0;box-shadow:none;background:transparent;border-radius:0}
+@media(max-width:760px){.mold-jan{left:0;right:0;bottom:0;border-width:2px 0 0;border-radius:0;box-shadow:none}}
+
+/* Gerenciador de Anúncios / de Eventos: trilho real "ferramentas" */
+.mold-trilho{position:fixed;top:32px;left:0;bottom:0;width:56px;z-index:45;background:#fff;border-right:2px solid var(--ink);display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;overflow:hidden}
+.mold-trilho button{width:38px;height:36px;border:0;border-radius:10px;background:none;display:grid;place-items:center;cursor:pointer;color:var(--ink2);flex:none}
+.mold-trilho button:hover{background:var(--blue-l)}
+.mold-trilho button.on{background:var(--blue-l);color:var(--blue);outline:2px solid var(--blue)}
+.mold-logo{color:#0866FF;font:900 28px/1 system-ui,'Segoe UI',Arial,sans-serif;-webkit-text-stroke:1px #0866FF;margin:0 0 6px;flex:none}
+.mold-mola{flex:1 1 auto;min-height:6px}
+@media(max-height:620px){.mold-trilho button[data-mold=confconta],.mold-trilho button[data-mold=problema],.mold-trilho button[data-mold=busca]{display:none}}
+
+/* cabeçalho: Business Suite (logo + portfólio) ou Gerenciador de Anúncios (título + conta de anúncios) */
+.mold-cab{position:fixed;top:32px;left:0;right:0;height:52px;z-index:44;display:flex;align-items:center;gap:12px;padding:0 16px;background:#fff;border-bottom:2px solid var(--ink)}
+.mold-cab .mold-logo{margin:0;font-size:24px}.mold-cab b{font-size:16px}
+.mold-cab h1{font-size:19px;margin:0;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mold-port,.mold-conta{display:flex;align-items:center;gap:8px;padding:5px 10px;border:2px solid var(--ink);border-radius:10px;background:#fff;font-weight:600;font-size:14px;white-space:nowrap}
+.mold-port .L{width:22px;height:22px;border-radius:6px;background:var(--yellow-l);border:1px solid #C98E1A;display:grid;place-items:center;font-size:12px;font-weight:800;color:#7A5600}
+.mold-port small{color:var(--muted);font-weight:600}
+.mold-port i,.mold-conta i{font-style:normal;color:var(--muted)}
+.mold-cab .sim-avatar{width:30px;height:30px;border-radius:50%;background:var(--yellow);border:2px solid var(--ink);display:grid;place-items:center;font-weight:800;flex:none}
+body.mold-com-trilho .mold-cab{left:56px}
+@media(max-width:560px){.mold-port small,.mold-conta{display:none}}
+
+/* Meta Business Suite: menu real da esquerda */
+.mold-bs{position:fixed;top:84px;left:0;bottom:0;width:214px;z-index:44;background:#fff;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:1px;padding:8px 8px;overflow:auto}
+.mold-bs button{display:flex;align-items:center;gap:10px;border:0;background:none;border-radius:8px;padding:6px 8px;text-align:left;cursor:pointer;color:var(--ink);font-size:13.5px;flex:none}
+.mold-bs button svg{width:18px;height:18px;flex:none;color:var(--ink2)}
+.mold-bs button:hover{background:var(--blue-l)}
+.mold-bs button.on{background:var(--blue-l);color:var(--blue);font-weight:700}.mold-bs button.on svg{color:var(--blue)}
+.mold-bs-sec{margin:8px 8px 2px;font-size:12px;font-weight:700;color:var(--muted)}
+.mold-bs-perfil{display:flex;align-items:center;gap:8px;padding:4px 6px 8px;border-bottom:1px solid var(--line);margin-bottom:4px;font-size:12.5px;font-weight:700}
+.mold-bs-perfil small{display:block;font-weight:500;color:var(--muted)}
+.mold-av{width:28px;height:28px;border-radius:50%;background:var(--yellow-l);border:1.5px solid #C98E1A;display:grid;place-items:center;font-weight:800;color:#7A5600;flex:none}
+@media(max-width:820px){.mold-bs{display:none}}
+
+/* o conteúdo do simulador abre espaço para a moldura */
+body.mold-com-trilho :is(.ss,.ga,.rl,.cm,.sim,.pf,.md-topo,.md,.bs,.ig,.ga-fundo,.ga-rod){left:56px}
+body.mold-com-cab :is(.ss,.ga,.rl,.cm,.sim,.pf,.bs,.ig){top:84px}
+body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:214px}
+@media(max-width:820px){body.mold-com-trilho :is(.ss,.ga,.rl,.cm,.sim,.pf,.md-topo,.md,.bs,.ig,.ga-fundo,.ga-rod){left:0}.mold-trilho{display:none}body.mold-com-trilho .mold-cab{left:0}body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:0}}
+
+/* aviso: item real sem simulador */
+.mold-aviso{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;z-index:2147482500;background:var(--ink);color:#fff;padding:9px 16px;border-radius:12px;font-weight:600;font-size:14px;pointer-events:none;transition:.25s}
+.mold-aviso.on{opacity:1;transform:translate(-50%,0)}
+
+/* "ir para": outros lugares do mesmo treino, fora da janela */
+.mold-ir-l{margin-left:10px;font-size:12px;font-weight:700;color:var(--muted)}
+.mold-ir{border:1.5px dashed var(--ink2);background:#fff;border-radius:999px;padding:2px 10px;font:600 12.5px "Segoe UI",system-ui,sans-serif;color:var(--ink);cursor:pointer}
+.mold-ir:hover{border-style:solid;background:var(--blue-l)}
+.mold-trilho-bs hr{width:28px;border:0;border-top:1px solid var(--line);margin:4px 0;flex:none}
+.mold-trilho-bs button{height:32px}
+
+/* página web pública dentro da janela (ex.: meta.com): a barra de cima é a do próprio site */
+.web-pag{position:fixed;top:32px;left:0;right:0;bottom:0;overflow:auto;background:#fff}
+.web-meta{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;padding:10px 22px;background:#fff;border-bottom:1px solid var(--line);font-size:13.5px;font-weight:600;color:#1c2b33}
+.web-meta nav{display:flex;gap:16px;align-items:center;white-space:nowrap}.web-meta b{border:1.5px solid #1c2b33;border-radius:999px;padding:3px 12px}
+.web-meta-logo{font-weight:800;font-size:17px;color:#0866FF;white-space:nowrap}.web-mola{flex:1}
+.web-main{max-width:1200px;margin:0 auto;padding:18px 22px 40px}
+@media(max-width:900px){.web-meta nav:first-of-type{display:none}}

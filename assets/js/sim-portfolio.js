@@ -34,27 +34,12 @@
     ilus: '<svg width="120" height="84" viewBox="0 0 120 84" fill="none"><rect x="10" y="6" width="100" height="72" rx="6" fill="#EEF1F6"/><rect x="18" y="16" width="40" height="26" rx="3" fill="#D9DFE8"/><rect x="62" y="16" width="40" height="26" rx="3" fill="#BFE3D2"/><rect x="18" y="46" width="40" height="24" rx="3" fill="#D9DFE8"/><rect x="62" y="46" width="40" height="24" rx="3" fill="#D9DFE8"/></svg>'
   };
 
-  /* ---------- menu (rótulos da tela real, 14/10/2026) ---------- */
-  var MENU = [
-    ['Informações da empresa', 'info', IC.info],
-    ['Usuários', null, IC.user, [['Pessoas', 'pessoas'], ['Parceiros', 'parceiros'], ['Usuários do sistema']]],
-    ['Contas', null, IC.conta, [['Páginas', 'paginas'], ['Contas de anúncios', 'contas'], ['Grupos de ativos de negócios'], ['Apps'], ['Contas comerciais'], ['Perfis do Instagram', 'instagram'], ['Contas do WhatsApp'], ['Contas de mensagens'], ['Perfis do Threads']]],
-    ['Fontes de dados', null, IC.dados, [['Catálogos'], ['Conjuntos de dados e pixels', 'pixel'], ['Conjuntos de eventos offline'], ['Conversões personalizadas'], ['Públicos compartilhados'], ['Pastas de criativos da empresa']]],
-    ['Adequação e segurança para marcas', null, IC.escudo, [['Domínios', 'dominios'], ['Listas de bloqueio de publishers']]],   // tela real 20/10/2026
-    ['Central de Segurança', 'seguranca', IC.escudo]
-  ];
   function rota() { var h = (location.hash || '').slice(1); return h || (pf() ? 'info' : 'inicio') }
   function vai(h) { if (location.hash === '#' + h) render(); else location.hash = h }
 
   function esqueleto(conteudo, conf) {
     var p = pf(), r = rota();
-    var menu = MENU.map(function (m) {
-      if (!m[3]) return '<button class="pf-item' + (r === m[1] ? ' on' : '') + '" data-ir="' + m[1] + '" data-t="menu-' + m[1] + '">' + m[2] + ' ' + m[0] + '</button>';
-      return '<div class="pf-grupo"><span>' + m[2] + ' ' + m[0] + ' ' + IC.seta + '</span>' + m[3].map(function (s) {
-        if (s[1] === 'pixel') return '<a class="pf-sub" href="meta-eventos.html" title="Abre o simulador do Gerenciador de Eventos">' + s[0] + ' ↗</a>';
-        return s[1] ? '<button class="pf-sub' + (r === s[1] ? ' on' : '') + '" data-ir="' + s[1] + '" data-t="menu-' + s[1] + '">' + s[0] + '</button>' : '<button class="pf-sub" disabled title="Fora do simulador por enquanto">' + s[0] + '</button>';
-      }).join('') + '</div>';
-    }).join('');
+    var menu = window.MENU_CONFIG(r, 'portfolio');   // menu comum das Configurações (sim-config-menu.js, tela real 01/11/2026)
     return '<div class="sim-faixa">🧪 Simulador de treinamento das Configurações do portfólio · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="pf"><header class="pf-cab"><b>Configurações</b>' + (p ? '<button class="pf-chip" data-ir="inicio" data-t="chip" title="Trocar de portfólio"><span class="L">L</span><span><b>' + esc(p.nome) + '</b><small>Portfólio empresarial</small></span></button>' : '') +
       '<button class="pf-tarefas">Tarefas</button><span class="sim-avatar">M</span></header>' +

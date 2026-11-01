@@ -37,10 +37,6 @@
   function grava() { try { localStorage.setItem('sim.verified2', JSON.stringify(S)) } catch (e) { } window.__simVf = { S: S } }
   grava();
   function casca(corpo) { return '<div class="sim-faixa">🧪 Simulador de treinamento do Meta Verified e da Meta One · nada aqui vai para a Meta e nada é cobrado · <a href="simuladores.html">← voltar à plataforma</a></div>' + corpo }
-  function nav() {
-    var t = [['config', '⚙️ Business Suite › Configurações › Meta Verified'], ['planos', '🌐 meta.com › Planos da Meta One']];
-    return '<nav class="ss-nav">' + t.map(function (x) { return '<button class="ss-it' + (S.tab === x[0] ? ' on' : '') + '" data-tab="' + x[0] + '" data-t="tab-' + x[0] + '">' + x[1] + '</button>' }).join('') + '</nav>';
-  }
   /* Configurações › Meta Verified (tela real, 28/10/2026) */
   function telaConfig() {
     var ben = [['✔️', 'Selo de verificado', 'Aparece onde você aparece'], ['🛡️', 'Proteção contra falsificação de identidade', 'Não se preocupe, estamos de olho'], ['💬', 'Suporte de agente por email e conversa', 'Ajuda quando e onde precisar'], ['⭐', 'Recursos diferenciados para o perfil', 'Apresente melhor sua empresa']];
@@ -71,7 +67,23 @@
       '<p class="miudo">A Meta One não está disponível em todas as regiões. É preciso cumprir requisitos para assinar. A Meta decide quais planos aparecem com base na atividade da empresa nos apps.</p>' +
       '<p class="conferido">✓ Planos, preços em US$ e recursos conferidos na página pública da Meta One em ' + CONF + ' (em inglês; os nomes dos recursos foram traduzidos por nós, a conferir). Nomes em português e preços em R$ do Newsroom da Meta Brasil (15/09/2026). A Meta diz que a Meta One está em teste e pode não aparecer para todas as contas.</p>';
   }
-  function pagina() { return casca('<div class="ss">' + nav() + '<main class="ss-main">' + (S.tab === 'planos' ? telaPlanos() : telaConfig()) + '</main></div>') }
+  /* Configurações › Meta Verified: o mesmo esqueleto e o mesmo menu das Configurações do portfólio (sim-config-menu.js, tela real 01/11/2026) */
+  function paginaConfig() {
+    return '<div class="pf"><header class="pf-cab"><b>Configurações</b><span class="pf-chip"><span class="L">L</span><span><b>Lojinha da Marina Aula</b><small>Portfólio empresarial</small></span></span>' +
+      '<button class="pf-tarefas">Tarefas</button><span class="sim-avatar">M</span></header><div class="pf-corpo"><aside class="pf-menu" data-t="menu">' + window.MENU_CONFIG('meta-verified.html', 'verified') + '</aside>' +
+      '<main class="pf-main ss-main">' + telaConfig() + '</main></div></div>';
+  }
+  /* meta.com/meta-one-plans: página pública (barra de cima real do meta.com, em inglês, 01/11/2026) */
+  function paginaPlanos() {
+    return '<div class="web-pag"><header class="web-meta"><span class="web-meta-logo">∞ Meta</span><nav><span>AI glasses</span><span>Meta Quest</span><span>Meta VR Glasses</span></nav><span class="web-mola"></span>' +
+      '<nav><span>Explore Meta</span><span>Support</span><span>🔍</span><span>🛍</span><b>Log In</b></nav></header><main class="web-main ss-main">' + telaPlanos() + '</main></div>';
+  }
+  function pagina() { return casca(S.tab === 'planos' ? paginaPlanos() : paginaConfig()) }
+  window.MOLDURA_AGORA = function () {
+    return S.tab === 'planos' ? { app: 'web', url: 'meta.com/meta-one-plans', destinos: [{ id: 'config', rotulo: '🖥️ Business Suite › Configurações › Meta Verified' }] }
+      : { app: 'config', on: 'config', onde: 'Meta Business Suite › Configurações › Meta Verified', destinos: [{ id: 'planos', rotulo: '🌐 meta.com/meta-one-plans' }] };
+  };
+  window.MOLDURA_VAI = function (id) { S.tab = id === 'planos' ? 'planos' : 'config'; S.aviso = ''; grava(); render() };
   function render() { $('#app').innerHTML = pagina(); window.__simVf = { S: S } }
   document.addEventListener('click', function (ev) {
     var t = ev.target, c;
