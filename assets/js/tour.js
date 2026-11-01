@@ -253,6 +253,26 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     y = cur(); if (y && !ok(p.cond)) { var nr = y.querySelectorAll('input[type=radio]').length; for (var r = 0; r < nr && !ok(p.cond); r++) { var rr = cur() && cur().querySelectorAll('input[type=radio]')[r]; if (rr) rr.click() } }
     y = cur(); if (y && !ok(p.cond)) { var kids = [].slice.call(y.querySelectorAll('button:not([disabled]),[data-sel],li,label.op')).filter(function (k) { return !/[✕×]/.test(k.textContent) && !k.matches('[data-rmcond],[data-rm]') }); for (var k1 = 0; k1 < kids.length && !ok(p.cond); k1++) try { kids[k1].click() } catch (e) { } }
   }
+  /* passos de editar código (editor de arquivos, tema e pixel personalizado da Shopify): o Pixel tenta as correções que as aulas pedem */
+  function editores(p) {
+    var okF = p.cond || (p.clique && p.valida) ? function () { try { return p.cond ? p.cond() : p.valida(alvoEl(p)) } catch (e) { return false } } : null; if (!okF || okF()) return;
+    var ta = document.getElementById('aeTexto');
+    if (ta) {
+      var cur = ta.value, S = window.SITE, c = [cur.replace(/(fbq\(\s*'track'\s*,\s*'Purchase'\s*,\s*\{.*\})\s*\)/, "$1, {eventID: '{{ pedido.id }}'})"), cur.replace(/<script>\s*fbq\('trackCustom'[\s\S]*?<\/script>/g, ''),
+        cur.replace(/(\s*)(fbq\('init')/, "$1fbq('consent', 'revoke');$1$2"), cur.replace(/\n?<script>\s*fbq\('track',\s*'Purchase'[\s\S]*?<\/script>/g, '')];
+      try { c.push(S.base(S.idCerto()), S.compra('{{ pedido.total }}', "'BRL'"), S.compra('{{ pedido.total }}', "'BRL'", 'Purchase', true)) } catch (e) { }
+      var md = cur, mdc = [], fx = /ld\+json/.test(cur) ? [['"brand": "Lojinha da Marina"\n', '"brand": "Lojinha da Marina",\n'], ['"facebook_tshirt_001"', '"ECOBAG_03"'], ['"39,90"', '"39.90"'], ['"R$"', '"BRL"']]
+        : /itemscope/.test(cur) ? [['content="facebook_tshirt_001"', 'content="ECOBAG_03"'], ['content="39,90"', 'content="39.90"'], ['content="R$"', 'content="BRL"']]
+        : [['facebook_tshirt_001', 'ECOBAG_03'], ['"39,90"', '"39.90"'], ['"R$"', '"BRL"'], ['em estoque', 'in stock']];
+      fx.forEach(function (f) { md = md.replace(f[0], f[1]); mdc.push(md) });
+      mdc.push(/ld\+json/.test(cur) ? md.replace(/\n\s*"additionalProperty"[^\n]*/, '') : /itemscope/.test(cur) ? md.replace(/\n\s*<div itemprop="additionalProperty"[\s\S]*?<\/div>/, '') : md.replace(/\n<meta property="product:item_group_id"[^\n]*/, ''));
+      if (/product:|og:|ld\+json|itemscope/.test(cur)) c = mdc.concat(c);
+      for (var i = 0; i < c.length; i++) { setv(ta, c[i]); if (okF()) return }
+      setv(ta, cur);
+    }
+    var tm = document.getElementById('shTema'); if (tm && window.SITE) { try { setv(tm, SITE.tema('')) } catch (e) { } if (okF()) return }
+    var px = document.getElementById('shPxCod'); if (px) setv(px, px.value.replace(/<\/?(script|noscript)[^>]*>\n?/gi, ''));
+  }
   function adianta() {
     var ate = adiantando(); if (ate == null || !tour) return;
     if (passo >= ate) { paraDeAdiantar(false); return }
@@ -261,8 +281,13 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (!el || !el.getClientRects().length) { adTent++; if (adTent === 4 && p.garante) try { p.garante() } catch (e) { } if (adTent > 30) return paraDeAdiantar(true); adT = setTimeout(adianta, 300); return }
     adTent = 0;
     if (p.pula && ok(p.pula)) return vai(passo + 1);
+    if (p.clique && p.valida) editores(p);
+    if (p.clique) {   // loja: escolher forma de pagamento e tamanho antes de seguir, como uma cliente faria
+      var pg = document.querySelector('[name=pag]'); if (pg && !document.querySelector('[name=pag]:checked')) pg.click();
+      var tam = document.querySelector('[data-var]:not(.on)'); if (tam && document.querySelector('#addCart') && !document.querySelector('[data-var].on')) tam.click();
+    }
     if (p.clique) { var alvoC = (el.id === 'destaques' || el.id === 'lista') ? el.querySelector('a.foto, a') || el : el; adT = setTimeout(function () { if (adiantando() != null && tour && tour[passo] === p) { if (++adCond > 6) return paraDeAdiantar(true); adianta() } }, 2500); alvoC.click(); return }
-    if (p.cond && !ok(p.cond)) { if (p.auto) try { p.auto() } catch (e) { } else preenche(p); if (!ok(p.cond)) { if (++adCond > 3) return paraDeAdiantar(true); adT = setTimeout(adianta, 400); return } }
+    if (p.cond && !ok(p.cond)) { if (p.auto) try { p.auto() } catch (e) { } else { editores(p); if (!ok(p.cond)) preenche(p) } if (!ok(p.cond)) { if (++adCond > 3) return paraDeAdiantar(true); adT = setTimeout(adianta, 400); return } }
     adCond = 0; vai(passo + 1);
   }
   // Onde pôr o balão: o lugar que cubra MENOS texto da tela (cada linha de texto e cada controle visível conta), nunca o destaque.
