@@ -37,6 +37,7 @@
     seta: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>' };
   function lang() { try { return JSON.parse(localStorage.getItem('plat.lang')) === 'es' } catch (e) { return false } }
   /* html do menu. ativo = rota acesa ('info', 'meta-verified.html'…); aqui = 'portfolio' (rotas viram data-ir) ou outra página (rotas viram link para meta-portfolio.html#rota) */
+  var ABERTOS = window.__cfgAbertos = window.__cfgAbertos || {};   // grupos que a pessoa abriu (o simulador redesenha o menu a cada clique)
   window.MENU_CONFIG = function (ativo, aqui) {
     var es = lang(), t = function (s) { return es && ES[s] ? ES[s] : s }, port = aqui === 'portfolio';
     function item(rot, rota, cls, ico) {
@@ -48,11 +49,11 @@
     }
     return MENU.map(function (m) {
       if (!m[3]) return item(m[0], m[1], 'pf-item', m[2]);
-      var aberto = m[4] || m[3].some(function (s) { return s[1] && s[1] === ativo });
-      return '<div data-sem-traduzir="1" class="pf-grupo' + (aberto ? '' : ' fechado') + '"><button class="pf-grupo-t" data-grupo-cfg>' + IC[m[2]] + ' ' + t(m[0]) + ' <span class="pf-seta">' + IC.seta + '</span></button>' +
+      var aberto = m[4] || ABERTOS[m[0]] || m[3].some(function (s) { return s[1] && s[1] === ativo });
+      return '<div data-sem-traduzir="1" class="pf-grupo' + (aberto ? '' : ' fechado') + '"><button class="pf-grupo-t" data-grupo-cfg="' + m[0] + '" data-t="grupo-' + m[2] + '">' + IC[m[2]] + ' ' + t(m[0]) + ' <span class="pf-seta">' + IC.seta + '</span></button>' +
         m[3].map(function (s) { return item(s[0], s[1], 'pf-sub') }).join('') + '</div>';
     }).join('');
   };
   // abrir/fechar grupo, como na tela real
-  document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-grupo-cfg]'); if (b) b.parentNode.classList.toggle('fechado') });
+  document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-grupo-cfg]'); if (b) { var f = b.parentNode.classList.toggle('fechado'); ABERTOS[b.getAttribute('data-grupo-cfg')] = !f } });
 })();
