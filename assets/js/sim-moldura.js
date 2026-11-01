@@ -35,7 +35,7 @@
   };
   // para onde cada item leva (só os que têm simulador; o resto avisa que não faz parte do treino)
   var VAI = { campanhas: 'meta-anuncios.html', relat: 'meta-relatorios.html', publicos: 'meta-publicos.html', eventos: 'meta-eventos.html',
-    inicio: 'meta-suite.html#inicio', caixa: 'meta-suite.html#caixa', conteudo: 'meta-turbinar.html', insights: 'meta-suite.html#insights', gads: 'meta-anuncios.html',
+    inicio: 'meta-suite.html#inicio', caixa: 'meta-suite.html#caixa', conteudo: 'meta-turbinar.html#posts', anuncios: 'meta-turbinar.html#promover', insights: 'meta-suite.html#insights', gads: 'meta-anuncios.html',
     comercio: 'meta-commerce.html', regras: 'meta-regras.html', config: 'meta-portfolio.html' };
   // Gerenciador de Anúncios (real, 01/11/2026): trilho "ferramentas"
   var TRILHO_ADS = [['logo'], ['sino', 'sino', T('Notificações', 'Notificaciones')], ['visao', 'painel', T('Visão geral da conta', 'Resumen de la cuenta')], ['campanhas', 'tabela', T('Campanhas', 'Campañas')],
@@ -55,7 +55,7 @@
     'meta-anuncios': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-feed': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-relatorios': { app: 'ads', on: 'relat', proprio: true },
     'meta-entrega': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-shopads': { app: 'ads', on: 'campanhas' }, 'meta-publicos': { app: 'ads', on: 'publicos', proprio: true },
     'meta-regras': { app: 'regras' }, 'meta-suite': { app: 'suite', on: 'inicio' }, 'meta-leads': { app: 'suite', on: 'todas', proprio: true },
-    'meta-verified': { app: 'config', on: 'config' }, 'meta-commerce': { app: 'comercio' }, 'meta-microdados': { app: 'web', url: 'business.facebook.com/ads/microdata/debug' },
+    'meta-verified': { app: 'config', on: 'config' }, 'meta-commerce': { app: 'comercio', proprio: true }, 'meta-microdados': { app: 'web', url: 'business.facebook.com/ads/microdata/debug' },
     'meta-metaone': { app: 'cel' }, 'meta-portfolio': { app: 'config', on: 'config' },
     'meta-eventos': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-mbe': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-catalogo': { app: 'comercio', proprio: true },
     'meta-turbinar': { app: 'suite', on: 'conteudo' }, 'meta-limites': { app: 'ads', on: 'todas' },

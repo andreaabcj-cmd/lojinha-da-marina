@@ -43,22 +43,26 @@
   function conferido(ok) { return ok === false ? '<p class="conferido pendente">⚠ Tela montada pela documentação oficial · a conferir com a tela real</p>' : '<p class="conferido">✓ Tela conferida com o Meta Business Suite real em ' + CONF + ' (conta de aula)</p>' }
 
   /* ---------- Conteúdo › Posts e reels ---------- */
-  function menuTopo(on) { return '<div class="ga-menu"><button class="' + (on === 'posts' ? 'on' : '') + '" data-ir="posts">Posts e reels</button><button class="' + (on === 'promover' ? 'on' : '') + '" data-ir="promover" data-t="menu-promover">Promover</button></div>' }
+  /* painel do meio do Business Suite (tela real 01/11/2026): Conteúdo e Anúncios têm a própria lista de seções */
+  function sub(tit, itens, on) { return '<nav class="bs-sub"><b>' + tit + '</b>' + itens.map(function (x) { return x.charAt(0) === '—' ? '<small>' + x.slice(1) + '</small>' : '<span' + (x === on ? ' class="on"' : '') + '>' + x + '</span>' }).join('') + '</nav>' }
+  var SUB_CONT = ['Posts e reels', 'Stories', 'Testes A/B', 'Feed e grade', 'Menções e marcações', 'Clipes', 'Coleções', 'Playlists', 'Peças publicitárias', 'Vídeos para post cruzado'];
+  window.MOLDURA_AGORA = function () { return { on: rota() === 'promover' ? 'anuncios' : 'conteudo' } };
   function posts() {
     var st = S.publicado ? '<span class="ga-tag vd">Em análise</span>' : '—';
-    return casca('<div class="ga"><div class="ga-topo"><h1>Conteúdo</h1><span class="ga-conta">Lojinha da Marina - Fictício</span></div>' + menuTopo('posts') +
+    return casca('<div class="ga"><div class="bs-2col">' + sub('Conteúdo', SUB_CONT, 'Posts e reels') + '<div class="bs-dir"><div class="ga-topo"><div><h1>Conteúdo</h1><p class="ss-sub">Programe, publique e gerencie posts, reels e stories e muito mais.</p></div><span class="ga-conta">Lojinha da Marina - Fictício</span></div>' +
       '<div class="ga-corpo"><div class="ga-abas"><span class="ga-aba on">Publicados</span><span class="ga-aba">Programados</span><span class="ga-aba">Rascunhos</span><span class="ga-aba">Quase expirando</span><span class="ga-aba">Expirados</span><span class="ga-aba">Posts de anúncios</span></div>' +
       '<table class="ga-tab"><thead><tr><th>Título</th><th>Data da publicação</th><th>Status</th><th>Alcance</th><th>Visualizações</th><th>Visualizadores</th><th>Seguidores</th><th></th></tr></thead><tbody>' +
       '<tr data-t="linha-post"><td>🖼️ <b>TESTE de treinamento — aqui não vendemos nada</b><br><small>Foto · Post cruzado</small></td><td>Quinta, 15 de outubro</td><td>' + st + '</td><td>0</td><td>0</td><td>0</td><td>0</td><td><button class="btn" data-ir="turbinar" data-t="btn-turbinar">Turbinar</button></td></tr>' +
       '<tr data-t="linha-foto"><td>🏪 <b>Lojinha da Marina: loja fictícia, criada para treinamento</b><br><small>Foto · Troca da foto do perfil</small></td><td>Terça, 13 de outubro</td><td>—</td><td>0</td><td>0</td><td>0</td><td>0</td><td><button class="btn sec" data-ir="semconteudo" data-t="btn-criar-anuncio">Criar anúncio</button></td></tr>' +
-      '</tbody></table>' + conferido() + '</div></div>');
+      '</tbody></table>' + conferido() + '</div></div></div></div>');
   }
-  function promover() {
-    return casca('<div class="ga"><div class="ga-topo"><h1>Promover</h1><span class="ga-conta">Lojinha da Marina - Fictício</span></div>' + menuTopo('promover') +
-      '<div class="ga-corpo"><div class="ga-cards"><button class="ga-card" data-ir="promover"><b>Anúncios Automatizados</b><small>Tenha anúncios personalizados que ajudam você a conseguir mais resultados.</small></button>' +
-      '<button class="ga-card" data-ir="promover"><b>Criar anúncio</b><small>Escolha uma meta e crie um anúncio do zero.</small></button>' +
-      '<button class="ga-card" data-ir="posts" data-t="card-turbinar"><b>Turbinar conteúdo</b><small>Use um post ou reel existente.</small></button></div>' + conferido() + '</div></div>');
+  function promover() {   // Business Suite › Anúncios (tela real 01/11/2026; antes se chamava Promover)
+    var rec = S.publicado ? '<div class="vf-caixa" data-t="anuncio-recente"><b>Post do Facebook turbinado</b> · <span class="ga-tag vd">Em análise</span><p class="miudo">🧪 TESTE de treinamento — aqui não vendemos nada…</p><p><button class="btn sec" disabled>Editar</button> <button class="btn sec" disabled>Ver resultados</button></p></div>' : '<p class="miudo">Nenhum anúncio recente.</p>';
+    return casca('<div class="ga"><div class="bs-2col">' + sub('Anúncios', ['Resumo dos anúncios', 'Todos os anúncios', '—Outras ferramentas', 'Gerenciador de Anúncios', 'Compare ferramentas de publicidade'], 'Resumo dos anúncios') +
+      '<div class="bs-dir"><div class="ga-topo"><div><h1>Anúncios</h1><p class="ss-sub">Configuração e gerenciamento de anúncios simples para conteúdo turbinado ou anúncios individuais.</p></div><button class="btn" data-ir="semconteudo" data-t="btn-criar-anuncio-bs" style="margin-left:auto">Criar anúncio</button><button class="btn sec" disabled>Tarefas</button></div>' +
+      '<div class="ga-corpo"><h3>Resumo da publicidade</h3><p class="miudo">Lojinha da Marina Aula: anúncios dos últimos 60 dias.</p><h3>Anúncios recentes</h3>' + rec + conferido() + '</div></div></div></div>');
   }
+
   function semconteudo() {
     return casca('<div class="ga"><div class="ga-topo"><h1>Selecione um conteúdo do Facebook</h1><span class="ga-conta">Tipo de conteúdo: Todos</span></div><div class="ga-corpo"><div class="ga-sec" data-t="sem-conteudo"><h3>Nenhum conteúdo para turbinar</h3>' +
       '<p>Parece que você não criou nenhum conteúdo (ou não é possível turbinar seu conteúdo existente). Crie um post ou reel agora para aumentar o engajamento com sua empresa.</p><p class="miudo">A Central de Ajuda da Meta explica: fotos do perfil não podem ser transformadas em anúncios; para usá-las, carregue-as como um novo post e turbine-o.</p>' +

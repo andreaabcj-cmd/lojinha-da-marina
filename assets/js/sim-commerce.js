@@ -31,7 +31,8 @@
   function nav() {
     var itens = S.loja ? MENU_LOJA : [['ativos', 'Ativos'], ['todas', 'Todas as ferramentas']];
     var sel = /^(config|detalhes|url|envio|perfil)$/.test(S.pag) ? 'config' : S.pag;
-    return '<nav class="ss-nav"><div class="cm-conta" data-t="cm-conta"><span class="L">L</span> ' + (S.loja ? 'Lojinha da Marina - Ficticio' : 'Lojinha da Marina Aula') + '</div>' + itens.map(function (x) {
+    // como no real (01/11/2026): "Gerenciador de Comércio" e a empresa ficam no alto do menu (não há barra no topo), igual ao simulador do catálogo
+    return '<nav class="ss-nav"><p class="cm-marca2">∞ Meta</p><h2 class="cm-h2">Gerenciador de Comércio</h2><div class="cm-conta" data-t="cm-conta"><span class="L">L</span> ' + (S.loja ? 'Lojinha da Marina - Ficticio' : 'Lojinha da Marina Aula') + '</div>' + itens.map(function (x) {
       return '<button class="ss-it' + (sel === x[0] ? ' on' : '') + '" data-pag="' + x[0] + '" data-t="menu-' + x[0] + '">' + x[1] + (x[0] === 'tarefas' ? ' <span class="cm-n">' + tarefas().length + '</span>' : '') + '</button>';
     }).join('') + '<p class="miudo" style="margin:10px 8px 4px">Usadas com frequência</p><a class="ss-it" href="meta-anuncios.html">Gerenciador de Anúncios</a><a class="ss-it" href="meta-eventos.html">Gerenciador de Eventos</a><a class="ss-it" href="meta-regras.html">Regras automatizadas</a></nav>';
   }
