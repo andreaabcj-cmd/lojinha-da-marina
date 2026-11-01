@@ -59,10 +59,6 @@
     return m;
   }
   function casca(corpo) { return '<div class="sim-faixa">🧪 Simulador de treinamento dos anúncios das Lojas · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' + corpo }
-  function nav() {
-    var t = [['criar', '📣 Criar anúncio das Lojas'], ['resultados', '📊 Resultados']];
-    return '<nav class="ss-nav">' + t.map(function (x) { return '<button class="ss-it' + (S.tab === x[0] ? ' on' : '') + '" data-tab="' + x[0] + '" data-t="tab-' + x[0] + '">' + x[1] + '</button>' }).join('') + '</nav>';
-  }
   function selOpt(id, lista, v, t) { return '<select class="ga-in" id="' + id + '" data-t="' + t + '">' + lista.map(function (o) { return '<option value="' + o + '"' + (o === v ? ' selected' : '') + '>' + o + '</option>' }).join('') + '</select>' }
   /* Rastreamento do anúncio e a janela “Criar um parâmetro de URL” (tela real do Gerenciador de Anúncios, 28/10/2026; só olhada) */
   var DIN = ['{{campaign.id}}', '{{adset.id}}', '{{ad.id}}', '{{campaign.name}}', '{{adset.name}}', '{{ad.name}}', '{{placement}}', '{{site_source_name}}'];
@@ -125,9 +121,16 @@
       '<div class="ga-aviso" data-t="aviso-site">Se o seu site recebe uma parte excessiva do tráfego dos anúncios das Lojas, ele pode estar convertendo mais compradores do que a loja. Também pode haver diferenças de contagem entre o Gerenciador de Anúncios e ferramentas de terceiros (como o Google Analytics).</div>' +
       '<p class="conferido">✓ As listas de métricas recomendadas e não recomendadas e os avisos vêm do artigo “Como entender seus relatórios de anúncios ao usar anúncios das Lojas” (Central de Ajuda, ' + CONF + '). ⚠ Os valores são inventados para o treino.</p>';
   }
+  window.MOLDURA_AGORA = function () {
+    return S.tab === 'resultados' ? { app: 'ads', on: 'campanhas', proprio: true, onde: 'Gerenciador de Anúncios › Anúncios', destinos: [{ id: 'criar', rotulo: '🖥️ Criar anúncio das Lojas' }] }
+      : { app: 'ads', on: 'campanhas', onde: 'Gerenciador de Anúncios › Criar anúncio das Lojas', destinos: [{ id: 'resultados', rotulo: '🖥️ Gerenciador de Anúncios › Anúncios (resultados)' }] };
+  };
+  window.MOLDURA_VAI = function (id) { S.tab = id; grava(); render() };
   function pagina() {
     var corpo = S.tab === 'resultados' ? telaResultados() : telaCriar();
-    return casca('<div class="ss">' + nav() + '<main class="ss-main">' + corpo + '</main></div>' + (S.tab === 'resultados' ? '' : janelaParam()));
+    // 01/11/2026: sem menu inventado; a criação e os resultados ficam dentro do Gerenciador de Anúncios (mesmo cabeçalho e abas dos outros simuladores)
+    if (S.tab === 'resultados') return casca('<div class="ga">' + GA_TOPO({ titulo: 'Anúncios' }) + '<div class="ga-corpo">' + GA_ABAS({ on: 'anun' }) + corpo + '</div></div>');
+    return casca('<div class="ss"><main class="ss-main">' + corpo + '</main></div>' + janelaParam());
   }
   document.addEventListener('click', function (ev) {
     var t = ev.target, c;

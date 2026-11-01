@@ -53,11 +53,11 @@
   // cada página: app (moldura), item aceso no trilho/menu e o título padrão
   var PAG = {
     'meta-anuncios': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-feed': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-relatorios': { app: 'ads', on: 'relat', proprio: true },
-    'meta-entrega': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-shopads': { app: 'ads', on: 'campanhas' }, 'meta-publicos': { app: 'ads', on: 'publicos' },
-    'meta-regras': { app: 'regras' }, 'meta-suite': { app: 'suite', on: 'inicio' }, 'meta-leads': { app: 'suite', on: 'todas' },
+    'meta-entrega': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-shopads': { app: 'ads', on: 'campanhas' }, 'meta-publicos': { app: 'ads', on: 'publicos', proprio: true },
+    'meta-regras': { app: 'regras' }, 'meta-suite': { app: 'suite', on: 'inicio' }, 'meta-leads': { app: 'suite', on: 'todas', proprio: true },
     'meta-verified': { app: 'config', on: 'config' }, 'meta-commerce': { app: 'comercio' }, 'meta-microdados': { app: 'web', url: 'business.facebook.com/ads/microdata/debug' },
     'meta-metaone': { app: 'cel' }, 'meta-portfolio': { app: 'config', on: 'config' },
-    'meta-eventos': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-mbe': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-catalogo': { app: 'comercio' },
+    'meta-eventos': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-mbe': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-catalogo': { app: 'comercio', proprio: true },
     'meta-turbinar': { app: 'suite', on: 'conteudo' }, 'meta-limites': { app: 'ads', on: 'todas' },
     'meta-instagram': { app: 'web', url: 'instagram.com', onde: 'Instagram no computador' },
     'admin-shopify': { app: 'web', url: 'admin.shopify.com', onde: 'Admin da Shopify da loja da Marina' },
@@ -123,9 +123,13 @@
       var tt = esc(titulo() || NOME.ads), ch = '<h1>' + tt + '</h1><span class="mold-conta">' + T('Conta de aula da Lojinha (ID 123456789)', 'Cuenta de clase de la Lojinha (ID 123456789)') + ' <i>▾</i></span>';
       if (!cab || cab.getAttribute('data-h') !== ch) { if (cab) cab.remove(); dentro.insertAdjacentHTML('afterbegin', '<header class="mold-cab mold-cab-ads">' + ch + '</header>'); dentro.firstChild.setAttribute('data-h', ch) }
     }
+    else if (lugar !== 'cel' && a.app === 'comercio' && !a.proprio) {   // Gerenciador de Comércio (real, 01/11/2026): "Gerenciador de Comércio" + empresa no alto
+      var cc = '<span class="mold-logo">∞</span><b>' + NOME.comercio + '</b><span class="mold-port"><span class="L">L</span>Lojinha da Marina Aula</span><span class="mold-mola"></span><span class="sim-avatar">M</span>';
+      if (!cab || cab.getAttribute('data-h') !== cc) { if (cab) cab.remove(); dentro.insertAdjacentHTML('afterbegin', '<header class="mold-cab">' + cc + '</header>'); dentro.firstChild.setAttribute('data-h', cc) }
+    }
     else if (cab) cab.remove();
     if (bs && !querBS) bs.remove();
-    document.body.classList.toggle('mold-com-trilho', querTr); document.body.classList.toggle('mold-com-bs', querBS); document.body.classList.toggle('mold-com-cab', querBS || (querTr && !a.proprio && a.app !== 'config'));
+    document.body.classList.toggle('mold-com-trilho', querTr); document.body.classList.toggle('mold-com-bs', querBS); document.body.classList.toggle('mold-com-cab', querBS || (querTr && !a.proprio && a.app !== 'config') || (lugar !== 'cel' && a.app === 'comercio' && !a.proprio));
     document.body.classList.toggle('mold-celular', lugar === 'cel');
   }
   var tm = null; function agenda() { clearTimeout(tm); tm = setTimeout(poe, 0) }

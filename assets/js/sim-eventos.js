@@ -87,7 +87,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       '<button title="Notificações">' + IC.sino + '</button><button title="Visão geral da conta">' + IC.painel + '</button><button title="Campanhas">' + IC.tabela + '</button>' +
       '<button title="Públicos">' + IC.pessoas + '</button><button title="Gerenciador de Anúncios">' + IC.megafone + '</button>' +
       '<button class="on" title="Gerenciador de Eventos">' + IC.eventos + '</button><button title="Todas as ferramentas">' + IC.menu + '</button></nav>' +
-      '<header class="sim-cab"><h1>' + esc(titulo) + '</h1><div class="sim-portfolio" title="Portfólio empresarial"><span class="L">L</span>' + PORTFOLIO + '<span class="seta">▾</span></div><span class="sim-avatar">M</span></header>' +
+      '<header class="sim-cab"><h1>' + esc(titulo) + '</h1><span class="mold-conta" style="margin-left:auto" title="Conta de anúncios">Conta de aula da Lojinha (ID 123456789) <i>▾</i></span><span class="sim-avatar">M</span></header>' +
       '<div class="sim-corpo"><aside class="sim-menu">' +
       '<button class="verde" data-acao="conectar" data-t="conectar">' + IC.mais + ' Conectar dados</button>' +
       '<button class="' + (menuAtivo === 'visao' ? 'on' : '') + '" data-ir="visao">' + IC.grade + ' Visão geral</button>' +

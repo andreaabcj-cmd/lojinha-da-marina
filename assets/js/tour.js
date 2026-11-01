@@ -184,6 +184,11 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   }
   function irPara(n) {
     if (!tour || n === passo || n < 0 || n >= tour.length) { var l0 = balao && balao.querySelector('.tg-passos'); if (l0) l0.remove(); return }
+    // 01/11/2026: o jeito certo de chegar a qualquer passo é refazer o caminho. O tutorial recomeça de onde começou (com o simulador zerado)
+    // e o Pixel faz sozinho os passos anteriores, com uma tela de espera por cima. Se não conseguir, cai no jeito antigo (garante do passo).
+    var ini = null; try { ini = sessionStorage.getItem('tour.inicio') } catch (e) { }
+    if (ini && seguro(ini) && n > 0) { try { sessionStorage.setItem('tour.adianta', JSON.stringify({ nome: nome, ate: n })); sessionStorage.removeItem('tour.ativo') } catch (e) { } veu(n); location.href = ini; return }
+    if (ini && seguro(ini) && n === 0) { try { sessionStorage.removeItem('tour.ativo') } catch (e) { } location.href = ini; return }
     if (n in paginas) return vai(n, true);
     if (!tour[n].pagina) { var j = n; while (j > 0 && !tour[j - 1].pagina && !(j - 1 in paginas)) j--; if (j !== n && j > 0) n = j }   // meio de um caminho sem página fixa (ex.: a compra): começa do início dele
     if (n in paginas) return vai(n, true);
@@ -205,6 +210,59 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       (p.fim ? '<button class="tg-btn" data-tg="fim">' + T(UI.fim) + '</button>' : prox ? '<button class="tg-btn" data-tg="prox">' + T(UI.prox) + '</button>' : '<small>' + T(UI.clique) + '</small>') + '</span></div>';
     p.antes && p.antes();
     posiciona();
+    if (adiantando()) { clearTimeout(adT); adT = setTimeout(adianta, 260) }
+  }
+  /* ---------- adiantar até um passo (Selecionar passo) ---------- */
+  var adT = null, adTent = 0, adCond = 0;
+  function adiantando() { try { var a = JSON.parse(sessionStorage.getItem('tour.adianta') || 'null'); return a && a.nome === nome ? a.ate : null } catch (e) { return null } }
+  function veu(n) {
+    var v = document.getElementById('tgVeu');
+    if (n == null) { if (v) v.remove(); return }
+    if (!v) { v = document.createElement('div'); v.id = 'tgVeu'; v.style.cssText = 'position:fixed;inset:0;z-index:2147483300;background:rgba(244,247,251,.94);display:grid;place-items:center;font:700 17px "Segoe UI",system-ui,sans-serif;color:#16294A;text-align:center;padding:20px'; document.body.appendChild(v) }
+    v.innerHTML = '<div>' + masc() + '<p>' + T({ pt: 'O Pixel está fazendo os passos anteriores para você…', es: 'El Pixel está haciendo los pasos anteriores por ti…' }) + '</p><small style="font-weight:600;color:#64748B">' + T(UI.passo) + ' ' + (passo + 1) + ' → ' + (n + 1) + '</small></div>';
+  }
+  function paraDeAdiantar(falhou) {
+    try { sessionStorage.removeItem('tour.adianta') } catch (e) { } veu(null); adTent = 0; adCond = 0;
+    if (falhou) { var p = tour[passo]; if (p && p.garante) try { p.garante() } catch (e) { } setTimeout(function () { desenha(); avisa({ pt: '⚠ Não deu para adiantar sozinho até aqui. Continue deste passo.', es: '⚠ No se pudo adelantar solo hasta aquí. Sigue desde este paso.' }) }, 250) }
+  }
+  function ok(f) { try { return !!f() } catch (e) { return false } }
+  function setv(el, v) { var d = Object.getOwnPropertyDescriptor(el.constructor.prototype, 'value'); if (d && d.set) d.set.call(el, v); else el.value = v; el.dispatchEvent(new Event(el.tagName === 'SELECT' ? 'change' : 'input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })) }
+  /* preenche um passo "faça e avance" como uma pessoa faria: textos citados na dica ou no texto do passo, depois valores comuns; listas; caixas */
+  function preenche(p) {
+    var cur = function () { return alvoEl(p) }, e = cur(); if (!e) return;
+    var cit = [], rx = /[“"]([^”"]{1,60})[”"]/g, m, fonte = T(p.dica) + ' ' + T(p.txt);
+    while ((m = rx.exec(fonte))) cit.push(m[1]);
+    var cands = cit.concat(['Lojinha da Marina', 'lojinhadamarina', '0', '1', '5', '10', '20', '30']);
+    var sels = function () { var x = cur(); return !x ? [] : x.tagName === 'SELECT' ? [x] : [].slice.call(x.querySelectorAll('select')) };
+    var vals = function (sl) { return sl ? [].map.call(sl.options, function (o) { return o.value }).filter(Boolean) : [] };
+    // listas: primeiro a opção citada no passo
+    sels().forEach(function (sl, i) { var o = [].filter.call(sl.options, function (o) { return cit.some(function (c) { return (o.text || '').indexOf(c) >= 0 || o.value === c }) })[0]; if (o) setv(sels()[i], o.value) });
+    if (ok(p.cond)) return;
+    for (var c = 0; c < cands.length && !ok(p.cond); c++) {
+      var x = cur(); if (!x) return;
+      var ins = x.matches('input,textarea') ? [x] : [].slice.call(x.querySelectorAll('input:not([type=checkbox]):not([type=radio]):not([type=hidden]),textarea'));
+      ins.forEach(function (i) { if (i.disabled || i.readOnly) return; var id = (i.id || '') + (i.placeholder || '') + (i.name || ''); setv(i, i.type === 'email' || /e-?mail/i.test(id) ? 'teste@lojinha.exemplo' : /url|link|endere|site/i.test(id) && !/^\d+$/.test(cands[c]) ? 'https://lojinhadamarina.exemplo' : cands[c]) });
+      if (ok(p.cond)) return;
+      var s0 = sels(); if (s0.length === 1) { var v = vals(s0[0]); for (var a1 = 0; a1 < v.length && !ok(p.cond); a1++) if (sels()[0]) setv(sels()[0], v[a1]) }
+      else if (s0.length >= 2) { var w = vals(s0[0]); for (var a2 = 0; a2 < w.length && !ok(p.cond); a2++) { setv(sels()[0], w[a2]); var w2 = vals(sels()[1]); for (var b2 = 0; b2 < w2.length && !ok(p.cond); b2++) setv(sels()[1], w2[b2]) } }
+    }
+    if (ok(p.cond)) return;
+    var y = cur(); if (y && y.matches('input[type=checkbox]')) y.click();
+    y = cur(); if (y && !ok(p.cond)) [].slice.call(y.querySelectorAll('input[type=checkbox]:not(:checked)')).forEach(function (k) { if (!ok(p.cond)) k.click() });
+    y = cur(); if (y && !ok(p.cond)) { var nr = y.querySelectorAll('input[type=radio]').length; for (var r = 0; r < nr && !ok(p.cond); r++) { var rr = cur() && cur().querySelectorAll('input[type=radio]')[r]; if (rr) rr.click() } }
+    y = cur(); if (y && !ok(p.cond)) { var kids = [].slice.call(y.querySelectorAll('button:not([disabled]),[data-sel],li,label.op')).filter(function (k) { return !/[✕×]/.test(k.textContent) && !k.matches('[data-rmcond],[data-rm]') }); for (var k1 = 0; k1 < kids.length && !ok(p.cond); k1++) try { kids[k1].click() } catch (e) { } }
+  }
+  function adianta() {
+    var ate = adiantando(); if (ate == null || !tour) return;
+    if (passo >= ate) { paraDeAdiantar(false); return }
+    veu(ate);
+    var p = tour[passo], el = alvoEl(p);
+    if (!el || !el.getClientRects().length) { adTent++; if (adTent === 4 && p.garante) try { p.garante() } catch (e) { } if (adTent > 30) return paraDeAdiantar(true); adT = setTimeout(adianta, 300); return }
+    adTent = 0;
+    if (p.pula && ok(p.pula)) return vai(passo + 1);
+    if (p.clique) { var alvoC = (el.id === 'destaques' || el.id === 'lista') ? el.querySelector('a.foto, a') || el : el; adT = setTimeout(function () { if (adiantando() != null && tour && tour[passo] === p) { if (++adCond > 6) return paraDeAdiantar(true); adianta() } }, 2500); alvoC.click(); return }
+    if (p.cond && !ok(p.cond)) { if (p.auto) try { p.auto() } catch (e) { } else preenche(p); if (!ok(p.cond)) { if (++adCond > 3) return paraDeAdiantar(true); adT = setTimeout(adianta, 400); return } }
+    adCond = 0; vai(passo + 1);
   }
   // Onde pôr o balão: o lugar que cubra MENOS texto da tela (cada linha de texto e cada controle visível conta), nunca o destaque.
   // Se mesmo assim cobrir demais (lista comprida em tela estreita), rola o destaque para o alto e encaixa o balão embaixo.
@@ -296,6 +354,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   window.TOUR = {
     inicia: function (n, p0, volta, pgs, atras) {
       if (!window.TOURS || !window.TOURS[n]) return; tour = window.TOURS[n]; nome = n; voltar = seguro(volta); paginas = pgs || {}; monta();
+      if (adiantando() != null) veu(adiantando());   // adiantando (Selecionar passo): a tela de espera entra antes de qualquer coisa
       clearInterval(timer); timer = setInterval(posiciona, 500);   // acompanha painéis que abrem e conteúdo que carrega
       vai(p0 || 0, atras);
     }
@@ -303,7 +362,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function inicia() {
     var q = new URLSearchParams(location.search), st = null;
     try { st = JSON.parse(sessionStorage.getItem('tour.ativo') || 'null') } catch (e) { }
-    if (q.get('tour')) window.TOUR.inicia(q.get('tour'), 0, q.get('voltar'));
+    if (q.get('tour')) { try { sessionStorage.setItem('tour.inicio', aqui().split('#')[0].split('?')[0] + location.search) } catch (e) { } window.TOUR.inicia(q.get('tour'), 0, q.get('voltar')) }
     else if (st && window.TOURS && window.TOURS[st.nome]) window.TOUR.inicia(st.nome, st.passo, st.voltar, st.paginas, st.paginas && st.paginas[st.passo] === aqui());
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(inicia, 300) }); else setTimeout(inicia, 300);

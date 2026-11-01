@@ -39,7 +39,7 @@
         '<div class="rl-viz"><span class="ga-tag">Todos os públicos</span><span class="ga-tag">Anúncios ativos</span><span class="ga-tag">Ação necessária</span><span class="ga-tag">Públicos sem rótulo</span></div>' +
         '<table class="cm-tab" data-t="tabela-publicos"><thead><tr><th>Públicos</th><th>Tipo</th><th>Tamanho estimado do público</th><th>Pontuação de correspondência</th><th>Status</th><th>Data de criação</th><th>Compartilhamento</th><th>ID do público</th></tr></thead><tbody>' + linhas + '</tbody></table>';
     }
-    return casca('<div class="ss"><nav class="ss-nav"><button class="ss-it" disabled>📣 Campanhas</button><button class="ss-it on">👥 Públicos</button><button class="ss-it" disabled>📊 Relatórios de Anúncios</button><button class="ss-it" disabled>⚙️ Configurações de publicidade</button></nav><main class="ss-main"><div class="ss-topo"><div><h1>Públicos</h1><p class="ss-sub">Lojinha da Marina Aula (123456789)</p></div><div class="ss-bt"><button class="btn sec" disabled>Mudar para a visualização padrão de públicos</button></div></div>' + corpo +
+    return casca('<div class="ss"><main class="ss-main ga-dentro"><div class="ga-topo"><h1>Públicos</h1><span class="ga-conta">Conta de aula da Lojinha (ID 123456789)</span><button class="btn sec" disabled style="margin-left:auto">Mudar para a visualização padrão de públicos</button></div>' + corpo +
       '<p class="conferido">✓ Página, cartões e colunas conferidos com os Públicos reais em ' + CONF + '. ⚠ Tamanhos, o público semelhante e o público salvo seguem o padrão da Meta (a conferir).</p></main></div>' + janela());
   }
 

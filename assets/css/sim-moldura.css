@@ -86,3 +86,7 @@ body.com-moldura .cm-tab{border:2px solid var(--ink);border-radius:var(--r,12px)
 /* controles do treino (não existem na Meta): fora da janela, tracejados */
 .mold-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:3px 8px;border:1.5px dashed #C9A227;border-radius:10px;background:#FFF6D6}
 .mold-ctl>span{font-size:12px;font-weight:800;color:#5C4500}.mold-ctl .btn{padding:3px 10px;font-size:12.5px}
+/* página real das Regras automatizadas: cabeçalho próprio, sem trilho */
+.rg-cab{display:flex;align-items:center;gap:12px;margin:-16px -22px 14px;padding:10px 18px;background:#fff;border-bottom:2px solid var(--ink)}
+.rg-cab .mold-logo{margin:0;font-size:24px}.rg-cab b{font-size:16px}.rg-ativ{color:var(--muted);font-weight:600;font-size:14px}
+.ss-main.ga-dentro{padding-top:0}.ss-main.ga-dentro>.ga-topo{margin:0 -22px 14px}

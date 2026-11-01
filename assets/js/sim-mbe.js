@@ -44,7 +44,7 @@
   function casca(corpo) {
     return '<div class="sim-faixa">🧪 Simulador de treinamento do Gerenciador de Eventos · Integrações · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="sim"><nav class="sim-trilho" aria-label="Ferramentas"><span class="logo meta-inf" aria-label="Meta">∞</span><button title="Notificações">' + IC.sino + '</button><button title="Visão geral da conta">' + IC.painel + '</button><button title="Campanhas">' + IC.tabela + '</button><button title="Públicos">' + IC.pessoas + '</button><button title="Gerenciador de Anúncios">' + IC.megafone + '</button><button class="on" title="Gerenciador de Eventos">' + IC.eventos + '</button><button title="Todas as ferramentas">' + IC.menu + '</button></nav>' +
-      '<header class="sim-cab"><h1>Integrações</h1><div class="sim-portfolio" title="Portfólio empresarial"><span class="L">L</span>Lojinha da Marina Aula<span class="seta">▾</span></div><span class="sim-avatar">M</span></header>' +
+      '<header class="sim-cab"><h1>Integrações</h1><span class="mold-conta" style="margin-left:auto" title="Conta de anúncios">Conta de aula da Lojinha (ID 123456789) <i>▾</i></span><span class="sim-avatar">M</span></header>' +
       '<div class="sim-corpo"><aside class="sim-menu"><a class="verde" href="meta-eventos.html#visao">' + IC.mais + ' Conectar dados</a><a href="meta-eventos.html#visao">' + IC.grade + ' Visão geral</a><a href="meta-eventos.html#conjuntos">' + IC.ds + ' Conjuntos de dados</a><a href="meta-eventos.html#cc">' + IC.estrela + ' Conversões personalizadas</a><button class="on">' + IC.integ + ' Integrações</button></aside>' +
       '<main class="sim-main">' + corpo + '</main></div></div>';
   }
