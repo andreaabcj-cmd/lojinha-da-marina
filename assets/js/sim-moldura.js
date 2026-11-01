@@ -35,7 +35,7 @@
   };
   // para onde cada item leva (só os que têm simulador; o resto avisa que não faz parte do treino)
   var VAI = { campanhas: 'meta-anuncios.html', relat: 'meta-relatorios.html', publicos: 'meta-publicos.html', eventos: 'meta-eventos.html',
-    inicio: 'meta-suite.html', caixa: 'meta-suite.html#caixa', conteudo: 'meta-turbinar.html', insights: 'meta-suite.html#insights', gads: 'meta-anuncios.html',
+    inicio: 'meta-suite.html#inicio', caixa: 'meta-suite.html#caixa', conteudo: 'meta-turbinar.html', insights: 'meta-suite.html#insights', gads: 'meta-anuncios.html',
     comercio: 'meta-commerce.html', regras: 'meta-regras.html', config: 'meta-portfolio.html' };
   // Gerenciador de Anúncios (real, 01/11/2026): trilho "ferramentas"
   var TRILHO_ADS = [['logo'], ['sino', 'sino', T('Notificações', 'Notificaciones')], ['visao', 'painel', T('Visão geral da conta', 'Resumen de la cuenta')], ['campanhas', 'tabela', T('Campanhas', 'Campañas')],
@@ -53,10 +53,15 @@
   // cada página: app (moldura), item aceso no trilho/menu e o título padrão
   var PAG = {
     'meta-anuncios': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-feed': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-relatorios': { app: 'ads', on: 'relat', proprio: true },
-    'meta-entrega': { app: 'ads', on: 'campanhas' }, 'meta-shopads': { app: 'ads', on: 'campanhas' }, 'meta-publicos': { app: 'ads', on: 'publicos' },
+    'meta-entrega': { app: 'ads', on: 'campanhas', proprio: true }, 'meta-shopads': { app: 'ads', on: 'campanhas' }, 'meta-publicos': { app: 'ads', on: 'publicos' },
     'meta-regras': { app: 'regras' }, 'meta-suite': { app: 'suite', on: 'inicio' }, 'meta-leads': { app: 'suite', on: 'todas' },
     'meta-verified': { app: 'config', on: 'config' }, 'meta-commerce': { app: 'comercio' }, 'meta-microdados': { app: 'web', url: 'business.facebook.com/ads/microdata/debug' },
-    'meta-metaone': { app: 'cel' }, 'meta-portfolio': { app: 'config', on: 'config' }
+    'meta-metaone': { app: 'cel' }, 'meta-portfolio': { app: 'config', on: 'config' },
+    'meta-eventos': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-mbe': { app: 'eventos', on: 'eventos', proprio: true }, 'meta-catalogo': { app: 'comercio' },
+    'meta-turbinar': { app: 'suite', on: 'conteudo' }, 'meta-limites': { app: 'ads', on: 'todas' },
+    'meta-instagram': { app: 'web', url: 'instagram.com', onde: 'Instagram no computador' },
+    'admin-shopify': { app: 'web', url: 'admin.shopify.com', onde: 'Admin da Shopify da loja da Marina' },
+    'admin-woo': { app: 'web', url: '…/wp-admin', onde: 'Painel do WordPress (WooCommerce) da loja da Marina' }
   };
   var P = PAG[pag] || { app: 'web' };
   function agora() { var a = {}; try { a = (window.MOLDURA_AGORA && window.MOLDURA_AGORA()) || {} } catch (e) { } var o = {}; for (var k in P) o[k] = P[k]; for (k in a) o[k] = a[k]; return o }
@@ -103,7 +108,8 @@
     // outros lugares do mesmo treino (ex.: o Business Suite e a página meta.com): ficam FORA da janela, com cara de Lojinha
     var ir = (a.destinos || []).filter(function (d) { return !d.on }).map(function (d) {
       return '<button class="mold-ir" data-ir-lugar="' + esc(d.id) + '" data-t="ir-' + esc(d.id) + '">' + esc(d.rotulo) + '</button>' }).join('');
-    var html = abas + '<p class="mold-onde" data-t="onde">' + linha + (ir ? '<span class="mold-ir-l">' + T('ir para', 'ir a') + ':</span>' + ir : '') + '</p>';
+    var html = abas + '<p class="mold-onde" data-t="onde">' + linha + (ir ? '<span class="mold-ir-l">' + T('ir para', 'ir a') + ':</span>' + ir : '') + '</p>' +
+      (a.controles ? '<div class="mold-ctl" title="' + T('Controles do treino: não existem na Meta', 'Controles de la práctica: no existen en Meta') + '"><span>🧪 ' + T('Treino', 'Práctica') + ':</span>' + a.controles + '</div>' : '');
     if (html !== ultimo) { topo.innerHTML = html; ultimo = html }
     document.body.classList.toggle('mold-abas', !!abas);
     jan.style.top = (32 + topo.offsetHeight + 2) + 'px';

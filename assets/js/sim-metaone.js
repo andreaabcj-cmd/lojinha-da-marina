@@ -43,15 +43,19 @@
   function C() { return CONTAS[S.conta] }
   function conferido(pend) { return pend ? '<p class="conferido pendente">⚠ ' + pend + '</p>' : '<p class="conferido">✓ Telas conferidas com o app real em ' + CONF + ' (Android, assinaturas de teste da conta de aula, canceladas depois)</p>' }
 
-  /* ---------- moldura ---------- */
-  function nav(atual) {
-    var it = [['ig', '📸', 'Instagram (celular)'], ['fb', '📘', 'Facebook (celular)'], ['web', '🖥️', 'Central de Contas (web)'], ['play', '▶️', 'Google Play (celular)']];
-    return '<nav class="ss-nav">' + it.map(function (m) { return '<button class="ss-it' + (atual === m[0] ? ' on' : '') + '" data-ir="' + m[0] + '" data-t="nav-' + m[0] + '">' + m[1] + ' ' + m[2] + '</button>' }).join('') + '</nav>';
+  /* ---------- moldura (01/11/2026: só o celular, como no simulador do WhatsApp Business; o computador fica na abinha "Computador") ---------- */
+  function cel(corpo, pop) {
+    return '<div class="cel-moldura m1-cel" data-t="celular"><div class="cel-barra"><span>9:41</span><span>📶 🔋</span></div><div class="cel-tela m1-tela">' + corpo + (pop || '') + '</div>' +
+      '<div class="cel-nav"><button data-acao="volta" aria-label="Voltar" data-t="sis-volta">◀</button><button data-acao="home" aria-label="Tela inicial" data-t="sis-home">●</button><button data-acao="nada" aria-label="Apps recentes">■</button></div></div>';
   }
-  function cel(corpo, pop) { return '<div class="m1-cel" data-t="celular"><div class="m1-barra"><span>9:41</span><span>📶 🔋</span></div><div class="m1-tela">' + corpo + '</div>' + (pop || '') + '<div class="m1-sisnav"><button data-acao="volta" aria-label="Voltar" data-t="sis-volta">◀</button><span>●</span><span>■</span></div></div>' }
-  function pagina(atual, titulo, corpo, lado) {
-    return '<div class="sim-faixa">🧪 Simulador de treinamento do Meta One · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' +
-      '<div class="ss">' + nav(atual) + '<main class="ss-main"><div class="ss-topo"><div><h1>' + titulo + '</h1></div></div><div class="m1-palco">' + corpo + (lado ? '<aside class="m1-lado">' + lado + '</aside>' : '') + '</div></main></div>';
+  function faixa() { return '<div class="sim-faixa">🧪 Simulador de treinamento do Meta One · nada aqui vai para a Meta · <a href="simuladores.html">← voltar à plataforma</a></div>' }
+  function pagina(atual, titulo, corpo, lado) { return faixa() + '<div class="m1-palco1">' + corpo + (lado ? '<div class="cel-ref m1-ref">' + lado + '</div>' : '') + '</div>' }
+  /* tela inicial do Android (desenho nosso, só para achar o app, igual ao do celular do WhatsApp) */
+  function home() {
+    var ap = function (ic, nome, ir, t) { return '<button class="cel-app"' + (ir ? ' data-ir="' + ir + '"' : ' data-acao="nada"') + (t ? ' data-t="' + t + '"' : '') + '><span class="ic">' + ic + '</span>' + nome + '</button>' };
+    return pagina('home', '', cel('<div class="cel-home"><p class="cel-hora">9:41</p><p class="cel-data">sábado, 1 de novembro</p><div class="cel-apps">' +
+      ap('📞', 'Telefone') + ap('💬', 'Mensagens') + ap('🌐', 'Chrome') + ap('📷', 'Câmera') + ap('⚙️', 'Configurações') + ap('▶️', 'Play Store', 'play', 'app-play') +
+      ap('<span class="m1-ic-ig">◎</span>', 'Instagram', 'ig', 'app-ig') + ap('<span class="m1-ic-fb">f</span>', 'Facebook', 'fb', 'app-fb') + '</div></div>'), '');
   }
   function topo(tit, voltar) { return '<div class="m1-topo">' + (voltar ? '<button data-acao="' + voltar + '" aria-label="Voltar" data-t="topo-volta">←</button>' : '') + '<b>' + tit + '</b></div>' }
   function linha(txt, sub, acao, t) { return '<button class="m1-linha" data-acao="' + acao + '"' + (t ? ' data-t="' + t + '"' : '') + '><span><b>' + txt + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</span><span>›</span></button>' }
@@ -146,18 +150,29 @@
   }
 
   /* ---------- Central de Contas (web) e Google Play ---------- */
-  function web() {
-    return pagina('web', 'Central de Contas (web)', '<div class="m1-web" data-t="web-assinaturas"><h2>Assinaturas</h2><p>Encontre e gerencie suas assinaturas em um só lugar.</p><p class="m1-sec">Gerenciar</p>' +
+  function web() {   // Central de Contas na web (tela real 01/11/2026): menu "Conta Meta" à esquerda, Assinaturas à direita
+    var menu = ['Página inicial', 'Login e segurança', 'Experiências multiperfil', 'Suas informações e permissões', 'Preferências de anúncios', 'Meta Pay', 'Assinaturas', 'Gerenciar conta'];
+    return faixa() + '<div class="web-pag"><div class="m1-ac"><aside class="m1-ac-menu"><p class="m1-ac-logo">∞ Meta</p><h2>Conta Meta</h2><p class="miudo">Controle como sua conta funciona em todos os apps e dispositivos. <u>Saiba mais</u></p>' +
+      menu.map(function (m) { return '<button class="m1-ac-it' + (m === 'Assinaturas' ? ' on' : '') + '" data-acao="nada">' + m + '</button>' }).join('') + '</aside>' +
+      '<main class="m1-ac-main"><p class="m1-ac-volta">Voltar às configurações do Facebook</p><div class="m1-web" data-t="web-assinaturas"><h2>Assinaturas</h2><p>Encontre e gerencie suas assinaturas em um só lugar.</p><p class="m1-sec">Gerenciar</p>' +
       '<button class="m1-linha" data-acao="web-pop" data-t="web-meta-one"><span><b>Meta One</b><small>' + (S.cancelado.pessoal ? 'Expira em ' : 'Renovação em ') + CONTAS.pessoal.data + '</small></span><span>›</span></button>' +
       '<p class="m1-sec">Descobrir</p><div class="m1-linha m1-fixo"><span><b>Criadores de conteúdo</b><small>Apoie seus criadores de conteúdo favoritos.</small></span></div>' +
-      (S.webPop ? '<div class="m1-dlg m1-dlg-web" data-t="web-aviso-celular"><b>Acesse seu dispositivo móvel para gerenciar a assinatura do Meta One</b><p>Como sua assinatura foi comprada em um dispositivo móvel, ela só pode ser gerenciada nele.</p><button data-acao="web-ok" data-t="web-ok">OK</button></div>' : '') + '</div>') + conferido();
+      (S.webPop ? '<div class="m1-dlg m1-dlg-web" data-t="web-aviso-celular"><b>Acesse seu dispositivo móvel para gerenciar a assinatura do Meta One</b><p>Como sua assinatura foi comprada em um dispositivo móvel, ela só pode ser gerenciada nele.</p><button data-acao="web-ok" data-t="web-ok">OK</button></div>' : '') +
+      '</div>' + conferido() + '</main></div></div>';
   }
   function play() {
     return pagina('play', 'Google Play (celular)', cel(topo('Assinaturas') + '<p class="m1-nota">O Google pode compartilhar dados de assinaturas que não identificam você pessoalmente com desenvolvedores para ajudá-los a oferecer esses serviços.</p><p class="m1-sec">Ativo</p><div class="m1-cx" data-t="play-vazio">Você não tem assinaturas ativas</div><p class="m1-sec">Expirou</p><div class="m1-cx">Google One · 200 GB<br><small>Expirou em 2 de mar. de 2026</small></div>'),
       '<p class="miudo">A oferta grátis do Meta One foi dada pela própria Meta: por isso a loja de apps não mostra assinatura ativa. Quando a assinatura é paga pela loja, ela aparece aqui e pode ser cancelada aqui.</p>') + conferido();
   }
 
-  var TELAS = { ig: ig, fb: fb, web: web, play: play };
+  var TELAS = { home: home, ig: ig, fb: fb, web: web, play: play };
+  var APP = { home: 'tela inicial', ig: 'Instagram', fb: 'Facebook', play: 'Google Play' };
+  window.MOLDURA_AGORA = function () {
+    var r = rota(); if (!TELAS[r]) r = 'ig';
+    return r === 'web' ? { lugar: 'pc', app: 'web', url: 'accountscenter.facebook.com/subscriptions', onde: 'Central de Contas', lugares: ['cel', 'pc'] }
+      : { lugar: 'cel', onde: 'Celular da Marina · ' + APP[r], lugares: ['cel', 'pc'] };
+  };
+  window.MOLDURA_TROCA = function (l) { S.pop = ''; S.webPop = false; grava(); vai(l === 'pc' ? 'web' : (S.ultCel || 'home')) };
   document.addEventListener('click', function (ev) {
     var t = ev.target, c;
     if ((c = t.closest('[data-conta]'))) { S.conta = c.getAttribute('data-conta'); S.trocaPop = false; S.tela = 'config'; S.pop = ''; grava(); render(); return }
@@ -169,6 +184,7 @@
     var ac = a.getAttribute('data-acao');
     var M = {
       nada: function () { if (window.SIMAVISO) SIMAVISO('Neste treino isso não muda nada.') },
+      home: function () { S.pop = ''; S.trocaPop = false; vai('home') },
       troca: function () { S.trocaPop = !S.trocaPop },
       'abre-m1': function () { S.tela = 'm1' }, 'fecha-m1': function () { S.tela = 'config' }, 'volta-m1': function () { S.tela = 'm1' }, 'volta-gerenciar': function () { S.tela = 'gerenciar' },
       gerenciar: function () { S.tela = 'gerenciar' }, planos: function () { S.tela = 'planos' }, ajuda: function () { S.tela = 'ajuda'; S.assist = false }, assistente: function () { S.assist = true },
@@ -183,7 +199,7 @@
     if (!M[ac]) return; M[ac](); grava(); render();
   });
   window.addEventListener('hashchange', render);
-  function render() { var r = rota(); if (!TELAS[r]) r = 'ig'; $('#app').innerHTML = TELAS[r](); window.__simM1 = S }
+  function render() { var r = rota(); if (!TELAS[r]) r = 'ig'; if (r !== 'web') S.ultCel = r; $('#app').innerHTML = TELAS[r](); window.__simM1 = S }
   window.SIMM1 = { zera: function () { S = inicial(); grava() }, set: function (o) { for (var k in (o || {})) S[k] = o[k]; grava() }, pronto: render };
   render();
 
@@ -205,7 +221,8 @@
   TOURS['achar-assinatura'] = [
     { alvo: '[data-t=web-meta-one]', clique: true, garante: em('web', {}), tit: T('Pelo computador', 'Desde la computadora'), txt: T('Na Central de Contas, em Assinaturas, aparece o Meta One com a data de renovação. Clique nele.', 'En el Centro de cuentas, en Suscripciones, aparece Meta One con la fecha de renovación. Haz clic.') },
     { alvo: '[data-t=web-aviso-celular]', garante: em('web', { webPop: true }), tit: T('Só no celular', 'Solo en el celular'), txt: T('“Como sua assinatura foi comprada em um dispositivo móvel, ela só pode ser gerenciada nele.” Pela web dá para ver, não para mexer. Clique em Próximo.', 'Por la web se ve, pero no se cambia: solo en el celular. Haz clic en Siguiente.') },
-    { alvo: '[data-t=nav-ig]', clique: true, garante: em('web', {}), tit: T('Vamos ao celular', 'Vamos al celular'), txt: T('Abra o Instagram (celular).', 'Abre Instagram (celular).') },
+    { alvo: '[data-t=troca-cel]', clique: true, garante: em('web', {}), tit: T('Vamos ao celular', 'Vamos al celular'), txt: T('Agora no celular. Clique na abinha Celular, lá em cima.', 'Ahora en el celular. Haz clic en la pestaña Celular, arriba.') },
+    { alvo: '[data-t=app-ig]', clique: true, garante: em('home', {}), tit: T('Abrir o Instagram', 'Abrir Instagram'), txt: T('Toque no Instagram.', 'Toca Instagram.') },
     { alvo: '[data-t=item-meta-one]', clique: true, garante: em('ig', {}), tit: T('Meta One', 'Meta One'), txt: T('Configurações e atividade › Assinaturas › Meta One.', 'Configuración y actividad › Suscripciones › Meta One.') },
     { alvo: '[data-t=btn-gerenciar]', clique: true, garante: em('ig', { tela: 'm1' }), tit: T('Gerenciar', 'Administrar'), txt: T('Toque em Gerenciar assinatura.', 'Toca Administrar suscripción.') },
     { alvo: '[data-t=perfis-assinatura]', garante: em('ig', { tela: 'gerenciar' }), tit: T('Perfis com assinatura', 'Perfiles con suscripción'), txt: T('Uma assinatura vale para os perfis da mesma Central de Contas: aqui, o Facebook e o Instagram da Marina. Clique em Próximo.', 'Una suscripción vale para los perfiles del mismo Centro de cuentas. Haz clic en Siguiente.') },
@@ -228,9 +245,11 @@
     { alvo: '[data-t=btn-gerenciar]', clique: true, garante: em('fb', { fbTela: 'm1' }), tit: T('Gerenciar', 'Administrar'), txt: T('Toque em Gerenciar assinatura.', 'Toca Administrar suscripción.') },
     { alvo: '[data-t=btn-cancelar]', clique: true, garante: em('fb', { fbTela: 'gerenciar' }), tit: T('Cancelar', 'Cancelar'), txt: T('Toque em Cancelar assinatura.', 'Toca Cancelar suscripción.') },
     { alvo: '[data-t=aviso-plataforma]', garante: em('fb', { fbTela: 'gerenciar', pop: 'plataforma' }), tit: T('O app certo', 'La app correcta'), txt: T('“Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou.” Ela foi comprada no Instagram, num Android. Clique em Próximo.', 'Solo se administra en la cuenta, la app o la plataforma donde se compró. Haz clic en Siguiente.') },
-    { alvo: '[data-t=nav-play]', clique: true, garante: em('fb', { fbTela: 'gerenciar' }), tit: T('E a loja de apps?', '¿Y la tienda de apps?'), txt: T('Vale olhar o Google Play também. Abra Google Play (celular).', 'Vale mirar Google Play. Ábrelo.') },
+    { alvo: '[data-t=sis-home]', clique: true, garante: em('fb', { fbTela: 'gerenciar' }), tit: T('E a loja de apps?', '¿Y la tienda de apps?'), txt: T('Vale olhar a loja de apps também. Toque no botão de início do celular (●).', 'Vale mirar la tienda de apps. Toca el botón de inicio del celular (●).') },
+    { alvo: '[data-t=app-play]', clique: true, garante: em('home', {}), tit: T('Play Store', 'Play Store'), txt: T('Toque na Play Store. Lá: foto do perfil › Pagamentos e assinaturas › Assinaturas.', 'Toca Play Store. Ahí: foto del perfil › Pagos y suscripciones › Suscripciones.') },
     { alvo: '[data-t=play-vazio]', garante: em('play', {}), tit: T('Nada na loja', 'Nada en la tienda'), txt: T('“Você não tem assinaturas ativas”: a oferta grátis veio da Meta, não passou pela loja. Então é no Instagram mesmo. Clique em Próximo.', 'La oferta gratis vino de Meta, no pasó por la tienda. Entonces es en Instagram. Haz clic en Siguiente.') },
-    { alvo: '[data-t=nav-ig]', clique: true, garante: em('play', {}), tit: T('Instagram', 'Instagram'), txt: T('Abra o Instagram (celular).', 'Abre Instagram (celular).') },
+    { alvo: '[data-t=sis-home]', clique: true, garante: em('play', {}), tit: T('De volta ao início', 'De vuelta al inicio'), txt: T('Toque no botão de início do celular (●).', 'Toca el botón de inicio del celular (●).') },
+    { alvo: '[data-t=app-ig]', clique: true, garante: em('home', {}), tit: T('Instagram', 'Instagram'), txt: T('Toque no Instagram.', 'Toca Instagram.') },
     { alvo: '[data-t=item-meta-one]', clique: true, garante: em('ig', {}), tit: T('Meta One', 'Meta One'), txt: T('Na conta pessoal da Marina, toque em Meta One.', 'En la cuenta personal de Marina, toca Meta One.') },
     { alvo: '[data-t=btn-gerenciar]', clique: true, garante: em('ig', { tela: 'm1' }), tit: T('Gerenciar', 'Administrar'), txt: T('Toque em Gerenciar assinatura.', 'Toca Administrar suscripción.') },
     { alvo: '[data-t=btn-cancelar]', clique: true, garante: em('ig', { tela: 'gerenciar' }), tit: T('Cancelar', 'Cancelar'), txt: T('Toque em Cancelar assinatura.', 'Toca Cancelar suscripción.') },

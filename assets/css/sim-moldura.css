@@ -73,3 +73,16 @@ body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:214px}
 .web-meta-logo{font-weight:800;font-size:17px;color:#0866FF;white-space:nowrap}.web-mola{flex:1}
 .web-main{max-width:1200px;margin:0 auto;padding:18px 22px 40px}
 @media(max-width:900px){.web-meta nav:first-of-type{display:none}}
+
+/* Gerenciador de Eventos: o trilho é o da moldura (o mesmo do Gerenciador de Anúncios) */
+body.mold-com-trilho .sim{grid-template-columns:0 1fr}body.mold-com-trilho .sim>.sim-trilho{display:none}
+
+/* estilos que vinham da casca antiga (cartões no padrão dos simuladores) */
+body.com-moldura .ss-nav{border-right:2px solid var(--ink)}
+body.com-moldura .ss-main h1{font-size:21px}
+body.com-moldura .vf-caixa,body.com-moldura .ss-card{background:#fff;border:2px solid var(--ink);border-radius:var(--r,12px);box-shadow:3px 3px 0 var(--ink);padding:14px 16px}
+body.com-moldura .cm-tab{border:2px solid var(--ink);border-radius:var(--r,12px);overflow:hidden;box-shadow:3px 3px 0 var(--ink);background:#fff}
+.ss:not(:has(>.ss-nav)){grid-template-columns:minmax(0,1fr)}
+/* controles do treino (não existem na Meta): fora da janela, tracejados */
+.mold-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:3px 8px;border:1.5px dashed #C9A227;border-radius:10px;background:#FFF6D6}
+.mold-ctl>span{font-size:12px;font-weight:800;color:#5C4500}.mold-ctl .btn{padding:3px 10px;font-size:12.5px}
