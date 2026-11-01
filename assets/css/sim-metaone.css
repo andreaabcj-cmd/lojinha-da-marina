@@ -1,0 +1,34 @@
+/* Simulador do Meta One: o celular escuro do Instagram/Facebook, a Central de Contas na web e o Google Play */
+.m1-palco{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.m1-lado{max-width:300px}
+.m1-cel{width:360px;max-width:100%;height:700px;background:#0c0f14;color:#e8eaed;border:3px solid var(--ink);border-radius:26px;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:14px}
+.m1-barra{display:flex;justify-content:space-between;padding:8px 18px 4px;font-size:12px;font-weight:700}
+.m1-tela{flex:1;overflow:auto;padding:4px 14px 14px}
+.m1-sisnav{display:flex;justify-content:center;gap:56px;padding:6px 0 10px;color:#8a8f98}.m1-sisnav button{border:0;background:none;color:inherit;font-size:16px;cursor:pointer}
+.m1-topo{display:flex;align-items:center;gap:10px;min-height:40px}.m1-topo button{border:0;background:none;color:inherit;font-size:20px;cursor:pointer}
+.m1-sec{color:#a8adb5;font-size:13px;margin:14px 0 6px;font-weight:700}
+.m1-grupo{margin:10px 0 6px;font-size:14px}
+.m1-linha{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;background:transparent;color:inherit;text-align:left;padding:9px 2px;cursor:pointer;font:inherit;border-bottom:1px solid #222831}
+.m1-linha small{display:block;color:#a8adb5;font-size:12px}.m1-linha.m1-fixo{cursor:default}
+.m1-cx{border:1px solid #2b313b;border-radius:14px;padding:10px 12px;line-height:1.7}.m1-cx small{color:#a8adb5}
+.m1-capa{text-align:center;margin:6px 0 10px}.m1-capa h2{margin:6px 0 2px;font-size:22px}.m1-capa h2 span{color:#4a9cff}.m1-capa small{color:#a8adb5}
+.m1-logo{font-size:40px;color:#4a9cff}
+.m1-card{border:1px solid #2b313b;border-radius:14px;padding:10px 12px;margin:10px 0}.m1-card p{color:#c9cdd3;font-size:13px}
+.m1-bt{background:#4a5cff;color:#fff;border:0;border-radius:10px;padding:8px 14px;font:700 13px inherit;cursor:pointer;margin:6px 0}.m1-bt.sec{background:#2b313b}
+.m1-sair{display:block;width:100%;border:0;background:none;color:#ff6b6b;font:700 14px inherit;padding:12px 0;cursor:pointer;text-align:left}
+.m1-sanf{display:flex;justify-content:space-between;width:100%;border:1px solid #2b313b;border-radius:12px;background:none;color:inherit;padding:10px 12px;margin:6px 0;cursor:pointer;font:600 14px inherit}
+.m1-plus{margin:0 0 6px 18px;color:#c9cdd3;font-size:13px;line-height:1.7}
+.m1-abas{display:flex;gap:6px;margin:6px 0;flex-wrap:wrap}.m1-abas button{border:1px solid #2b313b;background:none;color:inherit;border-radius:999px;padding:5px 12px;cursor:pointer;font:600 13px inherit}.m1-abas .on{background:#e8eaed;color:#0c0f14}
+.m1-plano{border:1px solid #2b313b;border-radius:14px;padding:10px 12px;margin:8px 0}.m1-plano.atual{border-color:#4a9cff}.m1-plano p{color:#c9cdd3;font-size:13px;margin:4px 0}.m1-plano ul{margin:6px 0 0 18px;font-size:13px;color:#c9cdd3}
+.m1-preco{font-size:16px}.m1-tag{background:#1f3b66;color:#cfe3ff;border-radius:999px;padding:1px 8px;font-size:11px}
+.m1-nota{color:#a8adb5;font-size:12px}
+.m1-radio{display:block;padding:8px 0;border-bottom:1px solid #222831}
+.m1-busca{background:#1a1f27;border-radius:10px;padding:8px 10px;color:#a8adb5;margin:6px 0}
+.m1-usuario{position:relative;margin:4px 0}.m1-usuario>button{border:0;background:none;color:inherit;font:800 16px inherit;cursor:pointer}
+.m1-pop-lista{position:absolute;z-index:5;top:28px;left:0;background:#1a1f27;border:1px solid #2b313b;border-radius:12px;padding:4px;min-width:200px}.m1-pop-lista button{display:block;width:100%;text-align:left;border:0;background:none;color:inherit;padding:8px;cursor:pointer;font:inherit}
+.m1-veu{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:18px;z-index:9}
+.m1-dlg{background:#3a3f47;color:#fff;border-radius:6px;padding:16px;max-width:300px}.m1-dlg p{color:#e8eaed;font-size:13px}.m1-dlg button{float:right;border:0;background:none;color:#7fb3ff;font:700 14px inherit;cursor:pointer}
+.m1-dlg .m1-cx{margin:8px 0}
+.m1-web{background:#fff;color:#1c1e21;border:2px solid var(--ink);border-radius:12px;padding:16px;max-width:560px;width:100%;position:relative}
+.m1-web .m1-linha{border-bottom:1px solid #e4e6eb}.m1-web .m1-linha small,.m1-web .m1-sec{color:#65676b}
+.m1-dlg-web{background:#fff;color:#1c1e21;border:2px solid var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.2);margin-top:12px}.m1-dlg-web p{color:#1c1e21}.m1-dlg-web button{color:#0866ff}

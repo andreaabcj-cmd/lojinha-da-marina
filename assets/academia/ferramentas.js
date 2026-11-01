@@ -1052,6 +1052,62 @@
         [{ pt: 'Uma condição', es: 'Una condición' }, 0, { pt: 'É uma ação.', es: 'Es una acción.' }],
         [{ pt: 'Uma ação que desativa o conjunto', es: 'Una acción que desactiva el conjunto' }, 0, { pt: 'O nome diz: “apenas uma notificação”.', es: 'El nombre lo dice: “solo una notificación”.' }]] }
   ]);
+  quizCatalogo('m1-planos', { pt: 'Que plano é esse?', es: '¿Qué plan es?' }, { pt: 'Pessoal ou de criador/empresa, e o que cada um traz.', es: 'Personal o de creador/empresa, y qué trae cada uno.' }, [
+    { q: { pt: 'Mais uso de IA, prévia de stories e ícone do app, sem selo', es: 'Más IA, vista previa de historias e ícono de la app, sin insignia' },
+      o: [[{ pt: 'Plano pessoal (Básico ou Premium)', es: 'Plan personal (Básico o Premium)' }, 1, { pt: 'Isso! Os pessoais não têm selo.', es: '¡Eso! Los personales no tienen insignia.' }],
+        [{ pt: 'Meta One Max', es: 'Meta One Max' }, 0, { pt: 'O Max tem selo, insights e suporte ilimitado.', es: 'Max tiene insignia, estadísticas y soporte ilimitado.' }],
+        [{ pt: 'Meta Verified antigo', es: 'Meta Verified antiguo' }, 0, { pt: 'O Meta Verified foca no selo.', es: 'Meta Verified se centra en la insignia.' }]] },
+    { q: { pt: 'Selo, página de links e 1 caso por mês com uma pessoa do suporte', es: 'Insignia, página de enlaces y 1 caso por mes con una persona' },
+      o: [[{ pt: 'Básico', es: 'Básico' }, 0, { pt: 'O Básico não tem selo nem suporte com pessoa.', es: 'Básico no tiene insignia ni soporte con persona.' }],
+        [{ pt: 'Avançado', es: 'Avanzado' }, 1, { pt: 'Isso! 1 caso por mês com pessoa.', es: '¡Eso! 1 caso por mes con persona.' }],
+        [{ pt: 'Premium', es: 'Premium' }, 0, { pt: 'O Premium é pessoal: mais IA, sem selo.', es: 'Premium es personal: más IA, sin insignia.' }]] },
+    { q: { pt: 'O mesmo plano com preços diferentes em duas contas', es: 'El mismo plan con precios distintos en dos cuentas' },
+      o: [[{ pt: 'Erro da Meta', es: 'Error de Meta' }, 0, { pt: 'É o esperado: o preço varia.', es: 'Es lo esperado: el precio varía.' }],
+        [{ pt: 'Desconto de primeiro mês', es: 'Descuento del primer mes' }, 0, { pt: 'A tela mostra o valor mensal.', es: 'La pantalla muestra el valor mensual.' }],
+        [{ pt: 'Preço por tipo de conta', es: 'Precio por tipo de cuenta' }, 1, { pt: 'Isso! Vale o da tela de quem assina.', es: '¡Eso! Vale el de la pantalla de quien se suscribe.' }]] }
+  ]);
+  quizCatalogo('m1-onde', { pt: 'Onde se faz?', es: '¿Dónde se hace?' }, { pt: 'Ver, mudar e pagar o Meta One: cada coisa num lugar.', es: 'Ver, cambiar y pagar Meta One: cada cosa en un lugar.' }, [
+    { q: { pt: 'Ver a data da próxima renovação pelo computador', es: 'Ver la fecha de renovación desde la computadora' },
+      o: [[{ pt: 'Central de Contas › Assinaturas', es: 'Centro de cuentas › Suscripciones' }, 1, { pt: 'Isso! Ver dá; mudar, não.', es: '¡Eso! Ver sí; cambiar, no.' }],
+        [{ pt: 'Gerenciador de Anúncios › Cobrança', es: 'Administrador de anuncios › Facturación' }, 0, { pt: 'Isso é cobrança de anúncios.', es: 'Eso es facturación de anuncios.' }],
+        [{ pt: 'Meta Pay', es: 'Meta Pay' }, 0, { pt: 'A assinatura é cobrada pela loja de apps.', es: 'La suscripción la cobra la tienda de apps.' }]] },
+    { q: { pt: 'Trocar o cartão da assinatura', es: 'Cambiar la tarjeta de la suscripción' },
+      o: [[{ pt: 'Suporte da Meta', es: 'Soporte de Meta' }, 0, { pt: 'A própria pessoa troca.', es: 'La propia persona la cambia.' }],
+        [{ pt: 'Loja de apps (Forma de pagamento)', es: 'Tienda de apps (Método de pago)' }, 1, { pt: 'Isso! Abre o Google Play ou a App Store.', es: '¡Eso! Abre Google Play o App Store.' }],
+        [{ pt: 'Configurações da Página', es: 'Configuración de la Página' }, 0, { pt: 'A Página não tem nada a ver.', es: 'La Página no tiene nada que ver.' }]] },
+    { q: { pt: 'Ver quais perfis usam a assinatura', es: 'Ver qué perfiles usan la suscripción' },
+      o: [[{ pt: 'Lista de seguidores', es: 'Lista de seguidores' }, 0, { pt: 'Não é ali.', es: 'No es ahí.' }],
+        [{ pt: 'Painel profissional', es: 'Panel profesional' }, 0, { pt: 'O painel mostra resultados, não a assinatura.', es: 'El panel muestra resultados.' }],
+        [{ pt: 'Gerenciar › Perfis com assinatura', es: 'Administrar › Perfiles con suscripción' }, 1, { pt: 'Isso! FB e IG da mesma Central de Contas.', es: '¡Eso! FB e IG del mismo Centro de cuentas.' }]] }
+  ]);
+  quizCatalogo('m1-cancelar', { pt: 'Cancelou ou não?', es: '¿Se canceló o no?' }, { pt: 'O que a tela mostra antes e depois do cancelamento.', es: 'Lo que muestra la pantalla antes y después de cancelar.' }, [
+    { q: { pt: '“Renovação em 8 de novembro”', es: '“Renovación el 8 de noviembre”' },
+      o: [[{ pt: 'Ativa: vai cobrar de novo', es: 'Activa: va a cobrar de nuevo' }, 1, { pt: 'Isso! Ainda não foi cancelada.', es: '¡Eso! Todavía no se canceló.' }],
+        [{ pt: 'Cancelada', es: 'Cancelada' }, 0, { pt: 'Cancelada mostra “Expira em”.', es: 'Cancelada muestra “Vence”.' }],
+        [{ pt: 'Suspensa por pagamento', es: 'Suspendida por pago' }, 0, { pt: 'Não é isso que a tela diz.', es: 'No es lo que dice la pantalla.' }]] },
+    { q: { pt: '“Expira em 1 de dezembro”', es: '“Vence el 1 de diciembre”' },
+      o: [[{ pt: 'Vai renovar no dia 1', es: 'Va a renovar el día 1' }, 0, { pt: 'Expira = não renova.', es: 'Vence = no renueva.' }],
+        [{ pt: 'Cancelada, com benefícios até o dia 1', es: 'Cancelada, con beneficios hasta el día 1' }, 1, { pt: 'Isso!', es: '¡Eso!' }],
+        [{ pt: 'Reembolsada', es: 'Reembolsada' }, 0, { pt: 'Não há reembolso do período.', es: 'No hay reembolso del período.' }]] },
+    { q: { pt: '“Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou”', es: '“Solo puedes administrar tu suscripción en la cuenta, app o plataforma donde la compraste”' },
+      o: [[{ pt: 'A assinatura foi bloqueada', es: 'La suscripción fue bloqueada' }, 0, { pt: 'É só o app errado.', es: 'Es solo la app equivocada.' }],
+        [{ pt: 'Precisa falar com o suporte', es: 'Hay que hablar con soporte' }, 0, { pt: 'O aviso já diz onde ir.', es: 'El aviso ya dice adónde ir.' }],
+        [{ pt: 'Use o app e o aparelho da compra', es: 'Usa la app y el aparato de la compra' }, 1, { pt: 'Isso!', es: '¡Eso!' }]] }
+  ]);
+  quizCatalogo('m1-beneficios', { pt: 'Já vale ou falta algo?', es: '¿Ya vale o falta algo?' }, { pt: 'Benefícios que já valem e os que pedem verificação.', es: 'Beneficios que ya valen y los que piden verificación.' }, [
+    { q: { pt: 'Selo de verificado', es: 'Insignia de verificado' },
+      o: [[{ pt: 'Só depois da verificação', es: 'Solo tras la verificación' }, 1, { pt: 'Isso! E não dá para pular.', es: '¡Eso! Y no se puede saltar.' }],
+        [{ pt: 'Na hora da assinatura', es: 'Al suscribirse' }, 0, { pt: 'Pede verificação.', es: 'Pide verificación.' }],
+        [{ pt: 'Com mil seguidores', es: 'Con mil seguidores' }, 0, { pt: 'Não há esse mínimo.', es: 'No hay ese mínimo.' }]] },
+    { q: { pt: 'Prévia de stories e ícone do app', es: 'Vista previa de historias e ícono de la app' },
+      o: [[{ pt: 'Só no Max', es: 'Solo en Max' }, 0, { pt: 'Vêm nos Plus, que estão em todos os planos.', es: 'Vienen en los Plus.' }],
+        [{ pt: 'Já valem (Plus)', es: 'Ya valen (Plus)' }, 1, { pt: 'Isso! Instagram Plus e Facebook Plus.', es: '¡Eso! Instagram Plus y Facebook Plus.' }],
+        [{ pt: 'Só no computador', es: 'Solo en la computadora' }, 0, { pt: 'São recursos do app do celular.', es: 'Son recursos de la app del celular.' }]] },
+    { q: { pt: 'Falar com uma pessoa do suporte', es: 'Hablar con una persona de soporte' },
+      o: [[{ pt: 'Ilimitado em todos', es: 'Ilimitado en todos' }, 0, { pt: 'Depende do plano.', es: 'Depende del plan.' }],
+        [{ pt: 'Nunca é possível', es: 'Nunca es posible' }, 0, { pt: 'É possível nos planos de criador.', es: 'Es posible en los planes de creador.' }],
+        [{ pt: 'Avançado 1, Expert 5, Max ilimitado', es: 'Avanzado 1, Expert 5, Max ilimitado' }, 1, { pt: 'Isso! Por mês.', es: '¡Eso! Por mes.' }]] }
+  ]);
   quizCatalogo('lead-local', { pt: 'O que a tela vai pedir?', es: '¿Qué va a pedir la pantalla?' }, { pt: 'O local da conversão e a meta de desempenho mudam o que a campanha de leads exige.', es: 'El lugar de conversión y el objetivo de rendimiento cambian lo que exige la campaña.' }, [
     { q: { pt: 'Local da conversão: “Formulários no site e instantâneos” (o padrão)', es: 'Lugar de conversión: el predeterminado, con sitio y formularios' },
       o: [[{ pt: 'Um conjunto de dados (o antigo Pixel)', es: 'Un conjunto de datos (el antiguo píxel)' }, 1, { pt: 'Isso! Porque inclui o site.', es: '¡Eso! Porque incluye el sitio.' }],
