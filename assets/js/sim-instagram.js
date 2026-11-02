@@ -178,7 +178,7 @@
     else if (ac === 'salvar-perfil') { if (F.eNome != null) S.nome = F.eNome; if (F.eUser != null) S.user = F.eUser.trim() || S.user; if (F.eBio != null) S.bio = F.eBio; grava(); vai('perfil') }
   });
   window.addEventListener('hashchange', function () { MAIS = false; SALVO = false; if (rota() !== 'cc') CC = null; render() });
-  window.SIMIG = { conv: function (p) { if (rota() !== 'converter') { location.hash = 'converter' } C.passo = p; render() }, perfilComercial: function () { if (S.tipo === 'pessoal') { S.tipo = 'comercial'; S.privada = false; S.categoria = 'Compras e varejo'; grava() } }, estado: function () { return { C: C, S: S, F: F } },
+  window.SIMIG = { conv: function (p) { if (rota() !== 'converter') { location.hash = 'converter' } C.passo = p; render() }, perfilComercial: function () { if (S.tipo === 'pessoal') { S.tipo = 'comercial'; S.privada = false; S.categoria = 'Compras e varejo'; grava(); render() } }, estado: function () { return { C: C, S: S, F: F } },
     cc: function (e) { if (rota() !== 'cc') location.hash = 'cc'; CC = e; render() } };
   // onde você está: a Central de Contas é outro endereço (accountscenter.instagram.com)
   window.MOLDURA_AGORA = function () { return rota() === 'cc' ? { url: 'accountscenter.instagram.com', onde: 'Central de Contas (Conta Meta) no computador' } : {} };
@@ -215,7 +215,8 @@
   /* no computador (instagram.com, 02/11/2026): a bio muda em Editar perfil; o nome e o @ mudam na Central de Contas */
   function escreve(id, v) { var i = document.getElementById(id); if (i) { i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })) } }
   TOURS['editar-perfil'] = [
-    { alvo: '[data-t=editar-perfil]', clique: true, garante: function () { SIMIG.perfilComercial(); location.hash = 'perfil' }, tit: T('Editar perfil', 'Editar perfil'), txt: T('Vamos deixar o perfil com cara de loja. Clique em Editar perfil.', 'Vamos a dejar el perfil con cara de tienda. Haz clic en Editar perfil.') },
+    { alvo: '[data-t=editar-perfil]', clique: true, antes: function () { SIMIG.perfilComercial() },   // quem não fez o tutorial anterior começa com a conta já comercial
+      garante: function () { SIMIG.perfilComercial(); location.hash = 'perfil' }, tit: T('Editar perfil', 'Editar perfil'), txt: T('Vamos deixar o perfil com cara de loja. Clique em Editar perfil.', 'Vamos a dejar el perfil con cara de tienda. Haz clic en Editar perfil.') },
     { alvo: '[data-t=ed-bio]', garante: function () { location.hash = 'editar' }, cond: function () { var f = (ig().F || {}); return (f.eBio || '').trim().length > 10 }, auto: function () { escreve('eBio', 'Canecas, camisetas e ecobags feitas à mão') },
       tit: T('A bio', 'La bio'), txt: T('No computador, aqui você muda a bio (o nome e o @ ficam na Central de Contas: já vamos lá). Em uma frase, o que a loja vende. Ex.: Canecas, camisetas e ecobags feitas à mão. Depois clique em Próximo.', 'En la computadora, aquí cambias la presentación (el nombre y el @ están en el Centro de cuentas: ya vamos). En una frase, qué vende la tienda. Ej.: Tazas, camisetas y ecobags hechas a mano. Después haz clic en Siguiente.') },
     { alvo: '[data-t=ed-salvar]', clique: true, garante: function () { location.hash = 'editar' }, tit: T('Enviar', 'Enviar'), txt: T('Clique em Enviar para salvar a bio.', 'Haz clic en Enviar para guardar la presentación.') },
