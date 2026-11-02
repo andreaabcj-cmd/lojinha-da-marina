@@ -244,7 +244,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     for (var c = 0; c < cands.length && !ok(p.cond); c++) {
       var x = cur(); if (!x) return;
       var ins = x.matches('input,textarea') ? [x] : [].slice.call(x.querySelectorAll('input:not([type=checkbox]):not([type=radio]):not([type=hidden]),textarea'));
-      ins.forEach(function (i) { if (i.disabled || i.readOnly) return; var id = (i.id || '') + (i.placeholder || '') + (i.name || ''); setv(i, i.type === 'email' || /e-?mail/i.test(id) ? 'teste@lojinha.exemplo' : /url|link|endere|site/i.test(id) && !/^\d+$/.test(cands[c]) ? 'https://lojinhadamarina.exemplo' : cands[c]) });
+      ins.forEach(function (i) { if (i.disabled || i.readOnly) return; var id = (i.id || '') + (i.placeholder || '') + (i.name || ''); setv(i, i.type === 'email' || /e-?mail/i.test(id) ? 'teste@lojinha.exemplo' : /url|link|endere|site/i.test(id) && !/^\d+$/.test(cands[c]) && !/^https?:\/\//.test(cands[c]) ? 'https://lojinhadamarina.exemplo' : cands[c]) });
       if (ok(p.cond)) return;
       var s0 = sels(); if (s0.length === 1) { var v = vals(s0[0]); for (var a1 = 0; a1 < v.length && !ok(p.cond); a1++) if (sels()[0]) setv(sels()[0], v[a1]) }
       else if (s0.length >= 2) { var w = vals(s0[0]); for (var a2 = 0; a2 < w.length && !ok(p.cond); a2++) { setv(sels()[0], w[a2]); var w2 = vals(sels()[1]); for (var b2 = 0; b2 < w2.length && !ok(p.cond); b2++) setv(sels()[1], w2[b2]) } }
