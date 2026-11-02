@@ -326,6 +326,18 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   function topoFixo() {   // quanto da parte de cima da tela está ocupado por faixas/cabeçalhos fixos da página
     var m = 0; [].forEach.call(document.querySelectorAll('body > *, #app > *'), function (e) { if (e.closest('.tg-balao,.tg-holo,.tg-recorte')) return; var c = getComputedStyle(e); if (c.position === 'fixed') { var r = e.getBoundingClientRect(); if (r.top < 100 && r.height < 130 && r.width > innerWidth * .5) m = Math.max(m, r.bottom) } }); return m;
   }
+  // só a parte do destaque que aparece: um quadro mais alto que a janela não vaza por cima do cabeçalho nem para fora da janela
+  function visivel(el) {
+    var r = el.getBoundingClientRect(), a = { left: r.left, top: r.top, right: r.right, bottom: r.bottom }, n = el.parentElement;
+    while (n && n !== document.body && n !== document.documentElement) {
+      var c = getComputedStyle(n);
+      if (c.overflowX !== 'visible' || c.overflowY !== 'visible') { var q = n.getBoundingClientRect(); a.left = Math.max(a.left, q.left); a.top = Math.max(a.top, q.top); a.right = Math.min(a.right, q.right); a.bottom = Math.min(a.bottom, q.bottom) }
+      n = n.parentElement;
+    }
+    a.top = Math.max(a.top, 0); a.bottom = Math.min(a.bottom, innerHeight);
+    if (a.right - a.left < 8 || a.bottom - a.top < 8) return r;   // quase nada à vista: fica o quadro inteiro (a rolagem do passo cuida do resto)
+    a.width = a.right - a.left; a.height = a.bottom - a.top; return a;
+  }
   function paiRolavel(el) { var n = el.parentElement; while (n && n !== document.body) { var o = getComputedStyle(n).overflowY; if ((o === 'auto' || o === 'scroll') && n.scrollHeight > n.clientHeight + 4) return n; n = n.parentElement } return null }
   function posiciona() {
     if (!tour || !holo) return; var p = tour[passo]; if (!p) return; var el = alvoEl(p);
@@ -339,7 +351,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     // o destaque ficou embaixo de um cabeçalho fixo da tela (ex.: o topo do editor do anúncio)? rola mais um pouco, uma vez por passo
     if (!p._tapado) { p._tapado = true; var r0 = el.getBoundingClientRect(), hx = r0.left + Math.min(24, r0.width / 2), hy = Math.max(0, r0.top) + 4, hit = document.elementFromPoint(hx, hy);
       if (hit && !el.contains(hit) && !hit.contains(el) && !hit.closest('.tg-balao,#tgVeu')) { var sp0 = paiRolavel(el), hb = hit.getBoundingClientRect(), d0 = hb.bottom - r0.top + 12; if (sp0 && d0 > 0 && d0 < 400) { sp0.scrollBy({ top: -d0, behavior: 'smooth' }); setTimeout(posiciona, 400); return } } }
-    var r = el.getBoundingClientRect(); holo.style.opacity = 1;
+    var r = visivel(el); holo.style.opacity = 1;
     // dentro de uma janela/painel: a janela inteira fica visível; só o resto da tela escurece
     var cx = el.closest && el.closest('.janela, [role=dialog], .da-painel, .ma-panel, .tg-caixa'); if (cx === el) cx = null;
     holo.classList.toggle('na-janela', !!cx);
