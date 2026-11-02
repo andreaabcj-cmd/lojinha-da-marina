@@ -203,7 +203,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var n = passo - 1; while (n > 0 && !(n in paginas)) n--; vai(Math.max(0, n), true);
   }
   function desenha() {
-    var p = tour[passo], prox = !p.clique && !p.fim, ond = onde(); paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null; p._sig = null; p._sigF = null; p._fn = 0; p._dock = false;
+    var p = tour[passo], prox = !p.clique && !p.fim, ond = onde(); paginas[passo] = aqui(); salva(); faltou = 0; p._consertou = false; manual = null; p._sig = null; p._sigF = null; p._fn = 0; p._dock = false; p._rolou = p._tapado = p._rolou2 = false;   // cada visita ao passo rola de novo até o destaque
     balao.classList.toggle('compacto', compacto); balao.classList.remove('fino');
     balao.innerHTML = '<button class="tg-sair" data-tg="sair">✕ ' + T(UI.sair) + '</button><button class="tg-bal-min" data-tg="compacta" title="' + T({ pt: 'Balão menor / maior (e dá para arrastá-lo)', es: 'Globo más pequeño / grande (y se puede arrastrar)' }) + '">' + T({ pt: '↔ menor/maior', es: '↔ menor/mayor' }) + '</button><span class="tg-masc">' + masc() + '</span>' + ond + '<b>' + T(p.tit) + '</b><p>' + T(p.txt) + '</p>' +
       (p.dica ? '<div class="tg-dica">💬 Pixel: ' + T(p.dica) + '</div>' : '') +
@@ -334,6 +334,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (!el || !el.getClientRects().length) { if (++faltou >= 3 && p.garante && !p._consertou) { p._consertou = true; try { p.garante() } catch (e) { } }
       holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
     if (!p._rolou) { p._rolou = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return }
+    // a tela foi redesenhada depois da rolagem (o simulador arrumou a tela, a lista cresceu…) e o destaque ficou fora de vista: rola mais uma vez
+    if (!p._rolou2) { var rv = el.getBoundingClientRect(); if (rv.top > innerHeight - 30 || rv.bottom < 30) { p._rolou2 = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return } }
     // o destaque ficou embaixo de um cabeçalho fixo da tela (ex.: o topo do editor do anúncio)? rola mais um pouco, uma vez por passo
     if (!p._tapado) { p._tapado = true; var r0 = el.getBoundingClientRect(), hx = r0.left + Math.min(24, r0.width / 2), hy = Math.max(0, r0.top) + 4, hit = document.elementFromPoint(hx, hy);
       if (hit && !el.contains(hit) && !hit.contains(el) && !hit.closest('.tg-balao,#tgVeu')) { var sp0 = paiRolavel(el), hb = hit.getBoundingClientRect(), d0 = hb.bottom - r0.top + 12; if (sp0 && d0 > 0 && d0 < 400) { sp0.scrollBy({ top: -d0, behavior: 'smooth' }); setTimeout(posiciona, 400); return } } }
