@@ -22,6 +22,18 @@
     'Configurações e atividade': 'Configuración y actividad', 'Como você usa o Instagram': 'Cómo usas Instagram', 'Central de Contas': 'Centro de cuentas', 'Notificações': 'Notificaciones', 'Para profissionais': 'Para profesionales',
     'Tipo de conta e ferramentas ›': 'Tipo de cuenta y herramientas ›', 'Tipo de conta e ferramentas': 'Tipo de cuenta y herramientas', 'Quem pode ver seu conteúdo': 'Quién puede ver tu contenido',
     'Privacidade da conta · Privada': 'Privacidad de la cuenta · Privada', 'Privacidade da conta · Pública': 'Privacidad de la cuenta · Pública',
+    /* menu ☰ Mais e Configurações do instagram.com (02/11/2026; espanhol no padrão do Instagram, a conferir) */
+    '✓ Tela conferida com o Instagram real em 02/11/2026': '✓ Pantalla revisada con Instagram real el 02/11/2026', '⊞ Também da Meta': '⊞ También de Meta',
+    '⚙️ Configurações': '⚙️ Configuración', '📈 Sua atividade': '📈 Tu actividad', '🔖 Salvos': '🔖 Guardado', '🌗 Alternar exibição': '🌗 Cambiar aspecto', '⚠️ Relatar um problema': '⚠️ Reportar un problema',
+    'Trocar de perfil': 'Cambiar de perfil', 'Sair': 'Salir', 'Configurações': 'Configuración', 'Sua conta': 'Tu cuenta', 'Conta Meta': 'Cuenta de Meta',
+    'Privacidade da conta': 'Privacidad de la cuenta', 'Amigos Próximos': 'Mejores amigos', 'Bloqueados': 'Bloqueados', 'Ocultar story e live': 'Ocultar historia y video en vivo',
+    'Como outras pessoas podem interagir com você': 'Cómo pueden interactuar otras personas contigo', 'Mensagens e respostas a stories': 'Mensajes y respuestas a historias', 'Marcações e menções': 'Etiquetas y menciones',
+    'Comentários': 'Comentarios', 'Compartilhamento': 'Compartir', 'Restritos': 'Restringidas', 'Palavras ocultas': 'Palabras ocultas', 'O que você vê': 'Lo que ves', 'Silenciados': 'Silenciadas',
+    'Preferências de conteúdo': 'Preferencias de contenido', 'Número de curtidas e compartilhamentos': 'Cantidad de Me gusta y veces que se compartió', 'Assinaturas de criador de conteúdo': 'Suscripciones a creadores',
+    'Seu app e suas mídias': 'Tu app y contenido multimedia', 'Arquivar e baixar': 'Archivar y descargar', 'Acessibilidade': 'Accesibilidad', 'Idioma': 'Idioma', 'Permissões do site do app': 'Permisos del sitio web',
+    'Central da Família': 'Centro para familias', 'Supervisão para Contas de Adolescente': 'Supervisión de cuentas de adolescentes', 'Tipo e ferramentas da conta': 'Tipo de cuenta y herramientas',
+    'Meta Verified': 'Meta Verified', 'Mais informações e suporte': 'Más información y asistencia', 'Ajuda': 'Ayuda', 'Central de Privacidade': 'Centro de privacidad', 'Status da conta': 'Estado de la cuenta',
+    'Bio': 'Presentación', 'Mostrar selo do Threads': 'Mostrar insignia de Threads', 'Tipo de conta': 'Tipo de cuenta', 'Trocar para conta profissional ›': 'Cambiar a cuenta profesional ›',
     'Mudar para conta profissional ›': 'Cambiar a cuenta profesional ›', 'Mudar para conta pessoal': 'Cambiar a cuenta personal', 'Tipo de conta:': 'Tipo de cuenta:', 'Comercial': 'Comercial', 'Criador de conteúdo': 'Creador de contenido',
     /* virar profissional */
     'Qual opção melhor descreve você?': '¿Qué opción te describe mejor?',

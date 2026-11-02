@@ -19,12 +19,34 @@
   function rota() { return (location.hash || '#perfil').slice(1) }
   function vai(h) { if (location.hash === '#' + h) render(); else location.hash = h }
 
-  function casca(conteudo, conf) {   // conf === false: tela montada pela ajuda oficial (ainda não vista)
+  /* conf === false: tela montada pela ajuda oficial (ainda não vista) · conf = 'dd/mm/aaaa': conferida nesse dia (senão CONF).
+     Barra lateral e menu ☰ Mais copiados do instagram.com real em 02/11/2026 (só olhando). */
+  var MAIS = false;
+  function casca(conteudo, conf) {
     return '<div class="sim-faixa">🧪 Simulador de treinamento do Instagram · nada aqui vai para o Instagram · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="ig"><aside class="ig-lado"><b class="ig-logo">Instagram</b>' +
-      ['🏠 Página inicial', '🔍 Pesquisa', '🧭 Explorar', '🎬 Reels', '✉️ Mensagens', '❤️ Notificações', '➕ Criar'].map(function (x) { return '<span class="ig-l">' + x + '</span>' }).join('') +
-      '<button class="ig-l on" data-ir="perfil" data-t="lado-perfil">👤 Perfil</button><button class="ig-l" data-ir="config" data-t="lado-mais">☰ Mais</button></aside>' +
-      '<main class="ig-main">' + conteudo + (conf === false ? '<p class="conferido pendente">⚠ Caminho montado pela Central de Ajuda do Instagram · a conferir com a tela real</p>' : '<p class="conferido">✓ Tela conferida com o Instagram real em ' + CONF + '</p>') + '</main></div>';
+      ['🏠 Página inicial', '🎬 Reels', '✉️ Mensagens', '🔍 Pesquisa', '❤️ Notificações', '➕ Criar'].map(function (x) { return '<span class="ig-l">' + x + '</span>' }).join('') +
+      '<button class="ig-l on" data-ir="perfil" data-t="lado-perfil">👤 Perfil</button><span class="ig-esp"></span>' +
+      (MAIS ? '<div class="ig-mais" data-t="mais-menu"><button class="ig-mi" data-ir="config" data-t="mais-config">⚙️ Configurações</button>' +
+        ['📈 Sua atividade', '🔖 Salvos', '🌗 Alternar exibição', '⚠️ Relatar um problema'].map(function (x) { return '<span class="ig-mi">' + x + '</span>' }).join('') +
+        '<hr><span class="ig-mi">Trocar de perfil</span><hr><span class="ig-mi">Sair</span></div>' : '') +
+      '<button class="ig-l' + (MAIS ? ' aberto' : '') + '" data-acao="mais" data-t="lado-mais">☰ Mais</button><span class="ig-l">⊞ Também da Meta</span></aside>' +
+      '<main class="ig-main">' + conteudo + (conf === false ? '<p class="conferido pendente">⚠ Caminho montado pela Central de Ajuda do Instagram · a conferir com a tela real</p>' : '<p class="conferido">✓ Tela conferida com o Instagram real em ' + (conf || CONF) + '</p>') + '</main></div>';
+  }
+  /* Configurações do instagram.com (02/11/2026): coluna com os grupos reais à esquerda, a tela escolhida à direita */
+  var CFG = [['Sua conta', [['Conta Meta']]], ['Como você usa o Instagram', [['Editar perfil', 'config'], ['Notificações']]],
+    ['Quem pode ver seu conteúdo', [['Privacidade da conta'], ['Amigos Próximos'], ['Bloqueados'], ['Ocultar story e live']]],
+    ['Como outras pessoas podem interagir com você', [['Mensagens e respostas a stories'], ['Marcações e menções'], ['Comentários'], ['Compartilhamento'], ['Restritos'], ['Palavras ocultas']]],
+    ['O que você vê', [['Silenciados'], ['Preferências de conteúdo'], ['Número de curtidas e compartilhamentos'], ['Assinaturas de criador de conteúdo']]],
+    ['Seu app e suas mídias', [['Arquivar e baixar'], ['Acessibilidade'], ['Idioma'], ['Permissões do site do app']]],
+    ['Central da Família', [['Supervisão para Contas de Adolescente']]], ['Para profissionais', [['Tipo e ferramentas da conta', 'tipo', 'tipo-ferramentas'], ['Meta Verified']]],
+    ['Mais informações e suporte', [['Ajuda'], ['Central de Privacidade'], ['Status da conta']]]];
+  function configs(ativo, corpo) {
+    return '<div class="ig-cfgs"><nav class="ig-cfg-menu"><h2>Configurações</h2>' + CFG.map(function (g) {
+      return '<p class="ig-sec">' + g[0] + '</p>' + g[1].map(function (i) {
+        return i[1] ? '<button class="ig-it bt' + (i[1] === ativo ? ' on' : '') + '" data-ir="' + i[1] + '"' + (i[2] ? ' data-t="' + i[2] + '"' : '') + '>' + i[0] + '</button>' : '<span class="ig-it">' + i[0] + '</span>';
+      }).join('');
+    }).join('') + '</nav><div class="ig-cfg-corpo">' + corpo + '</div></div>';
   }
   function cabecalho() {
     return '<div class="ig-cab"><span class="ig-foto">🧡</span><div><div class="ig-linha1"><b data-t="ig-user">' + esc(S.user) + '</b>' +
@@ -61,15 +83,16 @@
       return casca(cabecalho() + destaques() + '<div class="ig-abas"><b class="on">▦ Posts</b><span>▶ Reels</span><span>◫ Marcados</span></div><div class="ig-grade">' + POSTS.map(post).join('') + '</div>');
     },
     config: function () {
-      return casca('<div class="cartao ig-cfg"><h2>Configurações e atividade</h2>' +
-        '<p class="ig-sec">Como você usa o Instagram</p><span class="ig-it">Central de Contas</span><span class="ig-it">Notificações</span>' +
-        '<p class="ig-sec">Para profissionais</p><button class="ig-it bt" data-ir="tipo" data-t="tipo-ferramentas">Tipo de conta e ferramentas ›</button>' +
-        '<p class="ig-sec">Quem pode ver seu conteúdo</p><span class="ig-it">Privacidade da conta · ' + (S.tipo === 'pessoal' && S.privada ? 'Privada' : 'Pública') + '</span></div>', false);
+      // "Configurações" abre em Editar perfil (como no instagram.com); a edição de verdade fica no tutorial Editar perfil
+      return casca(configs('config', '<h2>Editar perfil</h2><div class="ig-cfg-cartao"><span class="ig-foto">🧡</span><div><b>' + esc(S.user) + '</b><br><small>' + esc(S.nome) + '</small></div></div>' +
+        '<p class="ig-sec">Bio</p><div class="ig-cfg-cartao">' + esc(S.bio) + '</div>' +
+        '<label class="ig-sw"><span>Mostrar selo do Threads</span><input type="checkbox" disabled/></label>'), '02/11/2026');
     },
     tipo: function () {
-      return casca('<div class="cartao ig-cfg"><h2>Tipo de conta e ferramentas</h2>' +
-        (S.tipo === 'pessoal' ? '<button class="ig-it bt" data-ir="converter" data-t="mudar-profissional">Mudar para conta profissional ›</button>' :
-          '<span class="ig-it">Tipo de conta: <b>' + (S.tipo === 'comercial' ? 'Comercial' : 'Criador de conteúdo') + '</b></span><button class="ig-it bt" data-acao="voltar-pessoal">Mudar para conta pessoal</button>') + '</div>', false);
+      // conta pessoal: tela vista em 02/11/2026; conta profissional: ainda não vista (montada pela Central de Ajuda)
+      return casca(configs('tipo', '<h2>Tipo e ferramentas da conta</h2><p class="ig-sec">Tipo de conta</p>' +
+        (S.tipo === 'pessoal' ? '<button class="ig-it bt ig-cfg-cartao" data-ir="converter" data-t="mudar-profissional">Trocar para conta profissional ›</button>' :
+          '<span class="ig-it">Tipo de conta: <b>' + (S.tipo === 'comercial' ? 'Comercial' : 'Criador de conteúdo') + '</b></span><button class="ig-it bt" data-acao="voltar-pessoal">Mudar para conta pessoal</button>')), S.tipo === 'pessoal' ? '02/11/2026' : false);
     },
     converter: function () { return casca('<div class="cartao ig-conv tg-caixa" data-t="conv-caixa">' + passoConv() + '</div>') },
     editar: function () {
@@ -110,19 +133,21 @@
     var m = $('#cMostrar'); if (m) m.onchange = function () { S.mostrarCat = m.checked };
     ['eNome', 'eUser', 'eBio'].forEach(function (id) { var i = $('#' + id); if (i) i.oninput = function () { F[id] = i.value; window.__simIg = { C: C, S: S, F: F } } });
     window.__simIg = { C: C, S: S, F: F };
+    var on = $('.ig-cfg-menu .on'); if (on) on.scrollIntoView({ block: 'nearest' });   // item aceso à vista, como no Instagram
   }
   var F = {};
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-ir],[data-acao]'); if (!a) return;
     if (a.hasAttribute('data-ir')) { if (a.getAttribute('data-ir') === 'converter') C = { passo: 0, tipo: '', cat: '' }; if (a.getAttribute('data-ir') === 'editar') F = {}; vai(a.getAttribute('data-ir')); return }
     var ac = a.getAttribute('data-acao');
+    if (ac === 'mais') { MAIS = !MAIS; render(); return }
     if (ac === 'conv-prox') { if (C.passo === 3) { S.tipo = C.tipo; S.privada = false; S.categoria = C.cat; grava() } C.passo++; render() }
     else if (ac === 'conv-volta') { C.passo = C.passo === 3 ? 2 : Math.max(0, C.passo - 1); render() }
     else if (ac === 'conv-semcontato') { S.contato = false; grava(); C.passo = 5; render() }
     else if (ac === 'voltar-pessoal') { S.tipo = 'pessoal'; grava(); render() }
     else if (ac === 'salvar-perfil') { if (F.eNome != null) S.nome = F.eNome; if (F.eUser != null) S.user = F.eUser.trim() || S.user; if (F.eBio != null) S.bio = F.eBio; grava(); vai('perfil') }
   });
-  window.addEventListener('hashchange', render);
+  window.addEventListener('hashchange', function () { MAIS = false; render() });
   window.SIMIG = { conv: function (p) { if (rota() !== 'converter') { location.hash = 'converter' } C.passo = p; render() }, perfilComercial: function () { if (S.tipo === 'pessoal') { S.tipo = 'comercial'; S.privada = false; S.categoria = 'Compras e varejo'; grava() } }, estado: function () { return { C: C, S: S, F: F } } };
   function render() { var r = rota(); $('#app').innerHTML = (TELAS[r] || TELAS.perfil)(); $$('.ig-l[data-ir]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-ir') === (r === 'perfil' || r === 'editar' ? 'perfil' : 'config')) }); liga() }
   render();
@@ -134,9 +159,10 @@
   TOURS['virar-profissional'] = [
     { alvo: '[data-t=ig-tipo]', garante: function () { location.hash = 'perfil' },
       tit: T('Hoje: conta pessoal', 'Hoy: cuenta personal'), txt: T('O Instagram da Marina ainda é pessoal (e privado). Para usar ferramentas de empresa, ele precisa virar conta profissional.', 'El Instagram de Marina todavía es personal (y privado). Para usar herramientas de empresa, tiene que volverse cuenta profesional.') },
-    { alvo: '[data-t=lado-mais]', clique: true, garante: function () { location.hash = 'perfil' }, tit: T('Configurações', 'Configuración'), txt: T('Clique em ☰ Mais para abrir as configurações.', 'Haz clic en ☰ Más para abrir la configuración.') },
-    { alvo: '[data-t=tipo-ferramentas]', clique: true, tit: T('Para profissionais', 'Para profesionales'), txt: T('Em “Para profissionais”, clique em Tipo de conta e ferramentas.', 'En “Para profesionales”, haz clic en Tipo de cuenta y herramientas.') },
-    { alvo: '[data-t=mudar-profissional]', clique: true, tit: T('Mudar para conta profissional', 'Cambiar a cuenta profesional'), txt: T('Clique em Mudar para conta profissional.', 'Haz clic en Cambiar a cuenta profesional.') },
+    { alvo: '[data-t=lado-mais]', clique: true, garante: function () { location.hash = 'perfil' }, tit: T('O menu Mais', 'El menú Más'), txt: T('Clique em ☰ Mais, no pé da barra da esquerda.', 'Haz clic en ☰ Más, al pie de la barra de la izquierda.') },
+    { alvo: '[data-t=mais-config]', clique: true, garante: function () { if (!document.querySelector('[data-t=mais-config]')) document.querySelector('[data-t=lado-mais]').click() }, tit: T('Configurações', 'Configuración'), txt: T('No menu que abriu, clique em Configurações.', 'En el menú que se abrió, haz clic en Configuración.') },
+    { alvo: '[data-t=tipo-ferramentas]', clique: true, garante: function () { location.hash = 'config' }, tit: T('Para profissionais', 'Para profesionales'), txt: T('Na coluna das configurações, desça até “Para profissionais” e clique em Tipo e ferramentas da conta.', 'En la columna de configuración, baja hasta “Para profesionales” y haz clic en Tipo de cuenta y herramientas.') },
+    { alvo: '[data-t=mudar-profissional]', clique: true, garante: function () { location.hash = 'tipo' }, tit: T('Trocar para conta profissional', 'Cambiar a cuenta profesional'), txt: T('Em “Tipo de conta”, clique em Trocar para conta profissional.', 'En “Tipo de cuenta”, haz clic en Cambiar a cuenta profesional.') },
     { alvo: '[data-t=conv-caixa]', garante: function () { SIMIG.conv(0) }, cond: function () { return (ig().C || {}).tipo === 'comercial' }, bloqueia: function (t) { return !!t.closest('[data-t=op-criador]') || (!!t.closest('[data-t=conv-avancar0]') && (ig().C || {}).tipo !== 'comercial') }, erro: T('A Marina tem uma loja: a opção certa é Comercial.', 'Marina tiene una tienda: la opción correcta es Comercial.'),
       tit: T('Comercial ou Criador?', '¿Comercial o Creador?'), txt: T('A Marina tem uma loja: escolha Comercial (para varejistas, negócios e marcas) e clique em Próximo.', 'Marina tiene una tienda: elige Comercial (para minoristas, negocios y marcas) y haz clic en Siguiente.'),
       dica: T('Criador de conteúdo é para influenciadores e artistas.', 'Creador de contenido es para influencers y artistas.') },

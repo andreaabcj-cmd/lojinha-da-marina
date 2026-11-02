@@ -257,6 +257,15 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .ig-campo input,.ig-campo textarea{width:100%;border:0;font:inherit;padding:2px 0;outline:0;resize:none;background:none}
 .ig-row{display:flex;justify-content:space-between;padding:10px 2px}.ig-row a{color:var(--blue)}
 @media (max-width:760px){.ig{grid-template-columns:1fr}.ig-lado{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:2px solid var(--ink)}.ig-logo,.ig-lado span.ig-l{display:none}.ig-cab{flex-direction:column;align-items:center;text-align:center;gap:14px}.ig-foto{width:96px;height:96px;font-size:44px}.ig-dest{gap:14px}.ig-dest i{width:58px;height:58px}}
+/* Instagram: ☰ Mais e Configurações como no instagram.com (02/11/2026) */
+.ig-lado{position:relative}.ig-esp{flex:1}.ig-l.aberto{background:#F2F5FA}
+.ig-mais{position:absolute;left:12px;bottom:96px;width:250px;padding:8px;background:#fff;border:2px solid var(--ink);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:5}
+.ig-mais hr{border:0;border-top:4px solid #F2F5FA;margin:6px -8px}.ig-mi{display:block;width:100%;text-align:left;padding:10px;border:0;border-radius:8px;background:none;font:inherit;color:var(--ink2)}button.ig-mi{cursor:pointer;font-weight:700;color:var(--ink)}button.ig-mi:hover{background:#F2F5FA}
+.ig-main:has(.ig-cfgs){padding:0;display:flex;flex-direction:column}.ig-main:has(.ig-cfgs) .conferido{margin:6px 16px}
+.ig-cfgs{flex:1;min-height:0;display:grid;grid-template-columns:300px 1fr}.ig-cfg-menu{overflow:auto;padding:16px 14px;border-right:1px solid var(--line)}.ig-cfg-menu h2{margin:0 0 8px;font-size:20px}
+.ig-cfg-menu .ig-it{border:0;border-radius:8px;padding:9px 10px;font-weight:400}.ig-cfg-menu .ig-it.on{font-weight:700}.ig-it.on{background:#F2F5FA}.ig-cfg-corpo{overflow:auto;padding:24px 40px;max-width:720px}
+.ig-cfg-cartao{display:flex;gap:12px;align-items:center;padding:14px;margin:8px 0;border-radius:14px;background:#F2F5FA;border:0}.ig-cfg-cartao .ig-foto{width:56px;height:56px;font-size:26px;box-shadow:none;border:0}
+@media (max-width:760px){.ig-mais{top:100%;bottom:auto}.ig-cfgs{grid-template-columns:1fr}.ig-cfg-menu{max-height:38vh;border-right:0;border-bottom:1px solid var(--line)}.ig-cfg-corpo{padding:16px}}
 .pf-insta{max-width:380px;margin:0 auto}
 .pf-abas{display:flex;gap:6px;margin:14px 0 10px;border-bottom:1px solid var(--line)}.pf-abas button{border:0;background:none;padding:8px 10px;font:inherit;font-weight:600;color:var(--muted);border-radius:8px 8px 0 0;cursor:pointer}.pf-abas button.on{background:var(--blue-l);color:var(--ink)}.pf-abas button:disabled{cursor:default}
 .pf-par{font-size:30px;text-align:center;margin:6px 0}
