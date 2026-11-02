@@ -46,7 +46,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     '@keyframes tgPulso{50%{outline-offset:7px}}' +
     '.tg-balao{position:fixed;z-index:2147483001;width:370px;max-width:calc(100vw - 24px);background:#fff;border:3px solid #16294A;border-radius:14px;box-shadow:5px 5px 0 #16294A;padding:24px 14px 12px 74px;font:15px/1.45 "Segoe UI",system-ui,Arial,sans-serif;color:#16294A;transition:top .85s cubic-bezier(.16,1,.3,1) .05s,left .85s cubic-bezier(.16,1,.3,1) .05s}' +
     '.tg-balao .tg-masc{position:absolute;left:10px;top:12px;animation:tgBoing 1.2s ease-in-out infinite}@keyframes tgBoing{50%{transform:translateY(-5px)}}' +
-    '.tg-balao b{display:block;font-size:16px;margin-bottom:3px}.tg-balao p{margin:0 0 8px;color:#3A4D6B}' +
+    '.tg-balao b{display:block;font-size:16px;margin-bottom:3px}.tg-balao p{margin:0 0 8px;color:#3A4D6B}.tg-balao p b{display:inline;font-size:inherit;margin:0;color:#16294A}' +
     '.tg-dica{background:#FFF4D6;border-radius:8px;padding:6px 8px;font-size:13px;color:#5E4300}' +
     '.tg-ctrl{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 10px;margin-top:10px}.tg-ctrl small{color:#64748B;white-space:nowrap}' +
     '.tg-ctrl>span{margin-left:auto;max-width:100%}.tg-balao.fino .tg-btn{padding:6px 9px;font-size:13px}.tg-balao.fino .tg-ctrl>span{gap:4px}'   /* balão estreito: os botões descem para a linha de baixo em vez de vazar (01/11/2026) */ +
