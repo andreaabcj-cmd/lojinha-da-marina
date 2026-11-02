@@ -81,7 +81,7 @@
   document.body.classList.add('com-moldura');
 
   function titulo() {
-    var h = app.querySelector('.ss-main h1, .ss-topo h1, .ga-topo h1, .rl h1, main h1, h1'); return h ? h.textContent.replace(/\s+/g, ' ').trim() : '';
+    var h = app.querySelector('.ss-main h1, .ss-topo h1, .ga-topo h1, .rl h1, main h1, h1'); return h ? h.textContent.replace(/[ⓘⓘ]/g, '').replace(/\s+/g, ' ').trim() : '';
   }
   function trilhoAds(on) {
     return '<nav class="mold-trilho" aria-label="ferramentas" data-sem-traduzir="1">' + TRILHO_ADS.map(function (x) {
