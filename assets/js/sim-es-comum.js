@@ -35,3 +35,10 @@
   for (var k in A) D[k] = A[k];
   P.push([/^Dia (\d+) do simulador$/, function (m) { return 'Día ' + m[1] + ' del simulador' }]);
 })();
+
+/* 02/11/2026: busca e coluna das tabelas do Gerenciador de Anúncios (Lojas, Relatórios, Leads) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = { 'Pesquise para filtrar por: nome, identificação ou métrica': 'Busca para filtrar por: nombre, identificador o métrica', 'Veiculação': 'Entrega' };
+  for (var k in A) if (!Object.prototype.hasOwnProperty.call(D, k)) D[k] = A[k];
+})();

@@ -355,3 +355,9 @@
   };
   for (var k in A) D[k] = A[k];
 })();
+
+/* 02/11/2026: nome do feed com o nome do catálogo (achado pelo robô em espanhol) */
+(function () {
+  var P = window.SIM_ES_PADROES = window.SIM_ES_PADROES || [];
+  P.push([/^([›⤒] )?Novo feed de dados para (.+)$/, function (m) { return (m[1] || '') + 'Nuevo feed de datos para ' + m[2] }]);
+})();

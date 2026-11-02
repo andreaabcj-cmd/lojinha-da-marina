@@ -232,3 +232,9 @@
   };
   for (var k in A) D[k] = A[k];
 })();
+
+/* 02/11/2026: contagem da autenticação em dois passos (qualquer número; achado pelo robô em espanhol) */
+(function () {
+  var P = window.SIM_ES_PADROES = window.SIM_ES_PADROES || [];
+  P.push([/^(\d+) de (\d+) pessoas? precisam? ativar a autenticação de dois fatores para acessar este portfólio\.$/, function (m) { return m[1] + ' de ' + m[2] + (m[2] === '1' ? ' persona debe' : ' personas debe') + ' activar la autenticación en dos pasos para acceder a este portafolio.' }]);
+})();
