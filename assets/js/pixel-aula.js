@@ -23,7 +23,8 @@ var LABON = !!ssGet('labLoja',false);
 var LAB = lsGet('lab',{});
 var consent = lsGet('consent',null);
 // num tutorial que não é sobre cookies, quem nunca respondeu o aviso conta como "aceitou" (02/11/2026): senão o Pixel segura os eventos e a tela não bate com o tutorial
-if(consent===null){try{var q0=new URLSearchParams(location.search),tA=JSON.parse(sessionStorage.getItem('tour.ativo')||'null')||(q0.get('tour')?{nome:q0.get('tour')}:null),sc=(window.SITE&&SITE.ativo&&SITE.ativo()&&SITE.get&&SITE.get().caso)||'';if(tA&&!/consent/i.test(tA.nome)&&!/cookies/i.test(sc)){consent='grant';lsSet('consent','grant')}}catch(e){}}
+if(consent!=='grant'){   // fora das aulas de cookies, a recusa feita na aula de cookies não segura o Pixel das outras aulas
+try{var q0=new URLSearchParams(location.search),tA=JSON.parse(sessionStorage.getItem('tour.ativo')||'null')||(q0.get('tour')?{nome:q0.get('tour')}:null),sc=(window.SITE&&SITE.ativo&&SITE.ativo()&&SITE.get&&SITE.get().caso)||'';if(tA&&!/consent/i.test(tA.nome)&&!/cookies/i.test(sc)){consent='grant';lsSet('consent','grant')}}catch(e){}}
 var AM = lsGet('am',!LIVE);   // com o Pixel de verdade, a correspondência avançada começa DESLIGADA (alunos podem digitar dados reais no checkout)
 var cliente = lsGet('cliente',null);
 /* No modo simulação, o Pixel é o que foi criado no Gerenciador de Eventos SIMULADO (meta-eventos.html). */
