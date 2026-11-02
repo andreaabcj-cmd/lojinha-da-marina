@@ -42,3 +42,12 @@
   var A = { 'Pesquise para filtrar por: nome, identificação ou métrica': 'Busca para filtrar por: nombre, identificador o métrica', 'Veiculação': 'Entrega' };
   for (var k in A) if (!Object.prototype.hasOwnProperty.call(D, k)) D[k] = A[k];
 })();
+
+/* 02/11/2026: controles do treino no topo da moldura (traduzidos pela sim-moldura.js) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {}, P = window.SIM_ES_PADROES = window.SIM_ES_PADROES || [];
+  var A = { 'Mostrar só as métricas recomendadas (artigo da Central de Ajuda)': 'Mostrar solo las métricas recomendadas (artículo del servicio de ayuda)',
+    'Histórico de atividades': 'Historial de actividades', 'Avançar 1 dia': 'Avanzar 1 día', 'Avançar 7 dias': 'Avanzar 7 días', 'Escolher uma página…': 'Elegir una página…' };
+  for (var k in A) if (!Object.prototype.hasOwnProperty.call(D, k)) D[k] = A[k];
+  P.push([/^Site de mentirinha \((.+)\):$/, function (m) { return 'Sitio de mentira (' + m[1] + '):' }]);
+})();

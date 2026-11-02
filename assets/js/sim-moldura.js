@@ -102,6 +102,12 @@
   function cabBS() { return '<header class="mold-cab" data-sem-traduzir="1"><span class="mold-logo">∞</span><b>Meta Business Suite</b><span class="mold-port"><span class="L">L</span>Lojinha da Marina Aula<small>' + T('Portfólio', 'Portafolio') + '</small><i>▾</i></span><span class="mold-mola"></span><span class="sim-avatar">M</span></header>' }
 
   var ultimo = '';
+  // o topo fica fora do tradutor automático; os controles do treino vêm em português de cada simulador e são traduzidos aqui
+  function ctlEs() {
+    var c = topo.querySelector('.mold-ctl'), tr = window.SIMI18N && window.SIMI18N.traduz; if (!es || !c || !tr) return;
+    var w = document.createTreeWalker(c, NodeFilter.SHOW_TEXT, null), n;
+    while ((n = w.nextNode())) { var v = tr(n.nodeValue); if (v != null) n.nodeValue = n.nodeValue.match(/^\s*/)[0] + v + n.nodeValue.match(/\s*$/)[0] }
+  }
   function poe() {
     var a = agora(), lugar = a.lugar || (a.app === 'cel' ? 'cel' : 'pc');
     // a faixa amarela fica fora da janela
@@ -117,7 +123,7 @@
       return '<button class="mold-ir" data-ir-lugar="' + esc(d.id) + '" data-t="ir-' + esc(d.id) + '">' + esc(traduz(d.rotulo)) + '</button>' }).join('');
     var html = abas + '<p class="mold-onde" data-t="onde">' + linha + (ir ? '<span class="mold-ir-l">' + T('ir para', 'ir a') + ':</span>' + ir : '') + '</p>' +
       (a.controles ? '<div class="mold-ctl" title="' + T('Controles do treino: não existem na Meta', 'Controles de la práctica: no existen en Meta') + '"><span>🧪 ' + T('Treino', 'Práctica') + ':</span>' + a.controles + '</div>' : '');
-    if (html !== ultimo) { topo.innerHTML = html; ultimo = html }
+    if (html !== ultimo) { topo.innerHTML = html; ultimo = html; ctlEs() }
     document.body.classList.toggle('mold-abas', !!abas);
     jan.style.top = (32 + topo.offsetHeight + 2) + 'px';
     // janela: celular sem moldura; computador com a moldura real do app

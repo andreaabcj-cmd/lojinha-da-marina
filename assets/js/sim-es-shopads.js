@@ -101,3 +101,9 @@
   };
   for (var k in A) D[k] = A[k];
 })();
+
+/* 02/11/2026: nota conferida no pé do relatório */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  D['✓ Tabela e colunas no formato do Gerenciador de Anúncios real. As métricas recomendadas e não recomendadas vêm do artigo da Central de Ajuda (16/10/2026). ⚠ Os valores são de exemplo do simulador.'] = '✓ Tabla y columnas con el formato del Administrador de anuncios real. Las métricas recomendadas y no recomendadas vienen del artículo del servicio de ayuda (16/10/2026). ⚠ Los valores son de ejemplo del simulador.';
+})();
