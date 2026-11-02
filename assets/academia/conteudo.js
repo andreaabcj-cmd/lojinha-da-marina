@@ -165,7 +165,8 @@ window.AULAS = {
           { pt: 'Contato público só com dados comerciais.', es: 'Contacto público solo con datos comerciales.' }],
         frase: { pt: 'O contato do perfil fica público. Você pode editar ou remover quando quiser: troque por um telefone ou email comercial. Te mostro onde.', es: 'El contacto del perfil queda público. Puedes editarlo o quitarlo cuando quieras: cámbialo por un teléfono o correo comercial. Te muestro dónde.' },
         passos: [{ pt: 'No app, vá no seu perfil e toque em Editar perfil.', es: 'En la app, ve a tu perfil y toca Editar perfil.' },
-          { pt: 'Ajuste Nome, Nome de usuário e Bio, e toque em Concluir.', es: 'Ajusta Nombre, Nombre de usuario y Bio, y toca Terminar.' }],
+          { pt: 'Ajuste Nome, Nome de usuário e Bio, e toque em Concluir.', es: 'Ajusta Nombre, Nombre de usuario y Bio, y toca Terminar.' },
+          { pt: 'No computador é separado: a bio muda em Configurações › Editar perfil; o nome e o @ mudam na Central de Contas (Conta Meta › sua conta › perfil do Instagram).', es: 'En la computadora es separado: la presentación cambia en Configuración › Editar perfil; el nombre y el @ cambian en el Centro de cuentas (Cuenta de Meta › tu cuenta › perfil de Instagram).' }],
         encaminhar: { pt: 'Se a cliente não consegue trocar o nome ou o @ (o Instagram limita mudanças), oriente a seguir a Central de Ajuda do Instagram.', es: 'Si la clienta no logra cambiar el nombre o el @ (Instagram limita cambios), orienta a seguir el Centro de ayuda de Instagram.' }
       },
       fontes: [
