@@ -65,7 +65,7 @@
   };
   var P = PAG[pag] || { app: 'web' };
   function agora() { var a = {}; try { a = (window.MOLDURA_AGORA && window.MOLDURA_AGORA()) || {} } catch (e) { } var o = {}; for (var k in P) o[k] = P[k]; for (k in a) o[k] = a[k]; return o }
-  var ES_ONDE = [['Meta Business Suite › Configurações', 'Meta Business Suite › Configuración'], ['Gerenciador de Anúncios', 'Administrador de anuncios'], ['Formulários de anúncios de lead', 'Formularios de anuncios para clientes potenciales'],
+  var ES_ONDE = [['Planilha da Marina no computador (Excel ou Planilhas Google)', 'Planilla de Marina en la computadora (Excel o Hojas de cálculo de Google)'], ['Central de Contas (Conta Meta) no computador', 'Centro de cuentas (Cuenta de Meta) en la computadora'], ['Meta Business Suite › Configurações', 'Meta Business Suite › Configuración'], ['Gerenciador de Anúncios', 'Administrador de anuncios'], ['Formulários de anúncios de lead', 'Formularios de anuncios para clientes potenciales'],
     ['Central de Leads', 'Centro de clientes potenciales'], ['Ferramenta de teste de anúncios de lead', 'Herramienta de prueba de anuncios para clientes potenciales'], ['Ferramenta de teste', 'Herramienta de prueba'],
     ['Conjuntos de anúncios', 'Conjuntos de anuncios'], ['Regras automatizadas', 'Reglas automatizadas'], ['Criar anúncio das Lojas', 'Crear un anuncio de Tiendas'], ['Anúncios (resultados)', 'Anuncios (resultados)'],
     ['Anúncios', 'Anuncios'], ['Campanhas', 'Campañas'], ['Formulários', 'Formularios'], ['Celular da Marina', 'Celular de Marina'], ['tela inicial', 'pantalla de inicio'], ['Central de Contas', 'Centro de cuentas'],

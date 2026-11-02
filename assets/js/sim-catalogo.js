@@ -34,6 +34,8 @@
   grava();
 
   function rota() { var h = (location.hash || '#inicio').slice(1).split('/'); return { tela: h[0] || 'inicio', id: h[1], aba: h[2] || 'visao' } }
+  // a planilha não é tela da Meta: é o arquivo da Marina aberto no computador (o "onde você está" diz isso)
+  window.MOLDURA_AGORA = function () { var r = rota(); return r.tela === 'cat' && r.aba === 'planilha' ? { app: 'web', url: 'catalogo-marina.csv', onde: 'Planilha da Marina no computador (Excel ou Planilhas Google)' } : {} };
   function vai(h) { if (location.hash === '#' + h) render(); else location.hash = h }
   function cat(id) { return S.cats.filter(function (c) { return c.id === id })[0] }
   function preco(it) { return (it.moeda === 'USD' ? 'US$' : 'R$') + it.preco.toFixed(2).replace('.', ',') }

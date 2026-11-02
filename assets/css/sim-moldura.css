@@ -107,3 +107,4 @@ body.com-moldura #siteCaso{top:36px!important;bottom:auto!important;left:14px!im
 .cm-tab{width:100%;border-collapse:collapse;font-size:14px}
 .cm-tab th{text-align:left;padding:8px 8px;font-size:12px;color:var(--muted);border-bottom:2px solid var(--line);white-space:nowrap}
 .cm-tab td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+body.com-moldura .pl{margin-top:40px}   /* planilha: a barra do arquivo não fica escondida no alto da janela */
