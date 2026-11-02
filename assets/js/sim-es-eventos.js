@@ -295,3 +295,20 @@
   P.push([/^Recebido pela última vez há (\d+) ?(s|min|h|d)$/, function (m) { return 'Última recepción: Hace ' + m[1] + ' ' + m[2] }]);
   P.push([/^Ativos \((\d+)\)$/, function (m) { return 'Activos (' + m[1] + ')' }]);
 })();
+
+/* 02/11/2026: textos que o robô em espanhol achou sem tradução (janela Criar um conjunto de dados e aviso de criado) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    'Criar um conjunto de dados': 'Crear un conjunto de datos',
+    'A criação de um conjunto de dados ajuda você a acompanhar as atividades que são importantes para sua empresa, para que você possa direcionar melhor os públicos e melhorar o desempenho.': 'Crear un conjunto de datos te ayuda a hacer un seguimiento de las actividades que son importantes para tu negocio, para que puedas segmentar mejor a los públicos y mejorar el rendimiento.',
+    'Insira um nome': 'Ingresa un nombre', 'Conecte': 'Conecta', 'todos os conjuntos de dados novos e existentes': 'todos los conjuntos de datos nuevos y existentes',
+    'neste portfólio empresarial à API de Conversões com a Meta. Isso funciona junto com seu Pixel da Meta para enviar eventos da web para o lado do servidor da Meta e proporcionar um desempenho mais duradouro. Você pode desconectar conjuntos de dados específicos ou desativar a conexão para todo o portfólio quando quiser no Gerenciador de Negócios.': 'de este portafolio comercial a la API de conversiones con Meta. Funciona junto con tu píxel de Meta para enviar eventos web al servidor de Meta y lograr un rendimiento más duradero. Puedes desconectar conjuntos de datos específicos o desactivar la conexión para todo el portafolio cuando quieras en el administrador comercial.',
+    'Ver termos': 'Ver condiciones', 'saiba como funciona': 'descubre cómo funciona', 'Selecione qualquer categoria aplicável': 'Selecciona cualquier categoría que corresponda', '• Opcional': '• Opcional',
+    'Suas escolhas serão aplicadas a todas as fontes de dados neste conjunto de dados. A seleção da categoria mais precisa para sua empresa pode ajudar a evitar o compartilhamento de informações proibidas pelos Termos das Ferramentas da Meta para Empresas. Dependendo da categoria e da localização, o compartilhamento de dados pode ser limitado ou bloqueado.': 'Tus elecciones se aplicarán a todas las fuentes de datos de este conjunto de datos. Elegir la categoría más precisa para tu negocio puede ayudar a evitar que se compartan datos prohibidos por las Condiciones de las herramientas para empresas de Meta. Según la categoría y la ubicación, el intercambio de datos puede limitarse o bloquearse.',
+    'Sobre as categorias': 'Información sobre las categorías', 'Escolha as opções que se aplicam': 'Elige las opciones que correspondan',
+    'Para estar em conformidade com nossas políticas e ajudar a proteger a privacidade de seus usuários, não compartilhe dados sensíveis de usuários conosco ao configurar eventos. Acesse a Central de Ajuda para saber mais sobre dados sensíveis.': 'Para cumplir con nuestras políticas y ayudar a proteger la privacidad de tus usuarios, no compartas con nosotros datos sensibles de usuarios al configurar eventos. Visita el servicio de ayuda para obtener más información sobre los datos sensibles.',
+    'Próximo passo: colocar o código do Pixel no site. Clique em': 'Siguiente paso: poner el código del píxel en el sitio. Haz clic en', 'para ver o código com este ID.': 'para ver el código con este identificador.'
+  };
+  for (var k in A) D[k] = A[k];
+})();
