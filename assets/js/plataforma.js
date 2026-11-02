@@ -301,12 +301,15 @@
       ['comparar-atribuicao', 'meta-relatorios.html?exemplo=1', 'relatorios', '04', { pt: 'Como entender a janela de atribuição', es: 'Cómo entender la ventana de atribución' }],
       ['relatorio-vazio', 'meta-relatorios.html?vazio=1', 'relatorios', '05', { pt: 'Como destravar um relatório vazio', es: 'Cómo destrabar un informe vacío' }],
       ['calcular-roas', 'meta-relatorios.html?roas=1', 'relatorios', '06', { pt: 'Como calcular o custo por compra e o ROAS', es: 'Cómo calcular el costo por compra y el ROAS' }] ] },
-    { m: 'meta-one', itens: [
-      ['explorar-planos', 'meta-metaone.html?zerar=1', 'meta-one', '01', { pt: 'Como ver os planos do Meta One', es: 'Cómo ver los planes de Meta One' }],
-      ['achar-assinatura', 'meta-metaone.html?zerar=1', 'meta-one', '02', { pt: 'Como achar e gerenciar a assinatura', es: 'Cómo encontrar y administrar la suscripción' }],
-      ['cancelar-meta-one', 'meta-metaone.html?zerar=1', 'meta-one', '03', { pt: 'Como cancelar o Meta One', es: 'Cómo cancelar Meta One' }],
-      ['cancelar-no-app-certo', 'meta-metaone.html?zerar=1', 'meta-one', '04', { pt: 'Como cancelar quando o app diz que não pode', es: 'Cómo cancelar cuando la app dice que no se puede' }],
-      ['beneficios-suporte', 'meta-metaone.html?zerar=1', 'meta-one', '05', { pt: 'Como ver os benefícios e chegar ao suporte', es: 'Cómo ver los beneficios y llegar al soporte' }] ] },
+    { m: 'verified', itens: [
+      ['escolher-plano', 'meta-verified.html?planos=1', 'verified', '02', { pt: 'Como comparar os planos da Meta One', es: 'Cómo comparar los planes de Meta One' }],
+      ['explorar-planos', 'meta-metaone.html?zerar=1', 'verified', '02', { pt: 'Como ver os planos do Meta One', es: 'Cómo ver los planes de Meta One' }],
+      ['cadastrar-meta-verified', 'meta-verified.html?zerar=1', 'verified', '03', { pt: 'Como começar a assinatura e o que vem depois', es: 'Cómo empezar la suscripción y qué viene después' }],
+      ['nao-consigo-cadastrar', 'meta-verified.html?problema=1', 'verified', '04', { pt: 'Como explicar o botão Começar apagado', es: 'Cómo explicar el botón Empezar apagado' }],
+      ['achar-assinatura', 'meta-metaone.html?zerar=1', 'verified', '05', { pt: 'Como achar e gerenciar a assinatura', es: 'Cómo encontrar y administrar la suscripción' }],
+      ['cancelar-meta-one', 'meta-metaone.html?zerar=1', 'verified', '07', { pt: 'Como cancelar o Meta One', es: 'Cómo cancelar Meta One' }],
+      ['cancelar-no-app-certo', 'meta-metaone.html?zerar=1', 'verified', '08', { pt: 'Como cancelar quando o app diz que não pode', es: 'Cómo cancelar cuando la app dice que no se puede' }],
+      ['beneficios-suporte', 'meta-metaone.html?zerar=1', 'verified', '09', { pt: 'Como ver os benefícios e chegar ao suporte', es: 'Cómo ver los beneficios y llegar al soporte' }]  ] },
     { m: 'lead-ads', itens: [
       ['local-conversao', 'meta-leads.html?zerar=1', 'lead-ads', '01', { pt: 'Como escolher o local da conversão para formulário instantâneo', es: 'Cómo elegir el lugar de conversión para formulario instantáneo' }],
       ['criar-formulario', 'meta-leads.html?zerar=1', 'lead-ads', '02', { pt: 'Como criar um formulário instantâneo', es: 'Cómo crear un formulario instantáneo' }],
@@ -352,10 +355,6 @@
       ['configurar-loja', 'meta-commerce.html?loja=1', 'commerce', '03', { pt: 'Como configurar o envio e a finalização da compra', es: 'Cómo configurar el envío y la finalización de compra' }],
       ['loja-nao-aparece', 'meta-commerce.html?problema=1', 'commerce', '04', { pt: 'Como descobrir por que a loja não aparece', es: 'Cómo descubrir por qué la tienda no aparece' }],
       ['mudancas-checkout', 'meta-shopads.html?zerar=1', 'commerce', '05', { pt: 'Como explicar o que mudou com a finalização da compra no site', es: 'Cómo explicar qué cambió con la finalización de compra en el sitio' }] ] },
-    { m: 'verified', itens: [
-      ['escolher-plano', 'meta-verified.html?planos=1', 'verified', '02', { pt: 'Como comparar os planos da Meta One', es: 'Cómo comparar los planes de Meta One' }],
-      ['cadastrar-meta-verified', 'meta-verified.html?zerar=1', 'verified', '03', { pt: 'Como começar a assinatura e o que vem depois', es: 'Cómo empezar la suscripción y qué viene después' }],
-      ['nao-consigo-cadastrar', 'meta-verified.html?problema=1', 'verified', '04', { pt: 'Como explicar o botão Começar apagado', es: 'Cómo explicar el botón Empezar apagado' }]] },
     { m: 'entrega', itens: [
       ['ler-aprendizado', 'meta-entrega.html?exemplo=1', 'entrega', '02', { pt: 'Como ler a coluna Veiculação e a fase de aprendizado', es: 'Cómo leer la columna Entrega y la fase de aprendizaje' }],
       ['edicao-significativa', 'meta-entrega.html?exemplo=1', 'entrega', '03', { pt: 'Como saber se uma edição reinicia o aprendizado', es: 'Cómo saber si una edición reinicia el aprendizaje' }],

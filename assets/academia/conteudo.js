@@ -37,7 +37,6 @@ window.MODULOS = [
   { id: 'dg-instagram', area: 'diagnostico', status: 'construcao', icone: '📸', titulo: { pt: 'Instagram e Página', es: 'Instagram y Página' }, resumo: { pt: 'Instagram que não conecta, não aparece no anúncio ou não pode anunciar (assinatura sem anúncios).', es: 'Instagram que no se conecta, no aparece en el anuncio o no puede anunciar (suscripción sin anuncios).' } },
   { id: 'dg-workaround', area: 'diagnostico', status: 'construcao', icone: '🧪', titulo: { pt: 'Workaround plausível', es: 'Workaround plausible' }, resumo: { pt: 'Saídas que a comunidade relata e que costumam funcionar, mas que a Meta não documenta. Só como tentativa, depois do caminho oficial, sem prometer resultado.', es: 'Salidas que la comunidad relata y que suelen funcionar, pero que Meta no documenta. Solo como intento, después del camino oficial, sin prometer resultado.' } },
   { id: 'dg-commerce', area: 'diagnostico', status: 'planejado', icone: '🛍️', titulo: { pt: 'Commerce e lojas', es: 'Commerce y tiendas' }, resumo: { pt: 'Loja que não fica visível e anúncios das Lojas que só levam ao site.', es: 'Tienda que no queda visible y anuncios de Tiendas que solo llevan al sitio.' } },
-  { id: 'verified', fase: 4, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified e Meta One', es: 'Meta Verified y Meta One' }, resumo: { pt: 'A diferença entre os dois, os planos da Meta One, assinar e verificar, nome do perfil, cancelar e revogada.', es: 'La diferencia entre los dos, los planes de Meta One, suscribirse y verificar, nombre del perfil, cancelar y revocada.' } },
   { id: 'commerce', fase: 4, status: 'construcao', icone: '🛍️', titulo: { pt: 'Introdução ao Commerce', es: 'Introducción a Commerce' }, resumo: { pt: 'Criar e publicar a loja no Gerenciador de Comércio, requisitos e o que mudou com a finalização da compra no site.', es: 'Crear y publicar la tienda en el Administrador de ventas, requisitos y qué cambió con la finalización de compra en el sitio.' } },
   { id: 'shop-ads', fase: 4, status: 'construcao', icone: '🛒', titulo: { pt: 'Anúncios de loja (Shop Ads)', es: 'Anuncios de tienda (Shop Ads)' }, resumo: { pt: 'Antes de criar, criar o anúncio das Lojas, por que só chega ao site e como ler os resultados.', es: 'Antes de crear, crear el anuncio de Tiendas, por qué solo llega al sitio y cómo leer los resultados.' } },
   { id: 'shop-ads-offsite', fase: 4, status: 'construcao', icone: '🧾', titulo: { pt: 'Shop Ads · finalização da compra fora da Meta', es: 'Shop Ads · pago fuera de Meta' }, resumo: { pt: 'A jornada até a compra no site, Pixel e catálogo, eventos duplicados, UTM e terceiros, e atualizar loja antiga.', es: 'El recorrido hasta la compra en el sitio, píxel y catálogo, eventos duplicados, UTM y terceros, y actualizar tienda antigua.' } },
@@ -45,7 +44,7 @@ window.MODULOS = [
   { id: 'mbe', fase: 5, status: 'construcao', icone: '🔌', titulo: { pt: 'Meta Business Extension (MBE)', es: 'Meta Business Extension (MBE)' }, resumo: { pt: 'Galeria de parceiros, a janela do MBE, opções da API de Conversões, problemas comuns e acesso de parceiros.', es: 'Galería de socios, la ventana del MBE, opciones de la API de Conversiones, problemas comunes y acceso de socios.' } },
   { id: 'integracoes', fase: 5, status: 'construcao', icone: '🧷', titulo: { pt: 'Integração com plataformas de terceiros', es: 'Integración con plataformas de terceros' }, resumo: { pt: 'Conectar a plataforma (WooCommerce), ler os erros do Diagnóstico, Pixel como fonte do catálogo e manter ou desconectar.', es: 'Conectar la plataforma (WooCommerce), leer los errores del Diagnóstico, píxel como fuente del catálogo y mantener o desconectar.' } },
   { id: 'shopify', fase: 5, status: 'construcao', icone: '🧩', titulo: { pt: 'Shopify e Meta', es: 'Shopify y Meta' }, resumo: { pt: 'Conectar a Shopify, quem gerencia o quê, sincronização e redirecionamento, e problemas comuns.', es: 'Conectar Shopify, quién gestiona qué, sincronización y redirección, y problemas comunes.' } },
-  { id: 'meta-one', extra: true, status: 'construcao', icone: '①', titulo: { pt: 'Meta One (assinatura)', es: 'Meta One (suscripción)' }, resumo: { pt: 'Os planos pessoais e de criador, onde gerenciar, cancelar no app certo, o selo e o suporte.', es: 'Los planes personales y de creador, dónde administrar, cancelar en la app correcta, la insignia y el soporte.' } },
+  { id: 'verified', extra: true, status: 'construcao', icone: '✅', titulo: { pt: 'Meta Verified e Meta One', es: 'Meta Verified y Meta One' }, resumo: { pt: 'A diferença entre os dois, os planos (pessoais, de criador e de empresa), assinar e verificar, onde gerenciar, nome do perfil, cancelar no app certo, revogada, o selo e o suporte.', es: 'La diferencia entre los dos, los planes (personales, de creador y de empresa), suscribirse y verificar, dónde administrar, nombre del perfil, cancelar en la app correcta, revocada, la insignia y el soporte.' } },   // 02/11/2026: um curso só (antes eram dois: Meta Verified na Foco e Meta One na Completa); só na Trilha Completa
   { id: 'pagamentos', extra: true, status: 'planejado', icone: '💳', titulo: { pt: 'Pagamentos e cobrança', es: 'Pagos y facturación' }, resumo: { pt: 'Formas de pagamento, saldo, limites de gastos e cobranças.', es: 'Métodos de pago, saldo, límites de gasto y cobros.' } },
   { id: 'acesso', extra: true, status: 'planejado', icone: '🔐', titulo: { pt: 'Acesso e login', es: 'Acceso e inicio de sesión' }, resumo: { pt: 'Senha, verificação em duas etapas e contas ou ativos comprometidos.', es: 'Contraseña, verificación en dos pasos y cuentas o activos comprometidos.' } },
   { id: 'restricoes', extra: true, status: 'planejado', icone: '🚧', titulo: { pt: 'Contas e restrições', es: 'Cuentas y restricciones' }, resumo: { pt: 'Contas desativadas ou restritas, limites de recursos e verificações.', es: 'Cuentas desactivadas o restringidas, límites de funciones y verificaciones.' } },
@@ -59,10 +58,10 @@ window.MODULOS = [
 window.TRILHAS = [
   { id: 'foco', icone: '🎯', nome: { pt: 'Trilha Foco', es: 'Ruta Foco' }, sub: { pt: 'Anúncios, medição e comércio', es: 'Anuncios, medición y comercio' },
     resumo: { pt: 'A ordem de estudo de quem atende anúncios, medição e comércio. Foca no que você resolve e, quando um caso é de outra área, mostra só uma linha de encaminhamento.', es: 'El orden de estudio de quien atiende anuncios, medición y comercio. Se centra en lo que tú resuelves y, cuando un caso es de otra área, muestra solo una línea de derivación.' },
-    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'apps-ios', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'lead-ads', 'regras', 'relatorios', 'segmentacao', 'entrega', 'verified', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
+    modulos: ['portfolio', 'portfolio-avancado', 'pixel', 'pixel-avancado', 'apps-ios', 'catalogo', 'microdados', 'anuncios', 'feed', 'instagram', 'lead-ads', 'regras', 'relatorios', 'segmentacao', 'entrega', 'commerce', 'shop-ads', 'shop-ads-offsite', 'mbe', 'integracoes', 'shopify', 'whatsapp'] },
   { id: 'completa', icone: '🧭', nome: { pt: 'Trilha Completa', es: 'Ruta Completa' }, sub: { pt: 'Tudo do Foco e mais', es: 'Todo el Foco y más' },
-    resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
-    modulos: null, extras: ['meta-one', 'pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
+    resumo: { pt: 'Para os demais departamentos: todos os módulos do Foco com a solução inteira de cada caso, mais os módulos extras (Meta Verified e Meta One, pagamentos, acesso e login, contas e restrições, políticas, orgânico).', es: 'Para los demás departamentos: todos los módulos del Foco con la solución completa de cada caso, más los módulos extras (Meta Verified y Meta One, pagos, acceso e inicio de sesión, cuentas y restricciones, políticas, orgánico).' },
+    modulos: null, extras: ['verified', 'pagamentos', 'acesso', 'restricoes', 'politicas', 'ig-organico'] }
 ];
 window.TRILHAS[1].modulos = window.TRILHAS[0].modulos;   // a Completa começa pelos mesmos módulos do Foco
 
@@ -2209,254 +2208,6 @@ window.AULAS = {
       ]
     }
   ],
-  /* Meta One (assinatura): Trilha Completa. Telas reais de 01/11/2026 no celular (perfil pessoal com Essencial e Instagram da loja com Max,
-     ofertas grátis do André, exploradas e canceladas a pedido dele) e Central de Ajuda (meta.com/help/subscriptions) lida no mesmo dia. */
-  'meta-one': [
-    {
-      id: '01', min: 7, status: 'pronta',
-      titulo: { pt: 'O que é o Meta One e os planos', es: 'Qué es Meta One y sus planes' },
-      antes: { pt: 'A Marina recebeu um convite: “Experimente o Meta One grátis”. Ela não sabe o que é.', es: 'Marina recibió una invitación para probar Meta One gratis. No sabe qué es.' },
-      fontes: [
-        { url: 'https://www.meta.com/help/subscriptions/960854640235758/', titulo: { pt: 'Sobre os planos do Meta One', es: 'Sobre los planes de Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/subscriptions/1887238708654023/', titulo: { pt: 'Sobre os planos Meta One Core', es: 'Sobre los planes Meta One Core' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/artificial-intelligence/1864308977565149/', titulo: { pt: 'Sobre os planos do Meta One Premium', es: 'Sobre los planes Meta One Premium' }, conferido: '01/11/2026' }
-      ],
-      gancho: { pt: '“Assinei. E agora, onde eu vejo e mudo isso?”', es: '“Me suscribí. ¿Y ahora dónde lo veo y lo cambio?”' },
-      objetivo: { pt: 'Explicar o Meta One, separar os planos pessoais dos de criador/empresa e saber por que o preço muda de conta para conta.', es: 'Explicar Meta One, separar los planes personales de los de creador/empresa y saber por qué el precio cambia de cuenta a cuenta.' },
-      entender: {
-        dialogo: [
-          ['marina', { pt: 'O que é esse Meta One? É o selo azul? 🤔', es: '¿Qué es Meta One? ¿Es la insignia azul? 🤔' }],
-          ['rafa', { pt: 'É uma assinatura paga que junta recursos extras no Instagram, no Facebook e no WhatsApp. Tem dois grupos de planos: os <b>pessoais</b> (Básico e Premium) e os de <b>criador ou empresa</b> (Essencial, Avançado, Expert e Max).', es: 'Es una suscripción paga que reúne recursos extra en Instagram, Facebook y WhatsApp. Hay dos grupos: los <b>personales</b> (Básico y Premium) y los de <b>creador o empresa</b> (Essencial, Avanzado, Expert y Max).' }],
-          ['rafa', { pt: 'Os pessoais trazem mais uso de IA e o pacote Instagram Plus, Facebook Plus e WhatsApp Plus (stories, mensagens, ícone do app). O selo de verificado só vem a partir do Essencial, e depois da verificação de identidade.', es: 'Los personales traen más uso de IA y el paquete Instagram Plus, Facebook Plus y WhatsApp Plus. La insignia de verificado solo viene desde Essencial, y después de verificar la identidad.' }],
-          ['marina', { pt: 'E quanto custa?', es: '¿Y cuánto cuesta?' }],
-          ['pixel', { pt: 'Depende da conta! Na conta profissional da loja, o Essencial saiu por R$59 e o Max por R$1.999. Num perfil pessoal, a aba “Criador de conteúdo” mostrou o Essencial por R$95 e o Max por R$3.199. Os pessoais: Básico R$32 e Premium R$97. O preço vale o que aparece na tela da cliente.', es: '¡Depende de la cuenta! En la cuenta profesional de la tienda el Essencial salió R$59; en un perfil personal, R$95. El precio que vale es el de la pantalla de la clienta.' }]
-        ],
-        pontos: [
-          { pt: '<b>Pessoais:</b> Básico (na Central de Ajuda, “Core”) e Premium: IA e os recursos Plus. Sem selo.', es: '<b>Personales:</b> Básico (“Core” en el Centro de ayuda) y Premium: IA y los recursos Plus. Sin insignia.' },
-          { pt: '<b>Criador/empresa:</b> Essencial, Avançado, Expert e Max: selo (com verificação), links, insights e suporte com pessoa.', es: '<b>Creador/empresa:</b> Essencial, Avanzado, Expert y Max: insignia (con verificación), enlaces, estadísticas y soporte con persona.' },
-          { pt: '<b>Preço:</b> muda com o tipo de conta e o país; não prometa valor sem ver a tela.', es: '<b>Precio:</b> cambia con el tipo de cuenta y el país; no prometas valores sin ver la pantalla.' },
-          { pt: '<b>Teste limitado:</b> nem toda conta vê o Meta One; quem não vê, não tem como assinar.', es: '<b>Prueba limitada:</b> no toda cuenta ve Meta One; quien no lo ve, no puede suscribirse.' }
-        ],
-        notas: { pt: 'Telas vistas em 01/11/2026 (Android, PT): Explorar planos no perfil pessoal (abas Pessoal e Criador de conteúdo) e na conta profissional da loja (abas Essencial a Max, “O preço pode incluir impostos”). Os planos e as regras vêm da Central de Ajuda do Meta One, lida no mesmo dia. As telas em espanhol não foram vistas (tradução nossa, a conferir).', es: 'Pantallas vistas el 01/11/2026 (Android, PT). Las pantallas en español no se vieron (traducción nuestra, por confirmar).' }
-      },
-      ferramenta: 'm1-planos',
-      praticar: {
-        texto: { pt: 'No simulador, você abre o Meta One da Marina e compara os planos pessoais com os de criador.', es: 'En el simulador, abres el Meta One de Marina y comparas los planes personales con los de creador.' },
-        tour: 'explorar-planos', pagina: 'meta-metaone.html?zerar=1'
-      },
-      atender: {
-        cena: { pt: 'Vi no Instagram de uma amiga que o Meta One Essencial custa R$95, mas na conta da minha loja aparece R$59. Estão me cobrando errado? 😕', es: 'Vi en el Instagram de una amiga que el Essencial cuesta R$95, pero en la cuenta de mi tienda aparece R$59. ¿Me cobran mal? 😕' },
-        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
-        opcoes: [
-          { certa: false, txt: { pt: '“É erro de exibição. O preço oficial é único: atualize o app e ele vai mostrar R$95 na sua conta também.”', es: '“Es un error de visualización. El precio oficial es único: actualiza la app y mostrará R$95 también.”' }, fb: { pt: 'O preço muda com o tipo de conta; atualizar não iguala.', es: 'El precio cambia con el tipo de cuenta.' } },
-          { certa: true, txt: { pt: '“O preço muda com o tipo de conta. Na conta da loja, vale o que aparece aí: R$59.”', es: '“El precio cambia con el tipo de cuenta. En la tienda, vale lo que aparece ahí.”' }, fb: { pt: 'Isso! Vale o preço da tela de quem assina.', es: '¡Eso! Vale el precio de la pantalla de quien se suscribe.' } },
-          { certa: false, txt: { pt: '“R$59 é só o primeiro mês. Do segundo em diante a Meta passa a cobrar os R$95 da tabela oficial.”', es: '“R$59 es solo el primer mes. Desde el segundo Meta cobra los R$95 de la tabla oficial.”' }, fb: { pt: 'Não há essa regra; a tela mostra o valor mensal.', es: 'No hay esa regla; la pantalla muestra el valor mensual.' } },
-          { certa: false, txt: { pt: '“Sua amiga assinou pelo computador, que é mais caro. Pelo celular o Meta One sai sempre mais barato.”', es: '“Tu amiga se suscribió por la computadora, que es más caro. Por el celular siempre sale más barato.”' }, fb: { pt: 'Meta One só se assina pelo celular.', es: 'Meta One solo se contrata por el celular.' } }
-        ]
-      },
-      cola: {
-        perguntas: [{ pt: 'A assinatura é num perfil pessoal ou na conta profissional da loja?', es: '¿La suscripción es en un perfil personal o en la cuenta profesional?' }, { pt: 'Qual plano aparece na tela (Básico, Premium, Essencial, Avançado, Expert, Max)?', es: '¿Qué plan aparece en la pantalla?' }],
-        conferir: [{ pt: 'Instagram › ☰ › Configurações e atividade › Assinaturas › Meta One.', es: 'Instagram › ☰ › Configuración y actividad › Suscripciones › Meta One.' }, { pt: 'Gerenciar assinatura › Explorar planos (o preço da conta da cliente).', es: 'Administrar suscripción › Explorar planes (el precio de la cuenta).' }],
-        frase: { pt: 'O Meta One tem planos pessoais (Básico e Premium) e de criador ou empresa (Essencial a Max). O preço muda com o tipo de conta: vale o que aparece na sua tela.', es: 'Meta One tiene planes personales (Básico y Premium) y de creador o empresa (Essencial a Max). El precio cambia con el tipo de cuenta: vale lo que aparece en tu pantalla.' },
-        passos: [{ pt: 'Abra o Instagram › ☰ › Configurações e atividade.', es: 'Abre Instagram › ☰ › Configuración y actividad.' }, { pt: 'Assinaturas › Meta One › Gerenciar assinatura › Explorar planos.', es: 'Suscripciones › Meta One › Administrar suscripción › Explorar planes.' }],
-        encaminhar: { pt: 'Se a cliente quer o Meta Verified para empresas pelo Business Suite, veja o módulo Meta Verified e Meta One. Dúvidas de cobrança na loja de apps seguem a loja.', es: 'Si la clienta quiere Meta Verified para empresas, mira el módulo Meta Verified y Meta One. Dudas de cobro en la tienda de apps siguen la tienda.' }
-      },
-      divergencias: [
-        { tema: { pt: 'Nome do plano pessoal', es: 'Nombre del plan personal' }, oficial: { pt: 'a Central de Ajuda chama de “Meta One Core”.', es: 'el Centro de ayuda lo llama “Meta One Core”.' }, tela: { pt: 'em 01/11/2026 a tela mostrou “Básico” (R$32,00/mês).', es: 'el 01/11/2026 la pantalla mostró “Básico”.' }, aula: { pt: 'usa “Básico” e cita o outro nome.', es: 'usa “Básico” y cita el otro nombre.' } },
-        { tema: { pt: 'Essencial em perfil pessoal', es: 'Essencial en perfil personal' }, oficial: { pt: 'a Central de Ajuda lista o Essencial entre os planos “para empresas e criadores de conteúdo”.', es: 'el Centro de ayuda lista Essencial entre los planes para empresas y creadores.' }, tela: { pt: 'um perfil pessoal (privado) recebeu o Meta One Essencial em oferta grátis, na aba “Criador de conteúdo”, por R$95.', es: 'un perfil personal recibió Essencial en oferta gratis, por R$95.' }, aula: { pt: 'ensina que o preço e o plano oferecido variam com a conta.', es: 'enseña que el precio y el plan ofrecido varían con la cuenta.' } }
-      ]
-    },
-    {
-      id: '02', min: 6, status: 'pronta',
-      titulo: { pt: 'Onde ver e gerenciar a assinatura', es: 'Dónde ver y administrar la suscripción' },
-      antes: { pt: 'A Marina assinou e quer conferir a data da cobrança pelo computador.', es: 'Marina se suscribió y quiere ver la fecha de cobro desde la computadora.' },
-      fontes: [
-        { url: 'https://www.meta.com/help/subscriptions/4515570262058351/', titulo: { pt: 'Como gerenciar sua assinatura do Meta One', es: 'Cómo administrar tu suscripción de Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/subscriptions/1275481294766689/', titulo: { pt: 'Como assinar o Meta One', es: 'Cómo suscribirse a Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/subscriptions/2534285893740819/', titulo: { pt: 'Cobrança e pagamentos de assinaturas da Meta', es: 'Facturación y pagos de suscripciones de Meta' }, conferido: '01/11/2026' }
-      ],
-      gancho: { pt: '“Quero cancelar antes de cobrar. Como faço?”', es: '“Quiero cancelar antes de que cobre. ¿Cómo hago?”' },
-      objetivo: { pt: 'Achar a assinatura no celular, entender “Perfis com assinatura” e por que a web só mostra a data.', es: 'Encontrar la suscripción en el celular, entender “Perfiles con suscripción” y por qué la web solo muestra la fecha.' },
-      entender: {
-        dialogo: [
-          ['marina', { pt: 'No computador, em Assinaturas, aparece o Meta One. Cliquei e mandou eu usar o celular! 😤', es: 'En la computadora, en Suscripciones, aparece Meta One. ¡Hice clic y me mandó usar el celular! 😤' }],
-          ['rafa', { pt: 'É assim: “Como sua assinatura foi comprada em um dispositivo móvel, ela só pode ser gerenciada nele.” Pela web você vê a data; mudar ou cancelar, só no app do celular.', es: 'Es así: como se compró en un dispositivo móvil, solo se administra en él. Por la web ves la fecha; cambiar o cancelar, solo en la app.' }],
-          ['rafa', { pt: 'No Instagram: perfil › ☰ › Configurações e atividade › Assinaturas › Meta One › Gerenciar assinatura. No Facebook: Menu › Configurações › Assinaturas › Meta One.', es: 'En Instagram: perfil › ☰ › Configuración y actividad › Suscripciones › Meta One › Administrar. En Facebook: Menú › Configuración › Suscripciones › Meta One.' }],
-          ['pixel', { pt: 'Em Gerenciar aparecem os “Perfis com assinatura” (a mesma assinatura vale no Facebook e no Instagram da mesma Central de Contas), o plano, a data de renovação, o valor e a forma de pagamento, que é a da loja de apps.', es: 'En Administrar aparecen los perfiles con suscripción, el plan, la fecha de renovación, el valor y el método de pago, que es el de la tienda de apps.' }]
-        ],
-        pontos: [
-          { pt: '<b>Web:</b> Central de Contas › Assinaturas mostra a data, mas não deixa mexer.', es: '<b>Web:</b> Centro de cuentas › Suscripciones muestra la fecha, pero no deja cambiar.' },
-          { pt: '<b>Celular:</b> Configurações › Assinaturas › Meta One › Gerenciar assinatura.', es: '<b>Celular:</b> Configuración › Suscripciones › Meta One › Administrar suscripción.' },
-          { pt: '<b>Pagamento:</b> é o da loja de apps (Google Play ou App Store), que também guarda o histórico.', es: '<b>Pago:</b> es el de la tienda de apps, que también guarda el historial.' }
-        ],
-        notas: { pt: 'Vistos em 01/11/2026: Central de Contas na web (Assinaturas › Meta One e o aviso “Acesse seu dispositivo móvel…”), Instagram e Facebook no Android (Assinaturas › Meta One, Gerenciar sua assinatura). “Forma de pagamento” abriu o Google Play.', es: 'Vistos el 01/11/2026: Centro de cuentas en la web, Instagram y Facebook en Android. Traducción al español nuestra (por confirmar).' }
-      },
-      ferramenta: 'm1-onde',
-      praticar: {
-        texto: { pt: 'No simulador, você começa pela web, vê o aviso e acha a assinatura no app do celular.', es: 'En el simulador, empiezas por la web, ves el aviso y encuentras la suscripción en la app del celular.' },
-        tour: 'achar-assinatura', pagina: 'meta-metaone.html?zerar=1'
-      },
-      atender: {
-        cena: { pt: 'Quero trocar o cartão do Meta One e não acho onde no Facebook do computador. 😩', es: 'Quiero cambiar la tarjeta de Meta One y no encuentro dónde en Facebook en la computadora. 😩' },
-        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
-        opcoes: [
-          { certa: false, txt: { pt: '“Em Configurações de pagamento do Gerenciador de Anúncios, troque o cartão principal e ele passa a valer.”', es: '“En la Configuración de pagos del Administrador de anuncios, cambia la tarjeta principal y pasa a valer.”' }, fb: { pt: 'Pagamento de anúncio é outra coisa.', es: 'El pago de anuncios es otra cosa.' } },
-          { certa: false, txt: { pt: '“Pela Central de Contas, em Meta Pay, troque o cartão salvo e a assinatura passa a usar o novo.”', es: '“En el Centro de cuentas, en Meta Pay, cambia la tarjeta guardada y la suscripción usa la nueva.”' }, fb: { pt: 'A cobrança é da loja de apps, não do Meta Pay.', es: 'El cobro es de la tienda de apps.' } },
-          { certa: true, txt: { pt: '“O cartão é o da loja de apps: Meta One › Gerenciar › Forma de pagamento.”', es: '“La tarjeta es la de la tienda: Meta One › Administrar › Método de pago.”' }, fb: { pt: 'Isso! A forma de pagamento é da loja.', es: '¡Eso! El método de pago es de la tienda.' } },
-          { certa: false, txt: { pt: '“Abra um chamado no suporte para eles trocarem o cartão: o assinante não consegue mudar sozinho.”', es: '“Abre un caso con soporte para que cambien la tarjeta: el suscriptor no puede solo.”' }, fb: { pt: 'A própria pessoa troca, na loja.', es: 'La propia persona la cambia, en la tienda.' } }
-        ]
-      },
-      cola: {
-        perguntas: [{ pt: 'Em qual app e em qual aparelho a assinatura foi feita?', es: '¿En qué app y aparato se hizo la suscripción?' }],
-        conferir: [{ pt: 'Central de Contas › Assinaturas (só mostra a data).', es: 'Centro de cuentas › Suscripciones (solo muestra la fecha).' }, { pt: 'App › Configurações › Assinaturas › Meta One › Gerenciar assinatura.', es: 'App › Configuración › Suscripciones › Meta One › Administrar suscripción.' }],
-        frase: { pt: 'O Meta One se gerencia no app do celular onde foi assinado. Pela web dá para ver a data, mas mudar plano, pagamento ou cancelar é no app.', es: 'Meta One se administra en la app del celular donde se contrató. Por la web se ve la fecha; cambiar o cancelar es en la app.' },
-        passos: [{ pt: 'Abra o app onde assinou (Instagram ou Facebook) no celular.', es: 'Abre la app donde te suscribiste, en el celular.' }, { pt: 'Configurações › Assinaturas › Meta One › Gerenciar assinatura.', es: 'Configuración › Suscripciones › Meta One › Administrar suscripción.' }],
-        encaminhar: { pt: 'Cobrança, histórico e reembolso pela loja de apps são com a Apple ou o Google, na conta usada para assinar.', es: 'Cobro, historial y reembolso por la tienda de apps son con Apple o Google.' }
-      }
-    },
-    {
-      id: '03', min: 7, status: 'pronta',
-      titulo: { pt: 'Cancelar o Meta One', es: 'Cancelar Meta One' },
-      antes: { pt: 'A Marina testou o Meta One da loja e não quer pagar a renovação.', es: 'Marina probó Meta One en la tienda y no quiere pagar la renovación.' },
-      fontes: [
-        { url: 'https://www.meta.com/help/subscriptions/1314531497228585/', titulo: { pt: 'Cancelar sua assinatura do Meta One', es: 'Cancelar tu suscripción de Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/subscriptions/2534285893740819/', titulo: { pt: 'Cobrança e pagamentos de assinaturas da Meta', es: 'Facturación y pagos de suscripciones de Meta' }, conferido: '01/11/2026' }
-      ],
-      gancho: { pt: '“Tentei cancelar pelo Facebook e não deixou!”', es: '“¡Intenté cancelar por Facebook y no me dejó!”' },
-      objetivo: { pt: 'Cancelar pelo caminho certo e explicar o que acontece depois: benefícios até o fim do ciclo, sem reembolso, e a promoção.', es: 'Cancelar por el camino correcto y explicar qué pasa después: beneficios hasta el final del ciclo, sin reembolso, y la promoción.' },
-      entender: {
-        dialogo: [
-          ['marina', { pt: 'Se eu cancelar hoje, perco tudo na hora? 😟', es: 'Si cancelo hoy, ¿pierdo todo al instante? 😟' }],
-          ['rafa', { pt: 'Não. A tela confirma: “Você ainda terá acesso a todos os seus benefícios até…” o fim do ciclo. Depois disso, não renova. E não há reembolso do período, a não ser que a lei exija.', es: 'No. La pantalla confirma que sigues con los beneficios hasta el final del ciclo. Después no renueva. Y no hay reembolso, salvo que la ley lo exija.' }],
-          ['rafa', { pt: 'Caminho: Meta One › (Gerenciar assinatura) › Cancelar assinatura. Na conta da loja aparece “Tem certeza?” com o que se perde; depois, “Por que você quer cancelar?”, com motivo opcional; e “Concluir o cancelamento”.', es: 'Camino: Meta One › (Administrar) › Cancelar suscripción. En la cuenta de la tienda aparece “¿Seguro?”; después el motivo (opcional) y “Finalizar cancelación”.' }],
-          ['pixel', { pt: 'Depois de cancelada, a tela troca “Renovação em” por “Expira em”. E na promoção grátis: se não cancelar antes do fim, ela renova cobrando. Sair do app ou apagar o app não cancela.', es: 'Cancelada, la pantalla cambia “Renovación” por “Vence”. En la promoción: si no cancelas antes del fin, renueva cobrando. Salir o borrar la app no cancela.' }]
-        ],
-        pontos: [
-          { pt: '<b>Benefícios:</b> continuam até o fim do ciclo (ou da promoção).', es: '<b>Beneficios:</b> siguen hasta el fin del ciclo (o de la promoción).' },
-          { pt: '<b>Sem reembolso</b> do período, salvo exigência legal.', es: '<b>Sin reembolso</b> del período, salvo exigencia legal.' },
-          { pt: '<b>Sinal de cancelada:</b> “Expira em” no lugar de “Renovação em”.', es: '<b>Señal de cancelada:</b> “Vence” en lugar de “Renovación”.' },
-          { pt: '<b>Pela loja:</b> cancele pelo menos 24 h antes do fim do período para não cobrar de novo.', es: '<b>Por la tienda:</b> cancela al menos 24 h antes del fin del período.' }
-        ],
-        notas: { pt: 'O cancelamento foi feito de verdade em 01/11/2026, a pedido do André, nas duas assinaturas de teste: Max na conta da loja (com a tela “Tem certeza?”) e Essencial no perfil pessoal (direto para o motivo). As duas passaram a mostrar “Expira em”.', es: 'La cancelación se hizo de verdad el 01/11/2026 en las dos suscripciones de prueba. Traducción al español nuestra (por confirmar).' }
-      },
-      ferramenta: 'm1-cancelar',
-      praticar: {
-        texto: { pt: 'No simulador, você cancela o Meta One Max da loja e confere o “Expira em”.', es: 'En el simulador, cancelas el Meta One Max de la tienda y revisas el “Vence”.' },
-        tour: 'cancelar-meta-one', pagina: 'meta-metaone.html?zerar=1'
-      },
-      atender: {
-        cena: { pt: 'Cancelei o Meta One ontem e o selo e os links continuam lá. Será que não cancelou? 🤨', es: 'Cancelé Meta One ayer y la insignia y los enlaces siguen ahí. ¿No se canceló? 🤨' },
-        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
-        opcoes: [
-          { certa: false, txt: { pt: '“Não cancelou: se ainda tem benefício, a assinatura segue ativa. Faça o cancelamento de novo pelo computador.”', es: '“No se canceló: si aún hay beneficios, sigue activa. Cancela de nuevo por la computadora.”' }, fb: { pt: 'Os benefícios seguem até o fim do ciclo, e pela web não se cancela.', es: 'Los beneficios siguen hasta el fin del ciclo.' } },
-          { certa: false, txt: { pt: '“Os benefícios só saem quando você apaga o app e entra de novo. Faça isso que a conta atualiza.”', es: '“Los beneficios salen cuando borras la app y vuelves a entrar. Hazlo y la cuenta se actualiza.”' }, fb: { pt: 'Apagar o app não muda nada na assinatura.', es: 'Borrar la app no cambia nada.' } },
-          { certa: false, txt: { pt: '“É sinal de reembolso: quando a Meta devolve o valor, os benefícios ficam liberados até a próxima fatura.”', es: '“Es señal de reembolso: cuando Meta devuelve el valor, los beneficios quedan hasta la próxima factura.”' }, fb: { pt: 'Cancelamento não tem reembolso do período.', es: 'La cancelación no tiene reembolso.' } },
-          { certa: true, txt: { pt: '“Está certo: ficam até o fim do ciclo. Em Gerenciar deve aparecer ‘Expira em’.”', es: '“Es correcto: siguen hasta el fin del ciclo. Debe aparecer ‘Vence’.”' }, fb: { pt: 'Isso! “Expira em” confirma o cancelamento.', es: '¡Eso! “Vence” confirma la cancelación.' } }
-        ]
-      },
-      cola: {
-        perguntas: [{ pt: 'Em Gerenciar aparece “Renovação em” ou “Expira em”?', es: '¿En Administrar aparece “Renovación” o “Vence”?' }, { pt: 'É uma promoção grátis? Até quando?', es: '¿Es una promoción gratis? ¿Hasta cuándo?' }],
-        conferir: [{ pt: 'Meta One › Detalhes da cobrança.', es: 'Meta One › Detalles del cobro.' }, { pt: 'Se assinou pela loja: Assinaturas da loja de apps.', es: 'Si se suscribió por la tienda: Suscripciones de la tienda.' }],
-        frase: { pt: 'Depois de cancelar, os benefícios continuam até o fim do ciclo e a tela passa a mostrar “Expira em”. Não há reembolso do período e não haverá nova cobrança.', es: 'Después de cancelar, los beneficios siguen hasta el fin del ciclo y la pantalla muestra “Vence”. No hay reembolso ni nuevo cobro.' },
-        passos: [{ pt: 'Meta One › Gerenciar assinatura › Cancelar assinatura.', es: 'Meta One › Administrar › Cancelar suscripción.' }, { pt: 'Continuar cancelamento › motivo (opcional) › Concluir o cancelamento.', es: 'Continuar › motivo (opcional) › Finalizar cancelación.' }, { pt: 'Confira “Expira em” em Detalhes da cobrança.', es: 'Revisa “Vence” en Detalles del cobro.' }],
-        encaminhar: { pt: 'Pedido de reembolso de cobrança feita pela loja de apps segue a política da Apple ou do Google.', es: 'El reembolso de un cobro hecho por la tienda de apps sigue la política de Apple o Google.' }
-      }
-    },
-    {
-      id: '04', min: 6, status: 'pronta',
-      titulo: { pt: '“Não consigo cancelar”: o app certo', es: '“No puedo cancelar”: la app correcta' },
-      antes: { pt: 'A Marina tentou cancelar a assinatura pessoal pelo Facebook.', es: 'Marina intentó cancelar la suscripción personal por Facebook.' },
-      fontes: [
-        { url: 'https://www.meta.com/help/subscriptions/805072418980556/', titulo: { pt: 'Como solucionar problemas com a assinatura do Meta One', es: 'Cómo solucionar problemas con la suscripción de Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/subscriptions/4515570262058351/', titulo: { pt: 'Como gerenciar sua assinatura do Meta One', es: 'Cómo administrar tu suscripción de Meta One' }, conferido: '01/11/2026' }
-      ],
-      gancho: { pt: '“E o selo? O que eu ganho de verdade com isso?”', es: '“¿Y la insignia? ¿Qué gano de verdad con esto?”' },
-      objetivo: { pt: 'Resolver “não consigo ver nem cancelar”: mesma conta, mesmo app, mesmo tipo de aparelho, e quando a loja de apps entra.', es: 'Resolver “no puedo ver ni cancelar”: misma cuenta, misma app, mismo tipo de aparato, y cuándo entra la tienda de apps.' },
-      entender: {
-        dialogo: [
-          ['marina', { pt: 'No Facebook, em Cancelar assinatura, apareceu um aviso e não cancelou! 😠', es: '¡En Facebook, en Cancelar suscripción, apareció un aviso y no canceló! 😠' }],
-          ['rafa', { pt: 'O aviso diz: “Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou” e mostra onde: “Abra o Instagram e entre nessa conta em um dispositivo Android”.', es: 'El aviso dice que solo se administra en la cuenta, la app o la plataforma donde se compró, y muestra dónde: “Abre Instagram en esa cuenta en un Android”.' }],
-          ['rafa', { pt: 'Três coisas precisam bater: o mesmo app (Instagram ou Facebook), o mesmo tipo de aparelho (Android ou iPhone) e a mesma conta da loja (Google ou Apple). Com conta diferente, a assinatura nem aparece.', es: 'Tres cosas deben coincidir: la misma app, el mismo tipo de aparato y la misma cuenta de la tienda. Con otra cuenta, la suscripción ni aparece.' }],
-          ['pixel', { pt: 'Se foi comprada pela loja, dá para cancelar também em Google Play › Pagamentos e assinaturas › Assinaturas (ou nos ajustes da Apple). Oferta grátis dada pela Meta pode nem aparecer na loja: aí é pelo app mesmo.', es: 'Si se compró por la tienda, también se cancela en Google Play › Pagos y suscripciones (o en Apple). Una oferta gratis de Meta puede no aparecer en la tienda: entonces es por la app.' }]
-        ],
-        pontos: [
-          { pt: '<b>Regra:</b> mesmo app, mesmo tipo de aparelho e mesma conta Google/Apple de quando assinou.', es: '<b>Regla:</b> misma app, mismo tipo de aparato y misma cuenta Google/Apple.' },
-          { pt: '<b>Aviso no outro app:</b> diz em qual app e aparelho gerenciar.', es: '<b>Aviso en la otra app:</b> dice en qué app y aparato administrar.' },
-          { pt: '<b>Loja:</b> se foi paga pela loja, cancela-se lá também; oferta da Meta pode não aparecer na loja.', es: '<b>Tienda:</b> si se pagó por la tienda, también se cancela ahí; una oferta de Meta puede no aparecer.' }
-        ],
-        notas: { pt: 'Vistos em 01/11/2026: o aviso do Facebook (“Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou… Abra o Instagram e entre nessa conta em um dispositivo Android…”) e o Google Play › Assinaturas mostrando “Você não tem assinaturas ativas” com a oferta grátis ativa.', es: 'Vistos el 01/11/2026: el aviso de Facebook y Google Play sin suscripciones activas. Traducción al español nuestra (por confirmar).' }
-      },
-      ferramenta: 'm1-cancelar',
-      praticar: {
-        texto: { pt: 'No simulador, você tenta pelo Facebook, confere o Google Play e cancela no app certo.', es: 'En el simulador, intentas por Facebook, revisas Google Play y cancelas en la app correcta.' },
-        tour: 'cancelar-no-app-certo', pagina: 'meta-metaone.html?zerar=1'
-      },
-      atender: {
-        cena: { pt: 'Assinei o Meta One no Android pelo Instagram. Troquei para iPhone e não acho a assinatura em lugar nenhum! 😱', es: 'Me suscribí en Android por Instagram. ¡Cambié a iPhone y no encuentro la suscripción en ningún lado! 😱' },
-        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
-        opcoes: [
-          { certa: true, txt: { pt: '“Ela fica presa ao Android e à conta Google: gerencie num Android, no Instagram.”', es: '“Queda atada a Android y a la cuenta Google: adminístrala en un Android.”' }, fb: { pt: 'Isso! Mesma plataforma e mesma conta da loja.', es: '¡Eso! Misma plataforma y misma cuenta de la tienda.' } },
-          { certa: false, txt: { pt: '“Trocar de celular cancela a assinatura sozinho. Pode ficar tranquila que não vem mais nenhuma cobrança.”', es: '“Cambiar de celular cancela la suscripción sola. Tranquila, no vendrá más ningún cobro.”' }, fb: { pt: 'Trocar de aparelho não cancela.', es: 'Cambiar de aparato no cancela.' } },
-          { certa: false, txt: { pt: '“No iPhone, entre no Facebook em vez do Instagram: lá a assinatura aparece para qualquer aparelho.”', es: '“En iPhone, entra a Facebook en vez de Instagram: ahí aparece para cualquier aparato.”' }, fb: { pt: 'O aviso manda voltar ao app e ao aparelho da compra.', es: 'El aviso manda volver a la app y el aparato de la compra.' } },
-          { certa: false, txt: { pt: '“Assine de novo no iPhone: a assinatura antiga do Android se cancela sozinha na mesma hora.”', es: '“Suscríbete de nuevo en iPhone: la antigua de Android se cancela sola al instante.”' }, fb: { pt: 'Assinar de novo pode gerar duas cobranças.', es: 'Suscribirse de nuevo puede generar dos cobros.' } }
-        ]
-      },
-      cola: {
-        perguntas: [{ pt: 'Em que app, aparelho (Android/iPhone) e conta Google/Apple foi a assinatura?', es: '¿En qué app, aparato y cuenta Google/Apple fue la suscripción?' }, { pt: 'O que diz o aviso ao tentar cancelar?', es: '¿Qué dice el aviso al intentar cancelar?' }],
-        conferir: [{ pt: 'O aviso “Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou”.', es: 'El aviso de que solo se administra donde se compró.' }, { pt: 'Google Play › Pagamentos e assinaturas › Assinaturas (ou Apple › Assinaturas).', es: 'Google Play › Pagos y suscripciones › Suscripciones (o Apple).' }],
-        frase: { pt: 'O Meta One só se gerencia no mesmo app, no mesmo tipo de aparelho e na mesma conta Google ou Apple em que foi assinado. Se foi pela loja, também dá para cancelar lá.', es: 'Meta One solo se administra en la misma app, aparato y cuenta Google o Apple donde se contrató. Si fue por la tienda, también se cancela ahí.' },
-        passos: [{ pt: 'Abra o app indicado no aviso, no aparelho certo.', es: 'Abre la app indicada en el aviso, en el aparato correcto.' }, { pt: 'Meta One › Gerenciar › Cancelar assinatura.', es: 'Meta One › Administrar › Cancelar suscripción.' }, { pt: 'Ou: loja de apps › Assinaturas › Meta One › Cancelar.', es: 'O: tienda de apps › Suscripciones › Meta One › Cancelar.' }],
-        encaminhar: { pt: 'Se a pessoa não tem mais acesso à conta Google ou Apple da compra, o cancelamento depende de recuperar essa conta na Apple ou no Google.', es: 'Si la persona ya no tiene acceso a la cuenta Google o Apple de la compra, depende de recuperarla con Apple o Google.' }
-      }
-    },
-    {
-      id: '05', min: 6, status: 'pronta',
-      titulo: { pt: 'Selo, benefícios e suporte', es: 'Insignia, beneficios y soporte' },
-      antes: { pt: 'A Marina quer saber o que muda na prática com o Meta One.', es: 'Marina quiere saber qué cambia en la práctica con Meta One.' },
-      fontes: [
-        { url: 'https://www.meta.com/help/subscriptions/1278609104422515/', titulo: { pt: 'Sobre o selo de verificado para assinantes do Meta One', es: 'Sobre la insignia de verificado para suscriptores de Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.meta.com/help/subscriptions/2290591971482409/', titulo: { pt: 'Como obter suporte com o Meta One', es: 'Cómo obtener soporte con Meta One' }, conferido: '01/11/2026' },
-        { url: 'https://www.facebook.com/help/1437311881513288', titulo: { pt: 'Sobre o Facebook Plus', es: 'Sobre Facebook Plus' }, conferido: '01/11/2026' }
-      ],
-      objetivo: { pt: 'Explicar o selo (só com verificação), os recursos Plus, os benefícios de criador e como chegar ao suporte com uma pessoa.', es: 'Explicar la insignia (solo con verificación), los recursos Plus, los beneficios de creador y cómo llegar al soporte con una persona.' },
-      entender: {
-        dialogo: [
-          ['marina', { pt: 'Assinei o Essencial e o selo não apareceu! 😕', es: '¡Me suscribí al Essencial y la insignia no apareció! 😕' }],
-          ['rafa', { pt: 'O selo e a proteção contra falsificação só ligam depois da verificação de identidade. A Meta tenta verificar pela atividade; se não der, aparece “Faça a verificação”. Sem passar na verificação, esses dois não ligam.', es: 'La insignia y la protección solo se activan tras verificar la identidad. Si no se puede automáticamente, aparece “Verificación”. Sin pasarla, no se activan.' }],
-          ['rafa', { pt: 'O resto já vem: Instagram Plus, Facebook Plus e WhatsApp Plus (prévia de stories, quem reviu, ícone do app, figurinhas, fixar mais conversas) e mais uso de IA. Nos planos de criador ainda tem página de links, links em posts e reels, insights e acesso compartilhado.', es: 'Lo demás ya viene: los Plus (historias, ícono, stickers) y más IA. En los de creador: página de enlaces, enlaces en publicaciones y reels, estadísticas y acceso compartido.' }],
-          ['pixel', { pt: 'Suporte: em Obter ajuda, o Assistente de suporte da Meta AI; para falar com uma pessoa, peça “Conversar com alguém do suporte”. Casos com pessoa por mês: Avançado 1, Expert 5, Max ilimitado.', es: 'Soporte: en Obtener ayuda, el asistente de Meta AI; para hablar con una persona, pide “Hablar con alguien de soporte”. Casos por mes: Avanzado 1, Expert 5, Max ilimitado.' }]
-        ],
-        pontos: [
-          { pt: '<b>Selo e proteção:</b> só depois da verificação; não dá para pular. Cancelar tira o selo.', es: '<b>Insignia y protección:</b> solo tras la verificación; no se puede saltar. Cancelar la quita.' },
-          { pt: '<b>Plus:</b> recursos de uso pessoal; não mexem em anúncios.', es: '<b>Plus:</b> recursos de uso personal; no cambian anuncios.' },
-          { pt: '<b>Suporte com pessoa:</b> Avançado 1, Expert 5, Max ilimitado por mês.', es: '<b>Soporte con persona:</b> Avanzado 1, Expert 5, Max ilimitado por mes.' }
-        ],
-        notas: { pt: 'Vistos em 01/11/2026: a lista de benefícios do Essencial (perfil pessoal) e do Max (conta da loja), os cartões “Configure seu Meta Business Agent” e “Faça a verificação”, e Obter ajuda › Ajuda e suporte. A tela de verificação não foi aberta (o André não quis verificar a identidade).', es: 'Vistos el 01/11/2026. La pantalla de verificación no se abrió. Traducción al español nuestra (por confirmar).' }
-      },
-      ferramenta: 'm1-beneficios',
-      praticar: {
-        texto: { pt: 'No simulador, você vê o que o selo exige, abre o Instagram Plus e chega ao assistente de suporte.', es: 'En el simulador, ves lo que exige la insignia, abres Instagram Plus y llegas al asistente de soporte.' },
-        tour: 'beneficios-suporte', pagina: 'meta-metaone.html?zerar=1'
-      },
-      atender: {
-        cena: { pt: 'Assinei o Meta One Essencial há uma semana e o selo azul ainda não apareceu no meu Instagram. Paguei por nada? 😤', es: 'Me suscribí al Essencial hace una semana y la insignia todavía no aparece. ¿Pagué por nada? 😤' },
-        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
-        opcoes: [
-          { certa: false, txt: { pt: '“O selo leva 30 dias para aparecer em qualquer plano. Espere o próximo mês que ele entra sozinho.”', es: '“La insignia tarda 30 días en aparecer en cualquier plan. Espera al próximo mes que entra sola.”' }, fb: { pt: 'Não há prazo fixo; depende da verificação.', es: 'No hay plazo fijo; depende de la verificación.' } },
-          { certa: true, txt: { pt: '“O selo só liga depois de verificar a identidade. Veja se pede a verificação.”', es: '“La insignia solo se activa tras verificar la identidad. Mira si la pide.”' }, fb: { pt: 'Isso! Sem verificação, sem selo.', es: '¡Eso! Sin verificación, sin insignia.' } },
-          { certa: false, txt: { pt: '“O Essencial não dá direito a selo, só o Max. Troque de plano em Explorar planos para conseguir.”', es: '“Essencial no da insignia, solo Max. Cambia de plan en Explorar planes para conseguirla.”' }, fb: { pt: 'O Essencial inclui o selo, com verificação.', es: 'Essencial incluye la insignia, con verificación.' } },
-          { certa: false, txt: { pt: '“O selo só aparece em contas com mais de mil seguidores. Cresça a conta que ele aparece.”', es: '“La insignia solo aparece en cuentas con más de mil seguidores. Haz crecer la cuenta.”' }, fb: { pt: 'Não há esse mínimo de seguidores.', es: 'No hay ese mínimo.' } }
-        ]
-      },
-      cola: {
-        perguntas: [{ pt: 'Aparece “Faça a verificação” na tela do Meta One?', es: '¿Aparece “Verificación” en la pantalla de Meta One?' }, { pt: 'Qual plano a cliente tem (para saber quantos casos com pessoa ela tem)?', es: '¿Qué plan tiene la clienta?' }],
-        conferir: [{ pt: 'Meta One › Seus benefícios › Mostre seu perfil autêntico.', es: 'Meta One › Tus beneficios › Muestra tu perfil auténtico.' }, { pt: 'Obter ajuda › Assistente de suporte da Meta AI.', es: 'Obtener ayuda › Asistente de soporte de Meta AI.' }],
-        frase: { pt: 'O selo e a proteção contra falsificação só ligam depois da verificação de identidade. Os outros benefícios já valem desde a assinatura.', es: 'La insignia y la protección solo se activan tras verificar la identidad. Los demás beneficios valen desde la suscripción.' },
-        passos: [{ pt: 'Meta One › “Faça a verificação” › siga os passos.', es: 'Meta One › “Verificación” › sigue los pasos.' }, { pt: 'Para ajuda: Obter ajuda › Assistente de suporte da Meta AI › Conversar com alguém do suporte.', es: 'Para ayuda: Obtener ayuda › Asistente › Hablar con alguien de soporte.' }],
-        encaminhar: { pt: 'Verificação recusada ou documento não aceito: a decisão é da própria Meta, na tela de verificação; oriente a seguir as instruções dela e o suporte do plano.', es: 'Verificación rechazada: la decisión es de Meta; orienta a seguir sus instrucciones y el soporte del plan.' }
-      }
-    }
-  ],
   regras: [
     {
       id: '01', min: 6, status: 'pronta',
@@ -4035,50 +3786,59 @@ window.AULAS = {
         }
       },
       {
-        id: '02', min: 8, status: 'pronta',
-        titulo: L('Os planos da Meta One', 'Los planes de Meta One'),
-        antes: L('A Marina quer pôr links nos reels e quer saber qual plano tem isso.', 'Marina quiere poner enlaces en los reels y quiere saber qué plan lo tiene.'),
-        fontes: [F_PLANOS, F_NEWS],
+        id: '02', min: 7, status: 'pronta',
+        titulo: { pt: 'Os planos: pessoais, de criador e de empresa', es: 'Los planes: personales, de creador y de empresa' },
+        antes: { pt: 'A Marina recebeu um convite: “Experimente o Meta One grátis”. Ela não sabe o que é.', es: 'Marina recibió una invitación para probar Meta One gratis. No sabe qué es.' },
+        fontes: [F_PLANOS, 
+          { url: 'https://www.meta.com/help/subscriptions/960854640235758/', titulo: { pt: 'Sobre os planos do Meta One', es: 'Sobre los planes de Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/subscriptions/1887238708654023/', titulo: { pt: 'Sobre os planos Meta One Core', es: 'Sobre los planes Meta One Core' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/artificial-intelligence/1864308977565149/', titulo: { pt: 'Sobre os planos do Meta One Premium', es: 'Sobre los planes Meta One Premium' }, conferido: '01/11/2026' }
+        ],
         gancho: L('Plano escolhido. Agora: onde se assina e o que acontece depois?', 'Plan elegido. Ahora: ¿dónde se suscribe y qué pasa después?'),
-        objetivo: L('Comparar os quatro planos da Meta One para empresas e escolher pelo que a empresa precisa.', 'Comparar los cuatro planes de Meta One para empresas y elegir según lo que la empresa necesita.'),
+        objetivo: { pt: 'Explicar o Meta One, separar os planos pessoais dos de criador/empresa e saber por que o preço muda de conta para conta.', es: 'Explicar Meta One, separar los planes personales de los de creador/empresa y saber por qué el precio cambia de cuenta a cuenta.' },
         entender: {
           dialogo: [
-            ['marina', L('Essencial, Avançado, Expert, Máximo… qual é a diferença? 😵', 'Essential, Advanced, Expert, Max… ¿cuál es la diferencia? 😵')],
-            ['rafa', L('Todos dão direito a pedir o selo. O Essencial é o de entrada: página de links no Instagram e, no WhatsApp, 1 canal verificado e respostas de IA.', 'Todos permiten pedir la insignia. Essential es el de entrada: página de enlaces en Instagram y, en WhatsApp, 1 canal verificado y respuestas de IA.')],
-            ['rafa', L('Links em reels e em posts começam no Avançado, que também traz insights e acesso para a equipe. Expert e Máximo aumentam limites e casos de suporte.', 'Los enlaces en reels y publicaciones empiezan en Advanced, que también trae estadísticas y acceso para el equipo. Expert y Max aumentan límites y casos de soporte.')],
-            ['marina', L('E o preço?', '¿Y el precio?')],
-            ['pixel', L('No Brasil, a partir de R$ 59, 199, 599 e 1.999 por mês. O preço é por Página, perfil do Instagram ou número do WhatsApp. E a Meta decide quais planos aparecem para cada conta.', 'En Brasil, desde R$ 59, 199, 599 y 1.999 al mes. El precio es por página, perfil de Instagram o número de WhatsApp. Y Meta decide qué planes aparecen para cada cuenta.')]
+            ['marina', { pt: 'O que é esse Meta One? É o selo azul? 🤔', es: '¿Qué es Meta One? ¿Es la insignia azul? 🤔' }],
+            ['rafa', { pt: 'É uma assinatura paga que junta recursos extras no Instagram, no Facebook e no WhatsApp. Tem dois grupos de planos: os <b>pessoais</b> (Básico e Premium) e os de <b>criador ou empresa</b> (Essencial, Avançado, Expert e Max).', es: 'Es una suscripción paga que reúne recursos extra en Instagram, Facebook y WhatsApp. Hay dos grupos: los <b>personales</b> (Básico y Premium) y los de <b>creador o empresa</b> (Essencial, Avanzado, Expert y Max).' }],
+            ['rafa', { pt: 'Os pessoais trazem mais uso de IA e o pacote Instagram Plus, Facebook Plus e WhatsApp Plus (stories, mensagens, ícone do app). O selo de verificado só vem a partir do Essencial, e depois da verificação de identidade.', es: 'Los personales traen más uso de IA y el paquete Instagram Plus, Facebook Plus y WhatsApp Plus. La insignia de verificado solo viene desde Essencial, y después de verificar la identidad.' }],
+            ['marina', { pt: 'E quanto custa?', es: '¿Y cuánto cuesta?' }],
+            ['pixel', { pt: 'Depende da conta! Na conta profissional da loja, o Essencial saiu por R$59 e o Max por R$1.999. Num perfil pessoal, a aba “Criador de conteúdo” mostrou o Essencial por R$95 e o Max por R$3.199. Os pessoais: Básico R$32 e Premium R$97. O preço vale o que aparece na tela da cliente.', es: '¡Depende de la cuenta! En la cuenta profesional de la tienda el Essencial salió R$59; en un perfil personal, R$95. El precio que vale es el de la pantalla de la clienta.' }]
           ],
           pontos: [
-            L('<b>Todos:</b> direito a pedir o selo (exige verificação).', '<b>Todos:</b> derecho a pedir la insignia (exige verificación).'),
-            L('<b>Links em reels e posts:</b> a partir do Avançado.', '<b>Enlaces en reels y publicaciones:</b> desde Advanced.'),
-            L('<b>Preço por ativo</b> (Página, Instagram ou WhatsApp); varia por região e conta.', '<b>Precio por activo</b> (página, Instagram o WhatsApp); varía según la región y la cuenta.')
+            L('<b>Empresas (meta.com):</b> o preço é por ativo (Página, Instagram ou WhatsApp); links em reels e posts a partir do Avançado. Todos os planos dão direito a pedir o selo.', '<b>Empresas (meta.com):</b> el precio es por activo (Página, Instagram o WhatsApp); enlaces en reels y publicaciones desde Advanced. Todos los planes dan derecho a pedir la insignia.'),
+            { pt: '<b>Pessoais:</b> Básico (na Central de Ajuda, “Core”) e Premium: IA e os recursos Plus. Sem selo.', es: '<b>Personales:</b> Básico (“Core” en el Centro de ayuda) y Premium: IA y los recursos Plus. Sin insignia.' },
+            { pt: '<b>Criador/empresa:</b> Essencial, Avançado, Expert e Max: selo (com verificação), links, insights e suporte com pessoa.', es: '<b>Creador/empresa:</b> Essencial, Avanzado, Expert y Max: insignia (con verificación), enlaces, estadísticas y soporte con persona.' },
+            { pt: '<b>Preço:</b> muda com o tipo de conta e o país; não prometa valor sem ver a tela.', es: '<b>Precio:</b> cambia con el tipo de cuenta y el país; no prometas valores sin ver la pantalla.' },
+            { pt: '<b>Teste limitado:</b> nem toda conta vê o Meta One; quem não vê, não tem como assinar.', es: '<b>Prueba limitada:</b> no toda cuenta ve Meta One; quien no lo ve, no puede suscribirse.' }
           ],
-          notas: NOTA
+          notas: { pt: 'Telas vistas em 01/11/2026 (Android, PT): Explorar planos no perfil pessoal (abas Pessoal e Criador de conteúdo) e na conta profissional da loja (abas Essencial a Max, “O preço pode incluir impostos”). Os planos e as regras vêm da Central de Ajuda do Meta One, lida no mesmo dia. As telas em espanhol não foram vistas (tradução nossa, a conferir).', es: 'Pantallas vistas el 01/11/2026 (Android, PT). Las pantallas en español no se vieron (traducción nuestra, por confirmar).' }
         },
-        ferramenta: 'planos-verified',
+        ferramenta: 'm1-planos',
         praticar: {
-          texto: L('No simulador, o Pixel te guia pelos planos da Meta One e você escolhe o certo para a Marina.', 'En el simulador, el Pixel te guía por los planes de Meta One y eliges el correcto para Marina.'),
-          tour: 'escolher-plano', pagina: 'meta-verified.html?planos=1'
+          texto: { pt: 'No simulador, você abre o Meta One da Marina e compara os planos pessoais com os de criador.', es: 'En el simulador, abres el Meta One de Marina y comparas los planes personales con los de creador.' },
+          tour: 'explorar-planos', pagina: 'meta-metaone.html?zerar=1'
         },
         atender: {
-          cena: L('Quero o plano mais caro, deve ser o melhor. Só preciso de links nos reels. Qual eu pego? 🤷', 'Quiero el plan más caro, debe ser el mejor. Solo necesito enlaces en los reels. ¿Cuál tomo? 🤷'),
-          pergunta: PERG,
+          cena: { pt: 'Vi no Instagram de uma amiga que o Meta One Essencial custa R$95, mas na conta da minha loja aparece R$59. Estão me cobrando errado? 😕', es: 'Vi en el Instagram de una amiga que el Essencial cuesta R$95, pero en la cuenta de mi tienda aparece R$59. ¿Me cobran mal? 😕' },
+          pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
           opcoes: [
-            op(true, 'Links em reels começam no Avançado. Se é só isso, ele basta; o mais caro sobra.', 'Los enlaces en reels empiezan en Advanced. Si es solo eso, alcanza; el más caro sobra.', 'Isso! Escolheu pela necessidade, não pelo preço.', '¡Eso! Elegiste por la necesidad, no por el precio.'),
-            op(false, 'Pegue o Máximo: só ele tem selo e links, os outros planos dão só suporte por email.', 'Toma Max: solo él tiene insignia y enlaces, los otros planes dan solo soporte por correo.', 'Todos os planos dão direito ao selo; links começam no Avançado.', 'Todos los planes dan derecho a la insignia; los enlaces empiezan en Advanced.'),
-            op(false, 'O Essencial já faz tudo; os planos maiores só deixam o selo azul maior no perfil.', 'Essential ya hace todo; los planes mayores solo agrandan la insignia azul en el perfil.', 'Links em reels não estão no Essencial.', 'Los enlaces en reels no están en Essential.'),
-            op(false, 'Deixa comigo: assino o Máximo para você, que é o que tem a aprovação mais rápida.', 'Déjamelo a mí: te suscribo a Max, que es el que tiene la aprobación más rápida.', 'A escolha é da cliente, e plano não acelera aprovação.', 'La elección es de la clienta, y el plan no acelera la aprobación.')
-          ],
-          mais: []
+            { certa: false, txt: { pt: '“É erro de exibição. O preço oficial é único: atualize o app e ele vai mostrar R$95 na sua conta também.”', es: '“Es un error de visualización. El precio oficial es único: actualiza la app y mostrará R$95 también.”' }, fb: { pt: 'O preço muda com o tipo de conta; atualizar não iguala.', es: 'El precio cambia con el tipo de cuenta.' } },
+            { certa: true, txt: { pt: '“O preço muda com o tipo de conta. Na conta da loja, vale o que aparece aí: R$59.”', es: '“El precio cambia con el tipo de cuenta. En la tienda, vale lo que aparece ahí.”' }, fb: { pt: 'Isso! Vale o preço da tela de quem assina.', es: '¡Eso! Vale el precio de la pantalla de quien se suscribe.' } },
+            { certa: false, txt: { pt: '“R$59 é só o primeiro mês. Do segundo em diante a Meta passa a cobrar os R$95 da tabela oficial.”', es: '“R$59 es solo el primer mes. Desde el segundo Meta cobra los R$95 de la tabla oficial.”' }, fb: { pt: 'Não há essa regra; a tela mostra o valor mensal.', es: 'No hay esa regla; la pantalla muestra el valor mensual.' } },
+            { certa: false, txt: { pt: '“Sua amiga assinou pelo computador, que é mais caro. Pelo celular o Meta One sai sempre mais barato.”', es: '“Tu amiga se suscribió por la computadora, que es más caro. Por el celular siempre sale más barato.”' }, fb: { pt: 'Meta One só se assina pelo celular.', es: 'Meta One solo se contrata por el celular.' } }
+          ]
         },
         cola: {
-          perguntas: [L('O que a empresa mais precisa?', '¿Qué necesita más la empresa?'), L('Quais planos aparecem na conta dela?', '¿Qué planes le aparecen en su cuenta?')],
-          conferir: [FERR],
-          frase: L('Todos os planos da Meta One dão direito a pedir o selo; links em reels e posts começam no Avançado. Vamos ver quais planos aparecem na sua conta.', 'Todos los planes de Meta One permiten pedir la insignia; los enlaces en reels y publicaciones empiezan en Advanced. Veamos qué planes aparecen en tu cuenta.'),
-          passos: [L('Pergunte a necessidade.', 'Pregunta la necesidad.'), L('Mostre o plano mais simples que atende.', 'Muestra el plan más simple que cumple.')],
-          encaminhar: L('Preços variam por região e conta: confirme na tela do cliente, sem prometer valores.', 'Los precios varían según la región y la cuenta: confirma en la pantalla del cliente, sin prometer valores.')
-        }
+          perguntas: [{ pt: 'A assinatura é num perfil pessoal ou na conta profissional da loja?', es: '¿La suscripción es en un perfil personal o en la cuenta profesional?' }, { pt: 'Qual plano aparece na tela (Básico, Premium, Essencial, Avançado, Expert, Max)?', es: '¿Qué plan aparece en la pantalla?' }],
+          conferir: [{ pt: 'Instagram › ☰ › Configurações e atividade › Assinaturas › Meta One.', es: 'Instagram › ☰ › Configuración y actividad › Suscripciones › Meta One.' }, { pt: 'Gerenciar assinatura › Explorar planos (o preço da conta da cliente).', es: 'Administrar suscripción › Explorar planes (el precio de la cuenta).' }],
+          frase: { pt: 'O Meta One tem planos pessoais (Básico e Premium) e de criador ou empresa (Essencial a Max). O preço muda com o tipo de conta: vale o que aparece na sua tela.', es: 'Meta One tiene planes personales (Básico y Premium) y de creador o empresa (Essencial a Max). El precio cambia con el tipo de cuenta: vale lo que aparece en tu pantalla.' },
+          passos: [{ pt: 'Abra o Instagram › ☰ › Configurações e atividade.', es: 'Abre Instagram › ☰ › Configuración y actividad.' }, { pt: 'Assinaturas › Meta One › Gerenciar assinatura › Explorar planos.', es: 'Suscripciones › Meta One › Administrar suscripción › Explorar planes.' }],
+          encaminhar: { pt: 'Se a cliente quer o Meta Verified para empresas pelo Business Suite, veja o módulo Meta Verified e Meta One. Dúvidas de cobrança na loja de apps seguem a loja.', es: 'Si la clienta quiere Meta Verified para empresas, mira el módulo Meta Verified y Meta One. Dudas de cobro en la tienda de apps siguen la tienda.' }
+        },
+        divergencias: [
+          { tema: { pt: 'Nome do plano pessoal', es: 'Nombre del plan personal' }, oficial: { pt: 'a Central de Ajuda chama de “Meta One Core”.', es: 'el Centro de ayuda lo llama “Meta One Core”.' }, tela: { pt: 'em 01/11/2026 a tela mostrou “Básico” (R$32,00/mês).', es: 'el 01/11/2026 la pantalla mostró “Básico”.' }, aula: { pt: 'usa “Básico” e cita o outro nome.', es: 'usa “Básico” y cita el otro nombre.' } },
+          { tema: { pt: 'Essencial em perfil pessoal', es: 'Essencial en perfil personal' }, oficial: { pt: 'a Central de Ajuda lista o Essencial entre os planos “para empresas e criadores de conteúdo”.', es: 'el Centro de ayuda lista Essencial entre los planes para empresas y creadores.' }, tela: { pt: 'um perfil pessoal (privado) recebeu o Meta One Essencial em oferta grátis, na aba “Criador de conteúdo”, por R$95.', es: 'un perfil personal recibió Essencial en oferta gratis, por R$95.' }, aula: { pt: 'ensina que o preço e o plano oferecido variam com a conta.', es: 'enseña que el precio y el plan ofrecido varían con la cuenta.' } }
+        ]
       },
       {
         id: '03', min: 8, status: 'pronta',
@@ -4130,7 +3890,7 @@ window.AULAS = {
         titulo: L('“O botão Começar não funciona”', '“El botón Empezar no funciona”'),
         antes: L('A Marina abriu o Meta Verified e o botão Começar está apagado.', 'Marina abrió Meta Verified y el botón Empezar está apagado.'),
         fontes: [F_SELO, F_MV],
-        gancho: L('Verificada! Agora: dá para mudar o nome do perfil?', '¡Verificada! Ahora: ¿se puede cambiar el nombre del perfil?'),
+        gancho: { pt: '“Assinei. E agora, onde eu vejo e mudo isso?”', es: '“Me suscribí. ¿Y ahora dónde lo veo y lo cambio?”' },
         objetivo: L('Ler a mensagem da própria tela e orientar quem tem permissão para assinar.', 'Leer el mensaje de la propia pantalla y orientar a quien tiene permiso para suscribirse.'),
         entender: {
           dialogo: [
@@ -4171,7 +3931,55 @@ window.AULAS = {
         }
       },
       {
-        id: '05', min: 7, status: 'pronta',
+        id: '05', min: 6, status: 'pronta',
+        titulo: { pt: 'Onde ver e gerenciar a assinatura', es: 'Dónde ver y administrar la suscripción' },
+        antes: { pt: 'A Marina assinou e quer conferir a data da cobrança pelo computador.', es: 'Marina se suscribió y quiere ver la fecha de cobro desde la computadora.' },
+        fontes: [
+          { url: 'https://www.meta.com/help/subscriptions/4515570262058351/', titulo: { pt: 'Como gerenciar sua assinatura do Meta One', es: 'Cómo administrar tu suscripción de Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/subscriptions/1275481294766689/', titulo: { pt: 'Como assinar o Meta One', es: 'Cómo suscribirse a Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/subscriptions/2534285893740819/', titulo: { pt: 'Cobrança e pagamentos de assinaturas da Meta', es: 'Facturación y pagos de suscripciones de Meta' }, conferido: '01/11/2026' }
+        ],
+        gancho: L('Verificada! Agora: dá para mudar o nome do perfil?', '¡Verificada! Ahora: ¿se puede cambiar el nombre del perfil?'),
+        objetivo: { pt: 'Achar a assinatura no celular, entender “Perfis com assinatura” e por que a web só mostra a data.', es: 'Encontrar la suscripción en el celular, entender “Perfiles con suscripción” y por qué la web solo muestra la fecha.' },
+        entender: {
+          dialogo: [
+            ['marina', { pt: 'No computador, em Assinaturas, aparece o Meta One. Cliquei e mandou eu usar o celular! 😤', es: 'En la computadora, en Suscripciones, aparece Meta One. ¡Hice clic y me mandó usar el celular! 😤' }],
+            ['rafa', { pt: 'É assim: “Como sua assinatura foi comprada em um dispositivo móvel, ela só pode ser gerenciada nele.” Pela web você vê a data; mudar ou cancelar, só no app do celular.', es: 'Es así: como se compró en un dispositivo móvil, solo se administra en él. Por la web ves la fecha; cambiar o cancelar, solo en la app.' }],
+            ['rafa', { pt: 'No Instagram: perfil › ☰ › Configurações e atividade › Assinaturas › Meta One › Gerenciar assinatura. No Facebook: Menu › Configurações › Assinaturas › Meta One.', es: 'En Instagram: perfil › ☰ › Configuración y actividad › Suscripciones › Meta One › Administrar. En Facebook: Menú › Configuración › Suscripciones › Meta One.' }],
+            ['pixel', { pt: 'Em Gerenciar aparecem os “Perfis com assinatura” (a mesma assinatura vale no Facebook e no Instagram da mesma Central de Contas), o plano, a data de renovação, o valor e a forma de pagamento, que é a da loja de apps.', es: 'En Administrar aparecen los perfiles con suscripción, el plan, la fecha de renovación, el valor y el método de pago, que es el de la tienda de apps.' }]
+          ],
+          pontos: [
+            { pt: '<b>Web:</b> Central de Contas › Assinaturas mostra a data, mas não deixa mexer.', es: '<b>Web:</b> Centro de cuentas › Suscripciones muestra la fecha, pero no deja cambiar.' },
+            { pt: '<b>Celular:</b> Configurações › Assinaturas › Meta One › Gerenciar assinatura.', es: '<b>Celular:</b> Configuración › Suscripciones › Meta One › Administrar suscripción.' },
+            { pt: '<b>Pagamento:</b> é o da loja de apps (Google Play ou App Store), que também guarda o histórico.', es: '<b>Pago:</b> es el de la tienda de apps, que también guarda el historial.' }
+          ],
+          notas: { pt: 'Vistos em 01/11/2026: Central de Contas na web (Assinaturas › Meta One e o aviso “Acesse seu dispositivo móvel…”), Instagram e Facebook no Android (Assinaturas › Meta One, Gerenciar sua assinatura). “Forma de pagamento” abriu o Google Play.', es: 'Vistos el 01/11/2026: Centro de cuentas en la web, Instagram y Facebook en Android. Traducción al español nuestra (por confirmar).' }
+        },
+        ferramenta: 'm1-onde',
+        praticar: {
+          texto: { pt: 'No simulador, você começa pela web, vê o aviso e acha a assinatura no app do celular.', es: 'En el simulador, empiezas por la web, ves el aviso y encuentras la suscripción en la app del celular.' },
+          tour: 'achar-assinatura', pagina: 'meta-metaone.html?zerar=1'
+        },
+        atender: {
+          cena: { pt: 'Quero trocar o cartão do Meta One e não acho onde no Facebook do computador. 😩', es: 'Quiero cambiar la tarjeta de Meta One y no encuentro dónde en Facebook en la computadora. 😩' },
+          pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+          opcoes: [
+            { certa: false, txt: { pt: '“Em Configurações de pagamento do Gerenciador de Anúncios, troque o cartão principal e ele passa a valer.”', es: '“En la Configuración de pagos del Administrador de anuncios, cambia la tarjeta principal y pasa a valer.”' }, fb: { pt: 'Pagamento de anúncio é outra coisa.', es: 'El pago de anuncios es otra cosa.' } },
+            { certa: false, txt: { pt: '“Pela Central de Contas, em Meta Pay, troque o cartão salvo e a assinatura passa a usar o novo.”', es: '“En el Centro de cuentas, en Meta Pay, cambia la tarjeta guardada y la suscripción usa la nueva.”' }, fb: { pt: 'A cobrança é da loja de apps, não do Meta Pay.', es: 'El cobro es de la tienda de apps.' } },
+            { certa: true, txt: { pt: '“O cartão é o da loja de apps: Meta One › Gerenciar › Forma de pagamento.”', es: '“La tarjeta es la de la tienda: Meta One › Administrar › Método de pago.”' }, fb: { pt: 'Isso! A forma de pagamento é da loja.', es: '¡Eso! El método de pago es de la tienda.' } },
+            { certa: false, txt: { pt: '“Abra um chamado no suporte para eles trocarem o cartão: o assinante não consegue mudar sozinho.”', es: '“Abre un caso con soporte para que cambien la tarjeta: el suscriptor no puede solo.”' }, fb: { pt: 'A própria pessoa troca, na loja.', es: 'La propia persona la cambia, en la tienda.' } }
+          ]
+        },
+        cola: {
+          perguntas: [{ pt: 'Em qual app e em qual aparelho a assinatura foi feita?', es: '¿En qué app y aparato se hizo la suscripción?' }],
+          conferir: [{ pt: 'Central de Contas › Assinaturas (só mostra a data).', es: 'Centro de cuentas › Suscripciones (solo muestra la fecha).' }, { pt: 'App › Configurações › Assinaturas › Meta One › Gerenciar assinatura.', es: 'App › Configuración › Suscripciones › Meta One › Administrar suscripción.' }],
+          frase: { pt: 'O Meta One se gerencia no app do celular onde foi assinado. Pela web dá para ver a data, mas mudar plano, pagamento ou cancelar é no app.', es: 'Meta One se administra en la app del celular donde se contrató. Por la web se ve la fecha; cambiar o cancelar es en la app.' },
+          passos: [{ pt: 'Abra o app onde assinou (Instagram ou Facebook) no celular.', es: 'Abre la app donde te suscribiste, en el celular.' }, { pt: 'Configurações › Assinaturas › Meta One › Gerenciar assinatura.', es: 'Configuración › Suscripciones › Meta One › Administrar suscripción.' }],
+          encaminhar: { pt: 'Cobrança, histórico e reembolso pela loja de apps são com a Apple ou o Google, na conta usada para assinar.', es: 'Cobro, historial y reembolso por la tienda de apps son con Apple o Google.' }
+        }
+      },
+      {
+        id: '06', min: 7, status: 'pronta',
         titulo: L('Nome do perfil com selo', 'Nombre del perfil con insignia'),
         antes: L('A Lojinha tem selo e a Marina quer mudar o nome do perfil para uma promoção.', 'La Lojinha tiene insignia y Marina quiere cambiar el nombre del perfil para una promoción.'),
         fontes: [F_NOME, F_TIRAR],
@@ -4212,44 +4020,147 @@ window.AULAS = {
         }
       },
       {
-        id: '06', min: 8, status: 'pronta',
+        id: '07', min: 7, status: 'pronta',
         titulo: L('Cancelar ou revogada', 'Cancelar o revocada'),
-        antes: L('Uma cliente da Marina diz que o selo sumiu de uma hora para outra.', 'Una clienta de Marina dice que la insignia desapareció de un momento a otro.'),
-        fontes: [F_REVOG, F_COBRA, F_TIRAR],
-        gancho: null,
-        objetivo: L('Diferenciar cancelamento de revogação e saber o que fazer em cada caso.', 'Diferenciar cancelación de revocación y saber qué hacer en cada caso.'),
+        antes: { pt: 'A Marina testou o Meta One da loja e não quer pagar a renovação.', es: 'Marina probó Meta One en la tienda y no quiere pagar la renovación.' },
+        fontes: [F_REVOG, F_COBRA, 
+          { url: 'https://www.meta.com/help/subscriptions/1314531497228585/', titulo: { pt: 'Cancelar sua assinatura do Meta One', es: 'Cancelar tu suscripción de Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/subscriptions/2534285893740819/', titulo: { pt: 'Cobrança e pagamentos de assinaturas da Meta', es: 'Facturación y pagos de suscripciones de Meta' }, conferido: '01/11/2026' }
+        ],
+        gancho: { pt: '“Tentei cancelar pelo Facebook e não deixou!”', es: '“¡Intenté cancelar por Facebook y no me dejó!”' },
+        objetivo: { pt: 'Cancelar pelo caminho certo, explicar o que acontece depois (benefícios até o fim do ciclo, sem reembolso, a promoção) e reconhecer quando a assinatura foi revogada.', es: 'Cancelar por el camino correcto, explicar qué pasa después (beneficios hasta el final del ciclo, sin reembolso, la promoción) y reconocer cuándo la suscripción fue revocada.' },
         entender: {
           dialogo: [
-            ['marina', L('Uma cliente cancelou e o selo continua lá. Outra não cancelou e o selo sumiu. Como assim? 🤯', 'Una clienta canceló y la insignia sigue ahí. Otra no canceló y la insignia desapareció. ¿Cómo es eso? 🤯')],
-            ['rafa', L('Quem cancela continua com a assinatura até o fim do ciclo de cobrança. Para não pagar o próximo mês, cancele antes de o período atual terminar.', 'Quien cancela sigue con la suscripción hasta el fin del ciclo de cobro. Para no pagar el mes siguiente, cancela antes de que termine el período actual.')],
-            ['rafa', L('Revogada é diferente: a Meta tira na hora. Motivos: pagamento falhou sem forma reserva, violação de políticas, conta excluída ou desativada por mais de 30 dias, troca para um tipo de conta que não se qualifica.', 'Revocada es diferente: Meta la quita al instante. Motivos: el pago falló sin método de respaldo, violación de políticas, cuenta eliminada o desactivada por más de 30 días, cambio a un tipo de cuenta que no califica.')],
-            ['pixel', L('Assinou pela App Store ou Google Play? Cancela pela loja. E mexer na assinatura pela loja em vez do app da Meta também pode levar à revogação.', '¿Se suscribió por App Store o Google Play? Se cancela por la tienda. Y cambiar la suscripción por la tienda en vez de la app de Meta también puede llevar a la revocación.')]
+            ['marina', { pt: 'Se eu cancelar hoje, perco tudo na hora? 😟', es: 'Si cancelo hoy, ¿pierdo todo al instante? 😟' }],
+            ['rafa', { pt: 'Não. A tela confirma: “Você ainda terá acesso a todos os seus benefícios até…” o fim do ciclo. Depois disso, não renova. E não há reembolso do período, a não ser que a lei exija.', es: 'No. La pantalla confirma que sigues con los beneficios hasta el final del ciclo. Después no renueva. Y no hay reembolso, salvo que la ley lo exija.' }],
+            ['rafa', { pt: 'Caminho: Meta One › (Gerenciar assinatura) › Cancelar assinatura. Na conta da loja aparece “Tem certeza?” com o que se perde; depois, “Por que você quer cancelar?”, com motivo opcional; e “Concluir o cancelamento”.', es: 'Camino: Meta One › (Administrar) › Cancelar suscripción. En la cuenta de la tienda aparece “¿Seguro?”; después el motivo (opcional) y “Finalizar cancelación”.' }],
+            ['pixel', { pt: 'Depois de cancelada, a tela troca “Renovação em” por “Expira em”. E na promoção grátis: se não cancelar antes do fim, ela renova cobrando. Sair do app ou apagar o app não cancela.', es: 'Cancelada, la pantalla cambia “Renovación” por “Vence”. En la promoción: si no cancelas antes del fin, renueva cobrando. Salir o borrar la app no cancela.' }],
+            ['rafa', { pt: 'Outra coisa é a assinatura revogada: aí o selo some de uma hora para outra, porque a Meta tirou (pagamento recusado, políticas ou a conta). Vale ter uma forma de pagamento reserva.', es: 'Otra cosa es la suscripción revocada: ahí la insignia desaparece de golpe, porque Meta la quitó (pago rechazado, políticas o la cuenta). Conviene tener un método de pago de respaldo.' }]
           ],
           pontos: [
-            L('<b>Cancelar:</b> vale até o fim do ciclo; cancele antes de ele terminar.', '<b>Cancelar:</b> vale hasta el fin del ciclo; cancela antes de que termine.'),
-            L('<b>Revogada:</b> a Meta tira na hora (pagamento, políticas, conta).', '<b>Revocada:</b> Meta la quita al instante (pago, políticas, cuenta).'),
-            L('<b>Prevenção:</b> forma de pagamento reserva.', '<b>Prevención:</b> método de pago de respaldo.')
+            L('<b>Revogada:</b> a Meta tira na hora (pagamento recusado, políticas, conta). Prevenção: uma forma de pagamento reserva.', '<b>Revocada:</b> Meta la quita al momento (pago rechazado, políticas, cuenta). Prevención: un método de pago de respaldo.'),
+            { pt: '<b>Benefícios:</b> continuam até o fim do ciclo (ou da promoção).', es: '<b>Beneficios:</b> siguen hasta el fin del ciclo (o de la promoción).' },
+            { pt: '<b>Sem reembolso</b> do período, salvo exigência legal.', es: '<b>Sin reembolso</b> del período, salvo exigencia legal.' },
+            { pt: '<b>Sinal de cancelada:</b> “Expira em” no lugar de “Renovação em”.', es: '<b>Señal de cancelada:</b> “Vence” en lugar de “Renovación”.' },
+            { pt: '<b>Pela loja:</b> cancele pelo menos 24 h antes do fim do período para não cobrar de novo.', es: '<b>Por la tienda:</b> cancela al menos 24 h antes del fin del período.' }
           ],
-          notas: NOTA
+          notas: { pt: 'O cancelamento foi feito de verdade em 01/11/2026, a pedido do André, nas duas assinaturas de teste: Max na conta da loja (com a tela “Tem certeza?”) e Essencial no perfil pessoal (direto para o motivo). As duas passaram a mostrar “Expira em”.', es: 'La cancelación se hizo de verdad el 01/11/2026 en las dos suscripciones de prueba. Traducción al español nuestra (por confirmar).' }
         },
-        ferramenta: 'cancelar-verified',
+        ferramenta: 'm1-cancelar',
+        praticar: {
+          texto: { pt: 'No simulador, você cancela o Meta One Max da loja e confere o “Expira em”.', es: 'En el simulador, cancelas el Meta One Max de la tienda y revisas el “Vence”.' },
+          tour: 'cancelar-meta-one', pagina: 'meta-metaone.html?zerar=1'
+        },
         atender: {
-          cena: L('Meu selo sumiu hoje e eu não cancelei nada! O que aconteceu? 😱', '¡Mi insignia desapareció hoy y no cancelé nada! ¿Qué pasó? 😱'),
-          pergunta: PERG,
+          cena: { pt: 'Cancelei o Meta One ontem e o selo e os links continuam lá. Será que não cancelou? 🤨', es: 'Cancelé Meta One ayer y la insignia y los enlaces siguen ahí. ¿No se canceló? 🤨' },
+          pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
           opcoes: [
-            op(true, 'Pode ter sido revogada: veja os avisos da Meta; o comum é falha no pagamento.', 'Puede ser una revocación: mira los avisos de Meta; lo común es falla de pago.', 'Isso! Diferenciou revogação de cancelamento e foi à causa mais comum.', '¡Eso! Diferenciaste revocación de cancelación y fuiste a la causa más común.'),
-            op(false, 'Selo some sozinho todo mês; é só esperar a renovação que ele volta amanhã.', 'La insignia desaparece sola cada mes; solo espera la renovación que vuelve mañana.', 'O selo não some todo mês.', 'La insignia no desaparece cada mes.'),
-            op(false, 'Você deve ter cancelado sem perceber; assine de novo agora que volta igual.', 'Debes haber cancelado sin darte cuenta; suscríbete de nuevo ahora que vuelve igual.', 'Cancelar mantém o selo até o fim do ciclo; sumir na hora indica revogação.', 'Cancelar mantiene la insignia hasta el fin del ciclo; desaparecer al instante indica revocación.'),
-            op(false, 'Isso é falsificação de identidade: denuncie seu próprio perfil para a Meta analisar.', 'Eso es suplantación de identidad: denuncia tu propio perfil para que Meta lo revise.', 'Não é falsificação: veja os avisos da assinatura.', 'No es suplantación: mira los avisos de la suscripción.')
-          ],
-          mais: []
+            { certa: false, txt: { pt: '“Não cancelou: se ainda tem benefício, a assinatura segue ativa. Faça o cancelamento de novo pelo computador.”', es: '“No se canceló: si aún hay beneficios, sigue activa. Cancela de nuevo por la computadora.”' }, fb: { pt: 'Os benefícios seguem até o fim do ciclo, e pela web não se cancela.', es: 'Los beneficios siguen hasta el fin del ciclo.' } },
+            { certa: false, txt: { pt: '“Os benefícios só saem quando você apaga o app e entra de novo. Faça isso que a conta atualiza.”', es: '“Los beneficios salen cuando borras la app y vuelves a entrar. Hazlo y la cuenta se actualiza.”' }, fb: { pt: 'Apagar o app não muda nada na assinatura.', es: 'Borrar la app no cambia nada.' } },
+            { certa: false, txt: { pt: '“É sinal de reembolso: quando a Meta devolve o valor, os benefícios ficam liberados até a próxima fatura.”', es: '“Es señal de reembolso: cuando Meta devuelve el valor, los beneficios quedan hasta la próxima factura.”' }, fb: { pt: 'Cancelamento não tem reembolso do período.', es: 'La cancelación no tiene reembolso.' } },
+            { certa: true, txt: { pt: '“Está certo: ficam até o fim do ciclo. Em Gerenciar deve aparecer ‘Expira em’.”', es: '“Es correcto: siguen hasta el fin del ciclo. Debe aparecer ‘Vence’.”' }, fb: { pt: 'Isso! “Expira em” confirma o cancelamento.', es: '¡Eso! “Vence” confirma la cancelación.' } }
+          ]
         },
         cola: {
-          perguntas: [L('Chegou email ou aviso da Meta?', '¿Llegó un correo o aviso de Meta?'), L('O pagamento passou neste mês?', '¿El pago pasó este mes?')],
-          conferir: [L('Central de Contas › Assinaturas e a forma de pagamento.', 'Centro de cuentas › Suscripciones y el método de pago.')],
-          frase: L('Cancelar mantém a assinatura até o fim do ciclo; revogação tira na hora. Vamos ver os avisos da Meta e o pagamento.', 'Cancelar mantiene la suscripción hasta el fin del ciclo; la revocación la quita al instante. Veamos los avisos de Meta y el pago.'),
-          passos: [L('Peça o aviso que a Meta mandou.', 'Pide el aviso que mandó Meta.'), L('Confira o pagamento e a forma reserva.', 'Revisa el pago y el método de respaldo.')],
-          encaminhar: L('Reembolso e revisão de revogação são com a Meta (ou com a loja de apps, se a compra foi por lá).', 'Reembolso y revisión de revocación son con Meta (o con la tienda de apps, si la compra fue por ahí).')
+          perguntas: [{ pt: 'Em Gerenciar aparece “Renovação em” ou “Expira em”?', es: '¿En Administrar aparece “Renovación” o “Vence”?' }, { pt: 'É uma promoção grátis? Até quando?', es: '¿Es una promoción gratis? ¿Hasta cuándo?' }],
+          conferir: [{ pt: 'Meta One › Detalhes da cobrança.', es: 'Meta One › Detalles del cobro.' }, { pt: 'Se assinou pela loja: Assinaturas da loja de apps.', es: 'Si se suscribió por la tienda: Suscripciones de la tienda.' }],
+          frase: { pt: 'Depois de cancelar, os benefícios continuam até o fim do ciclo e a tela passa a mostrar “Expira em”. Não há reembolso do período e não haverá nova cobrança.', es: 'Después de cancelar, los beneficios siguen hasta el fin del ciclo y la pantalla muestra “Vence”. No hay reembolso ni nuevo cobro.' },
+          passos: [{ pt: 'Meta One › Gerenciar assinatura › Cancelar assinatura.', es: 'Meta One › Administrar › Cancelar suscripción.' }, { pt: 'Continuar cancelamento › motivo (opcional) › Concluir o cancelamento.', es: 'Continuar › motivo (opcional) › Finalizar cancelación.' }, { pt: 'Confira “Expira em” em Detalhes da cobrança.', es: 'Revisa “Vence” en Detalles del cobro.' }],
+          encaminhar: { pt: 'Pedido de reembolso de cobrança feita pela loja de apps segue a política da Apple ou do Google.', es: 'El reembolso de un cobro hecho por la tienda de apps sigue la política de Apple o Google.' }
+        }
+      },
+      {
+        id: '08', min: 6, status: 'pronta',
+        titulo: { pt: '“Não consigo cancelar”: o app certo', es: '“No puedo cancelar”: la app correcta' },
+        antes: { pt: 'A Marina tentou cancelar a assinatura pessoal pelo Facebook.', es: 'Marina intentó cancelar la suscripción personal por Facebook.' },
+        fontes: [
+          { url: 'https://www.meta.com/help/subscriptions/805072418980556/', titulo: { pt: 'Como solucionar problemas com a assinatura do Meta One', es: 'Cómo solucionar problemas con la suscripción de Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/subscriptions/4515570262058351/', titulo: { pt: 'Como gerenciar sua assinatura do Meta One', es: 'Cómo administrar tu suscripción de Meta One' }, conferido: '01/11/2026' }
+        ],
+        gancho: { pt: '“E o selo? O que eu ganho de verdade com isso?”', es: '“¿Y la insignia? ¿Qué gano de verdad con esto?”' },
+        objetivo: { pt: 'Resolver “não consigo ver nem cancelar”: mesma conta, mesmo app, mesmo tipo de aparelho, e quando a loja de apps entra.', es: 'Resolver “no puedo ver ni cancelar”: misma cuenta, misma app, mismo tipo de aparato, y cuándo entra la tienda de apps.' },
+        entender: {
+          dialogo: [
+            ['marina', { pt: 'No Facebook, em Cancelar assinatura, apareceu um aviso e não cancelou! 😠', es: '¡En Facebook, en Cancelar suscripción, apareció un aviso y no canceló! 😠' }],
+            ['rafa', { pt: 'O aviso diz: “Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou” e mostra onde: “Abra o Instagram e entre nessa conta em um dispositivo Android”.', es: 'El aviso dice que solo se administra en la cuenta, la app o la plataforma donde se compró, y muestra dónde: “Abre Instagram en esa cuenta en un Android”.' }],
+            ['rafa', { pt: 'Três coisas precisam bater: o mesmo app (Instagram ou Facebook), o mesmo tipo de aparelho (Android ou iPhone) e a mesma conta da loja (Google ou Apple). Com conta diferente, a assinatura nem aparece.', es: 'Tres cosas deben coincidir: la misma app, el mismo tipo de aparato y la misma cuenta de la tienda. Con otra cuenta, la suscripción ni aparece.' }],
+            ['pixel', { pt: 'Se foi comprada pela loja, dá para cancelar também em Google Play › Pagamentos e assinaturas › Assinaturas (ou nos ajustes da Apple). Oferta grátis dada pela Meta pode nem aparecer na loja: aí é pelo app mesmo.', es: 'Si se compró por la tienda, también se cancela en Google Play › Pagos y suscripciones (o en Apple). Una oferta gratis de Meta puede no aparecer en la tienda: entonces es por la app.' }]
+          ],
+          pontos: [
+            { pt: '<b>Regra:</b> mesmo app, mesmo tipo de aparelho e mesma conta Google/Apple de quando assinou.', es: '<b>Regla:</b> misma app, mismo tipo de aparato y misma cuenta Google/Apple.' },
+            { pt: '<b>Aviso no outro app:</b> diz em qual app e aparelho gerenciar.', es: '<b>Aviso en la otra app:</b> dice en qué app y aparato administrar.' },
+            { pt: '<b>Loja:</b> se foi paga pela loja, cancela-se lá também; oferta da Meta pode não aparecer na loja.', es: '<b>Tienda:</b> si se pagó por la tienda, también se cancela ahí; una oferta de Meta puede no aparecer.' }
+          ],
+          notas: { pt: 'Vistos em 01/11/2026: o aviso do Facebook (“Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou… Abra o Instagram e entre nessa conta em um dispositivo Android…”) e o Google Play › Assinaturas mostrando “Você não tem assinaturas ativas” com a oferta grátis ativa.', es: 'Vistos el 01/11/2026: el aviso de Facebook y Google Play sin suscripciones activas. Traducción al español nuestra (por confirmar).' }
+        },
+        ferramenta: 'm1-cancelar',
+        praticar: {
+          texto: { pt: 'No simulador, você tenta pelo Facebook, confere o Google Play e cancela no app certo.', es: 'En el simulador, intentas por Facebook, revisas Google Play y cancelas en la app correcta.' },
+          tour: 'cancelar-no-app-certo', pagina: 'meta-metaone.html?zerar=1'
+        },
+        atender: {
+          cena: { pt: 'Assinei o Meta One no Android pelo Instagram. Troquei para iPhone e não acho a assinatura em lugar nenhum! 😱', es: 'Me suscribí en Android por Instagram. ¡Cambié a iPhone y no encuentro la suscripción en ningún lado! 😱' },
+          pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+          opcoes: [
+            { certa: true, txt: { pt: '“Ela fica presa ao Android e à conta Google: gerencie num Android, no Instagram.”', es: '“Queda atada a Android y a la cuenta Google: adminístrala en un Android.”' }, fb: { pt: 'Isso! Mesma plataforma e mesma conta da loja.', es: '¡Eso! Misma plataforma y misma cuenta de la tienda.' } },
+            { certa: false, txt: { pt: '“Trocar de celular cancela a assinatura sozinho. Pode ficar tranquila que não vem mais nenhuma cobrança.”', es: '“Cambiar de celular cancela la suscripción sola. Tranquila, no vendrá más ningún cobro.”' }, fb: { pt: 'Trocar de aparelho não cancela.', es: 'Cambiar de aparato no cancela.' } },
+            { certa: false, txt: { pt: '“No iPhone, entre no Facebook em vez do Instagram: lá a assinatura aparece para qualquer aparelho.”', es: '“En iPhone, entra a Facebook en vez de Instagram: ahí aparece para cualquier aparato.”' }, fb: { pt: 'O aviso manda voltar ao app e ao aparelho da compra.', es: 'El aviso manda volver a la app y el aparato de la compra.' } },
+            { certa: false, txt: { pt: '“Assine de novo no iPhone: a assinatura antiga do Android se cancela sozinha na mesma hora.”', es: '“Suscríbete de nuevo en iPhone: la antigua de Android se cancela sola al instante.”' }, fb: { pt: 'Assinar de novo pode gerar duas cobranças.', es: 'Suscribirse de nuevo puede generar dos cobros.' } }
+          ]
+        },
+        cola: {
+          perguntas: [{ pt: 'Em que app, aparelho (Android/iPhone) e conta Google/Apple foi a assinatura?', es: '¿En qué app, aparato y cuenta Google/Apple fue la suscripción?' }, { pt: 'O que diz o aviso ao tentar cancelar?', es: '¿Qué dice el aviso al intentar cancelar?' }],
+          conferir: [{ pt: 'O aviso “Você só pode gerenciar sua assinatura na conta, no app ou na plataforma em que a comprou”.', es: 'El aviso de que solo se administra donde se compró.' }, { pt: 'Google Play › Pagamentos e assinaturas › Assinaturas (ou Apple › Assinaturas).', es: 'Google Play › Pagos y suscripciones › Suscripciones (o Apple).' }],
+          frase: { pt: 'O Meta One só se gerencia no mesmo app, no mesmo tipo de aparelho e na mesma conta Google ou Apple em que foi assinado. Se foi pela loja, também dá para cancelar lá.', es: 'Meta One solo se administra en la misma app, aparato y cuenta Google o Apple donde se contrató. Si fue por la tienda, también se cancela ahí.' },
+          passos: [{ pt: 'Abra o app indicado no aviso, no aparelho certo.', es: 'Abre la app indicada en el aviso, en el aparato correcto.' }, { pt: 'Meta One › Gerenciar › Cancelar assinatura.', es: 'Meta One › Administrar › Cancelar suscripción.' }, { pt: 'Ou: loja de apps › Assinaturas › Meta One › Cancelar.', es: 'O: tienda de apps › Suscripciones › Meta One › Cancelar.' }],
+          encaminhar: { pt: 'Se a pessoa não tem mais acesso à conta Google ou Apple da compra, o cancelamento depende de recuperar essa conta na Apple ou no Google.', es: 'Si la persona ya no tiene acceso a la cuenta Google o Apple de la compra, depende de recuperarla con Apple o Google.' }
+        }
+      },
+      {
+        id: '09', min: 6, status: 'pronta',
+        titulo: { pt: 'Selo, benefícios e suporte', es: 'Insignia, beneficios y soporte' },
+        antes: { pt: 'A Marina quer saber o que muda na prática com o Meta One.', es: 'Marina quiere saber qué cambia en la práctica con Meta One.' },
+        fontes: [
+          { url: 'https://www.meta.com/help/subscriptions/1278609104422515/', titulo: { pt: 'Sobre o selo de verificado para assinantes do Meta One', es: 'Sobre la insignia de verificado para suscriptores de Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.meta.com/help/subscriptions/2290591971482409/', titulo: { pt: 'Como obter suporte com o Meta One', es: 'Cómo obtener soporte con Meta One' }, conferido: '01/11/2026' },
+          { url: 'https://www.facebook.com/help/1437311881513288', titulo: { pt: 'Sobre o Facebook Plus', es: 'Sobre Facebook Plus' }, conferido: '01/11/2026' }
+        ],
+        objetivo: { pt: 'Explicar o selo (só com verificação), os recursos Plus, os benefícios de criador e como chegar ao suporte com uma pessoa.', es: 'Explicar la insignia (solo con verificación), los recursos Plus, los beneficios de creador y cómo llegar al soporte con una persona.' },
+        entender: {
+          dialogo: [
+            ['marina', { pt: 'Assinei o Essencial e o selo não apareceu! 😕', es: '¡Me suscribí al Essencial y la insignia no apareció! 😕' }],
+            ['rafa', { pt: 'O selo e a proteção contra falsificação só ligam depois da verificação de identidade. A Meta tenta verificar pela atividade; se não der, aparece “Faça a verificação”. Sem passar na verificação, esses dois não ligam.', es: 'La insignia y la protección solo se activan tras verificar la identidad. Si no se puede automáticamente, aparece “Verificación”. Sin pasarla, no se activan.' }],
+            ['rafa', { pt: 'O resto já vem: Instagram Plus, Facebook Plus e WhatsApp Plus (prévia de stories, quem reviu, ícone do app, figurinhas, fixar mais conversas) e mais uso de IA. Nos planos de criador ainda tem página de links, links em posts e reels, insights e acesso compartilhado.', es: 'Lo demás ya viene: los Plus (historias, ícono, stickers) y más IA. En los de creador: página de enlaces, enlaces en publicaciones y reels, estadísticas y acceso compartido.' }],
+            ['pixel', { pt: 'Suporte: em Obter ajuda, o Assistente de suporte da Meta AI; para falar com uma pessoa, peça “Conversar com alguém do suporte”. Casos com pessoa por mês: Avançado 1, Expert 5, Max ilimitado.', es: 'Soporte: en Obtener ayuda, el asistente de Meta AI; para hablar con una persona, pide “Hablar con alguien de soporte”. Casos por mes: Avanzado 1, Expert 5, Max ilimitado.' }]
+          ],
+          pontos: [
+            { pt: '<b>Selo e proteção:</b> só depois da verificação; não dá para pular. Cancelar tira o selo.', es: '<b>Insignia y protección:</b> solo tras la verificación; no se puede saltar. Cancelar la quita.' },
+            { pt: '<b>Plus:</b> recursos de uso pessoal; não mexem em anúncios.', es: '<b>Plus:</b> recursos de uso personal; no cambian anuncios.' },
+            { pt: '<b>Suporte com pessoa:</b> Avançado 1, Expert 5, Max ilimitado por mês.', es: '<b>Soporte con persona:</b> Avanzado 1, Expert 5, Max ilimitado por mes.' }
+          ],
+          notas: { pt: 'Vistos em 01/11/2026: a lista de benefícios do Essencial (perfil pessoal) e do Max (conta da loja), os cartões “Configure seu Meta Business Agent” e “Faça a verificação”, e Obter ajuda › Ajuda e suporte. A tela de verificação não foi aberta (o André não quis verificar a identidade).', es: 'Vistos el 01/11/2026. La pantalla de verificación no se abrió. Traducción al español nuestra (por confirmar).' }
+        },
+        ferramenta: 'm1-beneficios',
+        praticar: {
+          texto: { pt: 'No simulador, você vê o que o selo exige, abre o Instagram Plus e chega ao assistente de suporte.', es: 'En el simulador, ves lo que exige la insignia, abres Instagram Plus y llegas al asistente de soporte.' },
+          tour: 'beneficios-suporte', pagina: 'meta-metaone.html?zerar=1'
+        },
+        atender: {
+          cena: { pt: 'Assinei o Meta One Essencial há uma semana e o selo azul ainda não apareceu no meu Instagram. Paguei por nada? 😤', es: 'Me suscribí al Essencial hace una semana y la insignia todavía no aparece. ¿Pagué por nada? 😤' },
+          pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+          opcoes: [
+            { certa: false, txt: { pt: '“O selo leva 30 dias para aparecer em qualquer plano. Espere o próximo mês que ele entra sozinho.”', es: '“La insignia tarda 30 días en aparecer en cualquier plan. Espera al próximo mes que entra sola.”' }, fb: { pt: 'Não há prazo fixo; depende da verificação.', es: 'No hay plazo fijo; depende de la verificación.' } },
+            { certa: true, txt: { pt: '“O selo só liga depois de verificar a identidade. Veja se pede a verificação.”', es: '“La insignia solo se activa tras verificar la identidad. Mira si la pide.”' }, fb: { pt: 'Isso! Sem verificação, sem selo.', es: '¡Eso! Sin verificación, sin insignia.' } },
+            { certa: false, txt: { pt: '“O Essencial não dá direito a selo, só o Max. Troque de plano em Explorar planos para conseguir.”', es: '“Essencial no da insignia, solo Max. Cambia de plan en Explorar planes para conseguirla.”' }, fb: { pt: 'O Essencial inclui o selo, com verificação.', es: 'Essencial incluye la insignia, con verificación.' } },
+            { certa: false, txt: { pt: '“O selo só aparece em contas com mais de mil seguidores. Cresça a conta que ele aparece.”', es: '“La insignia solo aparece en cuentas con más de mil seguidores. Haz crecer la cuenta.”' }, fb: { pt: 'Não há esse mínimo de seguidores.', es: 'No hay ese mínimo.' } }
+          ]
+        },
+        cola: {
+          perguntas: [{ pt: 'Aparece “Faça a verificação” na tela do Meta One?', es: '¿Aparece “Verificación” en la pantalla de Meta One?' }, { pt: 'Qual plano a cliente tem (para saber quantos casos com pessoa ela tem)?', es: '¿Qué plan tiene la clienta?' }],
+          conferir: [{ pt: 'Meta One › Seus benefícios › Mostre seu perfil autêntico.', es: 'Meta One › Tus beneficios › Muestra tu perfil auténtico.' }, { pt: 'Obter ajuda › Assistente de suporte da Meta AI.', es: 'Obtener ayuda › Asistente de soporte de Meta AI.' }],
+          frase: { pt: 'O selo e a proteção contra falsificação só ligam depois da verificação de identidade. Os outros benefícios já valem desde a assinatura.', es: 'La insignia y la protección solo se activan tras verificar la identidad. Los demás beneficios valen desde la suscripción.' },
+          passos: [{ pt: 'Meta One › “Faça a verificação” › siga os passos.', es: 'Meta One › “Verificación” › sigue los pasos.' }, { pt: 'Para ajuda: Obter ajuda › Assistente de suporte da Meta AI › Conversar com alguém do suporte.', es: 'Para ayuda: Obtener ayuda › Asistente › Hablar con alguien de soporte.' }],
+          encaminhar: { pt: 'Verificação recusada ou documento não aceito: a decisão é da própria Meta, na tela de verificação; oriente a seguir as instruções dela e o suporte do plano.', es: 'Verificación rechazada: la decisión es de Meta; orienta a seguir sus instrucciones y el soporte del plan.' }
         }
       }
     ];
