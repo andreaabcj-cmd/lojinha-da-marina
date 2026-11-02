@@ -327,7 +327,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var m = 0; [].forEach.call(document.querySelectorAll('body > *, #app > *'), function (e) { if (e.closest('.tg-balao,.tg-holo,.tg-recorte')) return; var c = getComputedStyle(e); if (c.position === 'fixed') { var r = e.getBoundingClientRect(); if (r.top < 100 && r.height < 130 && r.width > innerWidth * .5) m = Math.max(m, r.bottom) } }); return m;
   }
   // só a parte do destaque que aparece: um quadro mais alto que a janela não vaza por cima do cabeçalho nem para fora da janela
-  function visivel(el) {
+  function visivel(el, nulo) {
     var r = el.getBoundingClientRect(), a = { left: r.left, top: r.top, right: r.right, bottom: r.bottom }, n = el.parentElement;
     while (n && n !== document.body && n !== document.documentElement) {
       var c = getComputedStyle(n);
@@ -335,7 +335,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       n = n.parentElement;
     }
     a.top = Math.max(a.top, 0); a.bottom = Math.min(a.bottom, innerHeight);
-    if (a.right - a.left < 8 || a.bottom - a.top < 8) return r;   // quase nada à vista: fica o quadro inteiro (a rolagem do passo cuida do resto)
+    if (a.right - a.left < 8 || a.bottom - a.top < 8) return nulo ? null : r;   // quase nada à vista: fica o quadro inteiro (a rolagem do passo cuida do resto)
     a.width = a.right - a.left; a.height = a.bottom - a.top; return a;
   }
   function paiRolavel(el) { var n = el.parentElement; while (n && n !== document.body) { var o = getComputedStyle(n).overflowY; if ((o === 'auto' || o === 'scroll') && n.scrollHeight > n.clientHeight + 4) return n; n = n.parentElement } return null }
@@ -347,7 +347,8 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
       holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
     if (!p._rolou) { p._rolou = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return }
     // a tela foi redesenhada depois da rolagem (o simulador arrumou a tela, a lista cresceu…) e o destaque ficou fora de vista: rola mais uma vez
-    if (!p._rolou2) { var rv = el.getBoundingClientRect(); if (rv.top > innerHeight - 30 || rv.bottom < 30) { p._rolou2 = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return } }
+    // (também quando um painel com rolagem própria esconde quase todo o destaque: 02/11, a linha "Anúncios restantes" dos Limites ficava um fiozinho no alto)
+    if (!p._rolou2) { var rv = el.getBoundingClientRect(), vv = visivel(el, true), meio = !vv || vv.height < Math.min(rv.height, 60) * 0.6; if (rv.top > innerHeight - 30 || rv.bottom < 30 || meio) { p._rolou2 = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return } }
     // o destaque ficou embaixo de um cabeçalho fixo da tela (ex.: o topo do editor do anúncio)? rola mais um pouco, uma vez por passo
     if (!p._tapado) { p._tapado = true; var r0 = el.getBoundingClientRect(), hx = r0.left + Math.min(24, r0.width / 2), hy = Math.max(0, r0.top) + 4, hit = document.elementFromPoint(hx, hy);
       if (hit && !el.contains(hit) && !hit.contains(el) && !hit.closest('.tg-balao,#tgVeu')) { var sp0 = paiRolavel(el), hb = hit.getBoundingClientRect(), d0 = hb.bottom - r0.top + 12; if (sp0 && d0 > 0 && d0 < 400) { sp0.scrollBy({ top: -d0, behavior: 'smooth' }); setTimeout(posiciona, 400); return } } }

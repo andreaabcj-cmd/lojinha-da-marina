@@ -175,8 +175,9 @@
     var L = condPx(), tudo = L.every(function (x) { return x.ok });
     return '<div class="fundo" data-t="jan-pixel"><div class="janela"><h3>Adicionar produtos com pixel<button class="x" data-acao="fonte-fecha">✕</button></h3><p class="miudo">Usar pixels do Facebook instalados no seu site.</p><p>O Pixel pode adicionar e atualizar itens do catálogo quando alguém vê um produto. Cinco condições:</p><div data-t="lista-px">' +
       L.map(function (x) { return '<div class="pf-linha" data-t="cond-' + x.id + '"><span class="L">' + (x.ok ? '✓' : '✕') + '</span><span><b>' + x.txt + '</b>' + (x.ok ? '' : '<small>' + x.ajuda + (x.link ? ' <a href="' + x.link + '">' + x.lk + '</a>' : '') + '</small>') + '</span></div>' }).join('') + '</div>' +
-      '<p class="miudo">Pode levar até 24 horas para ficar pronto; depois atualiza o catálogo a cada interação, normalmente em até 15 minutos. <span>⚠ Título conferido com a tela real em 25/10/2026; as cinco condições vêm da Central de Ajuda (o portfólio de aula não tem Pixel, então a tela real só pede para criar um) · a conferir.</span></p>' +
-      '<div class="rodape-jan"><button class="btn sec" data-acao="fonte-fecha">Cancelar</button><button class="btn" data-acao="fonte-pixel-ok" data-t="btn-add-pixel"' + (tudo ? '' : ' disabled') + '>Adicionar</button></div></div></div>';
+      '<p class="miudo">Pode levar até 24 horas para ficar pronto; depois atualiza o catálogo a cada interação, normalmente em até 15 minutos.</p>' +
+      '<div class="rodape-jan"><button class="btn sec" data-acao="fonte-fecha">Cancelar</button><button class="btn" data-acao="fonte-pixel-ok" data-t="btn-add-pixel"' + (tudo ? '' : ' disabled') + '>Adicionar</button></div>' +
+      '<p class="conferido">⚠ Título conferido com a tela real em 25/10/2026; as cinco condições vêm da Central de Ajuda (o portfólio de aula não tem Pixel, então a tela real só pede para criar um) · a conferir.</p></div></div>';
   }
   function telaFontes(c, r) {
     var f = c.fontes[0], extra = c.fontes.slice(1).map(function (x) { return '<tr data-t="fonte-linha-2"><td class="nome"><b>' + esc(x.nome) + '</b></td><td>' + x.tipo + '<br><small>' + x.sub + '</small></td><td>' + c.itens.length + '</td><td><span class="cm-st"><i></i>Tudo certo</span></td><td>agora<br><small>' + x.quando + '</small></td><td></td></tr>' }).join('');
