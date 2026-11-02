@@ -51,9 +51,10 @@ body.mold-com-trilho .mold-cab{left:56px}
 
 /* o conteúdo do simulador abre espaço para a moldura */
 body.mold-com-trilho :is(.ss,.ga,.rl,.cm,.sim,.pf,.md-topo,.md,.bs,.ig,.ga-fundo,.ga-rod){left:56px}
+body.mold-com-trilho .lm{margin-left:56px}   /* Limites de anúncios por Página: página estática, abre espaço para o trilho */
 body.mold-com-cab :is(.ss,.ga,.rl,.cm,.sim,.pf,.bs,.ig){top:84px}
 body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:214px}
-@media(max-width:820px){body.mold-com-trilho :is(.ss,.ga,.rl,.cm,.sim,.pf,.md-topo,.md,.bs,.ig,.ga-fundo,.ga-rod){left:0}.mold-trilho{display:none}body.mold-com-trilho .mold-cab{left:0}body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:0}}
+@media(max-width:820px){body.mold-com-trilho .lm{margin-left:0}body.mold-com-trilho :is(.ss,.ga,.rl,.cm,.sim,.pf,.md-topo,.md,.bs,.ig,.ga-fundo,.ga-rod){left:0}.mold-trilho{display:none}body.mold-com-trilho .mold-cab{left:0}body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:0}}
 
 /* aviso: item real sem simulador */
 .mold-aviso{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;z-index:2147482500;background:var(--ink);color:#fff;padding:9px 16px;border-radius:12px;font-weight:600;font-size:14px;pointer-events:none;transition:.25s}
