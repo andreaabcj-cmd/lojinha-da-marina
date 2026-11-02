@@ -125,7 +125,7 @@
     var tr = dentro.querySelector(':scope > .mold-trilho'), bs = dentro.querySelector(':scope > .mold-bs'), cab = dentro.querySelector(':scope > .mold-cab');
     var querTr = lugar !== 'cel' && (a.app === 'ads' || a.app === 'eventos' || a.app === 'config') && !a.semTrilho, querBS = lugar !== 'cel' && a.app === 'suite' && !a.semMenu;
     if (querTr) { var on = (a.app === 'config' ? 'c:' : '') + (a.on || (a.app === 'config' ? 'config' : 'campanhas')); if (!tr || tr.getAttribute('data-on') !== on) { if (tr) tr.remove(); dentro.insertAdjacentHTML('afterbegin', a.app === 'config' ? trilhoBS(a.on || 'config') : trilhoAds(on)); dentro.firstChild.setAttribute('data-on', on) } } else if (tr) tr.remove();
-    if (querBS) { var on2 = a.on || 'inicio'; if (!bs || bs.getAttribute('data-on') !== on2) { if (bs) bs.remove(); dentro.insertAdjacentHTML('afterbegin', menuBS(on2)); dentro.firstChild.setAttribute('data-on', on2) } if (!cab) dentro.insertAdjacentHTML('afterbegin', cabBS()) }
+    if (querBS) { var on2 = a.on || 'inicio'; if (!bs || bs.getAttribute('data-on') !== on2) { if (bs) bs.remove(); dentro.insertAdjacentHTML('afterbegin', menuBS(on2)); dentro.firstChild.setAttribute('data-on', on2) } if (!cab && !a.semCab) dentro.insertAdjacentHTML('afterbegin', cabBS()); if (cab && a.semCab) cab.remove() }
     else if (querTr && !a.proprio && a.app !== 'config') {   // Gerenciador de Anúncios sem cabeçalho próprio no simulador: título da tela + conta de anúncios (como no real)
       var tt = esc(titulo() || NOME.ads), ch = '<h1>' + tt + '</h1><span class="mold-conta">' + T('Conta de aula da Lojinha (ID 123456789)', 'Cuenta de clase de la Lojinha (ID 123456789)') + ' <i>▾</i></span>';
       if (!cab || cab.getAttribute('data-h') !== ch) { if (cab) cab.remove(); dentro.insertAdjacentHTML('afterbegin', '<header class="mold-cab mold-cab-ads" data-sem-traduzir="1">' + ch + '</header>'); dentro.firstChild.setAttribute('data-h', ch) }
@@ -136,7 +136,7 @@
     }
     else if (cab) cab.remove();
     if (bs && !querBS) bs.remove();
-    document.body.classList.toggle('mold-com-trilho', querTr); document.body.classList.toggle('mold-com-bs', querBS); document.body.classList.toggle('mold-com-cab', querBS || (querTr && !a.proprio && a.app !== 'config') || (lugar !== 'cel' && a.app === 'comercio' && !a.proprio));
+    document.body.classList.toggle('mold-com-trilho', querTr); document.body.classList.toggle('mold-com-bs', querBS); document.body.classList.toggle('mold-sem-cab', querBS && !!a.semCab); document.body.classList.toggle('mold-com-cab', (querBS && !a.semCab) || (querTr && !a.proprio && a.app !== 'config') || (lugar !== 'cel' && a.app === 'comercio' && !a.proprio));
     document.body.classList.toggle('mold-celular', lugar === 'cel');
   }
   var tm = null; function agenda() { clearTimeout(tm); tm = setTimeout(poe, 0) }

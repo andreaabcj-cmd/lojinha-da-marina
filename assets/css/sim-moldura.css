@@ -75,7 +75,7 @@ body.mold-com-bs :is(.ss,.ga,.rl,.cm,.pf,.bs,.ig,.ga-rod){left:214px}
 @media(max-width:900px){.web-meta nav:first-of-type{display:none}}
 
 /* Gerenciador de Eventos: o trilho é o da moldura (o mesmo do Gerenciador de Anúncios) */
-body.mold-com-trilho .sim{grid-template-columns:0 1fr}body.mold-com-trilho .sim>.sim-trilho{display:none}
+body.mold-com-trilho .sim{grid-template-columns:0 1fr}body.mold-com-trilho .sim>.sim-trilho{visibility:hidden;overflow:hidden;border:0;padding:0;min-width:0}   /* fica na grade (senão as outras peças mudam de lugar), só some */
 
 /* estilos que vinham da casca antiga (cartões no padrão dos simuladores) */
 body.com-moldura .ss-nav{border-right:2px solid var(--ink)}
@@ -97,3 +97,6 @@ body.com-moldura .cm-tab{border:2px solid var(--ink);border-radius:var(--r,12px)
 .bs-sub b{font-size:15px;margin:0 6px 6px}.bs-sub span{padding:6px 8px;border-radius:8px;font-size:13.5px}.bs-sub span.on{background:var(--blue-l);color:var(--blue);font-weight:700}
 .bs-sub small{margin:8px 8px 2px;color:var(--muted);font-weight:700}
 @media(max-width:980px){.bs-sub{display:none}}
+/* Business Suite sem a barra de cima da moldura (a tela tem a própria, ex.: seletor de portfólios) */
+body.mold-sem-cab .mold-bs{top:32px}
+body.mold-com-bs .bs{grid-template-columns:minmax(0,1fr)}body.mold-com-bs .bs>.bs-lado{display:none}

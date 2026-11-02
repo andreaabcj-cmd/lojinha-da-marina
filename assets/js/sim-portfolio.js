@@ -51,6 +51,8 @@
   }
   function cabTela(tit, botoes) { return '<div class="pf-tit"><h1>' + tit + ' <span class="i">ⓘ</span></h1><div class="pf-acoes"><input class="pf-busca" placeholder="Pesquisar por nome ou ID" aria-label="Pesquisar"/><button class="btn sec">Filtros</button>' + (botoes || '') + '</div></div>' }
 
+  // tela inicial do Business Suite (seletor de portfólios): o menu é o do Business Suite, desenhado pela moldura; o cabeçalho com o seletor é desta tela
+  window.MOLDURA_AGORA = function () { return rota() === 'inicio' || !pf() ? { app: 'suite', on: 'inicio', semCab: true, onde: 'Meta Business Suite › Página inicial' } : {} };
   /* ---------- telas ---------- */
   var TELAS = {
     inicio: function () {   // como no Business Suite real (print de 13/10): o seletor de portfólios aberto, no topo à esquerda

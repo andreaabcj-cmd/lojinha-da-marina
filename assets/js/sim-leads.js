@@ -216,6 +216,11 @@
       ['Reconhecimento', 'Tráfego', 'Engajamento', 'Leads', 'Promoção do app', 'Vendas'].map(function (o) { return '<label class="ga-lin' + (C.obj === o ? ' on' : '') + '" data-t="obj-' + o.toLowerCase().replace(/\s/g, '-') + '"><input type="radio" name="cObj" value="' + o + '"' + (C.obj === o ? ' checked' : '') + '/><span><b>' + o + '</b></span></label>' }).join('') +
       (C.obj === 'Leads' ? '<div class="ga-aviso" data-t="obj-leads-info"><b>Leads</b> — Consiga leads para sua empresa ou marca.<br><small>Bom para: Formulários no site e instantâneos · Formulários instantâneos · Messenger, Instagram e WhatsApp · Conversões · Ligações</small></div>' : '') +
       '<div class="rodape-jan"><button class="btn sec" data-acao="c-cancela">Cancelar</button><button class="btn" data-acao="c-continua" data-t="btn-continuar-obj"' + (C.obj === 'Leads' ? '' : ' disabled') + '>Continuar</button></div><p class="miudo">No treino só o objetivo Leads continua.</p></div></div>' : '';
+    if (!C.criado)   // a lista de campanhas é a mesma tela do Gerenciador dos outros simuladores (sim-ads-comum.js)
+      return casca('<div class="ga">' + GA_TOPO({ titulo: 'Campanhas' }) + '<div class="ga-corpo">' + GA_ABAS({ on: 'camp' }) +
+        '<div class="ga-barra"><button class="btn" data-acao="c-criar" data-t="btn-mais-criar">＋ Criar</button><button class="btn sec" disabled>Duplicar</button><button class="btn sec" disabled>Editar</button><button class="btn sec" disabled>Analisar</button><button class="btn sec" disabled>Teste A/B</button><span class="busca">Pesquise para filtrar por: nome, identificação ou métrica</span></div>' +
+        '<table class="ga-tab"><thead><tr><th></th><th>Campanha</th><th>Veiculação</th><th>Ações</th><th>Orçamento</th><th>Valor gasto</th><th>Resultados</th></tr></thead><tbody><tr><td colspan="7" class="ga-vazio">Nenhuma campanha ainda. Clique em <b>Criar</b> para começar (no treino, só um rascunho).</td></tr></tbody></table>' +
+        conferido() + '</div></div>' + dlg + janelaCriar() + editor() + janelaCrm());
     return pagina('campanha', 'Gerenciador de Anúncios', 'Lojinha da Marina Aula (123456789)', corpo + dlg + conferido());
   }
 
