@@ -1,6 +1,6 @@
 /* Admin da Shopify (faz-de-conta) */
 body{margin:0;background:#F1F1F1;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:#202223}
-.sh-topo{margin-top:32px;background:#1A1A1A;color:#fff;display:flex;align-items:center;gap:16px;padding:8px 16px}
+.sh-topo{position:sticky;top:32px;z-index:6;margin-top:32px;background:#1A1A1A;color:#fff;display:flex;align-items:center;gap:16px;padding:8px 16px}
 .sh-logo{font-weight:800;font-size:16px;color:#95BF47}.sh-busca{flex:1;max-width:480px;background:#303030;border:1px solid #4A4A4A;border-radius:8px;padding:6px 10px;color:#fff}
 .sh-loja{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:600}.sh-loja i{font-style:normal;background:#6D7175;border-radius:6px;padding:3px 6px;font-size:12px}
 .sh-corpo{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 80px)}
