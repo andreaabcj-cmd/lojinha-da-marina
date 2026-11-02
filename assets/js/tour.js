@@ -334,6 +334,9 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     if (!el || !el.getClientRects().length) { if (++faltou >= 3 && p.garante && !p._consertou) { p._consertou = true; try { p.garante() } catch (e) { } }
       holo.style.opacity = 0; recorte.style.opacity = 0; balao.style.left = Math.max(10, (innerWidth - balao.offsetWidth) / 2) + 'px'; balao.style.top = '90px'; return }
     if (!p._rolou) { p._rolou = true; el.scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(posiciona, 400); return }
+    // o destaque ficou embaixo de um cabeçalho fixo da tela (ex.: o topo do editor do anúncio)? rola mais um pouco, uma vez por passo
+    if (!p._tapado) { p._tapado = true; var r0 = el.getBoundingClientRect(), hx = r0.left + Math.min(24, r0.width / 2), hy = Math.max(0, r0.top) + 4, hit = document.elementFromPoint(hx, hy);
+      if (hit && !el.contains(hit) && !hit.contains(el) && !hit.closest('.tg-balao,#tgVeu')) { var sp0 = paiRolavel(el), hb = hit.getBoundingClientRect(), d0 = hb.bottom - r0.top + 12; if (sp0 && d0 > 0 && d0 < 400) { sp0.scrollBy({ top: -d0, behavior: 'smooth' }); setTimeout(posiciona, 400); return } } }
     var r = el.getBoundingClientRect(); holo.style.opacity = 1;
     // dentro de uma janela/painel: a janela inteira fica visível; só o resto da tela escurece
     var cx = el.closest && el.closest('.janela, [role=dialog], .da-painel, .ma-panel, .tg-caixa'); if (cx === el) cx = null;
@@ -369,7 +372,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     balao.classList.toggle('compacto', o.v === 'compacto'); balao.classList.toggle('fino', o.v === 'fino');
     // ainda cobre muito texto (lista comprida em tela estreita): rola o destaque para cima e encaixa o balão embaixo, uma vez por passo
     if (o.q[2] > 2500 && !p._dock && r.top > 120) {
-      p._dock = true; var sp = paiRolavel(el), d = r.top - 90;
+      p._dock = true; var sp = paiRolavel(el), d = r.top - ((sp ? Math.max(0, sp.getBoundingClientRect().top) : 0) + 16);   // sobe até o alto da ÁREA que rola (não da tela: ela pode ter cabeçalho)
       if (sp) sp.scrollBy({ top: d, behavior: 'smooth' }); else window.scrollBy({ top: d, behavior: 'smooth' });
       p._sig = null; setTimeout(posiciona, 450); return;
     }

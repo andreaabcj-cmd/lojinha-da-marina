@@ -139,6 +139,10 @@
     document.body.classList.toggle('mold-com-trilho', querTr); document.body.classList.toggle('mold-com-bs', querBS); document.body.classList.toggle('mold-sem-cab', querBS && !!a.semCab); document.body.classList.toggle('mold-com-cab', (querBS && !a.semCab) || (querTr && !a.proprio && a.app !== 'config') || (lugar !== 'cel' && a.app === 'comercio' && !a.proprio));
     document.body.classList.toggle('mold-celular', lugar === 'cel');
   }
+  // janelas que o simulador põe direto na página (ex.: .fundo do Gerenciador de Eventos e das Configurações) vão para dentro da janela da moldura
+  function prendeJanela(n) { if (n && n.nodeType === 1 && n.parentNode === document.body && n.classList.contains('fundo')) dentro.appendChild(n) }
+  [].forEach.call(document.body.children, prendeJanela);
+  new MutationObserver(function (ms) { ms.forEach(function (m) { [].forEach.call(m.addedNodes, prendeJanela) }) }).observe(document.body, { childList: true });
   var tm = null; function agenda() { clearTimeout(tm); tm = setTimeout(poe, 0) }
   new MutationObserver(poe).observe(app, { childList: true }); poe();
   document.addEventListener('click', function (e) {

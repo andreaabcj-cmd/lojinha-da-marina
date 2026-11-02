@@ -100,3 +100,5 @@ body.com-moldura .cm-tab{border:2px solid var(--ink);border-radius:var(--r,12px)
 /* Business Suite sem a barra de cima da moldura (a tela tem a própria, ex.: seletor de portfólios) */
 body.mold-sem-cab .mold-bs{top:32px}
 body.mold-com-bs .bs{grid-template-columns:minmax(0,1fr)}body.mold-com-bs .bs>.bs-lado{display:none}
+/* "Caso do cliente" (controle do treino): nos simuladores fica no alto, fora da janela, e não cobre a tela */
+body.com-moldura #siteCaso{top:36px!important;bottom:auto!important;left:14px!important;transform:none!important;max-width:34vw!important;padding:4px 10px!important;font-size:12px!important;box-shadow:2px 2px 0 #F2B632!important}
