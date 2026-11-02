@@ -328,11 +328,15 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   }
   // só a parte do destaque que aparece: um quadro mais alto que a janela não vaza por cima do cabeçalho nem para fora da janela
   function visivel(el, nulo) {
-    var r = el.getBoundingClientRect(), a = { left: r.left, top: r.top, right: r.right, bottom: r.bottom }, n = el.parentElement;
-    while (n && n !== document.body && n !== document.documentElement) {
-      var c = getComputedStyle(n);
-      if (c.overflowX !== 'visible' || c.overflowY !== 'visible') { var q = n.getBoundingClientRect(); a.left = Math.max(a.left, q.left); a.top = Math.max(a.top, q.top); a.right = Math.min(a.right, q.right); a.bottom = Math.min(a.bottom, q.bottom) }
-      n = n.parentElement;
+    // só corta quem corta de verdade: janela "fixed" não é cortada por ninguém acima dela; "absolute" pula os pais sem posição (02/11: a janela do catálogo por país saía com o destaque cortado na tela estreita)
+    var r = el.getBoundingClientRect(), a = { left: r.left, top: r.top, right: r.right, bottom: r.bottom }, n = el, modo = getComputedStyle(el).position;
+    while (modo !== 'fixed') {
+      var p = n.parentElement;
+      while (modo === 'absolute' && p && p !== document.body && getComputedStyle(p).position === 'static') p = p.parentElement;
+      if (!p || p === document.body || p === document.documentElement) break;
+      var c = getComputedStyle(p);
+      if (c.overflowX !== 'visible' || c.overflowY !== 'visible') { var q = p.getBoundingClientRect(); a.left = Math.max(a.left, q.left); a.top = Math.max(a.top, q.top); a.right = Math.min(a.right, q.right); a.bottom = Math.min(a.bottom, q.bottom) }
+      n = p; modo = c.position;
     }
     a.top = Math.max(a.top, 0); a.bottom = Math.min(a.bottom, innerHeight);
     if (a.right - a.left < 8 || a.bottom - a.top < 8) return nulo ? null : r;   // quase nada à vista: fica o quadro inteiro (a rolagem do passo cuida do resto)
