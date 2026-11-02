@@ -21,7 +21,7 @@
 
   /* conf === false: tela montada pela ajuda oficial (ainda não vista) · conf = 'dd/mm/aaaa': conferida nesse dia (senão CONF).
      Barra lateral e menu ☰ Mais copiados do instagram.com real em 02/11/2026 (só olhando). */
-  var MAIS = false;
+  var MAIS = false, CC = null, SALVO = false;   // CC: janela aberta na Central de Contas ('lista' | 'perfil' | 'nome' | 'user')
   function casca(conteudo, conf) {
     return '<div class="sim-faixa">🧪 Simulador de treinamento do Instagram · nada aqui vai para o Instagram · <a href="simuladores.html">← voltar à plataforma</a></div>' +
       '<div class="ig"><aside class="ig-lado"><b class="ig-logo">Instagram</b>' +
@@ -34,7 +34,7 @@
       '<main class="ig-main">' + conteudo + (conf === false ? '<p class="conferido pendente">⚠ Caminho montado pela Central de Ajuda do Instagram · a conferir com a tela real</p>' : '<p class="conferido">✓ Tela conferida com o Instagram real em ' + (conf || CONF) + '</p>') + '</main></div>';
   }
   /* Configurações do instagram.com (02/11/2026): coluna com os grupos reais à esquerda, a tela escolhida à direita */
-  var CFG = [['Sua conta', [['Conta Meta']]], ['Como você usa o Instagram', [['Editar perfil', 'config'], ['Notificações']]],
+  var CFG = [['Sua conta', [['Conta Meta', 'cc', 'cfg-conta-meta']]], ['Como você usa o Instagram', [['Editar perfil', 'config'], ['Notificações']]],
     ['Quem pode ver seu conteúdo', [['Privacidade da conta'], ['Amigos Próximos'], ['Bloqueados'], ['Ocultar story e live']]],
     ['Como outras pessoas podem interagir com você', [['Mensagens e respostas a stories'], ['Marcações e menções'], ['Comentários'], ['Compartilhamento'], ['Restritos'], ['Palavras ocultas']]],
     ['O que você vê', [['Silenciados'], ['Preferências de conteúdo'], ['Número de curtidas e compartilhamentos'], ['Assinaturas de criador de conteúdo']]],
@@ -82,12 +82,7 @@
     perfil: function () {
       return casca(cabecalho() + destaques() + '<div class="ig-abas"><b class="on">▦ Posts</b><span>▶ Reels</span><span>◫ Marcados</span></div><div class="ig-grade">' + POSTS.map(post).join('') + '</div>');
     },
-    config: function () {
-      // "Configurações" abre em Editar perfil (como no instagram.com); a edição de verdade fica no tutorial Editar perfil
-      return casca(configs('config', '<h2>Editar perfil</h2><div class="ig-cfg-cartao"><span class="ig-foto">🧡</span><div><b>' + esc(S.user) + '</b><br><small>' + esc(S.nome) + '</small></div></div>' +
-        '<p class="ig-sec">Bio</p><div class="ig-cfg-cartao">' + esc(S.bio) + '</div>' +
-        '<label class="ig-sw"><span>Mostrar selo do Threads</span><input type="checkbox" disabled/></label>'), '02/11/2026');
-    },
+    config: function () { return TELAS.editar('config') },   // "Configurações" abre em Editar perfil, como no instagram.com
     tipo: function () {
       // conta pessoal: tela vista em 02/11/2026; conta profissional: ainda não vista (montada pela Central de Ajuda)
       return casca(configs('tipo', '<h2>Tipo e ferramentas da conta</h2><p class="ig-sec">Tipo de conta</p>' +
@@ -95,12 +90,42 @@
           '<span class="ig-it">Tipo de conta: <b>' + (S.tipo === 'comercial' ? 'Comercial' : 'Criador de conteúdo') + '</b></span><button class="ig-it bt" data-acao="voltar-pessoal">Mudar para conta pessoal</button>')), S.tipo === 'pessoal' ? '02/11/2026' : false);
     },
     converter: function () { return casca('<div class="cartao ig-conv tg-caixa" data-t="conv-caixa">' + passoConv() + '</div>') },
-    editar: function () {
-      return casca('<div class="cartao ig-edit tg-caixa"><h2>Editar perfil</h2><div class="ig-fotos"><span class="ig-foto">🧡</span><a>Editar foto ou avatar</a></div>' +
-        campo('Nome', 'eNome', S.nome, 'ed-nome') + campo('Nome de usuário', 'eUser', S.user, 'ed-user') + campo('Pronomes', 'ePron', '', null) +
-        '<label class="ig-campo" data-t="ed-bio"><small>Bio</small><textarea id="eBio" rows="2">' + esc(S.bio) + '</textarea></label>' +
-        '<div class="ig-row"><span>Links</span><a>Adicionar link</a></div><div class="ig-row"><span>Banners</span><a>Adicionar banners</a></div>' +
-        '<div class="rodape-jan"><button class="btn sec" data-ir="perfil">Cancelar</button><button class="btn" data-acao="salvar-perfil" data-t="ed-salvar">Concluir</button></div></div>');
+    /* Editar perfil do instagram.com (02/11/2026): no computador só a bio muda aqui; nome e @ ficam na Central de Contas */
+    editar: function (ativo) {
+      var bio = F.eBio != null ? F.eBio : S.bio;
+      return casca(configs(ativo || 'config', '<h2>Editar perfil</h2><div class="ig-cfg-cartao"><span class="ig-foto">🧡</span><div><b>' + esc(S.user) + '</b><br><small>' + esc(S.nome) + '</small></div></div>' +
+        '<p class="ig-sec">Site</p><div class="ig-cfg-cartao ig-apagado">Site</div><p class="miudo">Somente é possível editar os links no celular. Acesse o app do Instagram e edite seu perfil para alterar os sites na sua bio.</p>' +
+        '<p class="ig-sec">Bio</p><label class="ig-campo" data-t="ed-bio"><textarea id="eBio" rows="3" maxlength="150">' + esc(bio) + '</textarea><small class="ig-conta">' + bio.length + ' / 150</small></label>' +
+        '<label class="ig-sw ig-cfg-cartao"><span>Mostrar selo do Threads</span><input type="checkbox" disabled/></label>' +
+        '<label class="ig-sw ig-cfg-cartao"><span>Perfil gerado por IA<br><small class="miudo">Adicione este rótulo se o seu perfil apresentar uma pessoa gerada por IA.</small></span><input type="checkbox" disabled/></label>' +
+        '<p class="ig-sec">Gênero</p><div class="ig-cfg-cartao">Feminino</div><p class="miudo">Isso não fará parte do seu perfil público.</p>' +
+        '<label class="ig-sw ig-cfg-cartao"><span>Mostrar sugestões de contas em perfis</span><input type="checkbox" checked disabled/></label>' +
+        '<p class="miudo">Certas informações do perfil, como seu nome, a bio e os links, são visíveis para todos.</p>' +
+        (SALVO ? '<p class="ig-salvo" data-t="ed-salvo">✓ Perfil salvo.</p>' : '') +
+        '<div class="rodape-jan"><button class="btn" data-acao="salvar-bio" data-t="ed-salvar">Enviar</button></div>'), '02/11/2026');
+    },
+    /* Central de Contas (Conta Meta) na web, vista em 02/11/2026: Página inicial → Sua conta → perfil → Nome / Nome de usuário */
+    cc: function () {
+      var menu = ['Página inicial', 'Login e segurança', 'Experiências multiperfil', 'Suas informações e permissões', 'Preferências de anúncios', 'Meta Pay', 'Assinaturas', 'Gerenciar conta'];
+      var x = '<button class="ig-cc-x" data-acao="cc-fecha" title="Fechar">✕</button>', volta = function (p) { return '<button class="ig-cc-volta" data-acao="cc-' + p + '" title="Voltar">‹</button>' };
+      var dlg = '';
+      if (CC === 'lista') dlg = x + '<h3>Sua conta</h3><p class="ig-sec">Informações de contato padrão</p><p class="miudo">Use isto para reconhecer sua conta mais facilmente.</p><div class="ig-cc-linha">✉️ marina.teste@exemplo.com<span>›</span></div>' +
+        '<p class="ig-sec">Perfis</p><div class="ig-cc-linha">👩 Marina<small>Facebook</small><span>›</span></div><button class="ig-cc-linha" data-acao="cc-perfil" data-t="cc-perfil-ig">🧡 ' + esc(S.user) + '<small>Instagram</small><span>›</span></button><p class="ig-cc-mais">Adicionar mais</p>';
+      else if (CC === 'perfil') dlg = volta('lista') + x + '<div class="ig-cc-topo"><span class="ig-foto">🧡</span><b>' + esc(S.nome) + '</b><small>Instagram</small></div>' +
+        '<button class="ig-cc-linha" data-acao="cc-nome" data-t="cc-nome">Nome<span>›</span></button><button class="ig-cc-linha" data-acao="cc-user" data-t="cc-user">Nome de usuário<span>›</span></button>' +
+        '<div class="ig-cc-linha">Foto do perfil<span>›</span></div><div class="ig-cc-linha">Avatar<span>›</span></div>';
+      else if (CC === 'nome') dlg = volta('perfil') + x + '<h3>Nome</h3><label class="ig-campo" data-t="cc-campo-nome"><small>Nome</small><input id="eNome" value="' + esc(F.eNome != null ? F.eNome : S.nome) + '"/></label>' +
+        '<p class="miudo">Você só pode alterar seu nome duas vezes em 14 dias.</p><button class="btn ig-cc-ok" data-acao="cc-salva-nome" data-t="cc-concluir-nome">Concluir</button>';
+      else if (CC === 'user') dlg = volta('perfil') + x + '<h3>Nome de usuário</h3><p class="miudo">A alteração do seu nome de usuário também mudará o endereço do seu perfil do Instagram.</p>' +
+        '<label class="ig-campo" data-t="cc-campo-user"><small>Nome de usuário</small><input id="eUser" value="' + esc(F.eUser != null ? F.eUser : S.user) + '"/></label><button class="btn ig-cc-ok" data-acao="cc-salva-user" data-t="cc-concluir-user">Concluir</button>';
+      return '<div class="sim-faixa">🧪 Simulador de treinamento do Instagram · nada aqui vai para o Instagram · <a href="simuladores.html">← voltar à plataforma</a></div>' +
+        '<div class="ig-cc"><button class="ig-cc-sair" data-ir="config" data-t="cc-sair" title="Fechar">✕</button><aside class="ig-cc-menu"><p class="ig-cc-logo">∞ Meta</p><h2>Conta Meta</h2><p class="miudo">Controle como sua conta funciona em todos os apps e dispositivos da Meta. <u>Saiba mais</u></p>' +
+        menu.map(function (m, i) { return '<span class="ig-cc-it' + (i ? '' : ' on') + '">' + m + '</span>' }).join('') + '</aside>' +
+        '<main class="ig-cc-main"><h2>Página inicial</h2><p>Gerencie as configurações de todos os seus perfis e dispositivos da Meta em um só lugar.</p>' +
+        '<button class="ig-cc-card" data-acao="cc-lista" data-t="cc-conta"><span>∞ <b>marina.teste@exemplo.com</b><small>2 perfis</small></span><span>🧡👩 ›</span></button>' +
+        '<div class="ig-cc-card"><span>🛡️ <b>Checkup de Segurança da Meta</b></span><span>›</span></div><p class="ig-sec">Mais da Meta</p><div class="ig-cc-duas"><div class="ig-cc-card">👪 Central da Família</div><div class="ig-cc-card">👓 Óculos com IA</div></div>' +
+        '<p class="conferido">✓ Tela conferida com a Central de Contas real em 02/11/2026</p></main>' +
+        (dlg ? '<div class="ig-cc-fundo"><div class="ig-cc-dlg tg-caixa" data-t="cc-dlg">' + dlg + '</div></div>' : '') + '</div>';
     }
   };
   function campo(rot, id, v, t) { return '<label class="ig-campo"' + (t ? ' data-t="' + t + '"' : '') + '><small>' + rot + '</small><input id="' + id + '" value="' + esc(v) + '"/></label>' }
@@ -131,7 +156,7 @@
     $$('[name=igTipo]').forEach(function (r) { r.onchange = function () { C.tipo = r.value; window.__simIg = { C: C, S: S }; render() } });
     $$('[name=igCat]').forEach(function (r) { r.onchange = function () { C.cat = r.value; window.__simIg = { C: C, S: S }; render() } });
     var m = $('#cMostrar'); if (m) m.onchange = function () { S.mostrarCat = m.checked };
-    ['eNome', 'eUser', 'eBio'].forEach(function (id) { var i = $('#' + id); if (i) i.oninput = function () { F[id] = i.value; window.__simIg = { C: C, S: S, F: F } } });
+    ['eNome', 'eUser', 'eBio'].forEach(function (id) { var i = $('#' + id); if (i) i.oninput = function () { F[id] = i.value; window.__simIg = { C: C, S: S, F: F }; var n = $('.ig-conta'); if (n && id === 'eBio') n.textContent = i.value.length + ' / 150' } });
     window.__simIg = { C: C, S: S, F: F };
     var on = $('.ig-cfg-menu .on'); if (on) on.scrollIntoView({ block: 'nearest' });   // item aceso à vista, como no Instagram
   }
@@ -141,15 +166,23 @@
     if (a.hasAttribute('data-ir')) { if (a.getAttribute('data-ir') === 'converter') C = { passo: 0, tipo: '', cat: '' }; if (a.getAttribute('data-ir') === 'editar') F = {}; vai(a.getAttribute('data-ir')); return }
     var ac = a.getAttribute('data-acao');
     if (ac === 'mais') { MAIS = !MAIS; render(); return }
+    if (ac === 'salvar-bio') { if (F.eBio != null) S.bio = F.eBio; grava(); SALVO = true; render(); return }
+    if (/^cc-(lista|perfil|nome|user)$/.test(ac)) { CC = ac.slice(3); render(); return }
+    if (ac === 'cc-fecha') { CC = null; render(); return }
+    if (ac === 'cc-salva-nome') { if (F.eNome != null && F.eNome.trim()) S.nome = F.eNome.trim(); grava(); CC = 'perfil'; render(); return }
+    if (ac === 'cc-salva-user') { if (F.eUser != null && F.eUser.trim()) S.user = F.eUser.trim().replace(/\s+/g, ''); grava(); CC = 'perfil'; render(); return }
     if (ac === 'conv-prox') { if (C.passo === 3) { S.tipo = C.tipo; S.privada = false; S.categoria = C.cat; grava() } C.passo++; render() }
     else if (ac === 'conv-volta') { C.passo = C.passo === 3 ? 2 : Math.max(0, C.passo - 1); render() }
     else if (ac === 'conv-semcontato') { S.contato = false; grava(); C.passo = 5; render() }
     else if (ac === 'voltar-pessoal') { S.tipo = 'pessoal'; grava(); render() }
     else if (ac === 'salvar-perfil') { if (F.eNome != null) S.nome = F.eNome; if (F.eUser != null) S.user = F.eUser.trim() || S.user; if (F.eBio != null) S.bio = F.eBio; grava(); vai('perfil') }
   });
-  window.addEventListener('hashchange', function () { MAIS = false; render() });
-  window.SIMIG = { conv: function (p) { if (rota() !== 'converter') { location.hash = 'converter' } C.passo = p; render() }, perfilComercial: function () { if (S.tipo === 'pessoal') { S.tipo = 'comercial'; S.privada = false; S.categoria = 'Compras e varejo'; grava() } }, estado: function () { return { C: C, S: S, F: F } } };
-  function render() { var r = rota(); $('#app').innerHTML = (TELAS[r] || TELAS.perfil)(); $$('.ig-l[data-ir]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-ir') === (r === 'perfil' || r === 'editar' ? 'perfil' : 'config')) }); liga() }
+  window.addEventListener('hashchange', function () { MAIS = false; SALVO = false; if (rota() !== 'cc') CC = null; render() });
+  window.SIMIG = { conv: function (p) { if (rota() !== 'converter') { location.hash = 'converter' } C.passo = p; render() }, perfilComercial: function () { if (S.tipo === 'pessoal') { S.tipo = 'comercial'; S.privada = false; S.categoria = 'Compras e varejo'; grava() } }, estado: function () { return { C: C, S: S, F: F } },
+    cc: function (e) { if (rota() !== 'cc') location.hash = 'cc'; CC = e; render() } };
+  // onde você está: a Central de Contas é outro endereço (accountscenter.instagram.com)
+  window.MOLDURA_AGORA = function () { return rota() === 'cc' ? { url: 'accountscenter.instagram.com', onde: 'Central de Contas (Conta Meta) no computador' } : {} };
+  function render() { var r = rota(); $('#app').innerHTML = (TELAS[r] || TELAS.perfil)(); $$('.ig-l[data-ir]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-ir') === (r === 'perfil' ? 'perfil' : 'config')) }); liga(); if (window.MOLDURA) MOLDURA.atualiza() }
   render();
 
   /* ---------- tutoriais guiados ---------- */
@@ -171,23 +204,34 @@
     { alvo: '[data-t=conv-avancar1]', clique: true, garante: function () { SIMIG.conv(1) }, tit: T('Avançar', 'Siguiente'), txt: T('Clique em Avançar.', 'Haz clic en Siguiente.') },
     { alvo: '[data-t=conv-cats]', garante: function () { SIMIG.conv(2) }, cond: function () { return (ig().C || {}).cat === 'Compras e varejo' }, bloqueia: function (t) { var l = t.closest('.ig-cat-op'); return !!(l && !l.querySelector('[value="Compras e varejo"]')) }, erro: T('Loja de canecas e camisetas: a categoria certa é Compras e varejo.', 'Tienda de tazas y camisetas: la categoría correcta es Compras y venta minorista.'),
       tit: T('A categoria', 'La categoría'), txt: T('Canecas e camisetas: escolha Compras e varejo e clique em Próximo.', 'Tazas y camisetas: elige Compras y venta minorista y haz clic en Siguiente.') },
-    { alvo: '[data-t=conv-concluir]', clique: true, garante: function () { SIMIG.conv(2) }, tit: T('Concluir', 'Terminar'), txt: T('Clique em Concluir.', 'Haz clic en Terminar.') },
+    { alvo: '[data-t=conv-concluir]', clique: true, garante: function () { SIMIG.conv(2) }, tit: T('Concluir', 'Terminar'), txt: T('Clique em Concluir.', 'Haz clic en Listo.') },
     { alvo: '[data-t=conv-confirma]', garante: function () { SIMIG.conv(3) }, bloqueia: function (t) { return !!t.closest('button') }, erro: T('Primeiro leia o aviso e clique em Próximo no balão.', 'Primero lee el aviso y haz clic en Siguiente en el globo.'), tit: T('⚠️ Vai ficar pública', '⚠️ Va a quedar pública'), txt: T('Leia o aviso: a conta profissional é sempre pública. Se a cliente quer privacidade, a conta profissional não serve. Clique em Próximo.', 'Lee el aviso: la cuenta profesional siempre es pública. Si la clienta quiere privacidad, la cuenta profesional no sirve. Haz clic en Siguiente.') },
     { alvo: '[data-t=conv-continuar]', clique: true, garante: function () { SIMIG.conv(3) }, tit: T('Continuar', 'Continuar'), txt: T('Clique em Continuar.', 'Haz clic en Continuar.') },
     { alvo: '[data-t=conv-contato]', garante: function () { SIMIG.conv(4) }, tit: T('Contato público?', '¿Contacto público?'), txt: T('O que entra aqui aparece PUBLICAMENTE no perfil. A Marina não quer expor o telefone pessoal agora. Clique em Próximo.', 'Lo que pongas aquí aparece PÚBLICAMENTE en el perfil. Marina no quiere exponer su teléfono personal ahora. Haz clic en Siguiente.') },
     { alvo: '[data-t=conv-semcontato]', clique: true, garante: function () { SIMIG.conv(4) }, tit: T('Sem contato por enquanto', 'Sin contacto por ahora'), txt: T('Clique em Não usar minhas informações de contato (dá para adicionar depois).', 'Haz clic en No usar mi información de contacto (se puede agregar después).') },
-    { alvo: '[data-t=conv-fim]', clique: true, semVolta: true, tit: T('Conta comercial pronta! 🎉', '¡Cuenta comercial lista! 🎉'), txt: T('Clique em Concluir para ver o perfil.', 'Haz clic en Terminar para ver el perfil.') },
+    { alvo: '[data-t=conv-fim]', clique: true, semVolta: true, tit: T('Conta comercial pronta! 🎉', '¡Cuenta comercial lista! 🎉'), txt: T('Clique em Concluir para ver o perfil.', 'Haz clic en Listo para ver el perfil.') },
     { alvo: '[data-t=ig-tipo]', fim: true, semVolta: true, tit: T('Pronto! 🎉', '¡Listo! 🎉'), txt: T('Agora é conta profissional Comercial, pública, com a categoria no perfil. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Ahora es cuenta profesional Comercial, pública, con la categoría en el perfil. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
   ];
+  /* no computador (instagram.com, 02/11/2026): a bio muda em Editar perfil; o nome e o @ mudam na Central de Contas */
+  function escreve(id, v) { var i = document.getElementById(id); if (i) { i.value = v; i.dispatchEvent(new Event('input', { bubbles: true })) } }
   TOURS['editar-perfil'] = [
     { alvo: '[data-t=editar-perfil]', clique: true, garante: function () { SIMIG.perfilComercial(); location.hash = 'perfil' }, tit: T('Editar perfil', 'Editar perfil'), txt: T('Vamos deixar o perfil com cara de loja. Clique em Editar perfil.', 'Vamos a dejar el perfil con cara de tienda. Haz clic en Editar perfil.') },
-    { alvo: '[data-t=ed-nome]', garante: function () { location.hash = 'editar' }, cond: function () { var f = (ig().F || {}); return /lojinha/i.test(f.eNome || '') },
-      tit: T('O nome', 'El nombre'), txt: T('O nome aparece em negrito no perfil e na busca. Troque para o nome da loja: Lojinha da Marina. Depois clique em Próximo.', 'El nombre aparece en negrita en el perfil y en la búsqueda. Cámbialo por el nombre de la tienda: Lojinha da Marina. Después haz clic en Siguiente.') },
-    { alvo: '[data-t=ed-user]', garante: function () { location.hash = 'editar' }, cond: function () { var f = (ig().F || {}); return /lojinha/i.test(f.eUser || '') && !/\s/.test(f.eUser || '') },
-      tit: T('O nome de usuário (@)', 'El nombre de usuario (@)'), txt: T('O @ é o endereço do perfil. Coloque um @ da loja, sem espaços (ex.: lojinhadamarina). Depois clique em Próximo.', 'El @ es la dirección del perfil. Pon un @ de la tienda, sin espacios (ej.: lojinhadamarina). Después haz clic en Siguiente.') },
-    { alvo: '[data-t=ed-bio]', garante: function () { location.hash = 'editar' }, cond: function () { var f = (ig().F || {}); return (f.eBio || '').trim().length > 10 },
-      tit: T('A bio', 'La bio'), txt: T('Em uma frase: o que a loja vende. Ex.: Canecas, camisetas e ecobags feitas à mão. Depois clique em Próximo.', 'En una frase: qué vende la tienda. Ej.: Tazas, camisetas y ecobags hechas a mano. Después haz clic en Siguiente.') },
-    { alvo: '[data-t=ed-salvar]', clique: true, garante: function () { location.hash = 'editar' }, tit: T('Concluir', 'Terminar'), txt: T('Clique em Concluir para salvar.', 'Haz clic en Terminar para guardar.') },
-    { alvo: '.ig-cab', fim: true, semVolta: true, tit: T('Perfil de loja! 🎉', '¡Perfil de tienda! 🎉'), txt: T('Nome, @ e bio de loja. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'Nombre, @ y bio de tienda. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
+    { alvo: '[data-t=ed-bio]', garante: function () { location.hash = 'editar' }, cond: function () { var f = (ig().F || {}); return (f.eBio || '').trim().length > 10 }, auto: function () { escreve('eBio', 'Canecas, camisetas e ecobags feitas à mão') },
+      tit: T('A bio', 'La bio'), txt: T('No computador, aqui você muda a bio (o nome e o @ ficam na Central de Contas: já vamos lá). Em uma frase, o que a loja vende. Ex.: Canecas, camisetas e ecobags feitas à mão. Depois clique em Próximo.', 'En la computadora, aquí cambias la presentación (el nombre y el @ están en el Centro de cuentas: ya vamos). En una frase, qué vende la tienda. Ej.: Tazas, camisetas y ecobags hechas a mano. Después haz clic en Siguiente.') },
+    { alvo: '[data-t=ed-salvar]', clique: true, garante: function () { location.hash = 'editar' }, tit: T('Enviar', 'Enviar'), txt: T('Clique em Enviar para salvar a bio.', 'Haz clic en Enviar para guardar la presentación.') },
+    { alvo: '[data-t=cfg-conta-meta]', clique: true, garante: function () { location.hash = 'editar' }, tit: T('Nome e @: Conta Meta', 'Nombre y @: Cuenta de Meta'), txt: T('No computador, o nome e o @ mudam na Central de Contas. Clique em Conta Meta, no alto da coluna das configurações.', 'En la computadora, el nombre y el @ cambian en el Centro de cuentas. Haz clic en Cuenta de Meta, arriba en la columna de configuración.') },
+    { alvo: '[data-t=cc-conta]', clique: true, garante: function () { SIMIG.cc(null) }, tit: T('Sua conta', 'Tu cuenta'), txt: T('Esta é a Central de Contas (Conta Meta). Clique no cartão da sua conta, com o e-mail e os perfis.', 'Este es el Centro de cuentas (Cuenta de Meta). Haz clic en la tarjeta de tu cuenta, con el correo y los perfiles.') },
+    { alvo: '[data-t=cc-perfil-ig]', clique: true, garante: function () { SIMIG.cc('lista') }, tit: T('O perfil do Instagram', 'El perfil de Instagram'), txt: T('Em Perfis, clique no perfil do Instagram (não no do Facebook).', 'En Perfiles, haz clic en el perfil de Instagram (no en el de Facebook).') },
+    { alvo: '[data-t=cc-nome]', clique: true, garante: function () { SIMIG.cc('perfil') }, tit: T('Nome', 'Nombre'), txt: T('Clique em Nome.', 'Haz clic en Nombre.') },
+    { alvo: '[data-t=cc-campo-nome]', garante: function () { SIMIG.cc('nome') }, cond: function () { var f = (ig().F || {}); return /lojinha/i.test(f.eNome || '') }, auto: function () { escreve('eNome', 'Lojinha da Marina') },
+      tit: T('O nome', 'El nombre'), txt: T('O nome aparece em negrito no perfil e na busca. Troque para o nome da loja: Lojinha da Marina. Atenção: só dá para trocar o nome duas vezes em 14 dias. Depois clique em Próximo.', 'El nombre aparece en negrita en el perfil y en la búsqueda. Cámbialo por el nombre de la tienda: Lojinha da Marina. Ojo: solo se puede cambiar el nombre dos veces en 14 días. Después haz clic en Siguiente.') },
+    { alvo: '[data-t=cc-concluir-nome]', clique: true, garante: function () { SIMIG.cc('nome') }, tit: T('Concluir', 'Listo'), txt: T('Clique em Concluir.', 'Haz clic en Listo.') },
+    { alvo: '[data-t=cc-user]', clique: true, garante: function () { SIMIG.cc('perfil') }, tit: T('Nome de usuário', 'Nombre de usuario'), txt: T('Agora o @: clique em Nome de usuário.', 'Ahora el @: haz clic en Nombre de usuario.') },
+    { alvo: '[data-t=cc-campo-user]', garante: function () { SIMIG.cc('user') }, cond: function () { var f = (ig().F || {}); return /lojinha/i.test(f.eUser || '') && !/\s/.test(f.eUser || '') }, auto: function () { escreve('eUser', 'lojinhadamarina') },
+      tit: T('O nome de usuário (@)', 'El nombre de usuario (@)'), txt: T('O @ é o endereço do perfil (muda o link também). Coloque um @ da loja, sem espaços (ex.: lojinhadamarina). Depois clique em Próximo.', 'El @ es la dirección del perfil (también cambia el enlace). Pon un @ de la tienda, sin espacios (ej.: lojinhadamarina). Después haz clic en Siguiente.') },
+    { alvo: '[data-t=cc-concluir-user]', clique: true, garante: function () { SIMIG.cc('user') }, tit: T('Concluir', 'Listo'), txt: T('Clique em Concluir.', 'Haz clic en Listo.') },
+    { alvo: '[data-t=cc-sair]', clique: true, garante: function () { SIMIG.cc(null) }, tit: T('Fechar a Central de Contas', 'Cerrar el Centro de cuentas'), txt: T('Pronto. Feche a Central de Contas no ✕ do canto: você volta para as configurações do Instagram.', 'Listo. Cierra el Centro de cuentas con la ✕ de la esquina: vuelves a la configuración de Instagram.') },
+    { alvo: '[data-t=lado-perfil]', clique: true, garante: function () { location.hash = 'config' }, tit: T('Ver o perfil', 'Ver el perfil'), txt: T('Clique em Perfil, na barra da esquerda, para ver como ficou.', 'Haz clic en Perfil, en la barra de la izquierda, para ver cómo quedó.') },
+    { alvo: '.ig-cab', fim: true, semVolta: true, garante: function () { location.hash = 'perfil' }, tit: T('Perfil de loja! 🎉', '¡Perfil de tienda! 🎉'), txt: T('De volta ao perfil: nome, @ e bio de loja. (No app do celular, os três ficam juntos em Editar perfil.) Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'De vuelta al perfil: nombre, @ y presentación de tienda. (En la app del celular, los tres están juntos en Editar perfil.) Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
   ];
 })();

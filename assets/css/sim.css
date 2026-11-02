@@ -266,6 +266,20 @@ button.ig-l{cursor:pointer}button.ig-l:hover{background:#F2F5FA}.ig-l.on{backgro
 .ig-cfg-menu .ig-it{border:0;border-radius:8px;padding:9px 10px;font-weight:400}.ig-cfg-menu .ig-it.on{font-weight:700}.ig-it.on{background:#F2F5FA}.ig-cfg-corpo{overflow:auto;padding:24px 40px;max-width:720px}
 .ig-cfg-cartao{display:flex;gap:12px;align-items:center;padding:14px;margin:8px 0;border-radius:14px;background:#F2F5FA;border:0}.ig-cfg-cartao .ig-foto{width:56px;height:56px;font-size:26px;box-shadow:none;border:0}
 @media (max-width:760px){.ig-mais{top:100%;bottom:auto}.ig-cfgs{grid-template-columns:1fr}.ig-cfg-menu{max-height:38vh;border-right:0;border-bottom:1px solid var(--line)}.ig-cfg-corpo{padding:16px}}
+.ig-apagado{color:var(--muted)}.ig-conta{display:block;text-align:right}.ig-salvo{margin:10px 0 0;padding:8px 12px;border-radius:10px;background:#E8F7EF;font-weight:700}
+/* Central de Contas na web (02/11/2026) */
+.ig-cc{position:fixed;top:32px;left:0;right:0;bottom:0;display:grid;grid-template-columns:300px minmax(0,620px);gap:28px;justify-content:center;padding:22px;overflow:auto;background:linear-gradient(135deg,#F6F8FC,#EEF3FB)}
+.ig-cc-sair{position:absolute;top:10px;right:14px;border:0;background:none;font-size:20px;cursor:pointer}.ig-cc-logo{margin:0;color:#0866FF;font-weight:800}.ig-cc-menu h2{margin:4px 0 2px;font-size:22px}
+.ig-cc-it{display:block;padding:10px 12px;border-radius:10px;font-weight:600;font-size:14.5px}.ig-cc-it.on{background:#E3E9F2}.ig-cc-main h2{margin:6px 0 4px}
+.ig-cc-card{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;margin:8px 0;padding:14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font:inherit;text-align:left}button.ig-cc-card{cursor:pointer}
+.ig-cc-card small{display:block;color:var(--muted)}.ig-cc-duas{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ig-cc-duas .ig-cc-card{margin:0;min-height:70px}
+.ig-cc-fundo{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.35);z-index:4}
+.ig-cc-dlg{position:relative;width:min(470px,92%);max-height:86%;overflow:auto;padding:40px 18px 16px;background:#fff;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25)}.ig-cc-dlg h3{margin:4px 0 10px}
+.ig-cc-x,.ig-cc-volta{position:absolute;top:8px;border:0;background:none;font-size:20px;cursor:pointer}.ig-cc-x{right:10px}.ig-cc-volta{left:10px;font-size:26px;line-height:1}
+.ig-cc-linha{display:flex;align-items:center;gap:8px;width:100%;padding:12px;border:0;border-bottom:1px solid var(--line);background:none;font:inherit;text-align:left}.ig-cc-linha small{color:var(--muted);margin-left:6px}.ig-cc-linha span{margin-left:auto}button.ig-cc-linha{cursor:pointer;font-weight:700}button.ig-cc-linha:hover{background:#F2F5FA}
+.ig-cc-topo{display:flex;flex-direction:column;align-items:center;gap:4px;margin:14px 0}.ig-cc-topo .ig-foto{width:72px;height:72px;font-size:34px;box-shadow:none}.ig-cc-topo small{color:var(--muted)}
+.ig-cc-mais{color:#0866FF;font-weight:700;margin:10px 4px 0}.ig-cc-ok{display:block;width:100%;margin-top:14px;justify-content:center}
+@media (max-width:760px){.ig-cc{grid-template-columns:1fr}.ig-cc-menu{display:none}}
 .pf-insta{max-width:380px;margin:0 auto}
 .pf-abas{display:flex;gap:6px;margin:14px 0 10px;border-bottom:1px solid var(--line)}.pf-abas button{border:0;background:none;padding:8px 10px;font:inherit;font-weight:600;color:var(--muted);border-radius:8px 8px 0 0;cursor:pointer}.pf-abas button.on{background:var(--blue-l);color:var(--ink)}.pf-abas button:disabled{cursor:default}
 .pf-par{font-size:30px;text-align:center;margin:6px 0}
