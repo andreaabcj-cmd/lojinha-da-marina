@@ -333,3 +333,14 @@
   P.push([/^(.+) \(Você\)$/, function (m) { return m[1] + ' (Tú)' }]);
   P.push([/^✓ Telas do app conferidas em (.+) \(temas escuro e claro\) · campos que avisam “a conferir” ainda não foram vistos$/, function (m) { return '✓ Pantallas de la app revisadas el ' + m[1].replace(' e ', ' y ') + ' (temas oscuro y claro) · los campos que avisan “por confirmar” todavía no se vieron' }]);
 })();
+
+/* 02/11/2026: catálogo vazio; as mensagens dos clientes ficam em português (clientes brasileiros da Marina) (achados pelo robô em espanhol) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    "Organize seu catálogo": "Organiza tu catálogo",
+    "para atrair mais clientes": "para atraer más clientes",
+    "Crie coleções para que seja mais fácil encontrar seus itens e deixe seu catálogo ainda mais interessante.": "Crea colecciones para que sea más fácil encontrar tus artículos y haz que tu catálogo sea aún más interesante."
+  };
+  for (var k in A) D[k] = A[k];
+})();

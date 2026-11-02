@@ -74,3 +74,30 @@
   for (var kr in R) D[kr] = R[kr];
   P.push([/^(\{\{[a-z_.]+\}\}|utm_[a-z]+=.+)$/, function (m) { return m[1] }]);
 })();
+
+/* 02/11/2026: colunas do relatório e nota da Central de Ajuda (achados pelo robô em espanhol) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    "＋ Criar": "＋ Crear",
+    "Colunas: Personalizado ▾": "Columnas: Personalizado ▾",
+    "Compras no site ⓘ": "Compras en el sitio web ⓘ",
+    "Compras ⓘ": "Compras ⓘ",
+    "ROAS de compras ⓘ": "ROAS de compras ⓘ",
+    "Valor de conversão de compras ⓘ": "Valor de conversión de compras ⓘ",
+    "Custo por compra ⓘ": "Costo por compra ⓘ",
+    "CTR (taxa de cliques no link) ⓘ": "CTR (porcentaje de clics en el enlace) ⓘ",
+    "Cliques no link ⓘ": "Clics en el enlace ⓘ",
+    "Compras com assistência das lojas ⓘ": "Compras asistidas por las tiendas ⓘ",
+    "Cliques na loja ⓘ": "Clics en la tienda ⓘ",
+    "Custo por clique de saída único ⓘ": "Costo por clic saliente único ⓘ",
+    "ROAS das compras no site ⓘ": "ROAS de las compras en el sitio web ⓘ",
+    "Compras na Meta ⓘ": "Compras en Meta ⓘ",
+    "Anúncio das Lojas · Caneca azul": "Anuncio de las tiendas · Caneca azul",
+    "Vendas · Site e loja": "Ventas · Sitio web y tienda",
+    "● Ativo": "● Activo",
+    "Da Central de Ajuda": "Del servicio de ayuda",
+    "(“Como entender seus relatórios de anúncios ao usar anúncios das Lojas”, 16/10/2026): se o seu site recebe uma parte excessiva do tráfego dos anúncios das Lojas, ele pode estar convertendo mais compradores do que a loja. Também pode haver diferenças de contagem entre o Gerenciador de Anúncios e ferramentas de terceiros (como o Google Analytics).": "(“Cómo entender tus informes de anuncios al usar anuncios de las tiendas”, 16/10/2026): si tu sitio recibe una parte excesiva del tráfico de los anuncios de las tiendas, puede estar convirtiendo más compradores que la tienda. También puede haber diferencias de conteo entre el Administrador de anuncios y herramientas de terceros (como Google Analytics)."
+  };
+  for (var k in A) D[k] = A[k];
+})();

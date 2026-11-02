@@ -334,3 +334,24 @@
   P.push([/^✓ (Escolher país|Escolher idioma|Escolher colunas)$/, function (m) { return '✓ ' + LZ[m[1]] }]);
   P.push([/^Se você está usando vários catálogos de diferentes países e idiomas, poderá importar facilmente todas as informações para o catálogo (.+)\. Saiba mais$/, function (m) { return 'Si usas varios catálogos para distintos países e idiomas, puedes importar toda la información a ' + m[1] + ' fácilmente. Más información' }]);
 })();
+
+/* 02/11/2026: janela "Adicionar produtos com pixel" (achados pelo robô em espanhol) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    "O Pixel pode adicionar e atualizar itens do catálogo quando alguém vê um produto. Cinco condições:": "El píxel puede agregar y actualizar artículos del catálogo cuando alguien ve un producto. Cinco condiciones:",
+    "O Pixel e o catálogo estão no mesmo portfólio empresarial": "El píxel y el catálogo están en el mismo portafolio comercial",
+    "Você tem controle total do catálogo e do Pixel": "Tienes control total del catálogo y del píxel",
+    "O Pixel recebeu o evento ViewContent com a Identificação do conteúdo": "El píxel recibió el evento ViewContent con el identificador del contenido",
+    "Abra um produto na loja (isso dispara o ViewContent) e confira em Eventos de teste.": "Abre un producto en la tienda (eso activa el ViewContent) y revisa en Probar eventos.",
+    "Abrir a loja": "Abrir la tienda",
+    "As páginas de produto têm microdados (tags) corretos": "Las páginas de producto tienen microdatos (etiquetas) correctos",
+    "Verifique uma página de produto no Microdata Debugger.": "Revisa una página de producto en el Microdata Debugger.",
+    "Abrir o Microdata Debugger": "Abrir el Microdata Debugger",
+    "O Pixel disparou nos últimos sete dias": "El píxel se activó en los últimos siete días",
+    "Abra uma página da loja para o Pixel disparar.": "Abre una página de la tienda para que el píxel se active.",
+    "Crie ou conecte o Pixel no Gerenciador de Eventos.": "Crea o conecta el píxel en el Administrador de eventos.",
+    "Abrir o Gerenciador de Eventos": "Abrir el Administrador de eventos"
+  };
+  for (var k in A) D[k] = A[k];
+})();

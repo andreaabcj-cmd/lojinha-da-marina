@@ -312,3 +312,14 @@
   };
   for (var k in A) D[k] = A[k];
 })();
+
+/* 02/11/2026: nome da regra da conversão personalizada (achados pelo robô em espanhol) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    "URL contém": "URL contiene",
+    "URL não contém": "URL no contiene",
+    "URL é igual a": "URL es igual a"
+  };
+  for (var k in A) D[k] = A[k];
+})();

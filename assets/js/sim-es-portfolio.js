@@ -198,3 +198,37 @@
     P.push([/^Selected Facebook Pages: (.+) ▾$/, function (m) { return 'Selected Facebook Pages: ' + m[1] + ' ▾' }]);
   })();
 })();
+
+/* 02/11/2026: textos que o robô em espanhol achou sem tradução (Central de Segurança, Adicionar conta de anúncios, pagamentos, acesso) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    '⚠ 1 conta de anúncios sem segurança da conta de anúncios por aprovação de semelhantes': '⚠ 1 cuenta publicitaria sin seguridad de la cuenta publicitaria por aprobación de pares',
+    'Cibercriminosos veiculam anúncios não autorizados com frequência. Esses anúncios podem ser publicados sem precisar de análise por outra pessoa.': 'Los ciberdelincuentes publican anuncios no autorizados con frecuencia. Esos anuncios pueden publicarse sin que otra persona los revise.',
+    'Verifique os níveis de proteção e adicione usuários confiáveis para todas as contas de anúncios.': 'Revisa los niveles de protección y agrega usuarios de confianza a todas las cuentas publicitarias.',
+    '⚠ 1 usuário com um domínio de email público': '⚠ 1 usuario con un dominio de correo público',
+    'Ação concluída': 'Acción completada', '✅ Acesso com controle total limitado a 10 usuários ou menos': '✅ Acceso con control total limitado a 10 usuarios o menos',
+    '🔒 Autenticação de dois fatores': '🔒 Autenticación en dos pasos', 'Gerenciar minhas configurações pessoais': 'Administrar mi configuración personal',
+    'Ninguém': 'Nadie', 'Somente administradores': 'Solo administradores', 'Analisar o acesso das pessoas': 'Revisar el acceso de las personas',
+    '1 de 3 pessoas precisam ativar a autenticação de dois fatores para acessar este portfólio.': '1 de 3 personas debe activar la autenticación en dos pasos para acceder a este portafolio.',
+    '✓ Administrador secundário adicionado': '✓ Administrador secundario agregado',
+    'Você tem pelo menos um outro administrador neste portfólio que pode ajudar se você perder acesso à sua conta.': 'Tienes al menos otro administrador en este portafolio que puede ayudarte si pierdes el acceso a tu cuenta.',
+    'As pessoas podem tentar acessar sua empresa e controlar seus ativos por meio de ações específicas, como adicionar um administrador, compartilhar uma linha de crédito ou publicar um anúncio.': 'Las personas pueden intentar acceder a tu empresa y controlar tus activos mediante acciones específicas, como agregar un administrador, compartir una línea de crédito o publicar un anuncio.',
+    'Segurança do domínio': 'Seguridad del dominio', 'Segurança da conta de anúncios': 'Seguridad de la cuenta publicitaria',
+    'Exija que anúncios específicos sejam aprovados, como anúncios criados por um novo funcionário ou acima de determinado orçamento.': 'Exige que se aprueben anuncios específicos, como los creados por un empleado nuevo o los que superan cierto presupuesto.',
+    '✓ Layout conferido com a tela real em 25/10/2026': '✓ Diseño comparado con la pantalla real el 25/10/2026',
+    'Não é possível remover contas de anúncios de um portfólio empresarial depois que elas são adicionadas.': 'No es posible quitar cuentas publicitarias de un portafolio comercial después de agregarlas.',
+    'Gerencie anúncios para sua empresa, marca ou organização.': 'Administra anuncios para tu empresa, marca u organización.',
+    'Ideal para: quando você não tem acesso às contas de anúncios existentes e precisa de uma forma de veicular anúncios.': 'Ideal para: cuando no tienes acceso a las cuentas publicitarias existentes y necesitas una forma de publicar anuncios.',
+    'Adicionar uma conta de anúncio existente': 'Agregar una cuenta publicitaria existente',
+    'Transfira uma conta de anúncios para este portfólio empresarial. Você precisa ter acesso à conta de anúncios para adicioná-la.': 'Transfiere una cuenta publicitaria a este portafolio comercial. Necesitas tener acceso a la cuenta publicitaria para agregarla.',
+    'Ideal para: quando você quer gerenciar a conta de anúncios em um portfólio com Páginas, perfis do Instagram e outros ativos de negócios em que trabalha.': 'Ideal para: cuando quieres administrar la cuenta publicitaria en un portafolio con las Páginas, perfiles de Instagram y otros activos comerciales con los que trabajas.',
+    'Pedir acesso a uma conta de anúncios em outro portfólio empresarial': 'Solicitar acceso a una cuenta publicitaria de otro portafolio comercial',
+    'Tenha acesso a uma conta de anúncios em outro portfólio. A conta de anúncios não será transferida.': 'Obtén acceso a una cuenta publicitaria de otro portafolio. La cuenta publicitaria no se transferirá.',
+    'Ideal para: agências que precisam de acesso à conta de anúncios do cliente.': 'Ideal para: agencias que necesitan acceso a la cuenta publicitaria del cliente.',
+    'Formas de pagamento': 'Métodos de pago', 'Você não adicionou nenhuma forma de pagamento.': 'No agregaste ningún método de pago.', 'Dados da empresa': 'Datos de la empresa',
+    'Mais informações necessárias': 'Se necesita más información', 'Acesso parcial (só anúncios)': 'Acceso parcial (solo anuncios)',
+    'Conteúdo · Atividade da comunidade · Mensagens e ligações · Anúncios · Insights · Receita · Conteúdo de criador · Gerenciamento de criadores de conteúdo · Facebook e ferramentas comerciais': 'Contenido · Actividad de la comunidad · Mensajes y llamadas · Anuncios · Estadísticas · Ingresos · Contenido de creador · Administración de creadores de contenido · Facebook y herramientas comerciales'
+  };
+  for (var k in A) D[k] = A[k];
+})();

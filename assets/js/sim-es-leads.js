@@ -143,3 +143,22 @@
   P.push([/^Leads em análise: (\S+) · Leads convertidos: (\S+) · Taxa de conversão: (\S+)$/, function (m) { return 'En revisión: ' + m[1] + ' · Convertidos: ' + m[2] + ' · Tasa de conversión: ' + m[3] }]);
   P.push([/^(.+) \(cópia\)$/, function (m) { return m[1] + ' (copia)' }]);
 })();
+
+/* 02/11/2026: tabela de campanhas e editor do formulário (achados pelo robô em espanhol) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    "Analisar": "Analizar",
+    "Teste A/B": "Prueba A/B",
+    "Pesquise para filtrar por: nome, identificação ou métrica": "Busca para filtrar por: nombre, identificador o métrica",
+    "Campanha": "Campaña",
+    "Veiculação": "Entrega",
+    "Valor gasto": "Importe gastado",
+    "Nenhuma campanha ainda. Clique em": "Todavía no hay campañas. Haz clic en",
+    "para começar (no treino, só um rascunho).": "para empezar (en la práctica, solo un borrador).",
+    "Texto da descrição": "Texto de la descripción",
+    "Continue →": "Continuar →",
+    "Remover saudação": "Quitar saludo"
+  };
+  for (var k in A) D[k] = A[k];
+})();

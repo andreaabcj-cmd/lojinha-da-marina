@@ -136,3 +136,13 @@
   D["Personalizar"] = "Personalizar";
   P.push([/^Todos os (\d+) posicionamentos ▾$/, function (m) { return 'Todas las ' + m[1] + ' ubicaciones ▾' }]);
 })();
+
+/* 02/11/2026: nota da tela real dos aprimoramentos (achados pelo robô em espanhol) */
+(function () {
+  var D = window.SIM_ES = window.SIM_ES || {};
+  var A = {
+    "Na tela real (26/10/2026), cada aprimoramento tem um botão": "En la pantalla real (26/10/2026), cada mejora tiene un botón",
+    ": ele abre uma página própria com a chave Ativado/Desativado, as opções (em Adicionar sobreposições: Estilo do texto e Cor do plano de fundo, Automático ou escolhidos) e exemplos ao lado; “Voltar aos aprimoramentos” retorna à lista. Os aprimoramentos ficam em dois grupos: Para análise e Mídia. No simulador, a caixa de cada um faz o papel da chave.": ": abre una página propia con el interruptor Activado/Desactivado, las opciones (en Agregar superposiciones: Estilo del texto y Color de fondo, Automático o elegidos) y ejemplos al lado; “Volver a las mejoras” regresa a la lista. Las mejoras están en dos grupos: Para análisis y Contenido multimedia. En el simulador, la casilla de cada una hace de interruptor."
+  };
+  for (var k in A) D[k] = A[k];
+})();
