@@ -233,7 +233,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
     var cur = function () { return alvoEl(p) }, e = cur(); if (!e) return;
     var cit = [], rx = /[“"]([^”"]{1,60})[”"]/g, m, fonte = T(p.dica) + ' ' + T(p.txt);
     while ((m = rx.exec(fonte))) cit.push(m[1]);
-    var rx2 = /(?:Digite|digite|Escreva|escreva|Procure por|procure por|Escriba|Escribe|escribe|Busca|busca)\s+([^\s,;:()]+?)(?=[\s,;:()]|\.(?:\s|$)|$)/g;   // "Digite fbq.", "Digite 39.90"
+    var rx2 = /(?:Digite|digite|Escreva|escreva|Procure por|procure por|Escriba|Escribe|escribe|Busca|busca)\s+([^\s,;()]+?)(?=[\s,;()]|[.:](?:\s|$)|$)/g;   // "Digite fbq.", "Digite 39.90"
     while ((m = rx2.exec(fonte))) cit.push(m[1]);
     var cands = cit.concat(['Lojinha da Marina', 'lojinhadamarina', '0', '1', '5', '10', '20', '30']);
     var sels = function () { var x = cur(); return !x ? [] : x.tagName === 'SELECT' ? [x] : [].slice.call(x.querySelectorAll('select')) };
