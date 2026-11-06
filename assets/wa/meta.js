@@ -55,7 +55,7 @@
         '<tr><td>+55 11 98765-4321<small>🇧🇷 ' + t(T('Brasil', 'Brasil')) + '</small></td><td>Lojinha da Marina</td><td><span class="mt-selo">' + t(T('Offline', 'Sin conexión')) + '</span></td><td></td></tr></table>';
       else if (META.aba === 'resumo') h += '<div data-t="mt-resumo"><div class="mt-campo"><b>' + t(T('Informações da empresa', 'Información del negocio')) + '</b></div>' +
         campo(T('Endereço', 'Dirección'), T('Sem endereço', 'Sin dirección')) + campo(T('Moeda', 'Moneda'), T('Nenhuma moeda encontrada', 'No se encontró ninguna moneda')) +
-        campo(T('Nome comercial', 'Nombre comercial'), T('Lojinha da Marina', 'Lojinha da Marina')) + campo(T('Verificação da empresa', 'Verificación del negocio'), T('Não verificado', 'No verificado')) +
+        campo(T('Nome comercial', 'Nombre comercial'), T('Lojinha da Marina', 'Lojinha da Marina')) + campo(T('Verificação da empresa', 'Verificación del negocio'), T('Não verificado', 'No verificado'), 'mt-verificacao') +
         '<div class="mt-campo"><b>' + t(T('Status da conta', 'Estado de la cuenta')) + '</b><span class="mt-ok">● ' + t(T('Aprovada', 'Aprobada')) + '</span></div>' +
         campo(T('Payment method', 'Payment method'), T('Nenhuma forma de pagamento encontrada', 'No se encontró ningún método de pago')) + '</div>';
       else h += '<p class="mt-tipo">' + t(T('Esta aba fica para outra aula.', 'Esta pestaña queda para otra clase.')) + '</p>';
@@ -63,7 +63,7 @@
       return h + '</div></div>';
     }
   };
-  function campo(a, b) { return '<div class="mt-campo"><b>' + t(a) + '</b><span>' + t(b) + '</span></div>' }
+  function campo(a, b, dt) { return '<div class="mt-campo"' + (dt ? ' data-t="' + dt + '"' : '') + '><b>' + t(a) + '</b><span>' + t(b) + '</span></div>' }
 
   /* Gerenciador do WhatsApp (aula 14). Tela real vista em 28/10/2026, em PT, no portfólio de aula (só olhando):
      menu Visão geral · Campanhas de mensagens ↗ · Ferramentas da conta (Números de telefone, Registro de atividades) · Configurações de pagamento;
@@ -74,12 +74,12 @@
     ['g', T('Ferramentas da conta', 'Herramientas de la cuenta')], ['numeros', T('Números de telefone', 'Números de teléfono')], ['registro', T('Registro de atividades', 'Registro de actividad')],
     ['g', T('Configurações de pagamento', 'Configuración de pago')], ['pagamento', T('Índia', 'India')]];
   var WMENU_API = [['visao', T('Visão geral', 'Resumen')], ['campanhas', T('Campanhas de mensagens ↗', 'Campañas de mensajes ↗')],
-    ['g', T('Modelos de mensagens', 'Plantillas de mensajes')], ['fora', T('Gerenciar modelos', 'Administrar plantillas')], ['fora', T('Biblioteca de modelos', 'Biblioteca de plantillas')],
+    ['g', T('Modelos de mensagens', 'Plantillas de mensajes')], ['fora', T('Gerenciar modelos', 'Administrar plantillas')], ['fora', T('Biblioteca de modelos', 'Biblioteca de plantillas')], ['fora', T('Atualizações de categorias', 'Actualizaciones de categorías')],
     ['solo', T('Insights', 'Estadísticas')],
-    ['g', T('Ferramentas da conta', 'Herramientas de la cuenta')], ['fora', T('Limites de mensagens', 'Límites de mensajes')], ['fora', T('Flows', 'Flows')], ['numeros', T('Números de telefone', 'Números de teléfono')], ['registro', T('Registro de atividades', 'Registro de actividad')],
+    ['g', T('Ferramentas da conta', 'Herramientas de la cuenta')], ['fora', T('Limites de mensagens', 'Límites de mensajes')], ['flows', T('Flows', 'Flows')], ['numeros', T('Números de telefone', 'Números de teléfono')], ['fora', T('Catálogo', 'Catálogo')], ['registro', T('Registro de atividades', 'Registro de actividad')],
     ['g', T('Configurações de pagamento', 'Configuración de pago')], ['pagamento', T('Índia', 'India')]];
   var TESTE = '+1 555-010-0199';   // número de teste fictício (o real da conta de aula fica fora do repositório)
-  var WTIT = { visao: T('Visão geral', 'Resumen'), numeros: T('Telefones', 'Teléfonos'), perfil: T('Telefones', 'Teléfonos'), registro: T('Registro de atividades', 'Registro de actividad'), pagamento: T('Configurações de pagamento', 'Configuración de pago') };
+  var WTIT = { visao: T('Visão geral', 'Resumen'), numeros: T('Telefones', 'Teléfonos'), perfil: T('Telefones', 'Teléfonos'), registro: T('Registro de atividades', 'Registro de actividad'), pagamento: T('Configurações de pagamento', 'Configuración de pago'), flows: T('Flows', 'Flows'), flowcriar: T('Flows › Criar', 'Flows › Crear'), flowedit: T('Flows › Editar', 'Flows › Editar') };
   var NUM = '+55 11 98765-4321';
   function alerta(dt, ico, tit, txt, bt) { return '<div class="wam-alerta" data-t="' + dt + '"><b>' + ico + ' ' + t(tit) + '</b><p>' + t(txt) + '</p>' + (bt ? '<button class="mt-bt" data-mt="nada">' + t(bt) + '</button>' : '') + '</div>' }
   function bloco(tit, n) { return '<div class="wam-num"><small>' + t(tit) + '</small><b>' + n + '</b></div>' }
@@ -131,10 +131,48 @@
       return '<table class="mt-tab" data-t="wam-registro"><tr><th>' + t(T('Horário (Etc/UTC)', 'Hora (Etc/UTC)')) + '</th><th>' + t(T('Usuário', 'Usuario')) + '</th><th>' + t(T('Categoria', 'Categoría')) + '</th><th>' + t(T('Atividade', 'Actividad')) + '</th></tr>' +
         '<tr><td>10:50 · 13/10</td><td>' + t(T('Sistema da Meta', 'Sistema de Meta')) + '</td><td>' + t(T('Perfil comercial', 'Perfil comercial')) + '</td><td>' + t(T('Perfil comercial atualizado para', 'Perfil comercial actualizado para')) + ' ' + NUM + '</td></tr></table>';
     },
-    pagamento: function () { return '<div class="mt-vazio"><div class="ilu">🔭</div><b>' + t(T('Você não pode acessar as configurações de pagamento no momento', 'No puedes acceder a la configuración de pago en este momento')) + '</b></div>' }
+    pagamento: function () { return '<div class="mt-vazio"><div class="ilu">🔭</div><b>' + t(T('Você não pode acessar as configurações de pagamento no momento', 'No puedes acceder a la configuración de pago en este momento')) + '</b></div>' },
+    /* Flows (aula 20). Tela real vista em 06/11/2026, em PT e ES, na conta de teste do portfólio de aula: página inicial, Criar e editor.
+       O Flow, o nome e o JSON aqui são da Marina (fictícios). O popup segue um print real recebido em 06/11/2026: só o título em inglês, sem lista.
+       O popup em PT e ES e a página inicial em ES não foram vistos (a conferir). */
+    flows: function () {
+      if (META.flowTem) return '<div class="mt-titulo"><span class="mt-busca" style="margin-left:0;flex:1">🔍 ' + t(T('Pesquisar', 'Buscar')) + '</span><button class="mt-bt" data-mt="nada">' + t(T('Status', 'Estado')) + ' ▾</button><button class="mt-btazul" data-mt="wpag:flowcriar">' + t(T('Criar flow', 'Crear Flow')) + '</button></div>' +
+        '<table class="mt-tab" data-t="wam-flows-lista"><tr><th>' + t(T('Nome do flow', 'Nombre del Flow')) + '</th><th>' + t(T('Identificação do flow', 'Identificador del Flow')) + '</th><th>' + t(T('Status', 'Estado')) + '</th><th>' + t(T('Última atualização', 'Última actualización')) + '</th></tr>' +
+        '<tr><td><button class="wam-fl-link" data-mt="wpag:flowedit">' + t(FLOW.nome) + '</button></td><td>100000000000003</td><td><span class="mt-selo">' + t(T('Rascunho', 'Borrador')) + '</span></td><td>' + t(T('6 de nov de 2026', '6 de nov de 2026')) + '</td></tr></table>';
+      return '<div class="wam-sec wam-fl-ini"><h4>' + t(T('Turbine o desempenho com o WhatsApp Flows', 'Mejora el rendimiento con WhatsApp Flows')) + '</h4>' +
+        '<ul class="wa-lista"><li>' + t(T('Tenha interações melhores com os clientes para reduzir o atrito e aumentar a conversão.', 'Ten mejores interacciones con los clientes para reducir la fricción y aumentar la conversión.')) + '</li><li>' + t(T('Crie formulários estruturados e fáceis de usar.', 'Crea formularios estructurados y fáciles de usar.')) + '</li><li>' + t(T('Proporcione experiências personalizadas de acordo com as necessidades dos seus clientes.', 'Ofrece experiencias personalizadas según las necesidades de tus clientes.')) + '</li></ul>' +
+        '<p class="wam-fl-aviso" data-t="wam-flows-aviso">' + t(T('Para publicar Flows, você precisa <u>melhorar a qualidade das mensagens</u> e <u>conclua a verificação da empresa</u>.', 'Para publicar Flows, debes <u>mejorar la calidad de los mensajes</u> y <u>completar la verificación de la empresa</u>.')) + '</p>' +
+        '<button class="mt-btazul" data-mt="wpag:flowcriar" data-t="wam-flows-comecar">' + t(T('Começar', 'Empezar')) + '</button></div>';
+    },
+    flowcriar: function () {
+      var mods = [T('Padrão', 'Predeterminado'), T('Coletar interesse de compra', 'Recolectar los intereses de compra'), T('Obter feedback', 'Recibir comentarios'), T('Enviar uma pesquisa', 'Enviar una encuesta'), T('Suporte ao cliente', 'Servicio de atención al cliente')];
+      return '<div class="wam-sec" data-t="wam-fc-campos"><label class="dev-campo"><b>' + t(T('Nome', 'Nombre')) + '</b><span class="dev-in">' + t(FLOW.nome) + '</span></label>' +
+        '<label class="dev-campo"><b>' + t(T('Categorias', 'Categorías')) + '</b><span class="dev-in">' + t(T('Outro', 'Otro')) + '</span></label>' +
+        '<b>' + t(T('Modelo', 'Plantilla')) + '</b><div class="mt-abas"><button class="on" data-mt="nada">' + t(T('Sem endpoint', 'Sin punto de conexión')) + '</button><button data-mt="nada">' + t(T('Com endpoint', 'Con punto de conexión')) + '</button></div>' +
+        mods.map(function (m, i) { return '<div class="dev-radio wam-fl-mod"><span class="wa-radio' + (i ? '' : ' on') + '"></span> ' + t(m) + '</div>' }).join('') +
+        '<p class="mt-tipo">' + t(T('Ao usar o modelo JSON do Flow, você é responsável por personalizar a experiência para se adequar ao seu caso de uso, bem como por cumprir as leis aplicáveis e a Política de Mensagens do WhatsApp Business.', 'Al usar la plantilla JSON de Flow, eres responsable de personalizar la experiencia para adaptarla a tu caso de uso y de cumplir con las leyes aplicables y la Política de Mensajes de WhatsApp Business.')) + '</p>' +
+        '<div class="dev-rod"><button class="mt-bt" data-mt="wpag:flows">' + t(T('Descartar', 'Descartar')) + '</button><button class="mt-btazul" data-mt="wpag:flowedit" data-t="wam-fc-criar">' + t(T('Criar', 'Crear')) + '</button></div></div>';
+    },
+    flowedit: function () {
+      var linhas = FLOW.json().split('\n');
+      return '<div class="wam-fe"><div class="wam-fe-topo"><span class="wam-fe-ic">🧩</span><div class="wam-fe-nome"><b>' + t(FLOW.nome) + '</b><small><span class="mt-selo">' + t(T('Rascunho', 'Borrador')) + '</span> • ' + t(T('Atualizado em 6 de nov de 2026', 'Última actualización: 6 de nov de 2026')) + '</small></div>' +
+        '<span class="wam-fe-acoes"><button class="mt-bt" data-mt="nada">' + t(T('Salvar', 'Guardar')) + '</button><button class="mt-bt" data-mt="fpub" data-t="wam-fe-postar">⚠ ' + t(T('Postar', 'Publicar')) + '</button><button class="mt-bt" data-mt="nada" aria-label="' + t(T('Compartilhar', 'Compartir')) + '">⤴</button><button class="mt-bt" data-mt="nada" aria-label="' + t(T('Abrir menu suspenso', 'Abrir menú desplegable')) + '">⋯</button></span>' +
+        (META.flowPop ? '<div class="wam-fe-pop" data-t="wam-fe-pop" data-sem-traduzir><b>Before you can publish this Flow:</b><button data-mt="ffecha" data-t="wam-fe-pop-x" aria-label="' + t(T('Fechar', 'Cerrar')) + '">✕</button></div>' : '') + '</div>' +
+        '<div class="wam-fe-duas"><div class="wam-fe-ed"><div class="wam-fe-cab"><b>' + t(T('Editor', 'Editor')) + '</b><button class="mt-bt" data-mt="nada">' + t(T('Executar', 'Ejecutar')) + '</button></div>' +
+        '<div class="wam-fe-cod" data-sem-traduzir>' + linhas.map(function (l, i) { return '<div><i>' + (i + 1) + '</i><code>' + N.esc(l) + '</code></div>' }).join('') + '</div>' +
+        '<div class="wam-fe-rod" data-t="wam-fe-erros"><b>' + t(T('Erros no JSON do flow', 'Errores de JSON de Flow')) + ' <span class="wam-fe-zero">0</span></b><span>' + t(T('Ações', 'Acciones')) + '</span><span>' + t(T('Endpoint', 'Punto de conexión')) + '</span></div></div>' +
+        '<div class="wam-fe-pre"><div class="wam-fe-cab"><b>' + t(T('Prévia', 'Vista previa')) + '</b></div><div class="wam-fe-cel"><div class="tit"><span>✕</span><b>' + t(FLOW.nome) + '</b><span>⋮</span></div><label><span>' + t(T('Seu nome', 'Tu nombre')) + '</span></label><label><span>' + t(T('Frase na caneca', 'Frase en la taza')) + '</span></label><div class="env">' + t(T('Enviar encomenda', 'Enviar pedido')) + '</div><small>' + t(T('Gerenciada pela empresa. Saiba mais', 'Administrado por la empresa. Más información')) + '</small></div>' +
+        '<p class="mt-tipo">' + t(T('A renderização e a interação variam dependendo do dispositivo.', 'La representación y la interacción varían según el dispositivo.')) + '</p></div></div></div>';
+    }
   };
+  var FLOW = { nome: T('Encomenda de caneca', 'Pedido de taza'),
+    json: function () {
+      var es = N.lang === 'es';
+      return ['{', '  "version": "7.3",', '  "screens": [', '    {', '      "id": "' + (es ? 'PEDIDO' : 'ENCOMENDA') + '",', '      "title": "' + t(FLOW.nome) + '",', '      "terminal": true,', '      "success": true,', '      "data": {},', '      "layout": {', '        "type": "SingleColumnLayout",', '        "children": [', '          {', '            "type": "Form",', '            "name": "form",', '            "children": [',
+        '              { "type": "TextInput", "name": "nome", "label": "' + (es ? 'Tu nombre' : 'Seu nome') + '", "required": true },', '              { "type": "TextInput", "name": "frase", "label": "' + (es ? 'Frase en la taza' : 'Frase na caneca') + '", "required": true },', '              { "type": "Footer", "label": "' + (es ? 'Enviar pedido' : 'Enviar encomenda') + '",', '                "on-click-action": { "name": "complete", "payload": {} } }', '            ]', '          }', '        ]', '      }', '    }', '  ]', '}'].join('\n');
+    } };
   function wamRender() {
-    var p = META.pag in WPAGS ? META.pag : 'visao', sel = p === 'perfil' ? 'numeros' : p;
+    var p = META.pag in WPAGS ? META.pag : 'visao', sel = p === 'perfil' ? 'numeros' : p === 'flowcriar' || p === 'flowedit' ? 'flows' : p;
     var menu = '<nav class="mt-menu" data-t="wam-menu">' + (META.conta === 'api' ? WMENU_API : WMENU).map(function (m) {
       if (m[0] === 'g') return '<div class="g"><span>' + t(m[1]) + '</span><span>⌃</span></div>';
       if (m[0] === 'solo' || m[0] === 'fora') return '<button class="' + (m[0] === 'solo' ? 'solo' : '') + '" data-mt="nada">' + t(m[1]) + '</button>';
@@ -224,7 +262,7 @@
       '<span class="mt-port"><span class="mt-l">L</span><span><b>Lojinha da Marina</b><small>' + t(T('Portfólio empresarial', 'Portfolio comercial')) + '</small></span></span>' +
       '<span class="mt-tarefas">' + t(T('Tarefas', 'Tareas pendientes')) + '</span><span class="mt-av">M</span></div><div class="mt-corpo">' + menu() + '<div class="mt-cont">' + f() + '</div></div></div>';
   };
-  META.por = function (o) { META.app = ''; META.passo = 1; META.caso = false; META.port = false; META.sem2fa = false; META.aceito = false; META.jan = false; META.conta = 'app'; META.contaPop = false; META.dica = false; META.mais = false; META.pag = 'carregando'; META.sel = false; META.aba = 'numeros'; META.pop = false; for (var k in (o || {})) META[k] = o[k]; META.render() };
+  META.por = function (o) { META.app = ''; META.passo = 1; META.caso = false; META.port = false; META.sem2fa = false; META.aceito = false; META.jan = false; META.conta = 'app'; META.contaPop = false; META.dica = false; META.mais = false; META.flowPop = false; META.flowTem = false; META.pag = 'carregando'; META.sel = false; META.aba = 'numeros'; META.pop = false; for (var k in (o || {})) META[k] = o[k]; META.render() };
   META.montar = function (el) { META.el = el; META.por() };
 
   document.addEventListener('click', function (e) {
@@ -233,8 +271,11 @@
     if (a.indexOf('wpag:') === 0) {
       var w = a.slice(5);
       if (w === 'campanhas') return N.aviso(T('Campanhas de mensagens abre em outra janela. Fica de fora deste treino.', 'Campañas de mensajes se abre en otra ventana. Queda fuera de esta práctica.'));
-      META.pag = w; return META.render();
+      if (w === 'flowedit') META.flowTem = true;
+      META.flowPop = false; META.pag = w; return META.render();
     }
+    if (a === 'fpub') { META.flowPop = !META.flowPop; return META.render() }
+    if (a === 'ffecha') { META.flowPop = false; return META.render() }
     if (a === 'mais') { META.mais = !META.mais; return META.render() }
     if (a === 'wconta') { META.contaPop = !META.contaPop; return META.render() }
     if (a.indexOf('wconta:') === 0) { META.conta = a.slice(7); META.contaPop = false; META.dica = false; if (META.pag === 'perfil') META.pag = 'numeros'; return META.render() }

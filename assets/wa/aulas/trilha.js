@@ -1,4 +1,4 @@
-/* A trilha: 19 aulas (15 a 18 pedidas pelo pessoal em 28/10/2026; 19 em 29/10) na ordem da história da Marina (roteiro aprovado em 27/10/2026). */
+/* A trilha: 20 aulas (15 a 18 pedidas pelo pessoal em 28/10/2026; 19 em 29/10; 20 em 06/11) na ordem da história da Marina (roteiro aprovado em 27/10/2026). */
 (function () {
   var T = N.T;
   N.TRILHA = [
@@ -20,7 +20,8 @@
     ['16', '🧩', T('A API passo a passo e os parceiros', 'La API paso a paso y los socios')],
     ['17', '🗑️', T('Excluir × desregistrar o número', 'Eliminar × dar de baja el número')],
     ['18', '🤝', T('O mesmo número no app e na API', 'El mismo número en la app y en la API')],
-    ['19', '☑️', T('Selo por notoriedade: Conta comercial oficial', 'Insignia por notoriedad: Cuenta comercial oficial')]
+    ['19', '☑️', T('Selo por notoriedade: Conta comercial oficial', 'Insignia por notoriedad: Cuenta comercial oficial')],
+    ['20', '🧾', T('O Flow não publica', 'El Flow no se publica')]
   ].map(function (a) { return { id: a[0], icone: a[1], titulo: a[2] } });
 })();
 

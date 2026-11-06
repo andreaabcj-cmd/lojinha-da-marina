@@ -59,6 +59,22 @@
 .dev-cod{background:#F4F7FB;border:1px solid var(--line);border-radius:8px;padding:8px;font:11.5px/1.4 Consolas,monospace;white-space:pre-wrap;overflow:auto}
 .dev-jan{display:flex;gap:14px;margin-top:10px;border:2px solid var(--ink);border-radius:12px;padding:12px;background:#fff;box-shadow:3px 3px 0 var(--ink)}.dev-jan h4{margin:0 0 6px}
 .wam-dica{background:#FFF4D6;border-radius:8px;padding:6px 10px;font-size:12.5px}
+/* Flows no Gerenciador do WhatsApp (aula 20; tela real de 06/11/2026) */
+.wam-fl-ini{max-width:760px}.wam-fl-aviso{margin:10px 0;padding:8px 10px;background:#FFF4D6;border-radius:8px}
+.wam-fl-link{border:0;background:none;padding:0;font:700 13px inherit;color:var(--blue);cursor:pointer}.wam-fl-mod{margin:6px 0;padding:6px 8px}
+.wam-fe{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}.wam-fe-topo{position:relative;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wam-fe-ic{width:34px;height:34px;border-radius:8px;background:#0A7C5C;display:grid;place-items:center}.wam-fe-nome{display:flex;flex-direction:column;gap:2px}.wam-fe-nome b{font-size:15px}.wam-fe-nome small{color:var(--muted)}
+.wam-fe-acoes{margin-left:auto;display:flex;gap:6px}
+.wam-fe-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:5;display:flex;align-items:center;gap:18px;padding:12px 14px;background:#fff;border:2px solid var(--ink);border-radius:8px;box-shadow:3px 3px 0 var(--ink)}.wam-fe-pop button{border:0;background:none;font:inherit;cursor:pointer}
+.wam-fe-duas{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:10px;flex:1;min-height:320px}
+.wam-fe-ed,.wam-fe-pre{display:flex;flex-direction:column;background:#fff;border:2px solid var(--ink);border-radius:12px;overflow:hidden;min-height:0}
+.wam-fe-cab{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line)}
+.wam-fe-cod{flex:1;overflow:auto;padding:6px 0;font:12px/1.5 Consolas,monospace;min-height:0}.wam-fe-cod div{display:flex;white-space:pre}.wam-fe-cod i{flex:0 0 34px;padding-right:10px;text-align:right;color:var(--muted);font-style:normal}.wam-fe-cod code{font:inherit}
+.wam-fe-rod{display:flex;gap:16px;padding:8px 12px;border-top:1px solid var(--line)}.wam-fe-rod span{color:var(--muted)}.wam-fe-zero{display:inline-block;min-width:18px;text-align:center;border-radius:9px;background:#E6F4EA;color:#176B3A;font-size:11.5px}
+.wam-fe-pre .mt-tipo{margin:6px 12px 10px;font-size:11.5px}.wam-fe-cel{align-self:center;width:min(250px,calc(100% - 20px));margin:10px 0;border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.wam-fe-cel .tit{display:flex;justify-content:space-between;margin-bottom:12px;font-size:12.5px}.wam-fe-cel label{display:block;margin:8px 0;padding:9px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted)}
+.wam-fe-cel .env{margin:12px 0 6px;padding:7px;border-radius:999px;background:#EEF0F3;color:var(--muted);text-align:center}.wam-fe-cel small{display:block;text-align:center;color:var(--muted);font-size:10.5px}
+@media (max-width:900px){.wam-fe-duas{grid-template-columns:1fr}.wam-fe-pre{display:none}}
 @media (max-width:700px){.wam-duas{grid-template-columns:1fr}}
 @media (max-width:700px){
   .mt-menu{width:150px}.mt-esq{flex-direction:column}.mt-lista{width:auto;border-right:0;border-bottom:1px solid var(--line);max-height:110px}
