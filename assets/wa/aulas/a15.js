@@ -41,7 +41,7 @@
       lugares: ['meta'], comeco: function () { META.por({ app: 'wam', pag: 'numeros', conta: 'api' }) },
       passos: [
         P(m({ app: 'wam', pag: 'numeros', conta: 'api' }), 'wam-add-tel', ['O botão apagado', 'El botón apagado'], ['Na conta da API, “Adicionar telefone” está apagado. Vamos ver por quê.', 'En la cuenta de la API, “Agregar teléfono” está apagado. Veamos por qué.'], false, 'meta'),
-        P(m({ app: 'wam', pag: 'numeros', conta: 'api' }), 'wam-menu-visao', ['Visão geral', 'Resumen'], ['Clique em Visão geral.', 'Haz clic en Resumen.'], true, 'meta'),
+        P(m({ app: 'wam', pag: 'numeros', conta: 'api' }), 'wam-menu-visao', ['Visão geral', 'Información general'], ['Clique em Visão geral.', 'Haz clic en Información general.'], true, 'meta'),
         P(m({ app: 'wam', pag: 'visao', conta: 'api' }), 'wam-limite-numeros', ['1 de 2', '1 de 2'], ['Portfólio novo começa com 2 números. Verificando a empresa (ou chegando a 2.000 mensagens), a Meta sobe para 20.', 'Un portfolio nuevo empieza con 2 números. Verificando la empresa (o llegando a 2.000 mensajes), Meta lo sube a 20.'], false, 'meta'),
         P(m({ app: 'dev', pag: 'etapa2', aceito: true }), 'dev-registrar', ['Onde se adiciona', 'Dónde se agrega'], ['Em Meta for Developers, Etapa 2: “Registre seu número de telefone do WhatsApp”.', 'En Meta for Developers, Paso 2: “Registra tu número de teléfono de WhatsApp”.'], false, 'meta'),
         P(m({ app: 'dev', pag: 'etapa2', aceito: true }), 'dev-add-numero', ['Adicionar', 'Agregar'], ['Clique em Adicionar número de telefone.', 'Haz clic en Agregar número de teléfono.'], true, 'meta'),

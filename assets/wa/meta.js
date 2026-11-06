@@ -70,16 +70,16 @@
      Visão geral = Alertas (1 + "Ver mais (2)"), Níveis de mensagens, Contas de mensagens (Insights deste mês), Recursos.
      Números de telefone = tabela (Número, Nome, Status "Offline", Classificação de qualidade vazia) e ⚙ abre o Perfil do número.
      Número e identificação aqui são fictícios. Telas em espanhol não vistas: tradução nossa (a conferir). */
-  var WMENU = [['visao', T('Visão geral', 'Resumen')], ['campanhas', T('Campanhas de mensagens ↗', 'Campañas de mensajes ↗')],
+  var WMENU = [['visao', T('Visão geral', 'Información general')], ['campanhas', T('Campanhas de mensagens ↗', 'Campañas de mensajes ↗')],
     ['g', T('Ferramentas da conta', 'Herramientas de la cuenta')], ['numeros', T('Números de telefone', 'Números de teléfono')], ['registro', T('Registro de atividades', 'Registro de actividad')],
-    ['g', T('Configurações de pagamento', 'Configuración de pago')], ['pagamento', T('Índia', 'India')]];
-  var WMENU_API = [['visao', T('Visão geral', 'Resumen')], ['campanhas', T('Campanhas de mensagens ↗', 'Campañas de mensajes ↗')],
+    ['g', T('Configurações de pagamento', 'Opciones de configuración de pagos')], ['pagamento', T('Índia', 'India')]];
+  var WMENU_API = [['visao', T('Visão geral', 'Información general')], ['campanhas', T('Campanhas de mensagens ↗', 'Campañas de mensajes ↗')],
     ['g', T('Modelos de mensagens', 'Plantillas de mensajes')], ['fora', T('Gerenciar modelos', 'Administrar plantillas')], ['fora', T('Biblioteca de modelos', 'Biblioteca de plantillas')], ['fora', T('Atualizações de categorias', 'Actualizaciones de categorías')],
     ['solo', T('Insights', 'Estadísticas')],
     ['g', T('Ferramentas da conta', 'Herramientas de la cuenta')], ['fora', T('Limites de mensagens', 'Límites de mensajes')], ['flows', T('Flows', 'Flows')], ['numeros', T('Números de telefone', 'Números de teléfono')], ['fora', T('Catálogo', 'Catálogo')], ['registro', T('Registro de atividades', 'Registro de actividad')],
-    ['g', T('Configurações de pagamento', 'Configuración de pago')], ['pagamento', T('Índia', 'India')]];
+    ['g', T('Configurações de pagamento', 'Opciones de configuración de pagos')], ['pagamento', T('Índia', 'India')]];
   var TESTE = '+1 555-010-0199';   // número de teste fictício (o real da conta de aula fica fora do repositório)
-  var WTIT = { visao: T('Visão geral', 'Resumen'), numeros: T('Telefones', 'Teléfonos'), perfil: T('Telefones', 'Teléfonos'), registro: T('Registro de atividades', 'Registro de actividad'), pagamento: T('Configurações de pagamento', 'Configuración de pago'), flows: T('Flows', 'Flows'), flowcriar: T('Flows › Criar', 'Flows › Crear'), flowedit: T('Flows › Editar', 'Flows › Editar') };
+  var WTIT = { visao: T('Visão geral', 'Información general'), numeros: T('Telefones', 'Teléfonos'), perfil: T('Telefones', 'Teléfonos'), registro: T('Registro de atividades', 'Registro de actividad'), pagamento: T('Configurações de pagamento', 'Opciones de configuración de pagos'), flows: T('Flows', 'Flows'), flowcriar: T('Flows › Criar', 'Flows › Crear'), flowedit: T('Flows › Editar', 'Flows › Editar') };
   var NUM = '+55 11 98765-4321';
   function alerta(dt, ico, tit, txt, bt) { return '<div class="wam-alerta" data-t="' + dt + '"><b>' + ico + ' ' + t(tit) + '</b><p>' + t(txt) + '</p>' + (bt ? '<button class="mt-bt" data-mt="nada">' + t(bt) + '</button>' : '') + '</div>' }
   function bloco(tit, n) { return '<div class="wam-num"><small>' + t(tit) + '</small><b>' + n + '</b></div>' }
@@ -149,7 +149,7 @@
       return '<div class="wam-sec" data-t="wam-fc-campos"><label class="dev-campo"><b>' + t(T('Nome', 'Nombre')) + '</b><span class="dev-in">' + t(FLOW.nome) + '</span></label>' +
         '<label class="dev-campo"><b>' + t(T('Categorias', 'Categorías')) + '</b><span class="dev-in">' + t(T('Outro', 'Otro')) + '</span></label>' +
         '<b>' + t(T('Modelo', 'Plantilla')) + '</b><div class="mt-abas"><button class="on" data-mt="nada">' + t(T('Sem endpoint', 'Sin punto de conexión')) + '</button><button data-mt="nada">' + t(T('Com endpoint', 'Con punto de conexión')) + '</button></div>' +
-        mods.map(function (m, i) { return '<div class="dev-radio wam-fl-mod"><span class="wa-radio' + (i ? '' : ' on') + '"></span> ' + t(m) + '</div>' }).join('') +
+        mods.map(function (m, i) { return '<div class="dev-radio wam-fl-mod">' + (i ? '○' : '◉') + ' ' + t(m) + '</div>' }).join('') +
         '<p class="mt-tipo">' + t(T('Ao usar o modelo JSON do Flow, você é responsável por personalizar a experiência para se adequar ao seu caso de uso, bem como por cumprir as leis aplicáveis e a Política de Mensagens do WhatsApp Business.', 'Al usar la plantilla JSON de Flow, eres responsable de personalizar la experiencia para adaptarla a tu caso de uso y de cumplir con las leyes aplicables y la Política de Mensajes de WhatsApp Business.')) + '</p>' +
         '<div class="dev-rod"><button class="mt-bt" data-mt="wpag:flows">' + t(T('Descartar', 'Descartar')) + '</button><button class="mt-btazul" data-mt="wpag:flowedit" data-t="wam-fc-criar">' + t(T('Criar', 'Crear')) + '</button></div></div>';
     },
