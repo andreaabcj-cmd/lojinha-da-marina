@@ -1,6 +1,7 @@
 /* Meta Business Suite › Configurações (portfólio da Marina). Tela real vista em 27/10/2026, em PT e em ES (?locale=es_LA),
    no portfólio de aula; número e identificação aqui são fictícios.
-   - "Contas do WhatsApp" veio VAZIA mesmo com o app no portfólio; a conta do app aparece em "Contas de mensagens",
+   - "Contas do WhatsApp" veio VAZIA mesmo com o app no portfólio (13/11/2026: ela lista só os números da API, um por número;
+     o do app não entra nela — o portfólio da Marina só tem o app, então segue vazia); a conta do app aparece em "Contas de mensagens",
      com "Aplicativo WhatsApp Business" (ES: "App de WhatsApp Business") embaixo do nome.
    - Partes em inglês na tela real ficam em inglês: "Messaging accounts", "Summary", "WhatsApp accounts", "Contact support".
    - O Resumo em espanhol não foi visto: tradução nossa (a conferir). Conta da Plataforma (API) não foi vista: a conferir. */

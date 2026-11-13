@@ -1,5 +1,7 @@
 /* Aula 16 · A API passo a passo e os parceiros.
    Fontes lidas em 28/10/2026: developers.facebook.com › WhatsApp Cloud API › Get started; Solution Providers › overview.
+   13/11/2026: change-billing-currency ("Lines of credit are always denominated in USD"), account-model-evolution/onboarding
+   (cadastro começa pelo número; uma Conta de mensagens por parceiro; a empresa compartilha a Conta do WhatsApp).
    Telas reais: Meta for Developers (criar app de aula, Casos de uso › Conectar no WhatsApp, Etapas 1 e 2, Provedor de Tecnologia), 28/10/2026. */
 (function () {
   var P = N.P, Q = N.Q, meta = N.meta;
@@ -26,9 +28,10 @@
         ['<b>Etapa 3:</b> verificar a empresa (libera mais números e mais conversas).', '<b>Paso 3:</b> verificar la empresa (habilita más números y más conversaciones).']]],
       ['h', 'Parceiros', 'Socios'],
       ['ul', [
-        ['<b>Parceiro de Soluções:</b> parceiro oficial da Meta, oferece tudo e pode dar linha de crédito e cobrar a empresa direto.', '<b>Socio de soluciones:</b> socio oficial de Meta, ofrece todo y puede dar línea de crédito y cobrar a la empresa directo.'],
+        ['<b>Parceiro de Soluções:</b> parceiro oficial da Meta, oferece tudo e pode dar linha de crédito e cobrar a empresa direto. A linha de crédito é sempre em <b>dólar (USD)</b>, e é o parceiro quem fatura.', '<b>Socio de soluciones:</b> socio oficial de Meta, ofrece todo y puede dar línea de crédito y cobrar a la empresa directo. La línea de crédito siempre es en <b>dólares (USD)</b>, y quien factura es el socio.'],
         ['<b>Provedor de Tecnologia:</b> desenvolvedor terceirizado; pode trabalhar sozinho ou junto com um Parceiro de Soluções. Não dá crédito: a empresa põe a própria forma de pagamento.', '<b>Proveedor de tecnología:</b> desarrollador externo; puede trabajar solo o junto con un Socio de soluciones. No da crédito: la empresa pone su propio método de pago.'],
-        ['O parceiro liga a empresa pelo <b>cadastro incorporado</b> (Embedded Signup): ela entra no fluxo do site do parceiro e a Meta cria as contas sozinha.', 'El socio conecta a la empresa con el <b>registro integrado</b> (Embedded Signup): entra al flujo del sitio del socio y Meta crea las cuentas sola.']]],
+        ['O parceiro liga a empresa pelo <b>cadastro incorporado</b> (Embedded Signup): ela entra no fluxo do site do parceiro e a Meta cria sozinha a <b>Conta do WhatsApp</b> (o número) e a <b>Conta de mensagens</b> (modelos e cobrança). Desde set–out/2026, o cadastro começa pelo número.', 'El socio conecta a la empresa con el <b>registro integrado</b> (Embedded Signup): entra al flujo del sitio del socio y Meta crea sola la <b>Cuenta de WhatsApp</b> (el número) y la <b>Cuenta de mensajes</b> (plantillas y facturación). Desde sep–oct/2026, el registro empieza por el número.'],
+        ['Cada parceiro costuma ter a <b>sua própria</b> Conta de mensagens para a empresa; o que a empresa compartilha com ele é a Conta do WhatsApp (o número).', 'Cada socio suele tener <b>su propia</b> Cuenta de mensajes para la empresa; lo que la empresa comparte con él es la Cuenta de WhatsApp (el número).']]],
       ['nota', 'A tela do token permanente (usuário do sistema) não foi vista nesta rodada: vem da documentação.', 'La pantalla del token permanente (usuario del sistema) no se vio en esta ronda: viene de la documentación.']
     ],
     praticar: {
@@ -68,7 +71,9 @@
         [['Foto não afeta o recebimento.', 'La foto no afecta la recepción.'], ['Selo não tem relação.', 'La insignia no tiene relación.'], ['Isso! Webhooks são o que leva as mensagens recebidas para o sistema.', '¡Eso! Los webhooks llevan los mensajes recibidos al sistema.'], ['O limite não impede receber.', 'El límite no impide recibir.']])
     ],
     fontes: [N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started', ['Primeiros passos com a API de Nuvem do WhatsApp', 'Primeros pasos con la API de la nube de WhatsApp']),
-      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/overview', ['Parceiros de Soluções e Provedores de Tecnologia', 'Socios de soluciones y Proveedores de tecnología'])],
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/overview', ['Parceiros de Soluções e Provedores de Tecnologia', 'Socios de soluciones y Proveedores de tecnología']),
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/change-billing-currency', ['Mudar a moeda de cobrança (linhas de crédito sempre em USD)', 'Cambiar la moneda de facturación (líneas de crédito siempre en USD)'], '13/11/2026'),
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/account-model-evolution/onboarding/', ['Cadastro de clientes no novo modelo de contas', 'Registro de clientes en el nuevo modelo de cuentas'], '13/11/2026')],
     telas: N.T('Telas reais: Meta for Developers, app de aula criado em 28/10/2026 (criar app, caso de uso do WhatsApp, Etapas 1 e 2, Provedor de Tecnologia). Número de teste e identificadores fictícios.', 'Pantallas reales: Meta for Developers, app de práctica creada el 28/10/2026 (crear app, caso de uso de WhatsApp, Pasos 1 y 2, Proveedor de tecnología). Número de prueba e identificadores ficticios.')
   };
 })();

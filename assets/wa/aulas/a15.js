@@ -1,7 +1,9 @@
 /* Aula 15 · Pôr um número na conta da API (WABA).
    Fontes lidas em 28/10/2026: developers.facebook.com › Business phone numbers (requisitos, limite de 2 → 20, registro com PIN,
    status "connected", nome de exibição), Registration (POST /register, PIN de 6 dígitos, 10 tentativas em 72 h).
-   Telas reais: Meta for Developers › Etapa 2 › "Adicionar número de telefone" (passo Detalhes) e Gerenciador do WhatsApp da conta de teste, 28/10/2026. */
+   Telas reais: Meta for Developers › Etapa 2 › "Adicionar número de telefone" (passo Detalhes) e Gerenciador do WhatsApp da conta de teste, 28/10/2026.
+   13/11/2026: messaging-limits (nível do portfólio), account-model-evolution (Conta do WhatsApp por número; PIN saindo); Visão geral e
+   Números de telefone conferidos de novo (aviso "sem limites adicionais", "1 de 2 adicionados", sem aba de duas etapas). */
 (function () {
   var P = N.P, Q = N.Q, meta = N.meta;
   function m(o) { return meta(o) }
@@ -27,7 +29,12 @@
         ['Etapa 2 › Registre seu número › <b>Adicionar número de telefone</b> (ou Gerenciador do WhatsApp › Números de telefone).', 'Paso 2 › Registra tu número › <b>Agregar número de teléfono</b> (o Administrador de WhatsApp › Números de teléfono).'],
         ['Perfil: <b>nome de exibição</b> (igual ao nome comercial; passa por análise) e categoria.', 'Perfil: <b>nombre visible</b> (igual al nombre comercial; pasa por revisión) y categoría.'],
         ['Telefone e <b>código</b> por SMS ou ligação.', 'Teléfono y <b>código</b> por SMS o llamada.'],
-        ['O desenvolvedor <b>registra</b> o número na API com um PIN de 6 dígitos. Só com status <b>Conectado</b> ele manda e recebe.', 'El desarrollador <b>registra</b> el número en la API con un PIN de 6 dígitos. Solo con estado <b>Conectado</b> envía y recibe.']]],
+        ['O desenvolvedor <b>registra</b> o número na API com um PIN de 6 dígitos. Só com status <b>Conectado</b> ele manda e recebe.', 'El desarrollador <b>registra</b> el número en la API con un PIN de 6 dígitos. Solo con estado <b>Conectado</b> envía y recibe.'],
+        ['O número entra numa <b>Conta do WhatsApp</b> própria, ligada a uma <b>Conta de mensagens</b> (modelos e cobrança). Mais números = mais Contas do WhatsApp, não mais linhas na mesma conta.', 'El número entra en una <b>Cuenta de WhatsApp</b> propia, vinculada a una <b>Cuenta de mensajes</b> (plantillas y facturación). Más números = más Cuentas de WhatsApp, no más filas en la misma cuenta.']]],
+      ['h', 'Número × mensagens: dois limites diferentes', 'Número × mensajes: dos límites distintos'],
+      ['ul', [
+        ['<b>Quantos números:</b> o portfólio começa com 2 (“1 de 2 adicionados” na Visão geral) e sobe para 20.', '<b>Cuántos números:</b> el portfolio empieza con 2 (“1 de 2 agregados” en Información general) y sube a 20.'],
+        ['<b>Quantas mensagens:</b> o limite agora é do <b>portfólio inteiro</b>, somando todos os números (“Da sua conta comercial geral”). Começa em 250 conversas iniciadas pela empresa em 24 h; com a verificação ou mensagens de qualidade, vai a 2.000, 10 mil, 100 mil e ilimitado.', '<b>Cuántos mensajes:</b> el límite ahora es de <b>todo el portfolio</b>, sumando todos los números (“De tu cuenta comercial general”). Empieza en 250 conversaciones iniciadas por la empresa en 24 h; con la verificación o mensajes de calidad, pasa a 2.000, 10 mil, 100 mil e ilimitado.']]],
       ['h', 'Por que não deixa', 'Por qué no deja'],
       ['ul', [
         ['“Adicionar telefone” apagado: o limite de números do portfólio já foi usado.', '“Agregar teléfono” apagado: ya se usó el límite de números del portfolio.'],
@@ -65,7 +72,17 @@
     ],
     fontes: [N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers', ['Números de telefone comerciais', 'Números de teléfono comerciales']),
       N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/registration', ['Registrar um número de telefone comercial', 'Registrar un número de teléfono comercial']),
-      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/support/error-codes', ['Códigos de erro do WhatsApp', 'Códigos de error de WhatsApp'])],
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/support/error-codes', ['Códigos de erro do WhatsApp', 'Códigos de error de WhatsApp']),
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits', ['Limites de mensagens (nível do portfólio)', 'Límites de mensajes (nivel del portfolio)'], '13/11/2026'),
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/account-model-evolution/', ['Mudanças nas contas do WhatsApp Business', 'Cambios en las cuentas de WhatsApp Business'], '13/11/2026')],
+    divergencias: [{ tema: N.T('Quantos números o portfólio aceita', 'Cuántos números acepta el portfolio'),
+      oficial: N.T('A página de números diz: portfólio novo começa com 2 números e sobe para 20 com a verificação ou ao chegar a 2.000 mensagens.', 'La página de números dice: un portfolio nuevo empieza con 2 números y sube a 20 con la verificación o al llegar a 2.000 mensajes.'),
+      tela: N.T('Em 13/11/2026, a Visão geral ainda mostra “1 de 2 adicionados”, mas um aviso em Números de telefone diz que os limites de mensagens agora são da conta comercial geral e permitem escolher a quantidade de números “sem limites adicionais”.', 'El 13/11/2026, Información general todavía muestra “1 de 2 agregados”, pero un aviso en Números de teléfono dice que los límites de mensajes ahora son de la cuenta comercial general y permiten elegir la cantidad de números “sin límites adicionales”.'),
+      aula: N.T('Ensina o que a documentação e a Visão geral mostram (2, depois 20). Se o botão estiver apagado, conferir o contador da Visão geral antes de concluir.', 'Enseña lo que muestran la documentación e Información general (2, después 20). Si el botón está apagado, revisar el contador de Información general antes de concluir.') },
+      { tema: N.T('O PIN de 6 dígitos', 'El PIN de 6 dígitos'),
+      oficial: N.T('A página de registro pede o PIN de 6 dígitos; a página das mudanças nas contas diz que a Meta está aposentando esse PIN para números elegíveis, e a aba de verificação em duas etapas some.', 'La página de registro pide el PIN de 6 dígitos; la página de cambios en las cuentas dice que Meta está retirando ese PIN para números elegibles, y la pestaña de verificación en dos pasos desaparece.'),
+      tela: N.T('Em 13/11/2026, o número da conta de teste não tem mais a aba de verificação em duas etapas no Gerenciador do WhatsApp.', 'El 13/11/2026, el número de la cuenta de prueba ya no tiene la pestaña de verificación en dos pasos en el Administrador de WhatsApp.'),
+      aula: N.T('Mantém o PIN no registro (a documentação ainda pede), avisando que ele está saindo para parte dos números.', 'Mantiene el PIN en el registro (la documentación todavía lo pide), avisando que está saliendo para parte de los números.') }],
     telas: N.T('Telas reais: Gerenciador do WhatsApp (conta de teste) e Meta for Developers › Etapa 2 › Adicionar número de telefone, 28/10/2026. Os passos Telefone e Verificação não foram vistos (a conferir). Número fictício.', 'Pantallas reales: Administrador de WhatsApp (cuenta de prueba) y Meta for Developers › Paso 2 › Agregar número de teléfono, 28/10/2026. Los pasos Teléfono y Verificación no se vieron (por confirmar). Número ficticio.')
   };
 })();

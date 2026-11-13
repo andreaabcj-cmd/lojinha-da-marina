@@ -2,7 +2,9 @@
    Fontes lidas em 28/10/2026: developers.facebook.com › Embedded Signup › Onboarding WhatsApp Business app users (coexistência),
    Business phone numbers › Registration (deregister não serve para número em coexistência).
    Telas reais: app WhatsApp Business (Android) › Configurações › Conta › Plataforma comercial (25–26/10 e 28/10/2026, só olhando);
-   Gerenciador do WhatsApp › Números de telefone (28/10/2026). */
+   Gerenciador do WhatsApp › Números de telefone (28/10/2026).
+   13/11/2026: account-model-evolution (coexistência vira Conta de mensagens compartilhada com o parceiro) e
+   change-billing-currency (contas em coexistência não podem usar a migração de moeda). */
 (function () {
   var P = N.P, Q = N.Q, cel = N.cel, meta = N.meta;
   function wam(o) { var x = { app: 'wam' }; for (var k in o) x[k] = o[k]; return meta(x) }
@@ -22,7 +24,8 @@
       ['ul', [
         ['App WhatsApp Business na versão <b>2.24.17 ou mais nova</b>.', 'App WhatsApp Business en la versión <b>2.24.17 o más nueva</b>.'],
         ['Um <b>parceiro</b> da Meta (Parceiro de Soluções ou Provedor de Tecnologia) que ofereça a coexistência. Não se liga sozinho.', 'Un <b>socio</b> de Meta (Socio de soluciones o Proveedor de tecnología) que ofrezca la coexistencia. No se conecta solo.'],
-        ['No app: Configurações › Conta › Plataforma comercial › código de verificação ou QR code que o parceiro mostra.', 'En la app: Ajustes › Cuenta › Plataforma comercial › código de verificación o QR que muestra el socio.']]],
+        ['No app: Configurações › Conta › Plataforma comercial › código de verificação ou QR code que o parceiro mostra.', 'En la app: Ajustes › Cuenta › Plataforma comercial › código de verificación o QR que muestra el socio.'],
+        ['No modelo novo de contas (set–out/2026), a conta do app vira uma <b>Conta de mensagens</b> compartilhada com o parceiro. Conta em coexistência <b>não pode</b> usar a migração de moeda da Meta.', 'En el nuevo modelo de cuentas (sep–oct/2026), la cuenta de la app pasa a ser una <b>Cuenta de mensajes</b> compartida con el socio. Una cuenta en coexistencia <b>no puede</b> usar la migración de moneda de Meta.']]],
       ['h', 'O que vai junto e o que muda', 'Qué se lleva y qué cambia'],
       ['ul', [
         ['<b>Vai:</b> contatos e até 6 meses de conversas individuais. <b>Não vai:</b> grupos.', '<b>Se lleva:</b> contactos y hasta 6 meses de chats individuales. <b>No se lleva:</b> grupos.'],
@@ -66,7 +69,9 @@
         [['A documentação diz que as do app seguem grátis.', 'La documentación dice que las de la app siguen gratis.'], ['Isso! Só as da API seguem o preço da Plataforma.', '¡Eso! Solo las de la API siguen el precio de la Plataforma.'], ['A janela de 24 h é regra da API.', 'La ventana de 24 h es regla de la API.'], ['As mil grátis são das mensagens de serviço da API.', 'Los mil gratis son de los mensajes de servicio de la API.']])
     ],
     fontes: [N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/', ['Usuários do app WhatsApp Business na Plataforma (coexistência)', 'Usuarios de la app WhatsApp Business en la Plataforma (coexistencia)']),
-      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/registration', ['Registrar e desregistrar números', 'Registrar y dar de baja números'])],
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/registration', ['Registrar e desregistrar números', 'Registrar y dar de baja números']),
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/account-model-evolution/', ['Mudanças nas contas do WhatsApp Business (coexistência vira Conta de mensagens)', 'Cambios en las cuentas de WhatsApp Business (la coexistencia pasa a Cuenta de mensajes)'], '13/11/2026'),
+      N.F('https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/change-billing-currency', ['Mudar a moeda de cobrança (coexistência não pode)', 'Cambiar la moneda de facturación (la coexistencia no puede)'], '13/11/2026')],
     telas: N.T('Telas reais: app WhatsApp Business › Configurações › Conta › Plataforma comercial (Android, 28/10/2026, só olhando) e Gerenciador do WhatsApp (28/10/2026). Número fictício; a tela de Desconectar não foi vista (a conferir).', 'Pantallas reales: app WhatsApp Business › Ajustes › Cuenta › Plataforma comercial (Android, 28/10/2026, solo mirando) y Administrador de WhatsApp (28/10/2026). Número ficticio; la pantalla de Desconectar no se vio (por confirmar).')
   };
 })();
