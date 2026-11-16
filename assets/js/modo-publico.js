@@ -8,7 +8,8 @@
   var q = new URLSearchParams(location.search), forca = null;
   try { if (q.get('publico') === '1') localStorage.setItem('modo.publico', '1'); if (q.get('publico') === '0') localStorage.removeItem('modo.publico'); forca = localStorage.getItem('modo.publico') === '1' } catch (e) { }
   var PUB = ESCONDER_ABAS && (!local || forca);
-  var ABAS = /^(simuladores|laboratorio)\.html$/i;
+  // 16/11/2026: a aba Simuladores virou «Ferramentas» e voltou a aparecer (no site publicado também); só o Laboratório segue escondido
+  var ABAS = /^laboratorio\.html$/i;
   window.MODO_PUBLICO = PUB;
   /* ENCOSTADOS (25/10/2026, pedido do responsável): Laboratório e Simuladores ficam escondidos também no computador dele, para o foco
      ficar nos módulos. Só a ferramenta "Código base explicado" continua aberta. As telas de simulador abertas pelas práticas das
