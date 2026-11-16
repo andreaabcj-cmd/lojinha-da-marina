@@ -437,7 +437,11 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
   var TLANG = (function () { try { return JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' ? 'es' : 'pt' } catch (e) { return 'pt' } })();
   function tx(o) { return o == null ? '' : typeof o === 'string' ? o : (o[TLANG] || o.pt || '') }
   /* para a aula: se ainda não existe Pixel no simulador, cria um de exemplo (sem abrir janelas) */
-  function garantePixel() { if (!S.datasets.length) { S.datasets.unshift({ id: novoId(), nome: 'Pixel da Lojinha da Marina', criado: Date.now(), capi: false, am: true, cookies: true, auto: false }); grava(); render() } }
+  /* 16/11/2026: estes tutoriais são da loja da própria aula. Se ficou um "Caso do cliente" aberto (e não encerrado na loja), o site
+     do caso continua com o código e o ID do Pixel daquele caso: a loja manda os eventos para outro Pixel e o "Esperando o PageView"
+     nunca libera. Por isso encerram o caso antes de começar (o caso pode ser aberto de novo pela aula dele). */
+  function semCaso() { try { var s = JSON.parse(localStorage.getItem('loja.site') || 'null'); if (s && s.ativo) { s.ativo = false; localStorage.setItem('loja.site', JSON.stringify(s)) } } catch (e) { } }
+  function garantePixel() { semCaso(); if (!S.datasets.length) { S.datasets.unshift({ id: novoId(), nome: 'Pixel da Lojinha da Marina', criado: Date.now(), capi: false, am: true, cookies: true, auto: false }); grava(); render() } }
   var TOURS = {
     'gerenciador-pixel': [
       { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { garantePixel() },
