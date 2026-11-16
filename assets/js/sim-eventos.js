@@ -441,10 +441,10 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
      do caso continua com o código e o ID do Pixel daquele caso: a loja manda os eventos para outro Pixel e o "Esperando o PageView"
      nunca libera. Por isso encerram o caso antes de começar (o caso pode ser aberto de novo pela aula dele). */
   function semCaso() { try { var s = JSON.parse(localStorage.getItem('loja.site') || 'null'); if (s && s.ativo) { s.ativo = false; localStorage.setItem('loja.site', JSON.stringify(s)) } } catch (e) { } }
-  function garantePixel() { semCaso(); if (!S.datasets.length) { S.datasets.unshift({ id: novoId(), nome: 'Pixel da Lojinha da Marina', criado: Date.now(), capi: false, am: true, cookies: true, auto: false }); grava(); render() } }
+  function garantePixel() { if (!S.datasets.length) { S.datasets.unshift({ id: novoId(), nome: 'Pixel da Lojinha da Marina', criado: Date.now(), capi: false, am: true, cookies: true, auto: false }); grava(); render() } }
   var TOURS = {
     'gerenciador-pixel': [
-      { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { garantePixel() },
+      { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { semCaso(); garantePixel() },
         tit: { pt: 'Conjuntos de dados', es: 'Conjuntos de datos' }, txt: { pt: 'No atendimento, este é o primeiro lugar para olhar. Clique em Conjuntos de dados: é onde ficam os Pixels do cliente.', es: 'En la atención, este es el primer lugar donde mirar. Haz clic en Conjuntos de datos: ahí están los Pixels del cliente.' },
         dica: { pt: 'A Meta chama o Pixel de conjunto de dados. É a mesma coisa.', es: 'Meta llama al Pixel conjunto de datos. Es lo mismo.' } },
       { alvo: '[data-t=ds-abrir]', clique: true, tit: { pt: 'Abrir o Pixel', es: 'Abrir el Pixel' }, txt: { pt: 'Clique no Pixel do cliente.', es: 'Haz clic en el Pixel del cliente.' } },
@@ -484,7 +484,7 @@ window.VOLTA_AULA = window.VOLTA_AULA || (function () {
         txt: { pt: 'Este é o código, já com o número do Pixel dentro (no init). Ele vai no topo de todas as páginas do site, ou use a integração da plataforma da loja. Fim do tutorial! 🎉', es: 'Este es el código, ya con el número del Pixel adentro (en el init). Va arriba en todas las páginas del sitio, o usa la integración de la plataforma de la tienda. ¡Fin del tutorial! 🎉' } }
     ],
     'testar-eventos': [
-      { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { garantePixel() },
+      { alvo: '[data-t=menu-conjuntos]', clique: true, pre: function () { semCaso(); garantePixel() },
         tit: { pt: 'Conjuntos de dados', es: 'Conjuntos de datos' }, txt: { pt: 'Clique em Conjuntos de dados para ver seus Pixels.', es: 'Haz clic en Conjuntos de datos para ver tus píxeles.' } },
       { alvo: '[data-t=ds-abrir]', clique: true, tit: { pt: 'Abrir o Pixel', es: 'Abrir el Pixel' }, txt: { pt: 'Clique no seu Pixel.', es: 'Haz clic en tu Pixel.' } },
       { alvo: '[data-t=aba-teste]', clique: true, tit: { pt: 'Eventos de teste', es: 'Probar eventos' }, txt: { pt: 'Abra a aba Eventos de teste.', es: 'Abre la pestaña Probar eventos.' } },
