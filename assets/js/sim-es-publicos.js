@@ -81,5 +81,27 @@
   D["Público não criado"] = "Público no creado";
   D["Isso pode significar que o público que você usou para criar o público semelhante era muito pequeno. Tente novamente."] = "Esto puede significar que el público que usaste para crear el público similar era demasiado pequeño. Inténtalo de nuevo.";
   D["Em preenchimento"] = "En preparación";
+  // 16/11/2026: compartilhar público
+  D["↪ Compartilhar"] = "↪ Compartir";
+  D["Compartilhar"] = "Compartir";
+  D["Compartilhar público"] = "Compartir público";
+  D["Público:"] = "Público:";
+  D["Não foi possível compartilhar o público"] = "No se pudo compartir el público";
+  D["Não é possível compartilhar públicos salvos."] = "No se pueden compartir públicos guardados.";
+  D["Dá para compartilhar públicos personalizados e semelhantes. O público salvo fica só na conta de anúncios onde foi criado."] = "Se pueden compartir públicos personalizados y similares. El público guardado queda solo en la cuenta publicitaria donde se creó.";
+  D["⚠ Frase da Central de Ajuda (“Sobre os públicos compartilhados”); a mensagem exata da tela real não foi vista (a conferir)."] = "⚠ Frase del Centro de ayuda (“Información sobre los públicos compartidos”); el mensaje exacto de la pantalla real no se vio (por confirmar).";
+  D["Para compartilhar um público personalizado, o proprietário e o destinatário precisam ter um portfólio empresarial."] = "Para compartir un público personalizado, el propietario y el destinatario deben tener un portfolio empresarial.";
+  D["Quem recebe pode usar o público nos anúncios, mas não pode compartilhar de novo. Se você excluir o público, ele também some da conta de quem recebeu, e os conjuntos de anúncios que o usam são pausados."] = "Quien recibe puede usar el público en los anuncios, pero no puede volver a compartirlo. Si eliminas el público, también desaparece de la cuenta de quien lo recibió, y los conjuntos de anuncios que lo usan se pausan.";
+  D["Contas de anúncios ou pessoas"] = "Cuentas publicitarias o personas";
+  D["Permissão"] = "Permiso";
+  D["Direcionamento e insights"] = "Segmentación y estadísticas";
+  D["Somente direcionamento"] = "Solo segmentación";
+  D["A outra conta usa o público nos anúncios, mas não vê os dados dele."] = "La otra cuenta usa el público en los anuncios, pero no ve sus datos.";
+  D["A outra conta usa o público nos anúncios e também vê os dados dele."] = "La otra cuenta usa el público en los anuncios y también ve sus datos.";
+  D["Insira a identificação de uma conta de anúncios (só números)."] = "Ingresa el identificador de una cuenta publicitaria (solo números).";
+  D["⚠ Na conta de aula o botão Compartilhar fica bloqueado (conta nova). Passos e opções da Central de Ajuda (“Como compartilhar um público”, 16/11/2026); textos da janela a conferir."] = "⚠ En la cuenta de práctica el botón Compartir queda bloqueado (cuenta nueva). Pasos y opciones del Centro de ayuda (“Cómo compartir un público”, 16/11/2026); textos de la ventana por confirmar.";
+  D["OK"] = "OK";
+  D["Brasil 18+"] = "Brasil 18+";
+  P.push([/^Compartilhado · (Direcionamento e insights|Somente direcionamento)$/, function (m) { return 'Compartido · ' + (m[1] === 'Somente direcionamento' ? 'Solo segmentación' : 'Segmentación y estadísticas') }]);
   P.push([/^Semelhante \((\d+)%\) - (.+)$/, function (m) { return 'Similar (' + m[1] + '%) - ' + m[2] }]);
 })();

@@ -3,7 +3,9 @@
    Textos copiados das telas reais (conta de aula, 15–16/10/2026): página de Públicos, "Escolha uma fonte de público personalizado" (PT e ES) e o formulário do público do site (PT).
    O formulário em espanhol, o público semelhante (parte) e o público salvo ficam com textos do padrão da Meta (a conferir). Os tamanhos de público são INVENTADOS, exceto "Abaixo de 1.000" (real).
    URL: meta-publicos.html?zerar=1 · ?exemplo=1 (já com um público de compradores) · ?pequeno=1 (só um público pequeno)
-   Tutoriais (tour.js): ?tour=criar-publico-site | criar-semelhante | criar-salvo | publico-pequeno */
+   Tutoriais (tour.js): ?tour=criar-publico-site | criar-semelhante | criar-salvo | publico-pequeno | compartilhar-publico
+   16/11/2026: botão Compartilhar, coluna Compartilhamento e a janela de compartilhar (?compartilhar=1). Na conta de aula o botão fica bloqueado
+   (conta nova), então a janela segue os passos e textos da Central de Ajuda (a conferir); o aviso do bloqueio é o da tela real. */
 (function () {
   var CONF = '16/10/2026';
   var $ = function (s, r) { return (r || document).querySelector(s) };
@@ -15,10 +17,13 @@
   var FONTES2 = ['Vídeo', 'Formulário de lead', 'Experiência instantânea', 'Compras', 'Perfil do Instagram', 'Eventos', 'Página do Facebook', 'Classificados no Facebook'];
   var EVENTOS = ['Todos os visitantes do site', 'Pessoas que visitaram páginas da web específicas', 'Visitantes por tempo gasto', 'PageView', 'ViewContent', 'AddToCart', 'AddPaymentInfo', 'Purchase'];
   function aud(nome, tipo, tam, num, regra) { return { id: 'a' + Math.floor(Math.random() * 1e6), nome: nome, tipo: tipo, tam: tam, num: num, regra: regra, data: '16 de out de 2026' } }
-  function inicial() { return { auds: [] } }
-  var S = ler('sim.publicos', null) || inicial();
+  function inicial() { return { auds: [], sel: '' } }
+  var S = ler('sim.publicos', null) || inicial(); if (S.sel == null) S.sel = '';
+  function fixo(a, id) { a.id = id; return a }
+  function presetComp() { var s2 = inicial(); s2.auds = [fixo(aud('Compradores do site (exemplo)', 'Público personalizado', '2.300', 2300, 'Purchase · ' + PIXEL + ' · Nos últimos 180 dias'), 'a1'), fixo(aud('Visitantes do site 30 dias', 'Público personalizado', 'Abaixo de 1.000', 60, 'Todos os visitantes do site · ' + PIXEL + ' · Nos últimos 30 dias'), 'a2'), fixo(aud('Brasil 18+', 'Público salvo', '—', 0, 'Brasil · idade mínima 18'), 'a3')]; return s2 }
   if (params.get('zerar')) S = inicial();
   if (params.get('exemplo')) { S = inicial(); S.auds = [aud('Compradores do site (exemplo)', 'Público personalizado', '2.300', 2300, 'Purchase · ' + PIXEL + ' · Nos últimos 180 dias'), aud('Visitantes do site 30 dias', 'Público personalizado', 'Abaixo de 1.000', 60, 'Todos os visitantes do site · ' + PIXEL + ' · Nos últimos 30 dias')] }
+  if (params.get('compartilhar')) S = presetComp();
   if (params.get('pequeno')) { S = inicial(); S.auds = [aud('Visitantes do site 30 dias', 'Público personalizado', 'Abaixo de 1.000', 60, 'Todos os visitantes do site · ' + PIXEL + ' · Nos últimos 30 dias')] }
   var D = null, M = false;                         // janela aberta e menu "Criar público"
   function grava() { try { localStorage.setItem('sim.publicos', JSON.stringify(S)) } catch (e) { } window.__simPb = { S: S, D: D } }
@@ -34,10 +39,10 @@
         '<div class="pb-card"><h3>Públicos semelhantes</h3><p>Alcance pessoas novas parecidas com os públicos que já são importantes para você. Você pode criar um público semelhante com base em pessoas que curtem sua Página, pixels de conversão ou qualquer um dos seus públicos personalizados existentes.</p><button class="btn" data-acao="novo-sem" data-t="btn-criar-sem">Criar um público semelhante</button></div>' +
         '<div class="pb-card"><h3>Público salvo</h3><p>Salve as opções de segmentação que você usa com frequência para reutilizá-las com facilidade. Escolha dados demográficos, interesses e comportamentos e salve para usar de novo em outros anúncios depois.</p><button class="btn" data-acao="novo-salvo" data-t="btn-criar-salvo">Criar público salvo</button></div></div></div>';
     } else {
-      var linhas = S.auds.map(function (a) { return '<tr data-t="aud-' + a.id + '"><td><b>' + esc(a.nome) + '</b><br><small>' + esc(a.regra || '') + '</small></td><td>' + a.tipo + '</td><td>' + a.tam + '</td><td>—</td><td>' + (a.falhou ? '<span class="ga-tag vm" data-t="pb-erro-sem">Público não criado</span><br><small>Isso pode significar que o público que você usou para criar o público semelhante era muito pequeno. Tente novamente.</small>' : (a.tam === 'Abaixo de 1.000' && a.tipo === 'Público personalizado' ? '<span class="ga-tag am">Tráfego baixo no site</span><br><span class="ga-tag">Em preenchimento</span><br>' : a.tipo === 'Semelhante' ? '<span class="ga-tag">Em preenchimento</span><br>' : '') + '<span class="ga-tag vd">Disponível para usar</span>') + '</td><td>' + a.data + '</td><td>—</td><td>' + a.id + '</td></tr>' }).join('');
-      corpo = '<div class="ga-barra"><button class="btn" data-acao="menu" data-t="btn-criar-publico">Criar público ▾</button>' + (M ? '<div class="fd-op"><button data-acao="novo-pers" data-t="op-pers">Público personalizado</button><button data-acao="novo-sem" data-t="op-sem">Público semelhante</button><button data-acao="novo-salvo" data-t="op-salvo">Público salvo</button></div>' : '') + '<button class="btn sec" disabled>Editar</button><button class="btn sec" disabled>Compartilhar</button><button class="btn sec" disabled>Excluir</button></div>' +
+      var linhas = S.auds.map(function (a, i) { return '<tr data-t="aud-' + a.id + '"><td><input type="checkbox" data-selpb="' + a.id + '" data-t="chk-' + i + '"' + (S.sel === a.id ? ' checked' : '') + '/></td><td><b>' + esc(a.nome) + '</b><br><small>' + esc(a.regra || '') + '</small></td><td>' + a.tipo + '</td><td>' + a.tam + '</td><td>—</td><td>' + (a.falhou ? '<span class="ga-tag vm" data-t="pb-erro-sem">Público não criado</span><br><small>Isso pode significar que o público que você usou para criar o público semelhante era muito pequeno. Tente novamente.</small>' : (a.tam === 'Abaixo de 1.000' && a.tipo === 'Público personalizado' ? '<span class="ga-tag am">Tráfego baixo no site</span><br><span class="ga-tag">Em preenchimento</span><br>' : a.tipo === 'Semelhante' ? '<span class="ga-tag">Em preenchimento</span><br>' : '') + '<span class="ga-tag vd">Disponível para usar</span>') + '</td><td>' + a.data + '</td><td data-t="comp-' + i + '">' + (a.comp ? '<span class="ga-tag vd">' + esc(a.comp) + '</span>' : '—') + '</td><td>' + a.id + '</td></tr>' }).join('');
+      corpo = '<div class="ga-barra"><button class="btn" data-acao="menu" data-t="btn-criar-publico">Criar público ▾</button>' + (M ? '<div class="fd-op"><button data-acao="novo-pers" data-t="op-pers">Público personalizado</button><button data-acao="novo-sem" data-t="op-sem">Público semelhante</button><button data-acao="novo-salvo" data-t="op-salvo">Público salvo</button></div>' : '') + '<button class="btn sec" disabled>Editar</button><button class="btn sec" data-acao="compartilhar" data-t="btn-compartilhar"' + (S.sel ? '' : ' disabled title="Selecione um público"') + '>↪ Compartilhar</button><button class="btn sec" disabled>Excluir</button></div>' +
         '<div class="rl-viz"><span class="ga-tag">Todos os públicos</span><span class="ga-tag">Anúncios ativos</span><span class="ga-tag">Ação necessária</span><span class="ga-tag">Públicos sem rótulo</span></div>' +
-        '<table class="cm-tab" data-t="tabela-publicos"><thead><tr><th>Públicos</th><th>Tipo</th><th>Tamanho estimado do público</th><th>Pontuação de correspondência</th><th>Status</th><th>Data de criação</th><th>Compartilhamento</th><th>ID do público</th></tr></thead><tbody>' + linhas + '</tbody></table>';
+        '<table class="cm-tab" data-t="tabela-publicos"><thead><tr><th></th><th>Públicos</th><th>Tipo</th><th>Tamanho estimado do público</th><th>Pontuação de correspondência</th><th>Status</th><th>Data de criação</th><th>Compartilhamento</th><th>ID do público</th></tr></thead><tbody>' + linhas + '</tbody></table>';
     }
     return casca('<div class="ss"><main class="ss-main ga-dentro"><div class="ga-topo"><h1>Públicos</h1><span class="ga-conta">Conta de aula da Lojinha (ID 123456789)</span><button class="btn sec" disabled style="margin-left:auto">Mudar para a visualização padrão de públicos</button></div>' + corpo +
       '<p class="conferido">✓ Página, cartões e colunas conferidos com os Públicos reais em ' + CONF + '. ⚠ Tamanhos, o público semelhante e o público salvo seguem o padrão da Meta (a conferir).</p></main></div>' + janela());
@@ -86,6 +91,20 @@
         '<p class="conferido">✓ Formulário conferido com a tela real em 25/10/2026 (só olhando). Os interesses do Direcionamento detalhado não foram pesquisados.</p>' +
         '<div class="rodape-jan"><button class="btn sec" data-acao="cancela" data-t="pb-cancelar">Cancelar</button><button class="btn" data-acao="cria-salvo" data-t="btn-criar-salvo2">Criar público salvo</button></div>';
     }
+    else if (t === 'nao-salvo') {
+      c = '<h2>Não foi possível compartilhar o público</h2><div class="ga-aviso" data-t="pb-nao-salvo"><b>Não é possível compartilhar públicos salvos.</b><br><small>Dá para compartilhar públicos personalizados e semelhantes. O público salvo fica só na conta de anúncios onde foi criado.</small></div>' +
+        '<p class="conferido pendente">⚠ Frase da Central de Ajuda (“Sobre os públicos compartilhados”); a mensagem exata da tela real não foi vista (a conferir).</p><div class="rodape-jan"><button class="btn" data-acao="cancela" data-t="pb-ok-salvo">OK</button></div>';
+    } else if (t === 'comp') {
+      var al = S.auds.filter(function (x) { return x.id === S.sel })[0] || {}, okId = /^\d{6,}$/.test(String(D.contas || '').replace(/\s/g, ''));
+      c = '<h2>Compartilhar público</h2><p class="miudo">Público: <b>' + esc(al.nome) + '</b></p>' +
+        '<div class="ga-aviso" data-t="pb-comp-regra"><b>Para compartilhar um público personalizado, o proprietário e o destinatário precisam ter um portfólio empresarial.</b><br><small>Quem recebe pode usar o público nos anúncios, mas não pode compartilhar de novo. Se você excluir o público, ele também some da conta de quem recebeu, e os conjuntos de anúncios que o usam são pausados.</small></div>' +
+        '<p><b>Contas de anúncios ou pessoas</b></p><input class="ga-in' + (D.tentou && !okId ? ' err' : '') + '" id="pbContas" placeholder="Insira a identificação da conta de anúncios ou o nome" value="' + esc(D.contas) + '" data-t="pb-contas"/>' +
+        '<p><b>Permissão</b></p><select class="ga-in" id="pbPerm" data-t="pb-perm">' + ['Direcionamento e insights', 'Somente direcionamento'].map(function (o) { return '<option' + (D.perm === o ? ' selected' : '') + '>' + o + '</option>' }).join('') + '</select>' +
+        '<p class="miudo">' + (D.perm === 'Somente direcionamento' ? 'A outra conta usa o público nos anúncios, mas não vê os dados dele.' : 'A outra conta usa o público nos anúncios e também vê os dados dele.') + '</p>' +
+        (D.tentou && !okId ? '<p class="miudo err" data-t="pb-erro-comp">Insira a identificação de uma conta de anúncios (só números).</p>' : '') +
+        '<p class="conferido pendente">⚠ Na conta de aula o botão Compartilhar fica bloqueado (conta nova). Passos e opções da Central de Ajuda (“Como compartilhar um público”, 16/11/2026); textos da janela a conferir.</p>' +
+        '<div class="rodape-jan"><button class="btn sec" data-acao="cancela" data-t="pb-cancelar">Cancelar</button><button class="btn" data-acao="comp-ok" data-t="btn-comp-ok">Compartilhar</button></div>';
+    }
     return '<div class="ga-fundo"><div class="ga-jan fd-jan" data-t="jan-publico">' + c + '</div></div>';
   }
 
@@ -97,6 +116,8 @@
     else if (ac === 'novo-sem') { M = false; D = { tipo: 'sem', fonte: '', loc: '', pct: '1', tentou: false } }
     else if (ac === 'novo-salvo') { M = false; D = { tipo: 'salvo', nome: '', idade: '18', tentou: false } }
     else if (ac === 'cancela' || ac === 'conclui') D = null;
+    else if (ac === 'compartilhar') { var sa = S.auds.filter(function (x) { return x.id === S.sel })[0]; if (!sa) return; D = sa.tipo === 'Público salvo' ? { tipo: 'nao-salvo' } : { tipo: 'comp', contas: '', perm: 'Direcionamento e insights', tentou: false } }
+    else if (ac === 'comp-ok') { D.tentou = true; if (/^\d{6,}$/.test(String(D.contas || '').replace(/\s/g, ''))) { var sb = S.auds.filter(function (x) { return x.id === S.sel })[0]; if (sb) sb.comp = 'Compartilhado · ' + D.perm; D = null; S.sel = '' } }
     else if (ac === 'prox-fonte') { if (D.fonte === 'Site') D.tipo = 'site' }
     else if (ac === 'volta-fonte') D.tipo = 'fonte';
     else if (ac === 'cria-site') {
@@ -115,14 +136,17 @@
     grava(); render();
   });
   document.addEventListener('change', function (ev) {
-    var t = ev.target; if (!D) return;
+    var t = ev.target;
+    if (t.getAttribute && t.getAttribute('data-selpb')) { S.sel = t.checked ? t.getAttribute('data-selpb') : ''; grava(); render(); return }
+    if (!D) return;
+    if (t.id === 'pbPerm') { D.perm = t.value; grava(); render(); return }
     if (t.name === 'pbSrc') D.fonte = t.value; else if (t.id === 'pbEv') D.evento = t.value; else if (t.id === 'pbFonteSem') D.fonte = t.value; else if (t.id === 'pbLoc') D.loc = t.value; else if (t.id === 'pbIdade') D.idade = t.value;
     else return;
     grava(); render();
   });
   document.addEventListener('input', function (ev) {
     var t = ev.target; if (!D) return;
-    if (t.id === 'pbNome') D.nome = t.value; else if (t.id === 'pbRet') D.ret = t.value; else if (t.id === 'pbPct') { D.pct = t.value; render() } else return;
+    if (t.id === 'pbNome') D.nome = t.value; else if (t.id === 'pbContas') D.contas = t.value; else if (t.id === 'pbRet') D.ret = t.value; else if (t.id === 'pbPct') { D.pct = t.value; render() } else return;
     grava();
   });
   function render() {
@@ -133,6 +157,7 @@
   }
   window.SIMPB = { estado: function () { return { S: S, D: D } }, zera: function () { S = inicial(); D = null; M = false; grava(); render() }, exemplo: function () { S = inicial(); S.auds = [aud('Compradores do site (exemplo)', 'Público personalizado', '2.300', 2300, 'Purchase · ' + PIXEL + ' · Nos últimos 180 dias'), aud('Visitantes do site 30 dias', 'Público personalizado', 'Abaixo de 1.000', 60, 'Todos os visitantes do site · ' + PIXEL + ' · Nos últimos 30 dias')]; D = null; grava(); render() },
     pequeno: function () { S = inicial(); S.auds = [aud('Visitantes do site 30 dias', 'Público personalizado', 'Abaixo de 1.000', 60, 'Todos os visitantes do site · ' + PIXEL + ' · Nos últimos 30 dias')]; D = null; grava(); render() },
+    compartilha: function (sel, d) { S = presetComp(); S.sel = sel || ''; D = d || null; M = false; grava(); render() },
     abre: function (d) { D = d; grava(); render() }, set: function (o) { for (var k in o) if (D) D[k] = o[k]; grava(); render() } };
   render();
 
@@ -185,5 +210,21 @@
     { alvo: '[data-t=btn-criar-sem2]', clique: true, garante: function () { SIMPB.pequeno(); SIMPB.abre({ tipo: 'sem', fonte: 'Visitantes do site 30 dias', pct: '1', tentou: false }) }, tit: T('Tentar criar', 'Intentar crear'), txt: T('A fonte já está escolhida: Visitantes do site 30 dias. Clique em Criar público.', 'El origen ya está elegido: Visitantes do site 30 dias. Haz clic en Crear público.') },
     { alvo: '[data-t=pb-erro-sem]', garante: function () { SIMPB.pequeno(); var s2 = pb().S; if (!s2.auds.some(function (a) { return a.falhou })) { var x = aud('Semelhante (1%) - Visitantes do site 30 dias', 'Semelhante', '—', 0, 'Fonte: Visitantes do site 30 dias · o tamanho aparece no conjunto de anúncios'); x.falhou = true; s2.auds.push(x) } SIMPB.abre(null) }, tit: T('“Público não criado”', '“Público no creado”'), txt: T('O semelhante entrou na lista com o status “Público não criado”. Pela Central de Ajuda, isso pode significar que a fonte era muito pequena: o mínimo é 100 pessoas. Clique em Próximo.', 'El similar entró a la lista con el estado “Público no creado”. Según el Centro de ayuda, puede significar que el origen era demasiado pequeño: el mínimo es 100 personas. Haz clic en Siguiente.') },
     { alvo: '[data-t=pb-erro-sem]', fim: true, semVolta: true, garante: function () { SIMPB.pequeno(); var s2 = pb().S; if (!s2.auds.some(function (a) { return a.falhou })) { var x = aud('Semelhante (1%) - Visitantes do site 30 dias', 'Semelhante', '—', 0, 'Fonte: Visitantes do site 30 dias · o tamanho aparece no conjunto de anúncios'); x.falhou = true; s2.auds.push(x) } SIMPB.abre(null) }, tit: T('Paciência e fontes maiores! 🎉', '¡Paciencia y orígenes mayores! 🎉'), txt: T('Ao cliente: nada está quebrado. O público do site é pequeno porque a loja é nova; o semelhante precisa de pelo menos 100 pessoas na fonte (o ideal é de 1.000 a 5.000). Enquanto isso, use o público Advantage+ com controles de localização e idade, ou outra fonte maior, como a Página. Clique em Concluir.', 'Al cliente: nada está roto. El público del sitio es pequeño porque la tienda es nueva; el similar necesita al menos 100 personas en el origen (lo ideal, de 1.000 a 5.000). Mientras tanto, usa el público Advantage+ con controles de ubicación y edad, u otro origen mayor, como la Página. Haz clic en Finalizar.') }
+  ];
+  /* 16/11/2026: compartilhar um público com outra conta (agência) */
+  function C(sel, d) { SIMPB.compartilha(sel, d) }
+  TOURS['compartilhar-publico'] = [
+    { alvo: '[data-t=tabela-publicos]', garante: function () { C('') }, tit: T('Três públicos na conta', 'Tres públicos en la cuenta'), txt: T('A agência que vai cuidar dos anúncios da Marina pediu os públicos dela. Na lista há dois públicos personalizados e um público salvo, o “Brasil 18+”. Repare na coluna Compartilhamento: por enquanto, nada compartilhado. Clique em Próximo.', 'La agencia que va a cuidar los anuncios de Marina pidió sus públicos. En la lista hay dos públicos personalizados y un público guardado, “Brasil 18+”. Fíjate en la columna Compartir: por ahora, nada compartido. Haz clic en Siguiente.') },
+    { alvo: '[data-t=chk-2]', garante: function () { C('') }, cond: function () { return pb().S.sel === 'a3' }, tit: T('Primeiro, o público salvo', 'Primero, el público guardado'), txt: T('Vamos começar pelo “Brasil 18+”, que é um público salvo. Marque a caixa dele.', 'Empecemos por “Brasil 18+”, que es un público guardado. Marca su casilla.'), dica: T('Marque a caixa da linha “Brasil 18+”.', 'Marca la casilla de la fila “Brasil 18+”.') },
+    { alvo: '[data-t=btn-compartilhar]', clique: true, garante: function () { C('a3') }, tit: T('Compartilhar', 'Compartir'), txt: T('Clique em Compartilhar.', 'Haz clic en Compartir.') },
+    { alvo: '[data-t=pb-nao-salvo]', garante: function () { C('a3', { tipo: 'nao-salvo' }) }, tit: T('Público salvo não se compartilha', 'El público guardado no se comparte'), txt: T('A Central de Ajuda é clara: não é possível compartilhar públicos salvos. Dá para compartilhar públicos personalizados e semelhantes. Se a agência quer o “Brasil 18+”, ela cria um igual na conta dela: são só as opções de segmentação. Clique em Próximo.', 'El Centro de ayuda es claro: no se pueden compartir públicos guardados. Se pueden compartir públicos personalizados y similares. Si la agencia quiere “Brasil 18+”, crea uno igual en su cuenta: son solo opciones de segmentación. Haz clic en Siguiente.') },
+    { alvo: '[data-t=pb-ok-salvo]', clique: true, garante: function () { C('a3', { tipo: 'nao-salvo' }) }, tit: T('OK', 'OK'), txt: T('Clique em OK.', 'Haz clic en OK.') },
+    { alvo: '[data-t=chk-0]', garante: function () { C('') }, cond: function () { return pb().S.sel === 'a1' }, tit: T('Agora, um personalizado', 'Ahora, uno personalizado'), txt: T('Marque a caixa de “Compradores do site (exemplo)”, um público personalizado.', 'Marca la casilla de “Compradores do site (exemplo)”, un público personalizado.'), dica: T('Marque a caixa da primeira linha.', 'Marca la casilla de la primera fila.') },
+    { alvo: '[data-t=btn-compartilhar]', clique: true, garante: function () { C('a1') }, tit: T('Compartilhar', 'Compartir'), txt: T('Clique em Compartilhar.', 'Haz clic en Compartir.') },
+    { alvo: '[data-t=pb-comp-regra]', garante: function () { C('a1', { tipo: 'comp', contas: '', perm: 'Direcionamento e insights', tentou: false }) }, tit: T('A regra do portfólio', 'La regla del portfolio'), txt: T('Antes de tudo: para compartilhar um público personalizado, quem compartilha e quem recebe precisam ter um portfólio empresarial. E quem recebe não pode repassar adiante. Clique em Próximo.', 'Antes que nada: para compartir un público personalizado, quien comparte y quien recibe necesitan un portfolio empresarial. Y quien recibe no puede pasarlo a otros. Haz clic en Siguiente.') },
+    { alvo: '[data-t=pb-contas]', garante: function () { C('a1', { tipo: 'comp', contas: (pb().D && pb().D.contas) || '', perm: 'Direcionamento e insights', tentou: false }) }, cond: function () { return pb().D && /^\d{6,}$/.test(String(pb().D.contas || '').replace(/\s/g, '')) }, tit: T('Para quem', 'Para quién'), txt: T('Digite a identificação da conta de anúncios da agência. No treino, use 987654321. Depois clique em Próximo.', 'Escribe el identificador de la cuenta publicitaria de la agencia. En la práctica, usa 987654321. Después haz clic en Siguiente.'), dica: T('Digite 987654321.', 'Escribe 987654321.') },
+    { alvo: '[data-t=pb-perm]', garante: function () { C('a1', { tipo: 'comp', contas: (pb().D && pb().D.contas) || '987654321', perm: (pb().D && pb().D.perm) || 'Direcionamento e insights', tentou: false }) }, cond: function () { return pb().D && pb().D.perm === 'Somente direcionamento' }, tit: T('Permissão', 'Permiso'), txt: T('Duas opções: Direcionamento e insights (a agência usa o público e vê os dados dele) ou Somente direcionamento (só usa). A Marina prefere não mostrar os dados: escolha Somente direcionamento.', 'Dos opciones: Segmentación y estadísticas (la agencia usa el público y ve sus datos) o Solo segmentación (solo lo usa). Marina prefiere no mostrar los datos: elige Solo segmentación.'), dica: T('Escolha “Somente direcionamento”.', 'Elige “Solo segmentación”.') },
+    { alvo: '[data-t=btn-comp-ok]', clique: true, garante: function () { C('a1', { tipo: 'comp', contas: '987654321', perm: 'Somente direcionamento', tentou: false }) }, tit: T('Compartilhar', 'Compartir'), txt: T('Clique em Compartilhar.', 'Haz clic en Compartir.') },
+    { alvo: '[data-t=comp-0]', fim: true, semVolta: true, garante: function () { var a = pb().S.auds[0]; if (!a || a.id !== 'a1' || !a.comp) { C(''); pb().S.auds[0].comp = 'Compartilhado · Somente direcionamento'; SIMPB.abre(null) } }, tit: T('Compartilhado! 🎉', '¡Compartido! 🎉'), txt: T('A coluna Compartilhamento mostra o público compartilhado. Resumo para o atendimento: público salvo não se compartilha; personalizado e semelhante, sim; os dois lados precisam de portfólio; e quem recebe não repassa. Clique em Concluir. Depois, explore à vontade: o botão ↩ no canto leva de volta.', 'La columna Compartir muestra el público compartido. Resumen para la atención: el público guardado no se comparte; el personalizado y el similar, sí; los dos lados necesitan portfolio; y quien recibe no lo pasa a otros. Haz clic en Terminar. Después, explora a gusto: el botón ↩ en la esquina te lleva de vuelta.') }
   ];
 })();

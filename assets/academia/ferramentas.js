@@ -1178,6 +1178,35 @@
         [{ pt: 'Desativar tudo que gastar mais de R$ 1', es: 'Desactivar todo lo que gaste más de R$ 1' }, 0, { pt: 'Perigoso: desativaria quase tudo.', es: 'Peligroso: desactivaría casi todo.' }],
         [{ pt: 'Aumentar o orçamento em 100%', es: 'Aumentar el presupuesto en un 100%' }, 0, { pt: 'Gasta dinheiro sem teste.', es: 'Gasta dinero sin prueba.' }]] }
   ]);
+  /* 16/11/2026: lacunas da Lojinha (PLANO_LACUNAS_16-11) */
+  quizCatalogo('acesso-pagina', { pt: 'Que acesso dar?', es: '¿Qué acceso dar?' }, { pt: 'Página dentro ou fora do portfólio, pessoa ou agência: treine a escolha.', es: 'Página dentro o fuera del portfolio, persona o agencia: practica la elección.' }, [
+    { q: { pt: 'A dona da doceria não tem portfólio e quer que o filho poste como a Página.', es: 'La dueña de la pastelería no tiene portfolio y quiere que su hijo publique como la página.' },
+      o: [[{ pt: 'Acesso ao Facebook, dado na própria Página', es: 'Acceso a Facebook, dado en la propia página' }, 1, { pt: 'Isso! Com acesso ao Facebook ele troca para a Página e posta como ela.', es: '¡Eso! Con acceso a Facebook cambia a la página y publica como ella.' }],
+        [{ pt: 'Adicionar o filho como parceiro', es: 'Agregar al hijo como socio' }, 0, { pt: 'Parceiro é empresa, e só pelo portfólio.', es: 'Socio es una empresa, y solo por el portfolio.' }],
+        [{ pt: 'Passar a senha do Facebook dela para ele', es: 'Pasarle a él la contraseña de Facebook de ella' }, 0, { pt: 'Senha nunca se compartilha.', es: 'La contraseña nunca se comparte.' }]] },
+    { q: { pt: 'Uma pessoa vai só criar anúncios pelo Gerenciador de Anúncios, sem postar como a Página.', es: 'Una persona solo va a crear anuncios desde el Administrador de anuncios, sin publicar como la página.' },
+      o: [[{ pt: 'Acesso a tarefas', es: 'Acceso a tareas' }, 1, { pt: 'Isso! Trabalha pelas ferramentas, sem trocar para a Página.', es: '¡Eso! Trabaja desde las herramientas, sin cambiar a la página.' }],
+        [{ pt: 'Controle total', es: 'Control total' }, 0, { pt: 'É mais do que ela precisa: controle total mexe até em quem tem acesso.', es: 'Es más de lo que necesita: el control total cambia hasta quién tiene acceso.' }],
+        [{ pt: 'Nenhum: anúncio não precisa de acesso à Página', es: 'Ninguno: un anuncio no necesita acceso a la página' }, 0, { pt: 'Precisa: o anúncio sai em nome da Página.', es: 'Lo necesita: el anuncio sale a nombre de la página.' }]] },
+    { q: { pt: 'A agência quer entrar como empresa, com toda a equipe dela.', es: 'La agencia quiere entrar como empresa, con todo su equipo.' },
+      o: [[{ pt: 'Parceiro, pelo portfólio dos dois lados', es: 'Socio, por el portfolio de los dos lados' }, 1, { pt: 'Isso! Empresa só entra como parceiro, e as duas precisam de portfólio.', es: '¡Eso! Una empresa solo entra como socio, y las dos necesitan portfolio.' }],
+        [{ pt: 'Acesso a tarefas para a agência pela Página', es: 'Acceso a tareas para la agencia desde la página' }, 0, { pt: 'Pela Página o acesso é para pessoas, não para empresas.', es: 'Desde la página el acceso es para personas, no para empresas.' }],
+        [{ pt: 'Pedir à Meta para ligar a agência', es: 'Pedirle a Meta que conecte a la agencia' }, 0, { pt: 'Não precisa: é o próprio portfólio que concede.', es: 'No hace falta: el propio portfolio lo da.' }]] }
+  ]);
+  quizCatalogo('compartilhar-publico-q', { pt: 'Dá para compartilhar?', es: '¿Se puede compartir?' }, { pt: 'Que público pode ir para outra conta, e o que é preciso.', es: 'Qué público puede ir a otra cuenta, y qué hace falta.' }, [
+    { q: { pt: 'A Marina quer mandar para a agência o público salvo “Brasil 18+”.', es: 'Marina quiere enviarle a la agencia el público guardado “Brasil 18+”.' },
+      o: [[{ pt: 'Não dá: a agência cria um igual', es: 'No se puede: la agencia crea uno igual' }, 1, { pt: 'Isso! Público salvo não se compartilha.', es: '¡Eso! El público guardado no se comparte.' }],
+        [{ pt: 'Compartilhar com Somente direcionamento', es: 'Compartir con Solo segmentación' }, 0, { pt: 'Nenhuma permissão libera público salvo.', es: 'Ningún permiso habilita el público guardado.' }],
+        [{ pt: 'Transformar em semelhante e mandar', es: 'Convertirlo en similar y enviarlo' }, 0, { pt: 'Público salvo nem serve de fonte para semelhante.', es: 'El público guardado ni siquiera sirve de origen para un similar.' }]] },
+    { q: { pt: 'Ela vai compartilhar “Compradores do site”. A agência não tem portfólio.', es: 'Va a compartir “Compradores do site”. La agencia no tiene portfolio.' },
+      o: [[{ pt: 'A agência precisa criar um portfólio antes', es: 'La agencia necesita crear un portfolio antes' }, 1, { pt: 'Isso! Os dois lados precisam de portfólio empresarial.', es: '¡Eso! Los dos lados necesitan portfolio empresarial.' }],
+        [{ pt: 'Compartilhar com o perfil pessoal do dono da agência', es: 'Compartir con el perfil personal del dueño de la agencia' }, 0, { pt: 'Para público personalizado, a regra é portfólio dos dois lados.', es: 'Para un público personalizado, la regla es portfolio de los dos lados.' }],
+        [{ pt: 'Mandar a lista de pessoas por e-mail', es: 'Enviar la lista de personas por correo' }, 0, { pt: 'Não: o público não sai da Meta, e público não se vende nem se repassa.', es: 'No: el público no sale de Meta, y los públicos no se venden ni se pasan.' }]] },
+    { q: { pt: 'A Marina quer que a agência use o público, mas sem ver os dados dele.', es: 'Marina quiere que la agencia use el público, pero sin ver sus datos.' },
+      o: [[{ pt: 'Permissão Somente direcionamento', es: 'Permiso Solo segmentación' }, 1, { pt: 'Isso! A agência usa nos anúncios e não vê os dados.', es: '¡Eso! La agencia lo usa en los anuncios y no ve los datos.' }],
+        [{ pt: 'Direcionamento e insights', es: 'Segmentación y estadísticas' }, 0, { pt: 'Essa permissão mostra os dados também.', es: 'Ese permiso también muestra los datos.' }],
+        [{ pt: 'Não compartilhar e criar outro igual', es: 'No compartir y crear otro igual' }, 0, { pt: 'Público personalizado do site depende do Pixel dela: compartilhar é o caminho.', es: 'Un público personalizado del sitio depende de su Pixel: compartir es el camino.' }]] }
+  ]);
   quizCatalogo('editar-ou-excluir', { pt: 'Editar ou excluir?', es: '¿Editar o eliminar?' }, { pt: 'O que se pode mudar numa regra que já existe.', es: 'Qué se puede cambiar en una regla que ya existe.' }, [
     { q: { pt: 'A Marina quer mudar o intervalo de “37 meses” para “7 dias” numa regra já criada.', es: 'Marina quiere cambiar el intervalo de “37 meses” a “7 días” en una regla ya creada.' },
       o: [[{ pt: 'Editar a regra: o intervalo dá para mudar', es: 'Editar la regla: el intervalo se puede cambiar' }, 1, { pt: 'Isso! Nome, condições, intervalo e programação se editam.', es: '¡Eso! Nombre, condiciones, intervalo y programación se editan.' }],

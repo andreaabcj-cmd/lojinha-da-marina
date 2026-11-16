@@ -698,7 +698,7 @@ window.AULAS = {
       id: '04', min: 8, status: 'pronta',
       titulo: { pt: 'Os ativos: Página e conta de anúncios', es: 'Los activos: Página y cuenta publicitaria' },
       antes: { pt: 'A Marina já tem portfólio e o sobrinho com o acesso certo.', es: 'Marina ya tiene portfolio y al sobrino con el acceso correcto.' },
-      gancho: { pt: '“Portfólio pronto! Mas um recurso que eu quero pede ‘empresa verificada’. O que é isso?” Próximo módulo: Portfólio empresarial · avançado.', es: '“¡Portfolio listo! Pero una función que quiero pide ‘empresa verificada’. ¿Qué es eso?” Próximo módulo: Portfolio comercial · avanzado.' },
+      gancho: { pt: '“E quem não tem portfólio? Uma cliente quer dar acesso à Página para a agência sem criar nada.” Vamos ver o que dá para fazer pela própria Página.', es: '“¿Y quien no tiene portfolio? Una clienta quiere darle acceso a la página a la agencia sin crear nada.” Veamos qué se puede hacer desde la propia página.' },
       objetivo: { pt: 'Colocar a Página da loja no portfólio e criar a conta de anúncios certa (moeda e fuso não mudam depois).', es: 'Poner la Página de la tienda en el portfolio y crear la cuenta publicitaria correcta (la moneda y la zona horaria no cambian después).' },
       entender: {
         dialogo: [
@@ -754,6 +754,62 @@ window.AULAS = {
         { tema: { pt: 'Etapas de adicionar uma Página existente', es: 'Pasos para agregar una Página existente' }, oficial: { pt: 'nome ou URL › Avançar › aceitar os termos › Adicionar Página › Concluir.', es: 'nombre o URL › Siguiente › aceptar los términos › Agregar Página › Finalizar.' }, tela: { pt: 'janela em 3 etapas com nomes em inglês (Find Page, Add people, Review) e o aviso de que, sem controle total da Página, alguém com controle total precisa aprovar.', es: 'ventana en 3 pasos con nombres en inglés (Find Page, Add people, Review) y el aviso de que, sin control total de la Página, alguien con control total debe aprobar.' }, aula: { pt: 'o simulador resume em uma tela (nome › Adicionar Página); as etapas do meio ficam a conferir.', es: 'el simulador lo resume en una pantalla (nombre › Agregar Página); los pasos del medio quedan por confirmar.' } },
         { tema: { pt: 'Nome do acesso compartilhado', es: 'Nombre del acceso compartido' }, oficial: { pt: '“Pedir acesso compartilhado a uma Página do Facebook”.', es: '“Pedir acceso compartido a una Página de Facebook”.' }, tela: { pt: '“Solicitar acesso compartilhado a uma Página do Facebook”, com a descrição ainda em inglês.', es: '“Solicitar acesso compartilhado a uma Página do Facebook”, con la descripción todavía en inglés.' }, aula: { pt: 'usa o nome da tela.', es: 'usa el nombre de la pantalla.' } }
       ]
+    },
+    {
+      id: '05', min: 7, status: 'pronta',
+      titulo: { pt: 'A Página sem portfólio: quem pode acessar', es: 'La página sin portfolio: quién puede acceder' },
+      antes: { pt: 'O portfólio da Marina está organizado. Agora o Rafa atende a dona de uma doceria, que tem só a Página e não quer criar portfólio.', es: 'El portfolio de Marina está organizado. Ahora Rafa atiende a la dueña de una pastelería, que tiene solo la página y no quiere crear un portfolio.' },
+      fontes: [
+        { url: 'https://www.facebook.com/help/289207354498410', titulo: { pt: 'Sobre o acesso à Página do Facebook', es: 'Información sobre el acceso a la página de Facebook' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/help/187316341316631', titulo: { pt: 'Conceder, editar ou remover o acesso a uma Página do Facebook', es: 'Dar, editar o quitar el acceso a una página de Facebook' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/business/help/1101781386943864', titulo: { pt: 'Sobre o acesso à Página (Página num portfólio empresarial)', es: 'Información sobre el acceso a la página (página en un portfolio empresarial)' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/business/help/1717412048538897', titulo: { pt: 'Como conceder acesso a ativos de negócios no seu portfólio empresarial para um parceiro', es: 'Cómo dar acceso a activos comerciales de tu portfolio empresarial a un socio' }, conferido: '16/11/2026' }
+      ],
+      avisos: [
+        { tema: { pt: '“Permissões diretas no ativo”', es: '“Permisos directos en el activo”' }, ouve: { pt: 'Quem criou a Página tem “permissões diretas no ativo”, e a agência pode ganhar essas permissões pela Página.', es: 'Quien creó la página tiene “permisos directos en el activo”, y la agencia puede recibir esos permisos desde la página.' }, meta: { pt: 'A Meta não usa esse nome. Fora do portfólio ela fala em acesso ao Facebook (controle total ou parcial) e acesso a tarefas, sempre para pessoas. Empresa (agência) só entra como parceiro, pelo portfólio.', es: 'Meta no usa ese nombre. Fuera del portfolio habla de acceso a Facebook (control total o parcial) y acceso a tareas, siempre para personas. Una empresa (agencia) solo entra como socio, por el portfolio.' } }
+      ],
+      gancho: { pt: '“Portfólio pronto! Mas um recurso que eu quero pede ‘empresa verificada’. O que é isso?” Próximo módulo: Portfólio empresarial · avançado.', es: '“¡Portfolio listo! Pero una función que quiero pide ‘empresa verificada’. ¿Qué es eso?” Próximo módulo: Portfolio comercial · avanzado.' },
+      objetivo: { pt: 'Saber que acesso dar, e a quem, quando a Página não está num portfólio, e por que a agência, como empresa, só entra pelo portfólio.', es: 'Saber qué acceso dar, y a quién, cuando la página no está en un portfolio, y por qué la agencia, como empresa, solo entra por el portfolio.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'A dona da doceria não quer portfólio. Ela consegue dar acesso à Página para a agência pela própria Página? 🤔', es: 'La dueña de la pastelería no quiere portfolio. ¿Puede darle acceso a la página a la agencia desde la propia página? 🤔' }],
+          ['rafa', { pt: 'Pela Página, ela dá acesso a pessoas, não a empresas. Para cada pessoa, escolhe o tipo: acesso ao Facebook (controle total ou parcial) ou acesso a tarefas.', es: 'Desde la página, da acceso a personas, no a empresas. Para cada persona, elige el tipo: acceso a Facebook (control total o parcial) o acceso a tareas.' }],
+          ['marina', { pt: 'E qual é a diferença?', es: '¿Y cuál es la diferencia?' }],
+          ['rafa', { pt: 'Com acesso ao Facebook, a pessoa troca para a Página e age como ela. Com acesso a tarefas, ela trabalha por outras ferramentas, como o Business Suite e o Gerenciador de Anúncios, mas não troca para a Página.', es: 'Con acceso a Facebook, la persona cambia a la página y actúa como ella. Con acceso a tareas, trabaja desde otras herramientas, como Business Suite y el Administrador de anuncios, pero no cambia a la página.' }],
+          ['marina', { pt: 'E a agência inteira, como empresa?', es: '¿Y la agencia entera, como empresa?' }],
+          ['rafa', { pt: 'Aí só pelo portfólio: a empresa entra como parceiro, e as duas precisam ter portfólio. Sem portfólio, o jeito é dar acesso às pessoas da agência, uma por uma.', es: 'Ahí solo por el portfolio: la empresa entra como socio, y las dos necesitan portfolio. Sin portfolio, la forma es dar acceso a las personas de la agencia, una por una.' }],
+          ['pixel', { pt: 'Dentro de um portfólio, os nomes mudam: acesso parcial (só ferramentas comerciais), acesso parcial (ferramentas comerciais e Facebook) e controle total.', es: 'Dentro de un portfolio, los nombres cambian: acceso parcial (solo herramientas comerciales), acceso parcial (herramientas comerciales y Facebook) y control total.' }]
+        ],
+        pontos: [
+          { pt: '<b>Página fora do portfólio:</b> o acesso é dado na própria Página, sempre a pessoas.', es: '<b>Página fuera del portfolio:</b> el acceso se da en la propia página, siempre a personas.' },
+          { pt: '<b>Acesso ao Facebook</b> (controle total ou parcial): troca para a Página e age como ela. <b>Acesso a tarefas:</b> trabalha pelo Business Suite e pelo Gerenciador de Anúncios, sem trocar para a Página.', es: '<b>Acceso a Facebook</b> (control total o parcial): cambia a la página y actúa como ella. <b>Acceso a tareas:</b> trabaja desde Business Suite y el Administrador de anuncios, sin cambiar a la página.' },
+          { pt: '<b>Agência como empresa:</b> só como parceiro, pelo portfólio, e as duas precisam ter portfólio.', es: '<b>Agencia como empresa:</b> solo como socio, por el portfolio, y las dos necesitan portfolio.' },
+          { pt: '<b>Página num portfólio:</b> acesso parcial (só ferramentas comerciais), acesso parcial (ferramentas comerciais e Facebook) e controle total. Sem ninguém com controle total, a Página é desativada.', es: '<b>Página en un portfolio:</b> acceso parcial (solo herramientas comerciales), acceso parcial (herramientas comerciales y Facebook) y control total. Si nadie tiene control total, la página se desactiva.' }
+        ],
+        notas: { pt: 'Regras da Central de Ajuda da Meta lidas em 16/11/2026 (“Sobre o acesso à Página do Facebook”, “Sobre o acesso à Página” e “Como conceder acesso a ativos de negócios… para um parceiro”). No portfólio da conta de aula foram vistos, em 16/11/2026, a lista de Páginas com as colunas Acesso total, Acesso parcial e Parceiros e os botões Atribuir pessoas e Atribuir parceiro. A tela de Acesso à Página de uma Página fora de portfólio não foi vista (a conta de aula só tem Página dentro do portfólio): a conferir.', es: 'Reglas del Centro de ayuda de Meta leídas el 16/11/2026 (“Información sobre el acceso a la página de Facebook”, “Información sobre el acceso a la página” y “Cómo dar acceso a activos comerciales… a un socio”). En el portfolio de la cuenta de práctica se vieron, el 16/11/2026, la lista de páginas con las columnas Acceso total, Acceso parcial y Socios y los botones Asignar personas y Asignar socio. La pantalla de Acceso a la página de una página fuera de portfolio no se vio (la cuenta de práctica solo tiene página dentro del portfolio): por confirmar.' }
+      },
+      ferramenta: 'acesso-pagina',
+      praticar: {
+        texto: { pt: 'No simulador do portfólio, o Pixel te leva pelo único caminho para a agência entrar como empresa: Parceiros › conceder a um parceiro acesso aos seus ativos.', es: 'En el simulador del portfolio, el Pixel te lleva por el único camino para que la agencia entre como empresa: Socios › dar a un socio acceso a tus activos.' },
+        tour: 'dar-acesso-parceiro', pagina: 'meta-portfolio.html?exemplo=1'
+      },
+      atender: {
+        cena: { pt: 'Não quero criar portfólio nenhum. Só quero que a agência mexa na minha Página! Como faço? 😤', es: '¡No quiero crear ningún portfolio. Solo quiero que la agencia maneje mi página! ¿Cómo hago? 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“Em Configurações da Página, adicione a agência como parceira pelo nome da empresa: a Página aceita parceiros mesmo fora de um portfólio, e a agência só confirma pelo e-mail.”', es: '“En la configuración de la página, agrega a la agencia como socia por el nombre de la empresa: la página acepta socios aunque esté fuera de un portfolio, y la agencia solo confirma por correo.”' }, fb: { pt: 'Parceiro (empresa) só entra pelo portfólio. Pela Página, o acesso é para pessoas.', es: 'Un socio (empresa) solo entra por el portfolio. Desde la página, el acceso es para personas.' } },
+          { certa: true, txt: { pt: '“Pela Página, você dá acesso às pessoas da agência, uma por uma. Como empresa, a agência só entra se as duas tiverem portfólio.”', es: '“Desde la página, das acceso a las personas de la agencia, una por una. Como empresa, la agencia solo entra si las dos tienen portfolio.”' }, fb: { pt: 'Isso! Respeitou a escolha da cliente e explicou o limite.', es: '¡Eso! Respetaste la elección de la clienta y explicaste el límite.' } },
+          { certa: false, txt: { pt: '“Passe para a agência o seu login e a sua senha do Facebook: é o jeito mais simples de dar acesso sem portfólio, e a Meta permite quando a agência trabalha para a mesma empresa.”', es: '“Pásale a la agencia tu usuario y tu contraseña de Facebook: es la forma más simple de dar acceso sin portfolio, y Meta lo permite cuando la agencia trabaja para la misma empresa.”' }, fb: { pt: 'Nunca. Senha não se compartilha; o acesso se dá à pessoa, pela Página.', es: 'Nunca. La contraseña no se comparte; el acceso se da a la persona, desde la página.' } },
+          { certa: false, txt: { pt: '“Sem portfólio, ninguém além de você pode mexer na Página. Primeiro crie um portfólio, depois convide a agência como pessoa pelo e-mail dela.”', es: '“Sin portfolio, nadie más que tú puede manejar la página. Primero crea un portfolio, después invita a la agencia como persona por su correo.”' }, fb: { pt: 'Não é isso: dá para dar acesso a pessoas pela própria Página, sem portfólio.', es: 'No es eso: se puede dar acceso a personas desde la propia página, sin portfolio.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'A Página está num portfólio empresarial?', es: '¿La página está en un portfolio empresarial?' }, { pt: 'O acesso é para uma pessoa ou para a agência como empresa?', es: '¿El acceso es para una persona o para la agencia como empresa?' }],
+        conferir: [{ pt: 'Fora do portfólio: na Página, Configurações › Acesso à Página (a conferir na tela real).', es: 'Fuera del portfolio: en la página, Configuración › Acceso a la página (por confirmar en la pantalla real).' }, { pt: 'No portfólio: Configurações › Páginas › a Página › Atribuir pessoas ou Atribuir parceiro.', es: 'En el portfolio: Configuración › Páginas › la página › Asignar personas o Asignar socio.' }],
+        frase: { pt: 'Pela Página, o acesso é dado a pessoas. Para a agência entrar como empresa, as duas precisam ter portfólio empresarial.', es: 'Desde la página, el acceso se da a personas. Para que la agencia entre como empresa, las dos necesitan un portfolio empresarial.' },
+        passos: [{ pt: 'Sem portfólio: dar acesso a cada pessoa da agência (acesso ao Facebook ou a tarefas).', es: 'Sin portfolio: dar acceso a cada persona de la agencia (acceso a Facebook o a tareas).' }, { pt: 'Com portfólio: Parceiros › conceder acesso, com a identificação do portfólio da agência.', es: 'Con portfolio: Socios › dar acceso, con el identificador del portfolio de la agencia.' }],
+        encaminhar: { pt: 'Se a cliente perdeu o acesso à Página ou ninguém tem controle total, siga a Central de Ajuda da Meta para recuperar o acesso.', es: 'Si la clienta perdió el acceso a la página o nadie tiene control total, sigue el Centro de ayuda de Meta para recuperar el acceso.' }
+      }
     }
   ],
   pixel: [
@@ -3008,7 +3064,7 @@ window.AULAS = {
         { url: 'https://www.facebook.com/business/help/1523083297982009', titulo: { pt: 'Solucionar problemas do tamanho do público personalizado do site', es: 'Solucionar problemas del tamaño del público personalizado del sitio web' }, conferido: '25/10/2026' },
         { url: 'https://www.facebook.com/business/help/1055828013359808', titulo: { pt: 'Como entender as restrições de determinados públicos personalizados', es: 'Cómo entender las restricciones de ciertos públicos personalizados' }, conferido: '25/10/2026' }
       ],
-      gancho: { pt: '“Públicos prontos e campanhas publicadas. E agora apareceu ‘Aprendizado’ em tudo!” Próximo módulo: Entrega de anúncios.', es: '“Públicos listos y campañas publicadas. ¡Y ahora aparece ‘Aprendizaje’ en todo!” Próximo módulo: Entrega de anuncios.' },
+      gancho: { pt: '“A agência que vai cuidar dos meus anúncios pediu os meus públicos. Dá para mandar?” Dá, mas não todos.', es: '“La agencia que va a cuidar mis anuncios pidió mis públicos. ¿Se pueden enviar?” Se puede, pero no todos.' },
       objetivo: { pt: 'Diagnosticar um público pequeno ou um semelhante com “Público não criado”, e dizer ao cliente o que fazer enquanto os dados crescem.', es: 'Diagnosticar un público pequeño o un similar con “Público no creado”, y decirle al cliente qué hacer mientras los datos crecen.' },
       entender: {
         dialogo: [
@@ -3049,6 +3105,62 @@ window.AULAS = {
         passos: [{ pt: 'Leia os status do público em Públicos.', es: 'Lee los estados del público en Públicos.' },
           { pt: 'Rode com Advantage+ e controles, e volte ao semelhante depois.', es: 'Corre con Advantage+ y controles, y vuelve al similar después.' }],
         encaminhar: { pt: 'Se o público não enche mesmo com tráfego no site, confira o Pixel (módulo Pixel) e siga a Central de Ajuda da Meta.', es: 'Si el público no se llena aun con tráfico en el sitio, revisa el Pixel (módulo Pixel) y sigue el Centro de ayuda de Meta.' }
+      }
+    },
+    {
+      id: '06', min: 8, status: 'pronta',
+      titulo: { pt: 'Compartilhar um público com outra conta ou agência', es: 'Compartir un público con otra cuenta o agencia' },
+      antes: { pt: 'A agência que vai cuidar dos anúncios da Marina pediu os públicos dela.', es: 'La agencia que va a cuidar los anuncios de Marina pidió sus públicos.' },
+      fontes: [
+        { url: 'https://www.facebook.com/business/help/1676733802590358', titulo: { pt: 'Sobre os públicos compartilhados', es: 'Información sobre los públicos compartidos' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/business/help/344873576192361', titulo: { pt: 'Como compartilhar um público', es: 'Cómo compartir un público' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/help/499290663823687', titulo: { pt: 'Como compartilhar listas de público personalizado', es: 'Cómo compartir listas de públicos personalizados' }, conferido: '16/11/2026' }
+      ],
+      avisos: [
+        { tema: { pt: 'Compartilhar público salvo', es: 'Compartir un público guardado' }, ouve: { pt: 'Qualquer público da lista pode ser compartilhado com a agência.', es: 'Cualquier público de la lista se puede compartir con la agencia.' }, meta: { pt: 'Público salvo não pode ser compartilhado. Personalizado e semelhante, sim, e os dois lados precisam de portfólio empresarial.', es: 'El público guardado no se puede compartir. El personalizado y el similar, sí, y los dos lados necesitan un portfolio empresarial.' } }
+      ],
+      gancho: { pt: '“Públicos prontos e campanhas publicadas. E agora apareceu ‘Aprendizado’ em tudo!” Próximo módulo: Entrega de anúncios.', es: '“Públicos listos y campañas publicadas. ¡Y ahora aparece ‘Aprendizaje’ en todo!” Próximo módulo: Entrega de anuncios.' },
+      objetivo: { pt: 'Saber o que dá para compartilhar, o que os dois lados precisam e por que o botão Compartilhar pode estar bloqueado.', es: 'Saber qué se puede compartir, qué necesitan los dos lados y por qué el botón Compartir puede estar bloqueado.' },
+      entender: {
+        dialogo: [
+          ['marina', { pt: 'A agência pediu os meus públicos. Dá para mandar todos? 🤔', es: 'La agencia pidió mis públicos. ¿Se pueden enviar todos? 🤔' }],
+          ['rafa', { pt: 'Personalizados e semelhantes, sim: em Públicos, marque o público e clique em Compartilhar. Público salvo, não: a agência cria um igual na conta dela.', es: 'Personalizados y similares, sí: en Públicos, marca el público y haz clic en Compartir. El guardado, no: la agencia crea uno igual en su cuenta.' }],
+          ['marina', { pt: 'Precisa de alguma coisa antes?', es: '¿Hace falta algo antes?' }],
+          ['rafa', { pt: 'Precisa: para compartilhar um público personalizado, você e a agência precisam ter portfólio empresarial. Na janela, você põe a identificação da conta de anúncios dela e escolhe a permissão: Direcionamento e insights, ou Somente direcionamento.', es: 'Sí: para compartir un público personalizado, tú y la agencia necesitan un portfolio empresarial. En la ventana, pones el identificador de su cuenta publicitaria y eliges el permiso: Segmentación y estadísticas, o Solo segmentación.' }],
+          ['marina', { pt: 'E o botão Compartilhar ficou cinza na minha conta! 😕', es: '¡Y el botón Compartir quedó gris en mi cuenta! 😕' }],
+          ['rafa', { pt: 'Passe o mouse em cima e leia. Na nossa conta de aula, que é nova, a tela avisa que contas de empresas novas precisam seguir as Políticas de Publicidade por várias semanas antes de compartilhar públicos de lista de clientes com outra empresa.', es: 'Pasa el mouse por encima y lee. En nuestra cuenta de práctica, que es nueva, la pantalla avisa que las cuentas de empresas nuevas deben seguir las Políticas de publicidad por varias semanas antes de compartir públicos de lista de clientes con otra empresa.' }],
+          ['pixel', { pt: 'E quem recebe usa o público, mas não repassa. Se você apagar o público, ele some da conta da agência também, e os conjuntos que o usam são pausados.', es: 'Y quien recibe usa el público, pero no lo pasa a otros. Si borras el público, también desaparece de la cuenta de la agencia, y los conjuntos que lo usan se pausan.' }]
+        ],
+        pontos: [
+          { pt: '<b>Dá para compartilhar:</b> públicos personalizados e semelhantes. <b>Não dá:</b> público salvo.', es: '<b>Se puede compartir:</b> públicos personalizados y similares. <b>No se puede:</b> público guardado.' },
+          { pt: '<b>Os dois lados</b> precisam de portfólio empresarial.', es: '<b>Los dos lados</b> necesitan un portfolio empresarial.' },
+          { pt: '<b>Permissão:</b> Direcionamento e insights (usa e vê os dados) ou Somente direcionamento (só usa).', es: '<b>Permiso:</b> Segmentación y estadísticas (usa y ve los datos) o Solo segmentación (solo usa).' },
+          { pt: '<b>Lista de clientes:</b> tem regra própria (aceitar os termos de públicos personalizados na primeira vez) e conta nova pode ficar bloqueada por algumas semanas.', es: '<b>Lista de clientes:</b> tiene regla propia (aceptar las condiciones de públicos personalizados la primera vez) y una cuenta nueva puede quedar bloqueada por algunas semanas.' },
+          { pt: '<b>Quem recebe</b> não repassa; se o dono apagar, o público some dos dois lados e os conjuntos são pausados. E público não se vende.', es: '<b>Quien recibe</b> no lo pasa a otros; si el dueño lo borra, el público desaparece de los dos lados y los conjuntos se pausan. Y los públicos no se venden.' }
+        ],
+        notas: { pt: 'Regras da Central de Ajuda da Meta lidas em 16/11/2026 (“Sobre os públicos compartilhados” e “Como compartilhar um público”). Na conta de aula, em 16/11/2026, foram vistos o botão Compartilhar, a coluna Compartilhamento e a página Públicos compartilhados nas configurações do portfólio. O botão ficou bloqueado com o aviso de conta nova, então a janela de compartilhar do simulador segue os passos da Central de Ajuda (a conferir). A tela também mostrou a visão nova de Públicos, com rótulos (Clientes, Públicos engajados, Outros públicos), que o simulador ainda não tem.', es: 'Reglas del Centro de ayuda de Meta leídas el 16/11/2026 (“Información sobre los públicos compartidos” y “Cómo compartir un público”). En la cuenta de práctica, el 16/11/2026, se vieron el botón Compartir, la columna Compartir y la página Públicos compartidos en la configuración del portfolio. El botón quedó bloqueado con el aviso de cuenta nueva, así que la ventana de compartir del simulador sigue los pasos del Centro de ayuda (por confirmar). La pantalla también mostró la vista nueva de Públicos, con etiquetas (Clientes, Públicos con interacción, Otros públicos), que el simulador todavía no tiene.' }
+      },
+      ferramenta: 'compartilhar-publico-q',
+      praticar: {
+        texto: { pt: 'No simulador de Públicos, o Pixel te leva a tentar compartilhar um público salvo e depois a compartilhar um personalizado com a conta da agência.', es: 'En el simulador de Públicos, el Pixel te lleva a intentar compartir un público guardado y después a compartir uno personalizado con la cuenta de la agencia.' },
+        tour: 'compartilhar-publico', pagina: 'meta-publicos.html?compartilhar=1'
+      },
+      atender: {
+        cena: { pt: 'Tentei compartilhar o meu público “Brasil 18+” com a agência e não consigo de jeito nenhum! O que está errado? 😤', es: '¡Intenté compartir mi público “Brasil 18+” con la agencia y no lo logro de ninguna manera! ¿Qué está mal? 😤' },
+        pergunta: { pt: 'O que você responde?', es: '¿Qué respondes?' },
+        opcoes: [
+          { certa: false, txt: { pt: '“Isso é demora do sistema: o compartilhamento de público leva até 72 horas para liberar. Tente de novo depois de três dias, sem apagar nem editar o público enquanto isso.”', es: '“Es demora del sistema: compartir un público tarda hasta 72 horas en liberarse. Intenta de nuevo después de tres días, sin borrar ni editar el público mientras tanto.”' }, fb: { pt: 'Não há prazo assim. O problema é o tipo do público.', es: 'No existe un plazo así. El problema es el tipo de público.' } },
+          { certa: false, txt: { pt: '“Você precisa primeiro transformar o público em semelhante: só semelhantes podem ser compartilhados, e o semelhante de 1% fica com as mesmas pessoas do original.”', es: '“Primero tienes que convertir el público en similar: solo los similares se pueden compartir, y el similar de 1% queda con las mismas personas del original.”' }, fb: { pt: 'Não: personalizados também se compartilham, e o semelhante tem outras pessoas.', es: 'No: los personalizados también se comparten, y el similar tiene otras personas.' } },
+          { certa: true, txt: { pt: '“O ‘Brasil 18+’ é um público salvo, e público salvo não se compartilha. A agência cria um igual na conta dela.”', es: '“‘Brasil 18+’ es un público guardado, y el público guardado no se comparte. La agencia crea uno igual en su cuenta.”' }, fb: { pt: 'Isso! Identificou o tipo e já deu a saída.', es: '¡Eso! Identificaste el tipo y ya diste la salida.' } },
+          { certa: false, txt: { pt: '“Compartilhe pelo botão do conjunto de anúncios, não pela página Públicos: lá aparece a opção de mandar o público inteiro para outra conta, com as mesmas configurações.”', es: '“Compártelo desde el botón del conjunto de anuncios, no desde la página Públicos: ahí aparece la opción de enviar el público entero a otra cuenta, con la misma configuración.”' }, fb: { pt: 'Não existe esse caminho. O compartilhamento é na página Públicos, e salvo não vai.', es: 'No existe ese camino. Se comparte en la página Públicos, y el guardado no va.' } }
+        ]
+      },
+      cola: {
+        perguntas: [{ pt: 'Que tipo de público é: personalizado, semelhante ou salvo?', es: '¿Qué tipo de público es: personalizado, similar o guardado?' }, { pt: 'Os dois lados têm portfólio empresarial? Qual a identificação da conta de anúncios de quem vai receber?', es: '¿Los dos lados tienen portfolio empresarial? ¿Cuál es el identificador de la cuenta publicitaria de quien va a recibir?' }],
+        conferir: [{ pt: 'Públicos › marcar o público › Compartilhar (passe o mouse se estiver cinza).', es: 'Públicos › marcar el público › Compartir (pasa el mouse si está gris).' }, { pt: 'Coluna Compartilhamento, e Configurações do portfólio › Públicos compartilhados.', es: 'Columna Compartir, y Configuración del portfolio › Públicos compartidos.' }],
+        frase: { pt: 'Dá para compartilhar públicos personalizados e semelhantes, com portfólio dos dois lados. Público salvo não se compartilha: a outra conta cria um igual.', es: 'Se pueden compartir públicos personalizados y similares, con portfolio de los dos lados. El público guardado no se comparte: la otra cuenta crea uno igual.' },
+        passos: [{ pt: 'Públicos › marcar › Compartilhar › identificação da conta › permissão › Compartilhar.', es: 'Públicos › marcar › Compartir › identificador de la cuenta › permiso › Compartir.' }, { pt: 'Lista de clientes: aceitar os termos na primeira vez.', es: 'Lista de clientes: aceptar las condiciones la primera vez.' }],
+        encaminhar: { pt: 'Se o botão segue bloqueado por restrição da conta, confira o aviso da tela e a Página Inicial do Suporte para Empresas.', es: 'Si el botón sigue bloqueado por una restricción de la cuenta, revisa el aviso de la pantalla y la página de inicio del Soporte para empresas.' }
       }
     }
   ],

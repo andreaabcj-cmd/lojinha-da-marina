@@ -301,7 +301,8 @@
       ['criar-publico-site', 'meta-publicos.html?zerar=1', 'segmentacao', '02', { pt: 'Como criar um público de quem visitou o site', es: 'Cómo crear un público de quien visitó el sitio' }],
       ['criar-semelhante', 'meta-publicos.html?exemplo=1', 'segmentacao', '03', { pt: 'Como criar um público semelhante', es: 'Cómo crear un público similar' }],
       ['criar-salvo', 'meta-publicos.html?zerar=1', 'segmentacao', '04', { pt: 'Como criar um público salvo', es: 'Cómo crear un público guardado' }],
-      ['publico-pequeno', 'meta-publicos.html?pequeno=1', 'segmentacao', '05', { pt: 'Como entender um público pequeno ou recusado', es: 'Cómo entender un público pequeño o rechazado' }] ] },
+      ['publico-pequeno', 'meta-publicos.html?pequeno=1', 'segmentacao', '05', { pt: 'Como entender um público pequeno ou recusado', es: 'Cómo entender un público pequeño o rechazado' }],
+      ['compartilhar-publico', 'meta-publicos.html?compartilhar=1', 'segmentacao', '06', { pt: 'Como compartilhar um público com a conta da agência', es: 'Cómo compartir un público con la cuenta de la agencia' }] ] },
     { m: 'relatorios', itens: [
       ['ler-relatorio', 'meta-relatorios.html?zerar=1', 'relatorios', '02', { pt: 'Como ler a tabela do relatório (alcance, impressões, gasto)', es: 'Cómo leer la tabla del informe (alcance, impresiones, gasto)' }],
       ['montar-relatorio', 'meta-relatorios.html?zerar=1', 'relatorios', '03', { pt: 'Como montar o seu relatório (detalhamentos e métricas)', es: 'Cómo armar tu informe (desgloses y métricas)' }],
