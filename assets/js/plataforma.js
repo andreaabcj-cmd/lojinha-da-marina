@@ -582,6 +582,10 @@
       // quando a Central de Ajuda e a tela real não batem: as duas versões e o que a aula ensina
       (a.divergencias ? '<details class="fontes divergencias"><summary>⚖️ ' + T({ pt: 'Divergências: Central de Ajuda × tela real', es: 'Diferencias: Centro de ayuda × pantalla real' }) + '</summary><ul>' + a.divergencias.map(function (d) {
         return '<li><b>' + T(d.tema) + '</b><br>📚 ' + T({ pt: 'Central de Ajuda', es: 'Centro de ayuda' }) + ': ' + T(d.oficial) + '<br>🖥️ ' + T({ pt: 'Tela real', es: 'Pantalla real' }) + ': ' + T(d.tela) + '<br>✅ ' + T({ pt: 'Na aula', es: 'En la clase' }) + ': ' + T(d.aula) + '</li>'
+      }).join('') + '</ul></details>' : '') +
+      // 16/11/2026: quando o que se costuma repetir (fóruns, cursos, colegas) não bate com o que a Meta publica hoje. Discreto, fechado, como as Fontes.
+      (a.avisos ? '<details class="fontes avisos"><summary>❗ ' + T({ pt: 'Atenção: o que se ouve × o que a Meta diz hoje', es: 'Atención: lo que se escucha × lo que Meta dice hoy' }) + '</summary><ul>' + a.avisos.map(function (d) {
+        return '<li><b>' + T(d.tema) + '</b><br>💬 ' + T({ pt: 'Costuma-se dizer', es: 'Se suele decir' }) + ': ' + T(d.ouve) + '<br>📚 ' + T({ pt: 'A Meta diz', es: 'Meta dice' }) + ': ' + T(d.meta) + '</li>'
       }).join('') + '</ul></details>' : '');
   }
 

@@ -286,8 +286,13 @@ window.AULAS = {
       titulo: { pt: 'O Instagram no anúncio', es: 'El Instagram en el anuncio' },
       antes: { pt: 'A Marina ligou o Instagram à Página e já sabe montar o criativo do anúncio.', es: 'Marina vinculó el Instagram a la Página y ya sabe armar el contenido del anuncio.' },
       fontes: [
+        { url: 'https://www.facebook.com/business/help/272348126756182', titulo: { pt: 'Veicular anúncios no Instagram com a sua Página do Facebook', es: 'Publicar anuncios en Instagram con tu página de Facebook' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/business/help/407108559393196', titulo: { pt: 'Sobre os posicionamentos de anúncios nas tecnologias da Meta', es: 'Información sobre las ubicaciones de anuncios en las tecnologías de Meta' }, conferido: '16/11/2026' },
         { url: 'https://www.facebook.com/business/help/272348126756182', titulo: { pt: 'Como veicular anúncios no Instagram com sua Página do Facebook', es: 'Cómo publicar anuncios en Instagram con tu Página de Facebook' }, conferido: '25/10/2026' },
         { url: 'https://www.facebook.com/business/help/1513393428972189', titulo: { pt: 'Como criar anúncios comerciais do Instagram no Gerenciador de Anúncios da Meta', es: 'Cómo crear anuncios comerciales de Instagram en el Administrador de anuncios de Meta' }, conferido: '25/10/2026' }
+      ],
+      avisos: [
+        { tema: { pt: 'Anúncio no Instagram usando a Página', es: 'Anuncio en Instagram usando la página' }, ouve: { pt: 'Sem conta do Instagram, o nome nunca é clicável e a legenda não começa com o @.', es: 'Sin cuenta de Instagram, el nombre nunca se puede tocar y el texto no empieza con la @.' }, meta: { pt: 'A Meta só garante que o nome e a foto vêm da Página e que essa conta não posta nem comenta. O resto não está nas fontes oficiais: confira na prévia.', es: 'Meta solo garantiza que el nombre y la foto vienen de la página y que esa cuenta no publica ni comenta. Lo demás no está en las fuentes oficiales: revísalo en la vista previa.' } }
       ],
       gancho: { pt: '“Abri a lista de Perfil do Instagram e o meu @ não está lá!” Quase sempre a causa está na ligação, não no anúncio.', es: '“¡Abrí la lista de Perfil de Instagram y mi @ no está ahí!” Casi siempre la causa está en el vínculo, no en el anuncio.' },
       objetivo: { pt: 'Escolher o perfil do Instagram na Identidade do anúncio e ver o efeito na prévia.', es: 'Elegir el perfil de Instagram en la Identidad del anuncio y ver el efecto en la vista previa.' },
@@ -302,7 +307,9 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Página do Facebook:</b> obrigatória. <b>Perfil do Instagram:</b> opcional, mas dá a cara da loja.', es: '<b>Página de Facebook:</b> obligatoria. <b>Perfil de Instagram:</b> opcional, pero le da la cara a la tienda.' },
           { pt: '<b>Na prévia</b>, o cartão dos lugares do Instagram mostra o perfil escolhido.', es: '<b>En la vista previa</b>, la tarjeta de los lugares de Instagram muestra el perfil elegido.' },
-          { pt: '<b>Anúncio em parceria:</b> desativado por padrão, para anunciar junto com outros perfis.', es: '<b>Anuncio en colaboración:</b> desactivado de forma predeterminada, para anunciar junto con otros perfiles.' }
+          { pt: '<b>Anúncio em parceria:</b> desativado por padrão, para anunciar junto com outros perfis.', es: '<b>Anuncio en colaboración:</b> desactivado de forma predeterminada, para anunciar junto con otros perfiles.' },
+          { pt: '<b>Lugares do Instagram:</b> Feed, Feed do perfil, Explorar (página inicial), Stories, Reels e Resultados da pesquisa.', es: '<b>Lugares de Instagram:</b> Feed, Feed del perfil, Explorar (página de inicio), Stories, Reels y Resultados de búsqueda.' },
+          { pt: '<b>Sem conta do Instagram</b> (“Usar a Página do Facebook”): o anúncio aparece com o nome e a foto da Página. Ninguém entra nessa conta; ela não posta nem comenta.', es: '<b>Sin cuenta de Instagram</b> (“Usar la página de Facebook”): el anuncio aparece con el nombre y la foto de la página. Nadie entra en esa cuenta; no publica ni comenta.' }
         ],
         notas: { pt: 'Campos da Identidade vistos de verdade em 14–16/10/2026 (Página do Facebook, Perfil do Instagram, Threads, WhatsApp, Anúncio em parceria). Em 26/10/2026: a lista do Perfil do Instagram tem uma busca e cada perfil com o número de identificação; a prévia tem 4 grupos (Tudo · Feeds, In-stream para Reels com 9 posicionamentos · Stories, Status e Reels, Resultados da pesquisa, Apps e sites com 8 · Coluna da direita, Resultados da pesquisa com 2) e cada grupo deixa escolher um posicionamento, como “Feed do perfil do Instagram”. Num anúncio de catálogo sem mídia própria a prévia diz “Não há prévia para mostrar para este grupo de posicionamentos”.', es: 'Campos de la Identidad vistos de verdad el 14–16/10/2026 (Página de Facebook, Perfil de Instagram, Threads, WhatsApp, Anuncio en colaboración). El 26/10/2026: la lista del Perfil de Instagram tiene un buscador y cada perfil con su número de identificación; la vista previa tiene 4 grupos (Todo · Feeds e instream para Reels con 9 ubicaciones · Stories, estados, Reels, búsqueda, apps y sitios con 8 · Columna derecha y búsqueda con 2) y cada grupo permite elegir una ubicación, como “Feed del perfil de Instagram”.' }
       },
@@ -643,7 +650,7 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Acesso total (“Tudo”):</b> para quem administra a empresa. Mexe em tudo, dá acesso total a outros e pode até excluir o portfólio.', es: '<b>Acceso total (“Todo”):</b> para quien administra la empresa. Toca todo, da acceso total a otros y puede hasta eliminar el portfolio.' },
           { pt: '<b>Acesso básico (padrão) + ativos atribuídos:</b> a pessoa trabalha só no que você der, com acesso parcial ou total àquele ativo.', es: '<b>Acceso básico (predeterminado) + activos asignados:</b> la persona trabaja solo en lo que le des, con acceso parcial o total a ese activo.' },
-          { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro, pelo portfólio dela, e não como pessoa.', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio, por su propio portfolio, y no como persona.' },
+          { pt: '<b>Parceiro:</b> outra empresa (como uma agência) entra como parceiro, pelo portfólio dela, e não como pessoa. Ela precisa ter o próprio portfólio e informar a identificação dele (o passo a passo está no módulo MBE, aula 06).', es: '<b>Socio:</b> otra empresa (como una agencia) entra como socio, por su propio portfolio, y no como persona. Necesita tener su propio portfolio e informar su identificador (el paso a paso está en el módulo MBE, clase 06).' },
           { pt: '<b>No convite também aparecem:</b> Acesso temporário (na etapa do e-mail) e, em Ver opções avançadas, Finanças (ver ou gerenciar pagamentos e faturas). E ative a autenticação de dois fatores.', es: '<b>En la invitación también aparecen:</b> Acceso temporal (en el paso del correo) y, en Ver opciones avanzadas, Finanzas (ver o administrar pagos y facturas). Y activa la autenticación en dos pasos.' },
           { pt: '<b>Convite que não chega:</b> o e-mail convidado tem que ser o mesmo da conta do Facebook da pessoa. Olhe o spam e reenvie em Pessoas. Às vezes o convite espera a aprovação de outra pessoa com controle total, ou quem convidou ainda precisa confirmar o próprio e-mail.', es: '<b>Invitación que no llega:</b> el correo invitado tiene que ser el mismo de la cuenta de Facebook de la persona. Mira el spam y vuelve a enviarla en Personas. A veces la invitación espera la aprobación de otra persona con control total, o quien invitó todavía tiene que confirmar su propio correo.' }
         ],
@@ -679,6 +686,7 @@ window.AULAS = {
         encaminhar: { pt: 'Se o cliente perdeu o acesso de administrador (ninguém tem controle total), siga os caminhos oficiais de recuperação de acesso da Central de Ajuda da Meta.', es: 'Si el cliente perdió el acceso de administrador (nadie tiene control total), sigue los caminos oficiales de recuperación de acceso del Centro de ayuda de Meta.' }
       },
       fontes: [
+        { url: 'https://www.facebook.com/business/help/1717412048538897', titulo: { pt: 'Como conceder acesso a ativos de negócios no seu portfólio empresarial para um parceiro', es: 'Cómo dar acceso a activos comerciales de tu portfolio empresarial a un socio' }, conferido: '16/11/2026' },
         { url: 'https://www.facebook.com/business/help/2169003770027706', titulo: { pt: 'Adicionar pessoas ao portfólio e atribuir ativos', es: 'Agregar personas al portfolio y asignar activos' }, conferido: '14/10/2026' },
         { url: 'https://www.facebook.com/business/help/1717412048538897', titulo: { pt: 'Dar acesso a um parceiro (controle total ou acesso parcial)', es: 'Dar acceso a un socio (control total o acceso parcial)' }, conferido: '14/10/2026' }
       ],
@@ -1701,8 +1709,13 @@ window.AULAS = {
       titulo: { pt: 'Montar o criativo da Marina', es: 'Armar el contenido de Marina' },
       antes: { pt: 'A Marina conhece as partes do anúncio e tem a foto da Caneca azul pronta.', es: 'Marina conoce las partes del anuncio y tiene lista la foto de la Caneca azul.' },
       fontes: [
+        { url: 'https://www.facebook.com/business/ads-guide/image/facebook-feed', titulo: { pt: 'Guia de Anúncios: imagem no Feed do Facebook', es: 'Guía de anuncios: imagen en el Feed de Facebook' }, conferido: '16/11/2026' },
+        { url: 'https://www.facebook.com/business/ads-guide/image/instagram-feed', titulo: { pt: 'Guia de Anúncios: imagem no Feed do Instagram', es: 'Guía de anuncios: imagen en el Feed de Instagram' }, conferido: '16/11/2026' },
         { url: 'https://www.facebook.com/business/help/621956575422138', titulo: { pt: 'Criar uma campanha de anúncios', es: 'Crear una campaña publicitaria' }, conferido: '25/10/2026' },
         { url: 'https://www.facebook.com/business/help/297506218282224', titulo: { pt: 'Sobre o criativo Advantage+', es: 'Sobre el contenido Advantage+' }, conferido: '25/10/2026' }
+      ],
+      avisos: [
+        { tema: { pt: 'Proporção “recomendada”', es: 'Proporción “recomendada”' }, ouve: { pt: 'O recomendado para imagem única é de 1,91:1 a 4:5.', es: 'Lo recomendado para una imagen única es de 1,91:1 a 4:5.' }, meta: { pt: 'De 1,91:1 a 4:5 é o que o Feed do Instagram aceita. O recomendado hoje é 4:5, em 1440 × 1800 (antes se falava em 1080).', es: 'De 1,91:1 a 4:5 es lo que el Feed de Instagram acepta. Lo recomendado hoy es 4:5, en 1440 × 1800 (antes se hablaba de 1080).' } }
       ],
       gancho: { pt: '“No Feed ficou lindo, mas no Story tem uma faixa escura!” Vamos entender onde o anúncio aparece e como ajustar o corte.', es: '“En el Feed quedó lindo, ¡pero en el Story hay una franja oscura!” Vamos a entender dónde aparece el anuncio y cómo ajustar el recorte.' },
       objetivo: { pt: 'Escolher o formato, adicionar a mídia pelo assistente (mídia, texto, aprimoramentos) e ver o resultado na prévia.', es: 'Elegir el formato, agregar el contenido multimedia con el asistente (contenido, texto, mejoras) y ver el resultado en la vista previa.' },
@@ -1717,7 +1730,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Formato:</b> “Imagem ou vídeo único” (uma peça) ou “Carrossel” (vários cartões).', es: '<b>Formato:</b> “Una sola imagen o video” (una pieza) o “Secuencia” (varias tarjetas).' },
           { pt: '<b>Assistente de mídia:</b> escolha a mídia, escreva texto principal e título e confira os aprimoramentos.', es: '<b>Asistente de contenido:</b> elige el contenido, escribe texto principal y título y revisa las mejoras.' },
-          { pt: '<b>Depois de concluir:</b> a mídia aparece no anúncio e a prévia mostra o resultado.', es: '<b>Al terminar:</b> el contenido aparece en el anuncio y la vista previa muestra el resultado.' }
+          { pt: '<b>Depois de concluir:</b> a mídia aparece no anúncio e a prévia mostra o resultado.', es: '<b>Al terminar:</b> el contenido aparece en el anuncio y la vista previa muestra el resultado.' },
+          { pt: '<b>Proporção da imagem:</b> no Feed, o recomendado é 4:5, em pé (1440 × 1800). O Feed do Instagram aceita de 1,91:1 (deitada) até 4:5. Stories e Reels: 9:16.', es: '<b>Proporción de la imagen:</b> en el Feed, lo recomendado es 4:5, vertical (1440 × 1800). El Feed de Instagram acepta desde 1,91:1 (horizontal) hasta 4:5. Stories y Reels: 9:16.' }
         ],
         notas: { pt: 'Assistente e etapas vistos de verdade em 16/10/2026 (nomes das etapas, campos de texto e lista de aprimoramentos). Em 26/10/2026 (rascunho da conta de aula, nada publicado) foram vistos a etapa “Corte” (Quadrado, Vertical e Horizontal; Original ou 1:1, 9:16, 1,91:1; aviso de que o anúncio pode não aparecer ou ser cortado sozinho; Cortar, Substituir e “Cortar e expandir” com Meta AI) e o “Personalizar” dos aprimoramentos (página própria com chave Ativado/Desativado e opções).', es: 'Asistente y etapas vistos de verdad el 16/10/2026 (nombres de las etapas, campos de texto y lista de mejoras). El 26/10/2026 (borrador de la cuenta de clase, nada publicado) se vieron la etapa “Recorte” (Cuadrado, Vertical y Horizontal; Original o 1:1, 9:16, 1,91:1; aviso de que el anuncio puede no mostrarse o recortarse solo; Recortar, Reemplazar y “Recortar y expandir” con Meta AI) y el “Personalizar” de las mejoras (página propia con interruptor y opciones).' }
       },
@@ -2469,6 +2483,7 @@ window.AULAS = {
       titulo: { pt: 'Onde ficam os números', es: 'Dónde están los números' },
       antes: { pt: 'A Marina tem anúncios, regras e posts. Agora quer saber se tudo isso está funcionando.', es: 'Marina tiene anuncios, reglas y publicaciones. Ahora quiere saber si todo eso está funcionando.' },
       fontes: [
+        { url: 'https://www.facebook.com/business/help/812490812275416', titulo: { pt: 'Resultados diferentes no Gerenciador de Anúncios, nos Insights da Página e do Instagram e no Business Suite', es: 'Resultados distintos en el Administrador de anuncios, en las estadísticas de la página y de Instagram y en Business Suite' }, conferido: '16/11/2026' },
         { url: 'https://www.facebook.com/business/help/487269218011981', titulo: { pt: 'Sobre os Relatórios de Anúncios da Meta', es: 'Sobre los Informes de anuncios de Meta' }, conferido: '25/10/2026' },
         { url: 'https://www.facebook.com/business/help/337196340694086', titulo: { pt: 'Diferenças entre contagens de eventos no Gerenciador de Anúncios, no Relatório de Anúncios e no Gerenciador de Eventos', es: 'Diferencias entre los recuentos de eventos en el Administrador de anuncios, los Informes de anuncios y el Administrador de eventos' }, conferido: '25/10/2026' }
       ],
@@ -2484,7 +2499,7 @@ window.AULAS = {
         ],
         pontos: [
           { pt: '<b>Anúncios:</b> tabela de campanhas e Relatórios de Anúncios.', es: '<b>Anuncios:</b> tabla de campañas e Informes de anuncios.' },
-          { pt: '<b>Página e Instagram:</b> Insights do Business Suite.', es: '<b>Página e Instagram:</b> Estadísticas de Business Suite.' },
+          { pt: '<b>Página e Instagram:</b> Insights do Business Suite. Eles somam o orgânico (sem pagar) e o pago; o Gerenciador de Anúncios mostra só o pago. Por isso os números não batem.', es: '<b>Página e Instagram:</b> Estadísticas de Business Suite. Suman lo orgánico (sin pagar) y lo pagado; el Administrador de anuncios muestra solo lo pagado. Por eso los números no coinciden.' },
           { pt: '<b>Pixel e eventos:</b> Gerenciador de Eventos. Contagens podem diferir entre telas.', es: '<b>Pixel y eventos:</b> Administrador de eventos. Los conteos pueden diferir entre pantallas.' }
         ],
         notas: { pt: 'Relatórios de Anúncios vistos de verdade em 16/10/2026 em português e espanhol, com os números reais do anúncio de teste da conta de aula. Os títulos dos artigos da Central de Ajuda (atribuição, diferenças de contagem, anúncio sem dados) foram lidos em 16/10/2026; o conteúdo do artigo de diferenças de contagem não foi lido (a conferir).', es: 'Informes de anuncios vistos de verdad el 16/10/2026 en portugués y español, con los números reales del anuncio de prueba de la cuenta de práctica. Los títulos de los artículos del Centro de ayuda (atribución, diferencias de conteo, anuncio sin datos) se leyeron el 16/10/2026; el contenido del artículo de diferencias de conteo no se leyó (por confirmar).' }
@@ -2667,6 +2682,7 @@ window.AULAS = {
       titulo: { pt: 'Relatório vazio, zerado ou diferente', es: 'Informe vacío, en cero o distinto' },
       antes: { pt: 'A Marina já lê, monta e compara relatórios. Um dia, a tela amanhece vazia.', es: 'Marina ya lee, arma y compara informes. Un día, la pantalla amanece vacía.' },
       fontes: [
+        { url: 'https://www.facebook.com/business/help/1695754927158071', titulo: { pt: 'Sobre as métricas da Meta que estão sendo removidas (janela de 37 meses)', es: 'Información sobre las métricas de Meta que se eliminan (ventana de 37 meses)' }, conferido: '16/11/2026' },
         { url: 'https://www.facebook.com/business/help/212731928758069', titulo: { pt: 'Entenda por que um anúncio pode não ter dados ou métricas', es: 'Entiende por qué un anuncio puede no tener datos o métricas' }, conferido: '25/10/2026' }
       ],
       gancho: { pt: 'Com os números certos na tela, falta a pergunta da Marina: valeu o dinheiro?', es: 'Con los números correctos en la pantalla, falta la pregunta de Marina: ¿valió el dinero?' },
@@ -2682,7 +2698,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Vazio:</b> confira o período e clique em Alterar data.', es: '<b>Vacío:</b> revisa el período y haz clic en Cambiar fecha.' },
           { pt: '<b>Conta sumida:</b> filtro Teve veiculação.', es: '<b>Cuenta desaparecida:</b> filtro Con entrega.' },
-          { pt: '<b>Zero numa métrica:</b> veja o objetivo da campanha e se houve atividade.', es: '<b>Cero en una métrica:</b> mira el objetivo de la campaña y si hubo actividad.' }
+          { pt: '<b>Zero numa métrica:</b> veja o objetivo da campanha e se houve atividade.', es: '<b>Cero en una métrica:</b> mira el objetivo de la campaña y si hubo actividad.' },
+          { pt: '<b>Período muito antigo:</b> os números de anúncios ficam disponíveis por até 37 meses. Em “Máximo”, o calendário já começa 37 meses atrás.', es: '<b>Período muy antiguo:</b> los números de anuncios están disponibles hasta por 37 meses. En “Máximo”, el calendario ya empieza 37 meses atrás.' }
         ],
         notas: { pt: 'Tela vazia (“Nenhuma atividade durante o intervalo de datas selecionado”, Alterar data) e filtro Teve veiculação vistos de verdade em 15–16/10/2026. No simulador, Alterar data passa direto para Últimos 30 dias; na tela real escolhe-se o intervalo (a conferir). Existe um artigo da Central de Ajuda sobre anúncios sem dados, não lido (a conferir).', es: 'Pantalla vacía (“Ninguna actividad durante el intervalo de fechas seleccionado”, Cambiar fecha) y filtro Con entrega vistos de verdad el 15–16/10/2026. En el simulador, Cambiar fecha pasa directo a Últimos 30 días; en la pantalla real se elige el intervalo (por confirmar). Existe un artículo del Centro de ayuda sobre anuncios sin datos, no leído (por confirmar).' }
       },
@@ -3067,6 +3084,7 @@ window.AULAS = {
       titulo: { pt: 'Usar o Microdata Debugger', es: 'Usar el Microdata Debugger' },
       antes: { pt: 'A Marina sabe que o site precisa de microdados. Quer conferir os da Caneca azul.', es: 'Marina sabe que el sitio necesita microdatos. Quiere revisar los de la Caneca azul.' },
       fontes: [
+        { url: 'https://developers.facebook.com/docs/marketing-api/catalog/guides/microdata-tags', titulo: { pt: 'Tags de microdados (Meta for Developers)', es: 'Etiquetas de microdatos (Meta for Developers)' }, conferido: '16/11/2026' },
         { url: 'https://www.facebook.com/business/help/887775018036966', titulo: { pt: 'Adicionar produtos ao seu catálogo do site com um Pixel da Meta (microdados)', es: 'Agregar productos a tu catálogo desde el sitio con un píxel de Meta (microdatos)' }, conferido: '25/10/2026' }
       ],
       gancho: { pt: '“id, title, price, availability… o que cada um faz?” Vamos ler a tabela como quem lê uma ficha.', es: '“id, title, price, availability… ¿qué hace cada uno?” Vamos a leer la tabla como quien lee una ficha.' },
@@ -3082,7 +3100,8 @@ window.AULAS = {
         pontos: [
           { pt: '<b>Uma página de produto por vez</b> (não a loja inteira).', es: '<b>Una página de producto por vez</b> (no toda la tienda).' },
           { pt: '<b>Tabelas OpenGraph, JSON-LD e Schema.org:</b> os mesmos dados em formatos diferentes; se o site tiver mais de um, os valores devem combinar.', es: '<b>Tablas OpenGraph, JSON-LD y Schema.org:</b> los mismos datos en formatos distintos; si el sitio tiene más de uno, los valores deben coincidir.' },
-          { pt: '<b>“Parabéns”</b> vale só para a página testada.', es: '<b>“Felicitaciones”</b> vale solo para la página probada.' }
+          { pt: '<b>“Parabéns”</b> vale só para a página testada.', es: '<b>“Felicitaciones”</b> vale solo para la página probada.' },
+          { pt: '<b>O que ela faz:</b> lê os microdados de uma página e mostra se estão funcionando (o que a Meta leu, erros e avisos). Não é ferramenta de análise de visitas: não conta acessos nem se liga ao Google Analytics.', es: '<b>Qué hace:</b> lee los microdatos de una página y muestra si están funcionando (lo que Meta leyó, errores y avisos). No es una herramienta de análisis de visitas: no cuenta accesos ni se conecta con Google Analytics.' }
         ],
         notas: { pt: 'Resultado de sucesso visto de verdade em português em 16/10/2026 com a página da Caneca azul (Prévia, OpenGraph, JSON-LD e “Parabéns!”). Em espanhol, uma nova tentativa da mesma página deu erro, e o texto de sucesso em espanhol não foi visto (a conferir). Em 20/10/2026, depois que as páginas de produto da Lojinha ganharam os três formatos, a ferramenta real mostrou as três tabelas (OpenGraph, JSON-LD e Schema.org) para a Caneca azul.', es: 'Resultado de éxito visto de verdad en portugués el 16/10/2026 con la página de la Caneca azul (vista previa, OpenGraph, JSON-LD y “¡Felicitaciones!”). En español, un nuevo intento de la misma página dio error, y el texto de éxito en español no se vio (por confirmar). El 20/10/2026, después de que las páginas de producto de la Lojinha recibieran los tres formatos, la herramienta real mostró las tres tablas (OpenGraph, JSON-LD y Schema.org) para la Caneca azul.' }
       },
@@ -3537,8 +3556,13 @@ window.AULAS = {
         titulo: L('Ler a coluna Veiculação', 'Leer la columna Entrega'),
         antes: L('A Marina quer saber como cada conjunto está, de uma olhada só.', 'Marina quiere saber cómo está cada conjunto, de un vistazo.'),
         fontes: [
+          { url: 'https://www.facebook.com/business/help/403110480493160', titulo: L('Sobre o diagnóstico de relevância do anúncio', 'Información sobre el diagnóstico de relevancia del anuncio'), conferido: '16/11/2026' },
+          { url: 'https://www.facebook.com/business/help/1346816142327858', titulo: L('Sobre a fadiga do criativo', 'Información sobre la fatiga del contenido'), conferido: '16/11/2026' },
           { url: 'https://www.facebook.com/business/help/650774041651557', titulo: L('Como ver o status da campanha, do conjunto de anúncios ou da veiculação de anúncio no Gerenciador de Anúncios da Meta', 'Cómo ver el estado de la campaña, del conjunto de anuncios o de la entrega en el Administrador de anuncios de Meta'), conferido: '25/10/2026' },
           { url: 'https://www.facebook.com/business/help/112167992830700', titulo: L('Sobre a fase de aprendizado', 'Sobre la fase de aprendizaje'), conferido: '25/10/2026' }
+        ],
+        avisos: [
+          { tema: L('“Público saturado” e “liquidez”', '“Público saturado” y “liquidez”'), ouve: L('O anúncio rende menos porque o público saturou ou porque falta liquidez (saldo na conta).', 'El anuncio rinde menos porque el público se saturó o porque falta liquidez (saldo en la cuenta).'), meta: L('Hoje a Meta chama isso de fadiga do criativo. “Liquidez”, num material antigo de treinamento da Meta, é deixar o sistema livre para entregar (orçamento, público, posicionamentos e criativos amplos), e não tem a ver com saldo.', 'Hoy Meta lo llama fatiga del contenido. “Liquidez”, en un material antiguo de capacitación de Meta, es dejar el sistema libre para entregar (presupuesto, público, ubicaciones y contenidos amplios), y no tiene que ver con el saldo.') }
         ],
         gancho: L('Nem toda edição é igual: algumas mexem pouco, outras zeram o aprendizado.', 'No toda edición es igual: algunas tocan poco, otras ponen a cero el aprendizaje.'),
         objetivo: L('Ler a coluna Veiculação, o card “% gastos na fase de aprendizado” e saber o que falta para sair do aprendizado.', 'Leer la columna Entrega, la tarjeta “% de gasto en la fase de aprendizaje” y saber qué falta para salir del aprendizaje.'),
@@ -3553,7 +3577,9 @@ window.AULAS = {
           pontos: [
             L('<b>Veiculação</b> = estado de cada conjunto.', '<b>Entrega</b> = estado de cada conjunto.'),
             L('<b>Resultados</b> contam desde a última edição significativa.', '<b>Resultados</b> cuentan desde la última edición significativa.'),
-            L('<b>% gastos no aprendizado</b> = peso do aprendizado no gasto total.', '<b>% de gasto en aprendizaje</b> = peso del aprendizaje en el gasto total.')
+            L('<b>% gastos no aprendizado</b> = peso do aprendizado no gasto total.', '<b>% de gasto en aprendizaje</b> = peso del aprendizaje en el gasto total.'),
+            L('<b>Criativo limitado / Fadiga do criativo:</b> o público já viu demais o mesmo criativo e o custo por resultado subiu (fadiga = 2 vezes ou mais o custo dos anúncios anteriores). Renove o criativo.', '<b>Contenido limitado / Fatiga del contenido:</b> el público ya vio demasiado el mismo contenido y el costo por resultado subió (fatiga = 2 veces o más el costo de los anuncios anteriores). Renueva el contenido.'),
+            L('<b>Qualidade do anúncio:</b> pesa no leilão. A coluna Classificação de qualidade (diagnóstico de relevância) só aparece com mais de 500 impressões.', '<b>Calidad del anuncio:</b> pesa en la subasta. La columna Clasificación de calidad (diagnóstico de relevancia) solo aparece con más de 500 impresiones.')
           ],
           notas: NOTA_CENTRAL
         },
@@ -5046,6 +5072,8 @@ window.AULAS = {
         titulo: L('Escolher a configuração da API de Conversões', 'Elegir la configuración de la API de Conversiones'),
         antes: L('O Rafa mostra à Marina três lojas que ele atende, cada uma numa situação diferente.', 'Rafa le muestra a Marina tres tiendas que él atiende, cada una en una situación distinta.'),
         fontes: [
+          { url: 'https://developers.facebook.com/documentation/ads-commerce/gateway-products/conversions-api-gateway', titulo: { pt: 'Gateway da API de Conversões (Meta for Developers)', es: 'Puerta de enlace de la API de Conversiones (Meta for Developers)' }, conferido: '16/11/2026' },
+          { url: 'https://www.facebook.com/business/help/387152639648383', titulo: { pt: 'Sobre o Gateway da API de Conversões', es: 'Acerca de la puerta de enlace de la API de Conversiones' }, conferido: '16/11/2026' },
           { url: 'https://www.facebook.com/business/help/433493041367251', titulo: L('Comparar os métodos de configuração da API de Conversões', 'Comparar los métodos de configuración de la API de Conversiones'), conferido: '25/10/2026' }
         ],
         gancho: L('Cinco sintomas comuns e o primeiro lugar para olhar em cada um.', 'Cinco síntomas comunes y el primer lugar para mirar en cada uno.'),
@@ -5060,13 +5088,13 @@ window.AULAS = {
             ['marina', L('Abri as Configurações do Pixel e os botões têm outros nomes! 🤨', '¡Abrí la Configuración del píxel y los botones tienen otros nombres! 🤨')],
             ['rafa', L('Na tela, a API de Conversões aparece como “Configurar manualmente”, “Configurar integração direta” e “Configurar por meio de uma integração de parceiros”. A opção habilitada pela Meta não apareceu na conta que usamos para conferir: ela pode não aparecer para todas as contas.', 'En la pantalla, la API de Conversiones aparece como “Configurar manualmente”, “Configurar integración directa” y “Configurar mediante una integración de socios”. La opción habilitada por Meta no apareció en la cuenta que usamos para revisar: puede que no aparezca en todas las cuentas.')],
             ['marina', L('E o tal Gateway da API de Conversões?', '¿Y el famoso Gateway de la API de Conversiones?')],
-            ['rafa', L('É a API de Conversões rodando num servidor de nuvem da própria empresa (Amazon AWS ou Google Cloud), sem programar. A Meta não cobra, mas a nuvem cobra: a partir de US$ 30 por mês. Ela indica para quem investe mais de US$ 300 por mês e não usa uma plataforma parceira. Fica no Gerenciador de Eventos, em Plataformas de conexão de dados.', 'Es la API de Conversiones funcionando en un servidor de nube de la propia empresa (Amazon AWS o Google Cloud), sin programar. Meta no cobra, pero la nube sí: desde US$ 30 al mes. La indica para quien invierte más de US$ 300 al mes y no usa una plataforma socia. Está en el Administrador de eventos, en Plataformas de conexión de datos.')]
+            ['rafa', L('É a API de Conversões rodando num servidor de nuvem da própria empresa (Amazon AWS ou Google Cloud), sem programar. A Meta não cobra, mas a nuvem cobra: a partir de US$ 30 por mês. Ela indica para quem investe mais de US$ 300 por mês e não usa uma plataforma parceira. Fica no Gerenciador de Eventos, em Plataformas de conexão de dados. Sem programador: a Meta diz que a instalação, que levaria semanas, cai para minutos ou poucas horas.', 'Es la API de Conversiones funcionando en un servidor de nube de la propia empresa (Amazon AWS o Google Cloud), sin programar. Meta no cobra, pero la nube sí: desde US$ 30 al mes. La indica para quien invierte más de US$ 300 al mes y no usa una plataforma socia. Está en el Administrador de eventos, en Plataformas de conexión de datos. Sin programador: Meta dice que la instalación, que llevaría semanas, baja a minutos o pocas horas.')]
           ],
           pontos: [
             L('<b>Habilitada pela Meta:</b> grátis, um clique, só web.', '<b>Habilitada por Meta:</b> gratis, un clic, solo web.'),
             L('<b>Integração direta:</b> desenvolvedor; web, app, offline, CRM e mensagens.', '<b>Integración directa:</b> desarrollador; web, app, offline, CRM y mensajes.'),
             L('<b>Parceiros:</b> custo e tempo variam; lojas de plataformas conhecidas: poucos cliques.', '<b>Socios:</b> costo y tiempo varían; tiendas de plataformas conocidas: pocos clics.'),
-            L('<b>Gateway:</b> servidor de nuvem da empresa (AWS ou Google Cloud), a partir de US$ 30 por mês de nuvem. Só explicamos: praticar exigiria pagar.', '<b>Gateway:</b> servidor de nube de la empresa (AWS o Google Cloud), desde US$ 30 al mes de nube. Solo lo explicamos: practicarlo exigiría pagar.')
+            L('<b>Gateway:</b> servidor de nuvem da empresa (AWS ou Google Cloud), a partir de US$ 30 por mês de nuvem. Só explicamos: praticar exigiria pagar. Pouca ajuda de TI; pronto em minutos ou horas, não em semanas.', '<b>Gateway:</b> servidor de nube de la empresa (AWS o Google Cloud), desde US$ 30 al mes de nube. Solo lo explicamos: practicarlo exigiría pagar. Poca ayuda de TI; listo en minutos u horas, no en semanas.')
           ],
           notas: L(NOTA.pt + ' Em 20/10/2026, o artigo “Comparar as opções de configuração da API de Conversões” seguia com as mesmas três opções e a mesma tabela; nas Configurações do Pixel da conta de aula, os botões vistos foram “Configurar manualmente”, “Configurar integração direta” e “Configurar por meio de uma integração de parceiros”, sem a opção habilitada pela Meta (a conferir em outras contas). Gateway da API de Conversões: artigo da Central de Ajuda lido em 20/10/2026 (AWS ou Google Cloud; custos de nuvem a partir de US$ 30 por mês; indicado para quem gasta mais de US$ 300 por mês sem parceiro de e-commerce; em Plataformas de conexão de dados); sem prática porque exige nuvem paga.', NOTA.es + ' El 20/10/2026, el artículo “Comparar las opciones de configuración de la API de Conversiones” seguía con las mismas tres opciones y la misma tabla; en la Configuración del píxel de la cuenta de clase, los botones vistos fueron “Configurar manualmente”, “Configurar integración directa” y “Configurar mediante una integración de socios”, sin la opción habilitada por Meta (por confirmar en otras cuentas). Gateway de la API de Conversiones: artículo del Centro de ayuda leído el 20/10/2026 (AWS o Google Cloud; costos de nube desde US$ 30 al mes; indicado para quien gasta más de US$ 300 al mes sin socio de e-commerce; en Plataformas de conexión de datos); sin práctica porque exige nube paga.')
         },
@@ -7966,6 +7994,9 @@ window.AULAS = {
         ['marina', L('Apareceu um erro com um número enorme quando tentei publicar. Tenho três campanhas, nem sei qual é! 😵', '¡Apareció un error con un número enorme cuando intenté publicar. Tengo tres campañas, ni sé cuál es! 😵')],
         ['rafa', L('Vamos com calma: primeiro achar QUAL anúncio deu erro (pelo ID), depois ler o código do erro.', 'Con calma: primero encontrar CUÁL anuncio dio error (por el ID), después leer el código del error.')]
       ],
+      avisos: [
+        { tema: { pt: '“ID do rascunho”', es: '“Identificador del borrador”' }, ouve: { pt: 'Anúncio que ainda não foi publicado tem um “ID do rascunho”, diferente do ID do anúncio.', es: 'Un anuncio que todavía no se publicó tiene un “identificador del borrador”, distinto del identificador del anuncio.' }, meta: { pt: 'A Central de Ajuda só fala em ID do anúncio. Na conta de aula (16/11/2026), o rascunho aberto mostra o número em selected_ad_ids, como um anúncio publicado.', es: 'El Centro de ayuda solo habla del identificador del anuncio. En la cuenta de práctica (16/11/2026), el borrador abierto muestra el número en selected_ad_ids, como un anuncio publicado.' } }
+      ],
       objetivo: L('Localizar o objeto com erro no nível certo (anúncio, conjunto ou campanha) pelo ID e procurar o código do erro.', 'Ubicar el objeto con error en el nivel correcto (anuncio, conjunto o campaña) por el ID y buscar el código del error.'),
       entender: {
         dialogo: [
@@ -7991,12 +8022,12 @@ window.AULAS = {
       },
       cola: {
         perguntas: [L('Qual o ID do anúncio com erro?', '¿Cuál es el ID del anuncio con error?'), L('Qual a mensagem e o número do erro?', '¿Cuál es el mensaje y el número del error?')],
-        conferir: [L('Gerenciador de Anúncios › Colunas › Personalizar colunas (IDs); a mensagem do erro.', 'Administrador de anuncios › Columnas › Personalizar columnas (IDs); el mensaje del error.')],
+        conferir: [L('Gerenciador de Anúncios › Colunas › Personalizar colunas › Nomes e IDs de objetos › ID do anúncio; a mensagem do erro.', 'Administrador de anuncios › Columnas › Personalizar columnas › Nombres e identificadores de objetos › Identificador del anuncio; el mensaje del error.'), L('Atalho: abra o anúncio; o número depois de selected_ad_ids, no endereço, é o ID dele (vale também para rascunho).', 'Atajo: abre el anuncio; el número después de selected_ad_ids, en la dirección, es su ID (vale también para borrador).')],
         frase: L('Vamos achar o anúncio com erro pelo ID e ler o número do erro; aí sabemos exatamente o que corrigir.', 'Encontremos el anuncio con error por el ID y leamos el número del error; así sabemos exactamente qué corregir.'),
         passos: [L('Ligar a coluna de ID.', 'Activar la columna de ID.'), L('Anotar ID e código.', 'Anotar ID y código.'), L('Corrigir o que a mensagem pede.', 'Corregir lo que pide el mensaje.')],
         encaminhar: L('Erro de política ou de conta restrita é outro assunto: registre o ID e o código e siga a Central de Ajuda.', 'Error de política o de cuenta restringida es otro tema: registra el ID y el código y sigue el Centro de ayuda.')
       },
-      fontes: [F('https://www.facebook.com/business/help/321037758594702', 'Editar campanhas, conjuntos ou anúncios na tabela de relatórios', 'Editar campañas, conjuntos o anuncios en la tabla de informes'), F('https://www.facebook.com/business/help/1210227555661027', 'Como resolver um anúncio reprovado', 'Cómo resolver un anuncio rechazado', '19/10/2026')]
+      fontes: [F('https://www.facebook.com/business/help/2534657046763437', 'Como encontrar os números de identificação dos anúncios no Gerenciador de Anúncios', 'Cómo encontrar los números de identificación de los anuncios en el Administrador de anuncios', '16/11/2026'), F('https://www.facebook.com/business/help/321037758594702', 'Editar campanhas, conjuntos ou anúncios na tabela de relatórios', 'Editar campañas, conjuntos o anuncios en la tabla de informes'), F('https://www.facebook.com/business/help/1210227555661027', 'Como resolver um anúncio reprovado', 'Cómo resolver un anuncio rechazado', '19/10/2026')]
     })
   ]);
 
