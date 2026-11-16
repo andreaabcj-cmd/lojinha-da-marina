@@ -32,12 +32,24 @@
     'O menu Mais › Criar nova regra vem da Central de Ajuda da Meta; esta tabela do simulador é simplificada (a conferir).': 'El menú Más › Crear nueva regla viene del Centro de ayuda de Meta; esta tabla del simulador es simplificada (por confirmar).'
   };
   A['valor'] = 'valor';
+  // 16/11/2026: aba Atividade e aviso novo do topo (vistos em português; o espanhol segue o padrão da Meta, a conferir)
+  A['Atividade'] = 'Actividad';
+  A['As regras para recomendações agora são aplicadas automaticamente'] = 'Las reglas de las recomendaciones ahora se aplican automáticamente';
+  A['Gerencie as seleções de aplicação automática que você já configurou ou analise as alterações que foram aplicadas nos últimos 30 dias.'] = 'Administra las selecciones de aplicación automática que ya configuraste o revisa los cambios que se aplicaron en los últimos 30 días.';
+  A['Gerenciar aplicação automática'] = 'Administrar aplicación automática';
+  A['Ocultar resultados da regra sem alterações'] = 'Ocultar resultados de la regla sin cambios';
+  A['Detalhes'] = 'Detalles'; A['Alterado'] = 'Modificado'; A['Última verificação'] = 'Última revisión'; A['Sim'] = 'Sí'; A['Não'] = 'No';
+  A['Não há histórico de regras automático'] = 'No hay historial de reglas automáticas';
+  A['Não há histórico de regras automático para esta conta.'] = 'No hay historial de reglas automáticas para esta cuenta.';
+  A['⚠ Colunas, filtro e texto do vazio vistos na tela real em 16/11/2026; as linhas são do simulador (a conta de aula não tem histórico).'] = '⚠ Columnas, filtro y texto vacío vistos en la pantalla real el 16/11/2026; las filas son del simulador (la cuenta de práctica no tiene historial).';
+  A['🖥️ Regras automatizadas › Atividade'] = '🖥️ Reglas automáticas › Actividad'; A['🖥️ Regras automatizadas'] = '🖥️ Reglas automáticas';
   for (var k in M) A[k] = M[k]; for (var k2 in O) A[k2] = O[k2]; for (var k3 in I) A[k3] = I[k3];
   for (var k4 in A) D[k4] = A[k4];
   var tm = function (s) { return M[s] || s }, to = function (s) { return O[s] || s }, ti = function (s) { return I[s] || s };
   D['Na tela real (25/10/2026) a lista tem 12 ações (também Ativar conjuntos de anúncios, orçamento total e lance) e as métricas vêm em grupos: Mais comuns, Configurações, Tempo, Conversões no site (Pixel da Meta), Eventos do app, Conversões offline e Outro. O treino usa só as principais.'] = 'En la pantalla real (25/10/2026) la lista tiene 12 acciones (también Activar conjuntos de anuncios, presupuesto total y puja) y las métricas vienen en grupos: Más comunes, Configuración, Hora, Conversiones en el sitio web (píxel de Meta), Eventos en la app, Conversiones offline y Otro. La práctica usa solo las principales.';
   var AC = { 'Desativar conjuntos de anúncios': 'Desactivar conjuntos de anuncios', 'Somente enviar notificação': 'Solo enviar notificaciones', 'Aumentar orçamento diário em': 'Aumentar presupuesto diario', 'Reduzir orçamento diário em': 'Disminuir presupuesto diario' };
   P.push([/^(Gasto|Resultados|Custo por resultado) (é maior que|é menor que|é igual a) ([\d.,]+)( e (Gasto|Resultados|Custo por resultado) (é maior que|é menor que|é igual a) ([\d.,]+))? · (Hoje|Ontem|Últimos 7 dias|Últimos 14 dias|37 meses \(máximo\))$/, function (m) { return tm(m[1]) + ' ' + to(m[2]) + ' ' + m[3] + (m[4] ? ' y ' + tm(m[5]) + ' ' + to(m[6]) + ' ' + m[7] : '') + ' · ' + ti(m[8]) }]);
+  P.push([/^(Caneca azul · Brasil|Camiseta Montanha · Brasil|Ecobag Folha · Brasil)(, (Caneca azul · Brasil|Camiseta Montanha · Brasil|Ecobag Folha · Brasil))*$/, function (m) { return m[0] }]);
   P.push([/^(\d+) selecionado\(s\)$/, function (m) { return m[1] + ' seleccionado(s)' }]);
   P.push([/^(Desativar conjuntos de anúncios|Somente enviar notificação|Aumentar orçamento diário em|Reduzir orçamento diário em) (\d+)%$/, function (m) { return AC[m[1]] + ' ' + m[2] + '%' }]);
   P.push([/^Notificou sobre (\d+) (conjunto|conjuntos)$/, function (m) { return 'Notificó sobre ' + m[1] + ' ' + (m[1] === '1' ? 'conjunto' : 'conjuntos') }]);

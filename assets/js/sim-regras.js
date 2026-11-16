@@ -24,12 +24,12 @@
     b: { nome: 'Camiseta Montanha · Brasil', d: { 'Hoje': [4, 0], 'Ontem': [9, 0], 'Últimos 7 dias': [31.5, 0], 'Últimos 14 dias': [50, 2], '37 meses (máximo)': [95, 4] } },
     c: { nome: 'Ecobag Folha · Brasil', d: { 'Hoje': [1, 0], 'Ontem': [2, 0], 'Últimos 7 dias': [8, 0], 'Últimos 14 dias': [8, 0], '37 meses (máximo)': [8, 0] } }
   };
-  function inicial() { return { rules: [], seq: 0, st: { a: 'Ativo', b: 'Ativo', c: 'Ativo' }, sel: {}, sub: '' } }
-  var S = ler('sim.regras', null) || inicial();
+  function inicial() { return { rules: [], seq: 0, st: { a: 'Ativo', b: 'Ativo', c: 'Ativo' }, sel: {}, sub: '', hist: [] } }
+  var S = ler('sim.regras', null) || inicial(); if (!S.hist) S.hist = [];
   var RULE_EX = function () { return { id: 'r1', nome: 'Pausar conjunto sem resultado', aplica: APLICA[0], acao: ACOES[0], pct: '', conds: [{ m: 'Gasto', op: 'é maior que', v: '20' }, { m: 'Resultados', op: 'é igual a', v: '0' }], intervalo: 'Últimos 7 dias', prog: 'Diariamente', notif: true, ativa: true, res: '', ultima: '' } };
   if (params.get('zerar')) S = inicial();
   if (params.get('exemplo')) { S = inicial(); S.rules = [RULE_EX()]; S.seq = 1 }
-  if (params.get('problema')) { S = inicial(); var rp = RULE_EX(); rp.nome = 'Pausar conjunto caro'; rp.conds = [{ m: 'Gasto', op: 'é maior que', v: '20' }]; rp.intervalo = '37 meses (máximo)'; rp.prog = 'Continuamente'; rp.res = 'Desativou 2 conjuntos de anúncios'; rp.ultima = 'agora há pouco'; S.rules = [rp]; S.seq = 1; S.st.a = 'Desativado'; S.st.b = 'Desativado' }
+  if (params.get('problema')) { S = inicial(); var rp = RULE_EX(); rp.nome = 'Pausar conjunto caro'; rp.conds = [{ m: 'Gasto', op: 'é maior que', v: '20' }]; rp.intervalo = '37 meses (máximo)'; rp.prog = 'Continuamente'; rp.res = 'Desativou 2 conjuntos de anúncios'; rp.ultima = 'agora há pouco'; S.rules = [rp]; S.seq = 1; S.st.a = 'Desativado'; S.st.b = 'Desativado'; S.hist = [{ res: 'Desativou 2 conjuntos de anúncios', det: 'Caneca azul · Brasil, Camiseta Montanha · Brasil', nome: 'Pausar conjunto caro', alt: 'Sim', quando: 'agora há pouco' }]; }
   var D = null;                                    // janela Criar/Editar regra (rascunho)
   var M = false;                                   // menu "Mais" da tabela
   function grava() { try { localStorage.setItem('sim.regras', JSON.stringify(S)) } catch (e) { } window.__simRg = { S: S, D: D } }
@@ -53,7 +53,9 @@
     var al = alvos(r);
     if (r.acao === ACOES[0]) al.forEach(function (id) { S.st[id] = 'Desativado' });
     r.res = r.acao === ACOES[0] ? (al.length ? 'Desativou ' + al.length + (al.length === 1 ? ' conjunto de anúncios' : ' conjuntos de anúncios') : 'Nenhum conjunto atendeu às condições') : (al.length ? 'Notificou sobre ' + al.length + (al.length === 1 ? ' conjunto' : ' conjuntos') : 'Nenhum conjunto atendeu às condições');
-    r.ultima = 'agora há pouco'; return al;
+    r.ultima = 'agora há pouco';
+    (S.hist = S.hist || []).unshift({ res: r.res, det: al.map(function (id) { return DADOS[id].nome }).join(', ') || '—', nome: r.nome, alt: al.length && r.acao === ACOES[0] ? 'Sim' : 'Não', quando: 'agora há pouco' });
+    return al;
   }
   function novoRascunho(aplicaIdx, fixo) { return { id: '', nome: '', aplica: APLICA[aplicaIdx || 0], fixo: fixo || null, acao: '', pct: '10', conds: [{ m: 'Gasto', op: 'é maior que', v: '' }], intervalo: '37 meses (máximo)', prog: 'Continuamente', notif: true, editando: '', tentou: false } }
 
@@ -62,12 +64,12 @@
      + conta). Conjuntos de anúncios = o Gerenciador de Anúncios, com o mesmo cabeçalho e as mesmas abas dos outros simuladores (sim-ads-comum.js). */
   function pagina(atual, titulo, corpo, topo) {
     if (atual === 'campanhas') return casca('<div class="ga">' + GA_TOPO({ titulo: titulo }) + '<div class="ga-corpo">' + GA_ABAS({ on: 'conj' }) + corpo + '</div></div>' + modalDialogo());
-    return casca('<div class="ss"><main class="ss-main"><header class="rg-cab"><span class="mold-logo">∞</span><b>Regras automatizadas</b><span class="rg-ativ">Atividade</span><span class="mold-mola"></span><span class="mold-conta">Conta de aula da Lojinha (ID 123456789) <i>▾</i></span></header>' +
+    return casca('<div class="ss"><main class="ss-main"><header class="rg-cab"><span class="mold-logo">∞</span><b><a href="#lista" data-ir="lista" data-t="ir-lista" class="rg-nav' + (atual === 'atividade' ? '' : ' on') + '">Regras automatizadas</a></b><span class="rg-ativ"><a href="#atividade" data-ir="atividade" data-t="ir-atividade" class="rg-nav' + (atual === 'atividade' ? ' on' : '') + '">Atividade</a></span><span class="mold-mola"></span><span class="mold-conta">Conta de aula da Lojinha (ID 123456789) <i>▾</i></span></header>' +
       '<div class="ss-topo"><div><h1>' + titulo + '</h1></div><div class="ss-bt">' + (topo || '') + '</div></div>' + corpo + '</main></div>' + modalDialogo());
   }
   window.MOLDURA_AGORA = function () {
     return rota() === 'campanhas' ? { app: 'ads', on: 'campanhas', proprio: true, destinos: [{ id: 'lista', rotulo: '🖥️ Regras automatizadas' }] }
-      : { app: 'regras', onde: 'Gerenciador de Anúncios › Regras automatizadas', destinos: [{ id: 'campanhas', rotulo: '🖥️ Gerenciador de Anúncios › Conjuntos de anúncios' }] };
+      : { app: 'regras', onde: 'Gerenciador de Anúncios › Regras automatizadas', destinos: [{ id: rota() === 'atividade' ? 'lista' : 'atividade', rotulo: rota() === 'atividade' ? '🖥️ Regras automatizadas' : '🖥️ Regras automatizadas › Atividade' }, { id: 'campanhas', rotulo: '🖥️ Gerenciador de Anúncios › Conjuntos de anúncios' }] };
   };
   window.MOLDURA_VAI = function (id) { M = false; vai(id) };
   function lista() {
@@ -75,9 +77,21 @@
       return '<tr data-t="regra-' + r.id + '"><td><b>' + esc(r.nome) + '</b></td><td><label class="rg-sw"><input type="checkbox" data-liga="' + r.id + '"' + (r.ativa ? ' checked' : '') + '/> ' + (r.ativa ? 'Ativa' : 'Desativada') + '</label></td><td>' + r.id.toUpperCase() + '</td><td>' + esc(r.aplica) + '</td><td>' + esc(r.acao) + (r.acao.indexOf('orçamento') > 0 ? ' ' + esc(r.pct) + '%' : '') + '<br><small>' + r.conds.map(function (c) { return esc(c.m) + ' ' + esc(c.op) + ' ' + esc(c.v) }).join(' e ') + ' · ' + esc(r.intervalo) + '</small></td><td data-t="res-' + r.id + '">' + (r.res ? esc(r.res) + '<br><small>' + esc(r.ultima) + '</small>' : '—') + '</td><td>' + esc(r.prog) + '</td><td>Você</td><td class="rg-ac"><button class="btn sec" data-exec="' + r.id + '" data-t="btn-exec">Executar agora (simulador)</button> <button class="btn sec" data-edita="' + r.id + '" data-t="btn-edita">Editar</button> <button class="btn sec" data-exclui="' + r.id + '" data-t="btn-exclui">Excluir</button></td></tr>';
     }).join('') : '';
     var vazio = S.rules.length ? '' : '<div class="rg-vazio" data-t="vazio"><div class="ilus">🧰</div><b>Nenhuma regra automatizada</b><p>Não há regras automatizadas para esta conta. Você pode criar uma regra selecionando as campanhas, conjuntos de anúncios ou anúncios aos quais deseja aplicá-la no Gerenciador de Anúncios.</p></div>';
-    return pagina('lista', 'Regras automatizadas', '<div class="ga-aviso"><b>As regras para recomendações agora se chamam ajustes automáticos</b><br><small>Gerencie os ajustes automáticos que você já configurou ou crie novos.</small><p><button class="btn sec" disabled>Ver ajustes automáticos</button></p></div>' +
+    return pagina('lista', 'Regras automatizadas', '' + avisoRecom() + '' +
       '<p><button class="btn" data-acao="nova" data-t="btn-criar-regra">＋ Criar regra</button> <button class="btn sec" disabled>Personalizar colunas</button></p>' +
       '<div class="rg-tab"><table class="cm-tab"><thead><tr><th>Nome da regra</th><th>Status</th><th>Número de identificação</th><th>Aplicada a</th><th>Ação e condição</th><th>Resultados da regra</th><th>Quando a regra é executada</th><th>Criada por</th><th>Ações</th></tr></thead><tbody>' + linhas + '</tbody></table>' + vazio + '</div>' + conferido());
+  }
+  function avisoRecom() { return '<div class="ga-aviso"><b>As regras para recomendações agora são aplicadas automaticamente</b><br><small>Gerencie as seleções de aplicação automática que você já configurou ou analise as alterações que foram aplicadas nos últimos 30 dias.</small><p><button class="btn sec" disabled>Gerenciar aplicação automática</button></p></div>' }
+  /* 16/11/2026: a aba Atividade, como na tela real (Regras automatizadas › Atividade). A conta de aula não tem histórico,
+     então as linhas são do simulador; colunas, filtro e textos do vazio foram vistos de verdade. A Central de Ajuda não diz por quanto tempo o histórico fica. */
+  var OCULTA = false;
+  function atividade() {
+    var h = (S.hist || []).filter(function (x) { return !OCULTA || x.alt === 'Sim' });
+    var linhas = h.map(function (x, i) { return '<tr data-t="hist-' + i + '"><td>' + esc(x.res) + '</td><td>' + esc(x.det) + '</td><td>' + esc(x.nome) + '</td><td>' + esc(x.alt) + '</td><td>' + esc(x.quando) + '</td></tr>' }).join('');
+    var vazio = h.length ? '' : '<div class="rg-vazio" data-t="hist-vazio"><div class="ilus">🗂️</div><b>Não há histórico de regras automático</b><p>Não há histórico de regras automático para esta conta.</p></div>';
+    return pagina('atividade', 'Atividade', avisoRecom() + '<p><button class="btn" data-acao="nova" data-t="btn-criar-regra">＋ Criar regra</button> <label class="rg-sw" data-t="oculta-sem"><input type="checkbox" data-oculta="1"' + (OCULTA ? ' checked' : '') + '/> Ocultar resultados da regra sem alterações</label></p>' +
+      '<div class="rg-tab"><table class="cm-tab"><thead><tr><th>Resultados da regra</th><th>Detalhes</th><th>Nome da regra</th><th>Alterado</th><th>Última verificação</th></tr></thead><tbody>' + linhas + '</tbody></table>' + vazio + '</div>' +
+      conferido('Colunas, filtro e texto do vazio vistos na tela real em 16/11/2026; as linhas são do simulador (a conta de aula não tem histórico).'));
   }
   function campanhas() {
     var linhas = Object.keys(DADOS).map(function (id) { var dd = DADOS[id].d['Últimos 7 dias']; return '<tr><td><input type="checkbox" data-sel="' + id + '"' + (S.sel[id] ? ' checked' : '') + ' data-t="chk-' + id + '"/></td><td><b>' + DADOS[id].nome + '</b></td><td><span class="ga-tag ' + (S.st[id] === 'Ativo' ? 'vd' : 'am') + '">' + (S.st[id] === 'Ativo' ? '● Ativo' : '○ Desativado') + '</span>' + (S.st[id] === 'Ativo' ? '' : ' <button class="btn sec" data-reativa="' + id + '" data-t="btn-reativa-' + id + '">Ativar</button>') + '</td><td>' + fmt(dd[0]) + '</td><td>' + dd[1] + '</td></tr>' }).join('');
@@ -107,7 +121,7 @@
       '<div class="rodape-jan"><button class="btn sec" data-acao="cancela" data-t="regra-cancelar">Cancelar</button><button class="btn" data-acao="salva" data-t="regra-criar">' + (ed ? 'Salvar' : 'Criar') + '</button></div></div></div>';
   }
 
-  var TELAS = { lista: lista, campanhas: campanhas };
+  var TELAS = { lista: lista, campanhas: campanhas, atividade: atividade };
   document.addEventListener('click', function (ev) {
     var t = ev.target, c;
     if ((c = t.closest('[data-exec]'))) { var r = S.rules.filter(function (x) { return x.id === c.getAttribute('data-exec') })[0]; executa(r); grava(); render(); return }
@@ -135,6 +149,7 @@
   });
   document.addEventListener('change', function (ev) {
     var t = ev.target;
+    if (t.getAttribute && t.getAttribute('data-oculta')) { OCULTA = t.checked; render(); return }
     if (t.getAttribute && t.getAttribute('data-liga')) { S.rules.forEach(function (r) { if (r.id === t.getAttribute('data-liga')) r.ativa = t.checked }) }
     else if (t.getAttribute && t.getAttribute('data-sel')) { S.sel[t.getAttribute('data-sel')] = t.checked }
     else if (D && t.id === 'rAplica') D.aplica = t.value;
@@ -162,8 +177,8 @@
     window.__simRg = { S: S, D: D };
   }
   window.SIMRG = { vai: vai, estado: function () { return { S: S, D: D } }, zera: function () { S = inicial(); D = null; grava() }, exemplo: function () { S = inicial(); S.rules = [RULE_EX()]; S.seq = 1; D = null; grava() },
-    abre: function (o) { D = novoRascunho(0); for (var k in o) D[k] = o[k]; grava() }, problema: function () { S = inicial(); var rp = RULE_EX(); rp.nome = 'Pausar conjunto caro'; rp.conds = [{ m: 'Gasto', op: 'é maior que', v: '20' }]; rp.intervalo = '37 meses (máximo)'; rp.prog = 'Continuamente'; rp.res = 'Desativou 2 conjuntos de anúncios'; rp.ultima = 'agora há pouco'; S.rules = [rp]; S.seq = 1; S.st.a = 'Desativado'; S.st.b = 'Desativado'; D = null; grava() },
-    sel: function (o) { S.sel = o; grava() }, pronto: render };
+    abre: function (o) { D = novoRascunho(0); for (var k in o) D[k] = o[k]; grava() }, problema: function () { S = inicial(); var rp = RULE_EX(); rp.nome = 'Pausar conjunto caro'; rp.conds = [{ m: 'Gasto', op: 'é maior que', v: '20' }]; rp.intervalo = '37 meses (máximo)'; rp.prog = 'Continuamente'; rp.res = 'Desativou 2 conjuntos de anúncios'; rp.ultima = 'agora há pouco'; S.rules = [rp]; S.seq = 1; S.st.a = 'Desativado'; S.st.b = 'Desativado'; S.hist = [{ res: 'Desativou 2 conjuntos de anúncios', det: 'Caneca azul · Brasil, Camiseta Montanha · Brasil', nome: 'Pausar conjunto caro', alt: 'Sim', quando: 'agora há pouco' }]; D = null; grava() },
+    sel: function (o) { S.sel = o; grava() }, grava: grava, pronto: render };
   render();
 
   /* ---------- tutoriais guiados ---------- */
@@ -200,6 +215,9 @@
     { alvo: '[data-t=regra-r1]', garante: function () { SIMRG.exemplo(); location.hash = 'lista'; render() }, tit: T('Sua regra na tabela', 'Tu regla en la tabla'), txt: T('Cada regra é uma linha: nome, status, onde se aplica, a ação e a condição, os resultados da regra, quando ela é executada e quem criou. Clique em Próximo.', 'Cada regla es una fila: nombre, estado, dónde se aplica, la acción y la condición, los resultados de la regla, cuándo se ejecuta y quién la creó. Haz clic en Siguiente.') },
     { alvo: '[data-t=btn-exec]', clique: true, garante: function () { SIMRG.exemplo(); location.hash = 'lista'; render() }, tit: T('Ver a regra trabalhando', 'Ver la regla trabajando'), txt: T('Na vida real a regra roda sozinha, na programação escolhida. No simulador, clique em “Executar agora” para ver o efeito.', 'En la vida real la regla corre sola, en la programación elegida. En el simulador, haz clic en “Ejecutar ahora” para ver el efecto.') },
     { alvo: '[data-t=res-r1]', garante: function () { SIMRG.exemplo(); rg().S.rules[0].res = 'Desativou 1 conjunto de anúncios'; rg().S.rules[0].ultima = 'agora há pouco'; rg().S.st.b = 'Desativado'; location.hash = 'lista'; render() }, tit: T('Resultados da regra', 'Resultados de la regla'), txt: T('A coluna Resultados da regra conta o que a regra fez: aqui, desativou 1 conjunto. É o primeiro lugar para olhar quando alguém pergunta “por que meu anúncio parou?”. Clique em Próximo.', 'La columna Resultados de la regla cuenta lo que hizo la regla: aquí, desactivó 1 conjunto. Es el primer lugar para mirar cuando alguien pregunta “¿por qué se detuvo mi anuncio?”. Haz clic en Siguiente.') },
+    { alvo: '[data-t=ir-atividade]', clique: true, garante: function () { SIMRG.exemplo(); var r0 = rg().S.rules[0]; r0.res = 'Desativou 1 conjunto de anúncios'; r0.ultima = 'agora há pouco'; rg().S.st.b = 'Desativado'; rg().S.hist = [{ res: r0.res, det: 'Camiseta Montanha · Brasil', nome: r0.nome, alt: 'Sim', quando: 'agora há pouco' }]; SIMRG.grava(); location.hash = 'lista'; render() }, tit: T('A aba Atividade', 'La pestaña Actividad'), txt: T('Ao lado de Regras automatizadas fica a Atividade: o histórico do que cada regra fez em cada verificação. Clique em Atividade.', 'Al lado de Reglas automáticas está Actividad: el historial de lo que hizo cada regla en cada revisión. Haz clic en Actividad.') },
+    { alvo: '[data-t=hist-0]', garante: function () { SIMRG.exemplo(); var r0 = rg().S.rules[0]; r0.res = 'Desativou 1 conjunto de anúncios'; r0.ultima = 'agora há pouco'; rg().S.st.b = 'Desativado'; rg().S.hist = [{ res: r0.res, det: 'Camiseta Montanha · Brasil', nome: r0.nome, alt: 'Sim', quando: 'agora há pouco' }]; SIMRG.grava(); location.hash = 'atividade'; render() }, tit: T('O histórico da regra', 'El historial de la regla'), txt: T('Cada linha é uma verificação: o resultado, os detalhes (quais conjuntos), o nome da regra, se alterou algo e quando foi a última verificação. A caixa “Ocultar resultados da regra sem alterações” deixa só o que mudou de verdade. A Central de Ajuda não diz por quanto tempo esse histórico fica guardado. Clique em Próximo.', 'Cada fila es una revisión: el resultado, los detalles (qué conjuntos), el nombre de la regla, si cambió algo y cuándo fue la última revisión. La casilla “Ocultar resultados de la regla sin cambios” deja solo lo que cambió de verdad. El Centro de ayuda no dice por cuánto tiempo se guarda este historial. Haz clic en Siguiente.') },
+    { alvo: '[data-t=ir-lista]', clique: true, garante: function () { SIMRG.exemplo(); var r0 = rg().S.rules[0]; r0.res = 'Desativou 1 conjunto de anúncios'; r0.ultima = 'agora há pouco'; rg().S.st.b = 'Desativado'; rg().S.hist = [{ res: r0.res, det: 'Camiseta Montanha · Brasil', nome: r0.nome, alt: 'Sim', quando: 'agora há pouco' }]; SIMRG.grava(); location.hash = 'atividade'; render() }, tit: T('De volta às regras', 'De vuelta a las reglas'), txt: T('Agora volte para a tabela de regras: clique em Regras automatizadas.', 'Ahora vuelve a la tabla de reglas: haz clic en Reglas automáticas.') },
     { alvo: '[data-t=btn-edita]', clique: true, garante: function () { SIMRG.exemplo(); location.hash = 'lista'; render() }, tit: T('Editar', 'Editar'), txt: T('Clique em Editar.', 'Haz clic en Editar.') },
     { alvo: '[data-t=jan-regra]', garante: function () { SIMRG.exemplo(); var r = rg().S.rules[0]; SIMRG.abre({}); var d = rg().D; for (var k in r) d[k] = JSON.parse(JSON.stringify(r[k])); d.editando = 'r1'; d.pct = '10'; location.hash = 'lista'; render() }, tit: T('O que dá e o que não dá para mudar', 'Lo que se puede y lo que no se puede cambiar'), txt: T('Repare: “Aplicar regra a” e “Ação” ficam apagados. Pela Central de Ajuda, ao editar não dá para mudar onde a regra se aplica nem a ação: para isso, exclua e crie outra. Nome, condições, intervalo e programação dá para mudar. Clique em Próximo.', 'Fíjate: “Aplicar regla a” y “Acción” quedan apagados. Según el Centro de ayuda, al editar no se puede cambiar dónde se aplica la regla ni la acción: para eso, elimínala y crea otra. Nombre, condiciones, intervalo y programación sí se pueden cambiar. Haz clic en Siguiente.') },
     { alvo: '[data-t=regra-cancelar]', clique: true, garante: function () { SIMRG.exemplo(); var r = rg().S.rules[0]; SIMRG.abre({}); var d = rg().D; for (var k in r) d[k] = JSON.parse(JSON.stringify(r[k])); d.editando = 'r1'; location.hash = 'lista'; render() }, tit: T('Cancelar', 'Cancelar'), txt: T('Não vamos mudar nada agora. Clique em Cancelar.', 'No vamos a cambiar nada ahora. Haz clic en Cancelar.') },
