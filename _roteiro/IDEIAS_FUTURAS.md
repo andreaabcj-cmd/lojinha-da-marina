@@ -1,7 +1,6 @@
 # Ideias para depois (aprovadas como ideia, não implementadas)
 
-Registradas em 11/11/2026. Protótipos fora deste repositório, em `D:\AliLab\madrugada_11-11\lojinha_proto\`
-(abre direto do disco: `index.html`; detalhes no `RELATORIO.md` de lá).
+Registradas em 11/11/2026. Os protótipos ficam fora deste repositório.
 
 ## 1. Revisões do dia (repetição espaçada / FSRS)
 - O que é: o mesmo método do Anki (biblioteca **ts-fsrs**). Ele decide quando cada pergunta volta para o aluno
