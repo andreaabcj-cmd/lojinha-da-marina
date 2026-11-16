@@ -83,7 +83,7 @@
         '<div class="portas">' + [
           ['modulos.html', '🎓', U.modulos, { pt: 'Aprender: aulas curtas, em ordem, com prática guiada e atendimento.', es: 'Aprender: clases cortas, en orden, con casos prácticos.' }],
           ['diagnostico.html', '🩺', U.diagnostico, { pt: 'Resolver: casos de verdade, do jeito que o cliente reclama, com o tutorial guiado até o problema sumir.', es: 'Resolver: casos reales, tal como el cliente reclama, con el tutorial guiado hasta que el problema desaparece.' }],
-          ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Consultor de Dados.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Asesor de datos.' }],
+          ['loja.html', '🏪', U.loja, { pt: 'Praticar: a loja da Marina, com o Pixel funcionando e o Consultor de Dados.', es: 'Practicar: la tienda de Marina, con el Pixel funcionando y el Asistente de datos.' }],
           ['simuladores.html', '🕹️', U.simuladores, { pt: 'Ferramentas da Meta de treino: clique à vontade, nada vai para a Meta.', es: 'Herramientas de Meta de práctica: haz clic sin miedo, nada va a Meta.' }],
           ['laboratorio.html', '🧪', U.laboratorio, { pt: 'Explorar: as ferramentas das aulas, soltas, para explicar e testar.', es: 'Explorar: las herramientas de las clases, sueltas, para explicar y probar.' }]
         ].filter(function (p) { return !window.PUB_ESCONDIDA(p[0]) }).map(function (p) { return '<a class="porta-card" href="' + p[0] + '"><span class="ic">' + p[1] + '</span><b>' + T(p[2]) + '</b><span>' + T(p[3]) + '</span><em>' + T({ pt: 'Entrar →', es: 'Entrar →' }) + '</em></a>' }).join('') + '</div>';
@@ -229,7 +229,7 @@
       ['criar-pixel', 'meta-eventos.html', 'pixel', '02', { pt: 'Como criar um Pixel no Gerenciador de Eventos', es: 'Cómo crear un Pixel en el Administrador de eventos' }],
       ['gerenciador-pixel', 'meta-eventos.html', 'pixel', '03', { pt: 'Como conferir o Pixel no Gerenciador de Eventos', es: 'Cómo revisar el Pixel en el Administrador de eventos' }],
       ['print-pixel', 'pratica.html?p=print-pixel', 'pixel', '03', { pt: 'Como pedir e ler o print do cliente', es: 'Cómo pedir y leer la captura del cliente' }],
-      ['extensao-pixel', 'loja.html', 'pixel', '03', { pt: 'Como ver o Pixel com a extensão (Consultor de Dados)', es: 'Cómo ver el Pixel con la extensión (Asesor de datos)' }],
+      ['extensao-pixel', 'loja.html', 'pixel', '03', { pt: 'Como ver o Pixel com a extensão (Consultor de Dados)', es: 'Cómo ver el Pixel con la extensión (Asistente de datos)' }],
       ['achar-codigo', 'loja.html', 'pixel', '03', { pt: 'Como achar o código do Pixel no site (técnico)', es: 'Cómo encontrar el código del Pixel en el sitio (técnico)' }],
       ['testar-eventos', 'meta-eventos.html', 'pixel', '03', { pt: 'Como usar os Eventos de teste', es: 'Cómo usar Probar eventos' }],
       ['compra-completa', 'loja.html', 'pixel', '04', { pt: 'Como conferir se a compra chega (Purchase)', es: 'Cómo revisar si la compra llega (Purchase)' }] ] },

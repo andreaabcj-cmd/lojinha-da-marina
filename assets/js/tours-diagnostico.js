@@ -26,14 +26,14 @@
   function obrigadoLer(txt) { return [{ alvo: '#obrigadoBox', semVolta: true, tit: t('Pedido feito 🛒', 'Pedido hecho 🛒'), txt: txt }] }
   function consultor(txtLista) {   // abre o Consultor de Dados (a extensão) e lê a lista de eventos da página
     return [
-      { alvo: '#maExt', clique: true, pagina: P.obrigado, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() }, tit: t('Consultor de Dados', 'Asesor de datos'), txt: t('Abra o Consultor de Dados, na faixa amarela: é a extensão que o agente pede para o cliente instalar.', 'Abre el Asesor de datos, en la franja amarilla: es la extensión que el agente le pide al cliente que instale.') },
+      { alvo: '#maExt', clique: true, pagina: P.obrigado, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() }, tit: t('Consultor de Dados', 'Asistente de datos'), txt: t('Abra o Consultor de Dados, na faixa amarela: é a extensão que o agente pede para o cliente instalar.', 'Abre el Asistente de datos, en la franja amarilla: es la extensión que el agente le pide al cliente que instale.') },
       { alvo: '.da-card-pixel', clique: true, pagina: P.obrigado, pula: function () { return !!document.querySelector('.da-card-id') }, garante: function () { window.DA && DA.abrir('inicio') }, tit: t('O Pixel da página', 'El píxel de la página'), txt: t('Clique no cartão do Pixel.', 'Haz clic en la tarjeta del píxel.') },
       { alvo: '.da-lista', pagina: P.obrigado, garante: function () { window.DA && DA.abrir('pixel') }, tit: t('O que o Pixel contou', 'Lo que contó el píxel'), txt: txtLista }
     ];
   }
   function consultorVazio(txt) {   // com o Pixel bloqueado a extensão não vê nada: ela mostra "nenhum Pixel"
     return [
-      { alvo: '#maExt', clique: true, pagina: P.obrigado, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() }, tit: t('Consultor de Dados', 'Asesor de datos'), txt: t('Abra o Consultor de Dados, na faixa amarela.', 'Abre el Asesor de datos, en la franja amarilla.') },
+      { alvo: '#maExt', clique: true, pagina: P.obrigado, pula: function () { return document.documentElement.classList.contains('da-aberto') }, garante: function () { window.DA && DA.fechar() }, tit: t('Consultor de Dados', 'Asistente de datos'), txt: t('Abra o Consultor de Dados, na faixa amarela.', 'Abre el Asistente de datos, en la franja amarilla.') },
       { alvo: '#daCorpo', pagina: P.obrigado, garante: function () { window.DA && DA.abrir('inicio') }, tit: t('A extensão não vê nada', 'La extensión no ve nada'), txt: txt }
     ];
   }

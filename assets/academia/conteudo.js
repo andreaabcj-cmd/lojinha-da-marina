@@ -772,7 +772,7 @@ window.AULAS = {
       },
       ferramenta: 'caminho-visita',
       praticar: {
-        texto: { pt: 'Na Lojinha, o Pixel vai te guiar: abra um produto, ponha no carrinho e veja os avisos registrados no Consultor de Dados. É a prova de que ele conta o que as pessoas fazem.', es: 'En la Lojinha, el Pixel te guiará: abre un producto, ponlo en el carrito y mira los avisos registrados en el Asesor de datos. Es la prueba de que cuenta lo que hacen las personas.' },
+        texto: { pt: 'Na Lojinha, o Pixel vai te guiar: abra um produto, ponha no carrinho e veja os avisos registrados no Consultor de Dados. É a prova de que ele conta o que as pessoas fazem.', es: 'En la Lojinha, el Pixel te guiará: abre un producto, ponlo en el carrito y mira los avisos registrados en el Asistente de datos. Es la prueba de que cuenta lo que hacen las personas.' },
         tour: 'pixel-em-acao', pagina: 'loja.html'
       },
       atender: {
@@ -886,7 +886,7 @@ window.AULAS = {
           { id: 'print', icone: '📸', pagina: 'pratica.html?p=print-pixel', tour: 'print-pixel',
             tit: { pt: 'Print do cliente', es: 'Captura del cliente' }, txt: { pt: 'Como pedir o print certo (com o caminho exato) e o que ler nele.', es: 'Cómo pedir la captura correcta (con el camino exacto) y qué leer en ella.' } },
           { id: 'extensao', icone: '🔎', pagina: 'loja.html', tour: 'extensao-pixel',
-            tit: { pt: 'Extensão Consultor de Dados', es: 'Extensión Asesor de datos' }, txt: { pt: 'Abrir o site do cliente e ver o Pixel, o ID e os eventos.', es: 'Abrir el sitio del cliente y ver el Pixel, el ID y los eventos.' } },
+            tit: { pt: 'Extensão Consultor de Dados', es: 'Extensión Asistente de datos' }, txt: { pt: 'Abrir o site do cliente e ver o Pixel, o ID e os eventos.', es: 'Abrir el sitio del cliente y ver el Pixel, el ID y los eventos.' } },
           { id: 'codigo', icone: '🧑‍💻', pagina: 'loja.html', tour: 'achar-codigo', selo: { pt: 'técnico', es: 'técnico' },
             tit: { pt: 'Código-fonte da página', es: 'Código fuente de la página' }, txt: { pt: 'Abrir o código da página com Ctrl+U e achar o comentário, o init e o PageView.', es: 'Abrir el código de la página con Ctrl+U y encontrar el comentario, el init y el PageView.' } },
           { id: 'rede', icone: '🌐', pagina: 'loja.html?lab=1', tour: 'rede-pixel', selo: { pt: 'opcional', es: 'opcional' },
@@ -944,7 +944,7 @@ window.AULAS = {
       },
       ferramenta: 'explorador',
       praticar: {
-        texto: { pt: 'Na Lojinha, o Pixel te guia numa compra completa (de mentirinha): produto, carrinho, pagamento e a página de obrigado. No fim, você acha o Purchase com o valor e a moeda no Consultor de Dados.', es: 'En la Lojinha, el Pixel te guía en una compra completa (de mentira): producto, carrito, pago y la página de gracias. Al final, encuentras el Purchase con el valor y la moneda en el Asesor de datos.' },
+        texto: { pt: 'Na Lojinha, o Pixel te guia numa compra completa (de mentirinha): produto, carrinho, pagamento e a página de obrigado. No fim, você acha o Purchase com o valor e a moeda no Consultor de Dados.', es: 'En la Lojinha, el Pixel te guía en una compra completa (de mentira): producto, carrito, pago y la página de gracias. Al final, encuentras el Purchase con el valor y la moneda en el Asistente de datos.' },
         tour: 'compra-completa', pagina: 'loja.html'
       },
       atender: {
@@ -961,7 +961,7 @@ window.AULAS = {
         perguntas: [{ pt: 'Qual evento aparece no Gerenciador de Eventos quando alguém compra?', es: '¿Qué evento aparece en el Administrador de eventos cuando alguien compra?' },
           { pt: 'Nesse evento aparecem o valor e a moeda?', es: '¿En ese evento aparecen el valor y la moneda?' },
           { pt: 'Sua loja é de uma plataforma (como Shopify) ou foi feita sob medida?', es: '¿Tu tienda es de una plataforma (como Shopify) o fue hecha a medida?' }],
-        conferir: [{ pt: 'Depois de uma compra, o Purchase chega (Eventos de teste ou Consultor de Dados).', es: 'Después de una compra, el Purchase llega (Probar eventos o Asesor de datos).' },
+        conferir: [{ pt: 'Depois de uma compra, o Purchase chega (Eventos de teste ou Consultor de Dados).', es: 'Después de una compra, el Purchase llega (Probar eventos o Asistente de datos).' },
           { pt: 'O Purchase tem value (valor) e currency (moeda).', es: 'El Purchase tiene value (valor) y currency (moneda).' },
           { pt: 'A moeda é a da loja (por exemplo, BRL).', es: 'La moneda es la de la tienda (por ejemplo, BRL).' }],
         frase: { pt: 'Achei: o Pixel está avisando a compra, mas sem o valor e a moeda. O Pixel funciona; o que falta são os detalhes da compra. Vamos ver juntos de onde vem isso.', es: 'Lo encontré: el Pixel está avisando la compra, pero sin el valor ni la moneda. El Pixel funciona; lo que falta son los detalles de la compra. Veamos juntos de dónde viene.' },
@@ -3323,6 +3323,7 @@ window.AULAS = {
             ['rafa', L('E tem novidade: a partir de 12 de novembro de 2026, o Pixel passa a medir conversões no próprio aparelho do cliente, ligando o anúncio à compra sem mandar à Meta dados que identifiquem a pessoa. A opção vem ativada nas Configurações do Pixel.', 'Y hay novedad: a partir del 12 de noviembre de 2026, el píxel empieza a medir conversiones en el propio dispositivo del cliente, uniendo el anuncio con la compra sin mandar a Meta datos que identifiquen a la persona. La opción viene activada en la Configuración del píxel.')]
           ],
           pontos: [
+            L('⚠️ <b>Aviso:</b> “configurar os 8 eventos do iOS 14” é um processo <b>muito antigo</b>, que <b>não acontece mais hoje em dia</b>. Se o cliente ouviu falar disso, é informação desatualizada.', '⚠️ <b>Aviso:</b> “configurar los 8 eventos de iOS 14” es un proceso <b>muy antiguo</b>, que <b>ya no ocurre hoy en día</b>. Si el cliente escuchó hablar de eso, es información desactualizada.'),
             L('<b>ATT (iOS 14.5+):</b> o app pergunta se pode rastrear; sem permissão, o identificador de anúncios vem zerado.', '<b>ATT (iOS 14.5+):</b> la app pregunta si puede rastrear; sin permiso, el identificador de anuncios viene en ceros.'),
             L('<b>Mensuração de Eventos Agregados:</b> a Meta continua medindo, com privacidade (dados agregados, sem identificar a pessoa).', '<b>Medición de eventos agregados:</b> Meta sigue midiendo, con privacidad (datos agregados, sin identificar a la persona).'),
             L('<b>Mito velho:</b> não precisa mais priorizar 8 eventos nem verificar o domínio para os eventos; para o site, nenhuma ação é necessária.', '<b>Mito viejo:</b> ya no hace falta priorizar 8 eventos ni verificar el dominio para los eventos; para el sitio, no hace falta ninguna acción.'),
@@ -4651,7 +4652,7 @@ window.AULAS = {
   'shop-ads-offsite': (function () {
     function L(pt, es) { return { pt: pt, es: es } }
     var PERG = L('O que você responde?', '¿Qué respondes?');
-    var NOTA = L('Conteúdo da Central de Ajuda da Meta para Empresas lida em 16/10/2026 (português): “Dicas para usar o Pixel da Meta nos anúncios da sua loja”, “Como corrigir a duplicação do Pixel da Meta ao usar anúncios das Lojas”, “Sobre relatórios de terceiros para o desempenho dos anúncios das Lojas”, “Como entender seus relatórios…” e “Sobre as mudanças nas Lojas e na finalização da compra…”. A tela da prévia da loja com “Finalização da compra em outro site” foi vista de verdade no Gerenciador de Comércio (módulo Commerce). O Gerenciador de Eventos com compras reais e a extensão Consultor de Dados de Anúncios não foram vistos (a conta de aula não tem Pixel com compras). Eventos, horários e números do simulador são do treino (a conferir).', 'Contenido del Centro de ayuda de Meta para Empresas leído el 16/10/2026 (portugués): “Consejos para usar el píxel de Meta en los anuncios de tu tienda”, “Cómo corregir la duplicación del píxel de Meta al usar anuncios de Tiendas”, “Acerca de los informes de terceros para el rendimiento de los anuncios de Tiendas”, “Cómo entender tus informes…” y “Acerca de los cambios en Tiendas y en la finalización de compra…”. La pantalla de la vista previa de la tienda con “Finalizar compra en otro sitio web” se vio de verdad en el Administrador de ventas (módulo Commerce). El Administrador de eventos con compras reales y la extensión Asesor de datos de anuncios no se vieron (la cuenta de clase no tiene píxel con compras). Los eventos, horarios y números del simulador son del entrenamiento (por confirmar).');
+    var NOTA = L('Conteúdo da Central de Ajuda da Meta para Empresas lida em 16/10/2026 (português): “Dicas para usar o Pixel da Meta nos anúncios da sua loja”, “Como corrigir a duplicação do Pixel da Meta ao usar anúncios das Lojas”, “Sobre relatórios de terceiros para o desempenho dos anúncios das Lojas”, “Como entender seus relatórios…” e “Sobre as mudanças nas Lojas e na finalização da compra…”. A tela da prévia da loja com “Finalização da compra em outro site” foi vista de verdade no Gerenciador de Comércio (módulo Commerce). O Gerenciador de Eventos com compras reais e a extensão Consultor de Dados de Anúncios não foram vistos (a conta de aula não tem Pixel com compras). Eventos, horários e números do simulador são do treino (a conferir).', 'Contenido del Centro de ayuda de Meta para Empresas leído el 16/10/2026 (portugués): “Consejos para usar el píxel de Meta en los anuncios de tu tienda”, “Cómo corregir la duplicación del píxel de Meta al usar anuncios de Tiendas”, “Acerca de los informes de terceros para el rendimiento de los anuncios de Tiendas”, “Cómo entender tus informes…” y “Acerca de los cambios en Tiendas y en la finalización de compra…”. La pantalla de la vista previa de la tienda con “Finalizar compra en otro sitio web” se vio de verdad en el Administrador de ventas (módulo Commerce). El Administrador de eventos con compras reales y la extensión Asistente de datos de anuncios no se vieron (la cuenta de clase no tiene píxel con compras). Los eventos, horarios y números del simulador son del entrenamiento (por confirmar).');
     var FERR = L('Gerenciador de Eventos › Fontes de dados › seu Pixel, e o Gerenciador de Anúncios.', 'Administrador de eventos › Fuentes de datos › tu píxel, y el Administrador de anuncios.');
     return [
       {
@@ -4765,7 +4766,7 @@ window.AULAS = {
             ['marina', L('Cada compra aparece duas vezes na Meta! 😱', '¡Cada compra aparece dos veces en Meta! 😱')],
             ['rafa', L('Isso é duplicação: o mesmo evento chegando por mais de um caminho, por exemplo o canal do Facebook e Instagram na Shopify e também um Pixel no Gerenciador de tags do Google.', 'Eso es duplicación: el mismo evento llegando por más de un camino, por ejemplo el canal de Facebook e Instagram en Shopify y también un píxel en el Administrador de etiquetas de Google.')],
             ['marina', L('Como eu vejo?', '¿Cómo lo veo?')],
-            ['rafa', L('No Gerenciador de Eventos: Fontes de dados, seu Pixel, Visão geral, em Atividades clique em Comprar e Ver detalhes, aba Atividades recentes. Dois eventos no mesmo horário e com o mesmo URL indicam duplicação. Também dá para usar a extensão Consultor de Dados de Anúncios no Chrome.', 'En el Administrador de eventos: Fuentes de datos, tu píxel, Resumen, en Actividades haz clic en Comprar y Ver detalles, pestaña Actividades recientes. Dos eventos en el mismo horario y con la misma URL indican duplicación. También se puede usar la extensión Asesor de datos de anuncios en Chrome.')],
+            ['rafa', L('No Gerenciador de Eventos: Fontes de dados, seu Pixel, Visão geral, em Atividades clique em Comprar e Ver detalhes, aba Atividades recentes. Dois eventos no mesmo horário e com o mesmo URL indicam duplicação. Também dá para usar a extensão Consultor de Dados de Anúncios no Chrome.', 'En el Administrador de eventos: Fuentes de datos, tu píxel, Resumen, en Actividades haz clic en Comprar y Ver detalles, pestaña Actividades recientes. Dos eventos en el mismo horario y con la misma URL indican duplicación. También se puede usar la extensión Asistente de datos de anuncios en Chrome.')],
             ['pixel', L('Para corrigir, ache a origem. Na Shopify, use o canal do Facebook e Instagram e tire o Pixel de outros lugares (apps, tema). No Gerenciador de tags do Google, remova só os eventos duplicados, sem apagar eventos de pesquisa ou registro.', 'Para corregir, encuentra el origen. En Shopify, usa el canal de Facebook e Instagram y saca el píxel de otros lugares (apps, tema). En el Administrador de etiquetas de Google, quita solo los eventos duplicados, sin borrar eventos de búsqueda o registro.')]
           ],
           pontos: [
@@ -6791,7 +6792,7 @@ window.AULAS = {
     function L(pt, es) { return { pt: pt, es: es } }
     var PERG = L('O que você responde?', '¿Qué respondes?');
     var NOTA = L('Central de Ajuda da Meta para Empresas lida em português em 16/10/2026: “Como configurar e instalar o Pixel da Meta”, “Boas práticas para a configuração de eventos padrão com o Pixel da Meta”, “Como definir o valor e a moeda dos seus eventos padrão do Pixel da Meta”, “Como solucionar mensagens de erro e aviso do Pixel da Meta no Gerenciador de Eventos da Meta” e “O que fazer se o Pixel da Meta registrar menos eventos do site”. Central de Ajuda da Shopify (em inglês, 16/10/2026): “Facebook data sharing” e “Meta pixel”. A conta de aula não tem conjunto de dados nem loja Shopify: as telas de Eventos de teste, Diagnóstico, o editor de arquivos, o admin da Shopify e o código-fonte são recriações de treino feitas a partir dessas páginas (a conferir com as telas reais). O site do cliente é a própria Lojinha da Marina, de faz-de-conta.', 'Centro de ayuda de Meta para Empresas leído en portugués el 16/10/2026: “Cómo configurar e instalar el píxel de Meta”, “Prácticas recomendadas para la configuración de eventos estándar con el píxel de Meta”, “Cómo definir el valor y la moneda de tus eventos estándar del píxel de Meta”, “Cómo solucionar mensajes de error y aviso del píxel de Meta en el Administrador de eventos de Meta” y “Qué hacer si el píxel de Meta registra menos eventos del sitio”. Centro de ayuda de Shopify (en inglés, 16/10/2026): “Facebook data sharing” y “Meta pixel”. La cuenta de clase no tiene conjunto de datos ni tienda Shopify: las pantallas de Probar eventos, Diagnóstico, el editor de archivos, el admin de Shopify y el código fuente son recreaciones de práctica hechas a partir de esas páginas (por confirmar con las pantallas reales). El sitio del cliente es la propia Lojinha da Marina, de mentira.');
-    var FERR = L('Loja do cliente › Consultor de Dados › Gerenciador de Eventos (Eventos de teste e Diagnóstico) › Código-fonte da página › plataforma do cliente.', 'Tienda del cliente › Asesor de datos › Administrador de eventos (Probar eventos y Diagnóstico) › Código fuente de la página › plataforma del cliente.');
+    var FERR = L('Loja do cliente › Consultor de Dados › Gerenciador de Eventos (Eventos de teste e Diagnóstico) › Código-fonte da página › plataforma do cliente.', 'Tienda del cliente › Asistente de datos › Administrador de eventos (Probar eventos y Diagnóstico) › Código fuente de la página › plataforma del cliente.');
     return [
       {
         id: '01', min: 10, status: 'pronta',
@@ -6802,24 +6803,24 @@ window.AULAS = {
         ],
         antes: L('A Marina ouviu de uma cliente: “Vendo todo dia, mas o Gerenciador não mostra nenhuma compra”.', 'Marina oyó de una clienta: “Vendo todos los días, pero el Administrador no muestra ninguna compra”.'),
         gancho: L('Um sintoma, várias causas possíveis. O segredo é refazer o que o cliente faz e olhar as fontes na ordem certa.', 'Un síntoma, varias causas posibles. El secreto es rehacer lo que hace el cliente y mirar las fuentes en el orden correcto.'),
-        objetivo: L('Reproduzir o caso numa compra de teste e investigar com o Consultor de Dados, Eventos de teste, Diagnóstico e o código-fonte.', 'Reproducir el caso en una compra de prueba e investigar con el Asesor de datos, Probar eventos, Diagnóstico y el código fuente.'),
+        objetivo: L('Reproduzir o caso numa compra de teste e investigar com o Consultor de Dados, Eventos de teste, Diagnóstico e o código-fonte.', 'Reproducir el caso en una compra de prueba e investigar con el Asistente de datos, Probar eventos, Diagnóstico y el código fuente.'),
         entender: {
           dialogo: [
             ['marina', L('Por onde eu começo quando o Purchase não chega? 😵', '¿Por dónde empiezo cuando el Purchase no llega? 😵')],
-            ['rafa', L('Refaça o que o cliente faz: uma compra de teste no site dele. Depois olhe o que a Meta recebeu: no Consultor de Dados (a extensão), em Eventos de teste e na aba Diagnóstico do Gerenciador de Eventos. Por fim, olhe o código da página.', 'Rehaz lo que hace el cliente: una compra de prueba en su sitio. Después mira lo que recibió Meta: en el Asesor de datos (la extensión), en Probar eventos y en la pestaña Diagnóstico del Administrador de eventos. Por último, mira el código de la página.')],
+            ['rafa', L('Refaça o que o cliente faz: uma compra de teste no site dele. Depois olhe o que a Meta recebeu: no Consultor de Dados (a extensão), em Eventos de teste e na aba Diagnóstico do Gerenciador de Eventos. Por fim, olhe o código da página.', 'Rehaz lo que hace el cliente: una compra de prueba en su sitio. Después mira lo que recibió Meta: en el Asistente de datos (la extensión), en Probar eventos y en la pestaña Diagnóstico del Administrador de eventos. Por último, mira el código de la página.')],
             ['marina', L('E como eu olho o código?', '¿Y cómo miro el código?')],
             ['rafa', L('Abra o código-fonte da página (no navegador, “Exibir código-fonte da página”) e procure por fbq, que é o nome do código do Pixel. Se o código base está lá mas não há um fbq(\'track\', \'Purchase\'...) na página de pedido concluído, o evento nunca foi colocado.', 'Abre el código fuente de la página (en el navegador, “Ver código fuente de la página”) y busca fbq, que es el nombre del código del píxel. Si el código base está ahí pero no hay un fbq(\'track\', \'Purchase\'...) en la página de pedido completado, el evento nunca se colocó.')],
-            ['pixel', L('Se PageView, ViewContent e AddToCart chegam, o pixel está vivo: o problema é só no Purchase. Pixels de apps de plataformas não aparecem no código-fonte: para esses, use o Consultor de Dados.', 'Si PageView, ViewContent y AddToCart llegan, el píxel está vivo: el problema es solo en el Purchase. Los píxeles de apps de plataformas no aparecen en el código fuente: para esos, usa el Asesor de datos.')]
+            ['pixel', L('Se PageView, ViewContent e AddToCart chegam, o pixel está vivo: o problema é só no Purchase. Pixels de apps de plataformas não aparecem no código-fonte: para esses, use o Consultor de Dados.', 'Si PageView, ViewContent y AddToCart llegan, el píxel está vivo: el problema es solo en el Purchase. Los píxeles de apps de plataformas no aparecen en el código fuente: para esos, usa el Asistente de datos.')]
           ],
           pontos: [
             L('<b>Refaça o caso:</b> uma compra de teste no site do cliente.', '<b>Rehaz el caso:</b> una compra de prueba en el sitio del cliente.'),
-            L('<b>Fontes, em ordem:</b> Consultor de Dados, Eventos de teste, Diagnóstico, código-fonte (procure fbq).', '<b>Fuentes, en orden:</b> Asesor de datos, Probar eventos, Diagnóstico, código fuente (busca fbq).'),
+            L('<b>Fontes, em ordem:</b> Consultor de Dados, Eventos de teste, Diagnóstico, código-fonte (procure fbq).', '<b>Fuentes, en orden:</b> Asistente de datos, Probar eventos, Diagnóstico, código fuente (busca fbq).'),
             L('<b>Quais eventos chegam</b> mostram onde está o problema; feche com um teste.', '<b>Qué eventos llegan</b> muestra dónde está el problema; cierra con una prueba.')
           ],
           notas: NOTA
         },
         ferramenta: 'met-dg',
-        praticar: { texto: L('Você vai fazer a compra de teste, olhar o Consultor de Dados, Eventos de teste, o Diagnóstico e o código-fonte, e fechar o diagnóstico. O Pixel te guia, e tudo acontece em telas que imitam as de verdade.', 'Vas a hacer la compra de prueba, mirar el Asesor de datos, Probar eventos, el Diagnóstico y el código fuente, y cerrar el diagnóstico. El Pixel te guía, y todo ocurre en pantallas que imitan las de verdad.'), tour: 'investigar-purchase', pagina: 'loja.html' },
+        praticar: { texto: L('Você vai fazer a compra de teste, olhar o Consultor de Dados, Eventos de teste, o Diagnóstico e o código-fonte, e fechar o diagnóstico. O Pixel te guia, e tudo acontece em telas que imitam as de verdade.', 'Vas a hacer la compra de prueba, mirar el Asistente de datos, Probar eventos, el Diagnóstico y el código fuente, y cerrar el diagnóstico. El Pixel te guía, y todo ocurre en pantallas que imitan las de verdad.'), tour: 'investigar-purchase', pagina: 'loja.html' },
         atender: {
           cena: L('Meu Pixel não funciona! Vendo todo dia e a Meta não mostra nada. Quero que vocês arrumem agora! 😠', '¡Mi píxel no funciona! Vendo todos los días y Meta no muestra nada. ¡Quiero que lo arreglen ya! 😠'),
           pergunta: PERG,
@@ -7125,7 +7126,7 @@ window.AULAS = {
       },
       cola: {
         perguntas: [L('Uma visita sem compra já manda Purchase?', '¿Una visita sin compra ya manda Purchase?'), L('O Diagnóstico mostra “Vários eventos em uma ação”?', '¿El Diagnóstico muestra “Varios eventos en una acción”?'), L('Onde está o fbq(\'track\', \'Purchase\')?', '¿Dónde está el fbq(\'track\', \'Purchase\')?')],
-        conferir: [L('Consultor de Dados, Gerenciador de Eventos (Eventos de teste e Diagnóstico) e o código-fonte da página.', 'Asesor de datos, Administrador de eventos (Probar eventos y Diagnóstico) y el código fuente de la página.')],
+        conferir: [L('Consultor de Dados, Gerenciador de Eventos (Eventos de teste e Diagnóstico) e o código-fonte da página.', 'Asistente de datos, Administrador de eventos (Probar eventos y Diagnóstico) y el código fuente de la página.')],
         frase: L('O código da compra está num lugar que aparece em todas as páginas; vamos deixá-lo só na página de pedido concluído e testar.', 'El código de la compra está en un lugar que aparece en todas las páginas; lo dejaremos solo en la página de pedido completado y probaremos.'),
         passos: [L('Visita sem compra: há Purchase?', 'Visita sin compra: ¿hay Purchase?'), L('Tirar o Purchase do cabeçalho.', 'Quitar el Purchase del encabezado.'), L('Colocar na página de pedido concluído e testar.', 'Ponerlo en la página de pedido completado y probar.')],
         encaminhar: L('Se o cliente quer corrigir os números de dias passados, explique que o histórico não muda: vale a contagem a partir da correção.', 'Si el cliente quiere corregir los números de días pasados, explica que el historial no cambia: vale el conteo a partir de la corrección.')
@@ -7360,7 +7361,7 @@ window.AULAS = {
           ['pixel', L('Nível Padrão = só o Pixel; Avançado ou Máximo = Pixel + API de Conversões (a compra também vem do servidor).', 'Nivel Estándar = solo el píxel; Mejorado o Máximo = píxel + API de Conversiones (la compra también viene del servidor).')]
         ],
         pontos: [
-          L('<b>Sinal:</b> o Consultor de Dados não acha Pixel e nenhuma compra chega.', '<b>Señal:</b> el Asesor de datos no encuentra píxel y no llega ninguna compra.'),
+          L('<b>Sinal:</b> o Consultor de Dados não acha Pixel e nenhuma compra chega.', '<b>Señal:</b> el Asistente de datos no encuentra píxel y no llega ninguna compra.'),
           L('<b>Causa:</b> canal conectado sem Pixel e com compartilhamento desligado.', '<b>Causa:</b> canal conectado sin píxel y con compartir apagado.'),
           L('<b>Prova:</b> nova compra chega do navegador e do servidor.', '<b>Prueba:</b> una nueva compra llega del navegador y del servidor.')
         ]
@@ -7377,7 +7378,7 @@ window.AULAS = {
         ]
       },
       cola: {
-        perguntas: [L('O Consultor de Dados acha algum Pixel na loja?', '¿El Asesor de datos encuentra algún píxel en la tienda?'), L('O compartilhamento de dados está ativo?', '¿Compartir datos está activo?'), L('Qual Pixel e qual nível?', '¿Qué píxel y qué nivel?')],
+        perguntas: [L('O Consultor de Dados acha algum Pixel na loja?', '¿El Asistente de datos encuentra algún píxel en la tienda?'), L('O compartilhamento de dados está ativo?', '¿Compartir datos está activo?'), L('Qual Pixel e qual nível?', '¿Qué píxel y qué nivel?')],
         conferir: [L('Admin da Shopify › Facebook e Instagram › Configurações › Compartilhamento de dados.', 'Admin de Shopify › Facebook e Instagram › Configuración › Compartir datos.')],
         frase: L('A loja está conectada, mas o envio de dados está desligado; vamos ligar e escolher o seu Pixel.', 'La tienda está conectada, pero el envío de datos está apagado; vamos a activarlo y elegir tu píxel.'),
         passos: [L('Compra de teste.', 'Compra de prueba.'), L('Ativar compartilhamento, nível e Pixel.', 'Activar compartir, nivel y píxel.'), L('Nova compra.', 'Nueva compra.')],
@@ -7758,7 +7759,7 @@ window.AULAS = {
       },
       cola: {
         perguntas: [L('O Purchase dispara no clique ou na página de pedido concluído?', '¿El Purchase se dispara en el clic o en la página de pedido completado?'), L('Houve pagamentos recusados ou desistências no dia?', '¿Hubo pagos rechazados o abandonos ese día?')],
-        conferir: [L('Consultor de Dados ao clicar em Finalizar; Gerenciador de Eventos › Eventos de teste.', 'Asesor de datos al hacer clic en Finalizar; Administrador de eventos › Probar eventos.')],
+        conferir: [L('Consultor de Dados ao clicar em Finalizar; Gerenciador de Eventos › Eventos de teste.', 'Asistente de datos al hacer clic en Finalizar; Administrador de eventos › Probar eventos.')],
         frase: L('O Purchase precisa disparar só quando a compra é concluída; no botão Finalizar ele conta também quem não pagou.', 'El Purchase tiene que dispararse solo cuando la compra se completa; en el botón Finalizar cuenta también a quien no pagó.'),
         passos: [L('Clicar em Finalizar e ver se já chega Purchase.', 'Hacer clic en Finalizar y ver si ya llega Purchase.'), L('Mover o Purchase para a página de pedido concluído.', 'Mover el Purchase a la página de pedido completado.'), L('Testar com uma compra.', 'Probar con una compra.')],
         encaminhar: L('A mudança no código é com o desenvolvedor ou a plataforma do cliente.', 'El cambio en el código es con el desarrollador o la plataforma del cliente.')

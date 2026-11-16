@@ -32,7 +32,7 @@
       '<p class="ae-desc" data-t="desc">' + esc(a.desc) + '</p>' +
       '<div class="ae-ed"><pre class="ae-num" aria-hidden="true">' + n + '</pre><textarea id="aeTexto" spellcheck="false" wrap="off" placeholder="' + esc(a.dica) + '" data-t="ed-texto">' + esc(t) + '</textarea></div>' +
       '<div class="ae-rodape"><span id="aeStatus" data-t="ed-status">' + (msg || (salvoEm ? '✓ ' + T('Salvo às ', 'Guardado a las ') + salvoEm : T('Sem alterações novas.', 'Sin cambios nuevos.'))) + '</span></div>' +
-      '<p class="ae-nota">' + T('Treino: o agente não mexe no site do cliente. Aqui você faz o que o desenvolvedor dele faria, para entender o que pedir e conferir o resultado em Código-fonte, no Consultor de Dados e em Eventos de teste.', 'Entrenamiento: el agente no toca el sitio del cliente. Aquí haces lo que haría su desarrollador, para entender qué pedir y revisar el resultado en Código fuente, en el Asesor de datos y en Probar eventos.') + '</p></main></div></div>';
+      '<p class="ae-nota">' + T('Treino: o agente não mexe no site do cliente. Aqui você faz o que o desenvolvedor dele faria, para entender o que pedir e conferir o resultado em Código-fonte, no Consultor de Dados e em Eventos de teste.', 'Entrenamiento: el agente no toca el sitio del cliente. Aquí haces lo que haría su desarrollador, para entender qué pedir y revisar el resultado en Código fuente, en el Asistente de datos y en Probar eventos.') + '</p></main></div></div>';
     window.__simAe = { atual: atual, rascunho: rascunho };
   }
   document.addEventListener('click', function (e) {

@@ -38,7 +38,7 @@ window.TOURS['print-pixel'] = [
   { alvo: '[data-msg=pedido2]',
     tit: { pt: 'Print 2: o código do site', es: 'Captura 2: el código del sitio' },
     txt: { pt: 'Para ver o que o SITE usa, peça o código da página. Ctrl+U abre o código; Ctrl+F acha o fbq rapidinho.', es: 'Para ver lo que usa el SITIO, pide el código de la página. Ctrl+U abre el código; Ctrl+F encuentra el fbq rápido.' },
-    dica: { pt: 'Se o cliente não conseguir (no celular, por exemplo), tente outro jeito: a extensão Consultor de Dados também mostra o ID.', es: 'Si el cliente no puede (en el celular, por ejemplo), prueba otra forma: la extensión Asesor de datos también muestra el ID.' } },
+    dica: { pt: 'Se o cliente não conseguir (no celular, por exemplo), tente outro jeito: a extensão Consultor de Dados também mostra o ID.', es: 'Si el cliente no puede (en el celular, por ejemplo), prueba otra forma: la extensión Asistente de datos también muestra el ID.' } },
   { alvo: '[data-foto=codigo-base] .f-init',
     tit: { pt: 'O número do site', es: 'El número del sitio' },
     txt: { pt: 'Este é o número dentro do init: é para ele que o site envia os eventos.', es: 'Este es el número dentro del init: es a donde el sitio envía los eventos.' } },

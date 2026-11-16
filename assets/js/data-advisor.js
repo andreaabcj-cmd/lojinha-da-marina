@@ -132,8 +132,11 @@
   }
 
   function monta() {
-    painel = document.createElement('aside'); painel.className = 'da-painel'; painel.setAttribute('aria-label', 'Consultor de Dados de Anúncios da Meta (simulação)');
-    painel.innerHTML = '<header class="da-cab">' + IC.logo + '<span>Consultor de Dados de Anúncios da Meta</span><button class="da-ic2" title="Fixar">' + IC.pin + '</button><button class="da-ic2" data-acao="fechar" title="Fechar">' + IC.x + '</button></header>' +
+    // nome da extensão no idioma da plataforma (16/11/2026, pedido do responsável: em espanhol, "Asistente de datos")
+    var es = false; try { es = JSON.parse(localStorage.getItem('plat.lang') || '"pt"') === 'es' } catch (e) {}
+    var NOME = es ? 'Asistente de datos de anuncios de Meta' : 'Consultor de Dados de Anúncios da Meta';
+    painel = document.createElement('aside'); painel.className = 'da-painel'; painel.setAttribute('aria-label', NOME + (es ? ' (simulación)' : ' (simulação)'));
+    painel.innerHTML = '<header class="da-cab">' + IC.logo + '<span>' + NOME + '</span><button class="da-ic2" title="Fixar">' + IC.pin + '</button><button class="da-ic2" data-acao="fechar" title="Fechar">' + IC.x + '</button></header>' +
       '<div class="da-caixa"><div class="da-topo"><button class="da-ic" title="Notificações">' + IC.sino + '</button><button class="da-ic" title="Enviar comentários">' + IC.opiniao + '</button></div>' +
       '<div class="da-corpo" id="daCorpo"></div><p class="da-aviso">Simulação para treinamento. A extensão real (Meta Ads Data Advisor) fica no Chrome.</p></div>';
     document.body.appendChild(painel);

@@ -18,7 +18,9 @@
   window.LAB_ABERTA = function (f) { return !(PUB || ENCOSTADOS) || LAB_ABERTA.indexOf(f) >= 0 };
   if (PUB || ENCOSTADOS) {
     var aqui = location.pathname.split('/').pop();
-    var fora = ABAS.test(aqui) || (/^ferramenta\.html$/i.test(aqui) && LAB_ABERTA.indexOf(q.get('f')) < 0);
+    // ?espiar=1 (16/11/2026): só no computador do responsável, abre uma ferramenta escondida para ele decidir se libera (página de escolha das ferramentas)
+    var espiar = local && !forca && q.get('espiar') === '1';
+    var fora = ABAS.test(aqui) || (/^ferramenta\.html$/i.test(aqui) && LAB_ABERTA.indexOf(q.get('f')) < 0 && !espiar);
     if (fora) location.replace('modulos.html');
     // "← voltar à plataforma" dos simuladores e outros links para as abas escondidas levam aos Módulos
     document.addEventListener('click', function (e) {
