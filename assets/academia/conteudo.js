@@ -835,6 +835,7 @@ window.AULAS = {
         notas: { pt: 'A Marina chega com uma ideia errada vinda da IA. O ponto da aula: corrigir a INFORMAÇÃO com gentileza, nunca a pessoa. O Pixel mede; quem vende é o negócio dela, com a ajuda dos anúncios.', es: 'Marina llega con una idea equivocada que vino de la IA. El punto de la clase: corregir la INFORMACIÓN con amabilidad, nunca a la persona. El Pixel mide; quien vende es su negocio, con la ayuda de los anuncios.' }
       },
       ferramenta: 'caminho-visita',
+      eventos: true,   // 18/11/2026: etapa Eventos padrão (ferramenta do Aulão do Pixel), entre Ver de perto e Praticar
       praticar: {
         texto: { pt: 'Na Lojinha, o Pixel vai te guiar: abra um produto, ponha no carrinho e veja os avisos registrados no Consultor de Dados. É a prova de que ele conta o que as pessoas fazem.', es: 'En la Lojinha, el Pixel te guiará: abre un producto, ponlo en el carrito y mira los avisos registrados en el Asistente de datos. Es la prueba de que cuenta lo que hacen las personas.' },
         tour: 'pixel-em-acao', pagina: 'loja.html'

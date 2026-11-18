@@ -13,7 +13,7 @@
     sub: { pt: 'plataforma de treinamento', es: 'plataforma de entrenamiento' },
     pronta: { pt: 'pronta', es: 'lista' }, construcao: { pt: 'em construção', es: 'en construcción' }, planejado: { pt: 'planejado', es: 'planificado' },
     planejada: { pt: 'em breve', es: 'próximamente' }, depois: { pt: 'depois', es: 'después' }, interno: { pt: 'material interno', es: 'material interno' },
-    entender: { pt: 'Entender', es: 'Entender' }, ferramenta: { pt: 'Ver de perto', es: 'Ver de cerca' }, praticar: { pt: 'Praticar', es: 'Practicar' }, atender: { pt: 'Atender', es: 'Atender' }, colas: { pt: 'Colas', es: 'Guías' }, faq: { pt: 'FAQ', es: 'FAQ' },
+    entender: { pt: 'Entender', es: 'Entender' }, ferramenta: { pt: 'Ver de perto', es: 'Ver de cerca' }, praticar: { pt: 'Praticar', es: 'Practicar' }, eventos: { pt: 'Eventos padrão', es: 'Eventos estándar' }, atender: { pt: 'Atender', es: 'Atender' }, colas: { pt: 'Colas', es: 'Guías' }, faq: { pt: 'FAQ', es: 'FAQ' },
     ant: { pt: '◀ Anterior', es: '◀ Anterior' }, prox: { pt: 'Próximo ▶', es: 'Siguiente ▶' }, proxAula: { pt: 'Próxima aula ▶', es: 'Siguiente clase ▶' }, proxMod: { pt: 'Próximo módulo ▶', es: 'Siguiente módulo ▶' }, fimMod: { pt: 'Voltar ao módulo', es: 'Volver al módulo' },
     apresentar: { pt: '🎤 Apresentar', es: '🎤 Presentar' }, sairApr: { pt: '✕ Sair da apresentação', es: '✕ Salir de la presentación' }, notas: { pt: '📝 Notas', es: '📝 Notas' },
     fontes: { pt: 'Fontes oficiais', es: 'Fuentes oficiales' }, conferido: { pt: 'conferido em', es: 'revisado el' }, min: { pt: 'min', es: 'min' }
@@ -512,7 +512,7 @@
     if (!m || !a || a.status !== 'pronta') return '<p>' + T({ pt: 'Aula não encontrada.', es: 'Clase no encontrada.' }) + ' <a href="modulos.html">' + T(U.modulos) + '</a></p>';
     lsSet('plat.ultima', { m: mid, a: aid });
     var dg = m.area === 'diagnostico';   // caso do Diagnóstico: a Marina reclama → o tutorial guiado → por que aconteceu → atender
-    var partes = (dg ? ['reclamacao', 'praticar', 'entender', 'ferramenta', 'atender'] : ['entender', 'ferramenta', 'praticar', 'atender']).filter(function (p) { return a[p] });
+    var partes = (dg ? ['reclamacao', 'praticar', 'entender', 'ferramenta', 'atender'] : ['entender', 'ferramenta', 'eventos', 'praticar', 'atender']).filter(function (p) { return a[p] });
     passoAtual = Math.max(0, Math.min(partes.length - 1, (parseInt(Q.get('passo'), 10) || 1) - 1));
     var prox = aulasDaTrilha(mid).filter(function (x) { return lista.indexOf(x) > lista.indexOf(a) })[0], aqui = 'aula-plataforma.html?m=' + mid + '&a=' + aid, chatVisto = !!Q.get('passo');
     if (Q.get('feito')) { var fp0 = lsGet('plat.praticas', {}); fp0[mid + '/' + aid + '/' + Q.get('feito')] = true; lsSet('plat.praticas', fp0) }
@@ -526,6 +526,7 @@
       if (p === 'reclamacao') h = chat(a.reclamacao) + '<p class="fio depois">🧭 <b>' + T({ pt: 'O que vamos fazer:', es: 'Qué vamos a hacer:' }) + '</b> ' + T(a.objetivo) + '</p><p><button class="btn amarelo grande" id="bResolver">▶ ' + T(a.praticar ? { pt: 'Resolver com o tutorial guiado', es: 'Resolver con el tutorial guiado' } : { pt: 'Ver por que acontece', es: 'Ver por qué pasa' }) + '</button></p>';
       else if (p === 'entender') h = chat(a.entender.dialogo, a.antes) + (a.entender.pontos && a.entender.pontos.length ? '<ul class="pontos">' + a.entender.pontos.map(function (x) { return '<li>' + T(x) + '</li>' }).join('') + '</ul>' : '');
       else if (p === 'ferramenta') { var f = window.FERRAMENTAS[a.ferramenta]; h = '<div class="ferr-box" id="ferr"></div>' + (!window.LAB_ABERTA || window.LAB_ABERTA(a.ferramenta) ? '<p class="mais-lab">🧪 ' + T({ pt: 'Quer os detalhes técnicos?', es: '¿Quieres los detalles técnicos?' }) + ' <a href="ferramenta.html?f=' + a.ferramenta + '">' + T({ pt: 'Ferramenta completa no Laboratório', es: 'Herramienta completa en el Laboratorio' }) + '</a></p>' : ''); setTimeout(function () { f.montar($('#ferr'), T, LANG, { modo: 'simples' }) }) }
+      else if (p === 'eventos') h = '<div class="ferr-box" id="evpBox"></div>';   // 18/11/2026: etapa Eventos padrão (eventos-padrao.js)
       else if (p === 'praticar') {
         var volta = function (id) { return encodeURIComponent(aqui + '&passo=' + (passoAtual + (a.praticar.opcoes ? 1 : 2)) + '&feito=' + id) },   // várias práticas: volta para escolher outra; uma só: segue para o Atender
           fp = lsGet('plat.praticas', {});
@@ -543,7 +544,7 @@
         (a.gancho && !dg ? fioDepois() : '');
       // aula sem Atender (ex.: Portfólio 01): o “Na próxima aula” vai no fim da última etapa
       if (p !== 'atender' && passoAtual === partes.length - 1 && a.gancho && !dg) h += fioDepois();
-      $('#palco').innerHTML = h; $('#palco').classList.remove('mv-troca'); void $('#palco').offsetWidth; $('#palco').classList.add('mv-troca'); mov().cascata($('#palco'));
+      $('#palco').innerHTML = h; if (p === 'eventos' && window.EVENTOS_PADRAO) window.EVENTOS_PADRAO($('#evpBox'), T); $('#palco').classList.remove('mv-troca'); void $('#palco').offsetWidth; $('#palco').classList.add('mv-troca'); mov().cascata($('#palco'));
       if (p === 'reclamacao') { var bR = $('#bResolver'); if (bR) bR.onclick = function () { $('#bProx').click() }; if (!chatVisto) { chatVisto = true; mov().chat($('#palco'), function () { }) } }
       if (p === 'entender' && !chatVisto) { chatVisto = true; var pts = $('#palco .pontos'); if (pts) pts.classList.add('mv-oculta'); mov().chat($('#palco'), function () { if (pts) { pts.classList.remove('mv-oculta'); pts.classList.add('mv-chega') } }) }
       document.querySelectorAll('.passos button').forEach(function (b, i) { b.classList.toggle('on', i === passoAtual); b.classList.toggle('feito', i < passoAtual) });

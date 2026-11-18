@@ -371,3 +371,28 @@ html,body{overflow-x:clip}
 .esc-tag{display:inline-block;margin-left:8px;padding:0 7px;border-radius:999px;background:#FFF1E6;color:#9A4A12;border:1.5px solid #E8A87C;font:700 12px/1.6 inherit;vertical-align:middle;cursor:help;white-space:nowrap}
 .esc-tag.esc-sinal{background:#F2F2F2;color:#666;border-color:#CFCFCF}
 .pl-h1 .esc-tag{font-size:14px;vertical-align:4px}
+/* 18/11/2026: etapa "Eventos padrão" (aula Pixel · básico 01) — ferramenta do Aulão do Pixel no visual da Lojinha */
+.evp-topo{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
+.evp-kicker{font:800 13px "Segoe UI",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.evp-h{margin:2px 0 0;font:900 clamp(22px,3.4vw,32px)/1.1 "Segoe UI",sans-serif;color:var(--ink)}
+.evp-filtros{display:flex;flex-wrap:wrap;gap:8px}
+.evp-filtros button{padding:7px 14px;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink);font:700 14px "Segoe UI",sans-serif;cursor:pointer}
+.evp-filtros button.on{background:var(--ink);color:#fff}
+.evp-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.evp-ev{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 10px;background:#fff;border:2px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--ink);color:var(--ink);cursor:pointer;text-align:center;transition:.12s}
+.evp-ev:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.evp-ev b{font:700 15px Consolas,"Courier New",monospace}.evp-ev span{font-size:13px;color:var(--muted)}
+.evp-ev.on{background:var(--ink);color:#fff}.evp-ev.on span{color:#cbd5e1}
+.evp-ev.dim{opacity:.3}
+.evp-star{position:absolute;top:5px;right:8px;color:var(--yellow);font-size:14px}
+.evp-det{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.evp-card{padding:16px 18px;background:#fff;border:2px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--ink)}
+.evp-card p{margin:10px 0 0}.evp-par{font-size:14px;color:var(--ink2)}.evp-par span{font-family:Consolas,"Courier New",monospace}
+.evp-nome{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.evp-nome code{font:800 22px Consolas,"Courier New",monospace}
+.evp-chip{font:700 12px "Segoe UI",sans-serif;padding:2px 9px;border-radius:999px;border:2px solid currentColor}.evp-chip.vm{color:var(--red);background:var(--red-l)}.evp-chip.am{color:#8a5a00;background:var(--yellow-l)}
+.evp-cod{margin:0;padding:16px 18px;background:var(--ink);color:#e2e8f0;border:2px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--yellow);font:14px/1.55 Consolas,"Courier New",monospace;white-space:pre-wrap;word-break:break-word}
+.evp-cod .evp-s{color:#86efac}.evp-cod .evp-f{color:#7dd3fc}
+.evp-fonte{margin:12px 0 0;font-size:12.5px;color:var(--muted)}
+@media (max-width:700px){.evp-det{grid-template-columns:1fr}.evp-grade{grid-template-columns:repeat(2,1fr)}}
+.evp-ev b{font-size:13.5px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}.evp-ev .evp-star{color:#E0A100;font-size:17px;top:3px;right:7px;text-shadow:0 0 1px var(--ink)}.evp-ev.on .evp-star{color:var(--yellow)}
+.evp-ev b.longo{font-size:11.5px;letter-spacing:-.2px}.evp-ev{padding:12px 6px}
